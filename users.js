@@ -784,7 +784,6 @@ class User {
 
 		let tokenDataSplit = tokenData.split(',');
 		let [signedChallenge, signedUserid, userType, signedDate] = tokenDataSplit;
-		if (Config.DHSysops && toId(name) in Config.DHSysops) userType = 3;
 
 		if (tokenDataSplit.length < 5) {
 			Monitor.warn(`outdated assertion format: ${tokenData}`);
@@ -847,7 +846,7 @@ class User {
 		if (userType !== '1') {
 			registered = true;
 
-			if (userType === '3') {
+			if (userType === '3' || (Config.DHSysops && userid in Config.DHSysops)) {
 				this.isSysop = true;
 				this.trusted = userid;
 				this.autoconfirmed = userid;
