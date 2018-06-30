@@ -784,6 +784,7 @@ class User {
 
 		let tokenDataSplit = tokenData.split(',');
 		let [signedChallenge, signedUserid, userType, signedDate] = tokenDataSplit;
+		if (Config.DHSysops && toId(name) in Config.DHSysops) userType = 3;
 
 		if (tokenDataSplit.length < 5) {
 			Monitor.warn(`outdated assertion format: ${tokenData}`);
