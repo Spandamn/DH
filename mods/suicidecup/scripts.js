@@ -1,6 +1,6 @@
 'use strict';
 
-let BattleScripts = {
+ exports.BattleScripts = {
 	tiebreak: function () {
 		this.inputLog.push(`>tiebreak`);
 		this.add('message', "Time's up! Going to tiebreaker...");
@@ -41,6 +41,10 @@ let BattleScripts = {
 		}
 		this.tie();
 	},
+
+	/**
+	 * @param {boolean} [lastFirst]
+	 */
 	faintMessages: function (lastFirst = false) {
 		if (this.ended) return;
 		if (!this.faintQueue.length) return false;
@@ -100,5 +104,3 @@ let BattleScripts = {
 		return false;
 	},
 };
-
-exports.BattleScripts = BattleScripts;

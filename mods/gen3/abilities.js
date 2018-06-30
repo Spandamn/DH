@@ -22,11 +22,11 @@ let BattleAbilities = {
 			if (move && move.flags['contact'] && !source.status) {
 				let r = this.random(300);
 				if (r < 10) {
-					source.setStatus('slp', target);
+					source.setStatus('slp');
 				} else if (r < 20) {
-					source.setStatus('par', target);
+					source.setStatus('par');
 				} else if (r < 30) {
-					source.setStatus('psn', target);
+					source.setStatus('psn');
 				}
 			}
 		},
