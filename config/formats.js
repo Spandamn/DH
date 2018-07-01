@@ -3552,15 +3552,15 @@ exports.Formats = [
 		ruleset: ['[Gen 7] OU'],
 		banlist: [],
 	},
-{
+	{
 		name: "[Gen 7] Metagamiate",
 		desc: ["&bullet; <a href=\"https://www.smogon.com/forums/threads/3604808/\">Metagamiate</a>"],
 		mod: 'gen7',
 		ruleset: ['[Gen 7] OU'],
 		banlist: ['Dragonite', 'Kyurem-Black'],
-		onModifyMovePriority: -1,
+		onModifyMovePriority: -2,
 		onModifyMove: function (move, pokemon) {
-			if (move.type === 'Normal' && !move.isZ && move.id !== 'hiddenpower' && !pokemon.hasAbility(['aerilate', 'galvanize', 'normalize', 'pixilate', 'refrigerate'])) {
+			if (move.type === 'Normal' && !move.isZ && move.id !== 'hiddenpower'&& !pokemon.hasAbility(['aerilate', 'galvanize', 'normalize', 'pixilate', 'refrigerate'])) {
 				let types = pokemon.getTypes();
 				let type = types.length < 2 || !pokemon.set.shiny ? types[0] : types[1];
 				move.type = type;
