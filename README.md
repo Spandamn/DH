@@ -178,6 +178,13 @@ Contributors
 - [Ridaz] - Art (battle animations)
 - Tobias Mann [asgdf] - Development
 
+DragonHeaven
+
+- Spandan Punwatkar [Spandan] - Development
+- Anubhav Kumar [XpRienzo] - Development
+- Om [charizard8888] - Development
+- [Nixola] - Host
+
 Special thanks
 
 - See http://pokemonshowdown.com/credits
