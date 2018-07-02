@@ -61,5 +61,7 @@ this.modData('Learnsets', 'dustox').learnset.toxicturmoil = ['7L1'];
 this.modData('Learnsets', 'beedrill').learnset.wingattack = ['7L1'];
 this.modData('Learnsets', 'beedrill').learnset.feintattack = ['7L1'];
 this.modData('Learnsets', 'beedrill').learnset.stingstorm = ['7L1'];
+	
+this.modData('Learnsets', 'wormadamtrash').learnset.recover = ['7L1'];
 },
 };
