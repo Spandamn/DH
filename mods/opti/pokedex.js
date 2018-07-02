@@ -152,7 +152,7 @@ decidueye: {
 		types: ["Bug", "Steel"],
 		gender: "F",
 		baseStats: {hp: 70, atk: 82, def: 112, spa: 80, spd: 112, spe: 25},
-		abilities: {0: "Anticipation", H: "Overcoat"},
+		abilities: {0: "Filter", 1: "Regenerator", H: "Iron Barbs"},
 		heightm: 0.5,
 		weightkg: 6.5,
 		color: "Red",
