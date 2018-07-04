@@ -38,6 +38,7 @@ exports.BattleStatuses = {
 	aircurrent: {
 		effectType: 'Weather',
 		duration: 5,
+		num: 0,
 		durationCallback: function (source, effect) {
 			if (source && source.hasItem('breezerock')) {
 				return 8;
@@ -70,6 +71,7 @@ exports.BattleStatuses = {
 	shadowsky: {
 		effectType: 'Weather',
 		duration: 5,
+		num: 0,
 		durationCallback: function (source, effect) {
 		if (source && source.hasItem('shadowrock')) {
 				return 8;
