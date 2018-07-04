@@ -6703,15 +6703,15 @@ exports.BattleAbilities = {
 	},
 	"crushing": {
 		shortDesc: "Recoil from moves used against this Pokemon is doubled.",
-		onFoeModifyDamage: function (damage, source, target, effect) {
-			if (effect.id === 'recoil') {
-				this.chainModify(2);
+		onSourceModifyMove: function (move) {
+			if (move.recoil){
+				move.recoil = [move.recoil[0]*2, move.recoil[1]];
 			}
 		},
 		id: "crushing",
 		name: "Crushing",
 	},
-		"gtolerance": {
+	"gtolerance": {
 		shortDesc: "This Pokemon is immune to moves with 1/2 or less of their PP remaining.",
 		onTryHit: function(target, source, move) {
 			if (target !== source && move.pp*2 <= move.maxpp) {
