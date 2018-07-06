@@ -65,7 +65,7 @@ exports.BattleStatuses = {
 			this.eachEvent('Weather');
 		},
 		onEnd: function () {
-			this.add('raw|<h3>Air Current stopped</h3>');
+			this.add('raw|<h3>Air Current faded away</h3>');
 		},
 	},
 	shadowsky: {
@@ -98,7 +98,7 @@ exports.BattleStatuses = {
 			this.eachEvent('Weather');
 		},
 		onEnd: function () {
-			this.add('raw|<h3>Shadow Sky stopped</h3>');
+			this.add('raw|<h3>Shadow Sky faded away</h3>');
 		},
 	},
   };
