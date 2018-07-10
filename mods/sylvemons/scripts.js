@@ -1633,6 +1633,8 @@ this.modData('Learnsets', 'tangrowth').learnset.allterrainblast = ['7L1'];
 this.modData('Learnsets', 'tropius').learnset.allterrainblast = ['7L1'];
 this.modData('Learnsets', 'virizion').learnset.allterrainblast = ['7L1'];
 this.modData('Learnsets', 'xurkitree').learnset.allterrainblast = ['7L1'];
+	  
+	  this.modData('Learnsets', 'hoopa').learnset.shadowsky = ['7L1'];
 
 
     /*for (let i in this.data.Pokedex) {
