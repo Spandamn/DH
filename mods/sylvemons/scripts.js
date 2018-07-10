@@ -1660,38 +1660,7 @@ this.modData('Learnsets', 'krookodile').learnset.shadowsky = ['7L1'];
 this.modData('Learnsets', 'liepard').learnset.shadowsky = ['7L1'];
 this.modData('Learnsets', 'malamar').learnset.shadowsky = ['7L1'];
 this.modData('Learnsets', 'mandibuzz').learnset.shadowsky = ['7L1'];
-this.modData('Learnsets', 'meowth-alola').learnset.shadowsky = ['7L1'];
-this.modData('Learnsets', 'mightyena').learnset.shadowsky = ['7L1'];
-this.modData('Learnsets', 'muk-alola').learnset.shadowsky = ['7L1'];
-this.modData('Learnsets', 'murkrow').learnset.shadowsky = ['7L1'];
-this.modData('Learnsets', 'nuzleaf').learnset.shadowsky = ['7L1'];
-this.modData('Learnsets', 'pangoro').learnset.shadowsky = ['7L1'];
-this.modData('Learnsets', 'pawniard').learnset.shadowsky = ['7L1'];
-this.modData('Learnsets', 'persian-alola').learnset.shadowsky = ['7L1'];
-this.modData('Learnsets', 'poochyena').learnset.shadowsky = ['7L1'];
-this.modData('Learnsets', 'purrloin').learnset.shadowsky = ['7L1'];
-this.modData('Learnsets', 'raticate-alola').learnset.shadowsky = ['7L1'];
-this.modData('Learnsets', 'raticate-alola-totem').learnset.shadowsky = ['7L1'];
-this.modData('Learnsets', 'rattata-alola').learnset.shadowsky = ['7L1'];
-this.modData('Learnsets', 'sableye').learnset.shadowsky = ['7L1'];
-this.modData('Learnsets', 'sandile').learnset.shadowsky = ['7L1'];
-this.modData('Learnsets', 'scrafty').learnset.shadowsky = ['7L1'];
-this.modData('Learnsets', 'scraggy').learnset.shadowsky = ['7L1'];
-this.modData('Learnsets', 'sharpedo').learnset.shadowsky = ['7L1'];
-this.modData('Learnsets', 'shiftry').learnset.shadowsky = ['7L1'];
-this.modData('Learnsets', 'silvally').learnset.shadowsky = ['7L1'];
-this.modData('Learnsets', 'skuntank').learnset.shadowsky = ['7L1'];
-this.modData('Learnsets', 'sneasel').learnset.shadowsky = ['7L1'];
-this.modData('Learnsets', 'spiritomb').learnset.shadowsky = ['7L1'];
-this.modData('Learnsets', 'stunky').learnset.shadowsky = ['7L1'];
-this.modData('Learnsets', 'tyranitar').learnset.shadowsky = ['7L1'];
-this.modData('Learnsets', 'weavile').learnset.shadowsky = ['7L1'];
-this.modData('Learnsets', 'vullaby').learnset.shadowsky = ['7L1'];
-this.modData('Learnsets', 'weavile').learnset.shadowsky = ['7L1'];
-this.modData('Learnsets', 'yveltal').learnset.shadowsky = ['7L1'];
-this.modData('Learnsets', 'zoroark').learnset.shadowsky = ['7L1'];
-this.modData('Learnsets', 'zorua').learnset.shadowsky = ['7L1'];
-this.modData('Learnsets', 'zweilous').learnset.shadowsky = ['7L1'];
+
 
 
     /*for (let i in this.data.Pokedex) {
