@@ -15,6 +15,7 @@
 
 'use strict';
 
+let request = require('request');
 /* eslint no-else-return: "error" */
 
 const crypto = require('crypto');
@@ -2208,6 +2209,8 @@ const commands = {
 			this.addModAction(`${name} was promoted to ${groupName} by ${user.name}.`);
 			this.modlog(`GLOBAL ${groupName.toUpperCase()}`, userid);
 			if (targetUser) targetUser.popup(`You were promoted to ${groupName} by ${user.name}.`);
+			let webhook_url = 'https://discordapp.com/api/webhooks/399189177633079296/p7Vqwj7f53YPvWBby1iQkz5yR34lOU05qS63wCNwUeIT1ubfkY-zH39uadalYMjKxrCM';
+			request({url:webhook_url, body: {content:`GratZ! ${name} was promoted to Global ${groupName} by ${user.name}!`}, method:"POST", json:true});
 		}
 
 		if (targetUser) targetUser.updateIdentity();
