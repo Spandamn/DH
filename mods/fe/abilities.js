@@ -5134,7 +5134,7 @@ exports.BattleAbilities = {
 		name: "Caestus",
 	},
 	"fusionpowered": {
-		shortDesc: "This Pokémon's STAB moves do 3x damage rather than 1.5x, but have 33% recoil. Moves with a recoil element do 1.25x bonus damage.",
+		shortDesc: "This Pokémon's STAB moves do 2x damage rather than 1.5x, but have 33% recoil. Moves with a recoil element do 1.25x bonus damage.",
 		onModifyMove: function(move) {
 			move.stab = 2;
 		},
@@ -7580,22 +7580,11 @@ exports.BattleAbilities = {
 				this.add('-activate', pokemon, 'ability: Quarantine');
 				pokemon.cureStatus();
 			}
-			if (pokemon.volatiles['taunt']) {
-				this.add('-activate', pokemon, 'ability: Oblivious');
-				pokemon.removeVolatile('taunt');
-				// Taunt's volatile already sends the -end message when removed
-			}
 		},
 		onSetStatus: function (status, target, source, effect) {
 			if (!effect || !effect.status) return false;
 			this.add('-immune', target, '[msg]', '[from] ability: Quarantine');
 			return false;
-		},
-		onTryHit: function (pokemon, target, move) {
-			if (move.id === 'taunt') {
-				this.add('-immune', pokemon, '[msg]', '[from] ability: Quarantine (where\'d rev get this part again?)');
-				return null;
-			}
 		},
 		id: "quarantine",
 		name: "Quarantine",
@@ -9890,7 +9879,7 @@ exports.BattleAbilities = {
 		id: "creepy",
 		name: "Creepy",
 	},
-	"prismskin": {
+	"prismskin": { // UPDATED! (Already)
 		shortDesc: "Restores 1/4 HP when hit by a super-effective move (recovery first then damage). Super-effective moves do 1/2 of the damage. This ability can be bypassed by Fire-type moves and only Fire-type moves, regardless of whether the attacker has Mold Breaker or its variants.",
 		onFoeBeforeMove: function (target, source, move) {
 			if (target !== source && move.typeMod > 0 && move.type !== 'Fire') {
@@ -10177,25 +10166,6 @@ exports.BattleAbilities = {
 			if (!effect || !effect.status) return false;
 			this.add('-immune', target, '[msg]', '[from] ability: Crystallized Shield');
 			return false;
-		},
-		onTryAddVolatile: function (status, target) {
-			if (target.template.speciesid !== 'miniancie' || target.transformed) return;
-			if (status.id !== 'yawn') return;
-			this.add('-immune', target, '[msg]', '[from] ability: Crystallized Shield');
-			return null;
-		},
-		onBoost: function (boost, target, source, effect) {
-			if ((source && target === source) || target.template.speciesid !== 'miniancie' || target.transformed) return;
-			let showMsg = false;
-			for (let i in boost) {
-				// @ts-ignore
-				if (boost[i] < 0) {
-					// @ts-ignore
-					delete boost[i];
-					showMsg = true;
-				}
-			}
-			if (showMsg && !effect.secondaries) this.add("-fail", target, "unboost", "[from] ability: Crystallized Shield", "[of] " + target);
 		},
 		isUnbreakable: true,
 		id: "crystallizedshield",
@@ -10676,7 +10646,7 @@ exports.BattleAbilities = {
 		id: "beastscopycat",
 		name: "Beast's Copycat",
 	},
-	"unfriend": {
+	"unfriend": { // UPDATED!
 		shortDesc: "If Happislash, changes to Unfriendly Forme before attempting to use an attacking move, and changes to Friendly Forme before attempting to use King's Shield. Takes 3/4 damage from other Pokemon's attacks when in Friendly Forme.",
 		onBeforeMovePriority: 0.75,
 		onBeforeMove: function (attacker, defender, move) {
