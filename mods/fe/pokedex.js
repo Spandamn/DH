@@ -1166,6 +1166,31 @@ swampert: {
         color: "Black",
         eggGroups: ["Bug"],
     },
+    seedee: {
+        num: 750119,
+        species: "Seedee",
+        types: ["Grass", "Normal"],
+        genderRatio: {
+            M: 75.0,
+            F: 25.0
+        },
+        baseStats: {
+            hp: 55,
+            atk: 55,
+            def: 55,
+            spa: 50,
+            spd: 55,
+            spe: 50
+        },
+        abilities: {
+            0: "Sleepy Switch"
+        },
+        heightm: 0.4,
+        weightkg: 5.25,
+        color: "Brown",
+		  evos: ["joltry"],
+        eggGroups: ["Field"],
+    },
     joltry: {
         num: 750022,
         species: "Joltry",
@@ -1187,8 +1212,35 @@ swampert: {
         },
         heightm: 1.045,
         weightkg: 42.05,
+		  prevo: "seedee",
+		  evoLevel: 14,
         color: "Black",
         eggGroups: ["Field"],
+    },
+    shoorazu: {
+        num: 750120,
+        species: "Shoorazu",
+        types: ["Normal", "Grass"],
+        genderRatio: {
+            M: 37.5,
+            F: 62.5
+        },
+        baseStats: {
+            hp: 60,
+            atk: 35,
+            def: 65,
+            spa: 35,
+            spd: 65,
+            spe: 32
+        },
+        abilities: {
+            0: "Healing Fat"
+        },
+        heightm: 0.3,
+        weightkg: 3.25,
+        color: "Blue",
+		  evos: ["azumaloom"],
+        eggGroups: ["Undiscovered"],
     },
     azumaloom: {
         num: 750023,
@@ -1211,7 +1263,9 @@ swampert: {
         },
         heightm: 0.99,
         weightkg: 33.85,
-        color: "Black",
+		  prevo: "shoorazu",
+		  evoLevel: 20,
+        color: "Blue",
         eggGroups: ["Fairy"],
     },
     sawkape: {
