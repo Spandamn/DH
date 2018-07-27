@@ -1,6 +1,31 @@
 'use strict';
 
 exports.BattlePokedex = {
+    inkip: {
+        num: 75011,
+        species: "Inkip",
+        types: ["Dark", "Water"],
+        genderRatio: {
+            M: 75.0,
+            F: 25.0
+        },
+        baseStats: {
+            hp: 61,
+            atk: 77,
+            def: 67,
+            spa: 48,
+            spd: 58,
+            spe: 47
+        },
+        abilities: {
+            0: "Turnabout Torrent"
+        },
+        heightm: 0.4,
+        weightkg: 5.55,
+        color: "Blue",
+		  evos: ["swampamar"],
+        eggGroups: ["Water 1"],
+    },
 swampert: {
 		num: 260,
 		species: "Swampert",
@@ -50,7 +75,8 @@ swampert: {
         },
         heightm: 1.5,
         weightkg: 64.45,
-        color: "Black",
+        color: "Blue",
+		  prevo: "inkip",
 		  fusion: ["Swampert", "Malamar"],
         eggGroups: ["Water 1"],
     },
@@ -77,6 +103,27 @@ swampert: {
         color: "Blue",
         eggGroups: ["Water 1"],
     },
+    feekarp: {
+        num: 75012,
+        species: "Feekarp",
+        types: ["Water"],
+        baseStats: {
+            hp: 30,
+            atk: 22,
+            def: 52,
+            spa: 22,
+            spd: 52,
+            spe: 100
+        },
+        abilities: {
+            0: "Swift Swim"
+        },
+        heightm: 0.75,
+        weightkg: 8.4,
+        color: "Red",
+		  evos: ["gyarotic"],
+        eggGroups: ["Dragon"],
+    },
     gyarotic: {
         num: 75002,
         species: "Gyarotic",
@@ -98,7 +145,9 @@ swampert: {
         },
         heightm: 6.35,
         weightkg: 198.5,
-        color: "Black",
+		  prevo: "feekarp",
+		  evoLevel: 20,
+        color: "Blue",
         eggGroups: ["Dragon"],
     },
     gyaroticmega: {
@@ -124,6 +173,58 @@ swampert: {
         color: "Blue",
         eggGroups: ["Dragon"],
     },
+    krillazulie: {
+        num: 75013,
+        species: "Krillazulie",
+        types: ["Normal", "Water"],
+        genderRatio: {
+            M: 62.5,
+            F: 37.5
+        },
+        baseStats: {
+            hp: 51,
+            atk: 50,
+            def: 50,
+            spa: 50,
+            spd: 50,
+            spe: 50
+        },
+        abilities: {
+            0: "Moss Cleaner"
+        },
+        heightm: 0.25,
+        weightkg: 4.5,
+		  evos: ["frogrill"],
+        color: "Blue",
+        eggGroups: ["Undiscovered"],
+    },
+    frogrill: {
+        num: 75014,
+        species: "Frogrill",
+        types: ["Water"],
+        genderRatio: {
+            M: 75.0,
+            F: 25.0
+        },
+        baseStats: {
+            hp: 77,
+            atk: 56,
+            def: 66,
+            spa: 66,
+            spd: 68,
+            spe: 83
+        },
+        abilities: {
+            0: "Huge Torrent"
+        },
+        heightm: 0.5,
+        weightkg: 9.7,
+		  prevo: "krillazulie",
+		  evos: ["azuninja"],
+		  evoLevel: 16,
+        color: "Blue",
+        eggGroups: ["Water 1"],
+    },
     azuninja: {
         num: 75003,
         species: "Azuninja",
@@ -145,7 +246,9 @@ swampert: {
         },
         heightm: 1.145,
         weightkg: 34.25,
-        color: "Black",
+		  prevo: "frogrill",
+		  evoLevel: 27,
+        color: "Blue",
         eggGroups: ["Water 1"],
     },
     chandeform: {
@@ -172,6 +275,27 @@ swampert: {
         color: "Black",
         eggGroups: ["Amorphous"],
     },
+    dynamiss: {
+        num: 75015,
+        species: "Dynamiss",
+        types: ["Electric", "Ghost"],
+        baseStats: {
+            hp: 77,
+            atk: 56,
+            def: 66,
+            spa: 66,
+            spd: 68,
+            spe: 83
+        },
+        abilities: {
+            0: "Levitate"
+        },
+        heightm: 0.45,
+        weightkg: 0.65,
+		  evos: ["mismatross"],
+        color: "White",
+        eggGroups: ["Amorphous"],
+    },
     mismatross: {
         num: 75005,
         species: "Mismatross",
@@ -191,10 +315,37 @@ swampert: {
         abilities: {
             0: "Levitate"
         },
+		  prevo: "dynamiss",
+		  evoLevel: 41,
         heightm: 1.5,
         weightkg: 42.45,
-        color: "Black",
+        color: "Purple",
         eggGroups: ["Amorphous"],
+    },
+    axidos: {
+        num: 75016,
+        species: "Axidos",
+        types: ["Dragon", "Rock"],
+        genderRatio: {
+            M: 75.0,
+            F: 25.0
+        },
+        baseStats: {
+            hp: 66,
+            atk: 126,
+            def: 60,
+            spa: 40,
+            spd: 45,
+            spe: 77
+        },
+        abilities: {
+            0: "Mold Breaker"
+        },
+        heightm: 0.75,
+        weightkg: 24.75,
+		  evos: ["haxardos"],
+        color: "Green",
+        eggGroups: ["Monster"],
     },
     haxardos: {
         num: 75006,
@@ -217,7 +368,9 @@ swampert: {
         },
         heightm: 1.7,
         weightkg: 104,
-        color: "Black",
+		  prevo: "axidos",
+		  evoLevel: 36,
+        color: "Yellow",
         eggGroups: ["Monster"],
     },
     pangleye: {
@@ -267,6 +420,27 @@ swampert: {
         color: "Brown",
         eggGroups: ["Human-Like"],
     },
+    gibikarp: {
+        num: 75017,
+        species: "Gibikarp",
+        types: ["Ground", "Water"],
+        baseStats: {
+            hp: 50,
+            atk: 55,
+            def: 55,
+            spa: 32,
+            spd: 37,
+            spe: 70
+        },
+        abilities: {
+            0: "Denticles"
+        },
+        heightm: 0.8,
+        weightkg: 15.25,
+		  evos: ["garchados"],
+        color: "Red",
+        eggGroups: ["Dragon"],
+    },
     garchados: {
         num: 75008,
         species: "Garchados",
@@ -284,11 +458,13 @@ swampert: {
             spe: 101
         },
         abilities: {
-            0: "Intimidate + Sand Veil"
+            0: "Land Shark"
         },
         heightm: 4.205,
         weightkg: 165,
-        color: "Black",
+		  prevo: "gibikarp",
+		  evoLevel: 29,
+        color: "Blue",
         eggGroups: ["Dragon"],
     },
     garchadosmegac: {
@@ -337,6 +513,31 @@ swampert: {
         color: "Brown",
         eggGroups: ["Dragon"],
     },
+    merkitty: {
+        num: 75018,
+        species: "Merkitty",
+        types: ["Water", "Normal"],
+        genderRatio: {
+            M: 37.5,
+            F: 62.5
+        },
+        baseStats: {
+            hp: 100,
+            atk: 63,
+            def: 50,
+            spa: 57,
+            spd: 50,
+            spe: 60
+        },
+        abilities: {
+            0: "Normal Veil"
+        },
+        heightm: 1.4,
+        weightkg: 70.5,
+		  evos: ["wailcatty"],
+        color: "Pink",
+        eggGroups: ["Field"],
+    },
     wailcatty: {
         num: 75009,
         species: "Wailcatty",
@@ -358,8 +559,62 @@ swampert: {
         },
         heightm: 7.795,
         weightkg: 215.3,
-        color: "Black",
+		  prevo: "wailkitty",
+		  evoLevel: 40,
+        color: "Purple",
         eggGroups: ["Field"],
+    },
+    gibodile: {
+        num: 75019,
+        species: "Gibodile",
+        types: ["Dragon", "Water"],
+        genderRatio: {
+            M: 75.0,
+            F: 25.0
+        },
+        baseStats: {
+            hp: 59,
+            atk: 82,
+            def: 59,
+            spa: 47,
+            spd: 51,
+            spe: 57
+        },
+        abilities: {
+            0: "Torrent Veil"
+        },
+        heightm: 0.65,
+        weightkg: 15,
+		  evos: ["gabinaw"],
+        color: "Blue",
+        eggGroups: ["Monster"],
+    },
+    gabinaw: {
+        num: 750110,
+        species: "Gabinaw",
+        types: ["Dragon", "Water"],
+        genderRatio: {
+            M: 75.0,
+            F: 25.0
+        },
+        baseStats: {
+            hp: 76,
+            atk: 95,
+            def: 82,
+            spa: 64,
+            spd: 69,
+            spe: 80
+        },
+        abilities: {
+            0: "Torrent Veil"
+        },
+        heightm: 1.25,
+        weightkg: 40.5,
+		  prevo: "gibodile",
+		  evos: ["gargatr"],
+		  evoLevel: 21,
+        color: "Blue",
+        eggGroups: ["Monster"],
     },
     gargatr: {
         num: 750010,
@@ -382,7 +637,9 @@ swampert: {
         },
         heightm: 2.11,
         weightkg: 91.9,
-        color: "Black",
+		  prevo: "gabinaw",
+		  evoLevel: 39,
+        color: "Blue",
         eggGroups: ["Monster"],
     },
     gargatrmega: {
@@ -408,6 +665,27 @@ swampert: {
         color: "Brown",
         eggGroups: ["Monster"],
     },
+    krelpo: {
+        num: 750111,
+        species: "Krelpo",
+        types: ["Poison", "Dark"],
+        baseStats: {
+            hp: 76,
+            atk: 95,
+            def: 82,
+            spa: 64,
+            spd: 69,
+            spe: 80
+        },
+        abilities: {
+            0: "Toxic Barrage"
+        },
+        heightm: 0.65,
+        weightkg: 12.3,
+		  evos: ["dragon"],
+        color: "Blue",
+        eggGroups: ["Dragon"],
+    },
     dragon: {
         num: 750011,
         species: "Dragon",
@@ -427,9 +705,11 @@ swampert: {
         abilities: {
             0: "Levipoison"
         },
+		  prevo: "krelpo",
+		  evoLevel: 52,
         heightm: 1.8,
         weightkg: 120.75,
-        color: "Black",
+        color: "Blue",
         eggGroups: ["Dragon"],
     },
     hawlusharp: {
@@ -456,6 +736,27 @@ swampert: {
         color: "Black",
         eggGroups: ["Human-Like"],
     },
+    yamonix: {
+        num: 750112,
+        species: "Yamonix",
+        types: ["Rock", "Ghost"],
+        baseStats: {
+            hp: 45,
+            atk: 42,
+            def: 130,
+            spa: 60,
+            spd: 60,
+            spe: 55
+        },
+        abilities: {
+            0: "Mummy Fortitude"
+        },
+        heightm: 4.65,
+        weightkg: 105.75,
+		  evos: ["cofagreelix"],
+        color: "Black",
+        eggGroups: ["Mineral"],
+    },
     cofagreelix: {
         num: 750013,
         species: "Cofagreelix",
@@ -477,7 +778,9 @@ swampert: {
         },
         heightm: 5.445,
         weightkg: 238.25,
-        color: "Black",
+		  prevo: "yamonix",
+		  evoLevel: 34,
+        color: "Yellow",
         eggGroups: ["Mineral"],
     },
     cofagreelixmega: {
@@ -498,10 +801,31 @@ swampert: {
         abilities: {
             0: "Sand Force"
         },
-        heightm: 2,
-        weightkg: 75.5,
-        color: "Brown",
+        heightm: 6.745,
+        weightkg: 578.25,
+        color: "Yellow",
         eggGroups: ["Mineral"],
+    },
+    wailee: {
+        num: 750113,
+        species: "Wailee",
+        types: ["Normal", "Water"],
+        baseStats: {
+            hp: 100,
+            atk: 67,
+            def: 54,
+            spa: 72,
+            spd: 55,
+            spe: 62
+        },
+        abilities: {
+            0: "Adaptive Bias"
+        },
+        heightm: 1.15,
+        weightkg: 68.25,
+		  evos: ["joltlord", "umbord", "espord", "glacord"],
+        color: "Brown",
+        eggGroups: ["Field"],
     },
     joltlord: {
         num: 750014,
@@ -524,8 +848,35 @@ swampert: {
         },
         heightm: 7.645,
         weightkg: 211.25,
-        color: "Black",
+		  prevo: "wailee",
+		  evoLevel: 40,
+        color: "Yellow",
         eggGroups: ["Field"],
+    },
+    gligbee: {
+        num: 750114,
+        species: "Gligbee",
+        types: ["Bug", "Ground"],
+        genderRatio: {
+            M: 75.0,
+            F: 25.0
+        },
+        baseStats: {
+            hp: 62,
+            atk: 57,
+            def: 78,
+            spa: 37,
+            spd: 68,
+            spe: 82
+        },
+        abilities: {
+            0: "Honey Sterilize"
+        },
+        heightm: 0.7,
+        weightkg: 35.15,
+		  evos: ["vespicor"],
+        color: "Purple",
+        eggGroups: ["Bug"],
     },
     vepsicor: {
         num: 750015,
@@ -545,8 +896,34 @@ swampert: {
         },
         heightm: 1.6,
         weightkg: 40.5,
-        color: "Black",
+		  prevo: "gligbee",
+		  evoLevel: 21,
+        color: "Purple",
         eggGroups: ["Bug"],
+    },
+    zorgrowl: {
+        num: 750115,
+        species: "Zorgrowl",
+        types: ["Fire", "Dark"],
+        genderRatio: {
+            M: 81.25,
+            F: 18.75
+        },
+        baseStats: {
+            hp: 55,
+            atk: 74,
+            def: 48,
+            spa: 83,
+            spd: 55,
+            spe: 73
+        },
+        abilities: {
+            0: "Mirage Guard"
+        },
+        heightm: 0.7,
+        weightkg: 15.75,
+		  evos: ["zorcanine"],
+        eggGroups: ["Field"],
     },
     zorcanine: {
         num: 750016,
@@ -565,11 +942,13 @@ swampert: {
             spe: 110
         },
         abilities: {
-            0: "Mental Fear"
+            0: "Mirage Guard"
         },
         heightm: 1.755,
         weightkg: 118.05,
-        color: "Black",
+		  prevo: "zorgrowl",
+		  evoLevel: 30,
+        color: "Red",
         eggGroups: ["Field"],
     },
     archedactyl: {
@@ -619,6 +998,30 @@ swampert: {
         color: "Brown",
         eggGroups: ["Flying"],
     },
+    hippopopin: {
+        num: 750116,
+        species: "Hippopopin",
+        types: ["Grass", "Ground"],
+        genderRatio: {
+            M: 75.0,
+            F: 25.0
+        },
+        baseStats: {
+            hp: 70,
+            atk: 78,
+            def: 80,
+            spa: 48,
+            spd: 54,
+            spe: 40
+        },
+        abilities: {
+            0: "Cactus Power"
+        },
+        heightm: 0.6,
+        weightkg: 29.25,
+		  evos: ["chesdon"],
+        eggGroups: ["Field"],
+    },
     chesdon: {
         num: 750018,
         species: "Chesdon",
@@ -640,7 +1043,30 @@ swampert: {
         },
         heightm: 1.805,
         weightkg: 195,
-        color: "Black",
+		  prevo: "hippopopin",
+		  evoLevel: 30,
+        color: "Green",
+        eggGroups: ["Field"],
+    },
+    drilnub: {
+        num: 750117,
+        species: "Drilnub",
+        types: ["Ground", "Ice"],
+        baseStats: {
+            hp: 60,
+            atk: 82,
+            def: 45,
+            spa: 35,
+            spd: 42,
+            spe: 74
+        },
+        abilities: {
+            0: "Snow Force"
+        },
+        heightm: 0.35,
+        weightkg: 7.5,
+        color: "Brown",
+		  evos: ["mamodrill"],
         eggGroups: ["Field"],
     },
     mamodrill: {
@@ -662,10 +1088,33 @@ swampert: {
         abilities: {
             0: "Snow Force"
         },
+		  prevo: "drilnub",
+		  evoLevel: 30,
         heightm: 1.6,
         weightkg: 165.7,
-        color: "Black",
+        color: "Brown",
         eggGroups: ["Field"],
+    },
+    gooptile: {
+        num: 750118,
+        species: "Gooptile",
+        types: ["Dragon", "Electric"],
+        baseStats: {
+            hp: 54,
+            atk: 49,
+            def: 43,
+            spa: 71,
+            spd: 64,
+            spe: 63
+        },
+        abilities: {
+            0: "Goop Skin"
+        },
+        heightm: 0.4,
+        weightkg: 4.4,
+        color: "Purple",
+		  evos: ["heliodra"],
+        eggGroups: ["Dragon"],
     },
     heliodra: {
         num: 750020,
@@ -686,9 +1135,11 @@ swampert: {
         abilities: {
             0: "Sandy Skin"
         },
+		  prevo: "gooptile",
+		  evoLevel: 45,
         heightm: 1.5,
         weightkg: 85.75,
-        color: "Black",
+        color: "Purple",
         eggGroups: ["Dragon"],
     },
     syscor: {
@@ -4420,6 +4871,8 @@ swampert: {
         },
         heightm: 7.745,
         weightkg: 212.5,
+		  prevo: "wailee",
+		  evoLevel: 40,
         color: "Black",
         eggGroups: ["Field"],
     },
@@ -17609,9 +18062,9 @@ auroritarmega: {
 		  weightkg: 204,
 		  eggGroups: ["Monster"],
 	},
-	espeord: {
+	espord: {
 		num: 7500478,
-		species: "Espeord",
+		species: "Espord",
 		types: ["Psychic", "Water"],
         genderRatio: {
             M: 75.0,
@@ -17630,6 +18083,8 @@ auroritarmega: {
 		},
 		  heightm: 7.7,
 		  weightkg: 212.25,
+		  prevo: "wailee",
+		  evoLevel: 40,
 		  eggGroups: ["Field"],
 	},
 	glacord: {
@@ -17653,6 +18108,8 @@ auroritarmega: {
 		},
 		  heightm: 7.65,
 		  weightkg: 209.25,
+		  prevo: "wailee",
+		  evoLevel: 40,
 		  eggGroups: ["Field"],
 	},
 	hypango: {
