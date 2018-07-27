@@ -526,7 +526,20 @@ exports.BattleAbilities = {
 			duration: 1,
 			onStart: function (pokemon){
 				let stat = this.sample(['def', 'spa', 'spd']);
-				this.boost({atk: 2, [stat]: -1, spe: 2}, pokemon);	
+					let stats = [];
+			let boost = {};
+			let randomStat = stats.length ? this.sample(stats) : "";
+
+			stats = [];
+			for (let statMinus in pokemon.boosts) {
+				if (pokemon.boosts[statMinus] > -6 && statMinus !== randomStat) {
+					stats.push(statMinus);
+				}
+			}
+			randomStat = stats.length ? this.sample(stats) : "";
+			if (randomStat) boost[randomStat] = -1;
+
+			this.boost(boost);
 				pokemon.removeVolatile('armorcast');
 			},
 		},
