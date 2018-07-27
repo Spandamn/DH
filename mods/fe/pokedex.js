@@ -7890,7 +7890,7 @@ darkchomp: {
     shrek: {
         num: 7500210,
         species: "Shrek",
-        types: ["Grass", "Flying"],
+        types: ["Grass", "Fairy"],
         genderRatio: {
             M: 75.0,
             F: 25.0
