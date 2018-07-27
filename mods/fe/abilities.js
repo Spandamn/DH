@@ -7750,10 +7750,13 @@ exports.BattleAbilities = {
 		desc: "On switch-in, the PP of all of this Pokemon's moves are halved and this Pokemon's attack is raised two stages.",
 		shortDesc: "Halves all of this Pokemon's moves' PP upon switch-in, but raises Attack by two stages.",
 		onStart: function (pokemon) {
-			this.boost({atk: 2});
 			for (const moveSlot of pokemon.moveSlots) {
 					moveSlot.pp = (moveSlot.pp+1)/2;
 			}		
+		},
+		onModifyAtkPriority: 5,
+		onModifyAtk: function (atk) {
+			return this.chainModify(2);
 		},
 		id: "vexingvalor",
 		name: "Vexing Valor",
