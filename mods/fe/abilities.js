@@ -10677,8 +10677,8 @@ exports.BattleAbilities = {
 		name: "Beast's Copycat",
 	},
 	"unfriend": {
-		shortDesc: "If Happislash, changes to Unfriendly Forme before attempting to use an attacking move, and changes to Friendly Forme before attempting to use King's Shield. Takes 1/2 damage from other Pokemon's attacks when in Friendly Forme.",
-		onBeforeMovePriority: 0.5,
+		shortDesc: "If Happislash, changes to Unfriendly Forme before attempting to use an attacking move, and changes to Friendly Forme before attempting to use King's Shield. Takes 3/4 damage from other Pokemon's attacks when in Friendly Forme.",
+		onBeforeMovePriority: 0.75,
 		onBeforeMove: function (attacker, defender, move) {
 			if (attacker.template.baseSpecies !== 'Happislash' || attacker.transformed) return;
 			if (move.category === 'Status' && move.id !== 'kingsshield') return;
@@ -10700,7 +10700,7 @@ exports.BattleAbilities = {
 			}
 			if (boosted) {
 				this.debug('Analytic boost');
-				return this.chainModify(0.5);
+				return this.chainModify(0.75);
 			}
 		},
 		id: "unfriend",
