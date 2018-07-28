@@ -1336,6 +1336,50 @@ swampert: {
         color: "Brown",
         eggGroups: ["Field"],
     },
+    tariblava: {
+        num: 750121,
+        species: "Tariblava",
+        types: ["Ground", "Dragon"],
+        baseStats: {
+            hp: 65,
+            atk: 80,
+            def: 60,
+            spa: 53,
+            spd: 60,
+            spe: 60
+        },
+        abilities: {
+            0: "Sand Veil"
+        },
+        heightm: 0.65,
+        weightkg: 46.25,
+        color: "Blue",
+		  evos: ["pupibite"],
+        eggGroups: ["Monster"],
+    },
+    pupibite: {
+        num: 750122,
+        species: "Pupibite",
+        types: ["Rock", "Dragon"],
+        baseStats: {
+            hp: 79,
+            atk: 97,
+            def: 77,
+            spa: 67,
+            spd: 72,
+            spe: 76
+        },
+        abilities: {
+            0: "Sand Shed"
+        },
+        heightm: 1.3,
+        weightkg: 104,
+        color: "Blue",
+		  prevo: "tariblava",
+		  evoLevel: 27,
+		  evos: ["tyranichomp"],
+        eggGroups: ["Monster"],
+    },
     tyranichomp: {
         num: 750026,
         species: "Tyranichomp",
@@ -1357,7 +1401,9 @@ swampert: {
         },
         heightm: 1.96,
         weightkg: 148.5,
-        color: "Black",
+		  prevo: "pupibite",
+		  evoLevel: 51,
+        color: "Blue",
         eggGroups: ["Monster"],
     },
     tyranichompmegax: {
@@ -1378,9 +1424,9 @@ swampert: {
         abilities: {
             0: "Sand Stream"
         },
-        heightm: 2,
-        weightkg: 75.5,
-        color: "Brown",
+        heightm: 2.46,
+        weightkg: 201.5,
+        color: "Blue",
         eggGroups: ["Monster"],
     },
 
@@ -1402,10 +1448,31 @@ swampert: {
         abilities: {
             0: "Sand Force"
         },
-        heightm: 2,
-        weightkg: 75.5,
-        color: "Brown",
+        heightm: 1.96,
+        weightkg: 148.5,
+        color: "Blue",
         eggGroups: ["Monster"],
+    },
+    snochu: {
+        num: 750123,
+        species: "Snochu",
+        types: ["Ice", "Electric"],
+        baseStats: {
+            hp: 44,
+            atk: 57,
+            def: 37,
+            spa: 55,
+            spd: 47,
+            spe: 61
+        },
+        abilities: {
+            0: "Static Storm"
+        },
+        heightm: 0.5,
+        weightkg: 9.4,
+        color: "Yellow",
+		  evos: ["railie"],
+        eggGroups: ["Undiscovered"],
     },
     railie: {
         num: 750027,
@@ -1428,7 +1495,9 @@ swampert: {
         },
         heightm: 1.145,
         weightkg: 143.25,
-        color: "Black",
+		  prevo: "snochu",
+		  evoLevel: 42,
+        color: "White",
         eggGroups: ["Fairy"],
     },
     railiemega: {
@@ -1449,10 +1518,31 @@ swampert: {
         abilities: {
             0: "Refrigerate"
         },
-        heightm: 2,
-        weightkg: 75.5,
-        color: "Brown",
+        heightm: 1.745,
+        weightkg: 236.95,
+        color: "White",
         eggGroups: ["Fairy"],
+    },
+    charmingkarp: {
+        num: 750124,
+        species: "Charmingkarp",
+        types: ["Fire", "Water"],
+        baseStats: {
+            hp: 34,
+            atk: 43,
+            def: 55,
+            spa: 43,
+            spd: 45,
+            spe: 83
+        },
+        abilities: {
+            0: "Nightlight"
+        },
+        heightm: 0.75,
+        weightkg: 9.25,
+        color: "Red",
+		  evos: ["charatos"],
+        eggGroups: ["Dragon"],
     },
     charatos: {
         num: 750028,
@@ -1475,7 +1565,9 @@ swampert: {
         },
         heightm: 4.1,
         weightkg: 162.75,
-        color: "Black",
+		  prevo: "charmingkarp",
+		  evoLevel: 23,
+        color: "Blue",
         eggGroups: ["Dragon"],
     },
     charatosmegay: {
@@ -1496,9 +1588,9 @@ swampert: {
         abilities: {
             0: "Drought"
         },
-        heightm: 2,
-        weightkg: 75.5,
-        color: "Brown",
+        heightm: 4.1,
+        weightkg: 172.75,
+        color: "Blue",
         eggGroups: ["Dragon"],
     },
 
@@ -1520,9 +1612,9 @@ swampert: {
         abilities: {
             0: "Tough Claws"
         },
-        heightm: 2,
-        weightkg: 75.5,
-        color: "Brown",
+        heightm: 4.1,
+        weightkg: 182.75,
+        color: "Black",
         eggGroups: ["Dragon"],
     },
 
@@ -1544,9 +1636,9 @@ swampert: {
         abilities: {
             0: "Mold Breaker"
         },
-        heightm: 2,
-        weightkg: 75.5,
-        color: "Brown",
+        heightm: 4.1,
+        weightkg: 252.75,
+        color: "Blue",
         eggGroups: ["Dragon"],
     },
     aggrosaur: {
