@@ -3076,9 +3076,7 @@ exports.BattleAbilities = {
 			}
 		},
 		onModifyMove: function(move) {
-			if (move.basePower <= 60) {
 				move.ignoreAbility = true;
-			}
 		},
 		id: "engineer",
 		name: "Engineer",
@@ -4813,7 +4811,12 @@ exports.BattleAbilities = {
 		onEffectiveness: function(typeMod, type, move) {
 			if (move.flags['bite'] || move.type === 'Normal') {
 				move.absolutezeroboosted = true;
-				return typeMod + this.getEffectiveness('Ice', type);
+			}
+		},
+		onModifyMove: function (move, pokemon) {
+			if (move.type === 'Normal' && !['judgment', 'multiattack', 'naturalgift', 'revelationdance', 'technoblast', 'weatherball'].includes(move.id) && !(move.isZ && move.category !== 'Status')) {
+				move.type = 'Ice';
+				move.absolutezeroboosted = true;
 			}
 		},
 		onBasePowerPriority: 8,
@@ -9915,8 +9918,9 @@ exports.BattleAbilities = {
 	"terabeast": { //TODO: Checkthis
 		desc: "This Pokemon's move with the highest base power deals 1.5x damage and ignores the target's ability.",
 		shortDesc: "This Pokemon's move with the highest base power deals 1.5x damage and ignores the target's ability.",
-		onModifyMove: function (pokemon) {
+		onModifyMove: function (pokemon, move) {
 			/**@type {(Move|Pokemon)[][]} */
+			move.ignoreAbility = true;
 			let warnMoves = [];
 			let warnBp = 1;
 				for (const moveSlot of pokemon.moveSlots) {
@@ -9934,7 +9938,6 @@ exports.BattleAbilities = {
 				}
 			if (!warnMoves.length) return;
 			const [warnMoveName, warnTarget] = this.sample(warnMoves);
-			warnMoves.ignoreAbility = true;
 			return warnMoves.chainModify(1.5);
 		},
 		id: "terabeast",
