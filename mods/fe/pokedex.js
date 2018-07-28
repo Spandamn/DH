@@ -2020,6 +2020,30 @@ swampert: {
         color: "Brown",
         eggGroups: ["Human-Like"],
     },
+    snogepi: {
+        num: 750131,
+        species: "Snogepi",
+        types: ["Fairy", "Ice"],
+        genderRatio: {
+            M: 75.0,
+            F: 25.0
+        },
+        baseStats: {
+            hp: 52,
+            atk: 35,
+            def: 65,
+            spa: 53,
+            spd: 65,
+            spe: 35
+        },
+        abilities: {
+            0: "Serene Focus"
+        },
+        heightm: 0.5,
+        weightkg: 9.15,
+		  evos: ["glakiss"],
+        eggGroups: ["Undiscovered"],
+    },
     glakiss: {
         num: 750033,
         species: "Glakiss",
@@ -2037,11 +2061,13 @@ swampert: {
             spe: 90
         },
         abilities: {
-            0: "Serene Focus (Shield Dust)"
+            0: "Serene Focus"
         },
         heightm: 1.5,
         weightkg: 147.25,
         color: "Black",
+		  prevo: "snogepi",
+		  evoLevel: 42,
         eggGroups: ["Undiscovered"],
     },
     glakissmega: {
@@ -2062,10 +2088,30 @@ swampert: {
         abilities: {
             0: "Refigerate"
         },
-        heightm: 2,
-        weightkg: 75.5,
+        heightm: 1.9,
+        weightkg: 240.95,
         color: "Brown",
         eggGroups: ["Fairy"],
+    },
+    magiranha: {
+        num: 750132,
+        species: "Magiranha",
+        types: ["Water"],
+        baseStats: {
+            hp: 40,
+            atk: 63,
+            def: 45,
+            spa: 45,
+            spd: 25,
+            spe: 83
+        },
+        abilities: {
+            0: "Rattling Skin"
+        },
+        heightm: 0.85,
+        weightkg: 15.4,
+		  evos: ["sharpedos"],
+        eggGroups: ["Water 2"],
     },
     sharpedos: {
         num: 750034,
@@ -2088,6 +2134,8 @@ swampert: {
         },
         heightm: 4.15,
         weightkg: 161.9,
+		  prevo: "magiranha",
+		  evoLevel: 25,
         color: "Blue",
         eggGroups: ["Water 2"],
     },
@@ -2109,8 +2157,8 @@ swampert: {
         abilities: {
             0: "Strong Jaw"
         },
-        heightm: 2,
-        weightkg: 75.5,
+        heightm: 4.85,
+        weightkg: 203.4,
         color: "Blue",
         eggGroups: ["Water 2"],
     },
@@ -2133,8 +2181,8 @@ swampert: {
         abilities: {
             0: "Mold Breaker"
         },
-        heightm: 2,
-        weightkg: 75.5,
+        heightm: 4.15,
+        weightkg: 241.9,
         color: "Blue",
         eggGroups: ["Water 2"],
     },
