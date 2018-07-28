@@ -2500,6 +2500,28 @@ swampert: {
         color: "Black",
         eggGroups: ["Undiscovered"],
     },
+    starchop: {
+        num: 750138,
+        species: "Starchop",
+        types: ["Water", "Fighting"],
+        gender: "N",
+        baseStats: {
+            hp: 55,
+            atk: 72,
+            def: 52,
+            spa: 60,
+            spd: 47,
+            spe: 65
+        },
+        abilities: {
+            0: "Natural Guard"
+        },
+        heightm: 0.8,
+        weightkg: 27,
+        color: "Brown",
+		  evos: ["starchamp"],
+        eggGroups: ["Undiscovered"],
+    },
     starchamp: { //Starchamp	Starmie	Machamp	Water	Fighting	75	122	82	82	85	105	551	Natural Guard
         num: 750041,
         species: "Starchamp",
@@ -2518,8 +2540,31 @@ swampert: {
         },
         heightm: 1.35,
         weightkg: 105,
+		  prevo: "starchop",
+		  evoLevel: 25,
         color: "Purple",
         eggGroups: ["Undiscovered"],
+    },
+    grimo: {
+        num: 750139,
+        species: "Grimo",
+        types: ["Electric", "Poison"],
+        baseStats: {
+            hp: 70,
+            atk: 80,
+            def: 52,
+            spa: 47,
+            spd: 52,
+            spe: 47
+        },
+        abilities: {
+            0: "Sticky Float"
+        },
+        heightm: 0.55,
+        weightkg: 15.15,
+        color: "Purple",
+		  evos: ["eek"],
+        eggGroups: ["Amorphous"],
     },
       eek: {
         num: 750042,
@@ -2542,17 +2587,16 @@ swampert: {
         },
         heightm: 1.65,
         weightkg: 55.25,
-        color: "Black",
+		  prevo: "grimo",
+		  evoLevel: 38,
+        color: "Purple",
         eggGroups: ["Amorphous"],
     },
     hitachi: {
         num: 750043,
         species: "Hitachi",
         types: ["Fire", "Steel"],
-        genderRatio: {
-            M: 0.0,
-            F: 0.0
-        },
+        gender: "N",
         baseStats: {
             hp: 95,
             atk: 95,
@@ -2647,6 +2691,26 @@ swampert: {
         color: "Green",
         eggGroups: ["Undiscovered"],
     },
+    ferroedge: {
+        num: 750140,
+        species: "Ferroedge",
+        types: ["Steel", "Grass"],
+        baseStats: {
+            hp: 55,
+            atk: 80,
+            def: 100,
+            spa: 34,
+            spd: 70,
+            spe: 24
+        },
+        abilities: {
+            0: "Barb Guard"
+        },
+        heightm: 0.7,
+        weightkg: 10.4,
+		  evos: ["ferroslash"],
+        eggGroups: ["Mineral"],
+    },
     ferroslashshield: {
         num: 750045,
         species: "Ferroslash",
@@ -2669,6 +2733,8 @@ swampert: {
         },
         heightm: 1.345,
         weightkg: 81.5,
+		  prevo: "ferroedge",
+		  evoLevel: 37,
         color: "Gray",
         eggGroups: ["Mineral"],
     },
@@ -2699,6 +2765,56 @@ swampert: {
         color: "Gray",
         eggGroups: ["Mineral"],
     },
+    chaxe: {
+        num: 750141,
+        species: "Chaxe",
+        types: ["Fire", "Dragon"],
+        genderRatio: {
+            M: 75.0,
+            F: 25.0
+        },
+        baseStats: {
+            hp: 47,
+            atk: 83,
+            def: 56,
+            spa: 55,
+            spd: 50,
+            spe: 72
+        },
+        abilities: {
+            0: "Power-Up Pinch"
+        },
+        heightm: 0.6,
+        weightkg: 13.25,
+		  evos: ["fraxuleon"],
+        eggGroups: ["Monster", "Dragon"],
+    },
+    fraxuleon: {
+        num: 750142,
+        species: "Fraxuleon",
+        types: ["Fire", "Dragon"],
+        genderRatio: {
+            M: 75.0,
+            F: 25.0
+        },
+        baseStats: {
+            hp: 72,
+            atk: 100,
+            def: 74,
+            spa: 70,
+            spd: 67,
+            spe: 83
+        },
+        abilities: {
+            0: "Power-Up Pinch"
+        },
+        heightm: 1.05,
+        weightkg: 27.5,
+		  prevo: "chaxe",
+		  evoLevel: 27,
+		  evos: ["hazard"],
+        eggGroups: ["Monster", "Dragon"],
+    },
     hazard: {
         num: 750046,
         species: "Hazard",
@@ -2720,7 +2836,9 @@ swampert: {
         },
         heightm: 1.75,
         weightkg: 98,
-        color: "Black",
+		  prevo: "fraxuleon",
+		  evoLevel: 42,
+        color: "Red",
         eggGroups: ["Monster", "Dragon"],
     },
     hazardmegax: {
@@ -2745,9 +2863,9 @@ swampert: {
         abilities: {
             0: "Tough Claws"
         },
-        heightm: 1.8,
-        weightkg: 105.5,
-        color: "Red",
+        heightm: 1.75,
+        weightkg: 118,
+        color: "Black",
         eggGroups: ["Monster", "Dragon"],
     },
     hazardmegay: {
@@ -2772,8 +2890,8 @@ swampert: {
         abilities: {
             0: "Drought"
         },
-        heightm: 1.8,
-        weightkg: 105.5,
+        heightm: 1.75,
+        weightkg: 108,
         color: "Red",
         eggGroups: ["Monster", "Dragon"],
     },
@@ -2783,10 +2901,7 @@ swampert: {
         num: 750047,
         species: "Hitmonklang",
         types: ["Steel", "Fighting"],
-        genderRatio: {
-            M: 0.0,
-            F: 0.0
-        },
+        gender: "N",
         baseStats: {
             hp: 55,
             atk: 115,
