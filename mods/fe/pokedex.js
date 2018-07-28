@@ -2279,8 +2279,8 @@ swampert: {
         abilities: {
             0: "No Guard"
         },
-        heightm: 2,
-        weightkg: 75.5,
+        heightm: 1.705,
+        weightkg: 31.7,
         color: "Brown",
         eggGroups: ["Flying"],
     },
@@ -2359,6 +2359,27 @@ swampert: {
         color: "Red",
         eggGroups: ["Undiscovered"],
     },
+    pidgeyu: {
+        num: 750135,
+        species: "Pidgeyu",
+        types: ["Water", "Normal"],
+        baseStats: {
+            hp: 40,
+            atk: 45,
+            def: 50,
+            spa: 60,
+            spd: 49,
+            spe: 80
+        },
+        abilities: {
+            0: "Natural Eye"
+        },
+        heightm: 0.55,
+        weightkg: 18.15,
+        color: "Brown",
+		  evos: ["pidgemie"],
+        eggGroups: ["Undiscovered"],
+    },
     pidgemie: {
         num: 750039,
         species: "Pidgemie",
@@ -2380,7 +2401,7 @@ swampert: {
         },
         heightm: 1.295,
         weightkg: 59.75,
-        color: "Black",
+        color: "Purple",
         eggGroups: ["Undiscovered"],
     },
     pidgemiemega: {
@@ -2405,9 +2426,55 @@ swampert: {
         abilities: {
             0: "No Guard"
         },
-        heightm: 1.5,
-        weightkg: 39.5,
-        color: "Blue",
+        heightm: 1.995,
+        weightkg: 70.75,
+        color: "Purple",
+        eggGroups: ["Undiscovered"],
+    },
+    porywick: {
+        num: 750136,
+        species: "Porywick",
+        types: ["Normal", "Ghost"],
+        gender: "N",
+        baseStats: {
+            hp: 57,
+            atk: 45,
+            def: 67,
+            spa: 85,
+            spd: 70,
+            spe: 40
+        },
+        abilities: {
+            0: "Hot Copy"
+        },
+        heightm: 0.55,
+        weightkg: 19.8,
+        color: "White",
+		  evos: ["lampory"],
+        eggGroups: ["Undiscovered"],
+    },
+    lampory: {
+        num: 750137,
+        species: "Lampory",
+        types: ["Normal", "Ghost"],
+        gender: "N",
+        baseStats: {
+            hp: 82,
+            atk: 60,
+            def: 77,
+            spa: 108,
+            spd: 77,
+            spe: 77
+        },
+        abilities: {
+            0: "Flame Essence"
+        },
+        heightm: 0.6,
+        weightkg: 22.75,
+        color: "Black",
+		  prevo: "porywick",
+		  evoLevel: 41,
+		  evos: ["porylure"],
         eggGroups: ["Undiscovered"],
     },
     porylure: {
@@ -2428,6 +2495,8 @@ swampert: {
         },
         heightm: 0.95,
         weightkg: 34.15,
+		  prevo: "lampory",
+		  evoLevel: 41,
         color: "Black",
         eggGroups: ["Undiscovered"],
     },
