@@ -2186,6 +2186,31 @@ swampert: {
         color: "Blue",
         eggGroups: ["Water 2"],
     },
+    growlee: {
+        num: 750133,
+        species: "Growlee",
+        types: ["Normal", "Fire"],
+        genderRatio: {
+            M: 81.25,
+            F: 18.75
+        },
+        baseStats: {
+            hp: 62,
+            atk: 73,
+            def: 62,
+            spa: 62,
+            spd: 62,
+            spe: 62
+        },
+        abilities: {
+            0: "Flash and Adapt"
+        },
+        heightm: 0.5,
+        weightkg: 12.75,
+        color: "Brown",
+		  evos: ["vapornine", "arceon"],
+        eggGroups: ["Field"],
+    },
     vapornine: {
         num: 750035,
         species: "Vapornine",
@@ -2207,7 +2232,9 @@ swampert: {
         },
         heightm: 1.45,
         weightkg: 92,
-        color: "Black",
+		  prevo: "growlee",
+		  evoLevel: 1,
+        color: "Brown",
         eggGroups: ["Field"],
     },
     pidgetot: {
@@ -21471,6 +21498,8 @@ auroritarmega: {
 		   	     },
      				  heightm: 1.3,
         			  weightkg: 40,
+					  prevo: "growlee",
+					  evoLevel: 1,
 		   	     eggGroups: ["Field"],
 		   	 },
 				 pigment: {
