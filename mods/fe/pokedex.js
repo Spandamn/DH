@@ -1527,6 +1527,10 @@ swampert: {
         num: 750124,
         species: "Charmingkarp",
         types: ["Fire", "Water"],
+        genderRatio: {
+            M: 75.0,
+            F: 25.0
+        },
         baseStats: {
             hp: 34,
             atk: 43,
@@ -1641,6 +1645,58 @@ swampert: {
         color: "Blue",
         eggGroups: ["Dragon"],
     },
+    arosaur: {
+        num: 750125,
+        species: "Arosaur",
+        types: ["Grass", "Steel"],
+        genderRatio: {
+            M: 75.0,
+            F: 25.0
+        },
+        baseStats: {
+            hp: 52,
+            atk: 64,
+            def: 89,
+            spa: 57,
+            spd: 67,
+            spe: 42
+        },
+        abilities: {
+            0: "Rocky Growth"
+        },
+        heightm: 0.55,
+        weightkg: 33.45,
+        color: "Gray",
+		  evos: ["lairosaur"],
+        eggGroups: ["Monster"],
+    },
+    lairosaur: {
+        num: 750126,
+        species: "Lairosaur",
+        types: ["Grass", "Steel"],
+        genderRatio: {
+            M: 75.0,
+            F: 25.0
+        },
+        baseStats: {
+            hp: 70,
+            atk: 86,
+            def: 111,
+            spa: 75,
+            spd: 75,
+            spe: 60
+        },
+        abilities: {
+            0: "Rocky Growth"
+        },
+        heightm: 0.95,
+        weightkg: 66.5,
+        color: "Gray",
+		  prevo: "arosaur",
+		  evoLevel: 24,
+		  evos: ["aggrosaur"],
+        eggGroups: ["Monster"],
+    },
     aggrosaur: {
         num: 750029,
         species: "Aggrosaur",
@@ -1662,6 +1718,8 @@ swampert: {
         },
         heightm: 2.05,
         weightkg: 230,
+		  prevo: "lairosaur",
+		  evoLevel: 37,
         color: "Gray",
         eggGroups: ["Monster"],
     },
@@ -1683,8 +1741,8 @@ swampert: {
         abilities: {
             0: "Thick Fat"
         },
-        heightm: 2,
-        weightkg: 75.5,
+        heightm: 2.45,
+        weightkg: 285.5,
         color: "Gray",
         eggGroups: ["Monster"],
     },
@@ -1707,12 +1765,64 @@ swampert: {
         abilities: {
             0: "Filter"
         },
-        heightm: 2,
-        weightkg: 75.5,
+        heightm: 2.15,
+        weightkg: 265,
         color: "Gray",
         eggGroups: ["Monster"],
     },
-    blastninja: {
+    squirtroak: {
+        num: 750127,
+        species: "Squirtroak",
+        types: ["Water"],
+        genderRatio: {
+            M: 87.5,
+            F: 12.5
+        },
+        baseStats: {
+            hp: 54,
+            atk: 63,
+            def: 65,
+            spa: 73,
+            spd: 65,
+            spe: 73
+        },
+        abilities: {
+            0: "Torrent"
+        },
+        heightm: 0.4,
+        weightkg: 8,
+        color: "Blue",
+		  evos: ["wartoadier"],
+        eggGroups: ["Water 1"],
+    },
+    wartoadier: {
+        num: 750128,
+        species: "Wartoadier",
+        types: ["Water"],
+        genderRatio: {
+            M: 87.5,
+            F: 12.5
+        },
+        baseStats: {
+            hp: 71,
+            atk: 78,
+            def: 81,
+            spa: 89,
+            spd: 83,
+            spe: 92
+        },
+        abilities: {
+            0: "Torrent"
+        },
+        heightm: 0.8,
+        weightkg: 16.7,
+        color: "Blue",
+		  prevo: "squirtroak",
+		  evoLevel: 16,
+		  evos: ["blastinja"],
+        eggGroups: ["Water 1"],
+    },
+    blastinja: {
         num: 750030,
         species: "Blastinja",
         types: ["Water", "Dark"],
@@ -1733,7 +1843,9 @@ swampert: {
         },
         heightm: 1.55,
         weightkg: 62.75,
-        color: "Black",
+		  prevo: "wartoadier",
+		  evoLevel: 36,
+        color: "Blue",
         eggGroups: ["Water 1"],
     },
     blastinjamega: {
@@ -1754,8 +1866,8 @@ swampert: {
         abilities: {
             0: "Mega Launcher"
         },
-        heightm: 2,
-        weightkg: 75.5,
+        heightm: 1.55,
+        weightkg: 78.35,
         color: "Blue",
         eggGroups: ["Water 1"],
     },
@@ -1781,7 +1893,7 @@ swampert: {
         },
         heightm: 1.395,
         weightkg: 35.55,
-        color: "Black",
+        color: "White",
         eggGroups: ["Flying"],
     },
     skariamega: {
@@ -1802,10 +1914,62 @@ swampert: {
         abilities: {
             0: "Pixilate"
         },
-        heightm: 2,
-        weightkg: 75.5,
+        heightm: 1.795,
+        weightkg: 35.55,
         color: "Brown",
         eggGroups: ["Flying"],
+    },
+    mygara: {
+        num: 750129,
+        species: "Mygara",
+        types: ["Fire", "Psychic"],
+        genderRatio: {
+            M: 75.0,
+            F: 25.0
+        },
+        baseStats: {
+            hp: 40,
+            atk: 52,
+            def: 31,
+            spa: 102,
+            spd: 60,
+            spe: 101
+        },
+        abilities: {
+            0: "Magical Flame"
+        },
+        heightm: 0.8,
+        weightkg: 20.45,
+        color: "Red",
+		  evos: ["kadagma"],
+        eggGroups: ["Undiscovered"],
+    },
+    kadagma: {
+        num: 750130,
+        species: "Kadagma",
+        types: ["Fire", "Psychic"],
+        genderRatio: {
+            M: 75.0,
+            F: 25.0
+        },
+        baseStats: {
+            hp: 62,
+            atk: 75,
+            def: 53,
+            spa: 120,
+            spd: 87,
+            spe: 109
+        },
+        abilities: {
+            0: "Inner Body"
+        },
+        heightm: 1.3,
+        weightkg: 50.5,
+        color: "Red",
+		  prevo: "mygara",
+		  evoLevel: 23,
+		  evos: ["magmozam"],
+        eggGroups: ["Human-Like"],
     },
     magmozam: {
         num: 750032,
@@ -1828,7 +1992,9 @@ swampert: {
         },
         heightm: 1.55,
         weightkg: 58,
-        color: "Black",
+		  prevo: "kadagma",
+		  evoLevel: 23,
+        color: "Red",
         eggGroups: ["Human-Like"],
     },
     magmozammega: {
@@ -1849,8 +2015,8 @@ swampert: {
         abilities: {
             0: "Trace"
         },
-        heightm: 2,
-        weightkg: 75.5,
+        heightm: 1.25,
+        weightkg: 58,
         color: "Brown",
         eggGroups: ["Human-Like"],
     },
