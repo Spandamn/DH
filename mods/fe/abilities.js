@@ -5278,7 +5278,7 @@ exports.BattleAbilities = {
 		shortDesc: "When this Pokémon is below 50% health, the Base Power and secondary effect chance of moves with secondary effects are doubled.",
 		onModifyMovePriority: -2,
 		onModifyMove: function(move, pokemon) {
-			if (move.secondaries && pokemon.hp <= pokemon.maxhp / 3) {
+			if (move.secondaries && pokemon.hp <= pokemon.maxhp / 2.857142857142857) {
 				this.debug('doubling secondary chance');
 				for (const secondary of move.secondaries) {
 					// @ts-ignore
@@ -5288,7 +5288,7 @@ exports.BattleAbilities = {
 		},
 		onBasePowerPriority: 8,
 		onBasePower: function(basePower, attacker, defender, move) {
-			if (attacker.hp <= attacker.maxhp / 3 && move.secondaries) {
+			if (attacker.hp <= attacker.maxhp / 2.857142857142857 && move.secondaries) {
 				return this.chainModify(2);
 			}
 		},
@@ -10595,7 +10595,7 @@ exports.BattleAbilities = {
 	},
 	"adaptingbody": {
 		shortDesc: "Gains Adaptability and heals for 12% max HP when in weather for more than one turn.",
-		onModifyMove: function (move) {
+		onModifyMove: function (move, pokemon) {
 			if (target.activeTurns > 1) {
 				if (pokemon.volatiles['atmosphericperversion'] == pokemon.volatiles['weatherbreak']){
 					move.stab = 2;
@@ -10606,7 +10606,7 @@ exports.BattleAbilities = {
 		},
 		onWeather: function (target, source, effect) {
 			if (target.activeTurns > 1) {
-				if (pokemon.volatiles['atmosphericperversion'] == pokemon.volatiles['weatherbreak']){
+				if (target.volatiles['atmosphericperversion'] == target.volatiles['weatherbreak']){
 					this.heal(target.maxhp / 8, target, target);
 				} else {
 					this.damage(target.maxhp / 8, target, target);
@@ -10627,6 +10627,7 @@ exports.BattleAbilities = {
 		onTryDeductPP: function (pokemon) {
 			return null;
 		},
+		isUnbreakable: true,
 		id: "diamondarmor",
 		name: "Diamond Armor",
 	},
