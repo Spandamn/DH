@@ -77,6 +77,7 @@ swampert: {
         weightkg: 64.45,
         color: "Blue",
 		  prevo: "inkip",
+		  evoLevel: 28,
 		  fusion: ["Swampert", "Malamar"],
         eggGroups: ["Water 1"],
     },
@@ -98,8 +99,8 @@ swampert: {
         abilities: {
             0: "Swift Swim"
         },
-        heightm: 2,
-        weightkg: 75.5,
+        heightm: 1.9,
+        weightkg: 84.55,
         color: "Blue",
         eggGroups: ["Water 1"],
     },
@@ -168,8 +169,8 @@ swampert: {
         abilities: {
             0: "Mold Breaker"
         },
-        heightm: 2,
-        weightkg: 75.5,
+        heightm: 6.35,
+        weightkg: 278.5,
         color: "Blue",
         eggGroups: ["Dragon"],
     },
@@ -415,8 +416,8 @@ swampert: {
         abilities: {
             0: "Magic Bounce"
         },
-        heightm: 2,
-        weightkg: 75.5,
+        heightm: 1.31,
+        weightkg: 223.5,
         color: "Brown",
         eggGroups: ["Human-Like"],
     },
@@ -485,8 +486,8 @@ swampert: {
         abilities: {
             0: "Sand Force"
         },
-        heightm: 2,
-        weightkg: 75.5,
+        heightm: 4.205,
+        weightkg: 165,
         color: "Brown",
         eggGroups: ["Dragon"],
     },
@@ -508,8 +509,8 @@ swampert: {
         abilities: {
             0: "Mold Breaker"
         },
-        heightm: 2,
-        weightkg: 75.5,
+        heightm: 4.205,
+        weightkg: 245,
         color: "Brown",
         eggGroups: ["Dragon"],
     },
@@ -660,8 +661,8 @@ swampert: {
         abilities: {
             0: "Sand Force"
         },
-        heightm: 2,
-        weightkg: 75.5,
+        heightm: 2.11,
+        weightkg: 91.9,
         color: "Brown",
         eggGroups: ["Monster"],
     },
@@ -2895,8 +2896,27 @@ swampert: {
         color: "Red",
         eggGroups: ["Monster", "Dragon"],
     },
-
-
+    tyklink: {
+        num: 750143,
+        species: "Tyklink",
+        types: ["Steel", "Fighting"],
+        gender: "N",
+        baseStats: {
+            hp: 47,
+            atk: 83,
+            def: 56,
+            spa: 55,
+            spd: 50,
+            spe: 72
+        },
+        abilities: {
+            0: "Super Guts"
+        },
+        heightm: 0.5,
+        weightkg: 21,
+		  evos: ["hitmonklang"],
+        eggGroups: ["Undiscovered"],
+    },
     hitmonklang: {
         num: 750047,
         species: "Hitmonklang",
@@ -2915,8 +2935,30 @@ swampert: {
         },
         heightm: 1.005,
         weightkg: 64.5,
-        color: "Black",
+		  prevo: "tyklink",
+		  evoLevel: 32,
+        color: "Gray",
         eggGroups: ["Undiscovered"],
+    },
+    inkduck: {
+        num: 750144,
+        species: "Inkduck",
+        types: ["Water", "Dark"],
+        baseStats: {
+            hp: 60,
+            atk: 65,
+            def: 55,
+            spa: 65,
+            spd: 53,
+            spe: 55
+        },
+        abilities: {
+            0: "Atmospheric Perversion"
+        },
+        heightm: 0.6,
+        weightkg: 11.55,
+		  evos: ["maladuck"],
+        eggGroups: ["Water 1"],
     },
     maladuck: {
         num: 750048,
@@ -2939,8 +2981,10 @@ swampert: {
         },
         heightm: 1.6,
         weightkg: 61.8,
+		  prevo: "inkduck",
+		  evoLevel: 32,
         color: "Black",
-        eggGroups: ["Undiscovered"],
+        eggGroups: ["Water 1"],
     },
     yangarde: {
         num: 750049,
@@ -2990,6 +3034,27 @@ swampert: {
         color: "Black",
         eggGroups: ["Undiscovered"],
     },
+    raillish: {
+        num: 750145,
+        species: "Raillish",
+        types: ["Ghost", "Fairy"],
+        baseStats: {
+            hp: 55,
+            atk: 45,
+            def: 50,
+            spa: 75,
+            spd: 70,
+            spe: 50
+        },
+        abilities: {
+            0: "Cursed Trace"
+        },
+        heightm: 0.8,
+        weightkg: 19.8,
+		  evos: ["jellivoir"],
+        color: "White",
+        eggGroups: ["Amorphous"],
+    },
     jellivoir: {
         num: 750051,
         species: "Jellivoir",
@@ -3011,7 +3076,9 @@ swampert: {
         },
         heightm: 1.905,
         weightkg: 91.7,
-        color: "Black",
+		  prevo: "raillish",
+		  evoLevel: 32,
+        color: "White",
         eggGroups: ["Undiscovered"],
     },
     jellivoirmega: {
@@ -3036,10 +3103,54 @@ swampert: {
         abilities: {
             0: "Pixilate"
         },
-        heightm: 1.6,
-        weightkg: 90.0,
-        color: "Blue",
+        heightm: 1.905,
+        weightkg: 91.7,
+        color: "White",
         eggGroups: ["Amorphous"],
+    },
+    babelum: {
+        num: 750146,
+        species: "Babelum",
+        types: ["Steel", "Flying"],
+        baseStats: {
+            hp: 50,
+            atk: 52,
+            def: 57,
+            spa: 32,
+            spd: 60,
+            spe: 50
+        },
+        abilities: {
+            0: "Clear Focus"
+        },
+        heightm: 0.7,
+        weightkg: 51.35,
+		  evos: ["angol"],
+        color: "Blue",
+        eggGroups: ["Undiscovered"],
+    },
+    angol: {
+        num: 750147,
+        species: "Angol",
+        types: ["Steel", "Flying"],
+        baseStats: {
+            hp: 67,
+            atk: 97,
+            def: 95,
+            spa: 60,
+            spd: 77,
+            spe: 80
+        },
+        abilities: {
+            0: "Clear Focus"
+        },
+        heightm: 0.7,
+        weightkg: 128.75,
+		  prevo: "babelum",
+		  evoLevel: 21,
+		  evos: ["metabat"],
+        color: "Blue",
+        eggGroups: ["Undiscovered"],
     },
     metabat: {
         num: 750052,
@@ -3062,7 +3173,9 @@ swampert: {
         },
         heightm: 1.7,
         weightkg: 312.5,
-        color: "Black",
+		  prevo: "babelum",
+		  evoLevel: 45,
+        color: "Purple",
         eggGroups: ["Undiscovered"],
     },
     metabatmega: {
@@ -3087,8 +3200,8 @@ swampert: {
         abilities: {
             0: "Tough Claws"
         },
-        heightm: 2.0,
-        weightkg: 90.0,
+        heightm: 2.6,
+        weightkg: 705.4,
         color: "Purple",
         eggGroups: ["Undiscovered"],
     },
@@ -3132,8 +3245,8 @@ swampert: {
         abilities: {
             0: "Levitate"
         },
-        heightm: 2.0,
-        weightkg: 80.0,
+        heightm: 1.955,
+        weightkg: 86.45,
         color: "Red",
         eggGroups: ["Undiscovered"],
     },
@@ -3185,6 +3298,27 @@ swampert: {
         color: "Black",
         eggGroups: ["Undiscovered"],
     },
+    belpet: {
+        num: 750148,
+        species: "Belpet",
+        types: ["Ghost", "Steel"],
+        baseStats: {
+            hp: 42,
+            atk: 75,
+            def: 59,
+            spa: 49,
+            spd: 49,
+            spe: 52
+        },
+        abilities: {
+            0: "Hard Body"
+        },
+        heightm: 0.6,
+        weightkg: 48.75,
+		  evos: ["banegross"],
+        color: "Blue",
+        eggGroups: ["Undiscovered"],
+    },
     banegross: {
         num: 750056,
         species: "Banegross",
@@ -3206,7 +3340,9 @@ swampert: {
         },
         heightm: 1.345,
         weightkg: 281.25,
-        color: "Black",
+		  prevo: "belpet",
+		  evoLevel: 35,
+        color: "Blue",
         eggGroups: ["Undiscovered"],
     },
     banegrossmegax: {
@@ -3215,7 +3351,7 @@ swampert: {
         baseSpecies: "Banegross",
         forme: "Mega-X",
         formeLetter: "M",
-        types: ["Steel", "Ghost"],
+        types: ["Ghost", "Steel"],
         genderRatio: {
             M: 0.5,
             F: 0.5
@@ -3231,8 +3367,8 @@ swampert: {
         abilities: {
             0: "Tough Claws"
         },
-        heightm: 1.6,
-        weightkg: 550.0,
+        heightm: 2.245,
+        weightkg: 674.15,
         color: "Blue",
         eggGroups: ["Undiscovered"],
     },
@@ -3242,7 +3378,7 @@ swampert: {
         baseSpecies: "Banegross",
         forme: "Mega-Y",
         formeLetter: "M",
-        types: ["Steel", "Ghost"],
+        types: ["Ghost", "Steel"],
         genderRatio: {
             M: 0.5,
             F: 0.5
@@ -3258,8 +3394,8 @@ swampert: {
         abilities: {
             0: "Prankster"
         },
-        heightm: 1.6,
-        weightkg: 550.0,
+        heightm: 1.445,
+        weightkg: 281.75,
         color: "Blue",
         eggGroups: ["Undiscovered"],
     },
@@ -3284,7 +3420,7 @@ swampert: {
         },
         heightm: 1.5,
         weightkg: 54.5,
-        color: "Black",
+        color: "Blue",
         eggGroups: ["Undiscovered"],
     },
     herasirmegah: {
@@ -3309,8 +3445,8 @@ swampert: {
         abilities: {
             0: "Skill Link"
         },
-        heightm: 1.6,
-        weightkg: 70.0,
+        heightm: 1.7,
+        weightkg: 63,
         color: "Blue",
         eggGroups: ["Bug"],
     },
@@ -3336,10 +3472,31 @@ swampert: {
         abilities: {
             0: "Aerilate"
         },
-        heightm: 1.6,
-        weightkg: 60.0,
+        heightm: 1.7,
+        weightkg: 58.5,
         color: "Blue",
         eggGroups: ["Bug"],
+    },
+    misdreavalts: {
+        num: 750149,
+        species: "Misdreavalts",
+        types: ["Fairy", "Ghost"],
+        baseStats: {
+            hp: 49,
+            atk: 47,
+            def: 47,
+            spa: 80,
+            spd: 65,
+            spe: 77
+        },
+        abilities: {
+            0: "Synchofloat"
+        },
+        heightm: 0.55,
+        weightkg: 3.8,
+		  evos: ["mismagivoir"],
+        color: "White",
+        eggGroups: ["Amorphous"],
     },
     mismagivoir: {
         num: 750058,
@@ -3362,7 +3519,9 @@ swampert: {
         },
         heightm: 1.245,
         weightkg: 26.4,
-        color: "Black",
+		  prevo: "misdreavalts",
+		  evoLevel: 25,
+        color: "Purple",
         eggGroups: ["Undiscovered"],
     },
     mismagivoirmega: {
@@ -3383,9 +3542,9 @@ swampert: {
         abilities: {
             0: "Pixilate"
         },
-        heightm: 1.6,
-        weightkg: 90.0,
-        color: "Pink",
+        heightm: 1.245,
+        weightkg: 26.4,
+        color: "Purple",
         eggGroups: ["Amorphous"],
     },
     harem: {
@@ -3483,6 +3642,58 @@ swampert: {
         color: "Black",
         eggGroups: ["Undiscovered"],
     },
+    klip: {
+        num: 750150,
+        species: "Klip",
+        types: ["Water", "Steel"],
+        genderRatio: {
+            M: 0.875,
+            F: 0.125
+        },
+        baseStats: {
+            hp: 45,
+            atk: 77,
+            def: 60,
+            spa: 42,
+            spd: 55,
+            spe: 50
+        },
+        abilities: {
+            0: "Currential Disruption"
+        },
+        heightm: 0.35,
+        weightkg: 14.3,
+		  evos: ["klomp"],
+        color: "Gray",
+        eggGroups: ["Undiscovered"],
+    },
+    klomp: {
+        num: 750151,
+        species: "Klomp",
+        types: ["Water", "Steel"],
+        genderRatio: {
+            M: 0.875,
+            F: 0.125
+        },
+        baseStats: {
+            hp: 70,
+            atk: 102,
+            def: 85,
+            spa: 68,
+            spd: 80,
+            spe: 56
+        },
+        abilities: {
+            0: "Positive Growth"
+        },
+        heightm: 0.65,
+        weightkg: 39.5,
+		  evos: ["swank"],
+		  prevo: "klip",
+		  evoLevel: 27,
+        color: "Gray",
+        eggGroups: ["Undiscovered"],
+    },
     swank: {
         num: 750062,
         species: "Swank",
@@ -3504,7 +3715,9 @@ swampert: {
         },
         heightm: 1.055,
         weightkg: 81.45,
-        color: "Black",
+		  prevo: "klomp",
+		  evoLevel: 42,
+        color: "Gray",
         eggGroups: ["Undiscovered"],
     },
     swankmega: {
@@ -3529,9 +3742,9 @@ swampert: {
         abilities: {
             0: "Swift Swim"
         },
-        heightm: 1.5,
-        weightkg: 90.0,
-        color: "Blue",
+        heightm: 1.455,
+        weightkg: 101.55,
+        color: "Gray",
         eggGroups: ["Undiscovered"],
     },
     casting: {
@@ -3555,8 +3768,8 @@ swampert: {
         },
         heightm: 0.745,
         weightkg: 5.15,
-        color: "Black",
-        eggGroups: ["Undiscovered"],
+        color: "White",
+        eggGroups: ["Amorphous"],
     },
     sablemimez: {
         num: 750064,
@@ -3580,7 +3793,7 @@ swampert: {
         heightm: 0.905,
         weightkg: 32.75,
         color: "Black",
-        eggGroups: ["Undiscovered"],
+        eggGroups: ["Human-Like"],
     },
     sablemimezmega: {
         num: 750064,
@@ -3614,10 +3827,7 @@ swampert: {
         species: "Aegiline",
 		  baseForme: "Shield",
         types: ["Steel", "Bug"],
-        genderRatio: {
-            M: 0.0,
-            F: 0.0
-        },
+        gender: "N",
         baseStats: {
             hp: 65,
             atk: 85,
@@ -3642,10 +3852,7 @@ swampert: {
         forme: "Blade",
         formeLetter: "B",
         types: ["Steel", "Bug"],
-        genderRatio: {
-            M: 0.0,
-            F: 0.0
-        },
+        gender: "N",
         baseStats: {
             hp: 65,
             atk: 132,
@@ -3735,7 +3942,7 @@ swampert: {
         heightm: 0.85,
         weightkg: 22.15,
         color: "Black",
-        eggGroups: ["Undiscovered"],
+        eggGroups: ["Human-Like"],
     },
 
 
@@ -3761,8 +3968,8 @@ swampert: {
         abilities: {
             0: "Magic Bounce"
         },
-        heightm: 1.6,
-        weightkg: 60.0,
+        heightm: 0.85,
+        weightkg: 172.15,
         color: "Brown",
         eggGroups: ["Human-Like"],
     },
@@ -3788,18 +3995,42 @@ swampert: {
         abilities: {
             0: "Scrappy"
         },
-        heightm: 1.6,
-        weightkg: 60.0,
+        heightm: 0.95,
+        weightkg: 17.15,
         color: "Brown",
         eggGroups: ["Human-Like"],
+    },
+    slowdon: {
+        num: 750152,
+        species: "Slowdon",
+        types: ["Water", "Steel"],
+        genderRatio: {
+            M: 0.75,
+            F: 0.25
+        },
+        baseStats: {
+            hp: 70,
+            atk: 102,
+            def: 85,
+            spa: 68,
+            spd: 80,
+            spe: 56
+        },
+        abilities: {
+            0: "Resuscitate"
+        },
+        heightm: 0.85,
+        weightkg: 46.5,
+		  evos: ["bastioking"],
+        eggGroups: ["Monster"],
     },
     bastioking: {
         num: 750068,
         species: "Bastioking",
         types: ["Water", "Steel"],
         genderRatio: {
-            M: 75.0,
-            F: 25.0
+            M: 0.75,
+            F: 0.25
         },
         baseStats: {
             hp: 88,
@@ -3814,8 +4045,10 @@ swampert: {
         },
         heightm: 1.655,
         weightkg: 114.5,
-        color: "Black",
-        eggGroups: ["Undiscovered"],
+		  prevo: "slowdon",
+		  evoLevel: 30,
+        color: "Pink",
+        eggGroups: ["Monster"],
     },
     peatran: {
         num: 750069,
@@ -13120,6 +13353,19 @@ eggGroups: ["Undiscovered", ], },
        dexentry: "After evolving from Roseleef, Subject #304 broke out of confinement. Subject #74, even when Mega Evolved, was taken out effortlessly, as was Subject #83. Subject #59, which is only meant to be used in dire situations, was required to restrain it. Subject #304 has been successfully inhibited. Though it still has very strong Grass-type moves, it is no longer likely to effortlessly break through our most defensive fusions.",
     },
 
+		eevee: {
+			num: 133,
+			species: "Eevee",
+			types: ["Normal"],
+			genderRatio: {M: 0.875, F: 0.125},
+			baseStats: {hp: 55, atk: 55, def: 50, spa: 45, spd: 65, spe: 55},
+			abilities: {0: "Run Away", 1: "Adaptability", H: "Anticipation"},
+			heightm: 0.3,
+			weightkg: 6.5,
+			color: "Brown",
+			evos: ["vaporeon", "jolteon", "flareon", "espeon", "umbreon", "leafeon", "glaceon", "sylveon", "valveon"],
+			eggGroups: ["Field"],
+		},
 
     valveon: {
         num: 7500305,
@@ -13138,7 +13384,7 @@ eggGroups: ["Undiscovered", ], },
             0: "Pixie Absorb"
         },
 		 prevo: "eevee",
-		 evoLevel: 1,
+		 evoLevel: 2,
 		 eggGroups: ["Field"],
     },
 
