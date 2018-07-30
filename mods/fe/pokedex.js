@@ -3822,9 +3822,9 @@ swampert: {
         color: "Pink",
         eggGroups: ["Human-Like"],
     },
-    aegiline: {
+    aegilene: {
         num: 750065,
-        species: "Aegiline",
+        species: "Aegilene",
 		  baseForme: "Shield",
         types: ["Steel", "Bug"],
         gender: "N",
@@ -3845,10 +3845,10 @@ swampert: {
 		  otherFormes: ["aegilineblade"],
         eggGroups: ["Undiscovered"],
     },
-	    aegilineblade: {
+	    aegileneblade: {
         num: 750066,
-        species: "Aegiline-Blade",
-        baseSpecies: "Aegiline",
+        species: "Aegilene-Blade",
+        baseSpecies: "Aegilene",
         forme: "Blade",
         formeLetter: "B",
         types: ["Steel", "Bug"],
