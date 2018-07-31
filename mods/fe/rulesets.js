@@ -5,26 +5,17 @@
 
 /**@type {{[k: string]: FormatsData}} */
 let BattleFormats = {
-itemclause: {
+extremespeedclause: {
 		effectType: 'ValidatorRule',
 		name: 'Extreme Speed Clause',
 		desc: "Extreme Speed Clause: Only one Extreme Speed user per team.",
 		onStart: function () {
 			this.add('rule', 'Extreme Speed Clause: Only one Extreme Speed user per team.');
 		},
-		onValidateTeam: function (team, format) {
-			let moves = [];
-			if (set.moves) {
-				let hasMove = {"Extreme Speed"};
-				for (const moveId of set.moves) {
-					let move = this.getMove(moveId);
-					let moveid = move.id;
-					if (hasMove[moveid]) continue;
-					hasMove[moveid] = true;
-					moves.push(moveId);
-				}
-			}
-			set.moves = moves;
+		onValidateSet: function (set, format, setHas) {
+			if (!('move:extremespeed' in setHas)) return;	
+
+			return [(set.name || set.species) + " Extreme Speed Clause."];
 		},
 	},
   
