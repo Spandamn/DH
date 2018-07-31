@@ -15,8 +15,8 @@ extremespeedclause: {
 		onValidateSet: function (team, format) {
 			let movetable={}
 			for (const set of team) {
-				let movespeed = "Extreme Speed";
-				if (!movespeed) continue;
+				let movespeed = toId(set.move);
+				if (movespeed !=="extremespeed") continue;
 				if (movetable[movespeed]) {
 			return [(set.name || set.species) + " Extreme Speed Clause."];
 				}
