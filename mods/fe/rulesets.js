@@ -12,12 +12,18 @@ extremespeedclause: {
 		onStart: function () {
 			this.add('rule', 'Extreme Speed Clause: Only one Extreme Speed user per team.');
 		},
-		onValidateSet: function (set, format, setHas) {
-			if (!('move:extremespeed' in setHas)) return;	
-
+		onValidateSet: function (team, format) {
+			let movetable={}
+			for (const set of team) {
+				let movespeed = "Extreme Speed";
+				if (!movespeed) continue;
+				if (movetable[movespeed]) {
 			return [(set.name || set.species) + " Extreme Speed Clause."];
+				}
+				movetable[movespeed] = true;
+			}
 		},
-	},
+},
   
  };
 
