@@ -11050,7 +11050,6 @@ exports.BattleAbilities = {
 						stat = i;
 						bestStat = pokemon.stats[i];
 					}
-				}
 				this.boost({[stat]: 1}, pokemon);
 			}
 		},
