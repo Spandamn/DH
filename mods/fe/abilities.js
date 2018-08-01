@@ -11042,7 +11042,7 @@ exports.BattleAbilities = {
 	},
 	"sadistic": {
 		shortDesc: "If the foe switches out while this Pokemon is active, this Pokemon's highest stat is raised by 1 and the foe's replacement becomes trapped.",
-		onFoeSwitchOut: function (target, source) {
+		onFoeSwitchOut: function (source) {
 			let stat = 'atk';
 				let bestStat = 0;
 				for (let i in source.stats) {
