@@ -20199,6 +20199,29 @@ auroritarmega: {
             weightkg: 0.4,
             eggGroups: ["Undiscovered"],
         },
+	kyutanabusted: {
+        num: 7500516,
+        species: "Kyutana-Busted",
+        baseSpecies: "Kyutana",
+        forme: "Busted",
+        formeLetter: "B",
+        genderRatio: {M: 50.0, F: 50.0},
+        types: ["Ghost", "Grass"],
+         baseStats: {
+                hp: 70,
+                atk: 145,
+                def: 105,
+                spa: 55,
+                spd: 80,
+                spe: 105
+            },
+        abilities: {
+            0: "Beast Costumed"
+        },
+    heightm: 0.25,
+            weightkg: 0.4,
+            eggGroups: ["Undiscovered"],
+        },
         amdremarye: {
             num: 7500517,
             species: "Amdre-Marye",
