@@ -11040,25 +11040,4 @@ exports.BattleAbilities = {
 		id: "rainregen",
 		name: "Rain Regen",
 	},
-	"sadistic": {
-		shortDesc: "If the foe switches out while this Pokemon is active, this Pokemon's highest stat is raised by 1 and the foe's replacement becomes trapped.",
-		onFoeSwitchOut: function (pokemon) {
-			for (const target of pokemon.side.foe.active) {
-			let stat = 'atk';
-				let bestStat = 0;
-				for (let i in target.stats) {
-					if (target.stats[i] > bestStat) {
-						stat = i;
-						bestStat = target.stats[i];
-					}
-				this.boost({[stat]: 1}, target);
-			}
-			}
-		},
-		onFoeSwitchIn: function (pokemon) {
-				pokemon.tryTrap(true);
-		},
-		id: "sadistic",
-		name: "Sadistic",
-	},
 };
