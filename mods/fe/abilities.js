@@ -11060,7 +11060,7 @@ exports.BattleAbilities = {
 		},
 		onUpdate: function (pokemon) {
 			if (['kyutana'].includes(pokemon.template.speciesid) && this.effectData.busted) {
-				let templateid = pokemon.template.speciesid === 'kyutana' ? 'Kyutana-Busted' : 'Kyutana-Busted';
+				let templateid = pokemon.template.speciesid === 'kyutana' ? 'Kyutana-Busted-Test' : 'Kyutana-Busted';
 				pokemon.formeChange(templateid, this.effect, true);
 			}
 		},
