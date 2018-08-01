@@ -11040,42 +11040,4 @@ exports.BattleAbilities = {
 		id: "rainregen",
 		name: "Rain Regen",
 	},
-	"beastcostume": {
-		desc: "This Pokemon's Attack is raised by 1 stage if it attacks and knocks out another Pokemon.",
-		shortDesc: "This Pokemon's Attack is raised by 1 stage if it attacks and KOes another Pokemon.",
-		onDamagePriority: 1,
-		onDamage: function (damage, target, source, effect) {
-			if (effect && effect.effectType === 'Move' && ['kyutana'].includes(target.template.speciesid) && !target.transformed) {
-				this.add('-activate', target, 'ability: Beast Costume');
-				this.effectData.busted = true;
-				return 0;
-			}
-		},
-		onEffectiveness: function (typeMod, target, type, move) {
-			if (!this.activeTarget) return;
-			let pokemon = this.activeTarget;
-			if (!['kyutana'].includes(pokemon.template.speciesid) || pokemon.transformed || (pokemon.volatiles['substitute'] && !(move.flags['authentic'] || move.infiltrates))) return;
-			if (!pokemon.runImmunity(move.type)) return;
-			return 0;
-		},
-		onUpdate: function (pokemon) {
-			if (['kyutana'].includes(pokemon.template.speciesid) && this.effectData.busted) {
-				let templateid = pokemon.template.speciesid === 'kyutana' ? 'Kyutana-Busted-Test' : 'Kyutana-Busted';
-				pokemon.formeChange(templateid, this.effect, true);
-			}
-		},
-		onSourceFaint: function (target, source, effect) {
-			if (effect && effect.effectType === 'Move') {
-				this.add('-formechange', source, 'Kyutana', '[msg]');
-				source.formeChange("Kyutana");
-			}
-		},
-		id: "beastcostume",
-		name: "Beast Costume",
-	},
-	"beastcostumed": {
-		shortDesc: "Post Beast Costume ability.",
-		id: "beastcostumed",
-		name: "Beast Costumed",
-	},
 };
