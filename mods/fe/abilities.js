@@ -11053,9 +11053,9 @@ exports.BattleAbilities = {
 				this.boost({[stat]: 1}, source);
 			}
 		},
-		onFoeTrapPokemon: function (attacker, defender) {
-			if (!defender.activeTurns) {
-				defender.tryTrap(true);
+		onFoeTrapPokemon: function (pokemon) {
+			if (!pokemon.activeTurns) {
+				pokemon.tryTrap(true);
 			}
 		},
 		id: "sadistic",
