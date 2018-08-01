@@ -11042,21 +11042,20 @@ exports.BattleAbilities = {
 	},
 	"sadistic": {
 		shortDesc: "If the foe switches out while this Pokemon is active, this Pokemon's highest stat is raised by 1 and the foe's replacement becomes trapped.",
-		onFoeSwitchOut: function (pokemon) {
+		onFoeSwitchOut: function (attacker, defender) {
 			let stat = 'atk';
 				let bestStat = 0;
-				for (let i in pokemon.stats) {
-					if (pokemon.stats[i] > bestStat) {
+				for (let i in attacker.stats) {
+					if (attacker.stats[i] > bestStat) {
 						stat = i;
-						bestStat = pokemon.stats[i];
+						bestStat = attacker.stats[i];
 					}
-				this.boost({[stat]: 1}, pokemon);
+				this.boost({[stat]: 1}, attacker);
 			}
 		},
-		onFoeSwitchIn: function (pokemon) {
-			if (!pokemon.hasAbility('shadowtag') && this.isAdjacent(pokemon, this.effectData.target)) {
-				pokemon.maybeTrapped = true;
-				pokemon.tryTrap(true);
+		onFoeTrapPokemon: function (attacker, defender) {
+			if (!defender.activeTurns) {
+				defender.tryTrap(true);
 			}
 		},
 		id: "sadistic",
