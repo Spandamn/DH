@@ -227,8 +227,8 @@ learnistor: function(target, room, user) {
 		let buf = `<div class=infobox-limited><center><h2>List Of Eeveed Movepools</h2></center>`;
 		let feDex = require('../mods/eeveed/learnsets.js').BattleLearnsets;
 		if (!feDex) return this.errorReply("Error Fetching Eeveed Data.");
-		Object.values(feDex).forEach(learnsets => {
-			buf += `<b>${learnsets}</b>:<br> ${learnsets.learnset}<br>`;
+		Object.values(feDex).forEach(movepool => {
+			buf += `<b>${movepool}</b>:<br> ${movepool.learnset.value}<br>`;
 		});
 		this.sendReplyBox(`${buf}</div>`);
 	},
