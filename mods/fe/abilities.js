@@ -11040,4 +11040,73 @@ exports.BattleAbilities = {
 		id: "rainregen",
 		name: "Rain Regen",
 	},
+	"mosscleaner": {
+		shortDesc: "Absorbs Grass and Water moves. Boosts Attack by one stage whenever hit by either.",
+		onTryHitPriority: 1,
+		onTryHit: function (target, source, move) {
+			if (target !== source && (move.type === 'Grass' || move.type === 'Water')) {
+				if (!this.boost({atk: 1})) {
+					this.add('-immune', target, '[msg]', '[from] ability: Moss Cleaner');
+				}
+				return null;
+			}
+		},
+		onAllyTryHitSide: function (target, source, move) {
+			if (target === this.effectData.target || target.side !== source.side) return;
+			if (move.type === 'Grass' || move.type === 'Water') {
+				this.boost({atk: 1}, this.effectData.target);
+			}
+		},
+		id: "mosscleaner",
+		name: "Moss Cleaner",
+	},
+	"denticles": {
+		desc: "Pokemon making contact with this Pokemon lose 1/8 of their maximum HP. This damage and this Pokemon's Speed both double in rain.",
+		shortDesc: "Pokemon making contact with this Pokemon lose 1/8 of their max HP. This damage and this Pokemon's Speed both double in rain.",
+		onAfterDamageOrder: 1,
+		onAfterDamage: function (damage, target, source, move) {
+			if (source && source !== target && move && move.flags['contact']) {
+				if (this.isWeather(['raindance', 'primordialsea'])) {
+					if (pokemon.volatiles['atmosphericperversion'] == pokemon.volatiles['weatherbreak']){
+						this.damage(source.maxhp / 4, source, target);
+					} else {
+						this.damage(source.maxhp / 16, source, target);
+					}
+				} else{
+						this.damage(source.maxhp / 8, source, target);
+				}
+			}
+		},
+		onModifySpe: function (spe, pokemon) {
+			if (this.isWeather(['raindance', 'primordialsea'])) {
+				if (pokemon.volatiles['atmosphericperversion'] == pokemon.volatiles['weatherbreak']){
+					return this.chainModify(2);
+				} 	else {
+					return this.chainModify(0.5);
+				}
+			}
+		},
+		id: "denticles",
+		name: "Denticles",
+	},
+	"toxicbarrage": {
+		desc: "This Pokemon's Attack is multiplied by 1.5 and the accuracy of its attacks is multiplied by 0.8. Moves will always hit poisoned targets.",
+		shortDesc: "This Pokemon's Attack is 1.5x and accuracy of its attacks is 0.8x. Moves will always hit poisoned targets.",
+		// This should be applied directly to the stat as opposed to chaining witht he others
+		onModifyAtkPriority: 5,
+		onModifyAtk: function (atk) {
+			return this.modify(atk, 1.5);
+		},
+		onAnyAccuracy: function (accuracy, target, source, move) {
+			if (move && source === this.effectData.target) {
+				if (['psn', 'tox'].includes(target.status)){
+					return true;
+				}
+				return accuracy * 0.8;
+			}
+			return accuracy;
+		},
+		id: "toxicbarrage",
+		name: "toxicbarrage",
+	},
 };
