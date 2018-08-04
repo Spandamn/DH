@@ -2635,7 +2635,6 @@ exports.BattleAbilities = {
 	"Beasts Focus": {
 		shortDesc: "If Pokémon would be flinched, buffs highest non-HP stat instead.",
 		onFlinch: function(target, source, effect) {
-			if (effect && effect.effectType === 'Move') {
 				let stat = 'atk';
 				let bestStat = 0;
 				for (let i in source.stats) {
@@ -2644,10 +2643,8 @@ exports.BattleAbilities = {
 						bestStat = source.stats[i];
 					}
 				}
-				this.boost({
-					[stat]: 1
-				}, source);
-			}
+				this.boost({[stat]: 1}, source);
+				return false;
 		},
 		id: "beastsfocus",
 		name: "Beasts Focus",
