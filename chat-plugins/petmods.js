@@ -201,13 +201,24 @@ learnistor: function(target, room, user) {
 		this.sendReplyBox(`${buf}</div>`);
 	},
 	eeveedhelp: ["/eeveed - Shows the list of Pokemon in Eeevee'd."],
+	eeveedmegas: function (target, room, user) {
+		if (!this.runBroadcast()) return;
+		let buf = `<div class=infobox-limited><center><h2>List Of Eeveed Mega Stones</h2></center>`;
+		let feDex = require('../mods/eeveed/items.js').BattleItems;
+		if (!feDex) return this.errorReply("Error Fetching FE Data.");
+		Object.values(feDex).forEach(item => {
+			buf += `<button name="send" value="/dt ${item.name}, FE" style="background:none;border:none;">${item.id}</button><br>`;
+		});
+		this.sendReplyBox(`${buf}</div>`);
+	},
+	eeveedmegashelp: ["/femegas - Shows the list of Mega Stones in Fusion Evolution."],
 	eeveedabilities: function (target, room, user) {
 		if (!this.runBroadcast()) return;
 		let buf = `<div class=infobox-limited><center><h2>List Of Coded Eeveed Abilities</h2></center>`;
 		let feDex = require('../mods/eeveed/abilities.js').BattleAbilities;
 		if (!feDex) return this.errorReply("Error Fetching Eeveed Data.");
 		Object.values(feDex).forEach(ability => {
-			buf += `<button name="send" value="/dt ${ability.id}, Eeveed" style="background:none;border:none;">${ability.id}</button><br>`;
+			buf += `${ability.name}:${ability.shortDesc}<br>`;
 		});
 		this.sendReplyBox(`${buf}</div>`);
 	},
