@@ -1391,8 +1391,8 @@ exports.BattleMovedex = {
 		accuracy: 100,
 		basePower: 0,
 		category: "Status",
-		desc: "Drops target defense and special defense by one level, then returns to the player. 20% of chance to paralyze target.",
-		shortDesc: "Drops target defense and special defense by one level, then returns to the player. 20% of chance to paralyze target.",
+		desc: "Drops target defense and special defense by one level, then returns to the player.",
+		shortDesc: "Drops target defense and special defense by one level, then returns to the player.",
 		id: "bitterfragance",
 		isViable: true,
 		name: "Bitter Fragance",
@@ -1409,10 +1409,6 @@ exports.BattleMovedex = {
 		boosts: {
 			def: -1,
 			spd: -1,
-		},
-		secondary: {
-			chance: 20,
-			status: 'par',
 		},
 		onPrepareHit: function(target, source, move) {
 			this.attrLastMove('[still]');
