@@ -218,7 +218,7 @@ learnistor: function(target, room, user) {
 		let feDex = require('../mods/eeveed/abilities.js').BattleAbilities;
 		if (!feDex) return this.errorReply("Error Fetching Eeveed Data.");
 		Object.values(feDex).forEach(ability => {
-			buf += `<b>${ability.name}</b> :${ability.shortDesc}<br>`;
+			buf += `<b>${ability.name}</b>: ${ability.shortDesc}<br>`;
 		});
 		this.sendReplyBox(`${buf}</div>`);
 	},
