@@ -2632,7 +2632,7 @@ exports.BattleAbilities = {
 		id: "championsspirit",
 		name: "Champions Spirit",
 	},
-	"Beasts Focus": {
+	"beastsfocus": {
 		shortDesc: "If Pokémon would be flinched, buffs highest non-HP stat instead.",
 		onFlinch: function(target, source, effect) {
 				let stat = 'atk';
@@ -11084,5 +11084,35 @@ exports.BattleAbilities = {
 		},
 		id: "toxicbarrage",
 		name: "toxicbarrage",
+	},
+	"goopskin": {
+		desc: "This Pokemon is immune to Water-type moves and lowers the attacker's Speed by 1 stage when hit by a Water-type move. The power of Fire-type moves is multiplied by 1.25 when used on this Pokemon. At the end of each turn, this Pokemon restores 1/8 of its maximum HP, rounded down, if the weather is Rain Dance, and loses 1/8 of its maximum HP, rounded down, if the weather is Sunny Day.",
+		shortDesc: "This Pokemon is healed 1/8 by Rain; is hurt 1.25x by Fire, 1/8 by Sun. Immune to Water-type moves and if hit by one, lowers the attacker's Speed by 1 stage.",
+		onTryHit: function (target, source, move) {
+			if (target !== source && move.type === 'Water') {
+				if (!this.boost({spe: -1}, source, target)) {
+					this.add('-immune', target, '[msg]', '[from] ability: Goop Skin');
+				}
+				return null;
+			}
+		},
+		onBasePowerPriority: 7,
+		onFoeBasePower: function (basePower, attacker, defender, move) {
+			if (this.effectData.target !== defender) return;
+			if (move.type === 'Fire') {
+				return this.chainModify(1.25);
+			}
+		},
+		onWeather: function (target, source, effect) {
+			if (['raindance', 'primordialsea', 'desolateland', 'solarsnow', 'sunnyday'].includes(effect.id)){
+				if (['desolateland', 'solarsnow', 'sunnyday'].includes(effect.id) == (target.volatiles['atmosphericperversion'] == target.volatiles['weatherbreak'])) {
+					this.damage(target.maxhp / 8, target, target);
+				} else {
+					this.heal(target.maxhp / 8);
+				}
+			}
+		},
+		id: "goopskin",
+		name: "Goop Skin",
 	},
 };
