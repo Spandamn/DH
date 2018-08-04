@@ -207,7 +207,8 @@ learnistor: function(target, room, user) {
 		let jillianDex = require('../mods/eeveed/pokedex.js').BattlePokedex;
 		if (!jillianDex) return this.errorReply("Error Fetching Istor Data.");
 		Object.values(jillianDex).forEach(mon => {
-			buf += `<table><tr><td>Pokemon</td><td>Type #1</td><td>Type #2</td><td>Ability #1</td><td>Ability #2</td><td>Ability #3</td></td><td>HP</td><td>Atk</td><td>Def</td><td>SpA</td><td>SpD</td><td>Spe</td></tr><tr><td>${mon.species}</td><td>${mon.types[0]}</td><td>${mon.types[1]}</td><td>${mon.abilities.0}</td><td>${mon.abilities.1}</td><td>${mon.abilities.H}</td><td>${mon.baseStats.hp}</td><td>${mon.baseStats.atk}</td><td>${mon.baseStats.def}</td><td>${mon.baseStats.spa}</td><td>${mon.baseStats.spd}</td><td>${mon.baseStats.spe}</td></table>`;
+			buf += `<table><tr><td>Pokemon</td><td>Type #1</td><td>Type #2</td><td>Ability #1</td><td>Ability #2</td><td>Ability #3</td></td><td>HP</td><td>Atk</td><td>Def</td><td>SpA</td><td>SpD</td><td>Spe</td></tr><tr><td>${mon.species}</td><td>${mon.types[0]}</td><td>${mon.types[1]}</td><td>${mon.abilities.0}</td><td>${mon.abilities.1}</td></table>`;
+													 //<td>${mon.abilities.H}</td><td>${mon.baseStats.hp}</td><td>${mon.baseStats.atk}</td><td>${mon.baseStats.def}</td><td>${mon.baseStats.spa}</td><td>${mon.baseStats.spd}</td><td>${mon.baseStats.spe}</td></table>`;
 		});
 		this.sendReplyBox(`${buf}</div>`);
 	},
