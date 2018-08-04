@@ -222,7 +222,16 @@ learnistor: function(target, room, user) {
 		});
 		this.sendReplyBox(`${buf}</div>`);
 	},
-	
+	eeveedlearnsets: function (target, room, user) {
+		if (!this.runBroadcast()) return;
+		let buf = `<div class=infobox-limited><center><h2>List Of Eeveed Movepools</h2></center>`;
+		let feDex = require('../mods/eeveed/learnsets.js').BattleAbilities;
+		if (!feDex) return this.errorReply("Error Fetching Eeveed Data.");
+		Object.values(feDex).forEach(learnsets => {
+			buf += `<b>${learnsets}</b>:<br> ${learnsets.learnset}<br>`;
+		});
+		this.sendReplyBox(`${buf}</div>`);
+	},
 	tnfg: function (target, room, user) {
 		if (!this.runBroadcast()) return;
 		let buf = `<div class=infobox-limited><center><h2>List Of PTNFG Pokemon</h2></center>`;
