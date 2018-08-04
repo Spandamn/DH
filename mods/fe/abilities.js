@@ -7079,8 +7079,8 @@ exports.BattleAbilities = {
 	"carelessforce": {
 		shortDesc: "If this pokemon is holding an item, the item does nothing and this pokemon gets a 1.5x boost to physical moves.",
 		onUpdate: function(pokemon) {
-                  this.add('-start', pokemon, 'Embargo', '[silent]');
-                },
+     		this.add('-start', pokemon, 'Embargo', '[silent]');
+      },
 		onModifyAtkPriority: 5,
 		onModifyAtk: function (atk, pokemon) {
 			if (pokemon.item) {
@@ -10539,10 +10539,15 @@ exports.BattleAbilities = {
 		id: "bodyguard",
 		name: "Bodyguard",
 	},
-	"apathy": {
+	"apathy": { // TODO: Complete and test this
 		shortDesc: "Whenever this pokemon is afflicted by a status or move restricting affect, it is removed from it and applied to the opposing pokemon. If the effect cannot be inflicted, it is removed. Item induced restrictions do not count.",
 		id: "apathy",
 		name: "Apathy",
+		onTryMove: function (pokemon, move) {
+			if (move.id==='rest') return;
+			this.add('-fail', pokemon);
+			return null;
+		},
 		onTryHitPriority: 1,
 		onTryHit: function (target, source, move) {
 			if (target === source || move.hasBounced || !move.flags['reflectable']) {
@@ -10563,32 +10568,6 @@ exports.BattleAbilities = {
 			newMove.pranksterBoosted = false;
 			this.useMove(newMove, this.effectData.target, source);
 			return null;
-		},
-		onUpdate: function (pokemon) {
-			if (pokemon.volatiles['attract']) {
-				this.add('-activate', pokemon, 'ability: Oblivious');
-				pokemon.removeVolatile('attract');
-				this.add('-end', pokemon, 'move: Attract', '[from] ability: Apathy');
-			}
-			if (pokemon.volatiles['taunt']) {
-				this.add('-activate', pokemon, 'ability: Apathy');
-				pokemon.removeVolatile('taunt');
-				// Taunt's volatile already sends the -end message when removed
-			}
-		},
-		onImmunity: function (type, pokemon) {
-			if (type === 'attract') return false;
-		},
-		onTryHit: function (pokemon, target, move) {
-			if (move.id === 'attract' || move.id === 'captivate' || move.id === 'taunt') {
-				this.add('-immune', pokemon, '[msg]', '[from] ability: Apathy');
-				return null;
-			}
-		},
-		onSetStatus: function (status, target, source, effect) {
-			if (!effect || !effect.status) return false;
-			this.add('-immune', target, '[msg]', '[from] ability: Apathy');
-			return false;
 		},
 		effect: {
 			duration: 1,
