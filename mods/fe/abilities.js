@@ -11216,4 +11216,32 @@ exports.BattleAbilities = {
 		id: "chlorohide",
 		name: "Chloro Hide",
 	},
+	"vileskin": {
+		desc: "30% chance a Pokemon making contact with this Pokemon will be burned, poisoned, paralyzed, or fall asleep. This Pokemon has a 33% chance to have its major status condition cured at the end of each turn.",
+		shortDesc: "30% chance of poison/paralysis/sleep/burn on others making contact with this Pokemon. This Pokemon has a 33% chance to have its status cured at the end of each turn.",
+		onResidualOrder: 5,
+		onResidualSubOrder: 1,
+		onResidual: function (pokemon) {
+			if (this.randomChance(1, 3) && pokemon.hp && pokemon.status) {
+				this.debug('vile skin');
+				this.add('-activate', pokemon, 'ability: Vile Skin');
+				pokemon.cureStatus();
+			}
+		},
+		onAfterDamage: function (damage, target, source, move) {
+			if (move && move.flags['contact'] && !source.status) {
+				let r = this.random(120);
+				if (r < 11) {
+					source.setStatus('slp', target);
+				} else if (r < 21) {
+					source.setStatus('par', target);
+				} else if (r < 31) {
+					source.setStatus('psn', target);
+				} else if (r < 41) {
+					source.setStatus('brn', target);
+				}
+			}
+		},
+		id: "vileskin",
+		name: "Vile Skin",
 };
