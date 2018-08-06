@@ -11231,13 +11231,13 @@ exports.BattleAbilities = {
 		onAfterDamage: function (damage, target, source, move) {
 			if (move && move.flags['contact'] && !source.status) {
 				let r = this.random(120);
-				if (r < 11) {
+				if (r < 10) {
 					source.setStatus('slp', target);
-				} else if (r < 21) {
+				} else if (r < 20) {
 					source.setStatus('par', target);
-				} else if (r < 31) {
+				} else if (r < 30) {
 					source.setStatus('psn', target);
-				} else if (r < 41) {
+				} else if (r < 40) {
 					source.setStatus('brn', target);
 				}
 			}
