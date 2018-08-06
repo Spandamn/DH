@@ -3448,4 +3448,14 @@ exports.BattleItems = {
 		gen: 5,
 		desc: "Holder's first successful Flying-type attack will have 1.3x power. Single use.",
 	},
+	"honey": {
+		id: "honey",
+		name: "Honey",
+		fling: {
+			basePower: 30,
+		},
+		num: 94,
+		gen: 4,
+		desc: "No competitive use.",
+	},
 };
