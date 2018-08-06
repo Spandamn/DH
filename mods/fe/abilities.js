@@ -11244,4 +11244,5 @@ exports.BattleAbilities = {
 		},
 		id: "vileskin",
 		name: "Vile Skin",
+	},
 };
