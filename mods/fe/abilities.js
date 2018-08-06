@@ -11182,4 +11182,38 @@ exports.BattleAbilities = {
 		id: "rattlingskin",
 		name: "Rattling Skin",
 	},
+	"miraclehide": {
+		desc: "If this Pokemon is statused, it restores 1/8 of its maximum HP, rounded down, at the end of each turn. Cannot be damaged by Burn or Poison.",
+		shortDesc: "This Pokemon is healed by 1/8 of its max HP each turn when statused; no HP loss from burn or poison.",
+		onResidualOrder: 5,
+		onResidualSubOrder: 1,
+		onResidual: function (pokemon) {
+			if (pokemon.status) {
+				this.heal(pokemon.maxhp / 8);
+			}
+		},
+		onDamagePriority: 1,
+		onDamage: function (damage, target, source, effect) {
+			if (effect.id === 'psn' || effect.id === 'tox' || effect.id === 'brn') {
+				return false;
+			}
+		},
+		id: "miraclehide",
+		name: "Miracle Hide",
+	},
+	"chlorohide": {
+		desc: "If this Pokemon has a major status condition, its Speed is multiplied by 2; the Speed drop from paralysis is ignored.",
+		shortDesc: "If this Pokemon is statused, its Speed is 2x; ignores Speed drop from paralysis.",
+		onModifySpe: function (spe, pokemon) {
+			if (pokemon.status) {
+				if (pokemon.status === 'par') {
+					return this.chainModify(4);
+				} else {
+					return this.chainModify(2);
+				}
+			}
+		},
+		id: "chlorohide",
+		name: "Chloro Hide",
+	},
 };
