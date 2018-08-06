@@ -11116,4 +11116,52 @@ exports.BattleAbilities = {
 		id: "goopskin",
 		name: "Goop Skin",
 	},
+	"nightlight": {
+		desc: "The first time this Pokemon is hit by a Bug-, Dark-, or Ghost-type move, its attacking stat is multiplied by 1.5 while using a Fire-type attack as long as it remains active and has this Ability.",
+		shortDesc: "This Pokemon's Fire attacks do 1.5x damage if hit by a single Bug-, Dark-, or Ghost-type attack.",
+		onAfterDamage: function (damage, target, source, effect) {
+			if (effect && (effect.type === 'Dark' || effect.type === 'Bug' || effect.type === 'Ghost')) {
+				target.addVolatile('flashfire');
+			}
+		},
+		id: "nightlight",
+		name: "Nightlight",
+	},
+	"magicalflame": {
+		desc: "This Pokémon ignores passive damage. If it was to receive passive damage in any way, it instead burns a random foe.",
+		shortDesc: "This Pokemon can only be damaged by direct attacks. Damage negated in this way burns a random adjacent opponent.",
+		onDamage: function (damage, target, source, effect) {
+			if (effect.effectType !== 'Move') {
+				let targets = [];
+				for (const enemy of target.side.foe.active) {
+					if (!enemy || enemy.status || !this.isAdjacent(enemy, target)) continue;
+					targets.push(enemy);
+				}
+				if (targets.length){
+					let burntarget = this.sample(targets);
+					burntarget.trySetStatus('brn', target);
+				}
+				return false;
+			}
+		},
+		id: "magicalflame",
+		name: "Magical Flame",
+	},
+	"rattlingskin": {
+		desc: "If hit by a contact move, damages the attacker for 1/8 max HP. If hit by a Bug-, Ghost-, or Dark-type attack, damages the attacker for 1/16 max HP. These stack.",
+		shortDesc: "If hit by a contact move, damages the attacker for 1/8 max HP. If hit by a Bug-, Ghost-, or Dark-type attack, damages the attacker for 1/16 max HP. These stack.",
+		onAfterDamageOrder: 1,
+		onAfterDamage: function (damage, target, source, move) {
+			if (source && source !== target && move) {
+				if (move.flags['contact']){
+					this.damage(source.maxhp / 8, source, target);
+				}
+				if (move.type === 'Bug' || move.type === 'Ghost' || move.type === 'Dark'){
+					this.damage(source.maxhp / 16, source, target);
+				}
+			}
+		},
+		id: "rattlingskin",
+		name: "Rattling Skin",
+	},
 };
