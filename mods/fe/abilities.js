@@ -625,7 +625,8 @@ exports.BattleAbilities = {
 		name: "Snow Force",
 	},
 	"sandyskin": {
-		shortDesc: "Cures any major status ailment after each turn during sand. User is immune to sand damage.",
+		desc: "This Pokemon has its major status condition cured at the end of each turn if Sandstorm is active.",
+		shortDesc: "This Pokemon has its status cured at the end of each turn if Sandstorm is active.",
 		onResidualOrder: 5,
 		onResidualSubOrder: 1,
 		onResidual: function(pokemon) {
@@ -639,6 +640,23 @@ exports.BattleAbilities = {
 		},
 		id: "sandyskin",
 		name: "Sandy Skin",
+	},
+	"sandshed": {
+		desc: "This Pokemon has its major status condition cured at the end of each turn if Sandstorm is active.",
+		shortDesc: "This Pokemon has its status cured at the end of each turn if Sandstorm is active.",
+		onResidualOrder: 5,
+		onResidualSubOrder: 1,
+		onResidual: function(pokemon) {
+			if (pokemon.status && this.isWeather(['sandstorm'])) {
+				this.add('-activate', pokemon, 'ability: Sand Shed');
+				pokemon.cureStatus();
+			}
+		},
+		onImmunity: function(type, pokemon) {
+			if (type === 'sandstorm') return false;
+		},
+		id: "sandshed",
+		name: "Sand Shed",
 	},
 	"technicutter": {
 		shortDesc: "Moves of or below 60 BP get boosted by 1.5x, and attack cannot be lowered.",
