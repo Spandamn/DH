@@ -11245,4 +11245,25 @@ exports.BattleAbilities = {
 		id: "vileskin",
 		name: "Vile Skin",
 	},
+	"magneticfield": {
+		shortDesc: "This Pokemon is treated as airborne. Allies that are also airborne have the power of their special attacks multiplied by 1.3.",
+		onBasePowerPriority: 8,
+		onAllyBasePower: function (basePower, attacker, defender, move) {
+			if (!attacker.isGrounded() && attacker !== this.effectData.target && move.category === 'Special') {
+				this.debug('Magnetic Field boost');
+				return this.chainModify([0x14CD, 0x1000]);
+			}
+		},
+		//TODO: Negate effects from entry hazards that only affect grounded Pokemon
+		onDamage: function (damage, target, source, effect) {
+			if (effect && effect.id === 'spikes') {
+				return false;
+			}
+		},
+		onStart: function (pokemon) {
+			pokemon.addVolatile('magnetrise');
+		},
+		id: "magneticfield",
+		name: "Magnetic Field",
+	},
 };
