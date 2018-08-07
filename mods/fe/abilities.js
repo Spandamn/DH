@@ -9327,12 +9327,48 @@ exports.BattleAbilities = {
 	        }
 	    },
 	    onTryHit: function(source, target, move) {
-	        for (const moveSlot of target.moveSlots) {
-	            if (moveSlot.id && move.type === moveSlot.id.type && moveSlot.id.multihit) {
+			 	if (target.item) {
+	            if (target !== source && move.type === 'Rock' && target.hasMove('rockblast')) {
 	                this.add('-immune', target, '[msg]', '[from] ability: Horsetail Armor');
 	                return null;
 	            }
-	        }
+			 		else if (target !== source && move.type === 'Water' && target.hasMove('watershuriken')) {
+	                this.add('-immune', target, '[msg]', '[from] ability: Horsetail Armor');
+	                return null;
+	            }
+			 		else if (target !== source && move.type === 'Grass' && target.hasMove('bulletseed')) {
+	                this.add('-immune', target, '[msg]', '[from] ability: Horsetail Armor');
+	                return null;
+	            }
+			 		else if (target !== source && move.type === 'Steel' && target.hasMove('geargrind')) {
+	                this.add('-immune', target, '[msg]', '[from] ability: Horsetail Armor');
+	                return null;
+	            }
+			 		else if (target !== source && move.type === 'Dragon' && target.hasMove('dualchop')) {
+	                this.add('-immune', target, '[msg]', '[from] ability: Horsetail Armor');
+	                return null;
+	            }
+					else if (target !== source && move.type === 'Fighting' && target.hasMove('armthrust') || target.hasMove('doublekick') || target.hasMove('triplekick')) {
+	                this.add('-immune', target, '[msg]', '[from] ability: Horsetail Armor');
+	                return null;
+	            }
+					else if (target !== source && move.type === 'Ice' && target.hasMove('iciclespear')) {
+	                this.add('-immune', target, '[msg]', '[from] ability: Horsetail Armor');
+	                return null;
+	            }
+					else if (target !== source && move.type === 'Ground' && target.hasMove('bonerush') || target.hasMove('bonmerang')) {
+	                this.add('-immune', target, '[msg]', '[from] ability: Horsetail Armor');
+	                return null;
+	            }
+					else if (target !== source && move.type === 'Bug' && target.hasMove('twineedle') || target.hasMove('pinmissile')) {
+	                this.add('-immune', target, '[msg]', '[from] ability: Horsetail Armor');
+	                return null;
+	            }
+					else if (target !== source && move.type === 'Normal' && target.hasMove('barrage') || target.hasMove('cometpunch') || target.hasMove('doublehit') || target.hasMove('doubleslap') || target.hasMove('furyattack') || target.hasMove('furyswipes') || target.hasMove('spikecannon') || target.hasMove('tailslap')) {
+	                this.add('-immune', target, '[msg]', '[from] ability: Horsetail Armor');
+	                return null;
+	            }
+				}
 	    },
 	    id: "horsetailarmor",
 	    name: "Horsetail Armor",
