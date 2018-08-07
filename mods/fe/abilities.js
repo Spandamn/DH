@@ -9335,7 +9335,7 @@ exports.BattleAbilities = {
 	                this.add('-immune', target, '[msg]', '[from] ability: Horsetail Armor');
 	                return null;
 	            }
-			 		/*else if (target !== source && move.type === 'Grass' && target.hasMove('bulletseed') && target.item) {
+			 		else if (target !== source && move.type === 'Grass' && target.hasMove('bulletseed') && target.item) {
 	                this.add('-immune', target, '[msg]', '[from] ability: Horsetail Armor');
 	                return null;
 	            }
@@ -9347,7 +9347,7 @@ exports.BattleAbilities = {
 	                this.add('-immune', target, '[msg]', '[from] ability: Horsetail Armor');
 	                return null;
 	            }
-					else if (target !== source && move.type === 'Fighting' &&  && target.item target.hasMove('armthrust') || target.hasMove('doublekick') || target.hasMove('triplekick')) {
+					else if (target !== source && move.type === 'Fighting' && target.item && target.hasMove('armthrust') || target.hasMove('doublekick') || target.hasMove('triplekick')) {
 	                this.add('-immune', target, '[msg]', '[from] ability: Horsetail Armor');
 	                return null;
 	            }
@@ -9359,7 +9359,7 @@ exports.BattleAbilities = {
 	                this.add('-immune', target, '[msg]', '[from] ability: Horsetail Armor');
 	                return null;
 	            }
-					else if (target !== source && move.type === 'Bug' && target.hasMove('twineedle') || target.hasMove('pinmissile') && target.item) {
+					/*else if (target !== source && move.type === 'Bug' && target.hasMove('twineedle') || target.hasMove('pinmissile') && target.item) {
 	                this.add('-immune', target, '[msg]', '[from] ability: Horsetail Armor');
 	                return null;
 	            }
