@@ -222,12 +222,4 @@ lanshil: {
                  abilities: {0: "Rock Head", H: "Sturdy"},
 	              evos: ["middril"],
          },	
-lanshil: {
-                 num: 3027,
-                 species: "Lanshil",
-                 types: ["Rock"],
-                 baseStats: {hp: 48, atk: 50, def: 75, spa: 40, spd: 62, spe: 50},
-                 abilities: {0: "Rock Head", H: "Sturdy"},
-	              evos: ["middril"],
-         },
 };
