@@ -9326,9 +9326,8 @@ exports.BattleAbilities = {
 	            delete move.multiaccuracy;
 	        }
 	    },
-	    onTryHit: function(source, target, move) {
-			 	if (target.item) {
-	            if (target !== source && move.type === 'Rock' && target.hasMove('rockblast')) {
+	    onTryHit: function(target, source, move) {
+	            if (move && target !== source && move.type === 'Rock' && target.hasMove('rockblast') && target.item) {
 	                this.add('-immune', target, '[msg]', '[from] ability: Horsetail Armor');
 	                return null;
 	            }
@@ -9367,7 +9366,6 @@ exports.BattleAbilities = {
 					else if (target !== source && move.type === 'Normal' && target.hasMove('barrage') || target.hasMove('cometpunch') || target.hasMove('doublehit') || target.hasMove('doubleslap') || target.hasMove('furyattack') || target.hasMove('furyswipes') || target.hasMove('spikecannon') || target.hasMove('tailslap')) {
 	                this.add('-immune', target, '[msg]', '[from] ability: Horsetail Armor');
 	                return null;
-	            }
 				}
 	    },
 	    id: "horsetailarmor",
