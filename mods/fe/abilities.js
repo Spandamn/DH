@@ -9638,7 +9638,7 @@ exports.BattleAbilities = {
 			if(type === 'Water'){
 				pokemon.setType('Water');
 			} else {
-				pokemon.setType(['Water', type]);
+				pokemon.addType(type);
 			}
 		},
 		onImmunity: function (type, pokemon) {
