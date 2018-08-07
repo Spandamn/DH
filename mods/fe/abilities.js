@@ -1361,34 +1361,6 @@ exports.BattleAbilities = {
 		id: "cursedtrace",
 		name: "Cursed Trace",
 	},
-	/*"sheerflight": {
-		desc: "This Pokemon's attacks with secondary effects have their power multiplied by 1.3, but the secondary effects are removed.",
-		shortDesc: "This Pokemon's attacks with secondary effects have 1.3x power; nullifies the effects.",
-		onTryHit: function (target, source, move) {
-			if (target !== source && move.type === 'Ground') {
-            this.add('-immune', target, '[msg]', '[from] ability: Sheer Flight');
-				return null;
-			}
-		},
-		onModifyMove: function(move, pokemon) {
-			if (move.secondaries) {
-				delete move.secondaries;
-				// Actual negation of `AfterMoveSecondary` effects implemented in scripts.js
-				pokemon.addVolatile('sheerforce');
-			}
-		},
-		effect: {
-			duration: 1,
-			onBasePowerPriority: 8,
-			onBasePower: function(basePower, pokemon, target, move) {
-				return this.chainModify([0x14CD, 0x1000]);
-			}
-		},
-		id: "sheerflight",
-		name: "Sheer Flight",
-		rating: 4,
-		num: 230
-	},*/
 	"evaporation": {
 		shortDesc: "If this Pokemon is hit by a Water-type move, its Fire-type moves have their power increased by 50%; immune to Water-type moves.",
 		onTryHit: function(target, source, move) {
