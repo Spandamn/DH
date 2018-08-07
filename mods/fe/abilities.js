@@ -9331,7 +9331,7 @@ exports.BattleAbilities = {
 	                this.add('-immune', target, '[msg]', '[from] ability: Horsetail Armor');
 	                return null;
 	            }
-			 		else if (target !== source && move.type === 'Water' && target.hasMove('watershuriken')) {
+			 		/*else if (target !== source && move.type === 'Water' && target.hasMove('watershuriken')) {
 	                this.add('-immune', target, '[msg]', '[from] ability: Horsetail Armor');
 	                return null;
 	            }
@@ -9366,7 +9366,7 @@ exports.BattleAbilities = {
 					else if (target !== source && move.type === 'Normal' && target.hasMove('barrage') || target.hasMove('cometpunch') || target.hasMove('doublehit') || target.hasMove('doubleslap') || target.hasMove('furyattack') || target.hasMove('furyswipes') || target.hasMove('spikecannon') || target.hasMove('tailslap')) {
 	                this.add('-immune', target, '[msg]', '[from] ability: Horsetail Armor');
 	                return null;
-				}
+					}*/
 	    },
 	    id: "horsetailarmor",
 	    name: "Horsetail Armor",
