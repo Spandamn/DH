@@ -625,7 +625,8 @@ exports.BattleAbilities = {
 		name: "Snow Force",
 	},
 	"sandyskin": {
-		shortDesc: "Cures any major status ailment after each turn during sand. User is immune to sand damage.",
+		desc: "This Pokemon has its major status condition cured at the end of each turn if Sandstorm is active.",
+		shortDesc: "This Pokemon has its status cured at the end of each turn if Sandstorm is active.",
 		onResidualOrder: 5,
 		onResidualSubOrder: 1,
 		onResidual: function(pokemon) {
@@ -639,6 +640,23 @@ exports.BattleAbilities = {
 		},
 		id: "sandyskin",
 		name: "Sandy Skin",
+	},
+	"sandshed": {
+		desc: "This Pokemon has its major status condition cured at the end of each turn if Sandstorm is active.",
+		shortDesc: "This Pokemon has its status cured at the end of each turn if Sandstorm is active.",
+		onResidualOrder: 5,
+		onResidualSubOrder: 1,
+		onResidual: function(pokemon) {
+			if (pokemon.status && this.isWeather(['sandstorm'])) {
+				this.add('-activate', pokemon, 'ability: Sand Shed');
+				pokemon.cureStatus();
+			}
+		},
+		onImmunity: function(type, pokemon) {
+			if (type === 'sandstorm') return false;
+		},
+		id: "sandshed",
+		name: "Sand Shed",
 	},
 	"technicutter": {
 		shortDesc: "Moves of or below 60 BP get boosted by 1.5x, and attack cannot be lowered.",
@@ -11115,5 +11133,137 @@ exports.BattleAbilities = {
 		},
 		id: "goopskin",
 		name: "Goop Skin",
+	},
+	"nightlight": {
+		desc: "The first time this Pokemon is hit by a Bug-, Dark-, or Ghost-type move, its attacking stat is multiplied by 1.5 while using a Fire-type attack as long as it remains active and has this Ability.",
+		shortDesc: "This Pokemon's Fire attacks do 1.5x damage if hit by a single Bug-, Dark-, or Ghost-type attack.",
+		onAfterDamage: function (damage, target, source, effect) {
+			if (effect && (effect.type === 'Dark' || effect.type === 'Bug' || effect.type === 'Ghost')) {
+				target.addVolatile('flashfire');
+			}
+		},
+		id: "nightlight",
+		name: "Nightlight",
+	},
+	"magicalflame": {
+		desc: "This Pokémon ignores passive damage. If it was to receive passive damage in any way, it instead burns a random foe.",
+		shortDesc: "This Pokemon can only be damaged by direct attacks. Damage negated in this way burns a random adjacent opponent.",
+		onDamage: function (damage, target, source, effect) {
+			if (effect.effectType !== 'Move') {
+				let targets = [];
+				for (const enemy of target.side.foe.active) {
+					if (!enemy || enemy.status || !this.isAdjacent(enemy, target)) continue;
+					targets.push(enemy);
+				}
+				if (targets.length){
+					let burntarget = this.sample(targets);
+					burntarget.trySetStatus('brn', target);
+				}
+				return false;
+			}
+		},
+		id: "magicalflame",
+		name: "Magical Flame",
+	},
+	"rattlingskin": {
+		desc: "If hit by a contact move, damages the attacker for 1/8 max HP. If hit by a Bug-, Ghost-, or Dark-type attack, damages the attacker for 1/16 max HP. These stack.",
+		shortDesc: "If hit by a contact move, damages the attacker for 1/8 max HP. If hit by a Bug-, Ghost-, or Dark-type attack, damages the attacker for 1/16 max HP. These stack.",
+		onAfterDamageOrder: 1,
+		onAfterDamage: function (damage, target, source, move) {
+			if (source && source !== target && move) {
+				if (move.flags['contact']){
+					this.damage(source.maxhp / 8, source, target);
+				}
+				if (move.type === 'Bug' || move.type === 'Ghost' || move.type === 'Dark'){
+					this.damage(source.maxhp / 16, source, target);
+				}
+			}
+		},
+		id: "rattlingskin",
+		name: "Rattling Skin",
+	},
+	"miraclehide": {
+		desc: "If this Pokemon is statused, it restores 1/8 of its maximum HP, rounded down, at the end of each turn. Cannot be damaged by Burn or Poison.",
+		shortDesc: "This Pokemon is healed by 1/8 of its max HP each turn when statused; no HP loss from burn or poison.",
+		onResidualOrder: 5,
+		onResidualSubOrder: 1,
+		onResidual: function (pokemon) {
+			if (pokemon.status) {
+				this.heal(pokemon.maxhp / 8);
+			}
+		},
+		onDamagePriority: 1,
+		onDamage: function (damage, target, source, effect) {
+			if (effect.id === 'psn' || effect.id === 'tox' || effect.id === 'brn') {
+				return false;
+			}
+		},
+		id: "miraclehide",
+		name: "Miracle Hide",
+	},
+	"chlorohide": {
+		desc: "If this Pokemon has a major status condition, its Speed is multiplied by 2; the Speed drop from paralysis is ignored.",
+		shortDesc: "If this Pokemon is statused, its Speed is 2x; ignores Speed drop from paralysis.",
+		onModifySpe: function (spe, pokemon) {
+			if (pokemon.status) {
+				if (pokemon.status === 'par') {
+					return this.chainModify(4);
+				} else {
+					return this.chainModify(2);
+				}
+			}
+		},
+		id: "chlorohide",
+		name: "Chloro Hide",
+	},
+	"vileskin": {
+		desc: "30% chance a Pokemon making contact with this Pokemon will be burned, poisoned, paralyzed, or fall asleep. This Pokemon has a 33% chance to have its major status condition cured at the end of each turn.",
+		shortDesc: "30% chance of poison/paralysis/sleep/burn on others making contact with this Pokemon. This Pokemon has a 33% chance to have its status cured at the end of each turn.",
+		onResidualOrder: 5,
+		onResidualSubOrder: 1,
+		onResidual: function (pokemon) {
+			if (this.randomChance(1, 3) && pokemon.hp && pokemon.status) {
+				this.debug('vile skin');
+				this.add('-activate', pokemon, 'ability: Vile Skin');
+				pokemon.cureStatus();
+			}
+		},
+		onAfterDamage: function (damage, target, source, move) {
+			if (move && move.flags['contact'] && !source.status) {
+				let r = this.random(120);
+				if (r < 10) {
+					source.setStatus('slp', target);
+				} else if (r < 20) {
+					source.setStatus('par', target);
+				} else if (r < 30) {
+					source.setStatus('psn', target);
+				} else if (r < 40) {
+					source.setStatus('brn', target);
+				}
+			}
+		},
+		id: "vileskin",
+		name: "Vile Skin",
+	},
+	"magneticfield": {
+		shortDesc: "This Pokemon is treated as airborne. Allies that are also airborne have the power of their special attacks multiplied by 1.3.",
+		onBasePowerPriority: 8,
+		onAllyBasePower: function (basePower, attacker, defender, move) {
+			if (!attacker.isGrounded() && attacker !== this.effectData.target && move.category === 'Special') {
+				this.debug('Magnetic Field boost');
+				return this.chainModify([0x14CD, 0x1000]);
+			}
+		},
+		//TODO: Negate effects from entry hazards that only affect grounded Pokemon
+		onDamage: function (damage, target, source, effect) {
+			if (effect && effect.id === 'spikes') {
+				return false;
+			}
+		},
+		onStart: function (pokemon) {
+			pokemon.addVolatile('magnetrise');
+		},
+		id: "magneticfield",
+		name: "Magnetic Field",
 	},
 };
