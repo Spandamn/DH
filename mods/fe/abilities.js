@@ -11262,12 +11262,14 @@ exports.BattleAbilities = {
 		},
 		//TODO: Negate effects from entry hazards that only affect grounded Pokemon
 		onDamage: function (damage, target, source, effect) {
-			if (effect && effect.id === 'spikes') {
+			if (effect && effect.id === 'spikes' && !this.pseudoWeather['gravity'] && !target.volatiles['smackdown']) {
 				return false;
 			}
 		},
 		onUpdate: function (pokemon) {
-			pokemon.addVolatile('magnetrise');
+			if (!this.pseudoWeather['gravity'] && !pokemon.volatiles['smackdown']){
+				pokemon.addVolatile('magnetrise');
+			}
 		},
 		id: "magneticfield",
 		name: "Magnetic Field",
