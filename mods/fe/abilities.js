@@ -11266,10 +11266,157 @@ exports.BattleAbilities = {
 				return false;
 			}
 		},
-		onStart: function (pokemon) {
+		onUpdate: function (pokemon) {
 			pokemon.addVolatile('magnetrise');
 		},
 		id: "magneticfield",
 		name: "Magnetic Field",
+	},
+	"magicvigor": {
+		shortDesc: "This Pokemon cannot lose its held item due to another Pokemon's attack.",
+		onTakeItem: function (item, pokemon, source) {
+			if (this.suppressingAttackEvents() && pokemon !== this.activePokemon || !pokemon.hp || pokemon.item === 'stickybarb') return;
+			if (!this.activeMove) throw new Error("Battle.activeMove is null");
+			if ((source && source !== pokemon) || this.activeMove.id === 'knockoff') {
+				this.add('-activate', pokemon, 'ability: Magic Vigor');
+				return false;
+			}
+		},
+		id: "magicvigor",
+		name: "Magic Vigor",
+	},
+	"grimreminder": {
+		shortDesc: "Traces and nulls the foe's ability.",
+		onUpdate: function(pokemon) {
+			if (!pokemon.isStarted) return;
+			let possibleTargets = [];
+			for (let i = 0; i < pokemon.side.foe.active.length; i++) {
+				if (pokemon.side.foe.active[i] && !pokemon.side.foe.active[i].fainted) possibleTargets.push(pokemon.side.foe.active[i]);
+			}
+			while (possibleTargets.length) {
+				let rand = 0;
+				if (possibleTargets.length > 1) rand = this.random(possibleTargets.length);
+				let target = possibleTargets[rand];
+				let ability = this.getAbility(target.ability);
+				let bannedAbilities = {
+					adaptableillusion: 1,
+					aeroform: 1,
+					appropriation: 1,
+					battlebond: 1,
+					barbstance: 1,
+					beastcostume: 1,
+					comatose: 1,
+					combinationdrive: 1,
+					compression: 1,
+					coolasice: 1,
+					cosmology: 1,
+					crystallizedshield: 1,
+					cursedcloak: 1,
+					desertmirage: 1,
+					disguise: 1,
+					disguiseburden: 1,
+					effectsetter: 1,
+					errormacro: 1,
+					flowergift: 1,
+					forecast: 1,
+					foundation: 1,
+					geneticalgorithm: 1,
+					geologist: 1,
+					godoffertility: 1,
+					grimreminder: 1,
+					hideandseek: 1,
+					illusion: 1,
+					imposter: 1,
+					justiceillusion: 1,
+					magicalwand: 1,
+					miraclemorph: 1,
+					mirrormirror: 1,
+					mitosis: 1,
+					monsoon: 1,
+					multitype: 1,
+					optimize: 1,
+					pawprayer: 1,
+					powerofalchemy: 1,
+					prototype: 1,
+					receiver: 1,
+					resurrection: 1,
+					rhythm: 1,
+					rkssystem: 1,
+					sandyconstruct: 1,
+					schooling: 1,
+					shieldsdown: 1,
+					sleepingsystem: 1,
+					sociallife: 1,
+					spiralpower: 1,
+					stancechange: 1,
+					stanceshield: 1,
+					tacticalcomputer: 1,
+					techequip: 1,
+					technicalsystem: 1,
+					troll: 1,
+					triagesystem: 1,
+					typeillusionist: 1,
+					unfriend: 1,
+					victorysystem: 1,
+					weathercaster: 1,
+					weatherfront: 1,
+					whatdoesthisdo: 1,
+					zenmode: 1
+				};
+				if (bannedAbilities[target.ability]) {
+					possibleTargets.splice(rand, 1);
+					continue;
+				}
+				this.add('-ability', pokemon, ability, '[from] ability: Grim Reminder', '[of] ' + target);
+				if (pokemon.setAbility(ability)) target.addVolatile('gastroacid');
+				return;
+			}
+		},
+		id: "grimreminder",
+		name: "Grim Reminder",
+	},
+	"resuscitate": {
+		shortDesc: "Regenerator + Sturdy.",
+		onTryHit: function (pokemon, target, move) {
+			if (move.ohko) {
+				this.add('-immune', pokemon, '[msg]', '[from] ability: Resuscitate');
+				return null;
+			}
+		},
+		onDamagePriority: -100,
+		onDamage: function (damage, target, source, effect) {
+			if (target.hp === target.maxhp && damage >= target.hp && effect && effect.effectType === 'Move') {
+				this.add('-ability', target, 'Resuscitate');
+				return target.hp - 1;
+			}
+		},
+		onSwitchOut: function (pokemon) {
+			pokemon.heal(pokemon.maxhp / 3);
+		},
+		id: "resuscitate",
+		name: "Resuscitate",
+	},
+	"healingprovocation": {
+		shortDesc: "Upon switching out or having a stat lowered, recovers 1/3 of max HP.",
+		onAfterEachBoost: function (boost, target, source) {
+			if (!source || target.side === source.side) {
+				return;
+			}
+			let statsLowered = false;
+			for (let i in boost) {
+				// @ts-ignore
+				if (boost[i] < 0) {
+					statsLowered = true;
+				}
+			}
+			if (statsLowered) {
+				target.heal(target.maxhp / 3);
+			}
+		},
+		onSwitchOut: function (pokemon) {
+			pokemon.heal(pokemon.maxhp / 3);
+		},
+		id: "healingprovocation",
+		name: "Healing Provocation",
 	},
 };
