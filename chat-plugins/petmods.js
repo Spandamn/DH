@@ -507,7 +507,7 @@ evgutter: function (target, room, user) {
 		Object.values(feDex).forEach(mon => {
 			let separated = target.split(" ");
 			if (mon.prevo && !mon.evos) {
-			buf += `${mon.name}<br>`;
+			buf += `${mon.species}<br>`;
 			}
 		}
 		);
