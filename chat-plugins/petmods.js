@@ -470,21 +470,7 @@ evgutter: function (target, room, user) {
 		});
 		this.sendReplyBox(`${buf}</div>`);
 	},
-	cupspeed: function (target, room, user) {
-		if (!this.runBroadcast()) return;
-		let buf = `<div class=infobox-limited><center><h2>List Of Fusion Evolution Pokemon</h2></center>`;
-		let feDex = require('../data/pokedex.js').BattlePokedex;
-		if (!feDex) return this.errorReply("Error Fetching FE Data.");
-		Object.values(feDex).forEach(mon => {
-			let speedtierplus = 2.2 * mon.baseStats.spe + 108.9;
-			if (mon.species === 'Smeargle'|| mon.species === 'Accelgor'|| mon.species === 'Espeon'|| mon.species === 'Gothitelle'|| mon.species === 'Gothorita'|| mon.species === 'Gothita'|| mon.species === 'Ditto'|| mon.species === 'Lickilicky'|| mon.species === 'Lickitung'|| mon.species === 'Mewtwo'|| mon.species === 'Murkrow'|| mon.species === 'Sableye'|| mon.species === 'Salazzle'|| mon.species === 'Slowking'|| mon.species === 'Slowbro'|| mon.species === 'Slowpoke'|| mon.species === 'Charizard'|| mon.species === 'Darmanitan'|| mon.species === 'Liepard'|| mon.species === 'Mightyena'|| mon.species === 'Walrein'|| mon.species === 'Sealeo' || mon.species === 'Absol-Mega'|| mon.species === 'Abra'|| mon.species === 'Gardevoir'|| mon.species === 'Gulpin'|| mon.species === 'Hawlucha'|| mon.species === 'Latias'|| mon.species === 'Jynx'|| mon.species === 'Smoochum' || mon.species === 'Marowak-Alola'|| mon.species === 'Mismagius'|| mon.species === 'Ribombee'|| mon.species === 'Whimsicott'|| mon.species === 'Cottonee'|| mon.species === 'Zoroark'|| mon.species === 'Comfey'|| mon.species === 'Decidueye'|| mon.species === 'Deoxys-Speed'|| mon.species === 'Dugtrio'|| mon.species === 'Gastly'|| mon.species === 'Jellicent'|| mon.species === 'Jumpluff'|| mon.species === 'Poliwag' || mon.species === 'Celebi'|| mon.species === 'Electrode'|| mon.species === 'Minun'|| mon.species === 'Noivern'|| mon.species === 'Sunkern' || mon.species === 'Happiny' || mon.species === 'Ninetales'|| mon.species === 'Swampert')
-			{
-			buf += `${speedtierplus}: [IMG]https://www.serebii.net/pokedex-sm/icon/${mon.num}.png[/IMG]<br>`;
-			}
-
-		});
-		this.sendReplyBox(`${buf}</div>`);
-	},
+	
 	apdata: function (target, room, user) {
 		if (!this.runBroadcast()) return;
 		let buf = `<div class=infobox-limited><center><h2>List Of Moves</h2></center>`;
@@ -508,6 +494,20 @@ evgutter: function (target, room, user) {
 			let movetype = (("" + separated[0]).trim());
 			if (move.type === movetype && move.multihit) {
 			buf += `${move.name}<br>`;
+			}
+		}
+		);
+		this.sendReplyBox(`${buf}</div>`);
+	},
+	evomons: function (target, room, user) {
+		if (!this.runBroadcast()) return;
+		let buf = `<div class=infobox-limited><center><h2>List Of Moves</h2></center>`;
+		let feDex = require('../data/pokedex.js').BattlePokedex;
+		if (!feDex) return this.errorReply("Error Fetching FE Data.");
+		Object.values(feDex).forEach(mon => {
+			let separated = target.split(" ");
+			if (mon.prevo && !mon.evos) {
+			buf += `${mon.name}<br>`;
 			}
 		}
 		);
