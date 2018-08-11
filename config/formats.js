@@ -4236,7 +4236,7 @@ exports.Formats = [
   		desc: ["&bullet; <a href=http://www.smogon.com/forums/threads/eeveed-current-slate-sliggoo-and-sunkern-submissions.3602933/>Eeveed</a>",
 		      ],
   		ruleset: ['Pokemon', 'Sleep Clause Mod', 'Species Clause', 'Moody Clause', 'Evasion Moves Clause', 'Endless Battle Clause', 'HP Percentage Mod', 'Cancel Mod', 'Team Preview', 'Swagger Clause', 'Baton Pass Clause'],
-  		//banlist: ['Unreleased', 'Illegal'],
+  		banlist: ['Unreleased', 'Illegal'],
 		mod: 'eeveed',
   	},
 	{
