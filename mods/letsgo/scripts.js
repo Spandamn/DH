@@ -928,9 +928,6 @@ let BattleScripts = {
 				if (!zMove.isZ && zMove.category === 'Status') zMoveName = "Z-" + zMoveName;
 				zMoves.push({move: zMoveName, target: zMove.target});
 			} 
-			 else if (pokemon.baseTemplate.baseSpecies === 'Charizard' && pokemon.getItem().id === 'charizardite') {
-			return "Charizard-Mega-Y";
-		}
 			else {
 				zMoves.push(null);
 			}
@@ -953,6 +950,9 @@ let BattleScripts = {
 		if (['Necrozma-Dawn-Wings', 'Necrozma-Dusk-Mane'].includes(pokemon.baseTemplate.species) &&
 			pokemon.getItem().id === 'ultranecroziumz') {
 			return "Necrozma-Ultra";
+		}
+		else if (pokemon.baseTemplate.baseSpecies === 'Charizard' && pokemon.getItem().id === 'charizardite') {
+			return "Charizard-Mega-Y";
 		}
 		return null;
 	},
