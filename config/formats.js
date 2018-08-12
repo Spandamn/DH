@@ -4304,6 +4304,14 @@ exports.Formats = [
 		searchShow: false,
 	},
 	{
+  		name: "[Gen 7] Pokemon Let's Go",
+  		desc: ["&bullet; <a href=https://www.smogon.com/forums/threads/p.3640426/>Pokemon: Let's Go</a>",
+		      ],
+  		ruleset: ['Pokemon', 'Sleep Clause Mod', 'Species Clause', 'Moody Clause', 'Evasion Moves Clause', 'Endless Battle Clause', 'HP Percentage Mod', 'Cancel Mod', 'Team Preview', 'Swagger Clause', 'Baton Pass Clause'],
+		mod: 'letsgo',
+		// banlist: ['Unreleased', 'Illegal'],
+  	},
+	{
 		name: "[Gen 7] Tennysonmons",
 		desc: ["&bullet; Benmons",],
 		ruleset: ['Pokemon', 'Sleep Clause Mod', 'Species Clause', 'Moody Clause', 'Evasion Moves Clause', 'Endless Battle Clause', 'HP Percentage Mod', 'Cancel Mod', 'Team Preview', 'Swagger Clause', 'Baton Pass Clause'],
