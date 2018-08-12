@@ -3,7 +3,7 @@
 /**@type {{[k: string]: ItemData}} */
 let BattleItems = {
 
-"charizarditex": {
+"charizardite": {
 		id: "charizardite",
 		name: "Charizardite",
 		spritenum: 585,
