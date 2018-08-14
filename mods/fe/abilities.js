@@ -4796,13 +4796,8 @@ exports.BattleAbilities = {
 	},
 	"absolutezero": {
 		shortDesc: "Biting and normal-type moves used by this Pokemon are treated as being ice-type in addition to their usual type and receive a 20% power boost.",
-		onEffectiveness: function(typeMod, type, move) {
-			if (move.flags['bite'] || move.type === 'Normal') {
-				move.absolutezeroboosted = true;
-			}
-		},
 		onModifyMove: function (move, pokemon) {
-			if (move.absolutezeroboosted && !['judgment', 'multiattack', 'naturalgift', 'revelationdance', 'technoblast', 'weatherball'].includes(move.id) && !(move.isZ && move.category !== 'Status')) {
+			if (move.flags['bite'] || move.type === 'Normal' && !['judgment', 'multiattack', 'naturalgift', 'revelationdance', 'technoblast', 'weatherball'].includes(move.id) && !(move.isZ && move.category !== 'Status')) {
 				move.type = 'Ice';
 				move.absolutezeroboosted = true;
 			}
