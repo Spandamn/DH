@@ -8790,14 +8790,14 @@ exports.BattleAbilities = {
 			if (!source || source === target) return;
 			this.add('-activate', target, 'ability: Synchro Veil');
 			if (effect && effect.id === 'toxicspikes'){ 
-                        source.cureStatus();
+                        target.cureStatus();
                         return;}
 			if (status.id === 'slp' || status.id === 'frz'){ 
-                          source.cureStatus();
+                          target.cureStatus();
                           return;}
 			// @ts-ignore
 			source.trySetStatus(status, target, {status: status.id, id: 'synchroveil'});
-                        source.cureStatus();
+                        target.cureStatus();
 		},
 		id: "synchroveil",
 		name: "Synchro Veil",
@@ -9920,7 +9920,7 @@ exports.BattleAbilities = {
 		id: "creepy",
 		name: "Creepy",
 	},
-	"prismskin": { // UPDATED! (Already)
+	"prismskin": { // FIX THIS
 		shortDesc: "Restores 1/4 HP when hit by a super-effective move (recovery first then damage). Super-effective moves do 1/2 of the damage. This ability can be bypassed by Fire-type moves and only Fire-type moves, regardless of whether the attacker has Mold Breaker or its variants.",
 		onFoeBeforeMove: function (target, source, move) {
 			if (target !== source && move.typeMod > 0 && move.type !== 'Fire') {
