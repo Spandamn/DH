@@ -955,7 +955,7 @@ exports.BattleAbilities = {
 		shortDesc: "Cannot be OHKOed. Immune to major status conditions if its HP is full.",
 		onTryHit: function(pokemon, target, move) {
 			if (move.ohko) {
-				this.add('-immune', pokemon, '[msg]', '[from] ability: Sturdy');
+				this.add('-immune', pokemon, '[msg]', '[from] ability: Pristine');
 				return null;
 			}
 		},
@@ -967,13 +967,16 @@ exports.BattleAbilities = {
 			}
 		},
 		onUpdate: function(target) {
-			if (target.status === 'brn' || target.status === 'frz' || target.status === 'psn' || target.status === 'tox' || target.status === 'par' && target.hp >= target.maxhp) {
+			if (target.status && target.hp >= target.maxhp) {
 				this.add('-activate', target, 'ability: Pristine');
 				target.cureStatus();
 			}
 		},
-		onImmunity: function(type, target) {
-			if (target.status === 'brn' || target.status === 'frz' || target.status === 'psn' || target.status === 'tox' || target.status === 'par' && target.hp >= target.maxhp) return false;
+		onSetStatus: function (status, target, source, effect) {
+			if (target.hp < target.maxhp) return;
+			if (!effect || !effect.status) return false;
+			this.add('-immune', target, '[msg]', '[from] ability: Pristine');
+			return false;
 		},
 		id: "pristine",
 		name: "Pristine",
@@ -11251,16 +11254,23 @@ exports.BattleAbilities = {
 				return this.chainModify([0x14CD, 0x1000]);
 			}
 		},
-		//TODO: Negate effects from entry hazards that only affect grounded Pokemon
+		onBoost: function (boost, target, source, effect) {
+			if ((effect.id === 'cosmicweb' || effect.id === 'stickyweb' || effect.id === 'slipperyweb') && !this.pseudoWeather['gravity'] && target.item !== 'ironball') return false;
+		},
 		onDamage: function (damage, target, source, effect) {
-			if (effect && effect.id === 'spikes' && !this.pseudoWeather['gravity'] && !target.volatiles['smackdown']) {
+			if (effect && effect.id === 'spikes' && !this.pseudoWeather['gravity'] && !target.volatiles['smackdown'] && !target.item !== 'ironball') {
 				return false;
 			}
 		},
 		onUpdate: function (pokemon) {
-			if (!this.pseudoWeather['gravity'] && !pokemon.volatiles['smackdown']){
+			if (!pokemon.volatiles['magnetrise'] && !this.pseudoWeather['gravity'] && !pokemon.volatiles['smackdown'] && pokemon.item !== 'ironball'){
 				pokemon.addVolatile('magnetrise');
 			}
+		},
+		onSetStatus: function (status, target, source, effect) {
+			if (target.item === 'ironball' || this.pseudoWeather['gravity'] || target.volatiles['smackdown']) return;
+			if (!effect || !effect.status) return false;
+			if (effect.id === 'toxicspikes' || effect.id === 'stickyvenom') return false;
 		},
 		id: "magneticfield",
 		name: "Magnetic Field",
