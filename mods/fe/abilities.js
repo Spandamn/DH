@@ -5223,20 +5223,20 @@ exports.BattleAbilities = {
 	},
 	"meangirl": {
 		shortDesc: "Raises Attack by 1 stage whenever a Pokemon of the same gender enters battle. This also triggers when switching in on such a Pokemon.",
-		onSwitchIn: function (pokemon) {
+		onStart: function (pokemon) {
 			for (const target of pokemon.side.foe.active) {
 				if (!target || target.fainted) continue;
-			if (pokemon.gender && target.gender) {
-					this.boost({atk: 1});
 			}
+			if (pokemon.gender && target.gender) {
+				this.boost({atk: 1});
 			}
 		},
 		onFoeSwitchIn: function (pokemon) {
 			for (const target of pokemon.side.foe.active) {
 				if (!target || target.fainted) continue;
-			if (pokemon.gender && target.gender) {
-					this.boost({atk: 1});
 			}
+			if (pokemon.gender && target.gender) {
+				this.boost({atk: 1});
 			}
 		},
 		id: "meangirl",
