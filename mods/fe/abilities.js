@@ -3244,8 +3244,6 @@ exports.BattleAbilities = {
 		shortDesc: "This Pokemon's moves ignore screens, Aurora Veil, Substitutes, Mist, Safeguard, accuracy drops, and evasion boosts.",
 		onModifyMove: function(move) {
 			move.infiltrates = true;
-		},
-		onModifyMove: function(move) {
 			move.ignoreEvasion = true;
 		},
 		onBoost: function(boost, target, source, effect) {
