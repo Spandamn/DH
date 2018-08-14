@@ -11421,4 +11421,57 @@ exports.BattleAbilities = {
 		id: "healingprovocation",
 		name: "Healing Provocation",
 	},
+	"adaptiveclutch": {
+		desc: "This Pokemon's moves that match one of its types have a same-type attack bonus (STAB) of 2 instead of 1.5. Prevents foes sharing a type with this Pokemon from choosing to switch out unless they are immune to trapping.",
+		shortDesc: "This Pokemon's same-type attack bonus (STAB) is 2 instead of 1.5. Prevents foes sharing this Pokemon's type from choosing to switch.",
+		onModifyMove: function (move) {
+			move.stab = 2;
+		},
+		onFoeTrapPokemon: function (pokemon) {
+			if (pokemon.hasType(this.effectData.target.getTypes()) && this.isAdjacent(pokemon, this.effectData.target)) {
+				pokemon.tryTrap(true);
+			}
+		},
+		onFoeMaybeTrapPokemon: function (pokemon, source) {
+			if (!source) source = this.effectData.target;
+			if ((!pokemon.knownType || pokemon.hasType(source.getTypes())) && this.isAdjacent(pokemon, source)) {
+				pokemon.maybeTrapped = true;
+			}
+		},
+		id: "adaptiveclutch",
+		name: "Adaptive Clutch",
+	},
+	"bunsenburner": {
+		desc: "If this Pokemon is at full HP, it survives one hit with at least 1 HP and its attacking stat is multiplied by 1.5 while using a Fire-type attack. OHKO moves fail when used against this Pokemon.",
+		shortDesc: "If this Pokemon is at full HP, this Pokemon's attacking stat is 1.5x with Fire attacks and it survives one hit with at least 1 HP. Immune to OHKO.",
+		onTryHit: function (pokemon, target, move) {
+			if (move.ohko) {
+				this.add('-immune', pokemon, '[msg]', '[from] ability: Bunsen Burner');
+				return null;
+			}
+		},
+		onModifyAtkPriority: 5,
+		onModifyAtk: function (atk, attacker, defender, move) {
+			if (move.type === 'Fire' && attacker.hp >= attacker.maxhp) {
+				this.debug('Bunsen Burner boost');
+				return this.chainModify(1.5);
+			}
+		},
+		onModifySpAPriority: 5,
+		onModifySpA: function (atk, attacker, defender, move) {
+			if (move.type === 'Fire' && attacker.hp >= attacker.maxhp) {
+				this.debug('Bunsen Burner boost');
+				return this.chainModify(1.5);
+			}
+		},
+		onDamagePriority: -100,
+		onDamage: function (damage, target, source, effect) {
+			if (target.hp === target.maxhp && damage >= target.hp && effect && effect.effectType === 'Move') {
+				this.add('-ability', target, 'Bunsen Burner');
+				return target.hp - 1;
+			}
+		},
+		id: "bunsenburner",
+		name: "Bunsen Burner",
+	},
 };
