@@ -5227,7 +5227,7 @@ exports.BattleAbilities = {
 			for (const target of pokemon.side.foe.active) {
 				if (!target || target.fainted) continue;
 			if (pokemon.gender && target.gender) {
-					this.boost({atk: 1}, pokemon);
+					this.boost({atk: 1});
 			}
 			}
 		},
@@ -5235,7 +5235,7 @@ exports.BattleAbilities = {
 			for (const target of pokemon.side.foe.active) {
 				if (!target || target.fainted) continue;
 			if (pokemon.gender && target.gender) {
-					this.boost({atk: 1}, pokemon);
+					this.boost({atk: 1});
 			}
 			}
 		},
