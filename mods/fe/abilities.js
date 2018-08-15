@@ -4263,11 +4263,13 @@ exports.BattleAbilities = {
 	"nightmarefuel": {
 		shortDesc: "Dark-type moves have 1.5x power and have a 33% chance to put the foe to sleep.",
 		onModifyMovePriority: -1,
-		onModifyMove: function(move) {
-			if (move.category !== "Status") {
+		onModifyMove: function (move) {
+			if (move.category !== "Status" && move.type === "Dark") {
+				this.debug('Adding Stench flinch');
+				if (!move.secondaries) move.secondaries = [];
 				move.secondaries.push({
 					chance: 33,
-					status: 'slp',
+					volatileStatus: 'slp',
 				});
 			}
 		},
