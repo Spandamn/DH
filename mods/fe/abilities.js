@@ -4269,7 +4269,7 @@ exports.BattleAbilities = {
 				if (!move.secondaries) move.secondaries = [];
 				move.secondaries.push({
 					chance: 33,
-					volatileStatus: 'slp',
+					status: 'slp',
 				});
 			}
 		},
