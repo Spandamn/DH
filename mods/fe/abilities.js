@@ -787,7 +787,7 @@ exports.BattleAbilities = {
 		shortDesc: "Cofagreelix changes the ability of any attacker that makes contact to Mummy. If attacked by an enemy with the Mummy ability, Cofagreelix can endure a hit at one hit point if that hit would faint it.",
 		onTryHit: function(pokemon, target, move) {
 			if (move.ohko) {
-				this.add('-immune', pokemon, '[msg]', '[from] ability: Sturdy');
+				this.add('-immune', pokemon, '[msg]', '[from] ability: Mummy Fortitude');
 				return null;
 			}
 		},
