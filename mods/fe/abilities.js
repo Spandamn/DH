@@ -9929,13 +9929,9 @@ exports.BattleAbilities = {
 	},
 	"prismskin": { // FIX THIS
 		shortDesc: "Restores 1/4 HP when hit by a super-effective move (recovery first then damage). Super-effective moves do 1/2 of the damage. This ability can be bypassed by Fire-type moves and only Fire-type moves, regardless of whether the attacker has Mold Breaker or its variants.",
-		onFoeBeforeMove: function (target, source, move) {
-			if (target !== source && move.typeMod > 0 && move.type !== 'Fire') {
-				this.heal(target.maxhp / 4)
-			}
-		},
 		onSourceModifyDamage: function (damage, source, target, move) {
 			if (move.typeMod > 0 && move.type !== 'Fire') {
+				this.heal(target.maxhp / 4)
 				this.debug('Prism Armor neutralize');
 				return this.chainModify(0.5);
 			}
@@ -9987,26 +9983,28 @@ exports.BattleAbilities = {
 	},
 	"christmasparade": {
 		shortDesc: "Super effective attacks against this Pokemon becomes Ice-type and do 0.75x damage. Normal-type moves become Ice-type and do 1.75x damage.",
+		onModifyMovePriority: -1,
 		onFoeModifyMove: function (source, target, move) {
 			if (move.typeMod > 0) {
 				move.type === 'Ice';
-				move.christmasparadeboosted = true;
-			}
-			if (move.type === 'Normal' && !['judgment', 'multiattack', 'naturalgift', 'revelationdance', 'technoblast', 'weatherball'].includes(move.id) && !(move.isZ && move.category !== 'Status')) {
-				move.type = 'Ice';
 				move.christmasparade = true;
 			}
 		},
-		onFoeBasePowerPriority: 8,
-		onFoeBasePower: function (basePower, pokemon, target, move) {
-			if (move.christmasparade) return this.chainModify(1.75);
+		onModifyMove: function (move, pokemon) {
+			if (move.type === 'Normal' && !['judgment', 'multiattack', 'naturalgift', 'revelationdance', 'technoblast', 'weatherball'].includes(move.id) && !(move.isZ && move.category !== 'Status')) {
+				move.type = 'Ice';
+				move.christmasparadeboosted = true;
+			}
+		},
+		onBasePowerPriority: 8,
+		onBasePower: function (basePower, pokemon, target, move) {
+			if (move.christmasparadeboosted) return this.chainModify(1.75);
 		},
 		onSourceModifyDamage: function (damage, source, target, move) {
-			if (move.christmasparadeboosted) {
+			if (move.christmasparade) {
 				return this.chainModify(0.75);
 			}
 		},
-		isUnbreakable: true,
 		id: "christmasparade",
 		name: "Christmas Parade",
 	},
@@ -10347,6 +10345,17 @@ exports.BattleAbilities = {
 		shortDesc: "Upon consuming a Berry or knocking a foe out, boosts this pokémon's highest non-HP stat by one stage. Upon knocking a foe out, or under sun, 100% chance to restore berry. Otherwise, 50% chance to restore berry at the end of every turn.",
 		id: "farmersdelight",
 		name: "Farmer's Delight",
+		onEatItem: function (item, pokemon) {
+				let stat = 'atk';
+				let bestStat = 0;
+				for (let i in pokemon.stats) {
+				if (pokemon.stats[i] > bestStat) {
+					stat = i;
+					bestStat = pokemon.stats[i];
+					}
+				}
+				this.boost({[stat]: 1}, pokemon);
+		},
 		onResidualOrder: 26,
 		onResidualSubOrder: 1,
 		onResidual: function (pokemon) {
@@ -10355,15 +10364,6 @@ exports.BattleAbilities = {
 					pokemon.setItem(pokemon.lastItem);
 					pokemon.lastItem = '';
 					this.add('-item', pokemon, pokemon.getItem(), '[from] ability: Farmer\'s Delight');
-					let stat = 'atk';
-					let bestStat = 0;
-					for (let i in pokemon.stats) {
-					if (pokemon.stats[i] > bestStat) {
-						stat = i;
-						bestStat = pokemon.stats[i];
-					}
-				}
-				this.boost({[stat]: 1}, pokemon);
 				}
 			}
 		},
@@ -11478,5 +11478,87 @@ exports.BattleAbilities = {
 		},
 		id: "bunsenburner",
 		name: "Bunsen Burner",
+	},
+	
+	"interception": {
+		shortDesc: "When this Pokemon has a stat lowered by the foe, +2 Attack. If an opponent faints, this Pokemon gets +1 Attack, +2 if the foe had a lowered stat upon death. Multiple stats lowered do not stack.",
+		onAfterEachBoost: function (boost, target, source) {
+			if (!source || target.side === source.side) {
+				return;
+			}
+			let statsLowered = false;
+			for (let i in boost) {
+				// @ts-ignore
+				if (boost[i] < 0) {
+					statsLowered = true;
+				}
+			}
+			if (statsLowered) {
+				this.boost({atk: 2}, target, target, null, true);
+			}
+		},
+		onSourceFaint: function (target, source, effect) {
+			let loweredstats = false;
+			for (let stat in target.boosts) {
+				if (target.boosts[stat] < 0) {
+					loweredstats = true;
+				}
+			}
+			if (loweredstats){
+				this.boost({atk: 2}, source);
+			} else {
+				this.boost({atk: 1}, source);
+			}
+		},
+		id: "interception",
+		name: "Interception",
+	},
+	"scrapheap": {
+		shortDesc: "This Pokemon's Fighting- and Normal-type moves can hit Ghost-types and will attempt to remove the target's held item upon hitting.",
+		onModifyMovePriority: -5,
+		onModifyMove: function (move) {
+			if (!move.ignoreImmunity) move.ignoreImmunity = {};
+			if (move.ignoreImmunity !== true) {
+				move.ignoreImmunity['Fighting'] = true;
+				move.ignoreImmunity['Normal'] = true;
+			}
+		},
+		onSourceHit: function (target, source, move) {
+			if (!move || !target) return;
+			if ((move.type === 'Fighting' || move.type === 'Normal') && target !== source && move.category !== 'Status') {
+				let item = target.takeItem();
+				if (item) {
+					this.add('-enditem', target, item.name, '[from] ability: Scrap Heap', '[of] ' + source);
+				}
+			}
+		},
+		id: "scrapheap",
+		name: "Scrap Heap",
+	},
+	"antivirus": {
+		desc: "On switch-in, this Pokemon lowers the Attack or Special Attack of adjacent opposing Pokemon by 1 stage, whichever is higher. Both are lowered if they're equal. Pokemon behind a substitute are immune.",
+		shortDesc: "On switch-in, this Pokemon lowers the Attack or Special Attack of adjacent opponents by 1 stage, whichever is higher.",
+		onStart: function (pokemon) {
+			let activated = false;
+			for (const target of pokemon.side.foe.active) {
+				if (!target || !this.isAdjacent(target, pokemon)) continue;
+				if (!activated) {
+					this.add('-ability', pokemon, 'Antivirus', 'boost');
+					activated = true;
+				}
+				if (target.volatiles['substitute']) {
+					this.add('-immune', target, '[msg]');
+				} else {
+					if (target.getStat('atk', false, true) >= target.getStat('spa', false, true)){
+						this.boost({atk: -1}, target, pokemon);
+					}
+					if (target.getStat('atk', false, true) <= target.getStat('spa', false, true)){
+						this.boost({spa: -1}, target, pokemon);
+					}
+				}
+			}
+		},
+		id: "antivirus",
+		name: "Antivirus",
 	},
 };
