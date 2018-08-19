@@ -8896,10 +8896,8 @@ exports.BattleAbilities = {
 			let newMove = this.getMoveCopy(move.id);
 			newMove.hasBounced = true;
 			newMove.pranksterBoosted = false;
-			target.boost({atk: 1});
-			if (target.ability !== 'magicmirror') {
-         target.useMove(newMove, this.effectData.target, target);
-			}
+			this.boost({atk: 1}, target);
+  	      target.useMove(newMove, target, source);
 			return null;
 		},
 		onAllyTryHitSide: function (target, source, move) {
@@ -8909,10 +8907,8 @@ exports.BattleAbilities = {
 			let newMove = this.getMoveCopy(move.id);
 			newMove.hasBounced = true;
 			newMove.pranksterBoosted = false;
-			target.boost({atk: 1});
-			if (target.ability !== 'magicmirror') {
-         target.useMove(newMove, this.effectData.target, target);
-			}
+			this.boost({atk: 1}, target);
+  	      target.useMove(newMove, this.effectData.target, source);
 			return null;
 		},
 		effect: {
