@@ -170,11 +170,11 @@ learnistor: function(target, room, user) {
 	},
 	femovescalc: function (target, room, user) {
 		if (!this.runBroadcast()) return;
-		let buf = `<div class=infobox-limited><center><h2>List Of Alola Formes Pokemon</h2></center>`;
-		let feDex = require('../mods/fe/moves.js').BattlePokedex;
-		if (!feDex) return this.errorReply("Error Fetching Istor Data.");
-		Object.values(feDex).forEach(move => {
-			buf += `${move.basePower}, category: ${move.category},<br>},`;
+		let buf = `<div class=infobox-limited><center><h2>List Of Fusion Pokemon Moves</h2></center>`;
+		let eternalDex = require('../mods/fe/moves.js').BattleMovedex;
+		if (!eternalDex) return this.errorReply("Error Fetching Fusion Data.");
+		Object.values(eternalDex).forEach(move => {
+			buf += `'${move.name}<br>`;
 		});
 		this.sendReplyBox(`${buf}</div>`);
 	},
