@@ -4224,6 +4224,14 @@ exports.Formats = [
 		ruleset: ['Pokemon', 'Team Preview', 'HP Percentage Mod', 'Cancel Mod'],
 	},*/
 	{
+  		name: "[Gen 7] Clean Slate",
+  		desc: ["&bullet; <a href=https://www.smogon.com/forums/threads/.3639262/>Clean Slate</a>",
+		      ],
+  		ruleset: ['Pokemon', 'Sleep Clause Mod', 'Species Clause', 'Moody Clause', 'Evasion Moves Clause', 'Endless Battle Clause', 'HP Percentage Mod', 'Cancel Mod', 'Team Preview', 'Swagger Clause', 'Baton Pass Clause'],
+		mod: 'cleanslate',
+		banlist: ['Unreleased', 'Illegal'],
+  	},
+	{
 		name: "[Gen 7] Crossover Chaos",
 		desc: ["&bullet; <a href=https://www.smogon.com/forums/threads/.3623813/>Crossover Chaos</a>",
 		      ],
