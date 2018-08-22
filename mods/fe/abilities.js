@@ -10502,7 +10502,7 @@ exports.BattleAbilities = {
 		id: "mellowvibe",
 		name: "Mellow Vibe",
 	},
-	"hotairballoon": {
+	"inflate": {
 		desc: "After each consecutive kill, This pokemon gets +1 Special Attack, and +1 to it's highest stat. If Highest stat is Special Attack, then the second boost will be nullified.",
 		shortDesc: "After each consecutive kill, This pokemon gets +1 Special Attack, and +1 to it's highest stat. If Highest stat is Special Attack, then the second boost will be nullified.",
 		onSourceFaint: function (target, source, effect) {
@@ -10527,8 +10527,8 @@ exports.BattleAbilities = {
 				source.removeVolatile('hotairballoon');
 			},
 		},
-		id: "hotairballoon",
-		name: "Hot Air Balloon",
+		id: "inflate",
+		name: "Inflate",
 	},
 	/*"slimedrench": { //TODO: This is a WIP as well
 		shortDesc: "If the foe is poisoned, whenever it tries to heal (with an item or move), it takes that amount of damage.",
