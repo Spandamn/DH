@@ -33,7 +33,7 @@ let BattleAbilities = {
 				if (action.choice === 'runPrimal' && action.pokemon === source && source.template.speciesid === 'kyogre') return;
 				if (action.choice !== 'runSwitch' && action.choice !== 'runPrimal') break;
 			}
-			this.setWeather('gravity');
+			this.useMove('Gravity', source);
 		},
 		id: "forceofattraction",
 		name: "Force of Attraction",
@@ -44,7 +44,7 @@ let BattleAbilities = {
 "extremebulk": {
 		shortDesc: "If Gravity is active, this Pokemon's Attack is doubled.",
 		onModifySpe: function (atk, pokemon) {
-			if (this.isWeather(['gravity'])) {
+			if (this.pseudoWeather.gravity) {
 				return this.chainModify(2);
 			}
 		},
