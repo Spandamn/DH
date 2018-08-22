@@ -19024,7 +19024,7 @@ auroritarmega: {
 			spe: 113,
 		},
 		abilities: {
-			0: "Hot Air Balloon"
+			0: "Inflate"
 		},
 		  heightm: 1.5,
 		  weightkg: 14,
