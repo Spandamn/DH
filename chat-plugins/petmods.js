@@ -168,6 +168,16 @@ learnistor: function(target, room, user) {
 		});
 		this.sendReplyBox(`${buf}</div>`);
 	},
+	femovescalc: function (target, room, user) {
+		if (!this.runBroadcast()) return;
+		let buf = `<div class=infobox-limited><center><h2>List Of Alola Formes Pokemon</h2></center>`;
+		let feDex = require('../mods/fe/moves.js').BattlePokedex;
+		if (!feDex) return this.errorReply("Error Fetching Istor Data.");
+		Object.values(feDex).forEach(move => {
+			buf += `${move.basePower}, category: ${move.category},<br>},`;
+		});
+		this.sendReplyBox(`${buf}</div>`);
+	},
 	usv: function (target, room, user) {
 		if (!this.runBroadcast()) return;
 		let buf = `<div class=infobox-limited><center><h2>List Of Ultra Space Variants Pokemon</h2></center>`;
@@ -391,16 +401,7 @@ evgutter: function (target, room, user) {
 		});
 		this.sendReplyBox(`${buf}</div>`);
 	},
-	femovescalc: function (target, room, user) {
-		if (!this.runBroadcast()) return;
-		let buf = `<div class=infobox-limited><center><h2>List Of Alola Formes Pokemon</h2></center>`;
-		let feDex = require('../mods/fe/moves.js').BattlePokedex;
-		if (!feDex) return this.errorReply("Error Fetching Istor Data.");
-		Object.values(feDex).forEach(move => {
-			buf += `${move.name}: {<br> ${move.basePower}, category: ${move.category},<br>},`;
-		});
-		this.sendReplyBox(`${buf}</div>`);
-	},
+	
 	fespeed: function (target, room, user) {
 		if (!this.runBroadcast()) return;
 		let buf = `<div class=infobox-limited><center><h2>List Of Fusion Evolution Pokemon</h2></center>`;
