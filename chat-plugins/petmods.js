@@ -174,7 +174,7 @@ learnistor: function(target, room, user) {
 		let eternalDex = require('../mods/fe/moves.js').BattleMovedex;
 		if (!eternalDex) return this.errorReply("Error Fetching Fusion Data.");
 		Object.values(eternalDex).forEach(move => {
-			buf += `'${move.name}':{<br>bp:${move.basePower}, <br>type:'${move.type}',<br>category:'${move.category}',<br>}<br>`;
+			buf += `'${move.name}':{<br>bp:${move.basePower}, <br>type:'${move.type}',<br>category:'${move.category}',<br>},<br>`;
 		});
 		this.sendReplyBox(`${buf}</div>`);
 	},
