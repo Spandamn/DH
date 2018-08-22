@@ -4264,6 +4264,10 @@ exports.Formats = [
 		//banlist: ['Unreleased', 'Illegal', 'Dialcatty', 'Kars', 'Dittsey', 'Diceus', 'Peridot-Mega', 'Kyzor', 'Gonzap', 'Harem', 'Cinshado', 'Enteon', 'Mega Lucashadow', 'Kahoot', 'Taiwan', 'Passcraft', 'Dad', 'Enteon', 'Entir', 'Ultra Necrynx', 'Ultra Necrozerain', 'Shenala', 'Mega Xurkizard Y', 'Mega Archedactyl', 'Miminja', 'Mega Toxicario', 'Mega Lucasol L', 'Mega Alakario L', 'Mega Khangorus-Khan', 'Mega Kasukabe', 'Mega Absoko', 'Mega Kartaria', 'Dio', 'Mendoza', 'Deoxurk-Outlet', 'Omneus','Muddy Seed'],
 
 		mod: 'fe',
+		onPrepareHit: function(target, source, move) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Celebrate", target);
+		},
   		onModifyTemplate: function (template, pokemon, source) {
   			//This hack is for something important: The Pokemon's Sprite.
   			if (!template.base) return template;
