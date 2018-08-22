@@ -344,7 +344,7 @@ gutter: function (target, room, user) {
 		let jillianDex = require('../mods/fe/pokedex.js').BattlePokedex;
 		if (!jillianDex) return this.errorReply("Error Fetching Istor Data.");
 		Object.values(jillianDex).forEach(mon => {
-			buf += `&quot;${mon.species}&quot;: {<br> &quot;t1&quot;: &quot;${mon.types[0]}&quot;, <br>&quot;t2&quot;: &quot;${mon.types[1]}&quot;,<br> &quot;bs&quot;: { <br>&quot;hp&quot;: ${mon.baseStats.hp}, <br>&quot;at&quot;: ${mon.baseStats.atk}, <br> &quot;df&quot;: ${mon.baseStats.def}, <br> &quot;sa&quot;: ${mon.baseStats.spa},<br>&quot;sd&quot;: ${mon.baseStats.spd}, <br>&quot;sp&quot;: ${mon.baseStats.spe} <br> }, <br> },`;
+			buf += `&quot;${mon.species}&quot;: {<br> &quot;t1&quot;: &quot;${mon.types[0]}&quot;, <br>&quot;t2&quot;: &quot;${mon.types[1]}&quot;,<br> &quot;bs&quot;: { <br>&quot;hp&quot;: ${mon.baseStats.hp}, <br>&quot;at&quot;: ${mon.baseStats.atk}, <br> &quot;df&quot;: ${mon.baseStats.def}, <br> &quot;sa&quot;: ${mon.baseStats.spa},<br>&quot;sd&quot;: ${mon.baseStats.spd}, <br>&quot;sp&quot;: ${mon.baseStats.spe} <br> }, <br> },<br>`;
 		});
 		this.sendReplyBox(`${buf}</div>`);
 	},
@@ -354,7 +354,7 @@ gutter: function (target, room, user) {
 		let jillianDex = require('../mods/eternal/pokedex.js').BattlePokedex;
 		if (!jillianDex) return this.errorReply("Error Fetching Istor Data.");
 		Object.values(jillianDex).forEach(mon => {
-			buf += `&quot;${mon.species}&quot;: {<br> &quot;t1&quot;: &quot;${mon.types[0]}&quot;, <br>&quot;t2&quot;: &quot;${mon.types[1]}&quot;,<br> &quot;bs&quot;: { <br>&quot;hp&quot;: ${mon.baseStats.hp}, <br>&quot;at&quot;: ${mon.baseStats.atk}, <br> &quot;df&quot;: ${mon.baseStats.def}, <br> &quot;sa&quot;: ${mon.baseStats.spa},<br>&quot;sd&quot;: ${mon.baseStats.spd}, <br>&quot;sp&quot;: ${mon.baseStats.spe} <br> }, <br> &quot;w&quot;: ${mon.weightkg}<br> },`;
+			buf += `&quot;${mon.species}&quot;: {<br> &quot;t1&quot;: &quot;${mon.types[0]}&quot;, <br>&quot;t2&quot;: &quot;${mon.types[1]}&quot;,<br> &quot;bs&quot;: { <br>&quot;hp&quot;: ${mon.baseStats.hp}, <br>&quot;at&quot;: ${mon.baseStats.atk}, <br> &quot;df&quot;: ${mon.baseStats.def}, <br> &quot;sa&quot;: ${mon.baseStats.spa},<br>&quot;sd&quot;: ${mon.baseStats.spd}, <br>&quot;sp&quot;: ${mon.baseStats.spe} <br> }, <br> &quot;w&quot;: ${mon.weightkg}<br> },<br>`;
 });
 		this.sendReplyBox(`${buf}</div>`);
 	},
@@ -365,7 +365,7 @@ gutter: function (target, room, user) {
 		if (!jillianDex) return this.errorReply("Error Fetching Istor Data.");
 		Object.values(jillianDex).forEach(mon => {
 			if (mon.forme === 'Mega') {
-			buf += `&quot;${mon.species}&quot;: {<br> &quot;t1&quot;: &quot;${mon.types[0]}&quot;, <br>&quot;t2&quot;: &quot;${mon.types[1]}&quot;,<br> &quot;bs&quot;: { <br>&quot;hp&quot;: ${mon.baseStats.hp}, <br>&quot;at&quot;: ${mon.baseStats.atk}, <br> &quot;df&quot;: ${mon.baseStats.def}, <br> &quot;sa&quot;: ${mon.baseStats.spa},<br>&quot;sd&quot;: ${mon.baseStats.spd}, <br>&quot;sp&quot;: ${mon.baseStats.spe} <br> }, <br> &quot;w&quot;: ${mon.weightkg}<br> },`;
+			buf += `&quot;${mon.species}&quot;: {<br> &quot;t1&quot;: &quot;${mon.types[0]}&quot;, <br>&quot;t2&quot;: &quot;${mon.types[1]}&quot;,<br> &quot;bs&quot;: { <br>&quot;hp&quot;: ${mon.baseStats.hp}, <br>&quot;at&quot;: ${mon.baseStats.atk}, <br> &quot;df&quot;: ${mon.baseStats.def}, <br> &quot;sa&quot;: ${mon.baseStats.spa},<br>&quot;sd&quot;: ${mon.baseStats.spd}, <br>&quot;sp&quot;: ${mon.baseStats.spe} <br> }, <br> &quot;w&quot;: ${mon.weightkg}<br> },<br>`;
 }});
 		this.sendReplyBox(`${buf}</div>`);
 	},
@@ -376,7 +376,7 @@ evgutter: function (target, room, user) {
 		if (!jillianDex) return this.errorReply("Error Fetching Istor Data.");
 		Object.values(jillianDex).forEach(mon => {
 			if (mon.num > 9000) {
-			buf += `&quot;${mon.species}&quot;: {<br> &quot;t1&quot;: &quot;${mon.types[0]}&quot;, <br>&quot;t2&quot;: &quot;${mon.types[1]}&quot;,<br> &quot;bs&quot;: { <br>&quot;hp&quot;: ${mon.baseStats.hp}, <br>&quot;at&quot;: ${mon.baseStats.atk}, <br> &quot;df&quot;: ${mon.baseStats.def}, <br> &quot;sa&quot;: ${mon.baseStats.spa},<br>&quot;sd&quot;: ${mon.baseStats.spd}, <br>&quot;sp&quot;: ${mon.baseStats.spe} <br> }, <br> },`;
+			buf += `&quot;${mon.species}&quot;: {<br> &quot;t1&quot;: &quot;${mon.types[0]}&quot;, <br>&quot;t2&quot;: &quot;${mon.types[1]}&quot;,<br> &quot;bs&quot;: { <br>&quot;hp&quot;: ${mon.baseStats.hp}, <br>&quot;at&quot;: ${mon.baseStats.atk}, <br> &quot;df&quot;: ${mon.baseStats.def}, <br> &quot;sa&quot;: ${mon.baseStats.spa},<br>&quot;sd&quot;: ${mon.baseStats.spd}, <br>&quot;sp&quot;: ${mon.baseStats.spe} <br> }, <br> },<br>`;
 			}
 			});
 		this.sendReplyBox(`${buf}</div>`);
