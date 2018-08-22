@@ -2884,6 +2884,8 @@ exports.BattleMovedex = {
         category: "Status",
         desc: "Paralyzes the target regardless of its typing.",
         shortDesc: "Paralyzes the target regardless of its typing.",
+		  name: "Thunder Virus",
+		  id: "thundervirus",
         pp: 15,
         priority: 0,
         flags: {
