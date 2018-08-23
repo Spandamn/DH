@@ -5259,10 +5259,7 @@ exports.BattlePokedex = {
         num: 750092,
         species: "Enterrak",
         types: ["Fire", "Fighting"],
-        genderRatio: {
-            M: 0.0,
-            F: 0.0
-        },
+        gender: "N",
         baseStats: {
             hp: 112,
             atk: 132,
@@ -5326,6 +5323,27 @@ exports.BattlePokedex = {
         color: "Black",
         eggGroups: ["Flying"],
     },
+    sansjr: {
+        num: 750164,
+        species: "Sans Jr.",
+        types: ["Normal", "Ground"],
+        baseStats: {
+            hp: 70,
+            atk: 77,
+            def: 87,
+            spa: 37,
+            spd: 47,
+            spe: 50
+        },
+        abilities: {
+            0: "Lazy Bones"
+        },
+        heightm: 0.7,
+        weightkg: 18,
+		  evos: ["sans"],
+        color: "Brown",
+        eggGroups: ["Field"],
+    },
     sans: {
         num: 750094,
         species: "Sans",
@@ -5347,7 +5365,9 @@ exports.BattlePokedex = {
         },
         heightm: 1.5,
         weightkg: 80,
-        color: "Black",
+		  prevo: "sansjr",
+		  evoLevel: 24,
+        color: "Brown",
         eggGroups: ["Field"],
     },
     lucasol: {
