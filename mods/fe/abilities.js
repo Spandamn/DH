@@ -8906,7 +8906,7 @@ exports.BattleAbilities = {
 			newMove.hasBounced = true;
 			newMove.pranksterBoosted = false;
 			this.boost({atk: 1}, target);
-  	      target.useMove(newMove, target, source);
+  	      this.useMove(newMove, target, source);
 			return null;
 		},
 		onAllyTryHitSide: function (target, source, move) {
@@ -8917,7 +8917,7 @@ exports.BattleAbilities = {
 			newMove.hasBounced = true;
 			newMove.pranksterBoosted = false;
 			this.boost({atk: 1}, target);
-  	      target.useMove(newMove, this.effectData.target, source);
+  	      this.useMove(newMove, this.effectData.target, source);
 			return null;
 		},
 		effect: {
