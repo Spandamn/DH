@@ -5440,6 +5440,58 @@ exports.BattlePokedex = {
         color: "Black",
         eggGroups: ["Field"],
     },
+    treesaur: {
+        num: 750165,
+        species: "Treesaur",
+        types: ["Poison", "Grass"],
+        genderRatio: {
+            M: 87.5,
+            F: 12.5
+        },
+        baseStats: {
+            hp: 62,
+            atk: 67,
+            def: 52,
+            spa: 75,
+            spd: 70,
+            spe: 67
+        },
+        abilities: {
+            0: "Overgrow"
+        },
+        heightm: 0.6,
+        weightkg: 5.95,
+		  evos: ["vylesaur"],
+        color: "Green",
+        eggGroups: ["Monster"],
+    },
+    vylesaur: {
+        num: 750166,
+        species: "Vylesaur",
+        types: ["Poison", "Grass"],
+        genderRatio: {
+            M: 87.5,
+            F: 12.5
+        },
+        baseStats: {
+            hp: 70,
+            atk: 78,
+            def: 69,
+            spa: 97,
+            spd: 87,
+            spe: 92
+        },
+        abilities: {
+            0: "Overgrow"
+        },
+        heightm: 0.95,
+        weightkg: 17.3,
+		  prevo: "treesaur",
+		  evos: ["sceptilusaur"],
+		  evoLevel: 16,
+        color: "Green",
+        eggGroups: ["Monster"],
+    },
     sceptilusaur: {
         num: 750096,
         species: "Sceptilusaur",
@@ -5461,6 +5513,8 @@ exports.BattlePokedex = {
         },
         heightm: 1.855,
         weightkg: 76.1,
+		  prevo: "vylesaur",
+		  evoLevel: 34,
         color: "Green",
         eggGroups: ["Monster"],
     },
