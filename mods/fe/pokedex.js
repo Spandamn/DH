@@ -5208,6 +5208,27 @@ exports.BattlePokedex = {
         color: "Black",
         eggGroups: ["Undiscovered"],
     },
+    larvatrap: {
+        num: 750163,
+        species: "Larvatrap",
+        types: ["Fire", "Ground"],
+        baseStats: {
+            hp: 59,
+            atk: 105,
+            def: 59,
+            spa: 52,
+            spd: 59,
+            spe: 40
+        },
+        abilities: {
+            0: "Pit of Flame"
+        },
+        heightm: 0.9,
+        weightkg: 21.9,
+		  evos: ["volcagon"],
+        color: "Red",
+        eggGroups: ["Bug"],
+    },
     volcagon: {
         num: 750091,
         species: "Volcagon",
@@ -5229,7 +5250,9 @@ exports.BattlePokedex = {
         },
         heightm: 1.805,
         weightkg: 64,
-        color: "Black",
+		  prevo: "larvatrap",
+		  evoLevel: 49,
+        color: "Green",
         eggGroups: ["Bug"],
     },
     enterrak: {
