@@ -4927,6 +4927,27 @@ exports.BattlePokedex = {
         color: "White",
         eggGroups: ["Fairy"],
     },
+    gunkpawn: {
+        num: 750161,
+        species: "Gunk Pawn",
+        types: ["Steel", "Poison"],
+        baseStats: {
+            hp: 51,
+            atk: 88,
+            def: 55,
+            spa: 60,
+            spd: 45,
+            spe: 65
+        },
+        abilities: {
+            0: "Sharp Armor"
+        },
+        heightm: 0.6,
+        weightkg: 16.6,
+		  evos: ["toxisharp"],
+        color: "Red",
+        eggGroups: ["Human-Like"],
+    },
     toxisharp: {
         num: 750084,
         species: "Toxisharp",
@@ -4948,7 +4969,9 @@ exports.BattlePokedex = {
         },
         heightm: 1.45,
         weightkg: 57.2,
-        color: "Black",
+		  prevo: "gunkpawn",
+		  evoLevel: 44,
+        color: "Red",
         eggGroups: ["Human-Like"],
     },
     darmega: {
@@ -4979,10 +5002,7 @@ exports.BattlePokedex = {
         num: 750086,
         species: "Lag-I",
         types: ["Ground", "Ice"],
-        genderRatio: {
-            M: 0.0,
-            F: 0.0
-        },
+        gender: "M",
         baseStats: {
             hp: 84,
             atk: 112,
@@ -4996,7 +5016,31 @@ exports.BattlePokedex = {
         },
         heightm: 1.5,
         weightkg: 162.25,
-        color: "Black",
+        color: "Gray",
+        eggGroups: ["Undiscovered"],
+    },
+    lagimega: {
+        num: 750086,
+        species: "Lag-I-Mega",
+        baseSpecies: "Lag-I",
+        forme: "Mega",
+        formeLetter: "M",
+        types: ["Ground", "Ice"],
+        gender: "M",
+        baseStats: {
+            hp: 84,
+            atk: 152,
+            def: 85,
+            spa: 147,
+            spd: 80,
+            spe: 130
+        },
+        abilities: {
+            0: "Refrigerate"
+        },
+        heightm: 2.1,
+        weightkg: 255.95,
+        color: "Gray",
         eggGroups: ["Undiscovered"],
     },
     heatloom: {
@@ -5023,15 +5067,34 @@ exports.BattlePokedex = {
         color: "Black",
         eggGroups: ["Undiscovered"],
     },
+    golone: {
+        num: 750162,
+        species: "Golone",
+        types: ["Ghost", "Steel"],
+        gender: "N",
+        baseStats: {
+            hp: 51,
+            atk: 88,
+            def: 55,
+            spa: 60,
+            spd: 45,
+            spe: 65
+        },
+        abilities: {
+            0: "En Garde"
+        },
+        heightm: 0.9,
+        weightkg: 47,
+		  evos: ["golislash"],
+        color: "Blue",
+        eggGroups: ["Mineral"],
+    },
     golislash: {
         num: 750088,
         species: "Golislash",
 		  baseForme: "Defense",
         types: ["Ghost", "Steel"],
-        genderRatio: {
-            M: 0.0,
-            F: 0.0
-        },
+        gender: "N",
         baseStats: {
             hp: 74,
             atk: 87,
@@ -5045,8 +5108,10 @@ exports.BattlePokedex = {
         },
         heightm: 2.245,
         weightkg: 191.5,
-        color: "Black",
-        eggGroups: ["Undiscovered"],
+		  prevo: "golone",
+		  evoLevel: 39,
+        color: "Brown",
+        eggGroups: ["Mineral"],
     },
     golislashpower: {
         num: 750088,
@@ -5055,10 +5120,7 @@ exports.BattlePokedex = {
         forme: "Power",
         formeLetter: "P",
         types: ["Ghost", "Steel"],
-        genderRatio: {
-            M: 0.0,
-            F: 0.0
-        },
+        gender: "N",
         baseStats: {
             hp: 74,
             atk: 115,
@@ -5070,10 +5132,10 @@ exports.BattlePokedex = {
         abilities: {
             0: "Combination Drive"
         },
-        heightm: 2.245,
-        weightkg: 191.5,
-        color: "Black",
-        eggGroups: ["Undiscovered"],
+		  prevo: "golone",
+		  evoLevel: 39,
+        color: "Brown",
+        eggGroups: ["Mineral"],
     },
     hooporus: {
         num: 750089,
