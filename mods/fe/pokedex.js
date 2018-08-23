@@ -4898,7 +4898,7 @@ exports.BattlePokedex = {
         },
         heightm: 0.85,
         weightkg: 18.9,
-		  prevo: "porydile",
+		  prevo: "happipi",
 		  evos: ["blisskiss"],
 		  evoLevel: 2,
         color: "White",
