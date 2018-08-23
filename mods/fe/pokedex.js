@@ -5564,6 +5564,27 @@ exports.BattlePokedex = {
         color: "Green",
         eggGroups: ["Monster"],
     },
+    dourike: {
+        num: 750167,
+        species: "Dourike",
+        types: ["Electric", "Dark"],
+        baseStats: {
+            hp: 50,
+            atk: 60,
+            def: 40,
+            spa: 81,
+            spd: 50,
+            spe: 80
+        },
+        abilities: {
+            0: "Thunderous Embers"
+        },
+        heightm: 0.6,
+        weightkg: 13,
+		  evos: ["houndectric"],
+        color: "Black",
+        eggGroups: ["Field"],
+    },
     houndectric: {
         num: 750097,
         species: "Houndectric",
@@ -5585,6 +5606,8 @@ exports.BattlePokedex = {
         },
         heightm: 1.45,
         weightkg: 37.6,
+		  prevo: "dourike",
+		  evoLevel: 16,
         color: "Black",
         eggGroups: ["Field"],
     },
