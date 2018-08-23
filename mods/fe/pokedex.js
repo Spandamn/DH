@@ -5607,7 +5607,7 @@ exports.BattlePokedex = {
         heightm: 1.45,
         weightkg: 37.6,
 		  prevo: "dourike",
-		  evoLevel: 16,
+		  evoLevel: 25,
         color: "Black",
         eggGroups: ["Field"],
     },
