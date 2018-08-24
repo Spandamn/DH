@@ -7177,13 +7177,38 @@ darkchomp: {
         color: "Black",
         eggGroups: ["Amorphous"],
     },
+    amarunt: {
+        num: 750179,
+        species: "Amarunt",
+        types: ["Ice", "Dragon"],
+        genderRatio: {
+            M: 0.875,
+            F: 0.125
+        },
+        baseStats: { 
+            hp: 72,
+            atk: 89,
+            def: 68,
+            spa: 61,
+            spd: 59,
+            spe: 62
+        },
+        abilities: {
+            0: "Absolute Zero"
+        },
+        heightm: 1.05,
+        weightkg: 25.6,
+		  evos: ["aurantrum"],
+        color: "Brown",
+        eggGroups: ["Monster"],
+    },
     aurantrum: {
         num: 7500134,
         species: "Aurantrum",
         types: ["Ice", "Dragon"],
         genderRatio: {
-            M: 87.5,
-            F: 12.5
+            M: 0.875,
+            F: 0.125
         },
         baseStats: {
             hp: 112,
@@ -7198,6 +7223,8 @@ darkchomp: {
         },
         heightm: 2.59,
         weightkg: 247.5,
+		  prevo: "amarunt",
+		  evoLevel: 39,
         color: "Red",
         eggGroups: ["Monster"],
     },
