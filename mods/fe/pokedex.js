@@ -6636,6 +6636,27 @@ darkchomp: {
         color: "Black",
         eggGroups: ["Undiscovered"],
     },
+    cleahorch: {
+        num: 750175,
+        species: "Cleahorch",
+        types: ["Water"],
+        baseStats: { 
+            hp: 45,
+            atk: 51,
+            def: 71,
+            spa: 79,
+            spd: 49,
+            spe: 67
+        },
+        abilities: {
+            0: "Storm Launcher"
+        },
+        heightm: 0.45,
+        weightkg: 8.15,
+		  evos: ["clawdra"],
+        color: "Blue",
+        eggGroups: ["Water 1"],
+    },
     clawdra: {
         num: 7500123,
         species: "Clawdra",
@@ -6657,7 +6678,9 @@ darkchomp: {
         },
         heightm: 0.955,
         weightkg: 32.5,
-        color: "Black",
+		  prevo: "cleahorch",
+		  evoLevel: 34,
+        color: "Blue",
         eggGroups: ["Water 1"],
     },
     shaymode: {
