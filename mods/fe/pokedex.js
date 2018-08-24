@@ -105,10 +105,6 @@ exports.BattlePokedex = {
         num: 75002,
         species: "Gyarotic",
         types: ["Water"],
-        genderRatio: {
-            M: 50.0,
-            F: 50.0
-        },
         baseStats: {
             hp: 105,
             atk: 102,
@@ -232,10 +228,6 @@ exports.BattlePokedex = {
         num: 75004,
         species: "Chandeform",
         types: ["Ghost", "Normal"],
-        genderRatio: {
-            M: 50.0,
-            F: 50.0
-        },
         baseStats: {
             hp: 75,
             atk: 72,
@@ -277,10 +269,6 @@ exports.BattlePokedex = {
         num: 75005,
         species: "Mismatross",
         types: ["Electric", "Ghost"],
-        genderRatio: {
-            M: 50.0,
-            F: 50.0
-        },
         baseStats: {
             hp: 82,
             atk: 97,
@@ -354,10 +342,6 @@ exports.BattlePokedex = {
         num: 75007,
         species: "Pangleye",
         types: ["Fighting", "Dark"],
-        genderRatio: {
-            M: 50.0,
-            F: 50.0
-        },
         baseStats: {
             hp: 82,
             atk: 109,
@@ -422,10 +406,6 @@ exports.BattlePokedex = {
         num: 75008,
         species: "Garchados",
         types: ["Ground", "Water"],
-        genderRatio: {
-            M: 50.0,
-            F: 50.0
-        },
         baseStats: {
             hp: 111,
             atk: 137,
@@ -665,10 +645,6 @@ exports.BattlePokedex = {
         num: 750011,
         species: "Dragon",
         types: ["Dark", "Poison"],
-        genderRatio: {
-            M: 50.0,
-            F: 50.0
-        },
         baseStats: {
             hp: 88,
             atk: 100,
@@ -691,10 +667,6 @@ exports.BattlePokedex = {
         num: 750012,
         species: "Hawlusharp",
         types: ["Fighting", "Dark"],
-        genderRatio: {
-            M: 50.0,
-            F: 50.0
-        },
         baseStats: {
             hp: 81,
             atk: 118,
@@ -736,10 +708,6 @@ exports.BattlePokedex = {
         num: 750013,
         species: "Cofagreelix",
         types: ["Steel", "Ghost"],
-        genderRatio: {
-            M: 50.0,
-            F: 50.0
-        },
         baseStats: {
             hp: 76,
             atk: 77,
@@ -1052,10 +1020,6 @@ exports.BattlePokedex = {
         num: 750019,
         species: "Mamodrill",
         types: ["Ground", "Ice"],
-        genderRatio: {
-            M: 50.0,
-            F: 50.0
-        },
         baseStats: {
             hp: 120,
             atk: 142,
@@ -1099,10 +1063,6 @@ exports.BattlePokedex = {
         num: 750020,
         species: "Heliodra",
         types: ["Dragon", "Electric"],
-        genderRatio: {
-            M: 50.0,
-            F: 50.0
-        },
         baseStats: {
             hp: 86,
             atk: 87,
@@ -1125,10 +1085,6 @@ exports.BattlePokedex = {
         num: 750021,
         species: "Scyscor",
         types: ["Bug", "Ground"],
-        genderRatio: {
-            M: 50.0,
-            F: 50.0
-        },
         baseStats: {
             hp: 82,
             atk: 112,
@@ -1222,10 +1178,6 @@ exports.BattlePokedex = {
         num: 750023,
         species: "Azumaloom",
         types: ["Water", "Grass"],
-        genderRatio: {
-            M: 50.0,
-            F: 50.0
-        },
         baseStats: {
             hp: 90,
             atk: 100,
@@ -1269,10 +1221,6 @@ exports.BattlePokedex = {
         num: 750025,
         species: "Weasol",
         types: ["Dark", "Ice"],
-        genderRatio: {
-            M: 50.0,
-            F: 50.0
-        },
         baseStats: {
             hp: 77,
             atk: 135,
@@ -6540,10 +6488,7 @@ darkchomp: {
         num: 7500119,
         species: "Wigglyman",
         types: ["Water", "Fairy"],
-        genderRatio: {
-            M: 25.0,
-            F: 75.0
-        },
+        genderRatio: {M: 0.25, F: 0.75},
         baseStats: {
             hp: 120,
             atk: 85,
@@ -6792,8 +6737,8 @@ darkchomp: {
         species: "Bouffanine",
         types: ["Normal", "Fire"],
         genderRatio: {
-            M: 62.5,
-            F: 37.5
+            M: 0.625,
+            F: 0.375
         },
         baseStats: {
             hp: 102,
@@ -12979,10 +12924,7 @@ darkchomp: {
         num: 7500271,
         species: "Cinshado",
         types: ["Normal", "Fighting"],
-        genderRatio: {
-            M: 25.0,
-            F: 75.0
-        },
+        genderRatio: {M: 0.25, F: 0.75},
         baseStats: {
             hp: 82,
             atk: 130,
@@ -13862,7 +13804,7 @@ celebi: {
 		  num: 38,
 		  species: "Ninetales-Prime",
 		  baseSpecies: "Ninetales",
-        genderRatio: {M: 25.0, F: 75.0},
+        genderRatio: {M: 0.25, F: 0.75},
 		  forme: "Prime",
 		  formeLetter: "P",
         types: ["Ice", "Fire"],
@@ -15293,7 +15235,7 @@ eggGroups: ["Undiscovered", ], },
         num: 7500342,
         species: "Fablefin",
         types: ["Fairy"],
-        genderRatio: {M: 25.0, F: 75.0},
+        genderRatio: {M: 0.25, F: 0.75},
         baseStats: {
             hp: 85,
             atk: 72,
@@ -15738,7 +15680,7 @@ mimiblimbusted: {
         num: 7500360,
         species: "Warcanein",
         types: ["Water", "Fire"],
-        genderRatio: {M: 62.5, F: 37.5},
+        genderRatio: {M: 0.625, F: 0.375},
         baseStats: {
             hp: 110,
             atk: 105,
@@ -16069,7 +16011,7 @@ mimiblimbusted: {
         num: 7500373,
         species: "Mapu Iasu",
         types: ["Ghost", "Fairy"],
-        genderRatio: {M: 25.0, F: 75.0},
+        genderRatio: {M: 0.25, F: 0.75},
         baseStats: {
             hp: 75,
             atk: 85,
@@ -16088,7 +16030,7 @@ mimiblimbusted: {
         num: 7500374,
         species: "Mapu Auhe",
         types: ["Fire", "Grass"],
-        genderRatio: {M: 25.0, F: 75.0},
+        genderRatio: {M: 0.25, F: 0.75},
         baseStats: {
             hp: 75,
             atk: 120,
@@ -16107,7 +16049,7 @@ mimiblimbusted: {
         num: 7500375,
         species: "Mapu Moli",
         types: ["Electric"],
-        genderRatio: {M: 25.0, F: 75.0},
+        genderRatio: {M: 0.25, F: 0.75},
         baseStats: {
             hp: 75,
             atk: 93,
@@ -16126,7 +16068,7 @@ mimiblimbusted: {
         num: 7500376,
         species: "Mapu Bupa",
         types: ["Psychic"],
-        genderRatio: {M: 25.0, F: 75.0},
+        genderRatio: {M: 0.25, F: 0.75},
         baseStats: {
             hp: 75,
             atk: 90,
@@ -17344,10 +17286,7 @@ mimiblimbusted: {
         num: 7500417,
         species: "Exfey-Cola",
         types: ["Fairy", "Grass"],
-        genderRatio: {
-            M: 25.0,
-            F: 75.0
-        },
+        genderRatio: {M: 0.25, F: 0.75},
         baseStats: {
             hp: 83,
             atk: 88,
@@ -17918,10 +17857,7 @@ mimiblimbusted: {
         num: 7500436,
         species: "Belle",
         types: ["Steel", "Fairy"],
-        genderRatio: {
-            M: 25.0,
-            F: 75.0
-        },
+        genderRatio: {M: 0.25, F: 0.75},
         baseStats: {
             hp: 100,
             atk: 85,
@@ -18107,10 +18043,7 @@ arcalie: {
         num: 7500442,
         species: "Arcalie",
         types: ["Fire", "Dark"],
-        genderRatio: {
-            M: 62.5,
-            F: 37.5
-        },
+        genderRatio: {M: 0.625, F: 0.375},
         baseStats: {
             hp: 87,
             atk: 109,
