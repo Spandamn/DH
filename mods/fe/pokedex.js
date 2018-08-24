@@ -7085,6 +7085,27 @@ darkchomp: {
         color: "Gray",
         eggGroups: ["Bug"],
     },
+    rappel: {
+        num: 750179,
+        species: "Rappel",
+        types: ["Fairy", "Ghost"],
+        baseStats: { 
+            hp: 41,
+            atk: 55,
+            def: 43,
+            spa: 65,
+            spd: 45,
+            spe: 47
+        },
+        abilities: {
+            0: "Grim Reminder"
+        },
+        heightm: 0.5,
+        weightkg: 4.45,
+		  evos: ["gallette"],
+        color: "White",
+        eggGroups: ["Amorphous"],
+    },
     gallette: {
         num: 7500133,
         species: "Gallette",
@@ -7103,6 +7124,8 @@ darkchomp: {
         },
         heightm: 1.345,
         weightkg: 32.25,
+		  prevo: "rappel",
+		  evoLevel: 28,
         color: "Black",
         eggGroups: ["Amorphous"],
     },
