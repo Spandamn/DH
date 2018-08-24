@@ -6701,7 +6701,7 @@ darkchomp: {
         },
         heightm: 0.695,
         weightkg: 34.35,
-        color: "Black",
+        color: "White",
         eggGroups: ["Undiscovered"],
     },
     armortran: {
@@ -6725,7 +6725,7 @@ darkchomp: {
         },
         heightm: 1.7,
         weightkg: 240.25,
-        color: "Black",
+        color: "Gray",
         eggGroups: ["Undiscovered"],
     },
     gonzap: {
@@ -6773,7 +6773,7 @@ darkchomp: {
         },
         heightm: 1.755,
         weightkg: 124.8,
-        color: "Black",
+        color: "Brown",
         eggGroups: ["Field"],
     },
     dedsteel: {
@@ -6794,8 +6794,33 @@ darkchomp: {
         },
         heightm: 1.055,
         weightkg: 103.6,
-        color: "Black",
+        color: "Yellow",
         eggGroups: ["Undiscovered"],
+    },
+    charmite: {
+        num: 750176,
+        species: "Charmite",
+        types: ["Ice", "Fire"],
+        genderRatio: {
+            M: 75.0,
+            F: 25.0
+        },
+        baseStats: { 
+            hp: 52,
+            atk: 75,
+            def: 69,
+            spa: 51,
+            spd: 47,
+            spe: 61
+        },
+        abilities: {
+            0: "Bunsen Burner"
+        },
+        heightm: 0.8,
+        weightkg: 54,
+		  evos: ["avaizard"],
+        color: "Blue",
+        eggGroups: ["Monster"],
     },
     avaizard: {
         num: 7500129,
