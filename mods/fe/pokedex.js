@@ -5727,6 +5727,27 @@ exports.BattlePokedex = {
         color: "Black",
         eggGroups: ["Field"],
     },
+    karpon: {
+        num: 750169,
+        species: "Karpon",
+        types: ["Water", "Dragon"],
+        baseStats: { 
+            hp: 37,
+            atk: 57,
+            def: 62,
+            spa: 32,
+            spd: 40,
+            spe: 70
+        },
+        abilities: {
+            0: "Coward"
+        },
+        heightm: 0.75,
+        weightkg: 26.05,
+		  evos: ["gyaramence"],
+        color: "Red",
+        eggGroups: ["Dragon"],
+    },
     gyaramence: {
         num: 750099,
         species: "Gyaramence",
@@ -5748,7 +5769,7 @@ exports.BattlePokedex = {
         },
         heightm: 4,
         weightkg: 168.8,
-        color: "Black",
+        color: "Blue",
         eggGroups: ["Dragon"],
     },
     gyaramencemegag: {
@@ -5770,8 +5791,8 @@ exports.BattlePokedex = {
             0: "Mold Breaker"
         },
         heightm: 4,
-        weightkg: 168.8,
-        color: "Black",
+        weightkg: 248.8,
+        color: "Blue",
         eggGroups: ["Dragon"],
     },
     gyaramencemegas: {
@@ -5792,9 +5813,9 @@ exports.BattlePokedex = {
         abilities: {
             0: "Aerilate"
         },
-        heightm: 4,
-        weightkg: 168.8,
-        color: "Black",
+        heightm: 4.3,
+        weightkg: 178.8,
+        color: "Blue",
         eggGroups: ["Dragon"],
     },
     thunderblast: {
