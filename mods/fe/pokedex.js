@@ -5657,6 +5657,27 @@ exports.BattlePokedex = {
         color: "Black",
         eggGroups: ["Field"],
     },
+    whisdour: {
+        num: 750168,
+        species: "Whisdour",
+        types: ["Normal", "Fire"],
+        baseStats: { 
+            hp: 59,
+            atk: 60,
+            def: 36,
+            spa: 70,
+            spd: 46,
+            spe: 61
+        },
+        abilities: {
+            0: "Mix Tape"
+        },
+        heightm: 0.6,
+        weightkg: 13.55,
+		  evos: ["exdoom"],
+        color: "Black",
+        eggGroups: ["Field"],
+    },
     exdoom: {
         num: 750098,
         species: "Exdoom",
@@ -5678,6 +5699,8 @@ exports.BattlePokedex = {
         },
         heightm: 1.45,
         weightkg: 59.5,
+		  prevo: "whisdour",
+		  evoLevel: 27,
         color: "Black",
         eggGroups: ["Field"],
     },
