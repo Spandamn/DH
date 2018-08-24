@@ -5318,8 +5318,8 @@ exports.BattlePokedex = {
         abilities: {
             0: "Tough Claws"
         },
-        heightm: 1.495,
-        weightkg: 41.95,
+        heightm: 1.795,
+        weightkg: 61.95,
         color: "Black",
         eggGroups: ["Flying"],
     },
@@ -5412,8 +5412,8 @@ exports.BattlePokedex = {
         abilities: {
             0: "Adaptability"
         },
-        heightm: 1.19,
-        weightkg: 50.5,
+        heightm: 1.29,
+        weightkg: 54,
         color: "Black",
         eggGroups: ["Field"],
     },
@@ -5436,7 +5436,7 @@ exports.BattlePokedex = {
             0: "Magic Bounce"
         },
         heightm: 1.19,
-        weightkg: 50.5,
+        weightkg: 52.5,
         color: "Black",
         eggGroups: ["Field"],
     },
@@ -5536,8 +5536,8 @@ exports.BattlePokedex = {
         abilities: {
             0: "Thick Fat"
         },
-        heightm: 1.855,
-        weightkg: 76.1,
+        heightm: 2.255,
+        weightkg: 131.6,
         color: "Green",
         eggGroups: ["Monster"],
     },
@@ -5559,8 +5559,8 @@ exports.BattlePokedex = {
         abilities: {
             0: "Lightning Rod"
         },
-        heightm: 1.855,
-        weightkg: 76.1,
+        heightm: 2.055,
+        weightkg: 79.1,
         color: "Green",
         eggGroups: ["Monster"],
     },
@@ -5629,8 +5629,8 @@ exports.BattlePokedex = {
         abilities: {
             0: "Intimidate"
         },
-        heightm: 1.45,
-        weightkg: 37.6,
+        heightm: 1.75,
+        weightkg: 41.4,
         color: "Black",
         eggGroups: ["Field"],
     },
@@ -5652,8 +5652,8 @@ exports.BattlePokedex = {
         abilities: {
             0: "Solar Power"
         },
-        heightm: 1.45,
-        weightkg: 37.6,
+        heightm: 1.95,
+        weightkg: 52.1,
         color: "Black",
         eggGroups: ["Field"],
     },
