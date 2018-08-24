@@ -7514,6 +7514,27 @@ darkchomp: {
         color: "Purple",
         eggGroups: ["Undiscovered"],
     },
+    swaggy: {
+        num: 750183,
+        species: "Swaggy",
+        types: ["Fighting", "Normal"],
+        baseStats: { 
+            hp: 55,
+            atk: 72,
+            def: 70,
+            spa: 42,
+            spd: 80,
+            spe: 58
+        },
+        abilities: {
+            0: "Weather Man"
+        },
+        heightm: 0.5,
+        weightkg: 6.5,
+		  evos: ["scraftia"],
+        color: "Blue",
+        eggGroups: ["Dragon"],
+    },
     scraftia: {
         num: 7500138,
         species: "Scraftia",
@@ -7535,6 +7556,8 @@ darkchomp: {
         },
         heightm: 1.09,
         weightkg: 25.3,
+		  prevo: "swaggy",
+		  evoLevel: 37,
         color: "Blue",
         eggGroups: ["Dragon"],
     },
