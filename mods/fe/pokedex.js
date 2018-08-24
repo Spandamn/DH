@@ -7931,7 +7931,7 @@ darkchomp: {
         eggGroups: ["Undiscovered"],
     },
     beldurogue: {
-        num: 750187,
+        num: 750188,
         species: "Beldurogue",
         types: ["Steel", "Fighting"],
         gender: "M",
@@ -8035,7 +8035,7 @@ darkchomp: {
             spe: 113
         },
         abilities: {
-            0: "Khanqueror"
+            0: "Parental Bond"
         },
         heightm: 2.005,
         weightkg: 112.75,
@@ -8082,10 +8082,10 @@ darkchomp: {
             spe: 25
         },
         abilities: {
-            0: "Synchrostall"
+            0: "Magic Bounce"
         },
         heightm: 0.75,
-        weightkg: 22.75,
+        weightkg: 172.75,
         color: "Purple",
         eggGroups: ["Human-Like"],
     },
@@ -8287,6 +8287,28 @@ darkchomp: {
         color: "Purple",
         eggGroups: ["Fairy"],
     },
+    porymask: {
+        num: 750189,
+        species: "Porymask",
+        types: ["Normal", "Ghost"],
+        gender: "N",
+        baseStats: { 
+            hp: 55,
+            atk: 45,
+            def: 85,
+            spa: 73,
+            spd: 85,
+            spe: 35
+        },
+        abilities: {
+            0: "Negative Body"
+        },
+        heightm: 0.65,
+        weightkg: 19,
+		  evos: ["porygrigus"],
+        color: "Black",
+        eggGroups: ["Mineral"],
+    },
     porygrigus: {
         num: 7500155,
         species: "Porygrigus",
@@ -8306,7 +8328,7 @@ darkchomp: {
         heightm: 1.155,
         weightkg: 54.5,
         color: "Yellow",
-        eggGroups: ["Undiscovered"],
+        eggGroups: ["Mineral"],
     },
     zoroldeo: {
         num: 7500156,
