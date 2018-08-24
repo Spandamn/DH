@@ -6843,6 +6843,8 @@ darkchomp: {
         },
         heightm: 1.855,
         weightkg: 297.75,
+		  prevo: "charmite",
+		  evoLevel: 32,
         color: "Blue",
         eggGroups: ["Monster"],
     },
@@ -6892,6 +6894,27 @@ darkchomp: {
         color: "Blue",
         eggGroups: ["Monster"],
     },
+    slugwick: {
+        num: 750177,
+        species: "Slugwick",
+        types: ["Ghost", "Fire"],
+        baseStats: { 
+            hp: 55,
+            atk: 45,
+            def: 62,
+            spa: 87,
+            spd: 62,
+            spe: 30
+        },
+        abilities: {
+            0: "Flame Body"
+        },
+        heightm: 0.5,
+        weightkg: 19.05,
+		  evos: ["cargolure"],
+        color: "White",
+        eggGroups: ["Amorphous"],
+    },
     cargolure: {
         num: 7500130,
         species: "Cargolure",
@@ -6913,8 +6936,35 @@ darkchomp: {
         },
         heightm: 0.89,
         weightkg: 44.65,
+		  prevo: "slugwick",
+		  evoLevel: 40,
         color: "Black",
         eggGroups: ["Amorphous"],
+    },
+    riobra: {
+        num: 750178,
+        species: "Riobra",
+        types: ["Psychic", "Fighting"],
+        genderRatio: {
+            M: 81.25,
+            F: 18.75
+        },
+        baseStats: { 
+            hp: 42,
+            atk: 55,
+            def: 37,
+            spa: 90,
+            spd: 57,
+            spe: 95
+        },
+        abilities: {
+            0: "Inner Focus"
+        },
+        heightm: 0.8,
+        weightkg: 19.85,
+		  evos: ["alakario"],
+        color: "Blue",
+        eggGroups: ["Undiscovered"],
     },
     alakario: {
         num: 7500131,
@@ -6937,14 +6987,14 @@ darkchomp: {
         },
         heightm: 1.345,
         weightkg: 51,
-        color: "Yellow",
+        color: "Blue",
         eggGroups: ["Human-Like"],
     },
     alakariomegal: {
         num: 7500131,
         species: "Alakario-Mega-L",
         baseSpecies: "Alakario",
-        forme: "Mega L",
+        forme: "Mega-L",
         formeLetter: "M",
         types: ["Psychic", "Fighting"],
         baseStats: {
@@ -6960,14 +7010,14 @@ darkchomp: {
         },
         heightm: 1.445,
         weightkg: 54.5,
-        color: "Yellow",
+        color: "Blue",
         eggGroups: ["Human-Like"],
     },
     alakariomegaa: {
         num: 7500131,
         species: "Alakario-Mega-A",
         baseSpecies: "Alakario",
-        forme: "Mega A",
+        forme: "Mega-A",
         formeLetter: "M",
         types: ["Psychic", "Fighting"],
         baseStats: {
@@ -6983,7 +7033,7 @@ darkchomp: {
         },
         heightm: 1.045,
         weightkg: 51,
-        color: "Yellow",
+        color: "Blue",
         eggGroups: ["Human-Like"],
     },
     cazantor: {
