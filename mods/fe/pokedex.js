@@ -6496,8 +6496,8 @@ darkchomp: {
         abilities: {
             0: "Skill Link"
         },
-        heightm: 1.45,
-        weightkg: 127,
+        heightm: 1.65,
+        weightkg: 135.5,
         color: "Black",
         eggGroups: ["Bug"],
     },
@@ -6523,16 +6523,34 @@ darkchomp: {
         heightm: 0.645,
         weightkg: 6.7,
         color: "Black",
+        eggGroups: ["Fairy"],
+    },
+    magnebas: {
+        num: 750173,
+        species: "Magnebas",
+        types: ["Water", "Electric"],
+        baseStats: { 
+            hp: 30,
+            atk: 25,
+            def: 50,
+            spa: 67,
+            spd: 55,
+            spe: 64
+        },
+        abilities: {
+            0: "Adaptive Clutch"
+        },
+        heightm: 0.45,
+        weightkg: 6.7,
+		  evos: ["magnetic"],
+        color: "Gray",
         eggGroups: ["Undiscovered"],
     },
     magnetic: {
         num: 7500120,
         species: "Magnetic",
         types: ["Water", "Electric"],
-        genderRatio: {
-            M: 0.0,
-            F: 0.0
-        },
+		  gender: "N",
         baseStats: {
             hp: 102,
             atk: 65,
@@ -6546,7 +6564,9 @@ darkchomp: {
         },
         heightm: 3.695,
         weightkg: 171,
-        color: "Black",
+		  prevo: "magnebas",
+		  evoLevel: 30,
+        color: "Gray",
         eggGroups: ["Undiscovered"],
     },
     zorogonz: {
