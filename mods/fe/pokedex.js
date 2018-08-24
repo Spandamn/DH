@@ -7726,9 +7726,30 @@ darkchomp: {
         color: "Black",
         eggGroups: ["Monster"],
     },
-    lopunne: {
+    zunzoon: {
+        num: 750186,
+        species: "Zunzoon",
+        types: ["Normal"],
+        baseStats: { 
+            hp: 52,
+            atk: 63,
+            def: 50,
+            spa: 42,
+            spd: 53,
+            spe: 83
+        },
+        abilities: {
+            0: "Dieting Dolt"
+        },
+        heightm: 0.4,
+        weightkg: 11.5,
+		  evos: ["lopunoone"],
+        color: "Brown",
+        eggGroups: ["Field"],
+    },
+    lopunoone: {
         num: 7500142,
-        species: "Lopunne",
+        species: "Lopunoone",
         types: ["Normal"],
         genderRatio: {
             M: 50.0,
@@ -7747,13 +7768,15 @@ darkchomp: {
         },
         heightm: 0.85,
         weightkg: 32.9,
-        color: "Black",
+		  prevo: "zunzoon",
+		  evoLevel: 20,
+        color: "Brown",
         eggGroups: ["Field"],
     },
-	    lopunnemega: {
+	    lopunoonemega: {
         num: 7500140,
-        species: "Lopunne-Mega",
-        baseSpecies: "Lopunne",
+        species: "Lopunoone-Mega",
+        baseSpecies: "Lopunoone",
         forme: "Mega",
         formeLetter: "M",
         types: ["Normal", "Fighting"],
@@ -7768,9 +7791,9 @@ darkchomp: {
         abilities: {
             0: "Scrappy"
         },
-        heightm: 0.85,
+        heightm: 0.95,
         weightkg: 27.9,
-        color: "Black",
+        color: "Brown",
         eggGroups: ["Field"],
     },
     hootoise: {
