@@ -7670,9 +7670,34 @@ darkchomp: {
         abilities: {
             0: "Thick Fat"
         },
-        heightm: 1.755,
-        weightkg: 80.5,
+        heightm: 2.155,
+        weightkg: 136,
         color: "Green",
+        eggGroups: ["Undiscovered"],
+    },
+    rhyhoax: {
+        num: 750185,
+        species: "Rhyhoax",
+        types: ["Normal", "Rock"],
+        genderRatio: {
+            M: 75.0,
+            F: 25.0
+        },
+        baseStats: { 
+            hp: 112,
+            atk: 100,
+            def: 72,
+            spa: 40,
+            spd: 72,
+            spe: 20
+        },
+        abilities: {
+            0: "Amazing Bulk"
+        },
+        heightm: 0.8,
+        weightkg: 110,
+		  evos: ["rhyperlax"],
+        color: "Black",
         eggGroups: ["Undiscovered"],
     },
     rhyperlax: {
@@ -7696,6 +7721,8 @@ darkchomp: {
         },
         heightm: 2.25,
         weightkg: 371.4,
+		  prevo: "rhyhoax",
+		  evoLevel: 42,
         color: "Black",
         eggGroups: ["Monster"],
     },
