@@ -6987,6 +6987,8 @@ darkchomp: {
         },
         heightm: 1.345,
         weightkg: 51,
+		  prevo: "riobra",
+		  evoLevel: 16,
         color: "Blue",
         eggGroups: ["Human-Like"],
     },
