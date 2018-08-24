@@ -6529,6 +6529,7 @@ darkchomp: {
         num: 750173,
         species: "Magnebas",
         types: ["Water", "Electric"],
+		  gender: "N",
         baseStats: { 
             hp: 30,
             atk: 25,
@@ -6569,6 +6570,28 @@ darkchomp: {
         color: "Gray",
         eggGroups: ["Undiscovered"],
     },
+    zorugon: {
+        num: 750174,
+        species: "Zorugon",
+        types: ["Normal", "Dark"],
+		  gender: "N",
+        baseStats: { 
+            hp: 52,
+            atk: 62,
+            def: 60,
+            spa: 97,
+            spd: 62,
+            spe: 57
+        },
+        abilities: {
+            0: "Trace Mirage"
+        },
+        heightm: 0.45,
+        weightkg: 6.7,
+		  evos: ["zorogonz"],
+        color: "Red",
+        eggGroups: ["Undiscovered"],
+    },
     zorogonz: {
         num: 7500121,
         species: "Zorogon-Z",
@@ -6587,17 +6610,16 @@ darkchomp: {
         },
         heightm: 1.245,
         weightkg: 57.55,
-        color: "Black",
+		  prevo: "zorugon",
+		  evoLevel: 30,
+        color: "Red",
         eggGroups: ["Undiscovered"],
     },
     thundini: {
         num: 7500122,
         species: "Thundini",
         types: ["Electric", "Fire"],
-        genderRatio: {
-            M: 0.0,
-            F: 0.0
-        },
+        gender: "M",
         baseStats: {
             hp: 90,
             atk: 118,
