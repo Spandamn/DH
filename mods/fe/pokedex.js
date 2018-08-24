@@ -7839,7 +7839,7 @@ darkchomp: {
             0: "Mega Launcher"
         },
         heightm: 1.055,
-        weightkg: 47.25,
+        weightkg: 62.85,
         color: "Pink",
         eggGroups: ["Undiscovered"],
     },
@@ -7930,11 +7930,33 @@ darkchomp: {
         color: "Gray",
         eggGroups: ["Undiscovered"],
     },
+    beldurogue: {
+        num: 750187,
+        species: "Beldurogue",
+        types: ["Steel", "Fighting"],
+        gender: "M",
+        baseStats: { 
+            hp: 37,
+            atk: 60,
+            def: 57,
+            spa: 35,
+            spd: 47,
+            spe: 47
+        },
+        abilities: {
+            0: "Reckless Body"
+        },
+        heightm: 0.65,
+        weightkg: 58.1,
+		  evos: ["metanlee"],
+        color: "Blue",
+        eggGroups: ["Undiscovered"],
+    },
     metanlee: {
         num: 7500148,
         species: "Metanlee",
         types: ["Steel", "Fighting"],
-        gender: "N",
+        gender: "M",
         baseStats: {
             hp: 75,
             atk: 138,
@@ -7957,7 +7979,7 @@ darkchomp: {
         baseSpecies: "Metanlee",
         forme: "Mega",
         formeLetter: "M",
-        gender: "N",
+        gender: "M",
         types: ["Steel", "Fighting"],
         baseStats: {
             hp: 75,
@@ -7993,6 +8015,30 @@ darkchomp: {
         },
         heightm: 2.005,
         weightkg: 92.75,
+        color: "Yellow",
+        eggGroups: ["Monster"],
+    },
+    kangoruskhanmega: {
+        num: 7500149,
+        species: "Kangorus-Khan-Mega",
+        baseSpecies: "Kangorus-Khan",
+        forme: "Mega",
+        formeLetter: "M",
+        types: ["Normal", "Dragon"],
+        gender: "F",
+        baseStats: {
+            hp: 100,
+            atk: 161,
+            def: 115,
+            spa: 80,
+				spd: 105,
+            spe: 113
+        },
+        abilities: {
+            0: "Khanqueror"
+        },
+        heightm: 2.005,
+        weightkg: 112.75,
         color: "Yellow",
         eggGroups: ["Monster"],
     },
