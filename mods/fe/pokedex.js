@@ -7584,6 +7584,27 @@ darkchomp: {
         color: "Blue",
         eggGroups: ["Dragon"],
     },
+    swooshi: {
+        num: 750184,
+        species: "Swooshi",
+        types: ["Fairy", "Grass"],
+        baseStats: { 
+            hp: 70,
+            atk: 52,
+            def: 70,
+            spa: 55,
+            spd: 70,
+            spe: 50
+        },
+        abilities: {
+            0: "Therapeutic"
+        },
+        heightm: 0.4,
+        weightkg: 4,
+		  evos: ["slurpum"],
+        color: "Pink",
+        eggGroups: ["Fairy"],
+    },
     slurpum: {
         num: 7500139,
         species: "Slurpum",
@@ -7605,6 +7626,8 @@ darkchomp: {
         },
         heightm: 0.99,
         weightkg: 22.1,
+		  prevo: "swooshi",
+		  evoLevel: 23,
         color: "Pink",
         eggGroups: ["Fairy"],
     },
