@@ -879,8 +879,8 @@ exports.BattlePokedex = {
         species: "Zorgrowl",
         types: ["Fire", "Dark"],
         genderRatio: {
-            M: 81.25,
-            F: 18.75
+            M: 0.8125,
+            F: 0.1875
         },
         baseStats: {
             hp: 55,
@@ -903,8 +903,8 @@ exports.BattlePokedex = {
         species: "Zorcanine",
         types: ["Fire", "Dark"],
         genderRatio: {
-            M: 81.25,
-            F: 18.75
+            M: 0.8125,
+            F: 0.1875
         },
         baseStats: {
             hp: 85,
@@ -929,8 +929,8 @@ exports.BattlePokedex = {
         species: "Archedactyl",
         types: ["Rock", "Flying"],
         genderRatio: {
-            M: 87.5,
-            F: 12.5
+            M: 0.875,
+            F: 0.125
         },
         baseStats: {
             hp: 87,
@@ -955,6 +955,10 @@ exports.BattlePokedex = {
         forme: "Mega",
         formeLetter: "M",
         types: ["Rock", "Flying"],
+        genderRatio: {
+            M: 0.875,
+            F: 0.125
+        },
         baseStats: {
             hp: 87,
             atk: 162,
@@ -1748,8 +1752,8 @@ exports.BattlePokedex = {
         species: "Squirtroak",
         types: ["Water"],
         genderRatio: {
-            M: 87.5,
-            F: 12.5
+            M: 0.875,
+            F: 0.125
         },
         baseStats: {
             hp: 54,
@@ -1773,8 +1777,8 @@ exports.BattlePokedex = {
         species: "Wartoadier",
         types: ["Water"],
         genderRatio: {
-            M: 87.5,
-            F: 12.5
+            M: 0.875,
+            F: 0.125
         },
         baseStats: {
             hp: 71,
@@ -1800,8 +1804,8 @@ exports.BattlePokedex = {
         species: "Blastinja",
         types: ["Water", "Dark"],
         genderRatio: {
-            M: 87.5,
-            F: 12.5
+            M: 0.875,
+            F: 0.125
         },
         baseStats: {
             hp: 90,
@@ -1828,6 +1832,10 @@ exports.BattlePokedex = {
         forme: "Mega",
         formeLetter: "M",
         types: ["Water", "Dark"],
+        genderRatio: {
+            M: 0.875,
+            F: 0.125
+        },
         baseStats: {
             hp: 90,
             atk: 124,
@@ -1849,10 +1857,6 @@ exports.BattlePokedex = {
         num: 750031,
         species: "Skaria",
         types: ["Steel", "Dragon"],
-        genderRatio: {
-            M: 50.0,
-            F: 50.0
-        },
         baseStats: {
             hp: 80,
             atk: 85,
@@ -2164,8 +2168,8 @@ exports.BattlePokedex = {
         species: "Growlee",
         types: ["Normal", "Fire"],
         genderRatio: {
-            M: 81.25,
-            F: 18.75
+            M: 0.8125,
+            F: 0.1875
         },
         baseStats: {
             hp: 62,
@@ -2189,8 +2193,8 @@ exports.BattlePokedex = {
         species: "Vapornine",
         types: ["Water", "Fire"],
         genderRatio: {
-            M: 81.25,
-            F: 18.75
+            M: 0.8125,
+            F: 0.1875
         },
         baseStats: {
             hp: 120,
@@ -2214,10 +2218,6 @@ exports.BattlePokedex = {
         num: 750036,
         species: "Pidgetot",
         types: ["Normal", "Flying"],
-        genderRatio: {
-            M: 50.0,
-            F: 50.0
-        },
         baseStats: {
             hp: 89,
             atk: 82,
@@ -2591,8 +2591,8 @@ exports.BattlePokedex = {
         species: "Shaymizard",
         types: ["Fire", "Grass"],
         genderRatio: {
-            M: 87.5,
-            F: 12.5
+            M: 0.875,
+            F: 0.125
         },
         baseStats: {
             hp: 89,
@@ -5307,6 +5307,10 @@ exports.BattlePokedex = {
         forme: "Mega",
         formeLetter: "M",
         types: ["Normal", "Flying"],
+        genderRatio: {
+            M: 75.0,
+            F: 25.0
+        },
         baseStats: {
             hp: 92,
             atk: 152,
@@ -5445,8 +5449,8 @@ exports.BattlePokedex = {
         species: "Treesaur",
         types: ["Poison", "Grass"],
         genderRatio: {
-            M: 87.5,
-            F: 12.5
+            M: 0.875,
+            F: 0.125
         },
         baseStats: {
             hp: 62,
@@ -5470,8 +5474,8 @@ exports.BattlePokedex = {
         species: "Vylesaur",
         types: ["Poison", "Grass"],
         genderRatio: {
-            M: 87.5,
-            F: 12.5
+            M: 0.875,
+            F: 0.125
         },
         baseStats: {
             hp: 70,
@@ -5497,8 +5501,8 @@ exports.BattlePokedex = {
         species: "Sceptilusaur",
         types: ["Poison", "Grass"],
         genderRatio: {
-            M: 87.5,
-            F: 12.5
+            M: 0.875,
+            F: 0.125
         },
         baseStats: {
             hp: 90,
@@ -5525,6 +5529,10 @@ exports.BattlePokedex = {
         forme: "Mega X",
         formeLetter: "M",
         types: ["Poison", "Grass"],
+        genderRatio: {
+            M: 0.875,
+            F: 0.125
+        },
          baseStats: {
             hp: 90,
             atk: 116,
@@ -5548,6 +5556,10 @@ exports.BattlePokedex = {
         forme: "Mega Y",
         formeLetter: "M",
         types: ["Poison", "Dragon"],
+        genderRatio: {
+            M: 0.875,
+            F: 0.125
+        },
          baseStats: {
             hp: 90,
             atk: 123,
@@ -5870,8 +5882,8 @@ exports.BattlePokedex = {
         species: "Snoopa",
         types: ["Ghost", "Normal"],
         genderRatio: {
-            M: 87.5,
-            F: 12.5
+            M: 0.875,
+            F: 0.125
         },
         baseStats: {
             hp: 130,
@@ -6946,8 +6958,8 @@ darkchomp: {
         species: "Riobra",
         types: ["Psychic", "Fighting"],
         genderRatio: {
-            M: 81.25,
-            F: 18.75
+            M: 0.8125,
+            F: 0.1875
         },
         baseStats: { 
             hp: 42,
@@ -6971,8 +6983,8 @@ darkchomp: {
         species: "Alakario",
         types: ["Psychic", "Fighting"],
         genderRatio: {
-            M: 81.25,
-            F: 18.75
+            M: 0.8125,
+            F: 0.1875
         },
         baseStats: {
             hp: 77,
@@ -9688,8 +9700,8 @@ darkchomp: {
         species: "Lucashadow",
         types: ["Fighting", "Ghost"],
         genderRatio: {
-            M: 87.5,
-            F: 12.5
+            M: 0.875,
+            F: 0.125
         },
         baseStats: {
             hp: 80,
@@ -9715,8 +9727,8 @@ darkchomp: {
         formeLetter: "M",
         types: ["Fighting", "Ghost"],
         genderRatio: {
-            M: 87.5,
-            F: 12.5
+            M: 0.875,
+            F: 0.125
         },
         baseStats: {
             hp: 80,
@@ -10951,8 +10963,8 @@ darkchomp: {
         species: "Decidactyl",
         types: ["Ghost", "Flying"],
         genderRatio: {
-            M: 87.5,
-            F: 12.5
+            M: 0.875,
+            F: 0.125
         },
         baseStats: {
             hp: 89,
@@ -10967,7 +10979,34 @@ darkchomp: {
         },
         heightm: 1.7,
         weightkg: 47.8,
-        color: "Black",
+        color: "Brown",
+        eggGroups: ["Flying"],
+    },
+    decidactylmega: {
+        num: 7500225,
+        species: "Decidactyl-Mega",
+        baseSpecies: "Decidactyl",
+        forme: "Mega",
+        formeLetter: "M",
+        types: ["Ghost", "Flying"],
+        genderRatio: {
+            M: 0.875,
+            F: 0.125
+        },
+        baseStats: {
+            hp: 89,
+            atk: 146,
+            def: 100,
+            spa: 100,
+            spd: 117,
+            spe: 130
+        },
+        abilities: {
+            0: "Tough Claws"
+        },
+        heightm: 2,
+        weightkg: 67.8,
+        color: "Brown",
         eggGroups: ["Flying"],
     },
     lycanape: {
@@ -13005,8 +13044,8 @@ celebi: {
         species: "Rebell",
         types: ["Fighting", "Psychic"],
         genderRatio: {
-            M: 87.5,
-            F: 12.5
+            M: 0.875,
+            F: 0.125
         },
         baseStats: {
             hp: 70,
@@ -17165,8 +17204,8 @@ mimiblimbusted: {
         species: "Altarbat",
         types: ["Poison", "Dragon"],
         genderRatio: {
-            M: 50.0,
-            F: 50.0
+            M: 0.5,
+            F: 0.5
         },
         baseStats: {
             hp: 90,
@@ -17277,10 +17316,6 @@ mimiblimbusted: {
         num: 7500407,
         species: "Algantine",
         types: ["Poison", "Water"],
-        genderRatio: {
-            M: 50.0,
-            F: 50.0
-        },
         baseStats: {
             hp: 85,
             atk: 67,
@@ -22927,8 +22962,8 @@ auroritarmega: {
 		   	     species: "Arceon",
 		   	     types: ["Fire", "Psychic"],
         			  genderRatio: {
-          				M: 81.25,
-        				   F: 18.75
+          				M: 0.8125,
+        				   F: 0.1875
         			  },
 		   	     baseStats: {
 		   	         hp: 80,
