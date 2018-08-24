@@ -7080,8 +7080,8 @@ darkchomp: {
         abilities: {
             0: "Technician"
         },
-        heightm: 1.05,
-        weightkg: 75.5,
+        heightm: 1.25,
+        weightkg: 82.5,
         color: "Gray",
         eggGroups: ["Bug"],
     },
