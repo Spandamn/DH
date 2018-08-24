@@ -5722,8 +5722,8 @@ exports.BattlePokedex = {
         abilities: {
             0: "Solar Power"
         },
-        heightm: 1.45,
-        weightkg: 59.5,
+        heightm: 1.95,
+        weightkg: 74,
         color: "Black",
         eggGroups: ["Field"],
     },
