@@ -7178,7 +7178,7 @@ darkchomp: {
         eggGroups: ["Amorphous"],
     },
     amarunt: {
-        num: 750179,
+        num: 750180,
         species: "Amarunt",
         types: ["Ice", "Dragon"],
         genderRatio: {
@@ -7228,6 +7228,27 @@ darkchomp: {
         color: "Red",
         eggGroups: ["Monster"],
     },
+    ferrolix: {
+        num: 750181,
+        species: "Ferrolix",
+        types: ["Grass", "Rock"],
+        baseStats: { 
+            hp: 48,
+            atk: 60,
+            def: 130,
+            spa: 60,
+            spd: 77,
+            spe: 45
+        },
+        abilities: {
+            0: "Durable Barbs"
+        },
+        heightm: 4.7,
+        weightkg: 114.4,
+		  evos: ["steelthorn"],
+        color: "Gray",
+        eggGroups: ["Mineral"],
+    },
     steelthorn: {
         num: 7500135,
         species: "Steelthorn",
@@ -7249,6 +7270,8 @@ darkchomp: {
         },
         heightm: 5.09,
         weightkg: 255,
+		  prevo: "ferrolix",
+		  evoLevel: 40,
         color: "Gray",
         eggGroups: ["Mineral"],
     },
