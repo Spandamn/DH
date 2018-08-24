@@ -7970,6 +7970,8 @@ darkchomp: {
         },
         heightm: 1.55,
         weightkg: 299.9,
+		  prevo: "beldurogue",
+		  evoLevel: 27,
         color: "Blue",
         eggGroups: ["Undiscovered"],
     },
@@ -8327,6 +8329,8 @@ darkchomp: {
         },
         heightm: 1.155,
         weightkg: 54.5,
+		  prevo: "porymask",
+		  evoLevel: 34,
         color: "Yellow",
         eggGroups: ["Mineral"],
     },
@@ -8372,6 +8376,27 @@ darkchomp: {
         color: "Black",
         eggGroups: ["Undiscovered"],
     },
+    mallo: {
+        num: 750190,
+        species: "Mallo",
+        types: ["Fire", "Water"],
+        baseStats: { 
+            hp: 55,
+            atk: 45,
+            def: 85,
+            spa: 73,
+            spd: 85,
+            spe: 35
+        },
+        abilities: {
+            0: "Negative Body"
+        },
+        heightm: 0.5,
+        weightkg: 20.65,
+		  evos: ["macaroon"],
+        color: "Red",
+        eggGroups: ["Amorphous"],
+    },
 	macaroon: {
         num: 7500158,
         species: "Macaroon",
@@ -8389,6 +8414,8 @@ darkchomp: {
         },
         heightm: 0.84,
         weightkg: 42.45,
+		  prevo: "mallo",
+		  evoLevel: 34,
         color: "Brown",
         eggGroups: ["Amorphous"],
     },
@@ -8413,6 +8440,27 @@ darkchomp: {
         color: "Black",
         eggGroups: ["Undiscovered"],
     },
+    ponypom: {
+        num: 750191,
+        species: "Ponypom",
+        types: ["Normal", "Fire"],
+        baseStats: { 
+            hp: 62,
+            atk: 97,
+            def: 65,
+            spa: 72,
+            spd: 70,
+            spe: 97
+        },
+        abilities: {
+            0: "Run Away"
+        },
+        heightm: 0.9,
+        weightkg: 20.75,
+		  evos: ["rapipom"],
+        color: "Purple",
+        eggGroups: ["Field"],
+    },
     rapipom: {
         num: 7500160,
         species: "Rapipom",
@@ -8430,6 +8478,8 @@ darkchomp: {
         },
         heightm: 1.445,
         weightkg: 57.65,
+		  prevo: "ponypom",
+		  evoLevel: 40,
         color: "Purple",
         eggGroups: ["Field"],
     },
