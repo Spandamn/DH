@@ -1196,19 +1196,19 @@ exports.BattleItems = {
         gen: 6,
         desc: "If holder is a thundersaurus, this item allows it to Mega Evolve in battle.",
     },
-    "lopunneite": {
-        id: "lopunneite",
-        name: "lopunneite",
+    "lopunooneite": {
+        id: "lopunooneite",
+        name: "lopunooneite",
         spritenum: 626,
 
-        megaStone: "Lopunne-Mega",
-        megaEvolves: "Lopunne",
+        megaStone: "Lopunoone-Mega",
+        megaEvolves: "Lopunoone",
         onTakeItem: function(item, source) {
             if (item.megaEvolves === source.baseTemplate.baseSpecies) return false;
             return true;
         },
         gen: 6,
-        desc: "If holder is a lopunne, this item allows it to Mega Evolve in battle.",
+        desc: "If holder is a lopunoone, this item allows it to Mega Evolve in battle.",
     },
     "hootoiseite": {
         id: "hootoiseite",
