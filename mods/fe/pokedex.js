@@ -7298,6 +7298,28 @@ darkchomp: {
         color: "Gray",
         eggGroups: ["Mineral"],
     },
+    venoran: {
+        num: 750182,
+        species: "Venoran",
+        types: ["Poison", "Bug"],
+        gender: "F",
+        baseStats: { 
+            hp: 60,
+            atk: 58,
+            def: 57,
+            spa: 48,
+            spd: 50,
+            spe: 46
+        },
+        abilities: {
+            0: "Tainted Lens"
+        },
+        heightm: 0.7,
+        weightkg: 18.5,
+		  evos: ["venoqueen"],
+        color: "Blue",
+        eggGroups: ["Undiscovered"],
+    },
     venoqueen: {
         num: 7500136,
         species: "Venoqueen",
@@ -7316,7 +7338,9 @@ darkchomp: {
         },
         heightm: 1.4,
         weightkg: 36.25,
-        color: "Blue",
+		  prevo: "venoran",
+		  evoLevel: 24,
+        color: "Purple",
         eggGroups: ["Undiscovered"],
     },
        polyform2: {
