@@ -5769,6 +5769,8 @@ exports.BattlePokedex = {
         },
         heightm: 4,
         weightkg: 168.8,
+		  prevo: "karpon",
+		  evoLevel: 30,
         color: "Blue",
         eggGroups: ["Dragon"],
     },
@@ -5859,7 +5861,7 @@ exports.BattlePokedex = {
             0: "Mega Launcher"
         },
         heightm: 2.3,
-        weightkg: 73.25,
+        weightkg: 88.85,
         color: "Black",
         eggGroups: ["Undiscovered"],
     },
@@ -5887,6 +5889,31 @@ exports.BattlePokedex = {
         color: "Black",
         eggGroups: ["Undiscovered"],
     },
+    plupoke: {
+        num: 750170,
+        species: "Plupoke",
+        types: ["Water", "Psychic"],
+        genderRatio: {
+            M: 75.0,
+            F: 25.0
+        },
+        baseStats: { 
+            hp: 86,
+            atk: 63,
+            def: 64,
+            spa: 55,
+            spd: 63,
+            spe: 32
+        },
+        abilities: {
+            0: "Healing Provocation"
+        },
+        heightm: 0.8,
+        weightkg: 20.6,
+		  evos: ["empoleking"],
+        color: "Blue",
+        eggGroups: ["Water 1"],
+    },
     empoleking: {
         num: 7500102,
         species: "Empoleking",
@@ -5908,7 +5935,9 @@ exports.BattlePokedex = {
         },
         heightm: 1.855,
         weightkg: 82,
-        color: "Black",
+		  prevo: "plupoke",
+		  evoLevel: 26,
+        color: "Blue",
         eggGroups: ["Water 1"],
     },
     heathorn: {
@@ -6004,7 +6033,30 @@ exports.BattlePokedex = {
         },
         heightm: 1.46,
         weightkg: 71.9,
-        color: "Black",
+        color: "Gray",
+        eggGroups: ["Undiscovered"],
+    },
+    jelliemega: {
+        num: 7500106,
+        species: "Jellie-Mega",
+        baseSpecies: "Jellie",
+        forme: "Mega",
+        formeLetter: "M",
+        types: ["Ghost", "Fairy"],
+        baseStats: {
+            hp: 90,
+            atk: 140,
+            def: 90,
+            spa: 154,
+            spd: 90,
+            spe: 115
+        },
+        abilities: {
+            0: "Magic Bounce"
+        },
+        heightm: 1.86,
+        weightkg: 92.9,
+        color: "Gray",
         eggGroups: ["Undiscovered"],
     },
     zaggron: {
@@ -6028,7 +6080,7 @@ exports.BattlePokedex = {
         },
         heightm: 1.855,
         weightkg: 206.3,
-        color: "Black",
+        color: "Yellow",
         eggGroups: ["Undiscovered"],
     },
     zaggronmega: {
@@ -6049,9 +6101,9 @@ exports.BattlePokedex = {
         abilities: {
             0: "Filter"
         },
-        heightm: 1.855,
-        weightkg: 206.3,
-        color: "Black",
+        heightm: 1.955,
+        weightkg: 241.3,
+        color: "Yellow",
         eggGroups: ["Undiscovered"],
     },
     malaras: {
@@ -6075,7 +6127,7 @@ exports.BattlePokedex = {
         },
         heightm: 1.995,
         weightkg: 133.5,
-        color: "Black",
+        color: "Blue",
         eggGroups: ["Water 1"],
     },
     umbord: {
@@ -6125,7 +6177,7 @@ exports.BattlePokedex = {
         },
         heightm: 1.805,
         weightkg: 207.5,
-        color: "Black",
+        color: "Red",
         eggGroups: ["Undiscovered"],
     },
     eruptionmega: {
@@ -6146,19 +6198,16 @@ exports.BattlePokedex = {
         abilities: {
             0: "Sheer Force"
         },
-        heightm: 1.805,
-        weightkg: 207.5,
-        color: "Black",
+        heightm: 2.405,
+        weightkg: 308,
+        color: "Red",
         eggGroups: ["Undiscovered"],
     },
     porygardezy: {
         num: 7500111,
         species: "Porygarde-Zy",
         types: ["Normal", "Dragon"],
-        genderRatio: {
-            M: 0.0,
-            F: 0.0
-        },
+        gender: "N",
         baseStats: {
             hp: 97,
             atk: 110,
@@ -6217,7 +6266,7 @@ exports.BattlePokedex = {
         },
         heightm: 1.205,
         weightkg: 69.25,
-        color: "Black",
+        color: "Red",
         eggGroups: ["Bug"],
     },
     sicklemega: {
@@ -6238,19 +6287,16 @@ exports.BattlePokedex = {
         abilities: {
             0: "Technician"
         },
-        heightm: 1.205,
-        weightkg: 69.25,
-        color: "Black",
+        heightm: 1.405,
+        weightkg: 76.25,
+        color: "Red",
         eggGroups: ["Bug"],
     },
     koulion: {
         num: 7500114,
         species: "Koulion",
         types: ["Electric", "Steel"],
-        genderRatio: {
-            M: 0.0,
-            F: 0.0
-        },
+        gender: "N",
         baseStats: {
             hp: 99,
             atk: 102,
@@ -6266,6 +6312,27 @@ exports.BattlePokedex = {
         weightkg: 214,
         color: "Black",
         eggGroups: ["Undiscovered"],
+    },
+    panphan: {
+        num: 750171,
+        species: "Panphan",
+        types: ["Ground", "Fighting"],
+        baseStats: { 
+            hp: 84,
+            atk: 86,
+            def: 70,
+            spa: 48,
+            spd: 50,
+            spe: 50
+        },
+        abilities: {
+            0: "Scrap Heap"
+        },
+        heightm: 0.55,
+        weightkg: 20.75,
+		  evos: ["dongoro"],
+        color: "Blue",
+        eggGroups: ["Field"],
     },
     dongoro: {
         num: 7500115,
@@ -6288,7 +6355,9 @@ exports.BattlePokedex = {
         },
         heightm: 1.6,
         weightkg: 128,
-        color: "Black",
+		  prevo: "panphan",
+		  evoLevel: 28,
+        color: "Gray",
         eggGroups: ["Field"],
     },
 darkchomp: {
@@ -6338,6 +6407,27 @@ darkchomp: {
         color: "Black",
         eggGroups: ["Undiscovered"],
     },
+    friller: {
+        num: 750172,
+        species: "Friller",
+        types: ["Poison", "Water"],
+        baseStats: { 
+            hp: 82,
+            atk: 70,
+            def: 60,
+            spa: 57,
+            spd: 72,
+            spe: 37
+        },
+        abilities: {
+            0: "Cursing Contact"
+        },
+        heightm: 0.55,
+        weightkg: 20.75,
+		  evos: ["jelluk"],
+        color: "White",
+        eggGroups: ["Amorphous"],
+    },
     jelluk: {
         num: 7500117,
         species: "Jelluk",
@@ -6359,7 +6449,9 @@ darkchomp: {
         },
         heightm: 1.7,
         weightkg: 82.5,
-        color: "Black",
+		  prevo: "friller",
+		  evoLevel: 39,
+        color: "White",
         eggGroups: ["Amorphous"],
     },
     crustlecross: {
