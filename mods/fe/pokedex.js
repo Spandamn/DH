@@ -8628,7 +8628,7 @@ darkchomp: {
         heightm: 1.195,
         weightkg: 145.25,
         color: "Red",
-        eggGroups: ["Undiscovered"],
+        eggGroups: ["Mineral"],
     },
     galionzmega: {
         num: 7500164,
@@ -8652,7 +8652,7 @@ darkchomp: {
         heightm: 1.195,
         weightkg: 145.25,
         color: "Red",
-        eggGroups: ["Undiscovered"],
+        eggGroups: ["Mineral"],
     },
     steelweez: {
         num: 7500166,
@@ -11090,8 +11090,7 @@ darkchomp: {
         abilities: {
             0: "Beast's Focus"
         },
-
-
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -11111,8 +11110,7 @@ darkchomp: {
         abilities: {
             0: "Frisky Beast"
         },
-
-
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -11135,8 +11133,7 @@ darkchomp: {
         abilities: {
             0: "Volt Torrent"
         },
-
-
+		  eggGroups: ["Field"],
     },
 
 
@@ -11157,8 +11154,7 @@ darkchomp: {
             0: "Ancient Mariner"
         },
        dexentry: "A rogue team of former Team Rocket members created this fusion. It is said to be able to remove the anchor attached to its head and swing it around crazily for an extremely powerful Power Whip or Anchor Shot. At the same time, it is able to fight with its four arms against any enemies trying to dodge the attack",
-
-
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -11177,10 +11173,8 @@ darkchomp: {
         abilities: {
             0: "Monkey See Monkey Do"
         },
-
-
+		  eggGroups: ["Undiscovered"],
     },
-
 
     aerodako: {
         num: 7500235,
@@ -11201,10 +11195,8 @@ darkchomp: {
         abilities: {
             0: "Rocky Surge"
         },
-
-
+		  eggGroups: ["Undiscovered"],
     },
-
 
     aerodakomega: {
         num: 7500235,
@@ -11228,10 +11220,8 @@ darkchomp: {
         abilities: {
             0: "Tough Claws"
         },
-
-
+		  eggGroups: ["Undiscovered"],
     },
-
 
     tapujojo: {
         num: 7500236,
@@ -11249,11 +11239,8 @@ darkchomp: {
         abilities: {
             0: "Supercharge Surge"
         },
-
-
+		  eggGroups: ["Undiscovered"],
     },
-
-
     magicarticgear: {
         num: 7500237,
         species: "Magic Artic Gear",
@@ -11270,11 +11257,8 @@ darkchomp: {
         abilities: {
             0: "Broken Heart"
         },
-
-
+		  eggGroups: ["Undiscovered"],
     },
-
-
     necroltres: {
         num: 7500238,
         species: "Necroltres",
@@ -11291,10 +11275,8 @@ darkchomp: {
         abilities: {
             0: "Diamond Armor"
         },
-
-
+		  eggGroups: ["Undiscovered"],
     },
-
 
     kartanbull: {
         num: 7500239,
@@ -11312,11 +11294,8 @@ darkchomp: {
         abilities: {
             0: "Subdue"
         },
-
-
+		  eggGroups: ["Monster"],
     },
-
-
     venustoise: {
         num: 7500240,
         species: "Venustoise",
@@ -11337,7 +11316,7 @@ darkchomp: {
             0: "Sun Bath"
         },
     dexentry: "Two of our grunts, who were on the trail of the Pewter and Cerulean Gym Leaders at the time, have encountered a Gastly proficient in the art of illusions. This Gastly used a Venusaur and a Blastoise illusion to scare a Bulbasaur and Squirtle, then combined them to form Venustoise. While the plans to create a Venustoise were postponed for some time, a breakthrough in combining the rarely-seen abilities of Pokémon was discovered, and one of the first fusions to be created from this breakthrough was a live Bulbasquirt. When brought to Level 16, it evolved into an Ivytortle, and at Level 34, Ivytortle evolved into the same fusion depicted back in the Maiden's Peak illusion: Venustoise.",
-
+		  eggGroups: ["Monster"]
     },
 
 
@@ -11363,11 +11342,8 @@ darkchomp: {
         abilities: {
             0: "Thick Fat"
         },
-
-
+		  eggGroups: ["Monster"],
     },
-
-
     venustoisemegab: {
         num: 7500240,
         species: "Venustoise-Mega-Blue",
@@ -11390,11 +11366,8 @@ darkchomp: {
         abilities: {
             0: "Mega Launcher"
         },
-
-
+		  eggGroups: ["Monster"],
     },
-
-
     kingkek: {
         num: 7500241,
         species: "King Kek",
@@ -11410,11 +11383,8 @@ darkchomp: {
         abilities: {
             0: "Lazy Camo"
         },
-
-
+		  eggGroups: ["Field"],
     },
-
-
     sigillow: {
         num: 7500242,
         species: "Sigillow",
@@ -11430,8 +11400,7 @@ darkchomp: {
         abilities: {
             0: "Overwhelming"
         },
-
-
+		  eggGroups: ["Flying"],
     },
     covally: {
         num: 7500243,
@@ -11449,12 +11418,9 @@ darkchomp: {
         abilities: {
             0: "Triage System"
         },
-
-
+		  eggGroups: ["Undiscovered"],
     },
-
-
-    covallyfire: {
+	 covallyfire: {
         num: 7500243,
         species: "Covally-Fire",
         baseSpecies: "Covally",
@@ -11473,12 +11439,9 @@ darkchomp: {
         abilities: {
             0: "Triage System"
         },
-
-
+		  eggGroups: ["Undiscovered"],
     },
-
-
-    covallywater: {
+	 covallywater: {
         num: 7500243,
         species: "Covally-Water",
         baseSpecies: "Covally",
@@ -11497,12 +11460,9 @@ darkchomp: {
         abilities: {
             0: "Triage System"
         },
-
-
+		  eggGroups: ["Undiscovered"],
     },
-
-
-    covallyelectric: {
+	 covallyelectric: {
         num: 7500243,
         species: "Covally-Electric",
         baseSpecies: "Covally",
@@ -11521,11 +11481,8 @@ darkchomp: {
         abilities: {
             0: "Triage System"
         },
-
-
+		  eggGroups: ["Undiscovered"],
     },
-
-
     covallygrass: {
         num: 7500243,
         species: "Covally-Grass",
@@ -11545,11 +11502,8 @@ darkchomp: {
         abilities: {
             0: "Triage System"
         },
-
-
+		  eggGroups: ["Undiscovered"],
     },
-
-
     covallyice: {
         num: 7500243,
         species: "Covally-Ice",
@@ -11569,11 +11523,8 @@ darkchomp: {
         abilities: {
             0: "Triage System"
         },
-
-
+		  eggGroups: ["Undiscovered"],
     },
-
-
     covallyfighting: {
         num: 7500243,
         species: "Covally-Fighting",
@@ -11593,11 +11544,8 @@ darkchomp: {
         abilities: {
             0: "Triage System"
         },
-
-
+		  eggGroups: ["Undiscovered"],
     },
-
-
     covallypoison: {
         num: 7500243,
         species: "Covally-Poison",
@@ -11617,11 +11565,8 @@ darkchomp: {
         abilities: {
             0: "Triage System"
         },
-
-
+		  eggGroups: ["Undiscovered"],
     },
-
-
     covallyground: {
         num: 7500243,
         species: "Covally-Ground",
@@ -11641,11 +11586,8 @@ darkchomp: {
         abilities: {
             0: "Triage System"
         },
-
-
+		  eggGroups: ["Undiscovered"],
     },
-
-
     covallyflying: {
         num: 7500243,
         species: "Covally-Fire",
@@ -11665,11 +11607,8 @@ darkchomp: {
         abilities: {
             0: "Triage System"
         },
-
-
+		  eggGroups: ["Undiscovered"],
     },
-
-
     covallypsychic: {
         num: 7500243,
         species: "Covally-Psychic",
@@ -11689,13 +11628,8 @@ darkchomp: {
         abilities: {
             0: "Triage System"
         },
-
-
+		  eggGroups: ["Undiscovered"],
     },
-
-
-
-
     covallybug: {
         num: 7500243,
         species: "Covally-Bug",
@@ -11715,11 +11649,8 @@ darkchomp: {
         abilities: {
             0: "Triage System"
         },
-
-
+		  eggGroups: ["Undiscovered"],
     },
-
-
     covallyrock: {
         num: 7500243,
         species: "Covally-Rock",
@@ -11739,8 +11670,7 @@ darkchomp: {
         abilities: {
             0: "Triage System"
         },
-
-
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -11763,8 +11693,7 @@ darkchomp: {
         abilities: {
             0: "Triage System"
         },
-
-
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -11787,8 +11716,7 @@ darkchomp: {
         abilities: {
             0: "Triage System"
         },
-
-
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -11811,8 +11739,7 @@ darkchomp: {
         abilities: {
             0: "Triage System"
         },
-
-
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -11835,8 +11762,7 @@ darkchomp: {
         abilities: {
             0: "Triage System"
         },
-
-
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -11859,8 +11785,7 @@ darkchomp: {
         abilities: {
             0: "Triage System"
         },
-
-
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -11879,8 +11804,7 @@ darkchomp: {
         abilities: {
             0: "Regenerator"
         },
-
-
+		  eggGroups: ["Water 1"],
     },
     melon: {
         num: 7500245,
@@ -11898,6 +11822,7 @@ darkchomp: {
         abilities: {
             0: "Pixie Grace"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -11920,6 +11845,7 @@ darkchomp: {
         abilities: {
             0: "Pixie Grace"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -11939,6 +11865,7 @@ darkchomp: {
         abilities: {
             0: "Turborise"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -11958,6 +11885,7 @@ darkchomp: {
         abilities: {
             0: "Pixie Lure"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -11976,6 +11904,7 @@ darkchomp: {
         abilities: {
             0: "Flower Power"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -11997,6 +11926,7 @@ darkchomp: {
         abilities: {
             0: "Desolate Land"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -12016,6 +11946,7 @@ darkchomp: {
         abilities: {
             0: "Normalized Enemy"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -12034,6 +11965,7 @@ darkchomp: {
         abilities: {
             0: "Fungal Shield"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -12053,6 +11985,7 @@ darkchomp: {
         abilities: {
             0: "Pressurate"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -12071,6 +12004,7 @@ darkchomp: {
         abilities: {
             0: "Mana Potion"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -12089,6 +12023,7 @@ darkchomp: {
         abilities: {
             0: "Piercing Gaze"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -12107,6 +12042,7 @@ darkchomp: {
         abilities: {
             0: "Pressured Innards"
         },
+		  eggGroups: ["Undiscovered"],
     },
     omneus: {
         num: 7500255,
@@ -12124,6 +12060,7 @@ darkchomp: {
         abilities: {
             0: "Spiral Power"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -12146,6 +12083,7 @@ darkchomp: {
         abilities: {
             0: "Spiral Power"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -12168,6 +12106,7 @@ darkchomp: {
         abilities: {
             0: "Spiral Power"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -12190,6 +12129,7 @@ darkchomp: {
         abilities: {
             0: "Spiral Power"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -12212,6 +12152,7 @@ darkchomp: {
         abilities: {
             0: "Spiral Power"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -12234,6 +12175,7 @@ darkchomp: {
         abilities: {
             0: "Spiral Power"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -12256,6 +12198,7 @@ darkchomp: {
         abilities: {
             0: "Spiral Power"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -12278,6 +12221,7 @@ darkchomp: {
         abilities: {
             0: "Spiral Power"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -12300,6 +12244,7 @@ darkchomp: {
         abilities: {
             0: "Spiral Power"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -12322,6 +12267,7 @@ darkchomp: {
         abilities: {
             0: "Spiral Power"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -12344,6 +12290,7 @@ darkchomp: {
         abilities: {
             0: "Spiral Power"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -12366,6 +12313,7 @@ darkchomp: {
         abilities: {
             0: "Spiral Power"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -12388,6 +12336,7 @@ darkchomp: {
         abilities: {
             0: "Spiral Power"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -12410,6 +12359,7 @@ darkchomp: {
         abilities: {
             0: "Spiral Power"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -12432,6 +12382,7 @@ darkchomp: {
         abilities: {
             0: "Spiral Power"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -12454,6 +12405,7 @@ darkchomp: {
         abilities: {
             0: "Spiral Power"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -12472,6 +12424,7 @@ darkchomp: {
         abilities: {
             0: "Extremist"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -12493,6 +12446,7 @@ darkchomp: {
         abilities: {
             0: "Refrigerate"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -12512,6 +12466,7 @@ darkchomp: {
         abilities: {
             0: "Queen's Command"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -12530,6 +12485,7 @@ darkchomp: {
         abilities: {
             0: "Guerilla Warfare"
         },
+		  eggGroups: ["Bug"],
     },
 
 
@@ -12551,6 +12507,7 @@ darkchomp: {
         abilities: {
             0: "Technician"
         },
+		  eggGroups: ["Bug"],
     },
 
 
@@ -12570,6 +12527,7 @@ darkchomp: {
         abilities: {
             0: "Soulforged Diamond"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -12592,6 +12550,7 @@ darkchomp: {
         abilities: {
             0: "Sheer Force"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -12610,6 +12569,7 @@ darkchomp: {
         abilities: {
             0: "Cursed Cloak"
         },
+		  eggGroups: ["Amorphous"],
     },
 	
     banekyubusted: {
@@ -12762,6 +12722,7 @@ darkchomp: {
         abilities: {
             0: "Quarantine"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -12780,6 +12741,7 @@ darkchomp: {
         abilities: {
             0: "High Stakes"
         },
+		  eggGroups: ["Field"],
     },
 
 
@@ -12802,6 +12764,7 @@ darkchomp: {
         abilities: {
             0: "Blazing Contrary"
         },
+		  eggGroups: ["Field"],
     },
 
 
@@ -12821,6 +12784,7 @@ darkchomp: {
             0: "Appropriation"
         },
 		 otherFormes: ["mimukyubusted"],
+		  eggGroups: ["Amorphous"],
     },
 	mimukyubusted: {
         num: 7500267,
@@ -12840,6 +12804,7 @@ darkchomp: {
         abilities: {
             0: "Appropriation"
         },
+		  eggGroups: ["Amorphous"],
     },
     axatree: {
         num: 7500268,
@@ -12857,6 +12822,7 @@ darkchomp: {
         abilities: {
             0: "Beast Guard"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -12879,6 +12845,7 @@ darkchomp: {
         abilities: {
             0: "Trace"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -12898,6 +12865,7 @@ darkchomp: {
         abilities: {
             0: "Fear Shield"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -12917,6 +12885,7 @@ darkchomp: {
         abilities: {
             0: "Inverse Armor"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -12936,6 +12905,7 @@ darkchomp: {
         abilities: {
             0: "Frenzy"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -12954,6 +12924,7 @@ darkchomp: {
         abilities: {
             0: "Puffy Cloud"
         },
+		  eggGroups: ["Flying"],
     },
 
 
@@ -12975,6 +12946,7 @@ darkchomp: {
         abilities: {
             0: "Pixilate"
         },
+		  eggGroups: ["Flying"],
     },
 celebi: {
 		num: 251,
@@ -13021,6 +12993,7 @@ celebi: {
             0: "Tinkering"
         },
 		 fusion: ["Riolu", "Celebi"],
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -13028,7 +13001,6 @@ celebi: {
         num: 7500274,
         species: "Combarde",
         types: ["Fighting", "Ground"],
-        gender: "N",
         baseStats: {
             hp: 94,
             atk: 112,
@@ -13040,6 +13012,7 @@ celebi: {
         abilities: {
             0: "Sluggish Aura"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -13059,12 +13032,12 @@ celebi: {
         abilities: {
             0: "Troll"
         },
+		  eggGroups: ["Fairy"],
     },
     aravealola: {
         num: 7500276,
         species: "A Rave-Alola",
         types: ["Electric", "Normal"],
-        gender: "N",
         baseStats: {
             hp: 87,
             atk: 127,
@@ -13076,6 +13049,7 @@ celebi: {
         abilities: {
             0: "Optimize"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -13085,7 +13059,6 @@ celebi: {
         baseSpecies: "A Rave-Alola",
         forme: "Fire",
         formeLetter: "F",
-        gender: "N",
         types: ["Electric", "Fire"],
         baseStats: {
             hp: 87,
@@ -13098,6 +13071,7 @@ celebi: {
         abilities: {
             0: "Optimize"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -13107,7 +13081,6 @@ celebi: {
         baseSpecies: "A Rave-Alola",
         forme: "Water",
         formeLetter: "W",
-        gender: "N",
         types: ["Electric", "Water"],
         baseStats: {
             hp: 87,
@@ -13120,6 +13093,7 @@ celebi: {
         abilities: {
             0: "Optimize"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -13129,8 +13103,7 @@ celebi: {
         baseSpecies: "A Rave-Alola",
         forme: "Electric",
         formeLetter: "E",
-        gender: "N",
-        types: ["Electric", ],
+        types: ["Electric"],
         baseStats: {
             hp: 87,
             atk: 127,
@@ -13142,6 +13115,7 @@ celebi: {
         abilities: {
             0: "Optimize"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -13151,7 +13125,6 @@ celebi: {
         baseSpecies: "A Rave-Alola",
         forme: "Grass",
         formeLetter: "G",
-        gender: "N",
         types: ["Electric", "Grass"],
         baseStats: {
             hp: 87,
@@ -13164,6 +13137,7 @@ celebi: {
         abilities: {
             0: "Optimize"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -13173,7 +13147,6 @@ celebi: {
         baseSpecies: "A Rave-Alola",
         forme: "Ice",
         formeLetter: "I",
-        gender: "N",
         types: ["Electric", "Ice"],
         baseStats: {
             hp: 87,
@@ -13186,6 +13159,7 @@ celebi: {
         abilities: {
             0: "Optimize"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -13194,8 +13168,7 @@ celebi: {
         species: "A Rave-Alola-Fighting",
         baseSpecies: "A Rave-Alola",
         forme: "Fighting",
-        formeLetter: "H",
-        gender: "N",
+        formeLetter: "F",
         types: ["Electric", "Fighting"],
         baseStats: {
             hp: 87,
@@ -13208,6 +13181,7 @@ celebi: {
         abilities: {
             0: "Optimize"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -13217,7 +13191,6 @@ celebi: {
         baseSpecies: "A Rave-Alola",
         forme: "Poison",
         formeLetter: "P",
-        gender: "N",
         types: ["Electric", "Poison"],
         baseStats: {
             hp: 87,
@@ -13230,6 +13203,7 @@ celebi: {
         abilities: {
             0: "Optimize"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -13238,8 +13212,7 @@ celebi: {
         species: "A Rave-Alola-Ground",
         baseSpecies: "A Rave-Alola",
         forme: "Ground",
-        formeLetter: "U",
-        gender: "N",
+        formeLetter: "G",
         types: ["Electric", "Ground"],
         baseStats: {
             hp: 87,
@@ -13252,6 +13225,7 @@ celebi: {
         abilities: {
             0: "Optimize"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -13260,8 +13234,7 @@ celebi: {
         species: "A Rave-Alola-Flying",
         baseSpecies: "A Rave-Alola",
         forme: "Flying",
-        formeLetter: "L",
-        gender: "N",
+        formeLetter: "F",
         types: ["Electric", "Flying"],
         baseStats: {
             hp: 87,
@@ -13274,6 +13247,7 @@ celebi: {
         abilities: {
             0: "Optimize"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -13282,8 +13256,7 @@ celebi: {
         species: "A Rave-Alola-Psychic",
         baseSpecies: "A Rave-Alola",
         forme: "Psychic",
-        formeLetter: "Y",
-        gender: "N",
+        formeLetter: "P",
         types: ["Electric", "Psychic"],
         baseStats: {
             hp: 87,
@@ -13296,6 +13269,7 @@ celebi: {
         abilities: {
             0: "Optimize"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -13305,7 +13279,6 @@ celebi: {
         baseSpecies: "A Rave-Alola",
         forme: "Bug",
         formeLetter: "B",
-        gender: "N",
         types: ["Electric", "Bug"],
         baseStats: {
             hp: 87,
@@ -13318,6 +13291,7 @@ celebi: {
         abilities: {
             0: "Optimize"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -13327,7 +13301,6 @@ celebi: {
         baseSpecies: "A Rave-Alola",
         forme: "Rock",
         formeLetter: "R",
-        gender: "N",
         types: ["Electric", "Rock"],
         baseStats: {
             hp: 87,
@@ -13340,6 +13313,7 @@ celebi: {
         abilities: {
             0: "Optimize"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -13348,8 +13322,7 @@ celebi: {
         species: "A Rave-Alola-Ghost",
         baseSpecies: "A Rave-Alola",
         forme: "Ghost",
-        formeLetter: "O",
-        gender: "N",
+        formeLetter: "G",
         types: ["Electric", "Ghost"],
         baseStats: {
             hp: 87,
@@ -13362,6 +13335,7 @@ celebi: {
         abilities: {
             0: "Optimize"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -13371,7 +13345,6 @@ celebi: {
         baseSpecies: "A Rave-Alola",
         forme: "Dragon",
         formeLetter: "D",
-        gender: "N",
         types: ["Electric", "Fire"],
         baseStats: {
             hp: 87,
@@ -13384,6 +13357,7 @@ celebi: {
         abilities: {
             0: "Optimize"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -13392,8 +13366,7 @@ celebi: {
         species: "A Rave-Alola-Dark",
         baseSpecies: "A Rave-Alola",
         forme: "Dark",
-        formeLetter: "K",
-        gender: "N",
+        formeLetter: "D",
         types: ["Electric", "Dark"],
         baseStats: {
             hp: 87,
@@ -13406,6 +13379,7 @@ celebi: {
         abilities: {
             0: "Optimize"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -13415,7 +13389,6 @@ celebi: {
         baseSpecies: "A Rave-Alola",
         forme: "Steel",
         formeLetter: "S",
-        gender: "N",
         types: ["Electric", "Steel"],
         baseStats: {
             hp: 87,
@@ -13428,6 +13401,7 @@ celebi: {
         abilities: {
             0: "Optimize"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -13436,8 +13410,7 @@ celebi: {
         species: "A Rave-Alola-Fairy",
         baseSpecies: "A Rave-Alola",
         forme: "Fairy",
-        formeLetter: "A",
-        gender: "N",
+        formeLetter: "F",
         types: ["Electric", "Fairy"],
         baseStats: {
             hp: 87,
@@ -13450,6 +13423,7 @@ celebi: {
         abilities: {
             0: "Optimize"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -13472,6 +13446,7 @@ celebi: {
         abilities: {
             0: "Resurrection"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -13497,6 +13472,7 @@ celebi: {
         abilities: {
             0: "Resurrection Done"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -13504,7 +13480,6 @@ celebi: {
         num: 7500278,
         species: "Murkaleo",
         types: ["Flying", "Steel"],
-        gender: "N",
         baseStats: {
             hp: 98,
             atk: 115,
@@ -13516,6 +13491,7 @@ celebi: {
         abilities: {
             0: "Bamboozled"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -13535,6 +13511,7 @@ celebi: {
         abilities: {
             0: "Tetra Force"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -13542,7 +13519,6 @@ celebi: {
         num: 7500280,
         species: "Quinda",
         types: ["Normal", "Flying"],
-        gender: "N",
         baseStats: {
             hp: 102,
             atk: 102,
@@ -13561,7 +13537,6 @@ celebi: {
         num: 7500281,
         species: "Sablegigas",
         types: ["Normal", "Ghost"],
-        gender: "N",
         baseStats: {
             hp: 90,
             atk: 122,
@@ -13573,6 +13548,7 @@ celebi: {
         abilities: {
             0: "Slow Surge"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -13582,7 +13558,6 @@ celebi: {
         baseSpecies: "Sablegigas",
         forme: "Mega",
         formeLetter: "M",
-        gender: "N",
         types: ["Normal", "Ghost"],
         baseStats: {
             hp: 90,
@@ -13595,6 +13570,7 @@ celebi: {
         abilities: {
             0: "Magic Bounce"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -13632,6 +13608,7 @@ celebi: {
         abilities: {
             0: "Electron Rain"
         },
+		  eggGroups: ["Undiscovered"],
     dexentry: "Of the rare cases of a DNA Fusion not being done by Team Rocket. This powerful mermaid-like rodent was created by Team Aqua, after succesful capture of the Blue Orb. Their attempts at testing the Blue Orb on different species reacted with a Minun, which had then recieved Kyogre's powers contained in the Orb, becoming Kyonun. It swims through the oceans at high speeds, and has tremendous power when it is raining, capable of delievering shocks of over 10.000 Volts."
     },
 
@@ -13654,6 +13631,7 @@ celebi: {
         abilities: {
             0: "Primordial Sea"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -13673,6 +13651,7 @@ celebi: {
         abilities: {
             0: "Petrify"
         },
+		  eggGroups: ["Undiscovered"],
     },
     abomasorusmega: {
         num: 7500284,
@@ -13693,6 +13672,7 @@ celebi: {
         abilities: {
             0: "Snow Warning"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -13715,6 +13695,7 @@ celebi: {
         abilities: {
             0: "Triggered"
         },
+		  eggGroups: ["Human-Like"],
     },
 
 
@@ -13737,6 +13718,7 @@ celebi: {
         abilities: {
             0: "Adaptability"
         },
+		  eggGroups: ["Human-Like"],
     },
 
 
@@ -13757,6 +13739,7 @@ celebi: {
         abilities: {
             0: "Mitosis"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -13779,6 +13762,7 @@ celebi: {
         abilities: {
             0: "Mitosis"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -13797,6 +13781,7 @@ celebi: {
         abilities: {
             0: "Prestidigitation"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -13819,6 +13804,7 @@ celebi: {
         abilities: {
             0: "Solar Snow"
         },
+		  eggGroups: ["Field"],
     },
 
 
@@ -13838,6 +13824,7 @@ celebi: {
         abilities: {
             0: "Torrential Rage"
         },
+		  eggGroups: ["Monster"],
     },
 
 
@@ -13860,6 +13847,7 @@ celebi: {
         abilities: {
             0: "Mega Launcher"
         },
+		  eggGroups: ["Monster"],
     },
 
 
@@ -13879,6 +13867,7 @@ celebi: {
         abilities: {
             0: "Fluttering Heart"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -13898,111 +13887,6 @@ celebi: {
             0: "Prototype"
         },
     },
-kecleusbug: { 
-	 num: 7500291,
-	species: "Kecleus-Bug",
-baseSpecies: "Kecleus",
-forme: "Kecleus-Bug",
-formeLetter: "B",
-types: ["Bug"],
-genderRatio: {M: 0.00 , F: 0.00},
-baseStats: {hp: 90, atk: 105, def: 100, spa: 105, spd: 120, spe: 100},
-abilities: {0: "Prototype"},
-heightm: 2.1,
-weightkg: 171,
-color: "Green",
-eggGroups: ["Undiscovered", ], 
-				},
-	
-	kecleusbugdark: { 
-		 num: 7500291,
-		species: "Kecleus-Bug/Dark",
-baseSpecies: "Kecleus",
-forme: "Kecleus-Bug/Dark",
-formeLetter: "BD",
-types: ["Bug", "Dark"],
-genderRatio: {M: 0.00 , F: 0.00},
-baseStats: {hp: 90, atk: 105, def: 100, spa: 105, spd: 120, spe: 100},
-abilities: {0: "Prototype"},
-heightm: 2.1,
-weightkg: 171,
-color: "Green",
-eggGroups: ["Undiscovered", ], },
-	
-	kecleusbugdragon: {  
-		num: 7500291,
-	species: "Kecleus-Bug/Dragon",
-baseSpecies: "Kecleus",
-forme: "Kecleus-Bug/Dragon",
-formeLetter: "BD",
-types: ["Bug", "Dragon"],
-genderRatio: {M: 0.00 , F: 0.00},
-baseStats: {hp: 90, atk: 105, def: 100, spa: 105, spd: 120, spe: 100},
-abilities: {0: "Prototype"},
-heightm: 2.1,
-weightkg: 171,
-color: "Green",
-eggGroups: ["Undiscovered", ], },
-
-	kecleusbugelectric: { 
-		num: 7500291,
-		species: "Kecleus-Bug/Electric",
-baseSpecies: "Kecleus",
-forme: "Kecleus-Bug/Electric",
-formeLetter: "BE",
-types: ["Bug", "Electric"],
-genderRatio: {M: 0.00 , F: 0.00},
-baseStats: {hp: 90, atk: 105, def: 100, spa: 105, spd: 120, spe: 100},
-abilities: {0: "Prototype"},
-heightm: 2.1,
-weightkg: 171,
-color: "Green",
-eggGroups: ["Undiscovered", ], },
-	
-kecleusbugfairy: { 
-	num: 7500291,
-	species: "Kecleus-Bug/Fairy",
-baseSpecies: "Kecleus",
-forme: "Kecleus-Bug/Fairy",
-formeLetter: "BF",
-types: ["Bug", "Fairy"],
-genderRatio: {M: 0.00 , F: 0.00},
-baseStats: {hp: 90, atk: 105, def: 100, spa: 105, spd: 120, spe: 100},
-abilities: {0: "Prototype"},
-heightm: 2.1,
-weightkg: 171,
-color: "Green",
-eggGroups: ["Undiscovered", ], },
-	
-	kecleusbugfighting: { 
-		num: 7500291,
-		species: "Kecleus-Bug/Fighting",
-baseSpecies: "Kecleus",
-forme: "Kecleus-Bug/Fighting",
-formeLetter: "BF",
-types: ["Bug", "Fighting"],
-genderRatio: {M: 0.00 , F: 0.00},
-baseStats: {hp: 90, atk: 105, def: 100, spa: 105, spd: 120, spe: 100},
-abilities: {0: "Prototype"},
-heightm: 2.1,
-weightkg: 171,
-color: "Green",
-eggGroups: ["Undiscovered", ], },
-	
-	kecleusbugifire: { 
-		num: 7500291,
-		species: "Kecleus-Bug/Fire",
-baseSpecies: "Kecleus",
-forme: "Kecleus-Bug/Fire",
-formeLetter: "BF",
-types: ["Bug", "Fire"],
-genderRatio: {M: 0.00 , F: 0.00},
-baseStats: {hp: 90, atk: 105, def: 100, spa: 105, spd: 120, spe: 100},
-abilities: {0: "Prototype"},
-heightm: 2.1,
-weightkg: 171,
-color: "Green",
-eggGroups: ["Undiscovered", ], },
 	
     fearroh: {
         num: 7500292,
@@ -14019,6 +13903,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Sharpshooter"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -14038,6 +13923,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Rubber Up"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -14056,6 +13942,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Turbo Curse"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -14075,6 +13962,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Revved Up"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -14094,6 +13982,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Misty Supercharge"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -14114,6 +14003,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Crystallized Shield"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -14136,6 +14026,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Crystallized Shield"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -14155,6 +14046,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Grassworker"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -14174,6 +14066,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Shadow Guard"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -14192,6 +14085,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Vexing Valor"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -14213,6 +14107,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Aerilate"
         },
+		  eggGroups: ["Undiscovered"],
     },
     giramini: {
         num: 7500301,
@@ -14230,6 +14125,8 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Compression"
         },
+		  eggGroups: ["Undiscovered"],
+		  otherFormes: ["giraminiunleashed"],
     },
     giraminiunleashed: {
         num: 7500301,
@@ -14250,6 +14147,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Compression"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -14267,7 +14165,8 @@ eggGroups: ["Undiscovered", ], },
         },
         abilities: {
             0: "Bubble Slip"
-        },
+		  },
+		  eggGroups: ["Bug"],
        dexentry: "Upon first being encountered in the wild, it was thought to be an UB, due to it's oddity. However, upon more reserach being done, it was discovered that it is one of the many recently discovered hybrids. It is able to walk on water surfaces with it's thin four legs, and has a huge bubble around it's head. It uses bubbles to make the floor slippery to increase it's speed. It's still unknown wether this fusion has two eyes or four, as it was not indentified if it has an eye inside another, compound eyes, or just two huge eyes."
     },
     reshivine: {
@@ -14286,6 +14185,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Spiral Flames"
         },
+		  eggGroups: ["Undiscovered"],
     },
     rosium: {
         num: 7500304,
@@ -14303,6 +14203,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Operation Overgrow"
         },
+		  eggGroups: ["Grass"],
        dexentry: "After evolving from Roseleef, Subject #304 broke out of confinement. Subject #74, even when Mega Evolved, was taken out effortlessly, as was Subject #83. Subject #59, which is only meant to be used in dire situations, was required to restrain it. Subject #304 has been successfully inhibited. Though it still has very strong Grass-type moves, it is no longer likely to effortlessly break through our most defensive fusions.",
     },
 
@@ -14357,6 +14258,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Fearless"
         },
+		  eggGroups: ["Flying"],
     },
 
 
@@ -14376,6 +14278,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Peer Pressure"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -14394,6 +14297,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Time Stop"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -14413,6 +14317,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Upgrade"
         },
+		  eggGroups: ["Undiscovered"],
     },
     darmin: {
         num: 7500310,
@@ -14430,6 +14335,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Rhythm"
         },
+		  eggGroups: ["Field"],
     },
     darmindown: {
         num: 7500310,
@@ -14449,6 +14355,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Rhythm"
         },
+		  eggGroups: ["Field"],
     },
     conkeldurus: {
         num: 7500311,
@@ -14466,6 +14373,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Lightning Fist"
         },
+		  eggGroups: ["Human-Like"],
     },
     fisktres: {
         num: 7500312,
@@ -14482,6 +14390,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Flare Wings"
         },
+		  eggGroups: ["Undiscovered"],
     },
     landana: {
         num: 7500313,
@@ -14499,6 +14408,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Pecking Order"
         },
+		  eggGroups: ["Undiscovered"],
     },
     regimiki: {
         num: 7500314,
@@ -14515,6 +14425,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Vomit"
         },
+		  eggGroups: ["Undiscovered"],
     },
     star: {
         num: 7500315,
@@ -14532,6 +14443,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Magical Wand"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -14554,6 +14466,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Magical Wand"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -14572,6 +14485,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Beast's Copycat"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -14593,6 +14507,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Pixilate"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -14612,6 +14527,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Medical Expert"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -14634,6 +14550,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Pixilate"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -14652,6 +14569,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Bad Influence"
         },
+		  eggGroups: ["Bug"],
     },
 
 
@@ -14671,6 +14589,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Scout"
         },
+		  eggGroups: ["Bug"],
     },
 
 
@@ -14689,6 +14608,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Rejuvenation"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -14710,6 +14630,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Shell Armor"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -14717,7 +14638,6 @@ eggGroups: ["Undiscovered", ], },
         num: 7500321,
         species: "Zycannon",
         types: ["Ground", "Normal"],
-        gender: "N",
         baseStats: {
             hp: 67,
             atk: 130,
@@ -14729,6 +14649,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Force Drain"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -14748,6 +14669,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Foundation"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -14770,6 +14692,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Foundation"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -14798,6 +14721,7 @@ eggGroups: ["Undiscovered", ], },
         baseSpecies: "Peridot",
         forme: "Mega",
         formeLetter: "M",
+		  gender: "N",
         types: ["Flying", "Electric"],
         baseStats: {
             hp: 83,
@@ -14810,6 +14734,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "No Guard"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -14828,6 +14753,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Dirt Nap"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -14846,6 +14772,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Hydrodynamic"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -14867,6 +14794,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Strong Jaw"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -14885,6 +14813,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Engineer"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -14903,6 +14832,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Blessed Protection"
         },
+		  eggGroups: ["Amorphous"],
     },
 
 
@@ -14922,6 +14852,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Barbs Boost"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -14941,6 +14872,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Mirror Mirror"
         },
+		  eggGroups: ["Field"],
     },
 
 
@@ -14960,6 +14892,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Atmospheric Pull"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -14982,6 +14915,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Desolate Land"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -14989,7 +14923,6 @@ eggGroups: ["Undiscovered", ], },
         num: 7500331,
         species: "Kyurpedo",
         types: ["Ice", "Dark"],
-        gender: "N",
         baseStats: {
             hp: 105,
             atk: 145,
@@ -15001,6 +14934,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Volt Boost"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -15010,7 +14944,6 @@ eggGroups: ["Undiscovered", ], },
         baseSpecies: "Kyurpedo",
         forme: "Mega",
         formeLetter: "M",
-        gender: "N",
         types: ["Ice", "Dark"],
         baseStats: {
             hp: 105,
@@ -15023,6 +14956,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Strong Jaw"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -15060,6 +14994,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Land's Shield"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -15081,6 +15016,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Sheer Force"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -15100,6 +15036,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Danceposter"
         },
+		  eggGroups: ["Flying"],
     },
 
 
@@ -15119,6 +15056,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Night Terror"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -15137,6 +15075,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Merciless Beast"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -15155,6 +15094,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Royal Strength"
         },
+		  eggGroups: ["Field"],
     },
 
 
@@ -15173,6 +15113,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Godlike Powers"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -15192,6 +15133,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Soften Up"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -15210,6 +15152,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Tricky Glare"
         },
+		  eggGroups: ["Field"],
     },
 
 
@@ -15228,6 +15171,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Confiscation"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -15247,6 +15191,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Misty Mind"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -15266,6 +15211,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Familiar Maneuvering"
         },
+		  eggGroups: ["Mineral"],
     },
 
 
@@ -15285,6 +15231,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Stat Harvesting"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -15304,6 +15251,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Ability"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -15323,6 +15271,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Type Trap"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -15342,6 +15291,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Uninhabitable"
         },
+		  eggGroups: ["Monster"],
     },
 
 
@@ -15364,6 +15314,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Swift Swim"
         },
+		  eggGroups: ["Monster"],
     },
 
 
@@ -15403,6 +15354,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Huge Bubble"
         },
+		  eggGroups: ["Water 2"],
     },
 
 
@@ -15422,6 +15374,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Constellation"
         },
+		  eggGroups: ["Flying"],
     },
 
 
@@ -15444,6 +15397,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Pixilate"
         },
+		  eggGroups: ["Flying"],
     },
     scrafting: {
         num: 7500351,
@@ -15460,6 +15414,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Stare Down"
         },
+		  eggGroups: ["Field"],
     },
 
 
@@ -15478,6 +15433,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Ambition"
         },
+		  eggGroups: ["Flying"],
     },
 
 
@@ -15499,6 +15455,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "No Guard"
         },
+		  eggGroups: ["Flying"],
     },
 
 
@@ -15518,6 +15475,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Power Surge"
         },
+		  eggGroups: ["Field"],
     },
 
 
@@ -15540,6 +15498,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Magic Bounce"
         },
+		  eggGroups: ["Field"],
     },
 
 
@@ -15559,6 +15518,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Power Of Two"
         },
+		  eggGroups: ["Water 1"],
     },
 
 
@@ -15578,6 +15538,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Lava Dive"
         },
+		  eggGroups: ["Field"],
     },
 
 
@@ -15597,6 +15558,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Sheer Fat"
         },
+		  eggGroups: ["Monster"],
     },
 
 
@@ -15616,6 +15578,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Ocean Shield"
         },
+		  eggGroups: ["Water 1"],
     },
 
 
@@ -15635,6 +15598,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Chlorocoat"
         },
+		  eggGroups: ["Field"],
     },
 
 
@@ -16136,6 +16100,7 @@ mimiblimbusted: {
         abilities: {
             0: "Move~Stat"
         },
+		  eggGroups: ["Field"],
     },
 
 
@@ -17486,15 +17451,12 @@ mimiblimbusted: {
         abilities: {
             0: "Miracle Morph"
         },
+		  eggGroups: ["Undiscovered"],
     },
     nintwo: {
         num: 7500425,
         species: "Nintwo",
         types: ["Bug", "Psychic"],
-        genderRatio: {
-            M: 50.0,
-            F: 50.0
-        },
         baseStats: {
             hp: 83,
             atk: 100,
@@ -17506,6 +17468,7 @@ mimiblimbusted: {
         abilities: {
             0: "Speed Stopper"
         },
+		  eggGroups: ["Undiscovered"],
     },
     nintwomegax: {
         num: 7500425,
@@ -17525,6 +17488,7 @@ mimiblimbusted: {
         abilities: {
             0: "Steadfast"
         },
+		  eggGroups: ["Undiscovered"],
     },
     nintwomegay: {
         num: 7500425,
@@ -17544,15 +17508,12 @@ mimiblimbusted: {
         abilities: {
             0: "Insomnia"
         },
+		  eggGroups: ["Undiscovered"],
     },
     kommew: {
         num: 7500426,
         species: "Kommew",
         types: ["Fighting", "Psychic"],
-        genderRatio: {
-            M: 50.0,
-            F: 50.0
-        },
         baseStats: {
             hp: 107,
             atk: 105,
@@ -17593,10 +17554,6 @@ mimiblimbusted: {
         num: 7500428,
         species: "Pelippex",
         types: ["Water", "Poison"],
-        genderRatio: {
-            M: 50.0,
-            F: 50.0
-        },
         baseStats: {
             hp: 65,
             atk: 66,
@@ -19128,7 +19085,6 @@ auroritarmega: {
 		num: 7500468,
 		species: "Gholemise-Alola",
 		types: ["Electric", "Grass"],
-		gender: "N",
 		baseStats: {
 			hp: 85,
 			atk: 135,
@@ -19142,7 +19098,7 @@ auroritarmega: {
 		},
 		  heightm: 2.8,
 		  weightkg: 263,
-		  eggGroups: ["Undiscovered"],
+		  eggGroups: ["Mineral"],
 	},
 	tallsteelegg: {
 		num: 7500469,
