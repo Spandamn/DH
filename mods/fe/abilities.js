@@ -8899,25 +8899,25 @@ exports.BattleAbilities = {
 		name: "Magic Mirror",
 		onTryHitPriority: 1,
 		onTryHit: function (target, source, move) {
-			if (((target === source || !move.flags['reflectable']) && move.type !== 'Dark') || move.hasBounced) {
+			if ((target === source || (!move.flags['reflectable'] || move.type !== 'Dark')) || move.hasBounced) {
 				return;
 			}
 			let newMove = this.getMoveCopy(move.id);
 			newMove.hasBounced = true;
 			newMove.pranksterBoosted = false;
 			this.boost({atk: 1}, target);
-  	      target.useMove(newMove, target, source);
+  	      this.useMove(newMove, target, source);
 			return null;
 		},
 		onAllyTryHitSide: function (target, source, move) {
-			if (((target === source || !move.flags['reflectable']) && move.type !== 'Dark') || move.hasBounced) {
+			if ((target === source || (!move.flags['reflectable'] || move.type !== 'Dark')) || move.hasBounced) {
 				return;
 			}
 			let newMove = this.getMoveCopy(move.id);
 			newMove.hasBounced = true;
 			newMove.pranksterBoosted = false;
 			this.boost({atk: 1}, target);
-  	      target.useMove(newMove, this.effectData.target, source);
+  	      this.useMove(newMove, this.effectData.target, source);
 			return null;
 		},
 		effect: {

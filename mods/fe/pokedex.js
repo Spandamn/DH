@@ -4898,7 +4898,7 @@ exports.BattlePokedex = {
         },
         heightm: 0.85,
         weightkg: 18.9,
-		  prevo: "porydile",
+		  prevo: "happipi",
 		  evos: ["blisskiss"],
 		  evoLevel: 2,
         color: "White",
@@ -4927,6 +4927,27 @@ exports.BattlePokedex = {
         color: "White",
         eggGroups: ["Fairy"],
     },
+    gunkpawn: {
+        num: 750161,
+        species: "Gunk Pawn",
+        types: ["Steel", "Poison"],
+        baseStats: {
+            hp: 51,
+            atk: 88,
+            def: 55,
+            spa: 60,
+            spd: 45,
+            spe: 65
+        },
+        abilities: {
+            0: "Sharp Armor"
+        },
+        heightm: 0.6,
+        weightkg: 16.6,
+		  evos: ["toxisharp"],
+        color: "Red",
+        eggGroups: ["Human-Like"],
+    },
     toxisharp: {
         num: 750084,
         species: "Toxisharp",
@@ -4948,7 +4969,9 @@ exports.BattlePokedex = {
         },
         heightm: 1.45,
         weightkg: 57.2,
-        color: "Black",
+		  prevo: "gunkpawn",
+		  evoLevel: 44,
+        color: "Red",
         eggGroups: ["Human-Like"],
     },
     darmega: {
@@ -4979,10 +5002,7 @@ exports.BattlePokedex = {
         num: 750086,
         species: "Lag-I",
         types: ["Ground", "Ice"],
-        genderRatio: {
-            M: 0.0,
-            F: 0.0
-        },
+        gender: "M",
         baseStats: {
             hp: 84,
             atk: 112,
@@ -4996,7 +5016,31 @@ exports.BattlePokedex = {
         },
         heightm: 1.5,
         weightkg: 162.25,
-        color: "Black",
+        color: "Gray",
+        eggGroups: ["Undiscovered"],
+    },
+    lagimega: {
+        num: 750086,
+        species: "Lag-I-Mega",
+        baseSpecies: "Lag-I",
+        forme: "Mega",
+        formeLetter: "M",
+        types: ["Ground", "Ice"],
+        gender: "M",
+        baseStats: {
+            hp: 84,
+            atk: 152,
+            def: 85,
+            spa: 147,
+            spd: 80,
+            spe: 130
+        },
+        abilities: {
+            0: "Refrigerate"
+        },
+        heightm: 2.1,
+        weightkg: 255.95,
+        color: "Gray",
         eggGroups: ["Undiscovered"],
     },
     heatloom: {
@@ -5023,15 +5067,34 @@ exports.BattlePokedex = {
         color: "Black",
         eggGroups: ["Undiscovered"],
     },
+    golone: {
+        num: 750162,
+        species: "Golone",
+        types: ["Ghost", "Steel"],
+        gender: "N",
+        baseStats: {
+            hp: 51,
+            atk: 88,
+            def: 55,
+            spa: 60,
+            spd: 45,
+            spe: 65
+        },
+        abilities: {
+            0: "En Garde"
+        },
+        heightm: 0.9,
+        weightkg: 47,
+		  evos: ["golislash"],
+        color: "Blue",
+        eggGroups: ["Mineral"],
+    },
     golislash: {
         num: 750088,
         species: "Golislash",
 		  baseForme: "Defense",
         types: ["Ghost", "Steel"],
-        genderRatio: {
-            M: 0.0,
-            F: 0.0
-        },
+        gender: "N",
         baseStats: {
             hp: 74,
             atk: 87,
@@ -5045,8 +5108,10 @@ exports.BattlePokedex = {
         },
         heightm: 2.245,
         weightkg: 191.5,
-        color: "Black",
-        eggGroups: ["Undiscovered"],
+		  prevo: "golone",
+		  evoLevel: 39,
+        color: "Brown",
+        eggGroups: ["Mineral"],
     },
     golislashpower: {
         num: 750088,
@@ -5055,10 +5120,7 @@ exports.BattlePokedex = {
         forme: "Power",
         formeLetter: "P",
         types: ["Ghost", "Steel"],
-        genderRatio: {
-            M: 0.0,
-            F: 0.0
-        },
+        gender: "N",
         baseStats: {
             hp: 74,
             atk: 115,
@@ -5070,10 +5132,10 @@ exports.BattlePokedex = {
         abilities: {
             0: "Combination Drive"
         },
-        heightm: 2.245,
-        weightkg: 191.5,
-        color: "Black",
-        eggGroups: ["Undiscovered"],
+		  prevo: "golone",
+		  evoLevel: 39,
+        color: "Brown",
+        eggGroups: ["Mineral"],
     },
     hooporus: {
         num: 750089,
@@ -5146,6 +5208,27 @@ exports.BattlePokedex = {
         color: "Black",
         eggGroups: ["Undiscovered"],
     },
+    larvatrap: {
+        num: 750163,
+        species: "Larvatrap",
+        types: ["Fire", "Ground"],
+        baseStats: {
+            hp: 59,
+            atk: 105,
+            def: 59,
+            spa: 52,
+            spd: 59,
+            spe: 40
+        },
+        abilities: {
+            0: "Pit of Flame"
+        },
+        heightm: 0.9,
+        weightkg: 21.9,
+		  evos: ["volcagon"],
+        color: "Red",
+        eggGroups: ["Bug"],
+    },
     volcagon: {
         num: 750091,
         species: "Volcagon",
@@ -5167,17 +5250,16 @@ exports.BattlePokedex = {
         },
         heightm: 1.805,
         weightkg: 64,
-        color: "Black",
+		  prevo: "larvatrap",
+		  evoLevel: 49,
+        color: "Green",
         eggGroups: ["Bug"],
     },
     enterrak: {
         num: 750092,
         species: "Enterrak",
         types: ["Fire", "Fighting"],
-        genderRatio: {
-            M: 0.0,
-            F: 0.0
-        },
+        gender: "N",
         baseStats: {
             hp: 112,
             atk: 132,
@@ -5236,10 +5318,31 @@ exports.BattlePokedex = {
         abilities: {
             0: "Tough Claws"
         },
-        heightm: 1.495,
-        weightkg: 41.95,
+        heightm: 1.795,
+        weightkg: 61.95,
         color: "Black",
         eggGroups: ["Flying"],
+    },
+    sansjr: {
+        num: 750164,
+        species: "Sans Jr.",
+        types: ["Normal", "Ground"],
+        baseStats: {
+            hp: 70,
+            atk: 77,
+            def: 87,
+            spa: 37,
+            spd: 47,
+            spe: 50
+        },
+        abilities: {
+            0: "Lazy Bones"
+        },
+        heightm: 0.7,
+        weightkg: 18,
+		  evos: ["sans"],
+        color: "Brown",
+        eggGroups: ["Field"],
     },
     sans: {
         num: 750094,
@@ -5262,7 +5365,9 @@ exports.BattlePokedex = {
         },
         heightm: 1.5,
         weightkg: 80,
-        color: "Black",
+		  prevo: "sansjr",
+		  evoLevel: 24,
+        color: "Brown",
         eggGroups: ["Field"],
     },
     lucasol: {
@@ -5307,8 +5412,8 @@ exports.BattlePokedex = {
         abilities: {
             0: "Adaptability"
         },
-        heightm: 1.19,
-        weightkg: 50.5,
+        heightm: 1.29,
+        weightkg: 54,
         color: "Black",
         eggGroups: ["Field"],
     },
@@ -5331,9 +5436,61 @@ exports.BattlePokedex = {
             0: "Magic Bounce"
         },
         heightm: 1.19,
-        weightkg: 50.5,
+        weightkg: 52.5,
         color: "Black",
         eggGroups: ["Field"],
+    },
+    treesaur: {
+        num: 750165,
+        species: "Treesaur",
+        types: ["Poison", "Grass"],
+        genderRatio: {
+            M: 87.5,
+            F: 12.5
+        },
+        baseStats: {
+            hp: 62,
+            atk: 67,
+            def: 52,
+            spa: 75,
+            spd: 70,
+            spe: 67
+        },
+        abilities: {
+            0: "Overgrow"
+        },
+        heightm: 0.6,
+        weightkg: 5.95,
+		  evos: ["vylesaur"],
+        color: "Green",
+        eggGroups: ["Monster"],
+    },
+    vylesaur: {
+        num: 750166,
+        species: "Vylesaur",
+        types: ["Poison", "Grass"],
+        genderRatio: {
+            M: 87.5,
+            F: 12.5
+        },
+        baseStats: {
+            hp: 70,
+            atk: 78,
+            def: 69,
+            spa: 97,
+            spd: 87,
+            spe: 92
+        },
+        abilities: {
+            0: "Overgrow"
+        },
+        heightm: 0.95,
+        weightkg: 17.3,
+		  prevo: "treesaur",
+		  evos: ["sceptilusaur"],
+		  evoLevel: 16,
+        color: "Green",
+        eggGroups: ["Monster"],
     },
     sceptilusaur: {
         num: 750096,
@@ -5356,6 +5513,8 @@ exports.BattlePokedex = {
         },
         heightm: 1.855,
         weightkg: 76.1,
+		  prevo: "vylesaur",
+		  evoLevel: 34,
         color: "Green",
         eggGroups: ["Monster"],
     },
@@ -5377,8 +5536,8 @@ exports.BattlePokedex = {
         abilities: {
             0: "Thick Fat"
         },
-        heightm: 1.855,
-        weightkg: 76.1,
+        heightm: 2.255,
+        weightkg: 131.6,
         color: "Green",
         eggGroups: ["Monster"],
     },
@@ -5400,10 +5559,31 @@ exports.BattlePokedex = {
         abilities: {
             0: "Lightning Rod"
         },
-        heightm: 1.855,
-        weightkg: 76.1,
+        heightm: 2.055,
+        weightkg: 79.1,
         color: "Green",
         eggGroups: ["Monster"],
+    },
+    dourike: {
+        num: 750167,
+        species: "Dourike",
+        types: ["Electric", "Dark"],
+        baseStats: {
+            hp: 50,
+            atk: 60,
+            def: 40,
+            spa: 81,
+            spd: 50,
+            spe: 80
+        },
+        abilities: {
+            0: "Thunderous Embers"
+        },
+        heightm: 0.6,
+        weightkg: 13,
+		  evos: ["houndectric"],
+        color: "Black",
+        eggGroups: ["Field"],
     },
     houndectric: {
         num: 750097,
@@ -5426,6 +5606,8 @@ exports.BattlePokedex = {
         },
         heightm: 1.45,
         weightkg: 37.6,
+		  prevo: "dourike",
+		  evoLevel: 25,
         color: "Black",
         eggGroups: ["Field"],
     },
@@ -5447,8 +5629,8 @@ exports.BattlePokedex = {
         abilities: {
             0: "Intimidate"
         },
-        heightm: 1.45,
-        weightkg: 37.6,
+        heightm: 1.75,
+        weightkg: 41.4,
         color: "Black",
         eggGroups: ["Field"],
     },
@@ -5470,8 +5652,29 @@ exports.BattlePokedex = {
         abilities: {
             0: "Solar Power"
         },
-        heightm: 1.45,
-        weightkg: 37.6,
+        heightm: 1.95,
+        weightkg: 52.1,
+        color: "Black",
+        eggGroups: ["Field"],
+    },
+    whisdour: {
+        num: 750168,
+        species: "Whisdour",
+        types: ["Normal", "Fire"],
+        baseStats: { 
+            hp: 59,
+            atk: 60,
+            def: 36,
+            spa: 70,
+            spd: 46,
+            spe: 61
+        },
+        abilities: {
+            0: "Mix Tape"
+        },
+        heightm: 0.6,
+        weightkg: 13.55,
+		  evos: ["exdoom"],
         color: "Black",
         eggGroups: ["Field"],
     },
@@ -5496,6 +5699,8 @@ exports.BattlePokedex = {
         },
         heightm: 1.45,
         weightkg: 59.5,
+		  prevo: "whisdour",
+		  evoLevel: 27,
         color: "Black",
         eggGroups: ["Field"],
     },
@@ -5517,10 +5722,31 @@ exports.BattlePokedex = {
         abilities: {
             0: "Solar Power"
         },
-        heightm: 1.45,
-        weightkg: 59.5,
+        heightm: 1.95,
+        weightkg: 74,
         color: "Black",
         eggGroups: ["Field"],
+    },
+    karpon: {
+        num: 750169,
+        species: "Karpon",
+        types: ["Water", "Dragon"],
+        baseStats: { 
+            hp: 37,
+            atk: 57,
+            def: 62,
+            spa: 32,
+            spd: 40,
+            spe: 70
+        },
+        abilities: {
+            0: "Coward"
+        },
+        heightm: 0.75,
+        weightkg: 26.05,
+		  evos: ["gyaramence"],
+        color: "Red",
+        eggGroups: ["Dragon"],
     },
     gyaramence: {
         num: 750099,
@@ -5543,7 +5769,9 @@ exports.BattlePokedex = {
         },
         heightm: 4,
         weightkg: 168.8,
-        color: "Black",
+		  prevo: "karpon",
+		  evoLevel: 30,
+        color: "Blue",
         eggGroups: ["Dragon"],
     },
     gyaramencemegag: {
@@ -5565,8 +5793,8 @@ exports.BattlePokedex = {
             0: "Mold Breaker"
         },
         heightm: 4,
-        weightkg: 168.8,
-        color: "Black",
+        weightkg: 248.8,
+        color: "Blue",
         eggGroups: ["Dragon"],
     },
     gyaramencemegas: {
@@ -5587,9 +5815,9 @@ exports.BattlePokedex = {
         abilities: {
             0: "Aerilate"
         },
-        heightm: 4,
-        weightkg: 168.8,
-        color: "Black",
+        heightm: 4.3,
+        weightkg: 178.8,
+        color: "Blue",
         eggGroups: ["Dragon"],
     },
     thunderblast: {
@@ -5633,7 +5861,7 @@ exports.BattlePokedex = {
             0: "Mega Launcher"
         },
         heightm: 2.3,
-        weightkg: 73.25,
+        weightkg: 88.85,
         color: "Black",
         eggGroups: ["Undiscovered"],
     },
@@ -5661,6 +5889,31 @@ exports.BattlePokedex = {
         color: "Black",
         eggGroups: ["Undiscovered"],
     },
+    plupoke: {
+        num: 750170,
+        species: "Plupoke",
+        types: ["Water", "Psychic"],
+        genderRatio: {
+            M: 75.0,
+            F: 25.0
+        },
+        baseStats: { 
+            hp: 86,
+            atk: 63,
+            def: 64,
+            spa: 55,
+            spd: 63,
+            spe: 32
+        },
+        abilities: {
+            0: "Healing Provocation"
+        },
+        heightm: 0.8,
+        weightkg: 20.6,
+		  evos: ["empoleking"],
+        color: "Blue",
+        eggGroups: ["Water 1"],
+    },
     empoleking: {
         num: 7500102,
         species: "Empoleking",
@@ -5682,7 +5935,9 @@ exports.BattlePokedex = {
         },
         heightm: 1.855,
         weightkg: 82,
-        color: "Black",
+		  prevo: "plupoke",
+		  evoLevel: 26,
+        color: "Blue",
         eggGroups: ["Water 1"],
     },
     heathorn: {
@@ -5778,7 +6033,30 @@ exports.BattlePokedex = {
         },
         heightm: 1.46,
         weightkg: 71.9,
-        color: "Black",
+        color: "Gray",
+        eggGroups: ["Undiscovered"],
+    },
+    jelliemega: {
+        num: 7500106,
+        species: "Jellie-Mega",
+        baseSpecies: "Jellie",
+        forme: "Mega",
+        formeLetter: "M",
+        types: ["Ghost", "Fairy"],
+        baseStats: {
+            hp: 90,
+            atk: 140,
+            def: 90,
+            spa: 154,
+            spd: 90,
+            spe: 115
+        },
+        abilities: {
+            0: "Magic Bounce"
+        },
+        heightm: 1.86,
+        weightkg: 92.9,
+        color: "Gray",
         eggGroups: ["Undiscovered"],
     },
     zaggron: {
@@ -5802,7 +6080,7 @@ exports.BattlePokedex = {
         },
         heightm: 1.855,
         weightkg: 206.3,
-        color: "Black",
+        color: "Yellow",
         eggGroups: ["Undiscovered"],
     },
     zaggronmega: {
@@ -5823,9 +6101,9 @@ exports.BattlePokedex = {
         abilities: {
             0: "Filter"
         },
-        heightm: 1.855,
-        weightkg: 206.3,
-        color: "Black",
+        heightm: 1.955,
+        weightkg: 241.3,
+        color: "Yellow",
         eggGroups: ["Undiscovered"],
     },
     malaras: {
@@ -5849,7 +6127,7 @@ exports.BattlePokedex = {
         },
         heightm: 1.995,
         weightkg: 133.5,
-        color: "Black",
+        color: "Blue",
         eggGroups: ["Water 1"],
     },
     umbord: {
@@ -5899,7 +6177,7 @@ exports.BattlePokedex = {
         },
         heightm: 1.805,
         weightkg: 207.5,
-        color: "Black",
+        color: "Red",
         eggGroups: ["Undiscovered"],
     },
     eruptionmega: {
@@ -5920,19 +6198,16 @@ exports.BattlePokedex = {
         abilities: {
             0: "Sheer Force"
         },
-        heightm: 1.805,
-        weightkg: 207.5,
-        color: "Black",
+        heightm: 2.405,
+        weightkg: 308,
+        color: "Red",
         eggGroups: ["Undiscovered"],
     },
     porygardezy: {
         num: 7500111,
         species: "Porygarde-Zy",
         types: ["Normal", "Dragon"],
-        genderRatio: {
-            M: 0.0,
-            F: 0.0
-        },
+        gender: "N",
         baseStats: {
             hp: 97,
             atk: 110,
@@ -5991,7 +6266,7 @@ exports.BattlePokedex = {
         },
         heightm: 1.205,
         weightkg: 69.25,
-        color: "Black",
+        color: "Red",
         eggGroups: ["Bug"],
     },
     sicklemega: {
@@ -6012,19 +6287,16 @@ exports.BattlePokedex = {
         abilities: {
             0: "Technician"
         },
-        heightm: 1.205,
-        weightkg: 69.25,
-        color: "Black",
+        heightm: 1.405,
+        weightkg: 76.25,
+        color: "Red",
         eggGroups: ["Bug"],
     },
     koulion: {
         num: 7500114,
         species: "Koulion",
         types: ["Electric", "Steel"],
-        genderRatio: {
-            M: 0.0,
-            F: 0.0
-        },
+        gender: "N",
         baseStats: {
             hp: 99,
             atk: 102,
@@ -6040,6 +6312,27 @@ exports.BattlePokedex = {
         weightkg: 214,
         color: "Black",
         eggGroups: ["Undiscovered"],
+    },
+    panphan: {
+        num: 750171,
+        species: "Panphan",
+        types: ["Ground", "Fighting"],
+        baseStats: { 
+            hp: 84,
+            atk: 86,
+            def: 70,
+            spa: 48,
+            spd: 50,
+            spe: 50
+        },
+        abilities: {
+            0: "Scrap Heap"
+        },
+        heightm: 0.55,
+        weightkg: 20.75,
+		  evos: ["dongoro"],
+        color: "Blue",
+        eggGroups: ["Field"],
     },
     dongoro: {
         num: 7500115,
@@ -6062,7 +6355,9 @@ exports.BattlePokedex = {
         },
         heightm: 1.6,
         weightkg: 128,
-        color: "Black",
+		  prevo: "panphan",
+		  evoLevel: 28,
+        color: "Gray",
         eggGroups: ["Field"],
     },
 darkchomp: {
@@ -6112,6 +6407,27 @@ darkchomp: {
         color: "Black",
         eggGroups: ["Undiscovered"],
     },
+    friller: {
+        num: 750172,
+        species: "Friller",
+        types: ["Poison", "Water"],
+        baseStats: { 
+            hp: 82,
+            atk: 70,
+            def: 60,
+            spa: 57,
+            spd: 72,
+            spe: 37
+        },
+        abilities: {
+            0: "Cursing Contact"
+        },
+        heightm: 0.55,
+        weightkg: 20.75,
+		  evos: ["jelluk"],
+        color: "White",
+        eggGroups: ["Amorphous"],
+    },
     jelluk: {
         num: 7500117,
         species: "Jelluk",
@@ -6133,7 +6449,9 @@ darkchomp: {
         },
         heightm: 1.7,
         weightkg: 82.5,
-        color: "Black",
+		  prevo: "friller",
+		  evoLevel: 39,
+        color: "White",
         eggGroups: ["Amorphous"],
     },
     crustlecross: {
@@ -6178,8 +6496,8 @@ darkchomp: {
         abilities: {
             0: "Skill Link"
         },
-        heightm: 1.45,
-        weightkg: 127,
+        heightm: 1.65,
+        weightkg: 135.5,
         color: "Black",
         eggGroups: ["Bug"],
     },
@@ -6205,16 +6523,35 @@ darkchomp: {
         heightm: 0.645,
         weightkg: 6.7,
         color: "Black",
+        eggGroups: ["Fairy"],
+    },
+    magnebas: {
+        num: 750173,
+        species: "Magnebas",
+        types: ["Water", "Electric"],
+		  gender: "N",
+        baseStats: { 
+            hp: 30,
+            atk: 25,
+            def: 50,
+            spa: 67,
+            spd: 55,
+            spe: 64
+        },
+        abilities: {
+            0: "Adaptive Clutch"
+        },
+        heightm: 0.45,
+        weightkg: 6.7,
+		  evos: ["magnetic"],
+        color: "Gray",
         eggGroups: ["Undiscovered"],
     },
     magnetic: {
         num: 7500120,
         species: "Magnetic",
         types: ["Water", "Electric"],
-        genderRatio: {
-            M: 0.0,
-            F: 0.0
-        },
+		  gender: "N",
         baseStats: {
             hp: 102,
             atk: 65,
@@ -6228,7 +6565,31 @@ darkchomp: {
         },
         heightm: 3.695,
         weightkg: 171,
-        color: "Black",
+		  prevo: "magnebas",
+		  evoLevel: 30,
+        color: "Gray",
+        eggGroups: ["Undiscovered"],
+    },
+    zorugon: {
+        num: 750174,
+        species: "Zorugon",
+        types: ["Normal", "Dark"],
+		  gender: "N",
+        baseStats: { 
+            hp: 52,
+            atk: 62,
+            def: 60,
+            spa: 97,
+            spd: 62,
+            spe: 57
+        },
+        abilities: {
+            0: "Trace Mirage"
+        },
+        heightm: 0.45,
+        weightkg: 6.7,
+		  evos: ["zorogonz"],
+        color: "Red",
         eggGroups: ["Undiscovered"],
     },
     zorogonz: {
@@ -6249,17 +6610,16 @@ darkchomp: {
         },
         heightm: 1.245,
         weightkg: 57.55,
-        color: "Black",
+		  prevo: "zorugon",
+		  evoLevel: 30,
+        color: "Red",
         eggGroups: ["Undiscovered"],
     },
     thundini: {
         num: 7500122,
         species: "Thundini",
         types: ["Electric", "Fire"],
-        genderRatio: {
-            M: 0.0,
-            F: 0.0
-        },
+        gender: "M",
         baseStats: {
             hp: 90,
             atk: 118,
@@ -6275,6 +6635,27 @@ darkchomp: {
         weightkg: 32.5,
         color: "Black",
         eggGroups: ["Undiscovered"],
+    },
+    cleahorch: {
+        num: 750175,
+        species: "Cleahorch",
+        types: ["Water"],
+        baseStats: { 
+            hp: 45,
+            atk: 51,
+            def: 71,
+            spa: 79,
+            spd: 49,
+            spe: 67
+        },
+        abilities: {
+            0: "Storm Launcher"
+        },
+        heightm: 0.45,
+        weightkg: 8.15,
+		  evos: ["clawdra"],
+        color: "Blue",
+        eggGroups: ["Water 1"],
     },
     clawdra: {
         num: 7500123,
@@ -6297,7 +6678,9 @@ darkchomp: {
         },
         heightm: 0.955,
         weightkg: 32.5,
-        color: "Black",
+		  prevo: "cleahorch",
+		  evoLevel: 34,
+        color: "Blue",
         eggGroups: ["Water 1"],
     },
     shaymode: {
@@ -6318,7 +6701,7 @@ darkchomp: {
         },
         heightm: 0.695,
         weightkg: 34.35,
-        color: "Black",
+        color: "White",
         eggGroups: ["Undiscovered"],
     },
     armortran: {
@@ -6342,7 +6725,7 @@ darkchomp: {
         },
         heightm: 1.7,
         weightkg: 240.25,
-        color: "Black",
+        color: "Gray",
         eggGroups: ["Undiscovered"],
     },
     gonzap: {
@@ -6390,7 +6773,7 @@ darkchomp: {
         },
         heightm: 1.755,
         weightkg: 124.8,
-        color: "Black",
+        color: "Brown",
         eggGroups: ["Field"],
     },
     dedsteel: {
@@ -6411,8 +6794,33 @@ darkchomp: {
         },
         heightm: 1.055,
         weightkg: 103.6,
-        color: "Black",
+        color: "Yellow",
         eggGroups: ["Undiscovered"],
+    },
+    charmite: {
+        num: 750176,
+        species: "Charmite",
+        types: ["Ice", "Fire"],
+        genderRatio: {
+            M: 75.0,
+            F: 25.0
+        },
+        baseStats: { 
+            hp: 52,
+            atk: 75,
+            def: 69,
+            spa: 51,
+            spd: 47,
+            spe: 61
+        },
+        abilities: {
+            0: "Bunsen Burner"
+        },
+        heightm: 0.8,
+        weightkg: 54,
+		  evos: ["avaizard"],
+        color: "Blue",
+        eggGroups: ["Monster"],
     },
     avaizard: {
         num: 7500129,
@@ -18730,6 +19138,20 @@ auroritarmega: {
 		  weightkg: 111.5,
 		  eggGroups: ["Undiscovered"],
 	},
+	gloom: {
+		num: 44,
+		species: "Gloom",
+		types: ["Grass", "Poison"],
+		baseStats: {hp: 60, atk: 65, def: 70, spa: 85, spd: 75, spe: 40},
+		abilities: {0: "Chlorophyll", H: "Stench"},
+		heightm: 0.8,
+		weightkg: 8.6,
+		color: "Blue",
+		prevo: "oddish",
+		evos: ["vileplume", "bellossom", "vilossom"],
+		evoLevel: 21,
+		eggGroups: ["Grass"],
+	},
 	vilossom: {
 		num: 7500467,
 		species: "Vilossom",
@@ -22100,6 +22522,18 @@ auroritarmega: {
    				  weightkg: 128.25,
 		   	     eggGroups: ["Mineral"],
 		   	 },
+	cubone: {
+		num: 104,
+		species: "Cubone",
+		types: ["Ground"],
+		baseStats: {hp: 50, atk: 50, def: 95, spa: 40, spd: 50, spe: 35},
+		abilities: {0: "Rock Head", 1: "Lightning Rod", H: "Battle Armor"},
+		heightm: 0.4,
+		weightkg: 6.5,
+		color: "Brown",
+		evos: ["marowak", "marowakalola", "marowakprime"],
+		eggGroups: ["Monster"],
+	},
 				 marowakprime: {
 					num: 105,
 					species: "Marowak-Prime",
