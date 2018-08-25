@@ -10249,11 +10249,13 @@ exports.BattleAbilities = {
 			if (pokemon.item.naturalGift) return this.chainModify(1.3);
 		},
 		onDisableMove: function (pokemon) {
-				for (const moveSlot of pokemon.moveSlots) {
+			for (const target of pokemon.side.foe.active) {
+				for (const moveSlot of target.moveSlots) {
 					if (moveSlot.id.type === 'Rock' || moveSlot.id.type === 'Ground' || moveSlot.id.type === 'Steel') {
-						pokemon.disableMove(moveSlot.id);
+						target.disableMove(moveSlot.id);
 					}
 				}
+			}
 			},
 		onFoeTryEatItem: false,
 		id: "scarysandwich",
