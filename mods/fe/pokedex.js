@@ -6,8 +6,8 @@ exports.BattlePokedex = {
         species: "Inkip",
         types: ["Dark", "Water"],
         genderRatio: {
-            M: 75.0,
-            F: 25.0
+            M: 0.75,
+            F: 0.25
         },
         baseStats: {
             hp: 61,
@@ -31,8 +31,8 @@ exports.BattlePokedex = {
         species: "Swampamar",
         types: ["Dark", "Water"],
         genderRatio: {
-            M: 75.0,
-            F: 25.0
+            M: 0.75,
+            F: 0.25
         },
         baseStats: {
             hp: 103,
@@ -60,6 +60,10 @@ exports.BattlePokedex = {
         forme: "Mega",
         formeLetter: "M",
         types: ["Dark", "Water"],
+        genderRatio: {
+            M: 0.75,
+            F: 0.25
+        },
         baseStats: {
             hp: 103,
             atk: 151,
@@ -101,10 +105,6 @@ exports.BattlePokedex = {
         num: 75002,
         species: "Gyarotic",
         types: ["Water"],
-        genderRatio: {
-            M: 50.0,
-            F: 50.0
-        },
         baseStats: {
             hp: 105,
             atk: 102,
@@ -151,8 +151,8 @@ exports.BattlePokedex = {
         species: "Krillazulie",
         types: ["Normal", "Water"],
         genderRatio: {
-            M: 62.5,
-            F: 37.5
+            M: 0.625,
+            F: 0.375
         },
         baseStats: {
             hp: 51,
@@ -176,8 +176,8 @@ exports.BattlePokedex = {
         species: "Frogrill",
         types: ["Water"],
         genderRatio: {
-            M: 75.0,
-            F: 25.0
+            M: 0.75,
+            F: 0.25
         },
         baseStats: {
             hp: 77,
@@ -203,8 +203,8 @@ exports.BattlePokedex = {
         species: "Azuninja",
         types: ["Water"],
         genderRatio: {
-            M: 75.0,
-            F: 25.0
+            M: 0.75,
+            F: 0.25
         },
         baseStats: {
             hp: 96,
@@ -228,10 +228,6 @@ exports.BattlePokedex = {
         num: 75004,
         species: "Chandeform",
         types: ["Ghost", "Normal"],
-        genderRatio: {
-            M: 50.0,
-            F: 50.0
-        },
         baseStats: {
             hp: 75,
             atk: 72,
@@ -273,10 +269,6 @@ exports.BattlePokedex = {
         num: 75005,
         species: "Mismatross",
         types: ["Electric", "Ghost"],
-        genderRatio: {
-            M: 50.0,
-            F: 50.0
-        },
         baseStats: {
             hp: 82,
             atk: 97,
@@ -300,8 +292,8 @@ exports.BattlePokedex = {
         species: "Axidos",
         types: ["Dragon", "Rock"],
         genderRatio: {
-            M: 75.0,
-            F: 25.0
+            M: 0.75,
+            F: 0.25
         },
         baseStats: {
             hp: 66,
@@ -325,8 +317,8 @@ exports.BattlePokedex = {
         species: "Haxardos",
         types: ["Dragon", "Rock"],
         genderRatio: {
-            M: 75.0,
-            F: 25.0
+            M: 0.75,
+            F: 0.25
         },
         baseStats: {
             hp: 96,
@@ -350,10 +342,6 @@ exports.BattlePokedex = {
         num: 75007,
         species: "Pangleye",
         types: ["Fighting", "Dark"],
-        genderRatio: {
-            M: 50.0,
-            F: 50.0
-        },
         baseStats: {
             hp: 82,
             atk: 109,
@@ -418,10 +406,6 @@ exports.BattlePokedex = {
         num: 75008,
         species: "Garchados",
         types: ["Ground", "Water"],
-        genderRatio: {
-            M: 50.0,
-            F: 50.0
-        },
         baseStats: {
             hp: 111,
             atk: 137,
@@ -490,10 +474,7 @@ exports.BattlePokedex = {
         num: 75018,
         species: "Merkitty",
         types: ["Water", "Normal"],
-        genderRatio: {
-            M: 37.5,
-            F: 62.5
-        },
+        genderRatio: {M: 0.375, F: 0.625},
         baseStats: {
             hp: 100,
             atk: 63,
@@ -515,10 +496,7 @@ exports.BattlePokedex = {
         num: 75009,
         species: "Wailcatty",
         types: ["Normal", "Water"],
-        genderRatio: {
-            M: 37.5,
-            F: 62.5
-        },
+        genderRatio: {M: 0.375, F: 0.625},
         baseStats: {
             hp: 130,
             atk: 87,
@@ -542,8 +520,8 @@ exports.BattlePokedex = {
         species: "Gibodile",
         types: ["Dragon", "Water"],
         genderRatio: {
-            M: 75.0,
-            F: 25.0
+            M: 0.75,
+            F: 0.25
         },
         baseStats: {
             hp: 59,
@@ -567,8 +545,8 @@ exports.BattlePokedex = {
         species: "Gabinaw",
         types: ["Dragon", "Water"],
         genderRatio: {
-            M: 75.0,
-            F: 25.0
+            M: 0.75,
+            F: 0.25
         },
         baseStats: {
             hp: 76,
@@ -594,8 +572,8 @@ exports.BattlePokedex = {
         species: "Gargatr",
         types: ["Dragon", "Water"],
         genderRatio: {
-            M: 75.0,
-            F: 25.0
+            M: 0.75,
+            F: 0.25
         },
         baseStats: {
             hp: 106,
@@ -622,6 +600,10 @@ exports.BattlePokedex = {
         forme: "Mega",
         formeLetter: "M",
         types: ["Dragon", "Water"],
+        genderRatio: {
+            M: 0.75,
+            F: 0.25
+        },
         baseStats: {
             hp: 106,
             atk: 167,
@@ -663,10 +645,6 @@ exports.BattlePokedex = {
         num: 750011,
         species: "Dragon",
         types: ["Dark", "Poison"],
-        genderRatio: {
-            M: 50.0,
-            F: 50.0
-        },
         baseStats: {
             hp: 88,
             atk: 100,
@@ -689,10 +667,6 @@ exports.BattlePokedex = {
         num: 750012,
         species: "Hawlusharp",
         types: ["Fighting", "Dark"],
-        genderRatio: {
-            M: 50.0,
-            F: 50.0
-        },
         baseStats: {
             hp: 81,
             atk: 118,
@@ -734,10 +708,6 @@ exports.BattlePokedex = {
         num: 750013,
         species: "Cofagreelix",
         types: ["Steel", "Ghost"],
-        genderRatio: {
-            M: 50.0,
-            F: 50.0
-        },
         baseStats: {
             hp: 76,
             atk: 77,
@@ -805,8 +775,8 @@ exports.BattlePokedex = {
         species: "Joltlord",
         types: ["Electric", "Water"],
         genderRatio: {
-            M: 75.0,
-            F: 25.0
+            M: 0.75,
+            F: 0.25
         },
         baseStats: {
             hp: 127,
@@ -831,8 +801,8 @@ exports.BattlePokedex = {
         species: "Gligbee",
         types: ["Bug", "Ground"],
         genderRatio: {
-            M: 75.0,
-            F: 25.0
+            M: 0.75,
+            F: 0.25
         },
         baseStats: {
             hp: 62,
@@ -879,8 +849,8 @@ exports.BattlePokedex = {
         species: "Zorgrowl",
         types: ["Fire", "Dark"],
         genderRatio: {
-            M: 81.25,
-            F: 18.75
+            M: 0.8125,
+            F: 0.1875
         },
         baseStats: {
             hp: 55,
@@ -903,8 +873,8 @@ exports.BattlePokedex = {
         species: "Zorcanine",
         types: ["Fire", "Dark"],
         genderRatio: {
-            M: 81.25,
-            F: 18.75
+            M: 0.8125,
+            F: 0.1875
         },
         baseStats: {
             hp: 85,
@@ -929,8 +899,8 @@ exports.BattlePokedex = {
         species: "Archedactyl",
         types: ["Rock", "Flying"],
         genderRatio: {
-            M: 87.5,
-            F: 12.5
+            M: 0.875,
+            F: 0.125
         },
         baseStats: {
             hp: 87,
@@ -955,6 +925,10 @@ exports.BattlePokedex = {
         forme: "Mega",
         formeLetter: "M",
         types: ["Rock", "Flying"],
+        genderRatio: {
+            M: 0.875,
+            F: 0.125
+        },
         baseStats: {
             hp: 87,
             atk: 162,
@@ -976,8 +950,8 @@ exports.BattlePokedex = {
         species: "Hippopopin",
         types: ["Grass", "Ground"],
         genderRatio: {
-            M: 75.0,
-            F: 25.0
+            M: 0.75,
+            F: 0.25
         },
         baseStats: {
             hp: 70,
@@ -1000,8 +974,8 @@ exports.BattlePokedex = {
         species: "Chesdon",
         types: ["Grass", "Ground"],
         genderRatio: {
-            M: 75.0,
-            F: 25.0
+            M: 0.75,
+            F: 0.25
         },
         baseStats: {
             hp: 108,
@@ -1046,10 +1020,6 @@ exports.BattlePokedex = {
         num: 750019,
         species: "Mamodrill",
         types: ["Ground", "Ice"],
-        genderRatio: {
-            M: 50.0,
-            F: 50.0
-        },
         baseStats: {
             hp: 120,
             atk: 142,
@@ -1093,10 +1063,6 @@ exports.BattlePokedex = {
         num: 750020,
         species: "Heliodra",
         types: ["Dragon", "Electric"],
-        genderRatio: {
-            M: 50.0,
-            F: 50.0
-        },
         baseStats: {
             hp: 86,
             atk: 87,
@@ -1119,10 +1085,6 @@ exports.BattlePokedex = {
         num: 750021,
         species: "Scyscor",
         types: ["Bug", "Ground"],
-        genderRatio: {
-            M: 50.0,
-            F: 50.0
-        },
         baseStats: {
             hp: 82,
             atk: 112,
@@ -1144,8 +1106,8 @@ exports.BattlePokedex = {
         species: "Seedee",
         types: ["Grass", "Normal"],
         genderRatio: {
-            M: 75.0,
-            F: 25.0
+            M: 0.75,
+            F: 0.25
         },
         baseStats: {
             hp: 55,
@@ -1169,8 +1131,8 @@ exports.BattlePokedex = {
         species: "Joltry",
         types: ["Grass", "Electric"],
         genderRatio: {
-            M: 75.0,
-            F: 25.0
+            M: 0.75,
+            F: 0.25
         },
         baseStats: {
             hp: 87,
@@ -1194,10 +1156,7 @@ exports.BattlePokedex = {
         num: 750120,
         species: "Shoorazu",
         types: ["Normal", "Grass"],
-        genderRatio: {
-            M: 37.5,
-            F: 62.5
-        },
+        genderRatio: {M: 0.375, F: 0.625},
         baseStats: {
             hp: 60,
             atk: 35,
@@ -1219,10 +1178,6 @@ exports.BattlePokedex = {
         num: 750023,
         species: "Azumaloom",
         types: ["Water", "Grass"],
-        genderRatio: {
-            M: 50.0,
-            F: 50.0
-        },
         baseStats: {
             hp: 90,
             atk: 100,
@@ -1266,10 +1221,6 @@ exports.BattlePokedex = {
         num: 750025,
         species: "Weasol",
         types: ["Dark", "Ice"],
-        genderRatio: {
-            M: 50.0,
-            F: 50.0
-        },
         baseStats: {
             hp: 77,
             atk: 135,
@@ -1501,8 +1452,8 @@ exports.BattlePokedex = {
         species: "Charmingkarp",
         types: ["Fire", "Water"],
         genderRatio: {
-            M: 75.0,
-            F: 25.0
+            M: 0.75,
+            F: 0.25
         },
         baseStats: {
             hp: 34,
@@ -1526,8 +1477,8 @@ exports.BattlePokedex = {
         species: "Charatos",
         types: ["Fire", "Water"],
         genderRatio: {
-            M: 75.0,
-            F: 25.0
+            M: 0.75,
+            F: 0.25
         },
         baseStats: {
             hp: 97,
@@ -1623,8 +1574,8 @@ exports.BattlePokedex = {
         species: "Arosaur",
         types: ["Grass", "Steel"],
         genderRatio: {
-            M: 75.0,
-            F: 25.0
+            M: 0.75,
+            F: 0.25
         },
         baseStats: {
             hp: 52,
@@ -1648,8 +1599,8 @@ exports.BattlePokedex = {
         species: "Lairosaur",
         types: ["Grass", "Steel"],
         genderRatio: {
-            M: 75.0,
-            F: 25.0
+            M: 0.75,
+            F: 0.25
         },
         baseStats: {
             hp: 70,
@@ -1675,8 +1626,8 @@ exports.BattlePokedex = {
         species: "Aggrosaur",
         types: ["Grass", "Steel"],
         genderRatio: {
-            M: 75.0,
-            F: 25.0
+            M: 0.75,
+            F: 0.25
         },
         baseStats: {
             hp: 85,
@@ -1703,6 +1654,10 @@ exports.BattlePokedex = {
         forme: "Mega",
         formeLetter: "M",
         types: ["Grass", "Steel"],
+        genderRatio: {
+            M: 0.75,
+            F: 0.25
+        },
         baseStats: {
             hp: 85,
             atk: 124,
@@ -1727,6 +1682,10 @@ exports.BattlePokedex = {
         forme: "Mega",
         formeLetter: "M",
         types: ["Grass", "Steel"],
+        genderRatio: {
+            M: 0.75,
+            F: 0.25
+        },
         baseStats: {
             hp: 85,
             atk: 136,
@@ -1748,8 +1707,8 @@ exports.BattlePokedex = {
         species: "Squirtroak",
         types: ["Water"],
         genderRatio: {
-            M: 87.5,
-            F: 12.5
+            M: 0.875,
+            F: 0.125
         },
         baseStats: {
             hp: 54,
@@ -1773,8 +1732,8 @@ exports.BattlePokedex = {
         species: "Wartoadier",
         types: ["Water"],
         genderRatio: {
-            M: 87.5,
-            F: 12.5
+            M: 0.875,
+            F: 0.125
         },
         baseStats: {
             hp: 71,
@@ -1800,8 +1759,8 @@ exports.BattlePokedex = {
         species: "Blastinja",
         types: ["Water", "Dark"],
         genderRatio: {
-            M: 87.5,
-            F: 12.5
+            M: 0.875,
+            F: 0.125
         },
         baseStats: {
             hp: 90,
@@ -1828,6 +1787,10 @@ exports.BattlePokedex = {
         forme: "Mega",
         formeLetter: "M",
         types: ["Water", "Dark"],
+        genderRatio: {
+            M: 0.875,
+            F: 0.125
+        },
         baseStats: {
             hp: 90,
             atk: 124,
@@ -1849,10 +1812,6 @@ exports.BattlePokedex = {
         num: 750031,
         species: "Skaria",
         types: ["Steel", "Dragon"],
-        genderRatio: {
-            M: 50.0,
-            F: 50.0
-        },
         baseStats: {
             hp: 80,
             atk: 85,
@@ -1897,8 +1856,8 @@ exports.BattlePokedex = {
         species: "Mygara",
         types: ["Fire", "Psychic"],
         genderRatio: {
-            M: 75.0,
-            F: 25.0
+            M: 0.75,
+            F: 0.25
         },
         baseStats: {
             hp: 40,
@@ -1922,8 +1881,8 @@ exports.BattlePokedex = {
         species: "Kadagma",
         types: ["Fire", "Psychic"],
         genderRatio: {
-            M: 75.0,
-            F: 25.0
+            M: 0.75,
+            F: 0.25
         },
         baseStats: {
             hp: 62,
@@ -1949,8 +1908,8 @@ exports.BattlePokedex = {
         species: "Magmozam",
         types: ["Fire", "Psychic"],
         genderRatio: {
-            M: 75.0,
-            F: 25.0
+            M: 0.75,
+            F: 0.25
         },
         baseStats: {
             hp: 75,
@@ -1977,6 +1936,10 @@ exports.BattlePokedex = {
         forme: "Mega",
         formeLetter: "M",
         types: ["Fire", "Psychic"],
+        genderRatio: {
+            M: 0.75,
+            F: 0.25
+        },
         baseStats: {
             hp: 75,
             atk: 82,
@@ -1998,8 +1961,8 @@ exports.BattlePokedex = {
         species: "Snogepi",
         types: ["Fairy", "Ice"],
         genderRatio: {
-            M: 75.0,
-            F: 25.0
+            M: 0.75,
+            F: 0.25
         },
         baseStats: {
             hp: 52,
@@ -2022,8 +1985,8 @@ exports.BattlePokedex = {
         species: "Glakiss",
         types: ["Fairy", "Ice"],
         genderRatio: {
-            M: 75.0,
-            F: 25.0
+            M: 0.75,
+            F: 0.25
         },
         baseStats: {
             hp: 92,
@@ -2038,7 +2001,7 @@ exports.BattlePokedex = {
         },
         heightm: 1.5,
         weightkg: 147.25,
-        color: "Black",
+        color: "Gray",
 		  prevo: "snogepi",
 		  evoLevel: 42,
         eggGroups: ["Undiscovered"],
@@ -2050,6 +2013,10 @@ exports.BattlePokedex = {
         forme: "Mega",
         formeLetter: "M",
         types: ["Fairy", "Ice"],
+        genderRatio: {
+            M: 0.75,
+            F: 0.25
+        },
         baseStats: {
             hp: 92,
             atk: 115,
@@ -2063,7 +2030,7 @@ exports.BattlePokedex = {
         },
         heightm: 1.9,
         weightkg: 240.95,
-        color: "Brown",
+        color: "Gray",
         eggGroups: ["Fairy"],
     },
     magiranha: {
@@ -2164,8 +2131,8 @@ exports.BattlePokedex = {
         species: "Growlee",
         types: ["Normal", "Fire"],
         genderRatio: {
-            M: 81.25,
-            F: 18.75
+            M: 0.8125,
+            F: 0.1875
         },
         baseStats: {
             hp: 62,
@@ -2189,8 +2156,8 @@ exports.BattlePokedex = {
         species: "Vapornine",
         types: ["Water", "Fire"],
         genderRatio: {
-            M: 81.25,
-            F: 18.75
+            M: 0.8125,
+            F: 0.1875
         },
         baseStats: {
             hp: 120,
@@ -2214,10 +2181,6 @@ exports.BattlePokedex = {
         num: 750036,
         species: "Pidgetot",
         types: ["Normal", "Flying"],
-        genderRatio: {
-            M: 50.0,
-            F: 50.0
-        },
         baseStats: {
             hp: 89,
             atk: 82,
@@ -2591,8 +2554,8 @@ exports.BattlePokedex = {
         species: "Shaymizard",
         types: ["Fire", "Grass"],
         genderRatio: {
-            M: 87.5,
-            F: 12.5
+            M: 0.875,
+            F: 0.125
         },
         baseStats: {
             hp: 89,
@@ -2743,8 +2706,8 @@ exports.BattlePokedex = {
         species: "Chaxe",
         types: ["Fire", "Dragon"],
         genderRatio: {
-            M: 75.0,
-            F: 25.0
+            M: 0.75,
+            F: 0.25
         },
         baseStats: {
             hp: 47,
@@ -2767,8 +2730,8 @@ exports.BattlePokedex = {
         species: "Fraxuleon",
         types: ["Fire", "Dragon"],
         genderRatio: {
-            M: 75.0,
-            F: 25.0
+            M: 0.75,
+            F: 0.25
         },
         baseStats: {
             hp: 72,
@@ -2793,8 +2756,8 @@ exports.BattlePokedex = {
         species: "Hazard",
         types: ["Fire", "Dragon"],
         genderRatio: {
-            M: 75.0,
-            F: 25.0
+            M: 0.75,
+            F: 0.25
         },
         baseStats: {
             hp: 87,
@@ -3227,8 +3190,8 @@ exports.BattlePokedex = {
         species: "Grenheatja",
         types: ["Water", "Fire"],
         genderRatio: {
-            M: 75.0,
-            F: 25.0
+            M: 0.75,
+            F: 0.25
         },
         baseStats: {
             hp: 81,
@@ -4411,8 +4374,8 @@ exports.BattlePokedex = {
         species: "Hippee",
         types: ["Normal", "Ground"],
         genderRatio: {
-            M: 0.875,
-            F: 0.125
+            M: 0.75,
+            F: 0.25
         },
         baseStats: {
             hp: 70,
@@ -4436,8 +4399,8 @@ exports.BattlePokedex = {
         species: "Leafadon",
         types: ["Grass", "Ground"],
         genderRatio: {
-            M: 75.0,
-            F: 25.0
+            M: 0.75,
+            F: 0.25
         },
         baseStats: {
             hp: 96,
@@ -5281,8 +5244,8 @@ exports.BattlePokedex = {
         species: "Aeroraptor",
         types: ["Normal", "Flying"],
         genderRatio: {
-            M: 75.0,
-            F: 25.0
+            M: 0.75,
+            F: 0.25
         },
         baseStats: {
             hp: 92,
@@ -5307,6 +5270,10 @@ exports.BattlePokedex = {
         forme: "Mega",
         formeLetter: "M",
         types: ["Normal", "Flying"],
+        genderRatio: {
+            M: 0.75,
+            F: 0.25
+        },
         baseStats: {
             hp: 92,
             atk: 152,
@@ -5375,8 +5342,8 @@ exports.BattlePokedex = {
         species: "Lucasol",
         types: ["Fighting", "Dark"],
         genderRatio: {
-            M: 75.0,
-            F: 25.0
+            M: 0.75,
+            F: 0.25
         },
         baseStats: {
             hp: 78,
@@ -5401,6 +5368,10 @@ exports.BattlePokedex = {
         forme: "Mega L",
         formeLetter: "M",
         types: ["Fighting", "Dark"],
+        genderRatio: {
+            M: 0.75,
+            F: 0.25
+        },
         baseStats: {
             hp: 78,
             atk: 170,
@@ -5424,6 +5395,10 @@ exports.BattlePokedex = {
         forme: "Mega A",
         formeLetter: "M",
         types: ["Fighting", "Dark"],
+        genderRatio: {
+            M: 0.75,
+            F: 0.25
+        },
         baseStats: {
             hp: 78,
             atk: 150,
@@ -5445,8 +5420,8 @@ exports.BattlePokedex = {
         species: "Treesaur",
         types: ["Poison", "Grass"],
         genderRatio: {
-            M: 87.5,
-            F: 12.5
+            M: 0.875,
+            F: 0.125
         },
         baseStats: {
             hp: 62,
@@ -5470,8 +5445,8 @@ exports.BattlePokedex = {
         species: "Vylesaur",
         types: ["Poison", "Grass"],
         genderRatio: {
-            M: 87.5,
-            F: 12.5
+            M: 0.875,
+            F: 0.125
         },
         baseStats: {
             hp: 70,
@@ -5497,8 +5472,8 @@ exports.BattlePokedex = {
         species: "Sceptilusaur",
         types: ["Poison", "Grass"],
         genderRatio: {
-            M: 87.5,
-            F: 12.5
+            M: 0.875,
+            F: 0.125
         },
         baseStats: {
             hp: 90,
@@ -5525,6 +5500,10 @@ exports.BattlePokedex = {
         forme: "Mega X",
         formeLetter: "M",
         types: ["Poison", "Grass"],
+        genderRatio: {
+            M: 0.875,
+            F: 0.125
+        },
          baseStats: {
             hp: 90,
             atk: 116,
@@ -5548,6 +5527,10 @@ exports.BattlePokedex = {
         forme: "Mega Y",
         formeLetter: "M",
         types: ["Poison", "Dragon"],
+        genderRatio: {
+            M: 0.875,
+            F: 0.125
+        },
          baseStats: {
             hp: 90,
             atk: 123,
@@ -5870,8 +5853,8 @@ exports.BattlePokedex = {
         species: "Snoopa",
         types: ["Ghost", "Normal"],
         genderRatio: {
-            M: 87.5,
-            F: 12.5
+            M: 0.875,
+            F: 0.125
         },
         baseStats: {
             hp: 130,
@@ -5894,8 +5877,8 @@ exports.BattlePokedex = {
         species: "Plupoke",
         types: ["Water", "Psychic"],
         genderRatio: {
-            M: 75.0,
-            F: 25.0
+            M: 0.75,
+            F: 0.25
         },
         baseStats: { 
             hp: 86,
@@ -5919,8 +5902,8 @@ exports.BattlePokedex = {
         species: "Empoleking",
         types: ["Water", "Steel"],
         genderRatio: {
-            M: 75.0,
-            F: 25.0
+            M: 0.75,
+            F: 0.25
         },
         baseStats: {
             hp: 99,
@@ -6135,8 +6118,8 @@ exports.BattlePokedex = {
         species: "Umbord",
         types: ["Water", "Dark"],
         genderRatio: {
-            M: 75.0,
-            F: 25.0
+            M: 0.75,
+            F: 0.25
         },
         baseStats: {
             hp: 143,
@@ -6505,10 +6488,7 @@ darkchomp: {
         num: 7500119,
         species: "Wigglyman",
         types: ["Water", "Fairy"],
-        genderRatio: {
-            M: 25.0,
-            F: 75.0
-        },
+        genderRatio: {M: 0.25, F: 0.75},
         baseStats: {
             hp: 120,
             atk: 85,
@@ -6757,8 +6737,8 @@ darkchomp: {
         species: "Bouffanine",
         types: ["Normal", "Fire"],
         genderRatio: {
-            M: 62.5,
-            F: 37.5
+            M: 0.625,
+            F: 0.375
         },
         baseStats: {
             hp: 102,
@@ -6802,8 +6782,8 @@ darkchomp: {
         species: "Charmite",
         types: ["Ice", "Fire"],
         genderRatio: {
-            M: 75.0,
-            F: 25.0
+            M: 0.75,
+            F: 0.25
         },
         baseStats: { 
             hp: 52,
@@ -6827,8 +6807,8 @@ darkchomp: {
         species: "Avaizard",
         types: ["Ice", "Fire"],
         genderRatio: {
-            M: 75.0,
-            F: 25.0
+            M: 0.75,
+            F: 0.25
         },
         baseStats: {
             hp: 96,
@@ -6843,6 +6823,8 @@ darkchomp: {
         },
         heightm: 1.855,
         weightkg: 297.75,
+		  prevo: "charmite",
+		  evoLevel: 32,
         color: "Blue",
         eggGroups: ["Monster"],
     },
@@ -6853,6 +6835,10 @@ darkchomp: {
         forme: "Mega X",
         formeLetter: "M",
         types: ["Ice", "Dragon"],
+        genderRatio: {
+            M: 0.75,
+            F: 0.25
+        },
         baseStats: {
             hp: 96,
             atk: 156,
@@ -6876,6 +6862,10 @@ darkchomp: {
         forme: "Mega Y",
         formeLetter: "M",
         types: ["Ice", "Fire"],
+        genderRatio: {
+            M: 0.75,
+            F: 0.25
+        },
         baseStats: {
             hp: 96,
             atk: 130,
@@ -6891,6 +6881,27 @@ darkchomp: {
         weightkg: 307.75,
         color: "Blue",
         eggGroups: ["Monster"],
+    },
+    slugwick: {
+        num: 750177,
+        species: "Slugwick",
+        types: ["Ghost", "Fire"],
+        baseStats: { 
+            hp: 55,
+            atk: 45,
+            def: 62,
+            spa: 87,
+            spd: 62,
+            spe: 30
+        },
+        abilities: {
+            0: "Flame Body"
+        },
+        heightm: 0.5,
+        weightkg: 19.05,
+		  evos: ["cargolure"],
+        color: "White",
+        eggGroups: ["Amorphous"],
     },
     cargolure: {
         num: 7500130,
@@ -6913,16 +6924,43 @@ darkchomp: {
         },
         heightm: 0.89,
         weightkg: 44.65,
+		  prevo: "slugwick",
+		  evoLevel: 40,
         color: "Black",
         eggGroups: ["Amorphous"],
+    },
+    riobra: {
+        num: 750178,
+        species: "Riobra",
+        types: ["Psychic", "Fighting"],
+        genderRatio: {
+            M: 0.8125,
+            F: 0.1875
+        },
+        baseStats: { 
+            hp: 42,
+            atk: 55,
+            def: 37,
+            spa: 90,
+            spd: 57,
+            spe: 95
+        },
+        abilities: {
+            0: "Inner Focus"
+        },
+        heightm: 0.8,
+        weightkg: 19.85,
+		  evos: ["alakario"],
+        color: "Blue",
+        eggGroups: ["Undiscovered"],
     },
     alakario: {
         num: 7500131,
         species: "Alakario",
         types: ["Psychic", "Fighting"],
         genderRatio: {
-            M: 81.25,
-            F: 18.75
+            M: 0.8125,
+            F: 0.1875
         },
         baseStats: {
             hp: 77,
@@ -6937,14 +6975,16 @@ darkchomp: {
         },
         heightm: 1.345,
         weightkg: 51,
-        color: "Yellow",
+		  prevo: "riobra",
+		  evoLevel: 16,
+        color: "Blue",
         eggGroups: ["Human-Like"],
     },
     alakariomegal: {
         num: 7500131,
         species: "Alakario-Mega-L",
         baseSpecies: "Alakario",
-        forme: "Mega L",
+        forme: "Mega-L",
         formeLetter: "M",
         types: ["Psychic", "Fighting"],
         baseStats: {
@@ -6960,14 +7000,14 @@ darkchomp: {
         },
         heightm: 1.445,
         weightkg: 54.5,
-        color: "Yellow",
+        color: "Blue",
         eggGroups: ["Human-Like"],
     },
     alakariomegaa: {
         num: 7500131,
         species: "Alakario-Mega-A",
         baseSpecies: "Alakario",
-        forme: "Mega A",
+        forme: "Mega-A",
         formeLetter: "M",
         types: ["Psychic", "Fighting"],
         baseStats: {
@@ -6983,7 +7023,7 @@ darkchomp: {
         },
         heightm: 1.045,
         weightkg: 51,
-        color: "Yellow",
+        color: "Blue",
         eggGroups: ["Human-Like"],
     },
     cazantor: {
@@ -7028,10 +7068,31 @@ darkchomp: {
         abilities: {
             0: "Technician"
         },
-        heightm: 1.05,
-        weightkg: 75.5,
+        heightm: 1.25,
+        weightkg: 82.5,
         color: "Gray",
         eggGroups: ["Bug"],
+    },
+    rappel: {
+        num: 750179,
+        species: "Rappel",
+        types: ["Fairy", "Ghost"],
+        baseStats: { 
+            hp: 41,
+            atk: 55,
+            def: 43,
+            spa: 65,
+            spd: 45,
+            spe: 47
+        },
+        abilities: {
+            0: "Grim Reminder"
+        },
+        heightm: 0.5,
+        weightkg: 4.45,
+		  evos: ["gallette"],
+        color: "White",
+        eggGroups: ["Amorphous"],
     },
     gallette: {
         num: 7500133,
@@ -7051,6 +7112,8 @@ darkchomp: {
         },
         heightm: 1.345,
         weightkg: 32.25,
+		  prevo: "rappel",
+		  evoLevel: 28,
         color: "Black",
         eggGroups: ["Amorphous"],
     },
@@ -7102,13 +7165,38 @@ darkchomp: {
         color: "Black",
         eggGroups: ["Amorphous"],
     },
+    amarunt: {
+        num: 750180,
+        species: "Amarunt",
+        types: ["Ice", "Dragon"],
+        genderRatio: {
+            M: 0.875,
+            F: 0.125
+        },
+        baseStats: { 
+            hp: 72,
+            atk: 89,
+            def: 68,
+            spa: 61,
+            spd: 59,
+            spe: 62
+        },
+        abilities: {
+            0: "Absolute Zero"
+        },
+        heightm: 1.05,
+        weightkg: 25.6,
+		  evos: ["aurantrum"],
+        color: "Brown",
+        eggGroups: ["Monster"],
+    },
     aurantrum: {
         num: 7500134,
         species: "Aurantrum",
         types: ["Ice", "Dragon"],
         genderRatio: {
-            M: 87.5,
-            F: 12.5
+            M: 0.875,
+            F: 0.125
         },
         baseStats: {
             hp: 112,
@@ -7123,8 +7211,31 @@ darkchomp: {
         },
         heightm: 2.59,
         weightkg: 247.5,
+		  prevo: "amarunt",
+		  evoLevel: 39,
         color: "Red",
         eggGroups: ["Monster"],
+    },
+    ferrolix: {
+        num: 750181,
+        species: "Ferrolix",
+        types: ["Grass", "Rock"],
+        baseStats: { 
+            hp: 48,
+            atk: 60,
+            def: 130,
+            spa: 60,
+            spd: 77,
+            spe: 45
+        },
+        abilities: {
+            0: "Durable Barbs"
+        },
+        heightm: 4.7,
+        weightkg: 114.4,
+		  evos: ["steelthorn"],
+        color: "Gray",
+        eggGroups: ["Mineral"],
     },
     steelthorn: {
         num: 7500135,
@@ -7147,6 +7258,8 @@ darkchomp: {
         },
         heightm: 5.09,
         weightkg: 255,
+		  prevo: "ferrolix",
+		  evoLevel: 40,
         color: "Gray",
         eggGroups: ["Mineral"],
     },
@@ -7173,6 +7286,28 @@ darkchomp: {
         color: "Gray",
         eggGroups: ["Mineral"],
     },
+    venoran: {
+        num: 750182,
+        species: "Venoran",
+        types: ["Poison", "Bug"],
+        gender: "F",
+        baseStats: { 
+            hp: 60,
+            atk: 58,
+            def: 57,
+            spa: 48,
+            spd: 50,
+            spe: 46
+        },
+        abilities: {
+            0: "Tainted Lens"
+        },
+        heightm: 0.7,
+        weightkg: 18.5,
+		  evos: ["venoqueen"],
+        color: "Blue",
+        eggGroups: ["Undiscovered"],
+    },
     venoqueen: {
         num: 7500136,
         species: "Venoqueen",
@@ -7191,7 +7326,9 @@ darkchomp: {
         },
         heightm: 1.4,
         weightkg: 36.25,
-        color: "Blue",
+		  prevo: "venoran",
+		  evoLevel: 24,
+        color: "Purple",
         eggGroups: ["Undiscovered"],
     },
        polyform2: {
@@ -7365,6 +7502,27 @@ darkchomp: {
         color: "Purple",
         eggGroups: ["Undiscovered"],
     },
+    swaggy: {
+        num: 750183,
+        species: "Swaggy",
+        types: ["Fighting", "Normal"],
+        baseStats: { 
+            hp: 55,
+            atk: 72,
+            def: 70,
+            spa: 42,
+            spd: 80,
+            spe: 58
+        },
+        abilities: {
+            0: "Weather Man"
+        },
+        heightm: 0.5,
+        weightkg: 6.5,
+		  evos: ["scraftia"],
+        color: "Blue",
+        eggGroups: ["Dragon"],
+    },
     scraftia: {
         num: 7500138,
         species: "Scraftia",
@@ -7386,6 +7544,8 @@ darkchomp: {
         },
         heightm: 1.09,
         weightkg: 25.3,
+		  prevo: "swaggy",
+		  evoLevel: 37,
         color: "Blue",
         eggGroups: ["Dragon"],
     },
@@ -7412,6 +7572,27 @@ darkchomp: {
         color: "Blue",
         eggGroups: ["Dragon"],
     },
+    swooshi: {
+        num: 750184,
+        species: "Swooshi",
+        types: ["Fairy", "Grass"],
+        baseStats: { 
+            hp: 70,
+            atk: 52,
+            def: 70,
+            spa: 55,
+            spd: 70,
+            spe: 50
+        },
+        abilities: {
+            0: "Therapeutic"
+        },
+        heightm: 0.4,
+        weightkg: 4,
+		  evos: ["slurpum"],
+        color: "Pink",
+        eggGroups: ["Fairy"],
+    },
     slurpum: {
         num: 7500139,
         species: "Slurpum",
@@ -7433,6 +7614,8 @@ darkchomp: {
         },
         heightm: 0.99,
         weightkg: 22.1,
+		  prevo: "swooshi",
+		  evoLevel: 23,
         color: "Pink",
         eggGroups: ["Fairy"],
     },
@@ -7475,9 +7658,34 @@ darkchomp: {
         abilities: {
             0: "Thick Fat"
         },
-        heightm: 1.755,
-        weightkg: 80.5,
+        heightm: 2.155,
+        weightkg: 136,
         color: "Green",
+        eggGroups: ["Undiscovered"],
+    },
+    rhyhoax: {
+        num: 750185,
+        species: "Rhyhoax",
+        types: ["Normal", "Rock"],
+        genderRatio: {
+            M: 0.75,
+            F: 0.25
+        },
+        baseStats: { 
+            hp: 112,
+            atk: 100,
+            def: 72,
+            spa: 40,
+            spd: 72,
+            spe: 20
+        },
+        abilities: {
+            0: "Amazing Bulk"
+        },
+        heightm: 0.8,
+        weightkg: 110,
+		  evos: ["rhyperlax"],
+        color: "Black",
         eggGroups: ["Undiscovered"],
     },
     rhyperlax: {
@@ -7485,8 +7693,8 @@ darkchomp: {
         species: "Rhyperlax",
         types: ["Normal", "Rock"],
         genderRatio: {
-            M: 75.0,
-            F: 25.0
+            M: 0.75,
+            F: 0.25
         },
         baseStats: {
             hp: 147,
@@ -7501,12 +7709,35 @@ darkchomp: {
         },
         heightm: 2.25,
         weightkg: 371.4,
+		  prevo: "rhyhoax",
+		  evoLevel: 42,
         color: "Black",
         eggGroups: ["Monster"],
     },
-    lopunne: {
+    zunzoon: {
+        num: 750186,
+        species: "Zunzoon",
+        types: ["Normal"],
+        baseStats: { 
+            hp: 52,
+            atk: 63,
+            def: 50,
+            spa: 42,
+            spd: 53,
+            spe: 83
+        },
+        abilities: {
+            0: "Dieting Dolt"
+        },
+        heightm: 0.4,
+        weightkg: 11.5,
+		  evos: ["lopunoone"],
+        color: "Brown",
+        eggGroups: ["Field"],
+    },
+    lopunoone: {
         num: 7500142,
-        species: "Lopunne",
+        species: "Lopunoone",
         types: ["Normal"],
         genderRatio: {
             M: 50.0,
@@ -7525,13 +7756,15 @@ darkchomp: {
         },
         heightm: 0.85,
         weightkg: 32.9,
-        color: "Black",
+		  prevo: "zunzoon",
+		  evoLevel: 20,
+        color: "Brown",
         eggGroups: ["Field"],
     },
-	    lopunnemega: {
+	    lopunoonemega: {
         num: 7500140,
-        species: "Lopunne-Mega",
-        baseSpecies: "Lopunne",
+        species: "Lopunoone-Mega",
+        baseSpecies: "Lopunoone",
         forme: "Mega",
         formeLetter: "M",
         types: ["Normal", "Fighting"],
@@ -7546,9 +7779,9 @@ darkchomp: {
         abilities: {
             0: "Scrappy"
         },
-        heightm: 0.85,
+        heightm: 0.95,
         weightkg: 27.9,
-        color: "Black",
+        color: "Brown",
         eggGroups: ["Field"],
     },
     hootoise: {
@@ -7594,7 +7827,7 @@ darkchomp: {
             0: "Mega Launcher"
         },
         heightm: 1.055,
-        weightkg: 47.25,
+        weightkg: 62.85,
         color: "Pink",
         eggGroups: ["Undiscovered"],
     },
@@ -7640,14 +7873,31 @@ darkchomp: {
         color: "Gray",
         eggGroups: ["Undiscovered"],
     },
+    fasd: {
+        num: 750187,
+        species: "Fasd",
+        types: ["Water", "Dragon"],
+        baseStats: { 
+            hp: 41,
+            atk: 45,
+            def: 40,
+            spa: 42,
+            spd: 57,
+            spe: 74
+        },
+        abilities: {
+            0: "Over the Limit"
+        },
+        heightm: 0.7,
+        weightkg: 12.35,
+		  evos: ["hydraulic"],
+        color: "Black",
+        eggGroups: ["Dragon"],
+    },
     hydraulic: {
         num: 7500146,
         species: "Hydraulic",
         types: ["Water", "Dragon"],
-        genderRatio: {
-            M: 50.0,
-            F: 50.0
-        },
         baseStats: {
             hp: 103,
             atk: 92,
@@ -7661,6 +7911,8 @@ darkchomp: {
         },
         heightm: 4,
         weightkg: 161,
+		  prevo: "fasd",
+		  evoLevel: 57,
         color: "Black",
         eggGroups: ["Dragon"],
     },
@@ -7685,11 +7937,33 @@ darkchomp: {
         color: "Gray",
         eggGroups: ["Undiscovered"],
     },
+    beldurogue: {
+        num: 750188,
+        species: "Beldurogue",
+        types: ["Steel", "Fighting"],
+        gender: "M",
+        baseStats: { 
+            hp: 37,
+            atk: 60,
+            def: 57,
+            spa: 35,
+            spd: 47,
+            spe: 47
+        },
+        abilities: {
+            0: "Reckless Body"
+        },
+        heightm: 0.65,
+        weightkg: 58.1,
+		  evos: ["metanlee"],
+        color: "Blue",
+        eggGroups: ["Undiscovered"],
+    },
     metanlee: {
         num: 7500148,
         species: "Metanlee",
         types: ["Steel", "Fighting"],
-        gender: "N",
+        gender: "M",
         baseStats: {
             hp: 75,
             atk: 138,
@@ -7703,6 +7977,8 @@ darkchomp: {
         },
         heightm: 1.55,
         weightkg: 299.9,
+		  prevo: "beldurogue",
+		  evoLevel: 27,
         color: "Blue",
         eggGroups: ["Undiscovered"],
     },
@@ -7712,7 +7988,7 @@ darkchomp: {
         baseSpecies: "Metanlee",
         forme: "Mega",
         formeLetter: "M",
-        gender: "N",
+        gender: "M",
         types: ["Steel", "Fighting"],
         baseStats: {
             hp: 75,
@@ -7748,6 +8024,30 @@ darkchomp: {
         },
         heightm: 2.005,
         weightkg: 92.75,
+        color: "Yellow",
+        eggGroups: ["Monster"],
+    },
+    kangoruskhanmega: {
+        num: 7500149,
+        species: "Kangorus-Khan-Mega",
+        baseSpecies: "Kangorus-Khan",
+        forme: "Mega",
+        formeLetter: "M",
+        types: ["Normal", "Dragon"],
+        gender: "F",
+        baseStats: {
+            hp: 100,
+            atk: 161,
+            def: 115,
+            spa: 80,
+				spd: 105,
+            spe: 113
+        },
+        abilities: {
+            0: "Parental Bond"
+        },
+        heightm: 2.005,
+        weightkg: 112.75,
         color: "Yellow",
         eggGroups: ["Monster"],
     },
@@ -7791,10 +8091,10 @@ darkchomp: {
             spe: 25
         },
         abilities: {
-            0: "Synchrostall"
+            0: "Magic Bounce"
         },
         heightm: 0.75,
-        weightkg: 22.75,
+        weightkg: 172.75,
         color: "Purple",
         eggGroups: ["Human-Like"],
     },
@@ -7996,6 +8296,28 @@ darkchomp: {
         color: "Purple",
         eggGroups: ["Fairy"],
     },
+    porymask: {
+        num: 750189,
+        species: "Porymask",
+        types: ["Normal", "Ghost"],
+        gender: "N",
+        baseStats: { 
+            hp: 55,
+            atk: 45,
+            def: 85,
+            spa: 73,
+            spd: 85,
+            spe: 35
+        },
+        abilities: {
+            0: "Negative Body"
+        },
+        heightm: 0.65,
+        weightkg: 19,
+		  evos: ["porygrigus"],
+        color: "Black",
+        eggGroups: ["Mineral"],
+    },
     porygrigus: {
         num: 7500155,
         species: "Porygrigus",
@@ -8014,8 +8336,10 @@ darkchomp: {
         },
         heightm: 1.155,
         weightkg: 54.5,
+		  prevo: "porymask",
+		  evoLevel: 34,
         color: "Yellow",
-        eggGroups: ["Undiscovered"],
+        eggGroups: ["Mineral"],
     },
     zoroldeo: {
         num: 7500156,
@@ -8059,6 +8383,27 @@ darkchomp: {
         color: "Black",
         eggGroups: ["Undiscovered"],
     },
+    mallo: {
+        num: 750190,
+        species: "Mallo",
+        types: ["Fire", "Water"],
+        baseStats: { 
+            hp: 55,
+            atk: 45,
+            def: 85,
+            spa: 73,
+            spd: 85,
+            spe: 35
+        },
+        abilities: {
+            0: "Negative Body"
+        },
+        heightm: 0.5,
+        weightkg: 20.65,
+		  evos: ["macaroon"],
+        color: "Red",
+        eggGroups: ["Amorphous"],
+    },
 	macaroon: {
         num: 7500158,
         species: "Macaroon",
@@ -8076,6 +8421,8 @@ darkchomp: {
         },
         heightm: 0.84,
         weightkg: 42.45,
+		  prevo: "mallo",
+		  evoLevel: 34,
         color: "Brown",
         eggGroups: ["Amorphous"],
     },
@@ -8100,6 +8447,27 @@ darkchomp: {
         color: "Black",
         eggGroups: ["Undiscovered"],
     },
+    ponypom: {
+        num: 750191,
+        species: "Ponypom",
+        types: ["Normal", "Fire"],
+        baseStats: { 
+            hp: 62,
+            atk: 97,
+            def: 65,
+            spa: 72,
+            spd: 70,
+            spe: 97
+        },
+        abilities: {
+            0: "Run Away"
+        },
+        heightm: 0.9,
+        weightkg: 20.75,
+		  evos: ["rapipom"],
+        color: "Purple",
+        eggGroups: ["Field"],
+    },
     rapipom: {
         num: 7500160,
         species: "Rapipom",
@@ -8117,8 +8485,54 @@ darkchomp: {
         },
         heightm: 1.445,
         weightkg: 57.65,
+		  prevo: "ponypom",
+		  evoLevel: 40,
         color: "Purple",
         eggGroups: ["Field"],
+    },
+    tiniwag: {
+        num: 750192,
+        species: "Tiniwag",
+        types: ["Dragon", "Water"],
+        baseStats: { 
+            hp: 54,
+            atk: 70,
+            def: 50,
+            spa: 50,
+            spd: 50,
+            spe: 75
+        },
+        abilities: {
+            0: "Marvelous Diver"
+        },
+        heightm: 1.2,
+        weightkg: 7.85,
+		  evos: ["whirlagon"],
+        color: "Blue",
+        eggGroups: ["Water 1"],
+    },
+    whirlagon: {
+        num: 750193,
+        species: "Whirlagon",
+        types: ["Dragon", "Water"],
+        baseStats: { 
+            hp: 73,
+            atk: 84,
+            def: 75,
+            spa: 70,
+            spd: 70,
+            spe: 90
+        },
+        abilities: {
+            0: "Marvelous Diver"
+        },
+        heightm: 2.5,
+        weightkg: 18.25,
+		  prevo: "tiniwag",
+		  evos: ["tadpole"],
+		  evoLevel: 27,
+        color: "Blue",
+        eggGroups: ["Water 1"],
     },
     tadpole: {
         num: 7500161,
@@ -8137,7 +8551,9 @@ darkchomp: {
         },
         heightm: 1.755,
         weightkg: 132,
-        color: "Blue",
+		  prevo: "whirlagon",
+		  evoLevel: 55,
+        color: "Orange",
         eggGroups: ["Water 1"],
     },
     draegarados: {
@@ -8277,7 +8693,7 @@ darkchomp: {
         heightm: 1.195,
         weightkg: 145.25,
         color: "Red",
-        eggGroups: ["Undiscovered"],
+        eggGroups: ["Mineral"],
     },
     galionzmega: {
         num: 7500164,
@@ -8301,7 +8717,7 @@ darkchomp: {
         heightm: 1.195,
         weightkg: 145.25,
         color: "Red",
-        eggGroups: ["Undiscovered"],
+        eggGroups: ["Mineral"],
     },
     steelweez: {
         num: 7500166,
@@ -8440,8 +8856,8 @@ darkchomp: {
         species: "Conkelvire",
         types: ["Fighting", "Electric"],
         genderRatio: {
-            M: 75.0,
-            F: 25.0
+            M: 0.75,
+            F: 0.25
         },
         baseStats: {
             hp: 100,
@@ -8515,8 +8931,8 @@ darkchomp: {
         species: "Odelay",
         types: ["Water", "Rock"],
         genderRatio: {
-            M: 75.0,
-            F: 25.0
+            M: 0.75,
+            F: 0.25
         },
         baseStats: {
             hp: 78,
@@ -8755,8 +9171,8 @@ darkchomp: {
         species: "Simigoat",
         types: ["Fire", "Grass"],
         genderRatio: {
-            M: 75.0,
-            F: 25.0
+            M: 0.75,
+            F: 0.25
         },
         baseStats: {
             hp: 109,
@@ -8800,8 +9216,8 @@ darkchomp: {
         species: "Furfraught",
         types: ["Normal", "Fighting"],
         genderRatio: {
-            M: 75.0,
-            F: 25.0
+            M: 0.75,
+            F: 0.25
         },
         baseStats: {
             hp: 91,
@@ -9089,11 +9505,7 @@ darkchomp: {
     ambiccino: {
         num: 7500192,
         species: "Ambiccino",
-        types: ["Normal"],
-        genderRatio: {
-            M: 37.5,
-            F: 62.5
-        },
+        genderRatio: {M: 0.375, F: 0.625},
         baseStats: {
             hp: 90,
             atk: 113,
@@ -9253,8 +9665,8 @@ darkchomp: {
         species: "Magmovire",
         types: ["Fire", "Electric"],
         genderRatio: {
-            M: 75.0,
-            F: 25.0
+            M: 0.75,
+            F: 0.25
         },
         baseStats: {
             hp: 85,
@@ -9325,8 +9737,8 @@ darkchomp: {
         species: "Lucashadow",
         types: ["Fighting", "Ghost"],
         genderRatio: {
-            M: 87.5,
-            F: 12.5
+            M: 0.875,
+            F: 0.125
         },
         baseStats: {
             hp: 80,
@@ -9352,8 +9764,8 @@ darkchomp: {
         formeLetter: "M",
         types: ["Fighting", "Ghost"],
         genderRatio: {
-            M: 87.5,
-            F: 12.5
+            M: 0.875,
+            F: 0.125
         },
         baseStats: {
             hp: 80,
@@ -9729,8 +10141,8 @@ darkchomp: {
         species: "Shrek",
         types: ["Grass", "Fairy"],
         genderRatio: {
-            M: 75.0,
-            F: 25.0
+            M: 0.75,
+            F: 0.25
         },
         baseStats: {
             hp: 82,
@@ -10337,10 +10749,7 @@ darkchomp: {
         num: 7500219,
         species: "Comcott",
         types: ["Fairy", "Grass"],
-        genderRatio: {
-            M: 37.5,
-            F: 62.5
-        },
+        genderRatio: {M: 0.375, F: 0.625},
         baseStats: {
             hp: 65,
             atk: 69,
@@ -10513,8 +10922,8 @@ darkchomp: {
         species: "Archking",
         types: ["Water", "Flying"],
         genderRatio: {
-            M: 75.0,
-            F: 25.0
+            M: 0.75,
+            F: 0.25
         },
         baseStats: {
             hp: 75,
@@ -10588,8 +10997,8 @@ darkchomp: {
         species: "Decidactyl",
         types: ["Ghost", "Flying"],
         genderRatio: {
-            M: 87.5,
-            F: 12.5
+            M: 0.875,
+            F: 0.125
         },
         baseStats: {
             hp: 89,
@@ -10604,7 +11013,34 @@ darkchomp: {
         },
         heightm: 1.7,
         weightkg: 47.8,
-        color: "Black",
+        color: "Brown",
+        eggGroups: ["Flying"],
+    },
+    decidactylmega: {
+        num: 7500225,
+        species: "Decidactyl-Mega",
+        baseSpecies: "Decidactyl",
+        forme: "Mega",
+        formeLetter: "M",
+        types: ["Ghost", "Flying"],
+        genderRatio: {
+            M: 0.875,
+            F: 0.125
+        },
+        baseStats: {
+            hp: 89,
+            atk: 146,
+            def: 100,
+            spa: 100,
+            spd: 117,
+            spe: 130
+        },
+        abilities: {
+            0: "Tough Claws"
+        },
+        heightm: 2,
+        weightkg: 67.8,
+        color: "Brown",
         eggGroups: ["Flying"],
     },
     lycanape: {
@@ -10612,8 +11048,8 @@ darkchomp: {
         species: "Lycanape",
         types: ["Rock", "Fighting"],
         genderRatio: {
-            M: 75.0,
-            F: 25.0
+            M: 0.75,
+            F: 0.25
         },
         baseStats: {
             hp: 85,
@@ -10636,8 +11072,8 @@ darkchomp: {
         species: "Golisotops",
         types: ["Bug", "Water"],
         genderRatio: {
-            M: 75.0,
-            F: 25.0
+            M: 0.75,
+            F: 0.25
         },
         baseStats: {
             hp: 77,
@@ -10719,8 +11155,7 @@ darkchomp: {
         abilities: {
             0: "Beast's Focus"
         },
-
-
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -10740,8 +11175,7 @@ darkchomp: {
         abilities: {
             0: "Frisky Beast"
         },
-
-
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -10750,8 +11184,8 @@ darkchomp: {
         species: "Joltarina",
         types: ["Water", "Electric"],
         genderRatio: {
-            M: 87.5,
-            F: 12.5
+            M: 0.875,
+            F: 0.125
         },
         baseStats: {
             hp: 82,
@@ -10764,8 +11198,7 @@ darkchomp: {
         abilities: {
             0: "Volt Torrent"
         },
-
-
+		  eggGroups: ["Field"],
     },
 
 
@@ -10786,8 +11219,7 @@ darkchomp: {
             0: "Ancient Mariner"
         },
        dexentry: "A rogue team of former Team Rocket members created this fusion. It is said to be able to remove the anchor attached to its head and swing it around crazily for an extremely powerful Power Whip or Anchor Shot. At the same time, it is able to fight with its four arms against any enemies trying to dodge the attack",
-
-
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -10795,10 +11227,6 @@ darkchomp: {
         num: 7500234,
         species: "Mimian",
         types: ["Psychic", "Fighting"],
-        genderRatio: {
-            M: 50.0,
-            F: 50.0
-        },
         baseStats: {
             hp: 100,
             atk: 115,
@@ -10810,18 +11238,16 @@ darkchomp: {
         abilities: {
             0: "Monkey See Monkey Do"
         },
-
-
+		  eggGroups: ["Undiscovered"],
     },
-
 
     aerodako: {
         num: 7500235,
         species: "Aero Dako",
         types: ["Rock", "Electric"],
         genderRatio: {
-            M: 87.5,
-            F: 12.5
+            M: 0.875,
+            F: 0.125
         },
         baseStats: {
             hp: 75,
@@ -10834,10 +11260,8 @@ darkchomp: {
         abilities: {
             0: "Rocky Surge"
         },
-
-
+		  eggGroups: ["Undiscovered"],
     },
-
 
     aerodakomega: {
         num: 7500235,
@@ -10846,8 +11270,8 @@ darkchomp: {
         forme: "Mega",
         formeLetter: "M",
         genderRatio: {
-            M: 87.5,
-            F: 12.5
+            M: 0.875,
+            F: 0.125
         },
         types: ["Rock", "Electric"],
         baseStats: {
@@ -10861,10 +11285,8 @@ darkchomp: {
         abilities: {
             0: "Tough Claws"
         },
-
-
+		  eggGroups: ["Undiscovered"],
     },
-
 
     tapujojo: {
         num: 7500236,
@@ -10882,11 +11304,8 @@ darkchomp: {
         abilities: {
             0: "Supercharge Surge"
         },
-
-
+		  eggGroups: ["Undiscovered"],
     },
-
-
     magicarticgear: {
         num: 7500237,
         species: "Magic Artic Gear",
@@ -10903,11 +11322,8 @@ darkchomp: {
         abilities: {
             0: "Broken Heart"
         },
-
-
+		  eggGroups: ["Undiscovered"],
     },
-
-
     necroltres: {
         num: 7500238,
         species: "Necroltres",
@@ -10924,10 +11340,8 @@ darkchomp: {
         abilities: {
             0: "Diamond Armor"
         },
-
-
+		  eggGroups: ["Undiscovered"],
     },
-
 
     kartanbull: {
         num: 7500239,
@@ -10945,18 +11359,15 @@ darkchomp: {
         abilities: {
             0: "Subdue"
         },
-
-
+		  eggGroups: ["Monster"],
     },
-
-
     venustoise: {
         num: 7500240,
         species: "Venustoise",
         types: ["Water", "Poison"],
         genderRatio: {
-            M: 87.5,
-            F: 12.5
+            M: 0.875,
+            F: 0.125
         },
         baseStats: {
             hp: 89,
@@ -10970,7 +11381,7 @@ darkchomp: {
             0: "Sun Bath"
         },
     dexentry: "Two of our grunts, who were on the trail of the Pewter and Cerulean Gym Leaders at the time, have encountered a Gastly proficient in the art of illusions. This Gastly used a Venusaur and a Blastoise illusion to scare a Bulbasaur and Squirtle, then combined them to form Venustoise. While the plans to create a Venustoise were postponed for some time, a breakthrough in combining the rarely-seen abilities of Pokémon was discovered, and one of the first fusions to be created from this breakthrough was a live Bulbasquirt. When brought to Level 16, it evolved into an Ivytortle, and at Level 34, Ivytortle evolved into the same fusion depicted back in the Maiden's Peak illusion: Venustoise.",
-
+		  eggGroups: ["Monster"]
     },
 
 
@@ -10978,11 +11389,11 @@ darkchomp: {
         num: 7500240,
         species: "Venustoise-Mega-Green",
         baseSpecies: "Venustoise",
-        forme: "Mega",
+        forme: "Mega-Green",
         formeLetter: "M",
         genderRatio: {
-            M: 87.5,
-            F: 12.5
+            M: 0.875,
+            F: 0.125
         },
         types: ["Water", "Poison"],
         baseStats: {
@@ -10996,21 +11407,18 @@ darkchomp: {
         abilities: {
             0: "Thick Fat"
         },
-
-
+		  eggGroups: ["Monster"],
     },
-
-
     venustoisemegab: {
         num: 7500240,
         species: "Venustoise-Mega-Blue",
         baseSpecies: "Venustoise",
-        forme: "Mega",
+        forme: "Mega-Blue",
         formeLetter: "M",
         types: ["Water", "Poison"],
         genderRatio: {
-            M: 87.5,
-            F: 12.5
+            M: 0.875,
+            F: 0.125
         },
         baseStats: {
             hp: 89,
@@ -11023,11 +11431,8 @@ darkchomp: {
         abilities: {
             0: "Mega Launcher"
         },
-
-
+		  eggGroups: ["Monster"],
     },
-
-
     kingkek: {
         num: 7500241,
         species: "King Kek",
@@ -11043,11 +11448,8 @@ darkchomp: {
         abilities: {
             0: "Lazy Camo"
         },
-
-
+		  eggGroups: ["Field"],
     },
-
-
     sigillow: {
         num: 7500242,
         species: "Sigillow",
@@ -11063,8 +11465,7 @@ darkchomp: {
         abilities: {
             0: "Overwhelming"
         },
-
-
+		  eggGroups: ["Flying"],
     },
     covally: {
         num: 7500243,
@@ -11082,12 +11483,9 @@ darkchomp: {
         abilities: {
             0: "Triage System"
         },
-
-
+		  eggGroups: ["Undiscovered"],
     },
-
-
-    covallyfire: {
+	 covallyfire: {
         num: 7500243,
         species: "Covally-Fire",
         baseSpecies: "Covally",
@@ -11106,12 +11504,9 @@ darkchomp: {
         abilities: {
             0: "Triage System"
         },
-
-
+		  eggGroups: ["Undiscovered"],
     },
-
-
-    covallywater: {
+	 covallywater: {
         num: 7500243,
         species: "Covally-Water",
         baseSpecies: "Covally",
@@ -11130,12 +11525,9 @@ darkchomp: {
         abilities: {
             0: "Triage System"
         },
-
-
+		  eggGroups: ["Undiscovered"],
     },
-
-
-    covallyelectric: {
+	 covallyelectric: {
         num: 7500243,
         species: "Covally-Electric",
         baseSpecies: "Covally",
@@ -11154,11 +11546,8 @@ darkchomp: {
         abilities: {
             0: "Triage System"
         },
-
-
+		  eggGroups: ["Undiscovered"],
     },
-
-
     covallygrass: {
         num: 7500243,
         species: "Covally-Grass",
@@ -11178,11 +11567,8 @@ darkchomp: {
         abilities: {
             0: "Triage System"
         },
-
-
+		  eggGroups: ["Undiscovered"],
     },
-
-
     covallyice: {
         num: 7500243,
         species: "Covally-Ice",
@@ -11202,11 +11588,8 @@ darkchomp: {
         abilities: {
             0: "Triage System"
         },
-
-
+		  eggGroups: ["Undiscovered"],
     },
-
-
     covallyfighting: {
         num: 7500243,
         species: "Covally-Fighting",
@@ -11226,11 +11609,8 @@ darkchomp: {
         abilities: {
             0: "Triage System"
         },
-
-
+		  eggGroups: ["Undiscovered"],
     },
-
-
     covallypoison: {
         num: 7500243,
         species: "Covally-Poison",
@@ -11250,11 +11630,8 @@ darkchomp: {
         abilities: {
             0: "Triage System"
         },
-
-
+		  eggGroups: ["Undiscovered"],
     },
-
-
     covallyground: {
         num: 7500243,
         species: "Covally-Ground",
@@ -11274,11 +11651,8 @@ darkchomp: {
         abilities: {
             0: "Triage System"
         },
-
-
+		  eggGroups: ["Undiscovered"],
     },
-
-
     covallyflying: {
         num: 7500243,
         species: "Covally-Fire",
@@ -11298,11 +11672,8 @@ darkchomp: {
         abilities: {
             0: "Triage System"
         },
-
-
+		  eggGroups: ["Undiscovered"],
     },
-
-
     covallypsychic: {
         num: 7500243,
         species: "Covally-Psychic",
@@ -11322,13 +11693,8 @@ darkchomp: {
         abilities: {
             0: "Triage System"
         },
-
-
+		  eggGroups: ["Undiscovered"],
     },
-
-
-
-
     covallybug: {
         num: 7500243,
         species: "Covally-Bug",
@@ -11348,11 +11714,8 @@ darkchomp: {
         abilities: {
             0: "Triage System"
         },
-
-
+		  eggGroups: ["Undiscovered"],
     },
-
-
     covallyrock: {
         num: 7500243,
         species: "Covally-Rock",
@@ -11372,8 +11735,7 @@ darkchomp: {
         abilities: {
             0: "Triage System"
         },
-
-
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -11396,8 +11758,7 @@ darkchomp: {
         abilities: {
             0: "Triage System"
         },
-
-
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -11420,8 +11781,7 @@ darkchomp: {
         abilities: {
             0: "Triage System"
         },
-
-
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -11444,8 +11804,7 @@ darkchomp: {
         abilities: {
             0: "Triage System"
         },
-
-
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -11468,8 +11827,7 @@ darkchomp: {
         abilities: {
             0: "Triage System"
         },
-
-
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -11492,8 +11850,7 @@ darkchomp: {
         abilities: {
             0: "Triage System"
         },
-
-
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -11512,8 +11869,7 @@ darkchomp: {
         abilities: {
             0: "Regenerator"
         },
-
-
+		  eggGroups: ["Water 1"],
     },
     melon: {
         num: 7500245,
@@ -11531,6 +11887,7 @@ darkchomp: {
         abilities: {
             0: "Pixie Grace"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -11553,6 +11910,7 @@ darkchomp: {
         abilities: {
             0: "Pixie Grace"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -11572,6 +11930,7 @@ darkchomp: {
         abilities: {
             0: "Turborise"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -11591,6 +11950,7 @@ darkchomp: {
         abilities: {
             0: "Pixie Lure"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -11609,6 +11969,7 @@ darkchomp: {
         abilities: {
             0: "Flower Power"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -11630,6 +11991,7 @@ darkchomp: {
         abilities: {
             0: "Desolate Land"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -11649,6 +12011,7 @@ darkchomp: {
         abilities: {
             0: "Normalized Enemy"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -11667,6 +12030,7 @@ darkchomp: {
         abilities: {
             0: "Fungal Shield"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -11686,6 +12050,7 @@ darkchomp: {
         abilities: {
             0: "Pressurate"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -11704,6 +12069,7 @@ darkchomp: {
         abilities: {
             0: "Mana Potion"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -11722,6 +12088,7 @@ darkchomp: {
         abilities: {
             0: "Piercing Gaze"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -11740,6 +12107,7 @@ darkchomp: {
         abilities: {
             0: "Pressured Innards"
         },
+		  eggGroups: ["Undiscovered"],
     },
     omneus: {
         num: 7500255,
@@ -11757,6 +12125,7 @@ darkchomp: {
         abilities: {
             0: "Spiral Power"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -11779,6 +12148,7 @@ darkchomp: {
         abilities: {
             0: "Spiral Power"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -11801,6 +12171,7 @@ darkchomp: {
         abilities: {
             0: "Spiral Power"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -11823,6 +12194,7 @@ darkchomp: {
         abilities: {
             0: "Spiral Power"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -11845,6 +12217,7 @@ darkchomp: {
         abilities: {
             0: "Spiral Power"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -11867,6 +12240,7 @@ darkchomp: {
         abilities: {
             0: "Spiral Power"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -11889,6 +12263,7 @@ darkchomp: {
         abilities: {
             0: "Spiral Power"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -11911,6 +12286,7 @@ darkchomp: {
         abilities: {
             0: "Spiral Power"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -11933,6 +12309,7 @@ darkchomp: {
         abilities: {
             0: "Spiral Power"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -11955,6 +12332,7 @@ darkchomp: {
         abilities: {
             0: "Spiral Power"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -11977,6 +12355,7 @@ darkchomp: {
         abilities: {
             0: "Spiral Power"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -11999,6 +12378,7 @@ darkchomp: {
         abilities: {
             0: "Spiral Power"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -12021,6 +12401,7 @@ darkchomp: {
         abilities: {
             0: "Spiral Power"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -12043,6 +12424,7 @@ darkchomp: {
         abilities: {
             0: "Spiral Power"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -12065,6 +12447,7 @@ darkchomp: {
         abilities: {
             0: "Spiral Power"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -12087,6 +12470,7 @@ darkchomp: {
         abilities: {
             0: "Spiral Power"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -12105,6 +12489,7 @@ darkchomp: {
         abilities: {
             0: "Extremist"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -12126,6 +12511,7 @@ darkchomp: {
         abilities: {
             0: "Refrigerate"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -12145,6 +12531,7 @@ darkchomp: {
         abilities: {
             0: "Queen's Command"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -12163,6 +12550,7 @@ darkchomp: {
         abilities: {
             0: "Guerilla Warfare"
         },
+		  eggGroups: ["Bug"],
     },
 
 
@@ -12184,6 +12572,7 @@ darkchomp: {
         abilities: {
             0: "Technician"
         },
+		  eggGroups: ["Bug"],
     },
 
 
@@ -12203,6 +12592,7 @@ darkchomp: {
         abilities: {
             0: "Soulforged Diamond"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -12225,6 +12615,7 @@ darkchomp: {
         abilities: {
             0: "Sheer Force"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -12243,6 +12634,7 @@ darkchomp: {
         abilities: {
             0: "Cursed Cloak"
         },
+		  eggGroups: ["Amorphous"],
     },
 	
     banekyubusted: {
@@ -12395,6 +12787,7 @@ darkchomp: {
         abilities: {
             0: "Quarantine"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -12413,6 +12806,7 @@ darkchomp: {
         abilities: {
             0: "High Stakes"
         },
+		  eggGroups: ["Field"],
     },
 
 
@@ -12421,8 +12815,8 @@ darkchomp: {
         species: "Inferperior",
         types: ["Grass", "Fire"],
         genderRatio: {
-            M: 87.5,
-            F: 12.5
+            M: 0.875,
+            F: 0.125
         },
         baseStats: {
             hp: 75,
@@ -12435,6 +12829,7 @@ darkchomp: {
         abilities: {
             0: "Blazing Contrary"
         },
+		  eggGroups: ["Field"],
     },
 
 
@@ -12454,6 +12849,7 @@ darkchomp: {
             0: "Appropriation"
         },
 		 otherFormes: ["mimukyubusted"],
+		  eggGroups: ["Amorphous"],
     },
 	mimukyubusted: {
         num: 7500267,
@@ -12473,6 +12869,7 @@ darkchomp: {
         abilities: {
             0: "Appropriation"
         },
+		  eggGroups: ["Amorphous"],
     },
     axatree: {
         num: 7500268,
@@ -12490,6 +12887,7 @@ darkchomp: {
         abilities: {
             0: "Beast Guard"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -12512,6 +12910,7 @@ darkchomp: {
         abilities: {
             0: "Trace"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -12531,6 +12930,7 @@ darkchomp: {
         abilities: {
             0: "Fear Shield"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -12550,6 +12950,7 @@ darkchomp: {
         abilities: {
             0: "Inverse Armor"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -12557,10 +12958,7 @@ darkchomp: {
         num: 7500271,
         species: "Cinshado",
         types: ["Normal", "Fighting"],
-        genderRatio: {
-            M: 25.0,
-            F: 75.0
-        },
+        genderRatio: {M: 0.25, F: 0.75},
         baseStats: {
             hp: 82,
             atk: 130,
@@ -12572,6 +12970,7 @@ darkchomp: {
         abilities: {
             0: "Frenzy"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -12590,6 +12989,7 @@ darkchomp: {
         abilities: {
             0: "Puffy Cloud"
         },
+		  eggGroups: ["Flying"],
     },
 
 
@@ -12611,6 +13011,7 @@ darkchomp: {
         abilities: {
             0: "Pixilate"
         },
+		  eggGroups: ["Flying"],
     },
 celebi: {
 		num: 251,
@@ -12642,8 +13043,8 @@ celebi: {
         species: "Rebell",
         types: ["Fighting", "Psychic"],
         genderRatio: {
-            M: 87.5,
-            F: 12.5
+            M: 0.875,
+            F: 0.125
         },
         baseStats: {
             hp: 70,
@@ -12657,6 +13058,7 @@ celebi: {
             0: "Tinkering"
         },
 		 fusion: ["Riolu", "Celebi"],
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -12664,7 +13066,6 @@ celebi: {
         num: 7500274,
         species: "Combarde",
         types: ["Fighting", "Ground"],
-        gender: "N",
         baseStats: {
             hp: 94,
             atk: 112,
@@ -12676,6 +13077,7 @@ celebi: {
         abilities: {
             0: "Sluggish Aura"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -12695,12 +13097,12 @@ celebi: {
         abilities: {
             0: "Troll"
         },
+		  eggGroups: ["Fairy"],
     },
     aravealola: {
         num: 7500276,
         species: "A Rave-Alola",
         types: ["Electric", "Normal"],
-        gender: "N",
         baseStats: {
             hp: 87,
             atk: 127,
@@ -12712,6 +13114,7 @@ celebi: {
         abilities: {
             0: "Optimize"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -12721,7 +13124,6 @@ celebi: {
         baseSpecies: "A Rave-Alola",
         forme: "Fire",
         formeLetter: "F",
-        gender: "N",
         types: ["Electric", "Fire"],
         baseStats: {
             hp: 87,
@@ -12734,6 +13136,7 @@ celebi: {
         abilities: {
             0: "Optimize"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -12743,7 +13146,6 @@ celebi: {
         baseSpecies: "A Rave-Alola",
         forme: "Water",
         formeLetter: "W",
-        gender: "N",
         types: ["Electric", "Water"],
         baseStats: {
             hp: 87,
@@ -12756,6 +13158,7 @@ celebi: {
         abilities: {
             0: "Optimize"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -12765,8 +13168,7 @@ celebi: {
         baseSpecies: "A Rave-Alola",
         forme: "Electric",
         formeLetter: "E",
-        gender: "N",
-        types: ["Electric", ],
+        types: ["Electric"],
         baseStats: {
             hp: 87,
             atk: 127,
@@ -12778,6 +13180,7 @@ celebi: {
         abilities: {
             0: "Optimize"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -12787,7 +13190,6 @@ celebi: {
         baseSpecies: "A Rave-Alola",
         forme: "Grass",
         formeLetter: "G",
-        gender: "N",
         types: ["Electric", "Grass"],
         baseStats: {
             hp: 87,
@@ -12800,6 +13202,7 @@ celebi: {
         abilities: {
             0: "Optimize"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -12809,7 +13212,6 @@ celebi: {
         baseSpecies: "A Rave-Alola",
         forme: "Ice",
         formeLetter: "I",
-        gender: "N",
         types: ["Electric", "Ice"],
         baseStats: {
             hp: 87,
@@ -12822,6 +13224,7 @@ celebi: {
         abilities: {
             0: "Optimize"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -12830,8 +13233,7 @@ celebi: {
         species: "A Rave-Alola-Fighting",
         baseSpecies: "A Rave-Alola",
         forme: "Fighting",
-        formeLetter: "H",
-        gender: "N",
+        formeLetter: "F",
         types: ["Electric", "Fighting"],
         baseStats: {
             hp: 87,
@@ -12844,6 +13246,7 @@ celebi: {
         abilities: {
             0: "Optimize"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -12853,7 +13256,6 @@ celebi: {
         baseSpecies: "A Rave-Alola",
         forme: "Poison",
         formeLetter: "P",
-        gender: "N",
         types: ["Electric", "Poison"],
         baseStats: {
             hp: 87,
@@ -12866,6 +13268,7 @@ celebi: {
         abilities: {
             0: "Optimize"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -12874,8 +13277,7 @@ celebi: {
         species: "A Rave-Alola-Ground",
         baseSpecies: "A Rave-Alola",
         forme: "Ground",
-        formeLetter: "U",
-        gender: "N",
+        formeLetter: "G",
         types: ["Electric", "Ground"],
         baseStats: {
             hp: 87,
@@ -12888,6 +13290,7 @@ celebi: {
         abilities: {
             0: "Optimize"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -12896,8 +13299,7 @@ celebi: {
         species: "A Rave-Alola-Flying",
         baseSpecies: "A Rave-Alola",
         forme: "Flying",
-        formeLetter: "L",
-        gender: "N",
+        formeLetter: "F",
         types: ["Electric", "Flying"],
         baseStats: {
             hp: 87,
@@ -12910,6 +13312,7 @@ celebi: {
         abilities: {
             0: "Optimize"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -12918,8 +13321,7 @@ celebi: {
         species: "A Rave-Alola-Psychic",
         baseSpecies: "A Rave-Alola",
         forme: "Psychic",
-        formeLetter: "Y",
-        gender: "N",
+        formeLetter: "P",
         types: ["Electric", "Psychic"],
         baseStats: {
             hp: 87,
@@ -12932,6 +13334,7 @@ celebi: {
         abilities: {
             0: "Optimize"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -12941,7 +13344,6 @@ celebi: {
         baseSpecies: "A Rave-Alola",
         forme: "Bug",
         formeLetter: "B",
-        gender: "N",
         types: ["Electric", "Bug"],
         baseStats: {
             hp: 87,
@@ -12954,6 +13356,7 @@ celebi: {
         abilities: {
             0: "Optimize"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -12963,7 +13366,6 @@ celebi: {
         baseSpecies: "A Rave-Alola",
         forme: "Rock",
         formeLetter: "R",
-        gender: "N",
         types: ["Electric", "Rock"],
         baseStats: {
             hp: 87,
@@ -12976,6 +13378,7 @@ celebi: {
         abilities: {
             0: "Optimize"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -12984,8 +13387,7 @@ celebi: {
         species: "A Rave-Alola-Ghost",
         baseSpecies: "A Rave-Alola",
         forme: "Ghost",
-        formeLetter: "O",
-        gender: "N",
+        formeLetter: "G",
         types: ["Electric", "Ghost"],
         baseStats: {
             hp: 87,
@@ -12998,6 +13400,7 @@ celebi: {
         abilities: {
             0: "Optimize"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -13007,7 +13410,6 @@ celebi: {
         baseSpecies: "A Rave-Alola",
         forme: "Dragon",
         formeLetter: "D",
-        gender: "N",
         types: ["Electric", "Fire"],
         baseStats: {
             hp: 87,
@@ -13020,6 +13422,7 @@ celebi: {
         abilities: {
             0: "Optimize"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -13028,8 +13431,7 @@ celebi: {
         species: "A Rave-Alola-Dark",
         baseSpecies: "A Rave-Alola",
         forme: "Dark",
-        formeLetter: "K",
-        gender: "N",
+        formeLetter: "D",
         types: ["Electric", "Dark"],
         baseStats: {
             hp: 87,
@@ -13042,6 +13444,7 @@ celebi: {
         abilities: {
             0: "Optimize"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -13051,7 +13454,6 @@ celebi: {
         baseSpecies: "A Rave-Alola",
         forme: "Steel",
         formeLetter: "S",
-        gender: "N",
         types: ["Electric", "Steel"],
         baseStats: {
             hp: 87,
@@ -13064,6 +13466,7 @@ celebi: {
         abilities: {
             0: "Optimize"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -13072,8 +13475,7 @@ celebi: {
         species: "A Rave-Alola-Fairy",
         baseSpecies: "A Rave-Alola",
         forme: "Fairy",
-        formeLetter: "A",
-        gender: "N",
+        formeLetter: "F",
         types: ["Electric", "Fairy"],
         baseStats: {
             hp: 87,
@@ -13086,6 +13488,7 @@ celebi: {
         abilities: {
             0: "Optimize"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -13093,7 +13496,10 @@ celebi: {
         num: 7500277,
         species: "Miminja",
         types: ["Dark", "Ghost"],
-        genderRatio: {M: 75.0, F: 25.0},
+        genderRatio: {
+            M: 0.75,
+            F: 0.25
+        },
         baseStats: {
             hp: 63,
             atk: 112,
@@ -13105,6 +13511,7 @@ celebi: {
         abilities: {
             0: "Resurrection"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -13114,7 +13521,10 @@ celebi: {
         baseSpecies: "Miminja",
         forme: "Reborn",
         formeLetter: "R",
-        genderRatio: {M: 75.0, F: 25.0},
+        genderRatio: {
+            M: 0.75,
+            F: 0.25
+        },
         types: ["Dark", "Ghost"],
         baseStats: {
             hp: 63,
@@ -13127,6 +13537,7 @@ celebi: {
         abilities: {
             0: "Resurrection Done"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -13134,7 +13545,6 @@ celebi: {
         num: 7500278,
         species: "Murkaleo",
         types: ["Flying", "Steel"],
-        gender: "N",
         baseStats: {
             hp: 98,
             atk: 115,
@@ -13146,6 +13556,7 @@ celebi: {
         abilities: {
             0: "Bamboozled"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -13153,7 +13564,7 @@ celebi: {
         num: 7500279,
         species: "Zekronaw",
         types: ["Electric", "Water"],
-        genderRatio: {M: 87.5, F: 12.5},
+        genderRatio: {M: 0.875, F: 0.125},
         baseStats: {
             hp: 82,
             atk: 130,
@@ -13165,6 +13576,7 @@ celebi: {
         abilities: {
             0: "Tetra Force"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -13172,7 +13584,6 @@ celebi: {
         num: 7500280,
         species: "Quinda",
         types: ["Normal", "Flying"],
-        gender: "N",
         baseStats: {
             hp: 102,
             atk: 102,
@@ -13191,7 +13602,6 @@ celebi: {
         num: 7500281,
         species: "Sablegigas",
         types: ["Normal", "Ghost"],
-        gender: "N",
         baseStats: {
             hp: 90,
             atk: 122,
@@ -13203,6 +13613,7 @@ celebi: {
         abilities: {
             0: "Slow Surge"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -13212,7 +13623,6 @@ celebi: {
         baseSpecies: "Sablegigas",
         forme: "Mega",
         formeLetter: "M",
-        gender: "N",
         types: ["Normal", "Ghost"],
         baseStats: {
             hp: 90,
@@ -13225,6 +13635,7 @@ celebi: {
         abilities: {
             0: "Magic Bounce"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -13262,6 +13673,7 @@ celebi: {
         abilities: {
             0: "Electron Rain"
         },
+		  eggGroups: ["Undiscovered"],
     dexentry: "Of the rare cases of a DNA Fusion not being done by Team Rocket. This powerful mermaid-like rodent was created by Team Aqua, after succesful capture of the Blue Orb. Their attempts at testing the Blue Orb on different species reacted with a Minun, which had then recieved Kyogre's powers contained in the Orb, becoming Kyonun. It swims through the oceans at high speeds, and has tremendous power when it is raining, capable of delievering shocks of over 10.000 Volts."
     },
 
@@ -13284,6 +13696,7 @@ celebi: {
         abilities: {
             0: "Primordial Sea"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -13303,6 +13716,7 @@ celebi: {
         abilities: {
             0: "Petrify"
         },
+		  eggGroups: ["Undiscovered"],
     },
     abomasorusmega: {
         num: 7500284,
@@ -13323,6 +13737,7 @@ celebi: {
         abilities: {
             0: "Snow Warning"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -13330,7 +13745,10 @@ celebi: {
         num: 7500285,
         species: "Toxicario",
         types: ["Poison", "Fighting"],
-        genderRatio: {M: 75.0, F: 25.0},
+        genderRatio: {
+            M: 0.75,
+            F: 0.25
+        },
         baseStats: {
             hp: 86,
             atk: 118,
@@ -13342,6 +13760,7 @@ celebi: {
         abilities: {
             0: "Triggered"
         },
+		  eggGroups: ["Human-Like"],
     },
 
 
@@ -13351,7 +13770,7 @@ celebi: {
         baseSpecies: "Toxicario",
         forme: "Mega",
         formeLetter: "M",
-        genderRatio: {M: 75.0, F: 25.0},
+        genderRatio: {M: 0.75, F: 0.25},
         types: ["Poison", "Fighting"],
         baseStats: {
             hp: 86,
@@ -13364,6 +13783,7 @@ celebi: {
         abilities: {
             0: "Adaptability"
         },
+		  eggGroups: ["Human-Like"],
     },
 
 
@@ -13384,6 +13804,7 @@ celebi: {
         abilities: {
             0: "Mitosis"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -13406,6 +13827,7 @@ celebi: {
         abilities: {
             0: "Mitosis"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -13424,6 +13846,7 @@ celebi: {
         abilities: {
             0: "Prestidigitation"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -13431,7 +13854,7 @@ celebi: {
 		  num: 38,
 		  species: "Ninetales-Prime",
 		  baseSpecies: "Ninetales",
-        genderRatio: {M: 25.0, F: 75.0},
+        genderRatio: {M: 0.25, F: 0.75},
 		  forme: "Prime",
 		  formeLetter: "P",
         types: ["Ice", "Fire"],
@@ -13446,6 +13869,7 @@ celebi: {
         abilities: {
             0: "Solar Snow"
         },
+		  eggGroups: ["Field"],
     },
 
 
@@ -13453,7 +13877,7 @@ celebi: {
         num: 7500289,
         species: "Blampa",
         types: ["Water", "Dragon"],
-        genderRatio: {M: 75.0, F: 25.0},
+        genderRatio: {M: 0.75, F: 0.25},
         baseStats: {
             hp: 88,
             atk: 81,
@@ -13465,6 +13889,7 @@ celebi: {
         abilities: {
             0: "Torrential Rage"
         },
+		  eggGroups: ["Monster"],
     },
 
 
@@ -13475,7 +13900,7 @@ celebi: {
         forme: "Mega",
         formeLetter: "M",
         types: ["Water", "Dragon"],
-        genderRatio: {M: 75.0, F: 25.0},
+        genderRatio: {M: 0.75, F: 0.25},
         baseStats: {
             hp: 88,
             atk: 101,
@@ -13487,6 +13912,7 @@ celebi: {
         abilities: {
             0: "Mega Launcher"
         },
+		  eggGroups: ["Monster"],
     },
 
 
@@ -13506,6 +13932,7 @@ celebi: {
         abilities: {
             0: "Fluttering Heart"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -13525,111 +13952,6 @@ celebi: {
             0: "Prototype"
         },
     },
-kecleusbug: { 
-	 num: 7500291,
-	species: "Kecleus-Bug",
-baseSpecies: "Kecleus",
-forme: "Kecleus-Bug",
-formeLetter: "B",
-types: ["Bug"],
-genderRatio: {M: 0.00 , F: 0.00},
-baseStats: {hp: 90, atk: 105, def: 100, spa: 105, spd: 120, spe: 100},
-abilities: {0: "Prototype"},
-heightm: 2.1,
-weightkg: 171,
-color: "Green",
-eggGroups: ["Undiscovered", ], 
-				},
-	
-	kecleusbugdark: { 
-		 num: 7500291,
-		species: "Kecleus-Bug/Dark",
-baseSpecies: "Kecleus",
-forme: "Kecleus-Bug/Dark",
-formeLetter: "BD",
-types: ["Bug", "Dark"],
-genderRatio: {M: 0.00 , F: 0.00},
-baseStats: {hp: 90, atk: 105, def: 100, spa: 105, spd: 120, spe: 100},
-abilities: {0: "Prototype"},
-heightm: 2.1,
-weightkg: 171,
-color: "Green",
-eggGroups: ["Undiscovered", ], },
-	
-	kecleusbugdragon: {  
-		num: 7500291,
-	species: "Kecleus-Bug/Dragon",
-baseSpecies: "Kecleus",
-forme: "Kecleus-Bug/Dragon",
-formeLetter: "BD",
-types: ["Bug", "Dragon"],
-genderRatio: {M: 0.00 , F: 0.00},
-baseStats: {hp: 90, atk: 105, def: 100, spa: 105, spd: 120, spe: 100},
-abilities: {0: "Prototype"},
-heightm: 2.1,
-weightkg: 171,
-color: "Green",
-eggGroups: ["Undiscovered", ], },
-
-	kecleusbugelectric: { 
-		num: 7500291,
-		species: "Kecleus-Bug/Electric",
-baseSpecies: "Kecleus",
-forme: "Kecleus-Bug/Electric",
-formeLetter: "BE",
-types: ["Bug", "Electric"],
-genderRatio: {M: 0.00 , F: 0.00},
-baseStats: {hp: 90, atk: 105, def: 100, spa: 105, spd: 120, spe: 100},
-abilities: {0: "Prototype"},
-heightm: 2.1,
-weightkg: 171,
-color: "Green",
-eggGroups: ["Undiscovered", ], },
-	
-kecleusbugfairy: { 
-	num: 7500291,
-	species: "Kecleus-Bug/Fairy",
-baseSpecies: "Kecleus",
-forme: "Kecleus-Bug/Fairy",
-formeLetter: "BF",
-types: ["Bug", "Fairy"],
-genderRatio: {M: 0.00 , F: 0.00},
-baseStats: {hp: 90, atk: 105, def: 100, spa: 105, spd: 120, spe: 100},
-abilities: {0: "Prototype"},
-heightm: 2.1,
-weightkg: 171,
-color: "Green",
-eggGroups: ["Undiscovered", ], },
-	
-	kecleusbugfighting: { 
-		num: 7500291,
-		species: "Kecleus-Bug/Fighting",
-baseSpecies: "Kecleus",
-forme: "Kecleus-Bug/Fighting",
-formeLetter: "BF",
-types: ["Bug", "Fighting"],
-genderRatio: {M: 0.00 , F: 0.00},
-baseStats: {hp: 90, atk: 105, def: 100, spa: 105, spd: 120, spe: 100},
-abilities: {0: "Prototype"},
-heightm: 2.1,
-weightkg: 171,
-color: "Green",
-eggGroups: ["Undiscovered", ], },
-	
-	kecleusbugifire: { 
-		num: 7500291,
-		species: "Kecleus-Bug/Fire",
-baseSpecies: "Kecleus",
-forme: "Kecleus-Bug/Fire",
-formeLetter: "BF",
-types: ["Bug", "Fire"],
-genderRatio: {M: 0.00 , F: 0.00},
-baseStats: {hp: 90, atk: 105, def: 100, spa: 105, spd: 120, spe: 100},
-abilities: {0: "Prototype"},
-heightm: 2.1,
-weightkg: 171,
-color: "Green",
-eggGroups: ["Undiscovered", ], },
 	
     fearroh: {
         num: 7500292,
@@ -13646,6 +13968,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Sharpshooter"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -13665,6 +13988,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Rubber Up"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -13683,6 +14007,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Turbo Curse"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -13702,6 +14027,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Revved Up"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -13709,7 +14035,7 @@ eggGroups: ["Undiscovered", ], },
         num: 7500296,
         species: "Sylvoko",
         types: ["Fairy"],
-        genderRatio: {M: 87.5, F: 12.5},
+        genderRatio: {M: 0.875, F: 0.125},
         baseStats: {
             hp: 82,
             atk: 100,
@@ -13721,6 +14047,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Misty Supercharge"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -13741,6 +14068,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Crystallized Shield"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -13763,6 +14091,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Crystallized Shield"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -13782,6 +14111,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Grassworker"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -13801,6 +14131,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Shadow Guard"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -13819,6 +14150,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Vexing Valor"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -13840,6 +14172,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Aerilate"
         },
+		  eggGroups: ["Undiscovered"],
     },
     giramini: {
         num: 7500301,
@@ -13857,6 +14190,8 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Compression"
         },
+		  eggGroups: ["Undiscovered"],
+		  otherFormes: ["giraminiunleashed"],
     },
     giraminiunleashed: {
         num: 7500301,
@@ -13877,6 +14212,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Compression"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -13894,14 +14230,15 @@ eggGroups: ["Undiscovered", ], },
         },
         abilities: {
             0: "Bubble Slip"
-        },
+		  },
+		  eggGroups: ["Bug"],
        dexentry: "Upon first being encountered in the wild, it was thought to be an UB, due to it's oddity. However, upon more reserach being done, it was discovered that it is one of the many recently discovered hybrids. It is able to walk on water surfaces with it's thin four legs, and has a huge bubble around it's head. It uses bubbles to make the floor slippery to increase it's speed. It's still unknown wether this fusion has two eyes or four, as it was not indentified if it has an eye inside another, compound eyes, or just two huge eyes."
     },
     reshivine: {
         num: 7500303,
         species: "Reshivine",
         types: ["Dragon", "Grass"],
-        genderRatio: {M: 87.5, F: 12.5},
+        genderRatio: {M: 0.875, F: 0.125},
         baseStats: {
             hp: 80,
             atk: 90,
@@ -13913,12 +14250,13 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Spiral Flames"
         },
+		  eggGroups: ["Undiscovered"],
     },
     rosium: {
         num: 7500304,
         species: "Rosium",
         types: ["Poison", "Grass"],
-        genderRatio: {M: 75.0, F: 25.0},
+        genderRatio: {M: 0.75, F: 0.25},
         baseStats: {
             hp: 80,
             atk: 86,
@@ -13930,6 +14268,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Operation Overgrow"
         },
+		  eggGroups: ["Grass"],
        dexentry: "After evolving from Roseleef, Subject #304 broke out of confinement. Subject #74, even when Mega Evolved, was taken out effortlessly, as was Subject #83. Subject #59, which is only meant to be used in dire situations, was required to restrain it. Subject #304 has been successfully inhibited. Though it still has very strong Grass-type moves, it is no longer likely to effortlessly break through our most defensive fusions.",
     },
 
@@ -13951,7 +14290,7 @@ eggGroups: ["Undiscovered", ], },
         num: 7500305,
         species: "Valveon",
         types: ["Water", "Fairy"],
-        genderRatio: {M: 87.5, F: 12.5},
+			genderRatio: {M: 0.875, F: 0.125},
         baseStats: {
             hp: 122,
             atk: 75,
@@ -13984,6 +14323,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Fearless"
         },
+		  eggGroups: ["Flying"],
     },
 
 
@@ -14003,6 +14343,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Peer Pressure"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -14021,6 +14362,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Time Stop"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -14040,6 +14382,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Upgrade"
         },
+		  eggGroups: ["Undiscovered"],
     },
     darmin: {
         num: 7500310,
@@ -14057,6 +14400,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Rhythm"
         },
+		  eggGroups: ["Field"],
     },
     darmindown: {
         num: 7500310,
@@ -14076,6 +14420,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Rhythm"
         },
+		  eggGroups: ["Field"],
     },
     conkeldurus: {
         num: 7500311,
@@ -14093,6 +14438,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Lightning Fist"
         },
+		  eggGroups: ["Human-Like"],
     },
     fisktres: {
         num: 7500312,
@@ -14109,11 +14455,13 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Flare Wings"
         },
+		  eggGroups: ["Undiscovered"],
     },
     landana: {
         num: 7500313,
         species: "Landana",
         types: ["Ground", "Flying"],
+		  gender: "M",
         baseStats: {
             hp: 82,
             atk: 137,
@@ -14125,6 +14473,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Pecking Order"
         },
+		  eggGroups: ["Undiscovered"],
     },
     regimiki: {
         num: 7500314,
@@ -14141,12 +14490,13 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Vomit"
         },
+		  eggGroups: ["Undiscovered"],
     },
     star: {
         num: 7500315,
         species: "Star",
         types: ["Fairy", "Dark"],
-        genderRatio: {M: 87.5, F: 12.5},
+			genderRatio: {M: 0.875, F: 0.125},
         baseStats: {
             hp: 78,
             atk: 72,
@@ -14158,6 +14508,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Magical Wand"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -14167,7 +14518,7 @@ eggGroups: ["Undiscovered", ], },
         baseSpecies: "Star",
         forme: "Butterfly",
         formeLetter: "B",
-        genderRatio: {M: 87.5, F: 12.5},
+			genderRatio: {M: 0.875, F: 0.125},
         types: ["Fairy", "Dark"],
         baseStats: {
             hp: 78,
@@ -14180,6 +14531,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Magical Wand"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -14198,6 +14550,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Beast's Copycat"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -14219,6 +14572,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Pixilate"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -14238,6 +14592,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Medical Expert"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -14260,6 +14615,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Pixilate"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -14278,6 +14634,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Bad Influence"
         },
+		  eggGroups: ["Bug"],
     },
 
 
@@ -14297,6 +14654,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Scout"
         },
+		  eggGroups: ["Bug"],
     },
 
 
@@ -14315,6 +14673,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Rejuvenation"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -14336,6 +14695,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Shell Armor"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -14343,7 +14703,6 @@ eggGroups: ["Undiscovered", ], },
         num: 7500321,
         species: "Zycannon",
         types: ["Ground", "Normal"],
-        gender: "N",
         baseStats: {
             hp: 67,
             atk: 130,
@@ -14355,6 +14714,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Force Drain"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -14374,6 +14734,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Foundation"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -14396,6 +14757,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Foundation"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -14424,6 +14786,7 @@ eggGroups: ["Undiscovered", ], },
         baseSpecies: "Peridot",
         forme: "Mega",
         formeLetter: "M",
+		  gender: "N",
         types: ["Flying", "Electric"],
         baseStats: {
             hp: 83,
@@ -14436,6 +14799,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "No Guard"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -14454,6 +14818,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Dirt Nap"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -14472,6 +14837,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Hydrodynamic"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -14493,6 +14859,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Strong Jaw"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -14511,6 +14878,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Engineer"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -14529,6 +14897,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Blessed Protection"
         },
+		  eggGroups: ["Amorphous"],
     },
 
 
@@ -14548,6 +14917,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Barbs Boost"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -14567,6 +14937,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Mirror Mirror"
         },
+		  eggGroups: ["Field"],
     },
 
 
@@ -14586,6 +14957,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Atmospheric Pull"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -14608,6 +14980,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Desolate Land"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -14615,7 +14988,6 @@ eggGroups: ["Undiscovered", ], },
         num: 7500331,
         species: "Kyurpedo",
         types: ["Ice", "Dark"],
-        gender: "N",
         baseStats: {
             hp: 105,
             atk: 145,
@@ -14627,6 +14999,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Volt Boost"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -14636,7 +15009,6 @@ eggGroups: ["Undiscovered", ], },
         baseSpecies: "Kyurpedo",
         forme: "Mega",
         formeLetter: "M",
-        gender: "N",
         types: ["Ice", "Dark"],
         baseStats: {
             hp: 105,
@@ -14649,6 +15021,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Strong Jaw"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -14686,6 +15059,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Land's Shield"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -14707,6 +15081,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Sheer Force"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -14726,6 +15101,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Danceposter"
         },
+		  eggGroups: ["Flying"],
     },
 
 
@@ -14745,6 +15121,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Night Terror"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -14763,6 +15140,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Merciless Beast"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -14781,6 +15159,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Royal Strength"
         },
+		  eggGroups: ["Field"],
     },
 
 
@@ -14799,6 +15178,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Godlike Powers"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -14818,6 +15198,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Soften Up"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -14836,6 +15217,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Tricky Glare"
         },
+		  eggGroups: ["Field"],
     },
 
 
@@ -14854,6 +15236,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Confiscation"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -14861,7 +15244,7 @@ eggGroups: ["Undiscovered", ], },
         num: 7500342,
         species: "Fablefin",
         types: ["Fairy"],
-        genderRatio: {M: 25.0, F: 75.0},
+        genderRatio: {M: 0.25, F: 0.75},
         baseStats: {
             hp: 85,
             atk: 72,
@@ -14873,6 +15256,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Misty Mind"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -14892,6 +15276,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Familiar Maneuvering"
         },
+		  eggGroups: ["Mineral"],
     },
 
 
@@ -14911,6 +15296,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Stat Harvesting"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -14930,6 +15316,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Ability"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -14949,6 +15336,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Type Trap"
         },
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -14956,7 +15344,7 @@ eggGroups: ["Undiscovered", ], },
         num: 7500347,
         species: "Swampterra",
         types: ["Ground", "Water"],
-        genderRatio: {M: 87.5, F: 12.5},
+        genderRatio: {M: 0.875, F: 0.125},
         baseStats: {
             hp: 107,
             atk: 119,
@@ -14968,6 +15356,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Uninhabitable"
         },
+		  eggGroups: ["Monster"],
     },
 
 
@@ -14977,7 +15366,7 @@ eggGroups: ["Undiscovered", ], },
         baseSpecies: "Swampterra",
         forme: "Mega",
         formeLetter: "M",
-        genderRatio: {M: 87.5, F: 12.5},
+        genderRatio: {M: 0.875, F: 0.125},
         types: ["Ground", "Water"],
         baseStats: {
             hp: 107,
@@ -14990,6 +15379,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Swift Swim"
         },
+		  eggGroups: ["Monster"],
     },
 
 
@@ -15017,7 +15407,7 @@ eggGroups: ["Undiscovered", ], },
         num: 7500349,
         species: "Grequa",
         types: ["Water", "Bug"],
-        genderRatio: {M: 75.0, F: 25.0},
+        genderRatio: {M: 0.75, F: 0.25},
         baseStats: {
             hp: 82,
             atk: 92,
@@ -15029,6 +15419,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Huge Bubble"
         },
+		  eggGroups: ["Water 2"],
     },
 
 
@@ -15036,7 +15427,7 @@ eggGroups: ["Undiscovered", ], },
         num: 7500350,
         species: "Alteyer",
         types: ["Ghost", "Flying"],
-        genderRatio: {M: 75.0, F: 25.0},
+        genderRatio: {M: 0.75, F: 0.25},
         baseStats: {
             hp: 86,
             atk: 98,
@@ -15048,6 +15439,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Constellation"
         },
+		  eggGroups: ["Flying"],
     },
 
 
@@ -15057,7 +15449,7 @@ eggGroups: ["Undiscovered", ], },
         baseSpecies: "Alteyer",
         forme: "Mega",
         formeLetter: "M",
-        genderRatio: {M: 75.0, F: 25.0},
+        genderRatio: {M: 0.75, F: 0.25},
         types: ["Ghost", "Fairy"],
         baseStats: {
             hp: 86,
@@ -15070,6 +15462,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Pixilate"
         },
+		  eggGroups: ["Flying"],
     },
     scrafting: {
         num: 7500351,
@@ -15086,6 +15479,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Stare Down"
         },
+		  eggGroups: ["Field"],
     },
 
 
@@ -15104,6 +15498,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Ambition"
         },
+		  eggGroups: ["Flying"],
     },
 
 
@@ -15125,6 +15520,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "No Guard"
         },
+		  eggGroups: ["Flying"],
     },
 
 
@@ -15132,7 +15528,7 @@ eggGroups: ["Undiscovered", ], },
         num: 7500353,
         species: "Joltsol",
         types: ["Electric", "Dark"],
-        genderRatio: {M: 75.0, F: 25.0},
+        genderRatio: {M: 0.75, F: 0.25},
         baseStats: {
             hp: 75,
             atk: 107,
@@ -15144,6 +15540,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Power Surge"
         },
+		  eggGroups: ["Field"],
     },
 
 
@@ -15153,7 +15550,7 @@ eggGroups: ["Undiscovered", ], },
         baseSpecies: "Joltsol",
         forme: "Mega",
         formeLetter: "M",
-        genderRatio: {M: 75.0, F: 25.0},
+        genderRatio: {M: 0.75, F: 0.25},
         types: ["Electric", "Dark"],
         baseStats: {
             hp: 75,
@@ -15166,6 +15563,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Magic Bounce"
         },
+		  eggGroups: ["Field"],
     },
 
 
@@ -15173,7 +15571,7 @@ eggGroups: ["Undiscovered", ], },
         num: 7500354,
         species: "Topaz",
         types: ["Rock", "Fairy"],
-        genderRatio: {M: 75.0, F: 25.0},
+        genderRatio: {M: 0.75, F: 0.25},
         baseStats: {
             hp: 90,
             atk: 92,
@@ -15185,6 +15583,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Power Of Two"
         },
+		  eggGroups: ["Water 1"],
     },
 
 
@@ -15192,7 +15591,7 @@ eggGroups: ["Undiscovered", ], },
         num: 7500355,
         species: "Dolphin",
         types: ["Fire", "Normal"],
-        genderRatio: {M: 75.0, F: 25.0},
+        genderRatio: {M: 0.75, F: 0.25},
         baseStats: {
             hp: 122,
             atk: 124,
@@ -15204,6 +15603,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Lava Dive"
         },
+		  eggGroups: ["Field"],
     },
 
 
@@ -15211,7 +15611,7 @@ eggGroups: ["Undiscovered", ], },
         num: 7500356,
         species: "Snorligatr",
         types: ["Normal", "Water"],
-        genderRatio: {M: 87.5, F: 12.5},
+        genderRatio: {M: 0.875, F: 10.25},
         baseStats: {
             hp: 132,
             atk: 117,
@@ -15223,6 +15623,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Sheer Fat"
         },
+		  eggGroups: ["Monster"],
     },
 
 
@@ -15230,7 +15631,7 @@ eggGroups: ["Undiscovered", ], },
         num: 7500357,
         species: "Emponite",
         types: ["Steel", "Dragon"],
-        genderRatio: {M: 75.0, F: 25.0},
+        genderRatio: {M: 0.75, F: 0.25},
         baseStats: {
             hp: 97,
             atk: 120,
@@ -15242,6 +15643,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Ocean Shield"
         },
+		  eggGroups: ["Water 1"],
     },
 
 
@@ -15249,7 +15651,7 @@ eggGroups: ["Undiscovered", ], },
         num: 7500358,
         species: "Leafrou",
         types: ["Normal", "Grass"],
-        genderRatio: {M: 75.0, F: 25.0},
+        genderRatio: {M: 0.75, F: 0.25},
         baseStats: {
             hp: 80,
             atk: 105,
@@ -15261,6 +15663,7 @@ eggGroups: ["Undiscovered", ], },
         abilities: {
             0: "Chlorocoat"
         },
+		  eggGroups: ["Field"],
     },
 
 
@@ -15306,7 +15709,7 @@ mimiblimbusted: {
         num: 7500360,
         species: "Warcanein",
         types: ["Water", "Fire"],
-        genderRatio: {M: 62.5, F: 37.5},
+        genderRatio: {M: 0.625, F: 0.375},
         baseStats: {
             hp: 110,
             atk: 105,
@@ -15325,381 +15728,7 @@ mimiblimbusted: {
         num: 7500361,
         species: "Zorarce",
         types: ["Normal", "Dark"],
-        genderRatio: {M: 87.5, F: 12.5},
-        baseStats: {
-            hp: 80,
-            atk: 102,
-            def: 90,
-            spa: 100,
-            spd: 90,
-            spe: 102
-        },
-        abilities: {
-            0: "Type Illusionist"
-        },
-    },
-
-
-    zorarcefire: {
-        num: 7500361,
-        species: "Zorarce-Fire",
-        baseSpecies: "Zorarce",
-        forme: "Fire",
-        formeLetter: "F",
-        genderRatio: {M: 87.5, F: 12.5},
-        types: ["Fire", "Dark"],
-        baseStats: {
-            hp: 80,
-            atk: 102,
-            def: 90,
-            spa: 100,
-            spd: 90,
-            spe: 102
-        },
-        abilities: {
-            0: "Type Illusionist"
-        },
-    },
-
-
-    zorarcewater: {
-        num: 7500361,
-        species: "Zorarce-Water",
-        baseSpecies: "Zorarce",
-        forme: "Water",
-        formeLetter: "W",
-        genderRatio: {M: 87.5, F: 12.5},
-        types: ["Water", "Dark"],
-        baseStats: {
-            hp: 80,
-            atk: 102,
-            def: 90,
-            spa: 100,
-            spd: 90,
-            spe: 102
-        },
-        abilities: {
-            0: "Type Illusionist"
-        },
-    },
-
-
-    zorarceelectric: {
-        num: 7500361,
-        species: "Zorarce-Electric",
-        baseSpecies: "Zorarce",
-        forme: "Electric",
-        formeLetter: "E",
-        genderRatio: {M: 87.5, F: 12.5},
-        types: ["Electric", "Dark"],
-        baseStats: {
-            hp: 80,
-            atk: 102,
-            def: 90,
-            spa: 100,
-            spd: 90,
-            spe: 102
-        },
-        abilities: {
-            0: "Type Illusionist"
-        },
-    },
-
-
-    zorarcegrass: {
-        num: 7500361,
-        species: "Zorarce-Grass",
-        baseSpecies: "Zorarce",
-        forme: "Grass",
-        formeLetter: "G",
-        genderRatio: {M: 87.5, F: 12.5},
-        types: ["Grass", "Dark"],
-        baseStats: {
-            hp: 80,
-            atk: 102,
-            def: 90,
-            spa: 100,
-            spd: 90,
-            spe: 102
-        },
-        abilities: {
-            0: "Type Illusionist"
-        },
-    },
-
-
-    zorarceice: {
-        num: 7500361,
-        species: "Zorarce-Ice",
-        baseSpecies: "Zorarce",
-        forme: "Ice",
-        formeLetter: "I",
-        genderRatio: {M: 87.5, F: 12.5},
-        types: ["Ice", "Dark"],
-        baseStats: {
-            hp: 80,
-            atk: 102,
-            def: 90,
-            spa: 100,
-            spd: 90,
-            spe: 102
-        },
-        abilities: {
-            0: "Type Illusionist"
-        },
-    },
-
-
-    zorarcefighting: {
-        num: 7500361,
-        species: "Zorarce-Fighting",
-        baseSpecies: "Zorarce",
-        forme: "Fighting",
-        formeLetter: "H",
-        genderRatio: {M: 87.5, F: 12.5},
-        types: ["Fighting", "Dark"],
-        baseStats: {
-            hp: 80,
-            atk: 102,
-            def: 90,
-            spa: 100,
-            spd: 90,
-            spe: 102
-        },
-        abilities: {
-            0: "Type Illusionist"
-        },
-    },
-
-
-    zorarcepoison: {
-        num: 7500361,
-        species: "Zorarce-Poison",
-        baseSpecies: "Zorarce",
-        forme: "Poison",
-        formeLetter: "P",
-        genderRatio: {M: 87.5, F: 12.5},
-        types: ["Poison", "Dark"],
-        baseStats: {
-            hp: 80,
-            atk: 102,
-            def: 90,
-            spa: 100,
-            spd: 90,
-            spe: 102
-        },
-        abilities: {
-            0: "Type Illusionist"
-        },
-    },
-
-
-    zorarceground: {
-        num: 7500361,
-        species: "Zorarce-Ground",
-        baseSpecies: "Zorarce",
-        forme: "Ground",
-        formeLetter: "U",
-        genderRatio: {M: 87.5, F: 12.5},
-        types: ["Ground", "Dark"],
-        baseStats: {
-            hp: 80,
-            atk: 102,
-            def: 90,
-            spa: 100,
-            spd: 90,
-            spe: 102
-        },
-        abilities: {
-            0: "Type Illusionist"
-        },
-    },
-
-
-    zorarceflying: {
-        num: 7500361,
-        species: "Zorarce-Flying",
-        baseSpecies: "Zorarce",
-        forme: "Flying",
-        formeLetter: "L",
-        genderRatio: {M: 87.5, F: 12.5},
-        types: ["Flying", "Dark"],
-        baseStats: {
-            hp: 80,
-            atk: 102,
-            def: 90,
-            spa: 100,
-            spd: 90,
-            spe: 102
-        },
-        abilities: {
-            0: "Type Illusionist"
-        },
-    },
-
-
-    zorarcepsychic: {
-        num: 7500361,
-        species: "Zorarce-Psychic",
-        baseSpecies: "Zorarce",
-        forme: "Psychic",
-        formeLetter: "Y",
-        genderRatio: {M: 87.5, F: 12.5},
-        types: ["Psychic", "Dark"],
-        baseStats: {
-            hp: 80,
-            atk: 102,
-            def: 90,
-            spa: 100,
-            spd: 90,
-            spe: 102
-        },
-        abilities: {
-            0: "Type Illusionist"
-        },
-    },
-
-
-    zorarcebug: {
-        num: 7500361,
-        species: "Zorarce-Bug",
-        baseSpecies: "Zorarce",
-        forme: "Bug",
-        formeLetter: "B",
-        genderRatio: {M: 87.5, F: 12.5},
-        types: ["Bug", "Dark"],
-        baseStats: {
-            hp: 80,
-            atk: 102,
-            def: 90,
-            spa: 100,
-            spd: 90,
-            spe: 102
-        },
-        abilities: {
-            0: "Type Illusionist"
-        },
-    },
-
-
-    zorarcerock: {
-        num: 7500361,
-        species: "Zorarce-Rock",
-        baseSpecies: "Zorarce",
-        forme: "Rock",
-        formeLetter: "R",
-        genderRatio: {M: 87.5, F: 12.5},
-        types: ["Rock", "Dark"],
-        baseStats: {
-            hp: 80,
-            atk: 102,
-            def: 90,
-            spa: 100,
-            spd: 90,
-            spe: 102
-        },
-        abilities: {
-            0: "Type Illusionist"
-        },
-    },
-
-
-    zorarceghost: {
-        num: 7500361,
-        species: "Zorarce-Ghost",
-        baseSpecies: "Zorarce",
-        forme: "Ghost",
-        formeLetter: "O",
-        genderRatio: {M: 87.5, F: 12.5},
-        types: ["Ghost", "Dark"],
-        baseStats: {
-            hp: 80,
-            atk: 102,
-            def: 90,
-            spa: 100,
-            spd: 90,
-            spe: 102
-        },
-        abilities: {
-            0: "Type Illusionist"
-        },
-    },
-
-
-    zorarcedragon: {
-        num: 7500361,
-        species: "Zorarce-dragon",
-        baseSpecies: "Zorarce",
-        forme: "Dragon",
-        formeLetter: "D",
-        genderRatio: {M: 87.5, F: 12.5},
-        types: ["Dragon", "Dark"],
-        baseStats: {
-            hp: 80,
-            atk: 102,
-            def: 90,
-            spa: 100,
-            spd: 90,
-            spe: 102
-        },
-        abilities: {
-            0: "Type Illusionist"
-        },
-    },
-
-
-    zorarcedark: {
-        num: 7500361,
-        species: "Zorarce-Dark",
-        baseSpecies: "Zorarce",
-        forme: "Dark",
-        formeLetter: "K",
-        genderRatio: {M: 87.5, F: 12.5},
-        types: ["Dark"],
-        baseStats: {
-            hp: 80,
-            atk: 102,
-            def: 90,
-            spa: 100,
-            spd: 90,
-            spe: 102
-        },
-        abilities: {
-            0: "Type Illusionist"
-        },
-    },
-
-
-    zorarcesteel: {
-        num: 7500361,
-        species: "Zorarce-Steel",
-        baseSpecies: "Zorarce",
-        forme: "Steel",
-        formeLetter: "S",
-        genderRatio: {M: 87.5, F: 12.5},
-        types: ["Steel", "Dark"],
-        baseStats: {
-            hp: 80,
-            atk: 102,
-            def: 90,
-            spa: 100,
-            spd: 90,
-            spe: 102
-        },
-        abilities: {
-            0: "Type Illusionist"
-        },
-    },
-
-
-    zorarcefairy: {
-        num: 7500361,
-        species: "Zorarce-Fairy",
-        baseSpecies: "Zorarce",
-        forme: "Fairy",
-        formeLetter: "A",
-        genderRatio: {M: 87.5, F: 12.5},
-        types: ["Fairy", "Dark"],
+        genderRatio: {M: 0.875, F: 0.125},
         baseStats: {
             hp: 80,
             atk: 102,
@@ -16011,7 +16040,7 @@ mimiblimbusted: {
         num: 7500373,
         species: "Mapu Iasu",
         types: ["Ghost", "Fairy"],
-        genderRatio: {M: 25.0, F: 75.0},
+        genderRatio: {M: 0.25, F: 0.75},
         baseStats: {
             hp: 75,
             atk: 85,
@@ -16030,7 +16059,7 @@ mimiblimbusted: {
         num: 7500374,
         species: "Mapu Auhe",
         types: ["Fire", "Grass"],
-        genderRatio: {M: 25.0, F: 75.0},
+        genderRatio: {M: 0.25, F: 0.75},
         baseStats: {
             hp: 75,
             atk: 120,
@@ -16049,7 +16078,7 @@ mimiblimbusted: {
         num: 7500375,
         species: "Mapu Moli",
         types: ["Electric"],
-        genderRatio: {M: 25.0, F: 75.0},
+        genderRatio: {M: 0.25, F: 0.75},
         baseStats: {
             hp: 75,
             atk: 93,
@@ -16068,7 +16097,7 @@ mimiblimbusted: {
         num: 7500376,
         species: "Mapu Bupa",
         types: ["Psychic"],
-        genderRatio: {M: 25.0, F: 75.0},
+        genderRatio: {M: 0.25, F: 0.75},
         baseStats: {
             hp: 75,
             atk: 90,
@@ -16136,6 +16165,7 @@ mimiblimbusted: {
         abilities: {
             0: "Move~Stat"
         },
+		  eggGroups: ["Field"],
     },
 
 
@@ -16202,7 +16232,7 @@ mimiblimbusted: {
         num: 7500382,
         species: "Tyranwak",
         types: ["Rock", "Ghost"],
-        genderRatio: {M: 75.0, F: 25.0},
+        genderRatio: {M: 0.75, F: 0.25},
         baseStats: {
             hp: 81,
             atk: 110,
@@ -16337,7 +16367,7 @@ mimiblimbusted: {
         num: 7500388,
         species: "Nymph",
         types: ["Fairy", "Grass"],
-        genderRatio: {M: 87.5, F: 12.5},
+        genderRatio: {M: 0.875, F: 0.125},
         baseStats: {
             hp: 88,
             atk: 85,
@@ -16682,7 +16712,7 @@ mimiblimbusted: {
         num: 7500400,
         species: "Chaos II",
         types: ["Normal", "Fighting"],
-        genderRatio: {M: 37.5, F: 62.5},
+        genderRatio: {M: 0.375, F: 0.625},
         baseStats: {
             hp: 80,
             atk: 120,
@@ -16699,10 +16729,7 @@ mimiblimbusted: {
         num: 7500401,
         species: "Slowmarina",
         types: ["Water", "Fairy"],
-        genderRatio: {
-            M: 75.0,
-            F: 25.0
-        },
+        genderRatio: {M: 0.75, F: 0.25},
         baseStats: {
             hp: 97,
             atk: 84,
@@ -16726,10 +16753,7 @@ mimiblimbusted: {
         forme: "Mega",
         formeLetter: "M",
         types: ["Water", "Fairy"],
-        genderRatio: {
-            M: 75.0,
-            F: 25.0
-        },
+        genderRatio: {M: 0.75, F: 0.25},
         baseStats: {
             hp: 97,
             atk: 84,
@@ -16802,8 +16826,8 @@ mimiblimbusted: {
         species: "Altarbat",
         types: ["Poison", "Dragon"],
         genderRatio: {
-            M: 50.0,
-            F: 50.0
+            M: 0.5,
+            F: 0.5
         },
         baseStats: {
             hp: 90,
@@ -16890,10 +16914,7 @@ mimiblimbusted: {
         num: 7500406,
         species: "Shiinofey",
         types: ["Grass", "Fairy"],
-        genderRatio: {
-            M: 37.5,
-            F: 62.5
-        },
+        genderRatio: {M: 0.375, F: 0.625},
         baseStats: {
             hp: 65,
             atk: 58,
@@ -16914,10 +16935,6 @@ mimiblimbusted: {
         num: 7500407,
         species: "Algantine",
         types: ["Poison", "Water"],
-        genderRatio: {
-            M: 50.0,
-            F: 50.0
-        },
         baseStats: {
             hp: 85,
             atk: 67,
@@ -17299,10 +17316,7 @@ mimiblimbusted: {
         num: 7500417,
         species: "Exfey-Cola",
         types: ["Fairy", "Grass"],
-        genderRatio: {
-            M: 25.0,
-            F: 75.0
-        },
+        genderRatio: {M: 0.25, F: 0.75},
         baseStats: {
             hp: 83,
             atk: 88,
@@ -17502,15 +17516,12 @@ mimiblimbusted: {
         abilities: {
             0: "Miracle Morph"
         },
+		  eggGroups: ["Undiscovered"],
     },
     nintwo: {
         num: 7500425,
         species: "Nintwo",
         types: ["Bug", "Psychic"],
-        genderRatio: {
-            M: 50.0,
-            F: 50.0
-        },
         baseStats: {
             hp: 83,
             atk: 100,
@@ -17522,6 +17533,7 @@ mimiblimbusted: {
         abilities: {
             0: "Speed Stopper"
         },
+		  eggGroups: ["Undiscovered"],
     },
     nintwomegax: {
         num: 7500425,
@@ -17541,6 +17553,7 @@ mimiblimbusted: {
         abilities: {
             0: "Steadfast"
         },
+		  eggGroups: ["Undiscovered"],
     },
     nintwomegay: {
         num: 7500425,
@@ -17560,15 +17573,12 @@ mimiblimbusted: {
         abilities: {
             0: "Insomnia"
         },
+		  eggGroups: ["Undiscovered"],
     },
     kommew: {
         num: 7500426,
         species: "Kommew",
         types: ["Fighting", "Psychic"],
-        genderRatio: {
-            M: 50.0,
-            F: 50.0
-        },
         baseStats: {
             hp: 107,
             atk: 105,
@@ -17609,10 +17619,6 @@ mimiblimbusted: {
         num: 7500428,
         species: "Pelippex",
         types: ["Water", "Poison"],
-        genderRatio: {
-            M: 50.0,
-            F: 50.0
-        },
         baseStats: {
             hp: 65,
             atk: 66,
@@ -17781,10 +17787,7 @@ mimiblimbusted: {
         num: 7500433,
         species: "Heatreon",
         types: ["Steel", "Fairy"],
-        genderRatio: {
-            M: 75.0,
-            F: 25.0
-        },
+		  genderRatio: {M: 0.75, F: 0.25},
         baseStats: {
             hp: 100,
             atk: 77,
@@ -17876,10 +17879,7 @@ mimiblimbusted: {
         num: 7500436,
         species: "Belle",
         types: ["Steel", "Fairy"],
-        genderRatio: {
-            M: 25.0,
-            F: 75.0
-        },
+        genderRatio: {M: 0.25, F: 0.75},
         baseStats: {
             hp: 100,
             atk: 85,
@@ -18018,11 +18018,8 @@ mimiblimbusted: {
 	 roaramp: {
         num: 7500441,
         species: "Roaramp",
-        types: ["Electric", "Dark"], 
-        genderRatio: {
-            M: 75.0,
-            F: 25.0
-        },
+        types: ["Electric", "Dark"],
+		  genderRatio: {M: 0.75, F: 0.25},
         baseStats: {
             hp: 102,
             atk: 105,
@@ -18045,10 +18042,7 @@ roarampmega: {
         baseSpecies: "Roaramp",
         forme: "Mega",
         formeLetter: "M",
-        genderRatio: {
-            M: 75.0,
-            F: 25.0
-        },
+        genderRatio: {M: 0.75, F: 0.25},
         types: ["Electric", "Dark"], 
         baseStats: {
             hp: 102,
@@ -18071,10 +18065,7 @@ arcalie: {
         num: 7500442,
         species: "Arcalie",
         types: ["Fire", "Dark"],
-        genderRatio: {
-            M: 62.5,
-            F: 37.5
-        },
+        genderRatio: {M: 0.625, F: 0.375},
         baseStats: {
             hp: 87,
             atk: 109,
@@ -18136,10 +18127,7 @@ lycanperiordusk: {
         num: 7500444,
         species: "Lycanperior-Dusk",
         types: ["Rock", "Grass"],
-        genderRatio: {
-            M: 75.0,
-            F: 25.0
-        },
+        genderRatio: {M: 0.75, F: 0.25},
         baseStats: {
             hp: 85,
             atk: 106,
@@ -18235,10 +18223,7 @@ auroritar: {
         num: 7500449,
         species: "Auroritar",
         types: ["Rock"],
-        genderRatio: {
-            M: 75.0,
-            F: 25.0
-        },
+        genderRatio: {M: 0.75, F: 0.25},
         baseStats: {
             hp: 121,
             atk: 115,
@@ -18261,10 +18246,7 @@ auroritarmega: {
         forme: "Mega",
         formeLetter: "M",
         types: ["Rock"],
-        genderRatio: {
-            M: 75.0,
-            F: 25.0
-        },
+        genderRatio: {M: 0.75, F: 0.25},
         baseStats: {
             hp: 121,
             atk: 145,
@@ -18985,10 +18967,7 @@ auroritarmega: {
 		num: 7500462,
 		species: "Gamera",
 		types: ["Water", "Dark"],
-        genderRatio: {
-            M: 75.0,
-            F: 25.0
-        },
+      genderRatio: {M: 0.75, F: 0.25},
 		baseStats: {
 			hp: 99,
 			atk: 118,
@@ -19011,10 +18990,7 @@ auroritarmega: {
 		forme: "Mega",
 		formeLetter: "M",
 		types: ["Water", "Dark"],
-        genderRatio: {
-            M: 75.0,
-            F: 25.0
-        },
+      genderRatio: {M: 0.75, F: 0.25},
 		baseStats: {
 			hp: 99,
 			atk: 148,
@@ -19037,10 +19013,7 @@ auroritarmega: {
 		forme: "Mega",
 		formeLetter: "M",
 		types: ["Water", "Dark"],
-        genderRatio: {
-            M: 75.0,
-            F: 25.0
-        },
+      genderRatio: {M: 0.75, F: 0.25},
 		baseStats: {
 			hp: 99,
 			atk: 138,
@@ -19177,7 +19150,6 @@ auroritarmega: {
 		num: 7500468,
 		species: "Gholemise-Alola",
 		types: ["Electric", "Grass"],
-		gender: "N",
 		baseStats: {
 			hp: 85,
 			atk: 135,
@@ -19191,7 +19163,7 @@ auroritarmega: {
 		},
 		  heightm: 2.8,
 		  weightkg: 263,
-		  eggGroups: ["Undiscovered"],
+		  eggGroups: ["Mineral"],
 	},
 	tallsteelegg: {
 		num: 7500469,
@@ -19402,10 +19374,7 @@ auroritarmega: {
 		num: 7500477,
 		species: "Tyrannosaurus",
 		types: ["Grass", "Rock"],
-        genderRatio: {
-            M: 75.0,
-            F: 25.0
-        },
+      genderRatio: {M: 0.75, F: 0.25},
 		baseStats: {
 			hp: 100,
 			atk: 118,
@@ -19428,10 +19397,7 @@ auroritarmega: {
 		forme: "Mega",
 		formeLetter: "M",
 		types: ["Grass", "Rock"],
-        genderRatio: {
-            M: 75.0,
-            F: 25.0
-        },
+      genderRatio: {M: 0.75, F: 0.25},
 		baseStats: {
 			hp: 100,
 			atk: 138,
@@ -19454,10 +19420,7 @@ auroritarmega: {
 		forme: "Mega",
 		formeLetter: "M",
 		types: ["Grass", "Rock"],
-        genderRatio: {
-            M: 75.0,
-            F: 25.0
-        },
+      genderRatio: {M: 0.75, F: 0.25},
 		baseStats: {
 			hp: 100,
 			atk: 148,
@@ -19477,10 +19440,7 @@ auroritarmega: {
 		num: 7500478,
 		species: "Espord",
 		types: ["Psychic", "Water"],
-        genderRatio: {
-            M: 75.0,
-            F: 25.0
-        },
+      genderRatio: {M: 0.75, F: 0.25},
 		baseStats: {
 			hp: 127,
 			atk: 87,
@@ -19502,10 +19462,7 @@ auroritarmega: {
 		num: 7500479,
 		species: "Glacord",
 		types: ["Ice", "Water"],
-        genderRatio: {
-            M: 75.0,
-            F: 25.0
-        },
+      genderRatio: {M: 0.75, F: 0.25},
 		baseStats: {
 			hp: 127,
 			atk: 85,
@@ -19769,10 +19726,7 @@ auroritarmega: {
 		num: 7500489,
 		species: "Periurora",
 		types: ["Ice", "Rock"],
-        genderRatio: {
-            M: 75.0,
-            F: 25.0
-        },
+      genderRatio: {M: 0.75, F: 0.25},
 		baseStats: {
 			hp: 129,
 			atk: 118,
@@ -19958,10 +19912,7 @@ auroritarmega: {
 		num: 7500496,
 		species: "Blazel",
 		types: ["Fire", "Water"],
-        genderRatio: {
-            M: 75.0,
-            F: 25.0
-        },
+      genderRatio: {M: 0.75, F: 0.25},
 		baseStats: {
 			hp: 92,
 			atk: 122,
@@ -19984,10 +19935,7 @@ auroritarmega: {
 		forme: "Mega",
 		formeLetter: "M",
 		types: ["Fire", "Water"],
-        genderRatio: {
-            M: 75.0,
-            F: 25.0
-        },
+      genderRatio: {M: 0.75, F: 0.25},
 		baseStats: {
 			hp: 92,
 			atk: 162,
@@ -20187,7 +20135,6 @@ auroritarmega: {
 	},
 	chillax: { num: 7500504, species: "Chillax",
 		types: ["Normal", "Dragon"],
-		genderRatio: "{M: 50.0, F: 50.0}",
 		baseStats: {hp: 103, atk: 126, def: 102, spa: 80, spd: 92, spe: 83},
 		abilities: {0: "Mellow Vibe"},
 		heightm: 1.75,
@@ -20199,7 +20146,7 @@ auroritarmega: {
 	        num: 7500505,
 	        species: "Masterpiece",
 	        types: ["Fire", "Grass"],
-	        genderRatio: "{M: 75.0, F: 25.0}",
+			  genderRatio: {M: 0.75, F: 0.25},
 	        baseStats: {
 	            hp: 82,
 	            atk: 97,
@@ -20223,10 +20170,7 @@ auroritarmega: {
 	        forme: "Mega",
 	        formeLetter: "M",
 	        types: ["Fire", "Grass"],
-	        genderRatio: {
-	            M: 75.0,
-	            F: 25.0
-	        },
+			  genderRatio: {M: 0.75, F: 0.25},
 	        baseStats: {
 	            hp: 82,
 	            atk: 117,
@@ -20468,7 +20412,7 @@ auroritarmega: {
             num: 7500513,
             species: "Asterisk",
             types: ["Poison", "Flying"],
-            genderRatio: "{M: 75.0, F: 25.0}",
+				genderRatio: {M: 0.75, F: 0.25},
             baseStats: {
                 hp: 82,
                 atk: 70,
@@ -20508,7 +20452,7 @@ auroritarmega: {
             num: 7500515,
             species: "Centenarian",
             types: ["Electric", "Fighting"],
-            genderRatio: "{M: 75.0, F: 25.0}",
+			   genderRatio: {M: 0.75, F: 0.25},
             baseStats: {
                 hp: 83,
                 atk: 99,
@@ -20531,7 +20475,7 @@ auroritarmega: {
             forme: "Mega",
             formeLetter: "M",
             types: ["Electric", "Fighting"],
-            genderRatio: "{M: 75.0, F: 25.0}",
+			   genderRatio: {M: 0.75, F: 0.25},
             baseStats: {
                 hp: 83,
                 atk: 99,
@@ -20740,7 +20684,7 @@ auroritarmega: {
         num: 7500522,
         species: "Swolax",
         types: ["Normal", "Fighting"],
-        genderRatio: "{M: 87.5, F: 12.5}",
+        genderRatio: {M: 0.875, F: 0.125},
         baseStats: {
             hp: 139,
             atk: 131,
@@ -22283,10 +22227,7 @@ auroritarmega: {
 		        num: 7500558,
 		        species: "Topper",
 		        types: ["Fairy", "Flying"],
-        		  genderRatio: {
-           			M: 75.0,
-            	 	F: 25.0
-			  	   },
+			     genderRatio: {M: 0.75, F: 0.25},
 		        baseStats: {
 		            hp: 82,
 		            atk: 60,
@@ -22406,6 +22347,20 @@ auroritarmega: {
 		            color: "Green",
 		            eggGroups: ["Undiscovered"],
 		        },
+					poliwhirl: {
+						num: 61,
+						species: "Poliwhirl",
+						types: ["Water"],
+						baseStats: {hp: 65, atk: 65, def: 65, spa: 50, spd: 50, spe: 90},
+						abilities: {0: "Water Absorb", 1: "Damp", H: "Swift Swim"},
+						heightm: 1,
+						weightkg: 20,
+						color: "Blue",
+						prevo: "poliwag",
+						evos: ["poliwrath", "politoed", "polipolihotter"],
+						evoLevel: 25,
+						eggGroups: ["Water 1"],
+					},
 					polipolihotter: {
 						num: 7500564,
 						species: "Polipoli-Hotter",
@@ -22423,10 +22378,7 @@ auroritarmega: {
 		   	     num: 7500565,
 		   	     species: "Zebstoar",
 		   	     types: ["Electric", "Fire"],
-        			  genderRatio: {
-         	  			M: 75.0,
-         	   	 	F: 25.0
-				  	   },
+			   	  genderRatio: {M: 0.75, F: 0.25},
 		   	     baseStats: {
 		   	         hp: 102,
 		   	         atk: 121,
@@ -22564,8 +22516,8 @@ auroritarmega: {
 		   	     species: "Arceon",
 		   	     types: ["Fire", "Psychic"],
         			  genderRatio: {
-          				M: 81.25,
-        				   F: 18.75
+          				M: 0.8125,
+        				   F: 0.1875
         			  },
 		   	     baseStats: {
 		   	         hp: 80,
