@@ -7873,14 +7873,31 @@ darkchomp: {
         color: "Gray",
         eggGroups: ["Undiscovered"],
     },
+    fasd: {
+        num: 750187,
+        species: "Fasd",
+        types: ["Water", "Dragon"],
+        baseStats: { 
+            hp: 41,
+            atk: 45,
+            def: 40,
+            spa: 42,
+            spd: 57,
+            spe: 74
+        },
+        abilities: {
+            0: "Over the Limit"
+        },
+        heightm: 0.7,
+        weightkg: 12.35,
+		  evos: ["hydraulic"],
+        color: "Black",
+        eggGroups: ["Dragon"],
+    },
     hydraulic: {
         num: 7500146,
         species: "Hydraulic",
         types: ["Water", "Dragon"],
-        genderRatio: {
-            M: 50.0,
-            F: 50.0
-        },
         baseStats: {
             hp: 103,
             atk: 92,
@@ -7894,6 +7911,8 @@ darkchomp: {
         },
         heightm: 4,
         weightkg: 161,
+		  prevo: "fasd",
+		  evoLevel: 57,
         color: "Black",
         eggGroups: ["Dragon"],
     },
@@ -8471,6 +8490,50 @@ darkchomp: {
         color: "Purple",
         eggGroups: ["Field"],
     },
+    tiniwag: {
+        num: 750192,
+        species: "Tiniwag",
+        types: ["Dragon", "Water"],
+        baseStats: { 
+            hp: 54,
+            atk: 70,
+            def: 50,
+            spa: 50,
+            spd: 50,
+            spe: 75
+        },
+        abilities: {
+            0: "Marvelous Diver"
+        },
+        heightm: 1.2,
+        weightkg: 7.85,
+		  evos: ["whirlagon"],
+        color: "Blue",
+        eggGroups: ["Water 1"],
+    },
+    whirlagon: {
+        num: 750193,
+        species: "Whirlagon",
+        types: ["Dragon", "Water"],
+        baseStats: { 
+            hp: 73,
+            atk: 84,
+            def: 75,
+            spa: 70,
+            spd: 70,
+            spe: 90
+        },
+        abilities: {
+            0: "Marvelous Diver"
+        },
+        heightm: 2.5,
+        weightkg: 18.25,
+		  prevo: "tiniwag",
+		  evos: ["tadpole"],
+		  evoLevel: 27,
+        color: "Blue",
+        eggGroups: ["Water 1"],
+    },
     tadpole: {
         num: 7500161,
         species: "Tadpole",
@@ -8488,7 +8551,9 @@ darkchomp: {
         },
         heightm: 1.755,
         weightkg: 132,
-        color: "Blue",
+		  prevo: "whirlagon",
+		  evoLevel: 55,
+        color: "Orange",
         eggGroups: ["Water 1"],
     },
     draegarados: {
