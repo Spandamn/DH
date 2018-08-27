@@ -8899,7 +8899,7 @@ exports.BattleAbilities = {
 		name: "Magic Mirror",
 		onTryHitPriority: 1,
 		onTryHit: function (target, source, move) {
-			if ((target === source || (!move.flags['reflectable'] || move.type !== 'Dark')) || move.hasBounced) {
+			if ((target === source || (!move.flags['reflectable'] && move.type !== 'Dark')) || move.hasBounced) {
 				return;
 			}
 			let newMove = this.getMoveCopy(move.id);
@@ -11567,5 +11567,26 @@ exports.BattleAbilities = {
 		},
 		id: "antivirus",
 		name: "Antivirus",
+	},
+	"magicalvoice": {
+		desc: "This Pokemon restores 1/3 of its maximum HP, rounded down, when it switches out. This Pokemon's sound-based moves become Water-type moves and restore 1/6 of its maximum HP when used. This effect comes after other effects that change a move's type, but before Ion Deluge and Electrify's effects.",
+		shortDesc: "This Pokemon's sound-based moves become Water type and restore 1/6 of its HP after use. This Pokemon restores 1/3 of its maximum HP, rounded down, when it switches out.",
+		onSwitchOut: function (pokemon) {
+			pokemon.heal(pokemon.maxhp / 3);
+		},
+		onModifyMovePriority: -1,
+		onModifyMove: function (move) {
+			if (move.flags['sound']) {
+				move.type = 'Water';
+			}
+		},
+		onAfterMove: function (pokemon, move) {
+			if (move.flags['sound']){
+				this.heal(pokemon.maxhp / 6);
+				this.add('-activate', pokemon, 'ability: Magical Voice');
+			}
+		},
+		id: "magicalvoice",
+		name: "Magical Voice",
 	},
 };
