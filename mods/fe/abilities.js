@@ -11589,4 +11589,39 @@ exports.BattleAbilities = {
 		id: "magicalvoice",
 		name: "Magical Voice",
 	},
+	"levitimidate": {
+        desc: "On switch-in, this Pokemon removes any type-based immunities of adjacent opposing Pokemon. Pokemon behind a substitute are immune.",
+        shortDesc: "On switch-in, this Pokemon removes any type-based immunities of adjacent opposing Pokemon.",
+        onStart: function (pokemon) {
+            let activated = false;
+            for (const target of pokemon.side.foe.active) {
+                if (!target || !this.isAdjacent(target, pokemon)) continue;
+                if (!activated) {
+                    this.add('-ability', pokemon, 'Levitimidate', 'boost');
+                    activated = true;
+                }
+                if (target.volatiles['substitute']) {
+                    this.add('-immune', target, '[msg]');
+                } else {
+                    target.addVolatile('levitimidate');
+                }
+            }
+        },
+        effect: {
+            onNegateImmunity: function (pokemon, type) {
+                if (!['par', 'psn', 'tox', 'brn', 'frz'].includes(type)) return false;
+            },
+        },
+        id: "levitimidate",
+        name: "Levitimidate",
+    },
+ 
+    "ailmentmaster": {
+        shortDesc: "This Pokemon can inflict any status on any other Pokemon regardless of their typing.",
+        onSourceNegateImmunity: function (pokemon, type){
+             if (['par', 'psn', 'tox', 'brn', 'frz'].includes(type)) return false;
+        },
+        id: "ailmentmaster",
+        name: "Ailment Master",
+    },
 };
