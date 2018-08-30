@@ -31,7 +31,7 @@ exports.BattlePokedex = {
 	 },
 	 dewott: {
 		inherit: true,
-		types: ["Water"],
+		types: ["Water", "Fighting"],
       abilities: {0: "Torrent", 1: "Knight's Blade", H: "Shell Armor"},
 	 },
     samurott: {
@@ -1185,7 +1185,7 @@ exports.BattlePokedex = {
 	roserade: {
 		inherit: true,
 		types: ["Grass", "Poison"],
-      abilities: {0: "Grassy Surge", 1: "Poison Point", H: "Leaf Guard"},
+      abilities: {0: "Grassy Surge", 1: "Poison Point", H: "Technician"},
 	},
 	exeggutor: {
 		inherit: true,
