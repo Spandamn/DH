@@ -2878,7 +2878,6 @@ exports.BattleMovedex = {
         contestType: "Beautiful",
     },
     "thundervirus": {
-        // Is this adequate for paralyzing Electric-types? - Mygavolt
         accuracy: 100,
         basePower: 0,
         category: "Status",
@@ -2893,8 +2892,9 @@ exports.BattleMovedex = {
             reflectable: 1,
             mirror: 1
         },
-        status: 'par',
-        ignoreImmunity: true,
+        onHit: function (target, source) {
+		  		target.setStatus('par', source, true); 
+		  },
         secondary: false,
         target: "normal",
         type: "Electric",
