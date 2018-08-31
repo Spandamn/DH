@@ -1431,8 +1431,11 @@ exports.BattleAbilities = {
 		},
 		stopAttackEvents: true,
 		onModifyAtkPriority: 5,
-		onModifyAtk: function(atk, pokemon) {
-			if (pokemon.status === 'brn') {
+		onModifyAtk: function(atk, attacker, defender, move) {
+			if (attacker.status === 'brn') {
+				if (move.id === 'facade'){
+					return this.chainModify(1.5);
+				}
 				return this.chainModify(3);
 			}
 		},
