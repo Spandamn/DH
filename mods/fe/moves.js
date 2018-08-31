@@ -2878,6 +2878,8 @@ exports.BattleMovedex = {
         contestType: "Beautiful",
     },
     "thundervirus": {
+        // Is this adequate for paralyzing Electric-types? - Mygavolt
+		  // Now it should be. - KirbyRider1337
         accuracy: 100,
         basePower: 0,
         category: "Status",
