@@ -9510,6 +9510,22 @@ exports.BattleAbilities = {
 		onStart: function (pokemon) {
 			pokemon.addVolatile('upgrade');
 			this.add('-ability', pokemon, 'Upgrade');
+			let totalwater = 0;
+			let totalbug = 0;
+                        let targets = 0; 
+			for (const target of pokemon.side.foe.active) {
+				if (!target || target.fainted) continue;
+                                targets = targets + 1;
+				totalwater = totalwater + this.clampIntRange(target.runEffectiveness('Water'), -6, 6);
+				totalbug = totalbug + this.clampIntRange(target.runEffectiveness('Bug'), -6, 6);
+			}
+			if (totalwater >= totalbug && targets > 0) {
+			         pokemon.addVolatile('upgrade');
+			         pokemon.addVolatile('upgradewater');
+			} else if (targets > 0) {
+			         pokemon.addVolatile('upgrade');
+			         pokemon.addVolatile('upgradebug');
+			}
 		},
 		effect: {
 			noCopy: true, // doesn't get copied by Baton Pass
@@ -9518,22 +9534,22 @@ exports.BattleAbilities = {
 			},
 			onModifyAtkPriority: 5,
 			onModifyAtk: function (atk, attacker, defender, move) {
-				if (defender.hasType('Dragon') ||defender.hasType('Grass') || defender.hasType('Water') && move.type === 'Bug') {
+				if (attacker.volatiles['upgradebug'] && move.type === 'Bug') {
 					this.debug('Upgrade boost');
-					return this.chainModify(1.5);
+					return this.chainModify(2);
 				}
-				else if (move.type === 'Water') {
-					return this.chainModify(1.5);
+				else if (attacker.volatiles['upgradewater'] && move.type === 'Water') {
+					return this.chainModify(2);
 				}
 			},
 			onModifySpAPriority: 5,
 			onModifySpA: function (atk, attacker, defender, move) {
-				if (defender.hasType('Dragon') ||defender.hasType('Grass') || defender.hasType('Water') && move.type === 'Bug') {
+				if (attacker.volatiles['upgradebug'] && move.type === 'Bug') {
 					this.debug('Upgrade boost');
-					return this.chainModify(1.5);
+					return this.chainModify(2);
 				}
-				else if (move.type === 'Water') {
-					return this.chainModify(1.5);
+				else if (attacker.volatiles['upgradewater'] && move.type === 'Water') {
+					return this.chainModify(2);
 				}
 			},
 			onEnd: function (target) {
