@@ -2139,18 +2139,24 @@ exports.BattleAbilities = {
 	"armoredguts": {
 		shortDesc: "When statused, this Pokemon gains a 1.5x Attack Boost and it cannot be struck by Critical hits.",
 		onModifyAtkPriority: 5,
-		onModifyAtk: function(atk, pokemon) {
-			if (pokemon.status) {
-				return this.chainModify(1.5);
-			}
+		onModifyAtk: function(atk, attacker, defender, move) {
+	        if (attacker.status) {
+	            if (attacker.status === 'brn' && move.id !== 'facade') {
+	                return this.chainModify(3);
+	            } else {
+	                return this.chainModify(1.5);
+	            }
+	        }
 		},
-		onCriticalHit: false,
+		onSourceModifyCritRatio: function(critRatio, source, target){
+			if (target.status) return 0; 
+		}
 		id: "armoredguts",
 		name: "Armored Guts",
 	},
 	"shakeitoff": {
 		shortDesc: "Boosts the Special Attack stat by two stages when statused.",
-	    onSetStatus: function (status, target, source, effect) {
+	   onSetStatus: function (status, target, source, effect) {
 			if (!effect || !status) return false;
 			this.boost({spa: 2});
 		},
@@ -4083,10 +4089,14 @@ exports.BattleAbilities = {
 	"scrumptious": {
 		shortDesc: "If this Pokemon is statused, its Attack & SpA is 1.5x; ignores burn halving physical damage.",
 		onModifyAtkPriority: 5,
-		onModifyAtk: function(atk, pokemon) {
-			if (pokemon.status) {
-				return this.chainModify(1.5);
-			}
+		onModifyAtk: function(atk, attacker, defender, move) {
+	        if (attacker.status) {
+	            if (attacker.status === 'brn' && move.id !== 'facade') {
+	                return this.chainModify(3);
+	            } else {
+	                return this.chainModify(1.5);
+	            }
+	        }
 		},
 		onModifySpAPriority: 5,
 		onModifySpA: function(atk, pokemon) {
@@ -4164,10 +4174,10 @@ exports.BattleAbilities = {
 			}
 		},
 		onModifyAtkPriority: 5,
-		onModifyAtk: function(atk, pokemon) {
-			if (pokemon.status === 'brn') {
-				return this.chainModify(2);
-			}
+		onModifyAtk: function(atk, attacker, defender, move) {
+	        if (attacker.status === 'brn' && move.id !== 'facade') {
+	        		return this.chainModify(2);
+	        }
 		},
 		id: "panicmode",
 		name: "Panic Mode",
