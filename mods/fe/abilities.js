@@ -8094,19 +8094,19 @@ exports.BattleAbilities = {
 	"gutsybeast": {
 
 	    desc: "If this Pokemon has a major status condition, its most proficient stat is multiplied by 1.5; burn's physical damage halving is ignored if highest stat is Attack, and paralysis's speed halving is ignored if highest stat is Speed.",
-	    shortDesc: "If this Pokemon is statused, its highest stat is 1.5x; ignores status halving this stat.",
+	    shortDesc: "If this Pokemon is statused, its highest stat is 1.5x; Ignores status-based reductions to this stat.",
 	    onModifyAtkPriority: 5,
-	    onModifyAtk: function(atk, pokemon) {
+		onModifyAtk: function (atk, attacker, defender, move) {
 	        let stat = 'atk';
 	        let bestStat = 0;
-	        for (let i in pokemon.stats) {
-	            if (pokemon.stats[i] > bestStat) {
+	        for (let i in attacker.stats) {
+	            if (attacker.stats[i] > bestStat) {
 	                stat = i;
-	                bestStat = pokemon.stats[i];
+	                bestStat = attacker.stats[i];
 	            }
 	        }
-	        if (pokemon.status && stat === 'atk') {
-	            if (pokemon.status === 'brn') {
+	        if (attacker.status && stat === 'atk') {
+	            if (attacker.status === 'brn' && move.id !== 'facade') {
 	                return this.chainModify(3);
 	            } else {
 	                return this.chainModify(1.5);
