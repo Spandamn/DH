@@ -9712,12 +9712,46 @@ exports.BattleAbilities = {
 				}
 			}
 			if (warnMoves.length){
-				pokemon.baseStats.hp = warnBp;
-				pokemon.baseStats.atk = warnBp;
-				pokemon.baseStats.def = warnBp;
-				pokemon.baseStats.spa = warnBp;
-				pokemon.baseStats.spd = warnBp;
-				pokemon.baseStats.spe = warnBp;
+				let atkmod = 1;
+				let defmod = 1;
+				let spamod = 1;
+				let spdmod = 1;
+				let spemod = 1;
+				if (['Adamant', 'Lonely', 'Naughty', 'Brave'].includes(pokemon.getNature())){
+   				 atkmod = 1.1;
+				}
+				else if (['Modest', 'Bold', 'Calm', 'Timid'].includes(pokemon.getNature())){
+				    atkmod = 0.9;
+				}
+				if (['Bold', 'Impish', 'Lax', 'Relaxed'].includes(pokemon.getNature())){
+				    defmod = 1.1;
+				}
+				else if (['Lonely', 'Mild', 'Gentle', 'Hasty'].includes(pokemon.getNature())){
+   				 defmod = 0.9;
+				}
+				if (['Modest', 'Mild', 'Rash', 'Quiet'].includes(pokemon.getNature())){
+   				 spamod = 1.1;
+				}
+				else if (['Adamant', 'Impish', 'Careful', 'Jolly'].includes(pokemon.getNature())){
+   				 spamod = 0.9;
+				}
+				if (['Calm', 'Gentle', 'Careful', 'Sassy'].includes(pokemon.getNature())){
+				    spdmod = 1.1;
+				}
+				else if (['Naughty', 'Lax', 'Rash', 'Naive'].includes(pokemon.getNature())){
+				    spdmod = 0.9;
+				}
+				if (['Timid', 'Hasty', 'Jolly', 'Naive'].includes(pokemon.getNature())){
+				    spemod = 1.1;
+				}
+				else if (['Brave', 'Relaxed', 'Quiet', 'Sassy'].includes(pokemon.getNature())){
+				    spemod = 0.9;
+				}
+				pokemon.stats['atk'] = Math.floor((Math.floor(((2*warnBp+pokemon.set.ivs['atk']+pokemon.set.evs['atk']/4)*100)/pokemon.level + 5))*atkmod);
+				pokemon.stats['def'] = Math.floor((Math.floor(((2*warnBp+pokemon.set.ivs['def']+pokemon.set.evs['def']/4)*100)/pokemon.level + 5))*defmod);
+				pokemon.stats['spa'] = Math.floor((Math.floor(((2*warnBp+pokemon.set.ivs['spa']+pokemon.set.evs['spa']/4)*100)/pokemon.level + 5))*spamod);
+				pokemon.stats['spd'] = Math.floor((Math.floor(((2*warnBp+pokemon.set.ivs['spd']+pokemon.set.evs['spd']/4)*100)/pokemon.level + 5))*spdmod);
+				pokemon.stats['spe'] = Math.floor((Math.floor(((2*warnBp+pokemon.set.ivs['spe']+pokemon.set.evs['spe']/4)*100)/pokemon.level + 5))*spemod);
 			}
 		},
 		id: "movestat",
