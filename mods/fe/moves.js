@@ -2879,6 +2879,7 @@ exports.BattleMovedex = {
     },
     "thundervirus": {
         // Is this adequate for paralyzing Electric-types? - Mygavolt
+		  // Now it should be. - KirbyRider1337
         accuracy: 100,
         basePower: 0,
         category: "Status",
@@ -2893,8 +2894,9 @@ exports.BattleMovedex = {
             reflectable: 1,
             mirror: 1
         },
-        status: 'par',
-        ignoreImmunity: true,
+        onHit: function (target, source) {
+		  		target.setStatus('par', source, true); 
+		  },
         secondary: false,
         target: "normal",
         type: "Electric",
@@ -8541,5 +8543,45 @@ exports.BattleMovedex = {
 		type: "Ground",
 		zMovePower: 220,
 		contestType: "Cool",
+	},
+		"smartmissile": {
+		accuracy: true,
+		basePower: 25,
+		category: "Physical",
+		desc: "Hits two to five times. Has a 1/3 chance to hit two or three times, and a 1/6 chance to hit four or five times. If one of the hits breaks the target's substitute, it will take damage for the remaining hits. If the user has the Ability Skill Link, this move will always hit five times. This move does not check accuracy.",
+		shortDesc: "Hits 2-5 times in one turn. This move does not check accuracy.",
+		id: "smartmissile",
+		name: "Smart Missile",
+		pp: 20,
+		priority: 0,
+		flags: {protect: 1, mirror: 1},
+		multihit: [2, 5],
+		secondary: false,
+		target: "normal",
+		type: "Steel",
+		zMovePower: 140,
+		contestType: "Cool",
+	},
+	"dragonwork": {
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		desc: "Raises the user's Attack, Special Attack, and Speed by 1 stage.",
+		shortDesc: "Raises the user's Attack, Sp. Atk, Speed by 1.",
+		id: "dragonwork",
+		name: "Dragon Work",
+		pp: 20,
+		priority: 0,
+		flags: {snatch: 1},
+		boosts: {
+			atk: 1,
+			spa: 1,
+			spe: 1
+		},
+		secondary: false,
+		target: "self",
+		type: "Dragon",
+		zMoveBoost: {atk: 1},
+		contestType: "Tough",
 	},
 };

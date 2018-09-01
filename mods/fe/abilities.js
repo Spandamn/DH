@@ -1431,8 +1431,11 @@ exports.BattleAbilities = {
 		},
 		stopAttackEvents: true,
 		onModifyAtkPriority: 5,
-		onModifyAtk: function(atk, pokemon) {
-			if (pokemon.status === 'brn') {
+		onModifyAtk: function(atk, attacker, defender, move) {
+			if (attacker.status === 'brn') {
+				if (move.id === 'facade'){
+					return this.chainModify(1.5);
+				}
 				return this.chainModify(3);
 			}
 		},
@@ -2139,18 +2142,24 @@ exports.BattleAbilities = {
 	"armoredguts": {
 		shortDesc: "When statused, this Pokemon gains a 1.5x Attack Boost and it cannot be struck by Critical hits.",
 		onModifyAtkPriority: 5,
-		onModifyAtk: function(atk, pokemon) {
-			if (pokemon.status) {
-				return this.chainModify(1.5);
-			}
+		onModifyAtk: function(atk, attacker, defender, move) {
+	        if (attacker.status) {
+	            if (attacker.status === 'brn' && move.id !== 'facade') {
+	                return this.chainModify(3);
+	            } else {
+	                return this.chainModify(1.5);
+	            }
+	        }
 		},
-		onCriticalHit: false,
+		onSourceModifyCritRatio: function(critRatio, source, target){
+			if (target.status) return 0; 
+		}
 		id: "armoredguts",
 		name: "Armored Guts",
 	},
 	"shakeitoff": {
 		shortDesc: "Boosts the Special Attack stat by two stages when statused.",
-	    onSetStatus: function (status, target, source, effect) {
+	   onSetStatus: function (status, target, source, effect) {
 			if (!effect || !status) return false;
 			this.boost({spa: 2});
 		},
@@ -4083,10 +4092,14 @@ exports.BattleAbilities = {
 	"scrumptious": {
 		shortDesc: "If this Pokemon is statused, its Attack & SpA is 1.5x; ignores burn halving physical damage.",
 		onModifyAtkPriority: 5,
-		onModifyAtk: function(atk, pokemon) {
-			if (pokemon.status) {
-				return this.chainModify(1.5);
-			}
+		onModifyAtk: function(atk, attacker, defender, move) {
+	        if (attacker.status) {
+	            if (attacker.status === 'brn' && move.id !== 'facade') {
+	                return this.chainModify(3);
+	            } else {
+	                return this.chainModify(1.5);
+	            }
+	        }
 		},
 		onModifySpAPriority: 5,
 		onModifySpA: function(atk, pokemon) {
@@ -4164,10 +4177,10 @@ exports.BattleAbilities = {
 			}
 		},
 		onModifyAtkPriority: 5,
-		onModifyAtk: function(atk, pokemon) {
-			if (pokemon.status === 'brn') {
-				return this.chainModify(2);
-			}
+		onModifyAtk: function(atk, attacker, defender, move) {
+	        if (attacker.status === 'brn' && move.id !== 'facade') {
+	        		return this.chainModify(2);
+	        }
 		},
 		id: "panicmode",
 		name: "Panic Mode",
@@ -8094,19 +8107,19 @@ exports.BattleAbilities = {
 	"gutsybeast": {
 
 	    desc: "If this Pokemon has a major status condition, its most proficient stat is multiplied by 1.5; burn's physical damage halving is ignored if highest stat is Attack, and paralysis's speed halving is ignored if highest stat is Speed.",
-	    shortDesc: "If this Pokemon is statused, its highest stat is 1.5x; ignores status halving this stat.",
+	    shortDesc: "If this Pokemon is statused, its highest stat is 1.5x; Ignores status-based reductions to this stat.",
 	    onModifyAtkPriority: 5,
-	    onModifyAtk: function(atk, pokemon) {
+		onModifyAtk: function (atk, attacker, defender, move) {
 	        let stat = 'atk';
 	        let bestStat = 0;
-	        for (let i in pokemon.stats) {
-	            if (pokemon.stats[i] > bestStat) {
+	        for (let i in attacker.stats) {
+	            if (attacker.stats[i] > bestStat) {
 	                stat = i;
-	                bestStat = pokemon.stats[i];
+	                bestStat = attacker.stats[i];
 	            }
 	        }
-	        if (pokemon.status && stat === 'atk') {
-	            if (pokemon.status === 'brn') {
+	        if (attacker.status && stat === 'atk') {
+	            if (attacker.status === 'brn' && move.id !== 'facade') {
 	                return this.chainModify(3);
 	            } else {
 	                return this.chainModify(1.5);
@@ -9497,6 +9510,22 @@ exports.BattleAbilities = {
 		onStart: function (pokemon) {
 			pokemon.addVolatile('upgrade');
 			this.add('-ability', pokemon, 'Upgrade');
+			let totalwater = 0;
+			let totalbug = 0;
+                        let targets = 0; 
+			for (const target of pokemon.side.foe.active) {
+				if (!target || target.fainted) continue;
+                                targets = targets + 1;
+				totalwater = totalwater + this.clampIntRange(target.runEffectiveness('Water'), -6, 6);
+				totalbug = totalbug + this.clampIntRange(target.runEffectiveness('Bug'), -6, 6);
+			}
+			if (totalwater >= totalbug && targets > 0) {
+			         pokemon.addVolatile('upgrade');
+			         pokemon.addVolatile('upgradewater');
+			} else if (targets > 0) {
+			         pokemon.addVolatile('upgrade');
+			         pokemon.addVolatile('upgradebug');
+			}
 		},
 		effect: {
 			noCopy: true, // doesn't get copied by Baton Pass
@@ -9505,22 +9534,22 @@ exports.BattleAbilities = {
 			},
 			onModifyAtkPriority: 5,
 			onModifyAtk: function (atk, attacker, defender, move) {
-				if (defender.hasType('Dragon') ||defender.hasType('Grass') || defender.hasType('Water') && move.type === 'Bug') {
+				if (attacker.volatiles['upgradebug'] && move.type === 'Bug') {
 					this.debug('Upgrade boost');
-					return this.chainModify(1.5);
+					return this.chainModify(2);
 				}
-				else if (move.type === 'Water') {
-					return this.chainModify(1.5);
+				else if (attacker.volatiles['upgradewater'] && move.type === 'Water') {
+					return this.chainModify(2);
 				}
 			},
 			onModifySpAPriority: 5,
 			onModifySpA: function (atk, attacker, defender, move) {
-				if (defender.hasType('Dragon') ||defender.hasType('Grass') || defender.hasType('Water') && move.type === 'Bug') {
+				if (attacker.volatiles['upgradebug'] && move.type === 'Bug') {
 					this.debug('Upgrade boost');
-					return this.chainModify(1.5);
+					return this.chainModify(2);
 				}
-				else if (move.type === 'Water') {
-					return this.chainModify(1.5);
+				else if (attacker.volatiles['upgradewater'] && move.type === 'Water') {
+					return this.chainModify(2);
 				}
 			},
 			onEnd: function (target) {
@@ -9712,12 +9741,46 @@ exports.BattleAbilities = {
 				}
 			}
 			if (warnMoves.length){
-				pokemon.baseStats.hp = warnBp;
-				pokemon.baseStats.atk = warnBp;
-				pokemon.baseStats.def = warnBp;
-				pokemon.baseStats.spa = warnBp;
-				pokemon.baseStats.spd = warnBp;
-				pokemon.baseStats.spe = warnBp;
+				let atkmod = 1;
+				let defmod = 1;
+				let spamod = 1;
+				let spdmod = 1;
+				let spemod = 1;
+				if (['Adamant', 'Lonely', 'Naughty', 'Brave'].includes(pokemon.getNature())){
+   				 atkmod = 1.1;
+				}
+				else if (['Modest', 'Bold', 'Calm', 'Timid'].includes(pokemon.getNature())){
+				    atkmod = 0.9;
+				}
+				if (['Bold', 'Impish', 'Lax', 'Relaxed'].includes(pokemon.getNature())){
+				    defmod = 1.1;
+				}
+				else if (['Lonely', 'Mild', 'Gentle', 'Hasty'].includes(pokemon.getNature())){
+   				 defmod = 0.9;
+				}
+				if (['Modest', 'Mild', 'Rash', 'Quiet'].includes(pokemon.getNature())){
+   				 spamod = 1.1;
+				}
+				else if (['Adamant', 'Impish', 'Careful', 'Jolly'].includes(pokemon.getNature())){
+   				 spamod = 0.9;
+				}
+				if (['Calm', 'Gentle', 'Careful', 'Sassy'].includes(pokemon.getNature())){
+				    spdmod = 1.1;
+				}
+				else if (['Naughty', 'Lax', 'Rash', 'Naive'].includes(pokemon.getNature())){
+				    spdmod = 0.9;
+				}
+				if (['Timid', 'Hasty', 'Jolly', 'Naive'].includes(pokemon.getNature())){
+				    spemod = 1.1;
+				}
+				else if (['Brave', 'Relaxed', 'Quiet', 'Sassy'].includes(pokemon.getNature())){
+				    spemod = 0.9;
+				}
+				pokemon.stats['atk'] = Math.floor((Math.floor(((2*warnBp+pokemon.set.ivs['atk']+pokemon.set.evs['atk']/4)*100)/pokemon.level + 5))*atkmod);
+				pokemon.stats['def'] = Math.floor((Math.floor(((2*warnBp+pokemon.set.ivs['def']+pokemon.set.evs['def']/4)*100)/pokemon.level + 5))*defmod);
+				pokemon.stats['spa'] = Math.floor((Math.floor(((2*warnBp+pokemon.set.ivs['spa']+pokemon.set.evs['spa']/4)*100)/pokemon.level + 5))*spamod);
+				pokemon.stats['spd'] = Math.floor((Math.floor(((2*warnBp+pokemon.set.ivs['spd']+pokemon.set.evs['spd']/4)*100)/pokemon.level + 5))*spdmod);
+				pokemon.stats['spe'] = Math.floor((Math.floor(((2*warnBp+pokemon.set.ivs['spe']+pokemon.set.evs['spe']/4)*100)/pokemon.level + 5))*spemod);
 			}
 		},
 		id: "movestat",
