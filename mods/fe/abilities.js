@@ -2151,9 +2151,7 @@ exports.BattleAbilities = {
 	            }
 	        }
 		},
-		onSourceModifyCritRatio: function(critRatio, source, target){
-			if (target.status) return 0; 
-		}
+		onCriticalHit: false,
 		id: "armoredguts",
 		name: "Armored Guts",
 	},
