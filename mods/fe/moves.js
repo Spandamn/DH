@@ -8584,4 +8584,40 @@ exports.BattleMovedex = {
 		zMoveBoost: {atk: 1},
 		contestType: "Tough",
 	},
+		"dustbowldance": {
+		accuracy: 100,
+		basePower: 120,
+		category: "Special",
+		desc: "This attack charges on the first turn and executes on the second. Power is halved if the weather is Hail, Rain Dance, or Sunny Day. If the user is holding a Power Herb or the weather is Sandstorm, the move completes in one turn.",
+		shortDesc: "Charges turn 1. Hits turn 2. No charge in Sandstorm.",
+		id: "dustbowldance",
+		name: "Dust Bowl Dance",
+		pp: 10,
+		priority: 0,
+		flags: {charge: 1, protect: 1, mirror: 1},
+		onTry: function (attacker, defender, move) {
+			if (attacker.removeVolatile(move.id)) {
+				return;
+			}
+			this.add('-prepare', attacker, move.name, defender);
+			if (this.isWeather(['sandstorm']) || !this.runEvent('ChargeMove', attacker, defender, move)) {
+				this.add('-anim', attacker, move.name, defender);
+				return;
+			}
+			attacker.addVolatile('twoturnmove', defender);
+			return null;
+		},
+		onBasePowerPriority: 4,
+		onBasePower: function (basePower, pokemon, target) {
+			if (this.isWeather(['raindance', 'primordialsea', 'sunnyday', 'desolateland', 'solarsnow', 'hail'])) {
+				this.debug('weakened by weather');
+				return this.chainModify(0.5);
+			}
+		},
+		secondary: false,
+		target: "normal",
+		type: "Rock",
+		zMovePower: 190,
+		contestType: "Beautiful",
+	},
 };
