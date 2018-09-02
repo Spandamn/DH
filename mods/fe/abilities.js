@@ -11697,4 +11697,16 @@ exports.BattleAbilities = {
 		},
 		name: "Monarch of the Rain",
 	},
+	"slimedrench": {
+		shortDesc: "If the foe is poisoned, whenever it tries to heal (with an item or move), it takes that amount of damage.",
+		id: "slimedrench",
+		onFoeTryHeal: function (damage, target, source, effect) {
+			this.debug("Heal is occurring: " + target + " <- " + source + " :: " + effect.id);
+			if (target.status === 'tox' || target.status === 'psn') {
+				this.damage(damage);
+				return 0;
+			}
+		},
+		name: "Slime Drench",
+	},
 };
