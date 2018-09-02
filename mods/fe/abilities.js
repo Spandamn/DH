@@ -11687,4 +11687,14 @@ exports.BattleAbilities = {
         id: "ailmentmaster",
         name: "Ailment Master",
     },
+	"monarchoftherain": {
+		shortDesc: "This Pokemon's HP-restoring moves double in power.",
+		id: "monarchoftherain",
+		onTryHeal: function (damage, target, source, effect) {
+			if (effect && effect.id !== 'wish') {
+				return damage*2;
+			}
+		},
+		name: "Monarch of the Rain",
+	},
 };
