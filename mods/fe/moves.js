@@ -8600,7 +8600,7 @@ exports.BattleMovedex = {
 				return;
 			}
 			this.add('-prepare', attacker, move.name, defender);
-			if (this.isWeather(['sandstorm']) || !this.runEvent('ChargeMove', attacker, defender, move)) {
+			if ((this.isWeather() && this.isWeather(['sandstorm']) !== move.isInInvertedWeather) || !this.runEvent('ChargeMove', attacker, defender, move)) {
 				this.add('-anim', attacker, move.name, defender);
 				return;
 			}
@@ -8609,7 +8609,7 @@ exports.BattleMovedex = {
 		},
 		onBasePowerPriority: 4,
 		onBasePower: function (basePower, pokemon, target) {
-			if (this.isWeather(['raindance', 'primordialsea', 'sunnyday', 'desolateland', 'solarsnow', 'hail'])) {
+			if (this.isWeather() && this.isWeather['sandstorm'] === (pokemon.volatiles['atmosphericperversion'] === pokemon.volatiles['weatherbreak']))) {
 				this.debug('weakened by weather');
 				return this.chainModify(0.5);
 			}
