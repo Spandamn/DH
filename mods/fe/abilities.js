@@ -2151,9 +2151,7 @@ exports.BattleAbilities = {
 	            }
 	        }
 		},
-		onSourceModifyCritRatio: function(critRatio, source, target){
-			if (target.status) return 0; 
-		}
+		onCriticalHit: false,
 		id: "armoredguts",
 		name: "Armored Guts",
 	},
@@ -10775,8 +10773,9 @@ exports.BattleAbilities = {
 		name: "Unfriend",
 	},
 	"beasteye": {
-		shortDesc: "Highest non-HP stat can't be lowered. If this would happen or if this Pokémon is to land a KO, it gets +1 to that stat.",
+		shortDesc: "Highest non-HP stat can't be lowered by external means. If this would happen or if this Pokémon is to land a KO, it gets +1 to that stat.",
 		onBoost: function (boost, target, source, effect) {
+			if (source && target === source) return;
 			let stat = 'atk';
 				let bestStat = 0;
 				for (let i in target.stats) {
@@ -10785,8 +10784,8 @@ exports.BattleAbilities = {
 						bestStat = target.stats[i];
 					}
 				}
-			if (source && target === source) return;
 			if (boost.stat && boost.stat < 0) {
+				delete boost.stat;
 				if (!effect.secondaries) this.add("-fail", target, "unboost", "Attack", "[from] ability: Beast Eye", "[of] " + target);
 				this.boost({[stat]: 1}, target);
 			}
@@ -11687,4 +11686,26 @@ exports.BattleAbilities = {
         id: "ailmentmaster",
         name: "Ailment Master",
     },
+	"monarchoftherain": {
+		shortDesc: "This Pokemon's HP-restoring moves double in power.",
+		id: "monarchoftherain",
+		onTryHeal: function (damage, target, source, effect) {
+			if (effect && effect.id !== 'wish') {
+				return damage*2;
+			}
+		},
+		name: "Monarch of the Rain",
+	},
+	"slimedrench": {
+		shortDesc: "If the foe is poisoned, whenever it tries to heal (with an item or move), it takes that amount of damage.",
+		id: "slimedrench",
+		onFoeTryHeal: function (damage, target, source, effect) {
+			this.debug("Heal is occurring: " + target + " <- " + source + " :: " + effect.id);
+			if (target.status === 'tox' || target.status === 'psn') {
+				this.damage(damage);
+				return 0;
+			}
+		},
+		name: "Slime Drench",
+	},
 };
