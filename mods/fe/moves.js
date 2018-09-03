@@ -8609,7 +8609,7 @@ exports.BattleMovedex = {
 		},
 		onBasePowerPriority: 4,
 		onBasePower: function (basePower, pokemon, target) {
-			if (this.isWeather() && this.isWeather['sandstorm'] === (pokemon.volatiles['atmosphericperversion'] === pokemon.volatiles['weatherbreak']))) {
+			if (this.isWeather() && this.isWeather['sandstorm'] === (pokemon.volatiles['atmosphericperversion'] === pokemon.volatiles['weatherbreak'])) {
 				this.debug('weakened by weather');
 				return this.chainModify(0.5);
 			}
