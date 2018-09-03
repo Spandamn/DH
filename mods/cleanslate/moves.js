@@ -112,6 +112,25 @@ let BattleMovedex = {
 		type: "Poison",
 		zMovePower: 120,
 	},
+	"gravity": {
+        num: 356,
+        accuracy: true,
+        basePower: 0,
+        category: "Status",
+        desc: "For 5 turns, the evasiveness of all active Pokemon is multiplied by 0.6. At the time of use, Bounce, Fly, Magnet Rise, Sky Drop, and Telekinesis end immediately for all active Pokemon. During the effect, Bounce, Fly, Flying Press, High Jump Kick, Jump Kick, Magnet Rise, Sky Drop, Splash, and Telekinesis are prevented from being used by all active Pokemon. Ground-type attacks, Spikes, Toxic Spikes, Sticky Web, and the Ability Arena Trap can affect Flying types or Pokemon with the Ability Levitate. Fails if this move is already in effect.",
+        shortDesc: "For 5 turns, negates all Ground immunities.",
+        id: "gravity",
+        name: "Gravity",
+        pp: 5,
+        priority: 0,
+        flags: {nonsky: 1},
+        weather: 'Gravity',
+        secondary: null,
+        target: "all",
+        type: "Psychic",
+        zMoveBoost: {spe: 1},
+        contestType: "Beautiful",
+    },
   };
 
 exports.BattleMovedex = BattleMovedex;
