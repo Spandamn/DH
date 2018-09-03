@@ -2830,6 +2830,50 @@ exports.BattleFormatsData = { //
         tier: "OU",
         requiredItem: "celemenceite",
     },
+saladreigoncemega: {
+tier: "OU",
+	requiredItem: "saladreigoncemegaite"
+},
+salasaurmega: {
+tier: "OU",
+	requiredItem: "salasaurmegaite",
+},
+centenarianmega: {
+tier: "OU",
+	requiredItem: "centenarianmegaite",
+},
+amdremaryemega: {
+tier: "OU",
+	requiredItem: "amdremaryemegaite",
+},
+metabellmega: {
+tier: "OU",
+	requiredItem: "metabellmegaite",
+},
+bangmamega: {
+tier: "OU",
+	requiredItem: "bangmamegaite",
+},
+unozammega: {
+tier: "OU",
+	requiredItem: "unozammegaite",
+},
+laprasnowmega: {
+tier: "OU",
+	requiredItem: "laprasnowmegaite",
+},
+pigmentmega: {
+tier: "OU",
+	requiredItem: "pigmentmegaite",
+},
+mewdeucamegax: {
+tier: "OU",
+	requiredItem: "mewdeucamegaxite",
+},mewdeucamegay: {
+tier: "OU",
+	requiredItem: "mewdeucamegayite",
+},
+	
 	/* A bunch of items later... */
 	
     nut: {
