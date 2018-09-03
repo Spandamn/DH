@@ -53,6 +53,20 @@ let BattleAbilities = {
 		rating: 3,
 		num: 33.5,
 	},
+	"forceofattraction": {
+        shortDesc: "On switch-in, this Pokemon summons Gravity.",
+        onStart: function (source) {
+            for (const action of this.queue) {
+                if (action.choice === 'runPrimal' && action.pokemon === source && source.template.speciesid === 'kyogre') return;
+                if (action.choice !== 'runSwitch' && action.choice !== 'runPrimal') break;
+            }
+            this.setWeather('gravity');
+        },
+        id: "forceofattraction",
+        name: "Force of Attraction",
+        rating: 4.5,
+        num: 2,
+    },
   };
 
 exports.BattleAbilities = BattleAbilities;
