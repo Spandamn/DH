@@ -2929,7 +2929,7 @@ exports.BattleAbilities = {
 		name: "Grassworker",
 	},
 	"bubbleslip": {
-		shortDesc: "This Pokemon's Water power is 2x; it can't be burned; Fire power against it is halved.",
+		shortDesc: "This Pokemon's Water power is 2x; it can't be burned; Fire power against it is halved. Using a Water-type move will switch this Pokemon out for a chosen teammate.",
 		onModifyAtkPriority: 5,
 		onSourceModifyAtk: function(atk, attacker, defender, move) {
 			if (move.type === 'Fire') {
