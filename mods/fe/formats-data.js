@@ -2830,48 +2830,48 @@ exports.BattleFormatsData = { //
         tier: "OU",
         requiredItem: "celemenceite",
     },
-saladreigoncemega: {
+saldreigoncemega: {
 tier: "OU",
-	requiredItem: "saladreigoncemegaite"
+	requiredItem: "saldreigonceite"
 },
 salasaurmega: {
 tier: "OU",
-	requiredItem: "salasaurmegaite",
+	requiredItem: "salasaurite",
 },
 centenarianmega: {
 tier: "OU",
-	requiredItem: "centenarianmegaite",
+	requiredItem: "centenarianite",
 },
 amdremaryemega: {
 tier: "OU",
-	requiredItem: "amdremaryemegaite",
+	requiredItem: "amdremaryeite",
 },
 metabellmega: {
 tier: "OU",
-	requiredItem: "metabellmegaite",
+	requiredItem: "metabellite",
 },
 bangmamega: {
 tier: "OU",
-	requiredItem: "bangmamegaite",
+	requiredItem: "bangmaite",
 },
 unozammega: {
 tier: "OU",
-	requiredItem: "unozammegaite",
+	requiredItem: "unozamite",
 },
 laprasnowmega: {
 tier: "OU",
-	requiredItem: "laprasnowmegaite",
+	requiredItem: "laprasnowite",
 },
 pigmentmega: {
 tier: "OU",
-	requiredItem: "pigmentmegaite",
+	requiredItem: "pigmentite",
 },
 mewdeucamegax: {
 tier: "OU",
-	requiredItem: "mewdeucamegaxite",
+	requiredItem: "mewdeucaxite",
 },mewdeucamegay: {
 tier: "OU",
-	requiredItem: "mewdeucamegayite",
+	requiredItem: "mewdeucayite",
 },
 	
 	/* A bunch of items later... */
