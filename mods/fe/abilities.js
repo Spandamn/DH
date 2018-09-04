@@ -6712,7 +6712,7 @@ exports.BattleAbilities = {
 		name: "Frisky Beast",
 	},
 		"uninhabitable": {
-		shortDesc: "If this Pokemon is on the field, Grass-type moves won't work.",
+		shortDesc: "Prevents Grass-type moves while this Pokemon is active.",
 		id: "uninhabitable",
 		onAnyTryMove: function (target, source, effect) {
 			if (effect.type === 'Grass') {
