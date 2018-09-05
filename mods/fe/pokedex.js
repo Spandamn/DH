@@ -20232,9 +20232,9 @@ auroritarmega: {
         color: "Blue",
         eggGroups: ["Undiscovered"],
     },
-		saladreigonce: {
+		saldreigonce: {
         num: 7500507,
-        species: "Saladreigonce",
+        species: "Saldreigonce",
         types: ["Steel", "Flying"],
 	        genderRatio: {
 	            M: 50.0,
@@ -20256,10 +20256,10 @@ auroritarmega: {
         color: "Blue",
         eggGroups: ["Dragon"],
     },
-    saladreigoncemega: {
+    saldreigoncemega: {
         num: 7500507,
-        species: "Saladreigonce-Mega",
-        baseSpecies: "Saladreigonce",
+        species: "Saldreigonce-Mega",
+        baseSpecies: "Saldreigonce",
         forme: "Mega",
         formeLetter: "M",
         types: ["Dark", "Flying"],
