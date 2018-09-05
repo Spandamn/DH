@@ -2834,6 +2834,9 @@ saldreigoncemega: {
 tier: "OU",
 	requiredItem: "saldreigonceite"
 },
+	saldreigonce: {
+tier: "OU",
+},
 salasaurmega: {
 tier: "OU",
 	requiredItem: "salasaurite",
