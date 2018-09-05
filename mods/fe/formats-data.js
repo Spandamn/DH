@@ -2,25 +2,36 @@
 
 exports.BattleFormatsData = { //
 
+    inkip: {
+        randomBattleMoves: ["foulplay", "superpower", "psychocut", "waterfall", "knockoff", "doubleedge"],
+        tier: "LC",
+    },
     swampamar: {
-        randomBattleMoves: ["dragondance", "flareblitz", "dragonclaw", "earthquake", "roost", "willowisp"],
+        randomBattleMoves: ["earthquake", "superpower", "psychocut", "waterfall", "knockoff", "foulplay"],
         tier: "OU",
     },
     swampamarmega: {
-        randomBattleMoves: ["dragondance", "flareblitz", "dragonclaw", "earthquake", "roost", "willowisp"],
+        randomBattleMoves: ["earthquake", "raindance", "psychocut", "waterfall", "knockoff", "foulplay"],
         requiredItem: "Swampamarite",
         tier: "OU",
     },
+    feekarp: {
+        randomBattleMoves: ["icebeam", "scald", "dragonpulse", "mist", "haze", "waterfall", "flail", "splash"],
+        tier: "LC",
+    },
     gyarotic: {
-        randomBattleMoves: ["dragondance", "flareblitz", "dragonclaw", "earthquake", "roost", "willowisp"],
+        randomBattleMoves: ["dragondance", "haze", "crunch", "waterfall", "earthquake", "stoneedge", "dragontail"],
         tier: "OU",
     },
     gyaroticmega: {
         tier: "OU",
         requiredItem: "gyaroticite",
     },
-    azuninja: {
-        tier: "OU",
+    krillazulie: {
+        tier: "LC",
+    },
+    frogrill: {
+        tier: "NFE",
     },
     chandeform: {
         tier: "OU",
@@ -37,8 +48,14 @@ exports.BattleFormatsData = { //
     chandeformsandy: {
         tier: "OU",
     },
+    dynamiss: {
+        tier: "LC",
+    },
     mismatross: {
         tier: "OU",
+    },
+    axidos: {
+        tier: "LC",
     },
     haxardos: {
         tier: "OU",
@@ -49,6 +66,9 @@ exports.BattleFormatsData = { //
     pangleyemega: {
         tier: "OU",
         requiredItem: "pangleyeite",
+    },
+    gibikarp: {
+        tier: "LC",
     },
     garchados: {
         tier: "OU",
@@ -61,8 +81,17 @@ exports.BattleFormatsData = { //
         tier: "OU",
         requiredItem: "garchadoscite",
     },
+    merkitty: {
+        tier: "LC",
+    },
     wailcatty: {
         tier: "OU",
+    },
+    gibodile: {
+        tier: "LC",
+    },
+    gabinaw: {
+        tier: "NFE",
     },
     gargatr: {
         tier: "OU",
@@ -71,11 +100,17 @@ exports.BattleFormatsData = { //
         tier: "OU",
         requiredItem: "gargatrite",
     },
+    krelpo: {
+        tier: "LC",
+    },
     dragon: {
         tier: "OU",
     },
     hawlusharp: {
         tier: "OU",
+    },
+    yamonix: {
+        tier: "LC",
     },
     cofagreelix: {
         tier: "OU",
@@ -84,11 +119,20 @@ exports.BattleFormatsData = { //
         tier: "OU",
         requiredItem: "cofagreelixite",
     },
+    wailee: {
+        tier: "LC",
+    },
     joltlord: {
         tier: "OU",
     },
+    gligbee: {
+        tier: "LC",
+    },
     vepsicor: {
         tier: "OU",
+    },
+    zorgrowl: {
+        tier: "LC",
     },
     zorcanine: {
         tier: "OU",
@@ -100,11 +144,20 @@ exports.BattleFormatsData = { //
         tier: "OU",
         requiredItem: "archedactylite",
     },
+    hippopopin: {
+        tier: "LC",
+    },
     chesdon: {
         tier: "OU",
     },
+    drilnub: {
+        tier: "LC",
+    },
     mamodrill: {
         tier: "OU",
+    },
+    gooptile: {
+        tier: "LC",
     },
     heliodra: {
         tier: "OU",
@@ -112,8 +165,14 @@ exports.BattleFormatsData = { //
     scyscor: {
         tier: "OU",
     },
+    seedee: {
+        tier: "LC",
+    },
     joltry: {
         tier: "OU",
+    },
+    shoorazu: {
+        tier: "LC",
     },
     azumaloom: {
         tier: "OU",
@@ -128,6 +187,12 @@ exports.BattleFormatsData = { //
         tier: "OU",
         requiredItem: "weasolite",
     },
+    tariblava: {
+        tier: "LC",
+    },
+    pupibite: {
+        tier: "NFE",
+    },
     tyranichomp: {
         tier: "OU",
     },
@@ -139,12 +204,18 @@ exports.BattleFormatsData = { //
         tier: "OU",
         requiredItem: "tyranichompgite",
     },
+    snochu: {
+        tier: "LC",
+    },
     railie: {
         tier: "OU",
     },
     railiemega: {
         tier: "OU",
         requiredItem: "railieite",
+    },
+    charmingkarp: {
+        tier: "LC",
     },
     charatos: {
         tier: "OU",
@@ -161,6 +232,12 @@ exports.BattleFormatsData = { //
         tier: "OU",
         requiredItem: "charatosxite",
     },
+    arosaur: {
+        tier: "LC",
+    },
+    lairosaur: {
+        tier: "NFE",
+    },
     aggrosaur: {
         tier: "OU",
     },
@@ -171,6 +248,12 @@ exports.BattleFormatsData = { //
     aggrosaurmegaa: {
         tier: "OU",
         requiredItem: "aggrosauraite",
+    },
+    squirtroak: {
+        tier: "LC",
+    },
+    wartoadier: {
+        tier: "NFE",
     },
     blastinja: {
         tier: "OU",
@@ -186,6 +269,12 @@ exports.BattleFormatsData = { //
         tier: "OU",
         requiredItem: "skariaite",
     },
+    mygara: {
+        tier: "LC",
+    },
+    kadagma: {
+        tier: "NFE",
+    },
     magmozam: {
         tier: "OU",
     },
@@ -193,12 +282,18 @@ exports.BattleFormatsData = { //
         tier: "OU",
         requiredItem: "magmozamite",
     },
+    snogepi: {
+        tier: "LC",
+    },
     glakiss: {
         tier: "OU",
     },
     glakissmega: {
         tier: "OU",
         requiredItem: "glakissite",
+    },
+    magiranha: {
+        tier: "LC",
     },
     sharpedos: {
         tier: "OU",
@@ -210,6 +305,9 @@ exports.BattleFormatsData = { //
     sharpedosmegag: {
         tier: "OU",
         requiredItem: "sharpedosgite",
+    },
+    growlee: {
+        tier: "LC",
     },
     vapornine: {
         tier: "OU",
@@ -231,6 +329,9 @@ exports.BattleFormatsData = { //
         tier: "OU",
         requiredItem: "klazorite",
     },
+    pidgeyu: {
+        tier: "LC",
+    },
     pidgemie: {
         tier: "OU",
     },
@@ -238,11 +339,20 @@ exports.BattleFormatsData = { //
         tier: "OU",
         requiredItem: "pidgemieite",
     },
+    porywick: {
+        tier: "LC",
+    },
+    lampory: {
+        tier: "NFE",
+    },
     porylure: {
         tier: "OU",
     },
     starchamp: {
         tier: "OU",
+    },
+    grimo: {
+        tier: "LC",
     },
     eek: {
         tier: "OU",
@@ -261,11 +371,20 @@ exports.BattleFormatsData = { //
         tier: "OU",
         requiredItem: "shaymizardyite",
     },
+    ferroedge: {
+        tier: "LC",
+    },
     ferroslashshield: {
         tier: "OU",
     },
     ferroslashblade: {
         tier: "OU",
+    },
+    chaxe: {
+        tier: "LC",
+    },
+    fraxuleon: {
+        tier: "NFE",
     },
     hazard: {
         tier: "OU",
@@ -278,8 +397,14 @@ exports.BattleFormatsData = { //
         tier: "OU",
         requiredItem: "hazardyite",
     },
+    tyklink: {
+        tier: "LC",
+    },
     hitmonklang: {
         tier: "OU",
+    },
+    inkduck: {
+        tier: "LC",
     },
     maladuck: {
         tier: "OU",
@@ -290,12 +415,21 @@ exports.BattleFormatsData = { //
     suirizion: {
         tier: "OU",
     },
+    raillish: {
+        tier: "LC",
+    },
     jellivoir: {
         tier: "OU",
     },
     jellivoirmega: {
         tier: "OU",
         requiredItem: "jellivoirite",
+    },
+    babelum: {
+        tier: "LC",
+    },
+    angol: {
+        tier: "NFE",
     },
     metabat: {
         tier: "OU",
@@ -316,6 +450,9 @@ exports.BattleFormatsData = { //
     },
     moltie: {
         tier: "OU",
+    },
+    belpet: {
+        tier: "LC",
     },
     banegross: {
         tier: "OU",
@@ -339,6 +476,9 @@ exports.BattleFormatsData = { //
         tier: "OU",
         requiredItem: "herasirpite",
     },
+    misdreavalts: {
+        tier: "LC",
+    },
     mismagivoir: {
         tier: "OU",
     },
@@ -358,6 +498,12 @@ exports.BattleFormatsData = { //
     },
     lucharma: {
         tier: "OU",
+    },
+    klip: {
+        tier: "LC",
+    },
+    klomp: {
+        tier: "NFE",
     },
     swank: {
         tier: "OU",
@@ -409,6 +555,9 @@ exports.BattleFormatsData = { //
         tier: "OU",
         requiredItem: "loppeyeyite",
     },
+    slowdon: {
+        tier: "LC",
+    },
     bastioking: {
         tier: "OU",
     },
@@ -425,6 +574,9 @@ exports.BattleFormatsData = { //
     manatarmega: {
         tier: "OU",
         requiredItem: "manatarite",
+    },
+    quiaura: {
+        tier: "LC",
     },
     aurortoise: {
         tier: "OU",
@@ -461,8 +613,14 @@ exports.BattleFormatsData = { //
         tier: "OU",
         requiredItem: "shotite",
     },
+    hippee: {
+        tier: "LC",
+    },
     leafadon: {
         tier: "OU",
+    },
+    matrike: {
+        tier: "LC",
     },
     mampharos: {
         tier: "OU",
@@ -475,6 +633,12 @@ exports.BattleFormatsData = { //
         tier: "OU",
         requiredItem: "mampharosaite",
     },
+    porydile: {
+        tier: "LC",
+    },
+    krok2: {
+        tier: "NFE",
+    },
     krookz: {
         tier: "OU",
     },
@@ -484,6 +648,9 @@ exports.BattleFormatsData = { //
     entariamega: {
         tier: "OU",
         requiredItem: "entariaite",
+    },
+    sursquirt: {
+        tier: "LC",
     },
     blasterain: {
         tier: "OU",
@@ -502,8 +669,17 @@ exports.BattleFormatsData = { //
     chatotorus: {
         tier: "OU",
     },
+    happipi: {
+        tier: "LC",
+    },
+    chantic: {
+        tier: "OU",
+    },
     blisskiss: {
         tier: "OU",
+    },
+    gunkpawn: {
+        tier: "LC",
     },
     toxisharp: {
         tier: "OU",
@@ -521,6 +697,9 @@ exports.BattleFormatsData = { //
     heatloom: {
         tier: "OU",
     },
+    golone: {
+        tier: "LC",
+    },
     golislashdefense: {
         tier: "OU",
     },
@@ -537,6 +716,9 @@ exports.BattleFormatsData = { //
         tier: "OU",
         requiredItem: "lopunniniite",
     },
+    larvatrap: {
+        tier: "LC",
+    },
     volcagon: {
         tier: "OU",
     },
@@ -549,6 +731,9 @@ exports.BattleFormatsData = { //
     aeroraptormega: {
         tier: "OU",
         requiredItem: "aeroraptorite",
+    },
+    sansjr: {
+        tier: "LC",
     },
     sans: {
         tier: "OU",
@@ -564,6 +749,12 @@ exports.BattleFormatsData = { //
         tier: "OU",
         requiredItem: "lucasolaite",
     },
+    treesaur: {
+        tier: "LC",
+    },
+    vylesaur: {
+        tier: "NFE",
+    },
     sceptilusaur: {
         tier: "OU",
     },
@@ -574,6 +765,9 @@ exports.BattleFormatsData = { //
     sceptilusaurmegay: {
         tier: "OU",
         requiredItem: "sceptilusauryite",
+    },
+    dourike: {
+        tier: "LC",
     },
     houndectric: {
         tier: "OU",
@@ -586,12 +780,18 @@ exports.BattleFormatsData = { //
         tier: "OU",
         requiredItem: "houndectrichite",
     },
+    whisdour: {
+        tier: "LC",
+    },
     exdoom: {
         tier: "OU",
     },
     exdoommega: {
         tier: "OU",
         requiredItem: "exdoomite",
+    },
+    karpon: {
+        tier: "LC",
     },
     gyaramence: {
         tier: "OU",
@@ -613,6 +813,9 @@ exports.BattleFormatsData = { //
     },
     snoopa: {
         tier: "OU",
+    },
+    plupoke: {
+        tier: "LC",
     },
     empoleking: {
         tier: "OU",
@@ -665,6 +868,9 @@ exports.BattleFormatsData = { //
     koulion: {
         tier: "OU",
     },
+    panphan: {
+        tier: "LC",
+    },
     dongoro: {
         tier: "OU",
     },
@@ -674,6 +880,9 @@ exports.BattleFormatsData = { //
     darkchompmega: {
         tier: "OU",
         requiredItem: "darkchompite",
+    },
+    friller: {
+        tier: "LC",
     },
     jelluk: {
         tier: "OU",
@@ -688,6 +897,9 @@ exports.BattleFormatsData = { //
     wigglyman: {
         tier: "OU",
     },
+    magibas: {
+        tier: "LC",
+    },
     magnetic: {
         tier: "OU",
     },
@@ -696,6 +908,9 @@ exports.BattleFormatsData = { //
     },
     thundini: {
         tier: "OU",
+    },
+    cleahorch: {
+        tier: "LC",
     },
     clawdra: {
         tier: "OU",
@@ -715,6 +930,9 @@ exports.BattleFormatsData = { //
     dedsteel: {
         tier: "OU",
     },
+    charmite: {
+        tier: "LC",
+    },
     avaizard: {
         tier: "OU",
     },
@@ -726,8 +944,14 @@ exports.BattleFormatsData = { //
         tier: "OU",
         requiredItem: "avaizardyite",
     },
+    slugwick: {
+        tier: "LC",
+    },
     cargolure: {
         tier: "OU",
+    },
+    riobra: {
+        tier: "LC",
     },
     alakario: {
         tier: "OU",
@@ -747,19 +971,28 @@ exports.BattleFormatsData = { //
         tier: "OU",
         requiredItem: "cazantorite",
     },
-    gallete: {
+    rappel: {
+        tier: "LC",
+    },
+    gallette: {
         tier: "OU",
     },
-    galletemegag: {
+    gallettemegag: {
         tier: "OU",
-        requiredItem: "galletegite"
+        requiredItem: "gallettegite"
     },
-    galletemegab: {
+    gallettemegab: {
         tier: "OU",
-        requiredItem: "galletebite",
+        requiredItem: "gallettebite",
+    },
+    amarunt: {
+        tier: "LC",
     },
     aurantrum: {
         tier: "OU",
+    },
+    ferrolix: {
+        tier: "LC",
     },
     steelthorn: {
         tier: "OU",
@@ -767,6 +1000,9 @@ exports.BattleFormatsData = { //
     steelthornmega: {
         tier: "OU",
         requiredItem: "steelthornite",
+    },
+    venoran: {
+        tier: "LC",
     },
     venoqueen: {
         tier: "OU",
@@ -786,12 +1022,18 @@ exports.BattleFormatsData = { //
     polyform2sandy: {
         tier: "OU",
     },
+    swaggy: {
+        tier: "LC",
+    },
     scraftia: {
         tier: "OU",
     },
     scraftiamega: {
         tier: "OU",
         requiredItem: "scraftiaite",
+    },
+    swooshi: {
+        tier: "LC",
     },
     slurpum: {
         tier: "OU",
@@ -803,15 +1045,21 @@ exports.BattleFormatsData = { //
         tier: "OU",
         requiredItem: "thundersaurusite",
     },
+    rhyhoax: {
+        tier: "LC",
+    },
     rhyperlax: {
         tier: "OU",
     },
-    lopunne: {
+    zunzoon: {
+        tier: "LC",
+    },
+    lopunoone: {
         tier: "OU",
     },
-    lopunnemega: {
+    lopunoonemega: {
         tier: "OU",
-        requiredItem: "lopunneite",
+        requiredItem: "lopunooneite",
     },
     hootoise: {
         tier: "OU",
@@ -826,11 +1074,17 @@ exports.BattleFormatsData = { //
     laprazone: {
         tier: "OU",
     },
+    fasd: {
+        tier: "LC",
+    },
     hydraulic: {
         tier: "OU",
     },
     klinkle: {
         tier: "OU",
+    },
+    beldurogue: {
+        tier: "LC",
     },
     metanlee: {
         tier: "OU",
@@ -882,14 +1136,26 @@ exports.BattleFormatsData = { //
     stundos: {
         tier: "OU",
     },
+    mallo: {
+        tier: "LC",
+    },
     macaroon: {
         tier: "OU",
     },
     dank: {
         tier: "OU",
     },
+    ponypom: {
+        tier: "LC",
+    },
     rapipom: {
         tier: "OU",
+    },
+    tiniwag: {
+        tier: "LC",
+    },
+    whirlagon: {
+        tier: "NFE",
     },
     tadpole: {
         tier: "OU",
@@ -2705,7 +2971,7 @@ exports.BattleFormatsData = { //
         tier: "OU",
         requiredItem: "tyrannosaurusyite",
     },
-    espeord: {
+    espord: {
         tier: "OU",
     },
     glacord: {
