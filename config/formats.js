@@ -4268,7 +4268,7 @@ exports.Formats = [
 			this.attrLastMove('[still]');
 			this.add('-anim', source, "Celebrate", target);
 		},
-  		onModifyTemplate: function (template, pokemon, source) {
+  		/*onModifyTemplate: function (template, pokemon, source) {
   			//This hack is for something important: The Pokemon's Sprite.
   			if (!template.base) return template;
   			let temp = Object.assign({}, template);
@@ -4277,7 +4277,7 @@ exports.Formats = [
 			pokemon.fullname = `${pokemon.side.id}: ${pokemon.name}`;
 			pokemon.id = pokemon.fullname;
 			return temp;
-  		},
+  		},*/
 		checkLearnset: function (move, template, lsetData, set) {
             if (!template.fusion) return this.checkLearnset(move, template, lsetData, set);
             return this.checkLearnset(move, this.getTemplate(template.fusion[0])) || this.checkLearnset(move, this.getTemplate(template.fusion[1]));
