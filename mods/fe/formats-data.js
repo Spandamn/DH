@@ -2873,7 +2873,305 @@ tier: "OU",
 tier: "OU",
 	requiredItem: "mewdeucayite",
 },
-	
+	saladreigonce: {
+tier: "OU",
+},
+salasaur: {
+tier: "OU",
+},
+emulia: {
+tier: "OU",
+},
+klinkarel: {
+tier: "OU",
+},
+gumshoe: {
+tier: "OU",
+},
+barbominable: {
+tier: "OU",
+},
+asterisk: {
+tier: "OU",
+},
+togetrio: {
+tier: "OU",
+},
+centenarian: {
+tier: "OU",
+},
+kyutana: {
+tier: "OU",
+},
+kyutanabusted: {
+tier: "OU",
+},kyutanabustedtest: {
+tier: "OU",
+},
+amdremarye: {
+tier: "OU",
+},
+dondon: {
+tier: "OU",
+},
+xerdian: {
+tier: "OU",
+},
+genin: {
+tier: "OU",
+},
+aryvel: {
+tier: "OU",
+},
+swolax: {
+tier: "OU",
+},
+mendoza: {
+tier: "OU",
+},
+goohoo: {
+tier: "OU",
+},
+kyervine: {
+tier: "OU",
+},
+kyervineprimal: {
+tier: "OU",
+},
+pototonz: {
+tier: "OU",
+},
+tropeus: {
+tier: "OU",
+},
+tropeusfire: {
+tier: "OU",
+},
+tropeuswater: {
+tier: "OU",
+},
+tropeuselectric: {
+tier: "OU",
+},
+tropeusgrass: {
+tier: "OU",
+},
+tropeusice: {
+tier: "OU",
+},
+tropeusfighting: {
+tier: "OU",
+},
+tropeuspoison: {
+tier: "OU",
+},
+tropeusground: {
+tier: "OU",
+},
+tropeusflying: {
+tier: "OU",
+},
+tropeuspsychic: {
+tier: "OU",
+},
+tropeusbug: {
+tier: "OU",
+},
+tropeusrock: {
+tier: "OU",
+},
+tropeusghost: {
+tier: "OU",
+},
+tropeusdragon: {
+tier: "OU",
+},
+tropeusdark: {
+tier: "OU",
+},
+tropeussteel: {
+tier: "OU",
+},
+tropeusfairy: {
+tier: "OU",
+},
+metabell: {
+tier: "OU",
+},
+metabellmega: {
+tier: "OU",
+},
+taiwan: {
+tier: "OU",
+},
+apouterro: {
+tier: "OU",
+},
+castapus: {
+tier: "OU",
+},
+castapussmarty: {
+tier: "OU",
+},
+castapusstormy: {
+tier: "OU",
+},
+castapusgrassy: {
+tier: "OU",
+},
+castapusmisty: {
+tier: "OU",
+},
+
+castapusrocky: {
+tier: "OU",
+},
+castapusmurky: {
+tier: "OU",
+},
+castapuskelpy: {
+tier: "OU",
+},
+castapussludgy: {
+tier: "OU",
+},
+castapusbeauty: {
+tier: "OU",
+},
+castapussturdy: {
+tier: "OU",
+},
+wagonite: {
+tier: "OU",
+},
+drewni: {
+tier: "OU",
+},
+topper: {
+tier: "OU",
+},
+qwilala: {
+tier: "OU",
+},
+accelerateddetox: {
+tier: "OU",
+},quendorus: {
+tier: "OU",
+},
+farfect: {
+tier: "OU",
+},
+cocaine: {
+tier: "OU",
+},
+poliwhirl: {
+tier: "OU",
+},
+polipolihotter: {
+tier: "OU",
+},
+zebstoar: {
+tier: "OU",
+},
+frostapex: {
+tier: "OU",
+},
+passcraft: {
+tier: "OU",
+},
+shoo: {
+tier: "OU",
+},
+amunra: {
+tier: "OU",
+},
+cubone: {
+tier: "OU",
+},
+marowakprime: {
+tier: "OU",
+},
+arceon: {
+tier: "OU",
+},
+pigment: {
+tier: "OU",
+},
+bascure: {
+tier: "OU",
+},
+cleforusfable: {
+tier: "OU",
+},
+frozerade: {
+tier: "OU",
+},
+ornament: {
+tier: "OU",
+},
+cryomagius: {
+tier: "OU",
+},
+chantran: {
+tier: "OU",
+},
+necrotune: {
+tier: "OU",
+},
+necrotuneultra: {
+tier: "OU",
+},
+dramaqueen: {
+tier: "OU",
+},
+landoroarroyal: {
+tier: "OU",
+},
+wiseau: {
+tier: "OU",
+},
+nut: {
+tier: "OU",
+},
+ultraburstnut: {
+tier: "OU",
+},
+aegipass: {
+tier: "OU",
+},
+aegipassdirectional: {
+tier: "OU",
+},
+wall: {
+tier: "OU",
+},
+honoka: {
+tier: "OU",
+},
+unfeasable: {
+tier: "OU",
+},
+aegivally: {
+tier: "OU",
+},
+aegivallyguerilla: {
+tier: "OU",
+},
+necrogarde: {
+tier: "OU",
+},
+celmuse: {
+tier: "OU",
+},
+typeblade: {
+tier: "OU",
+},
+mewdeuca: {
+tier: "OU",
+},
+swalokumlol: {
+tier: "OU",
+},
 	/* A bunch of items later... */
 	
     nut: {
