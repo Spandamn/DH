@@ -4054,7 +4054,7 @@ exports.BattlePokedex = {
             spe: 100
         },
         abilities: {
-            0: "Hydro Stream (Drizzle)"
+            0: "Hydro Stream"
         },
         heightm: 1.155,
         weightkg: 101.7,
