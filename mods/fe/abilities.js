@@ -11723,4 +11723,20 @@ exports.BattleAbilities = {
 		id: "overthelimit",
 		name: "Over the Limit",
 	},
+	"guardsshield": {
+		shortDesc: "This Pokemon takes no damage in the turn it switches in. Immune to Ground-type, Spikes, Toxic Spikes, Sticky Web and other ground-based hazards.",
+		onTryHit: function (target, source, move) {
+			if (!target.activeTurns) {
+				this.add('-immune', target, '[msg]', '[from] ability: Guard\'s Shield');
+				return null;
+			}
+		},
+		onDamage: function (damage, target, source, effect) {
+			if (!target.activeTurns && effect.effectType !== 'Move') {
+				return false;
+			}
+		},
+		id: "guardsshield",
+		name: "Guard's Shield",
+	},
 };
