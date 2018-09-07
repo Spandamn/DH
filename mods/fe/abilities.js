@@ -11680,9 +11680,12 @@ exports.BattleAbilities = {
  
     "ailmentmaster": {
         shortDesc: "This Pokemon can inflict any status on any other Pokemon regardless of their typing.",
-        onSourceNegateImmunity: function (pokemon, type){
-             if (['par', 'psn', 'tox', 'brn', 'frz'].includes(type)) return false;
-        },
+		  onAnyTrySetStatus: function (status, target, source, effect) {
+			   //Foe must not have a status, and the one who inflicted it must be the one with this ability. 
+				if (target.status || source !== this.effectData.target) return;
+				source.setStatus(status, source, effect, true);
+				return null; 
+		  },
         id: "ailmentmaster",
         name: "Ailment Master",
     },
@@ -11707,5 +11710,17 @@ exports.BattleAbilities = {
 			}
 		},
 		name: "Slime Drench",
+	},
+	"overthelimit": {
+		desc: "This Pokemon's moves that match one of its types have a same-type attack bonus (STAB) of 3 instead of 1.5, but have their accuracy multiplied by 0.8.",
+		shortDesc: "This Pokemon's same-type attack bonus (STAB) is 3 instead of 1.5, and the accuracy of damaging moves matching one of this Pokemon's types is 0.8x. ",
+		onModifyMove: function (move, pokemon) {
+			move.stab = 3;
+			if (pokemon.hasType(move.type) && move.category !== 'Status' && typeof move.accuracy === 'number') {
+				move.accuracy *= 0.8;
+			}
+		},
+		id: "overthelimit",
+		name: "Over the Limit",
 	},
 };
