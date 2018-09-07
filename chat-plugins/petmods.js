@@ -308,6 +308,18 @@ learnistor: function(target, room, user) {
 		});
 		this.sendReplyBox(`${buf}</div>`);
 	},
+	feate: function (target, room, user) {
+		if (!this.runBroadcast()) return;
+		let buf = `<div class=infobox-limited><center><h2>List Of Coded Fusion Evolution Abilities</h2></center>`;
+		let feDex = require('../mods/fe/abilities.js').BattleAbilities;
+		if (!feDex) return this.errorReply("Error Fetching FE Data.");
+		Object.values(feDex).forEach(ability => {
+			if (ability.name.includes('ate')) {
+			buf += `<button name="send" value="/dt ${ability.id}, FE" style="background:none;border:none;">${ability.name}</button><br>`;
+				 }
+		});
+		this.sendReplyBox(`${buf}</div>`);
+	},
 	sylvemoves: function (target, room, user) {
 		if (!this.runBroadcast()) return;
 		let buf = `<div class=infobox-limited><center><h2>List Of Coded Fusion Moves</h2></center>`;
