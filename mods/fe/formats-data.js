@@ -1756,6 +1756,7 @@ exports.BattleFormatsData = { //
     },
     cherronprimal: {
         tier: "OU",
+		 requiredItem: "Red Orb",
     },
     dialcatty: {
         tier: "OU",
@@ -1984,7 +1985,11 @@ exports.BattleFormatsData = { //
         tier: "OU",
     },
     quinda: {
-        tier: "OU",
+        tier: "Uber",
+    },
+    quindamega: {
+		  requireMove: "Dragon Ascent",
+        tier: "Uber",
     },
     sablegigas: {
         tier: "OU",
@@ -2001,6 +2006,7 @@ exports.BattleFormatsData = { //
     },
     kyonunprimal: {
         tier: "OU",
+		 requiredItem: "Blue Orb",
     },
     abomasorus: {
         tier: "OU",
@@ -2199,6 +2205,7 @@ exports.BattleFormatsData = { //
     },
     glaiveprimal: {
         tier: "OU",
+		 requiredItem: "Red Orb",
     },
     kyurpedo: {
         tier: "OU",
@@ -2477,6 +2484,7 @@ exports.BattleFormatsData = { //
     },
     kyokidprimal: {
         tier: "OU",
+		 requiredItem: "Blue Orb",
     },
     lemorusincarnate: {
         tier: "OU",
@@ -2810,6 +2818,8 @@ exports.BattleFormatsData = { //
     },
     necrynxultra: {
         tier: "OU",
+        requiredItem: "Ultranecrozium Z",
+		  battleOnly: true,
     },
     hippally: {
         tier: "OU",
@@ -2870,6 +2880,8 @@ exports.BattleFormatsData = { //
     },
     necroquaultra: {
         tier: "OU",
+        requiredItem: "Ultranecrozium Z",
+		  battleOnly: true,
     },
     poize: {
         tier: "OU",
@@ -2891,6 +2903,8 @@ exports.BattleFormatsData = { //
     },
     necrozerainultra: {
         tier: "OU",
+        requiredItem: "Ultranecrozium Z",
+		  battleOnly: true,
     },
     quagsirom: {
         tier: "OU",
@@ -2947,6 +2961,8 @@ exports.BattleFormatsData = { //
     },
     necropurbeautiful: {
         tier: "OU",
+        requiredItem: "Ultranecrozium Z",
+		  battleOnly: true,
     },
     flyorusguard: {
         tier: "OU",
@@ -2956,6 +2972,8 @@ exports.BattleFormatsData = { //
     },
     lamparadelava: {
         tier: "OU",
+        requiredItem: "Ultranecrozium Z",
+		  battleOnly: true,
     },
     balloon: {
         tier: "OU",
@@ -3030,12 +3048,16 @@ exports.BattleFormatsData = { //
     },
     chazmahatched: {
         tier: "OU",
+        requiredItem: "Ultranecrozium Z",
+		  battleOnly: true,
     },
     smolitizer: {
         tier: "OU",
     },
     smolitizerultra: {
         tier: "OU",
+        requiredItem: "Ultranecrozium Z",
+		  battleOnly: true,
     },
     noirtic: {
         tier: "OU",
@@ -3138,12 +3160,10 @@ tier: "OU",
 mewdeucamegax: {
 tier: "OU",
 	requiredItem: "mewdeucaxite",
-},mewdeucamegay: {
+},
+	mewdeucamegay: {
 tier: "OU",
 	requiredItem: "mewdeucayite",
-},
-	saladreigonce: {
-tier: "OU",
 },
 salasaur: {
 tier: "OU",
@@ -3206,6 +3226,7 @@ tier: "OU",
 },
 kyervineprimal: {
 tier: "OU",
+requiredItem: "Blue Orb",
 },
 pototonz: {
 tier: "OU",
@@ -3267,9 +3288,6 @@ tier: "OU",
 metabell: {
 tier: "OU",
 },
-metabellmega: {
-tier: "OU",
-},
 taiwan: {
 tier: "OU",
 },
@@ -3310,6 +3328,82 @@ tier: "OU",
 castapussturdy: {
 tier: "OU",
 },
+ractusdel: {
+tier: "OU",
+},
+cornite: {
+tier: "OU",
+},
+passadust: {
+tier: "OU",
+},
+bangma: {
+tier: "OU",
+},
+weeeeds: {
+tier: "OU",
+},
+cherroh: {
+tier: "OU",
+},
+rotillwashaz: {
+tier: "OU",
+},
+mienzy: {
+tier: "OU",
+},
+whiscor: {
+tier: "OU",
+},
+yvenne: {
+tier: "OU",
+},
+unozam: {
+tier: "OU",
+},
+kyubeatblack: {
+tier: "OU",
+},
+kahoot: {
+tier: "OU",
+},
+laprasnow: {
+tier: "OU",
+},
+kars: {
+tier: "AG",
+},
+fletchitina: {
+tier: "OU",
+},
+bibokrook: {
+tier: "OU",
+},
+lycanitan: {
+tier: "OU",
+},
+minirill: {
+tier: "OU",
+},
+tomb2: {
+tier: "OU",
+},
+pikachuash: {
+tier: "OU",
+},
+talestoutaloland: {
+tier: "OU",
+},
+grousle: {
+tier: "OU",
+},
+    grousleprimal: {
+        tier: "OU",
+		 requiredItem: "Red Orb",
+    },
+region: {
+tier: "OU",
+},
 wagonite: {
 tier: "OU",
 },
@@ -3334,7 +3428,7 @@ cocaine: {
 tier: "OU",
 },
 poliwhirl: {
-tier: "OU",
+tier: "NFE",
 },
 polipolihotter: {
 tier: "OU",
@@ -3355,7 +3449,7 @@ amunra: {
 tier: "OU",
 },
 cubone: {
-tier: "OU",
+tier: "LC",
 },
 marowakprime: {
 tier: "OU",
@@ -3388,7 +3482,9 @@ necrotune: {
 tier: "OU",
 },
 necrotuneultra: {
-tier: "OU",
+        tier: "OU",
+        requiredItem: "Ultranecrozium Z",
+		  battleOnly: true,
 },
 dramaqueen: {
 tier: "OU",
@@ -3404,6 +3500,8 @@ tier: "OU",
 },
 ultraburstnut: {
 tier: "OU",
+        requiredItem: "Ultranecrozium Z",
+		  battleOnly: true,
 },
 aegipass: {
 tier: "OU",
@@ -3441,19 +3539,4 @@ tier: "OU",
 swalokumlol: {
 tier: "OU",
 },
-	/* A bunch of items later... */
-	
-    nut: {
-        tier: "OU",
-    },
-    ultraburstnut: {
-        tier: "OU",
-        requiredItem: "Ultranecrozium Z",
-		  battleOnly: true,
-    },
 };
-/* 
-requiredItem: "saldreigonceite",
-requiredItem: "salasaurite",
-requiredItem: "centenarianite",
-requiredItem: "amdremayre"*/
