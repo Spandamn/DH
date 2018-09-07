@@ -9,12 +9,9 @@ extremespeedclause: {
 		effectType: 'ValidatorRule',
 		name: 'Extreme Speed Clause',
 		desc: "Extreme Speed Clause: Only one Extreme Speed user per team.",
+		banlist: ['Extreme Speed > 1'],
 		onStart: function () {
 			this.add('rule', 'Extreme Speed Clause: Only one Extreme Speed user per team.');
-		},
-		onValidateTeam: function (team, format) {
-			// Code
-				 
 		},
 	},
   
