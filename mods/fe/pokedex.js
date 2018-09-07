@@ -20235,7 +20235,7 @@ auroritarmega: {
 		saldreigonce: {
         num: 7500507,
         species: "Saldreigonce",
-        types: ["Steel", "Flying"],
+        types: ["Dark", "Flying"],
 	        genderRatio: {
 	            M: 50.0,
 	            F: 50.0
