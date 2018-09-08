@@ -4227,17 +4227,13 @@ exports.Formats = [
 		ruleset: ['Pokemon', 'Team Preview', 'HP Percentage Mod', 'Cancel Mod'],
 	},*/
 	{
-        name: "[Gen 7] Evos for Everybody",
-        desc: `A metagame where pokemon that don't evolve are given evolutions to use in the OU environment.`,
-        threads: [
-            `&bullet; <a href="https://www.smogon.com/forums/threads/3636813/">Evos for Everybody</a>`,
-        ],
-        mod: 'E4E',
-        ruleset: ['[Gen 7] OU'],
-        onSwitchIn: function (pokemon) {
-            this.add('-start', pokemon, 'typechange', pokemon.template.types.join('/'), '[silent]');
-        }
-    },
+  		name: "[Gen 7] Clean Slate",
+  		desc: ["&bullet; <a href=https://www.smogon.com/forums/threads/.3639262/>Clean Slate</a>",
+		      ],
+  		ruleset: ['Pokemon', 'Sleep Clause Mod', 'Species Clause', 'Moody Clause', 'Evasion Moves Clause', 'Endless Battle Clause', 'HP Percentage Mod', 'Cancel Mod', 'Team Preview', 'Swagger Clause', 'Baton Pass Clause'],
+		mod: 'cleanslate',
+		banlist: ['Unreleased', 'Illegal'],
+  	},
 	{
 		name: "[Gen 7] Crossover Chaos",
 		desc: ["&bullet; <a href=https://www.smogon.com/forums/threads/.3623813/>Crossover Chaos</a>",
@@ -4263,17 +4259,13 @@ exports.Formats = [
 		banlist: ['Unreleased', 'Illegal'],
   	},
 	{
-        name: "[Gen 7] Evos for Everybody",
-        desc: `A metagame where pokemon that don't evolve are given evolutions to use in the OU environment.`,
-        threads: [
-            `&bullet; <a href="https://www.smogon.com/forums/threads/3636813/">Evos for Everybody</a>`,
-        ],
-        mod: 'E4E',
-        ruleset: ['[Gen 7] OU'],
-        onSwitchIn: function (pokemon) {
-            this.add('-start', pokemon, 'typechange', pokemon.template.types.join('/'), '[silent]');
-        }
-    },
+  		name: "[Gen 7] Evos for Everyone",
+  		desc: ["&bullet; <a href=https://www.smogon.com/forums/threads/evos-for-everyone-slate-10-cryogonal-delibird-moltres.3636813/>Evos for Everyone</a>",
+		      ],
+  		ruleset: ['Pokemon', 'Sleep Clause Mod', 'Species Clause', 'Moody Clause', 'Evasion Moves Clause', 'Endless Battle Clause', 'HP Percentage Mod', 'Cancel Mod', 'Team Preview', 'Swagger Clause', 'Baton Pass Clause'],
+		mod: 'evosforeveryone',
+		//banlist: ['Unreleased', 'Illegal'],
+  	},
 	{
   		name: "[Gen 7] Fusion Evolution",
   		desc: ["&bullet; <a href=http://www.smogon.com/forums/threads/fusion-evolution-v2-submission-phase.3560216/>Fusion Evolution</a>",
