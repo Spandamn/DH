@@ -4265,8 +4265,10 @@ exports.Formats = [
 
 		mod: 'fe',
 		onPrepareHit: function(target, source, move) {
+			if (!move.contestType) {
 			this.attrLastMove('[still]');
 			this.add('-anim', source, "Celebrate", target);
+			}
 		},
   		onModifyTemplate: function (template, pokemon, source) {
   			//This hack is for something important: The Pokemon's Sprite.
@@ -4279,8 +4281,7 @@ exports.Formats = [
 			return temp;
   		},
 		checkLearnset: function (move, template, lsetData, set) {
-            if (!template.fusion) return this.checkLearnset(move, template, lsetData, set);
-            return this.checkLearnset(move, this.getTemplate(template.fusion[0])) || this.checkLearnset(move, this.getTemplate(template.fusion[1]));
+           return null
         },
   	},
 	{
