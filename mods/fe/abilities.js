@@ -11362,7 +11362,7 @@ exports.BattleAbilities = {
 		name: "Magic Vigor",
 	},
 	"grimreminder": {
-		shortDesc: "Traces and nulls the foe's ability.",
+		shortDesc: "Upon switch-in, this Pokemon copies and suppresses the opponent's ability.",
 		onUpdate: function(pokemon) {
 			if (!pokemon.isStarted) return;
 			let possibleTargets = [];
@@ -11731,10 +11731,16 @@ exports.BattleAbilities = {
 				return null;
 			}
 		},
+		onBoost: function (boost, target, source, effect) {
+			if (effect.id === 'cosmicweb' || effect.id === 'stickyweb' || effect.id === 'slipperyweb') return false;
+		},
 		onDamage: function (damage, target, source, effect) {
 			if (!target.activeTurns && effect.effectType !== 'Move') {
 				return false;
 			}
+		},
+		onSetStatus: function (status, target, source, effect) {
+			if (effect.id === 'toxicspikes' || effect.id === 'stickyvenom') return false;
 		},
 		id: "guardsshield",
 		name: "Guard's Shield",
