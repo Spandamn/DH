@@ -19326,7 +19326,7 @@ let BattleMovedex = {
 		accuracy: 100,
 		basePower: 100,
 		category: "Physical",
-		desc: "If the user is hit by a contact move this turn before it can execute this move, the attacker is burned.",
+		desc: "If the user is hit by a contact move this turn before it can execute this move, the attacker is badly poisoned.",
 		shortDesc: "Burns on contact with the user before it moves.",
 		id: "venomslam",
 		isViable: true,

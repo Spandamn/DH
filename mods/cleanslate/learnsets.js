@@ -1859,6 +1859,7 @@ let BattleLearnsets = {
         thunder: ["7L1"],
         bulkup: ["7L1"],
         liquidation: ["7L1"],
+		hydropump: ["7L1"],
     }},
  
 	audino: {learnset: {
