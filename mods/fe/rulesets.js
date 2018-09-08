@@ -24,8 +24,8 @@ extremespeedclause: {
 	},
 	ateclause: {
         effectType: 'ValidatorRule',
-        name: '-ate Clause',
-        banlist: ['Aerilate + Pixilate + Refrigerate + Hydrate + Absolute Zero > 1'],
+        name: 'Ate Clause',
+        banlist: ['Aerilate + Pixilate + Refrigerate > 1'],
         onStart: function () {
             this.add('rule', '-ate Clause: Limit one of Ate user');
         },
