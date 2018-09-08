@@ -3476,8 +3476,11 @@ exports.Formats = [
 		threads: [
 			`&bullet; <a href="https://www.smogon.com/forums/threads/3627804/">Linked</a>`,
 		],
-
 		mod: 'linked',
+		teamLength: {
+			validate: [1, 3],
+			battle: 1,
+		},
 		ruleset: ['[Gen 7] OU'],
 		banlist: ['Chlorophyll', 'Sand Rush', 'Slush Rush', 'Surge Surfer', 'Swift Swim', 'Unburden', 'King\'s Rock', 'Razor Fang', 'Swampertite'],
 		restrictedMoves: ['Baneful Bunker', 'Bounce', 'Detect', 'Dig', 'Dive', 'Fly', 'Nature\'s Madness', 'Night Shade', 'Phantom Force', 'Protect', 'Seismic Toss', 'Shadow Force', 'Sky Drop', 'Spiky Shield', 'Super Fang'],
@@ -8076,6 +8079,30 @@ exports.Formats = [
             'Focus Sash', 'Soul Dew'
         ],
     },
+	{
+		name: "[Gen 7] 1v1 Linked",
+		desc: `The first two moves in a Pok&eacute;mon's moveset are used simultaneously.`,
+		threads: [
+			`&bullet; <a href="https://www.smogon.com/forums/threads/3627804/">Linked</a>`,
+		],
+
+		mod: 'linked',
+		ruleset: ['[Gen 7] OU'],
+		banlist: ['Chlorophyll', 'Sand Rush', 'Slush Rush', 'Surge Surfer', 'Swift Swim', 'Unburden', 'King\'s Rock', 'Razor Fang', 'Swampertite', 'Liepard'],
+		unbanlist: ['Mega Lucario', 'Lucarionite'],
+		restrictedMoves: ['Baneful Bunker', 'Bounce', 'Detect', 'Dig', 'Dive', 'Fly', 'Nature\'s Madness', 'Night Shade', 'Phantom Force', 'Protect', 'Seismic Toss', 'Shadow Force', 'Sky Drop', 'Spiky Shield', 'Super Fang'],
+		onValidateSet: function (set, format) {
+			const restrictedMoves = format.restrictedMoves || [];
+			let problems = [];
+			for (const [i, moveid] of set.moves.entries()) {
+				let move = this.getMove(moveid);
+				if ((i === 0 || i === 1) && restrictedMoves.includes(move.name)) {
+					problems.push(`${set.name || set.species}'s move ${move.name} cannot be linked.`);
+				}
+			}
+			return problems;
+		},
+	},
 	{
 		name: "[Gen 7] 1v1 Megamons",
 		mod: 'gen7',
