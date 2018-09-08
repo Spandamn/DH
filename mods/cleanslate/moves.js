@@ -19321,6 +19321,49 @@ let BattleMovedex = {
 		zMovePower: 140,
 		contestType: "Clever",
 	},
+	"venomslam": {
+		num: 690,
+		accuracy: 100,
+		basePower: 100,
+		category: "Physical",
+		desc: "If the user is hit by a contact move this turn before it can execute this move, the attacker is burned.",
+		shortDesc: "Burns on contact with the user before it moves.",
+		id: "venomslam",
+		isViable: true,
+		name: "Venom Slam",
+		pp: 15,
+		priority: -3,
+		flags: {bullet: 1, protect: 1},
+		beforeTurnCallback: function (pokemon) {
+			pokemon.addVolatile('venomslam');
+		},
+		effect: {
+			duration: 1,
+			onStart: function ( pokemon, source, move ) {
+				this.add('-singleturn', pokemon, 'move: Venom Slam');
+			},
+			onHit: function (pokemon, source, move) {
+				if (move.flags['contact']) {
+					source.trySetStatus('tox', pokemon);
+				}
+			},
+		},
+		onMoveAborted: function (pokemon) {
+			pokemon.removeVolatile('venomslam');
+		},
+		onAfterMove: function (pokemon) {
+			pokemon.removeVolatile('venomslam');
+		},
+		onPrepareHit: function(target, source, move) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Poison Jab", target);
+		},
+		secondary: null,
+		target: "normal",
+		type: "Poison",
+		zMovePower: 180,
+		contestType: "Tough",
+	},
 };
 
 exports.BattleMovedex = BattleMovedex;
