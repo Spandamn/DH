@@ -22,6 +22,14 @@ extremespeedclause: {
 				return null;
 		},
 	},
+	ateclause: {
+        effectType: 'ValidatorRule',
+        name: '-ate Clause',
+        banlist: ['Aerilate + Pixilate + Refrigerate + Hydrate + Absolute Zero + Pixie Grace + Optimize + Misty Supercharge + Enchanted + Move Madness + Fire-B-Gone + Meteor Shower + Overloaded Helm + Christmas Parade + Itemize > 1'],
+        onStart: function () {
+            this.add('rule', '-ate Clause: Limit one of Ate user');
+        },
+    },
  };
 
 exports.BattleFormats = BattleFormats;
