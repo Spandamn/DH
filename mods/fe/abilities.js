@@ -6062,22 +6062,21 @@ exports.BattleAbilities = {
 	},
 	"dazzlebeast": {
 		shortDesc: "Priority moves won't work against this Pokémon. Attempts to do so result in +1 to its highest non-HP stat.",
-		onTryHit: function (pokemon, source, effect) {
-			for (const target of pokemon.side.foe.active) {
-			if ((target.side === this.effectData.source.side || effect.id === 'perishsong') && effect.priority > 0.1 && effect.target !== 'foeSide') {
-				this.add('-immune', target, '[msg]', '[from] ability: Dazzle Beast');
-				let stat = 'atk';
-				let bestStat = 0;
-				for (let i in source.stats) {
-					if (source.stats[i] > bestStat) {
-						stat = i;
-						bestStat = source.stats[i];
+		onFoeTryMove: function (target, source, effect) {
+			if ((source.side === this.effectData.target.side || effect.id === 'perishsong') && effect.priority > 0.1 && effect.target !== 'foeSide') {
+				this.attrLastMove('[still]');
+				this.add('cant', this.effectData.target, 'ability: Dazzling', effect, '[of] ' + target);
+					let stat = 'atk';
+					let bestStat = 0;
+					for (let i in source.stats) {
+						if (source.stats[i] > bestStat) {
+							stat = i;
+							bestStat = source.stats[i];
+						}
 					}
+					this.boost({[stat]: 1}, source);
+					return false;
 				}
-				this.boost({[stat]: 1}, source);
-				return null;
-			}
-			}
 		},
 		id: "dazzlebeast",
 		name: "Dazzle Beast",
@@ -11362,7 +11361,7 @@ exports.BattleAbilities = {
 		name: "Magic Vigor",
 	},
 	"grimreminder": {
-		shortDesc: "Traces and nulls the foe's ability.",
+		shortDesc: "Upon switch-in, this Pokemon copies and suppresses the opponent's ability.",
 		onUpdate: function(pokemon) {
 			if (!pokemon.isStarted) return;
 			let possibleTargets = [];
@@ -11680,9 +11679,12 @@ exports.BattleAbilities = {
  
     "ailmentmaster": {
         shortDesc: "This Pokemon can inflict any status on any other Pokemon regardless of their typing.",
-        onSourceNegateImmunity: function (pokemon, type){
-             if (['par', 'psn', 'tox', 'brn', 'frz'].includes(type)) return false;
-        },
+		  onAnyTrySetStatus: function (status, target, source, effect) {
+			   //Foe must not have a status, and the one who inflicted it must be the one with this ability. 
+				if (target.status || source !== this.effectData.target) return;
+				source.setStatus(status, source, effect, true);
+				return null; 
+		  },
         id: "ailmentmaster",
         name: "Ailment Master",
     },
@@ -11707,5 +11709,39 @@ exports.BattleAbilities = {
 			}
 		},
 		name: "Slime Drench",
+	},
+	"overthelimit": {
+		desc: "This Pokemon's moves that match one of its types have a same-type attack bonus (STAB) of 3 instead of 1.5, but have their accuracy multiplied by 0.8.",
+		shortDesc: "This Pokemon's same-type attack bonus (STAB) is 3 instead of 1.5, and the accuracy of damaging moves matching one of this Pokemon's types is 0.8x. ",
+		onModifyMove: function (move, pokemon) {
+			move.stab = 3;
+			if (pokemon.hasType(move.type) && move.category !== 'Status' && typeof move.accuracy === 'number') {
+				move.accuracy *= 0.8;
+			}
+		},
+		id: "overthelimit",
+		name: "Over the Limit",
+	},
+	"guardsshield": {
+		shortDesc: "This Pokemon takes no damage in the turn it switches in. Immune to Ground-type, Spikes, Toxic Spikes, Sticky Web and other ground-based hazards.",
+		onTryHit: function (target, source, move) {
+			if (!target.activeTurns) {
+				this.add('-immune', target, '[msg]', '[from] ability: Guard\'s Shield');
+				return null;
+			}
+		},
+		onBoost: function (boost, target, source, effect) {
+			if (effect.id === 'cosmicweb' || effect.id === 'stickyweb' || effect.id === 'slipperyweb') return false;
+		},
+		onDamage: function (damage, target, source, effect) {
+			if (!target.activeTurns && effect.effectType !== 'Move') {
+				return false;
+			}
+		},
+		onSetStatus: function (status, target, source, effect) {
+			if (effect.id === 'toxicspikes' || effect.id === 'stickyvenom') return false;
+		},
+		id: "guardsshield",
+		name: "Guard's Shield",
 	},
 };
