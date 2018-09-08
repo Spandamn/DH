@@ -1089,6 +1089,30 @@ let BattleMovedex = {
 		zMoveEffect: 'clearnegativeboost',
 		contestType: "Tough",
 	},
+	"nastyplot": {
+		num: 417,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		desc: "Raises the user's Special Attack by 2 stages.",
+		shortDesc: "Raises the user's Sp. Atk by 2.",
+		id: "nastyplot",
+		isViable: true,
+		name: "Nasty Plot",
+		pp: 20,
+		priority: 0,
+		flags: {snatch: 1},
+		selfBoost: {
+		boosts: {
+			spa: 2,
+		}
+		},
+		secondary: false,
+		target: "self",
+		type: "Dark",
+		zMoveEffect: 'clearnegativeboost',
+		contestType: "Clever",
+	},
 };
 	//TODO: 
 	// Suspect: Automize, 
