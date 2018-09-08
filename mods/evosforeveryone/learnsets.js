@@ -21559,7 +21559,7 @@ let BattleLearnsets = {
 		surf: ["7M", "7V", "6M", "5M", "4M", "3M"],
 		swagger: ["7M", "7V", "6M", "5M", "4M", "3T"],
 		swift: ["7V", "4T", "3T"],
-		swordsdance: ["3T"],
+		swordsdance: ["7L1"],
 		tackle: ["7L1", "7V", "6L1", "5L1", "4L1", "3L1", "3S0"],
 		takedown: ["7L41", "7V", "6L41", "5L41", "4L41", "3L33"],
 		taunt: ["7M", "6M", "5M", "4M"],
