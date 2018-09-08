@@ -1056,7 +1056,9 @@ let BattleMovedex = {
 		priority: 0,
 		flags: {snatch: 1, dance: 1},
 		selfBoost: {
+			boosts: {
 			atk: 2,
+			}
 		},
 		secondary: false,
 		target: "self",
