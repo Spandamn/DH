@@ -4260,8 +4260,8 @@ exports.Formats = [
   		desc: ["&bullet; <a href=http://www.smogon.com/forums/threads/fusion-evolution-v2-submission-phase.3560216/>Fusion Evolution</a>",
   		       "&bullet; <a href=http://www.smogon.com/forums/threads/fusion-moves-fusion-evolution-companion-project.3564805/>Fusion Moves</a>",
   		      ],
-  		ruleset: ['Extreme Speed Clause', 'Pokemon', 'Sleep Clause Mod', 'Species Clause', 'Moody Clause', 'Evasion Moves Clause', 'Endless Battle Clause', 'HP Percentage Mod', 'Cancel Mod', 'Team Preview', 'Swagger Clause', 'Baton Pass Clause'],
-		banlist: ['Unreleased', 'Ignore Illegal Moves'],//, 'Dialcatty', 'Kars', 'Dittsey', 'Diceus', 'Peridot-Mega', 'Kyzor', 'Gonzap', 'Harem', 'Cinshado', 'Enteon', 'Mega Lucashadow', 'Kahoot', 'Taiwan', 'Passcraft', 'Dad', 'Enteon', 'Entir', 'Ultra Necrynx', 'Ultra Necrozerain', 'Shenala', 'Mega Xurkizard Y', 'Mega Archedactyl', 'Miminja', 'Mega Toxicario', 'Mega Lucasol L', 'Mega Alakario L', 'Mega Khangorus-Khan', 'Mega Kasukabe', 'Mega Absoko', 'Mega Kartaria', 'Dio', 'Mendoza', 'Deoxurk-Outlet', 'Omneus','Muddy Seed'],
+  		ruleset: ['Ignore Illegal Moves', 'Extreme Speed Clause', 'Pokemon', 'Sleep Clause Mod', 'Species Clause', 'Moody Clause', 'Evasion Moves Clause', 'Endless Battle Clause', 'HP Percentage Mod', 'Cancel Mod', 'Team Preview', 'Swagger Clause', 'Baton Pass Clause'],
+		banlist: ['Unreleased', 'Illegal'],//, 'Dialcatty', 'Kars', 'Dittsey', 'Diceus', 'Peridot-Mega', 'Kyzor', 'Gonzap', 'Harem', 'Cinshado', 'Enteon', 'Mega Lucashadow', 'Kahoot', 'Taiwan', 'Passcraft', 'Dad', 'Enteon', 'Entir', 'Ultra Necrynx', 'Ultra Necrozerain', 'Shenala', 'Mega Xurkizard Y', 'Mega Archedactyl', 'Miminja', 'Mega Toxicario', 'Mega Lucasol L', 'Mega Alakario L', 'Mega Khangorus-Khan', 'Mega Kasukabe', 'Mega Absoko', 'Mega Kartaria', 'Dio', 'Mendoza', 'Deoxurk-Outlet', 'Omneus','Muddy Seed'],
 
 		mod: 'fe',
 		onPrepareHit: function(target, source, move) {
