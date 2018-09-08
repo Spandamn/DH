@@ -4268,7 +4268,7 @@ exports.Formats = [
         threads: [
             `&bullet; <a href="https://www.smogon.com/forums/threads/3636813/">Evos for Everybody</a>`,
         ],
-        mod: 'evosforeveryone',
+        mod: 'E4E',
         ruleset: ['[Gen 7] OU'],
         onSwitchIn: function (pokemon) {
             this.add('-start', pokemon, 'typechange', pokemon.template.types.join('/'), '[silent]');
