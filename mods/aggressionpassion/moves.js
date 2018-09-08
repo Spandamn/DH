@@ -1042,6 +1042,77 @@ let BattleMovedex = {
 		type: "Normal",
 		contestType: "Beautiful",
 	},
+	"swordsdance": {
+		num: 14,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		desc: "Raises the user's Attack by 2 stages.",
+		shortDesc: "Raises the user's Attack by 2.",
+		id: "swordsdance",
+		isViable: true,
+		name: "Swords Dance",
+		pp: 20,
+		priority: 0,
+		flags: {snatch: 1, dance: 1},
+		selfBoost: {
+			boosts: {
+			atk: 2,
+			}
+		},
+		secondary: false,
+		target: "self",
+		type: "Normal",
+		zMoveEffect: 'clearnegativeboost',
+		contestType: "Beautiful",
+	},
+	"irondefense": {
+		num: 334,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		desc: "Raises the user's Defense by 2 stages.",
+		shortDesc: "Raises the user's Defense by 2.",
+		id: "irondefense",
+		name: "Iron Defense",
+		pp: 15,
+		priority: 0,
+		flags: {snatch: 1},
+		selfBoost: {
+		boosts: {
+			def: 2,
+		}
+		},
+		secondary: false,
+		target: "self",
+		type: "Steel",
+		zMoveEffect: 'clearnegativeboost',
+		contestType: "Tough",
+	},
+	"nastyplot": {
+		num: 417,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		desc: "Raises the user's Special Attack by 2 stages.",
+		shortDesc: "Raises the user's Sp. Atk by 2.",
+		id: "nastyplot",
+		isViable: true,
+		name: "Nasty Plot",
+		pp: 20,
+		priority: 0,
+		flags: {snatch: 1},
+		selfBoost: {
+		boosts: {
+			spa: 2,
+		}
+		},
+		secondary: false,
+		target: "self",
+		type: "Dark",
+		zMoveEffect: 'clearnegativeboost',
+		contestType: "Clever",
+	},
 };
 	//TODO: 
 	// Suspect: Automize, 

@@ -4227,13 +4227,17 @@ exports.Formats = [
 		ruleset: ['Pokemon', 'Team Preview', 'HP Percentage Mod', 'Cancel Mod'],
 	},*/
 	{
-  		name: "[Gen 7] Clean Slate",
-  		desc: ["&bullet; <a href=https://www.smogon.com/forums/threads/.3639262/>Clean Slate</a>",
-		      ],
-  		ruleset: ['Pokemon', 'Sleep Clause Mod', 'Species Clause', 'Moody Clause', 'Evasion Moves Clause', 'Endless Battle Clause', 'HP Percentage Mod', 'Cancel Mod', 'Team Preview', 'Swagger Clause', 'Baton Pass Clause'],
-		mod: 'cleanslate',
-		banlist: ['Unreleased', 'Illegal'],
-  	},
+        name: "[Gen 7] Evos for Everybody",
+        desc: `A metagame where pokemon that don't evolve are given evolutions to use in the OU environment.`,
+        threads: [
+            `&bullet; <a href="https://www.smogon.com/forums/threads/3636813/">Evos for Everybody</a>`,
+        ],
+        mod: 'E4E',
+        ruleset: ['[Gen 7] OU'],
+        onSwitchIn: function (pokemon) {
+            this.add('-start', pokemon, 'typechange', pokemon.template.types.join('/'), '[silent]');
+        }
+    },
 	{
 		name: "[Gen 7] Crossover Chaos",
 		desc: ["&bullet; <a href=https://www.smogon.com/forums/threads/.3623813/>Crossover Chaos</a>",
@@ -4259,12 +4263,24 @@ exports.Formats = [
 		banlist: ['Unreleased', 'Illegal'],
   	},
 	{
+        name: "[Gen 7] Evos for Everybody",
+        desc: `A metagame where pokemon that don't evolve are given evolutions to use in the OU environment.`,
+        threads: [
+            `&bullet; <a href="https://www.smogon.com/forums/threads/3636813/">Evos for Everybody</a>`,
+        ],
+        mod: 'evosforeveryone',
+        ruleset: ['[Gen 7] OU'],
+        onSwitchIn: function (pokemon) {
+            this.add('-start', pokemon, 'typechange', pokemon.template.types.join('/'), '[silent]');
+        }
+    },
+	{
   		name: "[Gen 7] Fusion Evolution",
   		desc: ["&bullet; <a href=http://www.smogon.com/forums/threads/fusion-evolution-v2-submission-phase.3560216/>Fusion Evolution</a>",
   		       "&bullet; <a href=http://www.smogon.com/forums/threads/fusion-moves-fusion-evolution-companion-project.3564805/>Fusion Moves</a>",
   		      ],
   		ruleset: ['Ate Clause', 'Extreme Speed Clause', 'Pokemon', 'Sleep Clause Mod', 'Species Clause', 'Moody Clause', 'Evasion Moves Clause', 'Endless Battle Clause', 'HP Percentage Mod', 'Cancel Mod', 'Team Preview', 'Swagger Clause', 'Baton Pass Clause'],
-		banlist: ['Unreleased', 'Dialcatty', 'Kars', 'Dittsey', 'Diceus', 'Peridot-Mega', 'Kyzor', 'Gonzap', 'Harem', 'Cinshado', 'Enteon', 'Lucashadow-Mega', 'Kahoot', 'Taiwan', 'Passcraft', 'Dad', 'Enteon', 'Entir', 'Necrynx-Ultra', 'Ultra Necrozerain', 'Shenala', 'Xurkizard-Mega-Y', 'Archedactyl-Mega', 'Miminja', 'Toxicario-Mega', 'Lucasol-Mega-L', 'Alakario-Mega-L', 'Khangorus-Khan-Mega', 'Kasukabe-Mega', 'Absoko-Mega', 'Kartaria-Mega', 'Dio', 'Mendoza', 'Deoxurk-Outlet', 'Omneus','Muddy Seed'],
+		banlist: ['Unreleased', 'Dialcatty', 'Kars', 'Dittsey', 'Diceus', 'Peridot-Mega', 'Kyzor', 'Gonzap', 'Harem', 'Cinshado', 'Enteon', 'Lucashadow-Mega', 'Kahoot', 'Taiwan', 'Passcraft', 'Dad', 'Enteon', 'Entir', 'Necrynx-Ultra', 'Shenala', 'Xurkizard-Mega-Y', 'Archedactyl-Mega', 'Miminja', 'Toxicario-Mega', 'Lucasol-Mega-L', 'Alakario-Mega-L', 'Kangorus-Khan-Mega', 'Absoko-Mega', 'Kartaria-Mega', 'Dio', 'Mendoza', 'Deoxurk-Outlet', 'Omneus','Muddy Seed'], // Mega Kasukabe Necrozerain-Ultra'
 
 		mod: 'fe',
 		onPrepareHit: function(target, source, move) {
