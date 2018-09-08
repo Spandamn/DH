@@ -1066,6 +1066,29 @@ let BattleMovedex = {
 		zMoveEffect: 'clearnegativeboost',
 		contestType: "Beautiful",
 	},
+	"irondefense": {
+		num: 334,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		desc: "Raises the user's Defense by 2 stages.",
+		shortDesc: "Raises the user's Defense by 2.",
+		id: "irondefense",
+		name: "Iron Defense",
+		pp: 15,
+		priority: 0,
+		flags: {snatch: 1},
+		selfBoost: {
+		boosts: {
+			def: 2,
+		}
+		},
+		secondary: false,
+		target: "self",
+		type: "Steel",
+		zMoveEffect: 'clearnegativeboost',
+		contestType: "Tough",
+	},
 };
 	//TODO: 
 	// Suspect: Automize, 
