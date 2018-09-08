@@ -1042,6 +1042,28 @@ let BattleMovedex = {
 		type: "Normal",
 		contestType: "Beautiful",
 	},
+	"swordsdance": {
+		num: 14,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		desc: "Raises the user's Attack by 2 stages.",
+		shortDesc: "Raises the user's Attack by 2.",
+		id: "swordsdance",
+		isViable: true,
+		name: "Swords Dance",
+		pp: 20,
+		priority: 0,
+		flags: {snatch: 1, dance: 1},
+		selfBoost: {
+			atk: 2,
+		},
+		secondary: false,
+		target: "self",
+		type: "Normal",
+		zMoveEffect: 'clearnegativeboost',
+		contestType: "Beautiful",
+	},
 };
 	//TODO: 
 	// Suspect: Automize, 
