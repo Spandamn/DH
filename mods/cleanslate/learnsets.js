@@ -1477,6 +1477,7 @@ let BattleLearnsets = {
         aerialace: ["7M"],
         attract: ["7M"],
         beakblast: ["7L1"],
+		bravebird: ["7L1"],
         brickbreak: ["7M"],
         confide: ["7M"],
         defog: ["7T"],
