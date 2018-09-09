@@ -225,6 +225,7 @@ let BattleLearnsets = {
         icebeam: ["7L1"],
         blizzard: ["7L1"],
         icywind: ["7L1"],
+		nastyplot: ["7L1"],
     }},
  
 	flygon: {learnset: {
@@ -1052,7 +1053,6 @@ let BattleLearnsets = {
         frustration: ["7M", "6M"],
         gigaimpact: ["7M", "6M"],
         grassknot: ["7M", "6M"],
-        gunkshot: ["7T", "6T"],
         hammerarm: ["7L70", "7L1", "6L1"],
         helpinghand: ["7T", "6T"],
         hiddenpower: ["7M", "6M"],
@@ -1085,7 +1085,6 @@ let BattleLearnsets = {
         round: ["7M", "6M"],
         secretpower: ["6M"],
         shadowclaw: ["7M", "6M"],
-        skyuppercut: ["7L52", "6L52"],
         slash: ["7L20", "6L20"],
         sleeptalk: ["7M", "6M"],
         sludgebomb: ["7M", "6M"],
@@ -1860,6 +1859,7 @@ let BattleLearnsets = {
         thunder: ["7L1"],
         bulkup: ["7L1"],
         liquidation: ["7L1"],
+		hydropump: ["7L1"],
     }},
  
 	audino: {learnset: {
