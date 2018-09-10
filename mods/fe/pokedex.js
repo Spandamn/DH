@@ -20647,12 +20647,12 @@ auroritarmega: {
 	    species: "Genin",
 	    types: ["Steel", "Flying"],
 	    baseStats: {
-	        hp: 90,
-	        atk: 103,
-	        def: 85,
-	        spa: 100,
-	        spd: 104,
-	        spe: 92
+	        hp: 66,
+	        atk: 105,
+	        def: 70,
+	        spa: 105,
+	        spd: 72,
+	        spe: 149
 	    },
 	    abilities: {
 	        0: "Malware"
