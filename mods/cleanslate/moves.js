@@ -19277,11 +19277,15 @@ let BattleMovedex = {
         flags: {protect: 1, mirror: 1},
 		onPrepareHit: function(target, source, move) {
 			this.attrLastMove('[still]');
-			this.add('-anim', source, "Venoshock", target);
+			this.add('-anim', source, "Cross Poison", target);
 		},
         onBasePowerPriority: 4,
         onBasePower: function (basePower, pokemon, target) {
-            if (target.negativeBoosts === 'true') {
+			let negativeBoosts = false;
+			for (const stat of ['atk', 'def', 'spa', 'spd', 'spe']) {
+				if ( target.boosts[ stat ] < 0 ) negativeBoosts = true;
+			}
+			if ( negativeBoosts === true) {
                 return this.chainModify(2);
             }
         },
