@@ -11067,7 +11067,7 @@ darkchomp: {
         color: "Brown",
         eggGroups: ["Field"],
     },
-    golisoptops: {
+    golisotops: {
         num: 7500227,
         species: "Golisotops",
         types: ["Bug", "Water"],
@@ -11092,7 +11092,7 @@ darkchomp: {
         eggGroups: ["Water 3"],
       dexentry: "It is theorized that Kabutops is a distant ancestor of Golisopod. With this theory known, a hypothetical specimen of an intermediate generation was created. It would seem that this generation was closer to our times than long back, as it has much of Golisopod's features. However, it remains having the two blades on its uppermost pair of arms.",
     },
-    pewearalola: {
+    perwearalola: {
         num: 7500228,
         species: "Perwear-Alola",
         types: ["Fighting", "Dark"],
@@ -11113,6 +11113,8 @@ darkchomp: {
         },
         color: "Black",
         eggGroups: ["Field"],
+        heightm: 1.6,
+        weightkg: 84,
     },
 
 
@@ -11137,6 +11139,8 @@ darkchomp: {
         },
         color: "Brown",
         eggGroups: ["Field"],
+        heightm: 1.75,
+        weightkg: 476,
     },
 
     kira: {
@@ -11156,6 +11160,8 @@ darkchomp: {
             0: "Beast's Focus"
         },
 		  eggGroups: ["Undiscovered"],
+        heightm: 1.25,
+        weightkg: 105.05,
     },
 
 
@@ -11176,6 +11182,8 @@ darkchomp: {
             0: "Frisky Beast"
         },
 		  eggGroups: ["Undiscovered"],
+        heightm: 6.05,
+        weightkg: 235.55,
     },
 
 
@@ -11199,6 +11207,8 @@ darkchomp: {
             0: "Volt Torrent"
         },
 		  eggGroups: ["Field"],
+        heightm: 1.3,
+        weightkg: 34.25,
     },
 
 
@@ -11220,6 +11230,8 @@ darkchomp: {
         },
        dexentry: "A rogue team of former Team Rocket members created this fusion. It is said to be able to remove the anchor attached to its head and swing it around crazily for an extremely powerful Power Whip or Anchor Shot. At the same time, it is able to fight with its four arms against any enemies trying to dodge the attack",
 		  eggGroups: ["Undiscovered"],
+        heightm: 2.75,
+        weightkg: 170,
     },
 
 
@@ -11239,6 +11251,8 @@ darkchomp: {
             0: "Monkey See Monkey Do"
         },
 		  eggGroups: ["Undiscovered"],
+        heightm: 1.2,
+        weightkg: 43.4,
     },
 
     aerodako: {
@@ -11261,6 +11275,8 @@ darkchomp: {
             0: "Rocky Surge"
         },
 		  eggGroups: ["Undiscovered"],
+        heightm: 1.8,
+        weightkg: 39.75,
     },
 
     aerodakomega: {
@@ -11286,6 +11302,8 @@ darkchomp: {
             0: "Tough Claws"
         },
 		  eggGroups: ["Undiscovered"],
+        heightm: 2.1,
+        weightkg: 59.75,
     },
 
     tapujojo: {
@@ -11305,6 +11323,8 @@ darkchomp: {
             0: "Supercharge Surge"
         },
 		  eggGroups: ["Undiscovered"],
+        heightm: 1.6,
+        weightkg: 30.55,
     },
     magicarticgear: {
         num: 7500237,
@@ -11323,6 +11343,8 @@ darkchomp: {
             0: "Broken Heart"
         },
 		  eggGroups: ["Undiscovered"],
+        heightm: 1.35,
+        weightkg: 67.95,
     },
     necroltres: {
         num: 7500238,
@@ -11341,6 +11363,8 @@ darkchomp: {
             0: "Diamond Armor"
         },
 		  eggGroups: ["Undiscovered"],
+        heightm: 2.2,
+        weightkg: 145,
     },
 
     kartanbull: {
@@ -11359,7 +11383,9 @@ darkchomp: {
         abilities: {
             0: "Subdue"
         },
-		  eggGroups: ["Monster"],
+		  eggGroups: ["Undiscovered"],
+        heightm: 0.85,
+        weightkg: 24.4,
     },
     venustoise: {
         num: 7500240,
@@ -11381,11 +11407,13 @@ darkchomp: {
             0: "Sun Bath"
         },
     dexentry: "Two of our grunts, who were on the trail of the Pewter and Cerulean Gym Leaders at the time, have encountered a Gastly proficient in the art of illusions. This Gastly used a Venusaur and a Blastoise illusion to scare a Bulbasaur and Squirtle, then combined them to form Venustoise. While the plans to create a Venustoise were postponed for some time, a breakthrough in combining the rarely-seen abilities of Pokémon was discovered, and one of the first fusions to be created from this breakthrough was a live Bulbasquirt. When brought to Level 16, it evolved into an Ivytortle, and at Level 34, Ivytortle evolved into the same fusion depicted back in the Maiden's Peak illusion: Venustoise.",
-		  eggGroups: ["Monster"]
+		  eggGroups: ["Monster"],
+        heightm: 1.8,
+        weightkg: 92.75,
     },
 
 
-    venustoisemegag: {
+    venustoisemegagreen: {
         num: 7500240,
         species: "Venustoise-Mega-Green",
         baseSpecies: "Venustoise",
@@ -11408,8 +11436,10 @@ darkchomp: {
             0: "Thick Fat"
         },
 		  eggGroups: ["Monster"],
+        heightm: 2.2,
+        weightkg: 148.25,
     },
-    venustoisemegab: {
+    venustoisemegablue: {
         num: 7500240,
         species: "Venustoise-Mega-Blue",
         baseSpecies: "Venustoise",
@@ -11432,6 +11462,8 @@ darkchomp: {
             0: "Mega Launcher"
         },
 		  eggGroups: ["Monster"],
+        heightm: 1.8,
+        weightkg: 108.35,
     },
     kingkek: {
         num: 7500241,
@@ -11449,6 +11481,8 @@ darkchomp: {
             0: "Lazy Camo"
         },
 		  eggGroups: ["Field"],
+        heightm: 1.5,
+        weightkg: 76.25,
     },
     sigillow: {
         num: 7500242,
@@ -11466,6 +11500,8 @@ darkchomp: {
             0: "Overwhelming"
         },
 		  eggGroups: ["Flying"],
+        heightm: 1.05,
+        weightkg: 16.9,
     },
     covally: {
         num: 7500243,
@@ -11484,6 +11520,8 @@ darkchomp: {
             0: "Triage System"
         },
 		  eggGroups: ["Undiscovered"],
+        heightm: 1.2,
+        weightkg: 50.4,
     },
 	 covallyfire: {
         num: 7500243,
@@ -11505,6 +11543,8 @@ darkchomp: {
             0: "Triage System"
         },
 		  eggGroups: ["Undiscovered"],
+        heightm: 1.2,
+        weightkg: 50.4,
     },
 	 covallywater: {
         num: 7500243,
@@ -11526,6 +11566,8 @@ darkchomp: {
             0: "Triage System"
         },
 		  eggGroups: ["Undiscovered"],
+        heightm: 1.2,
+        weightkg: 50.4,
     },
 	 covallyelectric: {
         num: 7500243,
@@ -11547,6 +11589,8 @@ darkchomp: {
             0: "Triage System"
         },
 		  eggGroups: ["Undiscovered"],
+        heightm: 1.2,
+        weightkg: 50.4,
     },
     covallygrass: {
         num: 7500243,
@@ -11589,6 +11633,8 @@ darkchomp: {
             0: "Triage System"
         },
 		  eggGroups: ["Undiscovered"],
+        heightm: 1.2,
+        weightkg: 50.4,
     },
     covallyfighting: {
         num: 7500243,
@@ -11596,7 +11642,7 @@ darkchomp: {
         baseSpecies: "Covally",
         gender: "N",
         forme: "Fighting",
-        formeLetter: "H",
+        formeLetter: "F",
         types: ["Fighting", "Fairy"],
         baseStats: {
             hp: 93,
@@ -11610,6 +11656,8 @@ darkchomp: {
             0: "Triage System"
         },
 		  eggGroups: ["Undiscovered"],
+        heightm: 1.2,
+        weightkg: 50.4,
     },
     covallypoison: {
         num: 7500243,
@@ -11631,6 +11679,8 @@ darkchomp: {
             0: "Triage System"
         },
 		  eggGroups: ["Undiscovered"],
+        heightm: 1.2,
+        weightkg: 50.4,
     },
     covallyground: {
         num: 7500243,
@@ -11638,7 +11688,7 @@ darkchomp: {
         baseSpecies: "Covally",
         gender: "N",
         forme: "Ground",
-        formeLetter: "Q",
+        formeLetter: "G",
         types: ["Ground", "Fairy"],
         baseStats: {
             hp: 93,
@@ -11652,6 +11702,8 @@ darkchomp: {
             0: "Triage System"
         },
 		  eggGroups: ["Undiscovered"],
+        heightm: 1.2,
+        weightkg: 50.4,
     },
     covallyflying: {
         num: 7500243,
@@ -11659,7 +11711,7 @@ darkchomp: {
         baseSpecies: "Covally",
         gender: "N",
         forme: "Flying",
-        formeLetter: "L",
+        formeLetter: "F",
         types: ["Flying", "Fairy"],
         baseStats: {
             hp: 93,
@@ -11673,6 +11725,8 @@ darkchomp: {
             0: "Triage System"
         },
 		  eggGroups: ["Undiscovered"],
+        heightm: 1.2,
+        weightkg: 50.4,
     },
     covallypsychic: {
         num: 7500243,
@@ -11680,7 +11734,7 @@ darkchomp: {
         baseSpecies: "Covally",
         gender: "N",
         forme: "Psychic",
-        formeLetter: "Y",
+        formeLetter: "P",
         types: ["Fire", "Fairy"],
         baseStats: {
             hp: 93,
@@ -11694,6 +11748,8 @@ darkchomp: {
             0: "Triage System"
         },
 		  eggGroups: ["Undiscovered"],
+        heightm: 1.2,
+        weightkg: 50.4,
     },
     covallybug: {
         num: 7500243,
@@ -11702,7 +11758,7 @@ darkchomp: {
         gender: "N",
         forme: "Bug",
         formeLetter: "B",
-        types: ["Fire", "Fairy"],
+        types: ["Bug", "Fairy"],
         baseStats: {
             hp: 93,
             atk: 73,
@@ -11715,6 +11771,8 @@ darkchomp: {
             0: "Triage System"
         },
 		  eggGroups: ["Undiscovered"],
+        heightm: 1.2,
+        weightkg: 50.4,
     },
     covallyrock: {
         num: 7500243,
@@ -11736,6 +11794,8 @@ darkchomp: {
             0: "Triage System"
         },
 		  eggGroups: ["Undiscovered"],
+        heightm: 1.2,
+        weightkg: 50.4,
     },
 
 
@@ -11745,7 +11805,7 @@ darkchomp: {
         baseSpecies: "Covally",
         gender: "N",
         forme: "Ghost",
-        formeLetter: "O",
+        formeLetter: "G",
         types: ["Ghost", "Fairy"],
         baseStats: {
             hp: 93,
@@ -11759,6 +11819,8 @@ darkchomp: {
             0: "Triage System"
         },
 		  eggGroups: ["Undiscovered"],
+        heightm: 1.2,
+        weightkg: 50.4,
     },
 
 
@@ -11782,6 +11844,8 @@ darkchomp: {
             0: "Triage System"
         },
 		  eggGroups: ["Undiscovered"],
+        heightm: 1.2,
+        weightkg: 50.4,
     },
 
 
@@ -11791,7 +11855,7 @@ darkchomp: {
         baseSpecies: "Covally",
         gender: "N",
         forme: "Dark",
-        formeLetter: "K",
+        formeLetter: "D",
         types: ["Dark", "Fairy"],
         baseStats: {
             hp: 93,
@@ -11805,6 +11869,8 @@ darkchomp: {
             0: "Triage System"
         },
 		  eggGroups: ["Undiscovered"],
+        heightm: 1.2,
+        weightkg: 50.4,
     },
 
 
@@ -11828,6 +11894,8 @@ darkchomp: {
             0: "Triage System"
         },
 		  eggGroups: ["Undiscovered"],
+        heightm: 1.2,
+        weightkg: 50.4,
     },
 
 
@@ -11837,7 +11905,7 @@ darkchomp: {
         baseSpecies: "Covally",
         gender: "N",
         forme: "Fairy",
-        formeLetter: "A",
+        formeLetter: "F",
         types: ["Fairy"],
         baseStats: {
             hp: 93,
@@ -11851,6 +11919,8 @@ darkchomp: {
             0: "Triage System"
         },
 		  eggGroups: ["Undiscovered"],
+        heightm: 1.2,
+        weightkg: 50.4,
     },
 
 
@@ -11870,6 +11940,8 @@ darkchomp: {
             0: "Regenerator"
         },
 		  eggGroups: ["Water 1"],
+        heightm: 0.95,
+        weightkg: 23.05,
     },
     melon: {
         num: 7500245,
@@ -11888,6 +11960,8 @@ darkchomp: {
             0: "Pixie Grace"
         },
 		  eggGroups: ["Undiscovered"],
+        heightm: 0.8,
+        weightkg: 15,
     },
 
 
@@ -11911,6 +11985,8 @@ darkchomp: {
             0: "Pixie Grace"
         },
 		  eggGroups: ["Undiscovered"],
+        heightm: 0.8,
+        weightkg: 15,
     },
 
 
@@ -11931,6 +12007,8 @@ darkchomp: {
             0: "Turborise"
         },
 		  eggGroups: ["Undiscovered"],
+        heightm: 1.95,
+        weightkg: 162.65,
     },
 
 
@@ -11951,6 +12029,8 @@ darkchomp: {
             0: "Pixie Lure"
         },
 		  eggGroups: ["Undiscovered"],
+        heightm: 1.65,
+        weightkg: 110.5,
     },
 
 
@@ -11970,6 +12050,8 @@ darkchomp: {
             0: "Flower Power"
         },
 		  eggGroups: ["Undiscovered"],
+        heightm: 2,
+        weightkg: 479.65,
     },
 
 
@@ -11992,6 +12074,8 @@ darkchomp: {
             0: "Desolate Land"
         },
 		  eggGroups: ["Undiscovered"],
+        heightm: 2,
+        weightkg: 529.35,
     },
 
 
@@ -12012,6 +12096,8 @@ darkchomp: {
             0: "Normalized Enemy"
         },
 		  eggGroups: ["Undiscovered"],
+        heightm: 3.25,
+        weightkg: 357.8,
     },
 
 
@@ -12031,6 +12117,8 @@ darkchomp: {
             0: "Fungal Shield"
         },
 		  eggGroups: ["Undiscovered"],
+        heightm: 2.5,
+        weightkg: 65.75,
     },
 
 
@@ -12051,6 +12139,8 @@ darkchomp: {
             0: "Pressurate"
         },
 		  eggGroups: ["Undiscovered"],
+        heightm: 2.6,
+        weightkg: 123.85,
     },
 
 
@@ -12070,6 +12160,8 @@ darkchomp: {
             0: "Mana Potion"
         },
 		  eggGroups: ["Undiscovered"],
+        heightm: 2.05,
+        weightkg: 126.25,
     },
 
 
@@ -12089,6 +12181,8 @@ darkchomp: {
             0: "Piercing Gaze"
         },
 		  eggGroups: ["Undiscovered"],
+        heightm: 3.3,
+        weightkg: 350,
     },
 
 
@@ -12108,11 +12202,13 @@ darkchomp: {
             0: "Pressured Innards"
         },
 		  eggGroups: ["Undiscovered"],
+        heightm: 2.4,
+        weightkg: 375.6,
     },
     omneus: {
         num: 7500255,
         species: "Omneus",
-        types: ["Water"],
+        types: ["Water", "Normal"],
         gender: "N",
         baseStats: {
             hp: 77,
@@ -12126,6 +12222,8 @@ darkchomp: {
             0: "Spiral Power"
         },
 		  eggGroups: ["Undiscovered"],
+        heightm: 1.8,
+        weightkg: 163.75,
     },
 
 
@@ -12149,6 +12247,8 @@ darkchomp: {
             0: "Spiral Power"
         },
 		  eggGroups: ["Undiscovered"],
+        heightm: 1.8,
+        weightkg: 163.75,
     },
 
 
@@ -12172,6 +12272,8 @@ darkchomp: {
             0: "Spiral Power"
         },
 		  eggGroups: ["Undiscovered"],
+        heightm: 1.8,
+        weightkg: 163.75,
     },
 
 
@@ -12195,6 +12297,8 @@ darkchomp: {
             0: "Spiral Power"
         },
 		  eggGroups: ["Undiscovered"],
+        heightm: 1.8,
+        weightkg: 163.75,
     },
 
 
@@ -12218,6 +12322,8 @@ darkchomp: {
             0: "Spiral Power"
         },
 		  eggGroups: ["Undiscovered"],
+        heightm: 1.8,
+        weightkg: 163.75,
     },
 
 
@@ -12241,6 +12347,8 @@ darkchomp: {
             0: "Spiral Power"
         },
 		  eggGroups: ["Undiscovered"],
+        heightm: 1.8,
+        weightkg: 163.75,
     },
 
 
@@ -12249,7 +12357,7 @@ darkchomp: {
         species: "Omneus-Fighting",
         baseSpecies: "Omneus",
         forme: "Fighting",
-        formeLetter: "H",
+        formeLetter: "F",
         gender: "N",
         types: ["Water", "Fighting"],
         baseStats: {
@@ -12264,6 +12372,8 @@ darkchomp: {
             0: "Spiral Power"
         },
 		  eggGroups: ["Undiscovered"],
+        heightm: 1.8,
+        weightkg: 163.75,
     },
 
 
@@ -12287,6 +12397,8 @@ darkchomp: {
             0: "Spiral Power"
         },
 		  eggGroups: ["Undiscovered"],
+        heightm: 1.8,
+        weightkg: 163.75,
     },
 
 
@@ -12295,7 +12407,7 @@ darkchomp: {
         species: "Omneus-Ground",
         baseSpecies: "Omneus",
         forme: "Ground",
-        formeLetter: "U",
+        formeLetter: "G",
         gender: "N",
         types: ["Water", "Ground"],
         baseStats: {
@@ -12310,6 +12422,8 @@ darkchomp: {
             0: "Spiral Power"
         },
 		  eggGroups: ["Undiscovered"],
+        heightm: 1.8,
+        weightkg: 163.75,
     },
 
 
@@ -12318,7 +12432,7 @@ darkchomp: {
         species: "Omneus-Flying",
         baseSpecies: "Omneus",
         forme: "Flying",
-        formeLetter: "L",
+        formeLetter: "F",
         gender: "N",
         types: ["Water", "Flying"],
         baseStats: {
@@ -12333,6 +12447,8 @@ darkchomp: {
             0: "Spiral Power"
         },
 		  eggGroups: ["Undiscovered"],
+        heightm: 1.8,
+        weightkg: 163.75,
     },
 
 
@@ -12341,7 +12457,7 @@ darkchomp: {
         species: "Omneus-Psychic",
         baseSpecies: "Omneus",
         forme: "Psychic",
-        formeLetter: "Y",
+        formeLetter: "P",
         gender: "N",
         types: ["Water", "Psychic"],
         baseStats: {
@@ -12356,6 +12472,8 @@ darkchomp: {
             0: "Spiral Power"
         },
 		  eggGroups: ["Undiscovered"],
+        heightm: 1.8,
+        weightkg: 163.75,
     },
 
 
@@ -12379,6 +12497,8 @@ darkchomp: {
             0: "Spiral Power"
         },
 		  eggGroups: ["Undiscovered"],
+        heightm: 1.8,
+        weightkg: 163.75,
     },
 
 
@@ -12402,6 +12522,8 @@ darkchomp: {
             0: "Spiral Power"
         },
 		  eggGroups: ["Undiscovered"],
+        heightm: 1.8,
+        weightkg: 163.75,
     },
 
 
@@ -12425,6 +12547,8 @@ darkchomp: {
             0: "Spiral Power"
         },
 		  eggGroups: ["Undiscovered"],
+        heightm: 1.8,
+        weightkg: 163.75,
     },
 
 
@@ -12448,6 +12572,8 @@ darkchomp: {
             0: "Spiral Power"
         },
 		  eggGroups: ["Undiscovered"],
+        heightm: 1.8,
+        weightkg: 163.75,
     },
 
 
@@ -12456,7 +12582,7 @@ darkchomp: {
         species: "Omneus-Fairy",
         baseSpecies: "Omneus",
         forme: "Fairy",
-        formeLetter: "A",
+        formeLetter: "F",
         gender: "N",
         types: ["Water", "Fairy"],
         baseStats: {
@@ -12471,6 +12597,8 @@ darkchomp: {
             0: "Spiral Power"
         },
 		  eggGroups: ["Undiscovered"],
+        heightm: 1.8,
+        weightkg: 163.75,
     },
 
 
@@ -12490,6 +12618,8 @@ darkchomp: {
             0: "Extremist"
         },
 		  eggGroups: ["Undiscovered"],
+        heightm: 1.65,
+        weightkg: 140.75,
     },
 
 
@@ -12512,6 +12642,8 @@ darkchomp: {
             0: "Refrigerate"
         },
 		  eggGroups: ["Undiscovered"],
+        heightm: 2.25,
+        weightkg: 234.45,
     },
 
 
@@ -12532,6 +12664,8 @@ darkchomp: {
             0: "Queen's Command"
         },
 		  eggGroups: ["Undiscovered"],
+        heightm: 1.55,
+        weightkg: 140.7,
     },
 
 
@@ -12551,6 +12685,8 @@ darkchomp: {
             0: "Guerilla Warfare"
         },
 		  eggGroups: ["Bug"],
+        heightm: 1.9,
+        weightkg: 113,
     },
 
 
@@ -12573,6 +12709,8 @@ darkchomp: {
             0: "Technician"
         },
 		  eggGroups: ["Bug"],
+        heightm: 2.1,
+        weightkg: 120,
     },
 
 
@@ -12593,6 +12731,8 @@ darkchomp: {
             0: "Soulforged Diamond"
         },
 		  eggGroups: ["Undiscovered"],
+        heightm: 2.15,
+        weightkg: 225,
     },
 
 
@@ -12616,6 +12756,8 @@ darkchomp: {
             0: "Sheer Force"
         },
 		  eggGroups: ["Undiscovered"],
+        heightm: 2.75,
+        weightkg: 325.5,
     },
 
 
@@ -12635,6 +12777,8 @@ darkchomp: {
             0: "Cursed Cloak"
         },
 		  eggGroups: ["Amorphous"],
+        heightm: 0.65,
+        weightkg: 6.6,
     },
 	
     banekyubusted: {
@@ -12656,6 +12800,8 @@ darkchomp: {
             0: "Cursed Cloak"
         },
 		  eggGroups: ["Amorphous"],
+        heightm: 0.65,
+        weightkg: 6.6,
     },
 
 
@@ -12678,6 +12824,8 @@ darkchomp: {
             0: "Prankster"
         },
 		  eggGroups: ["Amorphous"],
+        heightm: 0.75,
+        weightkg: 7.1,
     },
 
 
@@ -12697,6 +12845,8 @@ darkchomp: {
         abilities: {
             0: "Light Speed"
         },
+        heightm: 1.25,
+        weightkg: 36.4,
     },
 
 
@@ -12788,6 +12938,8 @@ darkchomp: {
             0: "Quarantine"
         },
 		  eggGroups: ["Undiscovered"],
+        heightm: 1.6,
+        weightkg: 53.8,
     },
 
 
@@ -12807,6 +12959,8 @@ darkchomp: {
             0: "High Stakes"
         },
 		  eggGroups: ["Field"],
+        heightm: 0.85,
+        weightkg: 33.95,
     },
 
 
@@ -12830,6 +12984,8 @@ darkchomp: {
             0: "Blazing Contrary"
         },
 		  eggGroups: ["Field"],
+        heightm: 2.25,
+        weightkg: 59,
     },
 
 
@@ -12850,6 +13006,8 @@ darkchomp: {
         },
 		 otherFormes: ["mimukyubusted"],
 		  eggGroups: ["Amorphous"],
+        heightm: 0.6,
+        weightkg: 26.35,
     },
 	mimukyubusted: {
         num: 7500267,
@@ -12870,6 +13028,8 @@ darkchomp: {
             0: "Appropriation"
         },
 		  eggGroups: ["Amorphous"],
+        heightm: 0.6,
+        weightkg: 26.35,
     },
     axatree: {
         num: 7500268,
@@ -12888,6 +13048,8 @@ darkchomp: {
             0: "Beast Guard"
         },
 		  eggGroups: ["Undiscovered"],
+        heightm: 2.65,
+        weightkg: 74,
     },
 
 
@@ -12911,12 +13073,14 @@ darkchomp: {
             0: "Trace"
         },
 		  eggGroups: ["Undiscovered"],
+        heightm: 2.35,
+        weightkg: 74,
     },
 
 
-    cresspal: {
+    cressapal: {
         num: 7500269,
-        species: "Cresspal",
+        species: "Cressapal",
         types: ["Normal", "Psychic"],
         gender: "F",
         baseStats: {
@@ -12931,6 +13095,8 @@ darkchomp: {
             0: "Fear Shield"
         },
 		  eggGroups: ["Undiscovered"],
+        heightm: 1.5,
+        weightkg: 49.8,
     },
 
 
@@ -12951,6 +13117,8 @@ darkchomp: {
             0: "Inverse Armor"
         },
 		  eggGroups: ["Undiscovered"],
+        heightm: 2.85,
+        weightkg: 146.5,
     },
 
 
@@ -12971,6 +13139,8 @@ darkchomp: {
             0: "Frenzy"
         },
 		  eggGroups: ["Undiscovered"],
+        heightm: 0.6,
+        weightkg: 14.85,
     },
 
 
@@ -12990,6 +13160,8 @@ darkchomp: {
             0: "Puffy Cloud"
         },
 		  eggGroups: ["Flying"],
+        heightm: 0.9,
+        weightkg: 20.2,
     },
 
 
@@ -13012,6 +13184,8 @@ darkchomp: {
             0: "Pixilate"
         },
 		  eggGroups: ["Flying"],
+        heightm: 1.3,
+        weightkg: 20.2,
     },
 celebi: {
 		num: 251,
@@ -13057,6 +13231,8 @@ celebi: {
         abilities: {
             0: "Tinkering"
         },
+        heightm: 0.65,
+        weightkg: 12.6,
 		 fusion: ["Riolu", "Celebi"],
 		  eggGroups: ["Undiscovered"],
     },
