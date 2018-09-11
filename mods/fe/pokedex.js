@@ -20726,7 +20726,6 @@ auroritarmega: {
         num: 7500524,
         species: "Goohoo",
         types: ["Dragon", "Ghost"],
-        gender: "N",
         baseStats: {
             hp: 85,
             atk: 125,
@@ -20747,7 +20746,7 @@ auroritarmega: {
 	    num: 7500525,
 	    species: "Kyervine",
 	    types: ["Grass", "Water"],
-            gender: "N",
+        genderRatio: {M: 0.875, F: 0.125},
 	    baseStats: {
 	        hp: 98,
 	        atk: 110,
@@ -20769,8 +20768,8 @@ auroritarmega: {
             baseSpecies: "Kyervine",
             forme: "Primal",
             formeLetter: "P",
-            types: ["Electric", "Dragon"],
-            gender: "N",
+            types: ["Grass", "Water"],
+        genderRatio: {M: 0.875, F: 0.125},
 	    baseStats: {
 	        hp: 98,
 	        atk: 110,
