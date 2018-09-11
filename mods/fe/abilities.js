@@ -7401,6 +7401,12 @@ exports.BattleAbilities = {
 	},
 	"contrabubble": {
 		shortDesc: "Reverses the effectiveness of Fire and Water attacks on all active Pokemon, and the effects of burn on this Pokemon.",
+		onBasePower: function (basePower, attacker, defender, move) {
+			if (move.id === 'facade' && attacker.status === 'burn') {
+				this.debug('Neutralize the burn inversion.');
+				return this.chainModify(0.25);
+			}
+		},
 		onAnyEffectiveness: function (typeMod, target, type, move) {
 			if (move.type === 'Water' || move.type === 'Fire') {
 				if (move && !this.getImmunity(move, type)) return 1;
