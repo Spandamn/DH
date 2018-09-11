@@ -6276,8 +6276,8 @@ exports.BattleAbilities = {
 			}
 		},
 	},
-	"adaptiveabsorption": {
-		shortDesc: "Immune to STAB moves. When hit by one, restores 50% of its HP.",
+	"adaptingabsorption": {
+		shortDesc: "This Pokemon is immune to an attacker's STAB moves. When hit by one, it restores 50% of its HP.",
 		onTryHit: function (target, source, move) {
 			if (target !== source && source.hasType(move.type)) {
 				if (!this.heal(target.maxhp / 2)) {
@@ -6286,8 +6286,8 @@ exports.BattleAbilities = {
 				return null;
 			}
 		},
-		id: "adaptiveabsorption",
-		name: "Adaptive Absorption",
+		id: "adaptingabsorption",
+		name: "Adapting Absorption",
 	},
 	'brilliantbrightness': {
 		shortDesc: "Resets foe's stat changes upon switch in. This pokémon cannot have it's status lowered by external means, and doing so will reduce the foe's attack by one stage.",
@@ -10812,8 +10812,8 @@ exports.BattleAbilities = {
 		name: "Beast Eye",
 	},
 	"weatherbreak": {
-		desc: "All weather-based effects, including abilities and passive stat increases, are reversed.",
-		shortDesc: "Inverts weather effects.",
+		desc: "When this Pokemon is active, ll weather-based effects, including abilities and passive stat increases, are reversed.",
+		shortDesc: "When this Pokemon is active, all weather-based effects are reversed.",
 		onStart: function (pokemon) {
 			this.add('-ability', pokemon, 'Weather Break');
 			for (const side of this.sides) {
@@ -10845,8 +10845,8 @@ exports.BattleAbilities = {
 		name: "Weather Break",
 	},
 	"atmosphericperversion": {
-		desc: "All weather-based effects, including abilities and passive stat increases, are reversed.",
-		shortDesc: "Inverts weather effects.",
+		desc: "When this Pokemon is active, ll weather-based effects, including abilities and passive stat increases, are reversed.",
+		shortDesc: "When this Pokemon is active, all weather-based effects are reversed.",
 		onStart: function (pokemon) {
 			this.add('-ability', pokemon, 'Atmospheric Perversion');
 			for (const side of this.sides) {
