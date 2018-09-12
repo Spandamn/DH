@@ -13253,6 +13253,8 @@ celebi: {
         abilities: {
             0: "Sluggish Aura"
         },
+        heightm: 2.95,
+        weightkg: 162.25,
 		  eggGroups: ["Undiscovered"],
     },
 
@@ -13273,6 +13275,8 @@ celebi: {
         abilities: {
             0: "Troll"
         },
+        heightm: 0.9,
+        weightkg: 25.4,
 		  eggGroups: ["Fairy"],
     },
     aravealola: {
@@ -13290,6 +13294,8 @@ celebi: {
         abilities: {
             0: "Optimize"
         },
+        heightm: 2.1,
+        weightkg: 215,
 		  eggGroups: ["Undiscovered"],
     },
 
@@ -13312,6 +13318,8 @@ celebi: {
         abilities: {
             0: "Optimize"
         },
+        heightm: 2.1,
+        weightkg: 215,
 		  eggGroups: ["Undiscovered"],
     },
 
@@ -13334,6 +13342,8 @@ celebi: {
         abilities: {
             0: "Optimize"
         },
+        heightm: 2.1,
+        weightkg: 215,
 		  eggGroups: ["Undiscovered"],
     },
 
@@ -13356,6 +13366,8 @@ celebi: {
         abilities: {
             0: "Optimize"
         },
+        heightm: 2.1,
+        weightkg: 215,
 		  eggGroups: ["Undiscovered"],
     },
 
@@ -13378,6 +13390,8 @@ celebi: {
         abilities: {
             0: "Optimize"
         },
+        heightm: 2.1,
+        weightkg: 215,
 		  eggGroups: ["Undiscovered"],
     },
 
@@ -13400,6 +13414,8 @@ celebi: {
         abilities: {
             0: "Optimize"
         },
+        heightm: 2.1,
+        weightkg: 215,
 		  eggGroups: ["Undiscovered"],
     },
 
@@ -13422,6 +13438,8 @@ celebi: {
         abilities: {
             0: "Optimize"
         },
+        heightm: 2.1,
+        weightkg: 215,
 		  eggGroups: ["Undiscovered"],
     },
 
@@ -13444,6 +13462,8 @@ celebi: {
         abilities: {
             0: "Optimize"
         },
+        heightm: 2.1,
+        weightkg: 215,
 		  eggGroups: ["Undiscovered"],
     },
 
@@ -13466,6 +13486,8 @@ celebi: {
         abilities: {
             0: "Optimize"
         },
+        heightm: 2.1,
+        weightkg: 215,
 		  eggGroups: ["Undiscovered"],
     },
 
@@ -13510,6 +13532,8 @@ celebi: {
         abilities: {
             0: "Optimize"
         },
+        heightm: 2.1,
+        weightkg: 215,
 		  eggGroups: ["Undiscovered"],
     },
 
@@ -13532,6 +13556,8 @@ celebi: {
         abilities: {
             0: "Optimize"
         },
+        heightm: 2.1,
+        weightkg: 215,
 		  eggGroups: ["Undiscovered"],
     },
 
@@ -13554,6 +13580,8 @@ celebi: {
         abilities: {
             0: "Optimize"
         },
+        heightm: 2.1,
+        weightkg: 215,
 		  eggGroups: ["Undiscovered"],
     },
 
@@ -13576,6 +13604,8 @@ celebi: {
         abilities: {
             0: "Optimize"
         },
+        heightm: 2.1,
+        weightkg: 215,
 		  eggGroups: ["Undiscovered"],
     },
 
@@ -13598,6 +13628,8 @@ celebi: {
         abilities: {
             0: "Optimize"
         },
+        heightm: 2.1,
+        weightkg: 215,
 		  eggGroups: ["Undiscovered"],
     },
 
@@ -13620,6 +13652,8 @@ celebi: {
         abilities: {
             0: "Optimize"
         },
+        heightm: 2.1,
+        weightkg: 215,
 		  eggGroups: ["Undiscovered"],
     },
 
@@ -13642,6 +13676,8 @@ celebi: {
         abilities: {
             0: "Optimize"
         },
+        heightm: 2.1,
+        weightkg: 215,
 		  eggGroups: ["Undiscovered"],
     },
 
@@ -13664,6 +13700,8 @@ celebi: {
         abilities: {
             0: "Optimize"
         },
+        heightm: 2.1,
+        weightkg: 215,
 		  eggGroups: ["Undiscovered"],
     },
 
@@ -13687,6 +13725,8 @@ celebi: {
         abilities: {
             0: "Resurrection"
         },
+        heightm: 0.85,
+        weightkg: 20.35,
 		  eggGroups: ["Undiscovered"],
     },
 
@@ -13713,6 +13753,8 @@ celebi: {
         abilities: {
             0: "Resurrection Done"
         },
+        heightm: 0.85,
+        weightkg: 20.35,
 		  eggGroups: ["Undiscovered"],
     },
 
@@ -13732,6 +13774,8 @@ celebi: {
         abilities: {
             0: "Bamboozled"
         },
+        heightm: 1.95,
+        weightkg: 116.05,
 		  eggGroups: ["Undiscovered"],
     },
 
@@ -13752,6 +13796,8 @@ celebi: {
         abilities: {
             0: "Tetra Force"
         },
+        heightm: 2,
+        weightkg: 185,
 		  eggGroups: ["Undiscovered"],
     },
 
@@ -13762,15 +13808,42 @@ celebi: {
         types: ["Normal", "Flying"],
         baseStats: {
             hp: 102,
-            atk: 102,
-            def: 105,
-            spa: 80,
-            spd: 105,
+            atk: 105,
+            def: 80,
+            spa: 105,
+            spd: 80,
             spe: 87
         },
         abilities: {
             0: "Weather Contradiction"
         },
+        heightm: 4.05,
+        weightkg: 108.75,
+        eggGroups: ["Undiscovered"]
+    },
+
+
+    quindamega: {
+        num: 7500280,
+        species: "Quinda-Mega",
+        baseSpecies: "Quinda",
+        forme: "Mega",
+        formeLetter: "M",
+        types: ["Normal", "Flying"],
+        baseStats: {
+            hp: 102,
+            atk: 135,
+            def: 90,
+            spa: 135,
+            spd: 90,
+            spe: 107
+        },
+        abilities: {
+            0: "Delta Stream"
+        },
+        heightm: 7.35,
+        weightkg: 294.25,
+        eggGroups: ["Undiscovered"]
     },
 
 
@@ -13789,6 +13862,8 @@ celebi: {
         abilities: {
             0: "Slow Surge"
         },
+        heightm: 2.1,
+        weightkg: 215.5,
 		  eggGroups: ["Undiscovered"],
     },
 
@@ -13811,6 +13886,8 @@ celebi: {
         abilities: {
             0: "Magic Bounce"
         },
+        heightm: 2.1,
+        weightkg: 365.5,
 		  eggGroups: ["Undiscovered"],
     },
 
@@ -13830,6 +13907,8 @@ celebi: {
         abilities: {
             0: "Compound Eyes"
         },
+        heightm: 1,
+        weightkg: 15.65,
 		  eggGroups: ["Bug"],
     },
 
@@ -13850,6 +13929,8 @@ celebi: {
             0: "Electron Rain"
         },
 		  eggGroups: ["Undiscovered"],
+        heightm: 2.45,
+        weightkg: 178.1,
     dexentry: "Of the rare cases of a DNA Fusion not being done by Team Rocket. This powerful mermaid-like rodent was created by Team Aqua, after succesful capture of the Blue Orb. Their attempts at testing the Blue Orb on different species reacted with a Minun, which had then recieved Kyogre's powers contained in the Orb, becoming Kyonun. It swims through the oceans at high speeds, and has tremendous power when it is raining, capable of delievering shocks of over 10.000 Volts."
     },
 
@@ -13872,6 +13953,8 @@ celebi: {
         abilities: {
             0: "Primordial Sea"
         },
+        heightm: 7.75,
+        weightkg: 256.1,
 		  eggGroups: ["Undiscovered"],
     },
 
@@ -13892,6 +13975,8 @@ celebi: {
         abilities: {
             0: "Petrify"
         },
+        heightm: 1.75,
+        weightkg: 101.75,
 		  eggGroups: ["Undiscovered"],
     },
     abomasorusmega: {
@@ -13913,6 +13998,8 @@ celebi: {
         abilities: {
             0: "Snow Warning"
         },
+        heightm: 2.25,
+        weightkg: 151.25,
 		  eggGroups: ["Undiscovered"],
     },
 
@@ -13936,6 +14023,8 @@ celebi: {
         abilities: {
             0: "Triggered"
         },
+        heightm: 1.25,
+        weightkg: 49.2,
 		  eggGroups: ["Human-Like"],
     },
 
@@ -13959,6 +14048,8 @@ celebi: {
         abilities: {
             0: "Adaptability"
         },
+        heightm: 1.35,
+        weightkg: 52.7,
 		  eggGroups: ["Human-Like"],
     },
 
@@ -13980,6 +14071,8 @@ celebi: {
         abilities: {
             0: "Mitosis"
         },
+        heightm: 4.95,
+        weightkg: 69.7,
 		  eggGroups: ["Undiscovered"],
     },
 
@@ -14003,6 +14096,8 @@ celebi: {
         abilities: {
             0: "Mitosis"
         },
+        heightm: 0.1,
+        weightkg: 0.25,
 		  eggGroups: ["Undiscovered"],
     },
 
@@ -14022,6 +14117,8 @@ celebi: {
         abilities: {
             0: "Prestidigitation"
         },
+        heightm: 5,
+        weightkg: 277.5,
 		  eggGroups: ["Undiscovered"],
     },
 
@@ -14045,6 +14142,8 @@ celebi: {
         abilities: {
             0: "Solar Snow"
         },
+        heightm: 1.1,
+        weightkg: 19.9,
 		  eggGroups: ["Field"],
     },
 
@@ -14065,6 +14164,8 @@ celebi: {
         abilities: {
             0: "Torrential Rage"
         },
+        heightm: 2.3,
+        weightkg: 135.25,
 		  eggGroups: ["Monster"],
     },
 
@@ -14088,6 +14189,8 @@ celebi: {
         abilities: {
             0: "Mega Launcher"
         },
+        heightm: 2.3,
+        weightkg: 150.85,
 		  eggGroups: ["Monster"],
     },
 
@@ -14108,6 +14211,8 @@ celebi: {
         abilities: {
             0: "Fluttering Heart"
         },
+        heightm: 0.8,
+        weightkg: 41.95,
 		  eggGroups: ["Undiscovered"],
     },
 
@@ -19484,7 +19589,7 @@ auroritarmega: {
 		  weightkg: 75,
 		  eggGroups: ["Undiscovered"],
 	},
-	lamparadenoche: {
+	lampara: {
 		num: 7500475,
 		species: "Lampara",
 		forme: "De-Noche",
@@ -19958,7 +20063,7 @@ auroritarmega: {
 		  weightkg: 210.6,
 		  eggGroups: ["Undiscovered"],
 	},
-	chazmaegg: {
+	chazma: {
 		num: 7500492,
 		species: "Chazma",
 	   baseForme: "Egg",
