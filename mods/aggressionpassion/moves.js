@@ -1162,6 +1162,276 @@ let BattleMovedex = {
 		zMoveEffect: 'clearnegativeboost',
 		contestType: "Clever",
 	},
+	"milkdrink": {
+		num: 208,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		desc: "The user restores 1/2 of its maximum HP, rounded half up.",
+		shortDesc: "Heals the user by 50% of its max HP.",
+		id: "milkdrink",
+		isViable: true,
+		name: "Milk Drink",
+		pp: 10,
+		priority: 0,
+		flags: {snatch: 1, heal: 1},
+		self: {
+			heal: [1, 2],
+		},
+		secondary: false,
+		target: "self",
+		type: "Normal",
+		zMoveEffect: 'clearnegativeboost',
+		contestType: "Cute",
+	},
+	"moonlight": {
+		num: 236,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		desc: "The user restores 1/2 of its maximum HP if no weather conditions are in effect, 2/3 of its maximum HP if the weather is Sunny Day, and 1/4 of its maximum HP if the weather is Hail, Rain Dance, or Sandstorm, all rounded half down.",
+		shortDesc: "Heals the user by a weather-dependent amount.",
+		id: "moonlight",
+		isViable: true,
+		name: "Moonlight",
+		pp: 5,
+		priority: 0,
+		flags: {snatch: 1, heal: 1},
+		self:{
+			onHit: function (pokemon) {
+			if (this.isWeather(['sunnyday', 'desolateland'])) {
+				return this.heal(this.modify(pokemon.maxhp, 0.667));
+			} else if (this.isWeather(['raindance', 'primordialsea', 'sandstorm', 'hail'])) {
+				return this.heal(this.modify(pokemon.maxhp, 0.25));
+			} else {
+				return this.heal(this.modify(pokemon.maxhp, 0.5));
+			}
+			}
+		},
+		secondary: false,
+		target: "self",
+		type: "Fairy",
+		zMoveEffect: 'clearnegativeboost',
+		contestType: "Beautiful",
+	},
+	"morningsun": {
+		num: 234,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		desc: "The user restores 1/2 of its maximum HP if no weather conditions are in effect, 2/3 of its maximum HP if the weather is Sunny Day, and 1/4 of its maximum HP if the weather is Hail, Rain Dance, or Sandstorm, all rounded half down.",
+		shortDesc: "Heals the user by a weather-dependent amount.",
+		id: "morningsun",
+		isViable: true,
+		name: "Morning Sun",
+		pp: 5,
+		priority: 0,
+		flags: {snatch: 1, heal: 1},
+		self:{
+			onHit: function (pokemon) {
+			if (this.isWeather(['sunnyday', 'desolateland'])) {
+				return this.heal(this.modify(pokemon.maxhp, 0.667));
+			} else if (this.isWeather(['raindance', 'primordialsea', 'sandstorm', 'hail'])) {
+				return this.heal(this.modify(pokemon.maxhp, 0.25));
+			} else {
+				return this.heal(this.modify(pokemon.maxhp, 0.5));
+			}
+			}
+		},
+		secondary: false,
+		target: "self",
+		type: "Normal",
+		zMoveEffect: 'clearnegativeboost',
+		contestType: "Beautiful",
+	},
+	"recover": {
+		num: 105,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		desc: "The user restores 1/2 of its maximum HP, rounded half up.",
+		shortDesc: "Heals the user by 50% of its max HP.",
+		id: "recover",
+		isViable: true,
+		name: "Recover",
+		pp: 10,
+		priority: 0,
+		flags: {snatch: 1, heal: 1},
+		self:{
+			heal: [1, 2],
+		},
+		secondary: false,
+		target: "self",
+		type: "Normal",
+		zMoveEffect: 'clearnegativeboost',
+		contestType: "Clever",
+	},
+	"rest": {
+		num: 156,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		desc: "The user falls asleep for the next two turns and restores all of its HP, curing itself of any major status condition in the process. Fails if the user has full HP, is already asleep, or if another effect is preventing sleep.",
+		shortDesc: "User sleeps 2 turns and restores HP and status.",
+		id: "rest",
+		isViable: true,
+		name: "Rest",
+		pp: 10,
+		priority: 0,
+		flags: {snatch: 1, heal: 1},
+		onTryMove: function (pokemon) {
+			if (pokemon.hp < pokemon.maxhp && pokemon.status !== 'slp' && !pokemon.hasAbility('comatose')) return;
+			this.add('-fail', pokemon);
+			return null;
+		},
+		self: {
+			onHit: function (target) {
+			if (!target.setStatus('slp')) return false;
+			target.statusData.time = 3;
+			target.statusData.startTime = 3;
+			this.heal(target.maxhp); //Aeshetic only as the healing happens after you fall asleep in-game
+			this.add('-status', target, 'slp', '[from] move: Rest');
+			}
+		},
+		secondary: false,
+		target: "self",
+		type: "Psychic",
+		zMoveEffect: 'clearnegativeboost',
+		contestType: "Cute",
+	},
+	"roost": {
+		num: 355,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		desc: "The user restores 1/2 of its maximum HP, rounded half up. Until the end of the turn, Flying-type users lose their Flying type and pure Flying-type users become Normal type. Does nothing if the user's HP is full.",
+		shortDesc: "Heals 50% HP. Flying-type removed 'til turn ends.",
+		id: "roost",
+		isViable: true,
+		name: "Roost",
+		pp: 10,
+		priority: 0,
+		flags: {snatch: 1, heal: 1},
+		self: {
+			heal: [1, 2],
+			volatileStatus: 'roost',
+		},
+		effect: {
+			duration: 1,
+			onResidualOrder: 20,
+			onTypePriority: -1,
+			onType: function (types, pokemon) {
+				this.effectData.typeWas = types;
+				return types.filter(type => type !== 'Flying');
+			},
+		},
+		secondary: false,
+		target: "self",
+		type: "Flying",
+		zMoveEffect: 'clearnegativeboost',
+		contestType: "Clever",
+	},
+	"shoreup": {
+		num: 659,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		desc: "The user restores 1/2 of its maximum HP, rounded half down. If the weather is Sandstorm, the user instead restores 2/3 of its maximum HP, rounded half down.",
+		shortDesc: "User restores 1/2 its max HP; 2/3 in Sandstorm.",
+		id: "shoreup",
+		isViable: true,
+		name: "Shore Up",
+		pp: 10,
+		priority: 0,
+		flags: {snatch: 1, heal: 1},
+		self:{
+			onHit: function (pokemon) {
+			if (this.isWeather('sandstorm')) {
+				return this.heal(this.modify(pokemon.maxhp, 0.667));
+			} else {
+				return this.heal(this.modify(pokemon.maxhp, 0.5));
+			}
+			}
+		},
+		secondary: false,
+		target: "self",
+		type: "Ground",
+		zMoveEffect: 'clearnegativeboost',
+		contestType: "Beautiful",
+	},
+	"slackoff": {
+		num: 303,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		desc: "The user restores 1/2 of its maximum HP, rounded half up.",
+		shortDesc: "Heals the user by 50% of its max HP.",
+		id: "slackoff",
+		isViable: true,
+		name: "Slack Off",
+		pp: 10,
+		priority: 0,
+		flags: {snatch: 1, heal: 1},
+		self:{
+			heal: [1, 2],
+		},
+		secondary: false,
+		target: "self",
+		type: "Normal",
+		zMoveEffect: 'clearnegativeboost',
+		contestType: "Cute",
+	},
+	"softboiled": {
+		num: 135,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		desc: "The user restores 1/2 of its maximum HP, rounded half up.",
+		shortDesc: "Heals the user by 50% of its max HP.",
+		id: "softboiled",
+		isViable: true,
+		name: "Soft-Boiled",
+		pp: 10,
+		priority: 0,
+		flags: {snatch: 1, heal: 1},
+		self:{
+			heal: [1, 2],
+		},
+		secondary: false,
+		target: "self",
+		type: "Normal",
+		zMoveEffect: 'clearnegativeboost',
+		contestType: "Cute",
+	},
+	"swallow": {
+		num: 256,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		desc: "The user restores its HP based on its Stockpile count. Restores 1/4 of its maximum HP if it's 1, 1/2 of its maximum HP if it's 2, both rounded half down, and all of its HP if it's 3. Fails if the user's Stockpile count is 0. The user's Defense and Special Defense decrease by as many stages as Stockpile had increased them, and the user's Stockpile count resets to 0.",
+		shortDesc: "Heals the user based on uses of Stockpile.",
+		id: "swallow",
+		name: "Swallow",
+		pp: 10,
+		priority: 0,
+		flags: {snatch: 1, heal: 1},
+		onTryHit: function (pokemon) {
+			if (!pokemon.volatiles['stockpile'] || !pokemon.volatiles['stockpile'].layers) return false;
+		},
+		self:{
+			onHit: function (pokemon) {
+			let healAmount = [0.25, 0.5, 1];
+			let healedBy = this.heal(this.modify(pokemon.maxhp, healAmount[(pokemon.volatiles['stockpile'].layers - 1)]));
+			pokemon.removeVolatile('stockpile');
+			return healedBy;
+			}
+		},
+		secondary: false,
+		target: "self",
+		type: "Normal",
+		zMoveEffect: 'clearnegativeboost',
+		contestType: "Tough",
+	},
 };
 	//TODO: 
 	// Suspect: Automize, 
