@@ -914,10 +914,12 @@ let BattleMovedex = {
 		volatileStatus: 'protect',
 		onPrepareHit: function (pokemon) {
 			return !!this.willAct() && this.runEvent('StallMove', pokemon);
+		}
 		},
+		self: {
 		onHit: function (pokemon) {
 			pokemon.addVolatile('stall');
-		},
+		}
 		},
 		secondary: false,
 		target: "self",
