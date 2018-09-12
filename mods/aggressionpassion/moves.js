@@ -1510,8 +1510,10 @@ let BattleMovedex = {
 				return null;
 			}
 		},
-		onHit: function (target) {
+		self:{
+			onHit: function (target) {
 			this.directDamage(target.maxhp / 4);
+			}
 		},
 		effect: {
 			onStart: function (target) {
