@@ -2,6 +2,7 @@
 
 /**@type {{[k: string]: MoveData}} */
 let BattleMovedex = {
+	
 	"tailwind": {
 		num: 366,
 		accuracy: true,
