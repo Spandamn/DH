@@ -2,6 +2,234 @@
 
 /**@type {{[k: string]: MoveData}} */
 let BattleMovedex = {
+	"tailwind": {
+		num: 366,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		desc: "For 4 turns, the user and its party members have their Speed doubled. Fails if this move is already in effect for the user's side.",
+		shortDesc: "For 4 turns, allies' Speed is doubled.",
+		id: "tailwind",
+		isViable: true,
+		name: "Tailwind",
+		pp: 15,
+		priority: 0,
+		flags: {snatch: 1},
+		self:{
+			sideCondition: 'tailwind',
+		},
+		effect: {
+			duration: 4,
+			durationCallback: function (target, source, effect) {
+				if (source && source.hasAbility('persistent')) {
+					this.add('-activate', source, 'ability: Persistent', effect);
+					return 6;
+				}
+				return 4;
+			},
+			onStart: function (side) {
+				this.add('-sidestart', side, 'move: Tailwind');
+			},
+			onModifySpe: function (spe, pokemon) {
+				return this.chainModify(2);
+			},
+			onResidualOrder: 21,
+			onResidualSubOrder: 4,
+			onEnd: function (side) {
+				this.add('-sideend', side, 'move: Tailwind');
+			},
+		},
+		secondary: false,
+		target: "allySide",
+		type: "Flying",
+		zMoveEffect: 'crit2',
+		contestType: "Cool",
+	},
+	"reflect": {
+		num: 115,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		desc: "For 5 turns, the user and its party members take 0.5x damage from physical attacks, or 0.66x damage if in a Double Battle; does not reduce damage further with Aurora Veil. Critical hits ignore this protection. It is removed from the user's side if the user or an ally is successfully hit by Brick Break, Psychic Fangs, or Defog. Brick Break and Psychic Fangs remove the effect before damage is calculated. Lasts for 8 turns if the user is holding Light Clay.",
+		shortDesc: "For 5 turns, physical damage to allies is halved.",
+		id: "reflect",
+		isViable: true,
+		name: "Reflect",
+		pp: 20,
+		priority: 0,
+		flags: {snatch: 1},
+		self:{
+			sideCondition: 'reflect',
+		},
+		effect: {
+			duration: 5,
+			durationCallback: function (target, source, effect) {
+				if (source && source.hasItem('lightclay')) {
+					return 8;
+				}
+				return 5;
+			},
+			onAnyModifyDamage: function (damage, source, target, move) {
+				if (target !== source && target.side === this.effectData.target && this.getCategory(move) === 'Physical') {
+					if (!move.crit && !move.infiltrates) {
+						this.debug('Reflect weaken');
+						if (target.side.active.length > 1) return this.chainModify([0xAAC, 0x1000]);
+						return this.chainModify(0.5);
+					}
+				}
+			},
+			onStart: function (side) {
+				this.add('-sidestart', side, 'Reflect');
+			},
+			onResidualOrder: 21,
+			onEnd: function (side) {
+				this.add('-sideend', side, 'Reflect');
+			},
+		},
+		secondary: false,
+		target: "allySide",
+		type: "Psychic",
+		zMoveBoost: {def: 1},
+		contestType: "Clever",
+	},
+	"lightscreen": {
+		num: 113,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		desc: "For 5 turns, the user and its party members take 0.5x damage from special attacks, or 0.66x damage if in a Double Battle; does not reduce damage further with Aurora Veil. Critical hits ignore this protection. It is removed from the user's side if the user or an ally is successfully hit by Brick Break, Psychic Fangs, or Defog. Lasts for 8 turns if the user is holding Light Clay.",
+		shortDesc: "For 5 turns, special damage to allies is halved.",
+		id: "lightscreen",
+		isViable: true,
+		name: "Light Screen",
+		pp: 30,
+		priority: 0,
+		flags: {snatch: 1},
+		self:{
+			sideCondition: 'lightscreen',
+		},
+		effect: {
+			duration: 5,
+			durationCallback: function (target, source, effect) {
+				if (source && source.hasItem('lightclay')) {
+					return 8;
+				}
+				return 5;
+			},
+			onAnyModifyDamage: function (damage, source, target, move) {
+				if (target !== source && target.side === this.effectData.target && this.getCategory(move) === 'Special') {
+					if (!move.crit && !move.infiltrates) {
+						this.debug('Light Screen weaken');
+						if (target.side.active.length > 1) return this.chainModify([0xAAC, 0x1000]);
+						return this.chainModify(0.5);
+					}
+				}
+			},
+			onStart: function (side) {
+				this.add('-sidestart', side, 'move: Light Screen');
+			},
+			onResidualOrder: 21,
+			onResidualSubOrder: 1,
+			onEnd: function (side) {
+				this.add('-sideend', side, 'move: Light Screen');
+			},
+		},
+		secondary: false,
+		target: "allySide",
+		type: "Psychic",
+		zMoveBoost: {spd: 1},
+		contestType: "Beautiful",
+	},
+	"aromatherapy": {
+		num: 312,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		desc: "Every Pokemon in the user's party is cured of its major status condition. Active Pokemon with the Ability Sap Sipper are not cured, unless they are the user.",
+		shortDesc: "Cures the user's party of all status conditions.",
+		id: "aromatherapy",
+		isViable: true,
+		name: "Aromatherapy",
+		pp: 5,
+		priority: 0,
+		flags: {snatch: 1, distance: 1},
+		self:{
+			onHit: function (pokemon, source, move) {
+			this.add('-activate', source, 'move: Aromatherapy');
+			let success = false;
+			for (const ally of pokemon.side.pokemon) {
+				if (ally !== source && ((ally.hasAbility('sapsipper')) ||
+						(ally.volatiles['substitute'] && !move.infiltrates))) {
+					continue;
+				}
+				if (ally.cureStatus()) success = true;
+			}
+			return success;
+		},
+		},
+		target: "allyTeam",
+		type: "Grass",
+		zMoveEffect: 'heal',
+		contestType: "Clever",
+	},
+	"refresh": {
+		num: 287,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		desc: "The user cures its burn, poison, or paralysis.",
+		shortDesc: "User cures its burn, poison, or paralysis.",
+		id: "refresh",
+		isViable: true,
+		name: "Refresh",
+		pp: 20,
+		priority: 0,
+		flags: {snatch: 1},
+		self:{
+			onHit: function (pokemon) {
+			if (['', 'slp', 'frz'].includes(pokemon.status)) return false;
+			pokemon.cureStatus();
+		},
+		},
+		secondary: false,
+		target: "self",
+		type: "Normal",
+		zMoveEffect: 'heal',
+		contestType: "Cute",
+	},
+	"laserfocus": {
+		num: 673,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		desc: "On the next turn, the user's attack will be a critical hit. Fails if the user already has the effect.",
+		shortDesc: "Next turn, the user's attack will be a critical hit.",
+		id: "laserfocus",
+		name: "Laser Focus",
+		pp: 30,
+		priority: 0,
+		flags: {snatch: 1},
+		self:{
+			volatileStatus: 'laserfocus',
+		},
+		effect: {
+			duration: 2,
+			onStart: function (pokemon) {
+				this.add('-start', pokemon, 'move: Laser Focus');
+			},
+			onModifyCritRatio: function (critRatio) {
+				return 5;
+			},
+			onEnd: function (pokemon) {
+				this.add('-end', pokemon, 'move: Laser Focus', '[silent]');
+			},
+		},
+		secondary: false,
+		target: "self",
+		type: "Normal",
+		zMoveBoost: {atk: 1},
+		contestType: "Cool",
+	},
 "acidarmor": {
 		num: 151,
 		accuracy: true,
