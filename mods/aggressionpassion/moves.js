@@ -1591,6 +1591,221 @@ let BattleMovedex = {
 		zMoveEffect: 'clearnegativeboost',
 		contestType: "Beautiful",
 	},
+	"magiccoat": {
+		num: 277,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		desc: "Until the end of the turn, the user is unaffected by certain non-damaging moves directed at it and will instead use such moves against the original user. Moves reflected in this way are unable to be reflected again by this or the Ability Magic Bounce's effect. Spikes, Stealth Rock, Sticky Web, and Toxic Spikes can only be reflected once per side, by the leftmost Pokemon under this or the Ability Magic Bounce's effect. If the user has the Ability Soundproof, this move's effect happens before a sound-based move can be nullified. The Abilities Lightning Rod and Storm Drain redirect their respective moves before this move takes effect.",
+		shortDesc: "Bounces back certain non-damaging moves.",
+		id: "magiccoat",
+		isViable: true,
+		name: "Magic Coat",
+		pp: 15,
+		priority: 4,
+		flags: {},
+		self: {
+			volatileStatus: 'magiccoat',
+		},
+		effect: {
+			duration: 1,
+			onStart: function (target, source, effect) {
+				this.add('-singleturn', target, 'move: Magic Coat');
+				if (effect && effect.effectType === 'Move') {
+					this.effectData.pranksterBoosted = effect.pranksterBoosted;
+				}
+			},
+			onTryHitPriority: 2,
+			onTryHit: function (target, source, move) {
+				if (target === source || move.hasBounced || !move.flags['reflectable']) {
+					return;
+				}
+				let newMove = this.getMoveCopy(move.id);
+				newMove.hasBounced = true;
+				newMove.pranksterBoosted = this.effectData.pranksterBoosted;
+				this.useMove(newMove, target, source);
+				return null;
+			},
+			onAllyTryHitSide: function (target, source, move) {
+				if (target.side === source.side || move.hasBounced || !move.flags['reflectable']) {
+					return;
+				}
+				let newMove = this.getMoveCopy(move.id);
+				newMove.hasBounced = true;
+				newMove.pranksterBoosted = false;
+				this.useMove(newMove, this.effectData.target, source);
+				return null;
+			},
+		},
+		secondary: false,
+		target: "self",
+		type: "Psychic",
+		zMoveBoost: {spd: 2},
+		contestType: "Beautiful",
+	},
+	"magnetrise": {
+		num: 393,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		desc: "For 5 turns, the user is immune to Ground-type attacks and the effects of Spikes, Toxic Spikes, Sticky Web, and the Ability Arena Trap as long as it remains active. If the user uses Baton Pass, the replacement will gain the effect. Ingrain, Smack Down, Thousand Arrows, and Iron Ball override this move if the user is under any of their effects. Fails if the user is already under this effect or the effects of Ingrain, Smack Down, or Thousand Arrows.",
+		shortDesc: "For 5 turns, the user is immune to Ground moves.",
+		id: "magnetrise",
+		name: "Magnet Rise",
+		pp: 10,
+		priority: 0,
+		flags: {snatch: 1, gravity: 1},
+		self:{
+			volatileStatus: 'magnetrise',
+		},
+		effect: {
+			duration: 5,
+			onStart: function (target) {
+				if (target.volatiles['smackdown'] || target.volatiles['ingrain']) return false;
+				this.add('-start', target, 'Magnet Rise');
+			},
+			onImmunity: function (type) {
+				if (type === 'Ground') return false;
+			},
+			onResidualOrder: 15,
+			onEnd: function (target) {
+				this.add('-end', target, 'Magnet Rise');
+			},
+		},
+		secondary: false,
+		target: "self",
+		type: "Electric",
+		zMoveBoost: {evasion: 1},
+		contestType: "Clever",
+	},
+	"tailwind": {
+		num: 366,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		desc: "For 4 turns, the user and its party members have their Speed doubled. Fails if this move is already in effect for the user's side.",
+		shortDesc: "For 4 turns, allies' Speed is doubled.",
+		id: "tailwind",
+		isViable: true,
+		name: "Tailwind",
+		pp: 15,
+		priority: 0,
+		flags: {snatch: 1},
+		self:{
+			sideCondition: 'tailwind',
+		},
+		effect: {
+			duration: 4,
+			durationCallback: function (target, source, effect) {
+				if (source && source.hasAbility('persistent')) {
+					this.add('-activate', source, 'ability: Persistent', effect);
+					return 6;
+				}
+				return 4;
+			},
+			onStart: function (side) {
+				this.add('-sidestart', side, 'move: Tailwind');
+			},
+			onModifySpe: function (spe, pokemon) {
+				return this.chainModify(2);
+			},
+			onResidualOrder: 21,
+			onResidualSubOrder: 4,
+			onEnd: function (side) {
+				this.add('-sideend', side, 'move: Tailwind');
+			},
+		},
+		secondary: false,
+		target: "allySide",
+		type: "Flying",
+		zMoveEffect: 'crit2',
+		contestType: "Cool",
+	},
+	"healbell": {
+		num: 215,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		desc: "Every Pokemon in the user's party is cured of its major status condition. Active Pokemon with the Ability Soundproof are not cured.",
+		shortDesc: "Cures the user's party of all status conditions.",
+		id: "healbell",
+		isViable: true,
+		name: "Heal Bell",
+		pp: 5,
+		priority: 0,
+		flags: {snatch: 1, sound: 1, distance: 1, authentic: 1},
+		self:{
+			onHit: function (pokemon, source) {
+			this.add('-activate', source, 'move: Heal Bell');
+			let side = pokemon.side;
+			let success = false;
+			for (const ally of side.pokemon) {
+				if (ally.hasAbility('soundproof')) continue;
+				if (ally.cureStatus()) success = true;
+			}
+			return success;
+		},
+		},
+		target: "allyTeam",
+		type: "Normal",
+		zMoveEffect: 'heal',
+		contestType: "Beautiful",
+	},
+	"banefulbunker": {
+		num: 661,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		desc: "The user is protected from most attacks made by other Pokemon during this turn, and Pokemon making contact with the user become poisoned. This move has a 1/X chance of being successful, where X starts at 1 and triples each time this move is successfully used. X resets to 1 if this move fails or if the user's last move used is not Baneful Bunker, Detect, Endure, King's Shield, Protect, Quick Guard, Spiky Shield, or Wide Guard. Fails if the user moves last this turn.",
+		shortDesc: "Protects from moves. Contact: poison.",
+		id: "banefulbunker",
+		isViable: true,
+		name: "Baneful Bunker",
+		pp: 10,
+		priority: 4,
+		flags: {},
+		stallingMove: true,
+		self:{
+			volatileStatus: 'banefulbunker',
+		},
+		onTryHit: function (target, source, move) {
+			return !!this.willAct() && this.runEvent('StallMove', target);
+		},
+		onHit: function (pokemon) {
+			pokemon.addVolatile('stall');
+		},
+		effect: {
+			duration: 1,
+			onStart: function (target) {
+				this.add('-singleturn', target, 'move: Protect');
+			},
+			onTryHitPriority: 3,
+			onTryHit: function (target, source, move) {
+				if (!move.flags['protect']) {
+					if (move.isZ) move.zBrokeProtect = true;
+					return;
+				}
+				this.add('-activate', target, 'move: Protect');
+				source.moveThisTurnResult = true;
+				let lockedmove = source.getVolatile('lockedmove');
+				if (lockedmove) {
+					// Outrage counter is reset
+					if (source.volatiles['lockedmove'].duration === 2) {
+						delete source.volatiles['lockedmove'];
+					}
+				}
+				if (move.flags['contact']) {
+					source.trySetStatus('psn', target);
+				}
+				return null;
+			},
+		},
+		secondary: false,
+		target: "self",
+		type: "Poison",
+		zMoveBoost: {def: 1},
+		contestType: "Tough",
+	},
 };
 	//TODO: 
 	// Suspect: Automize, 
