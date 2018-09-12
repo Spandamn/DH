@@ -140,38 +140,6 @@ let BattleMovedex = {
 		zMoveBoost: {spd: 1},
 		contestType: "Beautiful",
 	},
-	"aromatherapy": {
-		num: 312,
-		accuracy: true,
-		basePower: 0,
-		category: "Status",
-		desc: "Every Pokemon in the user's party is cured of its major status condition. Active Pokemon with the Ability Sap Sipper are not cured, unless they are the user.",
-		shortDesc: "Cures the user's party of all status conditions.",
-		id: "aromatherapy",
-		isViable: true,
-		name: "Aromatherapy",
-		pp: 5,
-		priority: 0,
-		flags: {snatch: 1, distance: 1},
-		self:{
-			onHit: function (pokemon, source, move) {
-			this.add('-activate', source, 'move: Aromatherapy');
-			let success = false;
-			for (const ally of pokemon.side.pokemon) {
-				if (ally !== source && ((ally.hasAbility('sapsipper')) ||
-						(ally.volatiles['substitute'] && !move.infiltrates))) {
-					continue;
-				}
-				if (ally.cureStatus()) success = true;
-			}
-			return success;
-		},
-		},
-		target: "allyTeam",
-		type: "Grass",
-		zMoveEffect: 'heal',
-		contestType: "Clever",
-	},
 	"refresh": {
 		num: 287,
 		accuracy: true,
