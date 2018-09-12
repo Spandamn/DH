@@ -13929,6 +13929,8 @@ celebi: {
             0: "Electron Rain"
         },
 		  eggGroups: ["Undiscovered"],
+        heightm: 2.45,
+        weightkg: 178.1,
     dexentry: "Of the rare cases of a DNA Fusion not being done by Team Rocket. This powerful mermaid-like rodent was created by Team Aqua, after succesful capture of the Blue Orb. Their attempts at testing the Blue Orb on different species reacted with a Minun, which had then recieved Kyogre's powers contained in the Orb, becoming Kyonun. It swims through the oceans at high speeds, and has tremendous power when it is raining, capable of delievering shocks of over 10.000 Volts."
     },
 
@@ -13951,6 +13953,8 @@ celebi: {
         abilities: {
             0: "Primordial Sea"
         },
+        heightm: 7.75,
+        weightkg: 256.1,
 		  eggGroups: ["Undiscovered"],
     },
 
@@ -13971,6 +13975,8 @@ celebi: {
         abilities: {
             0: "Petrify"
         },
+        heightm: 1.75,
+        weightkg: 101.75,
 		  eggGroups: ["Undiscovered"],
     },
     abomasorusmega: {
@@ -13992,6 +13998,8 @@ celebi: {
         abilities: {
             0: "Snow Warning"
         },
+        heightm: 2.25,
+        weightkg: 151.25,
 		  eggGroups: ["Undiscovered"],
     },
 
@@ -14015,6 +14023,8 @@ celebi: {
         abilities: {
             0: "Triggered"
         },
+        heightm: 1.25,
+        weightkg: 49.2,
 		  eggGroups: ["Human-Like"],
     },
 
@@ -14038,6 +14048,8 @@ celebi: {
         abilities: {
             0: "Adaptability"
         },
+        heightm: 1.35,
+        weightkg: 52.7,
 		  eggGroups: ["Human-Like"],
     },
 
@@ -14059,6 +14071,8 @@ celebi: {
         abilities: {
             0: "Mitosis"
         },
+        heightm: 4.95,
+        weightkg: 69.7,
 		  eggGroups: ["Undiscovered"],
     },
 
@@ -14082,6 +14096,8 @@ celebi: {
         abilities: {
             0: "Mitosis"
         },
+        heightm: 0.1,
+        weightkg: 0.25,
 		  eggGroups: ["Undiscovered"],
     },
 
@@ -14101,6 +14117,8 @@ celebi: {
         abilities: {
             0: "Prestidigitation"
         },
+        heightm: 5,
+        weightkg: 277.5,
 		  eggGroups: ["Undiscovered"],
     },
 
@@ -14124,6 +14142,8 @@ celebi: {
         abilities: {
             0: "Solar Snow"
         },
+        heightm: 1.1,
+        weightkg: 19.9,
 		  eggGroups: ["Field"],
     },
 
@@ -14144,6 +14164,8 @@ celebi: {
         abilities: {
             0: "Torrential Rage"
         },
+        heightm: 2.3,
+        weightkg: 135.25,
 		  eggGroups: ["Monster"],
     },
 
@@ -14167,6 +14189,8 @@ celebi: {
         abilities: {
             0: "Mega Launcher"
         },
+        heightm: 2.3,
+        weightkg: 150.85,
 		  eggGroups: ["Monster"],
     },
 
@@ -14187,6 +14211,8 @@ celebi: {
         abilities: {
             0: "Fluttering Heart"
         },
+        heightm: 0.8,
+        weightkg: 41.95,
 		  eggGroups: ["Undiscovered"],
     },
 
@@ -19563,7 +19589,7 @@ auroritarmega: {
 		  weightkg: 75,
 		  eggGroups: ["Undiscovered"],
 	},
-	lamparadenoche: {
+	lampara: {
 		num: 7500475,
 		species: "Lampara",
 		forme: "De-Noche",
@@ -20037,7 +20063,7 @@ auroritarmega: {
 		  weightkg: 210.6,
 		  eggGroups: ["Undiscovered"],
 	},
-	chazmaegg: {
+	chazma: {
 		num: 7500492,
 		species: "Chazma",
 	   baseForme: "Egg",
