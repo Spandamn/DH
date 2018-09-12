@@ -1113,6 +1113,55 @@ let BattleMovedex = {
 		zMoveEffect: 'clearnegativeboost',
 		contestType: "Clever",
 	},
+	"floralhealing": {
+		num: 666,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		desc: "The target restores 1/2 of its maximum HP, rounded half up. If the terrain is Grassy Terrain, the target instead restores 2/3 of its maximum HP, rounded half down.",
+		shortDesc: "Heals the target by 50% of its max HP.",
+		id: "floralhealing",
+		name: "Floral Healing",
+		pp: 10,
+		priority: 0,
+		flags: {protect: 1, reflectable: 1, heal: 1, mystery: 1},
+		self: {
+			onHit: function (target) {
+			if (this.isTerrain('grassyterrain')) {
+				return this.heal(this.modify(target.maxhp, 0.667)); // TODO: find out the real value
+			} else {
+				return this.heal(Math.ceil(target.maxhp * 0.5));
+			}
+			}
+		},
+		secondary: false,
+		target: "normal",
+		type: "Fairy",
+		zMoveEffect: 'clearnegativeboost',
+		contestType: "Beautiful",
+	},
+	"healorder": {
+		num: 456,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		desc: "The user restores 1/2 of its maximum HP, rounded half up.",
+		shortDesc: "Heals the user by 50% of its max HP.",
+		id: "healorder",
+		isViable: true,
+		name: "Heal Order",
+		pp: 10,
+		priority: 0,
+		flags: {snatch: 1, heal: 1},
+		self: {
+			heal: [1, 2],
+		},
+		secondary: false,
+		target: "self",
+		type: "Bug",
+		zMoveEffect: 'clearnegativeboost',
+		contestType: "Clever",
+	},
 };
 	//TODO: 
 	// Suspect: Automize, 
