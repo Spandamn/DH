@@ -2819,11 +2819,11 @@ exports.BattleAbilities = {
 		},
 		onModifyAtkPriority: 5,
 		onModifyAtk: function(pokemon, atk) {
-			if (this.isWeather(['sunnyday', 'desolateland', 'hail', 'raindance', 'primordialsea', 'sandstream', 'shadowdance', 'solarsnow', 'deltastream']) && pokemon.useItem()) {
-				if (target.volatiles['atmosphericperversion'] == target.volatiles['weatherbreak']){
-					return this.chainModify(0.66667);
-				} else {
+			if (this.weather) {
+				if (pokemon.volatiles['atmosphericperversion'] == pokemon.volatiles['weatherbreak']){
 					return this.chainModify(1.5);
+				} else {
+					return this.chainModify(0.6667);
 				}
 			}
 		},
@@ -8730,7 +8730,7 @@ exports.BattleAbilities = {
 	},
 	"solidsand": {
 		desc: "Upon switching in, the user summons Sandstorm for 5 turns (8 if holding Smooth Rock). If skies are clear and the user is hit by direct damage that would KO it, the user instead survives at 1 HP and summons Sandstorm again.",
-		shortDesc: "On switch-in, this Pokemon summons Sandstorm. Cannot be OHKO'd in clear skies, summoning Sandstorm if this would happen.",
+		shortDesc: "On switch-in, this Pokemon summons Sandstorm. It cannot be OHKO'd in clear skies, and summons Sandstorm if this would happen.",
 		onStart: function (source) {
 			this.setWeather('sandstorm');
 		},
@@ -11749,5 +11749,25 @@ exports.BattleAbilities = {
 		},
 		id: "guardsshield",
 		name: "Guard's Shield",
+	},
+	"weatherman": {
+		shortDesc: "Ignores weather effects. At the end of each turn in weather, this Pokemon's Attack is boosted by 1 stage.",
+		onStart: function(pokemon) {
+			this.add('-ability', pokemon, 'Weather Man');
+		},
+		onResidualOrder: 26,
+		onResidualSubOrder: 1,
+		onResidual: function (pokemon) {
+			if (pokemon.activeTurns && this.weather) {
+				if (pokemon.volatiles['atmosphericperversion'] == pokemon.volatiles['weatherbreak']){
+					this.boost({atk: 1});
+				} else {
+					this.boost({atk: -1});
+				}
+			}
+		},
+		suppressWeather: true,
+		id: "weatherman",
+		name: "Weather Man",
 	},
 };
