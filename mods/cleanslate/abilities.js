@@ -4218,7 +4218,7 @@ let BattleAbilities = {
         num: 157,
     },
 	"desertcoat": {
-		shortDesc: "This Pokemon cannot be burned. Gaining this Ability while burned cures it.",
+		shortDesc: "This Pokemon cannot be burned and is immune to Sandstorm damage.",
 		onImmunity: function (type, pokemon) {
 			if (type === 'sandstorm') return false;
 		},
@@ -4232,6 +4232,29 @@ let BattleAbilities = {
 		name: "Desert Coat",
 		rating: 2,
 		num: 41,
+	},
+	"malware": {
+		desc: "On switch-in, this Pokemon lowers the Speed of adjacent opposing Pokemon by 1 stage. Pokemon behind a substitute are immune.",
+		shortDesc: "On switch-in, this Pokemon lowers the Speed of adjacent opponents by 1 stage.",
+		onStart: function (pokemon) {
+			let activated = false;
+			for (const target of pokemon.side.foe.active) {
+				if (!target || !this.isAdjacent(target, pokemon)) continue;
+				if (!activated) {
+					this.add('-ability', pokemon, 'Malware', 'boost');
+					activated = true;
+				}
+				if (target.volatiles['substitute']) {
+					this.add('-immune', target, '[msg]');
+				} else {
+					this.boost({spe: -1}, target, pokemon);
+				}
+			}
+		},
+		id: "malware",
+		name: "Malware",
+		rating: 3.5,
+		num: 22,
 	},
 };
 
