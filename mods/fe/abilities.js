@@ -11770,4 +11770,27 @@ exports.BattleAbilities = {
 		id: "weatherman",
 		name: "Weather Man",
 	},
+	"shortcircuit": {
+		shortDesc: "At the end of each turn, this Pokemon paralyzes any opponents with Pressure or derived abilities.",
+		onResidualOrder: 26,
+		onResidualSubOrder: 1,
+		onResidual: function (pokemon) {
+			let activated = false;
+			for (const target of pokemon.side.foe.active) {
+				let pressureabilities = ['pressure', 'sandpressure', 'auraoffailure', 'noskill', 'justicepower', 'calamity', 'overwhelmingpresence', 'underpressure', 'compoundpressure', 'gtolerance', 'powerdrain', 'sandystorm', 'brokenheart', 'diamondarmor', 'normalizedenemy', 'pressurate', 'piercinggaze', 'goddesstrace', 'pressuredinnards', 'lightspeed', 'quarantine', 'mitosis', 'sharpshooter', 'vexingvalor', 'compression', 'peerpressure', 'timestop', 'dirtnap', 'ability', 'revitalize', 'threateningglare', 'pressurizer', 'monarchoftherain', 'dukeofthelightning', 'emperorofthefire', 'shortcircuit', 'purgativenostrum'];
+				if (!target || !this.isAdjacent(target, pokemon) || target.status || !pressureabilities.includes(target.ability)) continue;
+				if (!activated) {
+					this.add('-ability', pokemon, 'Short Circuit', 'boost');
+					activated = true;
+				}
+				if (target.volatiles['substitute']) {
+					this.add('-immune', target, '[msg]');
+				} else {
+					target.trySetStatus('par', pokemon);
+				}
+			}
+		},
+		id: "shortcircuit",
+		name: "Short Circuit",
+	},
 };
