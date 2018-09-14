@@ -11770,4 +11770,26 @@ exports.BattleAbilities = {
 		id: "weatherman",
 		name: "Weather Man",
 	},
+	"shortcircuit": {
+		shortDesc: "At the end of each turn, this Pokemon paralyzes any opponents with Pressure or derived abilities.",
+		onResidualOrder: 26,
+		onResidualSubOrder: 1,
+		onResidual: function (pokemon) {
+			let activated = false;
+			for (const target of pokemon.side.foe.active) {
+				if (!target || !this.isAdjacent(target, pokemon)) continue;
+				if (!activated) {
+					this.add('-ability', pokemon, 'Short Circuit', 'boost');
+					activated = true;
+				}
+				if (target.volatiles['substitute']) {
+					this.add('-immune', target, '[msg]');
+				} else {
+					target.trySetStatus('par', pokemon);
+				}
+			}
+		},
+		id: "shortcircuit",
+		name: "Short Circuit",
+	},
 };
