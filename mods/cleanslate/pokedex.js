@@ -13928,7 +13928,7 @@ let BattlePokedex = {
 		species: "Druddigon",
 		types: ["Dragon", "Ghost"],
 		baseStats: {hp: 90, atk: 120, def: 90, spa: 75, spd: 90, spe: 65},
-		abilities: {0: "Rough Skin", 1: "Sheer Force", H: "Mold Breaker"},
+		abilities: {0: "Mold Breaker", H: "Defiant"},
 		weightkg: 139,
 	},
 	forretress: {
