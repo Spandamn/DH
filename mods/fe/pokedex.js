@@ -13818,7 +13818,7 @@ celebi: {
             0: "Weather Contradiction"
         },
         heightm: 4.05,
-        weightkg: 108.75,
+        weightkg: 105.75,
         eggGroups: ["Undiscovered"]
     },
 
@@ -13842,7 +13842,7 @@ celebi: {
             0: "Delta Stream"
         },
         heightm: 7.35,
-        weightkg: 294.25,
+        weightkg: 291.25,
         eggGroups: ["Undiscovered"]
     },
 
@@ -14232,6 +14232,8 @@ celebi: {
         abilities: {
             0: "Prototype"
         },
+        heightm: 2.1,
+        weightkg: 171,
     },
 	
     fearroh: {
@@ -14249,6 +14251,8 @@ celebi: {
         abilities: {
             0: "Sharpshooter"
         },
+        heightm: 2.5,
+        weightkg: 118.5,
 		  eggGroups: ["Undiscovered"],
     },
 
@@ -14269,6 +14273,8 @@ celebi: {
         abilities: {
             0: "Rubber Up"
         },
+        heightm: 1.35,
+        weightkg: 82.5,
 		  eggGroups: ["Undiscovered"],
     },
 
@@ -14288,6 +14294,8 @@ celebi: {
         abilities: {
             0: "Turbo Curse"
         },
+        heightm: 2.1,
+        weightkg: 182,
 		  eggGroups: ["Undiscovered"],
     },
 
@@ -14308,6 +14316,8 @@ celebi: {
         abilities: {
             0: "Revved Up"
         },
+        heightm: 1.35,
+        weightkg: 51.5,
 		  eggGroups: ["Undiscovered"],
     },
 
@@ -14328,6 +14338,8 @@ celebi: {
         abilities: {
             0: "Misty Supercharge"
         },
+        heightm: 1.4,
+        weightkg: 22,
 		  eggGroups: ["Undiscovered"],
     },
 
@@ -14349,6 +14361,8 @@ celebi: {
         abilities: {
             0: "Crystallized Shield"
         },
+        heightm: 0.5,
+        weightkg: 44.25,
 		  eggGroups: ["Undiscovered"],
     },
 
@@ -14372,6 +14386,8 @@ celebi: {
         abilities: {
             0: "Crystallized Shield"
         },
+        heightm: 0.5,
+        weightkg: 4.55,
 		  eggGroups: ["Undiscovered"],
     },
 
@@ -14392,6 +14408,8 @@ celebi: {
         abilities: {
             0: "Grassworker"
         },
+        heightm: 2.9,
+        weightkg: 127.75,
 		  eggGroups: ["Undiscovered"],
     },
 
@@ -14412,6 +14430,8 @@ celebi: {
         abilities: {
             0: "Shadow Guard"
         },
+        heightm: 2.4,
+        weightkg: 60.6,
 		  eggGroups: ["Undiscovered"],
     },
 
@@ -14431,6 +14451,8 @@ celebi: {
         abilities: {
             0: "Vexing Valor"
         },
+        heightm: 1.8,
+        weightkg: 126.5,
 		  eggGroups: ["Undiscovered"],
     },
 
@@ -14453,6 +14475,8 @@ celebi: {
         abilities: {
             0: "Aerilate"
         },
+        heightm: 2,
+        weightkg: 130.5,
 		  eggGroups: ["Undiscovered"],
     },
     giramini: {
@@ -14471,6 +14495,8 @@ celebi: {
         abilities: {
             0: "Compression"
         },
+        heightm: 2.4,
+        weightkg: 395,
 		  eggGroups: ["Undiscovered"],
 		  otherFormes: ["giraminiunleashed"],
     },
@@ -14493,6 +14519,8 @@ celebi: {
         abilities: {
             0: "Compression"
         },
+        heightm: 4.8,
+        weightkg: 255.3,
 		  eggGroups: ["Undiscovered"],
     },
 
@@ -14513,6 +14541,8 @@ celebi: {
             0: "Bubble Slip"
 		  },
 		  eggGroups: ["Bug"],
+        heightm: 1.9,
+        weightkg: 95,
        dexentry: "Upon first being encountered in the wild, it was thought to be an UB, due to it's oddity. However, upon more reserach being done, it was discovered that it is one of the many recently discovered hybrids. It is able to walk on water surfaces with it's thin four legs, and has a huge bubble around it's head. It uses bubbles to make the floor slippery to increase it's speed. It's still unknown wether this fusion has two eyes or four, as it was not indentified if it has an eye inside another, compound eyes, or just two huge eyes."
     },
     reshivine: {
@@ -14531,6 +14561,8 @@ celebi: {
         abilities: {
             0: "Spiral Flames"
         },
+        heightm: 2,
+        weightkg: 173,
 		  eggGroups: ["Undiscovered"],
     },
     rosium: {
@@ -14549,6 +14581,8 @@ celebi: {
         abilities: {
             0: "Operation Overgrow"
         },
+        heightm: 1.35,
+        weightkg: 57.5,
 		  eggGroups: ["Grass"],
        dexentry: "After evolving from Roseleef, Subject #304 broke out of confinement. Subject #74, even when Mega Evolved, was taken out effortlessly, as was Subject #83. Subject #59, which is only meant to be used in dire situations, was required to restrain it. Subject #304 has been successfully inhibited. Though it still has very strong Grass-type moves, it is no longer likely to effortlessly break through our most defensive fusions.",
     },
@@ -14585,6 +14619,8 @@ celebi: {
         },
 		 prevo: "eevee",
 		 evoLevel: 2,
+        heightm: 1,
+        weightkg: 26.25,
 		 eggGroups: ["Field"],
     },
 
@@ -14604,6 +14640,8 @@ celebi: {
         abilities: {
             0: "Fearless"
         },
+        heightm: 1.2,
+        weightkg: 24.7,
 		  eggGroups: ["Flying"],
     },
 
@@ -14624,6 +14662,8 @@ celebi: {
         abilities: {
             0: "Peer Pressure"
         },
+        heightm: 2.75,
+        weightkg: 80.4,
 		  eggGroups: ["Undiscovered"],
     },
 
@@ -14643,6 +14683,8 @@ celebi: {
         abilities: {
             0: "Time Stop"
         },
+        heightm: 3.1,
+        weightkg: 353.5,
 		  eggGroups: ["Undiscovered"],
     },
 
@@ -14663,6 +14705,8 @@ celebi: {
         abilities: {
             0: "Upgrade"
         },
+        heightm: 1.5,
+        weightkg: 88.55,
 		  eggGroups: ["Undiscovered"],
     },
     darmin: {
@@ -14681,6 +14725,8 @@ celebi: {
         abilities: {
             0: "Rhythm"
         },
+        heightm: 1.65,
+        weightkg: 111.7,
 		  eggGroups: ["Field"],
     },
     darmindown: {
@@ -14701,6 +14747,8 @@ celebi: {
         abilities: {
             0: "Rhythm"
         },
+        heightm: 1.65,
+        weightkg: 111.7,
 		  eggGroups: ["Field"],
     },
     conkeldurus: {
