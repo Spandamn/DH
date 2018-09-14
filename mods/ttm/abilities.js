@@ -1430,12 +1430,12 @@ exports.BattleAbilities = {
 		num: 115,
 	},
 	"illuminate": {
-		shortDesc: "No competitive use.",
+		shortDesc: "This Pokemon's Normal-type moves become Light type and have 1.2x power.",
 		onModifyMovePriority: -1,
 		onModifyMove: function (move, pokemon) {
 			if (move.type === 'Normal' && move.id !== 'naturalgift' && !move.isZ) {
 				move.type = 'Light';
-				if (move.category !== 'Status') pokemon.addVolatile('aerilate');
+				if (move.category !== 'Status') pokemon.addVolatile('illuminate');
 			}
 		},
 		effect: {
