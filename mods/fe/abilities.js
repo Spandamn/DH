@@ -11777,7 +11777,8 @@ exports.BattleAbilities = {
 		onResidual: function (pokemon) {
 			let activated = false;
 			for (const target of pokemon.side.foe.active) {
-				if (!target || !this.isAdjacent(target, pokemon)) continue;
+				let pressureabilities = ['pressure', 'sandpressure', 'auraoffailure', 'noskill', 'justicepower', 'calamity', 'overwhelmingpresence', 'underpressure', 'compoundpressure', 'gtolerance', 'powerdrain', 'sandystorm', 'brokenheart', 'diamondarmor', 'normalizedenemy', 'pressurate', 'piercinggaze', 'goddesstrace', 'pressuredinnards', 'lightspeed', 'quarantine', 'mitosis', 'sharpshooter', 'vexingvalor', 'compression', 'peerpressure', 'timestop', 'dirtnap', 'ability', 'revitalize', 'threateningglare', 'pressurizer', 'monarchoftherain', 'dukeofthelightning', 'emperorofthefire', 'shortcircuit', 'purgativenostrum'];
+				if (!target || !this.isAdjacent(target, pokemon) || target.status || !pressureabilities.includes(target.ability)) continue;
 				if (!activated) {
 					this.add('-ability', pokemon, 'Short Circuit', 'boost');
 					activated = true;
