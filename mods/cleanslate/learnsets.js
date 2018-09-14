@@ -149,7 +149,7 @@ let BattleLearnsets = {
         captivate: ["4M"],
         chargebeam: ["7M", "6M", "5M", "4M"],
         confide: ["7M", "6M"],
-        counter: ["3T"],
+        counter: ["7M"],
         covet: ["7T", "6T", "5T"],
         curse: ["7V"],
         defensecurl: ["7V", "3T"],
