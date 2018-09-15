@@ -2591,7 +2591,7 @@ let BattleLearnsets = {
 		spikes: ["7M", "6M", "5M"],
 	}},
 	unown: {learnset: {
-		aurorabeam: ["7M", "7L1", "7V", "6L1", "5L1", "4L1", "3L1"],
+		aurasphere: ["7M", "7L1", "7V", "6L1", "5L1", "4L1", "3L1"],
 		blizzard: ["7M", "7L1", "7V", "6L1", "5L1", "4L1", "3L1"],
 		conversion: ["7M", "7L1", "7V", "6L1", "5L1", "4L1", "3L1"],
 		darkpulse: ["7M", "7L1", "7V", "6L1", "5L1", "4L1", "3L1"],
@@ -2600,7 +2600,7 @@ let BattleLearnsets = {
 		glare: ["7M", "7L1", "7V", "6L1", "5L1", "4L1", "3L1"],
 		hiddenpower: ["7M", "7L1", "7V", "6L1", "5L1", "4L1", "3L1"],
 		icebeam: ["7M", "7L1", "7V", "6L1", "5L1", "4L1", "3L1"],
-		judgement: ["7M", "7L1", "7V", "6L1", "5L1", "4L1", "3L1"],
+		judgment: ["7M", "7L1", "7V", "6L1", "5L1", "4L1", "3L1"],
 		lastresort: ["7M", "7L1", "7V", "6L1", "5L1", "4L1", "3L1"],
 		meanlook: ["7M", "7L1", "7V", "6L1", "5L1", "4L1", "3L1"],
 		naturepower: ["7M", "7L1", "7V", "6L1", "5L1", "4L1", "3L1"],
