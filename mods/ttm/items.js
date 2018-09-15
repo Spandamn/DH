@@ -6381,4 +6381,136 @@ exports.BattleItems = {
 		gen: 2,
 		desc: "Holder's Space-type attacks have 1.2x power.",
 	},
+	"lightiumz": {
+		id: "lightiumz",
+		name: "Lightium Z",
+		spritenum: 632,
+		onPlate: 'Light',
+		onTakeItem: false,
+		zMove: true,
+		zMoveType: "Light",
+		forcedForme: "Arceus-Light",
+		num: 777,
+		gen: 7,
+		desc: "If holder has a Light move, this item allows it to use a Light Z-Move.",
+	},
+	"shinyplate": {
+		id: "shinyplate",
+		name: "Shiny Plate",
+		spritenum: 105,
+		onPlate: 'Light',
+		onBasePowerPriority: 6,
+		onBasePower: function (basePower, user, target, move) {
+			if (move && move.type === 'Light') {
+				return this.chainModify([0x1333, 0x1000]);
+			}
+		},
+		onTakeItem: function (item, pokemon, source) {
+			if ((source && source.baseTemplate.num === 493) || pokemon.baseTemplate.num === 493) {
+				return false;
+			}
+			return true;
+		},
+		forcedForme: "Arceus-Light",
+		num: 311,
+		gen: 4,
+		desc: "Holder's Light-type attacks have 1.2x power. Judgment is Light type.",
+	},
+	"lightmemory": {
+		id: "lightmemory",
+		name: "Light Memory",
+		spritenum: 673,
+		onMemory: 'Light',
+		onTakeItem: function (item, pokemon, source) {
+			if ((source && source.baseTemplate.num === 773) || pokemon.baseTemplate.num === 773) {
+				return false;
+			}
+			return true;
+		},
+		forcedForme: "Silvally-Light",
+		num: 909,
+		gen: 7,
+		desc: "Holder's Multi-Attack is Light type.",
+	},
+	"kerretberry": {
+		id: "kerretberry",
+		name: "Kerret Berry",
+		spritenum: 603,
+		isBerry: true,
+		naturalGift: {
+			basePower: 80,
+			type: "Light",
+		},
+		onSourceModifyDamage: function (damage, source, target, move) {
+			if (move.type === 'Light' && move.typeMod > 0 && (!target.volatiles['substitute'] || move.flags['authentic'] || (move.infiltrates && this.gen >= 6))) {
+				if (target.eatItem()) {
+					this.debug('-50% reduction');
+					this.add('-enditem', target, this.effect, '[weaken]');
+					return this.chainModify(0.5);
+				}
+			}
+		},
+		onEat: function () { },
+		num: 686,
+		gen: 7,
+		desc: "Halves damage taken from a supereffective Light-type attack. Single use.",
+	},
+	"bigquartz": {
+		id: "bigquartz",
+		name: "Big Quartz",
+		spritenum: 273,
+		fling: {
+			basePower: 30,
+		},
+		onBasePowerPriority: 6,
+		onBasePower: function (basePower, user, target, move) {
+			if (move.type === 'Light') {
+				return this.chainModify([0x1333, 0x1000]);
+			}
+		},
+		num: 242,
+		gen: 7,
+		desc: "Holder's Light-type attacks have 1.2x power.",
+	},
+	"hardlightvest": {
+		id: "hardlightvest",
+		name: "Hardlight Vest",
+		spritenum: 273,
+		fling: {
+			basePower: 30,
+		},
+		onSourceFaint: function (target, source, effect, move) {
+			if (effect && effect.effectType === 'Move') {
+				let attackType = source.lastMove.type;
+				if (attackType === 'Light') {
+					this.boost({atk:1, def:1}, source);
+				}
+			}
+		},
+		num: 242,
+		gen: 7,
+		desc: "If the user knocks out a Pokemon with a Light-type attack, Atk and Def are boosted.",
+	},
+	"absorptionprism": {
+		id: "absorptionprism",
+		name: "Absorption Prism",
+		spritenum: 2,
+		fling: {
+			basePower: 30,
+		},
+		num: 545,
+		gen: 5,
+		desc: "Does nothing for now. Check back later!",
+	},
+	"lantern": {
+		id: "lantern",
+		name: "Lantern",
+		spritenum: 273,
+		fling: {
+			basePower: 30,
+		},
+		num: 242,
+		gen: 7,
+		desc: "Does nothing for now. Check back later!",
+	},
 };
