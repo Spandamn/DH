@@ -14767,7 +14767,9 @@ celebi: {
         abilities: {
             0: "Lightning Fist"
         },
-		  eggGroups: ["Human-Like"],
+        heightm: 1.5,
+        weightkg: 74,
+		  eggGroups: ["Undiscovered"],
     },
     fisktres: {
         num: 7500312,
@@ -14784,6 +14786,8 @@ celebi: {
         abilities: {
             0: "Flare Wings"
         },
+        heightm: 1.35,
+        weightkg: 35.5,
 		  eggGroups: ["Undiscovered"],
     },
     landana: {
@@ -14802,6 +14806,8 @@ celebi: {
         abilities: {
             0: "Pecking Order"
         },
+        heightm: 1.3,
+        weightkg: 46.1,
 		  eggGroups: ["Undiscovered"],
     },
     regimiki: {
@@ -14819,6 +14825,8 @@ celebi: {
         abilities: {
             0: "Vomit"
         },
+        heightm: 2,
+        weightkg: 210.6,
 		  eggGroups: ["Undiscovered"],
     },
     star: {
@@ -14837,6 +14845,8 @@ celebi: {
         abilities: {
             0: "Magical Wand"
         },
+        heightm: 1.5,
+        weightkg: 39,
 		  eggGroups: ["Undiscovered"],
     },
 
@@ -14860,6 +14870,8 @@ celebi: {
         abilities: {
             0: "Magical Wand"
         },
+        heightm: 1.5,
+        weightkg: 39,
 		  eggGroups: ["Undiscovered"],
     },
 
@@ -14879,6 +14891,8 @@ celebi: {
         abilities: {
             0: "Beast's Copycat"
         },
+        heightm: 1.4,
+        weightkg: 51.95,
 		  eggGroups: ["Undiscovered"],
     },
 
@@ -14901,6 +14915,8 @@ celebi: {
         abilities: {
             0: "Pixilate"
         },
+        heightm: 1.4,
+        weightkg: 51.95,
 		  eggGroups: ["Undiscovered"],
     },
 
@@ -14921,6 +14937,8 @@ celebi: {
         abilities: {
             0: "Medical Expert"
         },
+        heightm: 1.15,
+        weightkg: 100.3,
 		  eggGroups: ["Undiscovered"],
     },
 
@@ -14944,6 +14962,8 @@ celebi: {
         abilities: {
             0: "Pixilate"
         },
+        heightm: 1.55,
+        weightkg: 100.3,
 		  eggGroups: ["Undiscovered"],
     },
 
@@ -14963,6 +14983,8 @@ celebi: {
         abilities: {
             0: "Bad Influence"
         },
+        heightm: 0.7,
+        weightkg: 12.05,
 		  eggGroups: ["Bug"],
     },
 
@@ -14983,6 +15005,8 @@ celebi: {
         abilities: {
             0: "Scout"
         },
+        heightm: 1.25,
+        weightkg: 57.25,
 		  eggGroups: ["Bug"],
     },
 
@@ -15002,6 +15026,8 @@ celebi: {
         abilities: {
             0: "Rejuvenation"
         },
+        heightm: 3.55,
+        weightkg: 483.25,
 		  eggGroups: ["Undiscovered"],
     },
 
@@ -15024,6 +15050,8 @@ celebi: {
         abilities: {
             0: "Shell Armor"
         },
+        heightm: 3.95,
+        weightkg: 524.75,
 		  eggGroups: ["Undiscovered"],
     },
 
@@ -15043,6 +15071,8 @@ celebi: {
         abilities: {
             0: "Force Drain"
         },
+        heightm: 1.15,
+        weightkg: 29.75,
 		  eggGroups: ["Undiscovered"],
     },
 
@@ -15063,6 +15093,8 @@ celebi: {
         abilities: {
             0: "Foundation"
         },
+        heightm: 2.65,
+        weightkg: 155.75,
 		  eggGroups: ["Undiscovered"],
     },
 
@@ -15086,6 +15118,8 @@ celebi: {
         abilities: {
             0: "Foundation"
         },
+        heightm: 2.15,
+        weightkg: 311.5,
 		  eggGroups: ["Undiscovered"],
     },
 
@@ -15106,6 +15140,8 @@ celebi: {
         abilities: {
             0: "Limb Enhancers"
         },
+        heightm: 2.65,
+        weightkg: 69.75,
     },
 
 
@@ -15128,6 +15164,8 @@ celebi: {
         abilities: {
             0: "No Guard"
         },
+        heightm: 3.35,
+        weightkg: 80.75,
 		  eggGroups: ["Undiscovered"],
     },
 
@@ -15147,6 +15185,8 @@ celebi: {
         abilities: {
             0: "Dirt Nap"
         },
+        heightm: 1.2,
+        weightkg: 33.2,
 		  eggGroups: ["Undiscovered"],
     },
 
@@ -15166,6 +15206,8 @@ celebi: {
         abilities: {
             0: "Hydrodynamic"
         },
+        heightm: 2.6,
+        weightkg: 159.4,
 		  eggGroups: ["Undiscovered"],
     },
 
@@ -15188,6 +15230,8 @@ celebi: {
         abilities: {
             0: "Strong Jaw"
         },
+        heightm: 3.3,
+        weightkg: 200.9,
 		  eggGroups: ["Undiscovered"],
     },
 
@@ -15207,6 +15251,8 @@ celebi: {
         abilities: {
             0: "Engineer"
         },
+        heightm: 2.05,
+        weightkg: 192.1,
 		  eggGroups: ["Undiscovered"],
     },
 
@@ -15226,6 +15272,8 @@ celebi: {
         abilities: {
             0: "Blessed Protection"
         },
+        heightm: 1.25,
+        weightkg: 37.4,
 		  eggGroups: ["Amorphous"],
     },
 
@@ -15246,6 +15294,8 @@ celebi: {
         abilities: {
             0: "Barbs Boost"
         },
+        heightm: 3.25,
+        weightkg: 499,
 		  eggGroups: ["Undiscovered"],
     },
 
@@ -15266,6 +15316,8 @@ celebi: {
         abilities: {
             0: "Mirror Mirror"
         },
+        heightm: 0.5,
+        weightkg: 9.6,
 		  eggGroups: ["Field"],
     },
 
@@ -15286,6 +15338,8 @@ celebi: {
         abilities: {
             0: "Atmospheric Pull"
         },
+        heightm: 2.15,
+        weightkg: 477.25,
 		  eggGroups: ["Undiscovered"],
     },
 
@@ -15309,6 +15363,8 @@ celebi: {
         abilities: {
             0: "Desolate Land"
         },
+        heightm: 3.65,
+        weightkg: 526.95,
 		  eggGroups: ["Undiscovered"],
     },
 
@@ -15328,6 +15384,8 @@ celebi: {
         abilities: {
             0: "Volt Boost"
         },
+        heightm: 2.55,
+        weightkg: 206.9,
 		  eggGroups: ["Undiscovered"],
     },
 
@@ -15350,6 +15408,8 @@ celebi: {
         abilities: {
             0: "Strong Jaw"
         },
+        heightm: 3.25,
+        weightkg: 248.4,
 		  eggGroups: ["Undiscovered"],
     },
 
@@ -15370,6 +15430,9 @@ celebi: {
         abilities: {
             0: "Soul Power"
         },
+        heightm: 1.15,
+        weightkg: 56.5,
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -15388,6 +15451,8 @@ celebi: {
         abilities: {
             0: "Land's Shield"
         },
+        heightm: 2.95,
+        weightkg: 170,
 		  eggGroups: ["Undiscovered"],
     },
 
@@ -15410,6 +15475,8 @@ celebi: {
         abilities: {
             0: "Sheer Force"
         },
+        heightm: 3.55,
+        weightkg: 270.5,
 		  eggGroups: ["Undiscovered"],
     },
 
@@ -15430,6 +15497,8 @@ celebi: {
         abilities: {
             0: "Danceposter"
         },
+        heightm: 0.45,
+        weightkg: 3.7,
 		  eggGroups: ["Flying"],
     },
 

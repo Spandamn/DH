@@ -7402,7 +7402,7 @@ exports.BattleAbilities = {
 	"contrabubble": {
 		shortDesc: "Reverses the effectiveness of Fire and Water attacks on all active Pokemon, and the effects of burn on this Pokemon.",
 		onBasePower: function (basePower, attacker, defender, move) {
-			if (move.id === 'facade' && attacker.status === 'burn') {
+			if (move.id === 'facade' && attacker.status === 'brn') {
 				this.debug('Neutralize the burn inversion.');
 				return this.chainModify(0.25);
 			}
@@ -7416,7 +7416,7 @@ exports.BattleAbilities = {
       //TODO: Check to see if this is actually implemented properly.
 		onModifyAtkPriority: 5,
 		onModifyAtk: function (atk, pokemon) {
-			if (pokemon.status === 'burn') {
+			if (pokemon.status === 'brn') {
                                 //Invert Burn's reduction.
 				return this.chainModify(4);
 			}
@@ -8309,8 +8309,8 @@ exports.BattleAbilities = {
 		desc: "Inverts stat changes on user's SpA. Additionally boosts SpA whenever it claims a kill (doesn't take invertion in account here, just like Z-moves).",
       shortDesc: "Inverts SpA changes. Boosts this stat if it lands a KO.",
 		onBoost: function (boost, target, source, effect) {
-			if (source && target === source) return;
-			if (boost.spa && boost.spa < 0) {
+			if (effect && effect.id === 'zpower') return;
+			if (boost.spa) {
 				boost.spa *= -1;
 			}
 		},
