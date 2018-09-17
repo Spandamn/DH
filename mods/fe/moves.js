@@ -8917,5 +8917,25 @@ exports.BattleMovedex = {
 		zMovePower: 100,
 		contestType: "Cool",
 	},
+	"lifeloan": {
+		accuracy: 100,
+		basePower: 0,
+		category: "Status",
+		desc: "The user restores health equal to 1/2 of the target's maximum HP, rounded half up.",
+		shortDesc: "Heals the user by 50% of the target's max HP.",
+		id: "lifeloan",
+		name: "Life Loan",
+		pp: 10,
+		priority: 0,
+		flags: {protect: 1, reflectable: 1, mirror: 1, heal: 1},
+		onHit: function (target, source) {
+			return this.heal(Math.floor(target.maxhp+1)/2, source, target);
+		},
+		secondary: false,
+		target: "normal",
+		type: "Normal",
+		zMoveEffect: 'clearnegativeboost',
+		contestType: "Clever",
+	},
 };
 
