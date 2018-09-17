@@ -8837,5 +8837,65 @@ exports.BattleMovedex = {
 		zMovePower: 100,
 		contestType: "Clever",
 	},
+	
+	"frigidgizmo": {
+		accuracy: 100,
+		basePower: 0,
+		basePowerCallback: function (pokemon, target) {
+			let power = (Math.floor(25 * target.getStat('spe') / pokemon.getStat('spe')) || 1);
+			if (power > 150) power = 150;
+			this.debug('' + power + ' bp');
+			return power;
+		},
+		category: "Special",
+		desc: "Power is equal to (25 * target's current Speed / user's current Speed), rounded down, + 1, but not more than 150. This move's type effectiveness against Water is changed to be super effective no matter what this move's type is.",
+		shortDesc: "More power the slower the user than the target. Super effective on Water.",
+		id: "frigidgizmo",
+		isViable: true,
+		name: "Frigid Gizmo",
+		onEffectiveness: function (typeMod, type) {
+			if (type === 'Water') return 1;
+		},
+		pp: 5,
+		priority: 0,
+		flags: {contact: 1, protect: 1, mirror: 1},
+		secondary: false,
+		target: "normal",
+		type: "Steel",
+		zMovePower: 160,
+		contestType: "Cool",
+	},
+	"disarmingdeluge": {
+		accuracy: 100,
+		basePower: 40,
+		category: "Physical",
+		desc: "If this move is successful, causes Normal-type moves to become Fairy type this turn.",
+		shortDesc: "Usually goes first. Normal moves become Fairy type this turn.",
+		id: "disarmingdeluge",
+		isViable: true,
+		name: "Disarming Deluge",
+		pp: 30,
+		priority: 1,
+		flags: {protect: 1, mirror: 1},
+		pseudoWeather: 'disarmingdeluge',
+		effect: {
+			duration: 1,
+			onStart: function (target) {
+				this.add('-fieldactivate', 'move: Disarming Deluge');
+			},
+			onModifyMovePriority: -2,
+			onModifyMove: function (move) {
+				if (move.type === 'Normal') {
+					move.type = 'Fairy';
+					this.debug(move.name + "'s type changed to Fairy");
+				}
+			},
+		},
+		secondary: false,
+		target: "allAdjacentFoes",
+		type: "Fairy",
+		zMovePower: 100,
+		contestType: "Cool",
+	},
 };
 
