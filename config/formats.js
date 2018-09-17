@@ -4297,6 +4297,9 @@ exports.Formats = [
 			pokemon.id = pokemon.fullname;
 			return temp;
   		},
+		onSwitchIn: function (pokemon) {
+            this.add('-start', pokemon, 'typechange', pokemon.template.types.join('/'), '[silent]');
+        },
 		checkLearnset: function (move, template, lsetData, set) {
            return null
         },
