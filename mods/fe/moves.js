@@ -8897,5 +8897,25 @@ exports.BattleMovedex = {
 		zMovePower: 100,
 		contestType: "Cool",
 	},
+	"infuriationwave": {
+		accuracy: 100,
+		basePower: 0,
+		damageCallback: function (pokemon) {
+			return (this.random(50, 151) * pokemon.level) / 100 + 40;
+		},
+		category: "Special",
+		desc: "Deals damage to the target equal to (user's level) * (X+50) / 100 + 40, where X is a random number from 0 to 100, rounded down, but not less than 1 HP.",
+		shortDesc: "Random damage equal to 0.5x-1.5x user's level plus 40.",
+		id: "infuriationwave",
+		name: "Infuriation Wave",
+		pp: 15,
+		priority: 0,
+		flags: {protect: 1, mirror: 1},
+		secondary: false,
+		target: "normal",
+		type: "Psychic",
+		zMovePower: 100,
+		contestType: "Cool",
+	},
 };
 
