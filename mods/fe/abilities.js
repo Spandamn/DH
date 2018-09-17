@@ -5764,8 +5764,7 @@ exports.BattleAbilities = {
 	},
 	'badinfluence': {
 		shortDesc: "When the user switches in, all opponents on the field have their stat changes inverted.",
-		onStart: function(source) {
-			this.useMove('Topsy-Turvy', source);
+		onStart: function (pokemon) {
 			let activated = false;
 			for (const target of pokemon.side.foe.active) {
 				if (!target || !this.isAdjacent(target, pokemon)) continue;
