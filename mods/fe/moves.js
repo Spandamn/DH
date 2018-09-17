@@ -8771,5 +8771,26 @@ exports.BattleMovedex = {
 		zMovePower: 160,
 		contestType: "Cute",
 	},
+	"marshmadness": {
+		accuracy: 95,
+		basePower: 100,
+		category: "Special",
+		desc: "After damage, summons a swamp that quarters the Speed of any opponents for four turns.",
+		shortDesc: "After damage, summons a swamp that quarters the Speed of any opponents.",
+		id: "marshmadness",
+		isViable: true,
+		name: "Marsh Madness",
+		pp: 10,
+		priority: 0,
+		flags: {protect: 1, mirror: 1},
+		onHit: function (target, source, move) {
+			target.side.addSideCondition('grasspledge');
+		},
+		secondary: false,
+		target: "normal",
+		type: "Water",
+		zMovePower: 180,
+		contestType: "Beautiful",
+	},
 };
 
