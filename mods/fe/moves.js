@@ -8814,5 +8814,28 @@ exports.BattleMovedex = {
 		zMovePower: 200,
 		contestType: "Clever",
 	},
+	"reverberatingecho": {
+		accuracy: 100,
+		basePower: 40,
+		category: "Special",
+		desc: "Power doubles if the target shares a type with the user.",
+		shortDesc: "Usually goes first. Power doubles if the target shares a type with the user.",
+		id: "reverberatingecho",
+		name: "Reverberating Echo",
+		pp: 30,
+		priority: 1,
+		flags: {protect: 1, mirror: 1},
+		onBasePowerPriority: 4,
+		onBasePower: function (basePower, pokemon, target) {
+			if (target.hasType(pokemon.getTypes())) {
+				return this.chainModify(2);
+			}
+		},
+		secondary: false,
+		target: "normal",
+		type: "Psychic",
+		zMovePower: 100,
+		contestType: "Clever",
+	},
 };
 
