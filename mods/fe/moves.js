@@ -979,8 +979,8 @@ exports.BattleMovedex = {
 		flags: {protect: 1, reflectable: 1, mirror: 1, authentic: 1},
 		onHit: function (target, source, move) {
 			if (!target.volatiles['substitute'] || move.infiltrates) this.boost({evasion: -1});
-			let removeTarget = ['reflect', 'lightscreen', 'auroraveil', 'safeguard', 'mist', 'spikes', 'toxicspikes', 'stealthrock', 'stickyweb', 'stealthseed', 'cosmicweb', 'slipperyweb', 'stickyvenom'];
-			let removeAll = ['spikes', 'toxicspikes', 'stealthrock', 'stickyweb', 'stealthseed', 'cosmicweb', 'slipperyweb', 'stickyvenom'];
+			let removeTarget = ['reflect', 'lightscreen', 'auroraveil', 'safeguard', 'mist', 'spikes', 'toxicspikes', 'stealthrock', 'stickyweb', 'stealthseed', 'cosmicweb', 'slipperyweb', 'stickyvenom', 'glimmeringweb', 'stickyneedles'];
+			let removeAll = ['spikes', 'toxicspikes', 'stealthrock', 'stickyweb', 'stealthseed', 'cosmicweb', 'slipperyweb', 'stickyvenom', 'glimmeringweb', 'stickyneedles'];
 			let success = false;
 			for (const targetCondition of removeTarget) {
 				if (target.side.removeSideCondition(targetCondition)) {
@@ -1027,7 +1027,7 @@ exports.BattleMovedex = {
 				if (pokemon.hp && pokemon.removeVolatile('magicdrain')) {
 					this.add('-end', pokemon, 'Magic Drain', '[from] move: Rapid Spin', '[of] ' + pokemon);
 				}
-				let sideConditions = ['spikes', 'toxicspikes', 'stealthrock', 'stickyweb', 'stealthseed', 'cosmicweb', 'stickyvenom'];
+				let sideConditions = ['spikes', 'toxicspikes', 'stealthrock', 'stickyweb', 'stealthseed', 'cosmicweb', 'stickyvenom', 'glimmeringweb', 'stickyneedles'];
 				for (const condition of sideConditions) {
 					if (pokemon.hp && pokemon.side.removeSideCondition(condition)) {
 						this.add('-sideend', pokemon.side, this.getEffect(condition).name, '[from] move: Rapid Spin', '[of] ' + pokemon);
@@ -8600,7 +8600,7 @@ exports.BattleMovedex = {
 				return;
 			}
 			this.add('-prepare', attacker, move.name, defender);
-			if ((this.isWeather() && this.isWeather(['sandstorm']) !== move.isInInvertedWeather) || !this.runEvent('ChargeMove', attacker, defender, move)) {
+			if ((this.isWeather() && !this.isWeather(['deltastream']) && (this.isWeather['sandstorm'] !== move.isInInvertedWeather)) || !this.runEvent('ChargeMove', attacker, defender, move)) {
 				this.add('-anim', attacker, move.name, defender);
 				return;
 			}
@@ -8609,7 +8609,7 @@ exports.BattleMovedex = {
 		},
 		onBasePowerPriority: 4,
 		onBasePower: function (basePower, pokemon, target) {
-			if (this.isWeather() && this.isWeather['sandstorm'] === (pokemon.volatiles['atmosphericperversion'] === pokemon.volatiles['weatherbreak'])) {
+			if (this.isWeather() && !this.isWeather['deltastream'] && this.isWeather['sandstorm'] === (pokemon.volatiles['atmosphericperversion'] === pokemon.volatiles['weatherbreak'])) {
 				this.debug('weakened by weather');
 				return this.chainModify(0.5);
 			}
@@ -8619,6 +8619,323 @@ exports.BattleMovedex = {
 		type: "Rock",
 		zMovePower: 190,
 		//contestType: "Beautiful",
+	},
+	"serpentsstance": {
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		desc: "Raises the user's Attack, Defense, Special Attack, Special Defense, and accuracy by 1 stage.",
+		shortDesc: "Raises user's Attack, Defense, Sp. Atk, Sp. Def, and accuracy by 1.",
+		id: "serpentsstance",
+		isViable: true,
+		name: "Serpent's Stance",
+		pp: 20,
+		priority: 0,
+		flags: {snatch: 1},
+		boosts: {
+			atk: 1,
+			def: 1,
+			spa: 1,
+			spd: 1,
+			accuracy: 1,
+		},
+		secondary: false,
+		target: "self",
+		type: "Psychic",
+		zMoveEffect: 'clearnegativeboost',
+		contestType: "Tough",
+	},
+	"enlightenment": {
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		desc: "Raises the user's Attack, Defense, Special Attack, and Special Defense by 1 stage.",
+		shortDesc: "Raises user's Attack, Defense, Sp. Atk, Sp. Def by 1.",
+		id: "enlightenment",
+		isViable: true,
+		name: "Enlightenment",
+		pp: 10,
+		priority: 0,
+		flags: {snatch: 1},
+		boosts: {
+			atk: 1,
+			def: 1,
+			spa: 1,
+			spd: 1,
+		},
+		secondary: false,
+		target: "self",
+		type: "Psychic",
+		zMoveBoost: {spe: 1},
+		contestType: "Clever",
+	},
+	"gorgonswarm": {
+		accuracy: 100,
+		basePower: 100,
+		category: "Physical",
+		defensiveCategory: "Special",
+		desc: "Has a 50% chance to badly poison the target. Deals damage to the target based on its Special Defense instead of Defense.",
+		shortDesc: "50% chance to badly poison the target. Damages target based on Sp. Def, not Defense.",
+		id: "gorgonswarm",
+		name: "Gorgon Swarm",
+		pp: 5,
+		priority: 0,
+		flags: {contact: 1, protect: 1, mirror: 1},
+		secondary: {
+			chance: 50,
+			status: 'tox',
+		},
+		target: "normal",
+		type: "Poison",
+		zMovePower: 180,
+		contestType: "Clever",
+	},
+	"glimmeringweb": {
+		num: 564,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		desc: "Sets up a hazard on the foe's side of the field, lowering the Special Attack and Speed by 1 stage of each foe that switches in, unless it is a Flying-type Pokemon or has the Ability Levitate. Can be used only once before failing. Can be removed from the foe's side if any foe uses Rapid Spin or Defog, or is hit by Defog.",
+		shortDesc: "Lowers Sp. Atk and Speed of grounded foes by 1 on switch-in.",
+		id: "glimmeringweb",
+		isViable: true,
+		name: "Glimmering Web",
+		pp: 20,
+		priority: 0,
+		flags: {reflectable: 1},
+		sideCondition: 'glimmeringweb',
+		effect: {
+			onStart: function (side) {
+				this.add('-sidestart', side, 'move: Glimmering Web');
+			},
+			onSwitchIn: function (pokemon) {
+				if (!pokemon.isGrounded()) return;
+				this.add('-activate', pokemon, 'move: Glimmering Web');
+				this.boost({spa: -1, spe: -1}, pokemon, pokemon.side.foe.active[0], this.getMove('glimmeringweb'));
+			},
+		},
+		secondary: false,
+		target: "foeSide",
+		type: "Bug",
+		zMoveEffect: 'clearnegativeboost',
+		contestType: "Beautiful",
+	},
+	"stickyneedles": {
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		desc: "Sets up a hazard on the foe's side of the field, damaging each foe that switches in. Can be used only once before failing. Foes lose 1/32, 1/16, 1/8, 1/4, or 1/2 of their maximum HP, rounded down, based on their weakness to the Bug type; 0.25x, 0.5x, neutral, 2x, or 4x, respectively. Switch-ins that are not weak to the Bug type additionally have their Speed decreased by one stage. Can be removed from the foe's side if any foe uses Rapid Spin or Defog, or is hit by Defog.",
+		shortDesc: "Hurts foes on switch-in. Factors Bug weakness. Foes that aren't weak to Bug have their Speed lowered upon switch-in.",
+		id: "stickyneedles",
+		isViable: true,
+		name: "Sticky Needles",
+		pp: 20,
+		priority: 0,
+		flags: {reflectable: 1},
+		sideCondition: 'stickyneedles',
+		effect: {
+			// this is a side condition
+			onStart: function (side) {
+				this.add('-sidestart', side, 'move: Sticky Needles');
+			},
+			onSwitchIn: function (pokemon) {
+				let typeMod = this.clampIntRange(pokemon.runEffectiveness('Bug'), -6, 6);
+				this.damage(pokemon.maxhp * Math.pow(2, typeMod) / 8);
+				if (typeMod <= 0){
+					this.boost({spe: -1}, pokemon, pokemon.side.foe.active[0], this.getMove('stickyneedles'));
+				}
+			},
+		},
+		secondary: false,
+		target: "foeSide",
+		type: "Bug",
+		zMoveBoost: {def: 1},
+		contestType: "Cool",
+	},
+	"passionatekiss": {
+		accuracy: 100,
+		basePower: 80,
+		category: "Physical",
+		desc: "The user recovers 3/4 the HP lost by the target, rounded half up. If Big Root is held by the user, the HP recovered is 1.3x normal, rounded half down.",
+		shortDesc: "User recovers 75% of the damage dealt.",
+		id: "passionatekiss",
+		isViable: true,
+		name: "Passionate Kiss",
+		pp: 10,
+		priority: 0,
+		flags: {contact: 1, protect: 1, mirror: 1},
+		drain: [3, 4],
+		secondary: false,
+		target: "normal",
+		type: "Fairy",
+		zMovePower: 160,
+		contestType: "Cute",
+	},
+	"marshmadness": {
+		accuracy: 95,
+		basePower: 100,
+		category: "Special",
+		desc: "After damage, summons a swamp that quarters the Speed of any opponents for four turns.",
+		shortDesc: "After damage, summons a swamp that quarters the Speed of any opponents.",
+		id: "marshmadness",
+		isViable: true,
+		name: "Marsh Madness",
+		pp: 10,
+		priority: 0,
+		flags: {protect: 1, mirror: 1},
+		onHit: function (target, source, move) {
+			target.side.addSideCondition('grasspledge');
+		},
+		secondary: false,
+		target: "normal",
+		type: "Water",
+		zMovePower: 180,
+		contestType: "Beautiful",
+	},
+	"echocannon": {
+		accuracy: 100,
+		basePower: 140,
+		category: "Special",
+		desc: "This move copies the type of the last move used by the target. Defaults to Flying if the target has not made a move, or the last move used was Acupressure, After You, Aromatherapy, Aromatic Mist, Belch, Conversion 2, Counter, Crafty Shield, Curse, Doom Desire, Electric Terrain, Final Gambit, Flower Shield, Focus Punch, Future Sight, Grassy Terrain, Gravity, Guard Split, Hail, Happy Hour, Haze, Heal Bell, Heal Pulse, Helping Hand, Hold Hands, Ion Deluge, Light Screen, Lucky Chant, Magnetic Flux, Mat Block, Me First, Mimic, Mirror Coat, Mirror Move, Mist, Misty Terrain, Mud Sport, Nature Power, Perish Song, Power Split, Psych Up, Quick Guard, Rain Dance, Reflect, Reflect Type, Role Play, Rototiller, Safeguard, Sandstorm, Sketch, Spikes, Spit Up, Stealth Rock, Sticky Web, Struggle, Sunny Day, Tailwind, Toxic Spikes, Transform, Water Sport, Wide Guard, or any move that is self-targeting.",
+		shortDesc: "Copies the type of the target's last used move against the user, defaulting to Flying. Hits adjacent Pokemon.",
+		id: "mirrormove",
+		name: "Mirror Move",
+		pp: 20,
+		priority: 0,
+		flags: {protect: 1, sound: 1, mirror: 1, authentic: 1},
+		onModifyMove: function (move, source, target) {
+			if (target.lastMove && target.lastMove.flags['mirror']) {
+				move.type = target.lastMove.type;
+			}
+		},
+		secondary: false,
+		target: "allAdjacent",
+		type: "Flying",
+		zMovePower: 200,
+		contestType: "Clever",
+	},
+	"reverberatingecho": {
+		accuracy: 100,
+		basePower: 40,
+		category: "Special",
+		desc: "Power doubles if the target shares a type with the user.",
+		shortDesc: "Usually goes first. Power doubles if the target shares a type with the user.",
+		id: "reverberatingecho",
+		name: "Reverberating Echo",
+		pp: 30,
+		priority: 1,
+		flags: {protect: 1, mirror: 1},
+		onBasePowerPriority: 4,
+		onBasePower: function (basePower, pokemon, target) {
+			if (target.hasType(pokemon.getTypes())) {
+				return this.chainModify(2);
+			}
+		},
+		secondary: false,
+		target: "normal",
+		type: "Psychic",
+		zMovePower: 100,
+		contestType: "Clever",
+	},
+	
+	"frigidgizmo": {
+		accuracy: 100,
+		basePower: 0,
+		basePowerCallback: function (pokemon, target) {
+			let power = (Math.floor(25 * target.getStat('spe') / pokemon.getStat('spe')) || 1);
+			if (power > 150) power = 150;
+			this.debug('' + power + ' bp');
+			return power;
+		},
+		category: "Special",
+		desc: "Power is equal to (25 * target's current Speed / user's current Speed), rounded down, + 1, but not more than 150. This move's type effectiveness against Water is changed to be super effective no matter what this move's type is.",
+		shortDesc: "More power the slower the user than the target. Super effective on Water.",
+		id: "frigidgizmo",
+		isViable: true,
+		name: "Frigid Gizmo",
+		onEffectiveness: function (typeMod, type) {
+			if (type === 'Water') return 1;
+		},
+		pp: 5,
+		priority: 0,
+		flags: {contact: 1, protect: 1, mirror: 1},
+		secondary: false,
+		target: "normal",
+		type: "Steel",
+		zMovePower: 160,
+		contestType: "Cool",
+	},
+	"disarmingdeluge": {
+		accuracy: 100,
+		basePower: 40,
+		category: "Physical",
+		desc: "If this move is successful, causes Normal-type moves to become Fairy type this turn.",
+		shortDesc: "Usually goes first. Normal moves become Fairy type this turn.",
+		id: "disarmingdeluge",
+		isViable: true,
+		name: "Disarming Deluge",
+		pp: 30,
+		priority: 1,
+		flags: {protect: 1, mirror: 1},
+		pseudoWeather: 'disarmingdeluge',
+		effect: {
+			duration: 1,
+			onStart: function (target) {
+				this.add('-fieldactivate', 'move: Disarming Deluge');
+			},
+			onModifyMovePriority: -2,
+			onModifyMove: function (move) {
+				if (move.type === 'Normal') {
+					move.type = 'Fairy';
+					this.debug(move.name + "'s type changed to Fairy");
+				}
+			},
+		},
+		secondary: false,
+		target: "allAdjacentFoes",
+		type: "Fairy",
+		zMovePower: 100,
+		contestType: "Cool",
+	},
+	"infuriationwave": {
+		accuracy: 100,
+		basePower: 0,
+		damageCallback: function (pokemon) {
+			return (this.random(50, 151) * pokemon.level) / 100 + 40;
+		},
+		category: "Special",
+		desc: "Deals damage to the target equal to (user's level) * (X+50) / 100 + 40, where X is a random number from 0 to 100, rounded down, but not less than 1 HP.",
+		shortDesc: "Random damage equal to 0.5x-1.5x user's level plus 40.",
+		id: "infuriationwave",
+		name: "Infuriation Wave",
+		pp: 15,
+		priority: 0,
+		flags: {protect: 1, mirror: 1},
+		secondary: false,
+		target: "normal",
+		type: "Psychic",
+		zMovePower: 100,
+		contestType: "Cool",
+	},
+	"lifeloan": {
+		accuracy: 100,
+		basePower: 0,
+		category: "Status",
+		desc: "The user restores health equal to 1/2 of the target's maximum HP, rounded half up.",
+		shortDesc: "Heals the user by 50% of the target's max HP.",
+		id: "lifeloan",
+		name: "Life Loan",
+		pp: 10,
+		priority: 0,
+		flags: {protect: 1, reflectable: 1, mirror: 1, heal: 1},
+		onHit: function (target, source) {
+			return this.heal(Math.floor(target.maxhp+1)/2, source, target);
+		},
+		secondary: false,
+		target: "normal",
+		type: "Normal",
+		zMoveEffect: 'clearnegativeboost',
+		contestType: "Clever",
 	},
 };
 
