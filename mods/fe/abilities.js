@@ -2151,7 +2151,9 @@ exports.BattleAbilities = {
 	            }
 	        }
 		},
-		onCriticalHit: false,
+		onCriticalHit: function(pokemon){
+				if (pokemon.status) return false;
+		},
 		id: "armoredguts",
 		name: "Armored Guts",
 	},
