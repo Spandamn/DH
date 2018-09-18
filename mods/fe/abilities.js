@@ -11792,4 +11792,34 @@ exports.BattleAbilities = {
 		id: "shortcircuit",
 		name: "Short Circuit",
 	},
+	"desertmirage": {
+		desc: "If this Pokemon is an Aegipass, it changes to Directional Forme before attempting to use an attacking move, and changes to Magnetic Forme before attempting to use King's Shield or Ancient Shield. If it's in Directional Forme, this Pokemon's Ground-, Rock-, and Steel-type attacks have their power multiplied by 1.3. If it's in Magnetic forme, incoming Ground-, Rock-, and Steel-type attacks have their power divided by 1.3.",
+		shortDesc: "If Aegipass, changes Forme to Directional before attacks and Magnetic before King's Shield. Damage from Rock-, Ground-, or Steel-type moves is reduced by 1.3x as Magnetic. Directional's Rock-, Ground-, and Steel-type moves have 1.3x power.",
+		onBeforeMovePriority: 0.5,
+		onBeforeMove: function (attacker, defender, move) {
+			if (attacker.template.baseSpecies !== 'Aegipass' || attacker.transformed) return;
+			if (move.category === 'Status' && move.id !== 'kingsshield' && move.id !== 'ancientshield') return;
+			let targetSpecies = ((move.id === 'kingsshield' || move.id === 'ancientshield') ? 'Aegipass' : 'Aegipass-Directional');
+			if (attacker.template.species !== targetSpecies) attacker.formeChange(targetSpecies);
+		},
+		onBasePowerPriority: 8,
+		onBasePower: function (basePower, attacker, defender, move) {
+			if (attacker.template.species === 'Aegipass-Directional') {
+				if (move.type === 'Rock' || move.type === 'Ground' || move.type === 'Steel') {
+					this.debug('Desert Mirage boost');
+					return this.chainModify([0x14CD, 0x1000]);
+				}
+			}
+		},
+		onSourceBasePower: function (basePower, attacker, defender, move) {
+			if (defender.template.species === 'Aegipass-Magnetic') {
+				if (move.type === 'Rock' || move.type === 'Ground' || move.type === 'Steel') {
+					this.debug('Desert Mirage weaken');
+					return this.chainModify([0x1000, 0x14CD]);
+				}
+			}
+		},
+		id: "desertmirage",
+		name: "Desert Mirage",
+	},
 };
