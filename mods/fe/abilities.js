@@ -11816,10 +11816,28 @@ exports.BattleAbilities = {
 	"adaptivebias": {
 		desc: "This Pokemon's moves that match one of its types have a same-type attack bonus (STAB) of 2 instead of 1.5. When targeted by a move that matches one of the user's types, the same-type attack bonus is disregarded.",
 		shortDesc: "This Pokemon's same-type attack bonus (STAB) is 2 instead of 1.5. Negates STAB of incoming moves.",
-		onModifyMove: function (move) {
-			move.stab = 2;
+		onAnyModifyMove: function (move, attacker, defender) {
+			if (attacker === this.effectData.target) move.stab = 2;
+			else if (defender === this.effectData.target) move.stab = 1;
 		},
 		id: "adaptivebias",
 		name: "Adaptive Bias",
+	},
+	"goldentouch": {
+		shortDesc: "On switch-in, this Pokemon copies the effects of a random opposing Pokemon's held item.",
+		onStart: function (pokemon) {
+			let targets = [];
+			for (const target of pokemon.side.active.concat(pokemon.side.foe.active)) {
+				if (target.item && this.isAdjacent(pokemon, target)) {
+					targets.push(target);
+				}
+			}
+			if (!targets.length) return;
+			let randomTarget = this.sample(targets);
+			this.singleEvent('Start', randomTarget.getItem(), randomTarget.itemData, pokemon);
+			this.add('-item', pokemon, randomTarget.getItem(), '[from] ability: Golden Touch');
+		},
+		id: "goldentouch",
+		name: "Golden Touch",
 	},
 };
