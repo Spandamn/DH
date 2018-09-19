@@ -8975,23 +8975,15 @@ exports.BattleAbilities = {
 "inversearmor": {
     desc: "Type effectiveness of moves that the holder uses or is hit by is inverted (Inverse Battle rules apply; type effectiveness of moves used by Mold Breaker variants users is not influenced by this ability).",
     shortDesc: "Type effectiveness in moves that target or are used by this Pokemon is inverted.",
-	 onModifyMove: function (move) {
-		if (!move.ignoreImmunity) move.ignoreImmunity = {};
-		if (move.ignoreImmunity !== true) {
-			move.ignoreImmunity[move.type] = true;
-		}
+	 onAnyModifyMove: function (move, attacker, defender) {
+		 if (!move || (attacker !== this.effectData.target && defender !== this.effectData.target)) return;
+		 if (!move.ignoreImmunity) move.ignoreImmunity = {};
+		 if (move.ignoreImmunity !== true) {
+				move.ignoreImmunity[move.type] = true;
+		 }
 	 },
-	 onSourceModifyMove: function (move) {
-		if (!move.ignoreImmunity) move.ignoreImmunity = {};
-		if (move.ignoreImmunity !== true) {
-			move.ignoreImmunity[move.type] = true;
-		}
-	 },
-    onEffectiveness: function(typeMod, target, type, move) {
-        if (move && !this.getImmunity(move, type)) return 1;
-        return -typeMod;
-    },
-    onSourceEffectiveness: function(typeMod, target, type, move) {
+    onAnyEffectiveness: function(typeMod, source, target, type, move) {
+		  if (source !== this.effectData.target && target !== this.effectData.target) return;
         if (move && !this.getImmunity(move, type)) return 1;
         return -typeMod;
     },
@@ -10782,14 +10774,14 @@ exports.BattleAbilities = {
 			let stat = 'atk';
 				let bestStat = 0;
 				for (let i in target.stats) {
-					if (source.stats[i] > bestStat) {
+					if (target.stats[i] > bestStat) {
 						stat = i;
 						bestStat = target.stats[i];
 					}
 				}
 			if (boost.stat && boost.stat < 0) {
 				delete boost.stat;
-				if (!effect.secondaries) this.add("-fail", target, "unboost", "Attack", "[from] ability: Beast Eye", "[of] " + target);
+				if (!effect.secondaries) this.add("-fail", target, "unboost", stat, "[from] ability: Beast Eye", "[of] " + target);
 				this.boost({[stat]: 1}, target);
 			}
 		},
@@ -11820,5 +11812,14 @@ exports.BattleAbilities = {
 		},
 		id: "desertmirage",
 		name: "Desert Mirage",
+	},
+	"adaptivebias": {
+		desc: "This Pokemon's moves that match one of its types have a same-type attack bonus (STAB) of 2 instead of 1.5. When targeted by a move that matches one of the user's types, the same-type attack bonus is disregarded.",
+		shortDesc: "This Pokemon's same-type attack bonus (STAB) is 2 instead of 1.5. Negates STAB of incoming moves.",
+		onModifyMove: function (move) {
+			move.stab = 2;
+		},
+		id: "adaptivebias",
+		name: "Adaptive Bias",
 	},
 };
