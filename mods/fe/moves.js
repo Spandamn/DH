@@ -9059,5 +9059,28 @@ exports.BattleMovedex = {
 		zMovePower: 160,
 		contestType: "Cool",
 	},
+	"trip": {
+		accuracy: 100,
+		basePower: 40,
+		category: "Physical",
+		desc: "Has a 100% chance to lower the target's Attack by 1 stage.",
+		shortDesc: "Usually goes first. 100% chance to lower the target's Attack by 1.",
+		id: "trip",
+		isViable: true,
+		name: "Trip",
+		pp: 30,
+		priority: 1,
+		flags: {contact: 1, protect: 1, mirror: 1},
+		secondary: {
+			chance: 100,
+			boosts: {
+				atk: -1,
+			},
+		},
+		target: "normal",
+		type: "Fairy",
+		zMovePower: 100,
+		contestType: "Cute",
+	},
 };
 
