@@ -5283,10 +5283,10 @@ exports.BattleAbilities = {
 		name: "Serene Surge",
 	},
 	"ashestoashes": {
-		shortDesc: "When this Pokémon is below 50% health, the Base Power and secondary effect chance of moves with secondary effects are doubled.",
+		shortDesc: "When this Pokémon is below 33.3% health, the Base Power and secondary effect chance of moves with secondary effects are doubled.",
 		onModifyMovePriority: -2,
 		onModifyMove: function(move, pokemon) {
-			if (move.secondaries && pokemon.hp <= pokemon.maxhp / 2.857142857142857) {
+			if (move.secondaries && pokemon.hp <= pokemon.maxhp / 2) {
 				this.debug('doubling secondary chance');
 				for (const secondary of move.secondaries) {
 					// @ts-ignore
@@ -5296,7 +5296,7 @@ exports.BattleAbilities = {
 		},
 		onBasePowerPriority: 8,
 		onBasePower: function(basePower, attacker, defender, move) {
-			if (attacker.hp <= attacker.maxhp / 2.857142857142857 && move.secondaries) {
+			if (attacker.hp <= attacker.maxhp / 2 && move.secondaries) {
 				return this.chainModify(2);
 			}
 		},
