@@ -9082,5 +9082,31 @@ exports.BattleMovedex = {
 		zMovePower: 100,
 		contestType: "Cute",
 	},
+	"attentiongrab": {
+		accuracy: 100,
+		basePower: 80,
+		category: "Physical",
+		desc: "This move combines Fairy in its type effectiveness against the target. Has a 10% chance to lower the target's Attack by 1 stage.",
+		shortDesc: "Combines Fairy in its type effectiveness. 10% chance to lower the target's Attack by 1.",
+		id: "attentiongrab",
+		name: "Attention Grab",
+		pp: 10,
+		flags: {contact: 1, protect: 1, mirror: 1},
+		onEffectiveness: function (typeMod, type, move) {
+			// @ts-ignore
+			return typeMod + this.getEffectiveness('Fairy', type);
+		},
+		priority: 0,
+		secondary: {
+			chance: 10,
+			boosts: {
+				atk: -1,
+			},
+		},
+		target: "any",
+		type: "Ghost",
+		zMovePower: 160,
+		contestType: "Cute",
+	},
 };
 
