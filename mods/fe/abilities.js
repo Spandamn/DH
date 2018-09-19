@@ -11828,7 +11828,7 @@ exports.BattleAbilities = {
 		onStart: function (pokemon) {
 			let targets = [];
 			for (const target of pokemon.side.active.concat(pokemon.side.foe.active)) {
-				if (target.item && this.isAdjacent(pokemon, target)) {
+				if (target.item && target.item !== pokemon.item && this.isAdjacent(pokemon, target)) {
 					targets.push(target);
 				}
 			}
