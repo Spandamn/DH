@@ -125,7 +125,7 @@ exports.BattleAbilities = {
 				if (pokemon.volatiles['atmosphericperversion'] == pokemon.volatiles['weatherbreak']){
 					return this.chainModify(1.5);
 				} 	else {
-					return this.chainModify(0.66667);
+					return this.chainModify([0x0AAB, 0x1000]);
 				}
 			}
 		},
@@ -136,7 +136,7 @@ exports.BattleAbilities = {
 				if (pokemon.volatiles['atmosphericperversion'] == pokemon.volatiles['weatherbreak']){
 					return this.chainModify(1.5);
 				} 	else {
-					return this.chainModify(0.66667);
+					return this.chainModify([0x0AAB, 0x1000]););
 				}
 			}
 		},
@@ -199,7 +199,7 @@ exports.BattleAbilities = {
 				if (pokemon.volatiles['atmosphericperversion'] == pokemon.volatiles['weatherbreak']){
 					return this.chainModify(1.5);
 				} 	else {
-					return this.chainModify(0.66667);
+					return this.chainModify([0x0AAB, 0x1000]);
 				}
 			}
 		},
@@ -1936,7 +1936,7 @@ exports.BattleAbilities = {
 			if (this.isWeather(['hail', 'solarsnow'])) {
 				if (move.type === 'Rock' || move.type === 'Ground' || move.type === 'Steel' || move.type === 'Ice') {
 					this.debug('Desert Snow boost');
-					return this.chainModify(1.3);
+					return this.chainModify([0x14CD, 0x1000]);
 				}
 			}
 		},
@@ -2080,7 +2080,7 @@ exports.BattleAbilities = {
 		},
 		onBasePower: function(basePower, user, target, move) {
 			if (move.type === 'Water') {
-				return this.chainModify(1.1);
+					return this.chainModify([0x1199, 0x1000]);
 			}
 		},
 		id: "seamonster",
@@ -2236,14 +2236,14 @@ exports.BattleAbilities = {
 				if (attacker.volatiles['atmosphericperversion'] == attacker.volatiles['weatherbreak']){
 					return this.chainModify(1.5);
 				} else {
-					return this.chainModify(0.6666667);
+					return this.chainModify([0x0AAB, 0x1000]);
 				}
 			} else if (this.isWeather(['solarsnow'])) {
 				this.debug('Blaze boost');
 				if (attacker.volatiles['atmosphericperversion'] == attacker.volatiles['weatherbreak']){
 					return this.chainModify(2.25);
 				} else {
-					return this.chainModify(0.44444);
+					return this.chainModify([0x071C, 0x1000]);
 				}
 			}
 		},
@@ -2409,9 +2409,9 @@ exports.BattleAbilities = {
 	"sunaura": {
 		shortDesc: "Powers up each Pokemon's Fire-type moves by 33%.",
 		onBasePowerPriority: 8,
-		onBasePower: function(type, attacker, defender, move) {
-			if (type === 'Fire') {
-				return this.chainModify(1.3);
+		onAnyBasePower: function(basePower, source, target, move) {
+			if (move.type === 'Fire') {
+				return this.chainModify([0x1547, 0x1000]);
 			}
 		},
 		id: "sunaura",
@@ -2825,7 +2825,7 @@ exports.BattleAbilities = {
 				if (pokemon.volatiles['atmosphericperversion'] == pokemon.volatiles['weatherbreak']){
 					return this.chainModify(1.5);
 				} else {
-					return this.chainModify(0.6667);
+					return this.chainModify([0x0AAB, 0x1000]);
 				}
 			}
 		},
@@ -2877,7 +2877,7 @@ exports.BattleAbilities = {
 				if (pokemon.volatiles['atmosphericperversion'] == pokemon.volatiles['weatherbreak']){
 					return this.chainModify(1.5);
 				} 	else {
-					return this.chainModify(0.66667);
+					return this.chainModify([0x0AAB, 0x1000]);
 				}
 			}
 		},
@@ -2908,7 +2908,7 @@ exports.BattleAbilities = {
 		},
 		onBasePowerPriority: 8,
 		onBasePower: function(basePower, pokemon, target, move) {
-			if ((move.type === 'Electric' || move.type === 'Fairy') && this.isTerrain('mistyterrain')) return this.chainModify(1.3);
+			if ((move.type === 'Electric' || move.type === 'Fairy') && this.isTerrain('mistyterrain')) return this.chainModify([0x14CD, 0x1000]);;
 		},
 		id: "mistysupercharge",
 		name: "Misty Supercharge",
@@ -3635,10 +3635,10 @@ exports.BattleAbilities = {
 		shortDesc: "This Pokemon's contact and Grass-type moves are boost 1.3x. These boosts stack.",
 		onBasePowerPriority: 8,
 		onBasePower: function(basePower, attacker, defender, move) {
-			if (move.flags['contact'] != (move.type === 'Grass')) {
-				return this.chainModify(1.3);
+			if (move.flags['contact'] !== (move.type === 'Grass')) {
+				return this.chainModify([0x14CD, 0x1000]);
 			} else if (move.flags['contact'] && move.type === 'Grass') {
-				return this.chainModify(1.69);
+				return this.chainModify([0x1B0A, 0x1000]);
 			}
 		},
 		id: "lethalleafage",
@@ -5455,10 +5455,10 @@ exports.BattleAbilities = {
 		name: "Queen's Command",
 	},
 	"soulforgeddiamond": {
-		shortDesc: "This Pokemon receives 0.665x damage from supereffective attacks.",
+		shortDesc: "This Pokemon receives 0.667x damage from supereffective attacks.",
 		onSourceModifyDamage: function(damage, source, target, move) {
 			if (move.typeMod > 0) {
-				return this.chainModify(0.665);
+					return this.chainModify([0x0AAB, 0x1000]);
 			}
 		},
 		id: "soulforgeddiamond",
@@ -6817,7 +6817,7 @@ exports.BattleAbilities = {
 		onBasePower: function (basePower, attacker, defender, move) {
 			if (move.recoil || move.hasCustomRecoil) {
 				this.debug('Reckless boost');
-				return this.chainModify(1.1);
+					return this.chainModify([0x1199, 0x1000]);
 			}
 		},
                onDamage: function (damage, target, source, effect) {
@@ -6867,7 +6867,7 @@ exports.BattleAbilities = {
 				if (pokemon.volatiles['atmosphericperversion'] == pokemon.volatiles['weatherbreak']){
 					return this.chainModify(1.5);
 				} 	else {
-					return this.chainModify(0.66667);
+					return this.chainModify([0x0AAB, 0x1000]);
 				}
 			}
 		},
@@ -6878,7 +6878,7 @@ exports.BattleAbilities = {
 				if (pokemon.volatiles['atmosphericperversion'] == pokemon.volatiles['weatherbreak']){
 					return this.chainModify(1.5);
 				} 	else {
-					return this.chainModify(0.66667);
+					return this.chainModify([0x0AAB, 0x1000]);
 				}
 			}
 		},
@@ -10123,7 +10123,7 @@ exports.BattleAbilities = {
 		onBasePowerPriority: 8,
 		onBasePower: function (basePower, attacker, defender, move) {
 			if (move.flags['drain'] || move.flags['heal']) {
-				return this.chainModify(1.63);
+					return this.chainModify([0x1A14, 0x1000]);
 			}
 		},
 		onModifyMove: function (move) {
@@ -10310,7 +10310,7 @@ exports.BattleAbilities = {
 		},
 		onBasePowerPriority: 8,
 		onBasePower: function (basePower, pokemon, target, move) {
-			if (pokemon.item.naturalGift) return this.chainModify(1.3);
+			if (pokemon.item.naturalGift) return this.chainModify([0x14CD, 0x1000]);
 		},
 		onDisableMove: function (pokemon) {
 			for (const target of pokemon.side.foe.active) {
