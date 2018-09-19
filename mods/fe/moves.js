@@ -9035,5 +9035,29 @@ exports.BattleMovedex = {
 		zMoveEffect: 'clearnegativeboost',
 		contestType: "Cool",
 	},
+	"rollingstone": {
+		accuracy: 100,
+		basePower: 0,
+		basePowerCallback: function (pokemon, target) {
+			let power = (Math.floor(25 * target.getStat('spe') / pokemon.getStat('spe')) || 1);
+			if (power > 150) power = 150;
+			this.debug('' + power + ' bp');
+			return power;
+		},
+		category: "Special",
+		desc: "Power is equal to (25 * target's current Speed / user's current Speed), rounded down, + 1, but not more than 150.",
+		shortDesc: "More power the slower the user than the target.",
+		id: "rollingstone",
+		isViable: true,
+		name: "Rolling Stone",
+		pp: 10,
+		priority: 0,
+		flags: {bullet: 1, protect: 1, mirror: 1},
+		secondary: false,
+		target: "normal",
+		type: "Rock",
+		zMovePower: 160,
+		contestType: "Cool",
+	},
 };
 
