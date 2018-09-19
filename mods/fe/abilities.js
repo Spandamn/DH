@@ -8031,15 +8031,15 @@ exports.BattleAbilities = {
 	                bestStat = source.stats[i];
 	            }
 	        }
+			  let statsflipped = 0;
 	        for (let i in boost) {
 	            // @ts-ignore
 	            if (source.stats[i] != bestStat) {
 	                boost[i] *= -1;
-	                this.boost({
-	                    [stat]: 1
-	                }, source);
+						 statsflipped = statsflipped + 1;
 	            }
 	        }
+           this.boost({[stat]: statsflipped}, source);
 	    },
 	    onSourceFaint: function(target, source, effect) {
 	        if (effect && effect.effectType === 'Move') {
