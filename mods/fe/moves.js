@@ -9171,5 +9171,25 @@ exports.BattleMovedex = {
 		zMoveBoost: {spd: 1},
 		contestType: "Clever",
 	},
+	"trifreeze": {
+		accuracy: 100,
+		basePower: 75,
+		category: "Special",
+		desc: "This move's type effectiveness against Ice, Electric, or Fire is changed to be super effective no matter what this move's type is.",
+		shortDesc: "Super effective on Ice, Electric, and Fire.",
+		id: "trifreeze",
+		isViable: true,
+		name: "Tri-Freeze",
+		pp: 10,
+		priority: 0,
+		flags: {protect: 1, mirror: 1},
+		onEffectiveness: function (typeMod, type) {
+			if (type === 'Water' || type === 'Electric' || type === 'Fire') return 1;
+		},
+		target: "normal",
+		type: "Ice",
+		zMovePower: 140,
+		contestType: "Beautiful",
+	},
 };
 
