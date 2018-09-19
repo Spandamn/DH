@@ -9191,5 +9191,27 @@ exports.BattleMovedex = {
 		zMovePower: 140,
 		contestType: "Beautiful",
 	},
+	"nightmarepolish": {
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		desc: "Raises the user's Speed by 2 stages and its Special Attack by 1 stage.",
+		shortDesc: "Raises the user's Speed by 2 and Sp. Atk by 1.",
+		id: "nightmarepolish",
+		isViable: true,
+		name: "Nightmare Polish",
+		pp: 10,
+		priority: 0,
+		flags: {snatch: 1},
+		boosts: {
+			spe: 2,
+			spa: 1,
+		},
+		secondary: false,
+		target: "self",
+		type: "Dark",
+		zMoveEffect: 'clearnegativeboost',
+		contestType: "Clever",
+	},
 };
 
