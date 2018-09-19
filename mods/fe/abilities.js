@@ -7035,14 +7035,14 @@ exports.BattleAbilities = {
 			}
 			if (showMsg && !effect.secondaries) this.add("-fail", target, "unboost", "[from] ability: Poison Veil", "[of] " + target);
 		},
-		id: "poison",
+		id: "poisonveil",
 		name: "Poison Veil",
 	},
 	"thermogenesis": {
 		shortDesc: "This Pokemon has the resistances of fire types.",
 		onEffectiveness: function(typeMod, target, type, move) {
-			let typeCheck = this.battle.getEffectiveness(move, 'Fire');
-			typeCheck = this.battle.singleEvent('Effectiveness', move, null, 'Fire', move, null, typeCheck);
+			let typeCheck = this.getEffectiveness(move, 'Fire');
+			typeCheck = this.singleEvent('Effectiveness', move, null, 'Fire', move, null, typeCheck);
 			if (typeCheck < 0){
 				return typeMod - 1;
 			}
@@ -7058,18 +7058,18 @@ exports.BattleAbilities = {
 				this.add('-immune', target, '[msg]', '[from] ability: Echo');
 				let newMove = this.getMoveCopy(move.id);
 				if (source.ability !== 'echo') {
-				this.useMove(newMove, this.effectData.target, source);
+					this.useMove(newMove, this.effectData.target, source);
 				}
 				return null;
 			}
 		},
 		onAllyTryHitSide: function (target, source, move) {
 			if (move.flags['sound']) {
-			this.add('-immune', this.effectData.target, '[msg]', '[from] ability: Echo');
-			let newMove = this.getMoveCopy(move.id);
-			if (source.ability !== 'echo') {
-			this.useMove(newMove, this.effectData.target, source);
-			}
+				this.add('-immune', this.effectData.target, '[msg]', '[from] ability: Echo');
+				let newMove = this.getMoveCopy(move.id);
+				if (source.ability !== 'echo') {
+					this.useMove(newMove, this.effectData.target, source);
+				}
 			}
 			return null;
 		},
@@ -8975,23 +8975,15 @@ exports.BattleAbilities = {
 "inversearmor": {
     desc: "Type effectiveness of moves that the holder uses or is hit by is inverted (Inverse Battle rules apply; type effectiveness of moves used by Mold Breaker variants users is not influenced by this ability).",
     shortDesc: "Type effectiveness in moves that target or are used by this Pokemon is inverted.",
-	 onModifyMove: function (move) {
-		if (!move.ignoreImmunity) move.ignoreImmunity = {};
-		if (move.ignoreImmunity !== true) {
-			move.ignoreImmunity[move.type] = true;
-		}
+	 onAnyModifyMove: function (move, attacker, defender) {
+		 if (!move || (attacker !== this.effectData.target && defender !== this.effectData.target)) return;
+		 if (!move.ignoreImmunity) move.ignoreImmunity = {};
+		 if (move.ignoreImmunity !== true) {
+				move.ignoreImmunity[move.type] = true;
+		 }
 	 },
-	 onSourceModifyMove: function (move) {
-		if (!move.ignoreImmunity) move.ignoreImmunity = {};
-		if (move.ignoreImmunity !== true) {
-			move.ignoreImmunity[move.type] = true;
-		}
-	 },
-    onEffectiveness: function(typeMod, target, type, move) {
-        if (move && !this.getImmunity(move, type)) return 1;
-        return -typeMod;
-    },
-    onSourceEffectiveness: function(typeMod, target, type, move) {
+    onAnyEffectiveness: function(typeMod, source, target, type, move) {
+		  if (source !== this.effectData.target && target !== this.effectData.target) return;
         if (move && !this.getImmunity(move, type)) return 1;
         return -typeMod;
     },
@@ -10782,14 +10774,14 @@ exports.BattleAbilities = {
 			let stat = 'atk';
 				let bestStat = 0;
 				for (let i in target.stats) {
-					if (source.stats[i] > bestStat) {
+					if (target.stats[i] > bestStat) {
 						stat = i;
 						bestStat = target.stats[i];
 					}
 				}
 			if (boost.stat && boost.stat < 0) {
 				delete boost.stat;
-				if (!effect.secondaries) this.add("-fail", target, "unboost", "Attack", "[from] ability: Beast Eye", "[of] " + target);
+				if (!effect.secondaries) this.add("-fail", target, "unboost", stat, "[from] ability: Beast Eye", "[of] " + target);
 				this.boost({[stat]: 1}, target);
 			}
 		},
@@ -11793,7 +11785,7 @@ exports.BattleAbilities = {
 	},
 	"desertmirage": {
 		desc: "If this Pokemon is an Aegipass, it changes to Directional Forme before attempting to use an attacking move, and changes to Magnetic Forme before attempting to use King's Shield or Ancient Shield. If it's in Directional Forme, this Pokemon's Ground-, Rock-, and Steel-type attacks have their power multiplied by 1.3. If it's in Magnetic forme, incoming Ground-, Rock-, and Steel-type attacks have their power divided by 1.3.",
-		shortDesc: "If Aegipass, changes Forme to Directional before attacks and Magnetic before King's Shield. Damage from Rock-, Ground-, or Steel-type moves is reduced by 1.3x as Magnetic. Directional's Rock-, Ground-, and Steel-type moves have 1.3x power.",
+		shortDesc: "If Aegipass, changes Forme to Directional before attacks and Magnetic before King's Shield or Ancient Shield. Damage from Rock-, Ground-, or Steel-type moves is reduced by 1.3x as Magnetic. Directional's Rock-, Ground-, and Steel-type moves have 1.3x power.",
 		onBeforeMovePriority: 0.5,
 		onBeforeMove: function (attacker, defender, move) {
 			if (attacker.template.baseSpecies !== 'Aegipass' || attacker.transformed) return;
@@ -11820,5 +11812,14 @@ exports.BattleAbilities = {
 		},
 		id: "desertmirage",
 		name: "Desert Mirage",
+	},
+	"adaptivebias": {
+		desc: "This Pokemon's moves that match one of its types have a same-type attack bonus (STAB) of 2 instead of 1.5. When targeted by a move that matches one of the user's types, the same-type attack bonus is disregarded.",
+		shortDesc: "This Pokemon's same-type attack bonus (STAB) is 2 instead of 1.5. Negates STAB of incoming moves.",
+		onModifyMove: function (move) {
+			move.stab = 2;
+		},
+		id: "adaptivebias",
+		name: "Adaptive Bias",
 	},
 };

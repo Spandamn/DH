@@ -8983,5 +8983,254 @@ exports.BattleMovedex = {
 		zMovePower: 100,
 		contestType: "Tough",
 	},
+	"ancientshield": {
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		desc: "The user is protected from most attacks made by other Pokemon during this turn, and Pokemon trying to make contact with the user have their Attack, Defense, Special Attack, Special Defense, and Speed lowered by 1 stage each. Non-damaging moves go through this protection. This move has a 1/X chance of being successful, where X starts at 1 and triples each time this move is successfully used. X resets to 1 if this move fails or if the user's last move used is not Baneful Bunker, Detect, Endure, King's Shield, Protect, Quick Guard, Spiky Shield, or Wide Guard. Fails if the user moves last this turn.",
+		shortDesc: "Protects from attacks. Contact: lowers all stats by 1 (not acc/eva).",
+		id: "ancientshield",
+		isViable: true,
+		name: "Ancient Shield",
+		pp: 10,
+		priority: 4,
+		flags: {},
+		stallingMove: true,
+		volatileStatus: 'ancientshield',
+		onTryHit: function (pokemon) {
+			return !!this.willAct() && this.runEvent('StallMove', pokemon);
+		},
+		onHit: function (pokemon) {
+			pokemon.addVolatile('stall');
+		},
+		effect: {
+			duration: 1,
+			onStart: function (target) {
+				this.add('-singleturn', target, 'Protect');
+			},
+			onTryHitPriority: 3,
+			onTryHit: function (target, source, move) {
+				if (!move.flags['protect'] || move.category === 'Status') {
+					if (move.isZ) move.zBrokeProtect = true;
+					return;
+				}
+				this.add('-activate', target, 'move: Protect');
+				source.moveThisTurnResult = true;
+				let lockedmove = source.getVolatile('lockedmove');
+				if (lockedmove) {
+					// Outrage counter is reset
+					if (source.volatiles['lockedmove'].duration === 2) {
+						delete source.volatiles['lockedmove'];
+					}
+				}
+				if (move.flags['contact']) {
+					this.boost({atk: -1, def: -1, spa: -1, spd: -1, spe: -1}, source, target, this.getMove("Ancient Shield"));
+				}
+				return null;
+			},
+		},
+		secondary: false,
+		target: "self",
+		type: "Rock",
+		zMoveEffect: 'clearnegativeboost',
+		contestType: "Cool",
+	},
+	"rollingstone": {
+		accuracy: 100,
+		basePower: 0,
+		basePowerCallback: function (pokemon, target) {
+			let power = (Math.floor(25 * target.getStat('spe') / pokemon.getStat('spe')) || 1);
+			if (power > 150) power = 150;
+			this.debug('' + power + ' bp');
+			return power;
+		},
+		category: "Special",
+		desc: "Power is equal to (25 * target's current Speed / user's current Speed), rounded down, + 1, but not more than 150.",
+		shortDesc: "More power the slower the user than the target.",
+		id: "rollingstone",
+		isViable: true,
+		name: "Rolling Stone",
+		pp: 10,
+		priority: 0,
+		flags: {bullet: 1, protect: 1, mirror: 1},
+		secondary: false,
+		target: "normal",
+		type: "Rock",
+		zMovePower: 160,
+		contestType: "Cool",
+	},
+	"trip": {
+		accuracy: 100,
+		basePower: 40,
+		category: "Physical",
+		desc: "Has a 100% chance to lower the target's Attack by 1 stage.",
+		shortDesc: "Usually goes first. 100% chance to lower the target's Attack by 1.",
+		id: "trip",
+		isViable: true,
+		name: "Trip",
+		pp: 30,
+		priority: 1,
+		flags: {contact: 1, protect: 1, mirror: 1},
+		secondary: {
+			chance: 100,
+			boosts: {
+				atk: -1,
+			},
+		},
+		target: "normal",
+		type: "Fairy",
+		zMovePower: 100,
+		contestType: "Cute",
+	},
+	"attentiongrab": {
+		accuracy: 100,
+		basePower: 80,
+		category: "Physical",
+		desc: "This move combines Fairy in its type effectiveness against the target. Has a 10% chance to lower the target's Attack by 1 stage.",
+		shortDesc: "Combines Fairy in its type effectiveness. 10% chance to lower the target's Attack by 1.",
+		id: "attentiongrab",
+		name: "Attention Grab",
+		pp: 10,
+		flags: {contact: 1, protect: 1, mirror: 1},
+		onEffectiveness: function (typeMod, type, move) {
+			// @ts-ignore
+			return typeMod + this.getEffectiveness('Fairy', type);
+		},
+		priority: 0,
+		secondary: {
+			chance: 10,
+			boosts: {
+				atk: -1,
+			},
+		},
+		target: "normal",
+		type: "Ghost",
+		zMovePower: 160,
+		contestType: "Cute",
+	},
+	"powderburn": {
+		accuracy: 95,
+		basePower: 95,
+		category: "Special",
+		desc: "Has a 20% chance to burn the target, doubling to 40% if the target is Water-type. This move's type effectiveness against Water is changed to be super effective no matter what this move's type is.",
+		shortDesc: "40% chance to burn if the target is water-type, 20% chance otherwise. Super effective on Water.",
+		id: "powderburn",
+		isViable: true,
+		name: "Powder Burn",
+		pp: 10,
+		priority: 0,
+		flags: {protect: 1, mirror: 1},
+		onEffectiveness: function (typeMod, type) {
+			if (type === 'Water') return 1;
+		},
+		secondary: {
+			chance: 40,
+			onHit: function (target, source) {
+				let result = this.random(2);
+				if (target.hasType('Water') || result === 0) {
+					target.trySetStatus('brn', source);
+				}
+			},
+		},
+		target: "normal",
+		type: "Fire",
+		zMovePower: 175,
+		contestType: "Beautiful",
+	},
+	"stunningspikes": {
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		desc: "Sets up a hazard on the foe's side of the field, paralyzing each foe that switches in, unless it is a Flying-type Pokemon or has the Ability Levitate. Can be removed from the foe's side if any foe uses Rapid Spin or Defog, is hit by Defog, or a grounded Electric-type Pokemon switches in. Safeguard prevents the foe's party from being paralyzed on switch-in, but a substitute does not.",
+		shortDesc: "Paralyzes grounded foes on switch-in.",
+		id: "stunningspikes",
+		isViable: true,
+		name: "Stunning Spikes",
+		pp: 20,
+		priority: 0,
+		flags: {reflectable: 1, nonsky: 1},
+		sideCondition: 'stunningspikes',
+		effect: {
+			// this is a side condition
+			onStart: function (side) {
+				this.add('-sidestart', side, 'move: Stunning Spikes');
+			},
+			onSwitchIn: function (pokemon) {
+				if (!pokemon.isGrounded()) return;
+				if (pokemon.hasType('Electric')) {
+					this.add('-sideend', pokemon.side, 'move: Stunning Spikes', '[of] ' + pokemon);
+					pokemon.side.removeSideCondition('stunningspikes');
+				} else {
+					pokemon.trySetStatus('par', pokemon.side.foe.active[0]);
+				}
+			},
+		},
+		secondary: false,
+		target: "foeSide",
+		type: "Electric",
+		zMoveBoost: {spd: 1},
+		contestType: "Clever",
+	},
+	"trifreeze": {
+		accuracy: 100,
+		basePower: 75,
+		category: "Special",
+		desc: "This move's type effectiveness against Ice, Electric, or Fire is changed to be super effective no matter what this move's type is.",
+		shortDesc: "Super effective on Ice, Electric, and Fire.",
+		id: "trifreeze",
+		isViable: true,
+		name: "Tri-Freeze",
+		pp: 10,
+		priority: 0,
+		flags: {protect: 1, mirror: 1},
+		onEffectiveness: function (typeMod, type) {
+			if (type === 'Water' || type === 'Electric' || type === 'Fire') return 1;
+		},
+		target: "normal",
+		type: "Ice",
+		zMovePower: 140,
+		contestType: "Beautiful",
+	},
+	"nightmarepolish": {
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		desc: "Raises the user's Speed by 2 stages and its Special Attack by 1 stage.",
+		shortDesc: "Raises the user's Speed by 2 and Sp. Atk by 1.",
+		id: "nightmarepolish",
+		isViable: true,
+		name: "Nightmare Polish",
+		pp: 10,
+		priority: 0,
+		flags: {snatch: 1},
+		boosts: {
+			spe: 2,
+			spa: 1,
+		},
+		secondary: false,
+		target: "self",
+		type: "Dark",
+		zMoveEffect: 'clearnegativeboost',
+		contestType: "Clever",
+	},
+	"wilyblast": {
+		accuracy: 100,
+		basePower: 95,
+		category: "Special",
+		desc: "Damage is calculated using the target's Special Attack stat, including stat stage changes. The user's Ability and item are used as normal.",
+		shortDesc: "Uses target's Sp. Atk stat in damage calculation.",
+		id: "wilyblast",
+		isViable: true,
+		name: "Wily Blast",
+		pp: 15,
+		priority: 0,
+		flags: {protect: 1, mirror: 1},
+		useTargetOffensive: true,
+		secondary: false,
+		target: "normal",
+		type: "Fighting",
+		zMovePower: 175,
+		contestType: "Clever",
+	},
 };
 
