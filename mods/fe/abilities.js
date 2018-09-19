@@ -393,7 +393,7 @@ exports.BattleAbilities = {
 						return this.chainModify([0x14CD, 0x1000]);
 					} 	else {
 						this.debug('Inverted Sand Force suppress');
-						return this.chainModify(0.769230769);
+					return this.chainModify([0x0C4F, 0x1000]);
 					}
 				}
 			}
