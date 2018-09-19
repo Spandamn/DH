@@ -614,7 +614,7 @@ exports.BattleAbilities = {
 			if (this.isWeather(['hail', 'solarsnow']) && move.type === 'Ice') {
 				if (pokemon.volatiles['atmosphericperversion'] == pokemon.volatiles['weatherbreak']){
 					this.debug('Snow Force boost');
-					return this.chainModify(1.33);
+					this.chainModify([0x1547, 0x1000])
 				} else {
 					this.debug('Inverted Snow Force suppress');
 					return this.chainModify(0.75);
@@ -4203,8 +4203,8 @@ exports.BattleAbilities = {
 		onBasePower: function(basePower, attacker, defender, move) {
 			if (move.flags['punch']) {
 				return this.chainModify(1.5);
-			} else if (move.flags['contact'] && !move.flags['punch']) {
-				return this.chainModify(1.3);
+			} else if (move.flags['contact']) {
+				return this.chainModify(0x1547);
 			}
 		},
 		id: "fisticuffs",
@@ -5021,7 +5021,7 @@ exports.BattleAbilities = {
 		},
 		onBasePowerPriority: 8,
 		onBasePower: function(basePower, pokemon, target, move) {
-			if (move.hasSheerForce) return this.chainModify([0x14CD, 0x1000]);
+			if (move.hasSheerForce) return this.chainModify([0x1547, 0x1000]);
 		},
 		id: "topgear",
 		name: "Top Gear",
@@ -6203,7 +6203,7 @@ exports.BattleAbilities = {
 		shortDesc: "If this Pokemon is holding an item, its speed and the power of its Dark-type moves are 1.33x. If it is not holding an item, its speed and the power of its Dark-type moves are doubled.",
 		onModifySpe: function (spe, pokemon) {
 			if (pokemon.item) {
-				return this.chainModify(1.33);
+				return this.chainModify([0x1547, 0x1000])
 			}
 			else if (!pokemon.item) {
 				return this.chainModify(2);
@@ -6211,7 +6211,7 @@ exports.BattleAbilities = {
 		},
 		onModifyAtk: function (atk, attacker, defender, move) {
 			if (move.type === 'Dark' && attacker.item) {
-				return this.chainModify(1.33);
+				return this.chainModify([0x1547, 0x1000])
 			}
 			else 	if (move.type === 'Dark' && !attacker.item) {
 				return this.chainModify(2);
@@ -6220,7 +6220,7 @@ exports.BattleAbilities = {
 		onModifySpAPriority: 5,
 		onModifySpA: function (atk, attacker, defender, move) {
 			if (move.type === 'Dark' && attacker.item) {
-				return this.chainModify(1.33);
+				return this.chainModify([0x1547, 0x1000])
 			}
 			else 	if (move.type === 'Dark' && !attacker.item) {
 				return this.chainModify(2);
@@ -6259,7 +6259,7 @@ exports.BattleAbilities = {
 		onBasePowerPriority: 8,
 		onBasePower: function(basePower, attacker, defender, move) {
 			if (move.multihit) {
-				return this.chainModify(1.33);
+				return this.chainModify([0x1547, 0x1000])
 			}
 		},
 		id: "flipout",
@@ -7505,13 +7505,13 @@ exports.BattleAbilities = {
 		shortDesc: "Powers up Fairy-type moves by 33%. When an item is consumed, the power of Fairy-type moves is doubled instead.",
 		onModifyAtk: function (atk, attacker, defender, move) {
 			if (move.type === 'Fairy') {
-				return this.chainModify(1.33);
+				return this.chainModify([0x1547, 0x1000])
 			}
 		},
 		onModifySpAPriority: 5,
 		onModifySpA: function (atk, attacker, defender, move) {
 			if (move.type === 'Fairy') {
-				return this.chainModify(1.33);
+				return this.chainModify([0x1547, 0x1000])
 			}
 		},
 		onAfterUseItem: function (item, pokemon) {
@@ -9810,7 +9810,7 @@ exports.BattleAbilities = {
 		onBasePower: function (attacker, defender, move) {
 			if (move.type === 'Psychic' || move.type === 'Dragon' || move.type === 'Electric' || move.type === 'Fighting' || move.type === 'Ghost' || move.type === 'Normal' || move.type === 'Poison' || move.type === 'Ground' || move.type === 'Fairy') {
 				this.debug('Technician boost');
-				return this.chainModify(1.33);
+				return this.chainModify([0x1547, 0x1000])
 			}
 		},
 		id: "soakingaura",
