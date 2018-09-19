@@ -4204,7 +4204,7 @@ exports.BattleAbilities = {
 			if (move.flags['punch']) {
 				return this.chainModify(1.5);
 			} else if (move.flags['contact']) {
-				return this.chainModify(0x1547);
+				return this.chainModify([0x1547, 0x1000]);
 			}
 		},
 		id: "fisticuffs",
