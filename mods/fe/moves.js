@@ -8983,5 +8983,57 @@ exports.BattleMovedex = {
 		zMovePower: 100,
 		contestType: "Tough",
 	},
+	"ancientshield": {
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		desc: "The user is protected from most attacks made by other Pokemon during this turn, and Pokemon trying to make contact with the user have their Attack, Defense, Special Attack, Special Defense, and Speed lowered by 1 stage each. Non-damaging moves go through this protection. This move has a 1/X chance of being successful, where X starts at 1 and triples each time this move is successfully used. X resets to 1 if this move fails or if the user's last move used is not Baneful Bunker, Detect, Endure, King's Shield, Protect, Quick Guard, Spiky Shield, or Wide Guard. Fails if the user moves last this turn.",
+		shortDesc: "Protects from attacks. Contact: lowers all stats by 1 (not acc/eva).",
+		id: "ancientshield",
+		isViable: true,
+		name: "Ancient Shield",
+		pp: 10,
+		priority: 4,
+		flags: {},
+		stallingMove: true,
+		volatileStatus: 'ancientshield',
+		onTryHit: function (pokemon) {
+			return !!this.willAct() && this.runEvent('StallMove', pokemon);
+		},
+		onHit: function (pokemon) {
+			pokemon.addVolatile('stall');
+		},
+		effect: {
+			duration: 1,
+			onStart: function (target) {
+				this.add('-singleturn', target, 'Protect');
+			},
+			onTryHitPriority: 3,
+			onTryHit: function (target, source, move) {
+				if (!move.flags['protect'] || move.category === 'Status') {
+					if (move.isZ) move.zBrokeProtect = true;
+					return;
+				}
+				this.add('-activate', target, 'move: Protect');
+				source.moveThisTurnResult = true;
+				let lockedmove = source.getVolatile('lockedmove');
+				if (lockedmove) {
+					// Outrage counter is reset
+					if (source.volatiles['lockedmove'].duration === 2) {
+						delete source.volatiles['lockedmove'];
+					}
+				}
+				if (move.flags['contact']) {
+					this.boost({atk: -1, def: -1, spa: -1, spd: -1, spe: -1}, source, target, this.getMove("Ancient Shield"));
+				}
+				return null;
+			},
+		},
+		secondary: false,
+		target: "self",
+		type: "Rock",
+		zMoveEffect: 'clearnegativeboost',
+		contestType: "Cool",
+	},
 };
 
