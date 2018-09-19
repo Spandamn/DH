@@ -8937,5 +8937,51 @@ exports.BattleMovedex = {
 		zMoveEffect: 'clearnegativeboost',
 		contestType: "Clever",
 	},
+	"destructivestorm": {
+		accuracy: 100,
+		basePower: 150,
+		basePowerCallback: function (pokemon, target, move) {
+			if (!this.isWeather(['raindance', 'primordialsea'])){
+				return move.basePower * pokemon.hp / pokemon.maxhp;
+			}
+		},
+		category: "Special",
+		desc: "Power is equal to (user's current HP * 150 / user's maximum HP), rounded down, but not less than 1. Always has 150 Power in Rain.",
+		shortDesc: "Less power as user's HP decreases unless Rain Dance is active. Hits foe(s).",
+		id: "destructivestorm",
+		isViable: true,
+		name: "Destructive Storm",
+		pp: 5,
+		priority: 0,
+		flags: {protect: 1, mirror: 1},
+		secondary: false,
+		target: "allAdjacentFoes",
+		type: "Electric",
+		zMovePower: 200,
+		contestType: "Beautiful",
+	},
+	"quickbulldoze": {
+		accuracy: 100,
+		basePower: 40,
+		category: "Physical",
+		desc: "Has a 100% chance to lower the target's Speed by 1 stage.",
+		shortDesc: "Hits first. 100% chance to lower the target's Speed by 1.",
+		id: "quickbulldoze",
+		isViable: true,
+		name: "Quick Bulldoze",
+		pp: 30,
+		priority: 2,
+		flags: {protect: 1, mirror: 1},
+		secondary: {
+			chance: 100,
+			boosts: {
+				spe: -1,
+			},
+		},
+		target: "normal",
+		type: "Ground",
+		zMovePower: 100,
+		contestType: "Tough",
+	},
 };
 
