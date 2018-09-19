@@ -11814,7 +11814,7 @@ exports.BattleAbilities = {
 			if (defender.template.species === 'Aegipass-Magnetic') {
 				if (move.type === 'Rock' || move.type === 'Ground' || move.type === 'Steel') {
 					this.debug('Desert Mirage weaken');
-					return this.chainModify([0x1000, 0x14CD]);
+					return this.chainModify([0x0C4F, 0x1000]);
 				}
 			}
 		},
