@@ -601,7 +601,7 @@ exports.BattleAbilities = {
 		},
 		onModifyAtk: function(atk, attacker, defender, move) {
 			if (move.type === 'Grass') {
-				return this.chainModify(1.2);
+				return this.chainModify([0x1333, 0x1000]);
 			}
 		},
 		id: "cactuspower",
@@ -4233,20 +4233,17 @@ exports.BattleAbilities = {
 		name: "Starburst",
 	},
 	"faefist": {
-		shortDesc: "This Pokemon's punch-based attacks have 1.2x power. Sucker Punch is not boosted.",
+		shortDesc: "This Pokemon's punch-based attacks have 1.7x power. This Pokemon's Fairy-type moves have 1.2x power. These effects stack. Sucker Punch is not boosted.",
 		onBasePowerPriority: 8,
 		onBasePower: function(basePower, attacker, defender, move) {
-			if (move.flags['punch']) {
-				return this.chainModify(1.7);
-			} else if (move.type === 'Fairy') {
-				return this.chainModify(1.2);
-			} else if (move.flags['punch'] && move.type === 'Fairy') {
-				return this.chainModify(2.04);
-			}
-		},
-		onModifyMove: function(move) {
-			if (move.flags['punch']) {
-				move.type === 'Fairy'
+			if (move.flags['punch'] || move.type === 'Fairy') {
+				if (move.type !== 'Fairy') {
+					return this.chainModify([0x1B33, 0x1000]);
+				} else if (!move.flags['punch']) {
+					return this.chainModify([0x1333, 0x1000]);
+				} else {
+					return this.chainModify([0x20A3, 0x1000]);
+				}
 			}
 		},
 		id: "faefist",
@@ -5129,7 +5126,7 @@ exports.BattleAbilities = {
 		onBasePowerPriority: 8,
 		onBasePower: function(basePower, attacker, defender, move) {
 			if (move.flags['punch'] || move.name === 'Arm Thrust' || move.name === 'Needle Arm') {
-				return this.chainModify(1.2);
+				return this.chainModify([0x1333, 0x1000]);
 			}
 		},
 		onAfterEachBoost: function (boost, target, source) {
@@ -5151,7 +5148,7 @@ exports.BattleAbilities = {
 		name: "Caestus",
 	},
 	"fusionpowered": {
-		shortDesc: "This Pokémon's STAB moves do 2x damage rather than 1.5x, but have 33% recoil. Moves with a recoil element do 1.25x bonus damage.",
+		shortDesc: "This Pokémon's STAB moves do 2x damage rather than 1.5x. Recoil and STAB moves deal 1.2x damage.",
 		onModifyMove: function(move) {
 			move.stab = 2;
 		},
@@ -5159,7 +5156,7 @@ exports.BattleAbilities = {
 		onBasePower: function(basePower, attacker, defender, move) {
 			if (move.recoil || move.hasCustomRecoil || attacker.hasType(move.type)) {
 				this.debug('Reckless boost');
-				return this.chainModify(1.2);
+				return this.chainModify([0x1333, 0x1000]);
 			}
 		},
 		id: "fusionpowered",
