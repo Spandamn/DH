@@ -3716,7 +3716,7 @@ exports.BattleAbilities = {
 		name: "Black Hole",
 	},
 	"gracefulanalyst": {
-		shortDesc: "60% power boosting Analytic + Serene Grace",
+		shortDesc: "Serene Grace + 60% power boosting Analytic",
 		onBasePowerPriority: 8,
 		onBasePower: function(basePower, pokemon) {
 			let boosted = true;
@@ -3729,7 +3729,7 @@ exports.BattleAbilities = {
 				}
 			}
 			if (boosted) {
-				return this.chainModify(1.6);
+				return this.chainModify([0x199A, 0x1000]);
 			}
 		},
 		onModifyMovePriority: -2,
@@ -3823,7 +3823,7 @@ exports.BattleAbilities = {
 		onBasePowerPriority: 8,
 		onBasePower: function(basePower, attacker, defender, move) {
 			if (move.flags['contact']) {
-				return this.chainModify(1.67);
+				return this.chainModify([0x1AAB, 0x1000]);
 			}
 		},
 		id: "unrivaledclaws",
