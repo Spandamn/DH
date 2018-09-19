@@ -9137,5 +9137,39 @@ exports.BattleMovedex = {
 		zMovePower: 175,
 		contestType: "Beautiful",
 	},
+	"stunningspikes": {
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		desc: "Sets up a hazard on the foe's side of the field, paralyzing each foe that switches in, unless it is a Flying-type Pokemon or has the Ability Levitate. Can be removed from the foe's side if any foe uses Rapid Spin or Defog, is hit by Defog, or a grounded Electric-type Pokemon switches in. Safeguard prevents the foe's party from being paralyzed on switch-in, but a substitute does not.",
+		shortDesc: "Paralyzes grounded foes on switch-in.",
+		id: "stunningspikes",
+		isViable: true,
+		name: "Stunning Spikes",
+		pp: 20,
+		priority: 0,
+		flags: {reflectable: 1, nonsky: 1},
+		sideCondition: 'stunningspikes',
+		effect: {
+			// this is a side condition
+			onStart: function (side) {
+				this.add('-sidestart', side, 'move: Stunning Spikes');
+			},
+			onSwitchIn: function (pokemon) {
+				if (!pokemon.isGrounded()) return;
+				if (pokemon.hasType('Electric')) {
+					this.add('-sideend', pokemon.side, 'move: Stunning Spikes', '[of] ' + pokemon);
+					pokemon.side.removeSideCondition('stunningspikes');
+				} else {
+					pokemon.trySetStatus('par', pokemon.side.foe.active[0]);
+				}
+			},
+		},
+		secondary: false,
+		target: "foeSide",
+		type: "Electric",
+		zMoveBoost: {spd: 1},
+		contestType: "Clever",
+	},
 };
 
