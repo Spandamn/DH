@@ -9108,5 +9108,34 @@ exports.BattleMovedex = {
 		zMovePower: 160,
 		contestType: "Cute",
 	},
+	"powderburn": {
+		accuracy: 95,
+		basePower: 95,
+		category: "Special",
+		desc: "Has a 20% chance to burn the target, doubling to 40% if the target is Water-type. This move's type effectiveness against Water is changed to be super effective no matter what this move's type is.",
+		shortDesc: "40% chance to burn if the target is water-type, 20% chance otherwise. Super effective on Water.",
+		id: "powderburn",
+		isViable: true,
+		name: "Powder Burn",
+		pp: 10,
+		priority: 0,
+		flags: {protect: 1, mirror: 1},
+		onEffectiveness: function (typeMod, type) {
+			if (type === 'Water') return 1;
+		},
+		secondary: {
+			chance: 40,
+			onHit: function (target, source) {
+				let result = this.random(2);
+				if (target.hasType('Water') || result === 0) {
+					target.trySetStatus('brn', source);
+				}
+			},
+		},
+		target: "normal",
+		type: "Fire",
+		zMovePower: 175,
+		contestType: "Beautiful",
+	},
 };
 
