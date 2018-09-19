@@ -9103,7 +9103,7 @@ exports.BattleMovedex = {
 				atk: -1,
 			},
 		},
-		target: "any",
+		target: "normal",
 		type: "Ghost",
 		zMovePower: 160,
 		contestType: "Cute",
