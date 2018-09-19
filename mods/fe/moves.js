@@ -351,6 +351,36 @@ exports.BattleMovedex = {
 		//contestType: "Clever",
 	},
 	
+	"coreenforcer": {
+		num: 687,
+		accuracy: 100,
+		basePower: 100,
+		category: "Special",
+		desc: "If the user moves after the target, the target's Ability is rendered ineffective as long as it remains active. If the target uses Baton Pass, the replacement will remain under this effect. If the target's Ability is Multitype or Stance Change, this effect does not happen.",
+		shortDesc: "Nullifies the foe(s) Ability if the target moves first.",
+		id: "coreenforcer",
+		isViable: true,
+		name: "Core Enforcer",
+		pp: 10,
+		priority: 0,
+		flags: {protect: 1, mirror: 1},
+		onHit: function (target) {
+			if (['battlebond', 'comatose', 'disguise', 'multitype', 'powerconstruct', 'rkssystem', 'schooling', 'shieldsdown', 'stancechange', 'truant', 'resurrection', 'magicalwand', 'sleepingsystem', 'cursedcloak', 'appropriation', 'disguiseburden', 'hideandseek', 'beastcostume', 'spiralpower', 'optimize', 'prototype', 'typeillusionist', 'godoffertility', 'foundation', 'sandyconstruct', 'victorysystem', 'techequip', 'technicalsystem', 'triagesystem', 'geneticalgorithm', 'effectsetter', 'tacticalcomputer', 'mitosis', 'barbstance', 'errormacro', 'combinationdrive', 'stanceshield', 'unfriend', 'desertmirage', 'sociallife', 'cosmology', 'crystallizedshield', 'compression', 'whatdoesthisdo'].includes(target.ability)) return;
+			if (target.newlySwitched || this.willMove(target)) return;
+			target.addVolatile('gastroacid');
+		},
+		onAfterSubDamage: function (target) {
+			if (['battlebond', 'comatose', 'disguise', 'multitype', 'powerconstruct', 'rkssystem', 'schooling', 'shieldsdown', 'stancechange', 'truant', 'resurrection', 'magicalwand', 'sleepingsystem', 'cursedcloak', 'appropriation', 'disguiseburden', 'hideandseek', 'beastcostume', 'spiralpower', 'optimize', 'prototype', 'typeillusionist', 'godoffertility', 'foundation', 'sandyconstruct', 'victorysystem', 'techequip', 'technicalsystem', 'triagesystem', 'geneticalgorithm', 'effectsetter', 'tacticalcomputer', 'mitosis', 'barbstance', 'errormacro', 'combinationdrive', 'stanceshield', 'unfriend', 'desertmirage', 'sociallife', 'cosmology', 'crystallizedshield', 'compression', 'whatdoesthisdo'].includes(target.ability)) return;
+			if (target.newlySwitched || this.willMove(target)) return;
+			target.addVolatile('gastroacid');
+		},
+		secondary: false,
+		target: "allAdjacentFoes",
+		type: "Dragon",
+		zMovePower: 140,
+		contestType: "Tough",
+	},
+	
 	"simplebeam": {
 		num: 493,
 		accuracy: 100,
@@ -9261,6 +9291,37 @@ exports.BattleMovedex = {
 		type: "Fire",
 		zMovePower: 180,
 		contestType: "Cool",
+	},
+	
+	"heatedcore": {
+		accuracy: 100,
+		basePower: 120,
+		category: "Physical",
+		desc: "If the user moves after the target, the target is burned and its Ability is rendered ineffective as long as it remains active. If the target uses Baton Pass, the replacement will remain under this effect. If the target's Ability is Multitype or Stance Change, this effect does not happen.",
+		shortDesc: "Nullifies the target's ability and burns it if it moves before the user.",
+		id: "heatedcore",
+		isViable: true,
+		name: "Heated Core",
+		pp: 10,
+		priority: 0,
+		flags: {protect: 1, mirror: 1},
+		onHit: function (target, source, move) {
+			if (['battlebond', 'comatose', 'disguise', 'multitype', 'powerconstruct', 'rkssystem', 'schooling', 'shieldsdown', 'stancechange', 'truant', 'resurrection', 'magicalwand', 'sleepingsystem', 'cursedcloak', 'appropriation', 'disguiseburden', 'hideandseek', 'beastcostume', 'spiralpower', 'optimize', 'prototype', 'typeillusionist', 'godoffertility', 'foundation', 'sandyconstruct', 'victorysystem', 'techequip', 'technicalsystem', 'triagesystem', 'geneticalgorithm', 'effectsetter', 'tacticalcomputer', 'mitosis', 'barbstance', 'errormacro', 'combinationdrive', 'stanceshield', 'unfriend', 'desertmirage', 'sociallife', 'cosmology', 'crystallizedshield', 'compression', 'whatdoesthisdo'].includes(target.ability)) return;
+			if (target.newlySwitched || this.willMove(target)) return;
+			target.trySetStatus('brn', source);
+			target.addVolatile('gastroacid');
+		},
+		onAfterSubDamage: function (target, source, move) {
+			if (['battlebond', 'comatose', 'disguise', 'multitype', 'powerconstruct', 'rkssystem', 'schooling', 'shieldsdown', 'stancechange', 'truant', 'resurrection', 'magicalwand', 'sleepingsystem', 'cursedcloak', 'appropriation', 'disguiseburden', 'hideandseek', 'beastcostume', 'spiralpower', 'optimize', 'prototype', 'typeillusionist', 'godoffertility', 'foundation', 'sandyconstruct', 'victorysystem', 'techequip', 'technicalsystem', 'triagesystem', 'geneticalgorithm', 'effectsetter', 'tacticalcomputer', 'mitosis', 'barbstance', 'errormacro', 'combinationdrive', 'stanceshield', 'unfriend', 'desertmirage', 'sociallife', 'cosmology', 'crystallizedshield', 'compression', 'whatdoesthisdo'].includes(target.ability)) return;
+			if (target.newlySwitched || this.willMove(target)) return;
+			target.trySetStatus('brn', source);
+			target.addVolatile('gastroacid');
+		},
+		secondary: false,
+		target: "normal",
+		type: "Dragon",
+		zMovePower: 190,
+		contestType: "Tough",
 	},
 };
 
