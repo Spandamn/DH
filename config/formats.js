@@ -4303,7 +4303,7 @@ exports.Formats = [
 				//let ability1 = this.getAbility(pokemon.ability);
 				let ability2 = this.getAbility(target.ability);
 				//this.add('raw',ability1, ability1.desc);
-				this.add('raw',ability2, ability2.desc);
+				this.add('raw',ability2, ability2.desc, 'Test');
 				}
         },
 		checkLearnset: function (move, template, lsetData, set) {
