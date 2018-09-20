@@ -136,7 +136,7 @@ exports.BattleAbilities = {
 				if (pokemon.volatiles['atmosphericperversion'] == pokemon.volatiles['weatherbreak']){
 					return this.chainModify(1.5);
 				} 	else {
-					return this.chainModify([0x0AAB, 0x1000]););
+					return this.chainModify([0x0AAB, 0x1000]);
 				}
 			}
 		},
