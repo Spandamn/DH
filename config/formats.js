@@ -4300,7 +4300,7 @@ exports.Formats = [
 		onSwitchIn: function (pokemon) {
             this.add('-start', pokemon, 'typechange', pokemon.template.types.join('/'), '[silent]');
 				let ability = this.getAbility(pokemon.ability);
-				this.add('-ability', ability, ability.desc);
+				this.add('-start', ability, ability.desc, 'test');
         },
 		checkLearnset: function (move, template, lsetData, set) {
            return null
