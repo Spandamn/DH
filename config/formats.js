@@ -4300,9 +4300,9 @@ exports.Formats = [
 		onSwitchIn: function (pokemon) {
 				for (const target of pokemon.side.foe.active) {
             this.add('-start', pokemon, 'typechange', pokemon.template.types.join('/'), '[silent]');
-				let ability1 = this.getAbility(pokemon.ability);
+				//let ability1 = this.getAbility(pokemon.ability);
 				let ability2 = this.getAbility(target.ability);
-				this.add('raw|', ability1, ability1.desc,'');
+				//this.add('raw',ability1, ability1.desc);
 				this.add('raw',ability2, ability2.desc);
 				}
         },
