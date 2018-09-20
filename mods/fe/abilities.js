@@ -10913,6 +10913,7 @@ exports.BattleAbilities = {
 		shortDesc: "This Pokemon is treated as if it were alseep and also all types at once.",
 		onSwitchInPriority: 101,
 		onSwitchIn: function (pokemon) {
+					this.add('c|&Dr.wh0 cares|Sleeping System: This Pokemon is treated as if it were alseep and also all types at once.');
 				pokemon.setType(['Normal', 'Fire', 'Water', 'Electric', 'Grass', 'Ice', 'Fighting', 'Poison', 'Ground', 'Flying', 'Rock', 'Bug', 'Ghost', 'Psychic', 'Dragon', 'Dark', 'Steel', 'Fairy']);
 		},
 		onModifyMovePriority: -1,
