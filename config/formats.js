@@ -4303,7 +4303,7 @@ exports.Formats = [
 				//let ability1 = this.getAbility(pokemon.ability);
 				let ability = this.getAbility(target.ability);
 				//this.add('raw',ability1, ability1.desc);
-				if (target.num > 2000) {
+				if (target.num > 1) {
 				this.add('raw',ability,ability.shortDesc);
 				}
 				}
