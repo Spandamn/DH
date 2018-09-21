@@ -9377,5 +9377,34 @@ exports.BattleMovedex = {
 		type: "Dark",
 		contestType: "Clever",
 	},
+"growthhormone": {
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		desc: "The user restores 1/2 of its maximum HP and has its Defense raised by 1 if no weather conditions are in effect, 2/3 of its maximum HP and Defense raised by 2 if the weather is Sunny Day, and 1/4 of its maximum HP and no Defense boosts if the weather is Hail, Rain Dance, or Sandstorm, all HP values rounded half down.",
+		shortDesc: "Heals the user by a weather-dependent amount. Raises user's Defense by 1 in no weather; 2 in Sun.",
+		id: "growthhormone",
+		isViable: true,
+		name: "Growth Hormone",
+		pp: 5,
+		priority: 0,
+		flags: {snatch: 1, heal: 1},
+		onHit: function (pokemon) {
+			if ((this.isWeather(['sunnyday', 'desolateland', 'solarsnow']) && (pokemon.volatiles['atmosphericperversion'] === pokemon.volatiles['weatherbreak'])) || (this.isWeather(['raindance', 'primordialsea', 'sandstorm', 'hail']) == (pokemon.volatiles['atmosphericperversion'] !== pokemon.volatiles['weatherbreak']))) {
+				this.heal(this.modify(pokemon.maxhp, 0.667));
+				this.boost({def: 2}, pokemon);
+			} else if ((this.isWeather(['sunnyday', 'desolateland', 'solarsnow']) && (pokemon.volatiles['atmosphericperversion'] !== pokemon.volatiles['weatherbreak'])) || (this.isWeather(['raindance', 'primordialsea', 'sandstorm', 'hail']) == (pokemon.volatiles['atmosphericperversion'] === pokemon.volatiles['weatherbreak']))) {
+				return this.heal(this.modify(pokemon.maxhp, 0.25));
+			} else {
+				this.heal(this.modify(pokemon.maxhp, 0.5));
+				this.boost({def: 1}, pokemon);
+			}
+		},
+		secondary: false,
+		target: "self",
+		type: "Grass",
+		zMoveEffect: 'clearnegativeboost',
+		//contestType: "Clever",
+	},
 };
 
