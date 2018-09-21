@@ -9663,8 +9663,8 @@ exports.BattleAbilities = {
 		name: "Spiral Power",
 	},
 	"compassionatesoul": { 
-		desc: "This Pokemon's Attack is raised by 1 stage if it attacks and knocks out another Pokemon.",
-		shortDesc: "This Pokemon's Attack is raised by 1 stage if it attacks and KOes another Pokemon.",
+		desc: "When this Pokemon knocks out an opponent, it has its status cured and Special Attack raised by one stage. If this Pokémon switches out while its statused, the status is cured and whatever comes in has its Special Attack raised by one stage.",
+		shortDesc: "When this Pokemon lands a KO, its status is cured and its Special Attack is boosted. When this Pokemon switches out, its status is cured and the switch-in's Special Attack is boosted.",
 		onSourceFaint: function (target, source, effect) {
 			if (effect && effect.effectType === 'Move') {
 				this.boost({spa: 1}, source);
@@ -9672,13 +9672,8 @@ exports.BattleAbilities = {
 			}
 		},
 		onSwitchOut: function (pokemon) {
-			if (!pokemon.status) {
-				return;
-			}
-			else {
-				pokemon.cureStatus();
-				pokemon.addVolatile('compassionatesoul');
-			}
+			pokemon.cureStatus();
+			pokemon.side.addSideCondition('compassionatesoul');
 		},
 		effect: {
 			duration: 2,
