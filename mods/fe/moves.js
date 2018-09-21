@@ -9335,7 +9335,6 @@ exports.BattleMovedex = {
 		priority: 0,
 		flags: {},
 		onHit: function (target) {
-			let moves = [];
 			let i;
 			for (i = target.side.pokemon.length - 1; i > target.position; i--) {
 				if (!target.side.pokemon[i]) continue;
@@ -9347,6 +9346,7 @@ exports.BattleMovedex = {
 			if (!pokemon.moveSlots[0]){
 				return false;
 			}
+			let moves = [];
 			let move = pokemon.moveSlots[0].id;
 			if ('foulmimicry' !== move.id && !this.getMove(move).isZ) {
 				moves.push(move);
@@ -9359,7 +9359,7 @@ exports.BattleMovedex = {
 			let spec = 0 + target.stats['spa'];
 			target.stats['atk'] = pokemon.stats['atk'];
 			target.stats['spa'] = pokemon.stats['spa'];
-			this.useMove(this.sample(moves), target);
+			this.useMove(move, target);
 			//Then restore it.
 			target.stats['atk'] = phys;
 			target.stats['spa'] = spec;
