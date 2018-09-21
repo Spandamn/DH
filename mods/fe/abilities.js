@@ -11318,24 +11318,26 @@ exports.BattleAbilities = {
 				return this.chainModify([0x14CD, 0x1000]);
 			}
 		},
-		onBoost: function (boost, target, source, effect) {
-			if ((effect.id === 'cosmicweb' || effect.id === 'stickyweb' || effect.id === 'slipperyweb') && !this.pseudoWeather['gravity'] && target.item !== 'ironball') return false;
-		},
-		onDamage: function (damage, target, source, effect) {
-			if (effect && effect.id === 'spikes' && !this.pseudoWeather['gravity'] && !target.volatiles['smackdown'] && !target.item !== 'ironball') {
-				return false;
-			}
-		},
-		onUpdate: function (pokemon) {
-			if (!pokemon.volatiles['magnetrise'] && !this.pseudoWeather['gravity'] && !pokemon.volatiles['smackdown'] && pokemon.item !== 'ironball'){
-				pokemon.addVolatile('magnetrise');
-			}
-		},
-		onSetStatus: function (status, target, source, effect) {
-			if (target.item === 'ironball' || this.pseudoWeather['gravity'] || target.volatiles['smackdown']) return;
-			if (!effect || !effect.status) return false;
-			if (effect.id === 'toxicspikes' || effect.id === 'stickyvenom') return false;
-		},
+		// airborneness implemented in pokemon.js:Pokemon#isGrounded; The following is just in case it doesn't work.
+		
+// 		onBoost: function (boost, target, source, effect) {
+// 			if ((effect.id === 'cosmicweb' || effect.id === 'stickyweb' || effect.id === 'slipperyweb') && !this.pseudoWeather['gravity'] && target.item !== 'ironball') return false;
+// 		},
+// 		onDamage: function (damage, target, source, effect) {
+// 			if (effect && effect.id === 'spikes' && !this.pseudoWeather['gravity'] && !target.volatiles['smackdown'] && !target.item !== 'ironball') {
+// 				return false;
+// 			}
+// 		},
+// 		onUpdate: function (pokemon) {
+// 			if (!pokemon.volatiles['magnetrise'] && !this.pseudoWeather['gravity'] && !pokemon.volatiles['smackdown'] && pokemon.item !== 'ironball'){
+// 				pokemon.addVolatile('magnetrise');
+// 			}
+// 		},
+// 		onSetStatus: function (status, target, source, effect) {
+// 			if (target.item === 'ironball' || this.pseudoWeather['gravity'] || target.volatiles['smackdown']) return;
+// 			if (!effect || !effect.status) return false;
+// 			if (effect.id === 'toxicspikes' || effect.id === 'stickyvenom') return false;
+// 		},
 		id: "magneticfield",
 		name: "Magnetic Field",
 	},
@@ -11883,5 +11885,13 @@ exports.BattleAbilities = {
 		isUnbreakable: true,
 		id: "adaptableillusion",
 		name: "Adaptable Illusion",
+	},
+	"turborise": {
+		desc: "This Pokemon is immune to Ground. Gravity, Ingrain, Smack Down, Thousand Arrows, and Iron Ball nullify the immunity. Moongeist Beam, Sunsteel Strike, and the Abilities Mold Breaker, Teravolt, and Turboblaze cannot ignore this immunity.",
+		shortDesc: "This Pokemon is immune to Ground; Gravity/Ingrain/Smack Down/Iron Ball nullify it.",
+		// airborneness implemented in sim/pokemon.js:Pokemon#isGrounded
+		isUnbreakable: true,
+		id: "turborise",
+		name: "Turborise",
 	},
 };
