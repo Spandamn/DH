@@ -9267,7 +9267,7 @@ exports.BattleMovedex = {
 		basePower: 100,
 		category: "Special",
 		desc: "This move becomes a physical attack if the user's Attack is greater than its Special Attack, including stat stage changes. This move and its effects ignore the Abilities of other Pokemon. After it hits, the target's Ability is rendered ineffective as long as it remains active. If the target uses Baton Pass, the replacement will remain under this effect.",
-		shortDesc: "Physical if user's Atk > Sp. Atk. Ignores Abilities and nullifies.",
+		shortDesc: "Physical if user's Atk > Sp. Atk. Ignores Abilities and nullifies them.",
 		id: "photonburn",
 		isViable: true,
 		name: "Photon Burn",
@@ -9322,6 +9322,52 @@ exports.BattleMovedex = {
 		type: "Dragon",
 		zMovePower: 190,
 		contestType: "Tough",
+	},
+		"foulmimicry": {
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		desc: "The user uses the first move known by the last unfainted team member. This team member's attacking stat is copied during the move. Does not select itself or Z-Moves.",
+		shortDesc: "Uses the first move known by the last unfainted team member. This copies the team member's attacking stat.",
+		id: "foulmimicry",
+		name: "Foul Mimicry",
+		pp: 20,
+		priority: 0,
+		flags: {},
+		onHit: function (target) {
+			let moves = [];
+			let i;
+			for (i = target.side.pokemon.length - 1; i > target.position; i--) {
+				if (!target.side.pokemon[i]) continue;
+				if (!target.side.pokemon[i].fainted) break;
+			}
+			if (!target.side.pokemon[i]) return false;
+			if (target === target.side.pokemon[i]) return false;
+			let pokemon = target.side.pokemon[i];
+			if (!pokemon.moveSlots[0]){
+				return false;
+			}
+			let move = pokemon.moveSlots[0].id;
+			if ('foulmimicry' !== move.id && !this.getMove(move).isZ) {
+				moves.push(move);
+			}
+			if (!moves.length) {
+				return false;
+			}
+			//Copy the teammate's attacking stat before use.
+			let phys = 0 + target.stats['atk'];
+			let spec = 0 + target.stats['spa'];
+			target.stats['atk'] = pokemon.stats['atk'];
+			target.stats['spa'] = pokemon.stats['spa'];
+			this.useMove(this.sample(moves), target);
+			//Then restore it.
+			target.stats['atk'] = phys;
+			target.stats['spa'] = spec;
+		},
+		secondary: false,
+		target: "self",
+		type: "Dark",
+		contestType: "Clever",
 	},
 };
 
