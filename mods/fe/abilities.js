@@ -11894,4 +11894,54 @@ exports.BattleAbilities = {
 		id: "turborise",
 		name: "Turborise",
 	},
+	"compression": {
+		desc: "If this Pokemon is a Giramini, it changes to its Unleashed forme if it has 1/2 or less of its maximum HP and is holding a Griseous Orb, and changes to Captive Form if it has more than 1/2 its maximum HP. While in its Captive Form, it cannot become affected by major status conditions and opponents use up 1 extra PP per move. In Unleashed Form, it is airborne. Moongeist Beam, Sunsteel Strike, and the Abilities Mold Breaker, Teravolt, and Turboblaze cannot ignore this Ability.",
+		shortDesc: "If Giramini, switch-in/end of turn it changes to Unleashed at 1/2 max HP or less, else Captive.",
+		onStart: function (pokemon) {
+			if (pokemon.baseTemplate.baseSpecies !== 'Giramini' || pokemon.transformed) return;
+			if (pokemon.getItem() && pokemon.getItem() === 'griseousorb' && pokemon.hp <= pokemon.maxhp / 2) {
+				if (pokemon.template.speciesid === 'giramini') {
+					pokemon.formeChange('Giramini-Unleashed');
+				}
+			} else {
+				if (pokemon.template.speciesid !== 'giramini') {
+					pokemon.formeChange(pokemon.set.species);
+				}
+			}
+		},
+		onResidualOrder: 27,
+		onResidual: function (pokemon) {
+			if (pokemon.baseTemplate.baseSpecies !== 'Giramini' || pokemon.transformed || !pokemon.hp) return;
+			if (pokemon.getItem() && pokemon.getItem() === 'griseousorb' && pokemon.hp <= pokemon.maxhp / 2) {
+				if (pokemon.template.speciesid === 'giramini') {
+					pokemon.formeChange('Giramini-Unleashed');
+				}
+			} else {
+				if (pokemon.template.speciesid !== 'giramini') {
+					pokemon.formeChange(pokemon.set.species);
+				}
+			}
+		},
+		onDeductPP: function (target, source) {
+			if (target.side === source.side) return;
+			if (target.template.speciesid !== 'giramini' || target.transformed) return;
+			return 1;
+		},
+		onSetStatus: function (status, target, source, effect) {
+			if (target.template.speciesid !== 'giramini' || target.transformed) return;
+			if (!effect || !effect.status) return false;
+			this.add('-immune', target, '[msg]', '[from] ability: Compression');
+			return false;
+		},
+		onTryAddVolatile: function (status, target) {
+			if (target.template.speciesid !== 'giramini' || target.transformed) return;
+			if (status.id !== 'yawn') return;
+			this.add('-immune', target, '[msg]', '[from] ability: Compression');
+			return null;
+		},
+		// airborneness for Unleashed implemented in pokemon.js:Pokemon#isGrounded.
+		isUnbreakable: true,
+		id: "compression",
+		name: "Compression",
+	},
 };
