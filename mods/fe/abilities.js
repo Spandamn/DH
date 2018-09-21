@@ -1170,14 +1170,14 @@ exports.BattleAbilities = {
 		shortDesc: "Cures status when it uses a Fire-type move. Fire type moves are boosted by 50% whenever Healing Blaze is activated.",
 		onModifyAtkPriority: 5,
 		onModifyAtk: function(atk, attacker, defender, move) {
-			if (move.type === 'Fire' && attacker.hp <= attacker.maxhp / 3) {
+			if (attacker.status && move.type === 'Fire' && attacker.hp <= attacker.maxhp / 3) {
 				return this.chainModify(1.5);
 				attacker.cureStatus();
 			}
 		},
 		onModifySpAPriority: 5,
 		onModifySpA: function(atk, attacker, defender, move) {
-			if (move.type === 'Fire' && attacker.hp <= attacker.maxhp / 3) {
+			if (attacker.status && move.type === 'Fire' && attacker.hp <= attacker.maxhp / 3) {
 				return this.chainModify(1.5);
 				attacker.cureStatus();
 			}
