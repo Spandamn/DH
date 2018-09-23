@@ -11673,12 +11673,7 @@ exports.BattleAbilities = {
  
     "ailmentmaster": {
         shortDesc: "This Pokemon can inflict any status on any other Pokemon regardless of their typing.",
-		  onAnySetStatus: function (status, target, source, effect) {
-			   //Foe must not have a status, and the one who inflicted it must be the one with this ability. 
-				if (target.status || source !== this.effectData.target) return;
-				source.setStatus(status, source, effect, true);
-				return null; 
-		  },
+		  //Implemented in pokemon.js.
         id: "ailmentmaster",
         name: "Ailment Master",
     },
