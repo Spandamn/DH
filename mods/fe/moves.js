@@ -2932,9 +2932,7 @@ exports.BattleMovedex = {
             reflectable: 1,
             mirror: 1
         },
-        onHit: function (target, source) {
-		  		target.setStatus('par', source, true); 
-		  },
+        status: 'par',
         secondary: false,
         target: "normal",
         type: "Electric",
