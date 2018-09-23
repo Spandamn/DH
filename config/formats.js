@@ -8118,6 +8118,10 @@ exports.Formats = [
 		banlist: ['Chlorophyll', 'Sand Rush', 'Slush Rush', 'Surge Surfer', 'Swift Swim', 'Unburden', 'King\'s Rock', 'Razor Fang', 'Swampertite', 'Liepard'],
 		unbanlist: ['Lucario-Mega', 'Lucarionite', 'Blaziken', 'Landorus', 'Power Construct', 'Deoxys-Speed'],
 		restrictedMoves: ['Baneful Bunker', 'Bounce', 'Detect', 'Dig', 'Dive', 'Fly', 'Nature\'s Madness', 'Night Shade', 'Phantom Force', 'Protect', 'Seismic Toss', 'Shadow Force', 'Sky Drop', 'Spiky Shield', 'Super Fang'],
+		teamLength: {
+			validate: [1, 3],
+			battle: 1,
+		},
 		onValidateSet: function (set, format) {
 			const restrictedMoves = format.restrictedMoves || [];
 			let problems = [];
