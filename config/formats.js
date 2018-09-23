@@ -8113,11 +8113,10 @@ exports.Formats = [
 		threads: [
 			`&bullet; <a href="https://www.smogon.com/forums/threads/3627804/">Linked</a>`,
 		],
-
 		mod: 'linked',
 		ruleset: ['[Gen 7] OU'],
 		banlist: ['Chlorophyll', 'Sand Rush', 'Slush Rush', 'Surge Surfer', 'Swift Swim', 'Unburden', 'King\'s Rock', 'Razor Fang', 'Swampertite', 'Liepard'],
-		unbanlist: ['Mega Lucario', 'Lucarionite'],
+		unbanlist: ['Lucario-Mega', 'Lucarionite', 'Blaziken', 'Landorus', 'Power Construct', 'Deoxys-Speed'],
 		restrictedMoves: ['Baneful Bunker', 'Bounce', 'Detect', 'Dig', 'Dive', 'Fly', 'Nature\'s Madness', 'Night Shade', 'Phantom Force', 'Protect', 'Seismic Toss', 'Shadow Force', 'Sky Drop', 'Spiky Shield', 'Super Fang'],
 		onValidateSet: function (set, format) {
 			const restrictedMoves = format.restrictedMoves || [];
