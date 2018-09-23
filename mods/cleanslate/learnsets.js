@@ -702,11 +702,14 @@ let BattleLearnsets = {
         voltswitch: ["7M", "6M", "5M"],
         wildcharge: ["7M", "6M", "5M"],
         zapcannon: ["7V"],
-        dazzlinggleam: ["7V"],
-        wish: ["7V"],
-        healbell: ["7V"],
-        earthpower: ["7V"],
-        moonlight: ["7V"],
+        dazzlinggleam: ["7M"],
+        wish: ["7M"],
+        healbell: ["7M"],
+        earthpower: ["7M"],
+        moonlight: ["7M"],
+		airslash: ["7M"],
+		defog: ["7M"],
+		tailwind: ["7M"],
     }},
  
 	swalot: {learnset: {
@@ -896,6 +899,9 @@ let BattleLearnsets = {
         psychocut: ["7T"],
         futuresight: ["7T"],
         venostrike: ["7T"],
+		earthpower: ["7T"],
+		earthquake: ["7T"],
+		calmmind: ["7T"],
     }},
  
 	celesteela: {learnset: {
@@ -1116,6 +1122,9 @@ let BattleLearnsets = {
         pursuit: ["7T"],
         memento: ["7T"],
         finalgambit: ["7T"],
+		machpunch: ["7T"],
+		suckerpunch: ["7T"],
+		uturn: ["7T"],
     }},
  
 	trapinch: {learnset: {
@@ -1176,7 +1185,9 @@ let BattleLearnsets = {
         toxic: ["7M", "6M", "5M", "4M", "3M"],
         suckerpunch: ["7L1"],
         punishment: ["7L1"],
-        pursuit: ["7L1"],
+        firefang: ["7L1"],
+		pursuit: ["7L1"],
+		knockoff: ["7L1"],
     }},
  
     ninjask: {learnset: {
@@ -2601,6 +2612,7 @@ let BattleLearnsets = {
 		hiddenpower: ["7M", "7L1", "7V", "6L1", "5L1", "4L1", "3L1"],
 		icebeam: ["7M", "7L1", "7V", "6L1", "5L1", "4L1", "3L1"],
 		judgment: ["7M", "7L1", "7V", "6L1", "5L1", "4L1", "3L1"],
+		knockoff: ["7M", "7L1", "7V", "6L1", "5L1", "4L1", "3L1"],
 		lastresort: ["7M", "7L1", "7V", "6L1", "5L1", "4L1", "3L1"],
 		meanlook: ["7M", "7L1", "7V", "6L1", "5L1", "4L1", "3L1"],
 		naturepower: ["7M", "7L1", "7V", "6L1", "5L1", "4L1", "3L1"],
