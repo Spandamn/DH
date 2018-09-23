@@ -8115,7 +8115,7 @@ exports.Formats = [
 		],
 		mod: 'linked',
 		ruleset: ['[Gen 7] OU'],
-		banlist: ['Chlorophyll', 'Sand Rush', 'Slush Rush', 'Surge Surfer', 'Swift Swim', 'Unburden', 'King\'s Rock', 'Razor Fang', 'Swampertite', 'Liepard'],
+		banlist: ['Chlorophyll', 'Sand Rush', 'Slush Rush', 'Surge Surfer', 'Swift Swim', 'Unburden', 'King\'s Rock', 'Razor Fang', 'Swampertite', 'Liepard', 'Meowstic', 'Kyurem-Black', 'Jirachi', 'Meowstic-F'],
 		unbanlist: ['Lucario-Mega', 'Lucarionite', 'Blaziken', 'Landorus', 'Power Construct', 'Deoxys-Speed'],
 		restrictedMoves: ['Baneful Bunker', 'Bounce', 'Detect', 'Dig', 'Dive', 'Fly', 'Nature\'s Madness', 'Night Shade', 'Phantom Force', 'Protect', 'Seismic Toss', 'Shadow Force', 'Sky Drop', 'Spiky Shield', 'Super Fang'],
 		teamLength: {
