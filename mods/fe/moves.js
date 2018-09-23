@@ -576,9 +576,9 @@ exports.BattleMovedex = {
 		priority: 0,
 		flags: {snatch: 1, heal: 1},
 		onHit: function (pokemon) {
-			if (this.isWeather(['sunnyday', 'desolateland', 'solarsnow'])) {
+			if ((this.isWeather(['sunnyday', 'desolateland', 'solarsnow']) && (pokemon.volatiles['atmosphericperversion'] === pokemon.volatiles['weatherbreak'])) || (this.isWeather(['raindance', 'primordialsea', 'sandstorm', 'hail']) == (pokemon.volatiles['atmosphericperversion'] !== pokemon.volatiles['weatherbreak']))) {
 				return this.heal(this.modify(pokemon.maxhp, 0.667));
-			} else if (this.isWeather(['raindance', 'primordialsea', 'sandstorm', 'hail'])) {
+			} else if ((this.isWeather(['sunnyday', 'desolateland', 'solarsnow']) && (pokemon.volatiles['atmosphericperversion'] !== pokemon.volatiles['weatherbreak'])) || (this.isWeather(['raindance', 'primordialsea', 'sandstorm', 'hail']) == (pokemon.volatiles['atmosphericperversion'] === pokemon.volatiles['weatherbreak']))) {
 				return this.heal(this.modify(pokemon.maxhp, 0.25));
 			} else {
 				return this.heal(this.modify(pokemon.maxhp, 0.5));
@@ -604,9 +604,9 @@ exports.BattleMovedex = {
 		priority: 0,
 		flags: {snatch: 1, heal: 1},
 		onHit: function (pokemon) {
-			if (this.isWeather(['sunnyday', 'desolateland', 'solarsnow'])) {
+			if ((this.isWeather(['sunnyday', 'desolateland', 'solarsnow']) && (pokemon.volatiles['atmosphericperversion'] === pokemon.volatiles['weatherbreak'])) || (this.isWeather(['raindance', 'primordialsea', 'sandstorm', 'hail']) == (pokemon.volatiles['atmosphericperversion'] !== pokemon.volatiles['weatherbreak']))) {
 				return this.heal(this.modify(pokemon.maxhp, 0.667));
-			} else if (this.isWeather(['raindance', 'primordialsea', 'sandstorm', 'hail'])) {
+			} else if ((this.isWeather(['sunnyday', 'desolateland', 'solarsnow']) && (pokemon.volatiles['atmosphericperversion'] !== pokemon.volatiles['weatherbreak'])) || (this.isWeather(['raindance', 'primordialsea', 'sandstorm', 'hail']) == (pokemon.volatiles['atmosphericperversion'] === pokemon.volatiles['weatherbreak']))) {
 				return this.heal(this.modify(pokemon.maxhp, 0.25));
 			} else {
 				return this.heal(this.modify(pokemon.maxhp, 0.5));
@@ -632,9 +632,9 @@ exports.BattleMovedex = {
 		priority: 0,
 		flags: {snatch: 1, heal: 1},
 		onHit: function (pokemon) {
-			if (this.isWeather(['sunnyday', 'desolateland', 'solarsnow'])) {
+			if ((this.isWeather(['sunnyday', 'desolateland', 'solarsnow']) && (pokemon.volatiles['atmosphericperversion'] === pokemon.volatiles['weatherbreak'])) || (this.isWeather(['raindance', 'primordialsea', 'sandstorm', 'hail']) == (pokemon.volatiles['atmosphericperversion'] !== pokemon.volatiles['weatherbreak']))) {
 				return this.heal(this.modify(pokemon.maxhp, 0.667));
-			} else if (this.isWeather(['raindance', 'primordialsea', 'sandstorm', 'hail'])) {
+			} else if ((this.isWeather(['sunnyday', 'desolateland', 'solarsnow']) && (pokemon.volatiles['atmosphericperversion'] !== pokemon.volatiles['weatherbreak'])) || (this.isWeather(['raindance', 'primordialsea', 'sandstorm', 'hail']) == (pokemon.volatiles['atmosphericperversion'] === pokemon.volatiles['weatherbreak']))) {
 				return this.heal(this.modify(pokemon.maxhp, 0.25));
 			} else {
 				return this.heal(this.modify(pokemon.maxhp, 0.5));
@@ -737,7 +737,15 @@ exports.BattleMovedex = {
 		priority: 0,
 		flags: {snatch: 1},
 		onModifyMove: function (move) {
-			if (this.isWeather(['sunnyday', 'desolateland', 'solarsnow'])) move.boosts = {atk: 2, spa: 2};
+			if (this.isWeather(['sunnyday', 'desolateland', 'solarsnow'])){
+					if (move.isInInvertedWeather) delete move.boosts;
+				 	else move.boosts = {atk: 2, spa: 2};
+				 }
+		},
+		onHit: function (pokemon) {
+			if (this.isWeather(['sunnyday', 'desolateland', 'solarsnow']) && (pokemon.volatiles['atmosphericperversion'] === pokemon.volatiles['weatherbreak'])){
+				 	 return false;
+				 }
 		},
 		boosts: {
 			atk: 1,
@@ -9267,7 +9275,7 @@ exports.BattleMovedex = {
 		basePower: 100,
 		category: "Special",
 		desc: "This move becomes a physical attack if the user's Attack is greater than its Special Attack, including stat stage changes. This move and its effects ignore the Abilities of other Pokemon. After it hits, the target's Ability is rendered ineffective as long as it remains active. If the target uses Baton Pass, the replacement will remain under this effect.",
-		shortDesc: "Physical if user's Atk > Sp. Atk. Ignores Abilities and nullifies.",
+		shortDesc: "Physical if user's Atk > Sp. Atk. Ignores Abilities and nullifies them.",
 		id: "photonburn",
 		isViable: true,
 		name: "Photon Burn",
@@ -9322,6 +9330,81 @@ exports.BattleMovedex = {
 		type: "Dragon",
 		zMovePower: 190,
 		contestType: "Tough",
+	},
+		"foulmimicry": {
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		desc: "The user uses the first move known by the last unfainted team member. This team member's attacking stat is copied during the move. Does not select itself or Z-Moves.",
+		shortDesc: "Uses the first move known by the last unfainted team member. This copies the team member's attacking stat.",
+		id: "foulmimicry",
+		name: "Foul Mimicry",
+		pp: 20,
+		priority: 0,
+		flags: {},
+		onHit: function (target) {
+			let i;
+			for (i = target.side.pokemon.length - 1; i > target.position; i--) {
+				if (!target.side.pokemon[i]) continue;
+				if (!target.side.pokemon[i].fainted) break;
+			}
+			if (!target.side.pokemon[i]) return false;
+			if (target === target.side.pokemon[i]) return false;
+			let pokemon = target.side.pokemon[i];
+			if (!pokemon.moveSlots[0]){
+				return false;
+			}
+			let moves = [];
+			let move = pokemon.moveSlots[0].id;
+			if ('foulmimicry' !== move.id && !this.getMove(move).isZ) {
+				moves.push(move);
+			}
+			if (!moves.length) {
+				return false;
+			}
+			//Copy the teammate's attacking stat before use.
+			let phys = 0 + target.stats['atk'];
+			let spec = 0 + target.stats['spa'];
+			target.stats['atk'] = pokemon.stats['atk'];
+			target.stats['spa'] = pokemon.stats['spa'];
+			this.useMove(move, target);
+			//Then restore it.
+			target.stats['atk'] = phys;
+			target.stats['spa'] = spec;
+		},
+		secondary: false,
+		target: "self",
+		type: "Dark",
+		contestType: "Clever",
+	},
+"growthhormone": {
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		desc: "The user restores 1/2 of its maximum HP and has its Defense raised by 1 if no weather conditions are in effect, 2/3 of its maximum HP and Defense raised by 2 if the weather is Sunny Day, and 1/4 of its maximum HP and no Defense boosts if the weather is Hail, Rain Dance, or Sandstorm, all HP values rounded half down.",
+		shortDesc: "Heals the user by a weather-dependent amount. Raises user's Defense by 1 in no weather; 2 in Sun.",
+		id: "growthhormone",
+		isViable: true,
+		name: "Growth Hormone",
+		pp: 5,
+		priority: 0,
+		flags: {snatch: 1, heal: 1},
+		onHit: function (pokemon) {
+			if ((this.isWeather(['sunnyday', 'desolateland', 'solarsnow']) && (pokemon.volatiles['atmosphericperversion'] === pokemon.volatiles['weatherbreak'])) || (this.isWeather(['raindance', 'primordialsea', 'sandstorm', 'hail']) == (pokemon.volatiles['atmosphericperversion'] !== pokemon.volatiles['weatherbreak']))) {
+				this.heal(this.modify(pokemon.maxhp, 0.667));
+				this.boost({def: 2}, pokemon);
+			} else if ((this.isWeather(['sunnyday', 'desolateland', 'solarsnow']) && (pokemon.volatiles['atmosphericperversion'] !== pokemon.volatiles['weatherbreak'])) || (this.isWeather(['raindance', 'primordialsea', 'sandstorm', 'hail']) == (pokemon.volatiles['atmosphericperversion'] === pokemon.volatiles['weatherbreak']))) {
+				return this.heal(this.modify(pokemon.maxhp, 0.25));
+			} else {
+				this.heal(this.modify(pokemon.maxhp, 0.5));
+				this.boost({def: 1}, pokemon);
+			}
+		},
+		secondary: false,
+		target: "self",
+		type: "Grass",
+		zMoveEffect: 'clearnegativeboost',
+		//contestType: "Clever",
 	},
 };
 

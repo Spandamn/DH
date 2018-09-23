@@ -1170,14 +1170,14 @@ exports.BattleAbilities = {
 		shortDesc: "Cures status when it uses a Fire-type move. Fire type moves are boosted by 50% whenever Healing Blaze is activated.",
 		onModifyAtkPriority: 5,
 		onModifyAtk: function(atk, attacker, defender, move) {
-			if (move.type === 'Fire' && attacker.hp <= attacker.maxhp / 3) {
+			if (attacker.status && move.type === 'Fire' && attacker.hp <= attacker.maxhp / 3) {
 				return this.chainModify(1.5);
 				attacker.cureStatus();
 			}
 		},
 		onModifySpAPriority: 5,
 		onModifySpA: function(atk, attacker, defender, move) {
-			if (move.type === 'Fire' && attacker.hp <= attacker.maxhp / 3) {
+			if (attacker.status && move.type === 'Fire' && attacker.hp <= attacker.maxhp / 3) {
 				return this.chainModify(1.5);
 				attacker.cureStatus();
 			}
@@ -9663,8 +9663,8 @@ exports.BattleAbilities = {
 		name: "Spiral Power",
 	},
 	"compassionatesoul": { 
-		desc: "This Pokemon's Attack is raised by 1 stage if it attacks and knocks out another Pokemon.",
-		shortDesc: "This Pokemon's Attack is raised by 1 stage if it attacks and KOes another Pokemon.",
+		desc: "When this Pokemon knocks out an opponent, it has its status cured and Special Attack raised by one stage. If this Pokémon switches out while its statused, the status is cured and whatever comes in has its Special Attack raised by one stage.",
+		shortDesc: "When this Pokemon lands a KO, its status is cured and its Special Attack is boosted. When this Pokemon switches out, its status is cured and the switch-in's Special Attack is boosted.",
 		onSourceFaint: function (target, source, effect) {
 			if (effect && effect.effectType === 'Move') {
 				this.boost({spa: 1}, source);
@@ -9672,13 +9672,8 @@ exports.BattleAbilities = {
 			}
 		},
 		onSwitchOut: function (pokemon) {
-			if (!pokemon.status) {
-				return;
-			}
-			else {
-				pokemon.cureStatus();
-				pokemon.addVolatile('compassionatesoul');
-			}
+			pokemon.cureStatus();
+			pokemon.side.addSideCondition('compassionatesoul');
 		},
 		effect: {
 			duration: 2,
@@ -11323,24 +11318,26 @@ exports.BattleAbilities = {
 				return this.chainModify([0x14CD, 0x1000]);
 			}
 		},
-		onBoost: function (boost, target, source, effect) {
-			if ((effect.id === 'cosmicweb' || effect.id === 'stickyweb' || effect.id === 'slipperyweb') && !this.pseudoWeather['gravity'] && target.item !== 'ironball') return false;
-		},
-		onDamage: function (damage, target, source, effect) {
-			if (effect && effect.id === 'spikes' && !this.pseudoWeather['gravity'] && !target.volatiles['smackdown'] && !target.item !== 'ironball') {
-				return false;
-			}
-		},
-		onUpdate: function (pokemon) {
-			if (!pokemon.volatiles['magnetrise'] && !this.pseudoWeather['gravity'] && !pokemon.volatiles['smackdown'] && pokemon.item !== 'ironball'){
-				pokemon.addVolatile('magnetrise');
-			}
-		},
-		onSetStatus: function (status, target, source, effect) {
-			if (target.item === 'ironball' || this.pseudoWeather['gravity'] || target.volatiles['smackdown']) return;
-			if (!effect || !effect.status) return false;
-			if (effect.id === 'toxicspikes' || effect.id === 'stickyvenom') return false;
-		},
+		// airborneness implemented in pokemon.js:Pokemon#isGrounded; The following is just in case it doesn't work.
+		
+// 		onBoost: function (boost, target, source, effect) {
+// 			if ((effect.id === 'cosmicweb' || effect.id === 'stickyweb' || effect.id === 'slipperyweb') && !this.pseudoWeather['gravity'] && target.item !== 'ironball') return false;
+// 		},
+// 		onDamage: function (damage, target, source, effect) {
+// 			if (effect && effect.id === 'spikes' && !this.pseudoWeather['gravity'] && !target.volatiles['smackdown'] && !target.item !== 'ironball') {
+// 				return false;
+// 			}
+// 		},
+// 		onUpdate: function (pokemon) {
+// 			if (!pokemon.volatiles['magnetrise'] && !this.pseudoWeather['gravity'] && !pokemon.volatiles['smackdown'] && pokemon.item !== 'ironball'){
+// 				pokemon.addVolatile('magnetrise');
+// 			}
+// 		},
+// 		onSetStatus: function (status, target, source, effect) {
+// 			if (target.item === 'ironball' || this.pseudoWeather['gravity'] || target.volatiles['smackdown']) return;
+// 			if (!effect || !effect.status) return false;
+// 			if (effect.id === 'toxicspikes' || effect.id === 'stickyvenom') return false;
+// 		},
 		id: "magneticfield",
 		name: "Magnetic Field",
 	},
@@ -11840,5 +11837,111 @@ exports.BattleAbilities = {
 		},
 		id: "goldentouch",
 		name: "Golden Touch",
+	},
+	"adaptableillusion": {
+		desc: "When this Pokemon switches in, it appears as the last unfainted Pokemon in its party until it takes direct damage from another Pokemon's attack. Moves matching the mimicked Pokemon's primary type have their power multiplied by 1.3. This Pokemon's actual level and HP are displayed instead of those of the mimicked Pokemon.",
+		shortDesc: "This Pokemon appears as the last Pokemon in the party until it takes direct damage. Moves matching that Pokemon's primary type have 1.3x power.",
+		onBeforeSwitchIn: function (pokemon) {
+			pokemon.illusion = null;
+			let i;
+			for (i = pokemon.side.pokemon.length - 1; i > pokemon.position; i--) {
+				if (!pokemon.side.pokemon[i]) continue;
+				if (!pokemon.side.pokemon[i].fainted) break;
+			}
+			if (!pokemon.side.pokemon[i]) return;
+			if (pokemon === pokemon.side.pokemon[i]) return;
+			pokemon.illusion = pokemon.side.pokemon[i];
+		},
+		onBeforeMove: function (pokemon, move) {
+			if (pokemon.illusion && move.id === 'foulmimicry'){
+				this.useMove(pokemon.illusion.moveSlots[0].id, pokemon);
+				this.cancelMove(pokemon);
+			}
+		},
+		onBasePowerPriority: 8,
+		onBasePower: function (basePower, attacker, defender, move) {
+			if (attacker.illusion && move.type === attacker.illusion.types[0]) {
+				this.debug('Adaptable Illusion boost');
+				return this.chainModify([0x14CD, 0x1000]);
+			}
+		},
+		onAfterDamage: function (damage, target, source, effect) {
+			if (target.illusion && effect && effect.effectType === 'Move' && effect.id !== 'confused') {
+				this.singleEvent('End', this.getAbility('Adaptable Illusion'), target.abilityData, target, source, effect);
+			}
+		},
+		onEnd: function (pokemon) {
+			if (pokemon.illusion) {
+				this.debug('illusion cleared');
+				pokemon.illusion = null;
+				let details = pokemon.template.species + (pokemon.level === 100 ? '' : ', L' + pokemon.level) + (pokemon.gender === '' ? '' : ', ' + pokemon.gender) + (pokemon.set.shiny ? ', shiny' : '');
+				this.add('replace', pokemon, details);
+				this.add('-end', pokemon, 'Adaptable Illusion');
+			}
+		},
+		onFaint: function (pokemon) {
+			pokemon.illusion = null;
+		},
+		isUnbreakable: true,
+		id: "adaptableillusion",
+		name: "Adaptable Illusion",
+	},
+	"turborise": {
+		desc: "This Pokemon is immune to Ground. Gravity, Ingrain, Smack Down, Thousand Arrows, and Iron Ball nullify the immunity. Moongeist Beam, Sunsteel Strike, and the Abilities Mold Breaker, Teravolt, and Turboblaze cannot ignore this immunity.",
+		shortDesc: "This Pokemon is immune to Ground; Gravity/Ingrain/Smack Down/Iron Ball nullify it.",
+		// airborneness implemented in sim/pokemon.js:Pokemon#isGrounded
+		isUnbreakable: true,
+		id: "turborise",
+		name: "Turborise",
+	},
+	"compression": {
+		desc: "If this Pokemon is a Giramini, it changes to its Unleashed forme if it has 1/2 or less of its maximum HP and is holding a Griseous Orb, and changes to Captive Form if it has more than 1/2 its maximum HP. While in its Captive Form, it cannot become affected by major status conditions and opponents use up 1 extra PP per move. In Unleashed Form, it is airborne. Moongeist Beam, Sunsteel Strike, and the Abilities Mold Breaker, Teravolt, and Turboblaze cannot ignore this Ability.",
+		shortDesc: "If Giramini, switch-in/end of turn it changes to Unleashed at 1/2 max HP or less, else Captive.",
+		onStart: function (pokemon) {
+			if (pokemon.baseTemplate.baseSpecies !== 'Giramini' || pokemon.transformed) return;
+			if (pokemon.getItem() && pokemon.getItem() === 'griseousorb' && pokemon.hp <= pokemon.maxhp / 2) {
+				if (pokemon.template.speciesid === 'giramini') {
+					pokemon.formeChange('Giramini-Unleashed');
+				}
+			} else {
+				if (pokemon.template.speciesid !== 'giramini') {
+					pokemon.formeChange(pokemon.set.species);
+				}
+			}
+		},
+		onResidualOrder: 27,
+		onResidual: function (pokemon) {
+			if (pokemon.baseTemplate.baseSpecies !== 'Giramini' || pokemon.transformed || !pokemon.hp) return;
+			if (pokemon.getItem() && pokemon.getItem() === 'griseousorb' && pokemon.hp <= pokemon.maxhp / 2) {
+				if (pokemon.template.speciesid === 'giramini') {
+					pokemon.formeChange('Giramini-Unleashed');
+				}
+			} else {
+				if (pokemon.template.speciesid !== 'giramini') {
+					pokemon.formeChange(pokemon.set.species);
+				}
+			}
+		},
+		onDeductPP: function (target, source) {
+			if (target.side === source.side) return;
+			if (target.template.speciesid !== 'giramini' || target.transformed) return;
+			return 1;
+		},
+		onSetStatus: function (status, target, source, effect) {
+			if (target.template.speciesid !== 'giramini' || target.transformed) return;
+			if (!effect || !effect.status) return false;
+			this.add('-immune', target, '[msg]', '[from] ability: Compression');
+			return false;
+		},
+		onTryAddVolatile: function (status, target) {
+			if (target.template.speciesid !== 'giramini' || target.transformed) return;
+			if (status.id !== 'yawn') return;
+			this.add('-immune', target, '[msg]', '[from] ability: Compression');
+			return null;
+		},
+		// airborneness for Unleashed implemented in pokemon.js:Pokemon#isGrounded.
+		isUnbreakable: true,
+		id: "compression",
+		name: "Compression",
 	},
 };
