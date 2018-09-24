@@ -11918,7 +11918,7 @@ exports.BattleAbilities = {
 		},
 		onDeductPP: function (target, source) {
 			if (target.side === source.side) return;
-			if (target.template.speciesid !== 'giramini' || target.transformed) return;
+			if (source.template.speciesid !== 'giramini' || source.transformed) return;
 			return 1;
 		},
 		onSetStatus: function (status, target, source, effect) {
