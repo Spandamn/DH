@@ -9430,7 +9430,7 @@ exports.BattleMovedex = {
 		},
 		target: "normal",
 		type: "Ice",
-		zMovePower: 140,
+		zMovePower: 175,
 	},
 };
 
