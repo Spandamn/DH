@@ -11960,4 +11960,14 @@ exports.BattleAbilities = {
 		id: "typeillusionist",
 		name: "Type Illusionist",
 	},
+	"floatinggrounds": {
+		shortDesc: "This Pokemon is protected from Ground-type moves and Ground-based hazards. For the first three turns on the battlefield, it uses Spikes.",
+		onResidual: function (pokemon) {
+			if (pokemon.activeTurns <= 2){
+				this.useMove('Spikes', pokemon);
+			}
+		},
+		id: "floatinggrounds",
+		name: "Floating Grounds",
+	},
 };
