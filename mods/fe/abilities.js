@@ -11962,6 +11962,8 @@ exports.BattleAbilities = {
 	},
 	"floatinggrounds": {
 		shortDesc: "This Pokemon is protected from Ground-type moves and Ground-based hazards. For the first three turns on the battlefield, it uses Spikes.",
+		onResidualOrder: 26,
+		onResidualSubOrder: 1,
 		onResidual: function (pokemon) {
 			if (pokemon.activeTurns <= 2){
 				this.useMove('Spikes', pokemon);
