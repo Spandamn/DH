@@ -1513,7 +1513,7 @@ exports.BattleAbilities = {
 		getCategory: function(move) {
 			move = this.getMove(move);
 			if (move.category === 'Status') return 'Status';
-			if (move.category === 'Physical' && !move.category) return 'Special';
+			if (move.category === 'Physical') return 'Special';
 			return 'Physical';
 		},
 		onModifyMove: function (move){
