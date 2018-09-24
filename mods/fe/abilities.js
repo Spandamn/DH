@@ -1263,8 +1263,7 @@ exports.BattleAbilities = {
 					});
 					for (const moveSlot of source.moveSlots) {
 						if (moveSlot.id === source.lastMove.id) {
-							moveSlot.pp = Math.floor((moveSlot.pp+1)/2);
-							this.add('-activate', source, 'ability: Justice Power', this.getMove(source.lastMove.id).name);
+							this.deductPP(source.lastMove.id, Math.floor(moveSlot.pp/2));
 						}
 					}
 				}
@@ -3092,11 +3091,15 @@ exports.BattleAbilities = {
 	"landsshield": {
 		shortDesc: "Halves damage taken if either at full health or hit Super Effectively, both stack.",
 		onSourceModifyDamage: function (damage, source, target, move) {
-			if (target.hp >= target.maxhp) {
-				return this.chainModify(0.5);
-			}
-			if (move.typeMod > 0) {
-				return this.chainModify(0.5);
+			if (target.hp >= target.maxhp || move.typeMod > 0){
+				//Options in order: Move is super-effective, the mon is at full health, then both.
+				if (target.hp < target.maxhp) {
+					return this.chainModify(0.5);
+				}
+				if (move.typeMod <= 0) {
+					return this.chainModify(0.5);
+				}
+				return this.chainModify(0.25);
 			}
 		},
 		id: "landsshield",
@@ -6998,15 +7001,15 @@ exports.BattleAbilities = {
 			if (effect && effect.effectType === 'Move') {
 				let stat = 'atk';
 				let bestStat = 0;
-				for (let i in source.stats) {
-					if (source.stats[i] > bestStat) {
+				for (let i in target.stats) {
+					if (target.stats[i] > bestStat) {
 						stat = i;
-						bestStat = source.stats[i];
+						bestStat = target.stats[i];
 					}
-				this.boost({[stat]: 1}, source);
-			}
-                       return false;
-                      }
+					this.boost({[stat]: 1}, source);
+				}
+         	return false;
+         }
 		},
 		id: "beastsfocus",
 		name: "Beasts Focus",
@@ -7640,20 +7643,21 @@ exports.BattleAbilities = {
 		shortDesc: "Secondary typing and Normal-type moves change to match its plate or Z-Crystal. Moves that would otherwise be Normal-type have 1.2x power.",
 		onSwitchInPriority: 101,
 		onSwitchIn: function (pokemon) {
+				if (pokemon.template.baseSpecies !== 'A Rave-Alola') return;
 				// @ts-ignore
 				let type = pokemon.getItem().onPlate;
 				// @ts-ignore
 				if (!type || type === true) {
 					type = 'Normal';
 			}
-			if (type === 'Electric'){
-				pokemon.setType('Electric');
-			} else {
-				pokemon.setType('Electric', type);
+			if (type !== 'Normal'){
+				let forme = 'A Rave-Alola-' + type;
+				pokemon.formeChange(forme)
 			}
 		},
 		onModifyMovePriority: -1,
 		onModifyMove: function (move, pokemon) {
+			if (pokemon.template.baseSpecies !== 'A Rave-Alola') return;
 			if (pokemon.getItem() && move.type === 'Normal' && !['judgment', 'multiattack', 'naturalgift', 'revelationdance', 'technoblast', 'weatherball'].includes(move.id) && !(move.isZ && move.category !== 'Status')) {
 				move.type = pokemon.getItem().onPlate;
 				move.optimizeBoosted = true;
@@ -8845,7 +8849,7 @@ exports.BattleAbilities = {
 			for (const target of pokemon.side.foe.active) {
 				if (target.fainted) continue;
 				for (const moveSlot of target.moveSlots) {
-					moveSlot.pp = Math.floor((moveSlot.pp+1)/2);
+					this.deductPP(moveSlot.id, Math.floor(moveSlot.pp/2));
 				}
 			}
 			pokemon.baseAbility = 'pressuratefried';
@@ -9417,16 +9421,16 @@ exports.BattleAbilities = {
 			this.add('-ability', pokemon, 'Weather Caster');
 			let type = this.getMove(pokemon.moveSlots[0].id).type;
 			if (type === 'Fire') {
-			pokemon.setType('Electric', 'Fire');
-			this.setWeather('sunnyday');
+				pokemon.setType(['Electric', 'Fire']);
+				this.setWeather('sunnyday');
 			}
 			if (type === 'Water') {
-			pokemon.setType('Electric', 'Water');
-			this.setWeather('raindance');
+				pokemon.setType(['Electric', 'Water']);
+				this.setWeather('raindance');
 			}
 			if (type === 'Ice') {
-			pokemon.setType('Electric', 'Ice');
-			this.setWeather('hail');
+				pokemon.setType(['Electric', 'Ice']);
+				this.setWeather('hail');
 			}
 			this.add('-start', pokemon, 'typechange', type);
 		},
@@ -9437,16 +9441,17 @@ exports.BattleAbilities = {
 		shortDesc: "Holding a Memory changes this Pokemon's primary type and multiplies its accuracy by 1.5.",
 		onSwitchInPriority: 101,
 		onSwitchIn: function (pokemon) {
-				// @ts-ignore
-				let type = pokemon.getItem().onMemory;
-				// @ts-ignore
-				if (!type || type === true) {
-					type = 'Normal';
-				}
-			if(type === 'Fire'){
-				pokemon.setType('Fire');
-			} else {
-				pokemon.setType([type, 'Fire']);
+			if (pokemon.template.baseSpecies !== 'Vitality') return;
+			let type = 'Normal';
+			// @ts-ignore
+			type = pokemon.getItem().onMemory;
+			// @ts-ignore
+			if (!type || type === true) {
+				type = 'Normal';
+			}
+			if (type !== 'Normal'){
+				let forme = 'Vitality' + type;
+				pokemon.formeChange(forme)
 			}
 		},
 		onImmunity: function (type, pokemon) {
@@ -9625,6 +9630,7 @@ exports.BattleAbilities = {
 		// Form Changes implemented in statuses.js
 		onSwitchInPriority: 101,
 		onSwitchIn: function (pokemon) {
+			if (pokemon.template.baseSpecies !== 'Omneus') return;
 			let type = 'Normal';
 			// @ts-ignore
 			type = pokemon.getItem().onPlate;
@@ -9632,10 +9638,9 @@ exports.BattleAbilities = {
 			if (!type || type === true) {
 				type = 'Normal';
 			}
-			if(type === 'Water'){
-				pokemon.setType('Water');
-			} else {
-				pokemon.addType(type);
+			if(type !== 'Normal'){
+				let forme = 'Omneus-' + type;
+				pokemon.formeChange(forme)
 			}
 		},
 		onImmunity: function (type, pokemon) {
@@ -9869,7 +9874,7 @@ exports.BattleAbilities = {
 				this.add('-ability', pokemon, ability, '[from] ability: Goddess Trace', '[of] ' + target);
 				pokemon.setAbility(ability);
 				for (const moveSlot of target.moveSlots) {
-					moveSlot.pp = Math.floor((moveSlot.pp+1)/2);
+					this.deductPP(moveSlot.id, Math.floor(moveSlot.pp/2));
 				}
 				pokemon.baseAbility = 'trace';
 				return;
@@ -11673,12 +11678,7 @@ exports.BattleAbilities = {
  
     "ailmentmaster": {
         shortDesc: "This Pokemon can inflict any status on any other Pokemon regardless of their typing.",
-		  onAnySetStatus: function (status, target, source, effect) {
-			   //Foe must not have a status, and the one who inflicted it must be the one with this ability. 
-				if (target.status || source !== this.effectData.target) return;
-				source.setStatus(status, source, effect, true);
-				return null; 
-		  },
+		  //Implemented in pokemon.js.
         id: "ailmentmaster",
         name: "Ailment Master",
     },
@@ -11924,7 +11924,7 @@ exports.BattleAbilities = {
 		},
 		onDeductPP: function (target, source) {
 			if (target.side === source.side) return;
-			if (target.template.speciesid !== 'giramini' || target.transformed) return;
+			if (source.template.speciesid !== 'giramini' || source.transformed) return;
 			return 1;
 		},
 		onSetStatus: function (status, target, source, effect) {
@@ -11943,5 +11943,38 @@ exports.BattleAbilities = {
 		isUnbreakable: true,
 		id: "compression",
 		name: "Compression",
+	},
+	"typeillusionist": {
+		desc: "This Pokemon's primary typing changes depending on what plate or Z-Crystal it is holding. This type is hidden from the opponent.",
+		shortDesc: "This Pokemon's primary typing changes to match its plate or Z-Crystal. This typing is hidden from the opponent.",
+		onSwitchInPriority: 101,
+		onSwitchIn: function (pokemon) {
+				// @ts-ignore
+				let type = pokemon.getItem().onPlate;
+				// @ts-ignore
+				if (!type || type === true) {
+					type = 'Normal';
+			}
+			if (type === 'Dark'){
+				pokemon.setType('Dark');
+			} else {
+				pokemon.setType([type, 'Dark']);
+			}
+		},
+		id: "typeillusionist",
+		name: "Type Illusionist",
+	},
+	"floatinggrounds": {
+		shortDesc: "This Pokemon is protected from Ground-type moves and Ground-based hazards. For the first three turns on the battlefield, it uses Spikes.",
+		// airborneness implemented in pokemon.js:Pokemon#isGrounded.
+		onResidualOrder: 26,
+		onResidualSubOrder: 1,
+		onResidual: function (pokemon) {
+			if (pokemon.activeTurns <= 2){
+				this.useMove('Spikes', pokemon);
+			}
+		},
+		id: "floatinggrounds",
+		name: "Floating Grounds",
 	},
 };
