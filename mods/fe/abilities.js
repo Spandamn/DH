@@ -1513,7 +1513,7 @@ exports.BattleAbilities = {
 		getCategory: function(move) {
 			move = this.getMove(move);
 			if (move.category === 'Status') return 'Status';
-			if (move.category === 'Physical') return 'Special';
+			if (move.category === 'Physical' && !move.category) return 'Special';
 			return 'Physical';
 		},
 		onModifyMove: function (move){
@@ -7639,20 +7639,21 @@ exports.BattleAbilities = {
 		shortDesc: "Secondary typing and Normal-type moves change to match its plate or Z-Crystal. Moves that would otherwise be Normal-type have 1.2x power.",
 		onSwitchInPriority: 101,
 		onSwitchIn: function (pokemon) {
+				if (pokemon.template.baseSpecies !== 'A Rave-Alola') return;
 				// @ts-ignore
 				let type = pokemon.getItem().onPlate;
 				// @ts-ignore
 				if (!type || type === true) {
 					type = 'Normal';
 			}
-			if (type === 'Electric'){
-				pokemon.setType('Electric');
-			} else {
-				pokemon.setType('Electric', type);
+			if (type !== 'Normal'){
+				let forme = 'A Rave-Alola' + type;
+				pokemon.formeChange(forme)
 			}
 		},
 		onModifyMovePriority: -1,
 		onModifyMove: function (move, pokemon) {
+			if (pokemon.template.baseSpecies !== 'A Rave-Alola') return;
 			if (pokemon.getItem() && move.type === 'Normal' && !['judgment', 'multiattack', 'naturalgift', 'revelationdance', 'technoblast', 'weatherball'].includes(move.id) && !(move.isZ && move.category !== 'Status')) {
 				move.type = pokemon.getItem().onPlate;
 				move.optimizeBoosted = true;
