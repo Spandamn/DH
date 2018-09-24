@@ -9464,5 +9464,28 @@ exports.BattleMovedex = {
 		zMovePower: 190,
 		contestType: "Tough",
 	},
+	"blissboost": {
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		desc: "Raises the user's Defense, Special Attack, and Special Defense by 1 stage.",
+		shortDesc: "Raises the user's Defense, Sp. Atk, Sp. Def by 1.",
+		id: "blissboost",
+		isViable: true,
+		name: "Bliss Boost",
+		pp: 20,
+		priority: 0,
+		flags: {snatch: 1},
+		boosts: {
+			def: 1,
+			spa: 1,
+			spd: 1,
+		},
+		secondary: false,
+		target: "self",
+		type: "Psychic",
+		zMoveEffect: 'clearnegativeboost',
+		contestType: "Cute",
+	},
 };
 
