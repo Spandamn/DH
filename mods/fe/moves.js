@@ -9413,7 +9413,7 @@ exports.BattleMovedex = {
 		id: "oxygenbuster",
 		isViable: true,
 		name: "Oxygen Buster",
-		pp: 16,
+		pp: 10,
 		priority: 0,
 		flags: {protect: 1, mirror: 1},
 		onEffectiveness: function (typeMod, type) {
