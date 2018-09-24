@@ -11956,17 +11956,6 @@ exports.BattleAbilities = {
 				pokemon.setType([type, 'Dark']);
 			}
 		},
-		onModifyMovePriority: -1,
-		onModifyMove: function (move, pokemon) {
-			if (pokemon.getItem() && move.type === 'Normal' && !['judgment', 'multiattack', 'naturalgift', 'revelationdance', 'technoblast', 'weatherball'].includes(move.id) && !(move.isZ && move.category !== 'Status')) {
-				move.type = pokemon.getItem().onPlate;
-				move.optimizeBoosted = true;
-			}
-		},
-		onBasePowerPriority: 8,
-		onBasePower: function (basePower, pokemon, target, move) {
-			if (move.optimizeBoosted) return this.chainModify([0x1333, 0x1000]);
-		},
 		id: "typeillusionist",
 		name: "Type Illusionist",
 	},
