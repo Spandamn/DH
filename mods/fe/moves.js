@@ -9419,18 +9419,50 @@ exports.BattleMovedex = {
 		onEffectiveness: function (typeMod, type) {
 			if (type === 'Fire') return 1;
 		},
-		secondary: {
-			chance: 10,
-			status: 'frz',
-		},
 		onHit: function (target, source, move) {
 			if (target.hasType('Fire')) {
-			target.addVolatile('partiallytrapped');
+				target.addVolatile('partiallytrapped');
 			}
 		},
 		target: "normal",
 		type: "Ice",
 		zMovePower: 175,
+	},
+	"enforcingshot": {
+		accuracy: 100,
+		basePower: 120,
+		category: "Physical",
+		desc: "If the user moves before the target, this move has a 30% chance to inflict poisoning. If the user moves after the target, the target's Ability is rendered ineffective as long as it remains active and Toxic is inflicted. If the target uses Baton Pass, the replacement's ability will still be nullified. If the target's Ability is Multitype or Stance Change, only the poisoning will be inflicted.",
+		shortDesc: "Nullifies the target's Ability and inflicts Toxic poisoning if the target moves before the user. Otherwise, 30% chance to poison.",
+		id: "enforcingshot",
+		isViable: true,
+		name: "Enforcing Shot",
+		pp: 10,
+		priority: 0,
+		flags: {protect: 1, mirror: 1},
+		onHit: function (target, source, move) {
+			if (['battlebond', 'comatose', 'disguise', 'multitype', 'powerconstruct', 'rkssystem', 'schooling', 'shieldsdown', 'stancechange', 'truant', 'resurrection', 'magicalwand', 'sleepingsystem', 'cursedcloak', 'appropriation', 'disguiseburden', 'hideandseek', 'beastcostume', 'spiralpower', 'optimize', 'prototype', 'typeillusionist', 'godoffertility', 'foundation', 'sandyconstruct', 'victorysystem', 'techequip', 'technicalsystem', 'triagesystem', 'geneticalgorithm', 'effectsetter', 'tacticalcomputer', 'mitosis', 'barbstance', 'errormacro', 'combinationdrive', 'stanceshield', 'unfriend', 'desertmirage', 'sociallife', 'cosmology', 'crystallizedshield', 'compression', 'whatdoesthisdo'].includes(target.ability)) return;
+			if (target.newlySwitched || this.willMove(target)) return;
+			move.secondaries = [];
+			move.secondaries.push({
+				chance: 100,
+				status: 'tox',
+			});
+			target.addVolatile('gastroacid');
+		},
+		onAfterSubDamage: function (target) {
+			if (['battlebond', 'comatose', 'disguise', 'multitype', 'powerconstruct', 'rkssystem', 'schooling', 'shieldsdown', 'stancechange', 'truant', 'resurrection', 'magicalwand', 'sleepingsystem', 'cursedcloak', 'appropriation', 'disguiseburden', 'hideandseek', 'beastcostume', 'spiralpower', 'optimize', 'prototype', 'typeillusionist', 'godoffertility', 'foundation', 'sandyconstruct', 'victorysystem', 'techequip', 'technicalsystem', 'triagesystem', 'geneticalgorithm', 'effectsetter', 'tacticalcomputer', 'mitosis', 'barbstance', 'errormacro', 'combinationdrive', 'stanceshield', 'unfriend', 'desertmirage', 'sociallife', 'cosmology', 'crystallizedshield', 'compression', 'whatdoesthisdo'].includes(target.ability)) return;
+			if (target.newlySwitched || this.willMove(target)) return;
+			target.addVolatile('gastroacid');
+		},
+		secondary: {
+			chance: 30,
+			status: 'psn',
+		},
+		target: "normal",
+		type: "Poison",
+		zMovePower: 190,
+		contestType: "Tough",
 	},
 };
 
