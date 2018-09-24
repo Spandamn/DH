@@ -7647,6 +7647,8 @@ exports.BattleAbilities = {
 			if (type !== 'Normal'){
 				let forme = 'A Rave-Alola-' + type;
 				pokemon.formeChange(forme)
+			} else {
+				pokemon.formeChange('A Rave-Alola');
 			}
 		},
 		onModifyMovePriority: -1,
@@ -9446,6 +9448,8 @@ exports.BattleAbilities = {
 			if (type !== 'Normal'){
 				let forme = 'Vitality' + type;
 				pokemon.formeChange(forme)
+			} else {
+				pokemon.formeChange('Vitality');
 			}
 		},
 		onImmunity: function (type, pokemon) {
@@ -9635,6 +9639,8 @@ exports.BattleAbilities = {
 			if(type !== 'Normal'){
 				let forme = 'Omneus-' + type;
 				pokemon.formeChange(forme)
+			} else {
+				pokemon.formeChange('Omneus');
 			}
 		},
 		onImmunity: function (type, pokemon) {
