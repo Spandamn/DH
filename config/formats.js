@@ -6863,6 +6863,18 @@ exports.Formats = [
 		column: 3,
 	},
 	{
+		name: "[Gen 7] Anything Goes (No Soul Dew Nerf)",
+		desc: [
+			"&bullet; <a href=\"http://www.smogon.com/forums/threads/3587441/\">Anything Goes</a>",
+			"&bullet; <a href=\"http://www.smogon.com/forums/threads/3591711/\">AG Resources</a>",
+			"&bullet; <a href=\"http://www.smogon.com/tiers/om/analyses/ag/\">AG Analyses</a>",
+		],
+
+		mod: 'nosouldewnerf',
+		ruleset: ['Pokemon', 'Endless Battle Clause', 'Team Preview', 'HP Percentage Mod', 'Cancel Mod'],
+		banlist: ['Illegal', 'Unreleased'],
+	},
+	{
 		name: "[Gen 7] Aggression Passion",
 		desc: ["&bullet; Status moves become 80 BP moves of the [Undecided] category."],
 		mod: 'aggressionpassion',
