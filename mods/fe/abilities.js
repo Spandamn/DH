@@ -7084,18 +7084,12 @@ exports.BattleAbilities = {
 	},
 	"carelessforce": {
 		shortDesc: "If this pokemon is holding an item, the item does nothing and this pokemon gets a 1.5x boost to physical moves.",
-		onUpdate: function(pokemon) {
-     		this.add('-start', pokemon, 'Embargo', '[silent]');
-      },
+		//Item ignoring part implemented in pokemon.js.
 		onModifyAtkPriority: 5,
 		onModifyAtk: function (atk, pokemon) {
-			if (pokemon.item) {
+			if (pokemon.getItem()) {
 				return this.chainModify(1.5);
 			}
-		},
-		onEnd: function (pokemon) {
-                        //Find some way to remove it. Gastro Acid, Skill Swap...
-			pokemon.removeVolatile('embargo');
 		},
 		id: "carelessforce",
 		name: "Careless Force",
