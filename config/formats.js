@@ -6879,7 +6879,7 @@ exports.Formats = [
 		desc: ["&bullet; <a href=https://pastebin.com/LcyiuP01>Megas Info</a>",
 		      ],
 		ruleset: ['Pokemon', 'Sleep Clause Mod', 'Species Clause', 'Moody Clause', 'Evasion Moves Clause', 'Endless Battle Clause', 'HP Percentage Mod', 'Cancel Mod', 'Team Preview', 'Swagger Clause', 'Baton Pass Clause'],
-		banlist: [],
+		banlist: ['Illegal', 'Unreleased'],
 		mod: 'fanmadegame',
 	},
 	{
