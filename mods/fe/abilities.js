@@ -11971,4 +11971,31 @@ exports.BattleAbilities = {
 		id: "floatinggrounds",
 		name: "Floating Grounds",
 	},
+	"weatherbreak": {
+		desc: "When this Pokemon is active, all Pokemon on the field are under the effects of Klutz.",
+		shortDesc: "When this Pokemon is active, all Pokemon on the field have their held items suppressed.",
+		onStart: function (pokemon) {
+			this.add('-ability', pokemon, 'En Garde');
+			for (const side of this.sides) {
+				for (const target of side.active) {
+					target.addVolatile('engarde');
+				}
+			}
+		},
+		//Volatile effect suppressing items implemented in pokemon.js.
+		onEnd: function (pokemon) {
+			for (const side of this.sides) {
+				for (const target of side.active) {
+					if (target.hasAbility('engarde')) return;
+				}
+			}
+			for (const side of this.sides) {
+				for (const target of side.active) {
+					target.removeVolatile('engarde');
+				}
+			}
+		},
+		id: "weatherbreak",
+		name: "Weather Break",
+	},
 };
