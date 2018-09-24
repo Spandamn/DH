@@ -10,6 +10,27 @@ requiredItem: "Shuckleite",
 tier: "OU",
 },
 
+	flygonmegax: {
+randomBattleMoves: ['Earthquake', 'Dragon Dance', 'Roost', 'Outrage'], 
+randomDoublesBattleMoves: [], 
+requiredItem: "FlygoniteX",
+tier: "OU",
+},
+	
+	flygonmegay: {
+randomBattleMoves: ['Boomburst', 'Earth Power', 'Draco Meteor', 'Fire Blast'], 
+randomDoublesBattleMoves: [], 
+requiredItem: "FlygoniteY",
+tier: "OU",
+},
+	
+miloticmega: {
+randomBattleMoves: [], 
+randomDoublesBattleMoves: [], 
+requiredItem: "Miloticite",
+tier: "OU",
+},
+	
 };
 
 exports.BattleFormatsData = BattleFormatsData;
