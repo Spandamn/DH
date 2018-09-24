@@ -31,6 +31,20 @@ requiredItem: "Miloticite",
 tier: "OU",
 },
 	
+	kingdramega: {
+randomBattleMoves: [], 
+randomDoublesBattleMoves: [], 
+requiredItem: "Kingdraite",
+tier: "OU",
+},
+	
+	dragonitemega: {
+randomBattleMoves: [], 
+randomDoublesBattleMoves: [], 
+requiredItem: "Dragoniteite",
+tier: "OU",
+},
+	
 };
 
 exports.BattleFormatsData = BattleFormatsData;
