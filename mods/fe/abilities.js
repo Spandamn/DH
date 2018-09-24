@@ -3091,11 +3091,15 @@ exports.BattleAbilities = {
 	"landsshield": {
 		shortDesc: "Halves damage taken if either at full health or hit Super Effectively, both stack.",
 		onSourceModifyDamage: function (damage, source, target, move) {
-			if (target.hp >= target.maxhp) {
-				return this.chainModify(0.5);
-			}
-			if (move.typeMod > 0) {
-				return this.chainModify(0.5);
+			if (target.hp >= target.maxhp || move.typeMod > 0){
+				//Options in order: Move is super-effective, the mon is at full health, then both.
+				if (target.hp < target.maxhp) {
+					return this.chainModify(0.5);
+				}
+				if (move.typeMod <= 0) {
+					return this.chainModify(0.5);
+				}
+				return this.chainModify(0.25);
 			}
 		},
 		id: "landsshield",
