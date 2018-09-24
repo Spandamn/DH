@@ -11962,6 +11962,7 @@ exports.BattleAbilities = {
 	},
 	"floatinggrounds": {
 		shortDesc: "This Pokemon is protected from Ground-type moves and Ground-based hazards. For the first three turns on the battlefield, it uses Spikes.",
+		// airborneness implemented in pokemon.js:Pokemon#isGrounded.
 		onResidualOrder: 26,
 		onResidualSubOrder: 1,
 		onResidual: function (pokemon) {
