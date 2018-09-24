@@ -9404,5 +9404,33 @@ exports.BattleMovedex = {
 		zMoveEffect: 'clearnegativeboost',
 		//contestType: "Clever",
 	},
+	"oxygenbuster": {
+		accuracy: 100,
+		basePower: 95,
+		category: "Special",
+		desc: "Super-effective against Fire. Fire-types hit are trapped for 2-5 turns and lose 1/8 max HP every turn.",
+		shortDesc: "Super-effective against Fire. Fire-types hit are trapped for 2-5 turns and lose 1/8 max HP every turn.",
+		id: "oxygenbuster",
+		isViable: true,
+		name: "Oxygen Buster",
+		pp: 16,
+		priority: 0,
+		flags: {protect: 1, mirror: 1},
+		onEffectiveness: function (typeMod, type) {
+			if (type === 'Fire') return 1;
+		},
+		secondary: {
+			chance: 10,
+			status: 'frz',
+		},
+		onHit: function (target, source, move) {
+			if (target.hasType('Fire')) {
+			target.addVolatile('partiallytrapped');
+			}
+		},
+		target: "normal",
+		type: "Ice",
+		zMovePower: 140,
+	},
 };
 
