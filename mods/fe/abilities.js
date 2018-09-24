@@ -1263,8 +1263,7 @@ exports.BattleAbilities = {
 					});
 					for (const moveSlot of source.moveSlots) {
 						if (moveSlot.id === source.lastMove.id) {
-							moveSlot.pp = Math.floor((moveSlot.pp+1)/2);
-							this.add('-activate', source, 'ability: Justice Power', this.getMove(source.lastMove.id).name);
+							this.deductPP(source.lastMove.id, Math.floor(moveSlot.pp/2));
 						}
 					}
 				}
@@ -8845,7 +8844,7 @@ exports.BattleAbilities = {
 			for (const target of pokemon.side.foe.active) {
 				if (target.fainted) continue;
 				for (const moveSlot of target.moveSlots) {
-					moveSlot.pp = Math.floor((moveSlot.pp+1)/2);
+					this.deductPP(moveSlot.id, Math.floor(moveSlot.pp/2));
 				}
 			}
 			pokemon.baseAbility = 'pressuratefried';
@@ -9869,7 +9868,7 @@ exports.BattleAbilities = {
 				this.add('-ability', pokemon, ability, '[from] ability: Goddess Trace', '[of] ' + target);
 				pokemon.setAbility(ability);
 				for (const moveSlot of target.moveSlots) {
-					moveSlot.pp = Math.floor((moveSlot.pp+1)/2);
+					this.deductPP(moveSlot.id, Math.floor(moveSlot.pp/2));
 				}
 				pokemon.baseAbility = 'trace';
 				return;
