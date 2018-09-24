@@ -319,7 +319,7 @@ afterstorm: {
 				if (this.isWeather('solarsnow') && move.type === 'Fire' && !defender.hasType(['Ice', 'Fire', 'Grass'])) return this.chainModify(1/3);
 				if (this.isWeather(['sunnyday', 'solarsnow']) && move.type === 'Water') return this.chainModify(3);
 				if (this.isWeather('desolateland') && move.type === 'Water') return this.chainModify(1.5);
-				if (this.isWeather('sandstorm') && defender.hasType('Rock') && move.category === 'Special') return this.chainModify(2.25);
+				if (this.isWeather('sandstorm') && defender.hasType('Rock') && ((move.category === 'Special' && !move.defensiveCategory) || (move.defensiveCategory && move.defensiveCategory === 'Special'))) return this.chainModify(2.25);
 				if (this.isWeather('raindance') && move.type === 'Water') return this.chainModify(1/3);
 				if (this.isWeather('raindance') && move.type === 'Fire') return this.chainModify(3);
 				if (this.isWeather('primordialsea') && move.type === 'Fire') return this.chainModify(1.5);
@@ -343,7 +343,7 @@ afterstorm: {
 				if (this.isWeather('solarsnow') && move.type === 'Fire' && !defender.hasType(['Ice', 'Fire', 'Grass'])) return this.chainModify(1/3);
 				if (this.isWeather(['sunnyday', 'solarsnow']) && move.type === 'Water') return this.chainModify(3);
 				if (this.isWeather('desolateland') && move.type === 'Water') return this.chainModify(1.5);
-				if (this.isWeather('sandstorm') && defender.hasType('Rock') && move.category === 'Special') return this.chainModify(2.25);
+				if (this.isWeather('sandstorm') && defender.hasType('Rock') && ((move.category === 'Special' && !move.defensiveCategory) || (move.defensiveCategory && move.defensiveCategory === 'Special'))) return this.chainModify(2.25);
 				if (this.isWeather('raindance') && move.type === 'Water') return this.chainModify(1/3);
 				if (this.isWeather('raindance') && move.type === 'Fire') return this.chainModify(3);
 				if (this.isWeather('primordialsea') && move.type === 'Fire') return this.chainModify(1.5);
