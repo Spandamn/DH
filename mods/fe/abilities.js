@@ -7647,7 +7647,7 @@ exports.BattleAbilities = {
 					type = 'Normal';
 			}
 			if (type !== 'Normal'){
-				let forme = 'A Rave-Alola' + type;
+				let forme = 'A Rave-Alola-' + type;
 				pokemon.formeChange(forme)
 			}
 		},
@@ -9417,16 +9417,16 @@ exports.BattleAbilities = {
 			this.add('-ability', pokemon, 'Weather Caster');
 			let type = this.getMove(pokemon.moveSlots[0].id).type;
 			if (type === 'Fire') {
-			pokemon.setType('Electric', 'Fire');
-			this.setWeather('sunnyday');
+				pokemon.setType(['Electric', 'Fire']);
+				this.setWeather('sunnyday');
 			}
 			if (type === 'Water') {
-			pokemon.setType('Electric', 'Water');
-			this.setWeather('raindance');
+				pokemon.setType(['Electric', 'Water']);
+				this.setWeather('raindance');
 			}
 			if (type === 'Ice') {
-			pokemon.setType('Electric', 'Ice');
-			this.setWeather('hail');
+				pokemon.setType(['Electric', 'Ice']);
+				this.setWeather('hail');
 			}
 			this.add('-start', pokemon, 'typechange', type);
 		},
@@ -9625,6 +9625,7 @@ exports.BattleAbilities = {
 		// Form Changes implemented in statuses.js
 		onSwitchInPriority: 101,
 		onSwitchIn: function (pokemon) {
+			if (pokemon.template.baseSpecies !== 'Omneus') return;
 			let type = 'Normal';
 			// @ts-ignore
 			type = pokemon.getItem().onPlate;
@@ -9632,10 +9633,9 @@ exports.BattleAbilities = {
 			if (!type || type === true) {
 				type = 'Normal';
 			}
-			if(type === 'Water'){
-				pokemon.setType('Water');
-			} else {
-				pokemon.addType(type);
+			if(type !== 'Normal'){
+				let forme = 'Omneus-' + type;
+				pokemon.formeChange(forme)
 			}
 		},
 		onImmunity: function (type, pokemon) {
