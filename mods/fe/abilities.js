@@ -9437,16 +9437,17 @@ exports.BattleAbilities = {
 		shortDesc: "Holding a Memory changes this Pokemon's primary type and multiplies its accuracy by 1.5.",
 		onSwitchInPriority: 101,
 		onSwitchIn: function (pokemon) {
-				// @ts-ignore
-				let type = pokemon.getItem().onMemory;
-				// @ts-ignore
-				if (!type || type === true) {
-					type = 'Normal';
-				}
-			if(type === 'Fire'){
-				pokemon.setType('Fire');
-			} else {
-				pokemon.setType([type, 'Fire']);
+			if (pokemon.template.baseSpecies !== 'Vitality') return;
+			let type = 'Normal';
+			// @ts-ignore
+			type = pokemon.getItem().onMemory;
+			// @ts-ignore
+			if (!type || type === true) {
+				type = 'Normal';
+			}
+			if (type !== 'Normal'){
+				let forme = 'Vitality' + type;
+				pokemon.formeChange(forme)
 			}
 		},
 		onImmunity: function (type, pokemon) {
