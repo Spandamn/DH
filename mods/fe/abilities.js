@@ -11939,4 +11939,35 @@ exports.BattleAbilities = {
 		id: "compression",
 		name: "Compression",
 	},
+	"typeillusionist": {
+		desc: "This Pokemon's primary typing changes depending on what plate or Z-Crystal it is holding. This type is hidden from the opponent.",
+		shortDesc: "This Pokemon's primary typing changes to match its plate or Z-Crystal. This typing is hidden from the opponent.",
+		onSwitchInPriority: 101,
+		onSwitchIn: function (pokemon) {
+				// @ts-ignore
+				let type = pokemon.getItem().onPlate;
+				// @ts-ignore
+				if (!type || type === true) {
+					type = 'Normal';
+			}
+			if (type === 'Dark'){
+				pokemon.setType('Dark');
+			} else {
+				pokemon.setType([type, 'Dark']);
+			}
+		},
+		onModifyMovePriority: -1,
+		onModifyMove: function (move, pokemon) {
+			if (pokemon.getItem() && move.type === 'Normal' && !['judgment', 'multiattack', 'naturalgift', 'revelationdance', 'technoblast', 'weatherball'].includes(move.id) && !(move.isZ && move.category !== 'Status')) {
+				move.type = pokemon.getItem().onPlate;
+				move.optimizeBoosted = true;
+			}
+		},
+		onBasePowerPriority: 8,
+		onBasePower: function (basePower, pokemon, target, move) {
+			if (move.optimizeBoosted) return this.chainModify([0x1333, 0x1000]);
+		},
+		id: "typeillusionist",
+		name: "Type Illusionist",
+	},
 };
