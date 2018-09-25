@@ -7084,18 +7084,12 @@ exports.BattleAbilities = {
 	},
 	"carelessforce": {
 		shortDesc: "If this pokemon is holding an item, the item does nothing and this pokemon gets a 1.5x boost to physical moves.",
-		onUpdate: function(pokemon) {
-     		this.add('-start', pokemon, 'Embargo', '[silent]');
-      },
+		//Item ignoring part implemented in pokemon.js.
 		onModifyAtkPriority: 5,
 		onModifyAtk: function (atk, pokemon) {
-			if (pokemon.item) {
+			if (pokemon.getItem()) {
 				return this.chainModify(1.5);
 			}
-		},
-		onEnd: function (pokemon) {
-                        //Find some way to remove it. Gastro Acid, Skill Swap...
-			pokemon.removeVolatile('embargo');
 		},
 		id: "carelessforce",
 		name: "Careless Force",
@@ -7653,6 +7647,8 @@ exports.BattleAbilities = {
 			if (type !== 'Normal'){
 				let forme = 'A Rave-Alola-' + type;
 				pokemon.formeChange(forme)
+			} else {
+				pokemon.formeChange('A Rave-Alola');
 			}
 		},
 		onModifyMovePriority: -1,
@@ -9452,6 +9448,8 @@ exports.BattleAbilities = {
 			if (type !== 'Normal'){
 				let forme = 'Vitality' + type;
 				pokemon.formeChange(forme)
+			} else {
+				pokemon.formeChange('Vitality');
 			}
 		},
 		onImmunity: function (type, pokemon) {
@@ -9641,6 +9639,8 @@ exports.BattleAbilities = {
 			if(type !== 'Normal'){
 				let forme = 'Omneus-' + type;
 				pokemon.formeChange(forme)
+			} else {
+				pokemon.formeChange('Omneus');
 			}
 		},
 		onImmunity: function (type, pokemon) {
@@ -11976,5 +11976,32 @@ exports.BattleAbilities = {
 		},
 		id: "floatinggrounds",
 		name: "Floating Grounds",
+	},
+	"weatherbreak": {
+		desc: "When this Pokemon is active, all Pokemon on the field are under the effects of Klutz.",
+		shortDesc: "When this Pokemon is active, all Pokemon on the field have their held items suppressed.",
+		onStart: function (pokemon) {
+			this.add('-ability', pokemon, 'En Garde');
+			for (const side of this.sides) {
+				for (const target of side.active) {
+					target.addVolatile('engarde');
+				}
+			}
+		},
+		//Volatile effect suppressing items implemented in pokemon.js.
+		onEnd: function (pokemon) {
+			for (const side of this.sides) {
+				for (const target of side.active) {
+					if (target.hasAbility('engarde')) return;
+				}
+			}
+			for (const side of this.sides) {
+				for (const target of side.active) {
+					target.removeVolatile('engarde');
+				}
+			}
+		},
+		id: "weatherbreak",
+		name: "Weather Break",
 	},
 };
