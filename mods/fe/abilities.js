@@ -8259,6 +8259,37 @@ exports.BattleAbilities = {
 		onSwitchOut: function (pokemon) {
 			pokemon.heal(pokemon.maxhp / 3);
 		},
+		effect: {
+			duration: 2,
+			onStart: function (side, source) {
+				this.debug('Chain Heal started on ' + side.name);
+				this.effectData.positions = [];
+				// @ts-ignore
+				for (const i of side.active.keys()) {
+					this.effectData.positions[i] = false;
+				}
+				this.effectData.positions[source.position] = true;
+			},
+			onRestart: function (side, source) {
+				this.effectData.positions[source.position] = true;
+			},
+			onSwitchInPriority: 1,
+			onSwitchIn: function (target) {
+				const positions = /**@type {boolean[]} */ (this.effectData.positions);
+				if (target.position !== this.effectData.sourcePosition) {
+					return;
+				}
+				if (!target.fainted) {
+					let bannedAbilities = ['battlebond', 'comatose', 'chainheal', 'disguise', 'multitype', 'powerconstruct', 'rkssystem', 'schooling', 'shieldsdown', 'stancechange', 'truant', 'resurrection', 'magicalwand', 'sleepingsystem', 'cursedcloak', 'appropriation', 'disguiseburden', 'hideandseek', 'beastcostume', 'spiralpower', 'optimize', 'prototype', 'typeillusionist', 'godoffertility', 'foundation', 'sandyconstruct', 'victorysystem', 'techequip', 'technicalsystem', 'triagesystem', 'geneticalgorithm', 'effectsetter', 'tacticalcomputer', 'mitosis', 'barbstance', 'errormacro', 'combinationdrive', 'stanceshield', 'unfriend', 'desertmirage', 'sociallife', 'cosmology', 'crystallizedshield', 'compression', 'whatdoesthisdo'];
+					if (!bannedAbilities.includes(target.ability)) {
+						target.setAbility('chainheal');
+					}
+				}
+				if (!positions.some(affected => affected === true)) {
+					target.side.removeSideCondition('chainheal');
+				}
+			},
+		},
 		id: "chainheal",
 		name: "Chain Heal",
 	},
