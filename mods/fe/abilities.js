@@ -12004,4 +12004,36 @@ exports.BattleAbilities = {
 		id: "weatherbreak",
 		name: "Weather Break",
 	},
+	"beastcostume": {
+		desc: "If this Pokemon is a Kyutana, the first hit it takes in battle deals 0 neutral damage. Its disguise is then broken and it changes to Busted Form. If it lands a KO, it changes back. Confusion damage also breaks the disguise.",
+		shortDesc: "If this Pokemon is a Kyutana, the first hit it takes in battle or after landing a KO deals 0 neutral damage.",
+		onDamagePriority: 1,
+		onDamage: function (damage, target, source, effect) {
+			if (effect && effect.effectType === 'Move' && target.template.speciesid === 'kyutana' && !target.transformed) {
+				this.add('-activate', target, 'ability: Beast Costume');
+				this.effectData.busted = true;
+				return 0;
+			}
+		},
+		onEffectiveness: function (typeMod, target, type, move) {
+			if (!this.activeTarget) return;
+			let pokemon = this.activeTarget;
+			if (pokemon.template.speciesid !== 'kyutana' || pokemon.transformed || (pokemon.volatiles['substitute'] && !(move.flags['authentic'] || move.infiltrates))) return;
+			if (!pokemon.runImmunity(move.type)) return;
+			return 0;
+		},
+		onSourceFaint: function(target, source, effect) {
+			if (effect && effect.effectType === 'Move' && source.template.speciesid === 'kyutanabusted') {
+				source.formeChange('Kyutana', this.effect, true);
+			}
+		},
+		onUpdate: function (pokemon) {
+			if (pokemon.template.speciesid === 'kyutana' && this.effectData.busted) {
+				let templateid = 'Kyutana-Busted';
+				pokemon.formeChange(templateid, this.effect, true);
+			}
+		},
+		id: "beastcostume",
+		name: "Beast Costume",
+	},
 };
