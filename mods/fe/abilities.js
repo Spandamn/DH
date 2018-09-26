@@ -10951,7 +10951,7 @@ exports.BattleAbilities = {
 				this.add('-start', pokemon, 'typechange', type1, '[from] Prototype');
 			} else {
 				pokemon.setType([type1, type2]);
-				this.add('-start', pokemon, 'typechange', [type1, type2], '[from] Prototype');
+				this.add('-start', pokemon, 'typechange', pokemon.types.join('/'), '[from] Prototype');
 			}
 		},
 		onImmunity: function (type, pokemon) {
