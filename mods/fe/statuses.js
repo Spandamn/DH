@@ -22,7 +22,7 @@ let BattleStatuses = {
 		},
 		onBeforeMovePriority: 1,
 		onBeforeMove: function (pokemon) {
-			if (this.randomChance(1, 4) && !pokemon.hasAbility('therapeutic') && !pokemon.hasAbility('shutupandjam') && !pokemon.hasAbility('mellowvibe')) {
+			if (this.randomChance(1, 4) && !pokemon.hasAbility('therapeutic') && !pokemon.hasAbility('shutupandjam')) {
 				this.add('cant', pokemon, 'par');
 				return false;
 			}
@@ -58,7 +58,7 @@ let BattleStatuses = {
 				return;
 			}
 			this.add('cant', pokemon, 'frz');
-			if (pokemon.hasAbility('therapeutic') || pokemon.hasAbility('shutupandjam') && !pokemon.hasAbility('mellowvibe')){
+			if (pokemon.hasAbility('therapeutic') || pokemon.hasAbility('shutupandjam')){
 				return;
 			}
 			return false;
