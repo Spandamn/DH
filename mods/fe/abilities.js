@@ -12085,4 +12085,51 @@ exports.BattleAbilities = {
 		id: "beastcostume",
 		name: "Beast Costume",
 	},
+	"memestealer": {
+		desc: "If this Pokemon is hit by or uses a contact move, it steals the other Pokemon's stat boosts, decreases that Pokemon's highest stat by 1, and increases it on this Pokemon by 1.",
+		shortDesc: "If this Pokemon is hit by or uses a contact move, it steals other Pokemon's stat boosts, decreases that Pokemon's highest stat, and increases it on this Pokemon.",
+		onSourceHit: function (target, source, move) {
+			if (!move || !target) return;
+			if (target !== source && move.category !== 'Status' && move.flags['contact']) {
+				for (let i in target.boosts) {
+					source.boosts[i] = target.boosts[i];
+				}
+				target.clearBoosts();
+				this.add('-copyboost', source, target, '[from] ability: Meme Stealer', '[of] ' + source);
+				this.add('-clearboost', target);
+				let stat = 'atk';
+				let bestStat = 0;
+				for (let i in target.stats) {
+					if (target.stats[i] > bestStat) {
+						stat = i;
+						bestStat = target.stats[i];
+					}
+				}
+				this.boost({[stat]: -1}, target, source);
+				this.boost({[stat]: 1}, source);
+			}
+		},
+		onAfterMoveSecondary: function (target, source, move) {
+			if (source && source !== target && move && move.flags['contact']) {
+				for (let i in source.boosts) {
+					target.boosts[i] = source.boosts[i];
+				}
+				source.clearBoosts();
+				this.add('-copyboost', target, source, '[from] ability: Meme Stealer', '[of] ' + target);
+				this.add('-clearboost', source);
+				let stat = 'atk';
+				let bestStat = 0;
+				for (let i in source.stats) {
+					if (source.stats[i] > bestStat) {
+						stat = i;
+						bestStat = source.stats[i];
+					}
+				}
+				this.boost({[stat]: -1}, source, target);
+				this.boost({[stat]: 1}, target);
+			}
+		},
+		id: "memestealer",
+		name: "Meme Stealer",
+	},
 };
