@@ -10812,6 +10812,10 @@ exports.BattleAbilities = {
 				}
 			}
 		},
+		onAnySwitchin: function (pokemon) {
+			if (pokemon === this.effectData.target) return;
+			pokemon.addVolatile('weatherbreak');
+		},
 		onAnyDamage: function (damage, target, source, effect) {
 			if (effect && (effect.id === 'sandstorm' || effect.id === 'hail' || effect.id === 'solarsnow') && !target.volatiles['atmosphericperversion']) {
             this.heal(target.maxhp / 16);
@@ -10845,6 +10849,10 @@ exports.BattleAbilities = {
 				}
 			}
 		},
+		onAnySwitchin: function (pokemon) {
+			if (pokemon === this.effectData.target) return;
+			pokemon.addVolatile('atmosphericperversion');
+		},
 		onAnyDamage: function (damage, target, source, effect) {
 			if (effect && (effect.id === 'sandstorm' || effect.id === 'hail' || effect.id === 'solarsnow') && !target.volatiles['weatherbreak']) {
             this.heal(target.maxhp / 16);
@@ -10868,8 +10876,8 @@ exports.BattleAbilities = {
 		name: "Atmospheric Perversion",
 	},
 	"weathercontradiction": {
-		desc: "The effects of stat changes (for this Pokemon only) and weather is reversed.",
-		shortDesc: "Inverts weather effects and stat changes.",
+		desc: "This Pokemon's stat changes and the effects of weather are reversed when it is active.",
+		shortDesc: "The effects of stat changes (for this Pokemon only) and weather is reversed.",
 		onStart: function (pokemon) {
 			this.add('-ability', pokemon, 'Weather Contradiction');
 			for (const side of this.sides) {
@@ -10877,6 +10885,10 @@ exports.BattleAbilities = {
 					target.addVolatile('atmosphericperversion');
 				}
 			}
+		},
+		onAnySwitchin: function (pokemon) {
+			if (pokemon === this.effectData.target) return;
+			pokemon.addVolatile('weatherbreak');
 		},
 		onBoost: function (boost, target, source, effect) {
 			if (effect && effect.id === 'zpower') return;
