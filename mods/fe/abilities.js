@@ -9676,9 +9676,11 @@ exports.BattleAbilities = {
 				source.cureStatus();
 			}
 		},
+		onBeforeSwitchOut: function (pokemon) {
+			pokemon.side.addSideCondition('compassionatesoul');
+		},
 		onSwitchOut: function (pokemon) {
 			pokemon.cureStatus();
-			pokemon.side.addSideCondition('compassionatesoul');
 		},
 		effect: {
 			duration: 2,
