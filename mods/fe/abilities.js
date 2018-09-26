@@ -11099,7 +11099,7 @@ exports.BattleAbilities = {
 		},
 		onModifyMovePriority: 8,
 		onModifyMove: function(move, pokemon) {
-			if (move.flags['punch'] && move.category === 'Physical'){
+			if (move.flags['punch'] && move.category === 'Physical' && !move.defensiveCategory){
 				move.category = 'Special';
 				move.defensiveCategory = 'Physical';
 			}
