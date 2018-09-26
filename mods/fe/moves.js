@@ -9524,5 +9524,39 @@ exports.BattleMovedex = {
 		zMovePower: 185,
 		//contestType: "Beautiful",
 	},
+	"photosineticdestruction": {
+		accuracy: 100,
+		basePower: 100,
+		category: "Physical",
+		desc: "Has a 100% chance to lower the target's highest stat by 1 stage. This move becomes a special attack if the user's Special Attack is greater than its Attack, including stat stage changes. This move and its effects ignore the Abilities of other Pokemon.",
+		shortDesc: "100% chance to lower adjacent Pkmn Highest stat by 1. Special if user's Sp. Atk > Atk. Ignores Abilities.",
+		id: "photosineticdestruction",
+		name: "Photosinetic Destruction",
+		pp: 20,
+		priority: 0,
+		flags: {protect: 1, mirror: 1, nonsky: 1},
+		onModifyMove: function (move, pokemon) {
+			if (pokemon.getStat('spa', false, true) > pokemon.getStat('atk', false, true)) move.category = 'Special';
+		},
+		secondary: {
+			chance: 100,
+			onHit: function (target, source) {
+				let stat = 'atk';
+				let bestStat = 0;
+				for (let i in target.stats) {
+					if (target.stats[i] > bestStat) {
+						stat = i;
+						bestStat = target.stats[i];
+					}
+				}
+				this.boost({[stat]: -1}, target, source);
+			},
+		},
+		ignoreAbility: true,
+		target: "allAdjacent",
+		type: "Ground",
+		zMovePower: 200,
+		contestType: "Tough",
+	},
 };
 
