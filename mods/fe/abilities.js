@@ -10350,17 +10350,15 @@ exports.BattleAbilities = {
 		name: "Scary Sandwich",
 	},
 	"testcram": {
-		desc: "This Pokemon is immune to Ground-type moves. When this Pokemon is asleep, it is grounded and can ONLY be hit by Ground-type moves.",
-		shortDesc: "This Pokemon is immune to Ground-type moves. When this Pokemon is asleep, it is grounded and can ONLY be hit by Ground-type moves.",
-		onTryHit: function (target, source, move) {
-			if (target !== source && move.type === 'Ground' && target.status !== 'slp') {
-				this.add('-immune', target, '[msg]', '[from] ability: Test Cram');
+		shortDesc: "This Pokemon is immune to Ground-Type moves. If a move against this Pokémon ended up on a Critical Hit, it won't affect the Pokémon. This Pokemon's critical hit ratio is raised by 1 stage.",
+		onTryHit: function(target, source, move) {
+			if (move && move.effectType === 'Move' && move.crit || move.type === 'Ground') {
+				this.add('-immune', target, '[msg]', '[from] ability: Hyper Protection');
 				return null;
 			}
-			else if (target !== source && move.type !== 'Ground' && target.status === 'slp') {
-				this.add('-immune', target, '[msg]', '[from] ability: Test Cram');
-				return null;
-			}
+		},
+		onModifyCritRatio: function(critRatio) {
+			return critRatio + 1;
 		},
 		id: "testcram",
 		name: "Test Cram",
@@ -10956,10 +10954,10 @@ exports.BattleAbilities = {
 
 	"sleepingsystem": {
       desc: "This Pokémon would change types to match it's held drive. This Pokémon counts as asleep and always holding all drives. (Multi-Attack is still Normal.)",
-		shortDesc: "This Pokemon is treated as if it were alseep and also all types at once.",
+		shortDesc: "This Pokemon is treated as if it were asleep and also all types at once.",
 		onSwitchInPriority: 101,
 		onSwitchIn: function (pokemon) {
-					this.add('c|&Dr.wh0 cares|Sleeping System: This Pokemon is treated as if it were alseep and also all types at once.');
+					this.add('c|&Dr.wh0 cares|Sleeping System: This Pokemon is treated as if it were asleep and also all types at once.');
 				pokemon.setType(['Normal', 'Fire', 'Water', 'Electric', 'Grass', 'Ice', 'Fighting', 'Poison', 'Ground', 'Flying', 'Rock', 'Bug', 'Ghost', 'Psychic', 'Dragon', 'Dark', 'Steel', 'Fairy']);
 		},
 		onModifyMovePriority: -1,
