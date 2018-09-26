@@ -11991,7 +11991,7 @@ exports.BattleAbilities = {
 		id: "floatinggrounds",
 		name: "Floating Grounds",
 	},
-	"weatherbreak": {
+	"engarde": {
 		desc: "When this Pokemon is active, all Pokemon on the field are under the effects of Klutz.",
 		shortDesc: "When this Pokemon is active, all Pokemon on the field have their held items suppressed.",
 		onStart: function (pokemon) {
@@ -12001,6 +12001,10 @@ exports.BattleAbilities = {
 					target.addVolatile('engarde');
 				}
 			}
+		},
+		onAnySwitchin: function (pokemon) {
+			if (pokemon === this.effectData.target) return;
+			pokemon.addVolatile('engarde');
 		},
 		//Volatile effect suppressing items implemented in pokemon.js.
 		onEnd: function (pokemon) {
@@ -12015,8 +12019,8 @@ exports.BattleAbilities = {
 				}
 			}
 		},
-		id: "weatherbreak",
-		name: "Weather Break",
+		id: "engarde",
+		name: "En Garde",
 	},
 	"beastcostume": {
 		desc: "If this Pokemon is a Kyutana, the first hit it takes in battle deals 0 neutral damage. Its disguise is then broken and it changes to Busted Form. If it lands a KO, it changes back. Confusion damage also breaks the disguise.",
