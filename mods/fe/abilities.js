@@ -10837,6 +10837,7 @@ exports.BattleAbilities = {
 	"weatherbreak": {
 		desc: "When this Pokemon is active, ll weather-based effects, including abilities and passive stat increases, are reversed.",
 		shortDesc: "When this Pokemon is active, all weather-based effects are reversed.",
+		// https://hastebin.com/emuxidukok.pas
 		onStart: function (pokemon) {
 			this.add('-ability', pokemon, 'Weather Break');
 			for (const side of this.sides) {
@@ -10874,6 +10875,7 @@ exports.BattleAbilities = {
 	"atmosphericperversion": {
 		desc: "When this Pokemon is active, ll weather-based effects, including abilities and passive stat increases, are reversed.",
 		shortDesc: "When this Pokemon is active, all weather-based effects are reversed.",
+		// https://hastebin.com/emuxidukok.pas
 		onStart: function (pokemon) {
 			this.add('-ability', pokemon, 'Atmospheric Perversion');
 			for (const side of this.sides) {
