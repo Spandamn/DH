@@ -11057,8 +11057,8 @@ exports.BattleAbilities = {
 			if (move.flags['punch']) {
 				mod = mod * 1.2;
 				if (move.category === 'Physical') {
-					mod = mod * attacker.getStat('spa', false, true);
-					mod = mod / attacker.getStat('atk', false, true);
+					mod = mod * attacker.getStat('spa', false, false);
+					mod = mod / attacker.getStat('atk', false, false);
 				}
 			}
 			if (move.type === 'Electric') {
