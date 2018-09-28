@@ -1308,10 +1308,6 @@ exports.BattlePokedex = {
         num: 750026,
         species: "Tyranichomp",
         types: ["Rock", "Dragon"],
-        genderRatio: {
-            M: 50.0,
-            F: 50.0
-        },
         baseStats: {
             hp: 114,
             atk: 142,
@@ -1402,10 +1398,6 @@ exports.BattlePokedex = {
         num: 750027,
         species: "Railie",
         types: ["Ice", "Electric"],
-        genderRatio: {
-            M: 50.0,
-            F: 50.0
-        },
         baseStats: {
             hp: 80,
             atk: 95,
@@ -2057,10 +2049,6 @@ exports.BattlePokedex = {
         num: 750034,
         species: "Sharpedos",
         types: ["Water"],
-        genderRatio: {
-            M: 50.0,
-            F: 50.0
-        },
         baseStats: {
             hp: 92,
             atk: 132,
@@ -2506,10 +2494,6 @@ exports.BattlePokedex = {
         num: 750042,
         species: "Eek",
         types: ["Electric", "Poison"],
-        genderRatio: {
-            M: 50.0,
-            F: 50.0
-        },
         baseStats: {
             hp: 105,
             atk: 120,
@@ -2652,10 +2636,6 @@ exports.BattlePokedex = {
         species: "Ferroslash",
 		  baseForme: "Shield",
         types: ["Steel", "Grass"],
-        genderRatio: {
-            M: 50.0,
-            F: 50.0
-        },
         baseStats: {
             hp: 77,
             atk: 82,
@@ -2681,10 +2661,6 @@ exports.BattlePokedex = {
         forme: "Blade",
         formeLetter: "M",
         types: ["Steel", "Grass"],
-        genderRatio: {
-            M: 50.0,
-            F: 50.0
-        },
         baseStats: {
             hp: 77,
             atk: 150,
@@ -2899,10 +2875,6 @@ exports.BattlePokedex = {
         num: 750048,
         species: "Maladuck",
         types: ["Water", "Dark"],
-        genderRatio: {
-            M: 50.0,
-            F: 50.0
-        },
         baseStats: {
             hp: 93,
             atk: 97,
@@ -2994,10 +2966,6 @@ exports.BattlePokedex = {
         num: 750051,
         species: "Jellivoir",
         types: ["Ghost", "Fairy"],
-        genderRatio: {
-            M: 50.0,
-            F: 50.0
-        },
         baseStats: {
             hp: 94,
             atk: 72,
@@ -3686,10 +3654,6 @@ exports.BattlePokedex = {
         num: 750063,
         species: "Casting",
         types: ["Poison", "Normal"],
-        genderRatio: {
-            M: 50.0,
-            F: 50.0
-        },
         baseStats: {
             hp: 78,
             atk: 90,
@@ -4915,10 +4879,6 @@ exports.BattlePokedex = {
         num: 750084,
         species: "Toxisharp",
         types: ["Dark", "Poison"],
-        genderRatio: {
-            M: 50.0,
-            F: 50.0
-        },
         baseStats: {
             hp: 84,
             atk: 125,
@@ -4941,10 +4901,6 @@ exports.BattlePokedex = {
         num: 750085,
         species: "Darmega",
         types: ["Dark", "Bug"],
-        genderRatio: {
-            M: 50.0,
-            F: 50.0
-        },
         baseStats: {
             hp: 90,
             atk: 83,
@@ -5010,10 +4966,6 @@ exports.BattlePokedex = {
         num: 750087,
         species: "Heatloom",
         types: ["Steel", "Grass"],
-        genderRatio: {
-            M: 50.0,
-            F: 50.0
-        },
         baseStats: {
             hp: 95,
             atk: 130,
@@ -5104,10 +5056,6 @@ exports.BattlePokedex = {
         num: 750089,
         species: "Hooporus",
         types: ["Ghost", "Dragon"],
-        genderRatio: {
-            M: 50.0,
-            F: 50.0
-        },
         baseStats: {
             hp: 78,
             atk: 148,
@@ -5128,10 +5076,6 @@ exports.BattlePokedex = {
         num: 750090,
         species: "Lopunnini",
         types: ["Fire", "Normal"],
-        genderRatio: {
-            M: 50.0,
-            F: 50.0
-        },
         baseStats: {
             hp: 83,
             atk: 88,
@@ -5196,10 +5140,6 @@ exports.BattlePokedex = {
         num: 750091,
         species: "Volcagon",
         types: ["Fire", "Ground"],
-        genderRatio: {
-            M: 50.0,
-            F: 50.0
-        },
         baseStats: {
             hp: 92,
             atk: 90,
@@ -5315,10 +5255,6 @@ exports.BattlePokedex = {
         num: 750094,
         species: "Sans",
         types: ["Normal", "Ground"],
-        genderRatio: {
-            M: 50.0,
-            F: 50.0
-        },
         baseStats: {
             hp: 122,
             atk: 140,
@@ -5735,10 +5671,6 @@ exports.BattlePokedex = {
         num: 750099,
         species: "Gyaramence",
         types: ["Water", "Dragon"],
-        genderRatio: {
-            M: 50.0,
-            F: 50.0
-        },
         baseStats: {
             hp: 110,
             atk: 145,
@@ -5927,10 +5859,6 @@ exports.BattlePokedex = {
         num: 7500103,
         species: "Heathorn",
         types: ["Grass", "Steel"],
-        genderRatio: {
-            M: 50.0,
-            F: 50.0
-        },
         baseStats: {
             hp: 93,
             atk: 92,
@@ -5999,10 +5927,6 @@ exports.BattlePokedex = {
         num: 7500106,
         species: "Jellie",
         types: ["Ghost", "Fairy"],
-        genderRatio: {
-            M: 50.0,
-            F: 50.0
-        },
         baseStats: {
             hp: 90,
             atk: 80,
@@ -6046,10 +5970,6 @@ exports.BattlePokedex = {
         num: 7500107,
         species: "Zaggron",
         types: ["Flying", "Steel"],
-        genderRatio: {
-            M: 50.0,
-            F: 50.0
-        },
         baseStats: {
             hp: 80,
             atk: 100,
@@ -6093,10 +6013,6 @@ exports.BattlePokedex = {
         num: 7500108,
         species: "Malaras",
         types: ["Dark", "Ice"],
-        genderRatio: {
-            M: 50.0,
-            F: 50.0
-        },
         baseStats: {
             hp: 119,
             atk: 98,
@@ -6143,10 +6059,6 @@ exports.BattlePokedex = {
         num: 7500110,
         species: "Eruption",
         types: ["Fire", "Water"],
-        genderRatio: {
-            M: 50.0,
-            F: 50.0
-        },
         baseStats: {
             hp: 79,
             atk: 105,
@@ -6232,10 +6144,6 @@ exports.BattlePokedex = {
         num: 7500113,
         species: "Sickle",
         types: ["Bug", "Steel"],
-        genderRatio: {
-            M: 50.0,
-            F: 50.0
-        },
         baseStats: {
             hp: 55,
             atk: 80,
@@ -6321,10 +6229,6 @@ exports.BattlePokedex = {
         num: 7500115,
         species: "Dongoro",
         types: ["Ground", "Dark"],
-        genderRatio: {
-            M: 50.0,
-            F: 50.0
-        },
         baseStats: {
             hp: 102,
             atk: 132,
@@ -6415,10 +6319,6 @@ darkchomp: {
         num: 7500117,
         species: "Jelluk",
         types: ["Poison", "Water"],
-        genderRatio: {
-            M: 50.0,
-            F: 50.0
-        },
         baseStats: {
             hp: 112,
             atk: 92,
@@ -6441,10 +6341,6 @@ darkchomp: {
         num: 7500118,
         species: "Crustlecross",
         types: ["Rock", "Fighting"],
-        genderRatio: {
-            M: 50.0,
-            F: 50.0
-        },
         baseStats: {
             hp: 85,
             atk: 120,
@@ -6641,10 +6537,6 @@ darkchomp: {
         num: 7500123,
         species: "Clawdra",
         types: ["Water", "Dragon"],
-        genderRatio: {
-            M: 50.0,
-            F: 50.0
-        },
         baseStats: {
             hp: 83,
             atk: 94,
@@ -6688,10 +6580,6 @@ darkchomp: {
         num: 7500125,
         species: "Armortran",
         types: ["Steel", "Flying"],
-        genderRatio: {
-            M: 50.0,
-            F: 50.0
-        },
         baseStats: {
             hp: 90,
             atk: 85,
@@ -6712,10 +6600,6 @@ darkchomp: {
         num: 7500126,
         species: "Gonzap",
         types: ["Dragon", "Electric"],
-        genderRatio: {
-            M: 50.0,
-            F: 50.0
-        },
         baseStats: {
             hp: 95,
             atk: 99,
@@ -6907,10 +6791,6 @@ darkchomp: {
         num: 7500130,
         species: "Cargolure",
         types: ["Ghost", "Fire"],
-        genderRatio: {
-            M: 50.0,
-            F: 50.0
-        },
         baseStats: {
             hp: 70,
             atk: 67,
@@ -7030,10 +6910,6 @@ darkchomp: {
         num: 7500132,
         species: "Cazantor",
         types: ["Bug", "Steel"],
-        genderRatio: {
-            M: 50.0,
-            F: 50.0
-        },
         baseStats: {
             hp: 74,
             atk: 130,
@@ -7241,10 +7117,6 @@ darkchomp: {
         num: 7500135,
         species: "Steelthorn",
         types: ["Grass", "Steel"],
-        genderRatio: {
-            M: 50.0,
-            F: 50.0
-        },
         baseStats: {
             hp: 85,
             atk: 100,
@@ -7527,10 +7399,6 @@ darkchomp: {
         num: 7500138,
         species: "Scraftia",
         types: ["Fighting", "Dragon"],
-        genderRatio: {
-            M: 50.0,
-            F: 50.0
-        },
         baseStats: {
             hp: 80,
             atk: 90,
@@ -7597,10 +7465,6 @@ darkchomp: {
         num: 7500139,
         species: "Slurpum",
         types: ["Fairy", "Fighting"],
-        genderRatio: {
-            M: 50.0,
-            F: 50.0
-        },
         baseStats: {
             hp: 81,
             atk: 115,
@@ -7739,10 +7603,6 @@ darkchomp: {
         num: 7500142,
         species: "Lopunoone",
         types: ["Normal"],
-        genderRatio: {
-            M: 50.0,
-            F: 50.0
-        },
         baseStats: {
             hp: 81,
             atk: 83,
@@ -8055,10 +7915,6 @@ darkchomp: {
         num: 7500150,
         species: "Heebleye",
         types: ["Psychic", "Dark"],
-        genderRatio: {
-            M: 50.0,
-            F: 50.0
-        },
         baseStats: {
             hp: 72,
             atk: 85,
@@ -8627,10 +8483,6 @@ darkchomp: {
         num: 7500164,
         species: "Babuffe",
         types: ["Ghost", "Psychic"],
-        genderRatio: {
-            M: 50.0,
-            F: 50.0
-        },
         baseStats: {
             hp: 137,
             atk: 84,
@@ -8654,10 +8506,6 @@ darkchomp: {
         forme: "Mega",
         formeLetter: "M",
         types: ["Ghost", "Psychic"],
-        genderRatio: {
-            M: 50.0,
-            F: 50.0
-        },
         baseStats: {
             hp: 137,
             atk: 134,
@@ -8879,10 +8727,6 @@ darkchomp: {
         num: 7500172,
         species: "Landia",
         types: ["Dragon", "Flying"],
-        genderRatio: {
-            M: 50.0,
-            F: 50.0
-        },
         baseStats: {
             hp: 86,
             atk: 105,
@@ -8906,10 +8750,6 @@ darkchomp: {
         forme: "Mega",
         formeLetter: "M",
         types: ["Dragon", "Fairy"],
-        genderRatio: {
-            M: 50.0,
-            F: 50.0
-        },
         baseStats: {
             hp: 86,
             atk: 145,
@@ -9020,10 +8860,6 @@ darkchomp: {
         num: 7500176,
         species: "Rail Link",
         types: ["Normal", "Water"],
-        genderRatio: {
-            M: 50.0,
-            F: 50.0
-        },
         baseStats: {
             hp: 170,
             atk: 135,
@@ -9044,10 +8880,6 @@ darkchomp: {
         num: 7500177,
         species: "Agrippa",
         types: ["Fighting", "Steel"],
-        genderRatio: {
-            M: 50.0,
-            F: 50.0
-        },
         baseStats: {
             hp: 90,
             atk: 134,
@@ -9071,10 +8903,6 @@ darkchomp: {
         forme: "Basculin",
         formeLetter: "B",
         types: ["Water"],
-        genderRatio: {
-            M: 50.0,
-            F: 50.0
-        },
         baseStats: {
             hp: 80,
             atk: 102,
@@ -9095,10 +8923,6 @@ darkchomp: {
         num: 7500179,
         species: "Mewelli",
         types: ["Water", "Psychic"],
-        genderRatio: {
-            M: 50.0,
-            F: 50.0
-        },
         baseStats: {
             hp: 100,
             atk: 97,
@@ -9284,10 +9108,6 @@ darkchomp: {
         num: 7500185,
         species: "Supermuk",
         types: ["Ghost", "Poison"],
-        genderRatio: {
-            M: 50.0,
-            F: 50.0
-        },
         baseStats: {
             hp: 105,
             atk: 112,
@@ -9410,10 +9230,6 @@ darkchomp: {
         num: 7500188,
         species: "Escagon",
         types: ["Dragon", "Steel"],
-        genderRatio: {
-            M: 50.0,
-            F: 50.0
-        },
         baseStats: {
             hp: 85,
             atk: 128,
@@ -9458,10 +9274,6 @@ darkchomp: {
         num: 7500190,
         species: "Sunflorrim",
         types: ["Grass"],
-        genderRatio: {
-            M: 50.0,
-            F: 50.0
-        },
         baseStats: {
             hp: 82,
             atk: 77,
@@ -9526,10 +9338,6 @@ darkchomp: {
         num: 7500193,
         species: "Parp",
         types: ["Normal", "Dark"],
-        genderRatio: {
-            M: 50.0,
-            F: 50.0
-        },
         baseStats: {
             hp: 74,
             atk: 89,
@@ -9619,10 +9427,6 @@ darkchomp: {
         num: 7500196,
         species: "Hentai",
         types: ["Poison", "Fire"],
-        genderRatio: {
-            M: 50.0,
-            F: 50.0
-        },
         baseStats: {
             hp: 90,
             atk: 80,
@@ -9688,10 +9492,6 @@ darkchomp: {
         num: 7500199,
         species: "Volgon",
         types: ["Ground", "Electric"],
-        genderRatio: {
-            M: 50.0,
-            F: 50.0
-        },
         baseStats: {
             hp: 93,
             atk: 100,
@@ -10071,10 +9871,6 @@ darkchomp: {
         num: 7500207,
         species: "Vikarona",
         types: ["Electric", "Fire"],
-        genderRatio: {
-            M: 50.0,
-            F: 50.0
-        },
         baseStats: {
             hp: 91,
             atk: 75,
@@ -10095,10 +9891,6 @@ darkchomp: {
         num: 7500208,
         species: "Mudgoat",
         types: ["Grass", "Ground"],
-        genderRatio: {
-            M: 50.0,
-            F: 50.0
-        },
         baseStats: {
             hp: 121,
             atk: 122,
@@ -10590,10 +10382,6 @@ darkchomp: {
         num: 7500213,
         species: "Malaquanid",
         types: ["Dark", "Bug"],
-        genderRatio: {
-            M: 50.0,
-            F: 50.0
-        },
         baseStats: {
             hp: 87,
             atk: 91,
@@ -10607,17 +10395,13 @@ darkchomp: {
         },
         heightm: 1.65,
         weightkg: 64.5,
-        color: "Green",
+        color: "Purple",
         eggGroups: ["Water 1"],
     },
     scrapunny: {
         num: 7500214,
         species: "Scrapunny",
         types: ["Normal", "Dark"],
-        genderRatio: {
-            M: 50.0,
-            F: 50.0
-        },
         baseStats: {
             hp: 75,
             atk: 93,
@@ -10629,9 +10413,32 @@ darkchomp: {
         abilities: {
             0: "Mean Girl"
         },
-        heightm: 1.14,
+        heightm: 1.15,
         weightkg: 31.65,
-        color: "Black",
+        color: "Brown",
+        eggGroups: ["Field"],
+    },
+    scrapunnymega: {
+        num: 7500214,
+        species: "Scrapunny-Mega",
+        baseSpecies: "Scrapunny",
+        forme: "Mega",
+        formeLetter: "M",
+        types: ["Normal", "Fighting"],
+        baseStats: {
+            hp: 75,
+            atk: 153,
+            def: 119,
+            spa: 59,
+            spd: 115,
+            spe: 121
+        },
+        abilities: {
+            0: "Scrappy"
+        },
+        heightm: 1.25,
+        weightkg: 26.65,
+        color: "Brown",
         eggGroups: ["Field"],
     },
     bezong: {
