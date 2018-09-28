@@ -16135,6 +16135,8 @@ celebi: {
         abilities: {
             0: "Disguise Burden"
         },
+        heightm: 0.7,
+        weightkg: 7.85,
 		  otherFormes: ["mimiblimbusted"],
 		  eggGroups: ["Amorphous"],
     },
@@ -16156,6 +16158,8 @@ mimiblimbusted: {
         abilities: {
             0: "Disguise Burden"
         },
+        heightm: 0.3,
+        weightkg: 7.85,
 		  eggGroups: ["Amorphous"],
     },
     warcanein: {
@@ -16174,6 +16178,9 @@ mimiblimbusted: {
         abilities: {
             0: "Persistent Morale"
         },
+        heightm: 1.65,
+        weightkg: 152.8,
+		  eggGroups: ["Field"],
     },
 
 
@@ -16193,6 +16200,9 @@ mimiblimbusted: {
         abilities: {
             0: "Type Illusionist"
         },
+        heightm: 1.95,
+        weightkg: 166.25,
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -16213,6 +16223,9 @@ mimiblimbusted: {
         abilities: {
             0: "Unfriend"
         },
+        heightm: 1.15,
+        weightkg: 38.7,
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -16235,6 +16248,9 @@ mimiblimbusted: {
         abilities: {
             0: "Unfriend"
         },
+        heightm: 1.15,
+        weightkg: 38.7,
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -16254,6 +16270,9 @@ mimiblimbusted: {
         abilities: {
             0: "Photosynthesis Surge"
         },
+        heightm: 1.2,
+        weightkg: 62.95,
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -16272,6 +16291,9 @@ mimiblimbusted: {
         abilities: {
             0: "Dazzle Beast"
         },
+        heightm: 1.35,
+        weightkg: 22,
+		  eggGroups: ["Undiscovered"],
     },
 
 
