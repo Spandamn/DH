@@ -16312,6 +16312,9 @@ mimiblimbusted: {
         abilities: {
             0: "Rage Potion"
         },
+        heightm: 1.05,
+        weightkg: 37.75,
+		  eggGroups: ["Field"],
     },
 
 
@@ -16331,6 +16334,9 @@ mimiblimbusted: {
         abilities: {
             0: "Blacksmith"
         },
+        heightm: 1.1,
+        weightkg: 107.15,
+		  eggGroups: ["Mineral"],
     },
 
 
@@ -16349,6 +16355,9 @@ mimiblimbusted: {
         abilities: {
             0: "Two-Faced"
         },
+        heightm: 3.05,
+        weightkg: 454.25,
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -16368,6 +16377,9 @@ mimiblimbusted: {
         abilities: {
             0: "Contagious Yawn"
         },
+        heightm: 0.35,
+        weightkg: 18.5,
+		  eggGroups: ["Field"],
     },
 
 
@@ -16387,6 +16399,9 @@ mimiblimbusted: {
         abilities: {
             0: "Compassionate Soul"
         },
+        heightm: 1.05,
+        weightkg: 50.55,
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -16409,6 +16424,9 @@ mimiblimbusted: {
         abilities: {
             0: "Pixilate"
         },
+        heightm: 1.45,
+        weightkg: 50.55,
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -16428,6 +16446,9 @@ mimiblimbusted: {
         abilities: {
             0: "Magical Ice"
         },
+        heightm: 1.65,
+        weightkg: 107.25,
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -16450,6 +16471,9 @@ mimiblimbusted: {
         abilities: {
             0: "No Guard"
         },
+        heightm: 2.35,
+        weightkg: 118.25,
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -16469,6 +16493,9 @@ mimiblimbusted: {
         abilities: {
             0: "Genome Tree"
         },
+        heightm: 2.3,
+        weightkg: 206.8,
+		  eggGroups: ["Undiscovered"],
     },
 
 
