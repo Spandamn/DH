@@ -15912,6 +15912,8 @@ celebi: {
         abilities: {
             0: "Stare Down"
         },
+        heightm: 1.55,
+        weightkg: 80.25,
 		  eggGroups: ["Field"],
     },
 
@@ -15931,6 +15933,8 @@ celebi: {
         abilities: {
             0: "Ambition"
         },
+        heightm: 1.5,
+        weightkg: 62.25,
 		  eggGroups: ["Flying"],
     },
 
@@ -15953,6 +15957,8 @@ celebi: {
         abilities: {
             0: "No Guard"
         },
+        heightm: 2.2,
+        weightkg: 39.6,
 		  eggGroups: ["Flying"],
     },
 
@@ -15973,6 +15979,8 @@ celebi: {
         abilities: {
             0: "Power Surge"
         },
+        heightm: 1,
+        weightkg: 35.75,
 		  eggGroups: ["Field"],
     },
 
@@ -15996,6 +16004,8 @@ celebi: {
         abilities: {
             0: "Magic Bounce"
         },
+        heightm: 1,
+        weightkg: 37.75,
 		  eggGroups: ["Field"],
     },
 
@@ -16016,6 +16026,8 @@ celebi: {
         abilities: {
             0: "Power Of Two"
         },
+        heightm: 1.05,
+        weightkg: 34.5,
 		  eggGroups: ["Water 1"],
     },
 
@@ -16036,6 +16048,8 @@ celebi: {
         abilities: {
             0: "Lava Dive"
         },
+        heightm: 1.75,
+        weightkg: 84.75,
 		  eggGroups: ["Field"],
     },
 
@@ -16056,6 +16070,8 @@ celebi: {
         abilities: {
             0: "Sheer Fat"
         },
+        heightm: 2.2,
+        weightkg: 274.4,
 		  eggGroups: ["Monster"],
     },
 
@@ -16076,6 +16092,8 @@ celebi: {
         abilities: {
             0: "Ocean Shield"
         },
+        heightm: 1.95,
+        weightkg: 147.25,
 		  eggGroups: ["Water 1"],
     },
 
@@ -16096,6 +16114,8 @@ celebi: {
         abilities: {
             0: "Chlorocoat"
         },
+        heightm: 1.1,
+        weightkg: 26.75,
 		  eggGroups: ["Field"],
     },
 
