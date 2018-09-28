@@ -17336,6 +17336,9 @@ mimiblimbusted: {
         abilities: {
             0: "Flip Out"
         },
+        heightm: 0.95,
+        weightkg: 21.5,
+		  eggGroups: ["Field"],
     },
     slowmarina: {
         num: 7500401,
@@ -17464,10 +17467,6 @@ mimiblimbusted: {
         forme: "Mega",
         formeLetter: "M",
         types: ["Poison", "Fairy"],
-        genderRatio: {
-            M: 50.0,
-            F: 50.0
-        },
         baseStats: {
             hp: 90,
             atk: 130,
@@ -17723,13 +17722,10 @@ mimiblimbusted: {
     },
     // Vallysect 7500409
     mamozone: {
-        num: 7500412,
+        num: 7500413,
         species: "Mamozone",
         types: ["Ground", "Steel"],
-        genderRatio: {
-            M: 0.0,
-            F: 0.0
-        },
+        gender: "N",
         baseStats: {
             hp: 90,
             atk: 120,
@@ -17741,11 +17737,14 @@ mimiblimbusted: {
         abilities: {
             0: "Fat Trap"
         },
+        heightm: 1.05,
+        weightkg: 565.2,
+		  eggGroups: ["Undiscovered"],
     },
 
 
     slakoem: {
-        num: 7500413,
+        num: 7500414,
         species: "Slakoem",
         types: ["Normal", "Psychic"],
         genderRatio: {
@@ -17763,15 +17762,14 @@ mimiblimbusted: {
         abilities: {
             0: "Singularity"
         },
+        heightm: 1.05,
+        weightkg: 565.2,
+		  eggGroups: ["Undiscovered"],
     },
     audala: {
-        num: 7500414,
+        num: 7500415,
         species: "Audala",
         types: ["Ghost", "Normal"],
-        genderRatio: {
-            M: 50.0,
-            F: 50.0
-        },
         baseStats: {
             hp: 140,
             atk: 86,
@@ -17791,16 +17789,12 @@ mimiblimbusted: {
 
 
     audalamega: {
-        num: 7500414,
+        num: 7500415,
         species: "Audala-Mega",
         baseSpecies: "Audala",
         forme: "Mega",
         formeLetter: "M",
         types: ["Ghost", "Fairy"],
-        genderRatio: {
-            M: 50.0,
-            F: 50.0
-        },
         baseStats: {
             hp: 140,
             atk: 86,
@@ -17820,7 +17814,7 @@ mimiblimbusted: {
 
 
     sandgarde: {
-        num: 7500415,
+        num: 7500416,
         species: "Sandgarde",
         types: ["Ground", "Dragon"],
         gender: "N",
@@ -17844,7 +17838,7 @@ mimiblimbusted: {
 
 
     sandgardecastle: {
-        num: 7500415,
+        num: 7500416,
         species: "Sandgarde-Castle",
         baseSpecies: "Sandgarde",
         forme: "Castle",
@@ -17870,7 +17864,7 @@ mimiblimbusted: {
 
 
     triagonal: {
-        num: 7500416,
+        num: 7500417,
         species: "Triagonal",
         types: ["Electric", "Ice"],
         genderRatio: {
@@ -17896,7 +17890,7 @@ mimiblimbusted: {
 
 
     triagonalmega: {
-        num: 7500416,
+        num: 7500417,
         species: "Triagonal-Mega",
         baseSpecies: "Triagonal",
         forme: "Mega",
@@ -17925,7 +17919,7 @@ mimiblimbusted: {
 
 
     exfeycola: {
-        num: 7500417,
+        num: 7500418,
         species: "Exfey-Cola",
         types: ["Fairy", "Grass"],
         genderRatio: {M: 0.25, F: 0.75},
@@ -17947,13 +17941,9 @@ mimiblimbusted: {
     },
 	
     komodreigon: {
-        num: 7500418,
+        num: 7500419,
         species: "Komodreigon",
         types: ["Dragon", "Fighting"],
-        genderRatio: {
-            M: 50.0,
-            F: 50.0
-        },
         baseStats: {
             hp: 93,
             atk: 117,
@@ -17965,12 +17955,14 @@ mimiblimbusted: {
         abilities: {
             0: "S.O.N.A.R"
         },
+        heightm: 1.7,
+        weightkg: 119.1,
         eggGroups: ["Dragon"],
     },
 
 
     dunking: {
-        num: 7500419,
+        num: 7500420,
         species: "Dunking",
         types: ["Normal"],
         genderRatio: {
@@ -17986,7 +17978,7 @@ mimiblimbusted: {
             spe: 82
         },
         abilities: {
-            0: "Work Ethic"
+            0: "Shut Up and Jam",
         },
         heightm: 1.8,
         weightkg: 72.3,
@@ -17996,7 +17988,7 @@ mimiblimbusted: {
 
 
     kudou: {
-        num: 7500420,
+        num: 7500421,
         species: "Kudou",
         types: ["Water", "Electric"],
         gender: "N",
@@ -18019,7 +18011,7 @@ mimiblimbusted: {
 
 
     golisorem: {
-        num: 7500421,
+        num: 7500422,
         species: "Golisorem",
         types: ["Ice", "Water"],
         gender: "N",
@@ -18042,7 +18034,7 @@ mimiblimbusted: {
 
 
     tyrazma: {
-        num: 7500422,
+        num: 7500423,
         species: "Tyrazma",
         types: ["Rock", "Psychic"],
         gender: "N",
@@ -18065,7 +18057,7 @@ mimiblimbusted: {
 
 
     tyrazmamega: {
-        num: 7500422,
+        num: 7500423,
         species: "Tyrazma-Mega",
         baseSpecies: "Tyrazma",
         forme: "Mega",
@@ -18089,7 +18081,7 @@ mimiblimbusted: {
         eggGroups: ["Undiscovered"],
     },
     parasol: {
-        num: 7500423,
+        num: 7500424,
         species: "Parasol",
         types: ["Bug", "Steel"],
         genderRatio: {
@@ -18113,7 +18105,7 @@ mimiblimbusted: {
         eggGroups: ["Undiscovered"],
     },
     diceus: {
-        num: 7500424,
+        num: 7500425,
         species: "Diceus",
         types: ["Normal"],
         gender: "N",
@@ -18128,10 +18120,12 @@ mimiblimbusted: {
         abilities: {
             0: "Miracle Morph"
         },
+        heightm: 1.75,
+        weightkg: 162,
 		  eggGroups: ["Undiscovered"],
     },
     nintwo: {
-        num: 7500425,
+        num: 7500426,
         species: "Nintwo",
         types: ["Bug", "Psychic"],
         baseStats: {
@@ -18145,10 +18139,12 @@ mimiblimbusted: {
         abilities: {
             0: "Speed Stopper"
         },
+        heightm: 1.4,
+        weightkg: 67,
 		  eggGroups: ["Undiscovered"],
     },
     nintwomegax: {
-        num: 7500425,
+        num: 7500426,
         species: "Nintwo-Mega-X",
         baseSpecies: "Nintwo",
         forme: "Mega",
@@ -18165,10 +18161,12 @@ mimiblimbusted: {
         abilities: {
             0: "Steadfast"
         },
+        heightm: 1.9,
+        weightkg: 72,
 		  eggGroups: ["Undiscovered"],
     },
     nintwomegay: {
-        num: 7500425,
+        num: 7500426,
         species: "Nintwo-Mega-Y",
         baseSpecies: "Nintwo",
         forme: "Mega",
@@ -18185,10 +18183,12 @@ mimiblimbusted: {
         abilities: {
             0: "Insomnia"
         },
+        heightm: 0.9,
+        weightkg: 18.125,
 		  eggGroups: ["Undiscovered"],
     },
     kommew: {
-        num: 7500426,
+        num: 7500427,
         species: "Kommew",
         types: ["Fighting", "Psychic"],
         baseStats: {
@@ -18202,9 +18202,12 @@ mimiblimbusted: {
         abilities: {
             0: "Echo Chamber"
         },
+        heightm: 1,
+        weightkg: 41.1,
+		  eggGroups: ["Undiscovered"],
     },
 	tamatoa: {
-        num: 7500427,
+        num: 7500428,
         species: "Tamatoa",
         types: ["Grass", "Water"],
         genderRatio: {
@@ -18228,7 +18231,7 @@ mimiblimbusted: {
         eggGroups: ["Undiscovered"],
     },
     pelippex: {
-        num: 7500428,
+        num: 7500429,
         species: "Pelippex",
         types: ["Water", "Poison"],
         baseStats: {
@@ -18250,7 +18253,7 @@ mimiblimbusted: {
 
 
      kyzor: {
-        num: 7500429,
+        num: 7500430,
         species: "Kyzor",
         types: ["Dragon", "Steel"],
         genderRatio: {
@@ -18276,7 +18279,7 @@ mimiblimbusted: {
 
 
     kyzormega: {
-        num: 7500429,
+        num: 7500430,
         species: "Kyzor-Mega",
         baseSpecies: "Kyzor",
         forme: "Mega",
@@ -18305,7 +18308,7 @@ mimiblimbusted: {
 
 
     gumanitoos: {
-        num: 7500430,
+        num: 7500431,
         species: "Gumanitoos",
         types: ["Normal", "Ghost"],
         genderRatio: {
@@ -18323,9 +18326,13 @@ mimiblimbusted: {
         abilities: {
             0: "Levi Stakes"
         },
+        heightm: 3.8,
+        weightkg: 332.1,
+        color: "Black",
+        eggGroups: ["Undiscovered"],
     },
     xurkino: {
-        num: 7500431,
+        num: 7500432,
         species: "Xurkino",
         types: ["Electric", "Normal"],
         gender: "N",
@@ -18342,13 +18349,13 @@ mimiblimbusted: {
         },
         heightm: 2.5,
         weightkg: 65.5,
-        color: "White",
+        color: "Black",
         eggGroups: ["Undiscovered"],
     },
 
 
     xurkinomega: {
-        num: 7500431,
+        num: 7500432,
         species: "Xurkino-Mega",
         baseSpecies: "Xurkino",
         forme: "Mega",
@@ -18368,13 +18375,13 @@ mimiblimbusted: {
         },
         heightm: 2.9,
         weightkg: 66.5,
-        color: "White",
+        color: "Black",
         eggGroups: ["Undiscovered"],
     },
 
 
     yvelchan: {
-        num: 7500432,
+        num: 7500433,
         species: "Yvel-Chan",
         types: ["Flying", "Normal"],
         baseStats: {
@@ -18390,13 +18397,13 @@ mimiblimbusted: {
         },
         heightm: 3.5,
         weightkg: 118.8,
-        color: "Pink",
+        color: "Red",
         eggGroups: ["Undiscovered"],
     },
 
 
     heatreon: {
-        num: 7500433,
+        num: 7500434,
         species: "Heatreon",
         types: ["Steel", "Fairy"],
 		  genderRatio: {M: 0.75, F: 0.25},
@@ -18411,11 +18418,15 @@ mimiblimbusted: {
         abilities: {
             0: "Fire-B-Gone"
         },
+        heightm: 1.35,
+        weightkg: 226.75,
+        color: "Pink",
+        eggGroups: ["Undiscovered"],
     },
 
 
     altarigarde: {
-        num: 7500434,
+        num: 7500435,
         species: "Altarigarde",
         types: ["Ground", "Flying"],
         gender: "N",
@@ -18438,7 +18449,7 @@ mimiblimbusted: {
 
 
     altarigardemega: {
-        num: 7500434,
+        num: 7500435,
         species: "Altarigarde-Mega",
         baseSpecies: "Altarigarde",
         forme: "Mega",
@@ -18462,13 +18473,9 @@ mimiblimbusted: {
         eggGroups: ["Undiscovered"],
     },
     flycanion: {
-        num: 7500435,
+        num: 7500436,
         species: "Flycanion",
         types: ["Ground", "Fire"],
-        genderRatio: {
-            M: 50.0,
-            F: 50.0
-        },
         baseStats: {
             hp: 100,
             atk: 105,
@@ -18488,7 +18495,7 @@ mimiblimbusted: {
 
 
     belle: {
-        num: 7500436,
+        num: 7500437,
         species: "Belle",
         types: ["Steel", "Fairy"],
         genderRatio: {M: 0.25, F: 0.75},
@@ -18503,7 +18510,7 @@ mimiblimbusted: {
         abilities: {
             0: "Greedy Princess"
         },
-        heightm: 1146.3,
+        heightm: 5.25,
         weightkg: 519.95,
         color: "Pink",
         eggGroups: ["Undiscovered"],
@@ -18511,8 +18518,8 @@ mimiblimbusted: {
 
 
     maui: {
-        num: 7500437,
-        species: "Māui",
+        num: 7500438,
+        species: "Maui",
         types: ["Electric", "Poison"],
         genderRatio: {
             M: 0.0,
@@ -18537,7 +18544,7 @@ mimiblimbusted: {
 
 
     garzone: {
-        num: 75004348,
+        num: 7500439,
         species: "Garzone",
         types: ["Dragon", "Electric"],
         gender: "N",
@@ -18558,7 +18565,7 @@ mimiblimbusted: {
         eggGroups: ["Undiscovered"],
     },
 	garzonemega: {
-        num: 75004348,
+        num: 7500439,
         species: "Garzone-Mega",
         baseSpecies: "Garzone",
         gender: "N",
@@ -18584,13 +18591,9 @@ mimiblimbusted: {
 
 
     shitpost: {
-        num: 7500439,
+        num: 7500440,
         species: "Shitpost",
         types: ["Dark", "Steel"],
-        genderRatio: {
-            M: 50.0,
-            F: 50.0
-        },
         baseStats: {
             hp: 113,
             atk: 120,
@@ -18609,7 +18612,7 @@ mimiblimbusted: {
     },
 // Cat Bed: 7500438
 	lupuchandel: {
-        num: 7500440,
+        num: 7500441,
         species: "Lupu Chandel",
         types: ["Fire", "Fairy"],
         baseStats: { // 85	65	120	120	112	82
@@ -18628,7 +18631,7 @@ mimiblimbusted: {
         eggGroups: ["Undiscovered"],
     },
 	 roaramp: {
-        num: 7500441,
+        num: 7500442,
         species: "Roaramp",
         types: ["Electric", "Dark"],
 		  genderRatio: {M: 0.75, F: 0.25},
@@ -18649,7 +18652,7 @@ mimiblimbusted: {
     },
     
 roarampmega: {
-        num: 7500441,
+        num: 7500442,
         species: "Roaramp-Mega",
         baseSpecies: "Roaramp",
         forme: "Mega",
@@ -18674,7 +18677,7 @@ roarampmega: {
 
 
 arcalie: {
-        num: 7500442,
+        num: 7500443,
         species: "Arcalie",
         types: ["Fire", "Dark"],
         genderRatio: {M: 0.625, F: 0.375},
@@ -18694,7 +18697,7 @@ arcalie: {
 
 
 stakeye: {
-        num: 7500443,
+        num: 7500444,
         species: "Stakeye",
         types: ["Steel", "Ghost"],
         gender: "N",
@@ -18713,7 +18716,7 @@ stakeye: {
     },
     
 stakeyemega: {
-        num: 7500443,
+        num: 7500444,
         species: "Stakeye-Mega",
         baseSpecies: "Stakeye",
         forme: "Mega",
@@ -18730,13 +18733,13 @@ stakeyemega: {
         },
          abilities: {0: "Magic Bounce"},
         heightm: 3.0,
-        weightkg: 415.5,
+        weightkg: 565.5,
         eggGroups: ["Undiscovered"],
     },
 
 
 lycanperiordusk: {
-        num: 7500444,
+        num: 7500445,
         species: "Lycanperior-Dusk",
         types: ["Rock", "Grass"],
         genderRatio: {M: 0.75, F: 0.25},
@@ -18756,7 +18759,7 @@ lycanperiordusk: {
 
 
 gigafini: {
-        num: 7500445,
+        num: 7500446,
         species: "Giga Fini",
         types: ["Rock", "Water"],
         gender: "N",
@@ -18776,7 +18779,7 @@ gigafini: {
 
 
 stalossaka: {
-        num: 7500446,
+        num: 7500447,
         species: "Stalossaka",
         types: ["Steel", "Ghost"],
         gender: "N",
@@ -18796,7 +18799,7 @@ stalossaka: {
 
 
 stakamise: {
-        num: 7500446,
+        num: 7500448,
         species: "Stakamise",
         types: ["Steel", "Grass"],
         baseStats: {
@@ -18832,7 +18835,7 @@ stakamise: {
 		eggGroups: ["Undiscovered"],
 	},
 auroritar: {
-        num: 7500449,
+        num: 7500450,
         species: "Auroritar",
         types: ["Rock"],
         genderRatio: {M: 0.75, F: 0.25},
@@ -18852,7 +18855,7 @@ auroritar: {
 
 
 auroritarmega: {
-        num: 7500449,
+        num: 7500450,
         species: "Auroritar-Mega",
         baseSpecies: "Auroritar",
         forme: "Mega",
@@ -18873,7 +18876,7 @@ auroritarmega: {
 		  eggGroups: ["Monster"],
     }, 
  necrynxcutewig: {
-		num: 7500450,
+		num: 7500451,
 		species: "Necrynx",
 	   baseForme: "Cute Wig",
 		types: ["Ice", "Psychic"],
@@ -18894,7 +18897,7 @@ auroritarmega: {
 		  eggGroups: ["Undiscovered"],
 	},
 	necrynxultra: {
-		num: 7500450,
+		num: 7500451,
 		species: "Necrynx-Ultra",
 		baseSpecies: "Necrynx",
 		forme: "Ultra",
@@ -18917,7 +18920,7 @@ auroritarmega: {
 		  eggGroups: ["Undiscovered"],
 	},
 	hippally: {
-		num: 7500451,
+		num: 7500452,
 		species: "Hippally",
 		types: ["Ground", "Normal"],
 		gender: "N",
