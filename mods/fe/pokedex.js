@@ -10697,17 +10697,13 @@ darkchomp: {
         },
         heightm: 1.7,
         weightkg: 107,
-        color: "Orange",
+        color: "Red",
         eggGroups: ["Undiscovered"],
     },
     pherothorn: {
         num: 7500222,
         species: "Pherothorn",
         types: ["Bug", "Steel"],
-        genderRatio: {
-            M: 50.0,
-            F: 50.0
-        },
         baseStats: {
             hp: 72,
             atk: 115,
@@ -10752,10 +10748,6 @@ darkchomp: {
         num: 7500224,
         species: "Slampa",
         types: ["Water", "Dragon"],
-        genderRatio: {
-            M: 50.0,
-            F: 50.0
-        },
         baseStats: {
             hp: 96,
             atk: 77,
@@ -10903,10 +10895,6 @@ darkchomp: {
         num: 7500228,
         species: "Perwear-Alola",
         types: ["Fighting", "Dark"],
-        genderRatio: {
-            M: 50.0,
-            F: 50.0
-        },
         baseStats: {
             hp: 102,
             atk: 102,
@@ -10929,10 +10917,6 @@ darkchomp: {
         num: 7500229,
         species: "Mudape",
         types: ["Fighting", "Ground"],
-        genderRatio: {
-            M: 50.0,
-            F: 50.0
-        },
         baseStats: {
             hp: 92,
             atk: 125,
@@ -18193,10 +18177,6 @@ mimiblimbusted: {
         num: 7500420,
         species: "Dunking",
         types: ["Normal"],
-        genderRatio: {
-            M: 50.0,
-            F: 50.0
-        },
         baseStats: {
             hp: 135,
             atk: 125,
@@ -18312,10 +18292,6 @@ mimiblimbusted: {
         num: 7500424,
         species: "Parasol",
         types: ["Bug", "Steel"],
-        genderRatio: {
-            M: 50.0,
-            F: 50.0
-        },
         baseStats: {
             hp: 118,
             atk: 136,
@@ -21079,10 +21055,6 @@ auroritarmega: {
         num: 7500507,
         species: "Saldreigonce",
         types: ["Dark", "Flying"],
-	        genderRatio: {
-	            M: 50.0,
-	            F: 50.0
-	        },
         baseStats: {
             hp: 103,
             atk: 130,
@@ -21106,10 +21078,6 @@ auroritarmega: {
         forme: "Mega",
         formeLetter: "M",
         types: ["Dark", "Flying"],
-	        genderRatio: {
-	            M: 50.0,
-	            F: 50.0
-	        },
         baseStats: {
             hp: 103,
             atk: 140,
@@ -21173,7 +21141,6 @@ auroritarmega: {
             num: 7500509,
             species: "Emulia",
             types: ["Electric", "Flying"],
-            genderRatio: "{M: 50.0, F: 50.0}",
             baseStats: {
                 hp: 100,
                 atk: 82,
@@ -21194,7 +21161,6 @@ auroritarmega: {
             num: 7500510,
             species: "Klinkarel",
             types: ["Steel", "Water"],
-            genderRatio: "{M: 50.0, F: 50.0}",
             baseStats: {
                 hp: 69,
                 atk: 102,
@@ -21206,14 +21172,15 @@ auroritarmega: {
             abilities: {
                 0: "Positivity"
             },
-            color: "White",
+            heightm: 0.8,
+            weightkg: 56.25,
+            color: "Brown",
             eggGroups: ["Undiscovered"],
         },
         gumshoe: {
             num: 7500511,
             species: "Gumshoe",
             types: ["Dark", "Normal"],
-            genderRatio: "{M: 50.0, F: 50.0}",
             baseStats: { //89	125	72	60	82	95
                 hp: 89,
                 atk: 125,
@@ -21234,7 +21201,6 @@ auroritarmega: {
             num: 7500512,
             species: "Barbominable",
             types: ["Fighting", "Water"],
-            genderRatio: "{M: 50.0, F: 50.0}",
             baseStats: {
                 hp: 94,
                 atk: 128,
@@ -21275,7 +21241,6 @@ auroritarmega: {
             num: 7500514,
             species: "Togetrio",
             types: ["Ground", "Electric"],
-            genderRatio: "{M: 50.0, F: 50.0}",
             baseStats: {
                 hp: 60,
                 atk: 109,
@@ -21338,7 +21303,6 @@ auroritarmega: {
             num: 7500516,
             species: "Kyutana",
             types: ["Ghost", "Grass"],
-            genderRatio: "{M: 50.0, F: 50.0}",
             baseStats: {
                 hp: 70,
                 atk: 145,
@@ -21360,7 +21324,6 @@ auroritarmega: {
         baseSpecies: "Kyutana",
         forme: "Busted",
         formeLetter: "B",
-        genderRatio: {M: 50.0, F: 50.0},
         types: ["Ghost", "Grass"],
          baseStats: {
                 hp: 70,
@@ -21370,10 +21333,10 @@ auroritarmega: {
                 spd: 80,
                 spe: 105
             },
-        abilities: {
-            0: "Beast Costumed"
-        },
-    heightm: 0.25,
+        		abilities: {
+            	0: "Beast Costume"
+       		},
+    			heightm: 0.25,
             weightkg: 0.4,
             eggGroups: ["Undiscovered"],
         },
@@ -21383,7 +21346,6 @@ auroritarmega: {
         baseSpecies: "Kyutana",
         forme: "Busted-Test",
         formeLetter: "B",
-        genderRatio: {M: 50.0, F: 50.0},
         types: ["Ghost", "Grass"],
          baseStats: {
                 hp: 70,
@@ -22408,7 +22370,6 @@ auroritarmega: {
 	        num: 7500533,
 	        species: "Cornite",
 	        types: ["Rock", "Flying"],
-	        genderRatio: "{M: 50.0, F: 50.0}",
 	        baseStats: {
 	            hp: 88,
 	            atk: 104,
@@ -22450,7 +22411,6 @@ auroritarmega: {
 	        num: 7500535,
 	        species: "Bangma",
 	        types: ["Ghost", "Rock"],
-	        genderRatio: "{M: 50.0, F: 50.0}",
 	        baseStats: {
 	            hp: 72,
 	            atk: 92,
@@ -22474,10 +22434,6 @@ auroritarmega: {
 	        forme: "Mega",
 	        formeLetter: "M",
 	        types: ["Ghost", "Rock"],
-	        genderRatio: {
-	            M: 50.0,
-	            F: 50.0
-	        },
 	        baseStats: {
 	            hp: 72,
 	            atk: 142,
@@ -22561,7 +22517,6 @@ auroritarmega: {
 	        num: 7500539,
 	        species: "Mienzy",
 	        types: ["Fighting", "Dragon"],
-	        genderRatio: "{M: 50.0, F: 50.0}",
 	        baseStats: {
 	            hp: 59,
 	            atk: 132,
@@ -22582,7 +22537,6 @@ auroritarmega: {
 	        num: 7500540,
 	        species: "Whiscor",
 	        types: ["Bug", "Ground"],
-	        genderRatio: "{M: 50.0, F: 50.0}",
 	        baseStats: {
 	            hp: 67,
 	            atk: 85,
@@ -22603,7 +22557,6 @@ auroritarmega: {
 	        num: 7500541,
 	        species: "Yvenne",
 	        types: ["Electric", "Flying"],
-	        genderRatio: "{M: 50.0, F: 50.0}",
 	        baseStats: {
 	            hp: 96,
 	            atk: 94,
@@ -23560,7 +23513,6 @@ auroritarmega: {
 						num: 7500582,
 						species: "Wiseau",
 						types: ["Water", "Ground"],
-						genderRatio: "{M: 50.0, F: 50.0}",
 						baseStats: {hp: 112, atk: 117, def: 92, spa: 77, spd: 72, spe: 67},
 						abilities: {0: "Tommy's Room"},
 						heightm: 1.95,
@@ -23650,7 +23602,6 @@ auroritarmega: {
 				  num: 7500587,
    			  species: "Unfeasable",
    			  types: ["Normal", "Flying"],
-   			  genderRatio: "{M: 50.0, F: 50.0}",
    			  baseStats: {hp: 82, atk: 112, def: 82, spa: 73, spd: 68, spe: 106},
    			  abilities: {0: "360 No-Scope"},
    			  heightm: 1.4,
