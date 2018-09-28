@@ -3228,16 +3228,18 @@ exports.BattleAbilities = {
 		},
 		onModifyAtk: function(atk, attacker, defender, move) {
 			if (move.type === 'Water') {
+				if (attacker.hp <= attacker.maxhp / 3) {
+					return this.chainModify(3);
+				}
 				return this.chainModify(2);
-			} else if (move.type === 'Water' & attacker.hp <= attacker.maxhp / 3) {
-				return this.chainModify(3);
 			}
 		},
 		onModifySpA: function(atk, attacker, defender, move) {
 			if (move.type === 'Water') {
+				if (attacker.hp <= attacker.maxhp / 3) {
+					return this.chainModify(3);
+				}
 				return this.chainModify(2);
-			} else if (move.type === 'Water' & attacker.hp <= attacker.maxhp / 3) {
-				return this.chainModify(3);
 			}
 		},
 		onUpdate: function(pokemon) {
