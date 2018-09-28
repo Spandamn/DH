@@ -17500,6 +17500,9 @@ mimiblimbusted: {
         abilities: {
             0: "Last Nightmare"
         },
+        heightm: 1.35,
+        weightkg: 58.55,
+     	  eggGroups: ["Undiscovered"],
     },
     vanilele: {
         num: 7500405,
@@ -17624,6 +17627,9 @@ mimiblimbusted: {
         abilities: {
             0: "Firefighter"
         },
+        heightm: 1.4,
+        weightkg: 225.3,
+     	  eggGroups: ["Undiscovered"],
     },
     heatariamega: {
         num: 7500409, // 103	140	118	140	105	78
@@ -17643,6 +17649,9 @@ mimiblimbusted: {
         abilities: {
             0: "Firefighter"
         },
+        heightm: 1.8,
+        weightkg: 225.3,
+     	  eggGroups: ["Undiscovered"],
     },
     gardecuno: {
         num: 7500410,
