@@ -11064,7 +11064,7 @@ exports.BattleAbilities = {
 			if (move.type === 'Electric') {
 				mod = mod * 1.2;
 			}
-			return this.chainModify(Math.floor(mod*4096)/4096);
+			return this.chainModify(Math.floor(mod*0x1000)/0x1000);
 		},
 		id: "aeonflux",
 		name: "Aeon Flux",
