@@ -15827,6 +15827,7 @@ celebi: {
         heightm: 1.85,
         weightkg: 174.75,
         dexentry: "As Experiments #242 and #304, among others, need to be restrained in some way, shape, or form, some DNA was taken from the Dark Stone from Unova and combined with Doublade DNA. The resulting construct appears to have swords for arms, two tassels as wings, and a body made of the same substance as Doublade's sheath. While this fusion always hits its mark, it unfortunately is guaranteed to be hit by any attacks aimed for it.",
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -23925,6 +23926,8 @@ auroritarmega: {
         abilities: {
             0: "Unnerve"
         },
+        heightm: 2.75,
+        weightkg: 93.5,
      	 eggGroups: ["Undiscovered"],
     },
     mewdeucamegax: {
@@ -23945,6 +23948,8 @@ auroritarmega: {
         abilities: {
             0: "Steadfast"
         },
+        heightm: 3.05,
+        weightkg: 98.5,
      	  eggGroups: ["Undiscovered"],
     },
     mewdeucamegay: {
@@ -23965,6 +23970,8 @@ auroritarmega: {
         abilities: {
             0: "Insomnia"
         },
+        heightm: 2.25,
+        weightkg: 25.3,
      	  eggGroups: ["Undiscovered"],
     },
 	    swalokumlol: {
@@ -23982,6 +23989,8 @@ auroritarmega: {
         abilities: {
             0: "Slime Drench"
         },
+        heightm: 1.35,
+        weightkg: 66,
      	  eggGroups: ["Amorphous"],
     },
 };
