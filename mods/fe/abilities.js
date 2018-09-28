@@ -12055,7 +12055,9 @@ exports.BattleAbilities = {
 			if (!move || !target) return;
 			if (target !== source && move.category !== 'Status' && move.flags['contact']) {
 				for (let i in target.boosts) {
-					source.boosts[i] = target.boosts[i];
+					if (target.boosts[i] > 0){
+						source.boosts[i] = target.boosts[i];
+					}
 				}
 				target.clearBoosts();
 				this.add('-copyboost', source, target, '[from] ability: Meme Stealer', '[of] ' + source);
@@ -12075,7 +12077,9 @@ exports.BattleAbilities = {
 		onAfterMoveSecondary: function (target, source, move) {
 			if (source && source !== target && move && move.flags['contact']) {
 				for (let i in source.boosts) {
-					target.boosts[i] = source.boosts[i];
+					if (source.boosts[i] > 0){
+						target.boosts[i] = source.boosts[i];
+					}
 				}
 				source.clearBoosts();
 				this.add('-copyboost', target, source, '[from] ability: Meme Stealer', '[of] ' + target);
