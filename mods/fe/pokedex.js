@@ -16503,6 +16503,7 @@ mimiblimbusted: {
         num: 7500372,
         species: "Sakamaki",
         types: ["Dragon", "Steel"],
+		  gender: "N",
         baseStats: {
             hp: 80,
             atk: 128,
@@ -16514,6 +16515,9 @@ mimiblimbusted: {
         abilities: {
             0: "Code Unknown"
         },
+        heightm: 1.05,
+        weightkg: 91.8,
+		  eggGroups: ["Mineral"],
     },
 
 
@@ -16535,6 +16539,9 @@ mimiblimbusted: {
         abilities: {
             0: "Aerilate"
         },
+        heightm: 1.15,
+        weightkg: 101.8,
+		  eggGroups: ["Mineral"],
     },
 
 
@@ -16554,6 +16561,9 @@ mimiblimbusted: {
         abilities: {
             0: "Sensu Dancer"
         },
+        heightm: 0.95,
+        weightkg: 12.3,
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -16573,6 +16583,9 @@ mimiblimbusted: {
         abilities: {
             0: "Baile Dancer"
         },
+        heightm: 1.25,
+        weightkg: 24.45,
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -16592,6 +16605,9 @@ mimiblimbusted: {
         abilities: {
             0: "Pom-Pom Dancer"
         },
+        heightm: 1.2,
+        weightkg: 11.95,
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -16611,6 +16627,9 @@ mimiblimbusted: {
         abilities: {
             0: "Pau Dancer"
         },
+        heightm: 0.9,
+        weightkg: 11,
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -16630,6 +16649,9 @@ mimiblimbusted: {
         abilities: {
             0: "Ailment Master"
         },
+        heightm: 0.8,
+        weightkg: 13.1,
+		  eggGroups: ["Undiscovered"],
     },
 
 
