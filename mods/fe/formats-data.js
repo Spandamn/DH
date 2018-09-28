@@ -2514,7 +2514,7 @@ exports.BattleFormatsData = { //
         requiredItem: "xurkizardxite",
     },
     xurkizardmegay: {
-        tier: "OU",
+        tier: "Uber",
         requiredItem: "xurkizardyite",
     },
     skarmeye: {
@@ -2788,7 +2788,7 @@ exports.BattleFormatsData = { //
         tier: "OU",
     },
     stakeyemega: {
-        tier: "OU",
+        tier: "Uber",
         requiredItem: "stakeyeite"
     },
     lycanperiordusk: {
