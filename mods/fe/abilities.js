@@ -12099,4 +12099,37 @@ exports.BattleAbilities = {
 		id: "memestealer",
 		name: "Meme Stealer",
 	},
+	"tacticalcomputer": {
+		desc: "If this Pokemon is an Aegivally, it changes to Guerilla Forme before attempting to use an attacking move, and changes to Bulwark Forme before attempting to use King's Shield. In Bulwark Forme, its type is Steel plus the type of its held memory, Normal if there is none. In Guerilla Forme, its type is Steel plus the type of its first move.",
+		shortDesc: "If Aegivally, changes Forme to Guerilla before attacks and Bulwark before King's Shield. Primary type changes to match its Held Memory in Bulwark Forme and its first move in Guerilla Forme.",
+		onBeforeMovePriority: 0.5,
+		onBeforeMove: function (attacker, defender, move) {
+			if (attacker.template.baseSpecies !== 'Aegivally' || attacker.transformed) return;
+			if (move.category === 'Status' && move.id !== 'kingsshield') return;
+			let targetSpecies = (move.id === 'kingsshield' ? 'Aegivally' : 'Aegivally-Guerilla');
+			if (attacker.template.species !== targetSpecies){
+				attacker.formeChange(targetSpecies);
+				let type = 'Normal';
+				// @ts-ignore
+				type = attacker.getItem().onMemory;
+				// @ts-ignore
+				if (!type || type === true) {
+					type = 'Normal';
+				}
+				if (type !== this.getMove(attacker.moveSlots[0].id).type){
+					if (attacker.template.species === 'Aegivally'){	
+						if (type === 'Steel'){
+							attacker.setType('Steel');
+							this.add('-start', attacker, 'typechange', 'Steel', '[from] Prototype');
+						} else {
+							attacker.setType([type, 'Steel']);
+							this.add('-start', attacker, 'typechange', attacker.types.join('/'), '[from] Prototype');
+						}
+					}
+				}
+			}
+		},
+		id: "tacticalcomputer",
+		name: "Tactical Computer",
+	},
 };
