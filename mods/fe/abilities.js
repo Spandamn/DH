@@ -12120,10 +12120,19 @@ exports.BattleAbilities = {
 					if (attacker.template.species === 'Aegivally'){	
 						if (type === 'Steel'){
 							attacker.setType('Steel');
-							this.add('-start', attacker, 'typechange', 'Steel', '[from] Prototype');
+							this.add('-start', attacker, 'typechange', 'Steel', '[from] Tactical Computer');
 						} else {
 							attacker.setType([type, 'Steel']);
-							this.add('-start', attacker, 'typechange', attacker.types.join('/'), '[from] Prototype');
+							this.add('-start', attacker, 'typechange', attacker.types.join('/'), '[from] Tactical Computer');
+						}
+					} else {
+						let type2 = this.getMove(attacker.moveSlots[0].id).type;
+						if (type2 === 'Steel'){
+							attacker.setType('Steel');
+							this.add('-start', attacker, 'typechange', 'Steel', '[from] Tactical Computer');
+						} else {
+							attacker.setType([type2, 'Steel']);
+							this.add('-start', attacker, 'typechange', attacker.types.join('/'), '[from] Tactical Computer');
 						}
 					}
 				}
