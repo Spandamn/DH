@@ -16670,6 +16670,9 @@ mimiblimbusted: {
         abilities: {
             0: "Thermophilic"
         },
+        heightm: 0.95,
+        weightkg: 24,
+		  eggGroups: ["Bug"],
     },
 
 
@@ -16689,6 +16692,8 @@ mimiblimbusted: {
         abilities: {
             0: "Move~Stat"
         },
+        heightm: 0.45,
+        weightkg: 13.65,
 		  eggGroups: ["Field"],
     },
 
@@ -16709,6 +16714,9 @@ mimiblimbusted: {
         abilities: {
             0: "Enchanted"
         },
+        heightm: 1.2,
+        weightkg: 31.75,
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -16731,6 +16739,9 @@ mimiblimbusted: {
         abilities: {
             0: "Levitate"
         },
+        heightm: 1.6,
+        weightkg: 43.75,
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -16749,6 +16760,9 @@ mimiblimbusted: {
         abilities: {
             0: "Plan In Action"
         },
+        heightm: 3.4,
+        weightkg: 120,
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -16768,6 +16782,9 @@ mimiblimbusted: {
         abilities: {
             0: "Enchanted Skull"
         },
+        heightm: 1.25,
+        weightkg: 152,
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -16787,6 +16804,9 @@ mimiblimbusted: {
         abilities: {
             0: "Magic Sponge"
         },
+        heightm: 1.55,
+        weightkg: 104.5,
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -16806,6 +16826,9 @@ mimiblimbusted: {
         abilities: {
             0: "Thunderstorm Surge"
         },
+        heightm: 1.5,
+        weightkg: 24.25,
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -16825,6 +16848,9 @@ mimiblimbusted: {
         abilities: {
             0: "Hide-And-Seek"
         },
+        heightm: 0.25,
+        weightkg: 2.35,
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -16843,6 +16869,9 @@ mimiblimbusted: {
         abilities: {
             0: "Ground Leecher"
         },
+        heightm: 2.5,
+        weightkg: 110.5,
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -16862,6 +16891,9 @@ mimiblimbusted: {
         abilities: {
             0: "Bloodthirst"
         },
+        heightm: 5.35,
+        weightkg: 527.45,
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -16884,6 +16916,9 @@ mimiblimbusted: {
         abilities: {
             0: "Aerilate"
         },
+        heightm: 5.55,
+        weightkg: 531.45,
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -16891,7 +16926,7 @@ mimiblimbusted: {
         num: 7500388,
         species: "Nymph",
         types: ["Fairy", "Grass"],
-        genderRatio: {M: 0.875, F: 0.125},
+        gender: "N",
         baseStats: {
             hp: 88,
             atk: 85,
@@ -16903,6 +16938,9 @@ mimiblimbusted: {
         abilities: {
             0: "Deceiver"
         },
+        heightm: 2.15,
+        weightkg: 71.75,
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -16910,7 +16948,7 @@ mimiblimbusted: {
         num: 7500389,
         species: "Kyokid",
         types: ["Water", "Electric"],
-        gender: "N",
+        genderRatio: {M: 0.75, F: 0.25},
         baseStats: {
             hp: 72,
             atk: 81,
@@ -16922,6 +16960,9 @@ mimiblimbusted: {
         abilities: {
             0: "Electrotorrent"
         },
+        heightm: 2.55,
+        weightkg: 187.75,
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -16931,7 +16972,7 @@ mimiblimbusted: {
         baseSpecies: "Kyokid",
         forme: "Primal",
         formeLetter: "P",
-        gender: "N",
+        genderRatio: {M: 0.75, F: 0.25},
         types: ["Water", "Electric"],
         baseStats: {
             hp: 72,
@@ -16944,6 +16985,9 @@ mimiblimbusted: {
         abilities: {
             0: "Primordial Sea"
         },
+        heightm: 7.85,
+        weightkg: 265.75,
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -16963,6 +17007,9 @@ mimiblimbusted: {
         abilities: {
             0: "Move Madness"
         },
+        heightm: 1.6,
+        weightkg: 192,
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -16981,7 +17028,10 @@ mimiblimbusted: {
         abilities: {
             0: "Dark Surge"
         },
-     dexentry: " rare, legendary entity created in a laboratory by Team Rocket. It was made using the powerful forces of Tapu Koko, the guardian of Melemele, combined with an Absol. Results did not go as intended, as it kept the pure heart of Koko, and does not obey Team Rocket at all. This species is said to warn the coming of a terrible thunderstorm, and only ever appearing before one is near."
+        heightm: 1.5,
+        weightkg: 33.75,
+		  eggGroups: ["Undiscovered"],
+     dexentry: "A rare, legendary entity created in a laboratory by Team Rocket. It was made using the powerful forces of Tapu Koko, the guardian of Melemele, combined with an Absol. Results did not go as intended, as it kept the pure heart of Koko, and does not obey Team Rocket at all. This species is said to warn the coming of a terrible thunderstorm, and only ever appearing before one is near."
     },
 
 
@@ -17003,12 +17053,15 @@ mimiblimbusted: {
         abilities: {
             0: "Magic Bounce"
         },
+        heightm: 1.5,
+        weightkg: 35.75,
+		  eggGroups: ["Undiscovered"],
     },
 
 
-    permafrost: {
+    sugarplum: {
         num: 7500392,
-        species: "Permafrost",
+        species: "Sugarplum",
         types: ["Steel", "Fairy"],
         baseStats: {
             hp: 83,
@@ -17019,8 +17072,11 @@ mimiblimbusted: {
             spe: 94
         },
         abilities: {
-            0: "Special Snowflake"
+            0: "Nutcracker"
         },
+        heightm: 0.55,
+        weightkg: 4.15,
+		  eggGroups: ["Fairy"],
     },
 
 
