@@ -15507,7 +15507,6 @@ celebi: {
         num: 7500335,
         species: "Dark Hunter",
         types: ["Rock", "Dark"],
-        gender: "N",
         baseStats: {
             hp: 78,
             atk: 123,
@@ -15519,6 +15518,8 @@ celebi: {
         abilities: {
             0: "Night Terror"
         },
+        heightm: 1.3,
+        weightkg: 37.75,
 		  eggGroups: ["Undiscovered"],
     },
 
@@ -15538,6 +15539,8 @@ celebi: {
         abilities: {
             0: "Merciless Beast"
         },
+        heightm: 3.1,
+        weightkg: 451.25,
 		  eggGroups: ["Undiscovered"],
     },
 
@@ -15557,6 +15560,8 @@ celebi: {
         abilities: {
             0: "Royal Strength"
         },
+        heightm: 0.55,
+        weightkg: 9.1,
 		  eggGroups: ["Field"],
     },
 
@@ -15576,6 +15581,8 @@ celebi: {
         abilities: {
             0: "Godlike Powers"
         },
+        heightm: 0.3,
+        weightkg: 4.3,
 		  eggGroups: ["Undiscovered"],
     },
 
@@ -15596,6 +15603,8 @@ celebi: {
         abilities: {
             0: "Soften Up"
         },
+        heightm: 1.4,
+        weightkg: 81.75,
 		  eggGroups: ["Undiscovered"],
     },
 
@@ -15615,6 +15624,8 @@ celebi: {
         abilities: {
             0: "Tricky Glare"
         },
+        heightm: 1.25,
+        weightkg: 54.35,
 		  eggGroups: ["Field"],
     },
 
@@ -15634,6 +15645,8 @@ celebi: {
         abilities: {
             0: "Confiscation"
         },
+        heightm: 3.6,
+        weightkg: 261.65,
 		  eggGroups: ["Undiscovered"],
     },
 
@@ -15654,6 +15667,8 @@ celebi: {
         abilities: {
             0: "Misty Mind"
         },
+        heightm: 1.3,
+        weightkg: 30.6,
 		  eggGroups: ["Undiscovered"],
     },
 
@@ -15674,6 +15689,8 @@ celebi: {
         abilities: {
             0: "Familiar Maneuvering"
         },
+        heightm: 0.55,
+        weightkg: 18.5,
 		  eggGroups: ["Mineral"],
     },
 
@@ -15694,6 +15711,8 @@ celebi: {
         abilities: {
             0: "Stat Harvesting"
         },
+        heightm: 5.6,
+        weightkg: 549.95,
 		  eggGroups: ["Undiscovered"],
     },
 
@@ -15714,6 +15733,8 @@ celebi: {
         abilities: {
             0: "Ability"
         },
+        heightm: 2.55,
+        weightkg: 179,
 		  eggGroups: ["Undiscovered"],
     },
 
@@ -15734,6 +15755,8 @@ celebi: {
         abilities: {
             0: "Type Trap"
         },
+        heightm: 2.1,
+        weightkg: 208.5,
 		  eggGroups: ["Undiscovered"],
     },
 
@@ -15754,6 +15777,8 @@ celebi: {
         abilities: {
             0: "Uninhabitable"
         },
+        heightm: 1.85,
+        weightkg: 195.95,
 		  eggGroups: ["Monster"],
     },
 
@@ -15777,6 +15802,8 @@ celebi: {
         abilities: {
             0: "Swift Swim"
         },
+        heightm: 2.25,
+        weightkg: 216.05,
 		  eggGroups: ["Monster"],
     },
 
@@ -15797,6 +15824,8 @@ celebi: {
         abilities: {
             0: "Unstable Voltage"
         },
+        heightm: 1.85,
+        weightkg: 174.75,
         dexentry: "As Experiments #242 and #304, among others, need to be restrained in some way, shape, or form, some DNA was taken from the Dark Stone from Unova and combined with Doublade DNA. The resulting construct appears to have swords for arms, two tassels as wings, and a body made of the same substance as Doublade's sheath. While this fusion always hits its mark, it unfortunately is guaranteed to be hit by any attacks aimed for it.",
     },
 
@@ -15817,6 +15846,8 @@ celebi: {
         abilities: {
             0: "Huge Bubble"
         },
+        heightm: 1.65,
+        weightkg: 61,
 		  eggGroups: ["Water 2"],
     },
 
@@ -15837,6 +15868,8 @@ celebi: {
         abilities: {
             0: "Constellation"
         },
+        heightm: 1.35,
+        weightkg: 28.6,
 		  eggGroups: ["Flying"],
     },
 
@@ -15860,6 +15893,8 @@ celebi: {
         abilities: {
             0: "Pixilate"
         },
+        heightm: 1.75,
+        weightkg: 28.6,
 		  eggGroups: ["Flying"],
     },
     scrafting: {
