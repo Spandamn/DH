@@ -17095,6 +17095,9 @@ mimiblimbusted: {
         abilities: {
             0: "Revitalize"
         },
+        heightm: 2.8,
+        weightkg: 390.5,
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -17116,6 +17119,9 @@ mimiblimbusted: {
         abilities: {
             0: "Healer"
         },
+        heightm: 3.2,
+        weightkg: 391.5,
+		  eggGroups: ["Undiscovered"],
     },
     xurkizard: {
         num: 7500394,
@@ -17133,6 +17139,9 @@ mimiblimbusted: {
         abilities: {
             0: "Blazing Beast"
         },
+        heightm: 2.75,
+        weightkg: 95.25,
+		  eggGroups: ["Undiscovered"],
     },
     xurkizardmegax: {
         num: 7500394,
@@ -17153,6 +17162,9 @@ mimiblimbusted: {
         abilities: {
             0: "Tough Claws"
         },
+        heightm: 2.75,
+        weightkg: 115.25,
+		  eggGroups: ["Undiscovered"],
     },
     xurkizardmegay: {
         num: 7500394,
@@ -17173,6 +17185,9 @@ mimiblimbusted: {
         abilities: {
             0: "Drought"
         },
+        heightm: 2.75,
+        weightkg: 105.25,
+		  eggGroups: ["Undiscovered"],
     },
     skarmeye: {
         num: 7500395,
@@ -17189,6 +17204,9 @@ mimiblimbusted: {
         abilities: {
             0: "Light Armor"
         },
+        heightm: 1.65,
+        weightkg: 43.55,
+		  eggGroups: ["Flying"],
     },
 
 
@@ -17196,7 +17214,7 @@ mimiblimbusted: {
         num: 7500396,
         species: "Marshern",
         types: ["Ground", "Fairy"],
-        gender: "N",
+        genderRatio: {M: 0.875, F: 0.125},
         baseStats: {
             hp: 98,
             atk: 108,
@@ -17208,6 +17226,9 @@ mimiblimbusted: {
         abilities: {
             0: "Soaking Aura"
         },
+        heightm: 1.85,
+        weightkg: 121.5,
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -17215,7 +17236,7 @@ mimiblimbusted: {
         num: 7500397,
         species: "Grovyltal",
         types: ["Grass", "Dark"],
-        gender: "N",
+        genderRatio: {M: 0.875, F: 0.125},
         baseStats: {
             hp: 88,
             atk: 113,
@@ -17227,6 +17248,9 @@ mimiblimbusted: {
         abilities: {
             0: "Jailbreak"
         },
+        heightm: 3.35,
+        weightkg: 112.3,
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -17234,7 +17258,6 @@ mimiblimbusted: {
         num: 7500398,
         species: "Rairai",
         types: ["Dark", "Electric"],
-        gender: "N",
         baseStats: {
             hp: 65,
             atk: 110,
@@ -17246,6 +17269,9 @@ mimiblimbusted: {
         abilities: {
             0: "Paralyzed With Fear"
         },
+        heightm: 1.15,
+        weightkg: 40.25,
+		  eggGroups: ["Undiscovered"],
     },
 
 
@@ -17264,6 +17290,9 @@ mimiblimbusted: {
         abilities: {
             0: "Ageless Blizzard"
         },
+        heightm: 2.6,
+        weightkg: 160.25,
+		  eggGroups: ["Monster"],
     },
 
 
@@ -17285,6 +17314,9 @@ mimiblimbusted: {
         abilities: {
             0: "Snow Warning"
         },
+        heightm: 3.1,
+        weightkg: 209.75,
+		  eggGroups: ["Monster"],
     },
 
 
