@@ -660,7 +660,10 @@ exports.BattleMovedex = {
 		priority: 0,
 		flags: {protect: 1, mirror: 1},
 		onModifyMove: function (move) {
-			if (this.isWeather(['hail', 'solarsnow'])) move.accuracy = true;
+			if (this.isWeather(['hail', 'solarsnow'])){
+				 if (move.isInInvertedWeather) move.accuracy = 50;
+				 else move.accuracy = true;
+			}
 		},
 		secondary: {
 			chance: 10,
@@ -673,7 +676,7 @@ exports.BattleMovedex = {
 	},
 "auroraveil": {
 		num: 694,
-	  accuracy: true,
+	   accuracy: true,
 		basePower: 0,
 		category: "Status",
 		desc: "For 5 turns, the user and its party members take 0.5x damage from physical and special attacks, or 0.66x damage if in a Double Battle; does not reduce damage further with Reflect or Light Screen. Critical hits ignore this protection. It is removed from the user's side if the user or an ally is successfully hit by Brick Break, Psychic Fangs, or Defog. Brick Break and Psychic Fangs remove the effect before damage is calculated. Lasts for 8 turns if the user is holding Light Clay. Fails unless the weather is Hail.",
@@ -8834,8 +8837,8 @@ exports.BattleMovedex = {
 		category: "Special",
 		desc: "This move copies the type of the last move used by the target. Defaults to Flying if the target has not made a move, or the last move used was Acupressure, After You, Aromatherapy, Aromatic Mist, Belch, Conversion 2, Counter, Crafty Shield, Curse, Doom Desire, Electric Terrain, Final Gambit, Flower Shield, Focus Punch, Future Sight, Grassy Terrain, Gravity, Guard Split, Hail, Happy Hour, Haze, Heal Bell, Heal Pulse, Helping Hand, Hold Hands, Ion Deluge, Light Screen, Lucky Chant, Magnetic Flux, Mat Block, Me First, Mimic, Mirror Coat, Mirror Move, Mist, Misty Terrain, Mud Sport, Nature Power, Perish Song, Power Split, Psych Up, Quick Guard, Rain Dance, Reflect, Reflect Type, Role Play, Rototiller, Safeguard, Sandstorm, Sketch, Spikes, Spit Up, Stealth Rock, Sticky Web, Struggle, Sunny Day, Tailwind, Toxic Spikes, Transform, Water Sport, Wide Guard, or any move that is self-targeting.",
 		shortDesc: "Copies the type of the target's last used move against the user, defaulting to Flying. Hits adjacent Pokemon.",
-		id: "mirrormove",
-		name: "Mirror Move",
+		id: "echocannon",
+		name: "Echo Cannon",
 		pp: 20,
 		priority: 0,
 		flags: {protect: 1, sound: 1, mirror: 1, authentic: 1},
@@ -9486,6 +9489,74 @@ exports.BattleMovedex = {
 		type: "Psychic",
 		zMoveEffect: 'clearnegativeboost',
 		contestType: "Cute",
+	},
+"scaldingicicles": {
+		accuracy: 85,
+		basePower: 110,
+		category: "Special",
+		desc: "Has a 20% chance to either burn or freeze the target. If the weather is Hail, this move does not check accuracy.",
+		shortDesc: "20% chance to either burn or freeze foe(s). Can't miss in hail.",
+		id: "scaldingicicles",
+		isViable: true,
+		name: "Scalding Icicles",
+		pp: 5,
+		priority: 0,
+		flags: {protect: 1, mirror: 1, defrost: 1},
+		onModifyMove: function (move) {
+			if (this.isWeather(['hail', 'solarsnow'])){
+				 if (move.isInInvertedWeather) move.accuracy = 50;
+				 else move.accuracy = true;
+			}
+		},
+		secondary: {
+			chance: 20,
+			onHit: function (target, source) {
+				let result = this.random(2);
+				if (result === 0) {
+					target.trySetStatus('brn', source);
+				} else {
+					target.trySetStatus('frz', source);
+				}
+			},
+		},
+		target: "allAdjacentFoes",
+		type: "Water",
+		zMovePower: 185,
+		//contestType: "Beautiful",
+	},
+	"photosineticdestruction": {
+		accuracy: 100,
+		basePower: 100,
+		category: "Physical",
+		desc: "Has a 100% chance to lower the target's highest stat by 1 stage. This move becomes a special attack if the user's Special Attack is greater than its Attack, including stat stage changes. This move and its effects ignore the Abilities of other Pokemon.",
+		shortDesc: "100% chance to lower adjacent Pkmn Highest stat by 1. Special if user's Sp. Atk > Atk. Ignores Abilities.",
+		id: "photosineticdestruction",
+		name: "Photosinetic Destruction",
+		pp: 20,
+		priority: 0,
+		flags: {protect: 1, mirror: 1, nonsky: 1},
+		onModifyMove: function (move, pokemon) {
+			if (pokemon.getStat('spa', false, true) > pokemon.getStat('atk', false, true)) move.category = 'Special';
+		},
+		secondary: {
+			chance: 100,
+			onHit: function (target, source) {
+				let stat = 'atk';
+				let bestStat = 0;
+				for (let i in target.stats) {
+					if (target.stats[i] > bestStat) {
+						stat = i;
+						bestStat = target.stats[i];
+					}
+				}
+				this.boost({[stat]: -1}, target, source);
+			},
+		},
+		ignoreAbility: true,
+		target: "allAdjacent",
+		type: "Ground",
+		zMovePower: 200,
+		contestType: "Tough",
 	},
 };
 

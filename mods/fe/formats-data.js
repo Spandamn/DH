@@ -487,7 +487,7 @@ exports.BattleFormatsData = { //
         requiredItem: "mismagivoirite",
     },
     harem: {
-        tier: "OU",
+        tier: "Uber",
     },
     mana: {
         tier: "OU",
@@ -1180,9 +1180,9 @@ exports.BattleFormatsData = { //
     galionz: {
         tier: "OU",
     },
-    glalionzmega: {
+    galionzmega: {
         tier: "OU",
-        requiredItem: "glalionzite",
+        requiredItem: "galionzite",
     },
     steelweez: {
         tier: "OU",
@@ -2514,7 +2514,7 @@ exports.BattleFormatsData = { //
         requiredItem: "xurkizardxite",
     },
     xurkizardmegay: {
-        tier: "OU",
+        tier: "Uber",
         requiredItem: "xurkizardyite",
     },
     skarmeye: {
@@ -2788,7 +2788,7 @@ exports.BattleFormatsData = { //
         tier: "OU",
     },
     stakeyemega: {
-        tier: "OU",
+        tier: "Uber",
         requiredItem: "stakeyeite"
     },
     lycanperiordusk: {
@@ -3289,7 +3289,7 @@ metabell: {
 tier: "OU",
 },
 taiwan: {
-tier: "OU",
+tier: "Uber",
 },
 apouterro: {
 tier: "OU",
