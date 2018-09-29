@@ -12018,7 +12018,8 @@ exports.BattleAbilities = {
 		},
 		id: "engarde",
 		name: "En Garde",
-	},"beastcostume": {
+	},
+	"beastcostume": {
 		desc: "If this Pokemon is a Kyutana, the first hit it takes in battle deals 0 neutral damage. Its disguise is then broken and it changes to Busted Form. If it lands a KO, it changes back. Confusion damage also breaks the disguise.",
 		shortDesc: "If this Pokemon is a Kyutana, the first hit it takes in battle or after landing a KO deals 0 neutral damage.",
 		onDamagePriority: 1,
