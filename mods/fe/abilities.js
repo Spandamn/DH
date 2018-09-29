@@ -10672,7 +10672,7 @@ exports.BattleAbilities = {
 	"adaptingbody": {
 		shortDesc: "Gains Adaptability and heals for 12% max HP when in weather for more than one turn.",
 		onModifyMove: function (move, pokemon) {
-			if (target.activeTurns > 1) {
+			if (pokemon.activeTurns > 1) {
 				if (pokemon.volatiles['atmosphericperversion'] == pokemon.volatiles['weatherbreak']){
 					move.stab = 2;
 				} else {
