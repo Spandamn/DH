@@ -11863,6 +11863,7 @@ exports.BattleAbilities = {
 			if (pokemon === pokemon.side.pokemon[i]) return;
 			pokemon.illusion = pokemon.side.pokemon[i];
 		},
+		onBeforeMovePriority: -100,
 		onBeforeMove: function (pokemon, move) {
 			if (pokemon.illusion && move.id === 'foulmimicry'){
 				this.useMove(pokemon.illusion.moveSlots[0].id, pokemon);
