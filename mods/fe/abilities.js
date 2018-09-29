@@ -5383,7 +5383,7 @@ exports.BattleAbilities = {
 				if (attacker.volatiles['atmosphericperversion'] == attacker.volatiles['weatherbreak']){
 					return this.chainModify(2);
 				} 	else {
-					return this.chainModify(2 / 3);
+					return this.chainModify([0x0AAB, 0x1000]);
 				}
 			}
 		},
@@ -5393,7 +5393,7 @@ exports.BattleAbilities = {
 				if (attacker.volatiles['atmosphericperversion'] == attacker.volatiles['weatherbreak']){
 					return this.chainModify(2);
 				} 	else {
-					return this.chainModify(2 / 3);
+					return this.chainModify([0x0AAB, 0x1000]);
 				}
 			}
 		},
