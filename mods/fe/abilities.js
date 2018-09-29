@@ -8925,7 +8925,7 @@ exports.BattleAbilities = {
 			return null;
 		},
 		onAllyTryHitSide: function (target, source, move) {
-			if ((target === source || (!move.flags['reflectable'] || move.type !== 'Dark')) || move.hasBounced) {
+			if (target === source || !move.flags['reflectable'] || move.type !== 'Dark' || move.hasBounced) {
 				return;
 			}
 			let newMove = this.getMoveCopy(move.id);
