@@ -4993,7 +4993,7 @@ exports.BattleAbilities = {
 			if (target !== source && move.type === 'Ground') {
 				this.add('-immune', target, '[msg]', '[from] ability: Clear Levitation');
 				this.boost({
-					atk: 1
+					spe: 1
 				});
 				return null;
 			}
