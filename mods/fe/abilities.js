@@ -6352,7 +6352,7 @@ exports.BattleAbilities = {
 	"sonar": {
 		shortDesc: "Immune to sound based and Ground-type moves.",
 		onTryHit: function(target, source, move) {
-			if (target !== source && move.type === 'Ground' || move.flags['sound']) {
+			if (target !== source && (move.type === 'Ground' || move.flags['sound'])) {
 				this.add('-immune', target, '[msg]', '[from] ability: S.O.N.A.R');
 				return null;
 			}
