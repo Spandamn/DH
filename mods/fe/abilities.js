@@ -9743,34 +9743,34 @@ exports.BattleAbilities = {
 				let spamod = 1;
 				let spdmod = 1;
 				let spemod = 1;
-				if (['Adamant', 'Lonely', 'Naughty', 'Brave'].includes(pokemon.getNature())){
+				if (pokemon.getNature().plus === 'atk'){
    				 atkmod = 1.1;
 				}
-				else if (['Modest', 'Bold', 'Calm', 'Timid'].includes(pokemon.getNature())){
+				else if (pokemon.getNature().minus === 'atk'){
 				    atkmod = 0.9;
 				}
-				if (['Bold', 'Impish', 'Lax', 'Relaxed'].includes(pokemon.getNature())){
+				if (pokemon.getNature().plus === 'def'){
 				    defmod = 1.1;
 				}
-				else if (['Lonely', 'Mild', 'Gentle', 'Hasty'].includes(pokemon.getNature())){
+				else if (pokemon.getNature().minus === 'def'){
    				 defmod = 0.9;
 				}
-				if (['Modest', 'Mild', 'Rash', 'Quiet'].includes(pokemon.getNature())){
+				if (pokemon.getNature().plus === 'spa'){
    				 spamod = 1.1;
 				}
-				else if (['Adamant', 'Impish', 'Careful', 'Jolly'].includes(pokemon.getNature())){
+				else if (pokemon.getNature().minus === 'spa'){
    				 spamod = 0.9;
 				}
-				if (['Calm', 'Gentle', 'Careful', 'Sassy'].includes(pokemon.getNature())){
+				if (pokemon.getNature().plus === 'spd'){
 				    spdmod = 1.1;
 				}
-				else if (['Naughty', 'Lax', 'Rash', 'Naive'].includes(pokemon.getNature())){
+				else if (pokemon.getNature().minus === 'spd'){
 				    spdmod = 0.9;
 				}
-				if (['Timid', 'Hasty', 'Jolly', 'Naive'].includes(pokemon.getNature())){
+				else if (pokemon.getNature().plus === 'spe'){
 				    spemod = 1.1;
 				}
-				else if (['Brave', 'Relaxed', 'Quiet', 'Sassy'].includes(pokemon.getNature())){
+				else if (pokemon.getNature().minus === 'spe'){
 				    spemod = 0.9;
 				}
 				pokemon.stats['atk'] = Math.floor((Math.floor(((2*warnBp+pokemon.set.ivs['atk']+pokemon.set.evs['atk']/4)*100)/pokemon.level + 5))*atkmod);
@@ -12061,14 +12061,25 @@ exports.BattleAbilities = {
 		onSourceHit: function (target, source, move) {
 			if (!move || !target) return;
 			if (target !== source && move.category !== 'Status' && move.flags['contact']) {
-				for (let i in target.boosts) {
-					if (target.boosts[i] > 0){
-						source.boosts[i] = target.boosts[i];
+				let boosts = {};
+				let stolen = false;
+				for (let statName in target.boosts) {
+					let stage = target.boosts[statName];
+					if (stage > 0) {
+						boosts[statName] = stage;
+						stolen = true;
 					}
 				}
-				target.clearBoosts();
-				this.add('-copyboost', source, target, '[from] ability: Meme Stealer', '[of] ' + source);
-				this.add('-clearboost', target);
+				if (stolen) {
+					this.attrLastMove('[still]');
+					this.add('-clearpositiveboost', target, source, 'ability: Meme Stealer', '[of] ' + source);
+					this.boost(boosts, source, source);
+	
+					for (let statName in boosts) {
+						boosts[statName] = 0;
+					}
+					target.setBoost(boosts);
+				}
 				let stat = 'atk';
 				let bestStat = 0;
 				for (let i in target.stats) {
@@ -12083,14 +12094,25 @@ exports.BattleAbilities = {
 		},
 		onAfterMoveSecondary: function (target, source, move) {
 			if (source && source !== target && move && move.flags['contact']) {
-				for (let i in source.boosts) {
-					if (source.boosts[i] > 0){
-						target.boosts[i] = source.boosts[i];
+				let boosts = {};
+				let stolen = false;
+				for (let statName in source.boosts) {
+					let stage = source.boosts[statName];
+					if (stage > 0) {
+						boosts[statName] = stage;
+						stolen = true;
 					}
 				}
-				source.clearBoosts();
-				this.add('-copyboost', target, source, '[from] ability: Meme Stealer', '[of] ' + target);
-				this.add('-clearboost', source);
+				if (stolen) {
+					this.attrLastMove('[still]');
+					this.add('-clearpositiveboost', source, target, 'ability: Meme Stealer', '[of] ' + target);
+					this.boost(boosts, target, target);
+	
+					for (let statName in boosts) {
+						boosts[statName] = 0;
+					}
+					source.setBoost(boosts);
+				}
 				let stat = 'atk';
 				let bestStat = 0;
 				for (let i in source.stats) {
