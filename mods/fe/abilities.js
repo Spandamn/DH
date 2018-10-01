@@ -12150,4 +12150,14 @@ exports.BattleAbilities = {
 		id: "tacticalcomputer",
 		name: "Tactical Computer",
 	},
+	"indigestion": {
+		shortDesc: "This Pokemon consumes berries that affect stats as soon as possible.",
+		onUpdate: function (pokemon) {
+			if (['apicotberry', 'ganlonberry', 'keeberry', 'lansatberry', 'liechiberry', 'marangaberry', 'petayaberry', 'salacberry', 'starfberry'].includes(pokemon.getItem())){
+				pokemon.eatItem();	
+			}
+		},
+		id: "indigestion",
+		name: "Indigestion",
+	},
 };
