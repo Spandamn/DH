@@ -3545,6 +3545,156 @@ exports.Formats = [
 		},
 	},
 	{
+		name: "[Gen 7] Megamons",
+		desc: ["&bullet; <a href=\"https://www.smogon.com/forums/threads/3566648/\">Megamons</a>"],
+		mod: 'gen7',
+		ruleset: ['Species Clause', 'Nickname Clause', 'Moody Clause', 'OHKO Clause', 'Evasion Moves Clause', 'Swagger Clause', 'Mega Rayquaza Clause', 'Sleep Clause Mod', 'Endless Battle Clause', 'HP Percentage Mod', 'Cancel Mod', 'Team Preview'],
+		banlist: ['Unreleased', 'Illegal', 'Gengar-Mega', 'Mewtwo-Mega-X', 'Mewtwo-Mega-Y', 'Rayquaza-Mega'],
+		onValidateTeam: function(team) {
+			let problems = [];
+			let kyurems = 0;
+			for (let i = 0; i < team.length; i++) {
+				if (team[i].species === 'Kyurem-White' || team[i].species === 'Kyurem-Black') {
+					if (kyurems > 0) {
+						problems.push('You cannot have more than one Kyurem-Black/Kyurem-White.');
+						break;
+					}
+					kyurems++;
+				}
+			}
+			return problems;
+		},
+		onChangeSet: function(set, format) {
+			let item = this.getItem(set.item);
+			let template = this.getTemplate(set.species);
+			let problems = [];
+			let totalEV = 0;
+
+			if (set.species === set.name) delete set.name;
+			if (set.moves) {
+				for (let i = 0; i < set.moves.length; i++) {
+					let move = this.getMove(set.moves[i]);
+					if (move.isNonstandard) {
+						problems.push(move.name + ' does not exist.');
+					}
+				}
+			}
+			if (set.moves && set.moves.length > 4) {
+				problems.push((set.name || set.species) + ' has more than four moves.');
+			}
+			if (set.level && set.level > 100) {
+				problems.push((set.name || set.species) + ' is higher than level 100.');
+			}
+
+			if (template.isNonstandard) {
+				problems.push(set.species + ' does not exist.');
+			}
+			if (this.getAbility(set.ability).isNonstandard) {
+				problems.push(set.ability + ' does not exist.');
+			}
+			if (item.isNonstandard) {
+				if (item.isNonstandard === 'gen2') {
+					problems.push(item.name + ' does not exist outside of gen 2.');
+				} else {
+					problems.push(item.name + ' does not exist.');
+				}
+			}
+			for (let k in set.evs) {
+				if (typeof set.evs[k] !== 'number' || set.evs[k] < 0) {
+					set.evs[k] = 0;
+				}
+				totalEV += set.evs[k];
+			}
+			if (totalEV > 510) {
+				problems.push((set.name || set.species) + " has more than 510 total EVs.");
+			}
+
+			if (template.gender) {
+				if (set.gender !== template.gender) {
+					set.gender = template.gender;
+				}
+			} else {
+				if (set.gender !== 'M' && set.gender !== 'F') {
+					set.gender = undefined;
+				}
+			}
+
+			let baseTemplate = this.getTemplate(template.baseSpecies);
+			if (set.ivs && baseTemplate.gen >= 6 && (template.eggGroups[0] === 'Undiscovered' || template.species === 'Manaphy') && !template.prevo && !template.nfe && template.species !== 'Unown' && template.baseSpecies !== 'Pikachu' && (template.baseSpecies !== 'Diancie' || !set.shiny)) {
+				let perfectIVs = 0;
+				for (let i in set.ivs) {
+					if (set.ivs[i] >= 31) perfectIVs++;
+				}
+				if (perfectIVs < 3) problems.push((set.name || set.species) + " must have at least three perfect IVs because it's a legendary in gen 6.");
+			}
+
+			let moves = [];
+			if (set.moves) {
+				let hasMove = {};
+				for (let i = 0; i < set.moves.length; i++) {
+					let move = this.getMove(set.moves[i]);
+					let moveid = move.id;
+					if (hasMove[moveid]) continue;
+					hasMove[moveid] = true;
+					moves.push(set.moves[i]);
+				}
+			}
+			set.moves = moves;
+
+			let battleForme = template.battleOnly && template.species;
+			if (battleForme && !template.isMega) {
+				if (template.requiredAbility && set.ability !== template.requiredAbility) {
+					problems.push("" + template.species + " transforms in-battle with " + template.requiredAbility + "."); // Darmanitan-Zen
+				}
+				if (template.requiredItem && item.name !== template.requiredItem) {
+					problems.push("" + template.species + " transforms in-battle with " + template.requiredItem + '.'); // Primal
+				}
+				if (template.requiredMove && set.moves.indexOf(toId(template.requiredMove)) < 0) {
+					problems.push("" + template.species + " transforms in-battle with " + template.requiredMove + "."); // Meloetta-Pirouette
+				}
+				if (!format.noChangeForme) set.species = template.baseSpecies; // Fix forme for Aegislash, Castform, etc.
+			} else {
+				if (template.requiredItem && item.name !== template.requiredItem && !template.isMega) {
+					problems.push("" + (set.name || set.species) + " needs to hold " + template.requiredItem + '.'); // Plate/Drive/Griseous Orb
+				}
+				if (template.requiredMove && set.moves.indexOf(toId(template.requiredMove)) < 0 && !template.isMega) {
+					problems.push("" + (set.name || set.species) + " needs to have the move " + template.requiredMove + "."); // Keldeo-Resolute
+				}
+
+				if (item.forcedForme && template.species === this.getTemplate(item.forcedForme).baseSpecies && !format.noChangeForme) {
+					set.species = item.forcedForme;
+				}
+			}
+
+			if (set.species !== template.species) {
+				template = this.getTemplate(set.species);
+				if (!format.noChangeAbility) {
+					let legalAbility = false;
+					for (let i in template.abilities) {
+						if (template.abilities[i] !== set.ability) continue;
+						legalAbility = true;
+						break;
+					}
+					if (!legalAbility) {
+						set.ability = template.abilities['0'];
+					}
+				}
+			}
+
+			if (set.shiny && template.unobtainableShiny) {
+				problems.push("It's currently not possible to get a shiny " + template.species + ".");
+			}
+
+			return problems;
+		},
+		onSwitchIn: function(pokemon) {
+			let item = pokemon.getItem();
+			if (item.megaEvolves && pokemon.template.species === item.megaEvolves) {
+				pokemon.canMegaEvo = item.megaStone;
+			}
+		},
+	},
+	{
 		name: "[Gen 7] Mergemons",
 		desc: [
 			"Pok&eacute;mon gain the movepool of the previous and the next fully evolved Pok&eacute;mon, according to the Pok&eacute;dex.",
