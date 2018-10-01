@@ -9994,10 +9994,14 @@ exports.BattleAbilities = {
 	},
 	"prismskin": { // FIX THIS
 		shortDesc: "Restores 1/4 HP when hit by a super-effective move (recovery first then damage). Super-effective moves do 1/2 of the damage. This ability can be bypassed by Fire-type moves and only Fire-type moves, regardless of whether the attacker has Mold Breaker or its variants.",
+		onTryHit: function (target, source, move) {
+			if (move.typeMod > 0 && move.type !== 'Fire') {
+				this.debug('Prism Skin healing');
+				this.heal(target.maxhp / 4)
+			}
+		},
 		onSourceModifyDamage: function (damage, source, target, move) {
 			if (move.typeMod > 0 && move.type !== 'Fire') {
-				this.heal(target.maxhp / 4)
-				this.debug('Prism Armor neutralize');
 				return this.chainModify(0.5);
 			}
 		},
