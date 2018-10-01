@@ -11867,6 +11867,11 @@ exports.BattleAbilities = {
 		onBeforeMove: function (pokemon, move) {
 			if (pokemon.illusion && move.id === 'foulmimicry'){
 				this.useMove(pokemon.illusion.moveSlots[0].id, pokemon);
+				for (const moveSlot of source.moveSlots) {
+					if (moveSlot.id === 'foulmimicry') {
+						this.deductPP('foulmimicry', 1);
+					}
+				}
 				this.cancelMove(pokemon);
 			}
 		},
