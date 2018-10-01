@@ -10008,27 +10008,29 @@ exports.BattleAbilities = {
 	"terabeast": { //TODO: Checkthis
 		desc: "This Pokemon's move with the highest base power deals 1.5x damage and ignores the target's ability.",
 		shortDesc: "This Pokemon's move with the highest base power deals 1.5x damage and ignores the target's ability.",
-		onModifyMove: function (pokemon, move) {
+		onBasePower: function (basePower, pokemon, target, move) {
 			/**@type {(Move|Pokemon)[][]} */
-			move.ignoreAbility = true;
 			let warnMoves = [];
 			let warnBp = 1;
 				for (const moveSlot of pokemon.moveSlots) {
-					let move = this.getMove(moveSlot.move);
+					let newMove = this.getMove(moveSlot.move);
 					let bp = move.basePower;
-					if (move.ohko) bp = 160;
-					if (move.id === 'counter' || move.id === 'metalburst' || move.id === 'mirrorcoat') bp = 120;
-					if (!bp && move.category !== 'Status') bp = 80;
+					if (newMove.ohko) bp = 160;
+					if (newMove.id === 'counter' || newMove.id === 'metalburst' || newMove.id === 'mirrorcoat') bp = 120;
+					if (!bp && newMove.category !== 'Status') bp = 80;
 					if (bp > warnBp) {
-						warnMoves = [[move, pokemon]];
+						warnMoves = [[newMove, pokemon]];
 						warnBp = bp;
 					} else if (bp === warnBp) {
-						warnMoves.push([move, pokemon]);
+						warnMoves.push([newMove, pokemon]);
 					}
 				}
 			if (!warnMoves.length) return;
 			const [warnMoveName, warnTarget] = this.sample(warnMoves);
-			return warnMoves.chainModify(1.5);
+			if (warnMoveName.id === move.id) return this.chainModify(1.5);
+		},
+		onModifyMove: function (move) {
+			move.ignoreAbility = true;
 		},
 		id: "terabeast",
 		name: "Terabeast",
