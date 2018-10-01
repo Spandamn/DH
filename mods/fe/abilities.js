@@ -3065,7 +3065,7 @@ exports.BattleAbilities = {
 		name: "Hydrodynamic",
 	},
 	"engineer": {
-		shortDesc: "60 or lower BP moves inflict 1.5x damage and ignore opponent's ability.",
+		shortDesc: "Teravolt + Technician.",
 		onBasePowerPriority: 8,
 		onBasePower: function(basePower, attacker, defender, move) {
 			if (basePower <= 60) {
