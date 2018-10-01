@@ -4812,16 +4812,16 @@ exports.BattleAbilities = {
 		name: "Sleepwalker",
 	},
 	"absolutezero": {
-		shortDesc: "Biting and normal-type moves used by this Pokemon are treated as being ice-type in addition to their usual type and receive a 20% power boost.",
+		shortDesc: "Biting and normal-type moves used by this Pokemon receive a 50% power boost. This Pokemon's Normal-type moves become Ice-type.",
 		onModifyMove: function (move, pokemon) {
 			if (move.flags['bite'] || move.type === 'Normal' && !['judgment', 'multiattack', 'naturalgift', 'revelationdance', 'technoblast', 'weatherball'].includes(move.id) && !(move.isZ && move.category !== 'Status')) {
-				move.type = 'Ice';
+				move.type = (move.type === 'Normal' ? 'Ice' : move.type);
 				move.absolutezeroboosted = true;
 			}
 		},
 		onBasePowerPriority: 8,
 		onBasePower: function (basePower, pokemon, target, move) {
-			if (move.absolutezeroboosted) return this.chainModify([0x1333, 0x1000]);
+			if (move.absolutezeroboosted) return this.chainModify(1.5);
 		},
 		id: "absolutezero",
 		name: "Absolute Zero",
