@@ -12158,4 +12158,37 @@ exports.BattleAbilities = {
 		id: "indigestion",
 		name: "Indigestion",
 	},
+	"bloodmadecrops": {
+		desc: "When this Pokemon has 1/2 or less of its maximum HP, it uses certain Berries early. If this Pokemon eats a Berry, its highest stat is increased by 1 stage. When this Pokemon lands a KO, it eats certain berries and gains +1 to its highest stat.",
+		shortDesc: "This Pokemon's highest stat is raised by 1 if it attacks and KOes another Pokemon or if it eats a berry. Consumes pinch Berries at 50% HP or less and if it attacks and KOes another Pokemon.",
+		onSourceFaint: function (target, source, effect) {
+			if (effect && effect.effectType === 'Move') {
+				if (['figyberry', 'aguavberry', 'wikiberry', 'magoberry', 'iapapaberry', 'liechiberry', 'ganlonberry', 'salacberry', 'petayaberry', 'apicotberry', 'lansatberry', 'micleberry', 'custapberry'].includes(source.getItem())){
+					source.eatItem();
+				}
+				let stat = 'atk';
+				let bestStat = 0;
+				for (let i in source.stats) {
+					if (source.stats[i] > bestStat) {
+						stat = i;
+						bestStat = source.stats[i];
+					}
+				}
+				this.boost({[stat]: 1}, source);
+			}
+		},
+		onEatItem: function (item, pokemon) {
+				let stat = 'atk';
+				let bestStat = 0;
+				for (let i in pokemon.stats) {
+					if (pokemon.stats[i] > bestStat) {
+						stat = i;
+						bestStat = pokemon.stats[i];
+					}
+				}
+				this.boost({[stat]: 1}, pokemon);
+		},
+		id: "bloodmadecrops",
+		name: "Blood-Made Crops",
+	},
 };
