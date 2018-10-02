@@ -3044,7 +3044,7 @@ exports.BattleAbilities = {
 		name: "Pecking Order",
 	},
 	"hydrodynamic": {
-		shortDesc: "Aloha's Speed increases by one stage at the end of every turn, prevents opponent's moves and abilities from decreasing this Pokémon's Speed stat.",
+		shortDesc: "This Pokemon's Speed increases by one stage at the end of every turn. Other Pokemon cannot decrease this Pokémon's Speed stat.",
 		onResidualOrder: 26,
 		onResidualSubOrder: 1,
 		onResidual: function(pokemon) {
@@ -3065,7 +3065,7 @@ exports.BattleAbilities = {
 		name: "Hydrodynamic",
 	},
 	"engineer": {
-		shortDesc: "60 or lower BP moves inflict 1.5x damage and ignore opponent's ability.",
+		shortDesc: "Teravolt + Technician.",
 		onBasePowerPriority: 8,
 		onBasePower: function(basePower, attacker, defender, move) {
 			if (basePower <= 60) {
@@ -4812,16 +4812,16 @@ exports.BattleAbilities = {
 		name: "Sleepwalker",
 	},
 	"absolutezero": {
-		shortDesc: "Biting and normal-type moves used by this Pokemon are treated as being ice-type in addition to their usual type and receive a 20% power boost.",
+		shortDesc: "Biting and normal-type moves used by this Pokemon receive a 50% power boost. This Pokemon's Normal-type moves become Ice-type.",
 		onModifyMove: function (move, pokemon) {
 			if (move.flags['bite'] || move.type === 'Normal' && !['judgment', 'multiattack', 'naturalgift', 'revelationdance', 'technoblast', 'weatherball'].includes(move.id) && !(move.isZ && move.category !== 'Status')) {
-				move.type = 'Ice';
+				move.type = (move.type === 'Normal' ? 'Ice' : move.type);
 				move.absolutezeroboosted = true;
 			}
 		},
 		onBasePowerPriority: 8,
 		onBasePower: function (basePower, pokemon, target, move) {
-			if (move.absolutezeroboosted) return this.chainModify([0x1333, 0x1000]);
+			if (move.absolutezeroboosted) return this.chainModify(1.5);
 		},
 		id: "absolutezero",
 		name: "Absolute Zero",
@@ -9743,34 +9743,34 @@ exports.BattleAbilities = {
 				let spamod = 1;
 				let spdmod = 1;
 				let spemod = 1;
-				if (['Adamant', 'Lonely', 'Naughty', 'Brave'].includes(pokemon.getNature())){
+				if (pokemon.getNature().plus === 'atk'){
    				 atkmod = 1.1;
 				}
-				else if (['Modest', 'Bold', 'Calm', 'Timid'].includes(pokemon.getNature())){
+				else if (pokemon.getNature().minus === 'atk'){
 				    atkmod = 0.9;
 				}
-				if (['Bold', 'Impish', 'Lax', 'Relaxed'].includes(pokemon.getNature())){
+				if (pokemon.getNature().plus === 'def'){
 				    defmod = 1.1;
 				}
-				else if (['Lonely', 'Mild', 'Gentle', 'Hasty'].includes(pokemon.getNature())){
+				else if (pokemon.getNature().minus === 'def'){
    				 defmod = 0.9;
 				}
-				if (['Modest', 'Mild', 'Rash', 'Quiet'].includes(pokemon.getNature())){
+				if (pokemon.getNature().plus === 'spa'){
    				 spamod = 1.1;
 				}
-				else if (['Adamant', 'Impish', 'Careful', 'Jolly'].includes(pokemon.getNature())){
+				else if (pokemon.getNature().minus === 'spa'){
    				 spamod = 0.9;
 				}
-				if (['Calm', 'Gentle', 'Careful', 'Sassy'].includes(pokemon.getNature())){
+				if (pokemon.getNature().plus === 'spd'){
 				    spdmod = 1.1;
 				}
-				else if (['Naughty', 'Lax', 'Rash', 'Naive'].includes(pokemon.getNature())){
+				else if (pokemon.getNature().minus === 'spd'){
 				    spdmod = 0.9;
 				}
-				if (['Timid', 'Hasty', 'Jolly', 'Naive'].includes(pokemon.getNature())){
+				else if (pokemon.getNature().plus === 'spe'){
 				    spemod = 1.1;
 				}
-				else if (['Brave', 'Relaxed', 'Quiet', 'Sassy'].includes(pokemon.getNature())){
+				else if (pokemon.getNature().minus === 'spe'){
 				    spemod = 0.9;
 				}
 				pokemon.stats['atk'] = Math.floor((Math.floor(((2*warnBp+pokemon.set.ivs['atk']+pokemon.set.evs['atk']/4)*100)/pokemon.level + 5))*atkmod);
@@ -9994,10 +9994,14 @@ exports.BattleAbilities = {
 	},
 	"prismskin": { // FIX THIS
 		shortDesc: "Restores 1/4 HP when hit by a super-effective move (recovery first then damage). Super-effective moves do 1/2 of the damage. This ability can be bypassed by Fire-type moves and only Fire-type moves, regardless of whether the attacker has Mold Breaker or its variants.",
+		onTryHit: function (target, source, move) {
+			if (move.typeMod > 0 && move.type !== 'Fire') {
+				this.debug('Prism Skin healing');
+				this.heal(target.maxhp / 4)
+			}
+		},
 		onSourceModifyDamage: function (damage, source, target, move) {
 			if (move.typeMod > 0 && move.type !== 'Fire') {
-				this.heal(target.maxhp / 4)
-				this.debug('Prism Armor neutralize');
 				return this.chainModify(0.5);
 			}
 		},
@@ -10006,29 +10010,32 @@ exports.BattleAbilities = {
 		name: "Prism Skin",
 	},
 	"terabeast": { //TODO: Checkthis
-		desc: "This Pokemon's move with the highest base power deals 1.5x damage and ignores the target's ability.",
-		shortDesc: "This Pokemon's move with the highest base power deals 1.5x damage and ignores the target's ability.",
-		onModifyMove: function (pokemon, move) {
-			/**@type {(Move|Pokemon)[][]} */
+		desc: "This Pokemon's move with the highest base power deals 1.5x damage. All of this Pokemon's moves ignore the target's ability.",
+		shortDesc: "This Pokemon's move with the highest base power deals 1.5x damage. All of this Pokemon's moves ignore the target's ability.",
+		onBasePower: function (basePower, pokemon, target, move) {
+			/**@type {(Move)[]} */
 			move.ignoreAbility = true;
 			let warnMoves = [];
 			let warnBp = 1;
 				for (const moveSlot of pokemon.moveSlots) {
-					let move = this.getMove(moveSlot.move);
-					let bp = move.basePower;
-					if (move.ohko) bp = 160;
-					if (move.id === 'counter' || move.id === 'metalburst' || move.id === 'mirrorcoat') bp = 120;
-					if (!bp && move.category !== 'Status') bp = 80;
+					let newMove = this.getMove(moveSlot.move);
+					let bp = newMove.basePower;
+					if (newMove.ohko) bp = 160;
+					if (newMove.id === 'counter' || newMove.id === 'metalburst' || newMove.id === 'mirrorcoat') bp = 120;
+					if (!bp && newMove.category !== 'Status') bp = 80;
 					if (bp > warnBp) {
-						warnMoves = [[move, pokemon]];
+						warnMoves = [newMove];
 						warnBp = bp;
 					} else if (bp === warnBp) {
-						warnMoves.push([move, pokemon]);
+						warnMoves.push(newMove);
 					}
 				}
 			if (!warnMoves.length) return;
-			const [warnMoveName, warnTarget] = this.sample(warnMoves);
-			return warnMoves.chainModify(1.5);
+			let warnMoveName = this.sample(warnMoves);
+			if (warnMoveName.id === move.id || warnBp === move.basePower) return this.chainModify(1.5);
+		},
+		onModifyMove: function (move) {
+			move.ignoreAbility = true;
 		},
 		id: "terabeast",
 		name: "Terabeast",
@@ -10037,7 +10044,9 @@ exports.BattleAbilities = {
 		shortDesc: "Physical moves do 50% more damage every other turn.",
 		onModifyAtkPriority: 5,
 		onModifyAtk: function (atk, pokemon) {
-			return this.modify(atk, 1.5);
+			if (pokemon.removeVolatile('powersaver')){
+				return this.modify(atk, 1.5);
+			}
 			pokemon.addVolatile('powersaver');
 		},
 		effect: {
@@ -10050,13 +10059,14 @@ exports.BattleAbilities = {
 		shortDesc: "Super effective attacks against this Pokemon becomes Ice-type and do 0.75x damage. Normal-type moves become Ice-type and do 1.75x damage.",
 		onModifyMovePriority: -1,
 		onFoeModifyMove: function (source, target, move) {
-			if (move.typeMod > 0) {
+		},
+		onAnyModifyMove: function (source, target, move) {
+			if (target !== this.effectData.target && source !== this.effectData.target) return;
+			if (target === this.effectData.target && target.runEffectiveness(move) > 0) {
 				move.type === 'Ice';
 				move.christmasparade = true;
 			}
-		},
-		onModifyMove: function (move, pokemon) {
-			if (move.type === 'Normal' && !['judgment', 'multiattack', 'naturalgift', 'revelationdance', 'technoblast', 'weatherball'].includes(move.id) && !(move.isZ && move.category !== 'Status')) {
+			else if (source === this.effectData.target && move.type === 'Normal' && !['judgment', 'multiattack', 'naturalgift', 'revelationdance', 'technoblast', 'weatherball'].includes(move.id) && !(move.isZ && move.category !== 'Status')) {
 				move.type = 'Ice';
 				move.christmasparadeboosted = true;
 			}
