@@ -10669,12 +10669,13 @@ exports.BattleAbilities = {
 	},
 	"powerdrain": {
 		shortDesc: "This Pokemon paralyzes any Pokemon that would try to reduce its PP.",
-		onDeductPP: function (pokemon) {
-			for (const target of pokemon.side.foe.active) {
-				if (!target || target.fainted) continue;
-				this.setStatus('par', target);
-			}
-		},
+		//Should be implemented in scripts.js. This is here just in case.
+// 		onDeductPP: function (pokemon) {
+// 			for (const target of pokemon.side.foe.active) {
+// 				if (!target || target.fainted) continue;
+// 				this.setStatus('par', target);
+// 			}
+// 		},
 		id: "powerdrain",
 		name: "Power Drain",
 	},
