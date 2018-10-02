@@ -4423,41 +4423,50 @@ exports.Formats = [
         },
   	},
 	{
-  		name: "[Gen 7] Fusion Evolution",
-  		desc: ["&bullet; <a href=http://www.smogon.com/forums/threads/fusion-evolution-v2-submission-phase.3560216/>Fusion Evolution</a>",
-  		       "&bullet; <a href=http://www.smogon.com/forums/threads/fusion-moves-fusion-evolution-companion-project.3564805/>Fusion Moves</a>",
-  		      ],
-  		ruleset: ['Ate Clause', 'Extreme Speed Clause', 'Pokemon', 'Sleep Clause Mod', 'Species Clause', 'Moody Clause', 'Evasion Moves Clause', 'Endless Battle Clause', 'HP Percentage Mod', 'Cancel Mod', 'Team Preview', 'Swagger Clause', 'Baton Pass Clause'],
-		banlist: ['Unreleased', 'Dialcatty', 'Kars', 'Dittsey', 'Diceus', 'Peridot-Mega', 'Kyzor', 'Gonzap', 'Harem', 'Cinshado', 'Enteon', 'Lucashadow-Mega', 'Kahoot', 'Taiwan', 'Passcraft', 'Dad', 'Enteon', 'Entir', 'Necrynx-Ultra', 'Shenala', 'Xurkizard-Mega-Y', 'Archedactyl-Mega', 'Miminja', 'Toxicario-Mega', 'Lucasol-Mega-L', 'Alakario-Mega-L', 'Kangorus-Khan-Mega', 'Absoko-Mega', 'Kartaria-Mega', 'Dio', 'Mendoza', 'Deoxurk-Outlet', 'Omneus','Muddy Seed'], // Mega Kasukabe Necrozerain-Ultra'
+    	name: "[Gen 7] Fusion Evolution",
+    	desc: ["&bullet; <a href=http://www.smogon.com/forums/threads/fusion-evolution-v2-submission-phase.3560216/>Fusion Evolution</a>",
+        	"&bullet; <a href=http://www.smogon.com/forums/threads/fusion-moves-fusion-evolution-companion-project.3564805/>Fusion Moves</a>",
+    	],
+    	ruleset: ['Ate Clause', 'Extreme Speed Clause', 'Pokemon', 'Sleep Clause Mod', 'Species Clause', 'Moody Clause', 'Evasion Moves Clause', 'Endless Battle Clause', 'HP Percentage Mod', 'Cancel Mod', 'Team Preview', 'Swagger Clause', 'Baton Pass Clause'],
+    	banlist: ['Unreleased', 'Dialcatty', 'Kars', 'Dittsey', 'Diceus', 'peridotite', 'Kyzor', 'Gonzap', 'Harem', 'Cinshado', 'Enteon', 'lucashadowite', 'Kahoot', 'Taiwan', 'Dad', 'Enteon', 'Entir', 'Necrynx-Ultra', 'Shenala', 'xurkizardyite', 'archedactylite', 'Miminja', 'toxicarioite', 'lucasollite', 'alakariolite', 'kangoruskhanite', 'absokoite', 'kartariaite', 'Mtn Dew', 'Dio', 'Mendoza', 'Deoxurk-Outlet', 'Omneus', 'Muddy Seed', 'kasukabeite', 'Necrozerain-Ultra'], // Mega Kasukabe Necrozerain-Ultra'
 
-		mod: 'fe',
-		onPrepareHit: function(target, source, move) {
-			if (!move.contestType) {
-			this.attrLastMove('[still]');
-			this.add('-anim', source, "Celebrate", target);
-			}
-		},
-  		onModifyTemplate: function (template, pokemon, source) {
-  			//This hack is for something important: The Pokemon's Sprite.
-  			if (!template.base) return template;
-  			let temp = Objcet.assign({}, template);
-  			temp.species = temp.baseSpecies = template.base;
-			pokemon.name = template.species;
-			pokemon.fullname = `${pokemon.side.id}: ${pokemon.name}`;
-			pokemon.id = pokemon.fullname;
-			return temp;
-  		},
-		onSwitchIn: function (pokemon) {
-				for (const target of pokemon.side.foe.active) {
-            this.add('-start', pokemon, 'typechange', pokemon.template.types.join('/'), '[silent]');
-				let ability = this.getAbility(target.ability);
-				this.add('raw',ability,ability.shortDesc);
-				}
-        },
-		checkLearnset: function (move, template, lsetData, set) {
-           return null
-        },
-  	},
+    	mod: 'fe',
+    	onPrepareHit: function(target, source, move) {
+        	if (!move.contestType) {
+            	this.attrLastMove('[still]');
+            	this.add('-anim', source, "Celebrate", target);
+        	}
+    	},
+    	onModifyTemplate: function(template, pokemon, source) {
+        	//This hack is for something important: The Pokemon's Sprite.
+        	if (!template.base) return template;
+        	let temp = Object.assign({}, template);
+        	temp.species = temp.baseSpecies = template.base;
+        	pokemon.name = template.species;
+        	pokemon.fullname = `${pokemon.side.id}: ${pokemon.name}`;
+        	pokemon.id = pokemon.fullname;
+        	return temp;
+    	},
+    	onSwitchIn: function(pokemon) {
+        	//Kecleus's type is announced at the start of each turn.
+        	if (pokemon.template.species !== 'kecleus') {
+            	this.add('-start', pokemon, 'typechange', pokemon.template.types.join('/'), '[silent]');
+        	}
+        	let ability = this.getAbility(pokemon.ability);
+        	this.add('raw', ability, ability.shortDesc);
+    	},
+    	checkLearnset: function(move, template, lsetData, set) {
+        	// 				let problems = [];
+        	// 				let ability = "";
+        	// 				for (let i in template.abilities) {
+        	// 					if (set.ability === template.abilities[i]) ability = template.abilities[i];
+        	// 				}
+        	// 				if (ability !== "") problems.push("" + template.species + " cannot have the ability " + ability + ".");
+        	// 				if (!problems.length) return problems;
+			//					//There were plans to check the EVs.
+        	return null;
+    	},
+	},
 	{
   		name: "[Gen 7] G-Luke's Ideal World",
   		desc: ["&bullet; <a href=http://www.smogon.com/forums/threads/g-lukes-ideal-world-v1.3627945/>G-Luke's Ideal World</a>",
