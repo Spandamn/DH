@@ -3351,7 +3351,7 @@ exports.BattlePokedex = {
         heightm: 1.5,
         weightkg: 54.5,
         color: "Blue",
-        eggGroups: ["Undiscovered"],
+        eggGroups: ["Bug"],
     },
     herasirmegah: {
         num: 750057,
@@ -3498,7 +3498,7 @@ exports.BattlePokedex = {
         },
         heightm: 2.4,
         weightkg: 215.25,
-        color: "Black",
+        color: "Gray",
         eggGroups: ["Undiscovered"],
     },
     mana: {
@@ -3522,7 +3522,7 @@ exports.BattlePokedex = {
         },
         heightm: 1.005,
         weightkg: 24.6,
-        color: "Black",
+        color: "Yellow",
         eggGroups: ["Undiscovered"],
     },
     manamega: {
@@ -3545,7 +3545,7 @@ exports.BattlePokedex = {
         },
         heightm: 1.5,
         weightkg: 90.0,
-        color: "Pink",
+        color: "Yellow",
         eggGroups: ["Undiscovered"],
     },
     lucharma: {
@@ -3569,7 +3569,7 @@ exports.BattlePokedex = {
         },
         heightm: 1.55,
         weightkg: 137.65,
-        color: "Black",
+        color: "Red",
         eggGroups: ["Undiscovered"],
     },
     klip: {
@@ -3681,6 +3681,76 @@ exports.BattlePokedex = {
         num: 750063,
         species: "Casting",
         types: ["Poison", "Normal"],
+        baseStats: {
+            hp: 78,
+            atk: 90,
+            def: 105,
+            spa: 88,
+            spd: 80,
+            spe: 75
+        },
+        abilities: {
+            0: "Monsoon"
+        },
+        heightm: 0.745,
+        weightkg: 5.15,
+        color: "Gray",
+        eggGroups: ["Amorphous"],
+        otherFormes: ["castingsunny", "castingrainy", "castingsnowy"],
+    },
+    castingsunny: {
+        num: 750063,
+        species: "Casting-Sunny",
+        baseSpecies: "Casting",
+        forme: "Sunny",
+        formeLetter: "S",
+        types: ["Poison", "Fire"],
+        baseStats: {
+            hp: 78,
+            atk: 90,
+            def: 105,
+            spa: 88,
+            spd: 80,
+            spe: 75
+        },
+        abilities: {
+            0: "Monsoon"
+        },
+        heightm: 0.745,
+        weightkg: 5.15,
+        color: "Red",
+        eggGroups: ["Amorphous"],
+    },
+    castingrainy: {
+        num: 750063,
+        species: "Casting-Rainy",
+        baseSpecies: "Casting",
+        forme: "Rainy",
+        formeLetter: "R",
+        types: ["Poison", "Water"],
+        baseStats: {
+            hp: 78,
+            atk: 90,
+            def: 105,
+            spa: 88,
+            spd: 80,
+            spe: 75
+        },
+        abilities: {
+            0: "Monsoon"
+        },
+        heightm: 0.745,
+        weightkg: 5.15,
+        color: "Blue",
+        eggGroups: ["Amorphous"],
+    },
+    castingsnowy: {
+        num: 750063,
+        species: "Casting-Snowy",
+        baseSpecies: "Casting",
+        forme: "Snowy",
+        formeLetter: "S",
+        types: ["Poison", "Ice"],
         baseStats: {
             hp: 78,
             atk: 90,
