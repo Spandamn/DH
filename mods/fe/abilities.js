@@ -2269,14 +2269,14 @@ exports.BattleAbilities = {
 		shortDesc: "Sturdy + Iron Barbs",
 		onTryHit: function(pokemon, target, move) {
 			if (move.ohko) {
-				this.add('-immune', pokemon, '[msg]', '[from] ability: Sturdy');
+				this.add('-immune', pokemon, '[msg]', '[from] ability: Durable Barbs');
 				return null;
 			}
 		},
 		onDamagePriority: -100,
 		onDamage: function(damage, target, source, effect) {
 			if (target.hp === target.maxhp && damage >= target.hp && effect && effect.effectType === 'Move') {
-				this.add('-ability', target, 'Sturdy');
+				this.add('-ability', target, 'Durable Barbs');
 				return target.hp - 1;
 			}
 		},
