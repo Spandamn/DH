@@ -1642,9 +1642,9 @@ exports.BattleItems = {
         gen: 6,
         desc: "If holder is a banekyu, this item allows it to Mega Evolve in battle.",
     },
-    "Heratanaite": {
+    "heratanaite": {
         id: "heratanaite",
-        name: "heratanaite",
+        name: "Heratanaite",
         spritenum: 590,
 		 
         megaStone: "Heratana-Mega",
