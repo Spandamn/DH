@@ -1624,18 +1624,19 @@ exports.BattleAbilities = {
 		onStart: function(pokemon) {
 			this.add('-ability', pokemon, 'Under Pressure');
 		},
-		onDeductPP: function(pokemon) {
+		onDeductPP: function (target, source) {
+			if (target !== source) return;
 			return 1;
 		},
 		id: "underpressure",
 		name: "Under Pressure",
 	},
 	"naturaleye": {
-		shortDesc: "Pidgemie avoids status moves if they're not 100% accurate.",
+		shortDesc: "This Pokemon avoids all status moves if they're not 100% accurate.",
 		onFoeModifyAccuracyPriority: 10,
 		onFoeModifyAccuracy: function(accuracy, target, source, move) {
 			if (move.category === 'Status' && move.accuracy !== '100') {
-				this.debug('Wonder Skin - setting accuracy to 50');
+				this.debug('Natural Eye - setting accuracy to 0');
 				return 0;
 			}
 		},
@@ -5534,10 +5535,8 @@ exports.BattleAbilities = {
 	},
 	"sharpshooter": {
 		shortDesc: "This Pokemon's attacks always result in a critical hit, but use 2 PP instead of 1.",
-		onStart: function (pokemon) {
-			this.add('-ability', pokemon, 'Pressure');
-		},
-		onDeductPP: function (pokemon) {
+		onDeductPP: function (target, source) {
+			if (target !== source) return;
 			return 1;
 		},
 		onModifyMove: function(move) {
@@ -7897,7 +7896,7 @@ exports.BattleAbilities = {
 		name: "Merciless Beast",
 	},
 	"ability": {
-		shortDesc: "Fire-type attacking moves have their power doubled and their PP halved.",
+		shortDesc: "This Pokemon's Fire-type moves have their power doubled and their PP halved.",
 		onModifyAtkPriority: 5,
 		onModifyAtk: function (atk, attacker, defender, move) {
 			if (move.type === 'Fire') {
@@ -7912,8 +7911,9 @@ exports.BattleAbilities = {
 				return this.chainModify(2);
 			}
 		},
-		onDeductPP: function(pokemon, move) {
-			if (move.type === 'Fire') return 1;
+		onDeductPP: function (target, source, move) {
+			if (target !== source || move.type !== 'Fire') return;
+			return 1;
 		},
 		id: "ability",
 		name: "Ability",
@@ -10462,7 +10462,8 @@ exports.BattleAbilities = {
 		onStart: function (pokemon) {
 			this.add('-ability', pokemon, 'Calamity');
 		},
-		onTryDeductPP: function (pokemon) {
+		onDeductPPPriority: -1,
+		onDeductPP: function (pokemon) {
 			return null;
 		},
 		id: "calamity",
@@ -10667,8 +10668,8 @@ exports.BattleAbilities = {
 		},
 	},
 	"powerdrain": {
-		shortDesc: "Grants immunity to moves that would lower this Pokemon's stats.",
-		onFoeTryDeductPP: function (pokemon) {
+		shortDesc: "This Pokemon paralyzes any Pokemon that would try to reduce its PP.",
+		onDeductPP: function (pokemon) {
 			for (const target of pokemon.side.foe.active) {
 				if (!target || target.fainted) continue;
 				this.setStatus('par', target);
