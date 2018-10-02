@@ -4806,7 +4806,7 @@ exports.BattlePokedex = {
         },
         heightm: 1.155,
         weightkg: 43.65,
-        color: "Black",
+        color: "Pink",
         eggGroups: ["Undiscovered"],
     },
     dianbromegas: {
@@ -4881,7 +4881,7 @@ exports.BattlePokedex = {
         },
         heightm: 1.005,
         weightkg: 34.95,
-        color: "Black",
+        color: "Brown",
         eggGroups: ["Undiscovered"],
     },
     happipi: {
@@ -5034,7 +5034,7 @@ exports.BattlePokedex = {
         },
         heightm: 1.5,
         weightkg: 162.25,
-        color: "Gray",
+        color: "Brown",
         eggGroups: ["Undiscovered"],
     },
     lagimega: {
@@ -5058,7 +5058,7 @@ exports.BattlePokedex = {
         },
         heightm: 2.1,
         weightkg: 255.95,
-        color: "Gray",
+        color: "Brown",
         eggGroups: ["Undiscovered"],
     },
     heatloom: {
@@ -5078,7 +5078,7 @@ exports.BattlePokedex = {
         },
         heightm: 1.445,
         weightkg: 234.6,
-        color: "Black",
+        color: "Green",
         eggGroups: ["Undiscovered"],
     },
     golone: {
@@ -5168,7 +5168,7 @@ exports.BattlePokedex = {
         },
         heightm: 1.155,
         weightkg: 57.25,
-        color: "Black",
+        color: "Yellow",
         eggGroups: ["Undiscovered"],
     },
     lopunnini: {
@@ -5188,7 +5188,7 @@ exports.BattlePokedex = {
         },
         heightm: 0.8,
         weightkg: 18.65,
-        color: "Black",
+        color: "Yelow",
         eggGroups: ["Undiscovered"],
     },
     loppuninimega: {
@@ -5211,7 +5211,7 @@ exports.BattlePokedex = {
         },
         heightm: 0.9,
         weightkg: 13.65,
-        color: "Black",
+        color: "Yellow",
         eggGroups: ["Undiscovered"],
     },
     larvatrap: {
