@@ -9967,9 +9967,7 @@ exports.BattleAbilities = {
 	        if (effect && effect.effectType === 'Move' && target.template.speciesid === 'mimukyu' && !target.transformed) {
 	            this.add('-activate', target, 'ability: Appropriation');
 	            this.effectData.busted = true;
-	            let ability = this.getAbility(source.ability);
-	            let bannedAbilities = ['battlebond', 'comatose', 'disguise', 'flowergift', 'forecast', 'illusion', 'imposter', 'multitype', 'powerconstruct', 'powerofalchemy', 'receiver', 'rkssystem', 'schooling', 'shieldsdown', 'stancechange', 'trace', 'wonderguard', 'zenmode'];
-	            if (!bannedAbilities.includes(source.ability)) target.setAbility(ability);
+				   source.addVolatile('appropriation');
 	            return 0;
 	        }
 	    },
@@ -9987,7 +9985,15 @@ exports.BattleAbilities = {
 	            pokemon.baseTemplate = template;
 	            pokemon.details = template.species + (pokemon.level === 100 ? '' : ', L' + pokemon.level) + (pokemon.gender === '' ? '' : ', ' + pokemon.gender) + (pokemon.set.shiny ? ', shiny' : '');
 	            this.add('detailschange', pokemon, pokemon.details);
-	        }
+					for (const target of pokemon.side.foe.active) {
+						if (!target || !this.isAdjacent(target, pokemon) || !target.removeVolatile['appropriation']) continue;
+	            	let ability = this.getAbility(target.ability);
+	            	let bannedAbilities = ['appropriation', 'battlebond', 'comatose', 'disguise', 'flowergift', 'forecast', 'illusion', 'imposter', 'multitype', 'powerconstruct', 'powerofalchemy', 'receiver', 'rkssystem', 'schooling', 'shieldsdown', 'stancechange', 'trace', 'zenmode', 'resurrection', 'magicalwand', 'sleepingsystem', 'cursedcloak', 'appropriation', 'disguiseburden', 'hideandseek', 'beastcostume', 'spiralpower', 'optimize', 'prototype', 'typeillusionist', 'godoffertility', 'foundation', 'sandyconstruct', 'victorysystem', 'techequip', 'technicalsystem', 'triagesystem', 'geneticalgorithm', 'effectsetter', 'tacticalcomputer', 'mitosis', 'barbstance', 'errormacro', 'combinationdrive', 'stanceshield', 'unfriend', 'desertmirage', 'sociallife', 'cosmology', 'crystallizedshield', 'compression', 'whatdoesthisdo'];
+	            	if (bannedAbilities.includes(ability)) break;
+						this.add('-ability', target, ability, '[from] ability: Appropriation', '[of] ' + pokemon);
+						pokemon.setAbility(ability);
+					}
+			  }
 	    },
 	    id: "appropriation",
 	    name: "Appropriation",
