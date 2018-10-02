@@ -2167,9 +2167,12 @@ exports.BattleAbilities = {
 		name: "Shake it Off",
 	},
 	"prankstar": {
-		shortDesc: "This pokemon's moves of 70% accuracy or less have +1 Priority.",
+		shortDesc: "This pokemon's moves of 70% accuracy or less have +1 Priority, but cannot hit Dark-types.",
 		onModifyPriority: function(priority, pokemon, target, move) {
-			if (move.accuracy <= 70) return priority + 1;
+			if (move.accuracy <= 70){
+				move.pranksterBoosted = true;
+				return priority + 1;
+			}
 		},
 		id: "prankstar",
 		name: "Prankstar",
@@ -2290,9 +2293,12 @@ exports.BattleAbilities = {
 		name: "Durable Barbs",
 	},
 	"rapidgrowth": {
-		shortDesc: "Grass-type moves have their priority increased by 1.",
+		shortDesc: "Grass-type moves have their priority increased by 1, but cannot hit Dark-types.",
 		onModifyPriority: function(priority, pokemon, target, move) {
-			if (move && move.type === 'Grass') return priority + 1;
+			if (move && move.type === 'Grass'){
+				move.pranksterBoosted = true;
+				return priority + 1;
+			}
 		},
 		id: "rapidgrowth",
 		name: "Rapid Growth",
@@ -2381,9 +2387,12 @@ exports.BattleAbilities = {
 		name: "Negative Body",
 	},
 	"stunningbug": {
-		shortDesc: "Bug-type moves have their priority increased by 1.",
+		shortDesc: "Bug-type moves have their priority increased by 1, but cannot hit Dark-types.",
 		onModifyPriority: function(priority, pokemon, target, move) {
-			if (move && move.type === 'Bug') return priority + 1;
+			if (move && move.type === 'Bug'){
+				move.pranksterBoosted = true;
+				return priority + 1;
+			}
 		},
 		id: "stunningbug",
 		name: "Stunning Bug",
@@ -2520,9 +2529,12 @@ exports.BattleAbilities = {
 		name: "Hazmat Fur",
 	},
 	"indulgence": {
-		shortDesc: "This Pokemon's healing moves have their priority increased by 3.",
+		shortDesc: "This Pokemon's status and/or healing moves have their priority increased by 3, but do not affect Dark-types.",
 		onModifyPriority: function(priority, pokemon, target, move) {
-			if (move && move.category === 'Status' || move && move.flags['heal']) return priority + 3;
+			if (move && move.category === 'Status' || move && move.flags['heal']){
+				move.pranksterBoosted = true;
+				return priority + 3;
+			}
 		},
 		onModifyMove: function(move) {
 			if (move && move.category === 'Status') {}
@@ -2994,9 +3006,12 @@ exports.BattleAbilities = {
 		name: "Operation: Overgrow",
 	},
 	"lightningfist": {
-		shortDesc: "This Pokemon's punch-based attacks have their priorities increased by 1.",
+		shortDesc: "This Pokemon's punch-based attacks have their priorities increased by 1, but do not affect Dark-types.",
 		onModifyPriority: function(priority, pokemon, target, move) {
-			if (move.flags['punch']) return priority + 1;
+			if (move.flags['punch']){
+				move.pranksterBoosted = true;
+				return priority + 1;
+			}
 		},
 		id: "lightningfist",
 		name: "Lightning Fist",
@@ -3604,6 +3619,7 @@ exports.BattleAbilities = {
 		name: "Fat Trap",
 	},
 	"authority": {
+		shortDesc: "This Pokemon's physical moves have increased priority, but cannot hit Dark-types.",
 		onModifyPriority: function(priority, pokemon, target, move) {
 			if (move && move.category === 'Physical') {
 				return priority + 1;
@@ -4178,9 +4194,10 @@ exports.BattleAbilities = {
 		name: "Bingo Bongo",
 	},
 	"panicmode": {
-		shortDesc: "This Pokemon's moves have +1 priority when this Pokemon is burned, paralyzed, or poisoned. Ignores the burn Attack drop.",
+		shortDesc: "This Pokemon's moves have +1 priority when this Pokemon is burned, paralyzed, or poisoned, but are unable to hit Dark-types. Ignores the burn Attack drop.",
 		onModifyPriority: function (priority, pokemon, target, move) {
 			if (pokemon.status === 'brn' || pokemon.status === 'par' || pokemon.status === 'psn') {
+				move.pranksterBoosted = true;
 				return priority + 1;
 			}
 		},
@@ -5909,7 +5926,7 @@ exports.BattleAbilities = {
 		name: "Atmospheric Pull",
 	},
 	"trickyglare": {
-		shortDesc: "Status moves have +1 priority. If the opposing Pokemon attempts to use status moves, the move will fail and their attack will drop by 1 stage.",
+		shortDesc: "Status moves have +1 priority, but do not affect Dark-types. If the opposing Pokemon attempts to use status moves, the move will fail and their attack will drop by 1 stage.",
 		onModifyPriority: function (priority, pokemon, target, move) {
 			if (move && move.category === 'Status') {
 				move.pranksterBoosted = true;
@@ -5969,9 +5986,12 @@ exports.BattleAbilities = {
 		},
 	},
 	"familiarmaneuvering": {
-		shortDesc: "This Pokemon's STAB moves have +1 priority (including status moves that would be STAB).",
+		shortDesc: "This Pokemon's STAB moves have +1 priority (including status moves that would be STAB), but do not affect Dark-types.",
 		onModifyPriority: function (priority, pokemon, target, move) {
-			if (pokemon.hasType(move.type)) return priority + 1;
+			if (pokemon.hasType(move.type)){
+				move.pranksterBoosted = true;
+				return priority + 1;
+			}
 		},
 		id: "familiarmaneuvering",
 		name: "Familiar Maneuvering",
@@ -10000,7 +10020,7 @@ exports.BattleAbilities = {
 		name: "Scarily Adorable",
 	},
 	"creepy": {
-		shortDesc: "Status moves have +1 priority and lower the foe's Attack by one stage.",
+		shortDesc: "Status moves have +1 priority and lower the foe's Attack by one stage, but cannot affect Dark-types.",
 		onModifyPriority: function (priority, pokemon, target, move) {
 			if (move && move.category === 'Status') {
 				move.pranksterBoosted = true;
@@ -10164,7 +10184,7 @@ exports.BattleAbilities = {
 		name: "Pouch Aura",
 	},
 	"voltfield": {
-		shortDesc: "As long as the holder is on the field, opponent is under the effect of Taunt.",
+		shortDesc: "As long as the holder is on the field, any non-Dark-type opponents are under the effect of Taunt.",
 		onStart: function(pokemon) {
 			for (const target of pokemon.side.foe.active) {
 				if (!target || target.fainted) continue;
