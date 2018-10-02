@@ -2248,7 +2248,7 @@ exports.BattleAbilities = {
 			}
 		},
 		onWeather: function(target, source, effect) {
-			if (effect.id === 'hail' || effect.id === 'sunnyday' || effect.id === 'desolatelland') {
+			if (effect.id === 'hail' || effect.id === 'sunnyday' || effect.id === 'desolateland') {
 				if (target.volatiles['atmosphericperversion'] == target.volatiles['weatherbreak']){
 					this.heal(target.maxhp / 16, target, target);
 				} else {
