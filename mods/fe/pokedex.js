@@ -3788,7 +3788,7 @@ exports.BattlePokedex = {
         },
         heightm: 0.905,
         weightkg: 32.75,
-        color: "Black",
+        color: "Purple",
         eggGroups: ["Human-Like"],
     },
     sablemimezmega: {
@@ -3815,7 +3815,7 @@ exports.BattlePokedex = {
         },
         heightm: 0.905,
         weightkg: 182.75,
-        color: "Pink",
+        color: "Purple",
         eggGroups: ["Human-Like"],
     },
     aegilene: {
@@ -3837,7 +3837,7 @@ exports.BattlePokedex = {
         },
         heightm: 1.6,
         weightkg: 67.75,
-        color: "Black",
+        color: "Brown",
 		  otherFormes: ["aegilineblade"],
         eggGroups: ["Undiscovered"],
     },
@@ -3862,7 +3862,7 @@ exports.BattlePokedex = {
         },
         heightm: 1.6,
         weightkg: 67.75,
-        color: "Black",
+        color: "Brown",
         eggGroups: ["Undiscovered"],
     },
     houndlion: {
@@ -3937,7 +3937,7 @@ exports.BattlePokedex = {
         },
         heightm: 0.85,
         weightkg: 22.15,
-        color: "Black",
+        color: "Purple",
         eggGroups: ["Human-Like"],
     },
 
@@ -3966,7 +3966,7 @@ exports.BattlePokedex = {
         },
         heightm: 0.85,
         weightkg: 172.15,
-        color: "Brown",
+        color: "Purple",
         eggGroups: ["Human-Like"],
     },
     loppeyemegay: {
@@ -3993,7 +3993,7 @@ exports.BattlePokedex = {
         },
         heightm: 0.95,
         weightkg: 17.15,
-        color: "Brown",
+        color: "Purple",
         eggGroups: ["Human-Like"],
     },
     slowdon: {
@@ -4017,6 +4017,7 @@ exports.BattlePokedex = {
         },
         heightm: 0.85,
         weightkg: 46.5,
+        color: "Gray",
 		  evos: ["bastioking"],
         eggGroups: ["Monster"],
     },
@@ -4043,7 +4044,7 @@ exports.BattlePokedex = {
         weightkg: 114.5,
 		  prevo: "slowdon",
 		  evoLevel: 30,
-        color: "Pink",
+        color: "Gray",
         eggGroups: ["Monster"],
     },
     peatran: {
@@ -4119,7 +4120,7 @@ exports.BattlePokedex = {
         },
         heightm: 1.155,
         weightkg: 101.7,
-        color: "Black",
+        color: "Green",
         eggGroups: ["Undiscovered"],
     },
     manatarmega: {
@@ -4146,7 +4147,7 @@ exports.BattlePokedex = {
         },
         heightm: 1.655,
         weightkg: 154.7,
-        color: "Blue",
+        color: "Green",
         eggGroups: ["Undiscovered"],
     },
     quiaura: {
@@ -4170,6 +4171,7 @@ exports.BattlePokedex = {
         },
         heightm: 0.9,
         weightkg: 17.1,
+        color: "Blue",
 		  evos: ["aurortoise"],
         eggGroups: ["Monster"],
     },
@@ -4274,7 +4276,7 @@ exports.BattlePokedex = {
         },
         heightm: 2.45,
         weightkg: 695.4,
-        color: "Brown",
+        color: "Blue",
         eggGroups: ["Undiscovered"],
     },
     metsirmegap: {
@@ -4301,7 +4303,7 @@ exports.BattlePokedex = {
         },
         heightm: 1.75,
         weightkg: 699.4,
-        color: "Brown",
+        color: "Blue",
         eggGroups: ["Undiscovered"],
     },
     fablesteel: {
@@ -4325,7 +4327,7 @@ exports.BattlePokedex = {
         },
         heightm: 1.605,
         weightkg: 122.5,
-        color: "Black",
+        color: "Pink",
         eggGroups: ["Undiscovered"],
     },
     houdini: {
@@ -4349,7 +4351,7 @@ exports.BattlePokedex = {
         },
         heightm: 0.8,
         weightkg: 20,
-        color: "Pink",
+        color: "Purple",
         eggGroups: ["Undiscovered"],
     },
     houdinimega: {
@@ -4476,7 +4478,7 @@ exports.BattlePokedex = {
         },
         heightm: 1.5,
         weightkg: 162.75,
-        color: "Brown",
+        color: "Yellow",
         eggGroups: ["Field"],
     },
     matrike: {
@@ -4497,7 +4499,7 @@ exports.BattlePokedex = {
         heightm: 0.6,
         weightkg: 11.5,
 		  evos: ["mampharos"],
-        color: "Yellow",
+        color: "White",
         eggGroups: ["Field"],
     },
     mampharos: {
@@ -4675,7 +4677,7 @@ exports.BattlePokedex = {
         },
         heightm: 1.6,
         weightkg: 109.3,
-        color: "Black",
+        color: "Blue",
         eggGroups: ["Undiscovered"],
     },
     entariamega: {
@@ -4702,7 +4704,7 @@ exports.BattlePokedex = {
         },
         heightm: 2,
         weightkg: 109.3,
-        color: "Red",
+        color: "Blue",
         eggGroups: ["Undiscovered"],
     },
     sursquirt: {
@@ -4726,10 +4728,8 @@ exports.BattlePokedex = {
         },
         heightm: 0.5,
         weightkg: 5.35,
-		  prevo: "porydile",
-		  evos: ["krookz"],
-		  evoLevel: 29,
-        color: "Red",
+		  evos: ["blasterain"],
+        color: "Blue",
         eggGroups: ["Undiscovered"],
     },
     blasterain: {
@@ -4753,7 +4753,9 @@ exports.BattlePokedex = {
         },
         heightm: 1.195,
         weightkg: 44.55,
-        color: "Black",
+		  prevo: "sursquirt",
+		  evoLevel: 29,
+        color: "White",
         eggGroups: ["Undiscovered"],
     },
     blasterainmega: {
@@ -4780,7 +4782,7 @@ exports.BattlePokedex = {
         },
         heightm: 1.195,
         weightkg: 60.15,
-        color: "Blue",
+        color: "White",
         eggGroups: ["Water1"],
     },
     dianbro: {
@@ -19010,6 +19012,7 @@ stakeye: {
          abilities: {0: "Beast Eye"},
         heightm: 3.0,
         weightkg: 415.5,
+        color: "Purple",
         eggGroups: ["Undiscovered"],
     },
     
@@ -19032,6 +19035,7 @@ stakeyemega: {
          abilities: {0: "Magic Bounce"},
         heightm: 3.0,
         weightkg: 565.5,
+        color: "Purple",
         eggGroups: ["Undiscovered"],
     },
 
