@@ -7804,19 +7804,40 @@ exports.BattleAbilities = {
 		name: "Fearless",
 	},
 	"limbenhancers": {
-		desc: "When this Pokemon knocks out an opponent, this Pokemon's highest non-HP non-Defense stat is raised by one stage along with its Defense.",
-		shortDesc: "This Pokemon's Defense and other highest stat are raised by 1 if it attacks and KOes another Pokemon.",
+		desc: "When this Pokemon knocks out an opponent, this Pokemon's highest stat is raised by one stage. Its highest stat and defense cannot be lowered by other Pokemon, increasing if this were to happen.",
+		shortDesc: "This Pokemon's Defense and other highest stat cannot be lowered, instead being raised by 1. The latter is also raised by 1 if it attacks and KOes another Pokemon.",
+		onBoost: function (boost, target, source, effect) {
+			if (source && target === source) return;
+			if (boost.def && boost.def < 0) {
+				delete boost.def;
+				if (!effect.secondaries) this.add("-fail", target, "unboost", "Defense", "[from] ability: Limb Enhancers", "[of] " + target);
+				this.boost({def: 1}, target);
+			}
+			let stat = 'atk';
+				let bestStat = 0;
+				for (let i in target.stats) {
+					if (source.stats[i] > bestStat && i !== 'def') {
+						stat = i;
+						bestStat = target.stats[i];
+					}
+				}
+			if (boost.stat && boost.stat < 0) {
+				delete boost.stat;
+				if (!effect.secondaries) this.add("-fail", target, "unboost", stat, "[from] ability: Limb Enhancers", "[of] " + target);
+				this.boost({[stat]: 1}, target);
+			}
+		},
 		onSourceFaint: function (target, source, effect) {
 			if (effect && effect.effectType === 'Move') {
 				let stat = 'atk';
 				let bestStat = 0;
 				for (let i in source.stats) {
-					if (source.stats[i] > bestStat && source.stats[i] !== source.getStat('def', true, true)) {
+					if (source.stats[i] > bestStat) {
 						stat = i;
 						bestStat = source.stats[i];
 					}
 				}
-				this.boost({[stat]: 1, def: 1}, source);
+				this.boost({[stat]: 1}, source);
 			}
 		},
 		id: "limbenhancers",
