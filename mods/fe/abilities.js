@@ -12223,4 +12223,42 @@ exports.BattleAbilities = {
 		id: "bloodmadecrops",
 		name: "Blood-Made Crops",
 	},
+	"nutcracker": {
+		desc: "Pokemon making contact with this Pokemon lose 1/8 of their maximum HP, rounded down. This damage is doubled if it's holding an item. If this Pokemon loses its held item for any reason, its Speed is doubled and all opponents lose 12.5% of their maximum HP. This boost is lost if it switches out or gains a new item or Ability.",
+		shortDesc: "Speed is doubled and opponents lose 12.5% Max HP on held item loss; boost is lost if it switches, gets new item/Ability. Pokemon making contact with this Pokemon lose 1/8 of their max HP, 1/4 if holding an item.",
+		onAfterUseItem: function (item, pokemon) {
+			if (pokemon !== this.effectData.target) return;
+			pokemon.addVolatile('unburden');
+			for (const target of pokemon.side.foe.active) {
+				if (!target || !this.isAdjacent(target, pokemon)) continue;
+				if (!target.volatiles['substitute']) {
+					this.damage(source.maxhp / 8, target, pokemon);
+				}
+			}
+		},
+		onAfterDamageOrder: 1,
+		onAfterDamage: function (damage, target, source, move) {
+			if (source && source !== target && move && move.flags['contact']) {
+				if (target.item){
+					this.damage(source.maxhp / 4, source, target);
+				} else {
+					this.damage(source.maxhp / 8, source, target);
+				}
+			}
+		},
+		onTakeItem: function (item, pokemon) {
+			pokemon.addVolatile('unburden');
+			for (const target of pokemon.side.foe.active) {
+				if (!target || !this.isAdjacent(target, pokemon)) continue;
+				if (!target.volatiles['substitute']) {
+					this.damage(source.maxhp / 8, target, pokemon);
+				}
+			}
+		},
+		onEnd: function (pokemon) {
+			pokemon.removeVolatile('unburden');
+		},
+		id: "nutcracker",
+		name: "Nutcracker",
+	},
 };
