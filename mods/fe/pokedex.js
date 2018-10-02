@@ -378,7 +378,7 @@ exports.BattlePokedex = {
         },
         heightm: 1.31,
         weightkg: 223.5,
-        color: "Brown",
+        color: "Black",
         eggGroups: ["Human-Like"],
     },
     gibikarp: {
@@ -617,7 +617,7 @@ exports.BattlePokedex = {
         },
         heightm: 2.11,
         weightkg: 91.9,
-        color: "Brown",
+        color: "Blue",
         eggGroups: ["Monster"],
     },
     krelpo: {
@@ -680,7 +680,7 @@ exports.BattlePokedex = {
         },
         heightm: 1.195,
         weightkg: 45.75,
-        color: "Black",
+        color: "Red",
         eggGroups: ["Human-Like"],
     },
     yamonix: {
@@ -865,6 +865,7 @@ exports.BattlePokedex = {
         },
         heightm: 0.7,
         weightkg: 15.75,
+        color: "Brown",
 		  evos: ["zorcanine"],
         eggGroups: ["Field"],
     },
@@ -891,7 +892,7 @@ exports.BattlePokedex = {
         weightkg: 118.05,
 		  prevo: "zorgrowl",
 		  evoLevel: 30,
-        color: "Red",
+        color: "Brown",
         eggGroups: ["Field"],
     },
     archedactyl: {
@@ -915,7 +916,7 @@ exports.BattlePokedex = {
         },
         heightm: 1.6,
         weightkg: 45.5,
-        color: "Black",
+        color: "Yellow",
         eggGroups: ["Flying"],
     },
     archedactylmega: {
@@ -940,9 +941,9 @@ exports.BattlePokedex = {
         abilities: {
             0: "Tough Claws"
         },
-        heightm: 2,
-        weightkg: 75.5,
-        color: "Brown",
+        heightm: 1.9,
+        weightkg: 65.5,
+        color: "Yellow",
         eggGroups: ["Flying"],
     },
     hippopopin: {
@@ -966,6 +967,7 @@ exports.BattlePokedex = {
         },
         heightm: 0.6,
         weightkg: 29.25,
+        color: "Green",
 		  evos: ["chesdon"],
         eggGroups: ["Field"],
     },
@@ -1098,7 +1100,7 @@ exports.BattlePokedex = {
         },
         heightm: 1.755,
         weightkg: 49.25,
-        color: "Black",
+        color: "Purple",
         eggGroups: ["Bug"],
     },
     seedee: {
@@ -1149,7 +1151,7 @@ exports.BattlePokedex = {
         weightkg: 42.05,
 		  prevo: "seedee",
 		  evoLevel: 14,
-        color: "Black",
+        color: "Brown",
         eggGroups: ["Field"],
     },
     shoorazu: {
@@ -1214,7 +1216,7 @@ exports.BattlePokedex = {
         },
         heightm: 1.295,
         weightkg: 53,
-        color: "Black",
+        color: "Brown",
         eggGroups: ["Human-Like"],
     },
     weasol: {
@@ -1234,7 +1236,7 @@ exports.BattlePokedex = {
         },
         heightm: 1.14,
         weightkg: 40.5,
-        color: "Black",
+        color: "White",
         eggGroups: ["Field"],
     },
     weasolmega: {
@@ -1255,9 +1257,9 @@ exports.BattlePokedex = {
         abilities: {
             0: "Magic Bounce"
         },
-        heightm: 2,
-        weightkg: 75.5,
-        color: "Brown",
+        heightm: 1.15,
+        weightkg: 42.5,
+        color: "White",
         eggGroups: ["Field"],
     },
     tariblava: {
@@ -1840,7 +1842,7 @@ exports.BattlePokedex = {
         },
         heightm: 1.795,
         weightkg: 35.55,
-        color: "Brown",
+        color: "White",
         eggGroups: ["Flying"],
     },
     mygara: {
@@ -1945,7 +1947,7 @@ exports.BattlePokedex = {
         },
         heightm: 1.25,
         weightkg: 58,
-        color: "Brown",
+        color: "Red",
         eggGroups: ["Human-Like"],
     },
     snogepi: {
@@ -1969,6 +1971,7 @@ exports.BattlePokedex = {
         },
         heightm: 0.5,
         weightkg: 9.15,
+        color: "Gray",
 		  evos: ["glakiss"],
         eggGroups: ["Undiscovered"],
     },
@@ -2042,6 +2045,7 @@ exports.BattlePokedex = {
         },
         heightm: 0.85,
         weightkg: 15.4,
+        color: "Red",
 		  evos: ["sharpedos"],
         eggGroups: ["Water 2"],
     },
@@ -2162,7 +2166,7 @@ exports.BattlePokedex = {
         weightkg: 92,
 		  prevo: "growlee",
 		  evoLevel: 1,
-        color: "Brown",
+        color: "Blue",
         eggGroups: ["Field"],
     },
     pidgetot: {
@@ -2182,7 +2186,7 @@ exports.BattlePokedex = {
         },
         heightm: 1.005,
         weightkg: 20.7,
-        color: "Black",
+        color: "Brown",
         eggGroups: ["Flying"],
     },
     pidgetotmega: {
@@ -2229,7 +2233,7 @@ exports.BattlePokedex = {
         },
         heightm: 1.75,
         weightkg: 108.8,
-        color: "Black",
+        color: "Red",
         eggGroups: ["Undiscovered"],
     },
     klazor: {
@@ -2253,7 +2257,7 @@ exports.BattlePokedex = {
         },
         heightm: 1.205,
         weightkg: 84.5,
-        color: "Black",
+        color: "Gray",
         eggGroups: ["Undiscovered"],
     },
     klazormega: {
@@ -2280,7 +2284,7 @@ exports.BattlePokedex = {
         },
         heightm: 1.8,
         weightkg: 117.5,
-        color: "Red",
+        color: "Gray",
         eggGroups: ["Undiscovered"],
     },
     pidgeyu: {
@@ -2530,7 +2534,7 @@ exports.BattlePokedex = {
         },
         heightm: 1,
         weightkg: 215.55,
-        color: "Black",
+        color: "Yellow",
         eggGroups: ["Undiscovered"],
     },
     shaymizard: {
@@ -2554,7 +2558,7 @@ exports.BattlePokedex = {
         },
         heightm: 0.95,
         weightkg: 46.3,
-        color: "Black",
+        color: "Green",
         eggGroups: ["Undiscovered"],
     },
     shaymizardmegax: {
@@ -2628,6 +2632,7 @@ exports.BattlePokedex = {
         },
         heightm: 0.7,
         weightkg: 10.4,
+        color: "Brown",
 		  evos: ["ferroslash"],
         eggGroups: ["Mineral"],
     },
@@ -2651,7 +2656,7 @@ exports.BattlePokedex = {
         weightkg: 81.5,
 		  prevo: "ferroedge",
 		  evoLevel: 37,
-        color: "Gray",
+        color: "Brown",
         eggGroups: ["Mineral"],
     },
     ferroslashblade: {
@@ -2674,7 +2679,7 @@ exports.BattlePokedex = {
         },
         heightm: 1.345,
         weightkg: 81.5,
-        color: "Gray",
+        color: "Brown",
         eggGroups: ["Mineral"],
     },
     chaxe: {
@@ -2698,6 +2703,7 @@ exports.BattlePokedex = {
         },
         heightm: 0.6,
         weightkg: 13.25,
+        color: "Red",
 		  evos: ["fraxuleon"],
         eggGroups: ["Monster", "Dragon"],
     },
@@ -2724,6 +2730,7 @@ exports.BattlePokedex = {
         weightkg: 27.5,
 		  prevo: "chaxe",
 		  evoLevel: 27,
+        color: "Red",
 		  evos: ["hazard"],
         eggGroups: ["Monster", "Dragon"],
     },
@@ -2825,6 +2832,7 @@ exports.BattlePokedex = {
         },
         heightm: 0.5,
         weightkg: 21,
+        color: "Purple",
 		  evos: ["hitmonklang"],
         eggGroups: ["Undiscovered"],
     },
@@ -2868,6 +2876,7 @@ exports.BattlePokedex = {
         },
         heightm: 0.6,
         weightkg: 11.55,
+        color: "Blue",
 		  evos: ["maladuck"],
         eggGroups: ["Water 1"],
     },
@@ -2890,7 +2899,7 @@ exports.BattlePokedex = {
         weightkg: 61.8,
 		  prevo: "inkduck",
 		  evoLevel: 32,
-        color: "Black",
+        color: "Blue",
         eggGroups: ["Water 1"],
     },
     yangarde: {
@@ -2914,17 +2923,14 @@ exports.BattlePokedex = {
         },
         heightm: 3.455,
         weightkg: 178.25,
-        color: "Black",
+        color: "Green",
         eggGroups: ["Undiscovered"],
     },
     suirizion: {
         num: 750050,
         species: "Suirizion",
         types: ["Grass", "Water"],
-        genderRatio: {
-            M: 0.0,
-            F: 0.0
-        },
+        gender: "N",
         baseStats: {
             hp: 104,
             atk: 82,
@@ -2938,7 +2944,7 @@ exports.BattlePokedex = {
         },
         heightm: 2.01,
         weightkg: 193.5,
-        color: "Black",
+        color: "Green",
         eggGroups: ["Undiscovered"],
     },
     raillish: {
@@ -3126,7 +3132,7 @@ exports.BattlePokedex = {
         },
         heightm: 1.655,
         weightkg: 76.45,
-        color: "Black",
+        color: "Red",
         eggGroups: ["Undiscovered"],
     },
     dartiosmega: {
@@ -3174,17 +3180,14 @@ exports.BattlePokedex = {
         },
         heightm: 1.6,
         weightkg: 235,
-        color: "Black",
+        color: "Brown",
         eggGroups: ["Undiscovered"],
     },
     moltie: {
         num: 750055,
         species: "Moltie",
         types: ["Fairy", "Fire"],
-        genderRatio: {
-            M: 0.0,
-            F: 0.0
-        },
+        gender: "N",
         baseStats: {
             hp: 90,
             atk: 100,
@@ -3198,7 +3201,31 @@ exports.BattlePokedex = {
         },
         heightm: 1.36,
         weightkg: 34.4,
-        color: "Black",
+        color: "Pink",
+        eggGroups: ["Undiscovered"],
+    },
+    moltiemega: {
+        num: 750055,
+        species: "Moltie-Mega",
+        baseSpecies: "Moltie",
+        forme: "Mega",
+        formeLetter: "M",
+        types: ["Fairy", "Fire"],
+        gender: "N",
+        baseStats: {
+            hp: 90,
+            atk: 160,
+            def: 80,
+            spa: 180,
+            spd: 100,
+            spe: 139
+        },
+        abilities: {
+            0: "Magic Bounce"
+        },
+        heightm: 1.76,
+        weightkg: 53.4,
+        color: "Pink",
         eggGroups: ["Undiscovered"],
     },
     belpet: {
@@ -9294,10 +9321,7 @@ darkchomp: {
         num: 7500191,
         species: "Unconventional",
         types: ["Fire", "Rock"],
-        genderRatio: {
-            M: 0.0,
-            F: 0.0
-        },
+        gender: "N",
         baseStats: {
             hp: 87,
             atk: 82,
