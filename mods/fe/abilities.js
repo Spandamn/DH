@@ -3065,7 +3065,7 @@ exports.BattleAbilities = {
 		name: "Hydrodynamic",
 	},
 	"engineer": {
-		shortDesc: "Teravolt + Technician.",
+		shortDesc: "60 or lower BP moves inflict 1.5x damage and ignore opponent's ability.",
 		onBasePowerPriority: 8,
 		onBasePower: function(basePower, attacker, defender, move) {
 			if (basePower <= 60) {
@@ -4812,16 +4812,16 @@ exports.BattleAbilities = {
 		name: "Sleepwalker",
 	},
 	"absolutezero": {
-		shortDesc: "Biting and normal-type moves used by this Pokemon receive a 50% power boost. This Pokemon's Normal-type moves become Ice-type.",
+		shortDesc: "Biting and normal-type moves used by this Pokemon are treated as being ice-type in addition to their usual type and receive a 20% power boost.",
 		onModifyMove: function (move, pokemon) {
 			if (move.flags['bite'] || move.type === 'Normal' && !['judgment', 'multiattack', 'naturalgift', 'revelationdance', 'technoblast', 'weatherball'].includes(move.id) && !(move.isZ && move.category !== 'Status')) {
-				move.type = (move.type === 'Normal' ? 'Ice' : move.type);
+				move.type = 'Ice';
 				move.absolutezeroboosted = true;
 			}
 		},
 		onBasePowerPriority: 8,
 		onBasePower: function (basePower, pokemon, target, move) {
-			if (move.absolutezeroboosted) return this.chainModify(1.5);
+			if (move.absolutezeroboosted) return this.chainModify([0x1333, 0x1000]);
 		},
 		id: "absolutezero",
 		name: "Absolute Zero",
@@ -9743,34 +9743,34 @@ exports.BattleAbilities = {
 				let spamod = 1;
 				let spdmod = 1;
 				let spemod = 1;
-				if (pokemon.getNature().plus === 'atk'){
+				if (['Adamant', 'Lonely', 'Naughty', 'Brave'].includes(pokemon.getNature())){
    				 atkmod = 1.1;
 				}
-				else if (pokemon.getNature().minus === 'atk'){
+				else if (['Modest', 'Bold', 'Calm', 'Timid'].includes(pokemon.getNature())){
 				    atkmod = 0.9;
 				}
-				if (pokemon.getNature().plus === 'def'){
+				if (['Bold', 'Impish', 'Lax', 'Relaxed'].includes(pokemon.getNature())){
 				    defmod = 1.1;
 				}
-				else if (pokemon.getNature().minus === 'def'){
+				else if (['Lonely', 'Mild', 'Gentle', 'Hasty'].includes(pokemon.getNature())){
    				 defmod = 0.9;
 				}
-				if (pokemon.getNature().plus === 'spa'){
+				if (['Modest', 'Mild', 'Rash', 'Quiet'].includes(pokemon.getNature())){
    				 spamod = 1.1;
 				}
-				else if (pokemon.getNature().minus === 'spa'){
+				else if (['Adamant', 'Impish', 'Careful', 'Jolly'].includes(pokemon.getNature())){
    				 spamod = 0.9;
 				}
-				if (pokemon.getNature().plus === 'spd'){
+				if (['Calm', 'Gentle', 'Careful', 'Sassy'].includes(pokemon.getNature())){
 				    spdmod = 1.1;
 				}
-				else if (pokemon.getNature().minus === 'spd'){
+				else if (['Naughty', 'Lax', 'Rash', 'Naive'].includes(pokemon.getNature())){
 				    spdmod = 0.9;
 				}
-				else if (pokemon.getNature().plus === 'spe'){
+				if (['Timid', 'Hasty', 'Jolly', 'Naive'].includes(pokemon.getNature())){
 				    spemod = 1.1;
 				}
-				else if (pokemon.getNature().minus === 'spe'){
+				else if (['Brave', 'Relaxed', 'Quiet', 'Sassy'].includes(pokemon.getNature())){
 				    spemod = 0.9;
 				}
 				pokemon.stats['atk'] = Math.floor((Math.floor(((2*warnBp+pokemon.set.ivs['atk']+pokemon.set.evs['atk']/4)*100)/pokemon.level + 5))*atkmod);
@@ -9994,14 +9994,10 @@ exports.BattleAbilities = {
 	},
 	"prismskin": { // FIX THIS
 		shortDesc: "Restores 1/4 HP when hit by a super-effective move (recovery first then damage). Super-effective moves do 1/2 of the damage. This ability can be bypassed by Fire-type moves and only Fire-type moves, regardless of whether the attacker has Mold Breaker or its variants.",
-		onTryHit: function (target, source, move) {
-			if (move.typeMod > 0 && move.type !== 'Fire') {
-				this.debug('Prism Skin healing');
-				this.heal(target.maxhp / 4)
-			}
-		},
 		onSourceModifyDamage: function (damage, source, target, move) {
 			if (move.typeMod > 0 && move.type !== 'Fire') {
+				this.heal(target.maxhp / 4)
+				this.debug('Prism Armor neutralize');
 				return this.chainModify(0.5);
 			}
 		},
@@ -10012,29 +10008,27 @@ exports.BattleAbilities = {
 	"terabeast": { //TODO: Checkthis
 		desc: "This Pokemon's move with the highest base power deals 1.5x damage and ignores the target's ability.",
 		shortDesc: "This Pokemon's move with the highest base power deals 1.5x damage and ignores the target's ability.",
-		onBasePower: function (basePower, pokemon, target, move) {
+		onModifyMove: function (pokemon, move) {
 			/**@type {(Move|Pokemon)[][]} */
+			move.ignoreAbility = true;
 			let warnMoves = [];
 			let warnBp = 1;
 				for (const moveSlot of pokemon.moveSlots) {
-					let newMove = this.getMove(moveSlot.move);
+					let move = this.getMove(moveSlot.move);
 					let bp = move.basePower;
-					if (newMove.ohko) bp = 160;
-					if (newMove.id === 'counter' || newMove.id === 'metalburst' || newMove.id === 'mirrorcoat') bp = 120;
-					if (!bp && newMove.category !== 'Status') bp = 80;
+					if (move.ohko) bp = 160;
+					if (move.id === 'counter' || move.id === 'metalburst' || move.id === 'mirrorcoat') bp = 120;
+					if (!bp && move.category !== 'Status') bp = 80;
 					if (bp > warnBp) {
-						warnMoves = [[newMove, pokemon]];
+						warnMoves = [[move, pokemon]];
 						warnBp = bp;
 					} else if (bp === warnBp) {
-						warnMoves.push([newMove, pokemon]);
+						warnMoves.push([move, pokemon]);
 					}
 				}
 			if (!warnMoves.length) return;
 			const [warnMoveName, warnTarget] = this.sample(warnMoves);
-			if (warnMoveName.id === move.id) return this.chainModify(1.5);
-		},
-		onModifyMove: function (move) {
-			move.ignoreAbility = true;
+			return warnMoves.chainModify(1.5);
 		},
 		id: "terabeast",
 		name: "Terabeast",
@@ -10288,12 +10282,14 @@ exports.BattleAbilities = {
 		id: "crystallizedshield",
 		name: "Crystallized Shield",
 	},
-	"foodcoloring": {
+	"foodcoloring": { // TODO: Make it eat certain berries earlier
 		desc: "This Pokemon eats certain berries earlier. If a Pokemon on this team (including itself) is holding a berry, this Pokemon has 1.5x Special Attack.",
 		shortDesc: "This Pokemon eats certain berries earlier. If a Pokemon on this team (including itself) is holding a berry, this Pokemon has 1.5x Special Attack.",
-		//Eating some berries earlier is implemented in the berries themselves.
 		onModifySpAPriority: 5,
 		onModifySpA: function (spa, pokemon) {
+			if (pokemon.side.active.length === 1) {
+				return;
+			}
 			for (const allyActive of pokemon.side.active) {
 				if (allyActive && allyActive.position !== pokemon.position && !allyActive.fainted && allyActive.item.isBerry || pokemon.item.isBerry) {
 					return this.chainModify(1.5);
@@ -12067,25 +12063,14 @@ exports.BattleAbilities = {
 		onSourceHit: function (target, source, move) {
 			if (!move || !target) return;
 			if (target !== source && move.category !== 'Status' && move.flags['contact']) {
-				let boosts = {};
-				let stolen = false;
-				for (let statName in target.boosts) {
-					let stage = target.boosts[statName];
-					if (stage > 0) {
-						boosts[statName] = stage;
-						stolen = true;
+				for (let i in target.boosts) {
+					if (target.boosts[i] > 0){
+						source.boosts[i] = target.boosts[i];
 					}
 				}
-				if (stolen) {
-					this.attrLastMove('[still]');
-					this.add('-clearpositiveboost', target, source, 'ability: Meme Stealer', '[of] ' + source);
-					this.boost(boosts, source, source);
-	
-					for (let statName in boosts) {
-						boosts[statName] = 0;
-					}
-					target.setBoost(boosts);
-				}
+				target.clearBoosts();
+				this.add('-copyboost', source, target, '[from] ability: Meme Stealer', '[of] ' + source);
+				this.add('-clearboost', target);
 				let stat = 'atk';
 				let bestStat = 0;
 				for (let i in target.stats) {
@@ -12100,25 +12085,14 @@ exports.BattleAbilities = {
 		},
 		onAfterMoveSecondary: function (target, source, move) {
 			if (source && source !== target && move && move.flags['contact']) {
-				let boosts = {};
-				let stolen = false;
-				for (let statName in source.boosts) {
-					let stage = source.boosts[statName];
-					if (stage > 0) {
-						boosts[statName] = stage;
-						stolen = true;
+				for (let i in source.boosts) {
+					if (source.boosts[i] > 0){
+						target.boosts[i] = source.boosts[i];
 					}
 				}
-				if (stolen) {
-					this.attrLastMove('[still]');
-					this.add('-clearpositiveboost', source, target, 'ability: Meme Stealer', '[of] ' + target);
-					this.boost(boosts, target, target);
-	
-					for (let statName in boosts) {
-						boosts[statName] = 0;
-					}
-					source.setBoost(boosts);
-				}
+				source.clearBoosts();
+				this.add('-copyboost', target, source, '[from] ability: Meme Stealer', '[of] ' + target);
+				this.add('-clearboost', source);
 				let stat = 'atk';
 				let bestStat = 0;
 				for (let i in source.stats) {
@@ -12175,48 +12149,5 @@ exports.BattleAbilities = {
 		},
 		id: "tacticalcomputer",
 		name: "Tactical Computer",
-	},
-	"indigestion": {
-		shortDesc: "This Pokemon consumes berries that affect stats as soon as possible.",
-		onUpdate: function (pokemon) {
-			if (['apicotberry', 'ganlonberry', 'keeberry', 'lansatberry', 'liechiberry', 'marangaberry', 'petayaberry', 'salacberry', 'starfberry'].includes(pokemon.getItem())){
-				pokemon.eatItem();	
-			}
-		},
-		id: "indigestion",
-		name: "Indigestion",
-	},
-	"bloodmadecrops": {
-		desc: "When this Pokemon has 1/2 or less of its maximum HP, it uses certain Berries early. If this Pokemon eats a Berry, its highest stat is increased by 1 stage. When this Pokemon lands a KO, it eats certain berries and gains +1 to its highest stat.",
-		shortDesc: "This Pokemon's highest stat is raised by 1 if it attacks and KOes another Pokemon or if it eats a berry. Consumes pinch Berries at 50% HP or less and if it attacks and KOes another Pokemon.",
-		onSourceFaint: function (target, source, effect) {
-			if (effect && effect.effectType === 'Move') {
-				if (['figyberry', 'aguavberry', 'wikiberry', 'magoberry', 'iapapaberry', 'liechiberry', 'ganlonberry', 'salacberry', 'petayaberry', 'apicotberry', 'lansatberry', 'micleberry', 'custapberry'].includes(source.getItem())){
-					source.eatItem();
-				}
-				let stat = 'atk';
-				let bestStat = 0;
-				for (let i in source.stats) {
-					if (source.stats[i] > bestStat) {
-						stat = i;
-						bestStat = source.stats[i];
-					}
-				}
-				this.boost({[stat]: 1}, source);
-			}
-		},
-		onEatItem: function (item, pokemon) {
-				let stat = 'atk';
-				let bestStat = 0;
-				for (let i in pokemon.stats) {
-					if (pokemon.stats[i] > bestStat) {
-						stat = i;
-						bestStat = pokemon.stats[i];
-					}
-				}
-				this.boost({[stat]: 1}, pokemon);
-		},
-		id: "bloodmadecrops",
-		name: "Blood-Made Crops",
 	},
 };
