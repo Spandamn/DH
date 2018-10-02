@@ -10292,14 +10292,12 @@ exports.BattleAbilities = {
 		id: "crystallizedshield",
 		name: "Crystallized Shield",
 	},
-	"foodcoloring": { // TODO: Make it eat certain berries earlier
+	"foodcoloring": {
 		desc: "This Pokemon eats certain berries earlier. If a Pokemon on this team (including itself) is holding a berry, this Pokemon has 1.5x Special Attack.",
 		shortDesc: "This Pokemon eats certain berries earlier. If a Pokemon on this team (including itself) is holding a berry, this Pokemon has 1.5x Special Attack.",
+		 // Eating certain berries earlier is implemented in the code for said berries.
 		onModifySpAPriority: 5,
 		onModifySpA: function (spa, pokemon) {
-			if (pokemon.side.active.length === 1) {
-				return;
-			}
 			for (const allyActive of pokemon.side.active) {
 				if (allyActive && allyActive.position !== pokemon.position && !allyActive.fainted && allyActive.item.isBerry || pokemon.item.isBerry) {
 					return this.chainModify(1.5);
@@ -12073,14 +12071,25 @@ exports.BattleAbilities = {
 		onSourceHit: function (target, source, move) {
 			if (!move || !target) return;
 			if (target !== source && move.category !== 'Status' && move.flags['contact']) {
-				for (let i in target.boosts) {
-					if (target.boosts[i] > 0){
-						source.boosts[i] = target.boosts[i];
+				let boosts = {};
+				let stolen = false;
+				for (let statName in target.boosts) {
+					let stage = target.boosts[statName];
+					if (stage > 0) {
+						boosts[statName] = stage;
+						stolen = true;
 					}
 				}
-				target.clearBoosts();
-				this.add('-copyboost', source, target, '[from] ability: Meme Stealer', '[of] ' + source);
-				this.add('-clearboost', target);
+				if (stolen) {
+					this.add('-copyboost', source, target, '[from] ability: Meme Stealer', '[of] ' + source);
+					this.add('-clearpositiveboost', target, source, 'ability: Meme Stealer', '[of] ' + source);
+					this.boost(boosts, source, source);
+	
+					for (let statName in boosts) {
+						boosts[statName] = 0;
+					}
+					target.setBoost(boosts);
+				}
 				let stat = 'atk';
 				let bestStat = 0;
 				for (let i in target.stats) {
@@ -12095,14 +12104,25 @@ exports.BattleAbilities = {
 		},
 		onAfterMoveSecondary: function (target, source, move) {
 			if (source && source !== target && move && move.flags['contact']) {
-				for (let i in source.boosts) {
-					if (source.boosts[i] > 0){
-						target.boosts[i] = source.boosts[i];
+				let boosts = {};
+				let stolen = false;
+				for (let statName in source.boosts) {
+					let stage = source.boosts[statName];
+					if (stage > 0) {
+						boosts[statName] = stage;
+						stolen = true;
 					}
 				}
-				source.clearBoosts();
-				this.add('-copyboost', target, source, '[from] ability: Meme Stealer', '[of] ' + target);
-				this.add('-clearboost', source);
+				if (stolen) {
+					this.add('-copyboost', target, source, '[from] ability: Meme Stealer', '[of] ' + target);
+					this.add('-clearpositiveboost', source, target, 'ability: Meme Stealer', '[of] ' + target);
+					this.boost(boosts, target, target);
+	
+					for (let statName in boosts) {
+						boosts[statName] = 0;
+					}
+					source.setBoost(boosts);
+				}
 				let stat = 'atk';
 				let bestStat = 0;
 				for (let i in source.stats) {
@@ -12159,5 +12179,48 @@ exports.BattleAbilities = {
 		},
 		id: "tacticalcomputer",
 		name: "Tactical Computer",
+	},
+		"indigestion": {
+		shortDesc: "This Pokemon consumes berries that affect stats as soon as possible.",
+		onUpdate: function (pokemon) {
+			if (['apicotberry', 'ganlonberry', 'keeberry', 'lansatberry', 'liechiberry', 'marangaberry', 'petayaberry', 'salacberry', 'starfberry'].includes(pokemon.getItem())){
+				pokemon.eatItem();	
+			}
+		},
+		id: "indigestion",
+		name: "Indigestion",
+	},
+	"bloodmadecrops": {
+		desc: "When this Pokemon has 1/2 or less of its maximum HP, it uses certain Berries early. If this Pokemon eats a Berry, its highest stat is increased by 1 stage. When this Pokemon lands a KO, it eats certain berries and gains +1 to its highest stat.",
+		shortDesc: "This Pokemon's highest stat is raised by 1 if it attacks and KOes another Pokemon or if it eats a berry. Consumes pinch Berries at 50% HP or less and if it attacks and KOes another Pokemon.",
+		onSourceFaint: function (target, source, effect) {
+			if (effect && effect.effectType === 'Move') {
+				if (['figyberry', 'aguavberry', 'wikiberry', 'magoberry', 'iapapaberry', 'liechiberry', 'ganlonberry', 'salacberry', 'petayaberry', 'apicotberry', 'lansatberry', 'micleberry', 'custapberry'].includes(source.getItem())){
+					source.eatItem();
+				}
+				let stat = 'atk';
+				let bestStat = 0;
+				for (let i in source.stats) {
+					if (source.stats[i] > bestStat) {
+						stat = i;
+						bestStat = source.stats[i];
+					}
+				}
+				this.boost({[stat]: 1}, source);
+			}
+		},
+		onEatItem: function (item, pokemon) {
+				let stat = 'atk';
+				let bestStat = 0;
+				for (let i in pokemon.stats) {
+					if (pokemon.stats[i] > bestStat) {
+						stat = i;
+						bestStat = pokemon.stats[i];
+					}
+				}
+				this.boost({[stat]: 1}, pokemon);
+		},
+		id: "bloodmadecrops",
+		name: "Blood-Made Crops",
 	},
 };
