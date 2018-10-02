@@ -2834,9 +2834,10 @@ exports.BattleAbilities = {
 		name: "Puffy Cloud",
 	},
 	"tinkering": {
-		shortDesc: "This Pokemon's status moves and moves that switch the user out have +1 priority. This Pokemon heals status conditions upon switching out.",
+		shortDesc: "This Pokemon's status moves and moves that switch the user out have +1 priority, but do not affect Dark-types. This Pokemon heals status conditions upon switching out.",
 		onModifyPriority: function (priority, pokemon, target, move) {
 			if (move && move.category === 'Status' || move.selfSwitch) {
+				move.pranksterBoosted = true;
 				return priority + 1;
 			}
 		},
@@ -2847,12 +2848,13 @@ exports.BattleAbilities = {
 		name: "Tinkering",
 	},
 	"bamboozled": {
-		shortDesc: "Immune to status moves. Status moves used by this fusion have +1 priority.",
+		shortDesc: "Immune to status moves. Status moves used by this fusion have +1 priority, but cannot affect Dark-types.",
 		onImmunity: function(pokemon, move) {
 			if (move.category === 'Status') return false;
 		},
 		onModifyPriority: function(priority, pokemon, target, move) {
 			if (move && move.category === 'Status') {
+				move.pranksterBoosted = true;
 				return priority + 1;
 			}
 		},
