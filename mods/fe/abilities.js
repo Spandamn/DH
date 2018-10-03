@@ -3124,7 +3124,7 @@ exports.BattleAbilities = {
 		name: "Land's Shield",
 	},
 	"godlikepowers": {
-		shortDesc: "This Pokemon's Attack is doubled.",
+		shortDesc: "This Pokemon's Attack, Defense, Special Attack, Special Defense, and Speed are all doubled.",
 		onModifyAtkPriority: 5,
 		onModifyAtk: function(atk) {
 			return this.chainModify(2);
