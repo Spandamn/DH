@@ -14263,12 +14263,11 @@ celebi: {
         abilities: {
             0: "Grassworker"
         },
+        color: "Green",
         heightm: 2.9,
         weightkg: 127.75,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     shenala: {
         num: 7500299,
         species: "Shenala",
@@ -14285,12 +14284,11 @@ celebi: {
         abilities: {
             0: "Shadow Guard"
         },
+        color: "Purple",
         heightm: 2.4,
         weightkg: 60.6,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     entir: {
         num: 7500300,
         species: "Entir",
@@ -14306,12 +14304,11 @@ celebi: {
         abilities: {
             0: "Vexing Valor"
         },
+        color: "Brown",
         heightm: 1.8,
         weightkg: 126.5,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     entirmega: {
         num: 7500300,
         species: "Entir-Mega",
@@ -14330,6 +14327,7 @@ celebi: {
         abilities: {
             0: "Aerilate"
         },
+        color: "Brown",
         heightm: 2,
         weightkg: 130.5,
 		  eggGroups: ["Undiscovered"],
@@ -14350,6 +14348,7 @@ celebi: {
         abilities: {
             0: "Compression"
         },
+        color: "Black",
         heightm: 2.4,
         weightkg: 395,
 		  eggGroups: ["Undiscovered"],
@@ -14374,12 +14373,11 @@ celebi: {
         abilities: {
             0: "Compression"
         },
+        color: "Black",
         heightm: 4.8,
         weightkg: 255.3,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     aquapod: {
         num: 7500302,
         species: "Aquapod",
@@ -14395,6 +14393,7 @@ celebi: {
         abilities: {
             0: "Bubble Slip"
 		  },
+        color: "Gray",
 		  eggGroups: ["Bug"],
         heightm: 1.9,
         weightkg: 95,
@@ -14416,6 +14415,7 @@ celebi: {
         abilities: {
             0: "Spiral Flames"
         },
+        color: "White",
         heightm: 2,
         weightkg: 173,
 		  eggGroups: ["Undiscovered"],
@@ -14436,12 +14436,12 @@ celebi: {
         abilities: {
             0: "Operation Overgrow"
         },
+        color: "Green",
         heightm: 1.35,
         weightkg: 57.5,
 		  eggGroups: ["Grass"],
        dexentry: "After evolving from Roseleef, Subject #304 broke out of confinement. Subject #74, even when Mega Evolved, was taken out effortlessly, as was Subject #83. Subject #59, which is only meant to be used in dire situations, was required to restrain it. Subject #304 has been successfully inhibited. Though it still has very strong Grass-type moves, it is no longer likely to effortlessly break through our most defensive fusions.",
     },
-
 		eevee: {
 			num: 133,
 			species: "Eevee",
@@ -14455,7 +14455,6 @@ celebi: {
 			evos: ["vaporeon", "jolteon", "flareon", "espeon", "umbreon", "leafeon", "glaceon", "sylveon", "valveon"],
 			eggGroups: ["Field"],
 		},
-
     valveon: {
         num: 7500305,
         species: "Valveon",
@@ -14472,6 +14471,7 @@ celebi: {
         abilities: {
             0: "Pixie Absorb"
         },
+        color: "Blue",
 		 prevo: "eevee",
 		 evoLevel: 2,
         heightm: 1,
