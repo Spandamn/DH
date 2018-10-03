@@ -15351,8 +15351,6 @@ celebi: {
         weightkg: 37.75,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     guzzpex: {
         num: 7500336,
         species: "Guzzpex",
@@ -15368,12 +15366,11 @@ celebi: {
         abilities: {
             0: "Merciless Beast"
         },
+        color: "Blue",
         heightm: 3.1,
         weightkg: 451.25,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     dedede: {
         num: 7500337,
         species: "Dedede",
@@ -15389,12 +15386,11 @@ celebi: {
         abilities: {
             0: "Royal Strength"
         },
+        color: "Yellow",
         heightm: 0.55,
         weightkg: 9.1,
 		  eggGroups: ["Field"],
     },
-
-
     cosmill: {
         num: 7500338,
         species: "Cosmill",
@@ -15410,12 +15406,11 @@ celebi: {
         abilities: {
             0: "Godlike Powers"
         },
+        color: "Blue",
         heightm: 0.3,
         weightkg: 4.3,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     maginera: {
         num: 7500339,
         species: "Maginera",
@@ -15432,12 +15427,11 @@ celebi: {
         abilities: {
             0: "Soften Up"
         },
+        color: "Gray",
         heightm: 1.4,
         weightkg: 81.75,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     catdeer: {
         num: 7500340,
         species: "Catdeer",
@@ -15453,12 +15447,11 @@ celebi: {
         abilities: {
             0: "Tricky Glare"
         },
+        color: "Purple",
         heightm: 1.25,
         weightkg: 54.35,
 		  eggGroups: ["Field"],
     },
-
-
     hooptrio: {
         num: 7500341,
         species: "Hooptrio",
@@ -15474,12 +15467,11 @@ celebi: {
         abilities: {
             0: "Confiscation"
         },
+        color: "Blue",
         heightm: 3.6,
         weightkg: 261.65,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     fablefin: {
         num: 7500342,
         species: "Fablefin",
@@ -15496,12 +15488,11 @@ celebi: {
         abilities: {
             0: "Misty Mind"
         },
+        color: "Purple",
         heightm: 1.3,
         weightkg: 30.6,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     klefz: {
         num: 7500343,
         species: "Klef-Z",
@@ -15518,12 +15509,11 @@ celebi: {
         abilities: {
             0: "Familiar Maneuvering"
         },
+        color: "Gray",
         heightm: 0.55,
         weightkg: 18.5,
 		  eggGroups: ["Mineral"],
     },
-
-
     tropisteela: {
         num: 7500344,
         species: "Tropisteela",
@@ -15540,12 +15530,11 @@ celebi: {
         abilities: {
             0: "Stat Harvesting"
         },
+        color: "Green",
         heightm: 5.6,
         weightkg: 549.95,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     pokemon: {
         num: 7500345,
         species: "Pokemon",
@@ -15562,12 +15551,11 @@ celebi: {
         abilities: {
             0: "Ability"
         },
+        color: "Brown",
         heightm: 2.55,
         weightkg: 179,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     nosegod: {
         num: 7500346,
         species: "Nose God",
@@ -15584,12 +15572,11 @@ celebi: {
         abilities: {
             0: "Type Trap"
         },
+        color: "White",
         heightm: 2.1,
         weightkg: 208.5,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     swampterra: {
         num: 7500347,
         species: "Swampterra",
@@ -15606,12 +15593,11 @@ celebi: {
         abilities: {
             0: "Uninhabitable"
         },
+        color: "Blue",
         heightm: 1.85,
         weightkg: 195.95,
 		  eggGroups: ["Monster"],
     },
-
-
     swampterramega: {
         num: 7500347,
         species: "Swampterra-Mega",
@@ -15631,12 +15617,11 @@ celebi: {
         abilities: {
             0: "Swift Swim"
         },
+        color: "Blue",
         heightm: 2.25,
         weightkg: 216.05,
 		  eggGroups: ["Monster"],
     },
-
-
     zeklade: {
         num: 7500348,
         species: "Zeklade",
@@ -15653,13 +15638,12 @@ celebi: {
         abilities: {
             0: "Unstable Voltage"
         },
+        color: "Brown",
         heightm: 1.85,
         weightkg: 174.75,
         dexentry: "As Experiments #242 and #304, among others, need to be restrained in some way, shape, or form, some DNA was taken from the Dark Stone from Unova and combined with Doublade DNA. The resulting construct appears to have swords for arms, two tassels as wings, and a body made of the same substance as Doublade's sheath. While this fusion always hits its mark, it unfortunately is guaranteed to be hit by any attacks aimed for it.",
 		  eggGroups: ["Undiscovered"],
     },
-
-
     grequa: {
         num: 7500349,
         species: "Grequa",
@@ -15676,12 +15660,11 @@ celebi: {
         abilities: {
             0: "Huge Bubble"
         },
+        color: "Green",
         heightm: 1.65,
         weightkg: 61,
 		  eggGroups: ["Water 2"],
     },
-
-
     alteyer: {
         num: 7500350,
         species: "Alteyer",
@@ -15698,12 +15681,11 @@ celebi: {
         abilities: {
             0: "Constellation"
         },
+        color: "Brown",
         heightm: 1.35,
         weightkg: 28.6,
 		  eggGroups: ["Flying"],
     },
-
-
     alteyermega: {
         num: 7500350,
         species: "Alteyer-Mega",
@@ -15723,6 +15705,7 @@ celebi: {
         abilities: {
             0: "Pixilate"
         },
+        color: "Brown",
         heightm: 1.75,
         weightkg: 28.6,
 		  eggGroups: ["Flying"],
@@ -15742,6 +15725,7 @@ celebi: {
         abilities: {
             0: "Stare Down"
         },
+        color: "Brown",
         heightm: 1.55,
         weightkg: 80.25,
 		  eggGroups: ["Field"],
