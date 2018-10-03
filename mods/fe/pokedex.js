@@ -1328,9 +1328,9 @@ exports.BattlePokedex = {
         color: "Blue",
         eggGroups: ["Monster"],
     },
-    tyranichompmegax: {
+    tyranichompmegat: {
         num: 750026,
-        species: "Tyranichomp-Mega-X",
+        species: "Tyranichomp-Mega-T",
         baseSpecies: "Tyranichomp",
         forme: "Mega",
         formeLetter: "M",
@@ -1352,9 +1352,9 @@ exports.BattlePokedex = {
         eggGroups: ["Monster"],
     },
 
-    tyranichompmegay: {
+    tyranichompmegag: {
         num: 750026,
-        species: "Tyranichomp-Mega-Y",
+        species: "Tyranichomp-Mega-G",
         baseSpecies: "Tyranichomp",
         forme: "Mega",
         formeLetter: "M",
