@@ -14860,8 +14860,6 @@ celebi: {
         weightkg: 57.25,
 		  eggGroups: ["Bug"],
     },
-
-
     guzzbro: {
         num: 7500320,
         species: "Guzzbro",
@@ -14877,12 +14875,11 @@ celebi: {
         abilities: {
             0: "Rejuvenation"
         },
+        color: "Black",
         heightm: 3.55,
         weightkg: 483.25,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     guzzbromega: {
         num: 7500320,
         species: "Guzzbro-Mega",
@@ -14901,12 +14898,11 @@ celebi: {
         abilities: {
             0: "Shell Armor"
         },
+        color: "Black",
         heightm: 3.95,
         weightkg: 524.75,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     zycannon: {
         num: 7500321,
         species: "Zycannon",
@@ -14922,12 +14918,11 @@ celebi: {
         abilities: {
             0: "Force Drain"
         },
+        color: "Black",
         heightm: 1.15,
         weightkg: 29.75,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     zeeeee: {
         num: 7500322,
         species: "Zeeeee",
@@ -14944,12 +14939,11 @@ celebi: {
         abilities: {
             0: "Foundation"
         },
+        color: "Brown",
         heightm: 2.65,
         weightkg: 155.75,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     zeeeeecomplete: {
         num: 7500322,
         species: "Zeeeee-Complete",
@@ -14969,12 +14963,11 @@ celebi: {
         abilities: {
             0: "Foundation"
         },
+        color: "Black",
         heightm: 2.15,
         weightkg: 311.5,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     peridot: {
         num: 7500323,
         species: "Peridot",
@@ -14991,11 +14984,11 @@ celebi: {
         abilities: {
             0: "Limb Enhancers"
         },
+        color: "Black",
         heightm: 2.65,
         weightkg: 69.75,
+		  eggGroups: ["Undiscovered"],
     },
-
-
     peridotmega: {
         num: 7500323,
         species: "Peridot-Mega",
@@ -15015,12 +15008,11 @@ celebi: {
         abilities: {
             0: "No Guard"
         },
+        color: "Black",
         heightm: 3.35,
         weightkg: 80.75,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     stundicuno: {
         num: 7500324,
         species: "Stundicuno",
@@ -15036,12 +15028,11 @@ celebi: {
         abilities: {
             0: "Dirt Nap"
         },
+        color: "Brown",
         heightm: 1.2,
         weightkg: 33.2,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     aloha: {
         num: 7500325,
         species: "Aloha",
@@ -15057,12 +15048,11 @@ celebi: {
         abilities: {
             0: "Hydrodynamic"
         },
+        color: "White",
         heightm: 2.6,
         weightkg: 159.4,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     alohamega: {
         num: 7500325,
         species: "Aloha-Mega",
@@ -15081,12 +15071,11 @@ celebi: {
         abilities: {
             0: "Strong Jaw"
         },
+        color: "White",
         heightm: 3.3,
         weightkg: 200.9,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     zekloom: {
         num: 7500326,
         species: "Zekloom",
@@ -15102,12 +15091,11 @@ celebi: {
         abilities: {
             0: "Engineer"
         },
+        color: "Black",
         heightm: 2.05,
         weightkg: 192.1,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     gengalure: {
         num: 7500327,
         species: "Gengalure",
@@ -15123,12 +15111,11 @@ celebi: {
         abilities: {
             0: "Blessed Protection"
         },
+        color: "Purple",
         heightm: 1.25,
         weightkg: 37.4,
 		  eggGroups: ["Amorphous"],
     },
-
-
     ferrolord: {
         num: 7500328,
         species: "Ferrolord",
@@ -15145,12 +15132,11 @@ celebi: {
         abilities: {
             0: "Barbs Boost"
         },
+        color: "Black",
         heightm: 3.25,
         weightkg: 499,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     dad: {
         num: 7500329,
         species: "Dad",
@@ -15167,12 +15153,11 @@ celebi: {
         abilities: {
             0: "Mirror Mirror"
         },
+        color: "Purple",
         heightm: 0.5,
         weightkg: 9.6,
 		  eggGroups: ["Field"],
     },
-
-
     glaive: {
         num: 7500330,
         species: "Glaive",
@@ -15189,12 +15174,11 @@ celebi: {
         abilities: {
             0: "Atmospheric Pull"
         },
+        color: "Brown",
         heightm: 2.15,
         weightkg: 477.25,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     glaiveprimal: {
         num: 7500330,
         species: "Glaive-Primal",
@@ -15214,12 +15198,11 @@ celebi: {
         abilities: {
             0: "Desolate Land"
         },
+        color: "Brown",
         heightm: 3.65,
         weightkg: 526.95,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     kyurpedo: {
         num: 7500331,
         species: "Kyurpedo",
@@ -15235,12 +15218,11 @@ celebi: {
         abilities: {
             0: "Volt Boost"
         },
+        color: "Black",
         heightm: 2.55,
         weightkg: 206.9,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     kyurpedomega: {
         num: 7500331,
         species: "Kyurpedo-Mega",
@@ -15259,12 +15241,11 @@ celebi: {
         abilities: {
             0: "Strong Jaw"
         },
+        color: "Black",
         heightm: 3.25,
         weightkg: 248.4,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     gearchamp: {
         num: 7500332,
         species: "Gearchamp",
@@ -15281,12 +15262,11 @@ celebi: {
         abilities: {
             0: "Soul Power"
         },
+        color: "Gray",
         heightm: 1.15,
         weightkg: 56.5,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     luau: {
         num: 7500333,
         species: "Luau",
@@ -15302,12 +15282,11 @@ celebi: {
         abilities: {
             0: "Land's Shield"
         },
+        color: "Purple",
         heightm: 2.95,
         weightkg: 170,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     luaumega: {
         num: 7500333,
         species: "Luau-Mega",
@@ -15326,12 +15305,11 @@ celebi: {
         abilities: {
             0: "Sheer Force"
         },
+        color: "Purple",
         heightm: 3.55,
         weightkg: 270.5,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     dotsensu: {
         num: 7500334,
         species: "Dot-Sensu",
@@ -15348,12 +15326,11 @@ celebi: {
         abilities: {
             0: "Danceposter"
         },
+        color: "Purple",
         heightm: 0.45,
         weightkg: 3.7,
 		  eggGroups: ["Flying"],
     },
-
-
     darkhunter: {
         num: 7500335,
         species: "Dark Hunter",
@@ -15369,6 +15346,7 @@ celebi: {
         abilities: {
             0: "Night Terror"
         },
+        color: "Red",
         heightm: 1.3,
         weightkg: 37.75,
 		  eggGroups: ["Undiscovered"],
