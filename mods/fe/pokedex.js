@@ -4265,11 +4265,11 @@ exports.BattlePokedex = {
         },
         baseStats: {
             hp: 72,
-            atk: 160,
+            atk: 180,
             def: 135,
-            spa: 95,
-            spd: 100,
-            spe: 137
+            spa: 85,
+            spd: 90,
+            spe: 117
         },
         abilities: {
             0: "Tough Claws"
@@ -4302,7 +4302,7 @@ exports.BattlePokedex = {
             0: "Aerilate"
         },
         heightm: 1.75,
-        weightkg: 699.4,
+        weightkg: 306.5,
         color: "Blue",
         eggGroups: ["Undiscovered"],
     },
