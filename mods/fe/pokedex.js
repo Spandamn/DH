@@ -9430,7 +9430,7 @@ darkchomp: {
         },
         heightm: 0.85,
         weightkg: 13.9,
-        color: "Purple",
+        color: "Gray",
         eggGroups: ["Field"],
     },
     parp: {
@@ -9604,7 +9604,7 @@ darkchomp: {
         },
         heightm: 1.755,
         weightkg: 63.5,
-        color: "Black",
+        color: "Blue",
         eggGroups: ["Bug"],
     },
     tapuloom: {
@@ -9628,7 +9628,7 @@ darkchomp: {
         },
         heightm: 1.55,
         weightkg: 42.35,
-        color: "Red",
+        color: "Green",
         eggGroups: ["Undiscovered"],
     },
     lucashadow: {
@@ -9677,8 +9677,8 @@ darkchomp: {
         abilities: {
             0: "Adaptability"
         },
-        heightm: 0.95,
-        weightkg: 38.1,
+        heightm: 1.05,
+        weightkg: 41.6,
         color: "Gray",
         eggGroups: ["Undiscovered"],
     },
@@ -9795,7 +9795,7 @@ darkchomp: {
         },
         heightm: 0.3,
         weightkg: 0.55,
-        color: "White",
+        color: "Blue",
         eggGroups: ["Undiscovered"],
     },
     astrolithmeteor: {
@@ -9918,7 +9918,7 @@ darkchomp: {
         },
         heightm: 1.345,
         weightkg: 255.25,
-        color: "Red",
+        color: "Gray",
         eggGroups: ["Undiscovered"],
     },
     xurkivoir: {
@@ -10474,7 +10474,7 @@ darkchomp: {
         },
         heightm: 2.15,
         weightkg: 140.75,
-        color: "Green",
+        color: "Black",
         eggGroups: ["Undiscovered"],
     },
     malaquanid: {
@@ -10603,7 +10603,7 @@ darkchomp: {
         },
         heightm: 1.75,
         weightkg: 79.25,
-        color: "Yellow",
+        color: "White",
         eggGroups: ["Undiscovered"],
     },
     tapumeme: {
@@ -10624,7 +10624,7 @@ darkchomp: {
         },
         heightm: 0.9,
         weightkg: 12.55,
-        color: "Green",
+        color: "White",
         eggGroups: ["Undiscovered"],
     },
     tapumemedank: {
@@ -10648,7 +10648,7 @@ darkchomp: {
         },
         heightm: 0.9,
         weightkg: 12.55,
-        color: "Red",
+        color: "White",
         eggGroups: ["Undiscovered"],
     },
     comcott: {
@@ -10669,7 +10669,7 @@ darkchomp: {
         },
         heightm: 0.405,
         weightkg: 3.45,
-        color: "Black",
+        color: "Green",
         eggGroups: ["Undiscovered"],
     },
 	minislash: {
@@ -10740,7 +10740,7 @@ darkchomp: {
         },
         heightm: 1.155,
         weightkg: 48.5,
-        color: "Black",
+        color: "White",
         eggGroups: ["Undiscovered"],
     },
     crematoriamegax: {
@@ -10796,7 +10796,7 @@ darkchomp: {
         },
         heightm: 1.7,
         weightkg: 107,
-        color: "Red",
+        color: "White",
         eggGroups: ["Undiscovered"],
     },
     pherothorn: {
@@ -10887,7 +10887,7 @@ darkchomp: {
         },
         heightm: 2.3,
         weightkg: 163.25,
-        color: "Pink",
+        color: "White",
         eggGroups: ["Monster"],
     },
     decidactyl: {
@@ -11010,8 +11010,6 @@ darkchomp: {
         heightm: 1.6,
         weightkg: 84,
     },
-
-
     mudape: {
         num: 7500229,
         species: "Mudape",
@@ -11032,7 +11030,6 @@ darkchomp: {
         heightm: 1.75,
         weightkg: 476,
     },
-
     kira: {
         num: 7500230,
         species: "Kira",
@@ -11049,13 +11046,12 @@ darkchomp: {
         abilities: {
             0: "Beast's Focus"
         },
+        color: "White",
 		  eggGroups: ["Undiscovered"],
         heightm: 1.25,
         weightkg: 105.05,
     },
-
-
-    exelegoalola: {
+	exelegoalola: {
         num: 7500231,
         species: "Exelego-Alola",
         types: ["Rock", "Dragon"],
@@ -11071,12 +11067,11 @@ darkchomp: {
         abilities: {
             0: "Frisky Beast"
         },
+        color: "White",
 		  eggGroups: ["Undiscovered"],
         heightm: 6.05,
         weightkg: 235.55,
     },
-
-
     joltarina: {
         num: 7500232,
         species: "Joltarina",
@@ -11096,13 +11091,12 @@ darkchomp: {
         abilities: {
             0: "Volt Torrent"
         },
+        color: "Blue",
 		  eggGroups: ["Field"],
         heightm: 1.3,
         weightkg: 34.25,
     },
-
-
-    dhelchamp: {
+	dhelchamp: {
         num: 7500233,
         species: "Dhelchamp",
         types: ["Grass", "Fighting"],
@@ -11118,13 +11112,12 @@ darkchomp: {
         abilities: {
             0: "Ancient Mariner"
         },
-       dexentry: "A rogue team of former Team Rocket members created this fusion. It is said to be able to remove the anchor attached to its head and swing it around crazily for an extremely powerful Power Whip or Anchor Shot. At the same time, it is able to fight with its four arms against any enemies trying to dodge the attack",
+        color: "Green",
+        dexentry: "A rogue team of former Team Rocket members created this fusion. It is said to be able to remove the anchor attached to its head and swing it around crazily for an extremely powerful Power Whip or Anchor Shot. At the same time, it is able to fight with its four arms against any enemies trying to dodge the attack",
 		  eggGroups: ["Undiscovered"],
         heightm: 2.75,
         weightkg: 170,
     },
-
-
     mimian: {
         num: 7500234,
         species: "Mimian",
@@ -11140,11 +11133,11 @@ darkchomp: {
         abilities: {
             0: "Monkey See Monkey Do"
         },
+        color: "Pink",
 		  eggGroups: ["Undiscovered"],
         heightm: 1.2,
         weightkg: 43.4,
     },
-
     aerodako: {
         num: 7500235,
         species: "Aero Dako",
@@ -11164,11 +11157,11 @@ darkchomp: {
         abilities: {
             0: "Rocky Surge"
         },
+        color: "Black",
 		  eggGroups: ["Undiscovered"],
         heightm: 1.8,
         weightkg: 39.75,
     },
-
     aerodakomega: {
         num: 7500235,
         species: "Aero Dako-Mega",
@@ -11191,11 +11184,11 @@ darkchomp: {
         abilities: {
             0: "Tough Claws"
         },
+        color: "Black",
 		  eggGroups: ["Undiscovered"],
         heightm: 2.1,
         weightkg: 59.75,
     },
-
     tapujojo: {
         num: 7500236,
         species: "Tapu Jojo",
@@ -11212,6 +11205,7 @@ darkchomp: {
         abilities: {
             0: "Supercharge Surge"
         },
+        color: "Yellow",
 		  eggGroups: ["Undiscovered"],
         heightm: 1.6,
         weightkg: 30.55,
@@ -11232,6 +11226,7 @@ darkchomp: {
         abilities: {
             0: "Broken Heart"
         },
+        color: "Blue",
 		  eggGroups: ["Undiscovered"],
         heightm: 1.35,
         weightkg: 67.95,
@@ -11252,11 +11247,11 @@ darkchomp: {
         abilities: {
             0: "Diamond Armor"
         },
+        color: "Black",
 		  eggGroups: ["Undiscovered"],
         heightm: 2.2,
         weightkg: 145,
     },
-
     kartanbull: {
         num: 7500239,
         species: "Kartanbull",
@@ -11273,6 +11268,7 @@ darkchomp: {
         abilities: {
             0: "Subdue"
         },
+        color: "White",
 		  eggGroups: ["Undiscovered"],
         heightm: 0.85,
         weightkg: 24.4,
@@ -11296,7 +11292,8 @@ darkchomp: {
         abilities: {
             0: "Sun Bath"
         },
-    dexentry: "Two of our grunts, who were on the trail of the Pewter and Cerulean Gym Leaders at the time, have encountered a Gastly proficient in the art of illusions. This Gastly used a Venusaur and a Blastoise illusion to scare a Bulbasaur and Squirtle, then combined them to form Venustoise. While the plans to create a Venustoise were postponed for some time, a breakthrough in combining the rarely-seen abilities of Pokémon was discovered, and one of the first fusions to be created from this breakthrough was a live Bulbasquirt. When brought to Level 16, it evolved into an Ivytortle, and at Level 34, Ivytortle evolved into the same fusion depicted back in the Maiden's Peak illusion: Venustoise.",
+        color: "Blue",
+    	  dexentry: "Two of our grunts, who were on the trail of the Pewter and Cerulean Gym Leaders at the time, have encountered a Gastly proficient in the art of illusions. This Gastly used a Venusaur and a Blastoise illusion to scare a Bulbasaur and Squirtle, then combined them to form Venustoise. While the plans to create a Venustoise were postponed for some time, a breakthrough in combining the rarely-seen abilities of Pokémon was discovered, and one of the first fusions to be created from this breakthrough was a live Bulbasquirt. When brought to Level 16, it evolved into an Ivytortle, and at Level 34, Ivytortle evolved into the same fusion depicted back in the Maiden's Peak illusion: Venustoise.",
 		  eggGroups: ["Monster"],
         heightm: 1.8,
         weightkg: 92.75,
@@ -11325,6 +11322,7 @@ darkchomp: {
         abilities: {
             0: "Thick Fat"
         },
+        color: "Blue",
 		  eggGroups: ["Monster"],
         heightm: 2.2,
         weightkg: 148.25,
@@ -11351,6 +11349,7 @@ darkchomp: {
         abilities: {
             0: "Mega Launcher"
         },
+        color: "Blue",
 		  eggGroups: ["Monster"],
         heightm: 1.8,
         weightkg: 108.35,
@@ -11370,6 +11369,7 @@ darkchomp: {
         abilities: {
             0: "Lazy Camo"
         },
+        color: "Green",
 		  eggGroups: ["Field"],
         heightm: 1.5,
         weightkg: 76.25,
@@ -11389,6 +11389,7 @@ darkchomp: {
         abilities: {
             0: "Overwhelming"
         },
+        color: "Black",
 		  eggGroups: ["Flying"],
         heightm: 1.05,
         weightkg: 16.9,
@@ -11409,6 +11410,7 @@ darkchomp: {
         abilities: {
             0: "Triage System"
         },
+        color: "Gray",
 		  eggGroups: ["Undiscovered"],
         heightm: 1.2,
         weightkg: 50.4,
@@ -11432,6 +11434,7 @@ darkchomp: {
         abilities: {
             0: "Triage System"
         },
+        color: "Gray",
 		  eggGroups: ["Undiscovered"],
         heightm: 1.2,
         weightkg: 50.4,
@@ -11455,6 +11458,7 @@ darkchomp: {
         abilities: {
             0: "Triage System"
         },
+        color: "Gray",
 		  eggGroups: ["Undiscovered"],
         heightm: 1.2,
         weightkg: 50.4,
@@ -11478,6 +11482,7 @@ darkchomp: {
         abilities: {
             0: "Triage System"
         },
+        color: "Gray",
 		  eggGroups: ["Undiscovered"],
         heightm: 1.2,
         weightkg: 50.4,
@@ -11501,7 +11506,10 @@ darkchomp: {
         abilities: {
             0: "Triage System"
         },
+        color: "Gray",
 		  eggGroups: ["Undiscovered"],
+        heightm: 1.2,
+        weightkg: 50.4,
     },
     covallyice: {
         num: 7500243,
@@ -11522,6 +11530,7 @@ darkchomp: {
         abilities: {
             0: "Triage System"
         },
+        color: "Gray",
 		  eggGroups: ["Undiscovered"],
         heightm: 1.2,
         weightkg: 50.4,
@@ -11545,6 +11554,7 @@ darkchomp: {
         abilities: {
             0: "Triage System"
         },
+        color: "Gray",
 		  eggGroups: ["Undiscovered"],
         heightm: 1.2,
         weightkg: 50.4,
@@ -11568,6 +11578,7 @@ darkchomp: {
         abilities: {
             0: "Triage System"
         },
+        color: "Gray",
 		  eggGroups: ["Undiscovered"],
         heightm: 1.2,
         weightkg: 50.4,
@@ -11591,6 +11602,7 @@ darkchomp: {
         abilities: {
             0: "Triage System"
         },
+        color: "Gray",
 		  eggGroups: ["Undiscovered"],
         heightm: 1.2,
         weightkg: 50.4,
@@ -11614,6 +11626,7 @@ darkchomp: {
         abilities: {
             0: "Triage System"
         },
+        color: "Gray",
 		  eggGroups: ["Undiscovered"],
         heightm: 1.2,
         weightkg: 50.4,
@@ -11637,6 +11650,7 @@ darkchomp: {
         abilities: {
             0: "Triage System"
         },
+        color: "Gray",
 		  eggGroups: ["Undiscovered"],
         heightm: 1.2,
         weightkg: 50.4,
@@ -11660,6 +11674,7 @@ darkchomp: {
         abilities: {
             0: "Triage System"
         },
+        color: "Gray",
 		  eggGroups: ["Undiscovered"],
         heightm: 1.2,
         weightkg: 50.4,
@@ -11683,12 +11698,11 @@ darkchomp: {
         abilities: {
             0: "Triage System"
         },
+        color: "Gray",
 		  eggGroups: ["Undiscovered"],
         heightm: 1.2,
         weightkg: 50.4,
     },
-
-
     covallyghost: {
         num: 7500243,
         species: "Covally-Ghost",
@@ -11708,12 +11722,11 @@ darkchomp: {
         abilities: {
             0: "Triage System"
         },
+        color: "Gray",
 		  eggGroups: ["Undiscovered"],
         heightm: 1.2,
         weightkg: 50.4,
     },
-
-
     covallydragon: {
         num: 7500243,
         species: "Covally-Dragon",
@@ -11733,12 +11746,11 @@ darkchomp: {
         abilities: {
             0: "Triage System"
         },
+        color: "Gray",
 		  eggGroups: ["Undiscovered"],
         heightm: 1.2,
         weightkg: 50.4,
     },
-
-
     covallydark: {
         num: 7500243,
         species: "Covally-Dark",
@@ -11758,12 +11770,11 @@ darkchomp: {
         abilities: {
             0: "Triage System"
         },
+        color: "Gray",
 		  eggGroups: ["Undiscovered"],
         heightm: 1.2,
         weightkg: 50.4,
     },
-
-
     covallysteel: {
         num: 7500243,
         species: "Covally-Steel",
@@ -11783,12 +11794,11 @@ darkchomp: {
         abilities: {
             0: "Triage System"
         },
+        color: "Gray",
 		  eggGroups: ["Undiscovered"],
         heightm: 1.2,
         weightkg: 50.4,
     },
-
-
     covallyfairy: {
         num: 7500243,
         species: "Covally-Fairy",
@@ -11808,12 +11818,11 @@ darkchomp: {
         abilities: {
             0: "Triage System"
         },
+        color: "Gray",
 		  eggGroups: ["Undiscovered"],
         heightm: 1.2,
         weightkg: 50.4,
     },
-
-
     toxamola: {
         num: 7500244,
         species: "Toxamola",
@@ -11829,6 +11838,7 @@ darkchomp: {
         abilities: {
             0: "Regenerator"
         },
+        color: "Blue",
 		  eggGroups: ["Water 1"],
         heightm: 0.95,
         weightkg: 23.05,
@@ -11849,12 +11859,11 @@ darkchomp: {
         abilities: {
             0: "Pixie Grace"
         },
+        color: "White",
 		  eggGroups: ["Undiscovered"],
         heightm: 0.8,
         weightkg: 15,
     },
-
-
     melonpirouette: {
         num: 7500245,
         species: "Melon-Pirouette",
@@ -11874,12 +11883,11 @@ darkchomp: {
         abilities: {
             0: "Pixie Grace"
         },
+        color: "White",
 		  eggGroups: ["Undiscovered"],
         heightm: 0.8,
         weightkg: 15,
     },
-
-
     kyutomwhite: {
         num: 7500246,
         species: "Kyutom-White",
@@ -11896,12 +11904,11 @@ darkchomp: {
         abilities: {
             0: "Turborise"
         },
+        color: "Red",
 		  eggGroups: ["Undiscovered"],
         heightm: 1.95,
         weightkg: 162.65,
     },
-
-
     xernemite: {
         num: 7500247,
         species: "Xernemite",
@@ -11918,12 +11925,11 @@ darkchomp: {
         abilities: {
             0: "Pixie Lure"
         },
+        color: "Gray",
 		  eggGroups: ["Undiscovered"],
         heightm: 1.65,
         weightkg: 110.5,
     },
-
-
     cherron: {
         num: 7500248,
         species: "Cherron",
@@ -11939,12 +11945,11 @@ darkchomp: {
         abilities: {
             0: "Flower Power"
         },
+        color: "Purple",
 		  eggGroups: ["Undiscovered"],
         heightm: 2,
         weightkg: 479.65,
     },
-
-
     cherronprimal: {
         num: 7500248,
         species: "Cherron-Primal",
@@ -11963,12 +11968,11 @@ darkchomp: {
         abilities: {
             0: "Desolate Land"
         },
+        color: "Pink",
 		  eggGroups: ["Undiscovered"],
         heightm: 2,
         weightkg: 529.35,
     },
-
-
     dialcatty: {
         num: 7500249,
         species: "Dialcatty",
@@ -11985,12 +11989,11 @@ darkchomp: {
         abilities: {
             0: "Normalized Enemy"
         },
+        color: "Purple",
 		  eggGroups: ["Undiscovered"],
         heightm: 3.25,
         weightkg: 357.8,
     },
-
-
     lunatic: {
         num: 7500250,
         species: "Lunatic",
@@ -12006,12 +12009,11 @@ darkchomp: {
         abilities: {
             0: "Fungal Shield"
         },
+        color: "Purple",
 		  eggGroups: ["Undiscovered"],
         heightm: 2.5,
         weightkg: 65.75,
     },
-
-
     granho: {
         num: 7500251,
         species: "Gran-Ho",
@@ -12028,12 +12030,11 @@ darkchomp: {
         abilities: {
             0: "Pressurate"
         },
+        color: "Purple",
 		  eggGroups: ["Undiscovered"],
         heightm: 2.6,
         weightkg: 123.85,
     },
-
-
     lies: {
         num: 7500252,
         species: "Lies",
@@ -12049,12 +12050,11 @@ darkchomp: {
         abilities: {
             0: "Mana Potion"
         },
+        color: "Purple",
 		  eggGroups: ["Undiscovered"],
         heightm: 2.05,
         weightkg: 126.25,
     },
-
-
     viva: {
         num: 7500253,
         species: "Viva",
@@ -12070,12 +12070,11 @@ darkchomp: {
         abilities: {
             0: "Piercing Gaze"
         },
+        color: "White",
 		  eggGroups: ["Undiscovered"],
         heightm: 3.3,
         weightkg: 350,
     },
-
-
     girutukumuka: {
         num: 7500254,
         species: "Girutukumuka",
@@ -12091,6 +12090,7 @@ darkchomp: {
         abilities: {
             0: "Pressured Innards"
         },
+        color: "Black",
 		  eggGroups: ["Undiscovered"],
         heightm: 2.4,
         weightkg: 375.6,
@@ -12111,12 +12111,11 @@ darkchomp: {
         abilities: {
             0: "Spiral Power"
         },
+        color: "Blue",
 		  eggGroups: ["Undiscovered"],
         heightm: 1.8,
         weightkg: 163.75,
     },
-
-
     omneusfire: {
         num: 7500255,
         species: "Omneus-Fire",
@@ -12136,12 +12135,11 @@ darkchomp: {
         abilities: {
             0: "Spiral Power"
         },
+        color: "Blue",
 		  eggGroups: ["Undiscovered"],
         heightm: 1.8,
         weightkg: 163.75,
     },
-
-
     omneuswater: {
         num: 7500255,
         species: "Omneus-Water",
@@ -12161,12 +12159,11 @@ darkchomp: {
         abilities: {
             0: "Spiral Power"
         },
+        color: "Blue",
 		  eggGroups: ["Undiscovered"],
         heightm: 1.8,
         weightkg: 163.75,
     },
-
-
     omneuselectric: {
         num: 7500255,
         species: "Omneus-Electric",
@@ -12186,12 +12183,11 @@ darkchomp: {
         abilities: {
             0: "Spiral Power"
         },
+        color: "Blue",
 		  eggGroups: ["Undiscovered"],
         heightm: 1.8,
         weightkg: 163.75,
     },
-
-
     omneusgrass: {
         num: 7500255,
         species: "Omneus-Grass",
@@ -12211,12 +12207,11 @@ darkchomp: {
         abilities: {
             0: "Spiral Power"
         },
+        color: "Blue",
 		  eggGroups: ["Undiscovered"],
         heightm: 1.8,
         weightkg: 163.75,
     },
-
-
     omneusice: {
         num: 7500255,
         species: "Omneus-Ice",
@@ -12236,12 +12231,11 @@ darkchomp: {
         abilities: {
             0: "Spiral Power"
         },
+        color: "Blue",
 		  eggGroups: ["Undiscovered"],
         heightm: 1.8,
         weightkg: 163.75,
     },
-
-
     omneusfighting: {
         num: 7500255,
         species: "Omneus-Fighting",
@@ -12261,12 +12255,11 @@ darkchomp: {
         abilities: {
             0: "Spiral Power"
         },
+        color: "Blue",
 		  eggGroups: ["Undiscovered"],
         heightm: 1.8,
         weightkg: 163.75,
     },
-
-
     omneuspoison: {
         num: 7500255,
         species: "Omneus-Poison",
@@ -12286,12 +12279,11 @@ darkchomp: {
         abilities: {
             0: "Spiral Power"
         },
+        color: "Blue",
 		  eggGroups: ["Undiscovered"],
         heightm: 1.8,
         weightkg: 163.75,
     },
-
-
     omneusground: {
         num: 7500255,
         species: "Omneus-Ground",
@@ -12311,12 +12303,11 @@ darkchomp: {
         abilities: {
             0: "Spiral Power"
         },
+        color: "Blue",
 		  eggGroups: ["Undiscovered"],
         heightm: 1.8,
         weightkg: 163.75,
     },
-
-
     omneusflying: {
         num: 7500255,
         species: "Omneus-Flying",
@@ -12336,12 +12327,11 @@ darkchomp: {
         abilities: {
             0: "Spiral Power"
         },
+        color: "Blue",
 		  eggGroups: ["Undiscovered"],
         heightm: 1.8,
         weightkg: 163.75,
     },
-
-
     omneuspsychic: {
         num: 7500255,
         species: "Omneus-Psychic",
@@ -12361,12 +12351,11 @@ darkchomp: {
         abilities: {
             0: "Spiral Power"
         },
+        color: "Blue",
 		  eggGroups: ["Undiscovered"],
         heightm: 1.8,
         weightkg: 163.75,
     },
-
-
     omneusbug: {
         num: 7500255,
         species: "Omneus-Bug",
@@ -12386,12 +12375,11 @@ darkchomp: {
         abilities: {
             0: "Spiral Power"
         },
+        color: "Blue",
 		  eggGroups: ["Undiscovered"],
         heightm: 1.8,
         weightkg: 163.75,
     },
-
-
     omneusdragon: {
         num: 7500255,
         species: "Omneus-Dragon",
@@ -12411,12 +12399,11 @@ darkchomp: {
         abilities: {
             0: "Spiral Power"
         },
+        color: "Blue",
 		  eggGroups: ["Undiscovered"],
         heightm: 1.8,
         weightkg: 163.75,
     },
-
-
     omneusdark: {
         num: 7500255,
         species: "Omneus-Dark",
@@ -12436,12 +12423,11 @@ darkchomp: {
         abilities: {
             0: "Spiral Power"
         },
+        color: "Blue",
 		  eggGroups: ["Undiscovered"],
         heightm: 1.8,
         weightkg: 163.75,
     },
-
-
     omneussteel: {
         num: 7500255,
         species: "Omneus-Steel",
@@ -12461,12 +12447,11 @@ darkchomp: {
         abilities: {
             0: "Spiral Power"
         },
+        color: "Blue",
 		  eggGroups: ["Undiscovered"],
         heightm: 1.8,
         weightkg: 163.75,
     },
-
-
     omneusfairy: {
         num: 7500255,
         species: "Omneus-Fairy",
@@ -12486,12 +12471,11 @@ darkchomp: {
         abilities: {
             0: "Spiral Power"
         },
+        color: "Blue",
 		  eggGroups: ["Undiscovered"],
         heightm: 1.8,
         weightkg: 163.75,
     },
-
-
     pheralie: {
         num: 7500256,
         species: "Pheralie",
@@ -12507,12 +12491,11 @@ darkchomp: {
         abilities: {
             0: "Extremist"
         },
+        color: "Gray",
 		  eggGroups: ["Undiscovered"],
         heightm: 1.65,
         weightkg: 140.75,
     },
-
-
     pheraliemega: {
         num: 7500256,
         species: "Pheralie-Mega",
@@ -12531,12 +12514,11 @@ darkchomp: {
         abilities: {
             0: "Refrigerate"
         },
+        color: "Gray",
 		  eggGroups: ["Undiscovered"],
         heightm: 2.25,
         weightkg: 234.45,
     },
-
-
     tsarakion: {
         num: 7500257,
         species: "Tsarakion",
@@ -12553,12 +12535,11 @@ darkchomp: {
         abilities: {
             0: "Queen's Command"
         },
+        color: "Green",
 		  eggGroups: ["Undiscovered"],
         heightm: 1.55,
         weightkg: 140.7,
     },
-
-
     scipod: {
         num: 7500258,
         species: "Scipod",
