@@ -5232,7 +5232,7 @@ exports.BattlePokedex = {
         heightm: 0.9,
         weightkg: 21.9,
 		  evos: ["volcagon"],
-        color: "Red",
+        color: "Brown",
         eggGroups: ["Bug"],
     },
     volcagon: {
@@ -5275,7 +5275,7 @@ exports.BattlePokedex = {
         },
         heightm: 2.01,
         weightkg: 229,
-        color: "Black",
+        color: "Gray",
         eggGroups: ["Undiscovered"],
     },
     aeroraptor: {
@@ -5299,7 +5299,7 @@ exports.BattlePokedex = {
         },
         heightm: 1.495,
         weightkg: 41.95,
-        color: "Black",
+        color: "Purple",
         eggGroups: ["Flying"],
     },
     aeroraptormega: {
@@ -5326,7 +5326,7 @@ exports.BattlePokedex = {
         },
         heightm: 1.795,
         weightkg: 61.95,
-        color: "Black",
+        color: "Purple",
         eggGroups: ["Flying"],
     },
     sansjr: {
@@ -5393,7 +5393,7 @@ exports.BattlePokedex = {
         },
         heightm: 1.19,
         weightkg: 50.5,
-        color: "Black",
+        color: "Blue",
         eggGroups: ["Field"],
     },
     lucasolmegal: {
@@ -5420,7 +5420,7 @@ exports.BattlePokedex = {
         },
         heightm: 1.29,
         weightkg: 54,
-        color: "Black",
+        color: "Blue",
         eggGroups: ["Field"],
     },
     lucasolmegaa: {
@@ -5447,7 +5447,7 @@ exports.BattlePokedex = {
         },
         heightm: 1.19,
         weightkg: 52.5,
-        color: "Black",
+        color: "Blue",
         eggGroups: ["Field"],
     },
     treesaur: {
@@ -5852,7 +5852,7 @@ exports.BattlePokedex = {
         },
         heightm: 2.3,
         weightkg: 73.25,
-        color: "Black",
+        color: "Blue",
         eggGroups: ["Undiscovered"],
     },
     thunderblastmega: {
@@ -5876,7 +5876,7 @@ exports.BattlePokedex = {
         },
         heightm: 2.3,
         weightkg: 88.85,
-        color: "Black",
+        color: "Blue",
         eggGroups: ["Undiscovered"],
     },
     snoopa: {
@@ -5900,7 +5900,7 @@ exports.BattlePokedex = {
         },
         heightm: 1.31,
         weightkg: 234.5,
-        color: "Black",
+        color: "Purple",
         eggGroups: ["Undiscovered"],
     },
     plupoke: {
@@ -5971,7 +5971,7 @@ exports.BattlePokedex = {
         },
         heightm: 1.345,
         weightkg: 270,
-        color: "Black",
+        color: "Gray",
         eggGroups: ["Undiscovered"],
     },
     galvantulys: {
@@ -5995,7 +5995,7 @@ exports.BattlePokedex = {
         },
         heightm: 1.245,
         weightkg: 37.55,
-        color: "Black",
+        color: "Red",
         eggGroups: ["Undiscovered"],
     },
     hazygon: {
@@ -6019,7 +6019,7 @@ exports.BattlePokedex = {
         },
         heightm: 1.05,
         weightkg: 80.15,
-        color: "Black",
+        color: "Blue",
         eggGroups: ["Undiscovered"],
     },
     jellie: {
@@ -6039,7 +6039,7 @@ exports.BattlePokedex = {
         },
         heightm: 1.46,
         weightkg: 71.9,
-        color: "Gray",
+        color: "White",
         eggGroups: ["Undiscovered"],
     },
     jelliemega: {
@@ -6062,7 +6062,7 @@ exports.BattlePokedex = {
         },
         heightm: 1.86,
         weightkg: 92.9,
-        color: "Gray",
+        color: "White",
         eggGroups: ["Undiscovered"],
     },
     zaggron: {
@@ -6151,7 +6151,7 @@ exports.BattlePokedex = {
         weightkg: 212.5,
 		  prevo: "wailee",
 		  evoLevel: 40,
-        color: "Black",
+        color: "White",
         eggGroups: ["Field"],
     },
     eruption: {
@@ -6215,7 +6215,7 @@ exports.BattlePokedex = {
         },
         heightm: 2.945,
         weightkg: 169.5,
-        color: "Black",
+        color: "Red",
         eggGroups: ["Undiscovered"],
     },
     raptorus: {
@@ -6236,7 +6236,7 @@ exports.BattlePokedex = {
         },
         heightm: 1.245,
         weightkg: 46.45,
-        color: "Black",
+        color: "Brown",
         eggGroups: ["Undiscovered"],
     },
     sickle: {
@@ -6300,7 +6300,7 @@ exports.BattlePokedex = {
         },
         heightm: 2.01,
         weightkg: 214,
-        color: "Black",
+        color: "Blue",
         eggGroups: ["Undiscovered"],
     },
     panphan: {
@@ -6368,6 +6368,7 @@ darkchomp: {
         dexentry: "It is a nocturnal creature.  While it looks terrifying, it is harmless to humans. Intead, it hunts down good dreams, and has the ability to invade them. Once inside a good dream, Darkchomp won't stop until it tears everything appart, and proceeds to torment the dreamer's sleep until it is waken up by force. Darkchomp then flies away at high speeds in order to not be caught, and continues to hunt other dreams.",
         heightm: 1.705,
         weightkg: 72.75,
+        color: "Black",
 		  fusion: ["darkrai", "garchomp"],
     },
     darkchompmega: {
@@ -6411,7 +6412,7 @@ darkchomp: {
         heightm: 0.55,
         weightkg: 20.75,
 		  evos: ["jelluk"],
-        color: "White",
+        color: "Purple",
         eggGroups: ["Amorphous"],
     },
     jelluk: {
@@ -6433,7 +6434,7 @@ darkchomp: {
         weightkg: 82.5,
 		  prevo: "friller",
 		  evoLevel: 39,
-        color: "White",
+        color: "Purple",
         eggGroups: ["Amorphous"],
     },
     crustlecross: {
@@ -6453,7 +6454,7 @@ darkchomp: {
         },
         heightm: 1.45,
         weightkg: 127,
-        color: "Black",
+        color: "Red",
         eggGroups: ["Bug"],
     },
     crustlecrossmega: {
@@ -6476,7 +6477,7 @@ darkchomp: {
         },
         heightm: 1.65,
         weightkg: 135.5,
-        color: "Black",
+        color: "Red",
         eggGroups: ["Bug"],
     },
     wigglyman: {
@@ -6497,7 +6498,7 @@ darkchomp: {
         },
         heightm: 0.645,
         weightkg: 6.7,
-        color: "Black",
+        color: "Pink",
         eggGroups: ["Fairy"],
     },
     magnebas: {
@@ -6608,7 +6609,7 @@ darkchomp: {
         },
         heightm: 0.955,
         weightkg: 32.5,
-        color: "Black",
+        color: "Blue",
         eggGroups: ["Undiscovered"],
     },
     cleahorch: {
@@ -6672,7 +6673,7 @@ darkchomp: {
         },
         heightm: 0.695,
         weightkg: 34.35,
-        color: "White",
+        color: "Red",
         eggGroups: ["Undiscovered"],
     },
     armortran: {
@@ -6712,7 +6713,7 @@ darkchomp: {
         },
         heightm: 1.7,
         weightkg: 106.3,
-        color: "Black",
+        color: "Yellow",
         eggGroups: ["Undiscovered"],
     },
     bouffanine: {
@@ -7764,7 +7765,7 @@ darkchomp: {
         },
         heightm: 1.055,
         weightkg: 47.25,
-        color: "Pink",
+        color: "Purple",
         eggGroups: ["Undiscovered"],
     },
 	 hootoisemega: {
@@ -7787,7 +7788,7 @@ darkchomp: {
         },
         heightm: 1.055,
         weightkg: 62.85,
-        color: "Pink",
+        color: "Blue",
         eggGroups: ["Undiscovered"],
     },
     lietaur: {
@@ -8315,8 +8316,10 @@ darkchomp: {
         abilities: {
             0: "Justice Illusion"
         },
+		  heightm: 1.5,
         weightkg: 64.8,
-        color: "Blue",
+        color: "Yellow",
+		  eggGroups: ["Undiscovered"],
     },
     stundos: {
         num: 7500157,
@@ -8335,7 +8338,7 @@ darkchomp: {
         },
         heightm: 1.155,
         weightkg: 31.8,
-        color: "Black",
+        color: "Brown",
         eggGroups: ["Undiscovered"],
     },
     mallo: {
@@ -8378,7 +8381,7 @@ darkchomp: {
         weightkg: 42.45,
 		  prevo: "mallo",
 		  evoLevel: 34,
-        color: "Brown",
+        color: "Red",
         eggGroups: ["Amorphous"],
     },
     dank: {
@@ -8528,7 +8531,7 @@ darkchomp: {
         },
         heightm: 4.15,
         weightkg: 158.25,
-        color: "Blue",
+        color: "Brown",
         eggGroups: ["Dragon"],
     },
     draegaradosmega: {
@@ -8551,7 +8554,7 @@ darkchomp: {
         },
         heightm: 4.15,
         weightkg: 228.25,
-        color: "Blue",
+        color: "Brown",
         eggGroups: ["Dragon"],
     },
     grangoro: {
@@ -8819,7 +8822,7 @@ darkchomp: {
         },
         heightm: 1.6,
         weightkg: 112.8,
-        color: "Yellow",
+        color: "Brown",
         eggGroups: ["Human-Like"],
     },
     landia: {
@@ -8907,7 +8910,7 @@ darkchomp: {
         },
         heightm: 0.9,
         weightkg: 30.9,
-        color: "Black",
+        color: "Gray",
         eggGroups: ["Undiscovered"],
     },
     sceptetteeternal: {
@@ -8992,7 +8995,7 @@ darkchomp: {
         },
         heightm: 1.855,
         weightkg: 103,
-        color: "Black",
+        color: "Red",
         eggGroups: ["Human-Like"],
     },
     basculinbasculin: {
@@ -9084,8 +9087,8 @@ darkchomp: {
         abilities: {
             0: "Prankster"
         },
-        heightm: 3.045,
-        weightkg: 158.75,
+        heightm: 3.145,
+        weightkg: 159.25,
         color: "Black",
         eggGroups: ["Undiscovered"],
     },
@@ -9110,7 +9113,7 @@ darkchomp: {
         },
         heightm: 1.345,
         weightkg: 59.5,
-        color: "Brown",
+        color: "Red",
         eggGroups: ["Field"],
     },
     miltrank: {
@@ -9131,7 +9134,7 @@ darkchomp: {
         },
         heightm: 1.445,
         weightkg: 252.75,
-        color: "Black",
+        color: "Brown",
         eggGroups: ["Undiscovered"],
     },
     furfraught: {
@@ -9176,7 +9179,7 @@ darkchomp: {
         },
         heightm: 1.705,
         weightkg: 132,
-        color: "Purple",
+        color: "Green",
         eggGroups: ["Monster"],
     },
     tyrankingmega: {
@@ -9198,9 +9201,9 @@ darkchomp: {
         abilities: {
             0: "Sand Stream"
         },
-        heightm: 1.705,
-        weightkg: 132,
-        color: "Purple",
+        heightm: 2.205,
+        weightkg: 185,
+        color: "Green",
         eggGroups: ["Monster"],
     },
     supermuk: {
@@ -9220,7 +9223,7 @@ darkchomp: {
         },
         heightm: 1.445,
         weightkg: 34.5,
-        color: "Brown",
+        color: "Purple",
         eggGroups: ["Amorphous"],
     },
     mentor: {
@@ -9269,8 +9272,8 @@ darkchomp: {
         abilities: {
             0: "Tough Claws"
         },
-        heightm: 1.905,
-        weightkg: 328.3,
+        heightm: 2.805,
+        weightkg: 721.2,
         color: "Black",
         eggGroups: ["Undiscovered"],
     },
@@ -9295,7 +9298,7 @@ darkchomp: {
         },
         heightm: 1.345,
         weightkg: 57.3,
-        color: "White",
+        color: "Yellow",
         eggGroups: ["Undiscovered"],
     },
     elektramega: {
@@ -9322,7 +9325,7 @@ darkchomp: {
         },
         heightm: 1.045,
         weightkg: 57.3,
-        color: "White",
+        color: "Yellow",
         eggGroups: ["Undiscovered"],
     },
     escagon: {
@@ -9387,7 +9390,7 @@ darkchomp: {
         heightm: 0.65,
         weightkg: 8.9,
         color: "Yellow",
-        eggGroups: ["Undiscovered"],
+        eggGroups: ["Grass"],
     },
     unconventional: {
         num: 7500191,
