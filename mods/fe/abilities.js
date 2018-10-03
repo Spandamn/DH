@@ -6181,8 +6181,12 @@ exports.BattleAbilities = {
 						bestStat = source.stats[i];
 					}
 				}
-				this.boost({[stat]: 1}, source);
-				this.boost({atk: 1}, source);
+				if (stat === 'atk'){
+					this.boost({atk: 2}, source);
+				}
+				else {
+					this.boost({atk: 1, [stat]: 1}, source);
+				}
 			}
 		},
 		id: "bloodthirst",
@@ -10841,9 +10845,13 @@ exports.BattleAbilities = {
 					}
 				}
 			if (boost.stat && boost.stat < 0) {
-				delete boost.stat;
-				if (!effect.secondaries) this.add("-fail", target, "unboost", stat, "[from] ability: Beast Eye", "[of] " + target);
-				this.boost({[stat]: 1}, target);
+				if (effect.secondaries){
+					delete boost.stat;
+				}
+				else {
+					boost.stat = 1;
+					this.add("-fail", target, "unboost", stat, "[from] ability: Beast Eye", "[of] " + target);
+				}
 			}
 		},
 		onSourceFaint: function (target, source, effect) {
