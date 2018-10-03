@@ -20140,7 +20140,7 @@ auroritarmega: {
 	lampara: {
 		num: 7500475,
 		species: "Lampara",
-		forme: "De-Noche",
+		baseForme: "De-Noche",
 		types: ["Water", "Psychic"],
 		baseStats: {
 			hp: 113,
