@@ -3030,7 +3030,7 @@ exports.BattleAbilities = {
 			for (const target of pokemon.side.foe.active) {
 				if (!target || target.fainted) continue;
 				if (pokemon.status === 'brn' || pokemon.status === 'par') {
-						target.trySetStatus('par', target, effect);
+						target.trySetStatus('par', pokemon, effect);
 				}
 			}
 		},
