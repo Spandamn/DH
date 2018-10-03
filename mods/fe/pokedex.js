@@ -8511,7 +8511,7 @@ darkchomp: {
         weightkg: 132,
 		  prevo: "whirlagon",
 		  evoLevel: 55,
-        color: "Orange",
+        color: "Brown",
         eggGroups: ["Water 1"],
     },
     draegarados: {
@@ -15730,8 +15730,6 @@ celebi: {
         weightkg: 80.25,
 		  eggGroups: ["Field"],
     },
-
-
     not: {
         num: 7500352,
         species: "Not",
@@ -15747,12 +15745,11 @@ celebi: {
         abilities: {
             0: "Ambition"
         },
+        color: "Purple",
         heightm: 1.5,
         weightkg: 62.25,
 		  eggGroups: ["Flying"],
     },
-
-
     notmega: {
         num: 7500352,
         species: "Not-Mega",
@@ -15771,12 +15768,11 @@ celebi: {
         abilities: {
             0: "No Guard"
         },
+        color: "Purple",
         heightm: 2.2,
         weightkg: 39.6,
 		  eggGroups: ["Flying"],
     },
-
-
     joltsol: {
         num: 7500353,
         species: "Joltsol",
@@ -15793,12 +15789,11 @@ celebi: {
         abilities: {
             0: "Power Surge"
         },
+        color: "White",
         heightm: 1,
         weightkg: 35.75,
 		  eggGroups: ["Field"],
     },
-
-
     joltsolmega: {
         num: 7500353,
         species: "Joltsol-Mega",
@@ -15818,12 +15813,11 @@ celebi: {
         abilities: {
             0: "Magic Bounce"
         },
+        color: "White",
         heightm: 1,
         weightkg: 37.75,
 		  eggGroups: ["Field"],
     },
-
-
     topaz: {
         num: 7500354,
         species: "Topaz",
@@ -15840,12 +15834,11 @@ celebi: {
         abilities: {
             0: "Power Of Two"
         },
+        color: "Brown",
         heightm: 1.05,
         weightkg: 34.5,
 		  eggGroups: ["Water 1"],
     },
-
-
     dolphin: {
         num: 7500355,
         species: "Dolphin",
@@ -15862,12 +15855,11 @@ celebi: {
         abilities: {
             0: "Lava Dive"
         },
+        color: "Red",
         heightm: 1.75,
         weightkg: 84.75,
 		  eggGroups: ["Field"],
     },
-
-
     snorligatr: {
         num: 7500356,
         species: "Snorligatr",
@@ -15884,12 +15876,11 @@ celebi: {
         abilities: {
             0: "Sheer Fat"
         },
+        color: "Blue",
         heightm: 2.2,
         weightkg: 274.4,
 		  eggGroups: ["Monster"],
     },
-
-
     emponite: {
         num: 7500357,
         species: "Emponite",
@@ -15906,12 +15897,11 @@ celebi: {
         abilities: {
             0: "Ocean Shield"
         },
+        color: "Blue",
         heightm: 1.95,
         weightkg: 147.25,
 		  eggGroups: ["Water 1"],
     },
-
-
     leafrou: {
         num: 7500358,
         species: "Leafrou",
@@ -15928,12 +15918,11 @@ celebi: {
         abilities: {
             0: "Chlorocoat"
         },
+        color: "White",
         heightm: 1.1,
         weightkg: 26.75,
 		  eggGroups: ["Field"],
     },
-
-
     mimiblim: {
         num: 7500359,
         species: "Mimiblim",
@@ -15949,6 +15938,7 @@ celebi: {
         abilities: {
             0: "Disguise Burden"
         },
+        color: "Purple",
         heightm: 0.7,
         weightkg: 7.85,
 		  otherFormes: ["mimiblimbusted"],
@@ -15972,6 +15962,7 @@ mimiblimbusted: {
         abilities: {
             0: "Disguise Burden"
         },
+        color: "Purple",
         heightm: 0.3,
         weightkg: 7.85,
 		  eggGroups: ["Amorphous"],
@@ -15992,12 +15983,11 @@ mimiblimbusted: {
         abilities: {
             0: "Persistent Morale"
         },
+        color: "Blue",
         heightm: 1.65,
         weightkg: 152.8,
 		  eggGroups: ["Field"],
     },
-
-
     zorarce: {
         num: 7500361,
         species: "Zorarce",
@@ -16014,12 +16004,11 @@ mimiblimbusted: {
         abilities: {
             0: "Type Illusionist"
         },
+        color: "Black",
         heightm: 1.95,
         weightkg: 166.25,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     happislash: {
         num: 7500362,
         species: "Happislash",
@@ -16037,12 +16026,11 @@ mimiblimbusted: {
         abilities: {
             0: "Unfriend"
         },
+        color: "Pink",
         heightm: 1.15,
         weightkg: 38.7,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     happislashunfriendly: {
         num: 7500362,
         species: "Happislash-Unfriendly",
@@ -16062,12 +16050,11 @@ mimiblimbusted: {
         abilities: {
             0: "Unfriend"
         },
+        color: "Pink",
         heightm: 1.15,
         weightkg: 38.7,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     torkobulu: {
         num: 7500363,
         species: "Torko Bulu",
@@ -16084,12 +16071,11 @@ mimiblimbusted: {
         abilities: {
             0: "Photosynthesis Surge"
         },
+        color: "Red",
         heightm: 1.2,
         weightkg: 62.95,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     pheroxish: {
         num: 7500364,
         species: "Pheroxish",
@@ -16105,12 +16091,11 @@ mimiblimbusted: {
         abilities: {
             0: "Dazzle Beast"
         },
+        color: "Pink",
         heightm: 1.35,
         weightkg: 22,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     padunk: {
         num: 7500365,
         species: "Padunk",
@@ -16126,12 +16111,11 @@ mimiblimbusted: {
         abilities: {
             0: "Rage Potion"
         },
+        color: "Purple",
         heightm: 1.05,
         weightkg: 37.75,
 		  eggGroups: ["Field"],
     },
-
-
     magnelure: {
         num: 7500366,
         species: "Magnelure",
@@ -16148,12 +16132,11 @@ mimiblimbusted: {
         abilities: {
             0: "Blacksmith"
         },
+        color: "Black",
         heightm: 1.1,
         weightkg: 107.15,
 		  eggGroups: ["Mineral"],
     },
-
-
     shucklord: {
         num: 7500367,
         species: "Shucklord",
@@ -16169,12 +16152,11 @@ mimiblimbusted: {
         abilities: {
             0: "Two-Faced"
         },
+        color: "Yellow",
         heightm: 3.05,
         weightkg: 454.25,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     mtndew: {
         num: 7500368,
         species: "Mtn Dew",
@@ -16191,12 +16173,11 @@ mimiblimbusted: {
         abilities: {
             0: "Contagious Yawn"
         },
+        color: "Gray",
         heightm: 0.35,
         weightkg: 18.5,
 		  eggGroups: ["Field"],
     },
-
-
     altearnia: {
         num: 7500369,
         species: "Altearnia",
@@ -16213,12 +16194,11 @@ mimiblimbusted: {
         abilities: {
             0: "Compassionate Soul"
         },
+        color: "Blue",
         heightm: 1.05,
         weightkg: 50.55,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     altearniamega: {
         num: 7500369,
         species: "Altearnia-Mega",
@@ -16238,12 +16218,11 @@ mimiblimbusted: {
         abilities: {
             0: "Pixilate"
         },
+        color: "Gray",
         heightm: 1.45,
         weightkg: 50.55,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     regigiot: {
         num: 7500370,
         species: "Regigiot",
@@ -16260,12 +16239,11 @@ mimiblimbusted: {
         abilities: {
             0: "Magical Ice"
         },
+        color: "Blue",
         heightm: 1.65,
         weightkg: 107.25,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     regigiotmega: {
         num: 7500370,
         species: "Regigiot-Mega",
@@ -16285,12 +16263,11 @@ mimiblimbusted: {
         abilities: {
             0: "No Guard"
         },
+        color: "Blue",
         heightm: 2.35,
         weightkg: 118.25,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     kasukabe: {
         num: 7500371,
         species: "Kasukabe",
@@ -16307,12 +16284,35 @@ mimiblimbusted: {
         abilities: {
             0: "Genome Tree"
         },
+        color: "Brown",
         heightm: 2.3,
         weightkg: 206.8,
 		  eggGroups: ["Undiscovered"],
     },
-
-
+    kasukabemega: {
+        num: 7500371,
+        species: "Kasukabe-Mega",
+        baseSpecies: "Kasukabe",
+        forme: "Mega",
+        formeLetter: "M",
+        types: ["Normal", "Fighting"],
+        gender: "F",
+        baseStats: {
+            hp: 109,
+            atk: 147,
+            def: 129,
+            spa: 67,
+            spd: 103,
+            spe: 113
+        },
+        abilities: {
+            0: "Parental Bond"
+        },
+        color: "Brown",
+        heightm: 2.3,
+        weightkg: 226.8,
+		  eggGroups: ["Undiscovered"],
+    },
     sakamaki: {
         num: 7500372,
         species: "Sakamaki",
