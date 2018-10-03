@@ -4730,7 +4730,7 @@ exports.BattlePokedex = {
         weightkg: 5.35,
 		  evos: ["blasterain"],
         color: "Blue",
-        eggGroups: ["Undiscovered"],
+        eggGroups: ["Water 1"],
     },
     blasterain: {
         num: 750080,
@@ -4755,8 +4755,8 @@ exports.BattlePokedex = {
         weightkg: 44.55,
 		  prevo: "sursquirt",
 		  evoLevel: 29,
-        color: "White",
-        eggGroups: ["Undiscovered"],
+        color: "Blue",
+        eggGroups: ["Water 1"],
     },
     blasterainmega: {
         num: 750080,
@@ -4782,8 +4782,8 @@ exports.BattlePokedex = {
         },
         heightm: 1.195,
         weightkg: 60.15,
-        color: "White",
-        eggGroups: ["Water1"],
+        color: "Blue",
+        eggGroups: ["Water 1"],
     },
     dianbro: {
         num: 750081,
@@ -14478,8 +14478,6 @@ celebi: {
         weightkg: 26.25,
 		 eggGroups: ["Field"],
     },
-
-
     raptalon: {
         num: 7500306,
         species: "Raptalon",
@@ -14495,12 +14493,11 @@ celebi: {
         abilities: {
             0: "Fearless"
         },
+        color: "Brown",
         heightm: 1.2,
         weightkg: 24.7,
 		  eggGroups: ["Flying"],
     },
-
-
     deoxurkoutlet: {
         num: 7500307,
         species: "Deoxurk-Outlet",
@@ -14517,12 +14514,11 @@ celebi: {
         abilities: {
             0: "Peer Pressure"
         },
+        color: "Black",
         heightm: 2.75,
         weightkg: 80.4,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     dio: {
         num: 7500308,
         species: "Dio",
@@ -14538,12 +14534,11 @@ celebi: {
         abilities: {
             0: "Time Stop"
         },
+        color: "Brown",
         heightm: 3.1,
         weightkg: 353.5,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     generott: {
         num: 7500309,
         species: "Generott",
@@ -14560,6 +14555,7 @@ celebi: {
         abilities: {
             0: "Upgrade"
         },
+        color: "Blue",
         heightm: 1.5,
         weightkg: 88.55,
 		  eggGroups: ["Undiscovered"],
@@ -14580,6 +14576,7 @@ celebi: {
         abilities: {
             0: "Rhythm"
         },
+        color: "Brown",
         heightm: 1.65,
         weightkg: 111.7,
 		  eggGroups: ["Field"],
@@ -14602,6 +14599,7 @@ celebi: {
         abilities: {
             0: "Rhythm"
         },
+        color: "Blue",
         heightm: 1.65,
         weightkg: 111.7,
 		  eggGroups: ["Field"],
@@ -14622,6 +14620,7 @@ celebi: {
         abilities: {
             0: "Lightning Fist"
         },
+        color: "Blue",
         heightm: 1.5,
         weightkg: 74,
 		  eggGroups: ["Undiscovered"],
@@ -14641,6 +14640,7 @@ celebi: {
         abilities: {
             0: "Flare Wings"
         },
+        color: "Brown",
         heightm: 1.35,
         weightkg: 35.5,
 		  eggGroups: ["Undiscovered"],
@@ -14661,6 +14661,7 @@ celebi: {
         abilities: {
             0: "Pecking Order"
         },
+        color: "Brown",
         heightm: 1.3,
         weightkg: 46.1,
 		  eggGroups: ["Undiscovered"],
@@ -14680,6 +14681,7 @@ celebi: {
         abilities: {
             0: "Vomit"
         },
+        color: "Black",
         heightm: 2,
         weightkg: 210.6,
 		  eggGroups: ["Undiscovered"],
@@ -14700,12 +14702,11 @@ celebi: {
         abilities: {
             0: "Magical Wand"
         },
+        color: "Blue",
         heightm: 1.5,
         weightkg: 39,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     starbutterfly: {
         num: 7500315,
         species: "Star-Butterfly",
@@ -14725,12 +14726,11 @@ celebi: {
         abilities: {
             0: "Magical Wand"
         },
+        color: "Blue",
         heightm: 1.5,
         weightkg: 39,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     gardelego: {
         num: 7500316,
         species: "Gardelego",
@@ -14746,12 +14746,11 @@ celebi: {
         abilities: {
             0: "Beast's Copycat"
         },
+        color: "White",
         heightm: 1.4,
         weightkg: 51.95,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     gardelegomega: {
         num: 7500316,
         species: "Gardelego-Mega",
@@ -14770,12 +14769,11 @@ celebi: {
         abilities: {
             0: "Pixilate"
         },
+        color: "White",
         heightm: 1.4,
         weightkg: 51.95,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     maltarione: {
         num: 7500317,
         species: "Maltarione",
@@ -14792,12 +14790,11 @@ celebi: {
         abilities: {
             0: "Medical Expert"
         },
+        color: "Gray",
         heightm: 1.15,
         weightkg: 100.3,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     maltarionemega: {
         num: 7500317,
         species: "Maltarione-Mega",
@@ -14817,12 +14814,11 @@ celebi: {
         abilities: {
             0: "Pixilate"
         },
+        color: "Gray",
         heightm: 1.55,
         weightkg: 100.3,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     maskle: {
         num: 7500318,
         species: "Maskle",
@@ -14838,12 +14834,11 @@ celebi: {
         abilities: {
             0: "Bad Influence"
         },
+        color: "Blue",
         heightm: 0.7,
         weightkg: 12.05,
 		  eggGroups: ["Bug"],
     },
-
-
     cowardice: {
         num: 7500319,
         species: "Cowardice",
@@ -14860,6 +14855,7 @@ celebi: {
         abilities: {
             0: "Scout"
         },
+        color: "Brown",
         heightm: 1.25,
         weightkg: 57.25,
 		  eggGroups: ["Bug"],
