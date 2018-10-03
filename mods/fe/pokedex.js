@@ -21114,7 +21114,7 @@ auroritarmega: {
             spe: 109
         },
         abilities: {
-            0: "Cocky"
+            0: "Levitimidate"
         },
         heightm: 1.65,
         weightkg: 131.3,
@@ -21416,7 +21416,7 @@ auroritarmega: {
         abilities: {
             0: "Beast Costumed"
         },
-    heightm: 0.25,
+    			heightm: 0.25,
             weightkg: 0.4,
             eggGroups: ["Undiscovered"],
         },
@@ -21687,6 +21687,7 @@ auroritarmega: {
 	    abilities: {
 	        0: "God of Fertility"
 	    },
+        color: "Green",
 	    heightm: 2.6,
 	    weightkg: 210,
 	    eggGroups: ["Undiscovered"],
@@ -21709,6 +21710,7 @@ auroritarmega: {
 	    abilities: {
 	        0: "God of Fertility"
 	    },
+        color: "Green",
 	    heightm: 2.6,
 	    weightkg: 210,
 	    eggGroups: ["Undiscovered"],
@@ -21731,6 +21733,7 @@ auroritarmega: {
 	    abilities: {
 	        0: "God of Fertility"
 	    },
+        color: "Green",
 	    heightm: 2.6,
 	    weightkg: 210,
 	    eggGroups: ["Undiscovered"],
@@ -21753,6 +21756,7 @@ auroritarmega: {
 	    abilities: {
 	        0: "God of Fertility"
 	    },
+        color: "Green",
 	    heightm: 2.6,
 	    weightkg: 210,
 	    eggGroups: ["Undiscovered"],
@@ -21775,6 +21779,7 @@ auroritarmega: {
 	    abilities: {
 	        0: "God of Fertility"
 	    },
+        color: "Green",
 	    heightm: 2.6,
 	    weightkg: 210,
 	    eggGroups: ["Undiscovered"],
@@ -21797,6 +21802,7 @@ auroritarmega: {
 	    abilities: {
 	        0: "God of Fertility"
 	    },
+        color: "Green",
 	    heightm: 2.6,
 	    weightkg: 210,
 	    eggGroups: ["Undiscovered"],
@@ -21819,6 +21825,7 @@ auroritarmega: {
 	    abilities: {
 	        0: "God of Fertility"
 	    },
+        color: "Green",
 	    heightm: 2.6,
 	    weightkg: 210,
 	    eggGroups: ["Undiscovered"],
@@ -21841,6 +21848,7 @@ auroritarmega: {
 	    abilities: {
 	        0: "God of Fertility"
 	    },
+        color: "Green",
 	    heightm: 2.6,
 	    weightkg: 210,
 	    eggGroups: ["Undiscovered"],
@@ -21863,6 +21871,7 @@ auroritarmega: {
 	    abilities: {
 	        0: "God of Fertility"
 	    },
+        color: "Green",
 	    heightm: 2.6,
 	    weightkg: 210,
 	    eggGroups: ["Undiscovered"],
@@ -21885,6 +21894,7 @@ auroritarmega: {
 	    abilities: {
 	        0: "God of Fertility"
 	    },
+        color: "Green",
 	    heightm: 2.6,
 	    weightkg: 210,
 	    eggGroups: ["Undiscovered"],
@@ -21907,6 +21917,7 @@ auroritarmega: {
 	    abilities: {
 	        0: "God of Fertility"
 	    },
+        color: "Green",
 	    heightm: 2.6,
 	    weightkg: 210,
 	    eggGroups: ["Undiscovered"],
@@ -21929,6 +21940,7 @@ auroritarmega: {
 	    abilities: {
 	        0: "God of Fertility"
 	    },
+        color: "Green",
 	    heightm: 2.6,
 	    weightkg: 210,
 	    eggGroups: ["Undiscovered"],
@@ -21951,6 +21963,7 @@ auroritarmega: {
 	    abilities: {
 	        0: "God of Fertility"
 	    },
+        color: "Green",
 	    heightm: 2.6,
 	    weightkg: 210,
 	    eggGroups: ["Undiscovered"],
@@ -21973,6 +21986,7 @@ auroritarmega: {
 	    abilities: {
 	        0: "God of Fertility"
 	    },
+        color: "Green",
 	    heightm: 2.6,
 	    weightkg: 210,
 	    eggGroups: ["Undiscovered"],
@@ -21995,6 +22009,7 @@ auroritarmega: {
 	    abilities: {
 	        0: "God of Fertility"
 	    },
+        color: "Green",
 	    heightm: 2.6,
 	    weightkg: 210,
 	    eggGroups: ["Undiscovered"],
@@ -22017,6 +22032,7 @@ auroritarmega: {
 	    abilities: {
 	        0: "God of Fertility"
 	    },
+        color: "Green",
 	    heightm: 2.6,
 	    weightkg: 210,
 	    eggGroups: ["Undiscovered"],
@@ -22039,6 +22055,7 @@ auroritarmega: {
 	    abilities: {
 	        0: "God of Fertility"
 	    },
+        color: "Green",
 	    heightm: 2.6,
 	    weightkg: 210,
 	    eggGroups: ["Undiscovered"],
@@ -22061,10 +22078,12 @@ auroritarmega: {
 	    abilities: {
 	        0: "God of Fertility"
 	    },
+        color: "Green",
 	    heightm: 2.6,
 	    weightkg: 210,
 	    eggGroups: ["Undiscovered"],
-	},	metabell: {
+	},
+	metabell: {
 	        num: 7500528,
 	        species: "Metabell",
 	        types: ["Grass", "Steel"],
@@ -22080,6 +22099,7 @@ auroritarmega: {
 	        abilities: {
 	            0: "Indigestion"
 	        },
+        	  color: "Blue",
 	        heightm: 1.65,
 	        weightkg: 282.75,
 	        eggGroups: ["Undiscovered"],
@@ -22103,6 +22123,7 @@ auroritarmega: {
 	        abilities: {
 	            0: "Tough Claws"
 	        },
+	        color: "Blue",
 	        heightm: 1.65,
 	        weightkg: 675.65,
 	        eggGroups: ["Undiscovered"],
@@ -22144,6 +22165,7 @@ auroritarmega: {
 	        abilities: {
 	            0: "Wooded Surge"
 	        },
+        	  color: "Green",
 	        heightm: 1.7,
 	        weightkg: 164.3,
 	        eggGroups: ["Undiscovered"],
@@ -22238,7 +22260,7 @@ auroritarmega: {
 	        },
 	        heightm: 0.8,
 	        weightkg: 9.7,
-	        color: "Green",
+	        color: "Red",
 	        eggGroups: ["Undiscovered"],
 	    },
 	    castapusmisty: {
@@ -22262,7 +22284,7 @@ auroritarmega: {
 	        },
 	        heightm: 0.8,
 	        weightkg: 9.7,
-	        color: "Pink",
+	        color: "Purple",
 	        eggGroups: ["Undiscovered"],
 	    },
 	    castapusrocky: {
@@ -22358,7 +22380,7 @@ auroritarmega: {
 	        },
 	        heightm: 0.8,
 	        weightkg: 9.7,
-	        color: "Purple",
+	        color: "Green",
 	        eggGroups: ["Undiscovered"],
 	    },
 	    castapusbeauty: {
@@ -22424,6 +22446,7 @@ auroritarmega: {
 	        abilities: {
 	            0: "Aqua Booster"
 	        },
+	        color: "Purple",
 	        heightm: 2.3,
 	        weightkg: 89,
 	        eggGroups: ["Undiscovered"],
@@ -22841,6 +22864,7 @@ auroritarmega: {
 	        abilities: {
 	            0: "Paw Prayer"
 	        },
+	        color: "Red",
 	        heightm: 1.05,
 	        weightkg: 58.95,
 	        eggGroups: ["Field"],
@@ -22864,6 +22888,7 @@ auroritarmega: {
 	        abilities: {
 	            0: "Paw Prayer"
 	        },
+	        color: "Brown",
 	        heightm: 1.05,
 	        weightkg: 58.95,
 	        eggGroups: ["Field"],
@@ -22885,6 +22910,7 @@ auroritarmega: {
 	        abilities: {
 	            0: "Social Life"
 	        },
+        	  color: "Brown",
 	        heightm: 0.35,
 	        weightkg: 44.1,
 	        eggGroups: ["Undiscovered"],
@@ -22909,6 +22935,7 @@ auroritarmega: {
 	        abilities: {
 	            0: "Social Life"
 	        },
+	        color: "White",
 	        heightm: 0.35,
 	        weightkg: 4.4,
 	        eggGroups: ["Undiscovered"],
@@ -22930,7 +22957,7 @@ auroritarmega: {
 	        },
 	        heightm: 0.8,
 	        weightkg: 70.25,
-	        color: "Red",
+	        color: "Purple",
 	        eggGroups: ["Undiscovered"],
 	    },
 	pikachuash: {
@@ -22973,6 +23000,7 @@ auroritarmega: {
 	        abilities: {
 	            0: "Blizzard Blur"
 	        },
+	        color: "Blue",
 	        heightm: 1.15,
 	        weightkg: 40.45,
 	        eggGroups: ["Field"],
@@ -22993,6 +23021,7 @@ auroritarmega: {
 	    abilities: {
 	        0: "Solar Panel"
 	    },
+        color: "Red",
 	    heightm: 1.95,
 	    weightkg: 477.1,
 	    eggGroups: ["Undiscovered"],
@@ -23017,6 +23046,7 @@ auroritarmega: {
 	    		abilities: {
 	        		0: "Desolate Land"
 	    		},
+	        color: "Red",
 	    		heightm: 3.45,
 	    		weightkg: 526.8,
 	    		eggGroups: ["Undiscovered"],
@@ -23036,6 +23066,7 @@ auroritarmega: {
 	        abilities: {
 	            0: "Tour To Russia"
 	        },
+	        color: "Blue",
 	        heightm: 1.3,
 	        weightkg: 100.45,
 	        eggGroups: ["Undiscovered"],
@@ -23055,6 +23086,7 @@ auroritarmega: {
 		        abilities: {
 		            0: "Ice Scale"
 		        },
+	        color: "Blue",
 		        heightm: 1.8,
 		        weightkg: 180.3,
 		        eggGroups: ["Water 1"],
@@ -23077,7 +23109,7 @@ auroritarmega: {
 		        },
 		        heightm: 1.3,
 		        weightkg: 107,
-		        color: "Orange",
+		        color: "Brown",
 		        eggGroups: ["Undiscovered"],
 		    },
 		    topper: {
@@ -23096,6 +23128,7 @@ auroritarmega: {
 		        abilities: {
 		            0: "Afterstorm"
 		        },
+	        		color: "White",
 		        heightm: 1.35,
 		        weightkg: 33,
 		        eggGroups: ["Flying"],
@@ -23117,7 +23150,7 @@ auroritarmega: {
 		        },
 		        heightm: 2.25,
 		        weightkg: 61.95,
-				  color: "Gray",
+				  color: "Purple",
 		        eggGroups: ["Undiscovered"],
 		    },
 		    accelerateddetox: {
@@ -23180,7 +23213,7 @@ auroritarmega: {
 		            },
 		            heightm: 1.5,
 		            weightkg: 82.5,
-		            color: "Brown",
+		            color: "Purple",
 		            eggGroups: ["Undiscovered"],
 		        },
 					cocaine: {
@@ -23247,6 +23280,7 @@ auroritarmega: {
 		   	     abilities: {
 		   	         0: "Juggernaut"
 		   	     },
+			        color: "Black",
 		   	     heightm: 1.6,
 		   	     weightkg: 114.75,
 		   	     eggGroups: ["Field"],
@@ -23267,6 +23301,7 @@ auroritarmega: {
 		   	     abilities: {
 		   	         0: "Air Raider"
 		   	     },
+			        color: "Red",
 		   	     heightm: 0.5,
 		   	     weightkg: 7.4,
 		   	     eggGroups: ["Undiscovered"],
@@ -23286,6 +23321,7 @@ auroritarmega: {
 		   	     abilities: {
 		   	         0: "Interception"
 		   	     },
+			        color: "White",
 		   	     heightm: 1.55,
 		   	     weightkg: 56.4,
 		   	     eggGroups: ["Field"],
@@ -23308,7 +23344,7 @@ auroritarmega: {
 		   	     },
    				  heightm: 0.8,
    				  weightkg: 16.3,
-				     color: "Pink",
+				     color: "Purple",
 		   	     eggGroups: ["Undiscovered"],
 		   	 },
 		   	 amunra: {
@@ -23327,6 +23363,7 @@ auroritarmega: {
 		   	     abilities: {
 		   	         0: "The Hidden One"
 		   	     },
+     				  color: "Yellow",
    				  heightm: 1.45,
    				  weightkg: 128.25,
 		   	     eggGroups: ["Mineral"],
@@ -23389,6 +23426,7 @@ auroritarmega: {
 		   	     },
      				  heightm: 1.3,
         			  weightkg: 40,
+        			  color: "Pink",
 					  prevo: "growlee",
 					  evoLevel: 1,
 		   	     eggGroups: ["Field"],
@@ -23408,6 +23446,7 @@ auroritarmega: {
 	        	 	abilities: {
 	        	 	    0: "Food Coloring"
 	        	 	},
+		         color: "Purple",
 	          	heightm: 1.2,
 	        	 	weightkg: 55.85,
 	       	 	eggGroups: ["Field"],
@@ -23430,6 +23469,7 @@ auroritarmega: {
 	        		abilities: {
 	        		    0: "Intimidate"
 	        		},
+		         color: "Purple",
 	          	heightm: 1.5,
 	        	 	weightkg: 59.65,
 	       	 	eggGroups: ["Field"],
@@ -23449,11 +23489,12 @@ auroritarmega: {
 	        	 	abilities: {
 	        	 	    0: "Turboblaze"
 	        	 	},
+		         color: "Green",
 	          	heightm: 2,
 	        	 	weightkg: 171.5,
 	       	 	eggGroups: ["Undiscovered"],
 	    		 },
-				 clerforusfable: {
+				 cleforusfable: {
 		   	 	num: 7500574,
 	       	 	species: "Cleforus-Fable",
 	       	 	types: ["Fairy", "Ground"],
@@ -23469,6 +23510,7 @@ auroritarmega: {
 	        	 	abilities: {
 	        	 	    0: "Zero Awareness"
 	        	 	},
+		         color: "Brown",
 	          	heightm: 1.4,
 	        	 	weightkg: 54,
 	       	 	eggGroups: ["Undiscovered"],
@@ -23494,7 +23536,7 @@ auroritarmega: {
 						abilities: {0: "Regenerator"},
 						heightm: 1.4,
 						weightkg: 49.25,
-						color: "Purple",
+						color: "Green",
 						eggGroups: ["Undiscovered"],
 					},
 					cryomagius: {
@@ -23506,7 +23548,7 @@ auroritarmega: {
    				 abilities: {0: "Levitate"},
    				 heightm: 1.0,
    				 weightkg: 76.2,
-   				 color: "Blue",
+   				 color: "Purple",
    				 eggGroups: ["Undiscovered"],
 				   },
 					chantran: {
@@ -23529,7 +23571,7 @@ auroritarmega: {
 						abilities: {0: "Technological Armor"},
 						heightm: 1,
 						weightkg: 242.75,
-						color: "Red",
+						color: "Yellow",
 						eggGroups: ["Undiscovered"],
 					},
 	    		 	necrotuneultra: {
@@ -23543,6 +23585,7 @@ auroritarmega: {
 	        			abilities: {
 	        			    0: "Neuroforce"
 	        			},
+		        	   color: "Yellow",
 						heightm: 4.7,
 						weightkg: 12.75,
 	       		 	eggGroups: ["Undiscovered"],
@@ -23737,7 +23780,7 @@ auroritarmega: {
      			     heightm: 1.9,
     			     weightkg: 120.5,
 					  evos: ["aegivally"],
-     			     color: "Purple",
+     			     color: "Brown",
      			     eggGroups: ["Undiscovered"],
 				},
 	    mewdeuca: {
@@ -23755,6 +23798,7 @@ auroritarmega: {
         abilities: {
             0: "Unnerve"
         },
+		  color: "Purple",
         heightm: 2.75,
         weightkg: 93.5,
      	 eggGroups: ["Undiscovered"],
@@ -23777,6 +23821,7 @@ auroritarmega: {
         abilities: {
             0: "Steadfast"
         },
+		  color: "Purple",
         heightm: 3.05,
         weightkg: 98.5,
      	  eggGroups: ["Undiscovered"],
@@ -23799,6 +23844,7 @@ auroritarmega: {
         abilities: {
             0: "Insomnia"
         },
+		  color: "Purple",
         heightm: 2.25,
         weightkg: 25.3,
      	  eggGroups: ["Undiscovered"],
@@ -23818,6 +23864,7 @@ auroritarmega: {
         abilities: {
             0: "Slime Drench"
         },
+		  color: "Purple",
         heightm: 1.35,
         weightkg: 66,
      	  eggGroups: ["Amorphous"],
