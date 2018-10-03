@@ -10185,9 +10185,9 @@ exports.BattleAbilities = {
 					return this.chainModify([0x1A14, 0x1000]);
 			}
 		},
-		onModifyMove: function (move) {
-			if (move.flags['heal']) {
-				move.heal *= 1.63;
+		onTryHeal: function (damage, target, source, effect) {
+			if (effect && effect.effectType === 'Move') {
+				return Math.floor(damage*1.63);
 			}
 		},
 		id: "pouchaura",
@@ -10385,7 +10385,7 @@ exports.BattleAbilities = {
 	"testcram": {
 		shortDesc: "This Pokemon is immune to Ground-Type moves. If a move against this Pokémon ended up on a Critical Hit, it won't affect the Pokémon. This Pokemon's critical hit ratio is raised by 1 stage.",
 		onTryHit: function(target, source, move) {
-			if (move && move.effectType === 'Move' && (move.crit || move.type === 'Ground')) {
+			if (move && move.effectType === 'Move' && (move.crit || move.willCrit || move.type === 'Ground')) {
 				this.add('-immune', target, '[msg]', '[from] ability: Test Cram');
 				return null;
 			}
