@@ -20332,6 +20332,7 @@ auroritarmega: {
 		abilities: {
 			0: "Sensei"
 		},
+        color: "Yellow",
 		  heightm: 1.85,
 		  weightkg: 105.8,
 		  eggGroups: ["Human-Like"],
@@ -20351,6 +20352,7 @@ auroritarmega: {
 		abilities: {
 			0: "Prodigy"
 		},
+        color: "Red",
 		  heightm: 1.55,
 		  weightkg: 89.75,
 		  eggGroups: ["Bug"],
@@ -20373,6 +20375,7 @@ auroritarmega: {
 		abilities: {
 			0: "Technician"
 		},
+        color: "Red",
 		  heightm: 1.75,
 		  weightkg: 96.75,
 		  eggGroups: ["Bug"],
@@ -20393,6 +20396,7 @@ auroritarmega: {
 		abilities: {
 			0: "Titanium Toothpaste"
 		},
+        color: "Pink",
 		  heightm: 1.1,
 		  weightkg: 20.5,
 		  eggGroups: ["Fairy"],
@@ -20416,6 +20420,7 @@ auroritarmega: {
 		abilities: {
 			0: "Healer"
 		},
+        color: "White",
 		  heightm: 1.5,
 		  weightkg: 21.5,
 		  eggGroups: ["Fairy"],
@@ -20435,6 +20440,7 @@ auroritarmega: {
 		abilities: {
 			0: "Too Thick"
 		},
+        color: "Blue",
 		  heightm: 1.4,
 		  weightkg: 96.3,
 		  eggGroups: ["Field"],
@@ -20457,6 +20463,7 @@ auroritarmega: {
 		abilities: {
 			0: "Tech Fur"
 		},
+        color: "Gray",
 		  heightm: 1.05,
 		  weightkg: 33.5,
 		  eggGroups: ["Field"],
@@ -20476,6 +20483,7 @@ auroritarmega: {
 		abilities: {
 			0: "Veteran"
 		},
+        color: "Blue",
 		  heightm: 0.8,
 		  weightkg: 21.5,
 		  eggGroups: ["Water 1"],
@@ -20495,6 +20503,7 @@ auroritarmega: {
 		abilities: {
 			0: "Sound Soul"
 		},
+        color: "Gray",
 		  heightm: 1.8,
 		  weightkg: 114.35,
 		  eggGroups: ["Dragon"],
@@ -20514,6 +20523,7 @@ auroritarmega: {
 		abilities: {
 			0: "Phase Through"
 		},
+        color: "Blue",
 		  heightm: 1.3,
 		  weightkg: 52.8,
 		  eggGroups: ["Flying"],
@@ -20536,6 +20546,7 @@ auroritarmega: {
 		abilities: {
 			0: "Pixilate"
 		},
+        color: "Blue",
 		  heightm: 1.7,
 		  weightkg: 52.8,
 		  eggGroups: ["Flying"],
@@ -20555,6 +20566,7 @@ auroritarmega: {
 		abilities: {
 			0: "Locked Shell"
 		},
+        color: "Gray",
 		  heightm: 0.8,
 		  weightkg: 101.5,
 		  eggGroups: ["Mineral"],
@@ -20575,6 +20587,7 @@ auroritarmega: {
 		abilities: {
 			0: "Christmas Parade"
 		},
+        color: "Brown",
 		  heightm: 2.55,
 		  weightkg: 253.9,
 		  eggGroups: ["Monster"],
@@ -20595,6 +20608,7 @@ auroritarmega: {
 		abilities: {
 			0: "Magnetic Surge"
 		},
+        color: "Gray",
 		  heightm: 1.6,
 		  weightkg: 180.25,
 		  eggGroups: ["Undiscovered"],
@@ -20615,6 +20629,7 @@ auroritarmega: {
 		abilities: {
 			0: "Temporary Guard"
 		},
+        color: "Brown",
 		  heightm: 2.25,
 		  weightkg: 210.6,
 		  eggGroups: ["Undiscovered"],
@@ -20636,6 +20651,7 @@ auroritarmega: {
 		abilities: {
 			0: "Healthy Meal"
 		},
+        color: "Pink",
 		  heightm: 2.65,
 		  weightkg: 192.3,
 		  eggGroups: ["Undiscovered"],
@@ -20659,6 +20675,7 @@ auroritarmega: {
 		abilities: {
 			0: "Neuroforce"
 		},
+        color: "Pink",
 		  heightm: 5.95,
 		  weightkg: 72.3,
 		  eggGroups: ["Undiscovered"],
@@ -20679,6 +20696,7 @@ auroritarmega: {
 		abilities: {
 			0: "Christmas Spirit"
 		},
+        color: "Brown",
 		  heightm: 2.45,
 		  weightkg: 257.9,
 		  eggGroups: ["Undiscovered"],
@@ -20702,6 +20720,7 @@ auroritarmega: {
 		abilities: {
 			0: "Neuroforce"
 		},
+        color: "Yellow",
 		  heightm: 6.15,
 		  weightkg: 27.9,
 		  eggGroups: ["Undiscovered"],
@@ -20722,6 +20741,7 @@ auroritarmega: {
 		abilities: {
 			0: "Pressure"
 		},
+        color: "Black",
 		  heightm: 1.95,
 		  weightkg: 27.9,
 		  eggGroups: ["Undiscovered"],
@@ -20741,6 +20761,7 @@ auroritarmega: {
 		abilities: {
 			0: "Scrumptious"
 		},
+        color: "Yellow",
 		  heightm: 1.05,
 		  weightkg: 25.9,
 		  eggGroups: ["Flying"],
@@ -20761,6 +20782,7 @@ auroritarmega: {
 		abilities: {
 			0: "Heat Seeker"
 		},
+        color: "Brown",
 		  heightm: 1.5,
 		  weightkg: 42.75,
 		  eggGroups: ["Field"],
@@ -20784,6 +20806,7 @@ auroritarmega: {
 		abilities: {
 			0: "Speed Boost"
 		},
+        color: "Brown",
 		  heightm: 1.5,
 		  weightkg: 42.75,
 		  eggGroups: ["Field"],
@@ -20803,6 +20826,7 @@ auroritarmega: {
 		abilities: {
 			0: "Effective Strategy"
 		},
+        color: "Yellow",
 		  heightm: 1.65,
 		  weightkg: 23.25,
 		  eggGroups: ["Field"],
@@ -20823,6 +20847,7 @@ auroritarmega: {
 		abilities: {
 			0: "Floating Grounds"
 		},
+        color: "Black",
 		  heightm: 1.75,
 		  weightkg: 154.95,
 		  eggGroups: ["Undiscovered"],
@@ -20846,6 +20871,7 @@ auroritarmega: {
 		abilities: {
 			0: "Sand Stream"
 		},
+        color: "Black",
 		  heightm: 2.25,
 		  weightkg: 207.95,
 		  eggGroups: ["Undiscovered"],
@@ -20866,6 +20892,7 @@ auroritarmega: {
 		abilities: {
 			0: "Sleeping System"
 		},
+        color: "Gray",
 		  heightm: 1.35,
 		  weightkg: 60.2,
 		  eggGroups: ["Undiscovered"],
@@ -20885,6 +20912,7 @@ auroritarmega: {
 		abilities: {
 			0: "Snow Sucker"
 		},
+        color: "Blue",
 		  heightm: 0.95,
 		  weightkg: 22.2,
 		  eggGroups: ["Field"],
@@ -20904,6 +20932,7 @@ auroritarmega: {
 		abilities: {
 			0: "Ambulance"
 		},
+        color: "Pink",
 		  heightm: 0.8,
 		  weightkg: 10.25,
 		  eggGroups: ["Fairy"],
@@ -20923,6 +20952,7 @@ auroritarmega: {
 		abilities: {
 			0: "Bingo Bongo"
 		},
+        color: "Gray",
 		  heightm: 0.95,
 		  weightkg: 48.85,
 		  eggGroups: ["Undiscovered"],
@@ -20943,6 +20973,7 @@ auroritarmega: {
 		abilities: {
 			0: "Panic Mode"
 		},
+        color: "Purple",
 		  heightm: 0.9,
 		  weightkg: 33.25,
 		  eggGroups: ["Human-Like"],
@@ -20953,7 +20984,7 @@ auroritarmega: {
 		baseSpecies: "Theye",
 		forme: "Mega",
 		formeLetter: "M",
-		types: ["Ground", "Dark"],
+		types: ["Fighting", "Ghost"],
 		gender: "M",
 		baseStats: {
 			hp: 95,
@@ -20966,6 +20997,7 @@ auroritarmega: {
 		abilities: {
 			0: "Magic Bounce"
 		},
+        color: "Purple",
 		  heightm: 0.9,
 		  weightkg: 183.25,
 		  eggGroups: ["Human-Like"],
@@ -21064,7 +21096,7 @@ auroritarmega: {
         abilities: {
             0: "Aerilate"
         },
-        heightm: 9.2,
+        heightm: 9.5,
         weightkg: 1009.9,
         color: "Blue",
         eggGroups: ["Undiscovered"],
@@ -21128,6 +21160,7 @@ auroritarmega: {
         abilities: {
             0: "Poison Pores"
         },
+        color: "Green",
         heightm: 1.6,
         weightkg: 61.1,
         eggGroups: ["Monster"],
@@ -21151,6 +21184,7 @@ auroritarmega: {
             abilities: {
                 0: "Poison Pores"
             },
+	        color: "Green",
             heightm: 2.0,
             weightkg: 116.6,
             eggGroups: ["Monster"],
@@ -21173,7 +21207,7 @@ auroritarmega: {
             heightm: 5.2,
             weightkg: 110.5,
             color: "White",
-            eggGroups: ["Field", "Undiscovered"],
+            eggGroups: ["Undiscovered"],
         },
         klinkarel: {
             num: 7500510,
@@ -21212,7 +21246,7 @@ auroritarmega: {
             },
             heightm: 0.9,
             weightkg: 24.1,
-            color: "Black",
+            color: "Brown",
             eggGroups: ["Field"],
         },
         barbominable: {
@@ -21232,7 +21266,7 @@ auroritarmega: {
             },
             heightm: 1.7,
             weightkg: 138,
-            color: "White",
+            color: "Brown",
             eggGroups: ["Water 3"],
         },
         asterisk: {
@@ -21251,6 +21285,7 @@ auroritarmega: {
             abilities: {
                 0: "Starburst"
             },
+        		color: "White",
             heightm: 1.2,
             weightkg: 26.25,
             eggGroups: ["Fairy"],
@@ -21270,6 +21305,7 @@ auroritarmega: {
             abilities: {
                 0: "Quick Trap"
             },
+        		color: "Gray",
             heightm: 0.5,
             weightkg: 18.3,
             eggGroups: ["Field"],
@@ -21290,6 +21326,7 @@ auroritarmega: {
             abilities: {
                 0: "Aeon Flux"
             },
+	        color: "Brown",
             heightm: 1.35,
             weightkg: 47.6,
             eggGroups: ["Field"],
@@ -21313,6 +21350,7 @@ auroritarmega: {
             abilities: {
                 0: "Intimidate"
             },
+	        color: "Brown",
             heightm: 1.65,
             weightkg: 51.4,
             eggGroups: ["Field"],
@@ -21332,6 +21370,7 @@ auroritarmega: {
             abilities: {
                 0: "Beast Costume"
             },
+	        color: "White",
             heightm: 0.25,
             weightkg: 0.4,
             eggGroups: ["Undiscovered"],
@@ -21354,6 +21393,7 @@ auroritarmega: {
         		abilities: {
             	0: "Beast Costume"
        		},
+	        color: "White",
     			heightm: 0.25,
             weightkg: 0.4,
             eggGroups: ["Undiscovered"],
@@ -21442,7 +21482,7 @@ auroritarmega: {
 	    },
 	    heightm: 1.5,
 	    weightkg: 210,
-	    color: "Brown",
+	    color: "Gray",
 	    eggGroups: ["Field"],
 	},
 	xerdian: {
@@ -21500,6 +21540,7 @@ auroritarmega: {
 	    abilities: {
 	        0: "Nightmare Fuel"
 	    },
+        color: "Red",
 	    heightm: 3.45,
 	    weightkg: 118.25,
 	    eggGroups: ["Undiscovered"],
@@ -21581,6 +21622,7 @@ auroritarmega: {
 	    abilities: {
 	        0: "Atmospheric Perversion"
 	    },
+        color: "Blue",
 	    heightm: 2.65,
 	    weightkg: 184,
 	    eggGroups: ["Undiscovered"],
@@ -21604,6 +21646,7 @@ auroritarmega: {
 	    abilities: {
 	        0: "Primordial Sea"
 	    },
+        color: "Blue",
 	    heightm: 7.95,
 	    weightkg: 262,
 	    eggGroups: ["Undiscovered"],
@@ -21624,6 +21667,7 @@ auroritarmega: {
 	    abilities: {
 	        0: "Adaptive Eye"
 	    },
+        color: "Red",
 	    heightm: 2.65,
 	    weightkg: 184,
 	    eggGroups: ["Undiscovered"],
