@@ -4254,7 +4254,7 @@ exports.BattlePokedex = {
     },
     metsirmegam: {
         num: 750072,
-        species: "Mestir-Mega-M",
+        species: "Metsir-Mega-M",
         baseSpecies: "Metsir",
         forme: "Mega-M",
         formeLetter: "M",
