@@ -550,12 +550,14 @@ exports.BattleAbilities = {
 		shortDesc: "Immune to infatuation, taunting, and electric moves, and if hit by one restores HP by 1/8 of its maximum.",
 		onUpdate: function(pokemon) {
 			if (pokemon.volatiles['attract']) {
-				this.add('-activate', pokemon, 'ability: Oblivious');
+				this.add('-activate', pokemon, 'ability: Oblivious Absorb');
 				pokemon.removeVolatile('attract');
-				this.add('-end', pokemon, 'move: Attract', '[from] ability: Oblivious');
+				this.heal(pokemon.maxhp / 8);
+				this.add('-end', pokemon, 'move: Attract', '[from] ability: Oblivious Absorb');
 			}
 			if (pokemon.volatiles['taunt']) {
-				this.add('-activate', pokemon, 'ability: Oblivious');
+				this.add('-activate', pokemon, 'ability: Oblivious Absorb');
+				this.heal(pokemon.maxhp / 8);
 				pokemon.removeVolatile('taunt');
 				// Taunt's volatile already sends the -end message when removed
 			}
