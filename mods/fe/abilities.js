@@ -182,7 +182,7 @@ exports.BattleAbilities = {
 			}
 		},
 		onImmunity: function (type, pokemon) {
-			if (pokemon.volatiles['weatherbreak'] === pokemon.volatiles['atmosphericperversion'] && type === 'solarsnow') return false;
+			if (type === 'solarsnow') return false;
 		},
 		id: "leafguard",
 		name: "Leaf Guard",
