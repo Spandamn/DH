@@ -488,6 +488,49 @@ exports.BattleMovedex = {
 		zMoveBoost: {spd: 1},
 		//contestType: "Cute",
 	},
+	"skillswap": {
+		num: 285,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		desc: "The user swaps its Ability with the target's Ability. Fails if either the user or the target's Ability is Battle Bond, Comatose, Disguise, Illusion, Multitype, Power Construct, RKS System, Schooling, Shields Down, Stance Change, or Wonder Guard.",
+		shortDesc: "The user and the target trade Abilities.",
+		id: "skillswap",
+		name: "Skill Swap",
+		pp: 10,
+		priority: 0,
+		flags: {protect: 1, mirror: 1, authentic: 1, mystery: 1},
+		onTryHit: function (target, source) {
+			let bannedAbilities = ['battlebond', 'comatose', 'disguise', 'multitype', 'powerconstruct', 'rkssystem', 'schooling', 'shieldsdown', 'stancechange', 'truant', 'resurrection', 'magicalwand', 'sleepingsystem', 'cursedcloak', 'appropriation', 'disguiseburden', 'hideandseek', 'beastcostume', 'spiralpower', 'optimize', 'prototype', 'typeillusionist', 'godoffertility', 'foundation', 'sandyconstruct', 'victorysystem', 'techequip', 'technicalsystem', 'triagesystem', 'geneticalgorithm', 'effectsetter', 'tacticalcomputer', 'mitosis', 'barbstance', 'errormacro', 'combinationdrive', 'stanceshield', 'unfriend', 'desertmirage', 'sociallife', 'cosmology', 'crystallizedshield', 'compression', 'whatdoesthisdo'];
+			if (bannedAbilities.includes(target.ability) || bannedAbilities.includes(source.ability)) {
+				return false;
+			}
+		},
+		onHit: function (target, source, move) {
+			let targetAbility = this.getAbility(target.ability);
+			let sourceAbility = this.getAbility(source.ability);
+			if (target.side === source.side) {
+				this.add('-activate', source, 'move: Skill Swap', '', '', '[of] ' + target);
+			} else {
+				this.add('-activate', source, 'move: Skill Swap', targetAbility, sourceAbility, '[of] ' + target);
+			}
+			this.singleEvent('End', sourceAbility, source.abilityData, source);
+			this.singleEvent('End', targetAbility, target.abilityData, target);
+			if (targetAbility.id !== sourceAbility.id) {
+				source.ability = targetAbility.id;
+				target.ability = sourceAbility.id;
+				source.abilityData = {id: toId(source.ability), target: source};
+				target.abilityData = {id: toId(target.ability), target: target};
+			}
+			this.singleEvent('Start', targetAbility, source.abilityData, source);
+			this.singleEvent('Start', sourceAbility, target.abilityData, target);
+		},
+		secondary: null,
+		target: "normal",
+		type: "Psychic",
+		zMoveBoost: {spe: 1},
+		contestType: "Clever",
+	},
 		"solarbeam": {
 		num: 76,
 		accuracy: 100,
