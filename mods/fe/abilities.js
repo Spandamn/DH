@@ -3722,7 +3722,7 @@ exports.BattleAbilities = {
 		id: "meteorshower",
 		name: "Meteor Shower",
 	},
-	"blackhole": {
+	"darkmatter": {
 		shortDesc: "This Pokemon receives 1/2 damage from supereffective attacks. Immune to burn.",
 		onSourceModifyDamage: function(damage, source, target, move) {
 			if (move.typeMod > 0) {
@@ -3736,8 +3736,8 @@ exports.BattleAbilities = {
 			return false;
 		},
 		isUnbreakable: true,
-		id: "blackhole",
-		name: "Black Hole",
+		id: "darkmatter",
+		name: "Dark Matter",
 	},
 	"gracefulanalyst": {
 		shortDesc: "Serene Grace + 60% power boosting Analytic",
