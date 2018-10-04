@@ -170,19 +170,19 @@ exports.BattleAbilities = {
 		desc: "If Sunny Day is active, this Pokemon cannot gain a major status condition and Rest will fail for it.",
 		shortDesc: "If Sunny Day is active, this Pokemon cannot be statused and Rest will fail for it.",
 		onSetStatus: function (status, target, source, effect) {
-			if (this.isWeather(['sunnyday', 'desolateland', 'solarsnow'])) {
+			if (target.volatiles['weatherbreak'] === target.volatiles['atmosphericperversion'] && this.isWeather(['sunnyday', 'desolateland', 'solarsnow'])) {
 				if (effect && effect.status) this.add('-immune', target, '[msg]', '[from] ability: Leaf Guard');
 				return false;
 			}
 		},
 		onTryAddVolatile: function (status, target) {
-			if (status.id === 'yawn' && this.isWeather(['sunnyday', 'desolateland', 'solarsnow'])) {
+			if (target.volatiles['weatherbreak'] === target.volatiles['atmosphericperversion'] && status.id === 'yawn' && this.isWeather(['sunnyday', 'desolateland', 'solarsnow'])) {
 				this.add('-immune', target, '[msg]', '[from] ability: Leaf Guard');
 				return null;
 			}
 		},
 		onImmunity: function (type, pokemon) {
-			if (type === 'solarsnow') return false;
+			if (pokemon.volatiles['weatherbreak'] === pokemon.volatiles['atmosphericperversion'] && type === 'solarsnow') return false;
 		},
 		id: "leafguard",
 		name: "Leaf Guard",
@@ -630,7 +630,7 @@ exports.BattleAbilities = {
 		onResidualOrder: 5,
 		onResidualSubOrder: 1,
 		onResidual: function(pokemon) {
-			if (pokemon.status && this.isWeather(['sandstorm'])) {
+			if (pokemon.volatiles['weatherbreak'] === pokemon.volatiles['atmosphericperversion'] && pokemon.status && this.isWeather(['sandstorm'])) {
 				this.add('-activate', pokemon, 'ability: Sandy Skin');
 				pokemon.cureStatus();
 			}
@@ -647,7 +647,7 @@ exports.BattleAbilities = {
 		onResidualOrder: 5,
 		onResidualSubOrder: 1,
 		onResidual: function(pokemon) {
-			if (pokemon.status && this.isWeather(['sandstorm'])) {
+			if (pokemon.volatiles['weatherbreak'] === pokemon.volatiles['atmosphericperversion'] && pokemon.status && this.isWeather(['sandstorm'])) {
 				this.add('-activate', pokemon, 'ability: Sand Shed');
 				pokemon.cureStatus();
 			}
