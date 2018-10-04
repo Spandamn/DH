@@ -8106,44 +8106,53 @@ exports.BattleAbilities = {
 	    },
 	    id: "twofaced",
 	    name: "Two-Faced",
-	},
+	},"genometree": {
+    desc: "The user's Normal- and Fighting-type attacks ignore stat changes and Ghost's immunities. If the user attacks a boosted or Ghost-type Pokémon with a Normal- or Fighting-type attack, then the user's highest non-HP stat is boosted by 1 stage.",
+    shortDesc: "This Pokemon can hit Ghost types with Normal- and Fighting-type moves. If it does so or hits a boosted Pokemon with such a move, boosts its highest stat.",
+    onModifyMovePriority: -5,
+    onModifyMove: function(move) {
+        if (!move.ignoreImmunity) move.ignoreImmunity = {};
+        if (move.ignoreImmunity !== true) {
+            move.ignoreImmunity['Fighting'] = true;
+            move.ignoreImmunity['Normal'] = true;
+        }
+    },
 	"genometree": {
-         desc: "The user's Normal- and Fighting-type attacks ignore stat changes and Ghost's immunities. If the user attacks a boosted or Ghost-type Pokémon with a Normal- or Fighting-type attack, then the user's highest non-HP stat is boosted by 1 stage.",
-		shortDesc: "This Pokemon can hit Ghost types with Normal- and Fighting-type moves. If it does so or hits a boosted Pokemon with such a move, boosts its highest stat.",
-		onModifyMovePriority: -5,
-		onModifyMove: function (move) {
-			if (!move.ignoreImmunity) move.ignoreImmunity = {};
-			if (move.ignoreImmunity !== true) {
-				move.ignoreImmunity['Fighting'] = true;
-				move.ignoreImmunity['Normal'] = true;
-			}
-		},
-		onSourceHit: function (target, source, move) {
-			if (!move || !target) return;
-			if (target !== source && move.category !== 'Status' && (move.type === 'Normal' || move.type === 'Fighting')) {
-				  let buffed = false;
-                                  for (let i in target.boosts) { 
-                                  if (target.boosts[i] > 0){
-				    source.boosts[i] = target.boosts[i];
-                                    buffed = true;
-                                  }
-                                  if (buffed === true || target.hasType('Ghost')){
-				    let stat = 'atk';
-				    let bestStat = 0;
-				    for (let i in source.stats) {
-					if (source.stats[i] > bestStat) {
-						stat = i;
-						bestStat = source.stats[i];
-					}
-				    }
-				    this.boost({[stat]: 1}, source);
-											 }
-			}
-			}
-		},
-		id: "genometree",
-		name: "Genome Tree",
-	},
+    desc: "The user's Normal- and Fighting-type attacks ignore stat changes and Ghost's immunities. If the user attacks a boosted or Ghost-type Pokémon with a Normal- or Fighting-type attack, then the user's highest non-HP stat is boosted by 1 stage.",
+    shortDesc: "This Pokemon can hit Ghost types with Normal- and Fighting-type moves. If it hits a Ghost-type or a boosted opponent with such a move, boosts its highest stat.",
+    onModifyMovePriority: -5,
+    onModifyMove: function(move) {
+        if (!move.ignoreImmunity) move.ignoreImmunity = {};
+        if (move.ignoreImmunity !== true) {
+            move.ignoreImmunity['Fighting'] = true;
+            move.ignoreImmunity['Normal'] = true;
+        }
+    },
+    onSourceHit: function(target, source, move) {
+        if (!move || !target) return;
+        if (target !== source && move.category !== 'Status' && (move.type === 'Normal' || move.type === 'Fighting')) {
+            let buffed = false;
+            for (let i in target.boosts) {
+                if (target.boosts[i] > 0) {
+                    buffed = true;
+                }
+            }
+            if (buffed || target.hasType('Ghost')) {
+                let stat = 'atk';
+                let bestStat = 0;
+                for (let i in source.stats) {
+                    if (source.stats[i] > bestStat) {
+                        stat = i;
+                        bestStat = source.stats[i];
+                    }
+                }
+                this.boost({[stat]: 1}, source);
+            }
+        }
+    },
+    id: "genometree",
+    name: "Genome Tree",
+},
 	"blessedprotection": {
 		shortDesc: "Infiltrator effects + when a move break this Pokémon’s substitute, that move gets disabled until the target switches out.",
 		onModifyMove: function (move) {
