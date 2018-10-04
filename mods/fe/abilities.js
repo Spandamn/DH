@@ -10899,7 +10899,7 @@ exports.BattleAbilities = {
 		onEnd: function (pokemon) {
 			for (const side of this.sides) {
 				for (const target of side.active) {
-					if (target.hasAbility('weatherbreak')) return;
+					if (target.hasAbility('weatherbreak') && target !== pokemon) return;
 				}
 			}
 			for (const side of this.sides) {
@@ -10936,7 +10936,7 @@ exports.BattleAbilities = {
 		onEnd: function (pokemon) {
 			for (const side of this.sides) {
 				for (const target of side.active) {
-					if (target.hasAbility('atmosphericperversion') || target.hasAbility('weathercontradiction')) return;
+					if ((target.hasAbility('atmosphericperversion') || target.hasAbility('weathercontradiction')) && target !== pokemon) return;
 				}
 			}
 			for (const side of this.sides) {
@@ -10980,7 +10980,7 @@ exports.BattleAbilities = {
 		onEnd: function (pokemon) {
 			for (const side of this.sides) {
 				for (const target of side.active) {
-					if (target.hasAbility('atmosphericperversion') || target.hasAbility('weathercontradiction')) return;
+					if ((target.hasAbility('atmosphericperversion') || target.hasAbility('weathercontradiction')) && target !== pokemon) return;
 				}
 			}
 			for (const side of this.sides) {
@@ -12085,7 +12085,7 @@ exports.BattleAbilities = {
 		onEnd: function (pokemon) {
 			for (const side of this.sides) {
 				for (const target of side.active) {
-					if (target.hasAbility('engarde')) return;
+					if (target.hasAbility('engarde') && target !== pokemon) return;
 				}
 			}
 			for (const side of this.sides) {
@@ -12324,5 +12324,51 @@ exports.BattleAbilities = {
 		},
 		id: "nutcracker",
 		name: "Nutcracker",
+	},
+	"speedstopper": {
+		shortDesc: "While this Pokemon is active, it prevents opposing Pokemon from using their Berries and items that affect their Speed. This Pokemon gets +1 Speed on Switch-in if an opponent has such an item.",
+		onPreStart: function (pokemon) {
+			this.add('-ability', pokemon, 'Speed Stopper', pokemon.side.foe);
+		},
+		onStart: function (pokemon) {
+			let activated = false;
+			for (const target of pokemon.side.foe.active) {
+				if (target.getItem().isBerry){
+					activated = true;
+				}
+				if (!activated && ['adrenalineorb', 'choicescarf', 'quickpowder'].includes(target.getItem())){
+					target.addVolatile('engarde');
+					activated = true;
+				}
+			}
+			if (activated){
+				this.boost({spe: 1});
+			}
+		},
+		onAnySwitchin: function (pokemon) {
+			if (pokemon.side === this.effectData.target.side || !pokemon.getItem() || !['adrenalineorb', 'choicescarf', 'quickpowder'].includes(pokemon.getItem())) return;
+			pokemon.addVolatile('engarde');
+		},
+		onEnd: function (pokemon) {
+			let allyHasSpeedStopper = false;
+			for (const side of this.sides) {
+				for (const target of side.active) {
+					if (side === pokemon.side && target !== pokemon && target.hasAbility('speedstopper')){
+						allyHasSpeedStopper = true;
+					}
+					if (target.hasAbility('engarde')) return;
+				}
+			}
+			for (const side of this.sides) {
+				for (const target of side.active) {
+					if (!allyHasSpeedStopper || side !== pokemon.side){
+						target.removeVolatile('engarde');
+					}
+				}
+			}
+		},
+		onFoeTryEatItem: false,
+		id: "speedstopper",
+		name: "Speed Stopper",
 	},
 };
