@@ -5764,7 +5764,7 @@ exports.BattleAbilities = {
 		name: "Magical Wand",
 	},
 	"medicalexpert": {
-		shortDesc: "This Pokemon's moves have 1.3x the power when inflicted with a status condition or when it moves last. These bonuses stack.",
+		shortDesc: "This Pokemon's moves have 1.3x the power when inflicted with a status condition or when it moves last. These bonuses do not stack.",
 		onBasePowerPriority: 8,
 		onBasePower: function (basePower, pokemon) {
 			let boosted = true;
