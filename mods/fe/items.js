@@ -482,6 +482,20 @@ exports.BattleItems = {
         gen: 6,
         desc: "If holder is a dartios, this item allows it to Mega Evolve in battle.",
     },
+    "moltieite": {
+        id: "moltieite",
+        name: "moltieite",
+        spritenum: 624,
+
+        megaStone: "Moltie-Mega",
+        megaEvolves: "Moltie",
+        onTakeItem: function(item, source) {
+            if (item.megaEvolves === source.baseTemplate.baseSpecies) return false;
+            return true;
+        },
+        gen: 6,
+        desc: "If holder is a moltie, this item allows it to Mega Evolve in battle.",
+    },
     "banegrossxite": {
         id: "banegrossxite",
         name: "banegrossxite",
@@ -790,12 +804,26 @@ exports.BattleItems = {
         gen: 6,
         desc: "If holder is a blasterain, this item allows it to Mega Evolve in battle.",
     },
-    "dianbroite": {
-        id: "dianbroite",
-        name: "dianbroite",
+    "dianbrodite": {
+        id: "dianbrodite",
+        name: "dianbrodite",
+        spritenum: 624,
+
+        megaStone: "Dianbro-Mega-D",
+        megaEvolves: "Dianbro",
+        onTakeItem: function(item, source) {
+            if (item.megaEvolves === source.baseTemplate.baseSpecies) return false;
+            return true;
+        },
+        gen: 6,
+        desc: "If holder is a dianbro, this item allows it to Mega Evolve in battle.",
+    },
+    "dianbrosite": {
+        id: "dianbrosite",
+        name: "dianbrosite",
         spritenum: 620,
 
-        megaStone: "Dianbro-Mega",
+        megaStone: "Dianbro-Mega-S",
         megaEvolves: "Dianbro",
         onTakeItem: function(item, source) {
             if (item.megaEvolves === source.baseTemplate.baseSpecies) return false;
@@ -1292,7 +1320,21 @@ exports.BattleItems = {
             return true;
         },
         gen: 6,
-        desc: "If holder is a glalionz, this item allows it to Mega Evolve in battle.",
+        desc: "If holder is a galionz, this item allows it to Mega Evolve in battle.",
+    },
+    "thundurbeeite": {
+        id: "thundurbeeite",
+        name: "thundurbeeite",
+        spritenum: 628,
+
+        megaStone: "Thundurbee-Mega",
+        megaEvolves: "Thundurbee",
+        onTakeItem: function(item, source) {
+            if (item.megaEvolves === source.baseTemplate.baseSpecies) return false;
+            return true;
+        },
+        gen: 6,
+        desc: "If holder is a thundurbee, this item allows it to Mega Evolve in battle.",
     },
     "gallatrossite": {
         id: "gallatrossite",
