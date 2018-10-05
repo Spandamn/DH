@@ -11150,13 +11150,16 @@ exports.BattleAbilities = {
 			if (move.type === 'Electric') {
 				mod = mod * 1.2;
 			}
-			if (mod > 256){
-				return this.chainModify([Math.floor(mod*0x0010), 0x0010]);
+			if (mod < 16){
+				return this.chainModify([Math.floor(mod*0x1000), 0x1000]);
 			}
-			if (mod > 16){
+			if (mod < 256){
 				return this.chainModify([Math.floor(mod*0x0100), 0x0100]);
 			}
-			return this.chainModify([Math.floor(mod*0x1000), 0x1000]);
+			if (mod < 0x1000){
+				return this.chainModify([Math.floor(mod*0x0010), 0x0010]);
+			}
+			return this.chainModify(Math.floor(mod));
 		},
 		id: "aeonflux",
 		name: "Aeon Flux",
@@ -12454,5 +12457,54 @@ exports.BattleAbilities = {
 		},
 		id: "cursedcloak",
 		name: "Cursed Cloak",
+	},
+	"pawprayer": {
+		desc: "This Pokemon has 1.5x power on contact moves. If this Pokemon has a Psychic-type move in its moveset, it immediately transforms into Lycanitan-Daydream. In Daydream form, Psychic-type moves have an additional 1.5x power, and contact moves go off of the user's Special Attack.",
+		shortDesc: "x1.5 power on contact moves. If Lycanitan and has a Psychic-type move, turn into Daydream Form. As Daydream, x1.5 power to Psychic-type moves and turns all contact moves Special.",
+		onStart: function (pokemon) {
+			if (pokemon.baseTemplate.baseSpecies !== 'Lycanitan' || pokemon.transformed) return;
+			let hasPsychicMove = false;
+			for (const moveSlot of pokemon.moveSlots) {
+				let move = this.getMove(moveSlot.move);
+				if (!hasPsychicMove && move.type === 'Psychic') {
+					hasPsychicMove = true;
+				}
+			}
+			if (pokemon.hp > pokemon.maxhp / 4) {
+				if (pokemon.template.speciesid === 'lycanitan') {
+					pokemon.formeChange('Lycanitan-Daydream');
+				}
+			} else {
+				if (pokemon.template.speciesid === 'lycanitandaydream') {
+					pokemon.formeChange('Lycanitan');
+				}
+			}
+		},
+		onBasePowerPriority: 8,
+		onBasePower: function(basePower, attacker, defender, move) {
+			let mod = 1;
+			if (move.flags['contact']) {
+				mod = mod * 1.5;
+				if (attacker.template.speciesid === 'lycanitandaydream') {
+					mod = mod * attacker.getStat('spa', false, false);
+					mod = mod / attacker.getStat('atk', false, false);
+				}
+			}
+			if (move.type === 'Psychic' && attacker.template.speciesid === 'lycanitandaydream') {
+				mod = mod * 1.5;
+			}
+			if (mod < 16){
+				return this.chainModify([Math.floor(mod*0x1000), 0x1000]);
+			}
+			if (mod < 256){
+				return this.chainModify([Math.floor(mod*0x0100), 0x0100]);
+			}
+			if (mod < 0x1000){
+				return this.chainModify([Math.floor(mod*0x0010), 0x0010]);
+			}
+			return this.chainModify(Math.floor(mod));
+		},
+		id: "pawprayer",
+		name: "Paw Prayer",
 	},
 };
