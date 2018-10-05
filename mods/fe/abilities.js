@@ -12470,7 +12470,7 @@ exports.BattleAbilities = {
 					hasPsychicMove = true;
 				}
 			}
-			if (pokemon.hp > pokemon.maxhp / 4) {
+			if (hasPsychicMove) {
 				if (pokemon.template.speciesid === 'lycanitan') {
 					pokemon.formeChange('Lycanitan-Daydream');
 				}
@@ -12503,6 +12503,25 @@ exports.BattleAbilities = {
 				return this.chainModify([Math.floor(mod*0x0010), 0x0010]);
 			}
 			return this.chainModify(Math.floor(mod));
+		},
+		onUpdate: function (pokemon) {
+			if (pokemon.baseTemplate.baseSpecies !== 'Lycanitan' || pokemon.transformed) return;
+			let hasPsychicMove = false;
+			for (const moveSlot of pokemon.moveSlots) {
+				let move = this.getMove(moveSlot.move);
+				if (!hasPsychicMove && move.type === 'Psychic') {
+					hasPsychicMove = true;
+				}
+			}
+			if (hasPsychicMove) {
+				if (pokemon.template.speciesid === 'lycanitan') {
+					pokemon.formeChange('Lycanitan-Daydream');
+				}
+			} else {
+				if (pokemon.template.speciesid === 'lycanitandaydream') {
+					pokemon.formeChange('Lycanitan');
+				}
+			}
 		},
 		id: "pawprayer",
 		name: "Paw Prayer",
