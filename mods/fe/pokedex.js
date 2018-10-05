@@ -1641,9 +1641,9 @@ exports.BattlePokedex = {
         color: "Gray",
         eggGroups: ["Monster"],
     },
-    aggrosaurmegax: {
+    aggrosaurmegav: {
         num: 750029,
-        species: "Aggrosaur-Mega-X",
+        species: "Aggrosaur-Mega-V",
         baseSpecies: "Aggrosaur",
         forme: "Mega",
         formeLetter: "M",
@@ -1669,9 +1669,9 @@ exports.BattlePokedex = {
         eggGroups: ["Monster"],
     },
 
-    aggrosaurmegay: {
+    aggrosaurmegaa: {
         num: 750029,
-        species: "Aggrosaur-Mega-Y",
+        species: "Aggrosaur-Mega-A",
         baseSpecies: "Aggrosaur",
         forme: "Mega",
         formeLetter: "M",
