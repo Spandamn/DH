@@ -1280,6 +1280,19 @@ exports.BattleItems = {
         gen: 6,
         desc: "If holder is a metanlee, this item allows it to Mega Evolve in battle.",
     },
+	"kangoruskhanite": {
+		id: "kangoruskhanite",
+		name: "kangoruskhanite",
+		spritenum: 592,
+		megaStone: "Kangorus-Khan-Mega",
+		megaEvolves: "Kangorus-Khan",
+		onTakeItem: function (item, source) {
+			if (item.megaEvolves === source.baseTemplate.baseSpecies) return false;
+			return true;
+		},
+		gen: 6,
+		desc: "If held by a Kangorus-Khan, this item allows it to Mega Evolve in battle.",
+	},
     "heebleyeite": {
         id: "heebleyeite",
         name: "heebleyeite",
@@ -1880,19 +1893,33 @@ exports.BattleItems = {
         gen: 6,
         desc: "If holder is a aloha, this item allows it to Mega Evolve in battle.",
     },
-    "kyupedoite": {
-        id: "kyupedoite",
-        name: "kyupedoite",
-        spritenum: 619,
+    "gengalureite": {
+        id: "gengalureite",
+        name: "gengalureite",
+        spritenum: 588,
 		 
-        megaStone: "Kyupedo-Mega",
-        megaEvolves: "Kyupedo",
+        megaStone: "Gengalure-Mega",
+        megaEvolves: "Gengalure",
         onTakeItem: function(item, source) {
             if (item.megaEvolves === source.baseTemplate.baseSpecies) return false;
             return true;
         },
         gen: 6,
-        desc: "If holder is a kyupedo, this item allows it to Mega Evolve in battle.",
+        desc: "If holder is a Gengalure, this item allows it to Mega Evolve in battle.",
+    },
+    "kyurpedoite": {
+        id: "kyurpedoite",
+        name: "kyurpedoite",
+        spritenum: 619,
+		 
+        megaStone: "Kyurpedo-Mega",
+        megaEvolves: "Kyurpedo",
+        onTakeItem: function(item, source) {
+            if (item.megaEvolves === source.baseTemplate.baseSpecies) return false;
+            return true;
+        },
+        gen: 6,
+        desc: "If holder is a kyurpedo, this item allows it to Mega Evolve in battle.",
     },
     "luauite": {
         id: "luauite",
@@ -1907,6 +1934,34 @@ exports.BattleItems = {
         },
         gen: 6,
         desc: "If holder is a luau, this item allows it to Mega Evolve in battle.",
+    },
+    "gearchampite": {
+        id: "gearchampite",
+        name: "gearchampite",
+        spritenum: 599,
+		 
+        megaStone: "Gearchamp-Mega",
+        megaEvolves: "Gearchamp",
+        onTakeItem: function(item, source) {
+            if (item.megaEvolves === source.baseTemplate.baseSpecies) return false;
+            return true;
+        },
+        gen: 6,
+        desc: "If holder is a Gearchamp, this item allows it to Mega Evolve in battle.",
+    },
+    "alohaite": {
+        id: "alohaite",
+        name: "alohaite",
+        spritenum: 619,
+		 
+        megaStone: "Aloha-Mega",
+        megaEvolves: "Aloha",
+        onTakeItem: function(item, source) {
+            if (item.megaEvolves === source.baseTemplate.baseSpecies) return false;
+            return true;
+        },
+        gen: 6,
+        desc: "If holder is a aloha, this item allows it to Mega Evolve in battle.",
     },
     "swampterraite": {
         id: "swampterraite",
@@ -1992,6 +2047,19 @@ exports.BattleItems = {
         gen: 6,
         desc: "If holder is a regigot, this item allows it to Mega Evolve in battle.",
     },
+	"kasukabeite": {
+		id: "kasukabeite",
+		name: "kasukabeite",
+		spritenum: 592,
+		megaStone: "Kasukabe-Mega",
+		megaEvolves: "Kasukabe",
+		onTakeItem: function (item, source) {
+			if (item.megaEvolves === source.baseTemplate.baseSpecies) return false;
+			return true;
+		},
+		gen: 6,
+		desc: "If held by a Kasukabe, this item allows it to Mega Evolve in battle.",
+	},
     "sakamakiite": {
         id: "sakamakiite",
         name: "sakamakiite",
