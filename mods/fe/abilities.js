@@ -12396,6 +12396,12 @@ exports.BattleAbilities = {
 				}
 			}
 		},
+		onAnyDeductPP: function(target, source) {
+			if (target !== this.effectData.target && source !== this.effectData.target) return;
+			if (target === this.effectData.target && target.template.speciesid !== 'washoxstrand') return;
+			if (source === this.effectData.target && source.template.speciesid !== 'washox') return;
+			return 1;
+		},
 		onResidualOrder: 27,
 		onResidual: function (pokemon) {
 			if (pokemon.baseTemplate.baseSpecies !== 'Washox' || pokemon.transformed || !pokemon.hp) return;
@@ -12421,7 +12427,7 @@ exports.BattleAbilities = {
 				this.add('-activate', target, 'ability: Cursed Cloak');
 				this.effectData.busted = true;
 				if (source !== target){
-					source.addVolatile('disable', this.effectData.target);
+					source.addVolatile('disable', target);
 				}
 				return 0;
 			}
