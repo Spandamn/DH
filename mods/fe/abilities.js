@@ -12556,7 +12556,7 @@ exports.BattleAbilities = {
 				let statAdd = 0;
 				for (let stat in pokemon.boosts) {
 					// @ts-ignore
-					if (pokemon.boosts[stat] > 0) {
+					if (pokemon.boosts[stat] > 0 && statAdd < 6) {
 						statAdd = statAdd + pokemon.boosts[stat];
 					}
 				}
