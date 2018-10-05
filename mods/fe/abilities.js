@@ -11801,7 +11801,7 @@ exports.BattleAbilities = {
 		id: "slimedrench",
 		onFoeTryHeal: function (damage, target, source, effect) {
 			this.debug("Heal is occurring: " + target + " <- " + source + " :: " + effect.id);
-			if (target.status === 'tox' || target.status === 'psn') {
+			if ((target.status === 'tox' || target.status === 'psn') && effect && (effect.effectType === 'Move' || effect.effectType === 'Item')) {
 				this.damage(damage);
 				return 0;
 			}
