@@ -12626,4 +12626,96 @@ exports.BattleAbilities = {
 // 		id: "beastbootleg",
 // 		name: "Beast Bootleg",
 // 	},
+		
+// 	"vegetarian": {
+// 		desc: "This Pokemon is immune to Grass-type moves and activates the effects of a random berry, regardless of conditions, when hit by a Grass-type move.",
+// 		shortDesc: "This Pokemon summons and eats a randomly chosen berry if hit by a Grass move; Grass immunity.",
+// 		onTryHitPriority: 1,
+// 		onTryHit: function (target, source, move) {
+// 			if (target !== source && move.type === 'Grass') {
+// 				let spawnedBerries = ['leppaberry', 'oranberry', 'sitrusberry', 'figyberry', 'wikiberry', 'magoberry', 'aguavberry', 'iapapaberry', 'liechiberry', 'ganlonberry', 'salacberry', 'petayaberry', 'apicotberry', 'lansatberry', 'starfberry', 'micleberry', 'custapberry', 'keeberry', 'marangaberry', 'rowapberry', 'jabocaberry'];
+// 				if (target.status){
+// 					if (!target.volatiles['confusion']) spawnedBerries.push('lumberry');
+// 					switch (target.status){
+// 						case 'par':
+// 							spawnedBerries.push('cheriberry');
+// 							break;
+// 						case 'brn':
+// 							spawnedBerries.push('aspearberry');
+// 							break;
+// 						case 'psn':
+// 						case 'tox':
+// 							spawnedBerries.push('pechaberry');
+// 							break;
+// 						case 'frz':
+// 							spawnedBerries.push('rawstberry');
+// 							break;
+// 						case 'slp':
+// 							spawnedBerries.push('chestoberry');
+// 							break;
+// 					}
+// 				}
+// 				if (target.volatiles['confusion']){
+// 					spawnedBerries.push('persimberry');
+// 					spawnedBerries.push('lumberry');
+// 				}
+// 				let eatenBerry = spawnedBerries.sample();
+// 				if (eatenBerry === 'jabocaberry' || eatenBerry === 'marangaberry'){
+// 					this.damage(source.maxhp / 8, source, target);
+// 					return null;
+// 				}
+// 				let heldItem = target.item; 
+// 				target.item = eatenBerry;
+// 				let eating = true;
+// 				if !target.eatItem() eating = false;
+// 				target.item = heldItem;
+// 				if (!eating) {
+// 					this.add('-immune', target, '[msg]', '[from] ability: Vegetarian');
+// 				}
+// 				return null;
+// 			}
+// 		},
+// 		onAllyTryHitSide: function (target, source, move) {
+// 			if (target === this.effectData.target || target.side !== source.side) return;
+// 			if (move.type === 'Grass') {
+// 				let spawnedBerries = ['leppaberry', 'oranberry', 'sitrusberry', 'figyberry', 'wikiberry', 'magoberry', 'aguavberry', 'iapapaberry', 'liechiberry', 'ganlonberry', 'salacberry', 'petayaberry', 'apicotberry', 'lansatberry', 'starfberry', 'micleberry', 'custapberry', 'keeberry', 'marangaberry', 'rowapberry', 'jabocaberry'];
+// 				if (target.status){
+// 					if (!target.volatiles['confusion']) spawnedBerries.push('lumberry');
+// 					switch (target.status){
+// 						case 'par':
+// 							spawnedBerries.push('cheriberry');
+// 							break;
+// 						case 'brn':
+// 							spawnedBerries.push('aspearberry');
+// 							break;
+// 						case 'psn':
+// 						case 'tox':
+// 							spawnedBerries.push('pechaberry');
+// 							break;
+// 						case 'frz':
+// 							spawnedBerries.push('rawstberry');
+// 							break;
+// 						case 'slp':
+// 							spawnedBerries.push('chestoberry');
+// 							break;
+// 					}
+// 				}
+// 				if (target.volatiles['confusion']){
+// 					spawnedBerries.push('persimberry');
+// 					spawnedBerries.push('lumberry');
+// 				}
+// 				let eatenBerry = spawnedBerries.sample();
+// 				if (eatenBerry === 'jabocaberry' || eatenBerry === 'marangaberry'){
+// 					this.damage(source.maxhp / 8, source, target);
+// 					return null;
+// 				}
+// 				let heldItem = target.item; 
+// 				target.item = eatenBerry;
+// 				target.eatItem();
+// 				target.item = heldItem;
+// 			}
+// 		},
+// 		id: "vegetarian",
+// 		name: "Vegetarian",
+// 	},
 };
