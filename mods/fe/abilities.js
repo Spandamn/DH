@@ -12625,5 +12625,5 @@ exports.BattleAbilities = {
 // 		//Implementing volatiles['beastbootleg'].items working its magic likely goes into scripts.js
 // 		id: "beastbootleg",
 // 		name: "Beast Bootleg",
-	},
+// 	},
 };
