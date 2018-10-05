@@ -12608,4 +12608,22 @@ exports.BattleAbilities = {
 		id: "mirageguard",
 		name: "Mirage Guard",
 	},
+// 	"beastbootleg": {
+// 		desc: "When this Pokemon gets a KO, its highest stat is raised by one stage and it gains the effect of the foe's held item. It can hold up to two effects this way. Items matching the one it actually is holding do not count. After two effects are stored, new effects replace the first effect gained.",
+// 		shortDesc: "If this Pokemon attacks and KOes another Pokemon, it copies that Pokemon's held item's effects. Two effects can be copied this way, the earlier being overwritten if it copies a new one.",
+// 		onStart: function (pokemon) {
+// 			pokemon.addVolatile('beastbootleg');
+// 			pokemon.volatiles['beastbootleg'].items = ['', ''];
+// 		},
+// 		onSourceFaint: function (target, source, effect) {
+// 			if (effect && effect.effectType === 'Move' && target.item && !target.hasAbility('stickyhold')) {
+// 				if (!this.singleEvent('TakeItem', target.getItem(), target.itemData, target, source, effect, target.getItem())) return;
+// 				if (target.getItem() === source.getItem() || (source.volatiles['beastbootleg'].items && source.volatiles['beastbootleg'].items.includes(target.getItem().id))) return;
+// 				source.volatiles['beastbootleg'].items = [source.volatiles['beastbootleg'].items[1], target.getItem().id];
+// 			}
+// 		},
+// 		//Implementing volatiles['beastbootleg'].items working its magic likely goes into scripts.js
+// 		id: "beastbootleg",
+// 		name: "Beast Bootleg",
+	},
 };
