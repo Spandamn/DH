@@ -12412,4 +12412,33 @@ exports.BattleAbilities = {
 		id: "mitosis",
 		name: "Mitosis",
 	},
+	"cursedcloak": {
+		desc: "If this Pokemon is a Banekyu, the first hit it takes in battle deals 0 neutral damage. Its disguise is then broken, the attacker's move is disabled, and it changes to Busted Form. Confusion damage also breaks the disguise, but won't disable.",
+		shortDesc: "If this Pokemon is a Baneky, the first hit it takes in battle deals 0 neutral damage and disables the attacker's ability if it isn't from confusion.",
+		onDamagePriority: 1,
+		onDamage: function (damage, target, source, effect) {
+			if (effect && effect.effectType === 'Move' && target.template.speciesid === 'banekyu' && !target.transformed) {
+				this.add('-activate', target, 'ability: Cursed Cloak');
+				this.effectData.busted = true;
+				if (source !== target){
+					source.addVolatile('disable', this.effectData.target);
+				}
+				return 0;
+			}
+		},
+		onEffectiveness: function (typeMod, target, type, move) {
+			if (!this.activeTarget) return;
+			let pokemon = this.activeTarget;
+			if (target.template.speciesid !== 'banekyu' || pokemon.transformed || (pokemon.volatiles['substitute'] && !(move.flags['authentic'] || move.infiltrates))) return;
+			if (!pokemon.runImmunity(move.type)) return;
+			return 0;
+		},
+		onUpdate: function (pokemon) {
+			if (['mimikyu', 'mimikyutotem'].includes(pokemon.template.speciesid) && this.effectData.busted) {
+				pokemon.formeChange('Banekyu-Busted', this.effect, true);
+			}
+		},
+		id: "cursedcloak",
+		name: "Cursed Cloak",
+	},
 };
