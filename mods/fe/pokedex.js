@@ -8712,7 +8712,7 @@ darkchomp: {
         eggGroups: ["Undiscovered"],
     },
     thundurbeemega: {
-        num: 7500106,
+        num: 7500167,
         species: "Thundurbee-Mega",
         baseSpecies: "Thundurbee",
         forme: "Mega",
@@ -15285,6 +15285,30 @@ celebi: {
         },
         abilities: {
             0: "Soul Power"
+        },
+        color: "Gray",
+        heightm: 1.15,
+        weightkg: 56.5,
+		  eggGroups: ["Undiscovered"],
+    },
+    gearchampmega: {
+        num: 7500332,
+        species: "Gearchamp-Mega",
+        baseSpecies: "Gearchamp",
+        forme: "Mega",
+        formeLetter: "M",
+        types: ["Fighting", "Fairy"],
+        gender: "N",
+        baseStats: {
+            hp: 80,
+            atk: 124,
+            def: 105,
+            spa: 125,
+            spd: 105,
+            spe: 105
+        },
+        abilities: {
+            0: "Pure Power"
         },
         color: "Gray",
         heightm: 1.15,
