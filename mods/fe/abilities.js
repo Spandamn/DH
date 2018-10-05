@@ -1626,8 +1626,7 @@ exports.BattleAbilities = {
 		onStart: function(pokemon) {
 			this.add('-ability', pokemon, 'Under Pressure');
 		},
-		onDeductPP: function (target, source) {
-			if (target !== source) return;
+		onSourceDeductPP: function (move) {
 			return 1;
 		},
 		id: "underpressure",
@@ -5219,7 +5218,7 @@ exports.BattleAbilities = {
 			this.add('-ability', pokemon, 'Sandy Storm');
 			this.setWeather('sandstorm');
 		},
-		onDeductPP: function(target, source) {
+		onAnyDeductPP: function(target, source) {
 			if (!this.isWeather('sandstorm')) return;
 			return 1;
 		},
@@ -5556,8 +5555,8 @@ exports.BattleAbilities = {
 	},
 	"sharpshooter": {
 		shortDesc: "This Pokemon's attacks always result in a critical hit, but use 2 PP instead of 1.",
-		onDeductPP: function (target, source) {
-			if (target !== source) return;
+		onSourceDeductPP: function (move) {
+			if (move.category === 'Status') return;
 			return 1;
 		},
 		onModifyMove: function(move) {
@@ -7626,7 +7625,7 @@ exports.BattleAbilities = {
 		name: "Extremist",
 	},
 	"quarantine": {
-		shortDesc: "Attacks against this Pokémon use one extra PP. This Pokémon cannot be inflicted with status conditions of any kind, including Taunt.",
+		shortDesc: "Attacks against this Pokémon use one extra PP. This Pokémon cannot be inflicted with status conditions.",
 		onStart: function (pokemon) {
 			this.add('-ability', pokemon, 'Quarantine');
 		},
@@ -7945,7 +7944,7 @@ exports.BattleAbilities = {
 		name: "Merciless Beast",
 	},
 	"ability": {
-		shortDesc: "This Pokemon's Fire-type moves have their power doubled and their PP halved.",
+		shortDesc: "This Pokemon's Fire-type moves have their power and PP consumption doubled.",
 		onModifyAtkPriority: 5,
 		onModifyAtk: function (atk, attacker, defender, move) {
 			if (move.type === 'Fire') {
@@ -7960,8 +7959,8 @@ exports.BattleAbilities = {
 				return this.chainModify(2);
 			}
 		},
-		onDeductPP: function (target, source, move) {
-			if (target !== source || move.type !== 'Fire') return;
+		onSourceDeductPP: function (move) {
+			if (move.type !== 'Fire') return;
 			return 1;
 		},
 		id: "ability",
@@ -12024,7 +12023,7 @@ exports.BattleAbilities = {
 		},
 		onDeductPP: function (target, source) {
 			if (target.side === source.side) return;
-			if (source.template.speciesid !== 'giramini' || source.transformed) return;
+			if (target.template.speciesid !== 'giramini' || target.transformed) return;
 			return 1;
 		},
 		onSetStatus: function (status, target, source, effect) {
@@ -12381,5 +12380,36 @@ exports.BattleAbilities = {
 		onFoeTryEatItem: false,
 		id: "speedstopper",
 		name: "Speed Stopper",
+	},
+	"mitosis": {
+		desc: "On switch-in, if this Pokemon is a Washox and has more than 1/4 of its maximum HP left, it changes to Chomosome Form. If it is in Chromosome Form and its HP drops to 1/4 of its maximum HP or less, it changes to Strand Form at the end of the turn. If it is in Strand Form and its HP is greater than 1/4 its maximum HP at the end of the turn, it changes to Chromosome Form. This Pokemon's PP consumption is doubled in Chromosome Form, but doubles the consumption of enemy moves' PP in Strand Form.",
+		shortDesc: "If user is Washox, changes to Chromosome Form if it has > 1/4 max HP, else Strand Form. Chromosome uses up one additional PP per move, but Strand doubles the PP of incoming enemy moves.",
+		onStart: function (pokemon) {
+			if (pokemon.baseTemplate.baseSpecies !== 'Washox' || pokemon.transformed) return;
+			if (pokemon.hp > pokemon.maxhp / 4) {
+				if (pokemon.template.speciesid === 'washoxstrand') {
+					pokemon.formeChange('Washox');
+				}
+			} else {
+				if (pokemon.template.speciesid === 'washox') {
+					pokemon.formeChange('Washox-Strand');
+				}
+			}
+		},
+		onResidualOrder: 27,
+		onResidual: function (pokemon) {
+			if (pokemon.baseTemplate.baseSpecies !== 'Washox' || pokemon.transformed || !pokemon.hp) return;
+			if (pokemon.hp > pokemon.maxhp / 4) {
+				if (pokemon.template.speciesid === 'washoxstrand') {
+					pokemon.formeChange('Washox');
+				}
+			} else {
+				if (pokemon.template.speciesid === 'washox') {
+					pokemon.formeChange('Washox-Strand');
+				}
+			}
+		},
+		id: "mitosis",
+		name: "Mitosis",
 	},
 };
