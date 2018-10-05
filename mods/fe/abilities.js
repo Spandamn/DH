@@ -12526,4 +12526,45 @@ exports.BattleAbilities = {
 		id: "pawprayer",
 		name: "Paw Prayer",
 	},
+	"tourtorussia": {
+		desc: "This Pokemon heals 1/16 of its HP at the end of each turn for how many stat boosts it has, maxing out at 6/16. When this Pokemon first has its stats raised, or if a Pokemon attempts to lower this Pokemon's stats, hail is summoned. This Pokemon's stats cannot be lowered by opposing Pokemon.",
+		shortDesc: "If boosted, heals 6.25% of max HP for each boost at the end of each turn, maxing out at 37.5%. Stats cannot be lowered. Summons hail after its first stat boost or when an enemy tries to decrease a stat.",
+		onBoost: function (boost, target, source, effect) {
+			if (source && target === source) return;
+			let showMsg = false;
+			let summonHail = false;
+			for (let i in boost) {
+				// @ts-ignore
+				if (boost[i] < 0) {
+					// @ts-ignore
+					delete boost[i];
+					showMsg = true;
+					if (!effect.secondaries) summonHail = true;
+				}
+				else if (boost[i] > 0 && !this.volatiles['tourtorussia']){
+					target.addVolatile('tourtorussia');
+				   summonHail = true;
+				}
+			}
+			if (showMsg && !effect.secondaries) this.add("-fail", target, "unboost", "[from] ability: Tour To Russia", "[of] " + target);
+			if (summonHail) this.setWeather('hail');
+		},
+		onResidualOrder: 26,
+		onResidualSubOrder: 1,
+		onResidual: function (pokemon) {
+			if (pokemon.activeTurns) {
+				let statAdd = 0;
+				for (let stat in pokemon.boosts) {
+					// @ts-ignore
+					if (pokemon.boosts[stat] > 0) {
+						statAdd = statAdd + pokemon.boosts[stat];
+					}
+				}
+				if (statAdd > 6) statAdd = 6;
+				this.heal((pokemon.maxhp * statAdd) / 16);
+			}
+		},
+		id: "tourtorussia",
+		name: "Tour To Russia",
+	},
 };
