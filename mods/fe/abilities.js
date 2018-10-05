@@ -11150,6 +11150,12 @@ exports.BattleAbilities = {
 			if (move.type === 'Electric') {
 				mod = mod * 1.2;
 			}
+			if (mod > 256){
+				return this.chainModify([Math.floor(mod*0x0010), 0x0010]);
+			}
+			if (mod > 16){
+				return this.chainModify([Math.floor(mod*0x0100), 0x0100]);
+			}
 			return this.chainModify([Math.floor(mod*0x1000), 0x1000]);
 		},
 		id: "aeonflux",
