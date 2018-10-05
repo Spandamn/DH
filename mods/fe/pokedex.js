@@ -8711,6 +8711,30 @@ darkchomp: {
         color: "Yellow",
         eggGroups: ["Undiscovered"],
     },
+    thundurbeemega: {
+        num: 7500106,
+        species: "Thundurbee-Mega",
+        baseSpecies: "Thundurbee",
+        forme: "Mega",
+        formeLetter: "M",
+        types: ["Bug", "Electric"],
+        gender: "M",
+        baseStats: {
+            hp: 72,
+            atk: 180,
+            def: 55,
+            spa: 55,
+            spd: 90,
+            spe: 175
+        },
+        abilities: {
+            0: "Adaptability"
+        },
+        heightm: 1.645,
+        weightkg: 45.25,
+        color: "Yellow",
+        eggGroups: ["Undiscovered"],
+    },
     gallatross: {
         num: 7500168,
         species: "Gallatross",
