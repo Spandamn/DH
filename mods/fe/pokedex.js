@@ -15140,6 +15140,29 @@ celebi: {
         weightkg: 37.4,
 		  eggGroups: ["Amorphous"],
     },
+    gengaluremega: {
+        num: 7500327,
+        species: "Gengalure-Mega",
+        baseSpecies: "Gengalure",
+        forme: "Mega",
+        formeLetter: "M",
+        types: ["Ghost", "Fire"],
+        baseStats: {
+            hp: 70,
+            atk: 70,
+            def: 105,
+            spa: 187,
+            spd: 112,
+            spe: 125
+        },
+        abilities: {
+            0: "Shadow Tag"
+        },
+        color: "Purple",
+        heightm: 1.15,
+        weightkg: 37.4,
+		  eggGroups: ["Amorphous"],
+    },
     ferrolord: {
         num: 7500328,
         species: "Ferrolord",
