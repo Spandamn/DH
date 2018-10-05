@@ -1014,6 +1014,20 @@ exports.BattleItems = {
         gen: 6,
         desc: "If holder is a thunderblast, this item allows it to Mega Evolve in battle.",
     },
+    "jellieite": {
+        id: "jellieite",
+        name: "jellieite",
+        spritenum: 624,
+
+        megaStone: "Jellie-Mega",
+        megaEvolves: "Jellie",
+        onTakeItem: function(item, source) {
+            if (item.megaEvolves === source.baseTemplate.baseSpecies) return false;
+            return true;
+        },
+        gen: 6,
+        desc: "If holder is a jellie, this item allows it to Mega Evolve in battle.",
+    },
     "zaggronite": {
         id: "zaggronite",
         name: "zaggronite",
