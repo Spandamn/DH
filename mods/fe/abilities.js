@@ -4782,6 +4782,7 @@ exports.BattleAbilities = {
 					boosts[i] = 0;
 				}
 			}
+			pokemon.setBoost(boosts);
 			this.add('-clearnegativeboost', pokemon);
 		},
 		id: "clearpouch",
