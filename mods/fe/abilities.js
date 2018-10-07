@@ -5134,14 +5134,13 @@ exports.BattleAbilities = {
 	"evaporate": {
 	    shortDesc: "30% chance of healing 1/4 of its max HP instead of taking damage whenever hit by a super-effective attack.",
 	    onTryHit: function(target, source, move) {
-	        if (this.randomChance(3, 10)) {
-				  if (target !== source && move.typeMod > 0) {
+			  if (move.category === 'Status') return;
+			  if (target !== source && this.randomChance(3, 10) && target.runEffectiveness(move) > 0) {
 	            if (!this.heal(target.maxhp / 4)) {
 	                this.add('-immune', target, '[msg]', '[from] ability: Evaporate');
 	            }
 	            this.add('-ability', target, 'Evaporate');
 	            return null;
-	        }
 			  }
 	    },
 	    id: "evaporate",
