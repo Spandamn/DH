@@ -224,6 +224,15 @@ exports.BattleScripts = {
 
     // BattlePokemon scripts, which should override the other things.
     pokemon: {
+		 
+// 		getActionSpeed() {
+// 			let speed = this.getStat('spe', false, false);
+// 			if (speed > 10000) speed = 10000;
+// 			if ((this.battle.getPseudoWeather('trickroom') && !this.battle.getPseudoWeather('sluggishaura')) || (this.battle.getPseudoWeather('sluggishaura') && !this.battle.getWeather('trickroom'))) {
+// 				speed = 0x2710 - speed;
+// 			}
+// 			return speed & 0x1FFF;
+// 		},
         isGrounded(negateImmunity = false) {
             if ('gravity' in this.battle.pseudoWeather) return true;
             if ('ingrain' in this.volatiles && this.battle.gen >= 4) return true;
