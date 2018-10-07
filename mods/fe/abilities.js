@@ -12718,4 +12718,13 @@ exports.BattleAbilities = {
 // 		id: "vegetarian",
 // 		name: "Vegetarian",
 // 	},
+	"airraider": {
+		shortDesc: "This Pokemon is immune to Ground-type attacks. Its own attacks are critical hits if the target is neither grounded nor has this ability.",
+		onModifyCritRatio: function (critRatio, source, target) {
+			if (target && !target.isGrounded() && target.getAbility() !== 'airraider') return 5;
+		},
+		//Airborneness in scripts.js#pokemon
+		id: "airraider",
+		name: "Air Raider",
+	},
 };
