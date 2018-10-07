@@ -10409,29 +10409,26 @@ exports.BattleAbilities = {
 	"sippityhoo": {
 		desc: "If a foe with a removable item attacks the Pokémon with this ability, the item is lost and this Pokémon's Attack goes up by one stage. Furthermore, if the pokémon with this ability is not holding an item, it will steal the item and won't take damage from the attack. ",
 		shortDesc: "If a foe with a removable item attacks the Pokémon with this ability, the item is lost and this Pokémon's Attack goes up by one stage. Furthermore, if the pokémon with this ability is not holding an item, it will steal the item and won't take damage from the attack. ",
-		onSourceHit: function (target, source, move) {
-			if (!move || !target) return;
-			if (target !== source && move.category !== 'Status') {
-				if (source.item || source.volatiles['gem'] || source.volatiles['fling']) return;
-				let yourItem = target.takeItem(source);
-				if (!yourItem) return;
-				if (!source.setItem(yourItem)) {
-					target.item = yourItem.id; // bypass setItem so we don't break choicelock or anything
-					source.addVolatile('sippityhoo');
-					return;
+		onAfterMoveSecondary: function (target, source, move) {
+			if (source && source !== target && move && target.item) {
+				let yourItem = source.takeItem(target);
+				if (yourItem) {
+					this.add('-enditem', source, yourItem, '[silent]', '[from] ability: Sippity Hoo', '[of] ' + source);
+					this.boost({atk: 1})
 				}
-				this.add('-item', source, yourItem, '[from] ability: Sippity Hoo', '[of] ' + target);
 			}
 		},
 		onTryHit: function (target, source, move) {
-			if (target !== source && target.volatiles['sippityhoo']) {
+			if (target !== source && source.item) {
+				if (target.item || source.volatiles['gem'] || source.volatiles['fling']) return;
+				let yourItem = source.takeItem(target);
+				if (!yourItem) return;
+				if (!target.setItem(yourItem)) {
+					source.item = yourItem.id;
+					return;
+				}
 				this.add('-immune', target, '[msg]', '[from] ability: Sippity Hoo');
-				target.removeVolatile('sippityhoo');
 				return null;
-			}
-			if (target !== source && target.item) {
-				target.takeItem();
-				this.add('-activate', source, 'ability: Sippity Hoo');
 			}
 		},
 		id: "sippityhoo",
