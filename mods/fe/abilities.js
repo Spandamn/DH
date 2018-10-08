@@ -7848,8 +7848,8 @@ exports.BattleAbilities = {
 						bestStat = target.stats[i];
 					}
 				}
-			if (boost.stat && boost.stat < 0) {
-				delete boost.stat;
+			if (boost[stat] && boost[stat] < 0) {
+				delete boost[stat];
 				if (!effect.secondaries) this.add("-fail", target, "unboost", stat, "[from] ability: Limb Enhancers", "[of] " + target);
 				this.boost({[stat]: 1}, target);
 			}
@@ -10846,12 +10846,12 @@ exports.BattleAbilities = {
 						bestStat = target.stats[i];
 					}
 				}
-			if (boost.stat && boost.stat < 0) {
+			if (boost[stat] && boost[stat] < 0) {
 				if (effect.secondaries){
 					delete boost.stat;
 				}
 				else {
-					boost.stat = 1;
+					boost[stat] = 1;
 					this.add("-fail", target, "unboost", stat, "[from] ability: Beast Eye", "[of] " + target);
 				}
 			}
