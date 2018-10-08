@@ -4474,6 +4474,48 @@ exports.Formats = [
 		},
 	},
 	{
+		name: "[Gen 7] Hazards: The Stackening",
+		desc: `A metagame with Stealth Rock variants of every type; and they all stack with each other!.`,
+		threads: [
+			`&bullet; <a href="https://www.smogon.com/forums/threads/3639262/">Hazards: The Stackening</a>`,
+		],
+		mod: 'HTS',
+		ruleset: [ 'Pokemon', 'Standard','OHKO Clause','Team Preview','Evasion Moves Clause','Endless Battle Clause','Sleep Clause Mod', 'Freeze Clause Mod'],
+		checkLearnset: function (move, template, lsetData, set) {
+			const restrictedMoves = this.format.restrictedMoves || [];
+			let prevo = template.isMega ? this.getTemplate(template.species.substring(0, template.species.length - 5)).prevo : template.prevo;
+			let stealthHazards = ['stealthnormal', 'stealthwater', 'stealthgrass', 'stealthghost', 'stealthground', 'stealthice', 'stealthelectric', 'stealthdark', 'stealthdragon', 'stealthfire', 'stealthfighting', 'stealthfairy', 'stealthbug', 'stealthpoison', 'stealthpsychic', 'stealthrock', 'stealthsteel', 'stealthflying',];
+			let types = {};
+			if ( stealthHazards.includes(move.id) && !restrictedMoves.includes(move.name) && !move.isZ ) {
+				for ( let i in template.learnset ) {
+					if ( i !== 'hiddenpower' ) types[ Dex.getMove(i).type ] = true;
+				}	
+				while (prevo)
+				{
+					for ( let i in prevo.learnset ) {
+						if ( i !== 'hiddenpower' ) types[ Dex.getMove(i).type ] = true;
+					}			
+					prevo = Dex.getTemplate(prevo).prevo;
+				}
+				let baseTemplate = Dex.getTemplate(template.baseSpecies);
+				if (baseTemplate.otherFormes) {
+					for (const formeid of baseTemplate.otherFormes) {
+						let forme = Dex.getTemplate(formeid);
+						if (!forme.battleOnly) {
+							if (forme.forme !== 'Alola' && forme.forme !== 'Alola-Totem' && forme.baseSpecies !== 'Wormadam') {
+								for ( let i in forme.learnset ) {
+									if ( i !== 'hiddenpower' ) types[ Dex.getMove(i).type ] = true;
+								}			
+							}
+						}
+					}
+				}
+				if (types[ move.type ]) return null;
+			}
+			return this.checkLearnset(move, template, lsetData, set);
+		},
+	},	
+	{
 		name: "[Gen 7] Jillian",
 		desc: ["&bullet; A custom region",
 		      ],
