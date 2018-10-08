@@ -225,6 +225,88 @@ exports.BattleScripts = {
 
     // BattlePokemon scripts, which should override the other things.
     pokemon: { 
+		 
+		eatItem() {
+			if (!this.hp || !this.isActive) return false;
+			let source = this.battle.event.target;
+			let item = this.battle.effect;
+			if (this.battle.runEvent('UseItem', this, null, null, item) && this.battle.runEvent('TryEatItem', this, null, null, item)) {
+				this.battle.add('-enditem', this, item, '[eat]');
+
+				this.battle.singleEvent('Eat', item, this.itemData, this, source, item);
+				this.battle.runEvent('EatItem', this, null, null, item);
+
+				this.lastItem = this.item;
+				if (this.item === item.id) {
+					this.item = '';
+					this.itemData = {id: '', target: this};
+				}
+				if ('goldentouch' in this.volatiles){
+					if (this.volatiles['goldentouch'].item === item.id) {
+						this.volatiles['goldentouch'].item = '';
+					}
+				}
+				if ('beastbootleg' in this.volatiles){
+					if (this.volatiles['beastbootleg'].items[0] === item.id) {
+						this.volatiles['beastbootleg'].items[0] = '';
+					}
+					else if (this.volatiles['beastbootleg'].items[1] === item.id) {
+						this.volatiles['beastbootleg'].items[1] = this.volatiles['beastbootleg'].items[0];
+						this.volatiles['beastbootleg'].items[0] = '';
+						
+					}
+				}
+				this.usedItemThisTurn = true;
+				this.ateBerry = true;
+				this.battle.runEvent('AfterUseItem', this, null, null, item);
+				return true;
+			}
+			return false;
+		},
+		 
+		useItem(unused, source) {
+			let item = this.battle.effect;
+			if ((!this.hp && !item.isGem) || !this.isActive) return false;
+			if (!source && this.battle.event && this.battle.event.target) source = this.battle.event.target;
+			if (this.battle.runEvent('UseItem', this, null, null, item)) {
+				switch (item.id) {
+				case 'redcard':
+					this.battle.add('-enditem', this, item, '[of] ' + source);
+					break;
+				default:
+					if (!item.isGem) {
+						this.battle.add('-enditem', this, item);
+					}
+					break;
+				}
+
+				this.battle.singleEvent('Use', item, this.itemData, this, source, item);
+
+				this.lastItem = this.item;
+				if (this.item === item.id) {
+					this.item = '';
+					this.itemData = {id: '', target: this};
+				}
+				if ('goldentouch' in this.volatiles){
+					if (this.volatiles['goldentouch'].item === item.id) {
+						this.volatiles['goldentouch'].item = '';
+					}
+				}
+				if ('beastbootleg' in this.volatiles){
+					if (this.volatiles['beastbootleg'].items[0] === item.id) {
+						this.volatiles['beastbootleg'].items[0] = '';
+					}
+					else if (this.volatiles['beastbootleg'].items[1] === item.id) {
+						this.volatiles['beastbootleg'].items = ['', this.volatiles['beastbootleg'].items[0]];
+						
+					}
+				}
+				this.usedItemThisTurn = true;
+				this.battle.runEvent('AfterUseItem', this, null, null, item);
+				return true;
+			}
+			return false;
+		},
 		ignoringAbility() {
 			return !!((this.battle.gen >= 5 && !this.isActive) || ((this.volatiles['gastroacid'] || this.volatiles['teraarmor']) && !['battlebond', 'comatose', 'disguise', 'multitype', 'powerconstruct', 'rkssystem', 'schooling', 'shieldsdown', 'stancechange'].includes(this.ability)));
 		},
