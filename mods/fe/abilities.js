@@ -12715,4 +12715,38 @@ exports.BattleAbilities = {
 		id: "airraider",
 		name: "Air Raider",
 	},
+	
+	"sluggishaura": {
+		desc: "As long as this Pokemon is active, slower Pokeon move first. This Pokemon's Speed is lowered by 1 stage at the end of each full turn it has been on the field.",
+		shortDesc: "As long as this Pokemon is active, slower Pokeon move first. At the end of each turn, its Speed is reduced by 1 stage.",
+		onStart: function (source) {
+			this.addPseudoWeather('sluggishaura');
+		},
+		onAnyTryMove: function (target, source, effect) {
+			if (effect.effectType === 'Move' && effect.id === 'trickroom' && this.pseudoWeather.sluggishaura) {
+				this.add('-fail', source, effect, '[from] Sluggish Aura');
+				return null;
+			}
+		},
+		onEnd: function (pokemon) {
+			for (const side of this.sides) {
+				for (const target of side.active) {
+					if (target === pokemon) continue;
+					if (target && target.hp && target.hasAbility('sluggishaura')) {
+						return;
+					}
+				}
+			}
+			this.removePseudoWeather('sluggishaura');
+		},
+		onResidualOrder: 26,
+		onResidualSubOrder: 1,
+		onResidual: function (pokemon) {
+			if (pokemon.activeTurns) {
+				this.boost({spe: -1});
+			}
+		},
+		id: "sluggishaura",
+		name: "Sluggish Aura",
+	},
 };
