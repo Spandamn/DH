@@ -3932,4 +3932,70 @@ exports.BattleItems = {
 		gen: 3,
 		desc: "Restores 1/2 max HP at 1/4 max HP or less; confuses if -SpA Nature. Single use.",
 	},
+	"blueorb": {
+		id: "blueorb",
+		name: "Blue Orb",
+		spritenum: 41,
+		onSwitchIn: function (pokemon) {
+			if (pokemon.isActive && ['Kyogre', 'Kyonun', 'Kyokid', 'Kyervine'].includes(pokemon.baseTemplate.species)) {
+				this.insertQueue({pokemon: pokemon, choice: 'runPrimal'});
+			}
+		},
+		onPrimal: function (pokemon) {
+			switch (pokemon.baseTemplate.species){
+				case 'Kyogre':
+					pokemon.formeChange('Kyogre-Primal', this.effect, true);
+					break;
+				case 'Kyokid':
+					pokemon.formeChange('Kyokid-Primal', this.effect, true);
+					break;
+				case 'Kyonun':
+					pokemon.formeChange('Kyonun-Primal', this.effect, true);
+					break;
+				case 'Kyervine':
+					pokemon.formeChange('Kyervine-Primal', this.effect, true);
+					break;
+			}
+		},
+		onTakeItem: function (item, source) {
+			if (['Kyogre', 'Kyonun', 'Kyokid', 'Kyervine'].includes(source.baseTemplate.species)) return false;
+			return true;
+		},
+		num: 535,
+		gen: 6,
+		desc: "If held by a Kyogre or a fusion thereof, this item triggers its Primal Reversion in battle.",
+	},
+	"redorb": {
+		id: "redorb",
+		name: "Red Orb",
+		spritenum: 390,
+		onSwitchIn: function (pokemon) {
+			if (pokemon.isActive && ['Groudon', 'Cherron', 'Glaive', 'Grousle'].includes(pokemon.baseTemplate.species)) {
+				this.insertQueue({pokemon: pokemon, choice: 'runPrimal'});
+			}
+		},
+		onPrimal: function (pokemon) {
+			switch (pokemon.baseTemplate.species){
+				case 'Groudon':
+					pokemon.formeChange('Groudon-Primal', this.effect, true);
+					break;
+				case 'Cherron':
+					pokemon.formeChange('Cherron-Primal', this.effect, true);
+					break;
+				case 'Glaive':
+					pokemon.formeChange('Glaive-Primal', this.effect, true);
+					break;
+				case 'Grousle':
+					pokemon.formeChange('Grousle-Primal', this.effect, true);
+					break;
+			}
+		},
+		onTakeItem: function (item, source) {
+			if (['Groudon', 'Cherron', 'Glaive', 'Grousle'].includes(source.baseTemplate.species)) return false;
+			return true;
+		},
+		num: 534,
+		gen: 6,
+		desc: "If held by a Groudon or a fusion thereof, this item triggers its Primal Reversion in battle.",
+	},
 };
