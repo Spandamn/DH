@@ -2771,15 +2771,15 @@ exports.BattleFormatsData = { //
     shitpost: {
         tier: "OU",
     },
-    catbed: {
+    lupuchandel: {
         tier: "OU",
     },
-    trampoline: {
+    roaramp: {
         tier: "OU",
     },
-    trampolinemega: {
+    roarampmega: {
         tier: "OU",
-        requiredItem: "trampolineite",
+        requiredItem: "roarampite",
     },
     arcalie: {
         tier: "OU",
@@ -2813,7 +2813,7 @@ exports.BattleFormatsData = { //
         tier: "OU",
         requiredItem: "auroritarite",
     },
-    necrynxcutewig: {
+    necrynx: {
         tier: "OU",
     },
     necrynxultra: {
@@ -2875,7 +2875,7 @@ exports.BattleFormatsData = { //
     hippallyfairy: {
         tier: "OU",
     },
-    necroquaduskbubble: {
+    necroqua: {
         tier: "OU",
     },
     necroquaultra: {
@@ -2898,7 +2898,7 @@ exports.BattleFormatsData = { //
     watafak: {
         tier: "OU",
     },
-    necrozeraindawndisguise: {
+    necrozerain: {
         tier: "OU",
     },
     necrozerainultra: {
@@ -2956,7 +2956,7 @@ exports.BattleFormatsData = { //
     tornadeltherian: {
         tier: "OU",
     },
-    necropurugly: {
+    necropur: {
         tier: "OU",
     },
     necropurbeautiful: {
@@ -2967,7 +2967,7 @@ exports.BattleFormatsData = { //
     flyorusguard: {
         tier: "OU",
     },
-    lamparadenoche: {
+    lampara: {
         tier: "OU",
     },
     lamparadelava: {
@@ -3043,7 +3043,7 @@ exports.BattleFormatsData = { //
     shedigigas: {
         tier: "OU",
     },
-    chazmaegg: {
+    chazma: {
         tier: "OU",
     },
     chazmahatched: {
