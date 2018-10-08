@@ -241,7 +241,11 @@ exports.BattleScripts = {
             if ('ingrain' in this.volatiles && this.battle.gen >= 4) return true;
             if ('smackdown' in this.volatiles) return true;
             let item = (this.ignoringItem() ? '' : this.item);
-            if (item === 'ironball') return true;
+            let golden = ((this.ignoringItem() || !('goldentouch' in this.volatiles)) ? '' : this.volatiles['goldentouch'].item);
+            let bootleg1 = ((this.ignoringItem() || !('beastbootleg' in this.volatiles)) ? '' : this.volatiles['beastbootleg'].items[0]);
+            let bootleg2 = ((this.ignoringItem() || !('beastbootleg' in this.volatiles)) ? '' : this.volatiles['beastbootleg'].items[1]);
+			   let totalItems = [item, golden, bootleg1, bootleg2];
+            if (totalItems.includes('ironball')) return true;
             // If a Fire/Flying type uses Burn Up and Roost, it becomes ???/Flying-type, but it's still grounded.
             if (!negateImmunity && this.hasType('Flying') && !('roost' in this.volatiles)) return false;
             if ((this.hasAbility('levitate') || this.hasAbility('airraider') || this.hasAbility('magneticfield') || this.hasAbility('galelevitation') || this.hasAbility('floatinggrounds') || this.hasAbility('turborise')) && !this.battle.suppressingAttackEvents()) return null;
@@ -249,7 +253,7 @@ exports.BattleScripts = {
             if (this.hasAbility('compression') && this.template.species === 'Giramini-Unleashed' && !this.battle.suppressingAttackEvents()) return null;
             if ('magnetrise' in this.volatiles) return false;
             if ('telekinesis' in this.volatiles) return false;
-            return item !== 'airballoon';
+            return !totalItems.includes('airballoon');
         },
 
         setStatus(status, source = null, sourceEffect = null, ignoreImmunities = false) {
