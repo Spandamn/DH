@@ -19114,7 +19114,7 @@ auroritarmega: {
         abilities: {0: "Sand Stream"},
 		  eggGroups: ["Monster"],
     }, 
- necrynxcutewig: {
+ necrynx: {
 		num: 7500451,
 		species: "Necrynx",
 	   baseForme: "Cute Wig",
