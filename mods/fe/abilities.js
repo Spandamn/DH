@@ -11923,8 +11923,9 @@ exports.BattleAbilities = {
 			}
 			if (!targets.length) return;
 			let randomTarget = this.sample(targets);
-			this.singleEvent('Start', randomTarget.getItem(), randomTarget.itemData, pokemon);
-			this.add('-item', pokemon, randomTarget.getItem(), '[from] ability: Golden Touch');
+			this.add('-item', randomTarget, randomTarget.getItem().name, '[from] ability: Golden Touch', '[of] ' + pokemon, '[identify]');
+			pokemon.addVolatile('goldentouch');
+			pokemon.volatiles['goldentouch'].item = randomTarget.getItem().id;
 		},
 		id: "goldentouch",
 		name: "Golden Touch",
