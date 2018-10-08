@@ -4256,51 +4256,6 @@ let BattleAbilities = {
 		rating: 3.5,
 		num: 22,
 	},
-	 "overdrive": {
-        desc: "If Electric Terrain is active, this Pokemon's Attacks are multiplied by 1.5 and it loses 1/8 of its maximum HP, rounded down, at the end of each turn.",
-        shortDesc: "If Electric Terrain is active, this Pokemon's Attacks are 1.5x; loses 1/8 max HP per turn.",
-        onModifySpAPriority: 5,
-        onModifySpA: function (spa, pokemon) {
-            if (this.isTerrain('electricterrain')) return this.chainModify(1.5);
-        },
-        onModifyAtk: function (atk, pokemon) {
-            if (this.isTerrain('electricterrain')) return this.chainModify(1.5);
-        },
-        onTerrain: function (target, source, effect) {
-            if (effect.id === 'electricterrain') {
-                this.damage(target.maxhp / 8, target, target);
-            }
-        },
-        id: "overdrive",
-        name: "Overdrive",
-        rating: 1.5,
-        num: 94,
-    },
-	"pinksmoke": {
-        shortDesc: "This Pokemon is not affected by the secondary effect of another Pokemon's attack, and cannot be struck by a critical hit.",
-        onModifySecondaries: function (secondaries) {
-            this.debug('Shield Dust prevent secondary');
-            return secondaries.filter(effect => !!(effect.self || effect.dustproof));
-        },
-        onCriticalHit: false,
-        id: "pinksmoke",
-        name: "Pink Smoke",
-        rating: 2.5,
-        num: 19,
-    },
-	"lonewolf": {
-        desc: "This Pokemon's Sp. Attack is raised by 1 stage if it attacks and knocks out another Pokemon.",
-        shortDesc: "This Pokemon's Sp. Attack is raised by 1 stage if it attacks and KOes another Pokemon.",
-        onSourceFaint: function (target, source, effect) {
-            if (effect && effect.effectType === 'Move') {
-                this.boost({spa: 1}, source);
-            }
-        },
-        id: "lonewolf",
-        name: "Lone Wolf",
-        rating: 3.5,
-        num: 153,
-    },
 };
 
 exports.BattleAbilities = BattleAbilities;

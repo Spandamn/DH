@@ -19368,56 +19368,6 @@ let BattleMovedex = {
 		zMovePower: 180,
 		contestType: "Tough",
 	},
-	 "titaniatears": {
-        num: 500,
-        accuracy: 100,
-        basePower: 20,
-        basePowerCallback: function (pokemon, target, move) {
-            return move.basePower + 20 * pokemon.positiveBoosts();
-        },
-        category: "Special",
-        desc: "Power is equal to 20+(X*20), where X is the user's total stat stage changes that are greater than 0.",
-        shortDesc: " + 20 power for each of the user's stat boosts.",
-        id: "titaniatears",
-        name: "Titania Tears",
-        pp: 10,
-        priority: 0,
-        flags: {protect: 1, mirror: 1},
-        secondary: null,
-		onPrepareHit: function(target, source, move) {
-			this.attrLastMove('[still]');
-			this.add('-anim', source, "Fake Tears", target);
-		},
-        target: "normal",
-        type: "Fairy",
-        zMovePower: 160,
-        contestType: "Clever",
-    },
-	"diamonddagger": {
-        num: 348,
-        accuracy: 85,
-        basePower: 95,
-        category: "Special",
-        desc: "Has a higher chance for a critical hit.",
-        shortDesc: "High critical hit ratio.",
-        id: "diamonddagger",
-        isViable: true,
-        name: "Diamond Dagger",
-        pp: 5,
-        priority: 0,
-        flags: {protect: 1, mirror: 1},
-        critRatio: 2,
-        secondary: null,
-		onPrepareHit: function(target, source, move) {
-			this.attrLastMove('[still]');
-			this.add('-anim', source, "Fake Tears", target);
-		},
-        target: "normal",
-        type: "Rock",
-        zMovePower: 175,
-        contestType: "Cool",
-    },
-	
 };
 
 exports.BattleMovedex = BattleMovedex;
