@@ -10644,9 +10644,11 @@ exports.BattleAbilities = {
 						bestStat = source.stats[i];
 					}
 				}
-				this.boost({spa: 1}, source);
-				if (stat !== 'spa') {
-				this.boost({[stat]: 1}, source);
+				if (stat === 'spa') {
+					this.boost({spa: 1}, source);
+				}
+				else {
+					this.boost({spa: 1, [stat]: 1}, source);
 				}
 				source.removeVolatile('hotairballoon');
 			},
