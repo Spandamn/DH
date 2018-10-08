@@ -19614,7 +19614,7 @@ auroritarmega: {
 	necroquaultra: {
 		num: 7500453,
 		species: "Necroqua-Ultra",
-		baseSpecies: "Necroqua-Dusk-Bubble",
+		baseSpecies: "Necroqua",
 		forme: "Ultra",
 		formeLetter: "U",
 		types: ["Steel", "Dragon"],
@@ -19743,7 +19743,7 @@ auroritarmega: {
 		  weightkg: 424.25,
 		  eggGroups: ["Undiscovered"],
 	},
-	necrozeraindawndisguise: {
+	necrozerain: {
 		num: 7500458,
 		species: "Necrozerain",
 	   baseForme: "Dawn Disguise",
