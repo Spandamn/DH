@@ -482,6 +482,20 @@ exports.BattleItems = {
         gen: 6,
         desc: "If holder is a dartios, this item allows it to Mega Evolve in battle.",
     },
+    "moltieite": {
+        id: "moltieite",
+        name: "moltieite",
+        spritenum: 624,
+
+        megaStone: "Moltie-Mega",
+        megaEvolves: "Moltie",
+        onTakeItem: function(item, source) {
+            if (item.megaEvolves === source.baseTemplate.baseSpecies) return false;
+            return true;
+        },
+        gen: 6,
+        desc: "If holder is a moltie, this item allows it to Mega Evolve in battle.",
+    },
     "banegrossxite": {
         id: "banegrossxite",
         name: "banegrossxite",
@@ -790,12 +804,26 @@ exports.BattleItems = {
         gen: 6,
         desc: "If holder is a blasterain, this item allows it to Mega Evolve in battle.",
     },
-    "dianbroite": {
-        id: "dianbroite",
-        name: "dianbroite",
+    "dianbrodite": {
+        id: "dianbrodite",
+        name: "dianbrodite",
+        spritenum: 624,
+
+        megaStone: "Dianbro-Mega-D",
+        megaEvolves: "Dianbro",
+        onTakeItem: function(item, source) {
+            if (item.megaEvolves === source.baseTemplate.baseSpecies) return false;
+            return true;
+        },
+        gen: 6,
+        desc: "If holder is a dianbro, this item allows it to Mega Evolve in battle.",
+    },
+    "dianbrosite": {
+        id: "dianbrosite",
+        name: "dianbrosite",
         spritenum: 620,
 
-        megaStone: "Dianbro-Mega",
+        megaStone: "Dianbro-Mega-S",
         megaEvolves: "Dianbro",
         onTakeItem: function(item, source) {
             if (item.megaEvolves === source.baseTemplate.baseSpecies) return false;
@@ -985,6 +1013,20 @@ exports.BattleItems = {
         },
         gen: 6,
         desc: "If holder is a thunderblast, this item allows it to Mega Evolve in battle.",
+    },
+    "jellieite": {
+        id: "jellieite",
+        name: "jellieite",
+        spritenum: 624,
+
+        megaStone: "Jellie-Mega",
+        megaEvolves: "Jellie",
+        onTakeItem: function(item, source) {
+            if (item.megaEvolves === source.baseTemplate.baseSpecies) return false;
+            return true;
+        },
+        gen: 6,
+        desc: "If holder is a jellie, this item allows it to Mega Evolve in battle.",
     },
     "zaggronite": {
         id: "zaggronite",
@@ -1238,6 +1280,19 @@ exports.BattleItems = {
         gen: 6,
         desc: "If holder is a metanlee, this item allows it to Mega Evolve in battle.",
     },
+	"kangoruskhanite": {
+		id: "kangoruskhanite",
+		name: "kangoruskhanite",
+		spritenum: 592,
+		megaStone: "Kangorus-Khan-Mega",
+		megaEvolves: "Kangorus-Khan",
+		onTakeItem: function (item, source) {
+			if (item.megaEvolves === source.baseTemplate.baseSpecies) return false;
+			return true;
+		},
+		gen: 6,
+		desc: "If held by a Kangorus-Khan, this item allows it to Mega Evolve in battle.",
+	},
     "heebleyeite": {
         id: "heebleyeite",
         name: "heebleyeite",
@@ -1292,7 +1347,21 @@ exports.BattleItems = {
             return true;
         },
         gen: 6,
-        desc: "If holder is a glalionz, this item allows it to Mega Evolve in battle.",
+        desc: "If holder is a galionz, this item allows it to Mega Evolve in battle.",
+    },
+    "thundurbeeite": {
+        id: "thundurbeeite",
+        name: "thundurbeeite",
+        spritenum: 628,
+
+        megaStone: "Thundurbee-Mega",
+        megaEvolves: "Thundurbee",
+        onTakeItem: function(item, source) {
+            if (item.megaEvolves === source.baseTemplate.baseSpecies) return false;
+            return true;
+        },
+        gen: 6,
+        desc: "If holder is a thundurbee, this item allows it to Mega Evolve in battle.",
     },
     "gallatrossite": {
         id: "gallatrossite",
@@ -1642,9 +1711,9 @@ exports.BattleItems = {
         gen: 6,
         desc: "If holder is a banekyu, this item allows it to Mega Evolve in battle.",
     },
-    "Heratanaite": {
+    "heratanaite": {
         id: "heratanaite",
-        name: "heratanaite",
+        name: "Heratanaite",
         spritenum: 590,
 		 
         megaStone: "Heratana-Mega",
@@ -1824,19 +1893,33 @@ exports.BattleItems = {
         gen: 6,
         desc: "If holder is a aloha, this item allows it to Mega Evolve in battle.",
     },
-    "kyupedoite": {
-        id: "kyupedoite",
-        name: "kyupedoite",
-        spritenum: 619,
+    "gengalureite": {
+        id: "gengalureite",
+        name: "gengalureite",
+        spritenum: 588,
 		 
-        megaStone: "Kyupedo-Mega",
-        megaEvolves: "Kyupedo",
+        megaStone: "Gengalure-Mega",
+        megaEvolves: "Gengalure",
         onTakeItem: function(item, source) {
             if (item.megaEvolves === source.baseTemplate.baseSpecies) return false;
             return true;
         },
         gen: 6,
-        desc: "If holder is a kyupedo, this item allows it to Mega Evolve in battle.",
+        desc: "If holder is a Gengalure, this item allows it to Mega Evolve in battle.",
+    },
+    "kyurpedoite": {
+        id: "kyurpedoite",
+        name: "kyurpedoite",
+        spritenum: 619,
+		 
+        megaStone: "Kyurpedo-Mega",
+        megaEvolves: "Kyurpedo",
+        onTakeItem: function(item, source) {
+            if (item.megaEvolves === source.baseTemplate.baseSpecies) return false;
+            return true;
+        },
+        gen: 6,
+        desc: "If holder is a kyurpedo, this item allows it to Mega Evolve in battle.",
     },
     "luauite": {
         id: "luauite",
@@ -1851,6 +1934,34 @@ exports.BattleItems = {
         },
         gen: 6,
         desc: "If holder is a luau, this item allows it to Mega Evolve in battle.",
+    },
+    "gearchampite": {
+        id: "gearchampite",
+        name: "gearchampite",
+        spritenum: 599,
+		 
+        megaStone: "Gearchamp-Mega",
+        megaEvolves: "Gearchamp",
+        onTakeItem: function(item, source) {
+            if (item.megaEvolves === source.baseTemplate.baseSpecies) return false;
+            return true;
+        },
+        gen: 6,
+        desc: "If holder is a Gearchamp, this item allows it to Mega Evolve in battle.",
+    },
+    "alohaite": {
+        id: "alohaite",
+        name: "alohaite",
+        spritenum: 619,
+		 
+        megaStone: "Aloha-Mega",
+        megaEvolves: "Aloha",
+        onTakeItem: function(item, source) {
+            if (item.megaEvolves === source.baseTemplate.baseSpecies) return false;
+            return true;
+        },
+        gen: 6,
+        desc: "If holder is a aloha, this item allows it to Mega Evolve in battle.",
     },
     "swampterraite": {
         id: "swampterraite",
@@ -1936,6 +2047,19 @@ exports.BattleItems = {
         gen: 6,
         desc: "If holder is a regigot, this item allows it to Mega Evolve in battle.",
     },
+	"kasukabeite": {
+		id: "kasukabeite",
+		name: "kasukabeite",
+		spritenum: 592,
+		megaStone: "Kasukabe-Mega",
+		megaEvolves: "Kasukabe",
+		onTakeItem: function (item, source) {
+			if (item.megaEvolves === source.baseTemplate.baseSpecies) return false;
+			return true;
+		},
+		gen: 6,
+		desc: "If held by a Kasukabe, this item allows it to Mega Evolve in battle.",
+	},
     "sakamakiite": {
         id: "sakamakiite",
         name: "sakamakiite",
@@ -3457,5 +3581,355 @@ exports.BattleItems = {
 		num: 94,
 		gen: 4,
 		desc: "No competitive use.",
+	},
+	"aguavberry": {
+		id: "aguavberry",
+		name: "Aguav Berry",
+		spritenum: 5,
+		isBerry: true,
+		naturalGift: {
+			basePower: 80,
+			type: "Dragon",
+		},
+		onUpdate: function (pokemon) {
+			if (pokemon.hp <= pokemon.maxhp / 4 || (pokemon.hp <= pokemon.maxhp / 2 && ['gluttony', 'bloodmadecrops', 'foodcoloring'].includes(pokemon.getAbility()))) {
+				pokemon.eatItem();
+			}
+		},
+		onTryEatItem: function (item, pokemon) {
+			if (!this.runEvent('TryHeal', pokemon)) return false;
+		},
+		onEat: function (pokemon) {
+			this.heal(pokemon.maxhp / 2);
+			if (pokemon.getNature().minus === 'spd') {
+				pokemon.addVolatile('confusion');
+			}
+		},
+		num: 162,
+		gen: 3,
+		desc: "Restores 1/2 max HP at 1/4 max HP or less; confuses if -SpD Nature. Single use.",
+	},
+	"apicotberry": {
+		id: "apicotberry",
+		name: "Apicot Berry",
+		spritenum: 10,
+		isBerry: true,
+		naturalGift: {
+			basePower: 100,
+			type: "Ground",
+		},
+		onUpdate: function (pokemon) {
+			if (pokemon.hp <= pokemon.maxhp / 4 || (pokemon.hp <= pokemon.maxhp / 2 && ['gluttony', 'bloodmadecrops', 'foodcoloring'].includes(pokemon.getAbility()))) {
+				pokemon.eatItem();
+			}
+		},
+		onEat: function (pokemon) {
+			this.boost({spd: 1});
+		},
+		num: 205,
+		gen: 3,
+		desc: "Raises holder's Sp. Def by 1 stage when at 1/4 max HP or less. Single use.",
+	},
+	"custapberry": {
+		id: "custapberry",
+		name: "Custap Berry",
+		isUnreleased: true,
+		spritenum: 86,
+		isBerry: true,
+		naturalGift: {
+			basePower: 100,
+			type: "Ghost",
+		},
+		onModifyPriorityPriority: -1,
+		onModifyPriority: function (priority, pokemon) {
+			if (pokemon.hp <= pokemon.maxhp / 4 || (pokemon.hp <= pokemon.maxhp / 2 && ['gluttony', 'bloodmadecrops', 'foodcoloring'].includes(pokemon.getAbility()))) {
+				if (pokemon.eatItem()) {
+					this.add('-activate', pokemon, 'item: Custap Berry', '[consumed]');
+					pokemon.removeVolatile('custapberry');
+					return Math.round(priority) + 0.1;
+				}
+			}
+		},
+		onEat: function () { },
+		num: 210,
+		gen: 4,
+		desc: "Holder moves first in its priority bracket when at 1/4 max HP or less. Single use.",
+	},
+	"figyberry": {
+		id: "figyberry",
+		name: "Figy Berry",
+		spritenum: 140,
+		isBerry: true,
+		naturalGift: {
+			basePower: 80,
+			type: "Bug",
+		},
+		onUpdate: function (pokemon) {
+			if (pokemon.hp <= pokemon.maxhp / 4 || (pokemon.hp <= pokemon.maxhp / 2 && ['gluttony', 'bloodmadecrops', 'foodcoloring'].includes(pokemon.getAbility()))) {
+				pokemon.eatItem();
+			}
+		},
+		onTryEatItem: function (item, pokemon) {
+			if (!this.runEvent('TryHeal', pokemon)) return false;
+		},
+		onEat: function (pokemon) {
+			this.heal(pokemon.maxhp / 2);
+			if (pokemon.getNature().minus === 'atk') {
+				pokemon.addVolatile('confusion');
+			}
+		},
+		num: 159,
+		gen: 3,
+		desc: "Restores 1/2 max HP at 1/4 max HP or less; confuses if -Atk Nature. Single use.",
+	},
+	"ganlonberry": {
+		id: "ganlonberry",
+		name: "Ganlon Berry",
+		spritenum: 158,
+		isBerry: true,
+		naturalGift: {
+			basePower: 100,
+			type: "Ice",
+		},
+		onUpdate: function (pokemon) {
+			if (pokemon.hp <= pokemon.maxhp / 4 || (pokemon.hp <= pokemon.maxhp / 2 && ['gluttony', 'bloodmadecrops', 'foodcoloring'].includes(pokemon.getAbility()))) {
+				pokemon.eatItem();
+			}
+		},
+		onEat: function (pokemon) {
+			this.boost({def: 1});
+		},
+		num: 202,
+		gen: 3,
+		desc: "Raises holder's Defense by 1 stage when at 1/4 max HP or less. Single use.",
+	},
+	"iapapaberry": {
+		id: "iapapaberry",
+		name: "Iapapa Berry",
+		spritenum: 217,
+		isBerry: true,
+		naturalGift: {
+			basePower: 80,
+			type: "Dark",
+		},
+		onUpdate: function (pokemon) {
+			if (pokemon.hp <= pokemon.maxhp / 4 || (pokemon.hp <= pokemon.maxhp / 2 && ['gluttony', 'bloodmadecrops', 'foodcoloring'].includes(pokemon.getAbility()))) {
+				pokemon.eatItem();
+			}
+		},
+		onTryEatItem: function (item, pokemon) {
+			if (!this.runEvent('TryHeal', pokemon)) return false;
+		},
+		onEat: function (pokemon) {
+			this.heal(pokemon.maxhp / 2);
+			if (pokemon.getNature().minus === 'def') {
+				pokemon.addVolatile('confusion');
+			}
+		},
+		num: 163,
+		gen: 3,
+		desc: "Restores 1/2 max HP at 1/4 max HP or less; confuses if -Def Nature. Single use.",
+	},
+	"lansatberry": {
+		id: "lansatberry",
+		name: "Lansat Berry",
+		spritenum: 238,
+		isBerry: true,
+		naturalGift: {
+			basePower: 100,
+			type: "Flying",
+		},
+		onUpdate: function (pokemon) {
+			if (pokemon.hp <= pokemon.maxhp / 4 || (pokemon.hp <= pokemon.maxhp / 2 && ['gluttony', 'bloodmadecrops', 'foodcoloring'].includes(pokemon.getAbility()))) {
+				pokemon.eatItem();
+			}
+		},
+		onEat: function (pokemon) {
+			pokemon.addVolatile('focusenergy');
+		},
+		num: 206,
+		gen: 3,
+		desc: "Holder gains the Focus Energy effect when at 1/4 max HP or less. Single use.",
+	},
+	"liechiberry": {
+		id: "liechiberry",
+		name: "Liechi Berry",
+		spritenum: 248,
+		isBerry: true,
+		naturalGift: {
+			basePower: 100,
+			type: "Grass",
+		},
+		onUpdate: function (pokemon) {
+			if (pokemon.hp <= pokemon.maxhp / 4 || (pokemon.hp <= pokemon.maxhp / 2 && ['gluttony', 'bloodmadecrops', 'foodcoloring'].includes(pokemon.getAbility()))) {
+				pokemon.eatItem();
+			}
+		},
+		onEat: function (pokemon) {
+			this.boost({atk: 1});
+		},
+		num: 201,
+		gen: 3,
+		desc: "Raises holder's Attack by 1 stage when at 1/4 max HP or less. Single use.",
+	},
+	"magoberry": {
+		id: "magoberry",
+		name: "Mago Berry",
+		spritenum: 274,
+		isBerry: true,
+		naturalGift: {
+			basePower: 80,
+			type: "Ghost",
+		},
+		onUpdate: function (pokemon) {
+			if (pokemon.hp <= pokemon.maxhp / 4 || (pokemon.hp <= pokemon.maxhp / 2 && ['gluttony', 'bloodmadecrops', 'foodcoloring'].includes(pokemon.getAbility()))) {
+				pokemon.eatItem();
+			}
+		},
+		onTryEatItem: function (item, pokemon) {
+			if (!this.runEvent('TryHeal', pokemon)) return false;
+		},
+		onEat: function (pokemon) {
+			this.heal(pokemon.maxhp / 2);
+			if (pokemon.getNature().minus === 'spe') {
+				pokemon.addVolatile('confusion');
+			}
+		},
+		num: 161,
+		gen: 3,
+		desc: "Restores 1/2 max HP at 1/4 max HP or less; confuses if -Spe Nature. Single use.",
+	},
+	"micleberry": {
+		id: "micleberry",
+		name: "Micle Berry",
+		isUnreleased: true,
+		spritenum: 290,
+		isBerry: true,
+		naturalGift: {
+			basePower: 100,
+			type: "Rock",
+		},
+		onResidual: function (pokemon) {
+			if (pokemon.hp <= pokemon.maxhp / 4 || (pokemon.hp <= pokemon.maxhp / 2 && ['gluttony', 'bloodmadecrops', 'foodcoloring'].includes(pokemon.getAbility()))) {
+				pokemon.eatItem();
+			}
+		},
+		onEat: function (pokemon) {
+			pokemon.addVolatile('micleberry');
+		},
+		effect: {
+			duration: 2,
+			onSourceModifyAccuracy: function (accuracy, target, source) {
+				this.add('-enditem', source, 'Micle Berry');
+				source.removeVolatile('micleberry');
+				if (typeof accuracy === 'number') {
+					return accuracy * 1.2;
+				}
+			},
+		},
+		num: 209,
+		gen: 4,
+		desc: "Holder's next move has 1.2x accuracy when at 1/4 max HP or less. Single use.",
+	},
+	"petayaberry": {
+		id: "petayaberry",
+		name: "Petaya Berry",
+		spritenum: 335,
+		isBerry: true,
+		naturalGift: {
+			basePower: 100,
+			type: "Poison",
+		},
+		onUpdate: function (pokemon) {
+			if (pokemon.hp <= pokemon.maxhp / 4 || (pokemon.hp <= pokemon.maxhp / 2 && ['gluttony', 'bloodmadecrops', 'foodcoloring'].includes(pokemon.getAbility()))) {
+				pokemon.eatItem();
+			}
+		},
+		onEat: function (pokemon) {
+			this.boost({spa: 1});
+		},
+		num: 204,
+		gen: 3,
+		desc: "Raises holder's Sp. Atk by 1 stage when at 1/4 max HP or less. Single use.",
+	},
+	"salacberry": {
+		id: "salacberry",
+		name: "Salac Berry",
+		spritenum: 426,
+		isBerry: true,
+		naturalGift: {
+			basePower: 100,
+			type: "Fighting",
+		},
+		onUpdate: function (pokemon) {
+			if (pokemon.hp <= pokemon.maxhp / 4 || (pokemon.hp <= pokemon.maxhp / 2 && ['gluttony', 'bloodmadecrops', 'foodcoloring'].includes(pokemon.getAbility()))) {
+				pokemon.eatItem();
+			}
+		},
+		onEat: function (pokemon) {
+			this.boost({spe: 1});
+		},
+		num: 203,
+		gen: 3,
+		desc: "Raises holder's Speed by 1 stage when at 1/4 max HP or less. Single use.",
+	},
+	"starfberry": {
+		id: "starfberry",
+		name: "Starf Berry",
+		spritenum: 472,
+		isBerry: true,
+		naturalGift: {
+			basePower: 100,
+			type: "Psychic",
+		},
+		onUpdate: function (pokemon) {
+			if (pokemon.hp <= pokemon.maxhp / 4 || (pokemon.hp <= pokemon.maxhp / 2 && ['gluttony', 'bloodmadecrops', 'foodcoloring'].includes(pokemon.getAbility()))) {
+				pokemon.eatItem();
+			}
+		},
+		onEat: function (pokemon) {
+			let stats = [];
+			for (let stat in pokemon.boosts) {
+				if (stat !== 'accuracy' && stat !== 'evasion' && pokemon.boosts[stat] < 6) {
+					stats.push(stat);
+				}
+			}
+			if (stats.length) {
+				let randomStat = this.sample(stats);
+				let boost = {};
+				boost[randomStat] = 2;
+				this.boost(boost);
+			}
+		},
+		num: 207,
+		gen: 3,
+		desc: "Raises a random stat by 2 when at 1/4 max HP or less (not acc/eva). Single use.",
+	},
+	"wikiberry": {
+		id: "wikiberry",
+		name: "Wiki Berry",
+		spritenum: 538,
+		isBerry: true,
+		naturalGift: {
+			basePower: 80,
+			type: "Rock",
+		},
+		onUpdate: function (pokemon) {
+			if (pokemon.hp <= pokemon.maxhp / 4 || (pokemon.hp <= pokemon.maxhp / 2 && ['gluttony', 'bloodmadecrops', 'foodcoloring'].includes(pokemon.getAbility()))) {
+				pokemon.eatItem();
+			}
+		},
+		onTryEatItem: function (item, pokemon) {
+			if (!this.runEvent('TryHeal', pokemon)) return false;
+		},
+		onEat: function (pokemon) {
+			this.heal(pokemon.maxhp / 2);
+			if (pokemon.getNature().minus === 'spa') {
+				pokemon.addVolatile('confusion');
+			}
+		},
+		num: 160,
+		gen: 3,
+		desc: "Restores 1/2 max HP at 1/4 max HP or less; confuses if -SpA Nature. Single use.",
 	},
 };

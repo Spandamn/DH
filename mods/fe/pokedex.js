@@ -378,7 +378,7 @@ exports.BattlePokedex = {
         },
         heightm: 1.31,
         weightkg: 223.5,
-        color: "Brown",
+        color: "Black",
         eggGroups: ["Human-Like"],
     },
     gibikarp: {
@@ -617,7 +617,7 @@ exports.BattlePokedex = {
         },
         heightm: 2.11,
         weightkg: 91.9,
-        color: "Brown",
+        color: "Blue",
         eggGroups: ["Monster"],
     },
     krelpo: {
@@ -680,7 +680,7 @@ exports.BattlePokedex = {
         },
         heightm: 1.195,
         weightkg: 45.75,
-        color: "Black",
+        color: "Red",
         eggGroups: ["Human-Like"],
     },
     yamonix: {
@@ -865,6 +865,7 @@ exports.BattlePokedex = {
         },
         heightm: 0.7,
         weightkg: 15.75,
+        color: "Brown",
 		  evos: ["zorcanine"],
         eggGroups: ["Field"],
     },
@@ -891,7 +892,7 @@ exports.BattlePokedex = {
         weightkg: 118.05,
 		  prevo: "zorgrowl",
 		  evoLevel: 30,
-        color: "Red",
+        color: "Brown",
         eggGroups: ["Field"],
     },
     archedactyl: {
@@ -915,7 +916,7 @@ exports.BattlePokedex = {
         },
         heightm: 1.6,
         weightkg: 45.5,
-        color: "Black",
+        color: "Yellow",
         eggGroups: ["Flying"],
     },
     archedactylmega: {
@@ -940,9 +941,9 @@ exports.BattlePokedex = {
         abilities: {
             0: "Tough Claws"
         },
-        heightm: 2,
-        weightkg: 75.5,
-        color: "Brown",
+        heightm: 1.9,
+        weightkg: 65.5,
+        color: "Yellow",
         eggGroups: ["Flying"],
     },
     hippopopin: {
@@ -966,6 +967,7 @@ exports.BattlePokedex = {
         },
         heightm: 0.6,
         weightkg: 29.25,
+        color: "Green",
 		  evos: ["chesdon"],
         eggGroups: ["Field"],
     },
@@ -1098,7 +1100,7 @@ exports.BattlePokedex = {
         },
         heightm: 1.755,
         weightkg: 49.25,
-        color: "Black",
+        color: "Purple",
         eggGroups: ["Bug"],
     },
     seedee: {
@@ -1149,7 +1151,7 @@ exports.BattlePokedex = {
         weightkg: 42.05,
 		  prevo: "seedee",
 		  evoLevel: 14,
-        color: "Black",
+        color: "Brown",
         eggGroups: ["Field"],
     },
     shoorazu: {
@@ -1214,7 +1216,7 @@ exports.BattlePokedex = {
         },
         heightm: 1.295,
         weightkg: 53,
-        color: "Black",
+        color: "Brown",
         eggGroups: ["Human-Like"],
     },
     weasol: {
@@ -1234,7 +1236,7 @@ exports.BattlePokedex = {
         },
         heightm: 1.14,
         weightkg: 40.5,
-        color: "Black",
+        color: "White",
         eggGroups: ["Field"],
     },
     weasolmega: {
@@ -1255,9 +1257,9 @@ exports.BattlePokedex = {
         abilities: {
             0: "Magic Bounce"
         },
-        heightm: 2,
-        weightkg: 75.5,
-        color: "Brown",
+        heightm: 1.15,
+        weightkg: 42.5,
+        color: "White",
         eggGroups: ["Field"],
     },
     tariblava: {
@@ -1326,9 +1328,9 @@ exports.BattlePokedex = {
         color: "Blue",
         eggGroups: ["Monster"],
     },
-    tyranichompmegax: {
+    tyranichompmegat: {
         num: 750026,
-        species: "Tyranichomp-Mega-X",
+        species: "Tyranichomp-Mega-T",
         baseSpecies: "Tyranichomp",
         forme: "Mega",
         formeLetter: "M",
@@ -1350,9 +1352,9 @@ exports.BattlePokedex = {
         eggGroups: ["Monster"],
     },
 
-    tyranichompmegay: {
+    tyranichompmegag: {
         num: 750026,
-        species: "Tyranichomp-Mega-Y",
+        species: "Tyranichomp-Mega-G",
         baseSpecies: "Tyranichomp",
         forme: "Mega",
         formeLetter: "M",
@@ -1639,9 +1641,9 @@ exports.BattlePokedex = {
         color: "Gray",
         eggGroups: ["Monster"],
     },
-    aggrosaurmegax: {
+    aggrosaurmegav: {
         num: 750029,
-        species: "Aggrosaur-Mega-X",
+        species: "Aggrosaur-Mega-V",
         baseSpecies: "Aggrosaur",
         forme: "Mega",
         formeLetter: "M",
@@ -1667,9 +1669,9 @@ exports.BattlePokedex = {
         eggGroups: ["Monster"],
     },
 
-    aggrosaurmegay: {
+    aggrosaurmegaa: {
         num: 750029,
-        species: "Aggrosaur-Mega-Y",
+        species: "Aggrosaur-Mega-A",
         baseSpecies: "Aggrosaur",
         forme: "Mega",
         formeLetter: "M",
@@ -1840,7 +1842,7 @@ exports.BattlePokedex = {
         },
         heightm: 1.795,
         weightkg: 35.55,
-        color: "Brown",
+        color: "White",
         eggGroups: ["Flying"],
     },
     mygara: {
@@ -1945,7 +1947,7 @@ exports.BattlePokedex = {
         },
         heightm: 1.25,
         weightkg: 58,
-        color: "Brown",
+        color: "Red",
         eggGroups: ["Human-Like"],
     },
     snogepi: {
@@ -1969,6 +1971,7 @@ exports.BattlePokedex = {
         },
         heightm: 0.5,
         weightkg: 9.15,
+        color: "Gray",
 		  evos: ["glakiss"],
         eggGroups: ["Undiscovered"],
     },
@@ -2042,6 +2045,7 @@ exports.BattlePokedex = {
         },
         heightm: 0.85,
         weightkg: 15.4,
+        color: "Red",
 		  evos: ["sharpedos"],
         eggGroups: ["Water 2"],
     },
@@ -2162,7 +2166,7 @@ exports.BattlePokedex = {
         weightkg: 92,
 		  prevo: "growlee",
 		  evoLevel: 1,
-        color: "Brown",
+        color: "Blue",
         eggGroups: ["Field"],
     },
     pidgetot: {
@@ -2182,7 +2186,7 @@ exports.BattlePokedex = {
         },
         heightm: 1.005,
         weightkg: 20.7,
-        color: "Black",
+        color: "Brown",
         eggGroups: ["Flying"],
     },
     pidgetotmega: {
@@ -2229,7 +2233,7 @@ exports.BattlePokedex = {
         },
         heightm: 1.75,
         weightkg: 108.8,
-        color: "Black",
+        color: "Red",
         eggGroups: ["Undiscovered"],
     },
     klazor: {
@@ -2253,7 +2257,7 @@ exports.BattlePokedex = {
         },
         heightm: 1.205,
         weightkg: 84.5,
-        color: "Black",
+        color: "Gray",
         eggGroups: ["Undiscovered"],
     },
     klazormega: {
@@ -2280,7 +2284,7 @@ exports.BattlePokedex = {
         },
         heightm: 1.8,
         weightkg: 117.5,
-        color: "Red",
+        color: "Gray",
         eggGroups: ["Undiscovered"],
     },
     pidgeyu: {
@@ -2530,7 +2534,7 @@ exports.BattlePokedex = {
         },
         heightm: 1,
         weightkg: 215.55,
-        color: "Black",
+        color: "Yellow",
         eggGroups: ["Undiscovered"],
     },
     shaymizard: {
@@ -2554,7 +2558,7 @@ exports.BattlePokedex = {
         },
         heightm: 0.95,
         weightkg: 46.3,
-        color: "Black",
+        color: "Green",
         eggGroups: ["Undiscovered"],
     },
     shaymizardmegax: {
@@ -2628,6 +2632,7 @@ exports.BattlePokedex = {
         },
         heightm: 0.7,
         weightkg: 10.4,
+        color: "Brown",
 		  evos: ["ferroslash"],
         eggGroups: ["Mineral"],
     },
@@ -2651,7 +2656,7 @@ exports.BattlePokedex = {
         weightkg: 81.5,
 		  prevo: "ferroedge",
 		  evoLevel: 37,
-        color: "Gray",
+        color: "Brown",
         eggGroups: ["Mineral"],
     },
     ferroslashblade: {
@@ -2674,7 +2679,7 @@ exports.BattlePokedex = {
         },
         heightm: 1.345,
         weightkg: 81.5,
-        color: "Gray",
+        color: "Brown",
         eggGroups: ["Mineral"],
     },
     chaxe: {
@@ -2698,6 +2703,7 @@ exports.BattlePokedex = {
         },
         heightm: 0.6,
         weightkg: 13.25,
+        color: "Red",
 		  evos: ["fraxuleon"],
         eggGroups: ["Monster", "Dragon"],
     },
@@ -2724,6 +2730,7 @@ exports.BattlePokedex = {
         weightkg: 27.5,
 		  prevo: "chaxe",
 		  evoLevel: 27,
+        color: "Red",
 		  evos: ["hazard"],
         eggGroups: ["Monster", "Dragon"],
     },
@@ -2825,6 +2832,7 @@ exports.BattlePokedex = {
         },
         heightm: 0.5,
         weightkg: 21,
+        color: "Purple",
 		  evos: ["hitmonklang"],
         eggGroups: ["Undiscovered"],
     },
@@ -2868,6 +2876,7 @@ exports.BattlePokedex = {
         },
         heightm: 0.6,
         weightkg: 11.55,
+        color: "Blue",
 		  evos: ["maladuck"],
         eggGroups: ["Water 1"],
     },
@@ -2890,7 +2899,7 @@ exports.BattlePokedex = {
         weightkg: 61.8,
 		  prevo: "inkduck",
 		  evoLevel: 32,
-        color: "Black",
+        color: "Blue",
         eggGroups: ["Water 1"],
     },
     yangarde: {
@@ -2914,17 +2923,14 @@ exports.BattlePokedex = {
         },
         heightm: 3.455,
         weightkg: 178.25,
-        color: "Black",
+        color: "Green",
         eggGroups: ["Undiscovered"],
     },
     suirizion: {
         num: 750050,
         species: "Suirizion",
         types: ["Grass", "Water"],
-        genderRatio: {
-            M: 0.0,
-            F: 0.0
-        },
+        gender: "N",
         baseStats: {
             hp: 104,
             atk: 82,
@@ -2938,7 +2944,7 @@ exports.BattlePokedex = {
         },
         heightm: 2.01,
         weightkg: 193.5,
-        color: "Black",
+        color: "Green",
         eggGroups: ["Undiscovered"],
     },
     raillish: {
@@ -3126,7 +3132,7 @@ exports.BattlePokedex = {
         },
         heightm: 1.655,
         weightkg: 76.45,
-        color: "Black",
+        color: "Red",
         eggGroups: ["Undiscovered"],
     },
     dartiosmega: {
@@ -3174,17 +3180,14 @@ exports.BattlePokedex = {
         },
         heightm: 1.6,
         weightkg: 235,
-        color: "Black",
+        color: "Brown",
         eggGroups: ["Undiscovered"],
     },
     moltie: {
         num: 750055,
         species: "Moltie",
         types: ["Fairy", "Fire"],
-        genderRatio: {
-            M: 0.0,
-            F: 0.0
-        },
+        gender: "N",
         baseStats: {
             hp: 90,
             atk: 100,
@@ -3198,7 +3201,31 @@ exports.BattlePokedex = {
         },
         heightm: 1.36,
         weightkg: 34.4,
-        color: "Black",
+        color: "Pink",
+        eggGroups: ["Undiscovered"],
+    },
+    moltiemega: {
+        num: 750055,
+        species: "Moltie-Mega",
+        baseSpecies: "Moltie",
+        forme: "Mega",
+        formeLetter: "M",
+        types: ["Fairy", "Fire"],
+        gender: "N",
+        baseStats: {
+            hp: 90,
+            atk: 160,
+            def: 80,
+            spa: 180,
+            spd: 100,
+            spe: 139
+        },
+        abilities: {
+            0: "Magic Bounce"
+        },
+        heightm: 1.76,
+        weightkg: 53.4,
+        color: "Pink",
         eggGroups: ["Undiscovered"],
     },
     belpet: {
@@ -3324,7 +3351,7 @@ exports.BattlePokedex = {
         heightm: 1.5,
         weightkg: 54.5,
         color: "Blue",
-        eggGroups: ["Undiscovered"],
+        eggGroups: ["Bug"],
     },
     herasirmegah: {
         num: 750057,
@@ -3471,7 +3498,7 @@ exports.BattlePokedex = {
         },
         heightm: 2.4,
         weightkg: 215.25,
-        color: "Black",
+        color: "Gray",
         eggGroups: ["Undiscovered"],
     },
     mana: {
@@ -3495,7 +3522,7 @@ exports.BattlePokedex = {
         },
         heightm: 1.005,
         weightkg: 24.6,
-        color: "Black",
+        color: "Yellow",
         eggGroups: ["Undiscovered"],
     },
     manamega: {
@@ -3518,7 +3545,7 @@ exports.BattlePokedex = {
         },
         heightm: 1.5,
         weightkg: 90.0,
-        color: "Pink",
+        color: "Yellow",
         eggGroups: ["Undiscovered"],
     },
     lucharma: {
@@ -3542,7 +3569,7 @@ exports.BattlePokedex = {
         },
         heightm: 1.55,
         weightkg: 137.65,
-        color: "Black",
+        color: "Red",
         eggGroups: ["Undiscovered"],
     },
     klip: {
@@ -3667,6 +3694,76 @@ exports.BattlePokedex = {
         },
         heightm: 0.745,
         weightkg: 5.15,
+        color: "Gray",
+        eggGroups: ["Amorphous"],
+        otherFormes: ["castingsunny", "castingrainy", "castingsnowy"],
+    },
+    castingsunny: {
+        num: 750063,
+        species: "Casting-Sunny",
+        baseSpecies: "Casting",
+        forme: "Sunny",
+        formeLetter: "S",
+        types: ["Poison", "Fire"],
+        baseStats: {
+            hp: 78,
+            atk: 90,
+            def: 105,
+            spa: 88,
+            spd: 80,
+            spe: 75
+        },
+        abilities: {
+            0: "Monsoon"
+        },
+        heightm: 0.745,
+        weightkg: 5.15,
+        color: "Red",
+        eggGroups: ["Amorphous"],
+    },
+    castingrainy: {
+        num: 750063,
+        species: "Casting-Rainy",
+        baseSpecies: "Casting",
+        forme: "Rainy",
+        formeLetter: "R",
+        types: ["Poison", "Water"],
+        baseStats: {
+            hp: 78,
+            atk: 90,
+            def: 105,
+            spa: 88,
+            spd: 80,
+            spe: 75
+        },
+        abilities: {
+            0: "Monsoon"
+        },
+        heightm: 0.745,
+        weightkg: 5.15,
+        color: "Blue",
+        eggGroups: ["Amorphous"],
+    },
+    castingsnowy: {
+        num: 750063,
+        species: "Casting-Snowy",
+        baseSpecies: "Casting",
+        forme: "Snowy",
+        formeLetter: "S",
+        types: ["Poison", "Ice"],
+        baseStats: {
+            hp: 78,
+            atk: 90,
+            def: 105,
+            spa: 88,
+            spd: 80,
+            spe: 75
+        },
+        abilities: {
+            0: "Monsoon"
+        },
+        heightm: 0.745,
+        weightkg: 5.15,
         color: "White",
         eggGroups: ["Amorphous"],
     },
@@ -3691,7 +3788,7 @@ exports.BattlePokedex = {
         },
         heightm: 0.905,
         weightkg: 32.75,
-        color: "Black",
+        color: "Purple",
         eggGroups: ["Human-Like"],
     },
     sablemimezmega: {
@@ -3718,7 +3815,7 @@ exports.BattlePokedex = {
         },
         heightm: 0.905,
         weightkg: 182.75,
-        color: "Pink",
+        color: "Purple",
         eggGroups: ["Human-Like"],
     },
     aegilene: {
@@ -3740,7 +3837,7 @@ exports.BattlePokedex = {
         },
         heightm: 1.6,
         weightkg: 67.75,
-        color: "Black",
+        color: "Brown",
 		  otherFormes: ["aegilineblade"],
         eggGroups: ["Undiscovered"],
     },
@@ -3765,7 +3862,7 @@ exports.BattlePokedex = {
         },
         heightm: 1.6,
         weightkg: 67.75,
-        color: "Black",
+        color: "Brown",
         eggGroups: ["Undiscovered"],
     },
     houndlion: {
@@ -3840,7 +3937,7 @@ exports.BattlePokedex = {
         },
         heightm: 0.85,
         weightkg: 22.15,
-        color: "Black",
+        color: "Purple",
         eggGroups: ["Human-Like"],
     },
 
@@ -3869,7 +3966,7 @@ exports.BattlePokedex = {
         },
         heightm: 0.85,
         weightkg: 172.15,
-        color: "Brown",
+        color: "Purple",
         eggGroups: ["Human-Like"],
     },
     loppeyemegay: {
@@ -3896,7 +3993,7 @@ exports.BattlePokedex = {
         },
         heightm: 0.95,
         weightkg: 17.15,
-        color: "Brown",
+        color: "Purple",
         eggGroups: ["Human-Like"],
     },
     slowdon: {
@@ -3920,6 +4017,7 @@ exports.BattlePokedex = {
         },
         heightm: 0.85,
         weightkg: 46.5,
+        color: "Gray",
 		  evos: ["bastioking"],
         eggGroups: ["Monster"],
     },
@@ -3946,7 +4044,7 @@ exports.BattlePokedex = {
         weightkg: 114.5,
 		  prevo: "slowdon",
 		  evoLevel: 30,
-        color: "Pink",
+        color: "Gray",
         eggGroups: ["Monster"],
     },
     peatran: {
@@ -4022,7 +4120,7 @@ exports.BattlePokedex = {
         },
         heightm: 1.155,
         weightkg: 101.7,
-        color: "Black",
+        color: "Green",
         eggGroups: ["Undiscovered"],
     },
     manatarmega: {
@@ -4049,7 +4147,7 @@ exports.BattlePokedex = {
         },
         heightm: 1.655,
         weightkg: 154.7,
-        color: "Blue",
+        color: "Green",
         eggGroups: ["Undiscovered"],
     },
     quiaura: {
@@ -4073,6 +4171,7 @@ exports.BattlePokedex = {
         },
         heightm: 0.9,
         weightkg: 17.1,
+        color: "Blue",
 		  evos: ["aurortoise"],
         eggGroups: ["Monster"],
     },
@@ -4155,7 +4254,7 @@ exports.BattlePokedex = {
     },
     metsirmegam: {
         num: 750072,
-        species: "Mestir-Mega-M",
+        species: "Metsir-Mega-M",
         baseSpecies: "Metsir",
         forme: "Mega-M",
         formeLetter: "M",
@@ -4166,18 +4265,18 @@ exports.BattlePokedex = {
         },
         baseStats: {
             hp: 72,
-            atk: 160,
+            atk: 180,
             def: 135,
-            spa: 95,
-            spd: 100,
-            spe: 137
+            spa: 85,
+            spd: 90,
+            spe: 117
         },
         abilities: {
             0: "Tough Claws"
         },
         heightm: 2.45,
         weightkg: 695.4,
-        color: "Brown",
+        color: "Blue",
         eggGroups: ["Undiscovered"],
     },
     metsirmegap: {
@@ -4203,8 +4302,8 @@ exports.BattlePokedex = {
             0: "Aerilate"
         },
         heightm: 1.75,
-        weightkg: 699.4,
-        color: "Brown",
+        weightkg: 306.5,
+        color: "Blue",
         eggGroups: ["Undiscovered"],
     },
     fablesteel: {
@@ -4228,7 +4327,7 @@ exports.BattlePokedex = {
         },
         heightm: 1.605,
         weightkg: 122.5,
-        color: "Black",
+        color: "Pink",
         eggGroups: ["Undiscovered"],
     },
     houdini: {
@@ -4252,7 +4351,7 @@ exports.BattlePokedex = {
         },
         heightm: 0.8,
         weightkg: 20,
-        color: "Pink",
+        color: "Purple",
         eggGroups: ["Undiscovered"],
     },
     houdinimega: {
@@ -4379,7 +4478,7 @@ exports.BattlePokedex = {
         },
         heightm: 1.5,
         weightkg: 162.75,
-        color: "Brown",
+        color: "Yellow",
         eggGroups: ["Field"],
     },
     matrike: {
@@ -4400,7 +4499,7 @@ exports.BattlePokedex = {
         heightm: 0.6,
         weightkg: 11.5,
 		  evos: ["mampharos"],
-        color: "Yellow",
+        color: "White",
         eggGroups: ["Field"],
     },
     mampharos: {
@@ -4578,7 +4677,7 @@ exports.BattlePokedex = {
         },
         heightm: 1.6,
         weightkg: 109.3,
-        color: "Black",
+        color: "Blue",
         eggGroups: ["Undiscovered"],
     },
     entariamega: {
@@ -4605,7 +4704,7 @@ exports.BattlePokedex = {
         },
         heightm: 2,
         weightkg: 109.3,
-        color: "Red",
+        color: "Blue",
         eggGroups: ["Undiscovered"],
     },
     sursquirt: {
@@ -4629,11 +4728,9 @@ exports.BattlePokedex = {
         },
         heightm: 0.5,
         weightkg: 5.35,
-		  prevo: "porydile",
-		  evos: ["krookz"],
-		  evoLevel: 29,
-        color: "Red",
-        eggGroups: ["Undiscovered"],
+		  evos: ["blasterain"],
+        color: "Blue",
+        eggGroups: ["Water 1"],
     },
     blasterain: {
         num: 750080,
@@ -4656,8 +4753,10 @@ exports.BattlePokedex = {
         },
         heightm: 1.195,
         weightkg: 44.55,
-        color: "Black",
-        eggGroups: ["Undiscovered"],
+		  prevo: "sursquirt",
+		  evoLevel: 29,
+        color: "Blue",
+        eggGroups: ["Water 1"],
     },
     blasterainmega: {
         num: 750080,
@@ -4684,7 +4783,7 @@ exports.BattlePokedex = {
         heightm: 1.195,
         weightkg: 60.15,
         color: "Blue",
-        eggGroups: ["Water1"],
+        eggGroups: ["Water 1"],
     },
     dianbro: {
         num: 750081,
@@ -4707,7 +4806,7 @@ exports.BattlePokedex = {
         },
         heightm: 1.155,
         weightkg: 43.65,
-        color: "Black",
+        color: "Pink",
         eggGroups: ["Undiscovered"],
     },
     dianbromegas: {
@@ -4782,7 +4881,7 @@ exports.BattlePokedex = {
         },
         heightm: 1.005,
         weightkg: 34.95,
-        color: "Black",
+        color: "Brown",
         eggGroups: ["Undiscovered"],
     },
     happipi: {
@@ -4935,7 +5034,7 @@ exports.BattlePokedex = {
         },
         heightm: 1.5,
         weightkg: 162.25,
-        color: "Gray",
+        color: "Brown",
         eggGroups: ["Undiscovered"],
     },
     lagimega: {
@@ -4959,7 +5058,7 @@ exports.BattlePokedex = {
         },
         heightm: 2.1,
         weightkg: 255.95,
-        color: "Gray",
+        color: "Brown",
         eggGroups: ["Undiscovered"],
     },
     heatloom: {
@@ -4979,7 +5078,7 @@ exports.BattlePokedex = {
         },
         heightm: 1.445,
         weightkg: 234.6,
-        color: "Black",
+        color: "Green",
         eggGroups: ["Undiscovered"],
     },
     golone: {
@@ -5069,7 +5168,7 @@ exports.BattlePokedex = {
         },
         heightm: 1.155,
         weightkg: 57.25,
-        color: "Black",
+        color: "Yellow",
         eggGroups: ["Undiscovered"],
     },
     lopunnini: {
@@ -5089,7 +5188,7 @@ exports.BattlePokedex = {
         },
         heightm: 0.8,
         weightkg: 18.65,
-        color: "Black",
+        color: "Yelow",
         eggGroups: ["Undiscovered"],
     },
     loppuninimega: {
@@ -5112,7 +5211,7 @@ exports.BattlePokedex = {
         },
         heightm: 0.9,
         weightkg: 13.65,
-        color: "Black",
+        color: "Yellow",
         eggGroups: ["Undiscovered"],
     },
     larvatrap: {
@@ -5133,7 +5232,7 @@ exports.BattlePokedex = {
         heightm: 0.9,
         weightkg: 21.9,
 		  evos: ["volcagon"],
-        color: "Red",
+        color: "Brown",
         eggGroups: ["Bug"],
     },
     volcagon: {
@@ -5176,7 +5275,7 @@ exports.BattlePokedex = {
         },
         heightm: 2.01,
         weightkg: 229,
-        color: "Black",
+        color: "Gray",
         eggGroups: ["Undiscovered"],
     },
     aeroraptor: {
@@ -5200,7 +5299,7 @@ exports.BattlePokedex = {
         },
         heightm: 1.495,
         weightkg: 41.95,
-        color: "Black",
+        color: "Purple",
         eggGroups: ["Flying"],
     },
     aeroraptormega: {
@@ -5227,7 +5326,7 @@ exports.BattlePokedex = {
         },
         heightm: 1.795,
         weightkg: 61.95,
-        color: "Black",
+        color: "Purple",
         eggGroups: ["Flying"],
     },
     sansjr: {
@@ -5294,7 +5393,7 @@ exports.BattlePokedex = {
         },
         heightm: 1.19,
         weightkg: 50.5,
-        color: "Black",
+        color: "Blue",
         eggGroups: ["Field"],
     },
     lucasolmegal: {
@@ -5321,7 +5420,7 @@ exports.BattlePokedex = {
         },
         heightm: 1.29,
         weightkg: 54,
-        color: "Black",
+        color: "Blue",
         eggGroups: ["Field"],
     },
     lucasolmegaa: {
@@ -5348,7 +5447,7 @@ exports.BattlePokedex = {
         },
         heightm: 1.19,
         weightkg: 52.5,
-        color: "Black",
+        color: "Blue",
         eggGroups: ["Field"],
     },
     treesaur: {
@@ -5753,7 +5852,7 @@ exports.BattlePokedex = {
         },
         heightm: 2.3,
         weightkg: 73.25,
-        color: "Black",
+        color: "Blue",
         eggGroups: ["Undiscovered"],
     },
     thunderblastmega: {
@@ -5777,7 +5876,7 @@ exports.BattlePokedex = {
         },
         heightm: 2.3,
         weightkg: 88.85,
-        color: "Black",
+        color: "Blue",
         eggGroups: ["Undiscovered"],
     },
     snoopa: {
@@ -5801,7 +5900,7 @@ exports.BattlePokedex = {
         },
         heightm: 1.31,
         weightkg: 234.5,
-        color: "Black",
+        color: "Purple",
         eggGroups: ["Undiscovered"],
     },
     plupoke: {
@@ -5872,7 +5971,7 @@ exports.BattlePokedex = {
         },
         heightm: 1.345,
         weightkg: 270,
-        color: "Black",
+        color: "Gray",
         eggGroups: ["Undiscovered"],
     },
     galvantulys: {
@@ -5896,7 +5995,7 @@ exports.BattlePokedex = {
         },
         heightm: 1.245,
         weightkg: 37.55,
-        color: "Black",
+        color: "Red",
         eggGroups: ["Undiscovered"],
     },
     hazygon: {
@@ -5920,7 +6019,7 @@ exports.BattlePokedex = {
         },
         heightm: 1.05,
         weightkg: 80.15,
-        color: "Black",
+        color: "Blue",
         eggGroups: ["Undiscovered"],
     },
     jellie: {
@@ -5940,7 +6039,7 @@ exports.BattlePokedex = {
         },
         heightm: 1.46,
         weightkg: 71.9,
-        color: "Gray",
+        color: "White",
         eggGroups: ["Undiscovered"],
     },
     jelliemega: {
@@ -5963,7 +6062,7 @@ exports.BattlePokedex = {
         },
         heightm: 1.86,
         weightkg: 92.9,
-        color: "Gray",
+        color: "White",
         eggGroups: ["Undiscovered"],
     },
     zaggron: {
@@ -6052,7 +6151,7 @@ exports.BattlePokedex = {
         weightkg: 212.5,
 		  prevo: "wailee",
 		  evoLevel: 40,
-        color: "Black",
+        color: "White",
         eggGroups: ["Field"],
     },
     eruption: {
@@ -6116,7 +6215,7 @@ exports.BattlePokedex = {
         },
         heightm: 2.945,
         weightkg: 169.5,
-        color: "Black",
+        color: "Red",
         eggGroups: ["Undiscovered"],
     },
     raptorus: {
@@ -6137,7 +6236,7 @@ exports.BattlePokedex = {
         },
         heightm: 1.245,
         weightkg: 46.45,
-        color: "Black",
+        color: "Brown",
         eggGroups: ["Undiscovered"],
     },
     sickle: {
@@ -6201,7 +6300,7 @@ exports.BattlePokedex = {
         },
         heightm: 2.01,
         weightkg: 214,
-        color: "Black",
+        color: "Blue",
         eggGroups: ["Undiscovered"],
     },
     panphan: {
@@ -6269,6 +6368,7 @@ darkchomp: {
         dexentry: "It is a nocturnal creature.  While it looks terrifying, it is harmless to humans. Intead, it hunts down good dreams, and has the ability to invade them. Once inside a good dream, Darkchomp won't stop until it tears everything appart, and proceeds to torment the dreamer's sleep until it is waken up by force. Darkchomp then flies away at high speeds in order to not be caught, and continues to hunt other dreams.",
         heightm: 1.705,
         weightkg: 72.75,
+        color: "Black",
 		  fusion: ["darkrai", "garchomp"],
     },
     darkchompmega: {
@@ -6312,7 +6412,7 @@ darkchomp: {
         heightm: 0.55,
         weightkg: 20.75,
 		  evos: ["jelluk"],
-        color: "White",
+        color: "Purple",
         eggGroups: ["Amorphous"],
     },
     jelluk: {
@@ -6334,7 +6434,7 @@ darkchomp: {
         weightkg: 82.5,
 		  prevo: "friller",
 		  evoLevel: 39,
-        color: "White",
+        color: "Purple",
         eggGroups: ["Amorphous"],
     },
     crustlecross: {
@@ -6354,7 +6454,7 @@ darkchomp: {
         },
         heightm: 1.45,
         weightkg: 127,
-        color: "Black",
+        color: "Red",
         eggGroups: ["Bug"],
     },
     crustlecrossmega: {
@@ -6377,7 +6477,7 @@ darkchomp: {
         },
         heightm: 1.65,
         weightkg: 135.5,
-        color: "Black",
+        color: "Red",
         eggGroups: ["Bug"],
     },
     wigglyman: {
@@ -6398,7 +6498,7 @@ darkchomp: {
         },
         heightm: 0.645,
         weightkg: 6.7,
-        color: "Black",
+        color: "Pink",
         eggGroups: ["Fairy"],
     },
     magnebas: {
@@ -6509,7 +6609,7 @@ darkchomp: {
         },
         heightm: 0.955,
         weightkg: 32.5,
-        color: "Black",
+        color: "Blue",
         eggGroups: ["Undiscovered"],
     },
     cleahorch: {
@@ -6573,7 +6673,7 @@ darkchomp: {
         },
         heightm: 0.695,
         weightkg: 34.35,
-        color: "White",
+        color: "Red",
         eggGroups: ["Undiscovered"],
     },
     armortran: {
@@ -6613,7 +6713,7 @@ darkchomp: {
         },
         heightm: 1.7,
         weightkg: 106.3,
-        color: "Black",
+        color: "Yellow",
         eggGroups: ["Undiscovered"],
     },
     bouffanine: {
@@ -7665,7 +7765,7 @@ darkchomp: {
         },
         heightm: 1.055,
         weightkg: 47.25,
-        color: "Pink",
+        color: "Purple",
         eggGroups: ["Undiscovered"],
     },
 	 hootoisemega: {
@@ -7688,7 +7788,7 @@ darkchomp: {
         },
         heightm: 1.055,
         weightkg: 62.85,
-        color: "Pink",
+        color: "Blue",
         eggGroups: ["Undiscovered"],
     },
     lietaur: {
@@ -8216,8 +8316,10 @@ darkchomp: {
         abilities: {
             0: "Justice Illusion"
         },
+		  heightm: 1.5,
         weightkg: 64.8,
-        color: "Blue",
+        color: "Yellow",
+		  eggGroups: ["Undiscovered"],
     },
     stundos: {
         num: 7500157,
@@ -8236,7 +8338,7 @@ darkchomp: {
         },
         heightm: 1.155,
         weightkg: 31.8,
-        color: "Black",
+        color: "Brown",
         eggGroups: ["Undiscovered"],
     },
     mallo: {
@@ -8279,7 +8381,7 @@ darkchomp: {
         weightkg: 42.45,
 		  prevo: "mallo",
 		  evoLevel: 34,
-        color: "Brown",
+        color: "Red",
         eggGroups: ["Amorphous"],
     },
     dank: {
@@ -8409,7 +8511,7 @@ darkchomp: {
         weightkg: 132,
 		  prevo: "whirlagon",
 		  evoLevel: 55,
-        color: "Orange",
+        color: "Brown",
         eggGroups: ["Water 1"],
     },
     draegarados: {
@@ -8429,7 +8531,7 @@ darkchomp: {
         },
         heightm: 4.15,
         weightkg: 158.25,
-        color: "Blue",
+        color: "Brown",
         eggGroups: ["Dragon"],
     },
     draegaradosmega: {
@@ -8452,7 +8554,7 @@ darkchomp: {
         },
         heightm: 4.15,
         weightkg: 228.25,
-        color: "Blue",
+        color: "Brown",
         eggGroups: ["Dragon"],
     },
     grangoro: {
@@ -8609,6 +8711,30 @@ darkchomp: {
         color: "Yellow",
         eggGroups: ["Undiscovered"],
     },
+    thundurbeemega: {
+        num: 7500167,
+        species: "Thundurbee-Mega",
+        baseSpecies: "Thundurbee",
+        forme: "Mega",
+        formeLetter: "M",
+        types: ["Bug", "Electric"],
+        gender: "M",
+        baseStats: {
+            hp: 72,
+            atk: 180,
+            def: 55,
+            spa: 55,
+            spd: 90,
+            spe: 175
+        },
+        abilities: {
+            0: "Adaptability"
+        },
+        heightm: 1.645,
+        weightkg: 45.25,
+        color: "Yellow",
+        eggGroups: ["Undiscovered"],
+    },
     gallatross: {
         num: 7500168,
         species: "Gallatross",
@@ -8720,7 +8846,7 @@ darkchomp: {
         },
         heightm: 1.6,
         weightkg: 112.8,
-        color: "Yellow",
+        color: "Brown",
         eggGroups: ["Human-Like"],
     },
     landia: {
@@ -8808,7 +8934,7 @@ darkchomp: {
         },
         heightm: 0.9,
         weightkg: 30.9,
-        color: "Black",
+        color: "Gray",
         eggGroups: ["Undiscovered"],
     },
     sceptetteeternal: {
@@ -8893,7 +9019,7 @@ darkchomp: {
         },
         heightm: 1.855,
         weightkg: 103,
-        color: "Black",
+        color: "Red",
         eggGroups: ["Human-Like"],
     },
     basculinbasculin: {
@@ -8985,8 +9111,8 @@ darkchomp: {
         abilities: {
             0: "Prankster"
         },
-        heightm: 3.045,
-        weightkg: 158.75,
+        heightm: 3.145,
+        weightkg: 159.25,
         color: "Black",
         eggGroups: ["Undiscovered"],
     },
@@ -9011,7 +9137,7 @@ darkchomp: {
         },
         heightm: 1.345,
         weightkg: 59.5,
-        color: "Brown",
+        color: "Red",
         eggGroups: ["Field"],
     },
     miltrank: {
@@ -9032,7 +9158,7 @@ darkchomp: {
         },
         heightm: 1.445,
         weightkg: 252.75,
-        color: "Black",
+        color: "Brown",
         eggGroups: ["Undiscovered"],
     },
     furfraught: {
@@ -9077,7 +9203,7 @@ darkchomp: {
         },
         heightm: 1.705,
         weightkg: 132,
-        color: "Purple",
+        color: "Green",
         eggGroups: ["Monster"],
     },
     tyrankingmega: {
@@ -9099,9 +9225,9 @@ darkchomp: {
         abilities: {
             0: "Sand Stream"
         },
-        heightm: 1.705,
-        weightkg: 132,
-        color: "Purple",
+        heightm: 2.205,
+        weightkg: 185,
+        color: "Green",
         eggGroups: ["Monster"],
     },
     supermuk: {
@@ -9121,7 +9247,7 @@ darkchomp: {
         },
         heightm: 1.445,
         weightkg: 34.5,
-        color: "Brown",
+        color: "Purple",
         eggGroups: ["Amorphous"],
     },
     mentor: {
@@ -9170,8 +9296,8 @@ darkchomp: {
         abilities: {
             0: "Tough Claws"
         },
-        heightm: 1.905,
-        weightkg: 328.3,
+        heightm: 2.805,
+        weightkg: 721.2,
         color: "Black",
         eggGroups: ["Undiscovered"],
     },
@@ -9196,7 +9322,7 @@ darkchomp: {
         },
         heightm: 1.345,
         weightkg: 57.3,
-        color: "White",
+        color: "Yellow",
         eggGroups: ["Undiscovered"],
     },
     elektramega: {
@@ -9223,7 +9349,7 @@ darkchomp: {
         },
         heightm: 1.045,
         weightkg: 57.3,
-        color: "White",
+        color: "Yellow",
         eggGroups: ["Undiscovered"],
     },
     escagon: {
@@ -9288,16 +9414,13 @@ darkchomp: {
         heightm: 0.65,
         weightkg: 8.9,
         color: "Yellow",
-        eggGroups: ["Undiscovered"],
+        eggGroups: ["Grass"],
     },
     unconventional: {
         num: 7500191,
         species: "Unconventional",
         types: ["Fire", "Rock"],
-        genderRatio: {
-            M: 0.0,
-            F: 0.0
-        },
+        gender: "N",
         baseStats: {
             hp: 87,
             atk: 82,
@@ -9331,7 +9454,7 @@ darkchomp: {
         },
         heightm: 0.85,
         weightkg: 13.9,
-        color: "Purple",
+        color: "Gray",
         eggGroups: ["Field"],
     },
     parp: {
@@ -9505,7 +9628,7 @@ darkchomp: {
         },
         heightm: 1.755,
         weightkg: 63.5,
-        color: "Black",
+        color: "Blue",
         eggGroups: ["Bug"],
     },
     tapuloom: {
@@ -9529,7 +9652,7 @@ darkchomp: {
         },
         heightm: 1.55,
         weightkg: 42.35,
-        color: "Red",
+        color: "Green",
         eggGroups: ["Undiscovered"],
     },
     lucashadow: {
@@ -9578,8 +9701,8 @@ darkchomp: {
         abilities: {
             0: "Adaptability"
         },
-        heightm: 0.95,
-        weightkg: 38.1,
+        heightm: 1.05,
+        weightkg: 41.6,
         color: "Gray",
         eggGroups: ["Undiscovered"],
     },
@@ -9696,7 +9819,7 @@ darkchomp: {
         },
         heightm: 0.3,
         weightkg: 0.55,
-        color: "White",
+        color: "Blue",
         eggGroups: ["Undiscovered"],
     },
     astrolithmeteor: {
@@ -9819,7 +9942,7 @@ darkchomp: {
         },
         heightm: 1.345,
         weightkg: 255.25,
-        color: "Red",
+        color: "Gray",
         eggGroups: ["Undiscovered"],
     },
     xurkivoir: {
@@ -10375,7 +10498,7 @@ darkchomp: {
         },
         heightm: 2.15,
         weightkg: 140.75,
-        color: "Green",
+        color: "Black",
         eggGroups: ["Undiscovered"],
     },
     malaquanid: {
@@ -10504,7 +10627,7 @@ darkchomp: {
         },
         heightm: 1.75,
         weightkg: 79.25,
-        color: "Yellow",
+        color: "White",
         eggGroups: ["Undiscovered"],
     },
     tapumeme: {
@@ -10525,7 +10648,7 @@ darkchomp: {
         },
         heightm: 0.9,
         weightkg: 12.55,
-        color: "Green",
+        color: "White",
         eggGroups: ["Undiscovered"],
     },
     tapumemedank: {
@@ -10549,7 +10672,7 @@ darkchomp: {
         },
         heightm: 0.9,
         weightkg: 12.55,
-        color: "Red",
+        color: "White",
         eggGroups: ["Undiscovered"],
     },
     comcott: {
@@ -10570,7 +10693,7 @@ darkchomp: {
         },
         heightm: 0.405,
         weightkg: 3.45,
-        color: "Black",
+        color: "Green",
         eggGroups: ["Undiscovered"],
     },
 	minislash: {
@@ -10641,7 +10764,7 @@ darkchomp: {
         },
         heightm: 1.155,
         weightkg: 48.5,
-        color: "Black",
+        color: "White",
         eggGroups: ["Undiscovered"],
     },
     crematoriamegax: {
@@ -10697,7 +10820,7 @@ darkchomp: {
         },
         heightm: 1.7,
         weightkg: 107,
-        color: "Red",
+        color: "White",
         eggGroups: ["Undiscovered"],
     },
     pherothorn: {
@@ -10788,7 +10911,7 @@ darkchomp: {
         },
         heightm: 2.3,
         weightkg: 163.25,
-        color: "Pink",
+        color: "White",
         eggGroups: ["Monster"],
     },
     decidactyl: {
@@ -10911,8 +11034,6 @@ darkchomp: {
         heightm: 1.6,
         weightkg: 84,
     },
-
-
     mudape: {
         num: 7500229,
         species: "Mudape",
@@ -10933,7 +11054,6 @@ darkchomp: {
         heightm: 1.75,
         weightkg: 476,
     },
-
     kira: {
         num: 7500230,
         species: "Kira",
@@ -10950,13 +11070,12 @@ darkchomp: {
         abilities: {
             0: "Beast's Focus"
         },
+        color: "White",
 		  eggGroups: ["Undiscovered"],
         heightm: 1.25,
         weightkg: 105.05,
     },
-
-
-    exelegoalola: {
+	exelegoalola: {
         num: 7500231,
         species: "Exelego-Alola",
         types: ["Rock", "Dragon"],
@@ -10972,12 +11091,11 @@ darkchomp: {
         abilities: {
             0: "Frisky Beast"
         },
+        color: "White",
 		  eggGroups: ["Undiscovered"],
         heightm: 6.05,
         weightkg: 235.55,
     },
-
-
     joltarina: {
         num: 7500232,
         species: "Joltarina",
@@ -10997,13 +11115,12 @@ darkchomp: {
         abilities: {
             0: "Volt Torrent"
         },
+        color: "Blue",
 		  eggGroups: ["Field"],
         heightm: 1.3,
         weightkg: 34.25,
     },
-
-
-    dhelchamp: {
+	dhelchamp: {
         num: 7500233,
         species: "Dhelchamp",
         types: ["Grass", "Fighting"],
@@ -11019,13 +11136,12 @@ darkchomp: {
         abilities: {
             0: "Ancient Mariner"
         },
-       dexentry: "A rogue team of former Team Rocket members created this fusion. It is said to be able to remove the anchor attached to its head and swing it around crazily for an extremely powerful Power Whip or Anchor Shot. At the same time, it is able to fight with its four arms against any enemies trying to dodge the attack",
+        color: "Green",
+        dexentry: "A rogue team of former Team Rocket members created this fusion. It is said to be able to remove the anchor attached to its head and swing it around crazily for an extremely powerful Power Whip or Anchor Shot. At the same time, it is able to fight with its four arms against any enemies trying to dodge the attack",
 		  eggGroups: ["Undiscovered"],
         heightm: 2.75,
         weightkg: 170,
     },
-
-
     mimian: {
         num: 7500234,
         species: "Mimian",
@@ -11041,11 +11157,11 @@ darkchomp: {
         abilities: {
             0: "Monkey See Monkey Do"
         },
+        color: "Pink",
 		  eggGroups: ["Undiscovered"],
         heightm: 1.2,
         weightkg: 43.4,
     },
-
     aerodako: {
         num: 7500235,
         species: "Aero Dako",
@@ -11065,11 +11181,11 @@ darkchomp: {
         abilities: {
             0: "Rocky Surge"
         },
+        color: "Black",
 		  eggGroups: ["Undiscovered"],
         heightm: 1.8,
         weightkg: 39.75,
     },
-
     aerodakomega: {
         num: 7500235,
         species: "Aero Dako-Mega",
@@ -11092,11 +11208,11 @@ darkchomp: {
         abilities: {
             0: "Tough Claws"
         },
+        color: "Black",
 		  eggGroups: ["Undiscovered"],
         heightm: 2.1,
         weightkg: 59.75,
     },
-
     tapujojo: {
         num: 7500236,
         species: "Tapu Jojo",
@@ -11113,6 +11229,7 @@ darkchomp: {
         abilities: {
             0: "Supercharge Surge"
         },
+        color: "Yellow",
 		  eggGroups: ["Undiscovered"],
         heightm: 1.6,
         weightkg: 30.55,
@@ -11133,6 +11250,7 @@ darkchomp: {
         abilities: {
             0: "Broken Heart"
         },
+        color: "Blue",
 		  eggGroups: ["Undiscovered"],
         heightm: 1.35,
         weightkg: 67.95,
@@ -11153,11 +11271,11 @@ darkchomp: {
         abilities: {
             0: "Diamond Armor"
         },
+        color: "Black",
 		  eggGroups: ["Undiscovered"],
         heightm: 2.2,
         weightkg: 145,
     },
-
     kartanbull: {
         num: 7500239,
         species: "Kartanbull",
@@ -11174,6 +11292,7 @@ darkchomp: {
         abilities: {
             0: "Subdue"
         },
+        color: "White",
 		  eggGroups: ["Undiscovered"],
         heightm: 0.85,
         weightkg: 24.4,
@@ -11197,7 +11316,8 @@ darkchomp: {
         abilities: {
             0: "Sun Bath"
         },
-    dexentry: "Two of our grunts, who were on the trail of the Pewter and Cerulean Gym Leaders at the time, have encountered a Gastly proficient in the art of illusions. This Gastly used a Venusaur and a Blastoise illusion to scare a Bulbasaur and Squirtle, then combined them to form Venustoise. While the plans to create a Venustoise were postponed for some time, a breakthrough in combining the rarely-seen abilities of Pokémon was discovered, and one of the first fusions to be created from this breakthrough was a live Bulbasquirt. When brought to Level 16, it evolved into an Ivytortle, and at Level 34, Ivytortle evolved into the same fusion depicted back in the Maiden's Peak illusion: Venustoise.",
+        color: "Blue",
+    	  dexentry: "Two of our grunts, who were on the trail of the Pewter and Cerulean Gym Leaders at the time, have encountered a Gastly proficient in the art of illusions. This Gastly used a Venusaur and a Blastoise illusion to scare a Bulbasaur and Squirtle, then combined them to form Venustoise. While the plans to create a Venustoise were postponed for some time, a breakthrough in combining the rarely-seen abilities of Pokémon was discovered, and one of the first fusions to be created from this breakthrough was a live Bulbasquirt. When brought to Level 16, it evolved into an Ivytortle, and at Level 34, Ivytortle evolved into the same fusion depicted back in the Maiden's Peak illusion: Venustoise.",
 		  eggGroups: ["Monster"],
         heightm: 1.8,
         weightkg: 92.75,
@@ -11226,6 +11346,7 @@ darkchomp: {
         abilities: {
             0: "Thick Fat"
         },
+        color: "Blue",
 		  eggGroups: ["Monster"],
         heightm: 2.2,
         weightkg: 148.25,
@@ -11252,6 +11373,7 @@ darkchomp: {
         abilities: {
             0: "Mega Launcher"
         },
+        color: "Blue",
 		  eggGroups: ["Monster"],
         heightm: 1.8,
         weightkg: 108.35,
@@ -11271,6 +11393,7 @@ darkchomp: {
         abilities: {
             0: "Lazy Camo"
         },
+        color: "Green",
 		  eggGroups: ["Field"],
         heightm: 1.5,
         weightkg: 76.25,
@@ -11290,6 +11413,7 @@ darkchomp: {
         abilities: {
             0: "Overwhelming"
         },
+        color: "Black",
 		  eggGroups: ["Flying"],
         heightm: 1.05,
         weightkg: 16.9,
@@ -11310,6 +11434,7 @@ darkchomp: {
         abilities: {
             0: "Triage System"
         },
+        color: "Gray",
 		  eggGroups: ["Undiscovered"],
         heightm: 1.2,
         weightkg: 50.4,
@@ -11333,6 +11458,7 @@ darkchomp: {
         abilities: {
             0: "Triage System"
         },
+        color: "Gray",
 		  eggGroups: ["Undiscovered"],
         heightm: 1.2,
         weightkg: 50.4,
@@ -11356,6 +11482,7 @@ darkchomp: {
         abilities: {
             0: "Triage System"
         },
+        color: "Gray",
 		  eggGroups: ["Undiscovered"],
         heightm: 1.2,
         weightkg: 50.4,
@@ -11379,6 +11506,7 @@ darkchomp: {
         abilities: {
             0: "Triage System"
         },
+        color: "Gray",
 		  eggGroups: ["Undiscovered"],
         heightm: 1.2,
         weightkg: 50.4,
@@ -11402,7 +11530,10 @@ darkchomp: {
         abilities: {
             0: "Triage System"
         },
+        color: "Gray",
 		  eggGroups: ["Undiscovered"],
+        heightm: 1.2,
+        weightkg: 50.4,
     },
     covallyice: {
         num: 7500243,
@@ -11423,6 +11554,7 @@ darkchomp: {
         abilities: {
             0: "Triage System"
         },
+        color: "Gray",
 		  eggGroups: ["Undiscovered"],
         heightm: 1.2,
         weightkg: 50.4,
@@ -11446,6 +11578,7 @@ darkchomp: {
         abilities: {
             0: "Triage System"
         },
+        color: "Gray",
 		  eggGroups: ["Undiscovered"],
         heightm: 1.2,
         weightkg: 50.4,
@@ -11469,6 +11602,7 @@ darkchomp: {
         abilities: {
             0: "Triage System"
         },
+        color: "Gray",
 		  eggGroups: ["Undiscovered"],
         heightm: 1.2,
         weightkg: 50.4,
@@ -11492,6 +11626,7 @@ darkchomp: {
         abilities: {
             0: "Triage System"
         },
+        color: "Gray",
 		  eggGroups: ["Undiscovered"],
         heightm: 1.2,
         weightkg: 50.4,
@@ -11515,6 +11650,7 @@ darkchomp: {
         abilities: {
             0: "Triage System"
         },
+        color: "Gray",
 		  eggGroups: ["Undiscovered"],
         heightm: 1.2,
         weightkg: 50.4,
@@ -11538,6 +11674,7 @@ darkchomp: {
         abilities: {
             0: "Triage System"
         },
+        color: "Gray",
 		  eggGroups: ["Undiscovered"],
         heightm: 1.2,
         weightkg: 50.4,
@@ -11561,6 +11698,7 @@ darkchomp: {
         abilities: {
             0: "Triage System"
         },
+        color: "Gray",
 		  eggGroups: ["Undiscovered"],
         heightm: 1.2,
         weightkg: 50.4,
@@ -11584,12 +11722,11 @@ darkchomp: {
         abilities: {
             0: "Triage System"
         },
+        color: "Gray",
 		  eggGroups: ["Undiscovered"],
         heightm: 1.2,
         weightkg: 50.4,
     },
-
-
     covallyghost: {
         num: 7500243,
         species: "Covally-Ghost",
@@ -11609,12 +11746,11 @@ darkchomp: {
         abilities: {
             0: "Triage System"
         },
+        color: "Gray",
 		  eggGroups: ["Undiscovered"],
         heightm: 1.2,
         weightkg: 50.4,
     },
-
-
     covallydragon: {
         num: 7500243,
         species: "Covally-Dragon",
@@ -11634,12 +11770,11 @@ darkchomp: {
         abilities: {
             0: "Triage System"
         },
+        color: "Gray",
 		  eggGroups: ["Undiscovered"],
         heightm: 1.2,
         weightkg: 50.4,
     },
-
-
     covallydark: {
         num: 7500243,
         species: "Covally-Dark",
@@ -11659,12 +11794,11 @@ darkchomp: {
         abilities: {
             0: "Triage System"
         },
+        color: "Gray",
 		  eggGroups: ["Undiscovered"],
         heightm: 1.2,
         weightkg: 50.4,
     },
-
-
     covallysteel: {
         num: 7500243,
         species: "Covally-Steel",
@@ -11684,12 +11818,11 @@ darkchomp: {
         abilities: {
             0: "Triage System"
         },
+        color: "Gray",
 		  eggGroups: ["Undiscovered"],
         heightm: 1.2,
         weightkg: 50.4,
     },
-
-
     covallyfairy: {
         num: 7500243,
         species: "Covally-Fairy",
@@ -11709,12 +11842,11 @@ darkchomp: {
         abilities: {
             0: "Triage System"
         },
+        color: "Gray",
 		  eggGroups: ["Undiscovered"],
         heightm: 1.2,
         weightkg: 50.4,
     },
-
-
     toxamola: {
         num: 7500244,
         species: "Toxamola",
@@ -11730,6 +11862,7 @@ darkchomp: {
         abilities: {
             0: "Regenerator"
         },
+        color: "Blue",
 		  eggGroups: ["Water 1"],
         heightm: 0.95,
         weightkg: 23.05,
@@ -11750,12 +11883,11 @@ darkchomp: {
         abilities: {
             0: "Pixie Grace"
         },
+        color: "White",
 		  eggGroups: ["Undiscovered"],
         heightm: 0.8,
         weightkg: 15,
     },
-
-
     melonpirouette: {
         num: 7500245,
         species: "Melon-Pirouette",
@@ -11775,12 +11907,11 @@ darkchomp: {
         abilities: {
             0: "Pixie Grace"
         },
+        color: "White",
 		  eggGroups: ["Undiscovered"],
         heightm: 0.8,
         weightkg: 15,
     },
-
-
     kyutomwhite: {
         num: 7500246,
         species: "Kyutom-White",
@@ -11797,12 +11928,11 @@ darkchomp: {
         abilities: {
             0: "Turborise"
         },
+        color: "Red",
 		  eggGroups: ["Undiscovered"],
         heightm: 1.95,
         weightkg: 162.65,
     },
-
-
     xernemite: {
         num: 7500247,
         species: "Xernemite",
@@ -11819,12 +11949,11 @@ darkchomp: {
         abilities: {
             0: "Pixie Lure"
         },
+        color: "Gray",
 		  eggGroups: ["Undiscovered"],
         heightm: 1.65,
         weightkg: 110.5,
     },
-
-
     cherron: {
         num: 7500248,
         species: "Cherron",
@@ -11840,12 +11969,11 @@ darkchomp: {
         abilities: {
             0: "Flower Power"
         },
+        color: "Purple",
 		  eggGroups: ["Undiscovered"],
         heightm: 2,
         weightkg: 479.65,
     },
-
-
     cherronprimal: {
         num: 7500248,
         species: "Cherron-Primal",
@@ -11864,12 +11992,11 @@ darkchomp: {
         abilities: {
             0: "Desolate Land"
         },
+        color: "Pink",
 		  eggGroups: ["Undiscovered"],
         heightm: 2,
         weightkg: 529.35,
     },
-
-
     dialcatty: {
         num: 7500249,
         species: "Dialcatty",
@@ -11886,12 +12013,11 @@ darkchomp: {
         abilities: {
             0: "Normalized Enemy"
         },
+        color: "Purple",
 		  eggGroups: ["Undiscovered"],
         heightm: 3.25,
         weightkg: 357.8,
     },
-
-
     lunatic: {
         num: 7500250,
         species: "Lunatic",
@@ -11907,12 +12033,11 @@ darkchomp: {
         abilities: {
             0: "Fungal Shield"
         },
+        color: "Purple",
 		  eggGroups: ["Undiscovered"],
         heightm: 2.5,
         weightkg: 65.75,
     },
-
-
     granho: {
         num: 7500251,
         species: "Gran-Ho",
@@ -11929,12 +12054,11 @@ darkchomp: {
         abilities: {
             0: "Pressurate"
         },
+        color: "Purple",
 		  eggGroups: ["Undiscovered"],
         heightm: 2.6,
         weightkg: 123.85,
     },
-
-
     lies: {
         num: 7500252,
         species: "Lies",
@@ -11950,12 +12074,11 @@ darkchomp: {
         abilities: {
             0: "Mana Potion"
         },
+        color: "Purple",
 		  eggGroups: ["Undiscovered"],
         heightm: 2.05,
         weightkg: 126.25,
     },
-
-
     viva: {
         num: 7500253,
         species: "Viva",
@@ -11971,12 +12094,11 @@ darkchomp: {
         abilities: {
             0: "Piercing Gaze"
         },
+        color: "White",
 		  eggGroups: ["Undiscovered"],
         heightm: 3.3,
         weightkg: 350,
     },
-
-
     girutukumuka: {
         num: 7500254,
         species: "Girutukumuka",
@@ -11992,6 +12114,7 @@ darkchomp: {
         abilities: {
             0: "Pressured Innards"
         },
+        color: "Black",
 		  eggGroups: ["Undiscovered"],
         heightm: 2.4,
         weightkg: 375.6,
@@ -12012,12 +12135,11 @@ darkchomp: {
         abilities: {
             0: "Spiral Power"
         },
+        color: "Blue",
 		  eggGroups: ["Undiscovered"],
         heightm: 1.8,
         weightkg: 163.75,
     },
-
-
     omneusfire: {
         num: 7500255,
         species: "Omneus-Fire",
@@ -12037,12 +12159,11 @@ darkchomp: {
         abilities: {
             0: "Spiral Power"
         },
+        color: "Blue",
 		  eggGroups: ["Undiscovered"],
         heightm: 1.8,
         weightkg: 163.75,
     },
-
-
     omneuswater: {
         num: 7500255,
         species: "Omneus-Water",
@@ -12062,12 +12183,11 @@ darkchomp: {
         abilities: {
             0: "Spiral Power"
         },
+        color: "Blue",
 		  eggGroups: ["Undiscovered"],
         heightm: 1.8,
         weightkg: 163.75,
     },
-
-
     omneuselectric: {
         num: 7500255,
         species: "Omneus-Electric",
@@ -12087,12 +12207,11 @@ darkchomp: {
         abilities: {
             0: "Spiral Power"
         },
+        color: "Blue",
 		  eggGroups: ["Undiscovered"],
         heightm: 1.8,
         weightkg: 163.75,
     },
-
-
     omneusgrass: {
         num: 7500255,
         species: "Omneus-Grass",
@@ -12112,12 +12231,11 @@ darkchomp: {
         abilities: {
             0: "Spiral Power"
         },
+        color: "Blue",
 		  eggGroups: ["Undiscovered"],
         heightm: 1.8,
         weightkg: 163.75,
     },
-
-
     omneusice: {
         num: 7500255,
         species: "Omneus-Ice",
@@ -12137,12 +12255,11 @@ darkchomp: {
         abilities: {
             0: "Spiral Power"
         },
+        color: "Blue",
 		  eggGroups: ["Undiscovered"],
         heightm: 1.8,
         weightkg: 163.75,
     },
-
-
     omneusfighting: {
         num: 7500255,
         species: "Omneus-Fighting",
@@ -12162,12 +12279,11 @@ darkchomp: {
         abilities: {
             0: "Spiral Power"
         },
+        color: "Blue",
 		  eggGroups: ["Undiscovered"],
         heightm: 1.8,
         weightkg: 163.75,
     },
-
-
     omneuspoison: {
         num: 7500255,
         species: "Omneus-Poison",
@@ -12187,12 +12303,11 @@ darkchomp: {
         abilities: {
             0: "Spiral Power"
         },
+        color: "Blue",
 		  eggGroups: ["Undiscovered"],
         heightm: 1.8,
         weightkg: 163.75,
     },
-
-
     omneusground: {
         num: 7500255,
         species: "Omneus-Ground",
@@ -12212,12 +12327,11 @@ darkchomp: {
         abilities: {
             0: "Spiral Power"
         },
+        color: "Blue",
 		  eggGroups: ["Undiscovered"],
         heightm: 1.8,
         weightkg: 163.75,
     },
-
-
     omneusflying: {
         num: 7500255,
         species: "Omneus-Flying",
@@ -12237,12 +12351,11 @@ darkchomp: {
         abilities: {
             0: "Spiral Power"
         },
+        color: "Blue",
 		  eggGroups: ["Undiscovered"],
         heightm: 1.8,
         weightkg: 163.75,
     },
-
-
     omneuspsychic: {
         num: 7500255,
         species: "Omneus-Psychic",
@@ -12262,12 +12375,11 @@ darkchomp: {
         abilities: {
             0: "Spiral Power"
         },
+        color: "Blue",
 		  eggGroups: ["Undiscovered"],
         heightm: 1.8,
         weightkg: 163.75,
     },
-
-
     omneusbug: {
         num: 7500255,
         species: "Omneus-Bug",
@@ -12287,12 +12399,11 @@ darkchomp: {
         abilities: {
             0: "Spiral Power"
         },
+        color: "Blue",
 		  eggGroups: ["Undiscovered"],
         heightm: 1.8,
         weightkg: 163.75,
     },
-
-
     omneusdragon: {
         num: 7500255,
         species: "Omneus-Dragon",
@@ -12312,12 +12423,11 @@ darkchomp: {
         abilities: {
             0: "Spiral Power"
         },
+        color: "Blue",
 		  eggGroups: ["Undiscovered"],
         heightm: 1.8,
         weightkg: 163.75,
     },
-
-
     omneusdark: {
         num: 7500255,
         species: "Omneus-Dark",
@@ -12337,12 +12447,11 @@ darkchomp: {
         abilities: {
             0: "Spiral Power"
         },
+        color: "Blue",
 		  eggGroups: ["Undiscovered"],
         heightm: 1.8,
         weightkg: 163.75,
     },
-
-
     omneussteel: {
         num: 7500255,
         species: "Omneus-Steel",
@@ -12362,12 +12471,11 @@ darkchomp: {
         abilities: {
             0: "Spiral Power"
         },
+        color: "Blue",
 		  eggGroups: ["Undiscovered"],
         heightm: 1.8,
         weightkg: 163.75,
     },
-
-
     omneusfairy: {
         num: 7500255,
         species: "Omneus-Fairy",
@@ -12387,12 +12495,11 @@ darkchomp: {
         abilities: {
             0: "Spiral Power"
         },
+        color: "Blue",
 		  eggGroups: ["Undiscovered"],
         heightm: 1.8,
         weightkg: 163.75,
     },
-
-
     pheralie: {
         num: 7500256,
         species: "Pheralie",
@@ -12408,12 +12515,11 @@ darkchomp: {
         abilities: {
             0: "Extremist"
         },
+        color: "Gray",
 		  eggGroups: ["Undiscovered"],
         heightm: 1.65,
         weightkg: 140.75,
     },
-
-
     pheraliemega: {
         num: 7500256,
         species: "Pheralie-Mega",
@@ -12432,12 +12538,11 @@ darkchomp: {
         abilities: {
             0: "Refrigerate"
         },
+        color: "Gray",
 		  eggGroups: ["Undiscovered"],
         heightm: 2.25,
         weightkg: 234.45,
     },
-
-
     tsarakion: {
         num: 7500257,
         species: "Tsarakion",
@@ -12454,12 +12559,11 @@ darkchomp: {
         abilities: {
             0: "Queen's Command"
         },
+        color: "Green",
 		  eggGroups: ["Undiscovered"],
         heightm: 1.55,
         weightkg: 140.7,
     },
-
-
     scipod: {
         num: 7500258,
         species: "Scipod",
@@ -12475,12 +12579,11 @@ darkchomp: {
         abilities: {
             0: "Guerilla Warfare"
         },
+        color: "Red",
 		  eggGroups: ["Bug"],
         heightm: 1.9,
         weightkg: 113,
     },
-
-
     scipodmega: {
         num: 7500258,
         species: "Scipod-Mega",
@@ -12499,12 +12602,11 @@ darkchomp: {
         abilities: {
             0: "Technician"
         },
+        color: "Red",
 		  eggGroups: ["Bug"],
         heightm: 2.1,
         weightkg: 120,
     },
-
-
     necrozmerupt: {
         num: 7500259,
         species: "Necrozmerupt",
@@ -12521,12 +12623,11 @@ darkchomp: {
         abilities: {
             0: "Soulforged Diamond"
         },
+        color: "Black",
 		  eggGroups: ["Undiscovered"],
         heightm: 2.15,
         weightkg: 225,
     },
-
-
     necrozmeruptmega: {
         num: 7500259,
         species: "Necrozmerupt-Mega",
@@ -12546,12 +12647,11 @@ darkchomp: {
         abilities: {
             0: "Sheer Force"
         },
+        color: "Black",
 		  eggGroups: ["Undiscovered"],
         heightm: 2.75,
         weightkg: 325.5,
     },
-
-
     banekyu: {
         num: 7500260,
         species: "Banekyu",
@@ -12567,12 +12667,12 @@ darkchomp: {
         abilities: {
             0: "Cursed Cloak"
         },
+        color: "Yellow",
 		  eggGroups: ["Amorphous"],
         heightm: 0.65,
         weightkg: 6.6,
     },
-	
-    banekyubusted: {
+	banekyubusted: {
         num: 7500260,
         species: "Banekyu-Busted",
         baseSpecies: "Banekyu",
@@ -12590,12 +12690,11 @@ darkchomp: {
         abilities: {
             0: "Cursed Cloak"
         },
+        color: "Yellow",
 		  eggGroups: ["Amorphous"],
         heightm: 0.65,
         weightkg: 6.6,
     },
-
-
     banekyumega: {
         num: 7500260,
         species: "Banekyu-Mega",
@@ -12614,12 +12713,11 @@ darkchomp: {
         abilities: {
             0: "Prankster"
         },
+        color: "Yellow",
 		  eggGroups: ["Amorphous"],
         heightm: 0.75,
         weightkg: 7.1,
     },
-
-
     ninxys: {
         num: 7500261,
         species: "Ninxys",
@@ -12636,11 +12734,11 @@ darkchomp: {
         abilities: {
             0: "Light Speed"
         },
+        color: "Yellow",
+		  eggGroups: ["Undiscovered"],
         heightm: 1.25,
         weightkg: 36.4,
     },
-
-
     heratana: {
         num: 7500262,
         species: "Heratana",
@@ -12662,8 +12760,6 @@ darkchomp: {
         color: "White",
         eggGroups: ["Undiscovered"]
     },
-
-
     heratanamega: {
         num: 7500262,
         species: "Heratana-Mega",
@@ -12688,8 +12784,6 @@ darkchomp: {
         color: "White",
         eggGroups: ["Undiscovered"]
     },
-
-
     plumin: {
         num: 7500263,
         species: "Plumin",
@@ -12710,8 +12804,6 @@ darkchomp: {
         color: "Yellow",
         eggGroups: ["Fairy"]
     },
-
-
     oxyblissdefense: {
         num: 7500264,
         species: "Oxybliss-Defense",
@@ -12728,12 +12820,11 @@ darkchomp: {
         abilities: {
             0: "Quarantine"
         },
+        color: "Pink",
 		  eggGroups: ["Undiscovered"],
         heightm: 1.6,
         weightkg: 53.8,
     },
-
-
     diggercatealola: {
         num: 7500265,
         species: "Diggercate-Alola",
@@ -12749,12 +12840,11 @@ darkchomp: {
         abilities: {
             0: "High Stakes"
         },
+        color: "Black",
 		  eggGroups: ["Field"],
         heightm: 0.85,
         weightkg: 33.95,
     },
-
-
     inferperior: {
         num: 7500266,
         species: "Inferperior",
@@ -12774,12 +12864,11 @@ darkchomp: {
         abilities: {
             0: "Blazing Contrary"
         },
+        color: "Brown",
 		  eggGroups: ["Field"],
         heightm: 2.25,
         weightkg: 59,
     },
-
-
     mimukyu: {
         num: 7500267,
         species: "Mimukyu",
@@ -12796,6 +12885,7 @@ darkchomp: {
             0: "Appropriation"
         },
 		 otherFormes: ["mimukyubusted"],
+        color: "Green",
 		  eggGroups: ["Amorphous"],
         heightm: 0.6,
         weightkg: 26.35,
@@ -12818,6 +12908,7 @@ darkchomp: {
         abilities: {
             0: "Appropriation"
         },
+        color: "Green",
 		  eggGroups: ["Amorphous"],
         heightm: 0.6,
         weightkg: 26.35,
@@ -12838,12 +12929,11 @@ darkchomp: {
         abilities: {
             0: "Beast Guard"
         },
+        color: "Yellow",
 		  eggGroups: ["Undiscovered"],
         heightm: 2.65,
         weightkg: 74,
     },
-
-
     axatreemega: {
         num: 7500268,
         species: "Axatree-Mega",
@@ -12863,12 +12953,11 @@ darkchomp: {
         abilities: {
             0: "Trace"
         },
+        color: "Yellow",
 		  eggGroups: ["Undiscovered"],
         heightm: 2.35,
         weightkg: 74,
     },
-
-
     cressapal: {
         num: 7500269,
         species: "Cressapal",
@@ -12885,12 +12974,11 @@ darkchomp: {
         abilities: {
             0: "Fear Shield"
         },
+        color: "Yellow",
 		  eggGroups: ["Undiscovered"],
         heightm: 1.5,
         weightkg: 49.8,
     },
-
-
     necrior: {
         num: 7500270,
         species: "Necrior",
@@ -12907,12 +12995,11 @@ darkchomp: {
         abilities: {
             0: "Inverse Armor"
         },
+        color: "Black",
 		  eggGroups: ["Undiscovered"],
         heightm: 2.85,
         weightkg: 146.5,
     },
-
-
     cinshado: {
         num: 7500271,
         species: "Cinshado",
@@ -12929,12 +13016,11 @@ darkchomp: {
         abilities: {
             0: "Frenzy"
         },
+        color: "Gray",
 		  eggGroups: ["Undiscovered"],
         heightm: 0.6,
         weightkg: 14.85,
     },
-
-
     altellow: {
         num: 7500272,
         species: "Altellow",
@@ -12950,12 +13036,11 @@ darkchomp: {
         abilities: {
             0: "Puffy Cloud"
         },
+        color: "Blue",
 		  eggGroups: ["Flying"],
         heightm: 0.9,
         weightkg: 20.2,
     },
-
-
     altellowmega: {
         num: 7500272,
         species: "Altellow-Mega",
@@ -12974,6 +13059,7 @@ darkchomp: {
         abilities: {
             0: "Pixilate"
         },
+        color: "Blue",
 		  eggGroups: ["Flying"],
         heightm: 1.3,
         weightkg: 20.2,
@@ -13022,13 +13108,12 @@ celebi: {
         abilities: {
             0: "Tinkering"
         },
+        color: "Blue",
         heightm: 0.65,
         weightkg: 12.6,
 		 fusion: ["Riolu", "Celebi"],
 		  eggGroups: ["Undiscovered"],
     },
-
-
     combarde: {
         num: 7500274,
         species: "Combarde",
@@ -13044,12 +13129,11 @@ celebi: {
         abilities: {
             0: "Sluggish Aura"
         },
+        color: "Red",
         heightm: 2.95,
         weightkg: 162.25,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     dittsey: {
         num: 7500275,
         species: "Dittsey",
@@ -13066,6 +13150,7 @@ celebi: {
         abilities: {
             0: "Troll"
         },
+        color: "Purple",
         heightm: 0.9,
         weightkg: 25.4,
 		  eggGroups: ["Fairy"],
@@ -13085,12 +13170,11 @@ celebi: {
         abilities: {
             0: "Optimize"
         },
+        color: "Gray",
         heightm: 2.1,
         weightkg: 215,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     aravealolafire: {
         num: 7500276,
         species: "A Rave-Alola-Fire",
@@ -13109,12 +13193,11 @@ celebi: {
         abilities: {
             0: "Optimize"
         },
+        color: "Gray",
         heightm: 2.1,
         weightkg: 215,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     aravealolawater: {
         num: 7500276,
         species: "A Rave-Alola-Water",
@@ -13133,12 +13216,11 @@ celebi: {
         abilities: {
             0: "Optimize"
         },
+        color: "Gray",
         heightm: 2.1,
         weightkg: 215,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     aravealolaelectric: {
         num: 7500276,
         species: "A Rave-Alola-Electric",
@@ -13157,12 +13239,11 @@ celebi: {
         abilities: {
             0: "Optimize"
         },
+        color: "Gray",
         heightm: 2.1,
         weightkg: 215,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     aravealolagrass: {
         num: 7500276,
         species: "A Rave-Alola-Grass",
@@ -13181,12 +13262,11 @@ celebi: {
         abilities: {
             0: "Optimize"
         },
+        color: "Gray",
         heightm: 2.1,
         weightkg: 215,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     aravealolaice: {
         num: 7500276,
         species: "A Rave-Alola-Ice",
@@ -13205,12 +13285,11 @@ celebi: {
         abilities: {
             0: "Optimize"
         },
+        color: "Gray",
         heightm: 2.1,
         weightkg: 215,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     aravealolafighting: {
         num: 7500276,
         species: "A Rave-Alola-Fighting",
@@ -13229,12 +13308,11 @@ celebi: {
         abilities: {
             0: "Optimize"
         },
+        color: "Gray",
         heightm: 2.1,
         weightkg: 215,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     aravealolapoison: {
         num: 7500276,
         species: "A Rave-Alola-Poison",
@@ -13253,12 +13331,11 @@ celebi: {
         abilities: {
             0: "Optimize"
         },
+        color: "Gray",
         heightm: 2.1,
         weightkg: 215,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     aravealolaground: {
         num: 7500276,
         species: "A Rave-Alola-Ground",
@@ -13277,12 +13354,11 @@ celebi: {
         abilities: {
             0: "Optimize"
         },
+        color: "Gray",
         heightm: 2.1,
         weightkg: 215,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     aravealolaflying: {
         num: 7500276,
         species: "A Rave-Alola-Flying",
@@ -13301,10 +13377,11 @@ celebi: {
         abilities: {
             0: "Optimize"
         },
+        color: "Gray",
+        heightm: 2.1,
+        weightkg: 215,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     aravealolapsychic: {
         num: 7500276,
         species: "A Rave-Alola-Psychic",
@@ -13323,12 +13400,11 @@ celebi: {
         abilities: {
             0: "Optimize"
         },
+        color: "Gray",
         heightm: 2.1,
         weightkg: 215,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     aravealolabug: {
         num: 7500276,
         species: "A Rave-Alola-Bug",
@@ -13347,12 +13423,11 @@ celebi: {
         abilities: {
             0: "Optimize"
         },
+        color: "Gray",
         heightm: 2.1,
         weightkg: 215,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     aravealolarock: {
         num: 7500276,
         species: "A Rave-Alola-Rock",
@@ -13371,12 +13446,11 @@ celebi: {
         abilities: {
             0: "Optimize"
         },
+        color: "Gray",
         heightm: 2.1,
         weightkg: 215,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     aravealolaghost: {
         num: 7500276,
         species: "A Rave-Alola-Ghost",
@@ -13395,12 +13469,11 @@ celebi: {
         abilities: {
             0: "Optimize"
         },
+        color: "Gray",
         heightm: 2.1,
         weightkg: 215,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     aravealoladragon: {
         num: 7500276,
         species: "A Rave-Alola-Dragon",
@@ -13419,12 +13492,11 @@ celebi: {
         abilities: {
             0: "Optimize"
         },
+        color: "Gray",
         heightm: 2.1,
         weightkg: 215,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     aravealoladark: {
         num: 7500276,
         species: "A Rave-Alola-Dark",
@@ -13443,12 +13515,11 @@ celebi: {
         abilities: {
             0: "Optimize"
         },
+        color: "Gray",
         heightm: 2.1,
         weightkg: 215,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     aravealolasteel: {
         num: 7500276,
         species: "A Rave-Alola-Steel",
@@ -13467,12 +13538,11 @@ celebi: {
         abilities: {
             0: "Optimize"
         },
+        color: "Gray",
         heightm: 2.1,
         weightkg: 215,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     aravealolafairy: {
         num: 7500276,
         species: "A Rave-Alola-Fairy",
@@ -13491,12 +13561,11 @@ celebi: {
         abilities: {
             0: "Optimize"
         },
+        color: "Gray",
         heightm: 2.1,
         weightkg: 215,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     miminja: {
         num: 7500277,
         species: "Miminja",
@@ -13516,12 +13585,11 @@ celebi: {
         abilities: {
             0: "Resurrection"
         },
+        color: "Yellow",
         heightm: 0.85,
         weightkg: 20.35,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     miminjareborn: {
         num: 7500277,
         species: "Miminja-Reborn",
@@ -13544,12 +13612,11 @@ celebi: {
         abilities: {
             0: "Resurrection Done"
         },
+        color: "Yellow",
         heightm: 0.85,
         weightkg: 20.35,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     murkaleo: {
         num: 7500278,
         species: "Murkaleo",
@@ -13565,12 +13632,11 @@ celebi: {
         abilities: {
             0: "Bamboozled"
         },
+        color: "Black",
         heightm: 1.95,
         weightkg: 116.05,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     zekronaw: {
         num: 7500279,
         species: "Zekronaw",
@@ -13587,12 +13653,11 @@ celebi: {
         abilities: {
             0: "Tetra Force"
         },
+        color: "Black",
         heightm: 2,
         weightkg: 185,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     quinda: {
         num: 7500280,
         species: "Quinda",
@@ -13608,12 +13673,11 @@ celebi: {
         abilities: {
             0: "Weather Contradiction"
         },
+        color: "Green",
         heightm: 4.05,
         weightkg: 105.75,
         eggGroups: ["Undiscovered"]
     },
-
-
     quindamega: {
         num: 7500280,
         species: "Quinda-Mega",
@@ -13632,12 +13696,11 @@ celebi: {
         abilities: {
             0: "Delta Stream"
         },
+        color: "Green",
         heightm: 7.35,
         weightkg: 291.25,
         eggGroups: ["Undiscovered"]
     },
-
-
     sablegigas: {
         num: 7500281,
         species: "Sablegigas",
@@ -13653,12 +13716,11 @@ celebi: {
         abilities: {
             0: "Slow Surge"
         },
+        color: "Purple",
         heightm: 2.1,
         weightkg: 215.5,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     sablegigasmega: {
         num: 7500281,
         species: "Sablegigas-Mega",
@@ -13677,12 +13739,11 @@ celebi: {
         abilities: {
             0: "Magic Bounce"
         },
+        color: "Purple",
         heightm: 2.1,
         weightkg: 365.5,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     galvillon: {
         num: 7500282,
         species: "Galvillon",
@@ -13698,12 +13759,11 @@ celebi: {
         abilities: {
             0: "Compound Eyes"
         },
+        color: "Yellow",
         heightm: 1,
         weightkg: 15.65,
 		  eggGroups: ["Bug"],
     },
-
-
     kyonun: {
         num: 7500283,
         species: "Kyonun",
@@ -13719,13 +13779,12 @@ celebi: {
         abilities: {
             0: "Electron Rain"
         },
+        color: "Blue",
 		  eggGroups: ["Undiscovered"],
         heightm: 2.45,
         weightkg: 178.1,
     dexentry: "Of the rare cases of a DNA Fusion not being done by Team Rocket. This powerful mermaid-like rodent was created by Team Aqua, after succesful capture of the Blue Orb. Their attempts at testing the Blue Orb on different species reacted with a Minun, which had then recieved Kyogre's powers contained in the Orb, becoming Kyonun. It swims through the oceans at high speeds, and has tremendous power when it is raining, capable of delievering shocks of over 10.000 Volts."
     },
-
-
     kyonunprimal: {
         num: 7500283,
         species: "Kyonun-Primal",
@@ -13744,12 +13803,11 @@ celebi: {
         abilities: {
             0: "Primordial Sea"
         },
+        color: "Blue",
         heightm: 7.75,
         weightkg: 256.1,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     abomasorus: {
         num: 7500284,
         species: "Abomasorus",
@@ -13766,6 +13824,7 @@ celebi: {
         abilities: {
             0: "Petrify"
         },
+        color: "White",
         heightm: 1.75,
         weightkg: 101.75,
 		  eggGroups: ["Undiscovered"],
@@ -13789,12 +13848,11 @@ celebi: {
         abilities: {
             0: "Snow Warning"
         },
+        color: "White",
         heightm: 2.25,
         weightkg: 151.25,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     toxicario: {
         num: 7500285,
         species: "Toxicario",
@@ -13814,12 +13872,11 @@ celebi: {
         abilities: {
             0: "Triggered"
         },
+        color: "Blue",
         heightm: 1.25,
         weightkg: 49.2,
 		  eggGroups: ["Human-Like"],
     },
-
-
     toxicariomega: {
         num: 7500285,
         species: "Toxicario-Mega",
@@ -13839,12 +13896,11 @@ celebi: {
         abilities: {
             0: "Adaptability"
         },
+        color: "Blue",
         heightm: 1.35,
         weightkg: 52.7,
 		  eggGroups: ["Human-Like"],
     },
-
-
     washoxchromosome: {
         num: 7500286,
         species: "Washox",
@@ -13862,12 +13918,11 @@ celebi: {
         abilities: {
             0: "Mitosis"
         },
+        color: "Red",
         heightm: 4.95,
         weightkg: 69.7,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     washoxstrand: {
         num: 7500286,
         species: "Washox-Strand",
@@ -13887,12 +13942,11 @@ celebi: {
         abilities: {
             0: "Mitosis"
         },
+        color: "Red",
         heightm: 0.1,
         weightkg: 0.25,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     hoorbok: {
         num: 7500287,
         species: "Hoorbok",
@@ -13908,12 +13962,11 @@ celebi: {
         abilities: {
             0: "Prestidigitation"
         },
+        color: "Purple",
         heightm: 5,
         weightkg: 277.5,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     ninetalesprime: {
 		  num: 38,
 		  species: "Ninetales-Prime",
@@ -13933,12 +13986,11 @@ celebi: {
         abilities: {
             0: "Solar Snow"
         },
+        color: "White",
         heightm: 1.1,
         weightkg: 19.9,
 		  eggGroups: ["Field"],
     },
-
-
     blampa: {
         num: 7500289,
         species: "Blampa",
@@ -13955,12 +14007,11 @@ celebi: {
         abilities: {
             0: "Torrential Rage"
         },
+        color: "Blue",
         heightm: 2.3,
         weightkg: 135.25,
 		  eggGroups: ["Monster"],
     },
-
-
     blampamega: {
         num: 7500289,
         species: "Blampa-Mega",
@@ -13980,12 +14031,11 @@ celebi: {
         abilities: {
             0: "Mega Launcher"
         },
+        color: "Blue",
         heightm: 2.3,
         weightkg: 150.85,
 		  eggGroups: ["Monster"],
     },
-
-
     origamiswan: {
         num: 7500290,
         species: "Origami-Swan",
@@ -14002,12 +14052,11 @@ celebi: {
         abilities: {
             0: "Fluttering Heart"
         },
+        color: "Pink",
         heightm: 0.8,
         weightkg: 41.95,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     kecleus: {
         num: 7500291,
         species: "Kecleus",
@@ -14023,10 +14072,11 @@ celebi: {
         abilities: {
             0: "Prototype"
         },
+        color: "Green",
         heightm: 2.1,
         weightkg: 171,
-    },
-	
+		  eggGroups: ["Undiscovered"],
+    },	
     fearroh: {
         num: 7500292,
         species: "Fear-Roh",
@@ -14046,8 +14096,6 @@ celebi: {
         weightkg: 118.5,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     neoprene: {
         num: 7500293,
         species: "Neoprene",
@@ -14064,12 +14112,11 @@ celebi: {
         abilities: {
             0: "Rubber Up"
         },
+        color: "Blue",
         heightm: 1.35,
         weightkg: 82.5,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     maroramalola: {
         num: 7500294,
         species: "Maroram-Alola",
@@ -14085,12 +14132,11 @@ celebi: {
         abilities: {
             0: "Turbo Curse"
         },
+        color: "Purple",
         heightm: 2.1,
         weightkg: 182,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     genny: {
         num: 7500295,
         species: "Genny",
@@ -14107,12 +14153,11 @@ celebi: {
         abilities: {
             0: "Revved Up"
         },
+        color: "Purple",
         heightm: 1.35,
         weightkg: 51.5,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     sylvoko: {
         num: 7500296,
         species: "Sylvoko",
@@ -14129,12 +14174,11 @@ celebi: {
         abilities: {
             0: "Misty Supercharge"
         },
+        color: "Yellow",
         heightm: 1.4,
         weightkg: 22,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     miniancie: {
         num: 7500297,
         species: "Miniancie",
@@ -14152,12 +14196,11 @@ celebi: {
         abilities: {
             0: "Crystallized Shield"
         },
+        color: "Pink",
         heightm: 0.5,
         weightkg: 44.25,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     minianciejewel: {
         num: 7500297,
         species: "Miniancie-Jewel",
@@ -14177,12 +14220,57 @@ celebi: {
         abilities: {
             0: "Crystallized Shield"
         },
+        color: "Pink",
         heightm: 0.5,
         weightkg: 4.55,
 		  eggGroups: ["Undiscovered"],
     },
-
-
+    minianciemegaore: {
+        num: 7500297,
+        species: "Miniancie-Mega-Ore",
+        baseSpecies: "Miniancie",
+        gender: "N",
+        forme: "Mega-Ore",
+        formeLetter: "M",
+        baseStats: {
+            hp: 55,
+            atk: 140,
+            def: 105,
+            spa: 140,
+            spd: 105,
+            spe: 115
+        },
+        abilities: {
+            0: "Crystallized Shield"
+        },
+        color: "Pink",
+        heightm: 0.9,
+        weightkg: 63.25,
+		  eggGroups: ["Undiscovered"],
+    },
+    minianciemegajewel: {
+        num: 7500297,
+        species: "Miniancie-Mega-Jewel",
+        baseSpecies: "Miniancie",
+        gender: "N",
+        forme: "Mega-Jewel",
+        formeLetter: "M",
+        baseStats: {
+            hp: 55,
+            atk: 205,
+            def: 40,
+            spa: 205,
+            spd: 40,
+            spe: 175
+        },
+        abilities: {
+            0: "Crystallized Shield"
+        },
+        color: "Pink",
+        heightm: 0.9,
+        weightkg: 23.55,
+		  eggGroups: ["Undiscovered"],
+    },
     tapudede: {
         num: 7500298,
         species: "Tapu Dede",
@@ -14199,12 +14287,11 @@ celebi: {
         abilities: {
             0: "Grassworker"
         },
+        color: "Green",
         heightm: 2.9,
         weightkg: 127.75,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     shenala: {
         num: 7500299,
         species: "Shenala",
@@ -14221,12 +14308,11 @@ celebi: {
         abilities: {
             0: "Shadow Guard"
         },
+        color: "Purple",
         heightm: 2.4,
         weightkg: 60.6,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     entir: {
         num: 7500300,
         species: "Entir",
@@ -14242,12 +14328,11 @@ celebi: {
         abilities: {
             0: "Vexing Valor"
         },
+        color: "Brown",
         heightm: 1.8,
         weightkg: 126.5,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     entirmega: {
         num: 7500300,
         species: "Entir-Mega",
@@ -14266,6 +14351,7 @@ celebi: {
         abilities: {
             0: "Aerilate"
         },
+        color: "Brown",
         heightm: 2,
         weightkg: 130.5,
 		  eggGroups: ["Undiscovered"],
@@ -14286,6 +14372,7 @@ celebi: {
         abilities: {
             0: "Compression"
         },
+        color: "Black",
         heightm: 2.4,
         weightkg: 395,
 		  eggGroups: ["Undiscovered"],
@@ -14310,12 +14397,11 @@ celebi: {
         abilities: {
             0: "Compression"
         },
+        color: "Black",
         heightm: 4.8,
         weightkg: 255.3,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     aquapod: {
         num: 7500302,
         species: "Aquapod",
@@ -14331,6 +14417,7 @@ celebi: {
         abilities: {
             0: "Bubble Slip"
 		  },
+        color: "Gray",
 		  eggGroups: ["Bug"],
         heightm: 1.9,
         weightkg: 95,
@@ -14352,6 +14439,7 @@ celebi: {
         abilities: {
             0: "Spiral Flames"
         },
+        color: "White",
         heightm: 2,
         weightkg: 173,
 		  eggGroups: ["Undiscovered"],
@@ -14372,12 +14460,12 @@ celebi: {
         abilities: {
             0: "Operation Overgrow"
         },
+        color: "Green",
         heightm: 1.35,
         weightkg: 57.5,
 		  eggGroups: ["Grass"],
        dexentry: "After evolving from Roseleef, Subject #304 broke out of confinement. Subject #74, even when Mega Evolved, was taken out effortlessly, as was Subject #83. Subject #59, which is only meant to be used in dire situations, was required to restrain it. Subject #304 has been successfully inhibited. Though it still has very strong Grass-type moves, it is no longer likely to effortlessly break through our most defensive fusions.",
     },
-
 		eevee: {
 			num: 133,
 			species: "Eevee",
@@ -14391,7 +14479,6 @@ celebi: {
 			evos: ["vaporeon", "jolteon", "flareon", "espeon", "umbreon", "leafeon", "glaceon", "sylveon", "valveon"],
 			eggGroups: ["Field"],
 		},
-
     valveon: {
         num: 7500305,
         species: "Valveon",
@@ -14408,14 +14495,13 @@ celebi: {
         abilities: {
             0: "Pixie Absorb"
         },
+        color: "Blue",
 		 prevo: "eevee",
 		 evoLevel: 2,
         heightm: 1,
         weightkg: 26.25,
 		 eggGroups: ["Field"],
     },
-
-
     raptalon: {
         num: 7500306,
         species: "Raptalon",
@@ -14431,12 +14517,11 @@ celebi: {
         abilities: {
             0: "Fearless"
         },
+        color: "Brown",
         heightm: 1.2,
         weightkg: 24.7,
 		  eggGroups: ["Flying"],
     },
-
-
     deoxurkoutlet: {
         num: 7500307,
         species: "Deoxurk-Outlet",
@@ -14453,12 +14538,11 @@ celebi: {
         abilities: {
             0: "Peer Pressure"
         },
+        color: "Black",
         heightm: 2.75,
         weightkg: 80.4,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     dio: {
         num: 7500308,
         species: "Dio",
@@ -14474,12 +14558,11 @@ celebi: {
         abilities: {
             0: "Time Stop"
         },
+        color: "Brown",
         heightm: 3.1,
         weightkg: 353.5,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     generott: {
         num: 7500309,
         species: "Generott",
@@ -14496,6 +14579,7 @@ celebi: {
         abilities: {
             0: "Upgrade"
         },
+        color: "Blue",
         heightm: 1.5,
         weightkg: 88.55,
 		  eggGroups: ["Undiscovered"],
@@ -14516,6 +14600,7 @@ celebi: {
         abilities: {
             0: "Rhythm"
         },
+        color: "Brown",
         heightm: 1.65,
         weightkg: 111.7,
 		  eggGroups: ["Field"],
@@ -14538,6 +14623,7 @@ celebi: {
         abilities: {
             0: "Rhythm"
         },
+        color: "Blue",
         heightm: 1.65,
         weightkg: 111.7,
 		  eggGroups: ["Field"],
@@ -14558,6 +14644,7 @@ celebi: {
         abilities: {
             0: "Lightning Fist"
         },
+        color: "Blue",
         heightm: 1.5,
         weightkg: 74,
 		  eggGroups: ["Undiscovered"],
@@ -14577,6 +14664,7 @@ celebi: {
         abilities: {
             0: "Flare Wings"
         },
+        color: "Brown",
         heightm: 1.35,
         weightkg: 35.5,
 		  eggGroups: ["Undiscovered"],
@@ -14597,6 +14685,7 @@ celebi: {
         abilities: {
             0: "Pecking Order"
         },
+        color: "Brown",
         heightm: 1.3,
         weightkg: 46.1,
 		  eggGroups: ["Undiscovered"],
@@ -14616,6 +14705,7 @@ celebi: {
         abilities: {
             0: "Vomit"
         },
+        color: "Black",
         heightm: 2,
         weightkg: 210.6,
 		  eggGroups: ["Undiscovered"],
@@ -14636,12 +14726,11 @@ celebi: {
         abilities: {
             0: "Magical Wand"
         },
+        color: "Blue",
         heightm: 1.5,
         weightkg: 39,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     starbutterfly: {
         num: 7500315,
         species: "Star-Butterfly",
@@ -14661,12 +14750,11 @@ celebi: {
         abilities: {
             0: "Magical Wand"
         },
+        color: "Blue",
         heightm: 1.5,
         weightkg: 39,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     gardelego: {
         num: 7500316,
         species: "Gardelego",
@@ -14682,12 +14770,11 @@ celebi: {
         abilities: {
             0: "Beast's Copycat"
         },
+        color: "White",
         heightm: 1.4,
         weightkg: 51.95,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     gardelegomega: {
         num: 7500316,
         species: "Gardelego-Mega",
@@ -14706,12 +14793,11 @@ celebi: {
         abilities: {
             0: "Pixilate"
         },
+        color: "White",
         heightm: 1.4,
         weightkg: 51.95,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     maltarione: {
         num: 7500317,
         species: "Maltarione",
@@ -14728,12 +14814,11 @@ celebi: {
         abilities: {
             0: "Medical Expert"
         },
+        color: "Gray",
         heightm: 1.15,
         weightkg: 100.3,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     maltarionemega: {
         num: 7500317,
         species: "Maltarione-Mega",
@@ -14753,12 +14838,11 @@ celebi: {
         abilities: {
             0: "Pixilate"
         },
+        color: "Gray",
         heightm: 1.55,
         weightkg: 100.3,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     maskle: {
         num: 7500318,
         species: "Maskle",
@@ -14774,12 +14858,11 @@ celebi: {
         abilities: {
             0: "Bad Influence"
         },
+        color: "Blue",
         heightm: 0.7,
         weightkg: 12.05,
 		  eggGroups: ["Bug"],
     },
-
-
     cowardice: {
         num: 7500319,
         species: "Cowardice",
@@ -14796,12 +14879,11 @@ celebi: {
         abilities: {
             0: "Scout"
         },
+        color: "Brown",
         heightm: 1.25,
         weightkg: 57.25,
 		  eggGroups: ["Bug"],
     },
-
-
     guzzbro: {
         num: 7500320,
         species: "Guzzbro",
@@ -14817,12 +14899,11 @@ celebi: {
         abilities: {
             0: "Rejuvenation"
         },
+        color: "Black",
         heightm: 3.55,
         weightkg: 483.25,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     guzzbromega: {
         num: 7500320,
         species: "Guzzbro-Mega",
@@ -14841,12 +14922,11 @@ celebi: {
         abilities: {
             0: "Shell Armor"
         },
+        color: "Black",
         heightm: 3.95,
         weightkg: 524.75,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     zycannon: {
         num: 7500321,
         species: "Zycannon",
@@ -14862,12 +14942,11 @@ celebi: {
         abilities: {
             0: "Force Drain"
         },
+        color: "Black",
         heightm: 1.15,
         weightkg: 29.75,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     zeeeee: {
         num: 7500322,
         species: "Zeeeee",
@@ -14884,12 +14963,11 @@ celebi: {
         abilities: {
             0: "Foundation"
         },
+        color: "Brown",
         heightm: 2.65,
         weightkg: 155.75,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     zeeeeecomplete: {
         num: 7500322,
         species: "Zeeeee-Complete",
@@ -14909,12 +14987,11 @@ celebi: {
         abilities: {
             0: "Foundation"
         },
+        color: "Black",
         heightm: 2.15,
         weightkg: 311.5,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     peridot: {
         num: 7500323,
         species: "Peridot",
@@ -14931,11 +15008,11 @@ celebi: {
         abilities: {
             0: "Limb Enhancers"
         },
+        color: "Black",
         heightm: 2.65,
         weightkg: 69.75,
+		  eggGroups: ["Undiscovered"],
     },
-
-
     peridotmega: {
         num: 7500323,
         species: "Peridot-Mega",
@@ -14955,12 +15032,11 @@ celebi: {
         abilities: {
             0: "No Guard"
         },
+        color: "Black",
         heightm: 3.35,
         weightkg: 80.75,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     stundicuno: {
         num: 7500324,
         species: "Stundicuno",
@@ -14976,12 +15052,11 @@ celebi: {
         abilities: {
             0: "Dirt Nap"
         },
+        color: "Brown",
         heightm: 1.2,
         weightkg: 33.2,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     aloha: {
         num: 7500325,
         species: "Aloha",
@@ -14997,12 +15072,11 @@ celebi: {
         abilities: {
             0: "Hydrodynamic"
         },
+        color: "White",
         heightm: 2.6,
         weightkg: 159.4,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     alohamega: {
         num: 7500325,
         species: "Aloha-Mega",
@@ -15021,12 +15095,11 @@ celebi: {
         abilities: {
             0: "Strong Jaw"
         },
+        color: "White",
         heightm: 3.3,
         weightkg: 200.9,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     zekloom: {
         num: 7500326,
         species: "Zekloom",
@@ -15042,12 +15115,11 @@ celebi: {
         abilities: {
             0: "Engineer"
         },
+        color: "Black",
         heightm: 2.05,
         weightkg: 192.1,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     gengalure: {
         num: 7500327,
         species: "Gengalure",
@@ -15063,12 +15135,34 @@ celebi: {
         abilities: {
             0: "Blessed Protection"
         },
+        color: "Purple",
         heightm: 1.25,
         weightkg: 37.4,
 		  eggGroups: ["Amorphous"],
     },
-
-
+    gengaluremega: {
+        num: 7500327,
+        species: "Gengalure-Mega",
+        baseSpecies: "Gengalure",
+        forme: "Mega",
+        formeLetter: "M",
+        types: ["Ghost", "Fire"],
+        baseStats: {
+            hp: 70,
+            atk: 70,
+            def: 105,
+            spa: 187,
+            spd: 112,
+            spe: 125
+        },
+        abilities: {
+            0: "Shadow Tag"
+        },
+        color: "Purple",
+        heightm: 1.15,
+        weightkg: 37.4,
+		  eggGroups: ["Amorphous"],
+    },
     ferrolord: {
         num: 7500328,
         species: "Ferrolord",
@@ -15085,12 +15179,11 @@ celebi: {
         abilities: {
             0: "Barbs Boost"
         },
+        color: "Black",
         heightm: 3.25,
         weightkg: 499,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     dad: {
         num: 7500329,
         species: "Dad",
@@ -15107,12 +15200,11 @@ celebi: {
         abilities: {
             0: "Mirror Mirror"
         },
+        color: "Purple",
         heightm: 0.5,
         weightkg: 9.6,
 		  eggGroups: ["Field"],
     },
-
-
     glaive: {
         num: 7500330,
         species: "Glaive",
@@ -15129,12 +15221,11 @@ celebi: {
         abilities: {
             0: "Atmospheric Pull"
         },
+        color: "Brown",
         heightm: 2.15,
         weightkg: 477.25,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     glaiveprimal: {
         num: 7500330,
         species: "Glaive-Primal",
@@ -15154,12 +15245,11 @@ celebi: {
         abilities: {
             0: "Desolate Land"
         },
+        color: "Brown",
         heightm: 3.65,
         weightkg: 526.95,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     kyurpedo: {
         num: 7500331,
         species: "Kyurpedo",
@@ -15175,12 +15265,11 @@ celebi: {
         abilities: {
             0: "Volt Boost"
         },
+        color: "Black",
         heightm: 2.55,
         weightkg: 206.9,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     kyurpedomega: {
         num: 7500331,
         species: "Kyurpedo-Mega",
@@ -15199,12 +15288,11 @@ celebi: {
         abilities: {
             0: "Strong Jaw"
         },
+        color: "Black",
         heightm: 3.25,
         weightkg: 248.4,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     gearchamp: {
         num: 7500332,
         species: "Gearchamp",
@@ -15221,12 +15309,35 @@ celebi: {
         abilities: {
             0: "Soul Power"
         },
+        color: "Gray",
         heightm: 1.15,
         weightkg: 56.5,
 		  eggGroups: ["Undiscovered"],
     },
-
-
+    gearchampmega: {
+        num: 7500332,
+        species: "Gearchamp-Mega",
+        baseSpecies: "Gearchamp",
+        forme: "Mega",
+        formeLetter: "M",
+        types: ["Fighting", "Fairy"],
+        gender: "N",
+        baseStats: {
+            hp: 80,
+            atk: 124,
+            def: 105,
+            spa: 125,
+            spd: 105,
+            spe: 105
+        },
+        abilities: {
+            0: "Pure Power"
+        },
+        color: "Gray",
+        heightm: 1.15,
+        weightkg: 56.5,
+		  eggGroups: ["Undiscovered"],
+    },
     luau: {
         num: 7500333,
         species: "Luau",
@@ -15242,12 +15353,11 @@ celebi: {
         abilities: {
             0: "Land's Shield"
         },
+        color: "Purple",
         heightm: 2.95,
         weightkg: 170,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     luaumega: {
         num: 7500333,
         species: "Luau-Mega",
@@ -15266,12 +15376,11 @@ celebi: {
         abilities: {
             0: "Sheer Force"
         },
+        color: "Purple",
         heightm: 3.55,
         weightkg: 270.5,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     dotsensu: {
         num: 7500334,
         species: "Dot-Sensu",
@@ -15288,12 +15397,11 @@ celebi: {
         abilities: {
             0: "Danceposter"
         },
+        color: "Purple",
         heightm: 0.45,
         weightkg: 3.7,
 		  eggGroups: ["Flying"],
     },
-
-
     darkhunter: {
         num: 7500335,
         species: "Dark Hunter",
@@ -15309,12 +15417,11 @@ celebi: {
         abilities: {
             0: "Night Terror"
         },
+        color: "Red",
         heightm: 1.3,
         weightkg: 37.75,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     guzzpex: {
         num: 7500336,
         species: "Guzzpex",
@@ -15330,12 +15437,11 @@ celebi: {
         abilities: {
             0: "Merciless Beast"
         },
+        color: "Blue",
         heightm: 3.1,
         weightkg: 451.25,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     dedede: {
         num: 7500337,
         species: "Dedede",
@@ -15351,12 +15457,11 @@ celebi: {
         abilities: {
             0: "Royal Strength"
         },
+        color: "Yellow",
         heightm: 0.55,
         weightkg: 9.1,
 		  eggGroups: ["Field"],
     },
-
-
     cosmill: {
         num: 7500338,
         species: "Cosmill",
@@ -15372,12 +15477,11 @@ celebi: {
         abilities: {
             0: "Godlike Powers"
         },
+        color: "Blue",
         heightm: 0.3,
         weightkg: 4.3,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     maginera: {
         num: 7500339,
         species: "Maginera",
@@ -15394,12 +15498,11 @@ celebi: {
         abilities: {
             0: "Soften Up"
         },
+        color: "Gray",
         heightm: 1.4,
         weightkg: 81.75,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     catdeer: {
         num: 7500340,
         species: "Catdeer",
@@ -15415,12 +15518,11 @@ celebi: {
         abilities: {
             0: "Tricky Glare"
         },
+        color: "Purple",
         heightm: 1.25,
         weightkg: 54.35,
 		  eggGroups: ["Field"],
     },
-
-
     hooptrio: {
         num: 7500341,
         species: "Hooptrio",
@@ -15436,12 +15538,11 @@ celebi: {
         abilities: {
             0: "Confiscation"
         },
+        color: "Blue",
         heightm: 3.6,
         weightkg: 261.65,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     fablefin: {
         num: 7500342,
         species: "Fablefin",
@@ -15458,12 +15559,11 @@ celebi: {
         abilities: {
             0: "Misty Mind"
         },
+        color: "Purple",
         heightm: 1.3,
         weightkg: 30.6,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     klefz: {
         num: 7500343,
         species: "Klef-Z",
@@ -15480,12 +15580,11 @@ celebi: {
         abilities: {
             0: "Familiar Maneuvering"
         },
+        color: "Gray",
         heightm: 0.55,
         weightkg: 18.5,
 		  eggGroups: ["Mineral"],
     },
-
-
     tropisteela: {
         num: 7500344,
         species: "Tropisteela",
@@ -15502,12 +15601,11 @@ celebi: {
         abilities: {
             0: "Stat Harvesting"
         },
+        color: "Green",
         heightm: 5.6,
         weightkg: 549.95,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     pokemon: {
         num: 7500345,
         species: "Pokemon",
@@ -15524,12 +15622,11 @@ celebi: {
         abilities: {
             0: "Ability"
         },
+        color: "Brown",
         heightm: 2.55,
         weightkg: 179,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     nosegod: {
         num: 7500346,
         species: "Nose God",
@@ -15546,12 +15643,11 @@ celebi: {
         abilities: {
             0: "Type Trap"
         },
+        color: "White",
         heightm: 2.1,
         weightkg: 208.5,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     swampterra: {
         num: 7500347,
         species: "Swampterra",
@@ -15568,12 +15664,11 @@ celebi: {
         abilities: {
             0: "Uninhabitable"
         },
+        color: "Blue",
         heightm: 1.85,
         weightkg: 195.95,
 		  eggGroups: ["Monster"],
     },
-
-
     swampterramega: {
         num: 7500347,
         species: "Swampterra-Mega",
@@ -15593,12 +15688,11 @@ celebi: {
         abilities: {
             0: "Swift Swim"
         },
+        color: "Blue",
         heightm: 2.25,
         weightkg: 216.05,
 		  eggGroups: ["Monster"],
     },
-
-
     zeklade: {
         num: 7500348,
         species: "Zeklade",
@@ -15615,13 +15709,12 @@ celebi: {
         abilities: {
             0: "Unstable Voltage"
         },
+        color: "Brown",
         heightm: 1.85,
         weightkg: 174.75,
         dexentry: "As Experiments #242 and #304, among others, need to be restrained in some way, shape, or form, some DNA was taken from the Dark Stone from Unova and combined with Doublade DNA. The resulting construct appears to have swords for arms, two tassels as wings, and a body made of the same substance as Doublade's sheath. While this fusion always hits its mark, it unfortunately is guaranteed to be hit by any attacks aimed for it.",
 		  eggGroups: ["Undiscovered"],
     },
-
-
     grequa: {
         num: 7500349,
         species: "Grequa",
@@ -15638,12 +15731,11 @@ celebi: {
         abilities: {
             0: "Huge Bubble"
         },
+        color: "Green",
         heightm: 1.65,
         weightkg: 61,
 		  eggGroups: ["Water 2"],
     },
-
-
     alteyer: {
         num: 7500350,
         species: "Alteyer",
@@ -15660,12 +15752,11 @@ celebi: {
         abilities: {
             0: "Constellation"
         },
+        color: "Brown",
         heightm: 1.35,
         weightkg: 28.6,
 		  eggGroups: ["Flying"],
     },
-
-
     alteyermega: {
         num: 7500350,
         species: "Alteyer-Mega",
@@ -15685,6 +15776,7 @@ celebi: {
         abilities: {
             0: "Pixilate"
         },
+        color: "Brown",
         heightm: 1.75,
         weightkg: 28.6,
 		  eggGroups: ["Flying"],
@@ -15704,12 +15796,11 @@ celebi: {
         abilities: {
             0: "Stare Down"
         },
+        color: "Brown",
         heightm: 1.55,
         weightkg: 80.25,
 		  eggGroups: ["Field"],
     },
-
-
     not: {
         num: 7500352,
         species: "Not",
@@ -15725,12 +15816,11 @@ celebi: {
         abilities: {
             0: "Ambition"
         },
+        color: "Purple",
         heightm: 1.5,
         weightkg: 62.25,
 		  eggGroups: ["Flying"],
     },
-
-
     notmega: {
         num: 7500352,
         species: "Not-Mega",
@@ -15749,12 +15839,11 @@ celebi: {
         abilities: {
             0: "No Guard"
         },
+        color: "Purple",
         heightm: 2.2,
         weightkg: 39.6,
 		  eggGroups: ["Flying"],
     },
-
-
     joltsol: {
         num: 7500353,
         species: "Joltsol",
@@ -15771,12 +15860,11 @@ celebi: {
         abilities: {
             0: "Power Surge"
         },
+        color: "White",
         heightm: 1,
         weightkg: 35.75,
 		  eggGroups: ["Field"],
     },
-
-
     joltsolmega: {
         num: 7500353,
         species: "Joltsol-Mega",
@@ -15796,12 +15884,11 @@ celebi: {
         abilities: {
             0: "Magic Bounce"
         },
+        color: "White",
         heightm: 1,
         weightkg: 37.75,
 		  eggGroups: ["Field"],
     },
-
-
     topaz: {
         num: 7500354,
         species: "Topaz",
@@ -15818,12 +15905,11 @@ celebi: {
         abilities: {
             0: "Power Of Two"
         },
+        color: "Brown",
         heightm: 1.05,
         weightkg: 34.5,
 		  eggGroups: ["Water 1"],
     },
-
-
     dolphin: {
         num: 7500355,
         species: "Dolphin",
@@ -15840,12 +15926,11 @@ celebi: {
         abilities: {
             0: "Lava Dive"
         },
+        color: "Red",
         heightm: 1.75,
         weightkg: 84.75,
 		  eggGroups: ["Field"],
     },
-
-
     snorligatr: {
         num: 7500356,
         species: "Snorligatr",
@@ -15862,12 +15947,11 @@ celebi: {
         abilities: {
             0: "Sheer Fat"
         },
+        color: "Blue",
         heightm: 2.2,
         weightkg: 274.4,
 		  eggGroups: ["Monster"],
     },
-
-
     emponite: {
         num: 7500357,
         species: "Emponite",
@@ -15884,12 +15968,11 @@ celebi: {
         abilities: {
             0: "Ocean Shield"
         },
+        color: "Blue",
         heightm: 1.95,
         weightkg: 147.25,
 		  eggGroups: ["Water 1"],
     },
-
-
     leafrou: {
         num: 7500358,
         species: "Leafrou",
@@ -15906,12 +15989,11 @@ celebi: {
         abilities: {
             0: "Chlorocoat"
         },
+        color: "White",
         heightm: 1.1,
         weightkg: 26.75,
 		  eggGroups: ["Field"],
     },
-
-
     mimiblim: {
         num: 7500359,
         species: "Mimiblim",
@@ -15927,6 +16009,7 @@ celebi: {
         abilities: {
             0: "Disguise Burden"
         },
+        color: "Purple",
         heightm: 0.7,
         weightkg: 7.85,
 		  otherFormes: ["mimiblimbusted"],
@@ -15950,6 +16033,7 @@ mimiblimbusted: {
         abilities: {
             0: "Disguise Burden"
         },
+        color: "Purple",
         heightm: 0.3,
         weightkg: 7.85,
 		  eggGroups: ["Amorphous"],
@@ -15970,12 +16054,11 @@ mimiblimbusted: {
         abilities: {
             0: "Persistent Morale"
         },
+        color: "Blue",
         heightm: 1.65,
         weightkg: 152.8,
 		  eggGroups: ["Field"],
     },
-
-
     zorarce: {
         num: 7500361,
         species: "Zorarce",
@@ -15992,12 +16075,11 @@ mimiblimbusted: {
         abilities: {
             0: "Type Illusionist"
         },
+        color: "Black",
         heightm: 1.95,
         weightkg: 166.25,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     happislash: {
         num: 7500362,
         species: "Happislash",
@@ -16015,12 +16097,11 @@ mimiblimbusted: {
         abilities: {
             0: "Unfriend"
         },
+        color: "Pink",
         heightm: 1.15,
         weightkg: 38.7,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     happislashunfriendly: {
         num: 7500362,
         species: "Happislash-Unfriendly",
@@ -16040,12 +16121,11 @@ mimiblimbusted: {
         abilities: {
             0: "Unfriend"
         },
+        color: "Pink",
         heightm: 1.15,
         weightkg: 38.7,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     torkobulu: {
         num: 7500363,
         species: "Torko Bulu",
@@ -16062,12 +16142,11 @@ mimiblimbusted: {
         abilities: {
             0: "Photosynthesis Surge"
         },
+        color: "Red",
         heightm: 1.2,
         weightkg: 62.95,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     pheroxish: {
         num: 7500364,
         species: "Pheroxish",
@@ -16083,12 +16162,11 @@ mimiblimbusted: {
         abilities: {
             0: "Dazzle Beast"
         },
+        color: "Pink",
         heightm: 1.35,
         weightkg: 22,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     padunk: {
         num: 7500365,
         species: "Padunk",
@@ -16104,12 +16182,11 @@ mimiblimbusted: {
         abilities: {
             0: "Rage Potion"
         },
+        color: "Purple",
         heightm: 1.05,
         weightkg: 37.75,
 		  eggGroups: ["Field"],
     },
-
-
     magnelure: {
         num: 7500366,
         species: "Magnelure",
@@ -16126,12 +16203,11 @@ mimiblimbusted: {
         abilities: {
             0: "Blacksmith"
         },
+        color: "Black",
         heightm: 1.1,
         weightkg: 107.15,
 		  eggGroups: ["Mineral"],
     },
-
-
     shucklord: {
         num: 7500367,
         species: "Shucklord",
@@ -16147,12 +16223,11 @@ mimiblimbusted: {
         abilities: {
             0: "Two-Faced"
         },
+        color: "Yellow",
         heightm: 3.05,
         weightkg: 454.25,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     mtndew: {
         num: 7500368,
         species: "Mtn Dew",
@@ -16169,12 +16244,11 @@ mimiblimbusted: {
         abilities: {
             0: "Contagious Yawn"
         },
+        color: "Gray",
         heightm: 0.35,
         weightkg: 18.5,
 		  eggGroups: ["Field"],
     },
-
-
     altearnia: {
         num: 7500369,
         species: "Altearnia",
@@ -16191,12 +16265,11 @@ mimiblimbusted: {
         abilities: {
             0: "Compassionate Soul"
         },
+        color: "Blue",
         heightm: 1.05,
         weightkg: 50.55,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     altearniamega: {
         num: 7500369,
         species: "Altearnia-Mega",
@@ -16216,12 +16289,11 @@ mimiblimbusted: {
         abilities: {
             0: "Pixilate"
         },
+        color: "Gray",
         heightm: 1.45,
         weightkg: 50.55,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     regigiot: {
         num: 7500370,
         species: "Regigiot",
@@ -16238,12 +16310,11 @@ mimiblimbusted: {
         abilities: {
             0: "Magical Ice"
         },
+        color: "Blue",
         heightm: 1.65,
         weightkg: 107.25,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     regigiotmega: {
         num: 7500370,
         species: "Regigiot-Mega",
@@ -16263,12 +16334,11 @@ mimiblimbusted: {
         abilities: {
             0: "No Guard"
         },
+        color: "Blue",
         heightm: 2.35,
         weightkg: 118.25,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     kasukabe: {
         num: 7500371,
         species: "Kasukabe",
@@ -16285,12 +16355,35 @@ mimiblimbusted: {
         abilities: {
             0: "Genome Tree"
         },
+        color: "Brown",
         heightm: 2.3,
         weightkg: 206.8,
 		  eggGroups: ["Undiscovered"],
     },
-
-
+    kasukabemega: {
+        num: 7500371,
+        species: "Kasukabe-Mega",
+        baseSpecies: "Kasukabe",
+        forme: "Mega",
+        formeLetter: "M",
+        types: ["Normal", "Fighting"],
+        gender: "F",
+        baseStats: {
+            hp: 109,
+            atk: 147,
+            def: 129,
+            spa: 67,
+            spd: 103,
+            spe: 113
+        },
+        abilities: {
+            0: "Parental Bond"
+        },
+        color: "Brown",
+        heightm: 2.3,
+        weightkg: 226.8,
+		  eggGroups: ["Undiscovered"],
+    },
     sakamaki: {
         num: 7500372,
         species: "Sakamaki",
@@ -16307,12 +16400,11 @@ mimiblimbusted: {
         abilities: {
             0: "Code Unknown"
         },
+        color: "Gray",
         heightm: 1.05,
         weightkg: 91.8,
 		  eggGroups: ["Mineral"],
     },
-
-
     sakamakimega: {
         num: 7500372,
         species: "Sakamaki-Mega",
@@ -16331,12 +16423,11 @@ mimiblimbusted: {
         abilities: {
             0: "Aerilate"
         },
+        color: "Gray",
         heightm: 1.15,
         weightkg: 101.8,
 		  eggGroups: ["Mineral"],
     },
-
-
     mapuiasu: {
         num: 7500373,
         species: "Mapu Iasu",
@@ -16353,12 +16444,11 @@ mimiblimbusted: {
         abilities: {
             0: "Sensu Dancer"
         },
+        color: "Purple",
         heightm: 0.95,
         weightkg: 12.3,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     mapuauhe: {
         num: 7500374,
         species: "Mapu Auhe",
@@ -16375,12 +16465,11 @@ mimiblimbusted: {
         abilities: {
             0: "Baile Dancer"
         },
+        color: "Red",
         heightm: 1.25,
         weightkg: 24.45,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     mapumoli: {
         num: 7500375,
         species: "Mapu Moli",
@@ -16397,12 +16486,11 @@ mimiblimbusted: {
         abilities: {
             0: "Pom-Pom Dancer"
         },
+        color: "Yellow",
         heightm: 1.2,
         weightkg: 11.95,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     mapubupa: {
         num: 7500376,
         species: "Mapu Bupa",
@@ -16419,12 +16507,11 @@ mimiblimbusted: {
         abilities: {
             0: "Pau Dancer"
         },
+        color: "Psychic",
         heightm: 0.9,
         weightkg: 11,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     meazle: {
         num: 7500377,
         species: "Meazle",
@@ -16441,12 +16528,11 @@ mimiblimbusted: {
         abilities: {
             0: "Ailment Master"
         },
+        color: "Pink",
         heightm: 0.8,
         weightkg: 13.1,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     parantis: {
         num: 7500378,
         species: "Parantis",
@@ -16462,12 +16548,11 @@ mimiblimbusted: {
         abilities: {
             0: "Thermophilic"
         },
+        color: "Pink",
         heightm: 0.95,
         weightkg: 24,
 		  eggGroups: ["Bug"],
     },
-
-
     dinna: {
         num: 7500379,
         species: "Dinna",
@@ -16484,12 +16569,11 @@ mimiblimbusted: {
         abilities: {
             0: "Move~Stat"
         },
+        color: "Purple",
         heightm: 0.45,
         weightkg: 13.65,
 		  eggGroups: ["Field"],
     },
-
-
     sylvias: {
         num: 7500380,
         species: "Sylvias",
@@ -16506,12 +16590,11 @@ mimiblimbusted: {
         abilities: {
             0: "Enchanted"
         },
+        color: "Pink",
         heightm: 1.2,
         weightkg: 31.75,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     sylviasmega: {
         num: 7500380,
         species: "Sylvias-Mega",
@@ -16531,12 +16614,11 @@ mimiblimbusted: {
         abilities: {
             0: "Levitate"
         },
+        color: "Pink",
         heightm: 1.6,
         weightkg: 43.75,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     mightyyvel: {
         num: 7500381,
         species: "Mighty Yvel",
@@ -16552,12 +16634,11 @@ mimiblimbusted: {
         abilities: {
             0: "Plan In Action"
         },
+        color: "Red",
         heightm: 3.4,
         weightkg: 120,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     tyranwak: {
         num: 7500382,
         species: "Tyranwak",
@@ -16574,12 +16655,11 @@ mimiblimbusted: {
         abilities: {
             0: "Enchanted Skull"
         },
+        color: "Purple",
         heightm: 1.25,
         weightkg: 152,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     volcanoemblem: {
         num: 7500383,
         species: "Volcano Emblem",
@@ -16596,12 +16676,11 @@ mimiblimbusted: {
         abilities: {
             0: "Magic Sponge"
         },
+        color: "Black",
         heightm: 1.55,
         weightkg: 104.5,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     pelikoko: {
         num: 7500384,
         species: "Peli Koko",
@@ -16618,12 +16697,11 @@ mimiblimbusted: {
         abilities: {
             0: "Thunderstorm Surge"
         },
+        color: "Yellow",
         heightm: 1.5,
         weightkg: 24.25,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     mimitto: {
         num: 7500385,
         species: "Mimitto",
@@ -16640,12 +16718,11 @@ mimiblimbusted: {
         abilities: {
             0: "Hide-And-Seek"
         },
+        color: "Purple",
         heightm: 0.25,
         weightkg: 2.35,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     eellee: {
         num: 7500386,
         species: "Eel-Lee",
@@ -16661,12 +16738,11 @@ mimiblimbusted: {
         abilities: {
             0: "Ground Leecher"
         },
+        color: "Blue",
         heightm: 2.5,
         weightkg: 110.5,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     celesir: {
         num: 7500387,
         species: "Celesir",
@@ -16683,12 +16759,11 @@ mimiblimbusted: {
         abilities: {
             0: "Bloodthirst"
         },
+        color: "Green",
         heightm: 5.35,
         weightkg: 527.45,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     celesirmega: {
         num: 7500387,
         species: "Celesir-Mega",
@@ -16708,12 +16783,11 @@ mimiblimbusted: {
         abilities: {
             0: "Aerilate"
         },
+        color: "Green",
         heightm: 5.55,
         weightkg: 531.45,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     nymph: {
         num: 7500388,
         species: "Nymph",
@@ -16730,12 +16804,11 @@ mimiblimbusted: {
         abilities: {
             0: "Deceiver"
         },
+        color: "Gray",
         heightm: 2.15,
         weightkg: 71.75,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     kyokid: {
         num: 7500389,
         species: "Kyokid",
@@ -16752,12 +16825,11 @@ mimiblimbusted: {
         abilities: {
             0: "Electrotorrent"
         },
+        color: "Yellow",
         heightm: 2.55,
         weightkg: 187.75,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     kyokidprimal: {
         num: 7500389,
         species: "Kyokid-Primal",
@@ -16777,12 +16849,11 @@ mimiblimbusted: {
         abilities: {
             0: "Primordial Sea"
         },
+        color: "Yellow",
         heightm: 7.85,
         weightkg: 265.75,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     lemorusincarnate: {
         num: 7500390,
         species: "Lemorus-Incarnate",
@@ -16799,12 +16870,11 @@ mimiblimbusted: {
         abilities: {
             0: "Move Madness"
         },
+        color: "Gray",
         heightm: 1.6,
         weightkg: 192,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     absoko: {
         num: 7500391,
         species: "Absoko",
@@ -16820,13 +16890,12 @@ mimiblimbusted: {
         abilities: {
             0: "Dark Surge"
         },
+        color: "White",
         heightm: 1.5,
         weightkg: 33.75,
 		  eggGroups: ["Undiscovered"],
      dexentry: "A rare, legendary entity created in a laboratory by Team Rocket. It was made using the powerful forces of Tapu Koko, the guardian of Melemele, combined with an Absol. Results did not go as intended, as it kept the pure heart of Koko, and does not obey Team Rocket at all. This species is said to warn the coming of a terrible thunderstorm, and only ever appearing before one is near."
     },
-
-
     absokomega: {
         num: 7500391,
         species: "Absoko-Mega",
@@ -16845,12 +16914,11 @@ mimiblimbusted: {
         abilities: {
             0: "Magic Bounce"
         },
+        color: "White",
         heightm: 1.5,
         weightkg: 35.75,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     sugarplum: {
         num: 7500392,
         species: "Sugarplum",
@@ -16866,12 +16934,11 @@ mimiblimbusted: {
         abilities: {
             0: "Nutcracker"
         },
+        color: "Gray",
         heightm: 0.55,
         weightkg: 4.15,
 		  eggGroups: ["Fairy"],
     },
-
-
     giradino: {
         num: 7500393,
         species: "Giradino",
@@ -16887,12 +16954,11 @@ mimiblimbusted: {
         abilities: {
             0: "Revitalize"
         },
+        color: "Pink",
         heightm: 2.8,
         weightkg: 390.5,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     giradinomega: {
         num: 7500393,
         species: "Giradino-Mega",
@@ -16911,6 +16977,7 @@ mimiblimbusted: {
         abilities: {
             0: "Healer"
         },
+        color: "White",
         heightm: 3.2,
         weightkg: 391.5,
 		  eggGroups: ["Undiscovered"],
@@ -16931,6 +16998,7 @@ mimiblimbusted: {
         abilities: {
             0: "Blazing Beast"
         },
+        color: "Black",
         heightm: 2.75,
         weightkg: 95.25,
 		  eggGroups: ["Undiscovered"],
@@ -16954,6 +17022,7 @@ mimiblimbusted: {
         abilities: {
             0: "Tough Claws"
         },
+        color: "Black",
         heightm: 2.75,
         weightkg: 115.25,
 		  eggGroups: ["Undiscovered"],
@@ -16977,6 +17046,7 @@ mimiblimbusted: {
         abilities: {
             0: "Drought"
         },
+        color: "Black",
         heightm: 2.75,
         weightkg: 105.25,
 		  eggGroups: ["Undiscovered"],
@@ -17000,8 +17070,6 @@ mimiblimbusted: {
         weightkg: 43.55,
 		  eggGroups: ["Flying"],
     },
-
-
     marshern: {
         num: 7500396,
         species: "Marshern",
@@ -17018,12 +17086,11 @@ mimiblimbusted: {
         abilities: {
             0: "Soaking Aura"
         },
+        color: "Blue",
         heightm: 1.85,
         weightkg: 121.5,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     grovyltal: {
         num: 7500397,
         species: "Grovyltal",
@@ -17040,12 +17107,11 @@ mimiblimbusted: {
         abilities: {
             0: "Jailbreak"
         },
+        color: "Green",
         heightm: 3.35,
         weightkg: 112.3,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     rairai: {
         num: 7500398,
         species: "Rairai",
@@ -17061,12 +17127,11 @@ mimiblimbusted: {
         abilities: {
             0: "Paralyzed With Fear"
         },
+        color: "Black",
         heightm: 1.15,
         weightkg: 40.25,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     dramasnow: {
         num: 7500399,
         species: "Dramasnow",
@@ -17082,12 +17147,11 @@ mimiblimbusted: {
         abilities: {
             0: "Ageless Blizzard"
         },
+        color: "White",
         heightm: 2.6,
         weightkg: 160.25,
 		  eggGroups: ["Monster"],
     },
-
-
     dramasnowmega: {
         num: 7500399,
         species: "Dramasnow-Mega",
@@ -17106,12 +17170,11 @@ mimiblimbusted: {
         abilities: {
             0: "Snow Warning"
         },
+        color: "White",
         heightm: 3.1,
         weightkg: 209.75,
 		  eggGroups: ["Monster"],
     },
-
-
     chaosii: {
         num: 7500400,
         species: "Chaos II",
@@ -17128,6 +17191,7 @@ mimiblimbusted: {
         abilities: {
             0: "Flip Out"
         },
+        color: "Gray",
         heightm: 0.95,
         weightkg: 21.5,
 		  eggGroups: ["Field"],
@@ -17291,6 +17355,7 @@ mimiblimbusted: {
         abilities: {
             0: "Last Nightmare"
         },
+        color: "Black",
         heightm: 1.35,
         weightkg: 58.55,
      	  eggGroups: ["Undiscovered"],
@@ -17418,6 +17483,7 @@ mimiblimbusted: {
         abilities: {
             0: "Firefighter"
         },
+        color: "Brown",
         heightm: 1.4,
         weightkg: 225.3,
      	  eggGroups: ["Undiscovered"],
@@ -17440,6 +17506,7 @@ mimiblimbusted: {
         abilities: {
             0: "Firefighter"
         },
+        color: "Brown",
         heightm: 1.8,
         weightkg: 225.3,
      	  eggGroups: ["Undiscovered"],
@@ -17468,8 +17535,6 @@ mimiblimbusted: {
         color: "Blue",
         eggGroups: ["Undiscovered"],
     },
-
-
     gardecunomega: {
         num: 7500410,
         species: "Gardecuno-Mega",
@@ -17538,6 +17603,7 @@ mimiblimbusted: {
 		abilities: {
 			0: "Genetic Algorithm"
 		},
+        color: "Purple",
 		  heightm: 1.9,
 		  weightkg: 91.5,
 		  eggGroups: ["Undiscovered"],
@@ -17561,6 +17627,7 @@ mimiblimbusted: {
 		abilities: {
 			0: "Genetic Algorithm"
 		},
+        color: "Purple",
 		  heightm: 1.9,
 		  weightkg: 91.5,
 		  eggGroups: ["Undiscovered"],
@@ -17584,6 +17651,7 @@ mimiblimbusted: {
 		abilities: {
 			0: "Genetic Algorithm"
 		},
+        color: "Purple",
 		  heightm: 1.9,
 		  weightkg: 91.5,
 		  eggGroups: ["Undiscovered"],
@@ -17607,6 +17675,7 @@ mimiblimbusted: {
 		abilities: {
 			0: "Genetic Algorithm"
 		},
+        color: "Purple",
 		  heightm: 1.9,
 		  weightkg: 91.5,
 		  eggGroups: ["Undiscovered"],
@@ -17630,6 +17699,7 @@ mimiblimbusted: {
 		abilities: {
 			0: "Genetic Algorithm"
 		},
+        color: "Purple",
 		  heightm: 1.9,
 		  weightkg: 91.5,
 		  eggGroups: ["Undiscovered"],
@@ -17653,6 +17723,7 @@ mimiblimbusted: {
 		abilities: {
 			0: "Genetic Algorithm"
 		},
+        color: "Purple",
 		  heightm: 1.9,
 		  weightkg: 91.5,
 		  eggGroups: ["Undiscovered"],
@@ -17676,6 +17747,7 @@ mimiblimbusted: {
 		abilities: {
 			0: "Genetic Algorithm"
 		},
+        color: "Purple",
 		  heightm: 1.9,
 		  weightkg: 91.5,
 		  eggGroups: ["Undiscovered"],
@@ -17699,6 +17771,7 @@ mimiblimbusted: {
 		abilities: {
 			0: "Genetic Algorithm"
 		},
+        color: "Purple",
 		  heightm: 1.9,
 		  weightkg: 91.5,
 		  eggGroups: ["Undiscovered"],
@@ -17722,6 +17795,7 @@ mimiblimbusted: {
 		abilities: {
 			0: "Genetic Algorithm"
 		},
+        color: "Purple",
 		  heightm: 1.9,
 		  weightkg: 91.5,
 		  eggGroups: ["Undiscovered"],
@@ -17745,6 +17819,7 @@ mimiblimbusted: {
 		abilities: {
 			0: "Genetic Algorithm"
 		},
+        color: "Purple",
 		  heightm: 1.9,
 		  weightkg: 91.5,
 		  eggGroups: ["Undiscovered"],
@@ -17768,6 +17843,7 @@ mimiblimbusted: {
 		abilities: {
 			0: "Genetic Algorithm"
 		},
+        color: "Purple",
 		  heightm: 1.9,
 		  weightkg: 91.5,
 		  eggGroups: ["Undiscovered"],
@@ -17791,6 +17867,7 @@ mimiblimbusted: {
 		abilities: {
 			0: "Genetic Algorithm"
 		},
+        color: "Purple",
 		  heightm: 1.9,
 		  weightkg: 91.5,
 		  eggGroups: ["Undiscovered"],
@@ -17814,6 +17891,7 @@ mimiblimbusted: {
 		abilities: {
 			0: "Genetic Algorithm"
 		},
+        color: "Purple",
 		  heightm: 1.9,
 		  weightkg: 91.5,
 		  eggGroups: ["Undiscovered"],
@@ -17837,6 +17915,7 @@ mimiblimbusted: {
 		abilities: {
 			0: "Genetic Algorithm"
 		},
+        color: "Purple",
 		  heightm: 1.9,
 		  weightkg: 91.5,
 		  eggGroups: ["Undiscovered"],
@@ -17860,6 +17939,7 @@ mimiblimbusted: {
 		abilities: {
 			0: "Genetic Algorithm"
 		},
+        color: "Purple",
 		  heightm: 1.9,
 		  weightkg: 91.5,
 		  eggGroups: ["Undiscovered"],
@@ -17883,6 +17963,7 @@ mimiblimbusted: {
 		abilities: {
 			0: "Genetic Algorithm"
 		},
+        color: "Purple",
 		  heightm: 1.9,
 		  weightkg: 91.5,
 		  eggGroups: ["Undiscovered"],
@@ -17906,6 +17987,7 @@ mimiblimbusted: {
 		abilities: {
 			0: "Genetic Algorithm"
 		},
+        color: "Purple",
 		  heightm: 1.9,
 		  weightkg: 91.5,
 		  eggGroups: ["Undiscovered"],
@@ -17929,6 +18011,7 @@ mimiblimbusted: {
 		abilities: {
 			0: "Genetic Algorithm"
 		},
+        color: "Purple",
 		  heightm: 1.9,
 		  weightkg: 91.5,
 		  eggGroups: ["Undiscovered"],
@@ -17949,12 +18032,11 @@ mimiblimbusted: {
         abilities: {
             0: "Fat Trap"
         },
+        color: "Gray",
         heightm: 1.05,
         weightkg: 565.2,
 		  eggGroups: ["Undiscovered"],
     },
-
-
     slakoem: {
         num: 7500414,
         species: "Slakoem",
@@ -17974,6 +18056,7 @@ mimiblimbusted: {
         abilities: {
             0: "Singularity"
         },
+        color: "Blue",
         heightm: 1.05,
         weightkg: 565.2,
 		  eggGroups: ["Undiscovered"],
@@ -17998,8 +18081,6 @@ mimiblimbusted: {
         color: "Purple",
         eggGroups: ["Undiscovered"],
     },
-
-
     audalamega: {
         num: 7500415,
         species: "Audala-Mega",
@@ -18023,8 +18104,6 @@ mimiblimbusted: {
         color: "Purple",
         eggGroups: ["Undiscovered"],
     },
-
-
     sandgarde: {
         num: 7500416,
         species: "Sandgarde",
@@ -18047,8 +18126,6 @@ mimiblimbusted: {
         eggGroups: ["Undiscovered"],
         otherFormes: ["sandgardecastle"],
     },
-
-
     sandgardecastle: {
         num: 7500416,
         species: "Sandgarde-Castle",
@@ -18073,8 +18150,6 @@ mimiblimbusted: {
         color: "Brown",
         eggGroups: ["Undiscovered"],
     },
-
-
     triagonal: {
         num: 7500417,
         species: "Triagonal",
@@ -18099,8 +18174,6 @@ mimiblimbusted: {
         color: "Blue",
         eggGroups: ["Undiscovered"],
     },
-
-
     triagonalmega: {
         num: 7500417,
         species: "Triagonal-Mega",
@@ -18128,8 +18201,6 @@ mimiblimbusted: {
         color: "Blue",
         eggGroups: ["Undiscovered"],
     },
-
-
     exfeycola: {
         num: 7500418,
         species: "Exfey-Cola",
@@ -18151,7 +18222,6 @@ mimiblimbusted: {
         color: "Green",
         eggGroups: ["Grass"],
     },
-	
     komodreigon: {
         num: 7500419,
         species: "Komodreigon",
@@ -18167,12 +18237,11 @@ mimiblimbusted: {
         abilities: {
             0: "S.O.N.A.R"
         },
+        color: "Gray",
         heightm: 1.7,
         weightkg: 119.1,
         eggGroups: ["Dragon"],
     },
-
-
     dunking: {
         num: 7500420,
         species: "Dunking",
@@ -18193,8 +18262,6 @@ mimiblimbusted: {
         color: "Yellow",
         eggGroups: ["Field"],
     },
-
-
     kudou: {
         num: 7500421,
         species: "Kudou",
@@ -18216,8 +18283,6 @@ mimiblimbusted: {
         color: "Yellow",
         eggGroups: ["Undiscovered"],
     },
-
-
     golisorem: {
         num: 7500422,
         species: "Golisorem",
@@ -18239,8 +18304,6 @@ mimiblimbusted: {
         color: "Gray",
         eggGroups: ["Undiscovered"]
     },
-
-
     tyrazma: {
         num: 7500423,
         species: "Tyrazma",
@@ -18262,8 +18325,6 @@ mimiblimbusted: {
         color: "Black",
         eggGroups: ["Undiscovered"],
     },
-
-
     tyrazmamega: {
         num: 7500423,
         species: "Tyrazma-Mega",
@@ -18324,6 +18385,7 @@ mimiblimbusted: {
         abilities: {
             0: "Miracle Morph"
         },
+        color: "Purple",
         heightm: 1.75,
         weightkg: 162,
 		  eggGroups: ["Undiscovered"],
@@ -18343,6 +18405,7 @@ mimiblimbusted: {
         abilities: {
             0: "Speed Stopper"
         },
+        color: "Purple",
         heightm: 1.4,
         weightkg: 67,
 		  eggGroups: ["Undiscovered"],
@@ -18365,6 +18428,7 @@ mimiblimbusted: {
         abilities: {
             0: "Steadfast"
         },
+        color: "Purple",
         heightm: 1.9,
         weightkg: 72,
 		  eggGroups: ["Undiscovered"],
@@ -18387,6 +18451,7 @@ mimiblimbusted: {
         abilities: {
             0: "Insomnia"
         },
+        color: "Purple",
         heightm: 0.9,
         weightkg: 18.125,
 		  eggGroups: ["Undiscovered"],
@@ -18406,6 +18471,7 @@ mimiblimbusted: {
         abilities: {
             0: "Echo Chamber"
         },
+        color: "Gray",
         heightm: 1,
         weightkg: 41.1,
 		  eggGroups: ["Undiscovered"],
@@ -18431,7 +18497,7 @@ mimiblimbusted: {
         },
         heightm: 86.45,
         weightkg: 39.15,
-        color: "Black",
+        color: "Red",
         eggGroups: ["Undiscovered"],
     },
     pelippex: {
@@ -18451,11 +18517,9 @@ mimiblimbusted: {
         },
         heightm: 1,
         weightkg: 21.3,
-        color: "Yellow",
+        color: "Blue",
         eggGroups: ["Water 1"],
     },
-
-
      kyzor: {
         num: 7500430,
         species: "Kyzor",
@@ -18477,11 +18541,9 @@ mimiblimbusted: {
         },
         heightm: 2.4,
         weightkg: 221.5,
-        color: "Blue",
+        color: "Gray",
         eggGroups: ["Undiscovered"],
     },
-
-
     kyzormega: {
         num: 7500430,
         species: "Kyzor-Mega",
@@ -18506,11 +18568,9 @@ mimiblimbusted: {
         },
         heightm: 2.6,
         weightkg: 228.5,
-        color: "Blue",
+        color: "Gray",
         eggGroups: ["Undiscovered"],
     },
-
-
     gumanitoos: {
         num: 7500431,
         species: "Gumanitoos",
@@ -18556,8 +18616,6 @@ mimiblimbusted: {
         color: "Black",
         eggGroups: ["Undiscovered"],
     },
-
-
     xurkinomega: {
         num: 7500432,
         species: "Xurkino-Mega",
@@ -18582,8 +18640,6 @@ mimiblimbusted: {
         color: "Black",
         eggGroups: ["Undiscovered"],
     },
-
-
     yvelchan: {
         num: 7500433,
         species: "Yvel-Chan",
@@ -18604,8 +18660,6 @@ mimiblimbusted: {
         color: "Red",
         eggGroups: ["Undiscovered"],
     },
-
-
     heatreon: {
         num: 7500434,
         species: "Heatreon",
@@ -18627,8 +18681,6 @@ mimiblimbusted: {
         color: "Pink",
         eggGroups: ["Undiscovered"],
     },
-
-
     altarigarde: {
         num: 7500435,
         species: "Altarigarde",
@@ -18650,8 +18702,6 @@ mimiblimbusted: {
         color: "Green",
         eggGroups: ["Undiscovered"],
     },
-
-
     altarigardemega: {
         num: 7500435,
         species: "Altarigarde-Mega",
@@ -18693,11 +18743,9 @@ mimiblimbusted: {
         },
         heightm: 1.9,
         weightkg: 138.5,
-        color: "Brown",
+        color: "Red",
         eggGroups: ["Undiscovered"],
     },
-
-
     belle: {
         num: 7500437,
         species: "Belle",
@@ -18716,11 +18764,9 @@ mimiblimbusted: {
         },
         heightm: 5.25,
         weightkg: 519.95,
-        color: "Pink",
+        color: "Green",
         eggGroups: ["Undiscovered"],
     },
-
-
     maui: {
         num: 7500438,
         species: "Maui",
@@ -18742,11 +18788,9 @@ mimiblimbusted: {
         },
         heightm: 1.55,
         weightkg: 41.25,
-        color: "Black",
+        color: "Purple",
         eggGroups: ["Undiscovered"],
     },
-
-
     garzone: {
         num: 7500439,
         species: "Garzone",
@@ -18792,8 +18836,6 @@ mimiblimbusted: {
         color: "Gray",
         eggGroups: ["Undiscovered"],
     },
-
-
     shitpost: {
         num: 7500440,
         species: "Shitpost",
@@ -18830,6 +18872,7 @@ mimiblimbusted: {
         abilities: {
             0: "Beautiful Obliteration Weapon"
         },
+        color: "Purple",
         heightm: 1.15,
         weightkg: 27.75,
         eggGroups: ["Undiscovered"],
@@ -18850,12 +18893,12 @@ mimiblimbusted: {
          abilities: {
 				0: "Scarily Adorable"
 			},
+        color: "Yellow",
         heightm: 1.6,
         weightkg: 72.25,
         eggGroups: ["Field"],
     },
-    
-roarampmega: {
+   roarampmega: {
         num: 7500442,
         species: "Roaramp-Mega",
         baseSpecies: "Roaramp",
@@ -18874,12 +18917,11 @@ roarampmega: {
          abilities: {
 				0: "Mold Breaker"
 			},
+        color: "Yellow",
         heightm: 1.6,
         weightkg: 72.25,
         eggGroups: ["Field"],
     }, 
-
-
 arcalie: {
         num: 7500443,
         species: "Arcalie",
@@ -18894,12 +18936,11 @@ arcalie: {
             spe: 110
         },
          abilities: {0: "Creepy"},
+        color: "Purple",
         heightm: 1.5,
         weightkg: 96.25,
         eggGroups: ["Field"],
     },
-
-
 stakeye: {
         num: 7500444,
         species: "Stakeye",
@@ -18916,6 +18957,7 @@ stakeye: {
          abilities: {0: "Beast Eye"},
         heightm: 3.0,
         weightkg: 415.5,
+        color: "Purple",
         eggGroups: ["Undiscovered"],
     },
     
@@ -18938,10 +18980,9 @@ stakeyemega: {
          abilities: {0: "Magic Bounce"},
         heightm: 3.0,
         weightkg: 565.5,
+        color: "Purple",
         eggGroups: ["Undiscovered"],
     },
-
-
 lycanperiordusk: {
         num: 7500445,
         species: "Lycanperior-Dusk",
@@ -18956,12 +18997,11 @@ lycanperiordusk: {
             spe: 121
         },
          abilities: {0: "Lethal Leafage"},
+        color: "Green",
         heightm: 2.0,
         weightkg: 44.0,
         eggGroups: ["Field"],
     },
-
-
 gigafini: {
         num: 7500446,
         species: "Giga Fini",
@@ -18975,13 +19015,12 @@ gigafini: {
             spd: 105,
             spe: 55
         },
+        color: "Purple",
          abilities: {0: "Sandmist Surge"},
         heightm: 1.5,
         weightkg: 140.6,
         eggGroups: ["Undiscovered"],
     },
-
-
 stalossaka: {
         num: 7500447,
         species: "Stalossaka",
@@ -18997,11 +19036,10 @@ stalossaka: {
         },
         heightm: 3.4,
         weightkg: 535,
+        color: "Brown",
         abilities: {0: "Compact Boost"},
 		eggGroups: ["Undiscovered"],
     },
-
-
 stakamise: {
         num: 7500448,
         species: "Stakamise",
@@ -19016,13 +19054,10 @@ stakamise: {
         },
         heightm: 4.7,
         weightkg: 515,
+        color: "Green",
         abilities: {0: "Metal Monster"},
 		eggGroups: ["Undiscovered"],
     },
-
-
-
-
 	deoxysconfused: {
 		num: 386,
 		species: "Deoxys-Confused",
@@ -19053,11 +19088,10 @@ auroritar: {
         },
 		  heightm: 2.35,
 		  weightkg: 213.5,
+        color: "Blue",
         abilities: {0: "Meteor Shower"},
 		  eggGroups: ["Monster"],
     },
-
-
 auroritarmega: {
         num: 7500450,
         species: "Auroritar-Mega",
@@ -19074,12 +19108,13 @@ auroritarmega: {
             spd: 106,
             spe: 69
         },
+        color: "Blue",
 		  heightm: 2.85,
 		  weightkg: 266.5,
         abilities: {0: "Sand Stream"},
 		  eggGroups: ["Monster"],
     }, 
- necrynxcutewig: {
+ necrynx: {
 		num: 7500451,
 		species: "Necrynx",
 	   baseForme: "Cute Wig",
@@ -19096,6 +19131,7 @@ auroritarmega: {
 		abilities: {
 			0: "Prism Skin"
 		},
+        color: "Blue",
 		  heightm: 2.8,
 		  weightkg: 195.3,
 		  eggGroups: ["Undiscovered"],
@@ -19119,6 +19155,7 @@ auroritarmega: {
 		abilities: {
 			0: "Neuroforce"
 		},
+        color: "Yellow",
 		  heightm: 6.1,
 		  weightkg: 75.3,
 		  eggGroups: ["Undiscovered"],
@@ -19139,6 +19176,7 @@ auroritarmega: {
 		abilities: {
 			0: "Effect Setter"
 		},
+        color: "Gray",
 		  heightm: 2.15,
 		  weightkg: 200.25,
 		  eggGroups: ["Undiscovered"],
@@ -19162,6 +19200,7 @@ auroritarmega: {
 		abilities: {
 			0: "Effect Setter"
 		},
+        color: "Gray",
 		  heightm: 2.15,
 		  weightkg: 200.25,
 		  eggGroups: ["Undiscovered"],
@@ -19185,6 +19224,7 @@ auroritarmega: {
 		abilities: {
 			0: "Effect Setter"
 		},
+        color: "Gray",
 		  heightm: 2.15,
 		  weightkg: 200.25,
 		  eggGroups: ["Undiscovered"],
@@ -19208,6 +19248,7 @@ auroritarmega: {
 		abilities: {
 			0: "Effect Setter"
 		},
+        color: "Gray",
 		  heightm: 2.15,
 		  weightkg: 200.25,
 		  eggGroups: ["Undiscovered"],
@@ -19231,6 +19272,7 @@ auroritarmega: {
 		abilities: {
 			0: "Effect Setter"
 		},
+        color: "Gray",
 		  heightm: 2.15,
 		  weightkg: 200.25,
 		  eggGroups: ["Undiscovered"],
@@ -19254,6 +19296,7 @@ auroritarmega: {
 		abilities: {
 			0: "Effect Setter"
 		},
+        color: "Gray",
 		  heightm: 2.15,
 		  weightkg: 200.25,
 		  eggGroups: ["Undiscovered"],
@@ -19277,6 +19320,7 @@ auroritarmega: {
 		abilities: {
 			0: "Effect Setter"
 		},
+        color: "Gray",
 		  heightm: 2.15,
 		  weightkg: 200.25,
 		  eggGroups: ["Undiscovered"],
@@ -19300,6 +19344,7 @@ auroritarmega: {
 		abilities: {
 			0: "Effect Setter"
 		},
+        color: "Gray",
 		  heightm: 2.15,
 		  weightkg: 200.25,
 		  eggGroups: ["Undiscovered"],
@@ -19323,6 +19368,7 @@ auroritarmega: {
 		abilities: {
 			0: "Effect Setter"
 		},
+        color: "Gray",
 		  heightm: 2.15,
 		  weightkg: 200.25,
 		  eggGroups: ["Undiscovered"],
@@ -19346,6 +19392,7 @@ auroritarmega: {
 		abilities: {
 			0: "Effect Setter"
 		},
+        color: "Gray",
 		  heightm: 2.15,
 		  weightkg: 200.25,
 		  eggGroups: ["Undiscovered"],
@@ -19369,6 +19416,7 @@ auroritarmega: {
 		abilities: {
 			0: "Effect Setter"
 		},
+        color: "Gray",
 		  heightm: 2.15,
 		  weightkg: 200.25,
 		  eggGroups: ["Undiscovered"],
@@ -19392,6 +19440,7 @@ auroritarmega: {
 		abilities: {
 			0: "Effect Setter"
 		},
+        color: "Gray",
 		  heightm: 2.15,
 		  weightkg: 200.25,
 		  eggGroups: ["Undiscovered"],
@@ -19415,6 +19464,7 @@ auroritarmega: {
 		abilities: {
 			0: "Effect Setter"
 		},
+        color: "Gray",
 		  heightm: 2.15,
 		  weightkg: 200.25,
 		  eggGroups: ["Undiscovered"],
@@ -19438,6 +19488,7 @@ auroritarmega: {
 		abilities: {
 			0: "Effect Setter"
 		},
+        color: "Gray",
 		  heightm: 2.15,
 		  weightkg: 200.25,
 		  eggGroups: ["Undiscovered"],
@@ -19461,6 +19512,7 @@ auroritarmega: {
 		abilities: {
 			0: "Effect Setter"
 		},
+        color: "Gray",
 		  heightm: 2.15,
 		  weightkg: 200.25,
 		  eggGroups: ["Undiscovered"],
@@ -19484,6 +19536,7 @@ auroritarmega: {
 		abilities: {
 			0: "Effect Setter"
 		},
+        color: "Gray",
 		  heightm: 2.15,
 		  weightkg: 200.25,
 		  eggGroups: ["Undiscovered"],
@@ -19507,6 +19560,7 @@ auroritarmega: {
 		abilities: {
 			0: "Effect Setter"
 		},
+        color: "Gray",
 		  heightm: 2.15,
 		  weightkg: 200.25,
 		  eggGroups: ["Undiscovered"],
@@ -19530,6 +19584,7 @@ auroritarmega: {
 		abilities: {
 			0: "Effect Setter"
 		},
+        color: "Gray",
 		  heightm: 2.15,
 		  weightkg: 200.25,
 		  eggGroups: ["Undiscovered"],
@@ -19551,6 +19606,7 @@ auroritarmega: {
 		abilities: {
 			0: "Black Hole"
 		},
+        color: "Green",
 		  heightm: 2.6,
 		  weightkg: 271,
 		  eggGroups: ["Undiscovered"],
@@ -19574,6 +19630,7 @@ auroritarmega: {
 		abilities: {
 			0: "Neuroforce"
 		},
+        color: "Yellow",
 		  heightm: 6.7,
 		  weightkg: 41,
 		  eggGroups: ["Undiscovered"],
@@ -19594,6 +19651,7 @@ auroritarmega: {
 		abilities: {
 			0: "Terabeast"
 		},
+        color: "Purple",
 		  heightm: 1.75,
 		  weightkg: 173.4,
 		  eggGroups: ["Undiscovered"],
@@ -19615,6 +19673,7 @@ auroritarmega: {
 		abilities: {
 			0: "Graceful Analyst"
 		},
+        color: "Gray",
 		  heightm: 0.9,
 		  weightkg: 93.25,
 		  eggGroups: ["Undiscovered"],
@@ -19638,6 +19697,7 @@ auroritarmega: {
 		abilities: {
 			0: "Graceful Analyst"
 		},
+        color: "Gray",
 		  heightm: 0.9,
 		  weightkg: 93.25,
 		  eggGroups: ["Undiscovered"],
@@ -19657,6 +19717,7 @@ auroritarmega: {
 		abilities: {
 			0: "Tera Armor"
 		},
+        color: "Brown",
 		  heightm: 1.95,
 		  weightkg: 195,
 		  eggGroups: ["Undiscovered"],
@@ -19677,6 +19738,7 @@ auroritarmega: {
 		abilities: {
 			0: "Sadistic"
 		},
+        color: "Blue",
 		  heightm: 3.4,
 		  weightkg: 424.25,
 		  eggGroups: ["Undiscovered"],
@@ -19697,6 +19759,7 @@ auroritarmega: {
 		abilities: {
 			0: "Fearmonger"
 		},
+        color: "Blue",
 		  heightm: 2.5,
 		  weightkg: 176.8,
 		  eggGroups: ["Undiscovered"],
@@ -19719,6 +19782,7 @@ auroritarmega: {
 		abilities: {
 			0: "Neuroforce"
 		},
+        color: "Yellow",
 		  heightm: 5.8,
 		  weightkg: 56.8,
 		  eggGroups: ["Undiscovered"],
@@ -19738,6 +19802,7 @@ auroritarmega: {
 		abilities: {
 			0: "Unamazed"
 		},
+        color: "Black",
 		  heightm: 2.15,
 		  weightkg: 210,
 		  eggGroups: ["Undiscovered"],
@@ -19758,6 +19823,7 @@ auroritarmega: {
 		abilities: {
 			0: "What Does This Do?"
 		},
+        color: "Brown",
 		  heightm: 0.8,
 		  weightkg: 19.5,
 		  eggGroups: ["Undiscovered"],
@@ -19778,6 +19844,7 @@ auroritarmega: {
 		abilities: {
 			0: "Power Saver"
 		},
+        color: "Brown",
 		  heightm: 1.35,
 		  weightkg: 74.5,
 		  eggGroups: ["Field"],
@@ -19798,6 +19865,7 @@ auroritarmega: {
 		abilities: {
 			0: "Underwater Screen"
 		},
+        color: "Blue",
 		  heightm: 1.8,
 		  weightkg: 143.75,
 		  eggGroups: ["Monster"],
@@ -19821,6 +19889,7 @@ auroritarmega: {
 		abilities: {
 			0: "Sand Stream"
 		},
+        color: "Blue",
 		  heightm: 2.3,
 		  weightkg: 196.75,
 		  eggGroups: ["Monster"],
@@ -19844,6 +19913,7 @@ auroritarmega: {
 		abilities: {
 			0: "Mega Launcher"
 		},
+        color: "Blue",
 		  heightm: 1.8,
 		  weightkg: 159.35,
 		  eggGroups: ["Monster"],
@@ -19866,6 +19936,7 @@ auroritarmega: {
 		abilities: {
 			0: "Mountain Climber"
 		},
+        color: "Brown",
 		  heightm: 1.1,
 		  weightkg: 42.25,
 		  eggGroups: ["Field"],
@@ -19886,6 +19957,7 @@ auroritarmega: {
 		abilities: {
 			0: "Monarch of the Rain"
 		},
+        color: "Blue",
 		  heightm: 1.5,
 		  weightkg: 108,
 		  eggGroups: ["Undiscovered"],
@@ -19906,6 +19978,7 @@ auroritarmega: {
 		abilities: {
 			0: "Duke of the Lightning"
 		},
+        color: "Yellow",
 		  heightm: 1.35,
 		  weightkg: 101.25,
 		  eggGroups: ["Undiscovered"],
@@ -19926,6 +19999,7 @@ auroritarmega: {
 		abilities: {
 			0: "Emperor of the Fire"
 		},
+        color: "Red",
 		  heightm: 1.5,
 		  weightkg: 111.5,
 		  eggGroups: ["Undiscovered"],
@@ -19959,6 +20033,7 @@ auroritarmega: {
 		abilities: {
 			0: "Chlorophyll"
 		},
+        color: "Green",
 		prevo: "gloom",
 		evoLevel: 21,
 		  heightm: 0.8,
@@ -19980,6 +20055,7 @@ auroritarmega: {
 		abilities: {
 			0: "Overloaded Helm"
 		},
+        color: "Gray",
 		  heightm: 2.8,
 		  weightkg: 263,
 		  eggGroups: ["Mineral"],
@@ -20000,6 +20076,7 @@ auroritarmega: {
 		abilities: {
 			0: "Farmer's Delight"
 		},
+        color: "Green",
 		  heightm: 10.05,
 		  weightkg: 707.75,
 		  eggGroups: ["Undiscovered"],
@@ -20019,6 +20096,7 @@ auroritarmega: {
 		abilities: {
 			0: "Lightening Lightning"
 		},
+        color: "Pink",
 		  heightm: 1.15,
 		  weightkg: 24.75,
 		  eggGroups: ["Undiscovered"],
@@ -20039,6 +20117,7 @@ auroritarmega: {
 		abilities: {
 			0: "Unrivaled Claws"
 		},
+        color: "Purple",
 		  heightm: 1.15,
 		  weightkg: 24.75,
 		  eggGroups: ["Field"],
@@ -20059,6 +20138,7 @@ auroritarmega: {
 		abilities: {
 			0: "Ouroboros"
 		},
+        color: "Green",
 		  heightm: 2.5,
 		  weightkg: 106.5,
 		  eggGroups: ["Undiscovered"],
@@ -20068,7 +20148,6 @@ auroritarmega: {
 		species: "Necropur",
 	   baseForme: "Ugly",
 		types: ["Steel", "Normal"],
-		gender: "N",
 		baseStats: {
 			hp: 84,
 			atk: 139,
@@ -20080,6 +20159,7 @@ auroritarmega: {
 		abilities: {
 			0: "Braveheart"
 		},
+        color: "Yellow",
 		  heightm: 2.6,
 		  weightkg: 196.9,
 		  eggGroups: ["Undiscovered"],
@@ -20091,7 +20171,6 @@ auroritarmega: {
 		forme: "Beautiful",
 		formeLetter: "B",
 		types: ["Steel", "Dragon"],
-		gender: "N",
 		baseStats: {
 			hp: 84,
 			atk: 149,
@@ -20103,6 +20182,7 @@ auroritarmega: {
 		abilities: {
 			0: "Neuroforce"
 		},
+        color: "Yellow",
 		  heightm: 5.9,
 		  weightkg: 26.9,
 		  eggGroups: ["Undiscovered"],
@@ -20123,6 +20203,7 @@ auroritarmega: {
 		abilities: {
 			0: "Guard's Shield"
 		},
+        color: "Brown",
 		  heightm: 1.65,
 		  weightkg: 75,
 		  eggGroups: ["Undiscovered"],
@@ -20130,7 +20211,7 @@ auroritarmega: {
 	lampara: {
 		num: 7500475,
 		species: "Lampara",
-		forme: "De-Noche",
+		baseForme: "De-Noche",
 		types: ["Water", "Psychic"],
 		baseStats: {
 			hp: 113,
@@ -20143,6 +20224,7 @@ auroritarmega: {
 		abilities: {
 			0: "Dark Light"
 		},
+        color: "Blue",
 		  heightm: 2.7,
 		  weightkg: 186.25,
 		  eggGroups: ["Undiscovered"],
@@ -20165,6 +20247,7 @@ auroritarmega: {
 		abilities: {
 			0: "Neuroforce"
 		},
+        color: "Yellow",
 		  heightm: 6,
 		  weightkg: 66.25,
 		  eggGroups: ["Undiscovered"],
@@ -20185,6 +20268,7 @@ auroritarmega: {
 		abilities: {
 			0: "Inflate"
 		},
+        color: "Purple",
 		  heightm: 1.5,
 		  weightkg: 14,
 		  eggGroups: ["Undiscovered"],
@@ -20205,6 +20289,7 @@ auroritarmega: {
 		abilities: {
 			0: "Ancient Foliage"
 		},
+        color: "Green",
 		  heightm: 2,
 		  weightkg: 151,
 		  eggGroups: ["Monster"],
@@ -20228,6 +20313,7 @@ auroritarmega: {
 		abilities: {
 			0: "Thick Fat"
 		},
+        color: "Green",
 		  heightm: 2.4,
 		  weightkg: 206.5,
 		  eggGroups: ["Monster"],
@@ -20251,6 +20337,7 @@ auroritarmega: {
 		abilities: {
 			0: "Sand Stream"
 		},
+        color: "Green",
 		  heightm: 2.5,
 		  weightkg: 204,
 		  eggGroups: ["Monster"],
@@ -20271,6 +20358,7 @@ auroritarmega: {
 		abilities: {
 			0: "Synchro Veil"
 		},
+        color: "Blue",
 		  heightm: 7.7,
 		  weightkg: 212.25,
 		  prevo: "wailee",
@@ -20293,6 +20381,7 @@ auroritarmega: {
 		abilities: {
 			0: "Hail Veil"
 		},
+        color: "Blue",
 		  heightm: 7.65,
 		  weightkg: 209.25,
 		  prevo: "wailee",
@@ -20314,6 +20403,7 @@ auroritarmega: {
 		abilities: {
 			0: "Sensei"
 		},
+        color: "Yellow",
 		  heightm: 1.85,
 		  weightkg: 105.8,
 		  eggGroups: ["Human-Like"],
@@ -20333,6 +20423,7 @@ auroritarmega: {
 		abilities: {
 			0: "Prodigy"
 		},
+        color: "Red",
 		  heightm: 1.55,
 		  weightkg: 89.75,
 		  eggGroups: ["Bug"],
@@ -20355,6 +20446,7 @@ auroritarmega: {
 		abilities: {
 			0: "Technician"
 		},
+        color: "Red",
 		  heightm: 1.75,
 		  weightkg: 96.75,
 		  eggGroups: ["Bug"],
@@ -20375,6 +20467,7 @@ auroritarmega: {
 		abilities: {
 			0: "Titanium Toothpaste"
 		},
+        color: "Pink",
 		  heightm: 1.1,
 		  weightkg: 20.5,
 		  eggGroups: ["Fairy"],
@@ -20398,6 +20491,7 @@ auroritarmega: {
 		abilities: {
 			0: "Healer"
 		},
+        color: "White",
 		  heightm: 1.5,
 		  weightkg: 21.5,
 		  eggGroups: ["Fairy"],
@@ -20417,6 +20511,7 @@ auroritarmega: {
 		abilities: {
 			0: "Too Thick"
 		},
+        color: "Blue",
 		  heightm: 1.4,
 		  weightkg: 96.3,
 		  eggGroups: ["Field"],
@@ -20439,6 +20534,7 @@ auroritarmega: {
 		abilities: {
 			0: "Tech Fur"
 		},
+        color: "Gray",
 		  heightm: 1.05,
 		  weightkg: 33.5,
 		  eggGroups: ["Field"],
@@ -20458,6 +20554,7 @@ auroritarmega: {
 		abilities: {
 			0: "Veteran"
 		},
+        color: "Blue",
 		  heightm: 0.8,
 		  weightkg: 21.5,
 		  eggGroups: ["Water 1"],
@@ -20477,6 +20574,7 @@ auroritarmega: {
 		abilities: {
 			0: "Sound Soul"
 		},
+        color: "Gray",
 		  heightm: 1.8,
 		  weightkg: 114.35,
 		  eggGroups: ["Dragon"],
@@ -20496,6 +20594,7 @@ auroritarmega: {
 		abilities: {
 			0: "Phase Through"
 		},
+        color: "Blue",
 		  heightm: 1.3,
 		  weightkg: 52.8,
 		  eggGroups: ["Flying"],
@@ -20518,6 +20617,7 @@ auroritarmega: {
 		abilities: {
 			0: "Pixilate"
 		},
+        color: "Blue",
 		  heightm: 1.7,
 		  weightkg: 52.8,
 		  eggGroups: ["Flying"],
@@ -20537,6 +20637,7 @@ auroritarmega: {
 		abilities: {
 			0: "Locked Shell"
 		},
+        color: "Gray",
 		  heightm: 0.8,
 		  weightkg: 101.5,
 		  eggGroups: ["Mineral"],
@@ -20557,6 +20658,7 @@ auroritarmega: {
 		abilities: {
 			0: "Christmas Parade"
 		},
+        color: "Brown",
 		  heightm: 2.55,
 		  weightkg: 253.9,
 		  eggGroups: ["Monster"],
@@ -20577,6 +20679,7 @@ auroritarmega: {
 		abilities: {
 			0: "Magnetic Surge"
 		},
+        color: "Gray",
 		  heightm: 1.6,
 		  weightkg: 180.25,
 		  eggGroups: ["Undiscovered"],
@@ -20597,6 +20700,7 @@ auroritarmega: {
 		abilities: {
 			0: "Temporary Guard"
 		},
+        color: "Brown",
 		  heightm: 2.25,
 		  weightkg: 210.6,
 		  eggGroups: ["Undiscovered"],
@@ -20618,6 +20722,7 @@ auroritarmega: {
 		abilities: {
 			0: "Healthy Meal"
 		},
+        color: "Pink",
 		  heightm: 2.65,
 		  weightkg: 192.3,
 		  eggGroups: ["Undiscovered"],
@@ -20641,6 +20746,7 @@ auroritarmega: {
 		abilities: {
 			0: "Neuroforce"
 		},
+        color: "Pink",
 		  heightm: 5.95,
 		  weightkg: 72.3,
 		  eggGroups: ["Undiscovered"],
@@ -20661,6 +20767,7 @@ auroritarmega: {
 		abilities: {
 			0: "Christmas Spirit"
 		},
+        color: "Brown",
 		  heightm: 2.45,
 		  weightkg: 257.9,
 		  eggGroups: ["Undiscovered"],
@@ -20684,6 +20791,7 @@ auroritarmega: {
 		abilities: {
 			0: "Neuroforce"
 		},
+        color: "Yellow",
 		  heightm: 6.15,
 		  weightkg: 27.9,
 		  eggGroups: ["Undiscovered"],
@@ -20704,6 +20812,7 @@ auroritarmega: {
 		abilities: {
 			0: "Pressure"
 		},
+        color: "Black",
 		  heightm: 1.95,
 		  weightkg: 27.9,
 		  eggGroups: ["Undiscovered"],
@@ -20723,6 +20832,7 @@ auroritarmega: {
 		abilities: {
 			0: "Scrumptious"
 		},
+        color: "Yellow",
 		  heightm: 1.05,
 		  weightkg: 25.9,
 		  eggGroups: ["Flying"],
@@ -20743,6 +20853,7 @@ auroritarmega: {
 		abilities: {
 			0: "Heat Seeker"
 		},
+        color: "Brown",
 		  heightm: 1.5,
 		  weightkg: 42.75,
 		  eggGroups: ["Field"],
@@ -20766,6 +20877,7 @@ auroritarmega: {
 		abilities: {
 			0: "Speed Boost"
 		},
+        color: "Brown",
 		  heightm: 1.5,
 		  weightkg: 42.75,
 		  eggGroups: ["Field"],
@@ -20785,6 +20897,7 @@ auroritarmega: {
 		abilities: {
 			0: "Effective Strategy"
 		},
+        color: "Yellow",
 		  heightm: 1.65,
 		  weightkg: 23.25,
 		  eggGroups: ["Field"],
@@ -20805,6 +20918,7 @@ auroritarmega: {
 		abilities: {
 			0: "Floating Grounds"
 		},
+        color: "Black",
 		  heightm: 1.75,
 		  weightkg: 154.95,
 		  eggGroups: ["Undiscovered"],
@@ -20828,6 +20942,7 @@ auroritarmega: {
 		abilities: {
 			0: "Sand Stream"
 		},
+        color: "Black",
 		  heightm: 2.25,
 		  weightkg: 207.95,
 		  eggGroups: ["Undiscovered"],
@@ -20848,6 +20963,7 @@ auroritarmega: {
 		abilities: {
 			0: "Sleeping System"
 		},
+        color: "Gray",
 		  heightm: 1.35,
 		  weightkg: 60.2,
 		  eggGroups: ["Undiscovered"],
@@ -20867,6 +20983,7 @@ auroritarmega: {
 		abilities: {
 			0: "Snow Sucker"
 		},
+        color: "Blue",
 		  heightm: 0.95,
 		  weightkg: 22.2,
 		  eggGroups: ["Field"],
@@ -20886,6 +21003,7 @@ auroritarmega: {
 		abilities: {
 			0: "Ambulance"
 		},
+        color: "Pink",
 		  heightm: 0.8,
 		  weightkg: 10.25,
 		  eggGroups: ["Fairy"],
@@ -20905,6 +21023,7 @@ auroritarmega: {
 		abilities: {
 			0: "Bingo Bongo"
 		},
+        color: "Gray",
 		  heightm: 0.95,
 		  weightkg: 48.85,
 		  eggGroups: ["Undiscovered"],
@@ -20925,6 +21044,7 @@ auroritarmega: {
 		abilities: {
 			0: "Panic Mode"
 		},
+        color: "Purple",
 		  heightm: 0.9,
 		  weightkg: 33.25,
 		  eggGroups: ["Human-Like"],
@@ -20935,7 +21055,7 @@ auroritarmega: {
 		baseSpecies: "Theye",
 		forme: "Mega",
 		formeLetter: "M",
-		types: ["Ground", "Dark"],
+		types: ["Fighting", "Ghost"],
 		gender: "M",
 		baseStats: {
 			hp: 95,
@@ -20948,6 +21068,7 @@ auroritarmega: {
 		abilities: {
 			0: "Magic Bounce"
 		},
+        color: "Purple",
 		  heightm: 0.9,
 		  weightkg: 183.25,
 		  eggGroups: ["Human-Like"],
@@ -21046,7 +21167,7 @@ auroritarmega: {
         abilities: {
             0: "Aerilate"
         },
-        heightm: 9.2,
+        heightm: 9.5,
         weightkg: 1009.9,
         color: "Blue",
         eggGroups: ["Undiscovered"],
@@ -21064,7 +21185,7 @@ auroritarmega: {
             spe: 109
         },
         abilities: {
-            0: "Cocky"
+            0: "Levitimidate"
         },
         heightm: 1.65,
         weightkg: 131.3,
@@ -21110,6 +21231,7 @@ auroritarmega: {
         abilities: {
             0: "Poison Pores"
         },
+        color: "Green",
         heightm: 1.6,
         weightkg: 61.1,
         eggGroups: ["Monster"],
@@ -21133,6 +21255,7 @@ auroritarmega: {
             abilities: {
                 0: "Poison Pores"
             },
+	        color: "Green",
             heightm: 2.0,
             weightkg: 116.6,
             eggGroups: ["Monster"],
@@ -21155,7 +21278,7 @@ auroritarmega: {
             heightm: 5.2,
             weightkg: 110.5,
             color: "White",
-            eggGroups: ["Field", "Undiscovered"],
+            eggGroups: ["Undiscovered"],
         },
         klinkarel: {
             num: 7500510,
@@ -21194,7 +21317,7 @@ auroritarmega: {
             },
             heightm: 0.9,
             weightkg: 24.1,
-            color: "Black",
+            color: "Brown",
             eggGroups: ["Field"],
         },
         barbominable: {
@@ -21214,7 +21337,7 @@ auroritarmega: {
             },
             heightm: 1.7,
             weightkg: 138,
-            color: "White",
+            color: "Brown",
             eggGroups: ["Water 3"],
         },
         asterisk: {
@@ -21233,6 +21356,7 @@ auroritarmega: {
             abilities: {
                 0: "Starburst"
             },
+        		color: "White",
             heightm: 1.2,
             weightkg: 26.25,
             eggGroups: ["Fairy"],
@@ -21252,6 +21376,7 @@ auroritarmega: {
             abilities: {
                 0: "Quick Trap"
             },
+        		color: "Gray",
             heightm: 0.5,
             weightkg: 18.3,
             eggGroups: ["Field"],
@@ -21272,6 +21397,7 @@ auroritarmega: {
             abilities: {
                 0: "Aeon Flux"
             },
+	        color: "Brown",
             heightm: 1.35,
             weightkg: 47.6,
             eggGroups: ["Field"],
@@ -21295,6 +21421,7 @@ auroritarmega: {
             abilities: {
                 0: "Intimidate"
             },
+	        color: "Brown",
             heightm: 1.65,
             weightkg: 51.4,
             eggGroups: ["Field"],
@@ -21314,6 +21441,7 @@ auroritarmega: {
             abilities: {
                 0: "Beast Costume"
             },
+	        color: "White",
             heightm: 0.25,
             weightkg: 0.4,
             eggGroups: ["Undiscovered"],
@@ -21336,6 +21464,7 @@ auroritarmega: {
         		abilities: {
             	0: "Beast Costume"
        		},
+	        color: "White",
     			heightm: 0.25,
             weightkg: 0.4,
             eggGroups: ["Undiscovered"],
@@ -21358,7 +21487,7 @@ auroritarmega: {
         abilities: {
             0: "Beast Costumed"
         },
-    heightm: 0.25,
+    			heightm: 0.25,
             weightkg: 0.4,
             eggGroups: ["Undiscovered"],
         },
@@ -21424,7 +21553,7 @@ auroritarmega: {
 	    },
 	    heightm: 1.5,
 	    weightkg: 210,
-	    color: "Brown",
+	    color: "Gray",
 	    eggGroups: ["Field"],
 	},
 	xerdian: {
@@ -21482,6 +21611,7 @@ auroritarmega: {
 	    abilities: {
 	        0: "Nightmare Fuel"
 	    },
+        color: "Red",
 	    heightm: 3.45,
 	    weightkg: 118.25,
 	    eggGroups: ["Undiscovered"],
@@ -21563,6 +21693,7 @@ auroritarmega: {
 	    abilities: {
 	        0: "Atmospheric Perversion"
 	    },
+        color: "Blue",
 	    heightm: 2.65,
 	    weightkg: 184,
 	    eggGroups: ["Undiscovered"],
@@ -21586,6 +21717,7 @@ auroritarmega: {
 	    abilities: {
 	        0: "Primordial Sea"
 	    },
+        color: "Blue",
 	    heightm: 7.95,
 	    weightkg: 262,
 	    eggGroups: ["Undiscovered"],
@@ -21606,6 +21738,7 @@ auroritarmega: {
 	    abilities: {
 	        0: "Adaptive Eye"
 	    },
+        color: "Red",
 	    heightm: 2.65,
 	    weightkg: 184,
 	    eggGroups: ["Undiscovered"],
@@ -21625,6 +21758,7 @@ auroritarmega: {
 	    abilities: {
 	        0: "God of Fertility"
 	    },
+        color: "Green",
 	    heightm: 2.6,
 	    weightkg: 210,
 	    eggGroups: ["Undiscovered"],
@@ -21647,6 +21781,7 @@ auroritarmega: {
 	    abilities: {
 	        0: "God of Fertility"
 	    },
+        color: "Green",
 	    heightm: 2.6,
 	    weightkg: 210,
 	    eggGroups: ["Undiscovered"],
@@ -21669,6 +21804,7 @@ auroritarmega: {
 	    abilities: {
 	        0: "God of Fertility"
 	    },
+        color: "Green",
 	    heightm: 2.6,
 	    weightkg: 210,
 	    eggGroups: ["Undiscovered"],
@@ -21691,6 +21827,7 @@ auroritarmega: {
 	    abilities: {
 	        0: "God of Fertility"
 	    },
+        color: "Green",
 	    heightm: 2.6,
 	    weightkg: 210,
 	    eggGroups: ["Undiscovered"],
@@ -21713,6 +21850,7 @@ auroritarmega: {
 	    abilities: {
 	        0: "God of Fertility"
 	    },
+        color: "Green",
 	    heightm: 2.6,
 	    weightkg: 210,
 	    eggGroups: ["Undiscovered"],
@@ -21735,6 +21873,7 @@ auroritarmega: {
 	    abilities: {
 	        0: "God of Fertility"
 	    },
+        color: "Green",
 	    heightm: 2.6,
 	    weightkg: 210,
 	    eggGroups: ["Undiscovered"],
@@ -21757,6 +21896,7 @@ auroritarmega: {
 	    abilities: {
 	        0: "God of Fertility"
 	    },
+        color: "Green",
 	    heightm: 2.6,
 	    weightkg: 210,
 	    eggGroups: ["Undiscovered"],
@@ -21779,6 +21919,7 @@ auroritarmega: {
 	    abilities: {
 	        0: "God of Fertility"
 	    },
+        color: "Green",
 	    heightm: 2.6,
 	    weightkg: 210,
 	    eggGroups: ["Undiscovered"],
@@ -21801,6 +21942,7 @@ auroritarmega: {
 	    abilities: {
 	        0: "God of Fertility"
 	    },
+        color: "Green",
 	    heightm: 2.6,
 	    weightkg: 210,
 	    eggGroups: ["Undiscovered"],
@@ -21823,6 +21965,7 @@ auroritarmega: {
 	    abilities: {
 	        0: "God of Fertility"
 	    },
+        color: "Green",
 	    heightm: 2.6,
 	    weightkg: 210,
 	    eggGroups: ["Undiscovered"],
@@ -21845,6 +21988,7 @@ auroritarmega: {
 	    abilities: {
 	        0: "God of Fertility"
 	    },
+        color: "Green",
 	    heightm: 2.6,
 	    weightkg: 210,
 	    eggGroups: ["Undiscovered"],
@@ -21867,6 +22011,7 @@ auroritarmega: {
 	    abilities: {
 	        0: "God of Fertility"
 	    },
+        color: "Green",
 	    heightm: 2.6,
 	    weightkg: 210,
 	    eggGroups: ["Undiscovered"],
@@ -21889,6 +22034,7 @@ auroritarmega: {
 	    abilities: {
 	        0: "God of Fertility"
 	    },
+        color: "Green",
 	    heightm: 2.6,
 	    weightkg: 210,
 	    eggGroups: ["Undiscovered"],
@@ -21911,6 +22057,7 @@ auroritarmega: {
 	    abilities: {
 	        0: "God of Fertility"
 	    },
+        color: "Green",
 	    heightm: 2.6,
 	    weightkg: 210,
 	    eggGroups: ["Undiscovered"],
@@ -21933,6 +22080,7 @@ auroritarmega: {
 	    abilities: {
 	        0: "God of Fertility"
 	    },
+        color: "Green",
 	    heightm: 2.6,
 	    weightkg: 210,
 	    eggGroups: ["Undiscovered"],
@@ -21955,6 +22103,7 @@ auroritarmega: {
 	    abilities: {
 	        0: "God of Fertility"
 	    },
+        color: "Green",
 	    heightm: 2.6,
 	    weightkg: 210,
 	    eggGroups: ["Undiscovered"],
@@ -21977,6 +22126,7 @@ auroritarmega: {
 	    abilities: {
 	        0: "God of Fertility"
 	    },
+        color: "Green",
 	    heightm: 2.6,
 	    weightkg: 210,
 	    eggGroups: ["Undiscovered"],
@@ -21999,10 +22149,12 @@ auroritarmega: {
 	    abilities: {
 	        0: "God of Fertility"
 	    },
+        color: "Green",
 	    heightm: 2.6,
 	    weightkg: 210,
 	    eggGroups: ["Undiscovered"],
-	},	metabell: {
+	},
+	metabell: {
 	        num: 7500528,
 	        species: "Metabell",
 	        types: ["Grass", "Steel"],
@@ -22018,6 +22170,7 @@ auroritarmega: {
 	        abilities: {
 	            0: "Indigestion"
 	        },
+        	  color: "Blue",
 	        heightm: 1.65,
 	        weightkg: 282.75,
 	        eggGroups: ["Undiscovered"],
@@ -22041,6 +22194,7 @@ auroritarmega: {
 	        abilities: {
 	            0: "Tough Claws"
 	        },
+	        color: "Blue",
 	        heightm: 1.65,
 	        weightkg: 675.65,
 	        eggGroups: ["Undiscovered"],
@@ -22082,6 +22236,7 @@ auroritarmega: {
 	        abilities: {
 	            0: "Wooded Surge"
 	        },
+        	  color: "Green",
 	        heightm: 1.7,
 	        weightkg: 164.3,
 	        eggGroups: ["Undiscovered"],
@@ -22176,7 +22331,7 @@ auroritarmega: {
 	        },
 	        heightm: 0.8,
 	        weightkg: 9.7,
-	        color: "Green",
+	        color: "Red",
 	        eggGroups: ["Undiscovered"],
 	    },
 	    castapusmisty: {
@@ -22200,7 +22355,7 @@ auroritarmega: {
 	        },
 	        heightm: 0.8,
 	        weightkg: 9.7,
-	        color: "Pink",
+	        color: "Purple",
 	        eggGroups: ["Undiscovered"],
 	    },
 	    castapusrocky: {
@@ -22296,7 +22451,7 @@ auroritarmega: {
 	        },
 	        heightm: 0.8,
 	        weightkg: 9.7,
-	        color: "Purple",
+	        color: "Green",
 	        eggGroups: ["Undiscovered"],
 	    },
 	    castapusbeauty: {
@@ -22362,6 +22517,7 @@ auroritarmega: {
 	        abilities: {
 	            0: "Aqua Booster"
 	        },
+	        color: "Purple",
 	        heightm: 2.3,
 	        weightkg: 89,
 	        eggGroups: ["Undiscovered"],
@@ -22779,6 +22935,7 @@ auroritarmega: {
 	        abilities: {
 	            0: "Paw Prayer"
 	        },
+	        color: "Red",
 	        heightm: 1.05,
 	        weightkg: 58.95,
 	        eggGroups: ["Field"],
@@ -22802,6 +22959,7 @@ auroritarmega: {
 	        abilities: {
 	            0: "Paw Prayer"
 	        },
+	        color: "Brown",
 	        heightm: 1.05,
 	        weightkg: 58.95,
 	        eggGroups: ["Field"],
@@ -22823,6 +22981,7 @@ auroritarmega: {
 	        abilities: {
 	            0: "Social Life"
 	        },
+        	  color: "Brown",
 	        heightm: 0.35,
 	        weightkg: 44.1,
 	        eggGroups: ["Undiscovered"],
@@ -22847,6 +23006,7 @@ auroritarmega: {
 	        abilities: {
 	            0: "Social Life"
 	        },
+	        color: "White",
 	        heightm: 0.35,
 	        weightkg: 4.4,
 	        eggGroups: ["Undiscovered"],
@@ -22868,7 +23028,7 @@ auroritarmega: {
 	        },
 	        heightm: 0.8,
 	        weightkg: 70.25,
-	        color: "Red",
+	        color: "Purple",
 	        eggGroups: ["Undiscovered"],
 	    },
 	pikachuash: {
@@ -22911,6 +23071,7 @@ auroritarmega: {
 	        abilities: {
 	            0: "Blizzard Blur"
 	        },
+	        color: "Blue",
 	        heightm: 1.15,
 	        weightkg: 40.45,
 	        eggGroups: ["Field"],
@@ -22931,6 +23092,7 @@ auroritarmega: {
 	    abilities: {
 	        0: "Solar Panel"
 	    },
+        color: "Red",
 	    heightm: 1.95,
 	    weightkg: 477.1,
 	    eggGroups: ["Undiscovered"],
@@ -22955,6 +23117,7 @@ auroritarmega: {
 	    		abilities: {
 	        		0: "Desolate Land"
 	    		},
+	        color: "Red",
 	    		heightm: 3.45,
 	    		weightkg: 526.8,
 	    		eggGroups: ["Undiscovered"],
@@ -22974,6 +23137,7 @@ auroritarmega: {
 	        abilities: {
 	            0: "Tour To Russia"
 	        },
+	        color: "Blue",
 	        heightm: 1.3,
 	        weightkg: 100.45,
 	        eggGroups: ["Undiscovered"],
@@ -22993,6 +23157,7 @@ auroritarmega: {
 		        abilities: {
 		            0: "Ice Scale"
 		        },
+	        color: "Blue",
 		        heightm: 1.8,
 		        weightkg: 180.3,
 		        eggGroups: ["Water 1"],
@@ -23015,7 +23180,7 @@ auroritarmega: {
 		        },
 		        heightm: 1.3,
 		        weightkg: 107,
-		        color: "Orange",
+		        color: "Brown",
 		        eggGroups: ["Undiscovered"],
 		    },
 		    topper: {
@@ -23034,6 +23199,7 @@ auroritarmega: {
 		        abilities: {
 		            0: "Afterstorm"
 		        },
+	        		color: "White",
 		        heightm: 1.35,
 		        weightkg: 33,
 		        eggGroups: ["Flying"],
@@ -23055,7 +23221,7 @@ auroritarmega: {
 		        },
 		        heightm: 2.25,
 		        weightkg: 61.95,
-				  color: "Gray",
+				  color: "Purple",
 		        eggGroups: ["Undiscovered"],
 		    },
 		    accelerateddetox: {
@@ -23118,7 +23284,7 @@ auroritarmega: {
 		            },
 		            heightm: 1.5,
 		            weightkg: 82.5,
-		            color: "Brown",
+		            color: "Purple",
 		            eggGroups: ["Undiscovered"],
 		        },
 					cocaine: {
@@ -23185,6 +23351,7 @@ auroritarmega: {
 		   	     abilities: {
 		   	         0: "Juggernaut"
 		   	     },
+			        color: "Black",
 		   	     heightm: 1.6,
 		   	     weightkg: 114.75,
 		   	     eggGroups: ["Field"],
@@ -23205,6 +23372,7 @@ auroritarmega: {
 		   	     abilities: {
 		   	         0: "Air Raider"
 		   	     },
+			        color: "Red",
 		   	     heightm: 0.5,
 		   	     weightkg: 7.4,
 		   	     eggGroups: ["Undiscovered"],
@@ -23224,6 +23392,7 @@ auroritarmega: {
 		   	     abilities: {
 		   	         0: "Interception"
 		   	     },
+			        color: "White",
 		   	     heightm: 1.55,
 		   	     weightkg: 56.4,
 		   	     eggGroups: ["Field"],
@@ -23246,7 +23415,7 @@ auroritarmega: {
 		   	     },
    				  heightm: 0.8,
    				  weightkg: 16.3,
-				     color: "Pink",
+				     color: "Purple",
 		   	     eggGroups: ["Undiscovered"],
 		   	 },
 		   	 amunra: {
@@ -23265,6 +23434,7 @@ auroritarmega: {
 		   	     abilities: {
 		   	         0: "The Hidden One"
 		   	     },
+     				  color: "Yellow",
    				  heightm: 1.45,
    				  weightkg: 128.25,
 		   	     eggGroups: ["Mineral"],
@@ -23327,6 +23497,7 @@ auroritarmega: {
 		   	     },
      				  heightm: 1.3,
         			  weightkg: 40,
+        			  color: "Pink",
 					  prevo: "growlee",
 					  evoLevel: 1,
 		   	     eggGroups: ["Field"],
@@ -23346,6 +23517,7 @@ auroritarmega: {
 	        	 	abilities: {
 	        	 	    0: "Food Coloring"
 	        	 	},
+		         color: "Purple",
 	          	heightm: 1.2,
 	        	 	weightkg: 55.85,
 	       	 	eggGroups: ["Field"],
@@ -23368,6 +23540,7 @@ auroritarmega: {
 	        		abilities: {
 	        		    0: "Intimidate"
 	        		},
+		         color: "Purple",
 	          	heightm: 1.5,
 	        	 	weightkg: 59.65,
 	       	 	eggGroups: ["Field"],
@@ -23387,11 +23560,12 @@ auroritarmega: {
 	        	 	abilities: {
 	        	 	    0: "Turboblaze"
 	        	 	},
+		         color: "Green",
 	          	heightm: 2,
 	        	 	weightkg: 171.5,
 	       	 	eggGroups: ["Undiscovered"],
 	    		 },
-				 clerforusfable: {
+				 cleforusfable: {
 		   	 	num: 7500574,
 	       	 	species: "Cleforus-Fable",
 	       	 	types: ["Fairy", "Ground"],
@@ -23407,6 +23581,7 @@ auroritarmega: {
 	        	 	abilities: {
 	        	 	    0: "Zero Awareness"
 	        	 	},
+		         color: "Brown",
 	          	heightm: 1.4,
 	        	 	weightkg: 54,
 	       	 	eggGroups: ["Undiscovered"],
@@ -23432,7 +23607,7 @@ auroritarmega: {
 						abilities: {0: "Regenerator"},
 						heightm: 1.4,
 						weightkg: 49.25,
-						color: "Purple",
+						color: "Green",
 						eggGroups: ["Undiscovered"],
 					},
 					cryomagius: {
@@ -23444,7 +23619,7 @@ auroritarmega: {
    				 abilities: {0: "Levitate"},
    				 heightm: 1.0,
    				 weightkg: 76.2,
-   				 color: "Blue",
+   				 color: "Purple",
    				 eggGroups: ["Undiscovered"],
 				   },
 					chantran: {
@@ -23467,7 +23642,7 @@ auroritarmega: {
 						abilities: {0: "Technological Armor"},
 						heightm: 1,
 						weightkg: 242.75,
-						color: "Red",
+						color: "Yellow",
 						eggGroups: ["Undiscovered"],
 					},
 	    		 	necrotuneultra: {
@@ -23481,6 +23656,7 @@ auroritarmega: {
 	        			abilities: {
 	        			    0: "Neuroforce"
 	        			},
+		        	   color: "Yellow",
 						heightm: 4.7,
 						weightkg: 12.75,
 	       		 	eggGroups: ["Undiscovered"],
@@ -23675,7 +23851,7 @@ auroritarmega: {
      			     heightm: 1.9,
     			     weightkg: 120.5,
 					  evos: ["aegivally"],
-     			     color: "Purple",
+     			     color: "Brown",
      			     eggGroups: ["Undiscovered"],
 				},
 	    mewdeuca: {
@@ -23693,6 +23869,7 @@ auroritarmega: {
         abilities: {
             0: "Unnerve"
         },
+		  color: "Purple",
         heightm: 2.75,
         weightkg: 93.5,
      	 eggGroups: ["Undiscovered"],
@@ -23715,6 +23892,7 @@ auroritarmega: {
         abilities: {
             0: "Steadfast"
         },
+		  color: "Purple",
         heightm: 3.05,
         weightkg: 98.5,
      	  eggGroups: ["Undiscovered"],
@@ -23737,6 +23915,7 @@ auroritarmega: {
         abilities: {
             0: "Insomnia"
         },
+		  color: "Purple",
         heightm: 2.25,
         weightkg: 25.3,
      	  eggGroups: ["Undiscovered"],
@@ -23756,6 +23935,7 @@ auroritarmega: {
         abilities: {
             0: "Slime Drench"
         },
+		  color: "Purple",
         heightm: 1.35,
         weightkg: 66,
      	  eggGroups: ["Amorphous"],
