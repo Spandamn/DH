@@ -3198,8 +3198,8 @@ let BattleMovedex = {
 			/**@type {?boolean | number} */
 			let success = false;
 			if (!target.volatiles['substitute'] || move.infiltrates) success = this.boost({evasion: -1});
-			let removeTarget = ['reflect', 'lightscreen', 'auroraveil', 'safeguard', 'mist', 'spikes', 'toxicspikes', 'stealthrock', 'stickyweb'];
-			let removeAll = ['spikes', 'toxicspikes', 'stealthrock', 'stickyweb'];
+			let removeTarget = ['reflect', 'lightscreen', 'auroraveil', 'safeguard', 'mist'];
+			let removeAll = ['spikes', 'toxicspikes', 'stickyweb', 'stealthnormal', 'stealthwater', 'stealthgrass', 'stealthghost', 'stealthground', 'stealthice', 'stealthelectric', 'stealthdark', 'stealthdragon', 'stealthfire', 'stealthfighting', 'stealthfairy', 'stealthbug', 'stealthpoison', 'stealthpsychic', 'stealthrock', 'stealthsteel', 'stealthflying',];
 			for (const targetCondition of removeTarget) {
 				if (target.side.removeSideCondition(targetCondition)) {
 					if (!removeAll.includes(targetCondition)) continue;
@@ -6608,17 +6608,14 @@ let BattleMovedex = {
 		effect: {
 			duration: 5,
 			durationCallback: function (source, effect) {
-				if (effect && effect.effectType === 'Ability') {
-					return 8;
-				}
-				if (source && source.hasItem('metalpowder')) {
-					return 8;
+				if (source && source.hasAbility('persistent')) {
+					this.add('-activate', source, 'ability: Persistent', effect);
+					return 7;
 				}
 				return 5;
 			},
 			onStart: function () {
 				this.add('-fieldstart', 'move: Gravity');
-				if ( this.effectiveWeather() !== 'none' ) this.add('-weather', 'none');
 				for (const pokemon of this.sides[0].active.concat(this.sides[1].active)) {
 					let applies = false;
 					if (pokemon.removeVolatile('bounce') || pokemon.removeVolatile('fly')) {
@@ -13011,7 +13008,7 @@ let BattleMovedex = {
 				if (pokemon.hp && pokemon.removeVolatile('leechseed')) {
 					this.add('-end', pokemon, 'Leech Seed', '[from] move: Rapid Spin', '[of] ' + pokemon);
 				}
-				let sideConditions = ['spikes', 'toxicspikes', 'stealthrock', 'stickyweb'];
+				let sideConditions = ['spikes', 'toxicspikes', 'stickyweb', 'stealthnormal', 'stealthwater', 'stealthgrass', 'stealthghost', 'stealthground', 'stealthice', 'stealthelectric', 'stealthdark', 'stealthdragon', 'stealthfire', 'stealthfighting', 'stealthfairy', 'stealthbug', 'stealthpoison', 'stealthpsychic', 'stealthrock', 'stealthsteel', 'stealthflying',];
 				for (const condition of sideConditions) {
 					if (pokemon.hp && pokemon.side.removeSideCondition(condition)) {
 						this.add('-sideend', pokemon.side, this.getEffect(condition).name, '[from] move: Rapid Spin', '[of] ' + pokemon);
@@ -16026,6 +16023,297 @@ let BattleMovedex = {
 		zMoveBoost: {spd: 1},
 		contestType: "Cute",
 	},
+	"stealthnormal": {
+		num: 446,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		desc: "Sets up a hazard on the opposing side of the field, damaging each opposing Pokemon that switches in. Fails if the effect is already active on the opposing side. Foes lose 1/32, 1/16, 1/8, 1/4, or 1/2 of their maximum HP, rounded down, based on their weakness to the Normal type; 0.25x, 0.5x, neutral, 2x, or 4x, respectively. Can be removed from the opposing side if any opposing Pokemon uses Rapid Spin or Defog successfully, or is hit by Defog.",
+		shortDesc: "Hurts foes on switch-in. Factors Normal weakness.",
+		id: "stealthnormal",
+		isViable: true,
+		name: "Stealth Normal",
+		pp: 20,
+		priority: 0,
+		flags: {reflectable: 1},
+		sideCondition: 'stealthnormal',
+		effect: {
+			// this is a side condition
+			onStart: function (side) {
+				this.add('-sidestart', side, 'move: Stealth Normal');
+			},
+			onSwitchIn: function (pokemon) {
+				let typeMod = this.clampIntRange(pokemon.runEffectiveness('Normal'), -6, 6);
+				if ( typeMod <= 0 && pokemon.ability === 'wonderguard' ) return;
+				if (pokemon.runImmunity('Normal')) {
+					this.damage(pokemon.maxhp * Math.pow(2, typeMod) / 8);
+				}
+			},
+		},
+		onPrepareHit: function(target, source, move) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Egg Bomb", target);
+		},
+		secondary: null,
+		target: "foeSide",
+		type: "Rock",
+		zMoveBoost: {def: 1},
+		contestType: "Cool",
+	},
+	"stealthwater": {
+		num: 446,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		desc: "Sets up a hazard on the opposing side of the field, damaging each opposing Pokemon that switches in. Fails if the effect is already active on the opposing side. Foes lose 1/32, 1/16, 1/8, 1/4, or 1/2 of their maximum HP, rounded down, based on their weakness to the Water type; 0.25x, 0.5x, neutral, 2x, or 4x, respectively. Can be removed from the opposing side if any opposing Pokemon uses Rapid Spin or Defog successfully, or is hit by Defog.",
+		shortDesc: "Hurts foes on switch-in. Factors Water weakness.",
+		id: "stealthwater",
+		isViable: true,
+		name: "Stealth Water",
+		pp: 20,
+		priority: 0,
+		flags: {reflectable: 1},
+		sideCondition: 'stealthwater',
+		effect: {
+			// this is a side condition
+			onStart: function (side) {
+				this.add('-sidestart', side, 'move: Stealth Water');
+			},
+			onSwitchIn: function (pokemon) {
+				let abilities = ['stormdrain', 'waterabsorb', 'dryskin']
+				let typeMod = this.clampIntRange(pokemon.runEffectiveness('Water'), -6, 6);
+				if ( typeMod <= 0 && pokemon.ability === 'wonderguard' ) return;
+				if (pokemon.runImmunity('Water') && !abilities.includes( pokemon.ability )) this.damage(pokemon.maxhp * Math.pow(2, typeMod) / 8);
+			},
+		},
+		onPrepareHit: function(target, source, move) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Water Sport", target);
+		},
+		secondary: null,
+		target: "foeSide",
+		type: "Water",
+		zMoveBoost: {def: 1},
+		contestType: "Cool",
+	},
+	"stealthgrass": {
+		num: 446,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		desc: "Sets up a hazard on the opposing side of the field, damaging each opposing Pokemon that switches in. Fails if the effect is already active on the opposing side. Foes lose 1/32, 1/16, 1/8, 1/4, or 1/2 of their maximum HP, rounded down, based on their weakness to the Rock type; 0.25x, 0.5x, neutral, 2x, or 4x, respectively. Can be removed from the opposing side if any opposing Pokemon uses Rapid Spin or Defog successfully, or is hit by Defog.",
+		shortDesc: "Hurts foes on switch-in. Factors Grass weakness.",
+		id: "stealthgrass",
+		isViable: true,
+		name: "Stealth Grass",
+		pp: 20,
+		priority: 0,
+		flags: {reflectable: 1},
+		sideCondition: 'stealthgrass',
+		effect: {
+			// this is a side condition
+			onStart: function (side) {
+				this.add('-sidestart', side, 'move: Stealth Grass');
+			},
+			onSwitchIn: function (pokemon) {
+				let abilities = ['sapsipper']
+				let typeMod = this.clampIntRange(pokemon.runEffectiveness('Grass'), -6, 6);
+				if ( typeMod <= 0 && pokemon.ability === 'wonderguard' ) return;
+				if (pokemon.runImmunity('Grass') && !abilities.includes( pokemon.ability )) this.damage(pokemon.maxhp * Math.pow(2, typeMod) / 8);
+			},
+		},
+		onPrepareHit: function(target, source, move) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Leech Seed", target);
+		},
+		secondary: null,
+		target: "foeSide",
+		type: "Grass",
+		zMoveBoost: {def: 1},
+		contestType: "Cool",
+	},
+	"stealthfire": {
+		num: 446,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		desc: "Sets up a hazard on the opposing side of the field, damaging each opposing Pokemon that switches in. Fails if the effect is already active on the opposing side. Foes lose 1/32, 1/16, 1/8, 1/4, or 1/2 of their maximum HP, rounded down, based on their weakness to the Fire type; 0.25x, 0.5x, neutral, 2x, or 4x, respectively. Can be removed from the opposing side if any opposing Pokemon uses Rapid Spin or Defog successfully, or is hit by Defog.",
+		shortDesc: "Hurts foes on switch-in. Factors Fire weakness.",
+		id: "stealthfire",
+		isViable: true,
+		name: "Stealth Fire",
+		pp: 20,
+		priority: 0,
+		flags: {reflectable: 1},
+		sideCondition: 'stealthfire',
+		effect: {
+			// this is a side condition
+			onStart: function (side) {
+				this.add('-sidestart', side, 'move: Stealth Fire');
+			},
+			onSwitchIn: function (pokemon) {
+				let abilities = ['flashfire']
+				let d = 8;
+				if ( pokemon.ability === 'thickfat' || pokemon.ability === 'heatproof' ) d = 16;
+				if ( pokemon.ability === 'fluffy' || pokemon.ability === 'dryskin' ) d = 4;
+				let typeMod = this.clampIntRange(pokemon.runEffectiveness('Fire'), -6, 6);
+				if ( typeMod <= 0 && pokemon.ability === 'wonderguard' ) return;
+				if (pokemon.runImmunity('Fire') && !abilities.includes( pokemon.ability )) this.damage(pokemon.maxhp * Math.pow(2, typeMod) / d);
+			},
+		},
+		onPrepareHit: function(target, source, move) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Will-O-Wisp", target);
+		},
+		secondary: null,
+		target: "foeSide",
+		type: "Fire",
+		zMoveBoost: {def: 1},
+		contestType: "Cool",
+	},
+	"stealthfighting": {
+		num: 446,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		desc: "Sets up a hazard on the opposing side of the field, damaging each opposing Pokemon that switches in. Fails if the effect is already active on the opposing side. Foes lose 1/32, 1/16, 1/8, 1/4, or 1/2 of their maximum HP, rounded down, based on their weakness to the Fighting type; 0.25x, 0.5x, neutral, 2x, or 4x, respectively. Can be removed from the opposing side if any opposing Pokemon uses Rapid Spin or Defog successfully, or is hit by Defog.",
+		shortDesc: "Hurts foes on switch-in. Factors Fighting weakness.",
+		id: "stealthfighting",
+		isViable: true,
+		name: "Stealth Fighting",
+		pp: 20,
+		priority: 0,
+		flags: {reflectable: 1},
+		sideCondition: 'stealthfighting',
+		effect: {
+			// this is a side condition
+			onStart: function (side) {
+				this.add('-sidestart', side, 'move: Stealth Fighting');
+			},
+			onSwitchIn: function (pokemon) {
+				let typeMod = this.clampIntRange(pokemon.runEffectiveness('Fighting'), -6, 6);
+				if ( typeMod <= 0 && pokemon.ability === 'wonderguard' ) return;
+				if (pokemon.runImmunity('Fighting')) this.damage(pokemon.maxhp * Math.pow(2, typeMod) / 8);
+			},
+		},
+		onPrepareHit: function(target, source, move) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Mega Punch", target);
+		},
+		secondary: null,
+		target: "foeSide",
+		type: "Fighting",
+		zMoveBoost: {def: 1},
+		contestType: "Cool",
+	},
+	"stealthice": {
+		num: 446,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		desc: "Sets up a hazard on the opposing side of the field, damaging each opposing Pokemon that switches in. Fails if the effect is already active on the opposing side. Foes lose 1/32, 1/16, 1/8, 1/4, or 1/2 of their maximum HP, rounded down, based on their weakness to the Ice type; 0.25x, 0.5x, neutral, 2x, or 4x, respectively. Can be removed from the opposing side if any opposing Pokemon uses Rapid Spin or Defog successfully, or is hit by Defog.",
+		shortDesc: "Hurts foes on switch-in. Factors Ice weakness.",
+		id: "stealthice",
+		isViable: true,
+		name: "Stealth Ice",
+		pp: 20,
+		priority: 0,
+		flags: {reflectable: 1},
+		sideCondition: 'stealthice',
+		effect: {
+			// this is a side condition
+			onStart: function (side) {
+				this.add('-sidestart', side, 'move: Stealth Ice');
+			},
+			onSwitchIn: function (pokemon) {
+				let typeMod = this.clampIntRange(pokemon.runEffectiveness('Ice'), -6, 6);
+				if ( typeMod <= 0 && pokemon.ability === 'wonderguard' ) return;
+				let d = 8;
+				if ( pokemon.ability === 'thickfat') d = 16;
+				if (pokemon.runImmunity('Ice')) this.damage(pokemon.maxhp * Math.pow(2, typeMod) / d);
+			},
+		},
+		onPrepareHit: function(target, source, move) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Powder Snow", target);
+		},
+		secondary: null,
+		target: "foeSide",
+		type: "Ice",
+		zMoveBoost: {def: 1},
+		contestType: "Cool",
+	},
+	"stealthflying": {
+		num: 446,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		desc: "Sets up a hazard on the opposing side of the field, damaging each opposing Pokemon that switches in. Fails if the effect is already active on the opposing side. Foes lose 1/32, 1/16, 1/8, 1/4, or 1/2 of their maximum HP, rounded down, based on their weakness to the Flying type; 0.25x, 0.5x, neutral, 2x, or 4x, respectively. Can be removed from the opposing side if any opposing Pokemon uses Rapid Spin or Defog successfully, or is hit by Defog.",
+		shortDesc: "Hurts foes on switch-in. Factors Flying weakness.",
+		id: "stealthflying",
+		isViable: true,
+		name: "Stealth Flying",
+		pp: 20,
+		priority: 0,
+		flags: {reflectable: 1},
+		sideCondition: 'stealthflying',
+		effect: {
+			// this is a side condition
+			onStart: function (side) {
+				this.add('-sidestart', side, 'move: Stealth Flying');
+			},
+			onSwitchIn: function (pokemon) {
+				let typeMod = this.clampIntRange(pokemon.runEffectiveness('Flying'), -6, 6);
+				if ( typeMod <= 0 && pokemon.ability === 'wonderguard' ) return;
+				if (pokemon.runImmunity('Flying')) this.damage(pokemon.maxhp * Math.pow(2, typeMod) / 8);
+			},
+		},
+		onPrepareHit: function(target, source, move) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Feather Dance", target);
+		},
+		secondary: null,
+		target: "foeSide",
+		type: "Flying",
+		zMoveBoost: {def: 1},
+		contestType: "Cool",
+	},
+	"stealthground": {
+		num: 446,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		desc: "Sets up a hazard on the opposing side of the field, damaging each opposing Pokemon that switches in. Fails if the effect is already active on the opposing side. Foes lose 1/32, 1/16, 1/8, 1/4, or 1/2 of their maximum HP, rounded down, based on their weakness to the Ground type; 0.25x, 0.5x, neutral, 2x, or 4x, respectively. Can be removed from the opposing side if any opposing Pokemon uses Rapid Spin or Defog successfully, or is hit by Defog.",
+		shortDesc: "Hurts foes on switch-in. Factors Ground weakness.",
+		id: "stealthground",
+		isViable: true,
+		name: "Stealth Ground",
+		pp: 20,
+		priority: 0,
+		flags: {reflectable: 1},
+		sideCondition: 'stealthground',
+		effect: {
+			// this is a side condition
+			onStart: function (side) {
+				this.add('-sidestart', side, 'move: Stealth Ground');
+			},
+			onSwitchIn: function (pokemon) {
+				let abilities = ['levitate']
+				let typeMod = this.clampIntRange(pokemon.runEffectiveness('Ground'), -6, 6);
+				if ( typeMod <= 0 && pokemon.ability === 'wonderguard' ) return;
+				if (pokemon.runImmunity('Ground') && !abilities.includes( pokemon.ability )) this.damage(pokemon.maxhp * Math.pow(2, typeMod) / 8);
+			},
+		},
+		onPrepareHit: function(target, source, move) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Mud Sport", target);
+		},
+		secondary: null,
+		target: "foeSide",
+		type: "Ground",
+		zMoveBoost: {def: 1},
+		contestType: "Cool",
+	},
 	"stealthrock": {
 		num: 446,
 		accuracy: true,
@@ -16047,12 +16335,329 @@ let BattleMovedex = {
 			},
 			onSwitchIn: function (pokemon) {
 				let typeMod = this.clampIntRange(pokemon.runEffectiveness('Rock'), -6, 6);
-				this.damage(pokemon.maxhp * Math.pow(2, typeMod) / 8);
+				if ( typeMod <= 0 && pokemon.ability === 'wonderguard' ) return;
+				if (pokemon.runImmunity('Rock')) this.damage(pokemon.maxhp * Math.pow(2, typeMod) / 8);
 			},
 		},
 		secondary: null,
 		target: "foeSide",
 		type: "Rock",
+		zMoveBoost: {def: 1},
+		contestType: "Cool",
+	},
+	"stealthelectric": {
+		num: 446,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		desc: "Sets up a hazard on the opposing side of the field, damaging each opposing Pokemon that switches in. Fails if the effect is already active on the opposing side. Foes lose 1/32, 1/16, 1/8, 1/4, or 1/2 of their maximum HP, rounded down, based on their weakness to the Electric type; 0.25x, 0.5x, neutral, 2x, or 4x, respectively. Can be removed from the opposing side if any opposing Pokemon uses Rapid Spin or Defog successfully, or is hit by Defog.",
+		shortDesc: "Hurts foes on switch-in. Factors Electric weakness.",
+		id: "stealthelectric",
+		isViable: true,
+		name: "Stealth Electric",
+		pp: 20,
+		priority: 0,
+		flags: {reflectable: 1},
+		sideCondition: 'stealthelectric',
+		effect: {
+			// this is a side condition
+			onStart: function (side) {
+				this.add('-sidestart', side, 'move: Stealth Electric');
+			},
+			onSwitchIn: function (pokemon) {
+				let abilities = ['voltabsorb', 'motordrive', 'lightningrod']
+				let typeMod = this.clampIntRange(pokemon.runEffectiveness('Electric'), -6, 6);
+				if ( typeMod <= 0 && pokemon.ability === 'wonderguard' ) return;
+				if (pokemon.runImmunity('Electric') && !abilities.includes( pokemon.ability )) this.damage(pokemon.maxhp * Math.pow(2, typeMod) / 8);
+			},
+		},
+		onPrepareHit: function(target, source, move) {
+			this.attrLastMove('[still]');    
+			this.add('-anim', source, "Confuse Ray", target);
+		},
+		secondary: null,
+		target: "foeSide",
+		type: "Electric",
+		zMoveBoost: {def: 1},
+		contestType: "Cool",
+	},
+	"stealthpoison": {
+		num: 446,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		desc: "Sets up a hazard on the opposing side of the field, damaging each opposing Pokemon that switches in. Fails if the effect is already active on the opposing side. Foes lose 1/32, 1/16, 1/8, 1/4, or 1/2 of their maximum HP, rounded down, based on their weakness to the Poison type; 0.25x, 0.5x, neutral, 2x, or 4x, respectively. Can be removed from the opposing side if any opposing Pokemon uses Rapid Spin or Defog successfully, or is hit by Defog.",
+		shortDesc: "Hurts foes on switch-in. Factors Poison weakness.",
+		id: "stealthpoison",
+		isViable: true,
+		name: "Stealth Poison",
+		pp: 20,
+		priority: 0,
+		flags: {reflectable: 1},
+		sideCondition: 'stealthpoison',
+		effect: {
+			// this is a side condition
+			onStart: function (side) {
+				this.add('-sidestart', side, 'move: Stealth Poison');
+			},
+			onSwitchIn: function (pokemon) {
+				let typeMod = this.clampIntRange(pokemon.runEffectiveness('Poison'), -6, 6);
+				if ( typeMod <= 0 && pokemon.ability === 'wonderguard' ) return;
+				if (pokemon.runImmunity('Poison')) this.damage(pokemon.maxhp * Math.pow(2, typeMod) / 8);
+			},
+		},
+		onPrepareHit: function(target, source, move) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Sludge", target);
+		},
+		secondary: null,
+		target: "foeSide",
+		type: "Poison",
+		zMoveBoost: {def: 1},
+		contestType: "Cool",
+	},
+	"stealthpsychic": {
+		num: 446,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		desc: "Sets up a hazard on the opposing side of the field, damaging each opposing Pokemon that switches in. Fails if the effect is already active on the opposing side. Foes lose 1/32, 1/16, 1/8, 1/4, or 1/2 of their maximum HP, rounded down, based on their weakness to the Psychic type; 0.25x, 0.5x, neutral, 2x, or 4x, respectively. Can be removed from the opposing side if any opposing Pokemon uses Rapid Spin or Defog successfully, or is hit by Defog.",
+		shortDesc: "Hurts foes on switch-in. Factors Psychic weakness.",
+		id: "stealthpsychic",
+		isViable: true,
+		name: "Stealth Psychic",
+		pp: 20,
+		priority: 0,
+		flags: {reflectable: 1},
+		sideCondition: 'stealthpsychic',
+		effect: {
+			// this is a side condition
+			onStart: function (side) {
+				this.add('-sidestart', side, 'A string horrible hax');
+			},
+			onSwitchIn: function (pokemon) {
+				let typeMod = this.clampIntRange(pokemon.runEffectiveness('Psychic'), -6, 6);
+				if ( typeMod <= 0 && pokemon.ability === 'wonderguard' ) return;
+				if (pokemon.runImmunity('Psychic')) this.damage(pokemon.maxhp * Math.pow(2, typeMod) / 8);
+			},
+		},
+		onPrepareHit: function(target, source, move) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Psycho Shift", target);
+		},
+		secondary: null,
+		target: "foeSide",
+		type: "Psychic",
+		zMoveBoost: {def: 1},
+		contestType: "Cool",
+	},
+	"stealthbug": {
+		num: 446,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		desc: "Sets up a hazard on the opposing side of the field, damaging each opposing Pokemon that switches in. Fails if the effect is already active on the opposing side. Foes lose 1/32, 1/16, 1/8, 1/4, or 1/2 of their maximum HP, rounded down, based on their weakness to the Bug type; 0.25x, 0.5x, neutral, 2x, or 4x, respectively. Can be removed from the opposing side if any opposing Pokemon uses Rapid Spin or Defog successfully, or is hit by Defog.",
+		shortDesc: "Hurts foes on switch-in. Factors Bug weakness.",
+		id: "stealthbug",
+		isViable: true,
+		name: "Stealth Bug",
+		pp: 20,
+		priority: 0,
+		flags: {reflectable: 1},
+		sideCondition: 'stealthbug',
+		effect: {
+			// this is a side condition
+			onStart: function (side) {
+				this.add('-sidestart', side, 'That which begins when you kick a large bee hive');
+			},
+			onSwitchIn: function (pokemon) {
+				let typeMod = this.clampIntRange(pokemon.runEffectiveness('Bug'), -6, 6);
+				if ( typeMod <= 0 && pokemon.ability === 'wonderguard' ) return;
+				if (pokemon.runImmunity('Bug')) this.damage(pokemon.maxhp * Math.pow(2, typeMod) / 8);
+			},
+		},
+		onPrepareHit: function(target, source, move) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "String Shot", target);
+		},
+		secondary: null,
+		target: "foeSide",
+		type: "Bug",
+		zMoveBoost: {def: 1},
+		contestType: "Cool",
+	},
+	"stealthdark": {
+		num: 446,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		desc: "Sets up a hazard on the opposing side of the field, damaging each opposing Pokemon that switches in. Fails if the effect is already active on the opposing side. Foes lose 1/32, 1/16, 1/8, 1/4, or 1/2 of their maximum HP, rounded down, based on their weakness to the Dark type; 0.25x, 0.5x, neutral, 2x, or 4x, respectively. Can be removed from the opposing side if any opposing Pokemon uses Rapid Spin or Defog successfully, or is hit by Defog.",
+		shortDesc: "Hurts foes on switch-in. Factors Dark weakness.",
+		id: "stealthdark",
+		isViable: true,
+		name: "Stealth Dark",
+		pp: 20,
+		priority: 0,
+		flags: {reflectable: 1},
+		sideCondition: 'stealthdark',
+		effect: {
+			// this is a side condition
+			onStart: function (side) {
+				this.add('-sidestart', side, 'A long discussion about Kirby lore');
+			},
+			onSwitchIn: function (pokemon) {
+				let typeMod = this.clampIntRange(pokemon.runEffectiveness('Dark'), -6, 6);
+				if ( typeMod <= 0 && pokemon.ability === 'wonderguard' ) return;
+				if (pokemon.runImmunity('Dark')) this.damage(pokemon.maxhp * Math.pow(2, typeMod) / 8);
+			},
+		},
+		onPrepareHit: function(target, source, move) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Fling", target);
+		},
+		secondary: null,
+		target: "foeSide",
+		type: "Dark",
+		zMoveBoost: {def: 1},
+		contestType: "Cool",
+	},
+	"stealthghost": {
+		num: 446,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		desc: "Sets up a hazard on the opposing side of the field, damaging each opposing Pokemon that switches in. Fails if the effect is already active on the opposing side. Foes lose 1/32, 1/16, 1/8, 1/4, or 1/2 of their maximum HP, rounded down, based on their weakness to the Ghost type; 0.25x, 0.5x, neutral, 2x, or 4x, respectively. Can be removed from the opposing side if any opposing Pokemon uses Rapid Spin or Defog successfully, or is hit by Defog.",
+		shortDesc: "Hurts foes on switch-in. Factors Ghost weakness.",
+		id: "stealthghost",
+		isViable: true,
+		name: "Stealth Ghost",
+		pp: 20,
+		priority: 0,
+		flags: {reflectable: 1},
+		sideCondition: 'stealthghost',
+		effect: {
+			// this is a side condition
+			onStart: function (side) {
+				this.add('-sidestart', side, 'The countdown to your death');
+			},
+			onSwitchIn: function (pokemon) {
+				let typeMod = this.clampIntRange(pokemon.runEffectiveness('Ghost'), -6, 6);
+				if ( typeMod <= 0 && pokemon.ability === 'wonderguard' ) return;
+				if (pokemon.runImmunity('Ghost')) this.damage(pokemon.maxhp * Math.pow(2, typeMod) / 8);
+			},
+		},
+		onPrepareHit: function(target, source, move) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Hex", target);
+		},
+		secondary: null,
+		target: "foeSide",
+		type: "Ghost",
+		zMoveBoost: {def: 1},
+		contestType: "Cool",
+	},
+	"stealthsteel": {
+		num: 446,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		desc: "Sets up a hazard on the opposing side of the field, damaging each opposing Pokemon that switches in. Fails if the effect is already active on the opposing side. Foes lose 1/32, 1/16, 1/8, 1/4, or 1/2 of their maximum HP, rounded down, based on their weakness to the Steel type; 0.25x, 0.5x, neutral, 2x, or 4x, respectively. Can be removed from the opposing side if any opposing Pokemon uses Rapid Spin or Defog successfully, or is hit by Defog.",
+		shortDesc: "Hurts foes on switch-in. Factors Steel weakness.",
+		id: "stealthsteel",
+		isViable: true,
+		name: "Stealth Steel",
+		pp: 20,
+		priority: 0,
+		flags: {reflectable: 1},
+		sideCondition: 'stealthsteel',
+		effect: {
+			// this is a side condition
+			onStart: function (side) {
+				this.add('-sidestart', side, 'Some real-ass shit just');
+			},
+			onSwitchIn: function (pokemon) {
+				let typeMod = this.clampIntRange(pokemon.runEffectiveness('Steel'), -6, 6);
+				if ( typeMod <= 0 && pokemon.ability === 'wonderguard' ) return;
+				if (pokemon.runImmunity('Steel')) this.damage(pokemon.maxhp * Math.pow(2, typeMod) / 8);
+			},
+		},
+		onPrepareHit: function(target, source, move) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Mirror Shot", target);
+		},
+		secondary: null,
+		target: "foeSide",
+		type: "Steel",
+		zMoveBoost: {def: 1},
+		contestType: "Cool",
+	},
+	"stealthfairy": {
+		num: 446,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		desc: "Sets up a hazard on the opposing side of the field, damaging each opposing Pokemon that switches in. Fails if the effect is already active on the opposing side. Foes lose 1/32, 1/16, 1/8, 1/4, or 1/2 of their maximum HP, rounded down, based on their weakness to the Fairy type; 0.25x, 0.5x, neutral, 2x, or 4x, respectively. Can be removed from the opposing side if any opposing Pokemon uses Rapid Spin or Defog successfully, or is hit by Defog.",
+		shortDesc: "Hurts foes on switch-in. Factors Fairy weakness.",
+		id: "stealthfairy",
+		isViable: true,
+		name: "Stealth Fairy",
+		pp: 20,
+		priority: 0,
+		flags: {reflectable: 1},
+		sideCondition: 'stealthfairy',
+		effect: {
+			// this is a side condition
+			onStart: function (side) {
+				this.add('-sidestart', side, 'The 1000 year reign of Fairy Hitler has');
+			},
+			onSwitchIn: function (pokemon) {
+				let typeMod = this.clampIntRange(pokemon.runEffectiveness('Fairy'), -6, 6);
+				if ( typeMod <= 0 && pokemon.ability === 'wonderguard' ) return;
+				if (pokemon.runImmunity('Fairy')) this.damage(pokemon.maxhp * Math.pow(2, typeMod) / 8);
+			},
+		},
+		onPrepareHit: function(target, source, move) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Sweet Kiss", target);
+		},
+		secondary: null,
+		target: "foeSide",
+		type: "Fairy",
+		zMoveBoost: {def: 1},
+		contestType: "Cool",
+	},
+	"stealthdragon": {
+		num: 446,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		desc: "Sets up a hazard on the opposing side of the field, damaging each opposing Pokemon that switches in. Fails if the effect is already active on the opposing side. Foes lose 1/32, 1/16, 1/8, 1/4, or 1/2 of their maximum HP, rounded down, based on their weakness to the Dragon type; 0.25x, 0.5x, neutral, 2x, or 4x, respectively. Can be removed from the opposing side if any opposing Pokemon uses Rapid Spin or Defog successfully, or is hit by Defog.",
+		shortDesc: "Hurts foes on switch-in. Factors Dragon weakness.",
+		id: "stealthdragon",
+		isViable: true,
+		name: "Stealth Dragon",
+		pp: 20,
+		priority: 0,
+		flags: {reflectable: 1},
+		sideCondition: 'stealthdragon',
+		effect: {
+			// this is a side condition
+			onStart: function (side) {
+				this.add('-sidestart', side, "move: Rawr, I'm a dragon and I'm going to chill in this boss battle");
+			},
+			onSwitchIn: function (pokemon) {
+				let typeMod = this.clampIntRange(pokemon.runEffectiveness('Dragon'), -6, 6);
+				if ( typeMod <= 0 && pokemon.ability === 'wonderguard' ) return;
+				if (pokemon.runImmunity('Dragon')) this.damage(pokemon.maxhp * Math.pow(2, typeMod) / 8);
+			},
+		},
+		onPrepareHit: function(target, source, move) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Dragon Rage", target);
+		},
+		secondary: null,
+		target: "foeSide",
+		type: "Dragon",
 		zMoveBoost: {def: 1},
 		contestType: "Cool",
 	},
@@ -18590,7 +19195,7 @@ let BattleMovedex = {
 		pp: 20,
 		priority: 1,
 		flags: {protect: 1, mirror: 1},
-		multihit: 3,
+		multihit: [2, 5],
 		secondary: null,
 		target: "normal",
 		type: "Water",
@@ -19209,215 +19814,6 @@ let BattleMovedex = {
 		zMovePower: 190,
 		contestType: "Cute",
 	},
-	"petalblast": {
-        num: 585.5,
-        accuracy: 100,
-        basePower: 95,
-        category: "Special",
-        desc: "Has a 30% chance to lower the target's Special Attack by 1 stage.",
-        shortDesc: "30% chance to lower the target's Sp. Atk by 1.",
-        id: "petalblast",
-        isViable: true,
-        name: "Petal Blast",
-        pp: 15,
-        priority: 0,
-        flags: {protect: 1, mirror: 1},
-		onPrepareHit: function(target, source, move) {
-			this.attrLastMove('[still]');
-			this.add('-anim', source, "Petal Dance", target);
-		},
-        secondary: {
-            chance: 30,
-            boosts: {
-                spa: -1,
-            },
-        },
-        target: "normal",
-        type: "Dragon",
-        zMovePower: 175,
-    },
-    "viciousmockery": {
-        num: 691.5,
-        accuracy: 100,
-        basePower: 110,
-        category: "Special",
-        desc: "Lowers the user's Special Attack by 1 stage.",
-        shortDesc: "Lowers the user's Special Attack by 1.",
-        id: "viciousmockery",
-        isViable: true,
-        name: "Vicious Mockery",
-        pp: 5,
-        priority: 0,
-        flags: {protect: 1, mirror: 1, sound: 1, authentic: 1},
-		onPrepareHit: function(target, source, move) {
-			this.attrLastMove('[still]');
-			this.add('-anim', source, "Torment", target);
-		},
-        selfBoost: {
-            boosts: {
-                spa: -1,
-            },
-        },
-        secondary: null,
-        target: "allAdjacentFoes",
-        type: "Dark",
-        zMovePower: 185,
-    },
-    "venostrike": {
-        num: 474,
-        accuracy: 100,
-        basePower: 65,
-        category: "Special",
-        desc: "Power doubles if the target has a negative stat change.",
-        shortDesc: "Power doubles if the target has a negative stat change.",
-        id: "venostrike",
-        name: "Venostrike",
-        pp: 10,
-        priority: 0,
-        flags: {protect: 1, mirror: 1},
-		onPrepareHit: function(target, source, move) {
-			this.attrLastMove('[still]');
-			this.add('-anim', source, "Cross Poison", target);
-		},
-        onBasePowerPriority: 4,
-        onBasePower: function (basePower, pokemon, target) {
-			let negativeBoosts = false;
-			for (const stat of ['atk', 'def', 'spa', 'spd', 'spe']) {
-				if ( target.boosts[ stat ] < 0 ) negativeBoosts = true;
-			}
-			if ( negativeBoosts === true) {
-                return this.chainModify(2);
-            }
-        },
-        secondary: null,
-        target: "normal",
-        type: "Poison",
-        zMovePower: 120,
-    },
-	"cactusattack": {
-		num: 389,
-		accuracy: 100,
-		basePower: 70,
-		category: "Physical",
-		desc: "Fails if the target did not select a physical attack, special attack, or Me First for use this turn, or if the target moves before the user.",
-		shortDesc: "Usually goes first. Fails if target is not attacking.",
-		id: "cactusattack",
-		isViable: true,
-		name: "Cactus Attack",
-		pp: 5,
-		priority: 1,
-		flags: {contact: 1, protect: 1, mirror: 1},
-		onPrepareHit: function(target, source, move) {
-			this.attrLastMove('[still]');
-			this.add('-anim', source, "Needle Arm", target);
-		},
-		onTry: function (source, target) {
-			let action = this.willMove(target);
-			if (!action || action.choice !== 'move' || (action.move.category === 'Status' && action.move.id !== 'mefirst') || target.volatiles.mustrecharge) {
-				this.attrLastMove('[still]');
-				this.add('-fail', source);
-				return null;
-			}
-		},
-		secondary: null,
-		target: "normal",
-		type: "Grass",
-		zMovePower: 140,
-		contestType: "Clever",
-	},
-	"venomslam": {
-		num: 690,
-		accuracy: 100,
-		basePower: 100,
-		category: "Physical",
-		desc: "If the user is hit by a contact move this turn before it can execute this move, the attacker is badly poisoned.",
-		shortDesc: "Burns on contact with the user before it moves.",
-		id: "venomslam",
-		isViable: true,
-		name: "Venom Slam",
-		pp: 15,
-		priority: -3,
-		flags: {bullet: 1, protect: 1},
-		beforeTurnCallback: function (pokemon) {
-			pokemon.addVolatile('venomslam');
-		},
-		effect: {
-			duration: 1,
-			onStart: function ( pokemon, source, move ) {
-				this.add('-singleturn', pokemon, 'move: Venom Slam');
-			},
-			onHit: function (pokemon, source, move) {
-				if (move.flags['contact']) {
-					source.trySetStatus('tox', pokemon);
-				}
-			},
-		},
-		onMoveAborted: function (pokemon) {
-			pokemon.removeVolatile('venomslam');
-		},
-		onAfterMove: function (pokemon) {
-			pokemon.removeVolatile('venomslam');
-		},
-		onPrepareHit: function(target, source, move) {
-			this.attrLastMove('[still]');
-			this.add('-anim', source, "Poison Jab", target);
-		},
-		secondary: null,
-		target: "normal",
-		type: "Poison",
-		zMovePower: 180,
-		contestType: "Tough",
-	},
-	 "titaniatears": {
-        num: 500,
-        accuracy: 100,
-        basePower: 20,
-        basePowerCallback: function (pokemon, target, move) {
-            return move.basePower + 20 * pokemon.positiveBoosts();
-        },
-        category: "Special",
-        desc: "Power is equal to 20+(X*20), where X is the user's total stat stage changes that are greater than 0.",
-        shortDesc: " + 20 power for each of the user's stat boosts.",
-        id: "titaniatears",
-        name: "Titania Tears",
-        pp: 10,
-        priority: 0,
-        flags: {protect: 1, mirror: 1},
-        secondary: null,
-		onPrepareHit: function(target, source, move) {
-			this.attrLastMove('[still]');
-			this.add('-anim', source, "Fake Tears", target);
-		},
-        target: "normal",
-        type: "Fairy",
-        zMovePower: 160,
-        contestType: "Clever",
-    },
-	"diamonddagger": {
-        num: 348,
-        accuracy: 85,
-        basePower: 95,
-        category: "Special",
-        desc: "Has a higher chance for a critical hit.",
-        shortDesc: "High critical hit ratio.",
-        id: "diamonddagger",
-        isViable: true,
-        name: "Diamond Dagger",
-        pp: 5,
-        priority: 0,
-        flags: {protect: 1, mirror: 1},
-        critRatio: 2,
-        secondary: null,
-		onPrepareHit: function(target, source, move) {
-			this.attrLastMove('[still]');
-			this.add('-anim', source, "Fake Tears", target);
-		},
-        target: "normal",
-        type: "Rock",
-        zMovePower: 175,
-        contestType: "Cool",
-    },
-	
 };
 
 exports.BattleMovedex = BattleMovedex;
