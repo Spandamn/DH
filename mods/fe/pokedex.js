@@ -19589,7 +19589,7 @@ auroritarmega: {
 		  weightkg: 200.25,
 		  eggGroups: ["Undiscovered"],
 	},
-	necroquaduskbubble: {
+	necroqua: {
 		num: 7500453,
 		species: "Necroqua",
 	   baseForme: "Dusk Bubble",
@@ -19604,7 +19604,7 @@ auroritarmega: {
 			spe: 69
 		},
 		abilities: {
-			0: "Black Hole"
+			0: "Dark Matter"
 		},
         color: "Green",
 		  heightm: 2.6,
