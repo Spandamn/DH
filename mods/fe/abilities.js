@@ -10656,29 +10656,6 @@ exports.BattleAbilities = {
 		id: "inflate",
 		name: "Inflate",
 	},
-	/*"slimedrench": { //TODO: This is a WIP as well
-		shortDesc: "If the foe is poisoned, whenever it tries to heal (with an item or move), it takes that amount of damage.",
-		onFoeTryHeal: function (pokemon, heal) {
-			for (const target of pokemon.side.foe.active) {
-			if (!target || target.fainted) continue;
-			return null;
-			if (pokemon.status === 'psn' || pokemon.status === 'tox') {
-				this.damage(heal, target);
-			}
-			}
-		},
-		onFoeHeal: function (pokemon, heal) {
-			for (const target of pokemon.side.foe.active) {
-			if (!target || target.fainted) continue;
-			return null;
-			if (pokemon.status === 'psn' || pokemon.status === 'tox') {
-				this.damage(heal, target);
-			}
-			}
-		},
-		id: "slimedrench",
-		name: "Slime Drench",
-	},*/
 	"bodyguard": {
 		shortDesc: "Grants immunity to moves that would lower this Pokemon's stats.",
 		onTryHit: function (target, source, move) {
