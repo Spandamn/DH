@@ -11902,9 +11902,10 @@ exports.BattleAbilities = {
 			}
 			if (!targets.length) return;
 			let randomTarget = this.sample(targets);
+			if (pokemon.volatiles['beastbootleg'] && pokemon.volatiles['beastbootleg'].items.includes(randomTarget.item)) return;
 			this.add('-item', randomTarget, randomTarget.getItem().name, '[from] ability: Golden Touch', '[of] ' + pokemon, '[identify]');
 			pokemon.addVolatile('goldentouch');
-			pokemon.volatiles['goldentouch'].item = randomTarget.getItem().id;
+			pokemon.volatiles['goldentouch'].item = randomTarget.item;
 		},
 		id: "goldentouch",
 		name: "Golden Touch",
@@ -12583,10 +12584,11 @@ exports.BattleAbilities = {
 			pokemon.volatiles['beastbootleg'].items = ['', ''];
 		},
 		onSourceFaint: function (target, source, effect) {
-			if (effect && effect.effectType === 'Move' && target.item && !target.hasAbility('stickyhold')) {
+			if (effect && effect.effectType === 'Move' && target.item) {
 				if (!this.singleEvent('TakeItem', target.getItem(), target.itemData, target, source, effect, target.getItem())) return;
 				if (target.getItem() === source.getItem() || (source.volatiles['beastbootleg'].items && source.volatiles['beastbootleg'].items.includes(target.getItem().id))) return;
-				source.volatiles['beastbootleg'].items = [source.volatiles['beastbootleg'].items[1], target.getItem().id];
+				if (source.volatiles['goldentouch'] && source.volatiles['goldentouch'].item === target.item) return;
+				source.volatiles['beastbootleg'].items = [source.volatiles['beastbootleg'].items[1], target.item];
 			}
 		},
 		//Implementing volatiles['beastbootleg'].items working its magic likely goes into scripts.js
