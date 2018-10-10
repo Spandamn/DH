@@ -9050,9 +9050,10 @@ exports.BattleAbilities = {
 		 if (move.ignoreImmunity !== true) {
 				move.ignoreImmunity[move.type] = true;
 		 }
+		 move.inversearmor = true;
 	 },
     onAnyEffectiveness: function(typeMod, source, target, type, move) {
-		  if (source !== this.effectData.target && target !== this.effectData.target) return;
+		  if (!move.inversearmor) return;
         if (move && !this.getImmunity(move, type)) return 1;
         return -typeMod;
     },
