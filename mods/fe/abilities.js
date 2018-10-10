@@ -523,7 +523,7 @@ exports.BattleAbilities = {
 		name: "Flash Weather",
 	},
 	"intenserivalry": {
-		shortDesc: "Bypasses targets' abilities if they could hinder or prevent a move if the target is the same gender",
+		shortDesc: "Bypasses targets' abilities if they could hinder or prevent a move and if the target is the same gender.",
 		onStart: function(pokemon) {
 			this.add('-ability', pokemon, 'Intense Rivalry');
 		},
@@ -536,7 +536,7 @@ exports.BattleAbilities = {
 		name: "Intense Rivalry",
 	},
 	"levipoison": {
-		shortDesc: "If the opponent uses a Ground-type move it becomes Poisoned; Ground immunity.",
+		shortDesc: "If the opponent targets this Pokemon a Ground-type move, it becomes Poisoned; Ground immunity.",
 		onTryHit: function(target, source, move) {
 			if (target !== source && move.type === 'Ground') {
 				this.add('-immune', target, '[msg]', '[from] ability: Levi Poison');
@@ -550,13 +550,10 @@ exports.BattleAbilities = {
 		name: "Levipoison",
 	},
 	"glassing": {
-		shortDesc: "If the opponent uses a Ground-type move it becomes Burned; Ground immunity.",
+		shortDesc: "If the opponent targets this Pokemon a Ground-type move, it becomes Burned; Ground immunity.",
 		onTryHit: function(target, source, move) {
 			if (target !== source && move.type === 'Ground') {
 				this.add('-immune', target, '[msg]', '[from] ability: Glassing');
-				if (move && !source.status) {
-					source.setStatus('brn', target);
-				}
 				return null;
 			}
 		},
@@ -859,6 +856,7 @@ exports.BattleAbilities = {
 				let oldAbility = source.setAbility('mummy', target);
 				if (oldAbility) {
 					this.add('-activate', target, 'ability: Mummy Fortitude', this.getAbility(oldAbility).name, '[of] ' + source);
+					this.add('-ability', source, 'Mummy', '[from] ability: Mummy Fortitude', '[of] ' + target);
 				}
 			}
 		},
