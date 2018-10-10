@@ -437,14 +437,14 @@ exports.BattleScripts = {
 // 			let aliasTo = '';
 // 			if (id.startsWith('mega') && this.data.Pokedex[id.slice(4) + 'mega']) {
 // 				aliasTo = id.slice(4) + 'mega';
-// 			} else if (id !== 'mampharos' && id.startsWith('m') && this.data.Pokedex[id.slice(1) + 'mega']) {
+// 			} else if (id.startsWith('m') && this.data.Pokedex[id.slice(1) + 'mega']) {
 // 				aliasTo = id.slice(1) + 'mega';
 // 			} else if (id.startsWith('primal') && this.data.Pokedex[id.slice(6) + 'primal']) {
 // 				aliasTo = id.slice(6) + 'primal';
 // 			} else if (id.startsWith('p') && this.data.Pokedex[id.slice(1) + 'primal']) {
 // 				aliasTo = id.slice(1) + 'primal';
 // 			}
-// 			if (aliasTo) {
+// 			if (aliasTo && !this.data.Pokedex[id]) {
 // 				template = this.getTemplate(aliasTo);
 // 				if (template.exists) {
 // 					this.templateCache.set(id, template);
