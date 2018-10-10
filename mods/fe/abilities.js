@@ -10686,37 +10686,51 @@ exports.BattleAbilities = {
 	},
 	"apathy": { // TODO: Complete and test this
 		shortDesc: "Whenever this pokemon is afflicted by a status or move restricting affect, it is removed from it and applied to the opposing pokemon. If the effect cannot be inflicted, it is removed. Item induced restrictions do not count.",
-		id: "apathy",
-		name: "Apathy",
-		onTryMove: function (pokemon, move) {
-			if (move.id==='rest') return;
-			this.add('-fail', pokemon);
-			return null;
+		onAfterSetStatus: function (status, target, source, effect) {
+			this.cureStatus();
+			if (!source || source === target) return;
+			if (effect && effect.id === 'toxicspikes') return;
+			this.add('-activate', target, 'ability: Apathy');
+			// Hack to make status-prevention abilities think Synchronize is a status move
+			// and show messages when activating against it.
+			// @ts-ignore
+			source.trySetStatus(status, target, {status: status.id, id: 'apathy'});
 		},
-		onTryHitPriority: 1,
+		onUpdate: function (pokemon) {
+			if (pokemon.volatiles['attract']) {
+				this.add('-activate', pokemon, 'ability: Apathy');
+				pokemon.removeVolatile('attract');
+				this.add('-end', pokemon, 'move: Attract', '[from] ability: Apathy');
+			}
+			if (pokemon.volatiles['taunt']) {
+				this.add('-activate', pokemon, 'ability: Apathy');
+				pokemon.removeVolatile('taunt');
+				// Taunt's volatile already sends the -end message when removed
+			}
+			if (pokemon.volatiles['torment']) {
+				this.add('-activate', pokemon, 'ability: Apathy');
+				pokemon.removeVolatile('torment');
+			}
+			if (pokemon.volatiles['encore']) {
+				this.add('-activate', pokemon, 'ability: Apathy');
+				pokemon.removeVolatile('torment');
+			}
+		},
+		onImmunity: function (type, pokemon) {
+			if (type === 'attract') return false;
+		},
 		onTryHit: function (target, source, move) {
-			if (target === source || move.hasBounced || !move.flags['reflectable']) {
-				return;
+			if (move.id === 'attract' || move.id === 'taunt' || move.id === 'torment' || move.id === 'encore') {
+				this.add('-immune', target, '[msg]', '[from] ability: Apathy');
+				this.useMove(move.id, target, source);
+				return null;
 			}
-			let newMove = this.getMoveCopy(move.id);
-			newMove.hasBounced = true;
-			newMove.pranksterBoosted = false;
-			this.useMove(newMove, target, source);
-			return null;
-		},
-		onAllyTryHitSide: function (target, source, move) {
-			if (target.side === source.side || move.hasBounced || !move.flags['reflectable']) {
-				return;
-			}
-			let newMove = this.getMoveCopy(move.id);
-			newMove.hasBounced = true;
-			newMove.pranksterBoosted = false;
-			this.useMove(newMove, this.effectData.target, source);
-			return null;
 		},
 		effect: {
 			duration: 1,
 		},
+		id: "apathy",
+		name: "Apathy",
 	},
 	"powerdrain": {
 		shortDesc: "This Pokemon paralyzes any Pokemon that would try to reduce its PP.",
