@@ -11241,7 +11241,7 @@ exports.BattleAbilities = {
 			return accuracy;
 		},
 		id: "toxicbarrage",
-		name: "toxicbarrage",
+		name: "Toxic Barrage",
 	},
 	"goopskin": {
 		desc: "This Pokemon is immune to Water-type moves and lowers the attacker's Speed by 1 stage when hit by a Water-type move. The power of Fire-type moves is multiplied by 1.25 when used on this Pokemon. At the end of each turn, this Pokemon restores 1/8 of its maximum HP, rounded down, if the weather is Rain Dance, and loses 1/8 of its maximum HP, rounded down, if the weather is Sunny Day.",
