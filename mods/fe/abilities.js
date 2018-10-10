@@ -12013,7 +12013,7 @@ exports.BattleAbilities = {
 		shortDesc: "If Giramini, switch-in/end of turn it changes to Unleashed at 1/2 max HP or less, else Captive.",
 		onStart: function (pokemon) {
 			if (pokemon.baseTemplate.baseSpecies !== 'Giramini' || pokemon.transformed) return;
-			if (pokemon.getItem() && pokemon.getItem() === 'griseousorb' && pokemon.hp <= pokemon.maxhp / 2) {
+			if (pokemon.hasItem('griseousorb') && pokemon.hp <= pokemon.maxhp / 2) {
 				if (pokemon.template.speciesid === 'giramini') {
 					pokemon.formeChange('Giramini-Unleashed');
 				}
@@ -12026,7 +12026,7 @@ exports.BattleAbilities = {
 		onResidualOrder: 27,
 		onResidual: function (pokemon) {
 			if (pokemon.baseTemplate.baseSpecies !== 'Giramini' || pokemon.transformed || !pokemon.hp) return;
-			if (pokemon.getItem() && pokemon.getItem() === 'griseousorb' && pokemon.hp <= pokemon.maxhp / 2) {
+			if (pokemon.hasItem('griseousorb') && pokemon.hp <= pokemon.maxhp / 2) {
 				if (pokemon.template.speciesid === 'giramini') {
 					pokemon.formeChange('Giramini-Unleashed');
 				}
