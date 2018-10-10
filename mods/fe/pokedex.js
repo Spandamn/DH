@@ -18167,7 +18167,7 @@ mimiblimbusted: {
             spe: 125
         },
         abilities: {
-            0: "Airbone Lightning"
+            0: "Airbone Lighting"
         },
         heightm: 1.3,
         weightkg: 94.1,
