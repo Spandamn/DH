@@ -1,5 +1,6 @@
 'use strict';
 exports.BattleAbilities = {
+		//First, override some abilities.
 	"forecast": {
 		desc: "If this Pokemon is a Castform, its type changes to the current weather condition's type, except Sandstorm.",
 		shortDesc: "Castform's type changes to the current weather condition's type, except Sandstorm.",
@@ -406,6 +407,7 @@ exports.BattleAbilities = {
 		rating: 2,
 		num: 159,
 	},
+	
 	"turnabouttorrent": {
 		shortDesc: "Water-type moves of the user is boosted by 50% as long as user is above 1/3 HP; the user's stat changes are reversed.",
 		onBoost: function(boost) {
@@ -467,6 +469,58 @@ exports.BattleAbilities = {
 		},
 		id: "hugetorrent",
 		name: "Huge Torrent",
+	},
+	"flashweather": { //TODO: Have it do something else when in inverted weather.
+		shortDesc: "In Sun, absorbs Fire moves, in Rain Water, in Hail Ice, and in Sand, Rock.",
+		onTryHit: function(target, source, move) {
+			if (target !== source && target.volatiles['atmosphericperversion'] === target.volatiles['weatherbreak']){
+				if (move.type === 'Fire' && this.isWeather(['sunnyday', 'desolateland', 'solarsnow'])) {
+					if (!this.heal(target.maxhp / 4)) {
+						this.add('-immune', target, '[msg]', '[from] ability: Flash Weather');
+					}
+					return null;
+				} else if (move.type === 'Water' && this.isWeather(['raindance', 'primordialsea'])) {
+					if (!this.heal(target.maxhp / 4)) {
+						this.add('-immune', target, '[msg]', '[from] ability: Flash Weather');
+					}
+					return null;
+				} else if (move.type === 'Rock' && this.isWeather(['sandstorm'])) {
+					if (!this.heal(target.maxhp / 4)) {
+						this.add('-immune', target, '[msg]', '[from] ability: Flash Weather');
+					}
+					return null;
+				} else if (move.type === 'Ice' && this.isWeather(['hail', 'solarsnow'])) {
+					if (!this.heal(target.maxhp / 4)) {
+						this.add('-immune', target, '[msg]', '[from] ability: Flash Weather');
+					}
+					return null;
+				} else if (move.type === 'Ghost' && this.isWeather(['shadowdance'])) {
+					if (!this.heal(target.maxhp / 4)) {
+						this.add('-immune', target, '[msg]', '[from] ability: Flash Weather');
+					}
+					return null;
+				}
+			}
+		},
+		onSourceModifyDamage: function (damage, source, target, move) {
+			if (target !== source && target.volatiles['atmosphericperversion'] !== target.volatiles['weatherbreak']){
+				this.debug('Inverted Flash Weather - More Damage');
+				switch (move.type){
+					case 'Fire':
+						if (this.isWeather(['sunnyday', 'desolateland', 'solarsnow'])) return this.chainModify(1.5);
+					case 'Water':
+						if (this.isWeather(['raindance', 'primordialsea'])) return this.chainModify(1.5);
+					case 'Rock':
+						if (this.isWeather(['sandstorm'])) return this.chainModify(1.5);
+					case 'Ice':
+						if (this.isWeather(['hail', 'solarsnow'])) return this.chainModify(1.5);
+					case 'Ghost':
+						if (this.isWeather(['shadowdance'])) return this.chainModify(1.5);
+				}
+			}
+		},
+		id: "flashweather",
+		name: "Flash Weather",
 	},
 	"intenserivalry": {
 		shortDesc: "Bypasses targets' abilities if they could hinder or prevent a move if the target is the same gender",
@@ -4559,41 +4613,6 @@ exports.BattleAbilities = {
 		},
 		id: "juggernaut",
 		name: "Juggernaut",
-	},
-	"flashweather": { //TODO: Have it do something else when in inverted weather.
-		shortDesc: "In Sun, absorbs Fire moves, in Rain Water, in Hail Ice, and in Sand, Rock.",
-		onTryHit: function(target, source, move) {
-			if (target.volatiles['atmosphericperversion'] == target.volatiles['weatherbreak']){
-				if (target !== source && move.type === 'Fire' && this.isWeather(['sunnyday', 'desolateland', 'solarsnow'])) {
-					if (!this.heal(target.maxhp / 4)) {
-						this.add('-immune', target, '[msg]', '[from] ability: Flash Weather');
-					}
-					return null;
-				} else if (target !== source && move.type === 'Water' && this.isWeather(['raindance', 'primordialsea'])) {
-					if (!this.heal(target.maxhp / 4)) {
-						this.add('-immune', target, '[msg]', '[from] ability: Flash Weather');
-					}
-					return null;
-				} else if (target !== source && move.type === 'Rock' && this.isWeather(['sandstorm'])) {
-					if (!this.heal(target.maxhp / 4)) {
-						this.add('-immune', target, '[msg]', '[from] ability: Flash Weather');
-					}
-					return null;
-				} else if (target !== source && move.type === 'Ice' && this.isWeather(['hail', 'solarsnow'])) {
-					if (!this.heal(target.maxhp / 4)) {
-						this.add('-immune', target, '[msg]', '[from] ability: Flash Weather');
-					}
-					return null;
-				} else if (target !== source && move.type === 'Ghost' && this.isWeather(['shadowdance'])) {
-					if (!this.heal(target.maxhp / 4)) {
-						this.add('-immune', target, '[msg]', '[from] ability: Flash Weather');
-					}
-					return null;
-				}
-			}
-		},
-		id: "flashweather",
-		name: "Flash Weather",
 	},
 	"clearfocus": {
 		shortDesc: "Resets stat drops at the end of each turn (including self-inflicted).",
