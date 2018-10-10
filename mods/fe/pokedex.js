@@ -23104,7 +23104,7 @@ auroritarmega: {
             baseSpecies: "Grousle",
             forme: "Primal",
             formeLetter: "P",
-	    		types: ["Ground", "Electric"],
+	    		types: ["Ground", "Fire"],
       		gender: "N",
 	   		baseStats: {
 			        hp: 90,
