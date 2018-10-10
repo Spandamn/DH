@@ -4792,15 +4792,19 @@ exports.BattleAbilities = {
 	"clearpouch": {
 		shortDesc: "When this Pokemon consumes a Berry, it regains 33% of its maximum HP and any negative stat changes are removed.",
 		onEatItem: function(item, pokemon) {
-			this.heal(pokemon.maxhp / 3);
 			let boosts = {};
+			let activated = false;
 			for (let i in pokemon.boosts) {
 				if (pokemon.boosts[i] < 0) {
+					activated = true;
 					boosts[i] = 0;
 				}
 			}
-			pokemon.setBoost(boosts);
-			this.add('-clearnegativeboost', pokemon);
+			if (activated){
+				pokemon.setBoost(boosts);
+				this.add('-clearnegativeboost', pokemon);
+			}
+			this.heal(pokemon.maxhp / 3);
 		},
 		id: "clearpouch",
 		name: "Clear Pouch",
