@@ -401,4 +401,86 @@ exports.BattleScripts = {
             return !!((this.battle.gen >= 5 && !this.isActive) || ((this.hasAbility('klutz') || this.hasAbility('carelessforce') || this.volatiles['engarde']) && !this.getItem().ignoreKlutz) || this.volatiles['embargo'] || this.battle.pseudoWeather['magicroom']);
         },
     },
+// 	dex:{
+// 	getTemplate(name) {
+// 		if (name && typeof name !== 'string') {
+// 			return name;
+// 		}
+// 		name = (name || '').trim();
+// 		let id = toId(name);
+// 		if (id === 'nidoran' && name.slice(-1) === '♀') {
+// 			id = 'nidoranf';
+// 		} else if (id === 'nidoran' && name.slice(-1) === '♂') {
+// 			id = 'nidoranm';
+// 		}
+// 		let template = this.templateCache.get(id);
+// 		if (template) return template;
+// 		if (this.data.Aliases.hasOwnProperty(id)) {
+// 			if (this.data.FormatsData.hasOwnProperty(id)) {
+// 				// special event ID, like Rockruff-Dusk
+// 				let baseId = toId(this.data.Aliases[id]);
+// 				template = new Data.Template({name}, this.data.Pokedex[baseId], this.data.FormatsData[id], this.data.Learnsets[id]);
+// 				template.name = id;
+// 				template.species = id;
+// 				template.speciesid = id;
+// 				// @ts-ignore
+// 				template.abilities = {0: template.abilities['S']};
+// 			} else {
+// 				template = this.getTemplate(this.data.Aliases[id]);
+// 			}
+// 			if (template) {
+// 				this.templateCache.set(id, template);
+// 			}
+// 			return template;
+// 		}
+// 		if (!this.data.Pokedex.hasOwnProperty(id)) {
+// 			let aliasTo = '';
+// 			if (id.startsWith('mega') && this.data.Pokedex[id.slice(4) + 'mega']) {
+// 				aliasTo = id.slice(4) + 'mega';
+// 			} else if (id !== 'mampharos' && id.startsWith('m') && this.data.Pokedex[id.slice(1) + 'mega']) {
+// 				aliasTo = id.slice(1) + 'mega';
+// 			} else if (id.startsWith('primal') && this.data.Pokedex[id.slice(6) + 'primal']) {
+// 				aliasTo = id.slice(6) + 'primal';
+// 			} else if (id.startsWith('p') && this.data.Pokedex[id.slice(1) + 'primal']) {
+// 				aliasTo = id.slice(1) + 'primal';
+// 			}
+// 			if (aliasTo) {
+// 				template = this.getTemplate(aliasTo);
+// 				if (template.exists) {
+// 					this.templateCache.set(id, template);
+// 					return template;
+// 				}
+// 			}
+// 		}
+// 		if (id && this.data.Pokedex.hasOwnProperty(id)) {
+// 			template = new Data.Template({name}, this.data.Pokedex[id], this.data.FormatsData[id], this.data.Learnsets[id]);
+// 			// Inherit any statuses from the base species (Arceus, Silvally).
+// 			const baseSpeciesStatuses = this.data.Statuses[toId(template.baseSpecies)];
+// 			if (baseSpeciesStatuses !== undefined) {
+// 				for (const key in baseSpeciesStatuses) {
+// 					// @ts-ignore
+// 					if (!(key in template)) template[key] = baseSpeciesStatuses[key];
+// 				}
+// 			}
+// 			if (!template.tier && !template.doublesTier && template.baseSpecies !== template.species) {
+// 				if (template.baseSpecies === 'Mimikyu') {
+// 					template.tier = this.data.FormatsData[toId(template.baseSpecies)].tier || 'Illegal';
+// 					template.doublesTier = this.data.FormatsData[toId(template.baseSpecies)].doublesTier || 'Illegal';
+// 				} else if (template.speciesid.endsWith('totem')) {
+// 					template.tier = this.data.FormatsData[template.speciesid.slice(0, -5)].tier || 'Illegal';
+// 					template.doublesTier = this.data.FormatsData[template.speciesid.slice(0, -5)].doublesTier || 'Illegal';
+// 				} else {
+// 					template.tier = this.data.FormatsData[toId(template.baseSpecies)].tier || 'Illegal';
+// 					template.doublesTier = this.data.FormatsData[toId(template.baseSpecies)].doublesTier || 'Illegal';
+// 				}
+// 			}
+// 			if (!template.tier) template.tier = 'Illegal';
+// 			if (!template.doublesTier) template.doublesTier = template.tier;
+// 		} else {
+// 			template = new Data.Template({name, exists: false});
+// 		}
+// 		if (template.exists) this.templateCache.set(id, template);
+// 		return template;
+// 	},
+// 	},
 };
