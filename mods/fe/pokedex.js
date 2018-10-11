@@ -4498,13 +4498,13 @@ exports.BattlePokedex = {
         },
         heightm: 0.6,
         weightkg: 11.5,
-		  evos: ["mampharos"],
+		  evos: ["manpharos"],
         color: "White",
         eggGroups: ["Field"],
     },
-    mampharos: {
+    manpharos: {
         num: 750077,
-        species: "Mampharos",
+        species: "Manpharos",
         types: ["Electric"],
         genderRatio: {
             M: 0.5,
@@ -4528,10 +4528,10 @@ exports.BattlePokedex = {
         color: "Yellow",
         eggGroups: ["Field"],
     },
-    mampharosmegam: {
+    manpharosmegam: {
         num: 750077,
-        species: "Mampharos-Mega-M",
-        baseSpecies: "Mampharos",
+        species: "Manpharos-Mega-M",
+        baseSpecies: "Manpharos",
         forme: "Mega-M",
         formeLetter: "M",
         types: ["Electric"],
@@ -4555,10 +4555,10 @@ exports.BattlePokedex = {
         color: "Yellow",
         eggGroups: ["Field"],
     },
-    mampharosmegaa: {
+    manpharosmegaa: {
         num: 750077,
-        species: "Mampharos-Mega-A",
-        baseSpecies: "Mampharos",
+        species: "Manpharos-Mega-A",
+        baseSpecies: "Manpharos",
         forme: "Mega-A",
         formeLetter: "M",
         types: ["Electric", "Dragon"],
