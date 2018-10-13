@@ -748,13 +748,13 @@ exports.BattleItems = {
         gen: 6,
         desc: "If holder is a shot, this item allows it to Mega Evolve in battle.",
     },
-    "mampharosmite": {
-        id: "mampharosmite",
-        name: "mampharosmite",
+    "manpharosmite": {
+        id: "manpharosmite",
+        name: "manpharosmite",
         spritenum: 596,
 
-        megaStone: "Mampharos-Mega-M",
-        megaEvolves: "Mampharos",
+        megaStone: "Manpharos-Mega-M",
+        megaEvolves: "Manpharos",
         onTakeItem: function(item, source) {
             if (item.megaEvolves === source.baseTemplate.baseSpecies) return false;
             return true;
@@ -762,13 +762,13 @@ exports.BattleItems = {
         gen: 6,
         desc: "If holder is a mampharosm, this item allows it to Mega Evolve in battle.",
     },
-    "mampharosaite": {
-        id: "mampharosaite",
-        name: "mampharosaite",
+    "manpharosaite": {
+        id: "manpharosaite",
+        name: "manpharosaite",
         spritenum: 580,
 
-        megaStone: "Mampharos-Mega-A",
-        megaEvolves: "Mampharos",
+        megaStone: "Manpharos-Mega-A",
+        megaEvolves: "Manpharos",
         onTakeItem: function(item, source) {
             if (item.megaEvolves === source.baseTemplate.baseSpecies) return false;
             return true;
