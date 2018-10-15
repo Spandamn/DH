@@ -16,6 +16,7 @@ exports.BattlePokedex = {
 	   evoLevel: 1,
 	   eggGroups: ["Flying"],
 	},
+	
 	arbokmega: {
        num: 24,
 	   species: "Arbok-Mega",
@@ -31,6 +32,7 @@ exports.BattlePokedex = {
 	   evoLevel: 1,
 	   eggGroups: ["Field","Dragon"],
 	},
+	
 	sandslashalolamega: {
        num: 28,
 	   species: "Sandslash-Alola-Mega",
@@ -46,6 +48,7 @@ exports.BattlePokedex = {
 	   evoLevel: 1,
 	   eggGroups: ["Field"],
 	},
+	
 	nidoqueenmega: {
        num: 31,
 	   species: "Nidoqueen-Mega",
@@ -61,6 +64,7 @@ exports.BattlePokedex = {
 	   evoLevel: 1,
 	   eggGroups: ["Undiscovered"],
 	},
+	
 	nidokingmega: {
        num: 34,
 	   species: "Nidoking-Mega",
@@ -76,6 +80,7 @@ exports.BattlePokedex = {
 	   evoLevel: 1,
 	   eggGroups: ["Monster","Field"],
 	},
+	
 	clefablemega: {
        num: 36,
 	   species: "Clefable-Mega",
@@ -91,6 +96,7 @@ exports.BattlePokedex = {
 	   evoLevel: 1,
 	   eggGroups: ["Fairy"],
 	},
+	
 	ninetalesalola: {
 		num: 38,
 		species: "Ninetales-Alola",
@@ -107,6 +113,7 @@ exports.BattlePokedex = {
 		evoLevel: 1,
 		eggGroups: ["Field"],
 	},
+	
 	ninetalesalolamega: {
        num: 38,
 	   species: "Ninetales-Alola-Mega",
@@ -122,6 +129,7 @@ exports.BattlePokedex = {
 	   evoLevel: 1,
 	   eggGroups: ["Field"],
 	},
+	
 	wigglytuffmega: {
        num: 40,
 	   species: "Wigglytuff-Mega",
@@ -137,6 +145,7 @@ exports.BattlePokedex = {
 	   evoLevel: 1,
 	   eggGroups: ["Fairy"],
 	},
+	
 	persianalola: {
 		num: 53,
 		species: "Persian-Alola",
@@ -152,6 +161,7 @@ exports.BattlePokedex = {
 		evoLevel: 2,
 		eggGroups: ["Field"],
 	},
+	
 	persianalolamega: {
        num: 53,
 	   species: "Persian-Alola-Mega",
@@ -167,6 +177,7 @@ exports.BattlePokedex = {
 	   evoLevel: 1,
 	   eggGroups: ["Field"],
 	},
+	
 	primeapemega: {
        num: 57,
 	   species: "Primeape-Mega",
@@ -182,6 +193,7 @@ exports.BattlePokedex = {
 	   evoLevel: 1,
 	   eggGroups: ["Field"],
 	},
+	
 	arcaninemega: {
        num: 59,
 	   species: "Arcanine-Mega",
@@ -197,6 +209,7 @@ exports.BattlePokedex = {
 	   evoLevel: 1,
 	   eggGroups: ["Field"],
 	},
+	
 	machampmega: {
        num: 68,
 	   species: "Machamp-Mega",
@@ -212,6 +225,7 @@ exports.BattlePokedex = {
 	   evoLevel: 1,
 	   eggGroups: ["Human-Like"],
 	},
+	
 	golemalola: {
 		num: 76,
 		species: "Golem-Alola",
@@ -227,6 +241,7 @@ exports.BattlePokedex = {
 		evoLevel: 25,
 		eggGroups: ["Mineral"],
 	},
+	
 	golemalolamega: {
        num: 76,
 	   species: "Golem-Alola-Mega",
@@ -242,6 +257,7 @@ exports.BattlePokedex = {
 	   evoLevel: 1,
 	   eggGroups: ["Mineral"],
 	},
+	
 	kinglermega: {
        num: 99,
 	   species: "Kingler-Mega",
@@ -257,6 +273,7 @@ exports.BattlePokedex = {
 	   evoLevel: 1,
 	   eggGroups: ["Water 3"],
 	},
+	
 	marowakmega: {
        num: 105,
 	   species: "Marowak-Mega",
@@ -272,6 +289,7 @@ exports.BattlePokedex = {
 	   evoLevel: 1,
 	   eggGroups: ["Monster"],
 	},
+	
 	marowakalola: {
 		num: 105,
 		species: "Marowak-Alola",
@@ -287,6 +305,7 @@ exports.BattlePokedex = {
 		evoLevel: 28,
 		eggGroups: ["Monster"],
 	},
+	
 	marowakalolamega: {
        num: 105,
 	   species: "Marowak-Alola-Mega",
@@ -302,6 +321,7 @@ exports.BattlePokedex = {
 	   evoLevel: 1,
 	   eggGroups: ["Monster"],
 	},
+	
 	starmiemega: {
        num: 121,
 	   species: "Starmie-Mega",
@@ -316,6 +336,7 @@ exports.BattlePokedex = {
 	   color: "Purple",
 	   eggGroups: ["Water 3"],
 	},
+	
 	vaporeonmega: {
        num: 134,
 	   species: "Vaporeon-Mega",
@@ -330,6 +351,7 @@ exports.BattlePokedex = {
 	   color: "Blue",
 	   eggGroups: ["Field"],
 	},
+	
 	jolteonmega: {
        num: 135,
 	   species: "Jolteon-Mega",
@@ -344,6 +366,7 @@ exports.BattlePokedex = {
 	   color: "Yellow",
 	   eggGroups: ["Field"],
 	},
+	
 	flareonmega: {
        num: 136,
 	   species: "Flareon-Mega",
@@ -358,6 +381,7 @@ exports.BattlePokedex = {
 	   color: "Red",
 	   eggGroups: ["Field"],
 	},
+	
 	snorlaxmega: {
 		num: 143,
 		species: "Snorlax-Mega",
@@ -373,6 +397,7 @@ exports.BattlePokedex = {
 		color: "Black",
 		eggGroups: ["Monster"],
 	},
+	
 	articunomega: {
 		num: 144,
 		species: "Articuno-Mega",
@@ -388,6 +413,7 @@ exports.BattlePokedex = {
 		color: "Blue",
 		eggGroups: ["Undiscovered"],
 	},
+	
 	zapdosmega: {
 		num: 143,
 		species: "Zapdos-Mega",
@@ -403,6 +429,7 @@ exports.BattlePokedex = {
 		color: "Yellow",
 		eggGroups: ["Undiscovered"],
 	},
+	
 	moltresmega: {
 		num: 146,
 		species: "Moltres-Mega",
@@ -418,6 +445,7 @@ exports.BattlePokedex = {
 		color: "Yellow",
 		eggGroups: ["Undiscovered"],
 	},
+	
 	dragonitemega: {
 		num: 149,
 		species: "Dragonite-Mega",
@@ -432,6 +460,7 @@ exports.BattlePokedex = {
 		color: "Brown",
 		eggGroups: ["Water 1", "Dragon"],
 	},
+	
 	meganiummega: {
 		num: 154,
 		species: "Meganium-Mega",
@@ -446,6 +475,7 @@ exports.BattlePokedex = {
 		color: "Green",
 		eggGroups: ["Monster", "Grass"],
 	},
+	
 	typhlosionmega: {
 		num: 157,
 		species: "Typhlosion-Mega",
@@ -460,6 +490,7 @@ exports.BattlePokedex = {
 		color: "Yellow",
 		eggGroups: ["Field"],
 	},
+	
 	feraligatrmega: {
 		num: 160,
 		species: "Feraligatr-Mega",
@@ -474,6 +505,7 @@ exports.BattlePokedex = {
 		color: "Blue",
 		eggGroups: ["Monster", "Water 1"],
 	},
+	
 	bellossommega: {
 		num: 182,
 		species: "Bellossom-Mega",
@@ -488,6 +520,7 @@ exports.BattlePokedex = {
 		color: "Green",
 		eggGroups: ["Grass"],
 	},
+	
 	sudowoodomega: {
 		num: 185,
 		species: "Sudowoodo-Mega",
@@ -502,6 +535,7 @@ exports.BattlePokedex = {
 		color: "Brown",
 		eggGroups: ["Mineral"],
 	},
+	
 	sunfloramega: {
        num: 192,
 	   species: "Sunflora-Mega",
@@ -516,6 +550,7 @@ exports.BattlePokedex = {
 	   color: "Yellow",
 	   eggGroups: ["Grass"],
 	},
+	
 	dunsparcemega: {
 		num: 206,
 		species: "Dunsparce-Mega",
@@ -530,6 +565,7 @@ exports.BattlePokedex = {
 		color: "Yellow",
 		eggGroups: ["Field"],
 	},
+	
 	mantinemega: {
 		num: 226,
 		species: "Mantine-Mega",
@@ -544,6 +580,7 @@ exports.BattlePokedex = {
 		color: "Purple",
 		eggGroups: ["Water 1"],
 	},
+	
 	donphanmega: {
 		num: 232,
 		species: "Donphan-Mega",
@@ -558,6 +595,7 @@ exports.BattlePokedex = {
 		color: "Gray",
 		eggGroups: ["Field"],
 	},
+	
 	blisseymega: {
 		num: 242,
 		species: "Blissey-Mega",
@@ -572,6 +610,7 @@ exports.BattlePokedex = {
 		color: "Pink",
 		eggGroups: ["Fairy"],
 	},
+	
 	raikoumega: {
 		num: 243,
 		species: "Raikou-Mega",
@@ -586,6 +625,7 @@ exports.BattlePokedex = {
 		color: "Yellow",
 		eggGroups: ["Undiscovered"],
 	},
+	
 	enteimega: {
 		num: 243,
 		species: "Entei-Mega",
@@ -600,6 +640,7 @@ exports.BattlePokedex = {
 		color: "Brown",
 		eggGroups: ["Undiscovered"],
 	},
+	
 	suicunemega: {
 		num: 243,
 		species: "Suicune-Mega",
@@ -614,6 +655,7 @@ exports.BattlePokedex = {
 		color: "Blue",
 		eggGroups: ["Undiscovered"],
 	},
+	
 	mightyenamega: {
 		num: 262,
 		species: "Mightyena-Mega",
@@ -628,6 +670,7 @@ exports.BattlePokedex = {
 		color: "Gray",
 		eggGroups: ["Field"],
 	},
+	
 	swellowmega: {
 		num: 277,
 		species: "Swellow-Mega",
@@ -642,6 +685,7 @@ exports.BattlePokedex = {
 		color: "Blue",
 		eggGroups: ["Flying"],
 	},
+	
 	pelippermega: {
 		num: 279,
 		species: "Pelipper-Mega",
@@ -656,6 +700,7 @@ exports.BattlePokedex = {
 		color: "Yellow",
 		eggGroups: ["Water 1", "Flying"],
 	},
+	
 	breloommega: {
 		num: 286,
 		species: "Breloom-Mega",
@@ -670,6 +715,7 @@ exports.BattlePokedex = {
 		color: "Green",
 		eggGroups: ["Fairy", "Grass"],
 	},
+	
 	delcattymega: {
 		num: 301,
 		species: "Delcatty-Mega",
@@ -684,6 +730,7 @@ exports.BattlePokedex = {
 		color: "Purple",
 		eggGroups: ["Field", "Fairy"],
 	},
+	
 	torkoalmega: {
 		num: 324,
 		species: "Torkoal-Mega",
@@ -698,6 +745,7 @@ exports.BattlePokedex = {
 		color: "Brown",
 		eggGroups: ["Field"],
 	},
+	
 	flygonmega: {
 		num: 330,
 		species: "Flygon-Mega",
@@ -712,6 +760,7 @@ exports.BattlePokedex = {
 		color: "Green",
 		eggGroups: ["Bug"],
 	},
+	
 	sevipermega: {
 		num: 336,
 		species: "Seviper-Mega",
@@ -726,6 +775,7 @@ exports.BattlePokedex = {
 		color: "Black",
 		eggGroups: ["Field", "Dragon"],
 	},
+	
 	lunatonemega: {
 		num: 337,
 		species: "Lunatone-Mega",
@@ -740,6 +790,7 @@ exports.BattlePokedex = {
 		color: "Yellow",
 		eggGroups: ["Mineral"],
 	},
+	
 	solrockmega: {
 		num: 338,
 		species: "Solrock-Mega",
@@ -754,6 +805,7 @@ exports.BattlePokedex = {
 		color: "Red",
 		eggGroups: ["Mineral"],
 	},
+	
 	crawdauntmega: {
 		num: 342,
 		species: "Solrock-Mega",
@@ -768,6 +820,7 @@ exports.BattlePokedex = {
 		color: "Red",
 		eggGroups: ["Water 1", "Water 3"],
 	},
+	
 	tropiusmega: {
 		num: 357,
 		species: "Tropius-Mega",
@@ -782,6 +835,7 @@ exports.BattlePokedex = {
 		color: "Green",
 		eggGroups: ["Monster", "Grass"],
 	},
+	
 	huntailmega: {
 		num: 367,
 		species: "Huntail-Mega",
@@ -796,6 +850,7 @@ exports.BattlePokedex = {
 		color: "Blue",
 		eggGroups: ["Water 1"],
 	},
+	
 	gorebyssmega: {
 		num: 368,
 		species: "Gorebyss-Mega",
@@ -810,6 +865,7 @@ exports.BattlePokedex = {
 		color: "Pink",
 		eggGroups: ["Water 1"],
 	},
+	
 	torterramega: {
 		num: 389,
 		species: "Torterra-Mega",
@@ -824,6 +880,7 @@ exports.BattlePokedex = {
 		color: "Green",
 		eggGroups: ["Monster", "Grass"],
 	},
+	
 	infernapemega: {
 		num: 392,
 		species: "Infernape-Mega",
@@ -838,6 +895,7 @@ exports.BattlePokedex = {
 		color: "Brown",
 		eggGroups: ["Field", "Human-Like"],
 	},
+	
 	empoleonmega: {
 		num: 395,
 		species: "Empoleon-Mega",
@@ -852,6 +910,7 @@ exports.BattlePokedex = {
 		color: "Blue",
 		eggGroups: ["Water 1", "Field"],
 	},
+	
 	staraptormega: {
 		num: 398,
 		species: "Staraptor-Mega",
@@ -866,6 +925,7 @@ exports.BattlePokedex = {
 		color: "Brown",
 		eggGroups: ["Flying"],
 	},
+	
 	roserademega: {
 		num: 407,
 		species: "Roserade-Mega",
@@ -880,6 +940,7 @@ exports.BattlePokedex = {
 		color: "Green",
 		eggGroups: ["Fairy", "Grass"],
 	},
+	
 	ambipommega: {
 		num: 424,
 		species: "Ambipom-Mega",
@@ -894,6 +955,7 @@ exports.BattlePokedex = {
 		color: "Purple",
 		eggGroups: ["Field"],
 	},
+	
 	puruglymega: {
 		num: 432,
 		species: "Purugly-Mega",
@@ -908,6 +970,7 @@ exports.BattlePokedex = {
 		color: "Gray",
 		eggGroups: ["Field"],
 	},
+	
 	drapionmega: {
 		num: 452,
 		species: "Drapion-Mega",
@@ -922,6 +985,7 @@ exports.BattlePokedex = {
 		color: "Purple",
 		eggGroups: ["Bug", "Water 3"],
 	},
+	
 	lumineonmega: {
 		num: 457,
 		species: "Lumineon-Mega",
@@ -936,6 +1000,7 @@ exports.BattlePokedex = {
 		color: "Blue",
 		eggGroups: ["Water 2"],
 	},
+	
 	weavilemega: {
 		num: 461,
 		species: "Weavile-Mega",
@@ -950,6 +1015,7 @@ exports.BattlePokedex = {
 		color: "Black",
 		eggGroups: ["Field"],
 	},
+	
 	magnezonemega: {
 		num: 462,
 		species: "Magnezone-Mega",
@@ -964,6 +1030,7 @@ exports.BattlePokedex = {
 		color: "Gray",
 		eggGroups: ["Mineral"],
 	},
+	
 	rhyperiormega: {
 		num: 464,
 		species: "Rhyperior-Mega",
@@ -978,6 +1045,7 @@ exports.BattlePokedex = {
 		color: "Gray",
 		eggGroups: ["Monster", "Field"],
 	},
+	
 	tangrowthmega: {
 		num: 465,
 		species: "Tangrowth-Mega",
@@ -992,6 +1060,7 @@ exports.BattlePokedex = {
 		color: "Blue",
 		eggGroups: ["Grass"],
 	},
+	
 	electiviremega: {
 		num: 466,
 		species: "Electivire-Mega",
@@ -1006,6 +1075,7 @@ exports.BattlePokedex = {
 		color: "Yellow",
 		eggGroups: ["Human-Like"],
 	},
+	
 	magmortarmega: {
 		num: 467,
 		species: "Magmortar-Mega",
@@ -1020,6 +1090,7 @@ exports.BattlePokedex = {
 		color: "Red",
 		eggGroups: ["Human-Like"],
 	},
+	
 	yanmegamega: {
 		num: 469,
 		species: "Yanmega-Mega",
@@ -1034,13 +1105,14 @@ exports.BattlePokedex = {
 		color: "Gray",
 		eggGroups: ["Mineral"],
 	},
+	
 	gliscormega: {
 		num: 472,
 		species: "Gliscor-Mega",
 		baseSpecies: "Gliscor",
 		forme: "Mega",
 		formeLetter: "M",
-		types: ["Flying", "Dark"],
+		types: ["Dark", "Flying"],
 		baseStats: {hp: 75, atk: 110, def: 140, spa: 65, spd: 120, spe: 100},
 		abilities: {0: "Triage"},
 		heightm: 2,
@@ -1048,6 +1120,7 @@ exports.BattlePokedex = {
 		color: "Purple",
 		eggGroups: ["Bug"],
 	},
+	
 	mamoswinemega: {
 		num: 473,
 		species: "Mamoswine-Mega",
@@ -1062,6 +1135,7 @@ exports.BattlePokedex = {
 		color: "Brown",
 		eggGroups: ["Field"],
 	},
+	
 	porygonzmega: {
 		num: 474,
 		species: "Porygon-Z-Mega",
@@ -1076,6 +1150,7 @@ exports.BattlePokedex = {
 		color: "Red",
 		eggGroups: ["Mineral"],
 	},
+	
 	probopassmega: {
 		num: 476,
 		species: "Probopass-Mega",
@@ -1090,6 +1165,7 @@ exports.BattlePokedex = {
 		color: "Gray",
 		eggGroups: ["Mineral"],
 	},
+	
 	phionemega: {
 		num: 489,
 		species: "Phione-Mega",
@@ -1104,6 +1180,7 @@ exports.BattlePokedex = {
 		color: "Blue",
 		eggGroups: ["Water 1", "Fairy"],
 	},
+	
 	stoutlandmega: {
 		num: 508,
 		species: "Stoutland-Mega",
@@ -1118,6 +1195,7 @@ exports.BattlePokedex = {
 		color: "Gray",
 		eggGroups: ["Field"],
 	},
+	
 	liepardmega: {
 		num: 510,
 		species: "Liepard-Mega",
@@ -1132,6 +1210,7 @@ exports.BattlePokedex = {
 		color: "Purple",
 		eggGroups: ["Field"],
 	},
+	
 	simisagemega: {
 		num: 512,
 		species: "Simisage-Mega",
@@ -1147,6 +1226,7 @@ exports.BattlePokedex = {
 		color: "Green",
 		eggGroups: ["Field"],
 	},
+	
 	simisearmega: {
 		num: 514,
 		species: "Simisear-Mega",
@@ -1162,6 +1242,7 @@ exports.BattlePokedex = {
 		color: "Red",
 		eggGroups: ["Field"],
 	},
+	
 	simipourmega: {
 		num: 514,
 		species: "Simipour-Mega",
@@ -1177,6 +1258,7 @@ exports.BattlePokedex = {
 		color: "Blue",
 		eggGroups: ["Field"],
 	},
+	
 	musharnamega: {
 		num: 518,
 		species: "Musharna-Mega",
@@ -1191,6 +1273,7 @@ exports.BattlePokedex = {
 		color: "Pink",
 		eggGroups: ["Field"],
 	},
+	
 	zebstrikamega: {
 		num: 523,
 		species: "Zebstrika-Mega",
@@ -1205,6 +1288,7 @@ exports.BattlePokedex = {
 		color: "Black",
 		eggGroups: ["Field"],
 	},
+	
 	seismitoadmega: {
 		num: 537,
 		species: "Seismitoad-Mega",
@@ -1219,6 +1303,7 @@ exports.BattlePokedex = {
 		color: "Blue",
 		eggGroups: ["Water 1"],
 	},
+	
 	whimsicottmega: {
 		num: 547,
 		species: "Whimsicott-Mega",
@@ -1233,6 +1318,7 @@ exports.BattlePokedex = {
 		color: "Green",
 		eggGroups: ["Fairy", "Grass"],
 	},
+	
 	krookodilemega: {
 		num: 553,
 		species: "Krookodile-Mega",
@@ -1247,6 +1333,7 @@ exports.BattlePokedex = {
 		color: "Red",
 		eggGroups: ["Field"],
 	},
+	
 	maractusmega: {
 		num: 556,
 		species: "Maractus-Mega",
@@ -1261,6 +1348,7 @@ exports.BattlePokedex = {
 		color: "Green",
 		eggGroups: ["Grass"],
 	},
+	
 	carracostamega: {
 		num: 565,
 		species: "Carracosta-Mega",
@@ -1275,6 +1363,7 @@ exports.BattlePokedex = {
 		color: "Blue",
 		eggGroups: ["Water 1", "Water 3"],
 	},
+	
 	reuniclusmega: {
 		num: 579,
 		species: "Reuniclus-Mega",
@@ -1289,6 +1378,7 @@ exports.BattlePokedex = {
 		color: "Green",
 		eggGroups: ["Amorphous"],
 	},
+	
 	vanilluxemega: {
 		num: 584,
 		species: "Vanilluxe-Mega",
@@ -1303,6 +1393,7 @@ exports.BattlePokedex = {
 		color: "White",
 		eggGroups: ["Mineral"],
 	},
+	
 	amoongussmega: {
 		num: 591,
 		species: "Amoonguss-Mega",
@@ -1317,6 +1408,7 @@ exports.BattlePokedex = {
 		color: "White",
 		eggGroups: ["Grass"],
 	},
+	
 	galvantulamega: {
 		num: 596,
 		species: "Galvantula-Mega",
@@ -1331,6 +1423,7 @@ exports.BattlePokedex = {
 		color: "Yellow",
 		eggGroups: ["Bug"],
 	},
+	
 	eelektrossmega: {
 		num: 604,
 		species: "Eelektross-Mega",
@@ -1345,6 +1438,7 @@ exports.BattlePokedex = {
 		color: "Blue",
 		eggGroups: ["Amorphous"],
 	},
+	
 	bearticmega: {
 		num: 614,
 		species: "Beartic-Mega",
@@ -1359,6 +1453,7 @@ exports.BattlePokedex = {
 		color: "White",
 		eggGroups: ["Field"],
 	},
+	
 	mienshaomega: {
 		num: 620,
 		species: "Mienshao-Mega",
@@ -1373,6 +1468,7 @@ exports.BattlePokedex = {
 		color: "Purple",
 		eggGroups: ["Field", "Human-Like"],
 	},
+	
 	braviarymega: {
 		num: 628,
 		species: "Braviary-Mega",
@@ -1387,6 +1483,7 @@ exports.BattlePokedex = {
 		color: "Red",
 		eggGroups: ["Flying"],
 	},
+	
 	hydreigonmega: {
 		num: 635,
 		species: "Hydreigon-Mega",
@@ -1401,6 +1498,7 @@ exports.BattlePokedex = {
 		color: "Blue",
 		eggGroups: ["Dragon"],
 	},
+	
 	volcaronamega: {
 		num: 637,
 		species: "Volcarona-Mega",
@@ -1415,6 +1513,7 @@ exports.BattlePokedex = {
 		color: "White",
 		eggGroups: ["Bug"],
 	},
+	
 	cobalionmega: {
 		num: 638,
 		species: "Cobalion-Mega",
@@ -1429,6 +1528,7 @@ exports.BattlePokedex = {
 		color: "Blue",
 		eggGroups: ["Undiscovered"],
 	},
+	
 	terrakionmega: {
 		num: 639,
 		species: "Terrakion-Mega",
@@ -1443,6 +1543,7 @@ exports.BattlePokedex = {
 		color: "Gray",
 		eggGroups: ["Undiscovered"],
 	},
+	
 	virizionmega: {
 		num: 640,
 		species: "Virizion-Mega",
@@ -1457,6 +1558,7 @@ exports.BattlePokedex = {
 		color: "Green",
 		eggGroups: ["Undiscovered"],
 	},
+	
 	keldeomega: {
 		num: 647,
 		species: "Keldeo-Mega",
@@ -1471,6 +1573,7 @@ exports.BattlePokedex = {
 		color: "Yellow",
 		eggGroups: ["Undiscovered"],
 	},
+	
 	diggersbymega: {
 		num: 660,
 		species: "Diggersby-Mega",
@@ -1485,6 +1588,7 @@ exports.BattlePokedex = {
 		color: "Brown",
 		eggGroups: ["Field"],
 	},
+	
 	talonflamemega: {
 		num: 663,
 		species: "Talonflame-Mega",
@@ -1499,6 +1603,7 @@ exports.BattlePokedex = {
 		color: "Red",
 		eggGroups: ["Flying"],
 	},
+	
 	florgesmega: {
 		num: 671,
 		species: "Florges-Mega",
@@ -1513,6 +1618,7 @@ exports.BattlePokedex = {
 		color: "White",
 		eggGroups: ["Fairy"],
 	},
+	
 	pangoromega: {
 		num: 675,
 		species: "Pangoro-Mega",
@@ -1527,6 +1633,7 @@ exports.BattlePokedex = {
 		color: "White",
 		eggGroups: ["Field", "Human-Like"],
 	},
+	
 	meowsticmega: {
 		num: 678,
 		species: "Meowstic-Mega",
@@ -1541,6 +1648,7 @@ exports.BattlePokedex = {
 		color: "Blue",
 		eggGroups: ["Field"],
 	},
+	
 	slurpuffmega: {
 		num: 685,
 		species: "Slurpuff-Mega",
@@ -1555,6 +1663,7 @@ exports.BattlePokedex = {
 		color: "White",
 		eggGroups: ["Fairy"],
 	},
+	
 	dragalgemega: {
 		num: 685,
 		species: "Dragalge-Mega",
@@ -1569,6 +1678,7 @@ exports.BattlePokedex = {
 		color: "Brown",
 		eggGroups: ["Water 1", "Dragon"],
 	},
+	
 	sylveonmega: {
 		num: 700,
 		species: "Sylveon-Mega",
@@ -1583,6 +1693,7 @@ exports.BattlePokedex = {
 		color: "Pink",
 		eggGroups: ["Field"],
 	},
+	
 	goodramega : {
 		num: 706,
 		species: "Goodra-Mega",
@@ -1595,6 +1706,7 @@ exports.BattlePokedex = {
 		heightm: 2,
 		weightkg: 150.5, 
 	},
+	
 	klefkimega : {
 		num: 707,
 		species: "Klefki-Mega",
@@ -1607,6 +1719,7 @@ exports.BattlePokedex = {
 		heightm: 2,
 		weightkg: 3, 
 	},
+	
 	avaluggmega : {
 		num: 713,
 		species: "Avalugg-Mega",
@@ -1619,6 +1732,7 @@ exports.BattlePokedex = {
 		heightm: 2,
 		weightkg: 505, 
 	},
+	
 	decidueyemega: {
 		num: 724,
 		species: "Decidueye-Mega",
@@ -1633,6 +1747,7 @@ exports.BattlePokedex = {
 		color: "Brown",
 		eggGroups: ["Flying"],
 	},
+	
 	incineroarmega: {
 		num: 727,
 		species: "Incineroar-Mega",
@@ -1647,6 +1762,7 @@ exports.BattlePokedex = {
 		color: "Red",
 		eggGroups: ["Field"],
 	},
+	
 	primarinamega: {
 		num: 730,
 		species: "Primarina-Mega",
@@ -1661,6 +1777,7 @@ exports.BattlePokedex = {
 		color: "Blue",
 		eggGroups: ["Water 1", "Field"],
 	},
+	
 	toucannonmega: {
 		num: 733,
 		species: "Toucannon-Mega",
@@ -1675,6 +1792,7 @@ exports.BattlePokedex = {
 		color: "Black",
 		eggGroups: ["Flying"],
 	},
+	
 	vikavoltmega: {
 		num: 738,
 		species: "Vikavolt-Mega",
@@ -1689,6 +1807,7 @@ exports.BattlePokedex = {
 		color: "Blue",
 		eggGroups: ["Bug"],
 	},
+	
 	crabominablemega : {
 		num: 740,
 		species: "Crabominable-Mega",
@@ -1703,6 +1822,7 @@ exports.BattlePokedex = {
 		color: "White",
 		eggGroups: ["Water 3"],
 	},
+	
 	araquanidmega: {
 		num: 752,
 		species: "Araquanid-Mega",
@@ -1717,6 +1837,7 @@ exports.BattlePokedex = {
 		color: "Green",
 		eggGroups: ["Water 1", "Bug"],
 	},
+	
 	shiinoticmega: {
 		num: 756,
 		species: "Shiinotic-Mega",
@@ -1731,6 +1852,7 @@ exports.BattlePokedex = {
 		color: "Purple",
 		eggGroups: ["Grass"],
 	},
+	
 	golisopodmega: {
 		num: 784,
 		species: "Golisopod-Mega",
@@ -1745,6 +1867,7 @@ exports.BattlePokedex = {
 		color: "Gray",
 		eggGroups: ["Bug", "Water 3"],
 	},
+	
 	silvallymega: {
 		num: 773,
 		species: "Silvally-Mega",
@@ -1759,6 +1882,7 @@ exports.BattlePokedex = {
 		color: "Gray",
 		eggGroups: ["Undiscovered"],
 	},
+	
 	silvallyelectric: {
 		num: 773,
 		species: "Silvally-Electric",
@@ -1775,6 +1899,7 @@ exports.BattlePokedex = {
 		evoLevel: 2,
 		eggGroups: ["Undiscovered"],
 	},
+	
 	silvallyelectricmega: {
 		num: 773,
 		species: "Silvally-Electric-Mega",
@@ -1791,6 +1916,7 @@ exports.BattlePokedex = {
 		evoLevel: 2,
 		eggGroups: ["Undiscovered"],
 	},
+	
 	silvallyfire: {
 		num: 773,
 		species: "Silvally-Fire",
@@ -1807,6 +1933,7 @@ exports.BattlePokedex = {
 		evoLevel: 2,
 		eggGroups: ["Undiscovered"],
 	},
+	
 	silvallyfiremega: {
 		num: 773,
 		species: "Silvally-Fire-Mega",
@@ -1823,6 +1950,7 @@ exports.BattlePokedex = {
 		evoLevel: 2,
 		eggGroups: ["Undiscovered"],
 	},
+	
 	silvallygrass: {
 		num: 773,
 		species: "Silvally-Grass",
@@ -1839,6 +1967,7 @@ exports.BattlePokedex = {
 		evoLevel: 2,
 		eggGroups: ["Undiscovered"],
 	},
+	
 	silvallygrassmega: {
 		num: 773,
 		species: "Silvally-Grass-Mega",
@@ -1855,6 +1984,7 @@ exports.BattlePokedex = {
 		evoLevel: 2,
 		eggGroups: ["Undiscovered"],
 	},
+	
 	silvallyice: {
 		num: 773,
 		species: "Silvally-Ice",
@@ -1871,6 +2001,7 @@ exports.BattlePokedex = {
 		evoLevel: 2,
 		eggGroups: ["Undiscovered"],
 	},
+	
 	silvallyicemega: {
 		num: 773,
 		species: "Silvally-Ice-Mega",
@@ -1887,6 +2018,7 @@ exports.BattlePokedex = {
 		evoLevel: 2,
 		eggGroups: ["Undiscovered"],
 	},
+	
 	silvallywater: {
 		num: 773,
 		species: "Silvally-Water",
@@ -1904,6 +2036,7 @@ exports.BattlePokedex = {
 		evoLevel: 2,
 		eggGroups: ["Undiscovered"],
 	},
+	
 	silvallywatermega: {
 		num: 773,
 		species: "Silvally-Water-Mega",
@@ -1920,6 +2053,7 @@ exports.BattlePokedex = {
 		evoLevel: 2,
 		eggGroups: ["Undiscovered"],
 	},
+	
 	kommoomega: {
 		num: 784,
 		species: "Kommo-o-Mega",
@@ -1934,6 +2068,7 @@ exports.BattlePokedex = {
 		color: "Gray",
 		eggGroups: ["Dragon"],
 	},
+	
 	tapukokomega: {
 		num: 785,
 		species: "Tapu Koko-Mega",
@@ -1942,12 +2077,13 @@ exports.BattlePokedex = {
 		formeLetter: "M",
 		types: ["Electric", "Fairy"],
 		baseStats: {hp: 70, atk: 128, def: 95, spa: 107, spd: 85, spe: 185},
-		abilities: {0: "Electric Surge"},
+		abilities: {0: "Electric Efflux"},
 		heightm: 1.8,
 		weightkg: 20.5,
 		color: "Yellow",
 		eggGroups: ["Undiscovered"],
 	},
+	
 	tapulelemega: {
 		num: 786,
 		species: "Tapu Lele-Mega",
@@ -1956,12 +2092,13 @@ exports.BattlePokedex = {
 		formeLetter: "M",
 		types: ["Psychic", "Fairy"],
 		baseStats: {hp: 70, atk: 95, def: 85, spa: 185, spd: 128, spe: 107},
-		abilities: {0: "Psychic Surge"},
+		abilities: {0: "Psychic Pour"},
 		heightm: 1.2,
 		weightkg: 18.6,
 		color: "Pink",
 		eggGroups: ["Undiscovered"],
 	},
+	
 	tapubulumega: {
 		num: 787,
 		species: "Tapu Bulu-Mega",
@@ -1970,7 +2107,7 @@ exports.BattlePokedex = {
 		formeLetter: "M",
 		types: ["Grass", "Fairy"],
 		baseStats: {hp: 70, atk: 185, def: 128, spa: 95, spd: 107, spe: 85},
-		abilities: {0: "Grassy Surge"},
+		abilities: {0: "Grassy Gush"},
 		heightm: 1.9,
 		weightkg: 45.5,
 		color: "Red",
@@ -1984,12 +2121,13 @@ exports.BattlePokedex = {
 		formeLetter: "M",
 		types: ["Water", "Fairy"],
 		baseStats: {hp: 70, atk: 85, def: 128, spa: 107, spd: 185, spe: 95},
-		abilities: {0: "Misty Surge"},
+		abilities: {0: "Misty Mount"},
 		heightm: 1.3,
 		weightkg: 21.2,
 		color: "Purple",
 		eggGroups: ["Undiscovered"],
 	},
+	
 	nihilegomega: {
 		num: 793,
 		species: "Nihilego-Mega",
@@ -2004,6 +2142,7 @@ exports.BattlePokedex = {
 		color: "White",
 		eggGroups: ["Undiscovered"],
 	},
+	
 	buzzwolemega: {
 		num: 794,
 		species: "Buzzwole-Mega",
@@ -2018,6 +2157,7 @@ exports.BattlePokedex = {
 		color: "Red",
 		eggGroups: ["Undiscovered"],
 	},
+	
 	pheromosamega: {
 		num: 795,
 		species: "Pheromosa-Mega",
@@ -2032,6 +2172,7 @@ exports.BattlePokedex = {
 		color: "White",
 		eggGroups: ["Undiscovered"],
 	},
+	
 	xurkitreemega: {
 		num: 796,
 		species: "Xurkitree-Mega",
@@ -2046,6 +2187,7 @@ exports.BattlePokedex = {
 		color: "Black",
 		eggGroups: ["Undiscovered"],
 	},
+	
 	celesteelamega: {
 		num: 797,
 		species: "Celesteela-Mega",
@@ -2060,6 +2202,7 @@ exports.BattlePokedex = {
 		color: "Green",
 		eggGroups: ["Undiscovered"],
 	},
+	
 	kartanamega: {
 		num: 798,
 		species: "Kartana-Mega",
@@ -2074,6 +2217,7 @@ exports.BattlePokedex = {
 		color: "White",
 		eggGroups: ["Undiscovered"],
 	},
+	
 	guzzlordmega: {
 		num: 799,
 		species: "Guzzlord-Mega",
@@ -2088,85 +2232,86 @@ exports.BattlePokedex = {
 		color: "Black",
 		eggGroups: ["Undiscovered"],
 	},
+	
 	golurkmega : {
-num: 623,
-species: "Golurk-Mega",
-baseSpecies: "Golurk",
-forme: "Mega",
-formeLetter: "M", 
-types: ["Ground", "Fire"], 
-baseStats:{hp: 89, atk: 149, def: 110, spa: 50, spd: 110, spe: 70},
-abilities: {0: "Speed Boost"}, 
-evoLevel: 1,
-heightm: 2.8, 
-weightkg: 330, 
-},
+	num: 623,
+	species: "Golurk-Mega",
+	baseSpecies: "Golurk",
+	forme: "Mega",
+	formeLetter: "M", 
+	types: ["Ground", "Fire"], 
+	baseStats:{hp: 89, atk: 149, def: 110, spa: 50, spd: 110, spe: 70},
+	abilities: {0: "Speed Boost"}, 
+	evoLevel: 1,
+	heightm: 2.8, 
+	weightkg: 330, 
+	},
 
-cofagrigusmega : {
-num: 563,
-species: "Cofagrigus-Mega",
-baseSpecies: "Cofagrigus",
-forme: "Mega",
-formeLetter: "M", 
-types: ["Ghost"], 
-baseStats:{hp: 58, atk: 70, def: 115, spa: 135, spd: 105, spe: 100},
-abilities: {0: "Entomb"},
-evoLevel: 1,
-heightm: 76.5, 
-weightkg: 76.5, 
-},
+	cofagrigusmega : {
+	num: 563,
+	species: "Cofagrigus-Mega",
+	baseSpecies: "Cofagrigus",
+	forme: "Mega",
+	formeLetter: "M", 
+	types: ["Ghost"], 
+	baseStats:{hp: 58, atk: 70, def: 115, spa: 135, spd: 105, spe: 100},
+	abilities: {0: "Entomb"},
+	evoLevel: 1,
+	heightm: 76.5, 
+	weightkg: 76.5, 
+	},
 
-sigilyphmega : {
-num: 561,
-species: "Sigilyph-Mega",
-baseSpecies: "Sigilyph",
-forme: "Mega",
-formeLetter: "M", 
-types: ["Psychic", "Flying"], 
-baseStats:{hp: 72, atk: 58, def: 110, spa: 133, spd: 110, spe: 107},
-abilities: {0: "Forsee"}, 
-evoLevel: 1,
-heightm: 1.4, 
-weightkg: 14, 
-},
+	sigilyphmega : {
+	num: 561,
+	species: "Sigilyph-Mega",
+	baseSpecies: "Sigilyph",
+	forme: "Mega",
+	formeLetter: "M", 
+	types: ["Psychic", "Flying"], 
+	baseStats:{hp: 72, atk: 58, def: 110, spa: 133, spd: 110, spe: 107},
+	abilities: {0: "Forsee"}, 
+	evoLevel: 1,
+	heightm: 1.4, 
+	weightkg: 14, 
+	},
 
-samurottmega: {
-num: 503, 
-species: "Samurott-Mega", 
-baseSpecies: "Samurott", 
-forme: "Mega", 
-formeLetter: "M", 
-types:["Water"],
-baseStats: {hp: 95, atk: 152, def: 105, spa: 76, spd: 105, spe: 95}, 
-abilities: {0: "Supreme Samurai"}, 
-weightkg: 94.6, 
-evoLevel: 1,
-},
+	samurottmega: {
+	num: 503, 
+	species: "Samurott-Mega", 
+	baseSpecies: "Samurott", 
+	forme: "Mega", 
+	formeLetter: "M", 
+	types:["Water"],
+	baseStats: {hp: 95, atk: 152, def: 105, spa: 76, spd: 105, spe: 95}, 
+	abilities: {0: "Supreme Samurai"}, 
+	weightkg: 94.6, 
+	evoLevel: 1,
+	},
 
-serperiormega: {
-num: 497, 
-species: "Serperior-Mega", 
-baseSpecies: "Serperior", 
-forme: "Mega", 
-formeLetter: "M", 
-types:["Grass"],
-baseStats: {hp: 75, atk: 125, def: 105, spa: 105, spd: 105, spe: 113}, 
-abilities: {0: "Regal Reversal"}, 
-weightkg: 63, 
-evoLevel: 1,
-},
+	serperiormega: {
+	num: 497, 
+	species: "Serperior-Mega", 
+	baseSpecies: "Serperior", 
+	forme: "Mega", 
+	formeLetter: "M", 
+	types:["Grass"],
+	baseStats: {hp: 75, atk: 125, def: 105, spa: 105, spd: 105, spe: 113}, 
+	abilities: {0: "Regal Reversal"}, 
+	weightkg: 63, 
+	evoLevel: 1,
+	},
 
-emboarmega: {
-num: 500, 
-species: "Emboar-Mega", 
-baseSpecies: "Emboar", 
-forme: "Mega", 
-formeLetter: "M", 
-types:["Fire", "Fighting "],
-baseStats: {hp: 110, atk: 154, def: 125, spa: 99, spd: 85, spe: 55}, 
-abilities: {0: "Stamina"}, 
-weightkg: 400, 
-evoLevel: 1,
-},
+	emboarmega: {
+	num: 500, 
+	species: "Emboar-Mega", 
+	baseSpecies: "Emboar", 
+	forme: "Mega", 
+	formeLetter: "M", 
+	types:["Fire", "Fighting "],
+	baseStats: {hp: 110, atk: 154, def: 125, spa: 99, spd: 85, spe: 55}, 
+	abilities: {0: "Stamina"}, 
+	weightkg: 400, 
+	evoLevel: 1,
+	},
 
-}
+	}
