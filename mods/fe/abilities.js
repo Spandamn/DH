@@ -8037,37 +8037,44 @@ exports.BattleAbilities = {
 		name: "Constellation",
 	},
 	"lavadive": {
-                Desc: "On odd-numbered turns, Fire-type moves have 1.5x power. On even-numbered turns, Fire-type moves have 0.5x power.",
+      Desc: "On odd-numbered turns, Fire-type moves have 1.5x power. On even-numbered turns, Fire-type moves have 0.5x power.",
 		shortDesc: "Power of Fire-type moves alternates between x1.5 and x0.5 when it attacks.",
+		onStart: function (pokemon) {
+			pokemon.removeVolatile('lavadive');
+			if (pokemon.activeTurns && (pokemon.moveThisTurnResult !== undefined || !this.willMove(pokemon))) {
+				pokemon.addVolatile('lavadive');
+			}
+		},
+		onBeforeMovePriority: 9,
+		onBeforeMove: function (pokemon) {
+			if (pokemon.removeVolatile('lavadive')) return;
+			pokemon.addVolatile('lavadive');
+		},
 		onModifyAtkPriority: 5,
 		onModifyAtk: function (atk, attacker, defender, move) {
 			if (move.type === 'Fire'){
-				if (attacker.removeVolatile('lavadive')) {
+				if (attacker.volatiles['lavadive']) {
 					this.debug('Lava Dive reduction');
 					return this.chainModify(0.5);
 				}
       	   else {
-					attacker.addVolatile('lavadive');
 					this.debug('Lava Dive boost');
 					return this.chainModify(1.5);
             }
 			}
-			attacker.addVolatile('lavadive');
 		},
 		onModifySpAPriority: 5,
 		onModifySpA: function (atk, attacker, defender, move) {
 			if (move.type === 'Fire'){
-				if (attacker.removeVolatile('lavadive')) {
+				if (attacker.volatiles['lavadive']) {
 					this.debug('Lava Dive reduction');
 					return this.chainModify(0.5);
 				}
       	   else {
-					attacker.addVolatile('lavadive');
 					this.debug('Lava Dive boost');
 					return this.chainModify(1.5);
             }
 			}
-			attacker.addVolatile('lavadive');
 		},
 		effect: {
 			duration: 2,
