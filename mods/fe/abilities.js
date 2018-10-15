@@ -7711,7 +7711,9 @@ exports.BattleAbilities = {
 		onBasePower: function (basePower, pokemon, target, move) {
 			if (move.optimizeBoosted) return this.chainModify([0x1333, 0x1000]);
 		},
-                //TODO: Have Form Changes for A Rave-Alola
+		onTakeItem: function (item, pokemon, source) {
+			if (pokemon.item.onPlate) return false;
+		},
 		id: "optimize",
 		name: "Optimize",
 	},
@@ -9532,11 +9534,7 @@ exports.BattleAbilities = {
 			}
 		},
 		onTakeItem: function (item, pokemon, source) {
-			if (!pokemon.getItem().onMemory || this.suppressingAttackEvents() && pokemon !== this.activePokemon || !pokemon.hp) return;
-			if (!this.activeMove) throw new Error("Battle.activeMove is null");
-			if ((source && source !== pokemon) || this.activeMove.id === 'knockoff') {
-				return false;
-			}
+			if (pokemon.item.onMemory) return false;
 		},
 		onSourceModifyAccuracy: function (accuracy) {
 			if (typeof accuracy !== 'number') return;
@@ -9723,11 +9721,7 @@ exports.BattleAbilities = {
 			}
 		},
 		onTakeItem: function (item, pokemon, source) {
-			if (!pokemon.getItem().onPlate || this.suppressingAttackEvents() && pokemon !== this.activePokemon || !pokemon.hp) return;
-			if (!this.activeMove) throw new Error("Battle.activeMove is null");
-			if ((source && source !== pokemon) || this.activeMove.id === 'knockoff') {
-				return false;
-			}
+			if (pokemon.item.onPlate) return false;
 		},
 		onModifySpe: function (spe, pokemon) {
 			if (pokemon.getItem() && pokemon.getItem().onPlate) {
@@ -11062,11 +11056,7 @@ exports.BattleAbilities = {
 			}
 		},
 		onTakeItem: function (item, pokemon, source) {
-			if (!pokemon.getItem().onPlate || this.suppressingAttackEvents() && pokemon !== this.activePokemon || !pokemon.hp) return;
-			if (!this.activeMove) throw new Error("Battle.activeMove is null");
-			if ((source && source !== pokemon) || this.activeMove.id === 'knockoff') {
-				return false;
-			}
+			if (pokemon.item.onPlate) return false;
 		},
 		id: "prototype",
 		name: "Prototype",
@@ -11169,6 +11159,9 @@ exports.BattleAbilities = {
 	"techequip": {
 		shortDesc: "Holding a memory item will change the user's primary type to that of the memory, and make the user immune to that memory's type.",
 		// Implemented in statuses.js
+		onTakeItem: function (item, pokemon, source) {
+			if (pokemon.item.onMemory) return false;
+		},
 		id: "techequip",
 		name: "Tech Equip",
 	},
@@ -11177,7 +11170,11 @@ exports.BattleAbilities = {
 		// Implemented in statuses.js
 		onBasePowerPriority: 8,
 		onBasePower: function (basePower, attacker, defender, move) {
-				return this.chainModify(1.5);
+			if (!attacker.item.onMemory) return;
+			return this.chainModify(1.5);
+		},
+		onTakeItem: function (item, pokemon, source) {
+			if (pokemon.item.onMemory) return false;
 		},
 		id: "technicalsystem",
 		name: "Technical System",
@@ -11185,6 +11182,9 @@ exports.BattleAbilities = {
 	"triagesystem": {
 		shortDesc: "If this Pokémon is holding a Memory, it changes type to match that memory and all it's moves are boosted by 1.5.",
 		// Implemented in statuses.js
+		onTakeItem: function (item, pokemon, source) {
+			if (pokemon.item.onMemory) return false;
+		},
 		id: "triagesystem",
 		name: "Triage System",
 	},
@@ -12075,6 +12075,9 @@ exports.BattleAbilities = {
 				pokemon.setType([type, 'Dark']);
 			}
 		},
+		onTakeItem: function (item, pokemon, source) {
+			if (pokemon.item.onPlate) return false;
+		},
 		id: "typeillusionist",
 		name: "Type Illusionist",
 	},
@@ -12265,6 +12268,9 @@ exports.BattleAbilities = {
 					}
 				}
 			}
+		},
+		onTakeItem: function (item, pokemon, source) {
+			if (pokemon.item.onMemory) return false;
 		},
 		id: "tacticalcomputer",
 		name: "Tactical Computer",
