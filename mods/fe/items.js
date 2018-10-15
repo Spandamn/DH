@@ -4282,4 +4282,39 @@ exports.BattleItems = {
 		gen: 3,
 		desc: "If held by a Latias/Latios, its Dragon- and Psychic-type moves have 1.2x power.",
 	},
+	"metalpowder": {
+		inherit: true,
+		id: "metalpowder",
+		name: "Metal Powder",
+		fling: {
+			basePower: 10,
+		},
+		spritenum: 287,
+		onModifyDefPriority: 2,
+		onModifyDef: function (def, pokemon) {
+			if ((pokemon.template.species === 'Ditto' && !pokemon.transformed) || pokemon.hasAbility('whatdoesthisdo')) {
+				return this.chainModify(2);
+			}
+		},
+		num: 257,
+		gen: 2,
+		desc: "If held by a Ditto that hasn't Transformed, its Defense is doubled.",
+	},
+	"quickpowder": {
+		inherit: true,
+		id: "quickpowder",
+		name: "Quick Powder",
+		spritenum: 374,
+		fling: {
+			basePower: 10,
+		},
+		onModifySpe: function (spe, pokemon) {
+			if ((pokemon.template.species === 'Ditto' && !pokemon.transformed) || pokemon.hasAbility('whatdoesthisdo')) {
+				return this.chainModify(2);
+			}
+		},
+		num: 274,
+		gen: 4,
+		desc: "If held by a Ditto that hasn't Transformed, its Speed is doubled.",
+	},
 };
