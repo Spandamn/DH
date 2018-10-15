@@ -8041,26 +8041,32 @@ exports.BattleAbilities = {
 		shortDesc: "Power of Fire-type moves alternates between x1.5 and x0.5 when it attacks.",
 		onModifyAtkPriority: 5,
 		onModifyAtk: function (atk, attacker, defender, move) {
-			if (attacker.removeVolatile('lavadive') && move.type === 'Fire') {
-				this.debug('Lava Dive reduction');
-				return this.chainModify(0.5);
+			if (move.type === 'Fire'){
+				if (attacker.removeVolatile('lavadive')) {
+					this.debug('Lava Dive reduction');
+					return this.chainModify(0.5);
+				}
+      	   else {
+					attacker.addVolatile('lavadive');
+					this.debug('Lava Dive boost');
+					return this.chainModify(1.5);
+            }
 			}
-                        else if (move.type === 'Fire') {
-				this.debug('Lava Dive boost');
-				return this.chainModify(1.5);
-                        }
 			attacker.addVolatile('lavadive');
 		},
 		onModifySpAPriority: 5,
 		onModifySpA: function (atk, attacker, defender, move) {
-			if (attacker.removeVolatile('lavadive') && move.type === 'Fire') {
-				this.debug('Lava Dive reduction');
-				return this.chainModify(0.5);
+			if (move.type === 'Fire'){
+				if (attacker.removeVolatile('lavadive')) {
+					this.debug('Lava Dive reduction');
+					return this.chainModify(0.5);
+				}
+      	   else {
+					attacker.addVolatile('lavadive');
+					this.debug('Lava Dive boost');
+					return this.chainModify(1.5);
+            }
 			}
-                        else if (move.type === 'Fire') {
-				this.debug('Lava Dive boost');
-				return this.chainModify(1.5);
-                        }
 			attacker.addVolatile('lavadive');
 		},
 		effect: {
