@@ -226,6 +226,28 @@ exports.BattleScripts = {
     // BattlePokemon scripts, which should override the other things.
     pokemon: { 
 		 
+		hasItem(item) {
+			if (this.ignoringItem()) return false;
+			let ownItem = this.ignoringItem() ? '' : this.item;
+			let golden = false;
+			let bootleg = false;
+			if (!Array.isArray(item)) {
+				if (this.volatiles['goldentouch']){
+					golden = (this.volatiles['goldentouch'].item === toId(item));
+				}
+				if (this.volatiles['beastbootleg']){
+					bootleg = (this.volatiles['beastbootleg'].items.includes(toId(item)));
+				}
+				return (ownItem === toId(item) || golden || bootleg);
+			}
+			if (this.volatiles['goldentouch'] && !item.map(toId).includes(ownItem)){
+				golden = (item.map(toId).includes(this.volatiles['goldentouch'].item));
+			}
+			if (this.volatiles['beastbootleg'] && !item.map(toId).includes(ownItem)){
+ 		       bootleg = item.map(toId).includes(ownItem) || (item.map(toId).includes(this.volatiles['beastbootleg'].items[0]) || item.map(toId).includes(this.volatiles['beastbootleg'].items[1]));
+			}
+			return item.map(toId).includes(ownItem) || golden || bootleg;
+		},
 		eatItem() {
 			if (!this.hp || !this.isActive) return false;
 			let source = this.battle.event.target;
