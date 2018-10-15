@@ -4614,4 +4614,31 @@ regalreversal: {
 		rating: 3.5,
 		num: 22,
 	},
+	"ruggedshield": {
+		desc: "Pokemon making contact with this Pokemon lose 1/8 of their maximum HP, rounded down. Takes 1/2 dmg from Steel and Fighting moves.",
+		shortDesc: "Pokemon making contact with this Pokemon lose 1/8 of their max HP. Takes 1/2 dmg from Steel and Fighting moves.",
+		onAfterDamageOrder: 1,
+		onAfterDamage: function (damage, target, source, move) {
+			if (source && source !== target && move && move.flags['contact']) {
+				this.damage(source.maxhp / 8, source, target);
+			}
+		onModifyAtkPriority: 6,
+		onSourceModifyAtk: function (atk, attacker, defender, move) {
+			if (move.type === 'Steel' || move.type === 'Fighting') {
+				this.debug('Rugged Shield weaken');
+				return this.chainModify(0.5);
+			}
+		},
+		onModifySpAPriority: 5,
+		onSourceModifySpA: function (atk, attacker, defender, move) {
+			if (move.type === 'Steel' || move.type === 'Fighting') {
+				this.debug('Rugged Shield weaken');
+				return this.chainModify(0.5);
+			}
+		},
+		id: "ruggedshield",
+		name: "Rugged Shield",
+		rating: 3,
+		num: 160,
+	},
 };
