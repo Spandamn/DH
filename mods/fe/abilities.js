@@ -2,6 +2,7 @@
 exports.BattleAbilities = {
 		//First, override some abilities.
 	"forecast": {
+		inherit: true,
 		desc: "If this Pokemon is a Castform, its type changes to the current weather condition's type, except Sandstorm.",
 		shortDesc: "Castform's type changes to the current weather condition's type, except Sandstorm.",
 		onUpdate: function (pokemon) {
@@ -35,6 +36,7 @@ exports.BattleAbilities = {
 		num: 59,
 	},
 		"dryskin": {
+		inherit: true,
 		desc: "This Pokemon is immune to Water-type moves and restores 1/4 of its maximum HP, rounded down, when hit by a Water-type move. The power of Fire-type moves is multiplied by 1.25 when used on this Pokemon. At the end of each turn, this Pokemon restores 1/8 of its maximum HP, rounded down, if the weather is Rain Dance, and loses 1/8 of its maximum HP, rounded down, if the weather is Sunny Day.",
 		shortDesc: "This Pokemon is healed 1/4 by Water, 1/8 by Rain; is hurt 1.25x by Fire, 1/8 by Sun.",
 		onTryHit: function (target, source, move) {
@@ -67,6 +69,7 @@ exports.BattleAbilities = {
 		num: 87,
 	},
 	"chlorophyll": {
+		inherit: true,
 		shortDesc: "If Sunny Day is active, this Pokemon's Speed is doubled.",
 		onModifySpe: function (spe, pokemon) {
 			if (this.isWeather(['sunnyday', 'desolateland', 'solarsnow'])) {
@@ -84,6 +87,7 @@ exports.BattleAbilities = {
 	},
 
 	"slushrush": {
+		inherit: true,
 		shortDesc: "If Hail is active, this Pokemon's Speed is doubled.",
 		onModifySpe: function (spe, pokemon) {
 			if (this.isWeather(['hail', 'solarsnow'])) {
@@ -100,6 +104,7 @@ exports.BattleAbilities = {
 		num: 202,
 	},
 	"flowergift": {
+		inherit: true,
 		desc: "If this Pokemon is a Cherrim and Sunny Day is active, it changes to Sunshine Form and the Attack and Special Defense of it and its allies are multiplied by 1.5.",
 		shortDesc: "If user is Cherrim and Sunny Day is active, it and allies' Attack and Sp. Def are 1.5x.",
 		onStart: function (pokemon) {
@@ -148,6 +153,7 @@ exports.BattleAbilities = {
 	},
 
 	"icebody": {
+		inherit: true,
 		desc: "If Hail is active, this Pokemon restores 1/16 of its maximum HP, rounded down, at the end of each turn. This Pokemon takes no damage from Hail.",
 		shortDesc: "If Hail is active, this Pokemon heals 1/16 of its max HP each turn; immunity to Hail.",
 		onWeather: function (target, source, effect) {
@@ -168,6 +174,7 @@ exports.BattleAbilities = {
 		num: 115,
 	},
 	"leafguard": { //TODO: Add effects in inverted Sun.
+		inherit: true,
 		desc: "If Sunny Day is active, this Pokemon cannot gain a major status condition and Rest will fail for it.",
 		shortDesc: "If Sunny Day is active, this Pokemon cannot be statused and Rest will fail for it.",
 		onSetStatus: function (status, target, source, effect) {
@@ -192,6 +199,7 @@ exports.BattleAbilities = {
 	},
 
 	"solarpower": {
+		inherit: true,
 		desc: "If Sunny Day is active, this Pokemon's Special Attack is multiplied by 1.5 and it loses 1/8 of its maximum HP, rounded down, at the end of each turn.",
 		shortDesc: "If Sunny Day is active, this Pokemon's Sp. Atk is 1.5x; loses 1/8 max HP per turn.",
 		onModifySpAPriority: 5,
@@ -223,6 +231,7 @@ exports.BattleAbilities = {
 	},
 
 	"snowcloak": {
+		inherit: true,
 		desc: "If Hail is active, this Pokemon's evasiveness is multiplied by 1.25. This Pokemon takes no damage from Hail.",
 		shortDesc: "If Hail is active, this Pokemon's evasiveness is 1.25x; immunity to Hail.",
 		onImmunity: function (type, pokemon) {
@@ -247,6 +256,7 @@ exports.BattleAbilities = {
 	},
 
 	"drought": {
+		inherit: true,
 		shortDesc: "On switch-in, this Pokemon summons Sunny Day.",
 		onStart: function (source) {
 			for (const action of this.queue) {
@@ -261,6 +271,7 @@ exports.BattleAbilities = {
 		num: 70,
 	},
 	"snowwarning": {
+		inherit: true,
 		shortDesc: "On switch-in, this Pokemon summons Hail.",
 		onStart: function (source) {
 			if(!this.isWeather('solarsnow')) this.setWeather('hail');
@@ -271,6 +282,7 @@ exports.BattleAbilities = {
 		num: 117,
 	},
 	"overcoat": {
+		inherit: true,
 		shortDesc: "This Pokemon is immune to powder moves and damage from Sandstorm or Hail.",
 		onImmunity: function (type, pokemon) {
 			if (type === 'sandstorm' || type === 'hail' || type === 'solarsnow' || type === 'powder') return false;
@@ -288,6 +300,7 @@ exports.BattleAbilities = {
 		num: 142,
 	},
 	"harvest": {
+		inherit: true,
 		desc: "If the last item this Pokemon used is a Berry, there is a 50% chance it gets restored at the end of each turn. If Sunny Day is active, this chance is 100%.",
 		shortDesc: "If last item used is a Berry, 50% chance to restore it each end of turn. 100% in Sun.",
 		id: "harvest",
@@ -307,6 +320,7 @@ exports.BattleAbilities = {
 		num: 139,
 	},
 	"raindish": {
+		inherit: true,
 		desc: "If Rain Dance is active, this Pokemon restores 1/16 of its maximum HP, rounded down, at the end of each turn.",
 		shortDesc: "If Rain Dance is active, this Pokemon heals 1/16 of its max HP each turn.",
 		onWeather: function (target, source, effect) {
@@ -324,6 +338,7 @@ exports.BattleAbilities = {
 		num: 44,
 	},
 	"swiftswim": {
+		inherit: true,
 		shortDesc: "If Rain Dance is active, this Pokemon's Speed is doubled.",
 		onModifySpe: function (spe, pokemon) {
 			if (this.isWeather(['raindance', 'primordialsea'])) {
@@ -340,6 +355,7 @@ exports.BattleAbilities = {
 		num: 33,
 	},
 	"sandveil": {
+		inherit: true,
 		desc: "If Sandstorm is active, this Pokemon's evasiveness is multiplied by 1.25. This Pokemon takes no damage from Sandstorm.",
 		shortDesc: "If Sandstorm is active, this Pokemon's evasiveness is 1.25x; immunity to Sandstorm.",
 		onImmunity: function (type, pokemon) {
@@ -363,6 +379,7 @@ exports.BattleAbilities = {
 		num: 8,
 	},
 	"sandrush": {
+		inherit: true,
 		desc: "If Sandstorm is active, this Pokemon's Speed is doubled. This Pokemon takes no damage from Sandstorm.",
 		shortDesc: "If Sandstorm is active, this Pokemon's Speed is doubled; immunity to Sandstorm.",
 		onModifySpe: function (spe, pokemon) {
@@ -383,6 +400,7 @@ exports.BattleAbilities = {
 		num: 146,
 	},
 	"sandforce": {
+		inherit: true,
 		desc: "If Sandstorm is active, this Pokemon's Ground-, Rock-, and Steel-type attacks have their power multiplied by 1.3. This Pokemon takes no damage from Sandstorm.",
 		shortDesc: "This Pokemon's Ground/Rock/Steel attacks do 1.3x in Sandstorm; immunity to it.",
 		onBasePowerPriority: 8,
