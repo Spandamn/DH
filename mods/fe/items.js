@@ -4073,7 +4073,7 @@ exports.BattleItems = {
 		},
 		onBasePowerPriority: 6,
 		onBasePower: function (basePower, user, target, move) {
-			if ((user.baseTemplate.num === 487 || user.baseTemplate.num === 7500460) && (move.type === 'Ghost' || move.type === 'Dragon')) {
+			if ((user.baseTemplate.num === 487 || user.hasAbility('whatdoesthisdo')) && (move.type === 'Ghost' || move.type === 'Dragon')) {
 				return this.chainModify([0x1333, 0x1000]);
 			}
 		},
@@ -4088,5 +4088,180 @@ exports.BattleItems = {
 		num: 112,
 		gen: 4,
 		desc: "If held by a Giratina, its Ghost- and Dragon-type attacks have 1.2x power.",
+	},
+	"adamantorb": {
+		inherit: true,
+		id: "adamantorb",
+		name: "Adamant Orb",
+		spritenum: 4,
+		fling: {
+			basePower: 60,
+		},
+		onBasePowerPriority: 6,
+		onBasePower: function (basePower, user, target, move) {
+			if (move && (user.baseTemplate.species === 'Dialga' || user.hasAbility('whatdoesthisdo')) && (move.type === 'Steel' || move.type === 'Dragon')) {
+				return this.chainModify([0x1333, 0x1000]);
+			}
+		},
+		num: 135,
+		gen: 4,
+		desc: "If held by a Dialga, its Steel- and Dragon-type attacks have 1.2x power.",
+	},
+	"lustrousorb": {
+		inherit: true,
+		id: "lustrousorb",
+		name: "Lustrous Orb",
+		spritenum: 265,
+		fling: {
+			basePower: 60,
+		},
+		onBasePowerPriority: 6,
+		onBasePower: function (basePower, user, target, move) {
+			if (move && (user.baseTemplate.species === 'Palkia' || user.hasAbility('whatdoesthisdo')) && (move.type === 'Water' || move.type === 'Dragon')) {
+				return this.chainModify([0x1333, 0x1000]);
+			}
+		},
+		num: 136,
+		gen: 4,
+		desc: "If held by a Palkia, its Water- and Dragon-type attacks have 1.2x power.",
+	},
+	"eviolite": {
+		inherit: true,
+		id: "eviolite",
+		name: "Eviolite",
+		spritenum: 130,
+		fling: {
+			basePower: 40,
+		},
+		onModifyDefPriority: 2,
+		onModifyDef: function (def, pokemon) {
+			if (pokemon.baseTemplate.nfe || pokemon.hasAbility('whatdoesthisdo')) {
+				return this.chainModify(1.5);
+			}
+		},
+		onModifySpDPriority: 2,
+		onModifySpD: function (spd, pokemon) {
+			if (pokemon.baseTemplate.nfe || pokemon.hasAbility('whatdoesthisdo')) {
+				return this.chainModify(1.5);
+			}
+		},
+		num: 538,
+		gen: 5,
+		desc: "If holder's species can evolve, its Defense and Sp. Def are 1.5x.",
+	},
+	"lightball": {
+		inherit: true,
+		id: "lightball",
+		name: "Light Ball",
+		spritenum: 251,
+		fling: {
+			basePower: 30,
+			status: 'par',
+		},
+		onModifyAtkPriority: 1,
+		onModifyAtk: function (atk, pokemon) {
+			if (pokemon.baseTemplate.baseSpecies === 'Pikachu' || pokemon.hasAbility('whatdoesthisdo')) {
+				return this.chainModify(2);
+			}
+		},
+		onModifySpAPriority: 1,
+		onModifySpA: function (spa, pokemon) {
+			if (pokemon.baseTemplate.baseSpecies === 'Pikachu' || pokemon.hasAbility('whatdoesthisdo')) {
+				return this.chainModify(2);
+			}
+		},
+		num: 236,
+		gen: 2,
+		desc: "If held by a Pikachu, its Attack and Sp. Atk are doubled.",
+	},
+	"thickclub": {
+		inherit: true,
+		id: "thickclub",
+		name: "Thick Club",
+		spritenum: 491,
+		fling: {
+			basePower: 90,
+		},
+		onModifyAtkPriority: 1,
+		onModifyAtk: function (atk, pokemon) {
+			if (pokemon.baseTemplate.baseSpecies === 'Cubone' || pokemon.baseTemplate.baseSpecies === 'Marowak' || pokemon.hasAbility('whatdoesthisdo')) {
+				return this.chainModify(2);
+			}
+		},
+		num: 258,
+		gen: 2,
+		desc: "If held by a Cubone or a Marowak, its Attack is doubled.",
+	},
+	"luckypunch": {
+		inherit: true,
+		id: "luckypunch",
+		name: "Lucky Punch",
+		spritenum: 261,
+		fling: {
+			basePower: 40,
+		},
+		onModifyCritRatio: function (critRatio, user) {
+			if (user.baseTemplate.species === 'Chansey' || user.hasAbility('whatdoesthisdo')) {
+				return critRatio + 2;
+			}
+		},
+		num: 256,
+		gen: 2,
+		desc: "If held by a Chansey, its critical hit ratio is raised by 2 stages.",
+	},
+	"stick": {
+		inherit: true,
+		id: "stick",
+		name: "Stick",
+		fling: {
+			basePower: 60,
+		},
+		spritenum: 475,
+		onModifyCritRatio: function (critRatio, user) {
+			if (user.baseTemplate.species === 'Farfetch\'d' || user.hasAbility('whatdoesthisdo')) {
+				return critRatio + 2;
+			}
+		},
+		num: 259,
+		gen: 2,
+		desc: "If held by a Farfetch'd, its critical hit ratio is raised by 2 stages.",
+	},
+	"deepseascale": {
+		inherit: true,
+		id: "deepseascale",
+		name: "Deep Sea Scale",
+		spritenum: 93,
+		fling: {
+			basePower: 30,
+		},
+		onModifySpDPriority: 2,
+		onModifySpD: function (spd, pokemon) {
+			if (pokemon.baseTemplate.species === 'Clamperl' || pokemon.hasAbility('whatdoesthisdo')) {
+				return this.chainModify(2);
+			}
+		},
+		num: 227,
+		gen: 3,
+		desc: "If held by a Clamperl, its Sp. Def is doubled. Evolves Clamperl into Gorebyss when traded.",
+		shortDesc: "If held by a Clamperl, its Sp. Def is doubled.",
+	},
+	"deepseatooth": {
+		inherit: true,
+		id: "deepseatooth",
+		name: "Deep Sea Tooth",
+		spritenum: 94,
+		fling: {
+			basePower: 90,
+		},
+		onModifySpAPriority: 1,
+		onModifySpA: function (spa, pokemon) {
+			if (pokemon.baseTemplate.species === 'Clamperl' || pokemon.hasAbility('whatdoesthisdo')) {
+				return this.chainModify(2);
+			}
+		},
+		num: 226,
+		gen: 3,
+		desc: "If held by a Clamperl, its Sp. Atk is doubled. Evolves Clamperl into Huntail when traded.",
+		shortDesc: "If held by a Clamperl, its Sp. Atk is doubled.",
 	},
 };
