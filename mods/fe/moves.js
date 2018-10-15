@@ -833,6 +833,7 @@ exports.BattleMovedex = {
 		//contestType: "Tough",
 	},
 "thunder": {
+		inherit: true,
 		num: 87,
 		accuracy: 70,
 		basePower: 110,
@@ -846,9 +847,9 @@ exports.BattleMovedex = {
 		priority: 0,
 		flags: {protect: 1, mirror: 1},
 		onModifyMove: function (move) {
-			if (this.isWeather(['raindance', 'primordialsea'])) {
+			if (this.isWeather(['raindance', 'primordialsea']) === move.isInInvertedWeather) {
 				move.accuracy = true;
-			} else if (this.isWeather(['sunnyday', 'desolateland', 'solarsnow'])) {
+			} else if (this.isWeather(['sunnyday', 'desolateland', 'solarsnow']) === move.isInInvertedWeather) {
 				move.accuracy = 50;
 			}
 		},
@@ -862,6 +863,7 @@ exports.BattleMovedex = {
 		//contestType: "Cool",
 	},
 "dig": {
+		inherit: true,
 		num: 91,
 		accuracy: 100,
 		basePower: 80,
@@ -913,6 +915,7 @@ exports.BattleMovedex = {
 		//contestType: "Tough",
 	},
 	"dive": {
+		inherit: true,
 		num: 291,
 		accuracy: 100,
 		basePower: 80,
@@ -964,6 +967,7 @@ exports.BattleMovedex = {
 		//contestType: "Beautiful",
 	},
 	"weatherball": {
+		inherit: true,
 		num: 311,
 		accuracy: 100,
 		basePower: 50,
@@ -9600,6 +9604,56 @@ exports.BattleMovedex = {
 		type: "Ground",
 		zMovePower: 200,
 		contestType: "Tough",
+	},
+	"toxeed": {
+		accuracy: 90,
+		basePower: 0,
+		category: "Status",
+		desc: "The target is badly poisoned. The Pokemon at the user's position heals the damage from this poisoning at the end of each turn. If Big Root is held by the recipient, the HP recovered is 1.3x normal, rounded half down. If the target uses Baton Pass and switches out for another badly poisoned Pokemon, the replacement will continue being leeched. If the target switches out or uses Rapid Spin successfully, the effect ends. Grass-type Pokemon and Pokemon immune to poisoning are immune to this move on use, but not its effect.",
+		shortDesc: "Badly poisons the target. Toxic damage from this move is restored to user every turn.",
+		id: "toxeed",
+		isViable: true,
+		name: "Toxeed",
+		pp: 10,
+		priority: 0,
+		flags: {protect: 1, reflectable: 1, mirror: 1},
+		volatileStatus: 'toxeed',
+		effect: {
+			onStart: function (target) {
+				if (target.status === 'tox'){
+					this.add('-start', target, 'move: Toxeed');
+				} else {
+					target.removeVolatile('toxeed');
+				}
+			},
+			onUpdate: function (pokemon) {
+				if (pokemon.status !== 'tox') pokemon.removeVolatile('toxeed');
+			},
+			onDamage: function (damage, target, source, effect) {
+				if (effect && effect.id === 'tox') {
+					let healTarget = this.effectData.source.side.active[target.volatiles['toxeed'].sourcePosition];
+					if (!healTarget || healTarget.fainted || healTarget.hp <= 0) {
+						this.debug('Nothing to leech into');
+						return;
+					}
+					this.heal(damage, healTarget, target);
+				}
+			},
+		},
+		onTryHit: function (target) {
+			if (target.hasType('Grass')) {
+				this.add('-immune', target, '[msg]');
+				return null;
+			}
+			if (!target.trySetStatus('tox')){
+				return false;
+			}
+		},
+		secondary: null,
+		target: "normal",
+		type: "Grass",
+		zMoveBoost: {def: 1},
+		contestType: "Clever",
 	},
 };
 
