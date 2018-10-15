@@ -4264,4 +4264,22 @@ exports.BattleItems = {
 		desc: "If held by a Clamperl, its Sp. Atk is doubled. Evolves Clamperl into Huntail when traded.",
 		shortDesc: "If held by a Clamperl, its Sp. Atk is doubled.",
 	},
+	"souldew": {
+		inherit: true,
+		id: "souldew",
+		name: "Soul Dew",
+		spritenum: 459,
+		fling: {
+			basePower: 30,
+		},
+		onBasePowerPriority: 6,
+		onBasePower: function (basePower, user, target, move) {
+			if (move && (user.baseTemplate.num === 380 || user.baseTemplate.num === 381 || user.hasAbility('whatdoesthisdo')) && (move.type === 'Psychic' || move.type === 'Dragon')) {
+				return this.chainModify([0x1333, 0x1000]);
+			}
+		},
+		num: 225,
+		gen: 3,
+		desc: "If held by a Latias/Latios, its Dragon- and Psychic-type moves have 1.2x power.",
+	},
 };
