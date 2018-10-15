@@ -8129,7 +8129,7 @@ exports.BattleAbilities = {
 						 statsflipped = statsflipped + 1;
 	            }
 	        }
-           this.boost({[stat]: statsflipped}, source);
+           boost[stat] = boost[stat] + statsflipped;
 	    },
 	    onSourceFaint: function(target, source, effect) {
 	        if (effect && effect.effectType === 'Move') {
