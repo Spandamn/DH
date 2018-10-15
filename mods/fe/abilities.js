@@ -3960,7 +3960,7 @@ exports.BattleAbilities = {
 	"darklight": {
 		shortDesc: "Provides immunity to super effective attacks and heals 25% of its health instead. This Ability cannot be ignored.",
 		onTryHit: function (target, source, move) {
-			if (target !== source && move.typeMod > 0) {
+			if (target !== source && target.runEffectiveness(move) > 0) {
 				if (!this.heal(target.maxhp / 4)) {
 					this.add('-immune', target, '[msg]', '[from] ability: Dark Light');
 				}
@@ -3987,13 +3987,13 @@ exports.BattleAbilities = {
 		},
 		onModifyAtkPriority: 5,
 		onModifyAtk: function(atk, attacker, defender, move) {
-			if (move.type === 'Water' || move.type === 'Rock' && attacker.hp <= attacker.maxhp / 2) {
+			if (move.type === 'Grass' || move.type === 'Rock' && attacker.hp <= attacker.maxhp / 2) {
 				return this.chainModify(1.5);
 			}
 		},
 		onModifySpAPriority: 5,
 		onModifySpA: function(atk, attacker, defender, move) {
-			if (move.type === 'Water' || move.type === 'Rock' && attacker.hp <= attacker.maxhp / 2) {
+			if (move.type === 'Grass' || move.type === 'Rock' && attacker.hp <= attacker.maxhp / 2) {
 				return this.chainModify(1.5);
 			}
 		},
