@@ -3560,12 +3560,9 @@ exports.BattleAbilities = {
 		name: "Thermophilic",
 	},
 	"planinaction": {
-		shortDesc: "This Pokemon's Attack is raised by 1 stage after it is damaged by a Dark-type move.",
+		shortDesc: "Upon switch-in, this Pokemon's Attack is raised by one stage. When this Pokemon is active, all Dark-type moves have 1.33x power.",
 		onStart: function(pokemon) {
-			this.add('-ability', pokemon, 'Plan In Action');
-			this.boost({
-				atk: 1
-			});
+			this.boost({atk: 1});
 		},
 		onAnyBasePower: function(basePower, source, target, move) {
 			if (target === source || move.category === 'Status' || move.type !== 'Dark' || move.auraBoost) return;
@@ -6130,7 +6127,7 @@ exports.BattleAbilities = {
 		onFoeTryMove: function (target, source, effect) {
 			if ((source.side === this.effectData.target.side || effect.id === 'perishsong') && effect.priority > 0.1 && effect.target !== 'foeSide') {
 				this.attrLastMove('[still]');
-				this.add('cant', this.effectData.target, 'ability: Dazzling', effect, '[of] ' + target);
+				this.add('cant', this.effectData.target, 'ability: Dazzle Beast', effect, '[of] ' + target);
 					let stat = 'atk';
 					let bestStat = 0;
 					for (let i in source.stats) {
@@ -10915,7 +10912,7 @@ exports.BattleAbilities = {
 		name: "Beast Eye",
 	},
 	"weatherbreak": {
-		desc: "When this Pokemon is active, ll weather-based effects, including abilities and passive stat increases, are reversed.",
+		desc: "When this Pokemon is active, all weather-based effects, including abilities and passive stat increases, are reversed.",
 		shortDesc: "When this Pokemon is active, all weather-based effects are reversed.",
 		onStart: function (pokemon) {
 			this.add('-ability', pokemon, 'Weather Break');
@@ -10938,7 +10935,7 @@ exports.BattleAbilities = {
 		onEnd: function (pokemon) {
 			for (const side of this.sides) {
 				for (const target of side.active) {
-					if (target.hasAbility('weatherbreak') && target !== pokemon) return;
+					if (target.hasAbility('weatherbreak') && target !== pokemon && !target.ignoringAbility()) return;
 				}
 			}
 			for (const side of this.sides) {
@@ -10975,7 +10972,7 @@ exports.BattleAbilities = {
 		onEnd: function (pokemon) {
 			for (const side of this.sides) {
 				for (const target of side.active) {
-					if ((target.hasAbility('atmosphericperversion') || target.hasAbility('weathercontradiction')) && target !== pokemon) return;
+					if ((target.hasAbility('atmosphericperversion') || target.hasAbility('weathercontradiction')) && target !== pokemon && !target.ignoringAbility()) return;
 				}
 			}
 			for (const side of this.sides) {
@@ -11019,7 +11016,7 @@ exports.BattleAbilities = {
 		onEnd: function (pokemon) {
 			for (const side of this.sides) {
 				for (const target of side.active) {
-					if ((target.hasAbility('atmosphericperversion') || target.hasAbility('weathercontradiction')) && target !== pokemon) return;
+					if ((target.hasAbility('atmosphericperversion') || target.hasAbility('weathercontradiction')) && target !== pokemon && !target.ignoringAbility()) return;
 				}
 			}
 			for (const side of this.sides) {
@@ -11270,7 +11267,7 @@ exports.BattleAbilities = {
 		onAfterDamage: function (damage, target, source, move) {
 			if (source && source !== target && move && move.flags['contact']) {
 				if (this.isWeather(['raindance', 'primordialsea'])) {
-					if (pokemon.volatiles['atmosphericperversion'] == pokemon.volatiles['weatherbreak']){
+					if (target.volatiles['atmosphericperversion'] == target.volatiles['weatherbreak']){
 						this.damage(source.maxhp / 4, source, target);
 					} else {
 						this.damage(source.maxhp / 16, source, target);
@@ -12793,7 +12790,7 @@ exports.BattleAbilities = {
         for (const side of this.sides) {
             for (const target of side.active) {
                 if (target === pokemon) continue;
-                if (target && target.hp && target.hasAbility('sluggishaura')) {
+                if (target && target.hp && target.hasAbility('sluggishaura') && !target.ignoringAbility()) {
                     return;
                 }
             }
