@@ -9982,11 +9982,10 @@ exports.BattleAbilities = {
 	},
 		"sensei": {
 	    shortDesc: "This Pokemon's punching moves have the same base power as its most powerful move.",
-	    onBasePowerPriority: 8,
+	    onBasePowerPriority: 11,
 	    onBasePower: function(basePower, attacker, defender, move) {
 	        if (move.flags['punch']) {
-	            this.debug('Iron Fist boost');
-	            let warnMoves = [];
+	            this.debug('Sensei boost');
 	            let warnBp = move.basePower;
 	            for (const moveSlot of attacker.moveSlots) {
 	                let moves = this.getMove(moveSlot.move);
@@ -9995,15 +9994,10 @@ exports.BattleAbilities = {
 	                if (moves.id === 'counter' || moves.id === 'metalburst' || moves.id === 'mirrorcoat') bp = 120;
 	                if (!bp && moves.category !== 'Status') bp = 80;
 	                if (bp > warnBp) {
-	                    warnMoves = [
-	                        [moves, attacker]
-	                    ];
 	                    warnBp = bp;
-	                } else if (bp === warnBp) {
-	                    warnMoves.push([moves, attacker]);
 	                }
 	            }
-	            return this.chainModify(warnBp / move.basePower);
+	            return warnBp;
 	        }
 	    },
 	    id: "sensei",
@@ -12809,4 +12803,18 @@ exports.BattleAbilities = {
     id: "sluggishaura",
     name: "Sluggish Aura",
 },
+	"pressurizer": {
+		desc: "The Base Power of damaging moves against this Pokemon is set to 60, and non-damaging moves have their PP consumption doubled.",
+		shortDesc: "Damaging moves targeting this Pokemon have 60 Base Power, while non-damaging have their PP consumption doubled.",
+		onBasePowerPriority: 10,
+		onSourceBasePower: function (basePower, attacker, defender, move) {
+			return 60;
+		},
+		onDeductPP: function (target, source, move) {
+			if (move.category !== 'Status' || target.side === source.side) return;
+			return 1;
+		},
+		id: "pressurizer",
+		name: "Pressurizer",
+	},
 };
