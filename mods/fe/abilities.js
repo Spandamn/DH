@@ -3784,8 +3784,8 @@ exports.BattleAbilities = {
 			if (move.meteorshowerBoosted) return this.chainModify(1.5);
 		},
 		onModifySpDPriority: 4,
-		onModifySpD: function(spd, pokemon) {
-			if (pokemon.type === 'Rock') {
+		onAnyModifySpD: function(spd, pokemon) {
+			if (pokemon.hasType('Rock')) {
 				return this.chainModify(1.5);
 			}
 		},
@@ -3843,7 +3843,7 @@ exports.BattleAbilities = {
 		shortDesc: "While this Pokemon is active, Water and Rock-Type Pokemon Special Defense is boosted by 50%. Raises the power of Water and Rock-type moves by 50% when at 1/2 HP or less.",
 		onModifySpDPriority: 4,
 		onModifySpD: function(spd, pokemon) {
-			if (pokemon.type === 'Rock' || pokemon.type === 'Water') {
+			if (pokemon.hasType(['Rock', 'Water'])) {
 				return this.chainModify(1.5);
 			}
 		},
@@ -3978,9 +3978,9 @@ exports.BattleAbilities = {
 	},
 	"ancientfoliage": {
 		shortDesc: "While this Pokemon is active, Grass and Rock-Type Pokemon Special Defense is boosted by 50%. Raises the power of Grass and Rock-type moves by 50% when at 1/2 HP or less.",
-		onAnyModifySpDPriority: 4,
+		onModifySpDPriority: 4,
 		onAnyModifySpD: function(spd, pokemon) {
-			if (pokemon.hasType('Rock') || pokemon.hasType('Grass')) {
+			if (pokemon.hasType(['Rock', 'Grass'])) {
 				return this.chainModify(1.5);
 			}
 		},
@@ -5110,8 +5110,8 @@ exports.BattleAbilities = {
 			}
 		},
 		onAllyModifyMove: function(move, pokemon) {
-			if (pokemon.type === 'Grass' || move.type === 'Grass') {
-				move.stab = 3;
+			if (pokemon.hasType('Grass') && move.type === 'Grass') {
+				move.stab = 2.25;
 			}
 		},
 		id: "surgebloom",
@@ -6448,8 +6448,8 @@ exports.BattleAbilities = {
 	},
 	"diamondshield": {
 		shortDesc: "While this Pokemon is active, Rock type Pokemon receive 3/4 damage from all attacks.",
-		onSourceModifyDamage: function (damage, source, target, move) {
-			if (target.type === 'Rock') {
+		onAnyModifyDamage: function (damage, source, target, move) {
+			if (target.hasType('Rock')) {
 				return this.chainModify(0.75);
 			}
 		},
