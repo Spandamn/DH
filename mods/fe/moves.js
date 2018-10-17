@@ -9677,5 +9677,49 @@ exports.BattleMovedex = {
 		zMovePower: 160,
 		contestType: "Tough",
 	},
+	"maglevrailway": {
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		desc: "For 4 turns, the user and its party members have their Speed doubled and are immune to Ground. Fails if this move is already in effect for the user's side.",
+		shortDesc: "For 4 turns, allies are immune to ground and have doubled Speed.",
+		id: "maglevrailway",
+		isViable: true,
+		name: "Maglev Railway",
+		pp: 10,
+		priority: 0,
+		flags: {snatch: 1},
+		sideCondition: 'maglevrailway',
+		effect: {
+			duration: 4,
+			durationCallback: function (target, source, effect) {
+				if (source && source.hasAbility('persistent')) {
+					this.add('-activate', source, 'ability: Persistent', effect);
+					return 6;
+				}
+				return 4;
+			},
+			onStart: function (side) {
+				this.add('-sidestart', side, 'move: Maglev Railway');
+			},
+			onImmunity: function (type) {
+				if (type === 'Ground') return false;
+			},
+			onModifySpe: function (spe, pokemon) {
+				return this.chainModify(2);
+			},
+			//Airborneness is implemented in scripts.js/pokemon#isGrounded().
+			onResidualOrder: 21,
+			onResidualSubOrder: 4,
+			onEnd: function (side) {
+				this.add('-sideend', side, 'move: Maglev Railway');
+			},
+		},
+		secondary: null,
+		target: "allySide",
+		type: "Electric",
+		zMoveEffect: 'crit2',
+		contestType: "Cool",
+	},
 };
 
