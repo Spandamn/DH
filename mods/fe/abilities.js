@@ -9948,7 +9948,7 @@ exports.BattleAbilities = {
 	"sporespreading": {
 		shortDesc: "Healing Moves and moves with a chance to Poison, Sleep, or Paralyze the opponent have +1 priority.",
 		onModifyPriority: function (priority, pokemon, target, move) {
-			if (move && move.flags['heal'] || move.id === 'triattack' || (move.secondary && move.secondary.status && (move.secondary.status === 'psn' || move.secondary.status === 'par' || move.secondary.status === 'slp')) || (move.status && (move.status === 'psn' || move.status === 'slp' || move.status === 'par'))) return priority + 1;
+			if (move && move.flags['heal'] || move.id === 'triattack' || move.id === 'septicshock' || (move.secondary && move.secondary.status && (['psn', 'par', 'tox', 'slp'].includes(move.secondary.status))) || (move.status && ['psn', 'par', 'tox', 'slp'].includes(move.status))) return priority + 1;
 		},
 		id: "sporespreading",
 		name: "Spore Spreading",
