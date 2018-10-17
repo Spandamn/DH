@@ -1714,7 +1714,7 @@ exports.BattleItems = {
     },
     "heratanaite": {
         id: "heratanaite",
-        name: "Heratanaite",
+        name: "heratanaite",
         spritenum: 590,
 		 
         megaStone: "Heratana-Mega",
