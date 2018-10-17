@@ -12784,7 +12784,7 @@ exports.BattleAbilities = {
         for (const side of this.sides) {
             for (const target of side.active) {
                 if (target === pokemon) continue;
-                if (target && target.hp && target.hasAbility('sluggishaura') && !target.ignoringAbility()) {
+                if (target && target.hp && target.hasAbility('sluggishaura') && !target.volatiles['gastroacid']) {
                     return;
                 }
             }
