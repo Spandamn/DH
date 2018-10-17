@@ -9655,5 +9655,27 @@ exports.BattleMovedex = {
 		zMoveBoost: {def: 1},
 		contestType: "Clever",
 	},
+	"searingglare": {
+		accuracy: 100,
+		basePower: 80,
+		category: "Special",
+		desc: "Has a 100% chance to paralyze the target.",
+		shortDesc: "100% chance to paralyze the target.",
+		id: "searingglare",
+		isViable: true,
+		name: "Searing Glare",
+		pp: 15,
+		priority: 0,
+		flags: {protect: 1, mirror: 1},
+		thawsTarget: true,
+		secondary: {
+			chance: 100,
+			status: 'par',
+		},
+		target: "normal",
+		type: "Water",
+		zMovePower: 160,
+		contestType: "Tough",
+	},
 };
 
