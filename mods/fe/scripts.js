@@ -356,6 +356,7 @@ exports.BattleScripts = {
             //Compression protects Unleashed Giramini from Ground-type moves, but not Captive.
             if (this.hasAbility('compression') && this.template.species === 'Giramini-Unleashed' && !this.battle.suppressingAttackEvents()) return null;
             if ('magnetrise' in this.volatiles) return false;
+			   if ('maglevrailway' in this.side.sideConditions) return false;
             if ('telekinesis' in this.volatiles) return false;
             return !totalItems.includes('airballoon');
         },
