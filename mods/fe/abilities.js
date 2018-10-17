@@ -11966,6 +11966,7 @@ exports.BattleAbilities = {
 			this.add('-item', randomTarget, randomTarget.getItem().name, '[from] ability: Golden Touch', '[of] ' + pokemon, '[identify]');
 			pokemon.addVolatile('goldentouch');
 			pokemon.volatiles['goldentouch'].item = randomTarget.item;
+			this.singleEvent('Start', randomTarget.getItem(), {id: randomTarget.getItem().id, target: pokemon}, pokemon);
 		},
 		id: "goldentouch",
 		name: "Golden Touch",
@@ -12660,6 +12661,7 @@ exports.BattleAbilities = {
             if (target.getItem() === source.getItem() || (source.volatiles['beastbootleg'].items && source.volatiles['beastbootleg'].items.includes(target.getItem().id))) return;
             if (source.volatiles['goldentouch'] && source.volatiles['goldentouch'].item === target.item) return;
             source.volatiles['beastbootleg'].items = [source.volatiles['beastbootleg'].items[1], target.item];
+				this.singleEvent('Start', target.getItem(), {id: target.getItem().id, target: source}, source);
         }
     },
     //Implementing volatiles['beastbootleg'].items working its magic likely goes into scripts.js
