@@ -12340,9 +12340,7 @@ exports.BattleAbilities = {
                 bestStat = pokemon.stats[i];
             }
         }
-        this.boost({
-            [stat]: 1
-        }, pokemon);
+        this.boost({[stat]: 1}, pokemon);
     },
     id: "bloodmadecrops",
     name: "Blood-Made Crops",
