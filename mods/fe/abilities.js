@@ -3746,7 +3746,7 @@ exports.BattleAbilities = {
 				if (this.queue[i].choice === 'runPrimal' && this.queue[i].pokemon === source && source.template.speciesid === 'groudon') return;
 				if (this.queue[i].choice !== 'runSwitch' && this.queue[i].choice !== 'runPrimal') break;
 			}
-			this.setWeather('sandstream');
+			this.setWeather('sandstorm');
 		},
 		id: "sandmistsurge",
 		name: "Sandmist Surge",
@@ -8847,7 +8847,7 @@ exports.BattleAbilities = {
 				return target.hp - 1;
 			}
 		},
-		id: "sandstream",
+		id: "solidsand",
 		name: "Solid Sand",
 	},
 	"ambulance": {
