@@ -3548,9 +3548,9 @@ exports.BattlePokedex = {
         color: "Yellow",
         eggGroups: ["Undiscovered"],
     },
-    lucharma: {
+    lucharama: {
         num: 750061,
-        species: "Lucharma",
+        species: "Lucharama",
         types: ["Fighting", "Flying"],
         genderRatio: {
             M: 0.5,
