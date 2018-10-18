@@ -1865,9 +1865,9 @@ exports.BattleAbilities = {
 	"hydrostream": {
 		shortDesc: "On switch-in, this Pokemon summons Rain Dance.",
 		onStart: function(source) {
-			for (let i = 0; i < this.queue.length; i++) {
-				if (this.queue[i].choice === 'runPrimal' && this.queue[i].pokemon === source && source.template.speciesid === 'kyogre') return;
-				if (this.queue[i].choice !== 'runSwitch' && this.queue[i].choice !== 'runPrimal') break;
+			for (const action of this.queue) {
+				if (action.choice === 'runPrimal' && action.pokemon === source && source.template.speciesid === 'kyogre') return;
+				if (action.choice !== 'runSwitch' && action.choice !== 'runPrimal') break;
 			}
 			this.setWeather('raindance');
 		},
@@ -2835,7 +2835,7 @@ exports.BattleAbilities = {
 		name: "Pixie Lure",
 	},
 	"flowerpower": {
-		shortDesc: "Increases Attack and Special Defense by 1.5x, no ifs or buts about it.",
+		shortDesc: "This Pokemon's Attack and Special Defense are 1.5x at all times.",
 		onModifyAtkPriority: 5,
 		onModifyAtk: function(atk, pokemon) {
 			return this.chainModify(1.5);
@@ -2952,9 +2952,9 @@ exports.BattleAbilities = {
 	"electronrain": {
 		shortDesc: "Sp. Atk under Rain is 1.5x. Summons Rain upon switching in.",
 		onStart: function(source) {
-			for (let i = 0; i < this.queue.length; i++) {
-				if (this.queue[i].choice === 'runPrimal' && this.queue[i].pokemon === source && source.template.speciesid === 'kyogre') return;
-				if (this.queue[i].choice !== 'runSwitch' && this.queue[i].choice !== 'runPrimal') break;
+			for (const action of this.queue) {
+				if (action.choice === 'runPrimal' && action.pokemon === source && source.template.speciesid === 'kyonun') return;
+				if (action.choice !== 'runSwitch' && action.choice !== 'runPrimal') break;
 			}
 			this.setWeather('raindance');
 		},
@@ -3587,12 +3587,12 @@ exports.BattleAbilities = {
 		name: "Enchanted Skull",
 	},
 	"thunderstormsurge": {
-		shortDesc: "On switch-in, this Pokemon summons Rain + Electric Terrain.",
+		shortDesc: "On switch-in, this Pokemon summons Rain Dance and Electric Terrain.",
 		onStart: function(source) {
 			this.setTerrain('electricterrain');
-			for (let i = 0; i < this.queue.length; i++) {
-				if (this.queue[i].choice === 'runPrimal' && this.queue[i].pokemon === source && source.template.speciesid === 'kyogre') return;
-				if (this.queue[i].choice !== 'runSwitch' && this.queue[i].choice !== 'runPrimal') break;
+			for (const action of this.queue) {
+				if (action.choice === 'runPrimal' && action.pokemon === source && source.template.speciesid === 'kyogre') return;
+				if (action.choice !== 'runSwitch' && action.choice !== 'runPrimal') break;
 			}
 			this.setWeather('raindance');
 		},
@@ -5934,10 +5934,10 @@ exports.BattleAbilities = {
 						bestStat = source.stats[i];
 					}
 				}
-			if (target && target !== source && move && move.flags['contact']) {
-				this.damage(target.maxhp / 8, target, source);
-				this.boost({[stat]: 1}, source);
-			}
+				if (target && target !== source && move && move.flags['contact']) {
+					this.damage(target.maxhp / 8, target, source);
+					this.boost({[stat]: 1}, source);
+				}
 			}
 		},
 		onSourceFaint: function (target, source, effect) {
@@ -5959,6 +5959,10 @@ exports.BattleAbilities = {
 	'atmosphericpull': {
 		shortDesc: "Summons Gravity upon switch-in.",
 		onStart: function(source) {
+			for (const action of this.queue) {
+				if (action.choice === 'runPrimal' && action.pokemon === source && source.template.speciesid === 'glaive') return;
+				if (action.choice !== 'runSwitch' && action.choice !== 'runPrimal') break;
+			}
 			this.useMove('Gravity', source);
 		},
 		id: "atmosphericpull",
@@ -10946,6 +10950,10 @@ exports.BattleAbilities = {
 		desc: "When this Pokemon is active, ll weather-based effects, including abilities and passive stat increases, are reversed.",
 		shortDesc: "When this Pokemon is active, all weather-based effects are reversed.",
 		onStart: function (pokemon) {
+			for (const action of this.queue) {
+				if (action.choice === 'runPrimal' && action.pokemon === source && source.template.speciesid === 'kyervine') return;
+				if (action.choice !== 'runSwitch' && action.choice !== 'runPrimal') break;
+			}
 			this.add('-ability', pokemon, 'Atmospheric Perversion');
 			for (const side of this.sides) {
 				for (const target of side.active) {
