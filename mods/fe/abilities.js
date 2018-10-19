@@ -11975,6 +11975,7 @@ exports.BattleAbilities = {
 			pokemon.addVolatile('goldentouch');
 			pokemon.volatiles['goldentouch'].item = randomTarget.item;
 			this.singleEvent('Start', randomTarget.getItem(), {id: randomTarget.getItem().id, target: pokemon}, pokemon);
+			pokemon.abilityData = {id: randomTarget.getItem().id, target: pokemon};
 		},
 		id: "goldentouch",
 		name: "Golden Touch",
