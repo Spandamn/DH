@@ -51,6 +51,7 @@ exports.BattleScripts = {
 
 		let movename = move.name;
 		if (move.id === 'hiddenpower') movename = 'Hidden Power';
+		if (move.id === 'hiddengem') movename = 'Hidden Gem';
 		if (sourceEffect) attrs += '|[from]' + this.getEffect(sourceEffect);
 		if (zMove && move.isZ === true) {
 			attrs = '|[anim]' + movename + attrs;
