@@ -1370,6 +1370,20 @@ exports.BattleItems = {
 		gen: 7,
 		desc: "If holder is a Seismitoad, this item allows it to Mega Evolve in battle.",
 	},
+	"serperiorite": {
+		id: "serperiorite",
+		name: "Serperiorite",
+		spritenum: 620,
+		megaStone: "Serperior-Mega",
+		megaEvolves: "Serperior",
+		onTakeItem: function (item, source) {
+			if (item.megaEvolves === source.baseTemplate.baseSpecies) return false;
+			return true;
+		},
+		num: 760,
+		gen: 7,
+		desc: "If holder is a Serperior, this item allows it to Mega Evolve in battle.",
+	},
 	"seviperite": {
 		id: "seviperite",
 		name: "Seviperite",
