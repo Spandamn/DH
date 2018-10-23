@@ -9270,7 +9270,7 @@ exports.BattleMovedex = {
 		priority: 0,
 		flags: {protect: 1, mirror: 1},
 		onEffectiveness: function (typeMod, type) {
-			if (type === 'Water' || type === 'Electric' || type === 'Fire') return 1;
+			if (type === 'Ice' || type === 'Electric' || type === 'Fire') return 1;
 		},
 		target: "normal",
 		type: "Ice",
