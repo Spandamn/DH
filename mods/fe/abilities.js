@@ -6985,24 +6985,21 @@ exports.BattleAbilities = {
 	},
 		"steamsauna": {
 		shortDesc: "If the opponent uses a Water-type move, this Pokemon restores 25% of its HP and 30% chance to burn each opponent; Water immunity.",
-		onTryHit: function(target, source, pokemon, move) {
+		onTryHit: function(target, source, move) {
 			if (target !== source && move.type === 'Water') {
 				if (!this.heal(target.maxhp / 4)) {
 					this.add('-immune', target, '[msg]', '[from] ability: Steam Sauna');
 				}
-				if (move && !source.status) {
-					source.trySetStatus('brn', target);
+				for (const target2 of source.side.active) {
+					let activated = false;
+   				if (!target2 || !this.isAdjacent(target2, target)) continue;
+    				if (!activated) {
+        				activated = true;
+    				}
+    				if (!target2.status && !target2.volatiles['substitute'] && this.randomChance(3, 10)) {
+        				target2.trySetStatus('brn', target);
+    				}
 				}
-			        for (const target of pokemon.side.foe.active) {
-                                    let activated = false;
-                                    if (!target || !this.isAdjacent(target, pokemon)) continue;
-				    if (!activated) {
-					activated = true;
-				     }
-				     if (!target.volatiles['substitute'] && this.randomChance(3, 10)){
-					source.trySetStatus('brn', target);
-				     }
-			}
 				return null;
 			}
 		},
