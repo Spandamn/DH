@@ -10875,7 +10875,7 @@ exports.BattleAbilities = {
 				}
 			if (boost[stat] && boost[stat] < 0) {
 				if (effect.secondaries){
-					delete boost.stat;
+					delete boost[stat];
 				}
 				else {
 					boost[stat] = 1;
