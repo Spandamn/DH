@@ -7245,15 +7245,15 @@ exports.BattleAbilities = {
 		onTryHit: function(target, source, move) {
 			if (target !== source && move.type === 'Fire') {
 				move.accuracy = true;
-				if (!target.addVolatile('flashfire')) {
+				if (!target.addVolatile('greekfire')) {
 					this.add('-immune', target, '[msg]', '[from] ability: Greek Fire');
-				        this.damage(source.maxhp / 8, source, target);
 				}
+				this.damage(source.maxhp / 8, source, target);
 				return null;
 			}
 		},
 		onEnd: function(pokemon) {
-			pokemon.removeVolatile('flashfire');
+			pokemon.removeVolatile('greekfire');
 		},
 		effect: {
 			noCopy: true, // doesn't get copied by Baton Pass
