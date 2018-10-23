@@ -1644,10 +1644,11 @@ exports.BattleAbilities = {
 	"breaker": {
 		shortDesc: "This pokemon's attacks aren't hindered by stat boosts, drops or abilities.",
 		onStart: function(pokemon) {
-			this.add('-ability', pokemon, 'Mold Breaker');
+			this.add('-ability', pokemon, 'Breaker');
 		},
 		stopAttackEvents: true,
 		onBoost: function(boost, target, source, effect) {
+			let showMsg = false;
 			for (var i in boost) {
 				if (boost[i] < 0) {
 					delete boost[i];
