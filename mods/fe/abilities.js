@@ -683,9 +683,9 @@ exports.BattleAbilities = {
 		onBasePowerPriority: 8,
 		onBasePower: function(basePower, attacker, defender, move) {
 			if (this.isWeather(['hail', 'solarsnow']) && move.type === 'Ice') {
-				if (pokemon.volatiles['atmosphericperversion'] == pokemon.volatiles['weatherbreak']){
+				if (move.isInInvertedWeather){
 					this.debug('Snow Force boost');
-					this.chainModify([0x1547, 0x1000])
+					return this.chainModify([0x1547, 0x1000])
 				} else {
 					this.debug('Inverted Snow Force suppress');
 					return this.chainModify(0.75);
