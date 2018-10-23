@@ -892,7 +892,7 @@ exports.BattleAbilities = {
 		onDamagePriority: -100,
 		onDamage: function(damage, target, source, effect) {
 			if (target.hp === target.maxhp && damage >= target.hp && effect && effect.effectType === 'Move') {
-				this.add('-ability', target, 'Sturdy');
+				this.add('-ability', target, 'Blazing Body');
 				return target.hp - 1;
 			}
 		},
@@ -5218,9 +5218,15 @@ exports.BattleAbilities = {
 		name: "Fusion Powered",
 	},
 	"hyperprotection": {
-		shortDesc: "This Pokemon is imune to Ground-Type moves. If a move against this Pokémon ended up on a Critical Hit, it won't affect the Pokémon.",
+		shortDesc: "This Pokemon is immune to Ground-Type moves. If a move against this Pokémon ended up on a Critical Hit, it won't affect the Pokémon.",
 		onTryHit: function(target, source, move) {
-			if (move && move.effectType === 'Move' && move.crit || move.type === 'Ground') {
+			if (move && move.effectType === 'Move' && move.type === 'Ground') {
+				this.add('-immune', target, '[msg]', '[from] ability: Hyper Protection');
+				return null;
+			}
+		},
+		onDamage: function (damage, target, source, move) {
+			if (move.crit) {
 				this.add('-immune', target, '[msg]', '[from] ability: Hyper Protection');
 				return null;
 			}
@@ -10418,7 +10424,13 @@ exports.BattleAbilities = {
 	"testcram": {
 		shortDesc: "This Pokemon is immune to Ground-Type moves. If a move against this Pokémon ended up on a Critical Hit, it won't affect the Pokémon. This Pokemon's critical hit ratio is raised by 1 stage.",
 		onTryHit: function(target, source, move) {
-			if (move && move.effectType === 'Move' && (move.crit || move.willCrit || move.type === 'Ground')) {
+			if (move && move.effectType === 'Move' && move.type === 'Ground') {
+				this.add('-immune', target, '[msg]', '[from] ability: Test Cram');
+				return null;
+			}
+		},
+		onDamage: function (damage, target, source, move) {
+			if (move.crit) {
 				this.add('-immune', target, '[msg]', '[from] ability: Test Cram');
 				return null;
 			}
