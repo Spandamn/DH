@@ -2653,7 +2653,7 @@ exports.BattleAbilities = {
 		},
 		onBasePowerPriority: 8,
 		onBasePower: function(basePower, attacker, defender, move) {
-			if (move.recoil || move.hasCustomRecoil && attacker.hp <= attacker.maxhp / 3) {
+			if ((move.recoil || move.hasCustomRecoil) && attacker.hp <= attacker.maxhp / 3) {
 				return this.chainModify(1.5);
 			}
 		},
@@ -2683,7 +2683,7 @@ exports.BattleAbilities = {
 				if (!this.canSwitch(target.side) || target.forceSwitchFlag || target.switchFlag) return;
 				target.switchFlag = true;
 				source.switchFlag = false;
-				this.add('-activate', target, 'ability: Emergency Exit');
+				this.add('-activate', target, 'ability: Swift Retreat');
 			}
 		},
 		onAfterDamage: function(damage, target, source, effect) {
@@ -2691,7 +2691,7 @@ exports.BattleAbilities = {
 			if (target.hp <= target.maxhp / 2 && target.hp + damage > target.maxhp / 2) {
 				if (!this.canSwitch(target.side) || target.forceSwitchFlag || target.switchFlag) return;
 				target.switchFlag = true;
-				this.add('-activate', target, 'ability: Emergency Exit');
+				this.add('-activate', target, 'ability: Swift Retreat');
 			}
 		},
 		id: "swiftretreat",
@@ -2709,7 +2709,7 @@ exports.BattleAbilities = {
 			}
 		},
 		id: "championsspirit",
-		name: "Champions Spirit",
+		name: "Champion\'s Spirit",
 	},
 	"beastsfocus": {
 		shortDesc: "If Pokémon would be flinched, buffs highest non-HP stat instead.",
@@ -2726,7 +2726,7 @@ exports.BattleAbilities = {
 				return false;
 		},
 		id: "beastsfocus",
-		name: "Beasts Focus",
+		name: "Beast\'s Focus",
 	},
 	"volttorrent": {
 		shortDesc: "At 1/3 or less of its max HP, this Pokemon's attacking stat is 1.5x with Electric attacks.",
@@ -8200,11 +8200,10 @@ exports.BattleAbilities = {
 		name: "Blessed Protection",
 	},
 	"gutsybeast": {
-
 	    desc: "If this Pokemon has a major status condition, its most proficient stat is multiplied by 1.5; burn's physical damage halving is ignored if highest stat is Attack, and paralysis's speed halving is ignored if highest stat is Speed.",
 	    shortDesc: "If this Pokemon is statused, its highest stat is 1.5x; Ignores status-based reductions to this stat.",
 	    onModifyAtkPriority: 5,
-		onModifyAtk: function (atk, attacker, defender, move) {
+		 onModifyAtk: function (atk, attacker, defender, move) {
 	        let stat = 'atk';
 	        let bestStat = 0;
 	        for (let i in attacker.stats) {
