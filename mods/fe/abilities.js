@@ -730,7 +730,7 @@ exports.BattleAbilities = {
 		name: "Sand Shed",
 	},
 	"technicutter": {
-		shortDesc: "Moves of or below 60 BP get boosted by 1.5x, and attack cannot be lowered.",
+		shortDesc: "Technician + Hyper Cutter.",
 		onBasePowerPriority: 8,
 		onBasePower: function(basePower, attacker, defender, move) {
 			if (basePower <= 60) {
