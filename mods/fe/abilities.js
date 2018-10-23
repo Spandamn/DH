@@ -2697,19 +2697,14 @@ exports.BattleAbilities = {
 		name: "Swift Retreat",
 	},
 	"championsspirit": {
-		shortDesc: "This Pokemon's Atk & Defense are raised by 1 stage after it is damaged by a move, and by 3 if it gets critted.",
-		onAfterDamage: function(damage, target, source, effect, move) {
-			if (effect && effect.effectType === 'Move' && effect.id !== 'confused' && !move.crit) {
-				this.boost({
-					def: 1,
-					atk: 1
-				});
-			}
-		},
-		onHit: function(target, source, move) {
-			if (!target.hp) return;
-			if (move && move.effectType === 'Move' && move.crit) {
-				this.boost({atk: 3, def: 3}, target);
+		shortDesc: "This Pokemon's Atk & Defense are raised by 1 stage after it is damaged by a move. If it is a critical hit, they raise by 3 stages instead.",
+		onAfterDamage: function(damage, target, source, effect) {
+			if (effect && effect.effectType === 'Move' && effect.id !== 'confused') {
+				if (effect.crit)	{
+					this.boost({atk: 3, def: 3});
+				} else {
+					this.boost({atk: 1, def: 1});
+				}
 			}
 		},
 		id: "championsspirit",
