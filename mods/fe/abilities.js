@@ -684,11 +684,11 @@ exports.BattleAbilities = {
 		onBasePower: function(basePower, attacker, defender, move) {
 			if (this.isWeather(['hail', 'solarsnow']) && move.type === 'Ice') {
 				if (move.isInInvertedWeather){
-					this.debug('Snow Force boost');
-					return this.chainModify([0x1547, 0x1000])
-				} else {
 					this.debug('Inverted Snow Force suppress');
 					return this.chainModify(0.75);
+				} else {
+					this.debug('Snow Force boost');
+					return this.chainModify([0x1547, 0x1000])
 				}
 			}
 		},
