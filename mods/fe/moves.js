@@ -7547,7 +7547,7 @@ exports.BattleMovedex = {
 					pokemon.side.removeSideCondition('toxicspikes');
 				} else if (this.effectData.layers >= 2) {
 					pokemon.trySetStatus('tox', pokemon.side.foe.active[0]);
-					this.boost({spe: -1}, pokemon, pokemon.side.foe.active[0], this.getMove('stickyvenom'));
+					this.boost({spe: -2}, pokemon, pokemon.side.foe.active[0], this.getMove('stickyvenom'));
 				} else {
 					pokemon.trySetStatus('psn', pokemon.side.foe.active[0]);
 					this.boost({spe: -1}, pokemon, pokemon.side.foe.active[0], this.getMove('stickyvenom'));
