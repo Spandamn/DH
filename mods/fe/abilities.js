@@ -2697,7 +2697,7 @@ exports.BattleAbilities = {
 		name: "Swift Retreat",
 	},
 	"championsspirit": {
-		shortDesc: "This Pokemon's Atk & Defense are raised by 1 stage after it is damaged by a move.",
+		shortDesc: "This Pokemon's Atk & Defense are raised by 1 stage after it is damaged by a move, and by 3 if it gets critted.",
 		onAfterDamage: function(damage, target, source, effect, move) {
 			if (effect && effect.effectType === 'Move' && effect.id !== 'confused' && !move.crit) {
 				this.boost({
@@ -2709,11 +2709,7 @@ exports.BattleAbilities = {
 		onHit: function(target, source, move) {
 			if (!target.hp) return;
 			if (move && move.effectType === 'Move' && move.crit) {
-				target.setBoost({
-					atk: 3,
-					def: 3
-				});
-				this.add('-setboost', target, 'atk', 12, '[from] ability: Champions Spirit');
+				this.boost({atk: 3, def: 3}, target);
 			}
 		},
 		id: "championsspirit",
