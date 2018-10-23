@@ -10292,8 +10292,9 @@ exports.BattleAbilities = {
 		},
 		onAfterDamage: function (damage, target, source, effect) {
 			if (effect && effect.flags['contact']) {
-				this.add('-ability', target, 'Friction Charge');
-				target.addVolatile('frictioncharge');
+				if (target.addVolatile('frictioncharge')){
+					this.add('-ability', target, 'Friction Charge');
+				}
 			}
 		},
 		effect: {
