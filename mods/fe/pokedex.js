@@ -1083,7 +1083,7 @@ exports.BattlePokedex = {
         color: "Purple",
         eggGroups: ["Dragon"],
     },
-    syscor: {
+    scyscor: {
         num: 750021,
         species: "Scyscor",
         types: ["Bug", "Ground"],
