@@ -9530,7 +9530,7 @@ exports.BattleAbilities = {
 			} else {
 				activated = false;	
 			}
-			if (!activated){
+			if (activated){
 				this.add('-start', pokemon, 'typechange', pokemon.types.join('/'), '[from] Weather Caster');
 			}
 		},
