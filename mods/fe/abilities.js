@@ -9514,21 +9514,25 @@ exports.BattleAbilities = {
 	"weathercaster": {
 		shortDesc: "While this Pokemon is active, its secondary type changes.",
 		onStart: function (pokemon) {
-			this.add('-ability', pokemon, 'Weather Caster');
 			let type = this.getMove(pokemon.moveSlots[0].id).type;
+			let activated = true;
 			if (type === 'Fire') {
 				pokemon.setType(['Electric', 'Fire']);
 				this.setWeather('sunnyday');
 			}
-			if (type === 'Water') {
+			else if (type === 'Water') {
 				pokemon.setType(['Electric', 'Water']);
 				this.setWeather('raindance');
 			}
-			if (type === 'Ice') {
+			else if (type === 'Ice') {
 				pokemon.setType(['Electric', 'Ice']);
 				this.setWeather('hail');
+			} else {
+				activated = false;	
 			}
-			this.add('-start', pokemon, 'typechange', type);
+			if (!activated){
+				this.add('-start', pokemon, 'typechange', pokemon.types.join('/'), '[from] Weather Caster');
+			}
 		},
 		id: "weathercaster",
 		name: "Weather Caster",
