@@ -3442,7 +3442,7 @@ exports.BattleMovedex = {
         basePower: 0,
         category: "Status",
         desc: "Causes the target's last move used to lose 3 PP. If applicable, lost PP is transferred to the user's move with the most used PP other than this move. Fails if the target has not made a move, if the move has 0 PP, or if it no longer knows the move.",
-        shortDesc: "Transfers 3 PP from the target to the user.",
+        shortDesc: "Transfers 3 PP from the target's last move to the user's most-used move.",
         id: "spitesiphon",
         isViable: true,
         name: "Spite Siphon",
@@ -3455,23 +3455,24 @@ exports.BattleMovedex = {
             authentic: 1
         },
         onHit: function(target, source) {
-            if (target.deductPP(target.lastMove, 3)) {
-                this.add("-activate", target, 'move: Spite Siphon', this.getMove(target.lastMove).name, 3);
-                // Determine which move to restore PP to
-                let i = 0;
-                for (let m in source.moveset) {
-                    let currentMove = source.moveset[m];
-                    let mostUsedMove = source.moveset[i];
-                    if (currentMove.maxpp - currentMove.pp > mostUsedMove.maxpp - mostUsedMove.pp && currentMove.id !== 'spitesiphon') {
-                        i = m;
-                    }
-                }
-                // Add PP to the move in question (if it's not Spite Siphon)
-                if (source.moveset[i].id !== 'spitesiphon') {
-                    source.moveset[i].pp = Math.min(source.moveset[i].pp + 3, source.moveset[i].maxpp);
-                }
-                return;
-            }
+				if (target.lastMove && !target.lastMove.isZ) {
+					let ppDeducted = target.deductPP(target.lastMove.id, 3);
+					if (ppDeducted) {
+						this.add("-activate", target, 'move: Spite Siphon', this.getMove(target.lastMove.id).name, ppDeducted);
+                	// Determine which move to restore PP to					
+						let pp = 0;
+						let moveSlot;
+						for (const possibleMoveSlot of source.moveSlots) {
+							if (possibleMoveSlot.maxpp - possibleMoveSlot.pp > pp) {
+								moveSlot = possibleMoveSlot;
+								pp = moveSlot.pp;
+							}
+						}
+						moveSlot.pp += ppDeducted;
+						if (moveSlot.pp > moveSlot.maxpp) moveSlot.pp = moveSlot.maxpp;
+						return;
+					}
+				}
             return false;
         },
         secondary: false,
