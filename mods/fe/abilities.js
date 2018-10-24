@@ -6649,11 +6649,11 @@ exports.BattleAbilities = {
 		onResidualSubOrder: 2,
 		onResidual: function(pokemon) {
 			if (this.isTerrain('grassyterrain')) return;
-			this.heal(pokemon.maxhp / 16);
+			this.heal(pokemon.maxhp / 8);
 		},
 		onTerrain: function(pokemon) {
 			if (!this.isTerrain('grassyterrain')) return;
-			this.heal(pokemon.maxhp / 16);
+			this.heal(pokemon.maxhp / 8);
 		},
 		onDamagePriority: 1,
 		onDamage: function (damage, target, source, effect) {
