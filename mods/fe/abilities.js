@@ -407,7 +407,7 @@ exports.BattleAbilities = {
 		onBasePower: function (basePower, attacker, defender, move) {
 			if (this.isWeather('sandstorm')) {
 				if (move.type === 'Rock' || move.type === 'Ground' || move.type === 'Steel') {
-					if (pokemon.volatiles['atmosphericperversion'] == pokemon.volatiles['weatherbreak']){
+					if (move.isInInvertedWeather){
 						this.debug('Sand Force boost');
 						return this.chainModify([0x14CD, 0x1000]);
 					} 	else {
@@ -1346,7 +1346,7 @@ exports.BattleAbilities = {
 			num: 228
 		},
 	"cursedtrace": {
-		shortDesc: "Traces and nulls the foe's ability.",
+		shortDesc: "On switch-in, or when it can, this Pokemon copies a random adjacent foe's Ability and suppresses it.",
 		onUpdate: function(pokemon) {
 			if (!pokemon.isStarted) return;
 			let possibleTargets = [];
@@ -1427,8 +1427,10 @@ exports.BattleAbilities = {
 					possibleTargets.splice(rand, 1);
 					continue;
 				}
-				this.add('-ability', pokemon, ability, '[from] ability: Cursed Trace', '[of] ' + target);
-				if (pokemon.setAbility(ability)) target.addVolatile('gastroacid');
+				if (pokemon.setAbility(ability)){
+					this.add('-ability', pokemon, ability, '[from] ability: Cursed Trace', '[of] ' + target);
+					target.addVolatile('gastroacid');
+				}
 				return;
 			}
 		},
