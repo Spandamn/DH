@@ -184,7 +184,7 @@ exports.BattleMovedex = {
 			onSetStatus: function (status, target, source, effect) {
 				if (status.id === 'slp' && target.isGrounded() && !target.isSemiInvulnerable()) {
 					if (effect.effectType === 'Move' && !effect.secondaries) {
-						this.add('-activate', target, 'move: Electric Terrain');
+						this.add('-activate', target, 'move: Dark Terrain');
 					}
 					return false;
 				}
@@ -192,7 +192,7 @@ exports.BattleMovedex = {
 			onTryAddVolatile: function (status, target) {
 				if (!target.isGrounded() || target.isSemiInvulnerable()) return;
 				if (status.id === 'yawn') {
-					this.add('-activate', target, 'move: Electric Terrain');
+					this.add('-activate', target, 'move: Dark Terrain');
 					return null;
 				}
 			},
