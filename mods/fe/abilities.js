@@ -8164,7 +8164,7 @@ exports.BattleAbilities = {
 	},
 	"genometree": {
     desc: "The user's Normal- and Fighting-type attacks ignore stat changes and Ghost's immunities. If the user attacks a boosted or Ghost-type Pokémon with a Normal- or Fighting-type attack, then the user's highest non-HP stat is boosted by 1 stage.",
-    shortDesc: "This Pokemon can hit Ghost types with Normal- and Fighting-type moves. If it does so or hits a boosted Pokemon with such a move, boosts its highest stat.",
+    shortDesc: "This Pokemon can hit Ghost types with Normal- and Fighting-type moves. If it does so or hits a boosted Pokemon with such a move, boosts its highest stat. Normal- and Fighting-type moves ignore stat changes.",
     onModifyMovePriority: -5,
     onModifyMove: function(move) {
         if (!move.ignoreImmunity) move.ignoreImmunity = {};
@@ -8172,6 +8172,10 @@ exports.BattleAbilities = {
             move.ignoreImmunity['Fighting'] = true;
             move.ignoreImmunity['Normal'] = true;
         }
+		 if (['Fighting', 'Normal'].includes(move.type)){
+			 move.ignoreEvasion = true;
+			 move.ignoreDefensive = true;
+		 }
     },
     onSourceHit: function(target, source, move) {
         if (!move || !target) return;
@@ -8496,17 +8500,29 @@ exports.BattleAbilities = {
 		name: "Quick Trap",
 	},
 	"teraarmor": {
-        shortDesc: "Moves targeting this Pokémon are unaffected by the Ability of the move user.",
-        onFoeBeforeMove: function(pokemon, target) {
-			  let allActives = pokemon.side.active.concat(pokemon.side.foe.active);
-			for (const target of allActives) {
-			  if (target !== pokemon) {
-                pokemon.addVolatile('teraarmor');
-			  }
-		  	}
-        },
-        id: "teraarmor",
-        name: "Tera Armor",
+		shortDesc: "Moves targeting this Pokémon are unaffected by the Ability of the move user.",
+		onAnyBeforeMove: function(attacker, defender, move) {
+			if (attacker !== defender && defender === this.effectData.target) {
+					let bannedAbilities = ['battlebond', 'comatose', 'disguise', 'multitype', 'powerconstruct', 'rkssystem', 'schooling', 'shieldsdown', 'stancechange', 'truant', 'resurrection', 'magicalwand', 'sleepingsystem', 'cursedcloak', 'appropriation', 'disguiseburden', 'hideandseek', 'beastcostume', 'spiralpower', 'optimize', 'prototype', 'typeillusionist', 'godoffertility', 'foundation', 'sandyconstruct', 'victorysystem', 'techequip', 'technicalsystem', 'triagesystem', 'geneticalgorithm', 'effectsetter', 'tacticalcomputer', 'mitosis', 'barbstance', 'errormacro', 'combinationdrive', 'stanceshield', 'unfriend', 'desertmirage', 'sociallife', 'cosmology', 'crystallizedshield', 'compression', 'whatdoesthisdo'];
+					if (!bannedAbilities.includes(attacker.getAbility())){
+	         		attacker.addVolatile('teraarmor');
+					}
+			}
+     	},
+		effect: {
+			duration: 1,
+			onStart: function (pokemon) {
+				this.add('-endability', pokemon);
+			},
+			onTryHit: function (pokemon, target, move) {
+				target.removeVolatile('teraarmor');
+			},
+			onResidual: function (pokemon) {
+				pokemon.removeVolatile('teraarmor');
+			},
+		},
+      id: "teraarmor",
+      name: "Tera Armor",
     },
 	"turbocurse": {
         shortDesc: "Moves targeting this Pokémon are unaffected by the Ability of the move user.",
