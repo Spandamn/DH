@@ -161,61 +161,6 @@ exports.BattleMovedex = {
 		type: "Poison",
 		zMoveBoost: {spd: 1},
 	},
-	"shadowdance": {
-		accuracy: true,
-		basePower: 0,
-		category: "Status",
-		isViable: true,
-		desc: "Summons Spirit Storm for 5 turns (8 with Damp Rock). Under Spirit Storm, Ghost-Type moves have 1.5x power and every non-Ghost or Water type has the PP of each move reduced by 2 at the end of each turn. Forecast variants turn the user into a Ghost type, and Weather Ball becomes a Ghost-Type move. Phantom Force and Shadow Force don't need to charge under this weather.",
-		shortDesc: "Summons Spirit Storm for 5 turns, powering up Ghost-type moves and draining the PP of most Pokemon's moves.",
-		id: "shadowdance",
-		name: "Shadow Dance",
-		pp: 5,
-		priority: 0,
-		flags: {},
-		weather: 'ShadowDance',
-		secondary: false,
-		target: "all",
-		type: "Ghost",
-		zMoveBoost: {spe: 1},
-	},
-	"teraarmor": {
-		accuracy: 100,
-		basePower: 0,
-		category: "Status",
-		desc: "Causes the target's Ability to be rendered ineffective as long as it remains active. If the target uses Baton Pass, the replacement will remain under this effect. Fails if the target's Ability is Multitype or Stance Change.",
-		shortDesc: "Nullifies the target's Ability.",
-		id: "teraarmor",
-		name: "Tera Armor",
-		pp: 10,
-		priority: 0,
-		flags: {protect: 1, reflectable: 1, mirror: 1, mystery: 1},
-		volatileStatus: 'teraarmor',
-		onTryHit: function (pokemon) {
-			let bannedAbilities = ['battlebond', 'comatose', 'disguise', 'multitype', 'powerconstruct', 'rkssystem', 'schooling', 'shieldsdown', 'stancechange'];
-			if (bannedAbilities.includes(pokemon.ability)) {
-				return false;
-			}
-		},
-		effect: {
-			duration: 1,
-			onStart: function (pokemon) {
-				this.add('-endability', pokemon);
-				this.singleEvent('End', this.getAbility(pokemon.ability), pokemon.abilityData, pokemon, pokemon, 'teraarmor');
-			},
-			onTryHit: function (pokemon, target, move) {
-				target.removeVolatile('teraarmor');
-			},
-			onResidual: function (pokemon) {
-				pokemon.removeVolatile('teraarmor');
-			},
-		},
-		secondary: false,
-		target: "normal",
-		type: "Poison",
-		zMoveBoost: {spe: 1},
-		//contestType: "Tough",
-	},
 	"darkterrain": {
 		accuracy: true,
 		basePower: 0,
@@ -276,7 +221,41 @@ exports.BattleMovedex = {
 		zMoveBoost: {spe: 1},
 		//contestType: "Clever",
 	},
-		"metronome": {
+	"gastroacid": {
+		inherit: true,
+		num: 380,
+		accuracy: 100,
+		basePower: 0,
+		category: "Status",
+		desc: "Causes the target's Ability to be rendered ineffective as long as it remains active. If the target uses Baton Pass, the replacement will remain under this effect. If the target's Ability is Battle Bond, Comatose, Disguise, Multitype, Power Construct, RKS System, Schooling, Shields Down, or Stance Change, this move fails, and receiving the effect through Baton Pass ends the effect immediately.",
+		shortDesc: "Nullifies the target's Ability.",
+		id: "gastroacid",
+		name: "Gastro Acid",
+		pp: 10,
+		priority: 0,
+		flags: {protect: 1, reflectable: 1, mirror: 1, mystery: 1},
+		volatileStatus: 'gastroacid',
+		onTryHit: function (pokemon) {
+			let bannedAbilities = ['battlebond', 'comatose', 'disguise', 'multitype', 'powerconstruct', 'rkssystem', 'schooling', 'shieldsdown', 'stancechange', 'truant', 'resurrection', 'magicalwand', 'sleepingsystem', 'cursedcloak', 'appropriation', 'disguiseburden', 'hideandseek', 'beastcostume', 'spiralpower', 'optimize', 'prototype', 'typeillusionist', 'godoffertility', 'foundation', 'sandyconstruct', 'victorysystem', 'techequip', 'technicalsystem', 'triagesystem', 'geneticalgorithm', 'effectsetter', 'tacticalcomputer', 'mitosis', 'barbstance', 'errormacro', 'combinationdrive', 'stanceshield', 'unfriend', 'desertmirage', 'sociallife', 'cosmology', 'crystallizedshield', 'compression', 'whatdoesthisdo'];
+			if (bannedAbilities.includes(pokemon.ability)) {
+				return false;
+			}
+		},
+		effect: {
+			// Ability suppression implemented in Pokemon.ignoringAbility() within sim/pokemon.js
+			onStart: function (pokemon) {
+				this.add('-endability', pokemon);
+				this.singleEvent('End', this.getAbility(pokemon.ability), pokemon.abilityData, pokemon, pokemon, 'gastroacid');
+			},
+		},
+		secondary: null,
+		target: "normal",
+		type: "Poison",
+		zMoveBoost: {spe: 1},
+		contestType: "Tough",
+	},
+	"metronome": {
+		inherit: true,
 		num: 118,
 		accuracy: true,
 		basePower: 0,
@@ -288,7 +267,7 @@ exports.BattleMovedex = {
 		pp: 10,
 		priority: 0,
 		flags: {},
-		noMetronome: ['afteryou', 'assist', 'belch', 'bestow', 'celebrate', 'chatter', 'copycat', 'counter', 'covet', 'craftyshield', 'destinybond', 'detect', 'diamondstorm', 'dragonascent', 'endure', 'feint', 'focuspunch', 'followme', 'freezeshock', 'happyhour', 'helpinghand', 'holdhands', 'hyperspacefury', 'hyperspacehole', 'iceburn', 'kingsshield', 'lightofruin', 'matblock', 'mefirst', 'metronome', 'mimic', 'mirrorcoat', 'mirrormove', 'naturepower', 'originpulse', 'precipiceblades', 'protect', 'quash', 'quickguard', 'ragepowder', 'relicsong', 'secretsword', 'sketch', 'sleeptalk', 'snarl', 'snatch', 'snore', 'spikyshield', 'steameruption', 'struggle', 'switcheroo', 'technoblast', 'thief', 'thousandarrows', 'thousandwaves', 'transform', 'trick', 'vcreate', 'wideguard', 'teraarmor', 'darkterrain', 'beautifulterrain', 'radioactiveterrain', 'rockyterrain'],
+		noMetronome: ['afteryou', 'assist', 'belch', 'bestow', 'celebrate', 'chatter', 'copycat', 'counter', 'covet', 'craftyshield', 'destinybond', 'detect', 'diamondstorm', 'dragonascent', 'endure', 'feint', 'focuspunch', 'followme', 'freezeshock', 'happyhour', 'helpinghand', 'holdhands', 'hyperspacefury', 'hyperspacehole', 'iceburn', 'kingsshield', 'lightofruin', 'matblock', 'mefirst', 'metronome', 'mimic', 'mirrorcoat', 'mirrormove', 'naturepower', 'originpulse', 'precipiceblades', 'protect', 'quash', 'quickguard', 'ragepowder', 'relicsong', 'secretsword', 'sketch', 'sleeptalk', 'snarl', 'snatch', 'snore', 'spikyshield', 'steameruption', 'struggle', 'switcheroo', 'technoblast', 'thief', 'thousandarrows', 'thousandwaves', 'transform', 'trick', 'vcreate', 'wideguard', 'darkterrain', 'beautifulterrain', 'radioactiveterrain', 'rockyterrain'],
 		onHit: function (target, source, effect) {
 			let moves = [];
 			for (let i in exports.BattleMovedex) {
@@ -316,6 +295,7 @@ exports.BattleMovedex = {
 		//contestType: "Cute",
 	},
 	"worryseed": {
+		inherit: true,
 		num: 388,
 		accuracy: 100,
 		basePower: 0,
@@ -352,6 +332,7 @@ exports.BattleMovedex = {
 	},
 	
 	"coreenforcer": {
+		inherit: true,
 		num: 687,
 		accuracy: 100,
 		basePower: 100,
@@ -382,6 +363,7 @@ exports.BattleMovedex = {
 	},
 	
 	"simplebeam": {
+		inherit: true,
 		num: 493,
 		accuracy: 100,
 		basePower: 0,
@@ -415,6 +397,7 @@ exports.BattleMovedex = {
 	},
 	
 	"entrainment": {
+		inherit: true,
 		num: 494,
 		accuracy: 100,
 		basePower: 0,
@@ -449,6 +432,7 @@ exports.BattleMovedex = {
 		//contestType: "Cute",
 	},
 		"wish": {
+		inherit: true,
 		num: 273,
 		accuracy: true,
 		basePower: 0,
@@ -489,6 +473,7 @@ exports.BattleMovedex = {
 		//contestType: "Cute",
 	},
 	"skillswap": {
+		inherit: true,
 		num: 285,
 		accuracy: true,
 		basePower: 0,
@@ -532,6 +517,7 @@ exports.BattleMovedex = {
 		contestType: "Clever",
 	},
 		"solarbeam": {
+		inherit: true,
 		num: 76,
 		accuracy: 100,
 		basePower: 120,
@@ -569,6 +555,7 @@ exports.BattleMovedex = {
 		//contestType: "Cool",
 	},
 "solarblade": {
+		inherit: true,
 		num: 669,
 		accuracy: 100,
 		basePower: 125,
@@ -606,6 +593,7 @@ exports.BattleMovedex = {
 		//contestType: "Cool",
 	},
 "moonlight": {
+		inherit: true,
 		num: 236,
 		accuracy: true,
 		basePower: 0,
@@ -634,6 +622,7 @@ exports.BattleMovedex = {
 		//contestType: "Beautiful",
 	},
 "morningsun": {
+		inherit: true,
 		num: 234,
 		accuracy: true,
 		basePower: 0,
@@ -662,6 +651,7 @@ exports.BattleMovedex = {
 		//contestType: "Beautiful",
 	},
 "synthesis": {
+		inherit: true,
 		num: 235,
 		accuracy: true,
 		basePower: 0,
@@ -690,6 +680,7 @@ exports.BattleMovedex = {
 		//contestType: "Clever",
 	},
 "blizzard": {
+		inherit: true,
 		num: 59,
 		accuracy: 70,
 		basePower: 110,
@@ -718,6 +709,7 @@ exports.BattleMovedex = {
 		//contestType: "Beautiful",
 	},
 "auroraveil": {
+		inherit: true,
 		num: 694,
 	   accuracy: true,
 		basePower: 0,
@@ -771,6 +763,7 @@ exports.BattleMovedex = {
 		//contestType: "Beautiful",
 	},
 "growth": {
+		inherit: true,
 		num: 74,
 		accuracy: true,
 		basePower: 0,
@@ -789,9 +782,9 @@ exports.BattleMovedex = {
 				 }
 		},
 		onHit: function (pokemon) {
-			if (this.isWeather(['sunnyday', 'desolateland', 'solarsnow']) && (pokemon.volatiles['atmosphericperversion'] === pokemon.volatiles['weatherbreak'])){
-				 	 return false;
-				 }
+			if (this.isWeather(['sunnyday', 'desolateland', 'solarsnow']) && (pokemon.volatiles['atmosphericperversion'] !== pokemon.volatiles['weatherbreak'])){
+			 	 return false;
+			}
 		},
 		boosts: {
 			atk: 1,
@@ -804,6 +797,7 @@ exports.BattleMovedex = {
 		//contestType: "Beautiful",
 	},
 "hurricane": {
+		inherit: true,
 		num: 542,
 		accuracy: 70,
 		basePower: 110,
@@ -1053,6 +1047,7 @@ exports.BattleMovedex = {
 	},
 	
 	"defog": {
+		inherit: true,
 		num: 432,
 		accuracy: true,
 		basePower: 0,
@@ -1067,7 +1062,7 @@ exports.BattleMovedex = {
 		flags: {protect: 1, reflectable: 1, mirror: 1, authentic: 1},
 		onHit: function (target, source, move) {
 			if (!target.volatiles['substitute'] || move.infiltrates) this.boost({evasion: -1});
-			let removeTarget = ['reflect', 'lightscreen', 'auroraveil', 'safeguard', 'mist', 'spikes', 'toxicspikes', 'stealthrock', 'stickyweb', 'stealthseed', 'cosmicweb', 'slipperyweb', 'stickyvenom', 'glimmeringweb', 'stickyneedles'];
+			let removeTarget = ['reflect', 'lightscreen', 'auroraveil', 'safeguard', 'mist', 'spikes', 'toxicspikes', 'stealthrock', 'stickyweb', 'stealthseed', 'cosmicweb', 'slipperyweb', 'stickyvenom', 'glimmeringweb', 'stickyneedles', 'solarshields'];
 			let removeAll = ['spikes', 'toxicspikes', 'stealthrock', 'stickyweb', 'stealthseed', 'cosmicweb', 'slipperyweb', 'stickyvenom', 'glimmeringweb', 'stickyneedles'];
 			let success = false;
 			for (const targetCondition of removeTarget) {
@@ -9721,6 +9716,24 @@ exports.BattleMovedex = {
 		type: "Electric",
 		zMoveEffect: 'crit2',
 		contestType: "Cool",
+	},
+	"shadowdance": {
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		isViable: true,
+		desc: "Summons Spirit Storm for 5 turns (8 with Damp Rock). Under Spirit Storm, Ghost-Type moves have 1.5x power and every non-Ghost or Water type has the PP of each move reduced by 2 at the end of each turn. Forecast variants turn the user into a Ghost type, and Weather Ball becomes a Ghost-Type move. Phantom Force and Shadow Force don't need to charge under this weather.",
+		shortDesc: "Summons Spirit Storm for 5 turns, powering up Ghost-type moves and draining the PP of most Pokemon's moves.",
+		id: "shadowdance",
+		name: "Shadow Dance",
+		pp: 5,
+		priority: 0,
+		flags: {},
+		weather: 'ShadowDance',
+		secondary: false,
+		target: "all",
+		type: "Ghost",
+		zMoveBoost: {spe: 1},
 	},
 };
 
