@@ -2636,7 +2636,7 @@ exports.BattlePokedex = {
 		  evos: ["ferroslash"],
         eggGroups: ["Mineral"],
     },
-    ferroslashshield: {
+    ferroslash: {
         num: 750045,
         species: "Ferroslash",
 		  baseForme: "Shield",
