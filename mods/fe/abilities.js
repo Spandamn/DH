@@ -12833,4 +12833,22 @@ exports.BattleAbilities = {
 		id: "pressurizer",
 		name: "Pressurizer",
 	},
+	"sandyconstruct": {
+		desc: "If this Pokemon is a Sandgarde in Fort Forme, it changes to Castle Forme when it has 1/2 or less of its maximum HP at the end of the turn. Under a Sandstorm, even at 1/2 or more of its maximum HP, this transformation has a 20% chance to occur.",
+		shortDesc: "If Sandgarde, changes to Castle if at 1/2 max HP or less at end of turn. In Sandstorm, this transformation also has a 20% chance of occurring regardless of HP.",
+		onResidualOrder: 27,
+		onResidual: function (pokemon) {
+			if (pokemon.baseTemplate.baseSpecies !== 'Sandgarde' || pokemon.transformed || !pokemon.hp) return;
+			if (this.isWeather('sandstorm') && pokemon.volatiles['atmosphericperversion'] == pokemon.volatiles['weatherbreak']) return;
+			if (pokemon.template.speciesid === 'sandgardecastle' || (pokemon.hp > pokemon.maxhp / 2 && !(this.isWeather('sandstorm') && this.randomChance(2, 10)))) return;
+			this.add('-activate', pokemon, 'ability: Sandy Construct');
+			pokemon.formeChange('Sandgarde-Castle', this.effect, true);
+			let newHP = Math.floor(Math.floor(2 * pokemon.template.baseStats['hp'] + pokemon.set.ivs['hp'] + Math.floor(pokemon.set.evs['hp'] / 4) + 100) * pokemon.level / 100 + 10);
+			pokemon.hp = newHP - (pokemon.maxhp - pokemon.hp);
+			pokemon.maxhp = newHP;
+			this.add('-heal', pokemon, pokemon.getHealth, '[silent]');
+		},
+		id: "sandyconstruct",
+		name: "Sandy Construct",
+	},
 };
