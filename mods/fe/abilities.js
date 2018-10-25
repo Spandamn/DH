@@ -5228,7 +5228,7 @@ exports.BattleAbilities = {
 			}
 		},
 		onDamage: function (damage, target, source, move) {
-			if (move.crit) {
+			if (move && move.crit) {
 				this.add('-immune', target, '[msg]', '[from] ability: Hyper Protection');
 				return null;
 			}
