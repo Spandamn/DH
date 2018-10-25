@@ -3280,14 +3280,14 @@ exports.BattleAbilities = {
 			}
 			return accuracy;
 		},
-          onFoeBeforeMove: function(pokemon, target) {
-			  let allActives = pokemon.side.active.concat(pokemon.side.foe.active);
-			for (const target of allActives) {
-			  if (target !== pokemon) {
-          pokemon.addVolatile('teraarmor');
-			  }
-		  	}
-			 },
+		onAnyBeforeMove: function(attacker, defender, move) {
+			if (attacker !== defender && defender === this.effectData.target) {
+					let bannedAbilities = ['battlebond', 'comatose', 'disguise', 'multitype', 'powerconstruct', 'rkssystem', 'schooling', 'shieldsdown', 'stancechange', 'truant', 'resurrection', 'magicalwand', 'sleepingsystem', 'cursedcloak', 'appropriation', 'disguiseburden', 'hideandseek', 'beastcostume', 'spiralpower', 'optimize', 'prototype', 'typeillusionist', 'godoffertility', 'foundation', 'sandyconstruct', 'victorysystem', 'techequip', 'technicalsystem', 'triagesystem', 'geneticalgorithm', 'effectsetter', 'tacticalcomputer', 'mitosis', 'barbstance', 'errormacro', 'combinationdrive', 'stanceshield', 'unfriend', 'desertmirage', 'sociallife', 'cosmology', 'crystallizedshield', 'compression', 'whatdoesthisdo', 'underpressure'];
+					if (!bannedAbilities.includes(attacker.getAbility())){
+	         		attacker.addVolatile('teraarmor');
+					}
+			}
+     	},
 		onStart: function(pokemon) {
 			this.add('-ability', pokemon, 'Unstable Voltage');
 		},
@@ -5901,11 +5901,12 @@ exports.BattleAbilities = {
 	},
 		"foundation": {
 		shortDesc: "This Pokemon's STAB bonus is 2x rather than 1.5x. When this Pokemon is at or below half of its maximum HP, this Pokemon transforms into Zeeeee-Complete. Zeeeee-Complete's STAB bonus becomes 2.33x rather than 2x.",
-			onModifyMove: function (move, pokemon) {
-			if (pokemon.template.speciesid === 'zeeeeecomplete') {
+		onModifyMove: function (move, attacker, defender) {
+			if ((defender.hasAbility('moldedstall') && defender.willMove()) || ['unstablevoltage', 'teraarmor', 'turbocurse', 'unamazed', 'sturdymold'].includes(defender.getAbility())) return;
+			if (attacker.template.speciesid === 'zeeeeecomplete') {
 				move.stab = 2.333;
 			}
-			else if (pokemon.baseTemplate.species === 'Zeeeee') {
+			else if (attacker.baseTemplate.species === 'Zeeeee') {
 				move.stab = 2;
 			}
 		},
@@ -7718,16 +7719,19 @@ exports.BattleAbilities = {
 			}
 		},
 		onModifyMovePriority: -1,
-		onModifyMove: function (move, pokemon) {
-			if (pokemon.template.baseSpecies !== 'A Rave-Alola') return;
-			if (pokemon.getItem() && move.type === 'Normal' && !['judgment', 'multiattack', 'naturalgift', 'revelationdance', 'technoblast', 'weatherball'].includes(move.id) && !(move.isZ && move.category !== 'Status')) {
-				move.type = pokemon.getItem().onPlate;
+		onModifyMove: function (move, attacker, defender) {
+			if (attacker.template.baseSpecies !== 'A Rave-Alola') return;
+			if ((defender.hasAbility('moldedstall') && defender.willMove()) || ['unstablevoltage', 'teraarmor', 'turbocurse', 'unamazed', 'sturdymold'].includes(defender.getAbility())) return;
+			if (attacker.getItem() && move.type === 'Normal' && !['judgment', 'multiattack', 'naturalgift', 'revelationdance', 'technoblast', 'weatherball'].includes(move.id) && !(move.isZ && move.category !== 'Status')) {
+				move.type = attacker.getItem().onPlate;
 				move.optimizeBoosted = true;
 			}
 		},
 		onBasePowerPriority: 8,
 		onBasePower: function (basePower, pokemon, target, move) {
-			if (move.optimizeBoosted) return this.chainModify([0x1333, 0x1000]);
+			if (move.combinationdriveboosted && !(target.hasAbility('moldedstall') && target.willMove())) {
+				return this.chainModify([0x1333, 0x1000]);
+			}
 		},
 		onTakeItem: function (item, pokemon, source) {
 			if (pokemon.item.onPlate) return false;
@@ -8503,7 +8507,7 @@ exports.BattleAbilities = {
 		shortDesc: "Moves targeting this Pokémon are unaffected by the Ability of the move user.",
 		onAnyBeforeMove: function(attacker, defender, move) {
 			if (attacker !== defender && defender === this.effectData.target) {
-					let bannedAbilities = ['battlebond', 'comatose', 'disguise', 'multitype', 'powerconstruct', 'rkssystem', 'schooling', 'shieldsdown', 'stancechange', 'truant', 'resurrection', 'magicalwand', 'sleepingsystem', 'cursedcloak', 'appropriation', 'disguiseburden', 'hideandseek', 'beastcostume', 'spiralpower', 'optimize', 'prototype', 'typeillusionist', 'godoffertility', 'foundation', 'sandyconstruct', 'victorysystem', 'techequip', 'technicalsystem', 'triagesystem', 'geneticalgorithm', 'effectsetter', 'tacticalcomputer', 'mitosis', 'barbstance', 'errormacro', 'combinationdrive', 'stanceshield', 'unfriend', 'desertmirage', 'sociallife', 'cosmology', 'crystallizedshield', 'compression', 'whatdoesthisdo'];
+					let bannedAbilities = ['battlebond', 'comatose', 'disguise', 'multitype', 'powerconstruct', 'rkssystem', 'schooling', 'shieldsdown', 'stancechange', 'truant', 'resurrection', 'magicalwand', 'sleepingsystem', 'cursedcloak', 'appropriation', 'disguiseburden', 'hideandseek', 'beastcostume', 'spiralpower', 'optimize', 'prototype', 'typeillusionist', 'godoffertility', 'foundation', 'sandyconstruct', 'victorysystem', 'techequip', 'technicalsystem', 'triagesystem', 'geneticalgorithm', 'effectsetter', 'tacticalcomputer', 'mitosis', 'barbstance', 'errormacro', 'combinationdrive', 'stanceshield', 'unfriend', 'desertmirage', 'sociallife', 'cosmology', 'crystallizedshield', 'compression', 'whatdoesthisdo', 'underpressure'];
 					if (!bannedAbilities.includes(attacker.getAbility())){
 	         		attacker.addVolatile('teraarmor');
 					}
@@ -8526,14 +8530,14 @@ exports.BattleAbilities = {
     },
 	"turbocurse": {
         shortDesc: "Moves targeting this Pokémon are unaffected by the Ability of the move user.",
-        onFoeBeforeMove: function(pokemon, target) {
-			  let allActives = pokemon.side.active.concat(pokemon.side.foe.active);
-			for (const target of allActives) {
-			  if (target !== pokemon) {
-                pokemon.addVolatile('teraarmor');
-			  }
-		  	}
-        },
+		onAnyBeforeMove: function(attacker, defender, move) {
+			if (attacker !== defender && defender === this.effectData.target) {
+					let bannedAbilities = ['battlebond', 'comatose', 'disguise', 'multitype', 'powerconstruct', 'rkssystem', 'schooling', 'shieldsdown', 'stancechange', 'truant', 'resurrection', 'magicalwand', 'sleepingsystem', 'cursedcloak', 'appropriation', 'disguiseburden', 'hideandseek', 'beastcostume', 'spiralpower', 'optimize', 'prototype', 'typeillusionist', 'godoffertility', 'foundation', 'sandyconstruct', 'victorysystem', 'techequip', 'technicalsystem', 'triagesystem', 'geneticalgorithm', 'effectsetter', 'tacticalcomputer', 'mitosis', 'barbstance', 'errormacro', 'combinationdrive', 'stanceshield', 'unfriend', 'desertmirage', 'sociallife', 'cosmology', 'crystallizedshield', 'compression', 'whatdoesthisdo', 'underpressure'];
+					if (!bannedAbilities.includes(attacker.getAbility())){
+	         		attacker.addVolatile('teraarmor');
+					}
+			}
+     	},
         id: "turbocurse",
         name: "Turbo Curse",
     },
@@ -8630,17 +8634,17 @@ exports.BattleAbilities = {
     },
 	"sturdymold": {
         shortDesc: "This Pokemon cannot be KO'd in one hit, and the abilities of attacking Pokemon are nullified.",
-        onFoeBeforeMove: function(pokemon, target) {
-			  let allActives = pokemon.side.active.concat(pokemon.side.foe.active);
-			for (const target of allActives) {
-			  if (target !== pokemon) {
-                              pokemon.addVolatile('teraarmor');
-			  }
-		  	}
-        },
+		onAnyBeforeMove: function(attacker, defender, move) {
+			if (attacker !== defender && defender === this.effectData.target) {
+					let bannedAbilities = ['battlebond', 'comatose', 'disguise', 'multitype', 'powerconstruct', 'rkssystem', 'schooling', 'shieldsdown', 'stancechange', 'truant', 'resurrection', 'magicalwand', 'sleepingsystem', 'cursedcloak', 'appropriation', 'disguiseburden', 'hideandseek', 'beastcostume', 'spiralpower', 'optimize', 'prototype', 'typeillusionist', 'godoffertility', 'foundation', 'sandyconstruct', 'victorysystem', 'techequip', 'technicalsystem', 'triagesystem', 'geneticalgorithm', 'effectsetter', 'tacticalcomputer', 'mitosis', 'barbstance', 'errormacro', 'combinationdrive', 'stanceshield', 'unfriend', 'desertmirage', 'sociallife', 'cosmology', 'crystallizedshield', 'compression', 'whatdoesthisdo', 'underpressure'];
+					if (!bannedAbilities.includes(attacker.getAbility())){
+	         		attacker.addVolatile('teraarmor');
+					}
+			}
+     	},
 		onTryHit: function (pokemon, target, move) {
 			if (move.ohko) {
-				this.add('-immune', pokemon, '[msg]', '[from] ability: Sturdy');
+				this.add('-immune', pokemon, '[msg]', '[from] ability: Sturdy Mold');
 				return null;
 			}
 		},
@@ -8656,30 +8660,30 @@ exports.BattleAbilities = {
     },
 	"moldedstall": {
         shortDesc: "No abilities have an effect, other than this one, until after this Pokemon acts.",
-        onFoeBeforeMove: function(pokemon, target) {
-				let allActives = pokemon.side.active.concat(pokemon.side.foe.active);
-				for (const target of allActives) {
-			  		if (target !== pokemon && this.willMove(target)) {
-                  pokemon.addVolatile('teraarmor');
-			  		}
-		  		}
-        },
-		onModifyMove: function(move) {
-			move.ignoreAbility = true;
+		onAnyBeforeMove: function(attacker, defender, move) {
+			if (attacker !== defender && this.effectData.target.willMove() && attacker !== this.effectData.target) {
+					let bannedAbilities = ['battlebond', 'comatose', 'disguise', 'multitype', 'powerconstruct', 'rkssystem', 'schooling', 'shieldsdown', 'stancechange', 'truant', 'resurrection', 'magicalwand', 'sleepingsystem', 'cursedcloak', 'appropriation', 'disguiseburden', 'hideandseek', 'beastcostume', 'spiralpower', 'optimize', 'prototype', 'typeillusionist', 'godoffertility', 'foundation', 'sandyconstruct', 'victorysystem', 'techequip', 'technicalsystem', 'triagesystem', 'geneticalgorithm', 'effectsetter', 'tacticalcomputer', 'mitosis', 'barbstance', 'errormacro', 'combinationdrive', 'stanceshield', 'unfriend', 'desertmirage', 'sociallife', 'cosmology', 'crystallizedshield', 'compression', 'whatdoesthisdo', 'underpressure'];
+					if (!bannedAbilities.includes(attacker.getAbility())){
+	         		attacker.addVolatile('teraarmor');
+					}
+			}
+     	},
+		onAnyModifyMove: function(move, attacker) {
+			if (attacker === this.effectData.target || this.effectData.target.willMove()) move.ignoreAbility = true;
 		},	
         id: "moldedstall",
         name: "Molded Stall",
     },
 	"unamazed": {
 		shortDesc: "Moves used by and against this Pokémon ignore the foe’s ability and stat changes.",
-                onFoeBeforeMove: function(pokemon, target) {
-			  let allActives = pokemon.side.active.concat(pokemon.side.foe.active);
-			for (const target of allActives) {
-			  if (target !== pokemon) {
-                              pokemon.addVolatile('teraarmor');
-			  }
-		  	}
-	},
+		onAnyBeforeMove: function(attacker, defender, move) {
+			if (attacker !== defender && defender === this.effectData.target) {
+					let bannedAbilities = ['battlebond', 'comatose', 'disguise', 'multitype', 'powerconstruct', 'rkssystem', 'schooling', 'shieldsdown', 'stancechange', 'truant', 'resurrection', 'magicalwand', 'sleepingsystem', 'cursedcloak', 'appropriation', 'disguiseburden', 'hideandseek', 'beastcostume', 'spiralpower', 'optimize', 'prototype', 'typeillusionist', 'godoffertility', 'foundation', 'sandyconstruct', 'victorysystem', 'techequip', 'technicalsystem', 'triagesystem', 'geneticalgorithm', 'effectsetter', 'tacticalcomputer', 'mitosis', 'barbstance', 'errormacro', 'combinationdrive', 'stanceshield', 'unfriend', 'desertmirage', 'sociallife', 'cosmology', 'crystallizedshield', 'compression', 'whatdoesthisdo', 'underpressure'];
+					if (!bannedAbilities.includes(attacker.getAbility())){
+	         		attacker.addVolatile('teraarmor');
+					}
+			}
+     	},
 		onStart: function(pokemon) {
 			this.add('-ability', pokemon, 'Unamazed');
 		},
@@ -11172,7 +11176,7 @@ exports.BattleAbilities = {
 			}
 		},
 		onBasePower: function (basePower, attacker, defender, move) {
-			if (move.combinationdriveboosted) {
+			if (move.combinationdriveboosted && !(defender.hasAbility('moldedstall') && defender.willMove()) && !['unstablevoltage', 'teraarmor', 'turbocurse', 'unamazed', 'sturdymold'].includes(defender.getAbility())) {
 				this.debug('Combination Drive boost');
 				return this.chainModify(1.5);
 			}
@@ -11226,6 +11230,7 @@ exports.BattleAbilities = {
 		onBasePowerPriority: 8,
 		onBasePower: function (basePower, attacker, defender, move) {
 			if (!attacker.item.onMemory) return;
+			if ((defender.hasAbility('moldedstall') && defender.willMove()) || ['unstablevoltage', 'teraarmor', 'turbocurse', 'unamazed', 'sturdymold'].includes(defender.getAbility())) return;
 			return this.chainModify(1.5);
 		},
 		onTakeItem: function (item, pokemon, source) {
@@ -11954,7 +11959,7 @@ exports.BattleAbilities = {
 		},
 		onBasePowerPriority: 8,
 		onBasePower: function (basePower, attacker, defender, move) {
-			if (attacker.template.species === 'Aegipass-Directional') {
+			if (attacker.template.species === 'Aegipass-Directional' && !(defender.hasAbility('moldedstall') && defender.willMove()) && !['unstablevoltage', 'teraarmor', 'turbocurse', 'unamazed', 'sturdymold'].includes(defender.getAbility())) {
 				if (move.type === 'Rock' || move.type === 'Ground' || move.type === 'Steel') {
 					this.debug('Desert Mirage boost');
 					return this.chainModify([0x14CD, 0x1000]);
