@@ -16505,7 +16505,7 @@ mimiblimbusted: {
             spe: 98
         },
         abilities: {
-            0: "Pau Dancer"
+            0: "Pa'u Dancer"
         },
         color: "Psychic",
         heightm: 0.9,
