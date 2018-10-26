@@ -7251,7 +7251,7 @@ exports.Formats = [
 			if (!itemExists) return [`You have entered gibberish in the item slot on ${set.name || set.species}.`];
 			let validator = new this.constructor(Dex.getFormat(this.format.id, ['Ignore Illegal Abilities']));
 			let problems = validator.validateSet(Object.assign({}, set, {ability: ''}), teamHas) || validator.validateSet(Object.assign({}, set, {ability: '', item: set.ability}, teamHas)) || [];
-			if (dual.id === item.id) problems.push(`You cannot have two of the same thing on a Pokemon. (${set.name || set.species} has two of ${item.name})`);
+			if (set.ability === set.item) problems.push(`You cannot have two of the same thing on a Pokemon. (${set.name || set.species} has two of ${item.name})`);
 			return problems;
 		},
 		onSwitchInPriority: 2,
