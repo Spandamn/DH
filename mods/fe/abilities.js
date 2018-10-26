@@ -1968,7 +1968,7 @@ exports.BattleAbilities = {
 				if (typeof accuracy !== 'number') return;
 				if (target.volatiles['atmosphericperversion'] == target.volatiles['weatherbreak']){
 					this.debug('Sandy Eyes - enhancing accuracy');
-					return accuracy * 1.333333;
+					return accuracy * 1.333;
 				} else {
 					this.debug('Inverted Sandy Eyes - reducing accuracy');
 					return accuracy * 0.75;
