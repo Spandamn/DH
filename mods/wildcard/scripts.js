@@ -67,7 +67,7 @@ exports.BattleScripts = {
 		let atLeastOne = false;
 		let zMoves = [];
 		for (let i = 0; i < pokemon.moves.length; i++) {
-			if (pokemon.moveSlot[i].pp <= 0) {
+			if (pokemon.moveSlots[i].pp <= 0) {
 				zMoves.push(null);
 				continue;
 			}
