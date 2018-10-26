@@ -788,12 +788,6 @@ exports.BattleAbilities = {
 				return this.chainModify(1.5);
 			}
 		},
-		onUpdate: function(pokemon) {
-			if (pokemon.status === 'frz') {
-				this.add('-activate', pokemon, 'ability: Healing Fat');
-				pokemon.cureStatus();
-			}
-		},
 		id: "healingfat",
 		name: "Healing Fat",
 	},
