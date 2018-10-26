@@ -488,7 +488,7 @@ exports.BattleAbilities = {
 		id: "hugetorrent",
 		name: "Huge Torrent",
 	},
-	"flashweather": { //TODO: Have it do something else when in inverted weather.
+	"flashweather": {
 		shortDesc: "In Sun, absorbs Fire moves, in Rain Water, in Hail Ice, and in Sand, Rock.",
 		onTryHit: function(target, source, move) {
 			if (target !== source && target.volatiles['atmosphericperversion'] === target.volatiles['weatherbreak']){
@@ -553,6 +553,22 @@ exports.BattleAbilities = {
 		id: "intenserivalry",
 		name: "Intense Rivalry",
 	},
+	"moldedstall": {
+        shortDesc: "No abilities have an effect, other than this one, until after this Pokemon acts.",
+			onAnyBeforeMove: function(attacker, defender, move) {
+			if (attacker !== defender && this.effectData.target.willMove() && attacker !== this.effectData.target) {
+					let bannedAbilities = ['battlebond', 'comatose', 'disguise', 'multitype', 'powerconstruct', 'rkssystem', 'schooling', 'shieldsdown', 'stancechange', 'truant', 'resurrection', 'magicalwand', 'sleepingsystem', 'cursedcloak', 'appropriation', 'disguiseburden', 'hideandseek', 'beastcostume', 'spiralpower', 'optimize', 'prototype', 'typeillusionist', 'godoffertility', 'foundation', 'sandyconstruct', 'victorysystem', 'techequip', 'technicalsystem', 'triagesystem', 'geneticalgorithm', 'effectsetter', 'tacticalcomputer', 'mitosis', 'barbstance', 'errormacro', 'combinationdrive', 'stanceshield', 'unfriend', 'desertmirage', 'sociallife', 'cosmology', 'crystallizedshield', 'compression', 'whatdoesthisdo', 'underpressure', 'poisontouch', 'magician'];
+					if (!bannedAbilities.includes(attacker.getAbility())){
+	         		attacker.addVolatile('teraarmor');
+					}
+			}
+     	},
+		onAnyModifyMove: function(move, attacker) {
+			if (attacker === this.effectData.target || this.effectData.target.willMove()) move.ignoreAbility = true;
+		},	
+        id: "moldedstall",
+        name: "Molded Stall",
+    },
 	"levipoison": {
 		shortDesc: "If the opponent targets this Pokemon a Ground-type move, it becomes Poisoned; Ground immunity.",
 		onTryHit: function(target, source, move) {
@@ -641,30 +657,30 @@ exports.BattleAbilities = {
 		id: "obliviousabsorb",
 		name: "Oblivious Absorb",
 	},
-	"fear": {
-		shortDesc: "This Pokemon does not take recoil damage besides Struggle/Life Orb/crash damage.",
-		onDamage: function(damage, target, source, effect) {
-			if (effect.id === 'recoil' && this.activeMove.id !== 'struggle') return null;
-		},
-		onStart: function(pokemon) {
-			var foeactive = pokemon.side.foe.active;
-			var activated = false;
-			for (var i = 0; i < foeactive.length; i++) {
-				if (!foeactive[i] || !this.isAdjacent(foeactive[i], pokemon)) continue;
-				if (!activated) {
-					this.add('-ability', pokemon, 'Intimidate');
-					activated = true;
-				}
-			}
-			if (foeactive[i].volatiles['substitute']) {
-				this.add('-activate', foeactive[i], 'Substitute', 'ability: Intimidate', '[of] ' + pokemon);
-			} else {
-				this.boost({atk: -1}, foeactive[i], pokemon);
-			}
-		},
-		id: "fear",
-		name: "FEAR",
-	},
+// 	"fear": {
+// 		shortDesc: "Intimidate + Rock Head.",
+// 		onDamage: function(damage, target, source, effect) {
+// 			if (effect.id === 'recoil' && this.activeMove.id !== 'struggle') return null;
+// 		},
+// 		onStart: function(pokemon) {
+// 			var foeactive = pokemon.side.foe.active;
+// 			var activated = false;
+// 			for (var i = 0; i < foeactive.length; i++) {
+// 				if (!foeactive[i] || !this.isAdjacent(foeactive[i], pokemon)) continue;
+// 				if (!activated) {
+// 					this.add('-ability', pokemon, 'Intimidate');
+// 					activated = true;
+// 				}
+// 			}
+// 			if (foeactive[i].volatiles['substitute']) {
+// 				this.add('-activate', foeactive[i], 'Substitute', 'ability: Intimidate', '[of] ' + pokemon);
+// 			} else {
+// 				this.boost({atk: -1}, foeactive[i], pokemon);
+// 			}
+// 		},
+// 		id: "fear",
+// 		name: "FEAR",
+// 	},
 	"cactuspower": {
 		shortDesc: "Summons Sandstorm upon switching in. Grass-type moves have their power increased 20%.",
 		onStart: function(source) {
@@ -750,12 +766,13 @@ exports.BattleAbilities = {
 	},
 	"chlorovolt": {
 		shortDesc: "If Electric Terrain is active, this Pokemon's Speed is doubled.",
-		onModifySpePriority: 6,
-		onModifySpe: function(pokemon) {
-			if (this.isTerrain('electricterrain')) return this.chainModify(2);
+		onModifySpe: function (spe) {
+			if (this.isTerrain('electricterrain')) {
+				return this.chainModify(2);
+			}
 		},
 		id: "chlorvolt",
-		name: "Chloro Volt",
+		name: "ChloroVolt",
 	},
 	"healingfat": {
 		shortDesc: "HP is restored by 1/8th every turn when burned or frozen. Prevents the attack drop from Burn status and the immobilization by Frozen status.",
@@ -8657,22 +8674,6 @@ exports.BattleAbilities = {
 		},
         id: "sturdymold",
         name: "Sturdy Mold",
-    },
-	"moldedstall": {
-        shortDesc: "No abilities have an effect, other than this one, until after this Pokemon acts.",
-			onAnyBeforeMove: function(attacker, defender, move) {
-			if (attacker !== defender && this.effectData.target.willMove() && attacker !== this.effectData.target) {
-					let bannedAbilities = ['battlebond', 'comatose', 'disguise', 'multitype', 'powerconstruct', 'rkssystem', 'schooling', 'shieldsdown', 'stancechange', 'truant', 'resurrection', 'magicalwand', 'sleepingsystem', 'cursedcloak', 'appropriation', 'disguiseburden', 'hideandseek', 'beastcostume', 'spiralpower', 'optimize', 'prototype', 'typeillusionist', 'godoffertility', 'foundation', 'sandyconstruct', 'victorysystem', 'techequip', 'technicalsystem', 'triagesystem', 'geneticalgorithm', 'effectsetter', 'tacticalcomputer', 'mitosis', 'barbstance', 'errormacro', 'combinationdrive', 'stanceshield', 'unfriend', 'desertmirage', 'sociallife', 'cosmology', 'crystallizedshield', 'compression', 'whatdoesthisdo', 'underpressure', 'poisontouch', 'magician'];
-					if (!bannedAbilities.includes(attacker.getAbility())){
-	         		attacker.addVolatile('teraarmor');
-					}
-			}
-     	},
-		onAnyModifyMove: function(move, attacker) {
-			if (attacker === this.effectData.target || this.effectData.target.willMove()) move.ignoreAbility = true;
-		},	
-        id: "moldedstall",
-        name: "Molded Stall",
     },
 	"unamazed": {
 		shortDesc: "Moves used by and against this Pokémon ignore the foe’s ability and stat changes.",
