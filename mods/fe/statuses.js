@@ -89,7 +89,7 @@ let BattleStatuses = {
 				return;
 			}
 			this.add('cant', pokemon, 'frz');
-			if (pokemon.hasAbility('therapeutic') || pokemon.hasAbility('shutupandjam')){
+			if (pokemon.hasAbility('healingfat') || pokemon.hasAbility('therapeutic') || pokemon.hasAbility('shutupandjam')){
 				return;
 			}
 			return false;
