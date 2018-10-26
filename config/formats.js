@@ -7200,13 +7200,13 @@ exports.Formats = [
 				let pokemon = allPokemon[i];
 				//item slot
 				let itemSlot =  toId(pokemon.item);
-				if (itemSlot in Dex.data.Abilities) {
+				if (this.battle.getAbility(itemSlot).exists && this.battle.getAbility(itemSlot).effectType === 'Ability') {
 					pokemon.innate = `ability${itemSlot}`;
 					pokemon.item = "";
-				} else if (itemSlot in Dex.data.TypeChart) {
+				} else if (this.battle.getType(itemSlot).exists && this.battle.getType(itemSlot).effectType === 'Type') {
 					pokemon.types[0] = this.battle.getTypes(itemSlot).id;
 					pokemon.item = "";
-				} else if (itemSlot in Dex.data.Movedex) {
+				} else if (this.battle.getMove(itemSlot).exists && this.battle.getMove(itemSlot).effectType === 'Move') {
 					let move = this.battle.getMove(itemSlot);
 					pokemon.baseMoveSlots.push({
 						move: move.name,
@@ -7223,11 +7223,11 @@ exports.Formats = [
 				}
 
 				//ability slot
-				let abilitySlot = toId(pokemon.item);
-				if (abilitySlot in Dex.data.TypeChart) {
+				let abilitySlot = toId(pokemon.ability);
+				if (this.battle.getType(abilitySlot).exists && this.battle.getType(abilitySlot).effectType === 'Type') {
 					pokemon.types[1] = this.battle.getTypes(abilitySlot).id;
 					pokemon.ability = "";
-				} else if (abilitySlot in Dex.data.Movedex) {
+				} else if (this.battle.getMove(abilitySlot).exists && this.battle.getMove(abilitySlot).effectType === 'Move') {
 					let move = this.battle.getMove(abilitySlot);
 					pokemon.baseMoveSlots.push({
 						move: move.name,
