@@ -1966,7 +1966,7 @@ exports.BattleAbilities = {
 		onSourceModifyAccuracy: function(accuracy) {
 			if (this.isWeather('sandstorm')) {
 				if (typeof accuracy !== 'number') return;
-				if (target.volatiles['atmosphericperversion'] == target.volatiles['weatherbreak']){
+				if (this.effectData.target.volatiles['atmosphericperversion'] == this.effectData.target.volatiles['weatherbreak']){
 					this.debug('Sandy Eyes - enhancing accuracy');
 					return accuracy * 1.333;
 				} else {
