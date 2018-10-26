@@ -8328,19 +8328,10 @@ exports.BattleAbilities = {
 	},
 	"slownsteady": {
 		shortDesc: "This Pokemon takes 1/2 damage from attacks if it moves last.",
-		onFoeBasePowerPriority: 8,
-		onFoeBasePower: function (basePower, pokemon) {
-			let boosted = true;
-			let allActives = pokemon.side.active.concat(pokemon.side.foe.active);
-			for (const target of allActives) {
-				if (target === pokemon) continue;
-				if (this.willMove(target)) {
-					boosted = false;
-					break;
-				}
-			}
-			if (boosted) {
-				this.debug('Analytic boost');
+		onSourceBasePowerPriority: 8,
+		onSourceBasePower: function (basePower, attacker, defender, move) {
+			if (this.willMove(defender)) {
+				this.debug('Slow \'n\' Steady suppress');
 				return this.chainModify(0.5);
 			}
 		},
