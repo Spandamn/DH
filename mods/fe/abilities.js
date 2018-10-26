@@ -239,8 +239,8 @@ exports.BattleAbilities = {
 		},
 		onModifyAccuracy: function (accuracy, target) {
 			if (typeof accuracy !== 'number') return;
-			if (this.isWeather(['hail', 'solarsnow'])) {
-				if (target && (target.volatiles['atmosphericperversion'] == target.volatiles['weatherbreak'])){
+			if (target && this.isWeather(['hail', 'solarsnow'])) {
+				if (target.volatiles['atmosphericperversion'] == target.volatiles['weatherbreak']){
 					this.debug('Snow Cloak - decreasing accuracy');
 					return accuracy * 0.8;
 				} else {
@@ -254,33 +254,7 @@ exports.BattleAbilities = {
 		rating: 1.5,
 		num: 81,
 	},
-
-	"drought": {
-		inherit: true,
-		shortDesc: "On switch-in, this Pokemon summons Sunny Day.",
-		onStart: function (source) {
-			for (const action of this.queue) {
-				if (action.choice === 'runPrimal' && action.pokemon === source && source.template.speciesid === 'groudon') return;
-				if (action.choice !== 'runSwitch' && action.choice !== 'runPrimal') break;
-			}
-         if(!this.isWeather('solarsnow')) this.setWeather('sunnyday');          
-		},
-		id: "drought",
-		name: "Drought",
-		rating: 4.5,
-		num: 70,
-	},
-	"snowwarning": {
-		inherit: true,
-		shortDesc: "On switch-in, this Pokemon summons Hail.",
-		onStart: function (source) {
-			if(!this.isWeather('solarsnow')) this.setWeather('hail');
-		},
-		id: "snowwarning",
-		name: "Snow Warning",
-		rating: 4,
-		num: 117,
-	},
+	
 	"overcoat": {
 		inherit: true,
 		shortDesc: "This Pokemon is immune to powder moves and damage from Sandstorm or Hail.",
@@ -424,6 +398,21 @@ exports.BattleAbilities = {
 		name: "Sand Force",
 		rating: 2,
 		num: 159,
+	},
+	"battery": {
+		inherit: true,
+		shortDesc: "This Pokemon's allies have the power of their special attacks multiplied by 1.3.",
+		onBasePowerPriority: 8,
+		onAllyBasePower: function (basePower, attacker, defender, move) {
+			if (attacker !== this.effectData.target && move.category === 'Special') {
+				this.debug('Battery boost');
+				return this.chainModify([0x14CD, 0x1000]);
+			}
+		},
+		id: "battery",
+		name: "Battery",
+		rating: 0,
+		num: 217,
 	},
 	
 	"turnabouttorrent": {
