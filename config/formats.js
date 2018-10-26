@@ -3847,92 +3847,6 @@ exports.Formats = [
 		}
 	},
 	{
-		name: "[Gen 7] Wild Card [WIP]",
-		desc: `The Ability and Item slot are considered to be wild; allowing entry of moves, abilities and items.`,
-		threads: [
-			`&bullet; <a href="https://www.smogon.com/forums/threads/placeholder/">Wild Card</a>`,
-		],
-
-		mod: 'wildcard',
-		ruleset: ['[Gen 7] OU', 'Sleep Clause Mod'],
-		banlist: ['Kangaskhanite', 'Mawilite', 'Medichamite', 'Huge Power', 'Imposter', 'Normalize', 'Pure Power', 'Wonder Guard', 'Mimic', 'Sketch', 'Transform'],
-		onBegin: function () {
-			let allPokemon = p1.pokemon.concat(p2.pokemon);
-			for (let i = 0, len = allPokemon.length; i < len; i++) {
-				let pokemon = allPokemon[i];
-				//item slot
-				let itemSlot =  toId(pokemon.item);
-				if (itemSlot in Dex.data.Abilities) {
-					pokemon.innate = `ability${itemSlot}`;
-					pokemon.item = "";
-				} else if (itemSlot in Dex.data.TypeChart) {
-					pokemon.types[0] = battle.getTypes(itemSlot).id;
-					pokemon.item = "";
-				} else if (itemSlot in Dex.data.Movedex) {
-					let move = battle.getMove(itemSlot);
-					pokemon.baseMoveSlots.push({
-						move: move.name,
-						id: move.id,
-						pp: ((move.noPPBoosts || move.isZ) ? move.pp : move.pp * 8 / 5),
-						maxpp: ((move.noPPBoosts || move.isZ) ? move.pp : move.pp * 8 / 5),
-						target: move.target,
-						disabled: false,
-						disabledSource: '',
-						used: false,
-					});
-					pokemon.moveSlots = pokemon.baseMoveSlots;
-					pokemon.item = "";
-				}
-
-				//ability slot
-				let abilitySlot = toId(pokemon.item);
-				if (abilitySlot in Dex.data.TypeChart) {
-					pokemon.types[1] = battle.getTypes(abilitySlot).id;
-					pokemon.ability = "";
-				} else if (abilitySlot in Dex.data.Movedex) {
-					let move = battle.getMove(abilitySlot);
-					pokemon.baseMoveSlots.push({
-						move: move.name,
-						id: move.id,
-						pp: ((move.noPPBoosts || move.isZ) ? move.pp : move.pp * 8 / 5),
-						maxpp: ((move.noPPBoosts || move.isZ) ? move.pp : move.pp * 8 / 5),
-						target: move.target,
-						disabled: false,
-						disabledSource: '',
-						used: false,
-					});
-					pokemon.moveSlots = pokemon.baseMoveSlots;
-					pokemon.ability = "";
-				}
-			}
-		},
-		validateSet: function (set, teamHas) {
-			let problems = [];
-			let abilityExists = this.dex.getItem(set.ability) || this.dex.getType(set.ability) || this.dex.getAbility(set.ability) || this.dex.getMove(set.ability) || set.ability === '';
-			if (!abilityExists) problems.push(`You have entered gibberish in the ability slot on ${set.name || set.species}.`);
-			let itemExists = this.dex.getItem(set.item) || this.dex.getType(set.item) || this.dex.getAbility(set.item) || this.dex.getMove(set.item) || set.item === '';
-			if (!itemExists) problems.push(`You have entered gibberish in the item slot on ${set.name || set.species}.`);
-			let validator = new this.constructor(Dex.getFormat(this.format.id, ['Ignore Illegal Abilities']));
-			let problems = validator.validateSet(Object.assign({}, set, {ability: ''}), teamHas) || validator.validateSet(Object.assign({}, set, {ability: '', item: set.ability}, teamHas)) || [];
-			if (dual.id === item.id) problems.push(`You cannot have two of the same thing on a Pokemon. (${set.name || set.species} has two of ${item.name})`);
-			return problems;
-		},
-		onSwitchInPriority: 2,
-		onSwitchIn: function (pokemon) {
-			this.add('-start', pokemon, 'typechange', pokemon.types.join('/'), '[silent]');
-			if (!pokemon.innate) return;
-			pokemon.addVolatile(pokemon.innate);
-		},
-		onSwitchOut: function (pokemon) {
-			if (!pokemon.innate) return;
-			pokemon.removeVolatile(pokemon.innate);
-		},
-		onFaint: function (pokemon) {
-			if (!pokemon.innate) return;
-			pokemon.removeVolatile(pokemon.innate);
-		},
-	},
-	{
 		name: "[Gen 7] Partners in Crime",
 		desc: `Doubles-based metagame where both active ally Pok&eacute;mon share abilities and moves.`,
 		threads: [
@@ -7268,6 +7182,92 @@ exports.Formats = [
 			if (oMegaTemplate.exists && pokemon.originalSpecies !== oMegaTemplate.baseSpecies) {
 				this.add('-end', pokemon, oMegaTemplate.requiredItem || oMegaTemplate.requiredMove, '[silent]');
 			}
+		},
+	},
+	{
+		name: "[Gen 7] Wild Card [WIP]",
+		desc: `The Ability and Item slot are considered to be wild; allowing entry of moves, abilities and items.`,
+		threads: [
+			`&bullet; <a href="https://www.smogon.com/forums/threads/placeholder/">Wild Card</a>`,
+		],
+
+		mod: 'wildcard',
+		ruleset: ['[Gen 7] OU', 'Sleep Clause Mod'],
+		banlist: ['Kangaskhanite', 'Mawilite', 'Medichamite', 'Huge Power', 'Imposter', 'Normalize', 'Pure Power', 'Wonder Guard', 'Mimic', 'Sketch', 'Transform'],
+		onBegin: function () {
+			let allPokemon = p1.pokemon.concat(p2.pokemon);
+			for (let i = 0, len = allPokemon.length; i < len; i++) {
+				let pokemon = allPokemon[i];
+				//item slot
+				let itemSlot =  toId(pokemon.item);
+				if (itemSlot in Dex.data.Abilities) {
+					pokemon.innate = `ability${itemSlot}`;
+					pokemon.item = "";
+				} else if (itemSlot in Dex.data.TypeChart) {
+					pokemon.types[0] = battle.getTypes(itemSlot).id;
+					pokemon.item = "";
+				} else if (itemSlot in Dex.data.Movedex) {
+					let move = battle.getMove(itemSlot);
+					pokemon.baseMoveSlots.push({
+						move: move.name,
+						id: move.id,
+						pp: ((move.noPPBoosts || move.isZ) ? move.pp : move.pp * 8 / 5),
+						maxpp: ((move.noPPBoosts || move.isZ) ? move.pp : move.pp * 8 / 5),
+						target: move.target,
+						disabled: false,
+						disabledSource: '',
+						used: false,
+					});
+					pokemon.moveSlots = pokemon.baseMoveSlots;
+					pokemon.item = "";
+				}
+
+				//ability slot
+				let abilitySlot = toId(pokemon.item);
+				if (abilitySlot in Dex.data.TypeChart) {
+					pokemon.types[1] = battle.getTypes(abilitySlot).id;
+					pokemon.ability = "";
+				} else if (abilitySlot in Dex.data.Movedex) {
+					let move = battle.getMove(abilitySlot);
+					pokemon.baseMoveSlots.push({
+						move: move.name,
+						id: move.id,
+						pp: ((move.noPPBoosts || move.isZ) ? move.pp : move.pp * 8 / 5),
+						maxpp: ((move.noPPBoosts || move.isZ) ? move.pp : move.pp * 8 / 5),
+						target: move.target,
+						disabled: false,
+						disabledSource: '',
+						used: false,
+					});
+					pokemon.moveSlots = pokemon.baseMoveSlots;
+					pokemon.ability = "";
+				}
+			}
+		},
+		validateSet: function (set, teamHas) {
+			let problems = [];
+			let abilityExists = this.dex.getItem(set.ability) || this.dex.getType(set.ability) || this.dex.getAbility(set.ability) || this.dex.getMove(set.ability) || set.ability === '';
+			if (!abilityExists) problems.push(`You have entered gibberish in the ability slot on ${set.name || set.species}.`);
+			let itemExists = this.dex.getItem(set.item) || this.dex.getType(set.item) || this.dex.getAbility(set.item) || this.dex.getMove(set.item) || set.item === '';
+			if (!itemExists) problems.push(`You have entered gibberish in the item slot on ${set.name || set.species}.`);
+			let validator = new this.constructor(Dex.getFormat(this.format.id, ['Ignore Illegal Abilities']));
+			let problems = validator.validateSet(Object.assign({}, set, {ability: ''}), teamHas) || validator.validateSet(Object.assign({}, set, {ability: '', item: set.ability}, teamHas)) || [];
+			if (dual.id === item.id) problems.push(`You cannot have two of the same thing on a Pokemon. (${set.name || set.species} has two of ${item.name})`);
+			return problems;
+		},
+		onSwitchInPriority: 2,
+		onSwitchIn: function (pokemon) {
+			this.add('-start', pokemon, 'typechange', pokemon.types.join('/'), '[silent]');
+			if (!pokemon.innate) return;
+			pokemon.addVolatile(pokemon.innate);
+		},
+		onSwitchOut: function (pokemon) {
+			if (!pokemon.innate) return;
+			pokemon.removeVolatile(pokemon.innate);
+		},
+		onFaint: function (pokemon) {
+			if (!pokemon.innate) return;
+			pokemon.removeVolatile(pokemon.innate);
 		},
 	},
 	{
