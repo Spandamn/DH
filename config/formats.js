@@ -3905,7 +3905,7 @@ exports.Formats = [
 					pokemon.ability = "";
 				}
 			}
-		}
+		},
 		validateSet: function (set, teamHas) {
 			let problems = [];
 			let abilityExists = this.dex.getItem(set.ability) || this.dex.getType(set.ability) || this.dex.getAbility(set.ability) || this.dex.getMove(set.ability) || set.ability === '';
