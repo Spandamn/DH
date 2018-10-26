@@ -7226,7 +7226,7 @@ exports.Formats = [
 				let abilitySlot = toId(pokemon.ability);
 				if (this.getType(abilitySlot).exists && this.getType(abilitySlot).effectType === 'Type') {
 					pokemon.types[1] = this.getTypes(abilitySlot).id;
-					pokemon.ability = "";
+					pokemon.ability = pokemon.baseAbility = "";
 				} else if (this.getMove(abilitySlot).exists && this.getMove(abilitySlot).effectType === 'Move') {
 					let move = this.getMove(abilitySlot);
 					pokemon.baseMoveSlots.push({
@@ -7240,7 +7240,7 @@ exports.Formats = [
 						used: false,
 					});
 					pokemon.moveSlots = pokemon.baseMoveSlots;
-					pokemon.ability = "";
+					pokemon.ability = pokemon.baseAbility = "";
 				}
 			}
 		},
