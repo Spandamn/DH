@@ -7195,7 +7195,7 @@ exports.Formats = [
 		ruleset: ['[Gen 7] OU', 'Sleep Clause Mod'],
 		banlist: ['Kangaskhanite', 'Mawilite', 'Medichamite', 'Huge Power', 'Imposter', 'Normalize', 'Pure Power', 'Wonder Guard', 'Mimic', 'Sketch', 'Transform'],
 		onBegin: function () {
-			let allPokemon = p1.pokemon.concat(p2.pokemon);
+			let allPokemon = this.p1.pokemon.concat(this.p2.pokemon);
 			for (let i = 0, len = allPokemon.length; i < len; i++) {
 				let pokemon = allPokemon[i];
 				//item slot
@@ -7204,10 +7204,10 @@ exports.Formats = [
 					pokemon.innate = `ability${itemSlot}`;
 					pokemon.item = "";
 				} else if (itemSlot in Dex.data.TypeChart) {
-					pokemon.types[0] = battle.getTypes(itemSlot).id;
+					pokemon.types[0] = this.battle.getTypes(itemSlot).id;
 					pokemon.item = "";
 				} else if (itemSlot in Dex.data.Movedex) {
-					let move = battle.getMove(itemSlot);
+					let move = this.battle.getMove(itemSlot);
 					pokemon.baseMoveSlots.push({
 						move: move.name,
 						id: move.id,
@@ -7225,10 +7225,10 @@ exports.Formats = [
 				//ability slot
 				let abilitySlot = toId(pokemon.item);
 				if (abilitySlot in Dex.data.TypeChart) {
-					pokemon.types[1] = battle.getTypes(abilitySlot).id;
+					pokemon.types[1] = this.battle.getTypes(abilitySlot).id;
 					pokemon.ability = "";
 				} else if (abilitySlot in Dex.data.Movedex) {
-					let move = battle.getMove(abilitySlot);
+					let move = this.battle.getMove(abilitySlot);
 					pokemon.baseMoveSlots.push({
 						move: move.name,
 						id: move.id,
