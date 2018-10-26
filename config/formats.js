@@ -3847,26 +3847,111 @@ exports.Formats = [
 		}
 	},
 	{
+		name: "[Gen 7] Wild Card [WIP]",
+		desc: `The Ability and Item slot are considered to be wild; allowing entry of moves, abilities and items.`,
+		threads: [
+			`&bullet; <a href="https://www.smogon.com/forums/threads/placeholder/">Wild Card</a>`,
+		],
+
+		mod: 'wildcard',
+		ruleset: ['[Gen 7] OU', 'Sleep Clause Mod'],
+		banlist: ['Kangaskhanite', 'Mawilite', 'Medichamite', 'Huge Power', 'Imposter', 'Normalize', 'Pure Power', 'Wonder Guard', 'Mimic', 'Sketch', 'Transform'],
+		onBegin: function () {
+			let allPokemon = p1.pokemon.concat(p2.pokemon);
+			for (let i = 0, len = allPokemon.length; i < len; i++) {
+				let pokemon = allPokemon[i];
+				//item slot
+				let itemSlot =  toId(pokemon.item);
+				if (itemSlot in Dex.data.Abilities) {
+					pokemon.innate = `ability${itemSlot}`;
+					pokemon.item = "";
+				} else if (itemSlot in Dex.data.TypeChart) {
+					pokemon.types[0] = battle.getTypes(itemSlot).id;
+					pokemon.item = "";
+				} else if (itemSlot in Dex.data.Movedex) {
+					let move = battle.getMove(itemSlot);
+					pokemon.baseMoveSlots.push({
+						move: move.name,
+						id: move.id,
+						pp: ((move.noPPBoosts || move.isZ) ? move.pp : move.pp * 8 / 5),
+						maxpp: ((move.noPPBoosts || move.isZ) ? move.pp : move.pp * 8 / 5),
+						target: move.target,
+						disabled: false,
+						disabledSource: '',
+						used: false,
+					});
+					pokemon.moveSlots = pokemon.baseMoveSlots;
+					pokemon.item = "";
+				}
+
+				//ability slot
+				let abilitySlot = toId(pokemon.item);
+				if (abilitySlot in Dex.data.TypeChart) {
+					pokemon.types[1] = battle.getTypes(abilitySlot).id;
+					pokemon.ability = "";
+				} else if (abilitySlot in Dex.data.Movedex) {
+					let move = battle.getMove(abilitySlot);
+					pokemon.baseMoveSlots.push({
+						move: move.name,
+						id: move.id,
+						pp: ((move.noPPBoosts || move.isZ) ? move.pp : move.pp * 8 / 5),
+						maxpp: ((move.noPPBoosts || move.isZ) ? move.pp : move.pp * 8 / 5),
+						target: move.target,
+						disabled: false,
+						disabledSource: '',
+						used: false,
+					});
+					pokemon.moveSlots = pokemon.baseMoveSlots;
+					pokemon.ability = "";
+				}
+			}
+		}
+		validateSet: function (set, teamHas) {
+			let problems = [];
+			let abilityExists = this.dex.getItem(set.ability) || this.dex.getType(set.ability) || this.dex.getAbility(set.ability) || this.dex.getMove(set.ability) || set.ability === '';
+			if (!abilityExists) problems.push(`You have entered gibberish in the ability slot on ${set.name || set.species}.`);
+			let itemExists = this.dex.getItem(set.item) || this.dex.getType(set.item) || this.dex.getAbility(set.item) || this.dex.getMove(set.item) || set.item === '';
+			if (!itemExists) problems.push(`You have entered gibberish in the item slot on ${set.name || set.species}.`);
+			let validator = new this.constructor(Dex.getFormat(this.format.id, ['Ignore Illegal Abilities']));
+			let problems = validator.validateSet(Object.assign({}, set, {ability: ''}), teamHas) || validator.validateSet(Object.assign({}, set, {ability: '', item: set.ability}, teamHas)) || [];
+			if (dual.id === item.id) problems.push(`You cannot have two of the same thing on a Pokemon. (${set.name || set.species} has two of ${item.name})`);
+			return problems;
+		},
+		onSwitchInPriority: 2,
+		onSwitchIn: function (pokemon) {
+			this.add('-start', pokemon, 'typechange', pokemon.types.join('/'), '[silent]');
+			if (!pokemon.innate) return;
+			pokemon.addVolatile(pokemon.innate);
+		},
+		onSwitchOut: function (pokemon) {
+			if (!pokemon.innate) return;
+			pokemon.removeVolatile(pokemon.innate);
+		},
+		onFaint: function (pokemon) {
+			if (!pokemon.innate) return;
+			pokemon.removeVolatile(pokemon.innate);
+		},
+	},
+	{
 		name: "[Gen 7] Partners in Crime",
-		desc: [
-			"Doubles-based metagame where both active ally Pok&eacute;mon share abilities and moves.",
-			"&bullet; <a href=\"http://www.smogon.com/forums/threads/3618488/\">Partners in Crime</a>",
+		desc: `Doubles-based metagame where both active ally Pok&eacute;mon share abilities and moves.`,
+		threads: [
+			`&bullet; <a href="https://www.smogon.com/forums/threads/3618488/">Partners in Crime</a>`,
 		],
 
 		mod: 'pic',
 		gameType: 'doubles',
 		ruleset: ['[Gen 7] Doubles OU', 'Sleep Clause Mod'],
-		banlist: ['Huge Power', 'Imposter', 'Parental Bond', 'Pure Power', 'Wonder Guard', 'Kangaskhanite', 'Mawilite', 'Medichamite', 'Mimic', 'Sketch', 'Transform'],
-		onDisableMovePriority: -1,
+		banlist: ['Kangaskhanite', 'Mawilite', 'Medichamite', 'Huge Power', 'Imposter', 'Normalize', 'Pure Power', 'Wonder Guard', 'Mimic', 'Sketch', 'Transform'],
 		onSwitchInPriority: 2,
 		onSwitchIn: function (pokemon) {
 			if (this.p1.active.every(ally => ally && !ally.fainted)) {
 				let p1a = this.p1.active[0], p1b = this.p1.active[1];
 				if (p1a.ability !== p1b.ability) {
-					let p1a_innate = 'ability' + p1b.ability;
-					p1a.volatiles[p1a_innate] = {id: p1a_innate, target: p1a};
-					let p1b_innate = 'ability' + p1a.ability;
-					p1b.volatiles[p1b_innate] = {id: p1b_innate, target: p1b};
+					let p1aInnate = 'ability' + p1b.ability;
+					p1a.volatiles[p1aInnate] = {id: p1aInnate, target: p1a};
+					let p1bInnate = 'ability' + p1a.ability;
+					p1b.volatiles[p1bInnate] = {id: p1bInnate, target: p1b};
 				}
 			}
 			if (this.p2.active.every(ally => ally && !ally.fainted)) {
@@ -3880,37 +3965,57 @@ exports.Formats = [
 			}
 			let ally = pokemon.side.active.find(ally => ally && ally !== pokemon && !ally.fainted);
 			if (ally && ally.ability !== pokemon.ability) {
+				// @ts-ignore
 				if (!pokemon.innate) {
+					// @ts-ignore
 					pokemon.innate = 'ability' + ally.ability;
+					// @ts-ignore
 					delete pokemon.volatiles[pokemon.innate];
+					// @ts-ignore
 					pokemon.addVolatile(pokemon.innate);
 				}
+				// @ts-ignore
 				if (!ally.innate) {
+					// @ts-ignore
 					ally.innate = 'ability' + pokemon.ability;
+					// @ts-ignore
 					delete ally.volatiles[ally.innate];
+					// @ts-ignore
 					ally.addVolatile(ally.innate);
 				}
 			}
 		},
 		onSwitchOut: function (pokemon) {
+			// @ts-ignore
 			if (pokemon.innate) {
+				// @ts-ignore
 				pokemon.removeVolatile(pokemon.innate);
+				// @ts-ignore
 				delete pokemon.innate;
 			}
 			let ally = pokemon.side.active.find(ally => ally && ally !== pokemon && !ally.fainted);
+			// @ts-ignore
 			if (ally && ally.innate) {
+				// @ts-ignore
 				ally.removeVolatile(ally.innate);
+				// @ts-ignore
 				delete ally.innate;
 			}
 		},
 		onFaint: function (pokemon) {
+			// @ts-ignore
 			if (pokemon.innate) {
+				// @ts-ignore
 				pokemon.removeVolatile(pokemon.innate);
+				// @ts-ignore
 				delete pokemon.innate;
 			}
 			let ally = pokemon.side.active.find(ally => ally && ally !== pokemon && !ally.fainted);
+			// @ts-ignore
 			if (ally && ally.innate) {
+				// @ts-ignore
 				ally.removeVolatile(ally.innate);
+				// @ts-ignore
 				delete ally.innate;
 			}
 		},
