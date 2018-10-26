@@ -12744,7 +12744,7 @@ exports.BattleAbilities = {
             let heldItem = target.item;
             target.item = eatenBerry;
             let eating = true;
-            if !target.eatItem() eating = false;
+            if (!target.eatItem()) eating = false;
             target.item = heldItem;
             if (!eating) {
                 this.add('-immune', target, '[msg]', '[from] ability: Vegetarian');
