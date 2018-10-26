@@ -404,6 +404,7 @@ exports.BattleAbilities = {
 		shortDesc: "This Pokemon's allies have the power of their special attacks multiplied by 1.3.",
 		onBasePowerPriority: 8,
 		onAllyBasePower: function (basePower, attacker, defender, move) {
+			if ((defender.hasAbility('moldedstall') && defender.willMove()) || ['unstablevoltage', 'teraarmor', 'turbocurse', 'unamazed', 'sturdymold'].includes(defender.getAbility())) return;
 			if (attacker !== this.effectData.target && move.category === 'Special') {
 				this.debug('Battery boost');
 				return this.chainModify([0x14CD, 0x1000]);
