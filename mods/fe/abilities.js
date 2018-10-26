@@ -5056,7 +5056,7 @@ exports.BattleAbilities = {
 		shortDesc: "Speed is raised by 1 when hit by a Ground-type move; Ground immunity.",
 		onTryHit: function(target, source, move) {
 			if (target !== source && move.type === 'Ground') {
-				this.add('-immune', target, '[msg]', '[from] ability: Clear Levitation');
+				this.add('-immune', target, '[msg]', '[from] ability: Ground Drive');
 				this.boost({
 					spe: 1
 				});
