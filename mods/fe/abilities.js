@@ -12703,7 +12703,6 @@ exports.BattleAbilities = {
     id: "beastbootleg",
     name: "Beast Bootleg",
 },
-
 "vegetarian": {
     desc: "This Pokemon is immune to Grass-type moves and activates the effects of a random berry, regardless of conditions, when hit by a Grass-type move.",
     shortDesc: "This Pokemon summons and eats a randomly chosen berry if hit by a Grass move; Grass immunity.",
