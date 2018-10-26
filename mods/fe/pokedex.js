@@ -1083,7 +1083,7 @@ exports.BattlePokedex = {
         color: "Purple",
         eggGroups: ["Dragon"],
     },
-    syscor: {
+    scyscor: {
         num: 750021,
         species: "Scyscor",
         types: ["Bug", "Ground"],
@@ -2636,7 +2636,7 @@ exports.BattlePokedex = {
 		  evos: ["ferroslash"],
         eggGroups: ["Mineral"],
     },
-    ferroslashshield: {
+    ferroslash: {
         num: 750045,
         species: "Ferroslash",
 		  baseForme: "Shield",
@@ -3548,9 +3548,9 @@ exports.BattlePokedex = {
         color: "Yellow",
         eggGroups: ["Undiscovered"],
     },
-    lucharma: {
+    lucharama: {
         num: 750061,
-        species: "Lucharma",
+        species: "Lucharama",
         types: ["Fighting", "Flying"],
         genderRatio: {
             M: 0.5,
@@ -4498,13 +4498,13 @@ exports.BattlePokedex = {
         },
         heightm: 0.6,
         weightkg: 11.5,
-		  evos: ["mampharos"],
+		  evos: ["manpharos"],
         color: "White",
         eggGroups: ["Field"],
     },
-    mampharos: {
+    manpharos: {
         num: 750077,
-        species: "Mampharos",
+        species: "Manpharos",
         types: ["Electric"],
         genderRatio: {
             M: 0.5,
@@ -4528,10 +4528,10 @@ exports.BattlePokedex = {
         color: "Yellow",
         eggGroups: ["Field"],
     },
-    mampharosmegam: {
+    manpharosmegam: {
         num: 750077,
-        species: "Mampharos-Mega-M",
-        baseSpecies: "Mampharos",
+        species: "Manpharos-Mega-M",
+        baseSpecies: "Manpharos",
         forme: "Mega-M",
         formeLetter: "M",
         types: ["Electric"],
@@ -4555,10 +4555,10 @@ exports.BattlePokedex = {
         color: "Yellow",
         eggGroups: ["Field"],
     },
-    mampharosmegaa: {
+    manpharosmegaa: {
         num: 750077,
-        species: "Mampharos-Mega-A",
-        baseSpecies: "Mampharos",
+        species: "Manpharos-Mega-A",
+        baseSpecies: "Manpharos",
         forme: "Mega-A",
         formeLetter: "M",
         types: ["Electric", "Dragon"],
@@ -16505,7 +16505,7 @@ mimiblimbusted: {
             spe: 98
         },
         abilities: {
-            0: "Pau Dancer"
+            0: "Pa'u Dancer"
         },
         color: "Psychic",
         heightm: 0.9,
@@ -18167,7 +18167,7 @@ mimiblimbusted: {
             spe: 125
         },
         abilities: {
-            0: "Airbone Lightning"
+            0: "Airbone Lighting"
         },
         heightm: 1.3,
         weightkg: 94.1,
@@ -19589,7 +19589,7 @@ auroritarmega: {
 		  weightkg: 200.25,
 		  eggGroups: ["Undiscovered"],
 	},
-	necroquaduskbubble: {
+	necroqua: {
 		num: 7500453,
 		species: "Necroqua",
 	   baseForme: "Dusk Bubble",
@@ -19604,7 +19604,7 @@ auroritarmega: {
 			spe: 69
 		},
 		abilities: {
-			0: "Black Hole"
+			0: "Dark Matter"
 		},
         color: "Green",
 		  heightm: 2.6,
@@ -19614,7 +19614,7 @@ auroritarmega: {
 	necroquaultra: {
 		num: 7500453,
 		species: "Necroqua-Ultra",
-		baseSpecies: "Necroqua-Dusk-Bubble",
+		baseSpecies: "Necroqua",
 		forme: "Ultra",
 		formeLetter: "U",
 		types: ["Steel", "Dragon"],
@@ -19743,7 +19743,7 @@ auroritarmega: {
 		  weightkg: 424.25,
 		  eggGroups: ["Undiscovered"],
 	},
-	necrozeraindawndisguise: {
+	necrozerain: {
 		num: 7500458,
 		species: "Necrozerain",
 	   baseForme: "Dawn Disguise",
@@ -23104,7 +23104,7 @@ auroritarmega: {
             baseSpecies: "Grousle",
             forme: "Primal",
             formeLetter: "P",
-	    		types: ["Ground", "Electric"],
+	    		types: ["Ground", "Fire"],
       		gender: "N",
 	   		baseStats: {
 			        hp: 90,
