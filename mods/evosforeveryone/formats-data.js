@@ -7818,6 +7818,42 @@ let BattleFormatsData = {
 		tier: "OU",
 		doublesTier: "DOU",
 	},
+	primebird: {
+		tier: "OU",
+		doublesTier: "DOU",
+	},
+	cryohedral: {
+		tier: "OU",
+		doublesTier: "DOU",
+	},
+	pinceratops: {
+		tier: "OU",
+		doublesTier: "DOU",
+	},
+	cadenescent: {
+		tier: "OU",
+		doublesTier: "DOU",
+	},
+	spotlise: {
+		tier: "OU",
+		doublesTier: "DOU",
+	},
+	diamontink: {
+		tier: "OU",
+		doublesTier: "DOU",
+	},
+	mausolectre: {
+		tier: "OU",
+		doublesTier: "DOU",
+	},
+	drampasgrandpa: {
+		tier: "OU",
+		doublesTier: "DOU",
+	},
+	crimsagama: {
+		tier: "OU",
+		doublesTier: "DOU",
+	},
 };
 
 exports.BattleFormatsData = BattleFormatsData;
