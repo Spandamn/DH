@@ -109,13 +109,14 @@ exports.BattleScripts = {
 				let ppDrop = this.runEvent('DeductPP', source, pokemon, move);
 				if (ppDrop !== true) {
 					extraPP += ppDrop || 0;
+					if (ppDrop && pokemon.hasAbility('powerdrain') && !source.runStatusImmunity('par', false)){
+						this.add('-ability', pokemon, 'Power Drain');
+						source.trySetStatus('par', pokemon, {status: 'par', id: 'powerdrain'});
+					}
 				}
 			}
-			if (extraPP > 0 && !(['calamity', 'diamondarmor'].includes(pokemon.getAbility()))) {
+			if (extraPP > 0 && !pokemon.hasAbility('diamondarmor') && !pokemon.hasAbility('calamity')) {
 				pokemon.deductPP(move, extraPP);
-				if (pokemon.hasAbility('powerdrain')){
-					source.trySetStatus('par', pokemon);
-				}
 			}
 		}
 
