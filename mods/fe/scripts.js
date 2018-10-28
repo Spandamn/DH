@@ -109,7 +109,7 @@ exports.BattleScripts = {
 				let ppDrop = this.runEvent('DeductPP', source, pokemon, move);
 				if (ppDrop !== true) {
 					extraPP += ppDrop || 0;
-					if (ppDrop && pokemon.hasAbility('powerdrain') && source.runStatusImmunity('par', false)){
+					if (ppDrop && pokemon.hasAbility('powerdrain') && source.runStatusImmunity('par', false) && !source.status){
 						this.add('-ability', pokemon, 'Power Drain');
 						source.trySetStatus('par', pokemon);
 					}
