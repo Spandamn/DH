@@ -110,7 +110,7 @@ exports.BattleScripts = {
 				if (ppDrop !== true) {
 					extraPP += ppDrop || 0;
 					if (ppDrop && pokemon.hasAbility('powerdrain')){
-						source.trySetStatus('par', pokemon);
+						source.trySetStatus('par', pokemon, {status: 'par', id: 'powerdrain'});
 					}
 				}
 			}
