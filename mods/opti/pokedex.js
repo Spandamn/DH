@@ -239,4 +239,10 @@ types: ["Bug", "Poison"], // Stats: 50 / 120 / 50 / 120 / 50 / 140
 baseStats: {hp: 50, atk: 120, def: 50, spa: 120, spd: 50, spe: 140},
 abilities: {0: "Sniper", 1: "Sheer Force", H: "Technician"},
 },
+simisage: {
+inherit: true,
+types: ["Grass", "Fighting"], // 80 HP / 80 Atk / 75 Def / 110 SpA / 75 SpD / 115 Spe |
+baseStats: {hp: 80, atk: 80, def: 75, spa: 110, spd: 75, spe: 115},
+abilities: {0: "Competitive", H: "Overgrow"},
+},
   };
