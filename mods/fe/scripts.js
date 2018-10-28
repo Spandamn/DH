@@ -111,7 +111,7 @@ exports.BattleScripts = {
 					extraPP += ppDrop || 0;
 				}
 			}
-			if (extraPP > 0 && !['calamity', 'diamondarmor'].includes(pokemon.getAbility())) {
+			if (extraPP > 0 && !(['calamity', 'diamondarmor'].includes(pokemon.getAbility()))) {
 				pokemon.deductPP(move, extraPP);
 				if (pokemon.hasAbility('powerdrain')){
 					source.trySetStatus('par', pokemon);
@@ -229,7 +229,7 @@ exports.BattleScripts = {
 		 
 		hasItem(item) {
 			if (this.ignoringItem()) return false;
-			let ownItem = this.ignoringItem() ? '' : this.item;
+			let ownItem = (this.ignoringItem() ? '' : this.item);
 			let golden = false;
 			let bootleg = false;
 			if (!Array.isArray(item)) {
@@ -245,9 +245,9 @@ exports.BattleScripts = {
 				golden = (item.map(toId).includes(this.volatiles['goldentouch'].item));
 			}
 			if (this.volatiles['beastbootleg'] && !item.map(toId).includes(ownItem)){
- 		       bootleg = item.map(toId).includes(ownItem) || (item.map(toId).includes(this.volatiles['beastbootleg'].items[0]) || item.map(toId).includes(this.volatiles['beastbootleg'].items[1]));
+ 		       bootleg = (item.map(toId).includes(ownItem) || (item.map(toId).includes(this.volatiles['beastbootleg'].items[0]) || item.map(toId).includes(this.volatiles['beastbootleg'].items[1])));
 			}
-			return item.map(toId).includes(ownItem) || golden || bootleg;
+			return (item.map(toId).includes(ownItem) || golden || bootleg);
 		},
 		eatItem() {
 			if (!this.hp || !this.isActive) return false;
@@ -267,6 +267,7 @@ exports.BattleScripts = {
 				if ('goldentouch' in this.volatiles){
 					if (this.volatiles['goldentouch'].item === item.id) {
 						this.volatiles['goldentouch'].item = '';
+						this.abilityData = {id: '', target: this};
 					}
 				}
 				if ('beastbootleg' in this.volatiles){
@@ -313,6 +314,7 @@ exports.BattleScripts = {
 				if ('goldentouch' in this.volatiles){
 					if (this.volatiles['goldentouch'].item === item.id) {
 						this.volatiles['goldentouch'].item = '';
+						this.abilityData = {id: '', target: this};
 					}
 				}
 				if ('beastbootleg' in this.volatiles){
@@ -331,7 +333,7 @@ exports.BattleScripts = {
 			return false;
 		},
 		ignoringAbility() {
-			return !!((this.battle.gen >= 5 && !this.isActive) || ((this.volatiles['gastroacid'] || this.volatiles['teraarmor']) && !['battlebond', 'comatose', 'disguise', 'multitype', 'powerconstruct', 'rkssystem', 'schooling', 'shieldsdown', 'stancechange'].includes(this.ability)));
+			return !!((this.battle.gen >= 5 && !this.isActive) || ((this.volatiles['gastroacid'] || this.volatiles['teraarmor']) && !(['battlebond', 'comatose', 'disguise', 'multitype', 'powerconstruct', 'rkssystem', 'schooling', 'shieldsdown', 'stancechange', 'truant', 'resurrection', 'magicalwand', 'sleepingsystem', 'cursedcloak', 'appropriation', 'disguiseburden', 'hideandseek', 'beastcostume', 'spiralpower', 'optimize', 'prototype', 'typeillusionist', 'godoffertility', 'foundation', 'sandyconstruct', 'victorysystem', 'techequip', 'technicalsystem', 'triagesystem', 'geneticalgorithm', 'effectsetter', 'tacticalcomputer', 'mitosis', 'barbstance', 'errormacro', 'combinationdrive', 'stanceshield', 'unfriend', 'desertmirage', 'sociallife', 'cosmology', 'crystallizedshield', 'compression', 'whatdoesthisdo'].includes(this.ability))));
 		},
 		getActionSpeed() {
 			let speed = this.getStat('spe', false, false);
