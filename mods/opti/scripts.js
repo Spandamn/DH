@@ -63,5 +63,9 @@ this.modData('Learnsets', 'beedrill').learnset.feintattack = ['7L1'];
 this.modData('Learnsets', 'beedrill').learnset.stingstorm = ['7L1'];
 	
 this.modData('Learnsets', 'wormadamtrash').learnset.recover = ['7L1'];
+	this.modData('Learnsets', 'simisage').learnset.aurasphere = ['7L1'];
+	this.modData('Learnsets', 'simisage').learnset.vacuumwave = ['7L1'];
+	this.modData('Learnsets', 'simisage').learnset.uturn = ['7L1'];
+	this.modData('Learnsets', 'simisage').learnset.powergem = ['7L1'];
 },
 };
