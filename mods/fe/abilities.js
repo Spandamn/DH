@@ -8505,9 +8505,6 @@ exports.BattleAbilities = {
      	},
 		effect: {
 			duration: 1,
-			onStart: function (pokemon) {
-				this.add('-endability', pokemon);
-			},
 			onSourceHit: function (target, source, move) {
 				source.removeVolatile('teraarmor');
 			},
