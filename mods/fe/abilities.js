@@ -12790,7 +12790,7 @@ exports.BattleAbilities = {
     onAnyTryMove: function(target, source, effect) {
         if (effect.effectType === 'Move' && effect.id === 'trickroom' && this.pseudoWeather.sluggishaura) {
             this.add('-fail', source, effect, '[from] Sluggish Aura');
-            return null;
+            return null;u
         }
     },
     onEnd: function(pokemon) {
@@ -12814,21 +12814,14 @@ exports.BattleAbilities = {
         }
     },
 		effect: {
-			duration: 5,
-			durationCallback: function (source, effect) {
-				if (source && source.hasAbility('persistent')) {
-					this.add('-activate', source, 'ability: Persistent', effect);
-					return 7;
-				}
-				return 5;
-			},
-			onStart: function (target, source) {
-				this.add('-fieldstart', 'ability: Sluggish Aura', '[of] ' + source);
+			duration: 0,
+			onStart: function (battle, source, effect) {
+				this.add('-fieldstart', 'move: Sluggish Aura', '[from] ability: ' + effect, '[of] ' + source);
 			},
 			// Speed modification is changed in Pokemon.getActionSpeed() in sim/pokemon.js
 			onResidualOrder: 23,
 			onEnd: function () {
-				this.add('-fieldend', 'ability: Sluggish Aura');
+				this.add('-fieldend', 'move: Sluggish Aura');
 			},
 		},
     id: "sluggishaura",
