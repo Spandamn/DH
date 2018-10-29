@@ -109,9 +109,9 @@ exports.BattleScripts = {
 				let ppDrop = this.runEvent('DeductPP', source, pokemon, move);
 				if (ppDrop !== true) {
 					extraPP += ppDrop || 0;
-					if (ppDrop && pokemon.hasAbility('powerdrain') && !source.runStatusImmunity('par', false)){
+					if (ppDrop && pokemon.hasAbility('powerdrain') && source.runStatusImmunity('par', false) && !source.status){
 						this.add('-ability', pokemon, 'Power Drain');
-						source.trySetStatus('par', pokemon, {status: 'par', id: 'powerdrain'});
+						source.trySetStatus('par', pokemon);
 					}
 				}
 			}
@@ -339,7 +339,7 @@ exports.BattleScripts = {
 		getActionSpeed() {
 			let speed = this.getStat('spe', false, false);
 			if (speed > 10000) speed = 10000;
-			if ((this.battle.getPseudoWeather('trickroom') && !this.battle.getPseudoWeather('sluggishaura')) || (this.battle.getPseudoWeather('sluggishaura') && !this.battle.getWeather('trickroom'))) {
+			if ((this.battle.getPseudoWeather('trickroom') || this.battle.getPseudoWeather('sluggishaura')) && !(this.battle.getPseudoWeather('trickroom') && this.battle.getPseudoWeather('sluggishaura'))) {
 				speed = 0x2710 - speed;
 			}
 			return speed & 0x1FFF;

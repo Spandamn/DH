@@ -12813,6 +12813,24 @@ exports.BattleAbilities = {
             });
         }
     },
+		effect: {
+			duration: 5,
+			durationCallback: function (source, effect) {
+				if (source && source.hasAbility('persistent')) {
+					this.add('-activate', source, 'ability: Persistent', effect);
+					return 7;
+				}
+				return 5;
+			},
+			onStart: function (target, source) {
+				this.add('-fieldstart', 'ability: Sluggish Aura', '[of] ' + source);
+			},
+			// Speed modification is changed in Pokemon.getActionSpeed() in sim/pokemon.js
+			onResidualOrder: 23,
+			onEnd: function () {
+				this.add('-fieldend', 'ability: Sluggish Aura');
+			},
+		},
     id: "sluggishaura",
     name: "Sluggish Aura",
 },
