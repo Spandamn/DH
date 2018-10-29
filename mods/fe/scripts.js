@@ -103,19 +103,19 @@ exports.BattleScripts = {
 
 		let targets = pokemon.getMoveTargets(move, target);
 
-		if (!sourceEffect || ['pursuit', 'shocksuck', 'pursuingbeam'].includes(sourceEffect.id)) {
+		if (!sourceEffect || (['pursuit', 'shocksuck', 'pursuingbeam'].includes(sourceEffect.id))) {
 			let extraPP = 0;
 			for (const source of targets) {
 				let ppDrop = this.runEvent('DeductPP', source, pokemon, move);
 				if (ppDrop !== true) {
 					extraPP += ppDrop || 0;
-					if (ppDrop && pokemon.hasAbility('powerdrain') && source.runStatusImmunity('par', false) && !source.status){
+					if (ppDrop > 0 && pokemon.hasAbility('powerdrain') && !source.runStatusImmunity('par', false) && !source.status){
 						this.add('-ability', pokemon, 'Power Drain');
 						source.trySetStatus('par', pokemon);
 					}
 				}
 			}
-			if (extraPP > 0 && !pokemon.hasAbility('diamondarmor') && !pokemon.hasAbility('calamity')) {
+			if (extraPP > 0 && !(pokemon.hasAbility('diamondarmor') || pokemon.hasAbility('calamity'))) {
 				pokemon.deductPP(move, extraPP);
 			}
 		}
@@ -339,7 +339,10 @@ exports.BattleScripts = {
 		getActionSpeed() {
 			let speed = this.getStat('spe', false, false);
 			if (speed > 10000) speed = 10000;
-			if ((this.battle.getPseudoWeather('trickroom') || this.battle.getPseudoWeather('sluggishaura')) && !(this.battle.getPseudoWeather('trickroom') && this.battle.getPseudoWeather('sluggishaura'))) {
+			if (this.battle.getPseudoWeather('trickroom')) {
+				speed = 0x2710 - speed;
+			}
+			if (this.battle.getPseudoWeather('sluggishaura')) {
 				speed = 0x2710 - speed;
 			}
 			return speed & 0x1FFF;
