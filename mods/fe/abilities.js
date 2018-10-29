@@ -7368,8 +7368,8 @@ exports.BattleAbilities = {
 	},
 	"insidioustentacles": {
 		shortDesc: "If this Pokemon lands or is hit by a contact move, the other Pokemon's highest stat is decreased by 1 stage and it gets trapped.",
-		onModifyMove: function (move, source, target) {
-			if (!move || !move.flags['contact']) return;
+		onSourceHit: function (target, source, move) {
+			if (!move || !move.flags['contact'] || target.volatiles['substitute']) return;
 				let activated = false;
             let stat = 'atk';
             let bestStat = 0;
@@ -7379,14 +7379,13 @@ exports.BattleAbilities = {
 						  bestStat = target.stats[i];
                 }
             }
-            if (!target.volatiles['substitute']) {
-                this.boost({[stat]: -1}, target, source);
-                if (source.isActive) target.addVolatile('trapped', source, move, 'trapper');
-            }
+            this.boost({[stat]: -1}, target, source);
+            if (source.isActive) target.addVolatile('trapped', source, move, 'trapper');
 		},
 		onAfterDamageOrder: 1,
 		onAfterDamage: function (damage, target, source, move) {
-			let activated = false;
+			if (source && source !== target && move && move.flags['contact']) {
+				let activated = false;
             let stat = 'atk';
             let bestStat = 0;
             for (let i in target.stats) {
@@ -7395,7 +7394,6 @@ exports.BattleAbilities = {
 						  bestStat = target.stats[i];
                 }
             }
-			if (source && source !== target && move && move.flags['contact']) {
                 this.boost({[stat]: -1}, source, target);
                 if (target.isActive) source.addVolatile('trapped', target, move, 'trapper');
 			}
@@ -10800,7 +10798,8 @@ exports.BattleAbilities = {
 		name: "Adapting Body",
 	},
 	"diamondarmor": {
-		shortDesc: "Super-effective moves deal only ¾ of their normal damage. Negates any PP-depleting Ability.",
+		shortDesc: "This Pokemon receives 3/4 damage from supereffective attacks. It also ignores the effects of abilities that deplete PP.",
+		//Immunity to Pressure, etc. is implemented in scripts.js.
 		onSourceModifyDamage: function (damage, source, target, move) {
 			if (move.typeMod > 0) {
 				return this.chainModify(0.75);
