@@ -8508,8 +8508,8 @@ exports.BattleAbilities = {
 			onStart: function (pokemon) {
 				this.add('-endability', pokemon);
 			},
-			onTryHit: function (pokemon, target, move) {
-				target.removeVolatile('teraarmor');
+			onSourceHit: function (target, source, move) {
+				source.removeVolatile('teraarmor');
 			},
 			onResidual: function (pokemon) {
 				pokemon.removeVolatile('teraarmor');
