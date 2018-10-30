@@ -4473,7 +4473,11 @@ exports.Formats = [
 					this.add('raw',illusionability,illusionability.shortDesc);
 				} else {
 					let ability = this.getAbility(pokemon.ability);
-            	this.add('-start', pokemon, 'typechange', pokemon.getTypes().join('/'), '[silent]');
+					if (pokemon.hasAbility('typeillusionist')){
+       		     this.add('-start', pokemon, 'typechange', pokemon.template.types.join('/'), '[silent]');	
+					} else {
+            		this.add('-start', pokemon, 'typechange', pokemon.getTypes().join('/'), '[silent]');
+					}
 					this.add('raw',ability,ability.shortDesc);
 				}
         },
