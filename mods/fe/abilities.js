@@ -8505,8 +8505,9 @@ exports.BattleAbilities = {
      	},
 		effect: {
 			duration: 1,
-			onSourceHit: function (target, source, move) {
-				source.removeVolatile('teraarmor');
+			onAnyBeforeMove: function (target, source, move) {
+				if (this.effectData.target === source) return;
+				this.effectData.target.removeVolatile('teraarmor');
 			},
 			onResidual: function (pokemon) {
 				pokemon.removeVolatile('teraarmor');
