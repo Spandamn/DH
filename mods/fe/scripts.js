@@ -126,7 +126,9 @@ exports.BattleScripts = {
 			return false;
 		}
 
-		this.singleEvent('UseMoveMessage', move, null, pokemon, target, move);
+		if (!pokemon.illusion || move.id !== 'foulmimicry'){
+			this.singleEvent('UseMoveMessage', move, null, pokemon, target, move);
+		}
 
 		if (move.ignoreImmunity === undefined) {
 			move.ignoreImmunity = (move.category === 'Status');
