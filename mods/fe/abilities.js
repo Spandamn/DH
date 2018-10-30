@@ -416,6 +416,48 @@ exports.BattleAbilities = {
 		num: 217,
 	},
 	
+	"illusion": {
+		inherit: true,
+		desc: "When this Pokemon switches in, it appears as the last unfainted Pokemon in its party until it takes direct damage from another Pokemon's attack. This Pokemon's actual level and HP are displayed instead of those of the mimicked Pokemon.",
+		shortDesc: "This Pokemon appears as the last Pokemon in the party until it takes direct damage.",
+		onBeforeSwitchIn: function (pokemon) {
+			pokemon.illusion = null;
+			let i;
+			for (i = pokemon.side.pokemon.length - 1; i > pokemon.position; i--) {
+				if (!pokemon.side.pokemon[i]) continue;
+				if (!pokemon.side.pokemon[i].fainted) break;
+			}
+			if (!pokemon.side.pokemon[i]) return;
+			if (pokemon === pokemon.side.pokemon[i]) return;
+			pokemon.illusion = pokemon.side.pokemon[i];
+		},
+		onAfterDamage: function (damage, target, source, effect) {
+			if (target.illusion && effect && effect.effectType === 'Move' && effect.id !== 'confused') {
+				this.singleEvent('End', this.getAbility('Illusion'), target.abilityData, target, source, effect);
+			}
+		},
+		onEnd: function (pokemon) {
+			if (pokemon.illusion) {
+				this.debug('illusion cleared');
+				pokemon.illusion = null;
+				let details = pokemon.template.species + (pokemon.level === 100 ? '' : ', L' + pokemon.level) + (pokemon.gender === '' ? '' : ', ' + pokemon.gender) + (pokemon.set.shiny ? ', shiny' : '');
+				this.add('replace', pokemon, details);
+				this.add('-end', pokemon, 'Illusion');
+				let ability = this.getAbility(pokemon.ability);
+            this.add('-start', pokemon, 'typechange', pokemon.getTypes().join('/'), '[silent]');
+				this.add('raw', ability, ability.shortDesc);
+			}
+		},
+		onFaint: function (pokemon) {
+			pokemon.illusion = null;
+		},
+		isUnbreakable: true,
+		id: "illusion",
+		name: "Illusion",
+		rating: 4,
+		num: 149,
+	},
+	
 	"turnabouttorrent": {
 		shortDesc: "Water-type moves of the user is boosted by 50% as long as user is above 1/3 HP; the user's stat changes are reversed.",
 		onBoost: function(boost) {
