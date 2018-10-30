@@ -4409,8 +4409,8 @@ let BattleAbilities = {
 		num: 10012,
 	},
 	"enfeeble": {
-		desc: "On switch-in, this Pokemon lowers the Attack of adjacent opposing Pokemon by 1 stage. Pokemon behind a substitute are immune.",
-		shortDesc: "On switch-in, this Pokemon lowers the Attack of adjacent opponents by 1 stage.",
+		desc: "On switch-in, this Pokemon lowers the Special Attack of adjacent opposing Pokemon by 1 stage. Pokemon behind a substitute are immune.",
+		shortDesc: "On switch-in, this Pokemon lowers the Special Attack of adjacent opponents by 1 stage.",
 		onStart: function (pokemon) {
 			let activated = false;
 			for (const target of pokemon.side.foe.active) {
@@ -4430,6 +4430,96 @@ let BattleAbilities = {
 		name: "Enfeeble",
 		rating: 3.5,
 		num: 22,
+	},
+	"wintersgift": {
+		desc: "Raises the Special Attack and Defense of this pokemon and any allies on the field, if Hail is in effect.",
+		shortDesc: "Raises SpA and Def of self and allies in Hail.",
+		onStart: function (pokemon) {
+			delete this.effectData.forme;
+		},
+		onModifySpAPriority: 3,
+		onAllyModifySpA: function (spa) {
+			if (this.isWeather('hail')) {
+				return this.chainModify(1.5);
+			}
+		},
+		onModifyDefPriority: 4,
+		onAllyModifyDef: function (def) {
+			if (this.isWeather('hail')) {
+				return this.chainModify(1.5);
+			}
+		},
+		id: "wintersgift",
+		name: "Winter's Gift",
+		rating: 2.5,
+		num: 122,
+	},
+	"blueice": {
+		desc: "This Pokemon is immune to Fighting-type moves.",
+		shortDesc: "Fighting immunity.",
+		onTryHit: function (target, source, move) {
+			if (target !== source && move.type === 'Fighting') {
+				this.add('-immune', target, '[msg]', '[from] ability: Blue Ice');
+				return null;
+			}
+		},
+		id: "blueice",
+		name: "Blue Ice",
+		rating: 3.5,
+		num: 10,
+	},
+	"battlespirit": {
+		shortDesc: "This Pokemon's attacking stat is multiplied by 1.5 while using a Steel-type attack.",
+		onModifyAtkPriority: 5,
+		onModifyAtk: function (atk, attacker, defender, move) {
+			if (move.type === 'Fighting') {
+				this.debug('Battle Spirit boost');
+				return this.chainModify(1.5);
+			}
+		},
+		onModifySpAPriority: 5,
+		onModifySpA: function (atk, attacker, defender, move) {
+			if (move.type === 'Fighting') {
+				this.debug('Battle Spirit boost');
+				return this.chainModify(1.5);
+			}
+		},
+		id: "battlespirit",
+		name: "Battle Spirit",
+		rating: 3,
+		num: 200,
+	},
+	"ramifications": {
+		desc: "If a Pokemon uses a Dragon- or Rock-type attack against this Pokemon, that Pokemon's attacking stat is halved when calculating the damage to this Pokemon.",
+		shortDesc: "Dragon/Rock-type moves against this Pokemon deal damage with a halved attacking stat.",
+		onModifyAtkPriority: 6,
+		onSourceModifyAtk: function (atk, attacker, defender, move) {
+			if (move.type === 'Dragon' || move.type === 'Rock') {
+				this.debug('Ramifications weaken');
+				return this.chainModify(0.5);
+			}
+		},
+		onModifySpAPriority: 5,
+		onSourceModifySpA: function (atk, attacker, defender, move) {
+			if (move.type === 'Dragon' || move.type === 'Rock') {
+				this.debug('Ramifications weaken');
+				return this.chainModify(0.5);
+			}
+		},
+		id: "ramifications",
+		name: "Ramifications",
+		rating: 3.5,
+		num: 47,
+	},
+	"cloudysurge": {
+		shortDesc: "On switch-in, this Pokemon summons Cloudy Terrain.",
+		onStart: function (source) {
+			this.setTerrain('cloudyterrain');
+		},
+		id: "cloudysurge",
+		name: "Cloudy Surge",
+		rating: 4,
+		num: 228,
 	},
 };
 
