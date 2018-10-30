@@ -224,6 +224,37 @@ exports.BattleScripts = {
         }
         return null;
     },
+	
+	runMegaEvo: function (pokemon) {
+		const templateid = pokemon.canMegaEvo || pokemon.canUltraBurst;
+		if (!templateid) return false;
+		const side = pokemon.side;
+
+		// Pokémon affected by Sky Drop cannot mega evolve. Enforce it here for now.
+		for (const foeActive of side.foe.active) {
+			if (foeActive.volatiles['skydrop'] && foeActive.volatiles['skydrop'].source === pokemon) {
+				return false;
+			}
+		}
+
+		pokemon.formeChange(templateid, pokemon.getItem(), true);
+
+		// Limit one mega evolution
+		let wasMega = pokemon.canMegaEvo;
+		for (const ally of side.pokemon) {
+			if (wasMega) {
+				ally.canMegaEvo = null;
+			} else {
+				ally.canUltraBurst = null;
+			}
+		}
+
+		this.runEvent('AfterMega', pokemon);
+		let ability = this.getAbility(pokemon.ability);
+      this.add('-start', pokemon, 'typechange', pokemon.getTypes().join('/'), '[silent]');
+		this.add('raw', ability, ability.shortDesc);
+		return true;
+	},
 
     // BattlePokemon scripts, which should override the other things.
     pokemon: { 
