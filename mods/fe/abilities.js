@@ -6,7 +6,7 @@ exports.BattleAbilities = {
 		desc: "If this Pokemon is a Castform, its type changes to the current weather condition's type, except Sandstorm.",
 		shortDesc: "Castform's type changes to the current weather condition's type, except Sandstorm.",
 		onUpdate: function (pokemon) {
-			if (pokemon.baseTemplate.baseSpecies !== 'Castform' || pokemon.transformed) greturn;
+			if (pokemon.baseTemplate.baseSpecies !== 'Castform' || pokemon.transformed) return;
 			let forme = null;
 			switch (this.effectiveWeather()) {
 			case 'sunnyday':
@@ -12822,7 +12822,7 @@ exports.BattleAbilities = {
 
 "sluggishaura": {
     desc: "As long as this Pokemon is active, slower Pokeon move first. This Pokemon's Speed is lowered by 1 stage at the end of each full turn it has been on the field.",
-    shortDesc: "As long as this Pokemon is active, slower Pokmeon move first. At the end of each turn, its Speed is reduced by 1 stage. Trick Room cannot be used when this Pokemon is active.",
+    shortDesc: "As long as this Pokemon is active, slower Pokemon move first. At the end of each turn, its Speed is reduced by 1 stage. Trick Room cannot be used when this Pokemon is active.",
     onStart: function(source) {
         this.addPseudoWeather('sluggishaura');
     },
