@@ -6,7 +6,7 @@ exports.BattleAbilities = {
 		desc: "If this Pokemon is a Castform, its type changes to the current weather condition's type, except Sandstorm.",
 		shortDesc: "Castform's type changes to the current weather condition's type, except Sandstorm.",
 		onUpdate: function (pokemon) {
-			if (pokemon.baseTemplate.baseSpecies !== 'Castform' || pokemon.transformed) return;
+			if (pokemon.baseTemplate.baseSpecies !== 'Castform' || pokemon.transformed) greturn;
 			let forme = null;
 			switch (this.effectiveWeather()) {
 			case 'sunnyday':
@@ -12040,18 +12040,6 @@ exports.BattleAbilities = {
 			if (!pokemon.side.pokemon[i]) return;
 			if (pokemon === pokemon.side.pokemon[i]) return;
 			pokemon.illusion = pokemon.side.pokemon[i];
-		},
-		onBeforeMovePriority: -100,
-		onBeforeMove: function (pokemon, move) {
-			if (pokemon.illusion && move.id === 'foulmimicry'){
-				this.useMove(pokemon.illusion.moveSlots[0].id, pokemon);
-				for (const moveSlot of source.moveSlots) {
-					if (moveSlot.id === 'foulmimicry') {
-						this.deductPP('foulmimicry', 1);
-					}
-				}
-				this.cancelMove(pokemon);
-			}
 		},
 		onBasePowerPriority: 8,
 		onBasePower: function (basePower, attacker, defender, move) {
