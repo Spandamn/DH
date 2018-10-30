@@ -4467,10 +4467,18 @@ exports.Formats = [
 			return temp;
   		},
 		onSwitchIn: function (pokemon) {
-				for (const target of pokemon.side.foe.active) {
-            this.add('-start', pokemon, 'typechange', pokemon.template.types.join('/'), '[silent]');
-				let ability = this.getAbility(target.ability);
-				this.add('raw',ability,ability.shortDesc);
+				if (pokemon.illusion){
+            	this.add('-start', pokemon, 'typechange', pokemon.illusion.template.types.join('/'), '[silent]');
+					let illusionability = this.getAbility(pokemon.illusion.ability);
+					this.add('raw',illusionability,illusionability.shortDesc);
+				} else {
+					let ability = this.getAbility(pokemon.ability);
+					if (pokemon.hasAbility('typeillusionist')){
+       		     this.add('-start', pokemon, 'typechange', pokemon.template.types.join('/'), '[silent]');	
+					} else {
+            		this.add('-start', pokemon, 'typechange', pokemon.getTypes().join('/'), '[silent]');
+					}
+					this.add('raw',ability,ability.shortDesc);
 				}
         },
 		checkLearnset: function (move, template, lsetData, set) {

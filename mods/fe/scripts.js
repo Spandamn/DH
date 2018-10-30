@@ -103,19 +103,19 @@ exports.BattleScripts = {
 
 		let targets = pokemon.getMoveTargets(move, target);
 
-		if (!sourceEffect || ['pursuit', 'shocksuck', 'pursuingbeam'].includes(sourceEffect.id)) {
+		if (!sourceEffect || (['pursuit', 'shocksuck', 'pursuingbeam'].includes(sourceEffect.id))) {
 			let extraPP = 0;
 			for (const source of targets) {
 				let ppDrop = this.runEvent('DeductPP', source, pokemon, move);
 				if (ppDrop !== true) {
 					extraPP += ppDrop || 0;
-					if (ppDrop && pokemon.hasAbility('powerdrain') && source.runStatusImmunity('par', false) && !source.status){
+					if (ppDrop && pokemon.hasAbility('powerdrain') && !source.runStatusImmunity('par', false) && !source.status){
 						this.add('-ability', pokemon, 'Power Drain');
 						source.trySetStatus('par', pokemon);
 					}
 				}
 			}
-			if (extraPP > 0 && !pokemon.hasAbility('diamondarmor') && !pokemon.hasAbility('calamity')) {
+			if (extraPP > 0 && !(pokemon.hasAbility('diamondarmor') || pokemon.hasAbility('calamity'))) {
 				pokemon.deductPP(move, extraPP);
 			}
 		}
@@ -126,7 +126,9 @@ exports.BattleScripts = {
 			return false;
 		}
 
-		this.singleEvent('UseMoveMessage', move, null, pokemon, target, move);
+		if (!pokemon.illusion || move.id !== 'foulmimicry'){
+			this.singleEvent('UseMoveMessage', move, null, pokemon, target, move);
+		}
 
 		if (move.ignoreImmunity === undefined) {
 			move.ignoreImmunity = (move.category === 'Status');
@@ -224,6 +226,37 @@ exports.BattleScripts = {
         }
         return null;
     },
+	
+	runMegaEvo: function (pokemon) {
+		const templateid = pokemon.canMegaEvo || pokemon.canUltraBurst;
+		if (!templateid) return false;
+		const side = pokemon.side;
+
+		// Pokémon affected by Sky Drop cannot mega evolve. Enforce it here for now.
+		for (const foeActive of side.foe.active) {
+			if (foeActive.volatiles['skydrop'] && foeActive.volatiles['skydrop'].source === pokemon) {
+				return false;
+			}
+		}
+
+		pokemon.formeChange(templateid, pokemon.getItem(), true);
+
+		// Limit one mega evolution
+		let wasMega = pokemon.canMegaEvo;
+		for (const ally of side.pokemon) {
+			if (wasMega) {
+				ally.canMegaEvo = null;
+			} else {
+				ally.canUltraBurst = null;
+			}
+		}
+
+		this.runEvent('AfterMega', pokemon);
+		let ability = this.getAbility(pokemon.ability);
+      this.add('-start', pokemon, 'typechange', pokemon.getTypes().join('/'), '[silent]');
+		this.add('raw', ability, ability.shortDesc);
+		return true;
+	},
 
     // BattlePokemon scripts, which should override the other things.
     pokemon: { 
@@ -339,7 +372,10 @@ exports.BattleScripts = {
 		getActionSpeed() {
 			let speed = this.getStat('spe', false, false);
 			if (speed > 10000) speed = 10000;
-			if ((this.battle.getPseudoWeather('trickroom') || this.battle.getPseudoWeather('sluggishaura')) && !(this.battle.getPseudoWeather('trickroom') && this.battle.getPseudoWeather('sluggishaura'))) {
+			if (this.battle.getPseudoWeather('trickroom')) {
+				speed = 0x2710 - speed;
+			}
+			if (this.battle.getPseudoWeather('sluggishaura')) {
 				speed = 0x2710 - speed;
 			}
 			return speed & 0x1FFF;

@@ -6,7 +6,7 @@ exports.BattleAbilities = {
 		desc: "If this Pokemon is a Castform, its type changes to the current weather condition's type, except Sandstorm.",
 		shortDesc: "Castform's type changes to the current weather condition's type, except Sandstorm.",
 		onUpdate: function (pokemon) {
-			if (pokemon.baseTemplate.baseSpecies !== 'Castform' || pokemon.transformed) return;
+			if (pokemon.baseTemplate.baseSpecies !== 'Castform' || pokemon.transformed) greturn;
 			let forme = null;
 			switch (this.effectiveWeather()) {
 			case 'sunnyday':
@@ -414,6 +414,48 @@ exports.BattleAbilities = {
 		name: "Battery",
 		rating: 0,
 		num: 217,
+	},
+	
+	"illusion": {
+		inherit: true,
+		desc: "When this Pokemon switches in, it appears as the last unfainted Pokemon in its party until it takes direct damage from another Pokemon's attack. This Pokemon's actual level and HP are displayed instead of those of the mimicked Pokemon.",
+		shortDesc: "This Pokemon appears as the last Pokemon in the party until it takes direct damage.",
+		onBeforeSwitchIn: function (pokemon) {
+			pokemon.illusion = null;
+			let i;
+			for (i = pokemon.side.pokemon.length - 1; i > pokemon.position; i--) {
+				if (!pokemon.side.pokemon[i]) continue;
+				if (!pokemon.side.pokemon[i].fainted) break;
+			}
+			if (!pokemon.side.pokemon[i]) return;
+			if (pokemon === pokemon.side.pokemon[i]) return;
+			pokemon.illusion = pokemon.side.pokemon[i];
+		},
+		onAfterDamage: function (damage, target, source, effect) {
+			if (target.illusion && effect && effect.effectType === 'Move' && effect.id !== 'confused') {
+				this.singleEvent('End', this.getAbility('Illusion'), target.abilityData, target, source, effect);
+			}
+		},
+		onEnd: function (pokemon) {
+			if (pokemon.illusion) {
+				this.debug('illusion cleared');
+				pokemon.illusion = null;
+				let details = pokemon.template.species + (pokemon.level === 100 ? '' : ', L' + pokemon.level) + (pokemon.gender === '' ? '' : ', ' + pokemon.gender) + (pokemon.set.shiny ? ', shiny' : '');
+				this.add('replace', pokemon, details);
+				this.add('-end', pokemon, 'Illusion');
+				let ability = this.getAbility(pokemon.ability);
+            this.add('-start', pokemon, 'typechange', pokemon.getTypes().join('/'), '[silent]');
+				this.add('raw', ability, ability.shortDesc);
+			}
+		},
+		onFaint: function (pokemon) {
+			pokemon.illusion = null;
+		},
+		isUnbreakable: true,
+		id: "illusion",
+		name: "Illusion",
+		rating: 4,
+		num: 149,
 	},
 	
 	"turnabouttorrent": {
@@ -6985,6 +7027,9 @@ exports.BattleAbilities = {
 				let details = pokemon.template.species + (pokemon.level === 100 ? '' : ', L' + pokemon.level) + (pokemon.gender === '' ? '' : ', ' + pokemon.gender) + (pokemon.set.shiny ? ', shiny' : '');
 				this.add('replace', pokemon, details);
 				this.add('-end', pokemon, 'Illusion');
+				let ability = this.getAbility(pokemon.ability);
+            this.add('-start', pokemon, 'typechange', pokemon.getTypes().join('/'), '[silent]');
+				this.add('raw', ability, ability.shortDesc);
 			}
 		},
 		onFaint: function (pokemon) {
@@ -7368,8 +7413,8 @@ exports.BattleAbilities = {
 	},
 	"insidioustentacles": {
 		shortDesc: "If this Pokemon lands or is hit by a contact move, the other Pokemon's highest stat is decreased by 1 stage and it gets trapped.",
-		onModifyMove: function (move, source, target) {
-			if (!move || !move.flags['contact']) return;
+		onSourceHit: function (target, source, move) {
+			if (!move || !move.flags['contact'] || target.volatiles['substitute']) return;
 				let activated = false;
             let stat = 'atk';
             let bestStat = 0;
@@ -7379,14 +7424,13 @@ exports.BattleAbilities = {
 						  bestStat = target.stats[i];
                 }
             }
-            if (!target.volatiles['substitute']) {
-                this.boost({[stat]: -1}, target, source);
-                if (source.isActive) target.addVolatile('trapped', source, move, 'trapper');
-            }
+            this.boost({[stat]: -1}, target, source);
+            if (source.isActive) target.addVolatile('trapped', source, move, 'trapper');
 		},
 		onAfterDamageOrder: 1,
 		onAfterDamage: function (damage, target, source, move) {
-			let activated = false;
+			if (source && source !== target && move && move.flags['contact']) {
+				let activated = false;
             let stat = 'atk';
             let bestStat = 0;
             for (let i in target.stats) {
@@ -7395,7 +7439,6 @@ exports.BattleAbilities = {
 						  bestStat = target.stats[i];
                 }
             }
-			if (source && source !== target && move && move.flags['contact']) {
                 this.boost({[stat]: -1}, source, target);
                 if (target.isActive) source.addVolatile('trapped', target, move, 'trapper');
 			}
@@ -8507,11 +8550,9 @@ exports.BattleAbilities = {
      	},
 		effect: {
 			duration: 1,
-			onStart: function (pokemon) {
-				this.add('-endability', pokemon);
-			},
-			onTryHit: function (pokemon, target, move) {
-				target.removeVolatile('teraarmor');
+			onAnyBeforeMove: function (target, source, move) {
+				if (this.effectData.target === source) return;
+				this.effectData.target.removeVolatile('teraarmor');
 			},
 			onResidual: function (pokemon) {
 				pokemon.removeVolatile('teraarmor');
@@ -10800,7 +10841,8 @@ exports.BattleAbilities = {
 		name: "Adapting Body",
 	},
 	"diamondarmor": {
-		shortDesc: "Super-effective moves deal only ¾ of their normal damage. Negates any PP-depleting Ability.",
+		shortDesc: "This Pokemon receives 3/4 damage from supereffective attacks. It also ignores the effects of abilities that deplete PP.",
+		//Immunity to Pressure, etc. is implemented in scripts.js.
 		onSourceModifyDamage: function (damage, source, target, move) {
 			if (move.typeMod > 0) {
 				return this.chainModify(0.75);
@@ -11987,7 +12029,7 @@ exports.BattleAbilities = {
 	},
 	"adaptableillusion": {
 		desc: "When this Pokemon switches in, it appears as the last unfainted Pokemon in its party until it takes direct damage from another Pokemon's attack. Moves matching the mimicked Pokemon's primary type have their power multiplied by 1.3. This Pokemon's actual level and HP are displayed instead of those of the mimicked Pokemon.",
-		shortDesc: "This Pokemon appears as the last Pokemon in the party until it takes direct damage. Moves matching that Pokemon's primary type have 1.3x power.",
+		shortDesc: "This Pokemon appears as the last Pokemon in the party until it takes direct damage. Moves matching that Pokemon's primary type have 1.3x power while the illusion is active.",
 		onBeforeSwitchIn: function (pokemon) {
 			pokemon.illusion = null;
 			let i;
@@ -11999,23 +12041,14 @@ exports.BattleAbilities = {
 			if (pokemon === pokemon.side.pokemon[i]) return;
 			pokemon.illusion = pokemon.side.pokemon[i];
 		},
-		onBeforeMovePriority: -100,
-		onBeforeMove: function (pokemon, move) {
-			if (pokemon.illusion && move.id === 'foulmimicry'){
-				this.useMove(pokemon.illusion.moveSlots[0].id, pokemon);
-				for (const moveSlot of source.moveSlots) {
-					if (moveSlot.id === 'foulmimicry') {
-						this.deductPP('foulmimicry', 1);
-					}
-				}
-				this.cancelMove(pokemon);
-			}
-		},
 		onBasePowerPriority: 8,
 		onBasePower: function (basePower, attacker, defender, move) {
-			if (attacker.illusion && move.type === attacker.illusion.types[0]) {
-				this.debug('Adaptable Illusion boost');
-				return this.chainModify([0x14CD, 0x1000]);
+			if (attacker.illusion) {
+				let illusionTypes = attacker.illusion.getTypes();
+				if (illusionTypes[0] === move.type){
+					this.debug('Adaptable Illusion boost');
+					return this.chainModify([0x14CD, 0x1000]);
+				}
 			}
 		},
 		onAfterDamage: function (damage, target, source, effect) {
@@ -12030,6 +12063,9 @@ exports.BattleAbilities = {
 				let details = pokemon.template.species + (pokemon.level === 100 ? '' : ', L' + pokemon.level) + (pokemon.gender === '' ? '' : ', ' + pokemon.gender) + (pokemon.set.shiny ? ', shiny' : '');
 				this.add('replace', pokemon, details);
 				this.add('-end', pokemon, 'Adaptable Illusion');
+				let ability = this.getAbility(pokemon.ability);
+            this.add('-start', pokemon, 'typechange', pokemon.getTypes().join('/'), '[silent]');
+				this.add('raw', ability, ability.shortDesc);
 			}
 		},
 		onFaint: function (pokemon) {
@@ -12651,6 +12687,9 @@ exports.BattleAbilities = {
             let details = pokemon.template.species + (pokemon.level === 100 ? '' : ', L' + pokemon.level) + (pokemon.gender === '' ? '' : ', ' + pokemon.gender) + (pokemon.set.shiny ? ', shiny' : '');
             this.add('replace', pokemon, details);
             this.add('-end', pokemon, 'Illusion');
+				let ability = this.getAbility(pokemon.ability);
+            this.add('-start', pokemon, 'typechange', pokemon.getTypes().join('/'), '[silent]');
+				this.add('raw', ability, ability.shortDesc);
         }
     },
     onFaint: function(pokemon) {
@@ -12790,7 +12829,7 @@ exports.BattleAbilities = {
     onAnyTryMove: function(target, source, effect) {
         if (effect.effectType === 'Move' && effect.id === 'trickroom' && this.pseudoWeather.sluggishaura) {
             this.add('-fail', source, effect, '[from] Sluggish Aura');
-            return null;
+            return null;u
         }
     },
     onEnd: function(pokemon) {
@@ -12814,21 +12853,14 @@ exports.BattleAbilities = {
         }
     },
 		effect: {
-			duration: 5,
-			durationCallback: function (source, effect) {
-				if (source && source.hasAbility('persistent')) {
-					this.add('-activate', source, 'ability: Persistent', effect);
-					return 7;
-				}
-				return 5;
-			},
-			onStart: function (target, source) {
-				this.add('-fieldstart', 'ability: Sluggish Aura', '[of] ' + source);
+			duration: 0,
+			onStart: function (battle, source, effect) {
+				this.add('-fieldstart', 'move: Sluggish Aura', '[from] ability: ' + effect, '[of] ' + source);
 			},
 			// Speed modification is changed in Pokemon.getActionSpeed() in sim/pokemon.js
 			onResidualOrder: 23,
 			onEnd: function () {
-				this.add('-fieldend', 'ability: Sluggish Aura');
+				this.add('-fieldend', 'move: Sluggish Aura');
 			},
 		},
     id: "sluggishaura",
