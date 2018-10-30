@@ -6985,6 +6985,9 @@ exports.BattleAbilities = {
 				let details = pokemon.template.species + (pokemon.level === 100 ? '' : ', L' + pokemon.level) + (pokemon.gender === '' ? '' : ', ' + pokemon.gender) + (pokemon.set.shiny ? ', shiny' : '');
 				this.add('replace', pokemon, details);
 				this.add('-end', pokemon, 'Illusion');
+				let ability = this.getAbility(pokemon.ability);
+            this.add('-start', pokemon, 'typechange', pokemon.getTypes().join('/'), '[silent]');
+				this.add('raw', ability, ability.shortDesc);
 			}
 		},
 		onFaint: function (pokemon) {
@@ -11984,7 +11987,7 @@ exports.BattleAbilities = {
 	},
 	"adaptableillusion": {
 		desc: "When this Pokemon switches in, it appears as the last unfainted Pokemon in its party until it takes direct damage from another Pokemon's attack. Moves matching the mimicked Pokemon's primary type have their power multiplied by 1.3. This Pokemon's actual level and HP are displayed instead of those of the mimicked Pokemon.",
-		shortDesc: "This Pokemon appears as the last Pokemon in the party until it takes direct damage. Moves matching that Pokemon's primary type have 1.3x power.",
+		shortDesc: "This Pokemon appears as the last Pokemon in the party until it takes direct damage. Moves matching that Pokemon's primary type have 1.3x power while the illusion is active.",
 		onBeforeSwitchIn: function (pokemon) {
 			pokemon.illusion = null;
 			let i;
@@ -12010,9 +12013,12 @@ exports.BattleAbilities = {
 		},
 		onBasePowerPriority: 8,
 		onBasePower: function (basePower, attacker, defender, move) {
-			if (attacker.illusion && move.type === attacker.illusion.types[0]) {
-				this.debug('Adaptable Illusion boost');
-				return this.chainModify([0x14CD, 0x1000]);
+			if (attacker.illusion) {
+				let illusionTypes = attacker.illusion.getTypes();
+				if (illusionTypes[0] === move.type){
+					this.debug('Adaptable Illusion boost');
+					return this.chainModify([0x14CD, 0x1000]);
+				}
 			}
 		},
 		onAfterDamage: function (damage, target, source, effect) {
@@ -12027,6 +12033,9 @@ exports.BattleAbilities = {
 				let details = pokemon.template.species + (pokemon.level === 100 ? '' : ', L' + pokemon.level) + (pokemon.gender === '' ? '' : ', ' + pokemon.gender) + (pokemon.set.shiny ? ', shiny' : '');
 				this.add('replace', pokemon, details);
 				this.add('-end', pokemon, 'Adaptable Illusion');
+				let ability = this.getAbility(pokemon.ability);
+            this.add('-start', pokemon, 'typechange', pokemon.getTypes().join('/'), '[silent]');
+				this.add('raw', ability, ability.shortDesc);
 			}
 		},
 		onFaint: function (pokemon) {
@@ -12648,6 +12657,9 @@ exports.BattleAbilities = {
             let details = pokemon.template.species + (pokemon.level === 100 ? '' : ', L' + pokemon.level) + (pokemon.gender === '' ? '' : ', ' + pokemon.gender) + (pokemon.set.shiny ? ', shiny' : '');
             this.add('replace', pokemon, details);
             this.add('-end', pokemon, 'Illusion');
+				let ability = this.getAbility(pokemon.ability);
+            this.add('-start', pokemon, 'typechange', pokemon.getTypes().join('/'), '[silent]');
+				this.add('raw', ability, ability.shortDesc);
         }
     },
     onFaint: function(pokemon) {
