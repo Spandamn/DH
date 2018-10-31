@@ -23,7 +23,7 @@ exports.BattleAbilities = {
 			for (const source of pokemon.side.active) {
 			if (move && move.flags['dance']) {
 				if (this.randomChance(9, 10)) {
-					this.boost({atk: 1});
+					source.boost({atk: 1});
 				}
 			}
 			}
