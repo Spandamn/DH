@@ -4789,19 +4789,20 @@ exports.BattleAbilities = {
 		onBasePowerPriority: 8,
 		onBasePower: function(basePower, attacker, defender, move) {
 			if (move.flags['pulse']) {
+				if (this.isWeather(['raindance', 'primordialsea'])) {
+					if (move.isInInvertedWeather){
+						return this.chainModify(0.25);
+					} 	else {
+						return this.chainModify(2);
+					}
+				} else if (this.isWeather(['sunnyday', 'desolateland', 'solarsnow'])) {
+					if (move.isInInvertedWeather){
+						return this.chainModify(2);
+					} 	else {
+						return this.chainModify(0.25);
+					}
+				}
 				return this.chainModify(1.5);
-			} else if (move.flags['pulse'] && this.isWeather(['raindance', 'primordialsea'])) {
-				if (pokemon.volatiles['atmosphericperversion'] == pokemon.volatiles['weatherbreak']){
-					return this.chainModify(2);
-				} 	else {
-					return this.chainModify(0.25);
-				}
-			} else if (move.flags['pulse'] && this.isWeather(['sunnyday', 'desolateland', 'solarsnow'])) {
-				if (pokemon.volatiles['atmosphericperversion'] == pokemon.volatiles['weatherbreak']){
-					return this.chainModify(0.25);
-				} 	else {
-					return this.chainModify(2);
-				}
 			}
 		},
 		onModifySpe: function(spe, pokemon) {
