@@ -2039,13 +2039,11 @@ exports.BattleAbilities = {
 	},
 	"dreamcrusher": {
 		shortDesc: "The user deals 2x damage to sleeping targets.",
-		onModifyDamage: function(damage, source, pokemon, move) {
-			for (const target of pokemon.side.foe.active) {
+		onModifyDamage: function (damage, source, target, move) {
 			if (!target || !target.hp) continue;
-			if (target.status && target.status == 'slp') {
+			if (target.status && target.status === 'slp') {
 				this.debug('Dream Crusher boost');
 				return this.chainModify(2);
-			}
 			}
 		},
 		id: "dreamcrusher",
