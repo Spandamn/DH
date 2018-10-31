@@ -1318,6 +1318,8 @@ let BattleLearnsets = {
         defog: ["7L1"],
 		knockoff: ["7L1"],
 		liquidation: ["7L1"],
+		playrough: ["7L1"],
+		hydropump: ["7L1"],
     }},
  
 	swampert: {learnset: {
@@ -2812,6 +2814,7 @@ let BattleLearnsets = {
         wildcharge: ["7M"],
         wrap: ["7L1"],
         zapcannon: ["7L73"],
+		recover: ["7L73"],
     }},
  
 	genesect: {learnset: {
@@ -3093,7 +3096,6 @@ lycanrocmidnight: {learnset: {
         shadowbone: ["7T", "5M"],
         dazzlinggleam: ["7T", "5M"],
     }},
-
 };
 
 exports.BattleLearnsets = BattleLearnsets;

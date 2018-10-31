@@ -4235,6 +4235,12 @@ let BattleMovedex = {
 					this.add('-fieldstart', 'move: Electric Terrain');
 				}
 			},
+			onTerrain: function (pokemon) {
+				if (pokemon.isGrounded() && pokemon.ability === 'overdrive') {
+					this.damage(pokemon.maxhp / 8, pokemon, pokemon);
+				}
+				print( pokemon.ability )
+			},
 			onResidualOrder: 21,
 			onResidualSubOrder: 2,
 			onEnd: function () {

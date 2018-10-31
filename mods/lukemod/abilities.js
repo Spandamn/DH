@@ -952,6 +952,11 @@ exports.BattleAbilities = {
 				return this.chainModify(1.5);
 			}
 		},
+		onDamage: function (damage, target, source, effect) {
+			if (effect.effectType =='brn') {
+				return false;
+			}
+		},
 		id: "flareboost",
 		name: "Flare Boost",
 		rating: 2.5,
@@ -1843,19 +1848,9 @@ exports.BattleAbilities = {
 	},
 	"magician": {
 		desc: "If this Pokemon has no item, it steals the item off a Pokemon it hits with an attack. Does not affect Doom Desire and Future Sight.",
-		shortDesc: "If this Pokemon has no item, it steals the item off a Pokemon it hits with an attack.",
-		onSourceHit: function (target, source, move) {
-			if (!move || !target) return;
-			if (target !== source && move.category !== 'Status') {
-				if (source.item || source.volatiles['gem'] || source.volatiles['fling']) return;
-				let yourItem = target.takeItem(source);
-				if (!yourItem) return;
-				if (!source.setItem(yourItem)) {
-					target.item = yourItem.id; // bypass setItem so we don't break choicelock or anything
-					return;
-				}
-				this.add('-item', source, yourItem, '[from] ability: Magician', '[of] ' + target);
-			}
+		shortDesc: "Switches items with foe on switchin.",
+		onStart: function (source) {
+			this.useMove('Switcheroo', source);
 		},
 		id: "magician",
 		name: "Magician",
@@ -2296,8 +2291,9 @@ exports.BattleAbilities = {
 		desc: "This Pokemon's damaging moves become multi-hit moves that hit twice. The second hit has its damage quartered. Does not affect multi-hit moves or moves that have multiple targets.",
 		shortDesc: "This Pokemon's damaging moves hit twice. The second hit has its damage quartered.",
 		onPrepareHit: function (source, target, move) {
+			if (source.baseTemplate.Species !== 'Kangaskhan-Mega') return;
 			if (['iceball', 'rollout'].includes(move.id)) return;
-			if (move.category !== 'Status' && !move.selfdestruct && !move.multihit && !move.flags['charge'] && !move.spreadHit && !move.isZ) {
+			if (move.category !== 'Status' && !move.selfdestruct && !move.multihit && !move.flags['charge'] && !move.spreadHit && !move.isZ && move.damage != 'level') {
 				move.multihit = 2;
 				move.hasParentalBond = true;
 				move.hit = 0;
@@ -2346,21 +2342,18 @@ exports.BattleAbilities = {
 	},
 	"pickpocket": {
 		desc: "If this Pokemon has no item, it steals the item off a Pokemon that makes contact with it. This effect applies after all hits from a multi-hit move; Sheer Force prevents it from activating if the move has a secondary effect.",
-		shortDesc: "If this Pokemon has no item, it steals the item off a Pokemon making contact with it.",
+		shortDesc: "This Pokemon's contact moves remove items.",
 		onAfterMoveSecondary: function (target, source, move) {
 			if (source && source !== target && move && move.flags['contact']) {
 				if (target.item) {
 					return;
 				}
-				let yourItem = source.takeItem(target);
-				if (!yourItem) {
-					return;
+				if (source.hp) {
+				let item = target.takeItem();
+				if (item) {
+					this.add('-enditem', target, item.name, '[from] ability: Pickpocket', '[of] ' + source);
 				}
-				if (!target.setItem(yourItem)) {
-					source.item = yourItem.id;
-					return;
-				}
-				this.add('-item', target, yourItem, '[from] ability: Pickpocket', '[of] ' + source);
+			}
 			}
 		},
 		id: "pickpocket",
@@ -3728,6 +3721,11 @@ exports.BattleAbilities = {
 		onBasePower: function (basePower, attacker, defender, move) {
 			if ((attacker.status === 'psn' || attacker.status === 'tox') && move.category === 'Physical') {
 				return this.chainModify(1.5);
+			}
+		},
+		onDamage: function (damage, target, source, effect) {
+			if (effect.effectType =='tox' || effect.effectType =='psn') {
+				return false;
 			}
 		},
 		id: "toxicboost",

@@ -63,5 +63,33 @@ this.modData('Learnsets', 'beedrill').learnset.feintattack = ['7L1'];
 this.modData('Learnsets', 'beedrill').learnset.stingstorm = ['7L1'];
 	
 this.modData('Learnsets', 'wormadamtrash').learnset.recover = ['7L1'];
+	this.modData('Learnsets', 'simisage').learnset.aurasphere = ['7L1'];
+	this.modData('Learnsets', 'simisage').learnset.vacuumwave = ['7L1'];
+	this.modData('Learnsets', 'simisage').learnset.uturn = ['7L1'];
+	this.modData('Learnsets', 'simisage').learnset.powergem = ['7L1'];
+	this.modData('Learnsets', 'simisear').learnset.thunderbolt = ['7L1'];
+this.modData('Learnsets', 'simisear').learnset.thunder = ['7L1'];
+this.modData('Learnsets', 'simisear').learnset.discharge = ['7L1'];
+this.modData('Learnsets', 'simisear').learnset.electroball = ['7L1'];
+this.modData('Learnsets', 'simisear').learnset.thunderwave = ['7L1'];
+this.modData('Learnsets', 'simisear').learnset.nuzzle = ['7L1'];
+this.modData('Learnsets', 'simisear').learnset.voltswitch = ['7L1'];
+this.modData('Learnsets', 'simisear').learnset.uturn = ['7L1'];
+	this.modData('Learnsets', 'simipour').learnset.moonblast = ['7L1'];
+this.modData('Learnsets', 'simipour').learnset.freezedry = ['7L1'];
+this.modData('Learnsets', 'simipour').learnset.uturn = ['7L1'];
+	
+	this.modData('Learnsets', 'oricorio').learnset.heatwave = ['7L1'];
+this.modData('Learnsets', 'oricorio').learnset.fierydance = ['7L1'];
+this.modData('Learnsets', 'oricorio').learnset.quiverdance = ['7L1'];
+this.modData('Learnsets', 'oricorio').learnset.bravebird = ['7L1'];
+this.modData('Learnsets', 'oricorio').learnset.lunardance = ['7L1'];
+this.modData('Learnsets', 'oricorio').learnset.dragondance = ['7L1'];
+this.modData('Learnsets', 'oricorio').learnset.raindance = ['7L1'];
+this.modData('Learnsets', 'oricorio').learnset.jubiliationdance = ['7L1'];
+this.modData('Learnsets', 'oricorio').learnset.petaldance = ['7L1'];
+this.modData('Learnsets', 'oricorio').learnset.blazekick = ['7L1'];
+	
+
 },
 };

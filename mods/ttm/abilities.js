@@ -1430,7 +1430,21 @@ exports.BattleAbilities = {
 		num: 115,
 	},
 	"illuminate": {
-		shortDesc: "No competitive use.",
+		shortDesc: "This Pokemon's Normal-type moves become Light type and have 1.2x power.",
+		onModifyMovePriority: -1,
+		onModifyMove: function (move, pokemon) {
+			if (move.type === 'Normal' && move.id !== 'naturalgift' && !move.isZ) {
+				move.type = 'Light';
+				if (move.category !== 'Status') pokemon.addVolatile('illuminate');
+			}
+		},
+		effect: {
+			duration: 1,
+			onBasePowerPriority: 8,
+			onBasePower: function (basePower, pokemon, target, move) {
+				return this.chainModify([0x1333, 0x1000]);
+			},
+		},
 		id: "illuminate",
 		name: "Illuminate",
 		rating: 0,
@@ -4164,7 +4178,7 @@ exports.BattleAbilities = {
 		rating: 2,
 		num: -8,
 	},
-	"nightingalepledge": {
+	"nightinggalepledge": {
 		desc: "Immune to Dark-type moves & Taunt, Embargo, Torment",
 		shortDesc: "Immune to Dark-type moves & Taunt, Embargo, Torment",
 		onUpdate: function (pokemon) {
@@ -4199,8 +4213,8 @@ exports.BattleAbilities = {
 				this.add('-immune', this.effectData.target, '[msg]', '[from] ability: Nightingale Pledge');
 			}
 		},
-		id: "nightingalepledge",
-		name: "Nightingale Pledge",
+		id: "nightinggalepledge",
+		name: "Nightinggale Pledge",
 		rating: 2,
 		num: -4,
 	},
@@ -4297,7 +4311,7 @@ exports.BattleAbilities = {
 		rating: 2,
 		num: -8,
 	},
-	"immmortal": {
+	"immortal": {
 		desc: "This Pokemon is immune to Time-type moves and restores 1/8 of its maximum HP, rounded down, when hit by an Time-type move.",
 		shortDesc: "This Pokemon heals 1/8 of its max HP when hit by Time moves; Time immunity.",
 		onTryHit: function (target, source, move) {
@@ -4363,5 +4377,71 @@ exports.BattleAbilities = {
 		name: "Astralize",
 		rating: 4,
 		num: 206,
+	},
+	"mirrorbody": {
+		desc: "This Pokemon blocks certain status moves and instead uses the move against the original user.",
+		shortDesc: "This Pokemon blocks Light-type moves and bounces them back to the user.",
+		id: "mirrorbody",
+		name: "Mirror Body",
+		onTryHitPriority: 1,
+		onTryHit: function (target, source, move) {
+			if (target === source || move.hasBounced || !move.type === 'Light') {
+				return;
+			}
+			let newMove = this.getMoveCopy(move.id);
+			newMove.hasBounced = true;
+			newMove.pranksterBoosted = false;
+			this.useMove(newMove, target, source);
+			return null;
+		},
+		onAllyTryHitSide: function (target, source, move) {
+			if (target.side === source.side || move.hasBounced || !move.flags['reflectable']) {
+				return;
+			}
+			let newMove = this.getMoveCopy(move.id);
+			newMove.hasBounced = true;
+			newMove.pranksterBoosted = false;
+			this.useMove(newMove, this.effectData.target, source);
+			return null;
+		},
+		effect: {
+			duration: 1,
+		},
+		rating: 4.5,
+		num: 156,
+	},
+	"deflector": {
+		desc: "This Pokemon's Attack is raised by 2 stages for each of its stat stages that is lowered by an opposing Pokemon.",
+		shortDesc: "Does nothing for now. Check back later!",
+		id: "deflector",
+		name: "Deflector",
+		rating: 2.5,
+		num: 128,
+	},
+	"quickflash": {
+		shortDesc: "If this Pokemon is at full HP, its Flying-type moves have their priority increased by 1.",
+		onModifyPriority: function (priority, pokemon, target, move) {
+			if (move && move.type === 'Light' && pokemon.hp > pokemon.maxhp / 2) return priority + 1;
+		},
+		id: "quickflash",
+		name: "Quick Flash",
+		rating: 3,
+		num: 177,
+	},
+	"lightabsorb": {
+		desc: "This Pokemon is immune to Electric-type moves and restores 1/4 of its maximum HP, rounded down, when hit by an Electric-type move.",
+		shortDesc: "This Pokemon heals 1/4 of its max HP when hit by Electric moves; Electric immunity.",
+		onTryHit: function (target, source, move) {
+			if (target !== source && move.type === 'Light') {
+				if (!this.heal(target.maxhp / 4)) {
+					this.add('-immune', target, '[msg]', '[from] ability: Volt Absorb');
+				}
+				return null;
+			}
+		},
+		id: "lightabsorb",
+		name: "Light Absorb",
+		rating: 3.5,
+		num: 10,
 	},
 };

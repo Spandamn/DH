@@ -5,17 +5,19 @@ const FS = require('./../lib/fs');
 const MINUTE = 60 * 1000;
 const YEAR = 365 * 24 * 60 * MINUTE;
 
-const theStudio = Rooms.get('thestudio');
-const tvbf = Rooms.get('tvbooksfilms');
-const yt = Rooms.get('youtube');
+const theStudio = /** @type {ChatRoom} */ (Rooms.get('thestudio'));
+const tvbf = /** @type {ChatRoom} */ (Rooms.get('jubilifetvfilms'));
+const yt = /** @type {ChatRoom} */ (Rooms.get('youtube'));
+const library = /** @type {ChatRoom} */ (Rooms.get('thelibrary'));
 
 const AOTDS_FILE = 'config/chat-plugins/thestudio.tsv';
 const FOTDS_FILE = 'config/chat-plugins/tvbf-films.tsv';
-const BOTDS_FILE = 'config/chat-plugins/tvbf-books.tsv';
 const SOTDS_FILE = 'config/chat-plugins/tvbf-shows.tsv';
 const COTDS_FILE = 'config/chat-plugins/youtube-channels.tsv';
+const BOTWS_FILE = 'config/chat-plugins/thelibrary.tsv';
 const PRENOMS_FILE = 'config/chat-plugins/otd-prenoms.json';
 
+/** @type {{[k: string]: [string, AnyObject][]}} */
 let prenoms = {};
 try {
 	prenoms = require(`../${PRENOMS_FILE}`);
@@ -28,16 +30,31 @@ function savePrenoms() {
 	FS(PRENOMS_FILE).write(JSON.stringify(prenoms));
 }
 
-function toNominationId(nomination) { // toId would return '' for foreign/sadistic nominations
+/**
+ * @param {string} nomination
+ *
+ * toId would return '' for foreign/sadistic nominations
+ */
+function toNominationId(nomination) {
 	return nomination.toLowerCase().replace(/\s/g, '').replace(/\b&\b/g, '');
 }
 
 class OtdHandler {
-	constructor(id, name, room, filename, keys, keyLabels) {
+	/**
+	 * @param {string} id
+	 * @param {string} name
+	 * @param {ChatRoom} room
+	 * @param {string} filename
+	 * @param {string[]} keys
+	 * @param {string[]} keyLabels
+	 * @param {boolean} week
+	 */
+	constructor(id, name, room, filename, keys, keyLabels, week = false) {
 		this.id = id;
 		this.name = name;
 		this.room = room;
 
+		/** @type {Map<string, AnyObject>} */
 		this.nominations = new Map(prenoms[id]);
 		this.removedNominations = new Map();
 
@@ -48,11 +65,13 @@ class OtdHandler {
 
 		this.keys = keys;
 		this.keyLabels = keyLabels;
+		this.timeLabel = week ? 'Week' : 'Day';
 
+		/** @type {AnyObject[]} */
 		this.winners = [];
 
-		this.file.read().then(data => {
-			data = ('' + data).split("\n");
+		this.file.read().then(content => {
+			const data = ('' + content).split("\n");
 			for (const arg of data) {
 				if (!arg || arg === '\r') continue;
 				if (arg.startsWith(`${this.keyLabels[0]}\t`)) continue;
@@ -81,13 +100,17 @@ class OtdHandler {
 		this.removedNominations = new Map();
 		delete prenoms[this.id];
 		savePrenoms();
-		clearTimeout(this.timer);
+		if (this.timer) clearTimeout(this.timer);
 	}
 
+	/**
+	 * @param {User} user
+	 * @param {string} nomination
+	 */
 	addNomination(user, nomination) {
 		const id = toNominationId(nomination);
 
-		if (this.winners.slice(this.room === tvbf ? -10 : -30).some(entry => toNominationId(entry[this.keys[0]]) === id)) return user.sendTo(this.room, `This ${this.name.toLowerCase()} has already been ${this.id} in the past month.`);
+		if (this.winners.slice(this.room === tvbf ? -15 : -30).some(entry => toNominationId(entry[this.keys[0]]) === id)) return user.sendTo(this.room, `This ${this.name.toLowerCase()} has already been ${this.id} in the past month.`);
 
 		for (const value of this.removedNominations.values()) {
 			if (toId(user) in value.userids || user.latestIp in value.ips) return user.sendTo(this.room, `Since your nomination has been removed by staff, you cannot submit another ${this.name.toLowerCase()} until the next round.`);
@@ -129,11 +152,11 @@ class OtdHandler {
 		let buffer = '';
 
 		if (this.voting) {
-			buffer += `<div class="broadcast-blue"><p style="font-weight:bold;text-align:center;font-size:12pt;">Nominations for ${this.name} of the Day are in progress! Use <code>/${this.id} nom</code> to nominate a${['A', 'E', 'I', 'O', 'U'].includes(this.name[0]) ? 'n' : ''} ${this.name.toLowerCase()}!</p>`;
+			buffer += `<div class="broadcast-blue"><p style="font-weight:bold;text-align:center;font-size:12pt;">Nominations for ${this.name} of the ${this.timeLabel} are in progress! Use <code>/${this.id} nom</code> to nominate a${['A', 'E', 'I', 'O', 'U'].includes(this.name[0]) ? 'n' : ''} ${this.name.toLowerCase()}!</p>`;
 			if (this.nominations.size) buffer += `<span style="font-weight:bold;">Nominations:</span>`;
 			buffer += `<ul>`;
 		} else {
-			buffer += `<div class="broadcast-blue"><p style="font-weight:bold;text-align:center;font-size:10pt;">Pre-noms for ${this.name} of the Day:</p>`;
+			buffer += `<div class="broadcast-blue"><p style="font-weight:bold;text-align:center;font-size:10pt;">Pre-noms for ${this.name} of the ${this.timeLabel}:</p>`;
 		}
 
 		this.nominations.forEach((value, key) => {
@@ -149,6 +172,9 @@ class OtdHandler {
 		this.room.add(`|uhtml|otd|${this.generateNomWindow()}`);
 	}
 
+	/**
+	 * @param {Connection} connection
+	 */
 	displayTo(connection) {
 		connection.sendTo(this.room, `|uhtml|otd|${this.generateNomWindow()}`);
 	}
@@ -158,15 +184,19 @@ class OtdHandler {
 		if (!keys.length) return false;
 
 		let winner = this.nominations.get(keys[Math.floor(Math.random() * keys.length)]);
+		if (!winner) return false; // Should never happen but shuts typescript up.
 		this.appendWinner(winner.nomination, winner.name);
 
-		this.room.add(Chat.html `|uhtml|otd|<div class="broadcast-blue"><p style="font-weight:bold;text-align:center;font-size:12pt;">Nominations for ${this.name} of the Day are over!</p><p style="tex-align:center;font-size:10pt;">Out of ${keys.length} nominations, we randomly selected <strong>${winner.nomination}</strong> as the winner! (Nomination by ${winner.name})</p></div>`);
+		this.room.add(Chat.html `|uhtml|otd|<div class="broadcast-blue"><p style="font-weight:bold;text-align:center;font-size:12pt;">Nominations for ${this.name} of the ${this.timeLabel} are over!</p><p style="tex-align:center;font-size:10pt;">Out of ${keys.length} nominations, we randomly selected <strong>${winner.nomination}</strong> as the winner! (Nomination by ${winner.name})</p></div>`);
 		this.room.update();
 
 		this.finish();
 		return true;
 	}
 
+	/**
+	 * @param {string} name
+	 */
 	removeNomination(name) {
 		name = toId(name);
 
@@ -190,11 +220,19 @@ class OtdHandler {
 		return success;
 	}
 
+	/**
+	 * @param {string} winner
+	 * @param {string} user
+	 */
 	forceWinner(winner, user) {
 		this.appendWinner(winner, user);
 		this.finish();
 	}
 
+	/**
+	 * @param {string} nomination
+	 * @param {string} user
+	 */
 	appendWinner(nomination, user) {
 		const entry = {time: Date.now(), nominator: user};
 		entry[this.keys[0]] = nomination;
@@ -202,6 +240,9 @@ class OtdHandler {
 		this.saveWinners();
 	}
 
+	/**
+	 * @param {{[k: string]: string}} properties
+	 */
 	setWinnerProperty(properties) {
 		if (!this.winners.length) return;
 		for (let i in properties) {
@@ -229,7 +270,7 @@ class OtdHandler {
 		if (!this.winners.length) return false;
 		let winner = this.winners[this.winners.length - 1];
 
-		let output = Chat.html `<div class="broadcast-blue" style="text-align:center;"><p><span style="font-weight:bold;font-size:11pt">The ${this.name} of the Day is ${winner[this.keys[0]]}.</span>`;
+		let output = Chat.html `<div class="broadcast-blue" style="text-align:center;"><p><span style="font-weight:bold;font-size:11pt">The ${this.name} of the ${this.timeLabel} is ${winner[this.keys[0]]}${winner.author ? ` by ${winner.author}` : ''}.</span>`;
 		if (winner.quote) output += Chat.html `<br/><span style="font-style:italic;">"${winner.quote}"</span>`;
 		if (winner.tagline) output += Chat.html `<br/>${winner.tagline}`;
 		output += `</p><table style="margin:auto;"><tr>`;
@@ -252,6 +293,9 @@ class OtdHandler {
 		return output;
 	}
 
+	/**
+	 * @param {number} year
+	 */
 	generateWinnerList(year) {
 		let output = `|wide||html|`;
 
@@ -267,9 +311,10 @@ class OtdHandler {
 				break;
 			}
 
+			/** @param {number} num */
 			const pad = num => num < 10 ? '0' + num : num;
 
-			output += Chat.html `[${pad(date.getMonth() + 1)}-${pad(date.getDate())}-${date.getFullYear()}] ${this.winners[i][this.keys[0]]}`;
+			output += Chat.html `[${pad(date.getMonth() + 1)}-${pad(date.getDate())}-${date.getFullYear()}] ${this.winners[i][this.keys[0]]}${this.winners[i].author ? ` by ${this.winners[i].author}` : ''}`;
 			if (this.winners[i].song) {
 				output += `: `;
 				if (this.winners[i].link) {
@@ -290,10 +335,13 @@ class OtdHandler {
 
 const aotd = new OtdHandler('aotd', 'Artist', theStudio, AOTDS_FILE, ['artist', 'nominator', 'quote', 'song', 'link', 'image', 'time'], ['Artist', 'Nominator', 'Quote', 'Song', 'Link', 'Image', 'Timestamp']);
 const fotd = new OtdHandler('fotd', 'Film', tvbf, FOTDS_FILE, ['film', 'nominator', 'quote', 'link', 'image', 'time'], ['Film', 'Nominator', 'Quote', 'Link', 'Image', 'Timestamp']);
-const botd = new OtdHandler('botd', 'Book', tvbf, BOTDS_FILE, ['book', 'nominator', 'quote', 'link', 'image', 'time'], ['Book', 'Nominator', 'Quote', 'Link', 'Image', 'Timestamp']);
 const sotd = new OtdHandler('sotd', 'Show', tvbf, SOTDS_FILE, ['show', 'nominator', 'quote', 'link', 'image', 'time'], ['Show', 'Nominator', 'Quote', 'Link', 'Image', 'Timestamp']);
 const cotd = new OtdHandler('cotd', 'Channel', yt, COTDS_FILE, ['channel', 'nominator', 'link', 'tagline', 'image', 'time'], ['Show', 'Nominator', 'Link', 'Tagline', 'Image', 'Timestamp']);
+const botw = new OtdHandler('botw', 'Book', library, BOTWS_FILE, ['book', 'nominator', 'link', 'quote', 'author', 'image', 'time'], ['Book', 'Nominator', 'Link', 'Quote', 'Author', 'Image', 'Timestamp'], true);
 
+/**
+ * @param {string} message
+ */
 function selectHandler(message) {
 	let id = toId(message.substring(1, 5));
 	switch (id) {
@@ -301,17 +349,21 @@ function selectHandler(message) {
 		return aotd;
 	case 'fotd':
 		return fotd;
-	case 'botd':
-		return botd;
 	case 'sotd':
 		return sotd;
 	case 'cotd':
 		return cotd;
+	case 'botw':
+		return botw;
 	default:
 		throw new Error("Invalid type for otd handler.");
 	}
 }
 
+/** @typedef {(this: CommandContext, target: string, room: ChatRoom, user: User, connection: Connection, cmd: string, message: string) => (void)} ChatHandler */
+/** @typedef {{[k: string]: ChatHandler | string | true | string[] | ChatCommands}} ChatCommands */
+
+/** @type {ChatCommands} */
 let commands = {
 	start: function (target, room, user, connection, cmd) {
 		if (!this.canTalk()) return;
@@ -321,11 +373,11 @@ let commands = {
 		if (room !== handler.room) return this.errorReply(`This command can only be used in ${handler.room.title}.`);
 		if (!this.can('mute', null, room)) return false;
 
-		if (handler.voting) return this.errorReply(`The nomination for the ${handler.name} of the Day nomination is already in progress.`);
+		if (handler.voting) return this.errorReply(`The nomination for the ${handler.name} of the ${handler.timeLabel} nomination is already in progress.`);
 		handler.startVote();
 
-		this.privateModAction(`(${user.name} has started nominations for the ${handler.name} of the Day.)`);
-		this.modlog(`${handler.id.toUpperCase()} START`);
+		this.privateModAction(`(${user.name} has started nominations for the ${handler.name} of the ${handler.timeLabel}.)`);
+		this.modlog(`${handler.id.toUpperCase()} START`, null);
 	},
 	starthelp: [`/-otd start - Starts nominations for the Thing of the Day. Requires: % @ # & ~`],
 
@@ -337,14 +389,14 @@ let commands = {
 		if (room !== handler.room) return this.errorReply(`This command can only be used in ${handler.room.title}.`);
 		if (!this.can('mute', null, room)) return false;
 
-		if (!handler.voting) return this.errorReply(`There is no ${handler.name} of the Day nomination in progress.`);
+		if (!handler.voting) return this.errorReply(`There is no ${handler.name} of the ${handler.timeLabel} nomination in progress.`);
 
-		if (!handler.nominations.size) return this.errorReply(`Can't select the ${handler.name} of the Day without nominations.`);
+		if (!handler.nominations.size) return this.errorReply(`Can't select the ${handler.name} of the ${handler.timeLabel} without nominations.`);
 
 		handler.rollWinner();
 
-		this.privateModAction(`(${user.name} has ended nominations for the ${handler.name} of the Day.)`);
-		this.modlog(`${handler.id.toUpperCase()} END`);
+		this.privateModAction(`(${user.name} has ended nominations for the ${handler.name} of the ${handler.timeLabel}.)`);
+		this.modlog(`${handler.id.toUpperCase()} END`, null);
 	},
 	endhelp: [`/-otd end - End nominations for the Thing of the Day and set it to a randomly selected nomination. Requires: % @ # & ~`],
 
@@ -392,10 +444,10 @@ let commands = {
 		if (!userid) return this.errorReply(`'${name}' is not a valid username.`);
 
 		if (handler.removeNomination(userid)) {
-			this.privateModAction(`(${user.name} removed ${this.targetUsername}'s nomination for the ${handler.name} of the Day.)`);
+			this.privateModAction(`(${user.name} removed ${this.targetUsername}'s nomination for the ${handler.name} of the ${handler.timeLabel}.)`);
 			this.modlog(`${handler.id.toUpperCase()} REMOVENOM`, userid);
 		} else {
-			this.sendReply(`User '${name}' has no nomination for the ${handler.name} of the Day.`);
+			this.sendReply(`User '${name}' has no nomination for the ${handler.name} of the ${handler.timeLabel}.`);
 		}
 	},
 	removehelp: [`/-otd remove [username] - Remove a user's nomination for the Thing of the Day and prevent them from voting again until the next round. Requires: % @ * # & ~`],
@@ -412,9 +464,9 @@ let commands = {
 		if (!toNominationId(target).length || target.length > 50) return this.sendReply(`'${target}' is not a valid ${handler.name.toLowerCase()} name.`);
 
 		handler.forceWinner(target, user.name);
-		this.privateModAction(`(${user.name} forcibly set the ${handler.name} of the Day to ${target}.)`);
+		this.privateModAction(`(${user.name} forcibly set the ${handler.name} of the ${handler.timeLabel} to ${target}.)`);
 		this.modlog(`${handler.id.toUpperCase()} FORCE`, user.name, target);
-		room.add(`The ${handler.name} of the Day was forcibly set to '${target}'`);
+		room.add(`The ${handler.name} of the ${handler.timeLabel} was forcibly set to '${target}'`);
 	},
 	forcehelp: [`/-otd force [nomination] - Forcibly sets the Thing of the Day without a nomination round. Requires: # & ~`],
 
@@ -426,11 +478,11 @@ let commands = {
 		if (room !== handler.room) return this.errorReply(`This command can only be used in ${handler.room.title}.`);
 		if (!this.can('mute', null, room)) return false;
 
-		if (!(handler.voting && handler.timer)) return this.errorReply(`There is no ${handler.name} of the Day nomination to disable the timer for.`);
+		if (!(handler.voting && handler.timer)) return this.errorReply(`There is no ${handler.name} of the ${handler.timeLabel} nomination to disable the timer for.`);
 
 		clearTimeout(handler.timer);
 
-		this.privateModAction(`(${user.name} disabled the ${handler.name} of the Day timer.)`);
+		this.privateModAction(`(${user.name} disabled the ${handler.name} of the ${handler.timeLabel} timer.)`);
 	},
 	delayhelp: [`/-otd delay - Turns off the automatic 20 minute timer for Thing of the Day voting rounds. Requires: % @ # & ~`],
 
@@ -459,8 +511,9 @@ let commands = {
 			case 'artist':
 			case 'film':
 			case 'show':
-			case 'book':
 			case 'channel':
+			case 'book':
+			case 'author':
 				if (!toNominationId(value) || value.length > 50) return this.errorReply(`Please enter a valid ${key} name.`);
 				break;
 			case 'quote':
@@ -486,8 +539,8 @@ let commands = {
 
 		if (keys.length) {
 			handler.setWinnerProperty(changelist);
-			this.modlog('handler.id.toUpperCase()', null, `changed ${keys.join(', ')}`);
-			return this.privateModAction(`(${user.name} changed the following propert${Chat.plural(keys, 'ies', 'y')} of the ${handler.name} of the Day: ${keys.join(', ')})`);
+			this.modlog(handler.id.toUpperCase(), null, `changed ${keys.join(', ')}`);
+			return this.privateModAction(`(${user.name} changed the following propert${Chat.plural(keys, 'ies', 'y')} of the ${handler.name} of the ${handler.timeLabel}: ${keys.join(', ')})`);
 		}
 	},
 	sethelp: [`/-otd set property: value[, property: value] - Set the winner, quote, song, link or image for the current Thing of the Day. Requires: % @ * # & ~`],
@@ -518,7 +571,7 @@ let commands = {
 };
 
 const help = [
-	`Thing of the Day plugin commands (aotd, fotd, botd, sotd, cotd):`,
+	`Thing of the Day plugin commands (aotd, fotd, sotd, cotd):`,
 	`- /-otd - View the current Thing of the Day.`,
 	`- /-otd start - Starts nominations for the Thing of the Day. Requires: % @ # & ~`,
 	`- /-otd nom [nomination] - Nominate something for Thing of the Day.`,
@@ -533,9 +586,9 @@ const help = [
 exports.commands = {
 	aotd: commands,
 	fotd: commands,
-	botd: commands,
 	sotd: commands,
 	cotd: commands,
+	botw: commands,
 	aotdhelp: help,
 	otdhelp: help,
 };

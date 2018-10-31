@@ -239,4 +239,46 @@ types: ["Bug", "Poison"], // Stats: 50 / 120 / 50 / 120 / 50 / 140
 baseStats: {hp: 50, atk: 120, def: 50, spa: 120, spd: 50, spe: 140},
 abilities: {0: "Sniper", 1: "Sheer Force", H: "Technician"},
 },
+simisage: {
+inherit: true,
+types: ["Grass", "Fighting"], // 80 HP / 80 Atk / 75 Def / 110 SpA / 75 SpD / 115 Spe |
+baseStats: {hp: 80, atk: 80, def: 75, spa: 110, spd: 75, spe: 115},
+abilities: {0: "Competitive", H: "Overgrow"},
+},
+simisear: {
+inherit: true,
+types: ["Fire", "Electric"], // 80 HP / 80 Atk / 75 Def / 110 SpA / 75 SpD / 115 Spe | BST: 535
+baseStats: {hp: 80, atk: 80, def: 75, spa: 110, spd: 75, spe: 115},
+abilities: {0: "Competitive", H: "Blaze"},
+},
+	 simipour: {
+inherit: true,
+types: ["Water", "Ice"], // 80 HP / 80 Atk / 75 Def / 110 SpA / 75 SpD / 115 Spe | BST: 535
+baseStats: {hp: 80, atk: 80, def: 75, spa: 110, spd: 75, spe: 115},
+abilities: {0: "Competitive", H: "Torrent"},
+},
+oricorio: {
+inherit: true,
+types: ["Fighting", "Flying"], 
+baseStats: {hp: 80, atk: 116, def: 76, spa: 102, spd: 70, spe: 96}, // 80 HP / 116 Atk / 76 Def / 102 SpA / 70 SpD / 96 Spe (540 BST)
+abilities: {0: "Dancer", 1: "Serene Grace", H: "Jubilee Spirit"},
+},
+oricoriopompom: {
+inherit: true,
+types: ["Electric", "Flying"], 
+baseStats: {hp: 85, atk: 70, def: 99, spa: 103, spd: 70, spe: 113}, 
+abilities: {0: "Dancer", 1: "Serene Grace", H: "Fluffy"},
+},
+	 oricoriopau: {
+inherit: true,
+types: ["Psychic", "Flying"], 
+aseStats: {hp: 85, atk: 70, def: 103, spa: 99, spd: 113, spe: 70}, 
+abilities: {0: "Dancer", 1: "Serene Grace", H: "Magic Guard"},
+},
+	 oricoriosensu: {
+inherit: true,
+types: ["Ghost", "Flying"], 
+baseStats: {hp: 80, atk: 76, def: 70, spa: 116, spd: 96, spe: 102}, 
+abilities: {0: "Dancer", 1: "Serene Grace", H: "Jubilee Spirit"},
+},
   };

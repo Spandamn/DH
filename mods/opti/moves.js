@@ -277,4 +277,27 @@ exports.BattleMovedex = {
 		zMovePower: 180,
 		contestType: "Beautiful",
 	},
+	"jubileespirit": {
+		accuracy: 100,
+		basePower: 90,
+		category: "Physical",
+		desc: "This move's type depends on the user's primary type. If the user's primary type is typeless, this move's type is the user's secondary type if it has one, otherwise the added type from Forest's Curse or Trick-or-Treat. This move is typeless if the user's type is typeless alone.",
+		shortDesc: "Type varies based on the user's primary type.",
+		id: "jubileespirit",
+		isViable: true,
+		name: "Jubilee Spirit",
+		pp: 15,
+		priority: 0,
+		flags: {protect: 1, mirror: 1, dance: 1},
+		onModifyMove: function (move, pokemon) {
+			let type = pokemon.types[0];
+			if (type === "Bird") type = "???";
+			move.type = type;
+		},
+		secondary: null,
+		target: "normal",
+		type: "Normal",
+		zMovePower: 175,
+		contestType: "Beautiful",
+	},
 };

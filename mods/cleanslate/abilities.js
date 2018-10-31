@@ -4266,11 +4266,6 @@ let BattleAbilities = {
         onModifyAtk: function (atk, pokemon) {
             if (this.isTerrain('electricterrain')) return this.chainModify(1.5);
         },
-        onTerrain: function (target, source, effect) {
-            if (effect.id === 'electricterrain') {
-                this.damage(target.maxhp / 8, target, target);
-            }
-        },
         id: "overdrive",
         name: "Overdrive",
         rating: 1.5,

@@ -2,6 +2,7 @@
 
 exports.BattleItems = {
 	"lifeorb": {
+		inherit: true,
 		id: "lifeorb",
 		name: "Life Orb",
 		spritenum: 249,
@@ -482,6 +483,20 @@ exports.BattleItems = {
         gen: 6,
         desc: "If holder is a dartios, this item allows it to Mega Evolve in battle.",
     },
+    "moltieite": {
+        id: "moltieite",
+        name: "moltieite",
+        spritenum: 624,
+
+        megaStone: "Moltie-Mega",
+        megaEvolves: "Moltie",
+        onTakeItem: function(item, source) {
+            if (item.megaEvolves === source.baseTemplate.baseSpecies) return false;
+            return true;
+        },
+        gen: 6,
+        desc: "If holder is a moltie, this item allows it to Mega Evolve in battle.",
+    },
     "banegrossxite": {
         id: "banegrossxite",
         name: "banegrossxite",
@@ -734,13 +749,13 @@ exports.BattleItems = {
         gen: 6,
         desc: "If holder is a shot, this item allows it to Mega Evolve in battle.",
     },
-    "mampharosmite": {
-        id: "mampharosmite",
-        name: "mampharosmite",
+    "manpharosmite": {
+        id: "manpharosmite",
+        name: "manpharosmite",
         spritenum: 596,
 
-        megaStone: "Mampharos-Mega-M",
-        megaEvolves: "Mampharos",
+        megaStone: "Manpharos-Mega-M",
+        megaEvolves: "Manpharos",
         onTakeItem: function(item, source) {
             if (item.megaEvolves === source.baseTemplate.baseSpecies) return false;
             return true;
@@ -748,13 +763,13 @@ exports.BattleItems = {
         gen: 6,
         desc: "If holder is a mampharosm, this item allows it to Mega Evolve in battle.",
     },
-    "mampharosaite": {
-        id: "mampharosaite",
-        name: "mampharosaite",
+    "manpharosaite": {
+        id: "manpharosaite",
+        name: "manpharosaite",
         spritenum: 580,
 
-        megaStone: "Mampharos-Mega-A",
-        megaEvolves: "Mampharos",
+        megaStone: "Manpharos-Mega-A",
+        megaEvolves: "Manpharos",
         onTakeItem: function(item, source) {
             if (item.megaEvolves === source.baseTemplate.baseSpecies) return false;
             return true;
@@ -790,12 +805,26 @@ exports.BattleItems = {
         gen: 6,
         desc: "If holder is a blasterain, this item allows it to Mega Evolve in battle.",
     },
-    "dianbroite": {
-        id: "dianbroite",
-        name: "dianbroite",
+    "dianbrodite": {
+        id: "dianbrodite",
+        name: "dianbrodite",
+        spritenum: 624,
+
+        megaStone: "Dianbro-Mega-D",
+        megaEvolves: "Dianbro",
+        onTakeItem: function(item, source) {
+            if (item.megaEvolves === source.baseTemplate.baseSpecies) return false;
+            return true;
+        },
+        gen: 6,
+        desc: "If holder is a dianbro, this item allows it to Mega Evolve in battle.",
+    },
+    "dianbrosite": {
+        id: "dianbrosite",
+        name: "dianbrosite",
         spritenum: 620,
 
-        megaStone: "Dianbro-Mega",
+        megaStone: "Dianbro-Mega-S",
         megaEvolves: "Dianbro",
         onTakeItem: function(item, source) {
             if (item.megaEvolves === source.baseTemplate.baseSpecies) return false;
@@ -985,6 +1014,20 @@ exports.BattleItems = {
         },
         gen: 6,
         desc: "If holder is a thunderblast, this item allows it to Mega Evolve in battle.",
+    },
+    "jellieite": {
+        id: "jellieite",
+        name: "jellieite",
+        spritenum: 624,
+
+        megaStone: "Jellie-Mega",
+        megaEvolves: "Jellie",
+        onTakeItem: function(item, source) {
+            if (item.megaEvolves === source.baseTemplate.baseSpecies) return false;
+            return true;
+        },
+        gen: 6,
+        desc: "If holder is a jellie, this item allows it to Mega Evolve in battle.",
     },
     "zaggronite": {
         id: "zaggronite",
@@ -1238,6 +1281,19 @@ exports.BattleItems = {
         gen: 6,
         desc: "If holder is a metanlee, this item allows it to Mega Evolve in battle.",
     },
+	"kangoruskhanite": {
+		id: "kangoruskhanite",
+		name: "kangoruskhanite",
+		spritenum: 592,
+		megaStone: "Kangorus-Khan-Mega",
+		megaEvolves: "Kangorus-Khan",
+		onTakeItem: function (item, source) {
+			if (item.megaEvolves === source.baseTemplate.baseSpecies) return false;
+			return true;
+		},
+		gen: 6,
+		desc: "If held by a Kangorus-Khan, this item allows it to Mega Evolve in battle.",
+	},
     "heebleyeite": {
         id: "heebleyeite",
         name: "heebleyeite",
@@ -1292,7 +1348,21 @@ exports.BattleItems = {
             return true;
         },
         gen: 6,
-        desc: "If holder is a glalionz, this item allows it to Mega Evolve in battle.",
+        desc: "If holder is a galionz, this item allows it to Mega Evolve in battle.",
+    },
+    "thundurbeeite": {
+        id: "thundurbeeite",
+        name: "thundurbeeite",
+        spritenum: 628,
+
+        megaStone: "Thundurbee-Mega",
+        megaEvolves: "Thundurbee",
+        onTakeItem: function(item, source) {
+            if (item.megaEvolves === source.baseTemplate.baseSpecies) return false;
+            return true;
+        },
+        gen: 6,
+        desc: "If holder is a thundurbee, this item allows it to Mega Evolve in battle.",
     },
     "gallatrossite": {
         id: "gallatrossite",
@@ -1642,7 +1712,7 @@ exports.BattleItems = {
         gen: 6,
         desc: "If holder is a banekyu, this item allows it to Mega Evolve in battle.",
     },
-    "Heratanaite": {
+    "heratanaite": {
         id: "heratanaite",
         name: "heratanaite",
         spritenum: 590,
@@ -1824,19 +1894,33 @@ exports.BattleItems = {
         gen: 6,
         desc: "If holder is a aloha, this item allows it to Mega Evolve in battle.",
     },
-    "kyupedoite": {
-        id: "kyupedoite",
-        name: "kyupedoite",
-        spritenum: 619,
+    "gengalureite": {
+        id: "gengalureite",
+        name: "gengalureite",
+        spritenum: 588,
 		 
-        megaStone: "Kyupedo-Mega",
-        megaEvolves: "Kyupedo",
+        megaStone: "Gengalure-Mega",
+        megaEvolves: "Gengalure",
         onTakeItem: function(item, source) {
             if (item.megaEvolves === source.baseTemplate.baseSpecies) return false;
             return true;
         },
         gen: 6,
-        desc: "If holder is a kyupedo, this item allows it to Mega Evolve in battle.",
+        desc: "If holder is a Gengalure, this item allows it to Mega Evolve in battle.",
+    },
+    "kyurpedoite": {
+        id: "kyurpedoite",
+        name: "kyurpedoite",
+        spritenum: 619,
+		 
+        megaStone: "Kyurpedo-Mega",
+        megaEvolves: "Kyurpedo",
+        onTakeItem: function(item, source) {
+            if (item.megaEvolves === source.baseTemplate.baseSpecies) return false;
+            return true;
+        },
+        gen: 6,
+        desc: "If holder is a kyurpedo, this item allows it to Mega Evolve in battle.",
     },
     "luauite": {
         id: "luauite",
@@ -1851,6 +1935,34 @@ exports.BattleItems = {
         },
         gen: 6,
         desc: "If holder is a luau, this item allows it to Mega Evolve in battle.",
+    },
+    "gearchampite": {
+        id: "gearchampite",
+        name: "gearchampite",
+        spritenum: 599,
+		 
+        megaStone: "Gearchamp-Mega",
+        megaEvolves: "Gearchamp",
+        onTakeItem: function(item, source) {
+            if (item.megaEvolves === source.baseTemplate.baseSpecies) return false;
+            return true;
+        },
+        gen: 6,
+        desc: "If holder is a Gearchamp, this item allows it to Mega Evolve in battle.",
+    },
+    "alohaite": {
+        id: "alohaite",
+        name: "alohaite",
+        spritenum: 619,
+		 
+        megaStone: "Aloha-Mega",
+        megaEvolves: "Aloha",
+        onTakeItem: function(item, source) {
+            if (item.megaEvolves === source.baseTemplate.baseSpecies) return false;
+            return true;
+        },
+        gen: 6,
+        desc: "If holder is a aloha, this item allows it to Mega Evolve in battle.",
     },
     "swampterraite": {
         id: "swampterraite",
@@ -1936,6 +2048,19 @@ exports.BattleItems = {
         gen: 6,
         desc: "If holder is a regigot, this item allows it to Mega Evolve in battle.",
     },
+	"kasukabeite": {
+		id: "kasukabeite",
+		name: "kasukabeite",
+		spritenum: 592,
+		megaStone: "Kasukabe-Mega",
+		megaEvolves: "Kasukabe",
+		onTakeItem: function (item, source) {
+			if (item.megaEvolves === source.baseTemplate.baseSpecies) return false;
+			return true;
+		},
+		gen: 6,
+		desc: "If held by a Kasukabe, this item allows it to Mega Evolve in battle.",
+	},
     "sakamakiite": {
         id: "sakamakiite",
         name: "sakamakiite",
@@ -2611,6 +2736,7 @@ exports.BattleItems = {
 	//Fusions are given access to Z-Moves. 
 	
 	"pikaniumz": {
+		inherit: true,
 		id: "pikaniumz",
 		name: "Pikanium Z",
 		spritenum: 649,
@@ -2623,6 +2749,7 @@ exports.BattleItems = {
 		desc: "If held by a Pikachu with Volt Tackle, it can use Catastropika.",
 	},
 	"pikashuniumz": {
+		inherit: true,
 		id: "pikashuniumz",
 		name: "Pikashunium Z",
 		spritenum: 659,
@@ -2635,6 +2762,7 @@ exports.BattleItems = {
 		desc: "If held by cap Pikachu with Thunderbolt, it can use 10,000,000 Volt Thunderbolt.",
 	},
 	"tapuniumz": {
+		inherit: true,
 		id: "tapuniumz",
 		name: "Tapunium Z",
 		spritenum: 653,
@@ -2647,6 +2775,7 @@ exports.BattleItems = {
 		desc: "If held by a Tapu with Nature's Madness, it can use Guardian of Alola.",
 	},
 	"snorliumz": {
+		inherit: true,
 		id: "snorliumz",
 		name: "Snorlium Z",
 		spritenum: 656,
@@ -2659,6 +2788,7 @@ exports.BattleItems = {
 		desc: "If held by a Snorlax with Giga Impact, it can use Pulverizing Pancake.",
 	},
 	"mewniumz": {
+		inherit: true,
 		id: "mewniumz",
 		name: "Mewnium Z",
 		spritenum: 658,
@@ -2671,6 +2801,7 @@ exports.BattleItems = {
 		desc: "If held by a Mew with Psychic, it can use Genesis Supernova.",
 	},
 	"decidiumz": {
+		inherit: true,
 		id: "decidiumz",
 		name: "Decidium Z",
 		spritenum: 650,
@@ -2683,6 +2814,7 @@ exports.BattleItems = {
 		desc: "If held by a Decidueye with Spirit Shackle, it can use Sinister Arrow Raid.",
 	},
 	"inciniumz": {
+		inherit: true,
 		id: "inciniumz",
 		name: "Incinium Z",
 		spritenum: 651,
@@ -2695,6 +2827,7 @@ exports.BattleItems = {
 		desc: "If held by an Incineroar with Darkest Lariat, it can use Malicious Moonsault.",
 	},
 	"primariumz": {
+		inherit: true,
 		id: "primariumz",
 		name: "Primarium Z",
 		spritenum: 652,
@@ -2707,6 +2840,7 @@ exports.BattleItems = {
 		desc: "If held by a Primarina with Sparkling Aria, it can use Oceanic Operetta.",
 	},
 	"lycaniumz": {
+		inherit: true,
 		id: "lycaniumz",
 		name: "Lycanium Z",
 		spritenum: 689,
@@ -2719,6 +2853,7 @@ exports.BattleItems = {
 		desc: "If held by any Lycanroc with Stone Edge, it can use Splintered Stormshards.",
 	},
 	"mimikiumz": {
+		inherit: true,
 		id: "mimikiumz",
 		name: "Mimikium Z",
 		spritenum: 688,
@@ -2731,6 +2866,7 @@ exports.BattleItems = {
 		desc: "If held by a Mimikyu with Play Rough, it can use Let's Snuggle Forever.",
 	},
 	"solganiumz": {
+		inherit: true,
 		id: "solganiumz",
 		name: "Solganium Z",
 		spritenum: 685,
@@ -2743,6 +2879,7 @@ exports.BattleItems = {
 		desc: "Solgaleo or Dusk Mane Necrozma with Sunsteel Strike can use a special Z-Move.",
 	},
 	"lunaliumz": {
+		inherit: true,
 		id: "lunaliumz",
 		name: "Lunalium Z",
 		spritenum: 686,
@@ -2770,6 +2907,7 @@ exports.BattleItems = {
 	},
 	
 	"marshadiumz": {
+		inherit: true,
 		id: "marshadiumz",
 		name: "Marshadium Z",
 		spritenum: 654,
@@ -2782,6 +2920,7 @@ exports.BattleItems = {
 		desc: "If held by Marshadow with Spectral Thief, it can use Soul-Stealing 7-Star Strike.",
 	},
 	"charcoal": {
+		inherit: true,
 		id: "charcoal",
 		name: "Charcoal",
 		spritenum: 61,
@@ -2800,6 +2939,7 @@ exports.BattleItems = {
 		desc: "Holder's Fire-type attacks have 1.2x power.",
 	},
 	"mysticwater": {
+		inherit: true,
 		id: "mysticwater",
 		name: "Mystic Water",
 		spritenum: 300,
@@ -2818,6 +2958,7 @@ exports.BattleItems = {
 		desc: "Holder's Water-type attacks have 1.2x power.",
 	},
 	"miracleseed": {
+		inherit: true,
 		id: "miracleseed",
 		name: "Miracle Seed",
 		onItemize: 'Grass',
@@ -2836,6 +2977,7 @@ exports.BattleItems = {
 		desc: "Holder's Grass-type attacks have 1.2x power.",
 	},
 	"magnet": {
+		inherit: true,
 		id: "magnet",
 		name: "Magnet",
 		onItemize: 'Electric',
@@ -2854,6 +2996,7 @@ exports.BattleItems = {
 		desc: "Holder's Electric-type attacks have 1.2x power.",
 	},
 	"silkscarf": {
+		inherit: true,
 		id: "silkscarf",
 		name: "Silk Scarf",
 		onItemize: 'Normal',
@@ -2872,6 +3015,7 @@ exports.BattleItems = {
 		desc: "Holder's Normal-type attacks have 1.2x power.",
 	},
 	"twistedspoon": {
+		inherit: true,
 		id: "twistedspoon",
 		name: "Twisted Spoon",
 		onItemize: 'Psychic',
@@ -2890,6 +3034,7 @@ exports.BattleItems = {
 		desc: "Holder's Psychic-type attacks have 1.2x power.",
 	},
 	"blackglasses": {
+		inherit: true,
 		id: "blackglasses",
 		name: "Black Glasses",
 		onItemize: 'Dark',
@@ -2908,6 +3053,7 @@ exports.BattleItems = {
 		desc: "Holder's Dark-type attacks have 1.2x power.",
 	},
 	"blackbelt": {
+		inherit: true,
 		id: "blackbelt",
 		name: "Black Belt",
 		onItemize: 'Fighting',
@@ -2926,6 +3072,7 @@ exports.BattleItems = {
 		desc: "Holder's Fighting-type attacks have 1.2x power.",
 	},
 	"poisonbarb": {
+		inherit: true,
 		id: "poisonbarb",
 		name: "Poison Barb",
 		onItemize: 'Poison',
@@ -2945,6 +3092,7 @@ exports.BattleItems = {
 		desc: "Holder's Poison-type attacks have 1.2x power.",
 	},
 	"sharpbeak": {
+		inherit: true,
 		id: "sharpbeak",
 		name: "Sharp Beak",
 		onItemize: 'Flying',
@@ -2963,6 +3111,7 @@ exports.BattleItems = {
 		desc: "Holder's Flying-type attacks have 1.2x power.",
 	},
 	"nevermeltice": {
+		inherit: true,
 		id: "nevermeltice",
 		name: "Never-Melt Ice",
 		spritenum: 305,
@@ -2981,6 +3130,7 @@ exports.BattleItems = {
 		desc: "Holder's Ice-type attacks have 1.2x power.",
 	},
 	"softsand": {
+		inherit: true,
 		id: "softsand",
 		name: "Soft Sand",
 		onItemize: 'Ground',
@@ -2999,6 +3149,7 @@ exports.BattleItems = {
 		desc: "Holder's Ground-type attacks have 1.2x power.",
 	},
 	"hardstone": {
+		inherit: true,
 		id: "hardstone",
 		name: "Hard Stone",
 		onItemize: 'Rock',
@@ -3017,6 +3168,7 @@ exports.BattleItems = {
 		desc: "Holder's Rock-type attacks have 1.2x power.",
 	},
 	"dragonfang": {
+		inherit: true,
 		id: "dragonfang",
 		name: "Dragon Fang",
 		onItemize: 'Dragon',
@@ -3035,6 +3187,7 @@ exports.BattleItems = {
 		desc: "Holder's Dragon-type attacks have 1.2x power.",
 	},
 	"metalcoat": {
+		inherit: true,
 		id: "metalcoat",
 		name: "Metal Coat",
 		onItemize: 'Steel',
@@ -3053,6 +3206,7 @@ exports.BattleItems = {
 		desc: "Holder's Steel-type attacks have 1.2x power.",
 	},
 	"silverpowder": {
+		inherit: true,
 		id: "silverpowder",
 		name: "SilverPowder",
 		onItemize: 'Bug',
@@ -3071,6 +3225,7 @@ exports.BattleItems = {
 		desc: "Holder's Bug-type attacks have 1.2x power.",
 	},
 	"spelltag": {
+		inherit: true,
 		id: "spelltag",
 		name: "Spell Tag",
 		onItemize: 'Ghost',
@@ -3090,6 +3245,7 @@ exports.BattleItems = {
 	},
 	
 	"firegem": {
+		inherit: true,
 		id: "firegem",
 		name: "Fire Gem",
 		isUnreleased: true,
@@ -3110,6 +3266,7 @@ exports.BattleItems = {
 		desc: "Holder's first successful Fire-type attack will have 1.3x power. Single use.",
 	},
 	"fightinggem": {
+		inherit: true,
 		id: "fightinggem",
 		name: "Fighting Gem",
 		isUnreleased: true,
@@ -3130,6 +3287,7 @@ exports.BattleItems = {
 		desc: "Holder's first successful Fighting-type attack will have 1.3x power. Single use.",
 	},
 	"fairygem": {
+		inherit: true,
 		id: "fairygem",
 		name: "Fairy Gem",
 		isUnreleased: true,
@@ -3150,6 +3308,7 @@ exports.BattleItems = {
 		desc: "Holder's first successful Fairy-type attack will have 1.3x power. Single use.",
 	},
 	"electricgem": {
+		inherit: true,
 		id: "electricgem",
 		name: "Electric Gem",
 		isUnreleased: true,
@@ -3170,6 +3329,7 @@ exports.BattleItems = {
 		desc: "Holder's first successful Electric-type attack will have 1.3x power. Single use.",
 	},
 	"dragongem": {
+		inherit: true,
 		id: "dragongem",
 		name: "Dragon Gem",
 		isUnreleased: true,
@@ -3190,6 +3350,7 @@ exports.BattleItems = {
 		desc: "Holder's first successful Dragon-type attack will have 1.3x power. Single use.",
 	},
 	"darkgem": {
+		inherit: true,
 		id: "darkgem",
 		name: "Dark Gem",
 		isUnreleased: true,
@@ -3210,6 +3371,7 @@ exports.BattleItems = {
 		desc: "Holder's first successful Dark-type attack will have 1.3x power. Single use.",
 	},
 	"buggem": {
+		inherit: true,
 		id: "buggem",
 		name: "Bug Gem",
 		isUnreleased: true,
@@ -3230,6 +3392,7 @@ exports.BattleItems = {
 		desc: "Holder's first successful Bug-type attack will have 1.3x power. Single use.",
 	},
 	"watergem": {
+		inherit: true,
 		id: "watergem",
 		name: "Water Gem",
 		isUnreleased: true,
@@ -3250,6 +3413,7 @@ exports.BattleItems = {
 		desc: "Holder's first successful Water-type attack will have 1.3x power. Single use.",
 	},
 	"steelgem": {
+		inherit: true,
 		id: "steelgem",
 		name: "Steel Gem",
 		isUnreleased: true,
@@ -3270,6 +3434,7 @@ exports.BattleItems = {
 		desc: "Holder's first successful Steel-type attack will have 1.3x power. Single use.",
 	},
 	"rockgem": {
+		inherit: true,
 		id: "rockgem",
 		name: "Rock Gem",
 		isUnreleased: true,
@@ -3290,6 +3455,7 @@ exports.BattleItems = {
 		desc: "Holder's first successful Rock-type attack will have 1.3x power. Single use.",
 	},
 	"psychicgem": {
+		inherit: true,
 		id: "psychicgem",
 		name: "Psychic Gem",
 		isUnreleased: true,
@@ -3310,6 +3476,7 @@ exports.BattleItems = {
 		desc: "Holder's first successful Psychic-type attack will have 1.3x power. Single use.",
 	},
 	"poisongem": {
+		inherit: true,
 		id: "poisongem",
 		name: "Poison Gem",
 		isUnreleased: true,
@@ -3330,6 +3497,7 @@ exports.BattleItems = {
 		desc: "Holder's first successful Poison-type attack will have 1.3x power. Single use.",
 	},
 	"normalgem": {
+		inherit: true,
 		id: "normalgem",
 		name: "Normal Gem",
 		spritenum: 307,
@@ -3349,6 +3517,7 @@ exports.BattleItems = {
 		desc: "Holder's first successful Normal-type attack will have 1.3x power. Single use.",
 	},
 	"icegem": {
+		inherit: true,
 		id: "icegem",
 		name: "Ice Gem",
 		isUnreleased: true,
@@ -3369,6 +3538,7 @@ exports.BattleItems = {
 		desc: "Holder's first successful Ice-type attack will have 1.3x power. Single use.",
 	},
 	"groundgem": {
+		inherit: true,
 		id: "groundgem",
 		name: "Ground Gem",
 		isUnreleased: true,
@@ -3389,6 +3559,7 @@ exports.BattleItems = {
 		desc: "Holder's first successful Ground-type attack will have 1.3x power. Single use.",
 	},
 	"grassgem": {
+		inherit: true,
 		id: "grassgem",
 		name: "Grass Gem",
 		isUnreleased: true,
@@ -3409,6 +3580,7 @@ exports.BattleItems = {
 		desc: "Holder's first successful Grass-type attack will have 1.3x power. Single use.",
 	},
 	"ghostgem": {
+		inherit: true,
 		id: "ghostgem",
 		name: "Ghost Gem",
 		isUnreleased: true,
@@ -3429,6 +3601,7 @@ exports.BattleItems = {
 		desc: "Holder's first successful Ghost-type attack will have 1.3x power. Single use.",
 	},
 	"flyinggem": {
+		inherit: true,
 		id: "flyinggem",
 		name: "Flying Gem",
 		isUnreleased: true,
@@ -3457,5 +3630,691 @@ exports.BattleItems = {
 		num: 94,
 		gen: 4,
 		desc: "No competitive use.",
+	},
+	"aguavberry": {
+		inherit: true,
+		id: "aguavberry",
+		name: "Aguav Berry",
+		spritenum: 5,
+		isBerry: true,
+		naturalGift: {
+			basePower: 80,
+			type: "Dragon",
+		},
+		onUpdate: function (pokemon) {
+			if (pokemon.hp <= pokemon.maxhp / 4 || (pokemon.hp <= pokemon.maxhp / 2 && ['gluttony', 'bloodmadecrops', 'foodcoloring'].includes(pokemon.getAbility()))) {
+				pokemon.eatItem();
+			}
+		},
+		onTryEatItem: function (item, pokemon) {
+			if (!this.runEvent('TryHeal', pokemon)) return false;
+		},
+		onEat: function (pokemon) {
+			this.heal(pokemon.maxhp / 2);
+			if (pokemon.getNature().minus === 'spd') {
+				pokemon.addVolatile('confusion');
+			}
+		},
+		num: 162,
+		gen: 3,
+		desc: "Restores 1/2 max HP at 1/4 max HP or less; confuses if -SpD Nature. Single use.",
+	},
+	"apicotberry": {
+		inherit: true,
+		id: "apicotberry",
+		name: "Apicot Berry",
+		spritenum: 10,
+		isBerry: true,
+		naturalGift: {
+			basePower: 100,
+			type: "Ground",
+		},
+		onUpdate: function (pokemon) {
+			if (pokemon.hp <= pokemon.maxhp / 4 || (pokemon.hp <= pokemon.maxhp / 2 && ['gluttony', 'bloodmadecrops', 'foodcoloring'].includes(pokemon.getAbility()))) {
+				pokemon.eatItem();
+			}
+		},
+		onEat: function (pokemon) {
+			this.boost({spd: 1});
+		},
+		num: 205,
+		gen: 3,
+		desc: "Raises holder's Sp. Def by 1 stage when at 1/4 max HP or less. Single use.",
+	},
+	"custapberry": {
+		inherit: true,
+		id: "custapberry",
+		name: "Custap Berry",
+		isUnreleased: true,
+		spritenum: 86,
+		isBerry: true,
+		naturalGift: {
+			basePower: 100,
+			type: "Ghost",
+		},
+		onModifyPriorityPriority: -1,
+		onModifyPriority: function (priority, pokemon) {
+			if (pokemon.hp <= pokemon.maxhp / 4 || (pokemon.hp <= pokemon.maxhp / 2 && ['gluttony', 'bloodmadecrops', 'foodcoloring'].includes(pokemon.getAbility()))) {
+				if (pokemon.eatItem()) {
+					this.add('-activate', pokemon, 'item: Custap Berry', '[consumed]');
+					pokemon.removeVolatile('custapberry');
+					return Math.round(priority) + 0.1;
+				}
+			}
+		},
+		onEat: function () { },
+		num: 210,
+		gen: 4,
+		desc: "Holder moves first in its priority bracket when at 1/4 max HP or less. Single use.",
+	},
+	"figyberry": {
+		inherit: true,
+		id: "figyberry",
+		name: "Figy Berry",
+		spritenum: 140,
+		isBerry: true,
+		naturalGift: {
+			basePower: 80,
+			type: "Bug",
+		},
+		onUpdate: function (pokemon) {
+			if (pokemon.hp <= pokemon.maxhp / 4 || (pokemon.hp <= pokemon.maxhp / 2 && ['gluttony', 'bloodmadecrops', 'foodcoloring'].includes(pokemon.getAbility()))) {
+				pokemon.eatItem();
+			}
+		},
+		onTryEatItem: function (item, pokemon) {
+			if (!this.runEvent('TryHeal', pokemon)) return false;
+		},
+		onEat: function (pokemon) {
+			this.heal(pokemon.maxhp / 2);
+			if (pokemon.getNature().minus === 'atk') {
+				pokemon.addVolatile('confusion');
+			}
+		},
+		num: 159,
+		gen: 3,
+		desc: "Restores 1/2 max HP at 1/4 max HP or less; confuses if -Atk Nature. Single use.",
+	},
+	"ganlonberry": {
+		inherit: true,
+		id: "ganlonberry",
+		name: "Ganlon Berry",
+		spritenum: 158,
+		isBerry: true,
+		naturalGift: {
+			basePower: 100,
+			type: "Ice",
+		},
+		onUpdate: function (pokemon) {
+			if (pokemon.hp <= pokemon.maxhp / 4 || (pokemon.hp <= pokemon.maxhp / 2 && ['gluttony', 'bloodmadecrops', 'foodcoloring'].includes(pokemon.getAbility()))) {
+				pokemon.eatItem();
+			}
+		},
+		onEat: function (pokemon) {
+			this.boost({def: 1});
+		},
+		num: 202,
+		gen: 3,
+		desc: "Raises holder's Defense by 1 stage when at 1/4 max HP or less. Single use.",
+	},
+	"iapapaberry": {
+		inherit: true,
+		id: "iapapaberry",
+		name: "Iapapa Berry",
+		spritenum: 217,
+		isBerry: true,
+		naturalGift: {
+			basePower: 80,
+			type: "Dark",
+		},
+		onUpdate: function (pokemon) {
+			if (pokemon.hp <= pokemon.maxhp / 4 || (pokemon.hp <= pokemon.maxhp / 2 && ['gluttony', 'bloodmadecrops', 'foodcoloring'].includes(pokemon.getAbility()))) {
+				pokemon.eatItem();
+			}
+		},
+		onTryEatItem: function (item, pokemon) {
+			if (!this.runEvent('TryHeal', pokemon)) return false;
+		},
+		onEat: function (pokemon) {
+			this.heal(pokemon.maxhp / 2);
+			if (pokemon.getNature().minus === 'def') {
+				pokemon.addVolatile('confusion');
+			}
+		},
+		num: 163,
+		gen: 3,
+		desc: "Restores 1/2 max HP at 1/4 max HP or less; confuses if -Def Nature. Single use.",
+	},
+	"lansatberry": {
+		inherit: true,
+		id: "lansatberry",
+		name: "Lansat Berry",
+		spritenum: 238,
+		isBerry: true,
+		naturalGift: {
+			basePower: 100,
+			type: "Flying",
+		},
+		onUpdate: function (pokemon) {
+			if (pokemon.hp <= pokemon.maxhp / 4 || (pokemon.hp <= pokemon.maxhp / 2 && ['gluttony', 'bloodmadecrops', 'foodcoloring'].includes(pokemon.getAbility()))) {
+				pokemon.eatItem();
+			}
+		},
+		onEat: function (pokemon) {
+			pokemon.addVolatile('focusenergy');
+		},
+		num: 206,
+		gen: 3,
+		desc: "Holder gains the Focus Energy effect when at 1/4 max HP or less. Single use.",
+	},
+	"liechiberry": {
+		inherit: true,
+		id: "liechiberry",
+		name: "Liechi Berry",
+		spritenum: 248,
+		isBerry: true,
+		naturalGift: {
+			basePower: 100,
+			type: "Grass",
+		},
+		onUpdate: function (pokemon) {
+			if (pokemon.hp <= pokemon.maxhp / 4 || (pokemon.hp <= pokemon.maxhp / 2 && ['gluttony', 'bloodmadecrops', 'foodcoloring'].includes(pokemon.getAbility()))) {
+				pokemon.eatItem();
+			}
+		},
+		onEat: function (pokemon) {
+			this.boost({atk: 1});
+		},
+		num: 201,
+		gen: 3,
+		desc: "Raises holder's Attack by 1 stage when at 1/4 max HP or less. Single use.",
+	},
+	"magoberry": {
+		inherit: true,
+		id: "magoberry",
+		name: "Mago Berry",
+		spritenum: 274,
+		isBerry: true,
+		naturalGift: {
+			basePower: 80,
+			type: "Ghost",
+		},
+		onUpdate: function (pokemon) {
+			if (pokemon.hp <= pokemon.maxhp / 4 || (pokemon.hp <= pokemon.maxhp / 2 && ['gluttony', 'bloodmadecrops', 'foodcoloring'].includes(pokemon.getAbility()))) {
+				pokemon.eatItem();
+			}
+		},
+		onTryEatItem: function (item, pokemon) {
+			if (!this.runEvent('TryHeal', pokemon)) return false;
+		},
+		onEat: function (pokemon) {
+			this.heal(pokemon.maxhp / 2);
+			if (pokemon.getNature().minus === 'spe') {
+				pokemon.addVolatile('confusion');
+			}
+		},
+		num: 161,
+		gen: 3,
+		desc: "Restores 1/2 max HP at 1/4 max HP or less; confuses if -Spe Nature. Single use.",
+	},
+	"micleberry": {
+		inherit: true,
+		id: "micleberry",
+		name: "Micle Berry",
+		isUnreleased: true,
+		spritenum: 290,
+		isBerry: true,
+		naturalGift: {
+			basePower: 100,
+			type: "Rock",
+		},
+		onResidual: function (pokemon) {
+			if (pokemon.hp <= pokemon.maxhp / 4 || (pokemon.hp <= pokemon.maxhp / 2 && ['gluttony', 'bloodmadecrops', 'foodcoloring'].includes(pokemon.getAbility()))) {
+				pokemon.eatItem();
+			}
+		},
+		onEat: function (pokemon) {
+			pokemon.addVolatile('micleberry');
+		},
+		effect: {
+			duration: 2,
+			onSourceModifyAccuracy: function (accuracy, target, source) {
+				this.add('-enditem', source, 'Micle Berry');
+				source.removeVolatile('micleberry');
+				if (typeof accuracy === 'number') {
+					return accuracy * 1.2;
+				}
+			},
+		},
+		num: 209,
+		gen: 4,
+		desc: "Holder's next move has 1.2x accuracy when at 1/4 max HP or less. Single use.",
+	},
+	"petayaberry": {
+		inherit: true,
+		id: "petayaberry",
+		name: "Petaya Berry",
+		spritenum: 335,
+		isBerry: true,
+		naturalGift: {
+			basePower: 100,
+			type: "Poison",
+		},
+		onUpdate: function (pokemon) {
+			if (pokemon.hp <= pokemon.maxhp / 4 || (pokemon.hp <= pokemon.maxhp / 2 && ['gluttony', 'bloodmadecrops', 'foodcoloring'].includes(pokemon.getAbility()))) {
+				pokemon.eatItem();
+			}
+		},
+		onEat: function (pokemon) {
+			this.boost({spa: 1});
+		},
+		num: 204,
+		gen: 3,
+		desc: "Raises holder's Sp. Atk by 1 stage when at 1/4 max HP or less. Single use.",
+	},
+	"salacberry": {
+		inherit: true,
+		id: "salacberry",
+		name: "Salac Berry",
+		spritenum: 426,
+		isBerry: true,
+		naturalGift: {
+			basePower: 100,
+			type: "Fighting",
+		},
+		onUpdate: function (pokemon) {
+			if (pokemon.hp <= pokemon.maxhp / 4 || (pokemon.hp <= pokemon.maxhp / 2 && ['gluttony', 'bloodmadecrops', 'foodcoloring'].includes(pokemon.getAbility()))) {
+				pokemon.eatItem();
+			}
+		},
+		onEat: function (pokemon) {
+			this.boost({spe: 1});
+		},
+		num: 203,
+		gen: 3,
+		desc: "Raises holder's Speed by 1 stage when at 1/4 max HP or less. Single use.",
+	},
+	"starfberry": {
+		inherit: true,
+		id: "starfberry",
+		name: "Starf Berry",
+		spritenum: 472,
+		isBerry: true,
+		naturalGift: {
+			basePower: 100,
+			type: "Psychic",
+		},
+		onUpdate: function (pokemon) {
+			if (pokemon.hp <= pokemon.maxhp / 4 || (pokemon.hp <= pokemon.maxhp / 2 && ['gluttony', 'bloodmadecrops', 'foodcoloring'].includes(pokemon.getAbility()))) {
+				pokemon.eatItem();
+			}
+		},
+		onEat: function (pokemon) {
+			let stats = [];
+			for (let stat in pokemon.boosts) {
+				if (stat !== 'accuracy' && stat !== 'evasion' && pokemon.boosts[stat] < 6) {
+					stats.push(stat);
+				}
+			}
+			if (stats.length) {
+				let randomStat = this.sample(stats);
+				let boost = {};
+				boost[randomStat] = 2;
+				this.boost(boost);
+			}
+		},
+		num: 207,
+		gen: 3,
+		desc: "Raises a random stat by 2 when at 1/4 max HP or less (not acc/eva). Single use.",
+	},
+	"wikiberry": {
+		inherit: true,
+		id: "wikiberry",
+		name: "Wiki Berry",
+		spritenum: 538,
+		isBerry: true,
+		naturalGift: {
+			basePower: 80,
+			type: "Rock",
+		},
+		onUpdate: function (pokemon) {
+			if (pokemon.hp <= pokemon.maxhp / 4 || (pokemon.hp <= pokemon.maxhp / 2 && ['gluttony', 'bloodmadecrops', 'foodcoloring'].includes(pokemon.getAbility()))) {
+				pokemon.eatItem();
+			}
+		},
+		onTryEatItem: function (item, pokemon) {
+			if (!this.runEvent('TryHeal', pokemon)) return false;
+		},
+		onEat: function (pokemon) {
+			this.heal(pokemon.maxhp / 2);
+			if (pokemon.getNature().minus === 'spa') {
+				pokemon.addVolatile('confusion');
+			}
+		},
+		num: 160,
+		gen: 3,
+		desc: "Restores 1/2 max HP at 1/4 max HP or less; confuses if -SpA Nature. Single use.",
+	},
+	"blueorb": {
+		inherit: true,
+		id: "blueorb",
+		name: "Blue Orb",
+		spritenum: 41,
+		onSwitchIn: function (pokemon) {
+			if (pokemon.isActive && ['Kyogre', 'Kyonun', 'Kyokid', 'Kyervine'].includes(pokemon.baseTemplate.species)) {
+				this.insertQueue({pokemon: pokemon, choice: 'runPrimal'});
+			}
+		},
+		onPrimal: function (pokemon) {
+			switch (pokemon.baseTemplate.species){
+				case 'Kyogre':
+					pokemon.formeChange('Kyogre-Primal', this.effect, true);
+					break;
+				case 'Kyokid':
+					pokemon.formeChange('Kyokid-Primal', this.effect, true);
+					break;
+				case 'Kyonun':
+					pokemon.formeChange('Kyonun-Primal', this.effect, true);
+					break;
+				case 'Kyervine':
+					pokemon.formeChange('Kyervine-Primal', this.effect, true);
+					break;
+			}
+		},
+		onTakeItem: function (item, source) {
+			if (['Kyogre', 'Kyonun', 'Kyokid', 'Kyervine'].includes(source.baseTemplate.species)) return false;
+			return true;
+		},
+		num: 535,
+		gen: 6,
+		desc: "If held by a Kyogre or a fusion thereof, this item triggers its Primal Reversion in battle.",
+	},
+	"redorb": {
+		inherit: true,
+		id: "redorb",
+		name: "Red Orb",
+		spritenum: 390,
+		onSwitchIn: function (pokemon) {
+			if (pokemon.isActive && ['Groudon', 'Cherron', 'Glaive', 'Grousle'].includes(pokemon.baseTemplate.species)) {
+				this.insertQueue({pokemon: pokemon, choice: 'runPrimal'});
+			}
+		},
+		onPrimal: function (pokemon) {
+			switch (pokemon.baseTemplate.species){
+				case 'Groudon':
+					pokemon.formeChange('Groudon-Primal', this.effect, true);
+					break;
+				case 'Cherron':
+					pokemon.formeChange('Cherron-Primal', this.effect, true);
+					break;
+				case 'Glaive':
+					pokemon.formeChange('Glaive-Primal', this.effect, true);
+					break;
+				case 'Grousle':
+					pokemon.formeChange('Grousle-Primal', this.effect, true);
+					break;
+			}
+		},
+		onTakeItem: function (item, source) {
+			if (['Groudon', 'Cherron', 'Glaive', 'Grousle'].includes(source.baseTemplate.species)) return false;
+			return true;
+		},
+		num: 534,
+		gen: 6,
+		desc: "If held by a Groudon or a fusion thereof, this item triggers its Primal Reversion in battle.",
+	},
+	"griseousorb": {
+		inherit: true,
+		id: "griseousorb",
+		name: "Griseous Orb",
+		spritenum: 180,
+		fling: {
+			basePower: 60,
+		},
+		onBasePowerPriority: 6,
+		onBasePower: function (basePower, user, target, move) {
+			if ((user.baseTemplate.num === 487 || user.hasAbility('whatdoesthisdo')) && (move.type === 'Ghost' || move.type === 'Dragon')) {
+				return this.chainModify([0x1333, 0x1000]);
+			}
+		},
+		onTakeItem: function (item, pokemon, source) {
+			let nums = [487, 7500301, 7500460];
+			if ((source && nums.includes(source.baseTemplate.num)) || nums.includes(pokemon.baseTemplate.num)) {
+				return false;
+			}
+			return true;
+		},
+		forcedForme: "Giratina-Origin",
+		num: 112,
+		gen: 4,
+		desc: "If held by a Giratina, its Ghost- and Dragon-type attacks have 1.2x power.",
+	},
+	"adamantorb": {
+		inherit: true,
+		id: "adamantorb",
+		name: "Adamant Orb",
+		spritenum: 4,
+		fling: {
+			basePower: 60,
+		},
+		onBasePowerPriority: 6,
+		onBasePower: function (basePower, user, target, move) {
+			if (move && (user.baseTemplate.species === 'Dialga' || user.hasAbility('whatdoesthisdo')) && (move.type === 'Steel' || move.type === 'Dragon')) {
+				return this.chainModify([0x1333, 0x1000]);
+			}
+		},
+		num: 135,
+		gen: 4,
+		desc: "If held by a Dialga, its Steel- and Dragon-type attacks have 1.2x power.",
+	},
+	"lustrousorb": {
+		inherit: true,
+		id: "lustrousorb",
+		name: "Lustrous Orb",
+		spritenum: 265,
+		fling: {
+			basePower: 60,
+		},
+		onBasePowerPriority: 6,
+		onBasePower: function (basePower, user, target, move) {
+			if (move && (user.baseTemplate.species === 'Palkia' || user.hasAbility('whatdoesthisdo')) && (move.type === 'Water' || move.type === 'Dragon')) {
+				return this.chainModify([0x1333, 0x1000]);
+			}
+		},
+		num: 136,
+		gen: 4,
+		desc: "If held by a Palkia, its Water- and Dragon-type attacks have 1.2x power.",
+	},
+	"eviolite": {
+		inherit: true,
+		id: "eviolite",
+		name: "Eviolite",
+		spritenum: 130,
+		fling: {
+			basePower: 40,
+		},
+		onModifyDefPriority: 2,
+		onModifyDef: function (def, pokemon) {
+			if (pokemon.baseTemplate.nfe || pokemon.hasAbility('whatdoesthisdo')) {
+				return this.chainModify(1.5);
+			}
+		},
+		onModifySpDPriority: 2,
+		onModifySpD: function (spd, pokemon) {
+			if (pokemon.baseTemplate.nfe || pokemon.hasAbility('whatdoesthisdo')) {
+				return this.chainModify(1.5);
+			}
+		},
+		num: 538,
+		gen: 5,
+		desc: "If holder's species can evolve, its Defense and Sp. Def are 1.5x.",
+	},
+	"lightball": {
+		inherit: true,
+		id: "lightball",
+		name: "Light Ball",
+		spritenum: 251,
+		fling: {
+			basePower: 30,
+			status: 'par',
+		},
+		onModifyAtkPriority: 1,
+		onModifyAtk: function (atk, pokemon) {
+			if (pokemon.baseTemplate.baseSpecies === 'Pikachu' || pokemon.hasAbility('whatdoesthisdo')) {
+				return this.chainModify(2);
+			}
+		},
+		onModifySpAPriority: 1,
+		onModifySpA: function (spa, pokemon) {
+			if (pokemon.baseTemplate.baseSpecies === 'Pikachu' || pokemon.hasAbility('whatdoesthisdo')) {
+				return this.chainModify(2);
+			}
+		},
+		num: 236,
+		gen: 2,
+		desc: "If held by a Pikachu, its Attack and Sp. Atk are doubled.",
+	},
+	"thickclub": {
+		inherit: true,
+		id: "thickclub",
+		name: "Thick Club",
+		spritenum: 491,
+		fling: {
+			basePower: 90,
+		},
+		onModifyAtkPriority: 1,
+		onModifyAtk: function (atk, pokemon) {
+			if (pokemon.baseTemplate.baseSpecies === 'Cubone' || pokemon.baseTemplate.baseSpecies === 'Marowak' || pokemon.hasAbility('whatdoesthisdo')) {
+				return this.chainModify(2);
+			}
+		},
+		num: 258,
+		gen: 2,
+		desc: "If held by a Cubone or a Marowak, its Attack is doubled.",
+	},
+	"luckypunch": {
+		inherit: true,
+		id: "luckypunch",
+		name: "Lucky Punch",
+		spritenum: 261,
+		fling: {
+			basePower: 40,
+		},
+		onModifyCritRatio: function (critRatio, user) {
+			if (user.baseTemplate.species === 'Chansey' || user.hasAbility('whatdoesthisdo')) {
+				return critRatio + 2;
+			}
+		},
+		num: 256,
+		gen: 2,
+		desc: "If held by a Chansey, its critical hit ratio is raised by 2 stages.",
+	},
+	"stick": {
+		inherit: true,
+		id: "stick",
+		name: "Stick",
+		fling: {
+			basePower: 60,
+		},
+		spritenum: 475,
+		onModifyCritRatio: function (critRatio, user) {
+			if (user.baseTemplate.species === 'Farfetch\'d' || user.hasAbility('whatdoesthisdo')) {
+				return critRatio + 2;
+			}
+		},
+		num: 259,
+		gen: 2,
+		desc: "If held by a Farfetch'd, its critical hit ratio is raised by 2 stages.",
+	},
+	"deepseascale": {
+		inherit: true,
+		id: "deepseascale",
+		name: "Deep Sea Scale",
+		spritenum: 93,
+		fling: {
+			basePower: 30,
+		},
+		onModifySpDPriority: 2,
+		onModifySpD: function (spd, pokemon) {
+			if (pokemon.baseTemplate.species === 'Clamperl' || pokemon.hasAbility('whatdoesthisdo')) {
+				return this.chainModify(2);
+			}
+		},
+		num: 227,
+		gen: 3,
+		desc: "If held by a Clamperl, its Sp. Def is doubled. Evolves Clamperl into Gorebyss when traded.",
+		shortDesc: "If held by a Clamperl, its Sp. Def is doubled.",
+	},
+	"deepseatooth": {
+		inherit: true,
+		id: "deepseatooth",
+		name: "Deep Sea Tooth",
+		spritenum: 94,
+		fling: {
+			basePower: 90,
+		},
+		onModifySpAPriority: 1,
+		onModifySpA: function (spa, pokemon) {
+			if (pokemon.baseTemplate.species === 'Clamperl' || pokemon.hasAbility('whatdoesthisdo')) {
+				return this.chainModify(2);
+			}
+		},
+		num: 226,
+		gen: 3,
+		desc: "If held by a Clamperl, its Sp. Atk is doubled. Evolves Clamperl into Huntail when traded.",
+		shortDesc: "If held by a Clamperl, its Sp. Atk is doubled.",
+	},
+	"souldew": {
+		inherit: true,
+		id: "souldew",
+		name: "Soul Dew",
+		spritenum: 459,
+		fling: {
+			basePower: 30,
+		},
+		onBasePowerPriority: 6,
+		onBasePower: function (basePower, user, target, move) {
+			if (move && (user.baseTemplate.num === 380 || user.baseTemplate.num === 381 || user.hasAbility('whatdoesthisdo')) && (move.type === 'Psychic' || move.type === 'Dragon')) {
+				return this.chainModify([0x1333, 0x1000]);
+			}
+		},
+		num: 225,
+		gen: 3,
+		desc: "If held by a Latias/Latios, its Dragon- and Psychic-type moves have 1.2x power.",
+	},
+	"metalpowder": {
+		inherit: true,
+		id: "metalpowder",
+		name: "Metal Powder",
+		fling: {
+			basePower: 10,
+		},
+		spritenum: 287,
+		onModifyDefPriority: 2,
+		onModifyDef: function (def, pokemon) {
+			if ((pokemon.template.species === 'Ditto' && !pokemon.transformed) || pokemon.hasAbility('whatdoesthisdo')) {
+				return this.chainModify(2);
+			}
+		},
+		num: 257,
+		gen: 2,
+		desc: "If held by a Ditto that hasn't Transformed, its Defense is doubled.",
+	},
+	"quickpowder": {
+		inherit: true,
+		id: "quickpowder",
+		name: "Quick Powder",
+		spritenum: 374,
+		fling: {
+			basePower: 10,
+		},
+		onModifySpe: function (spe, pokemon) {
+			if ((pokemon.template.species === 'Ditto' && !pokemon.transformed) || pokemon.hasAbility('whatdoesthisdo')) {
+				return this.chainModify(2);
+			}
+		},
+		num: 274,
+		gen: 4,
+		desc: "If held by a Ditto that hasn't Transformed, its Speed is doubled.",
 	},
 };

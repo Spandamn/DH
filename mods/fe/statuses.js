@@ -2,6 +2,37 @@
 
 /**@type {{[k: string]: EffectData}} */
 let BattleStatuses = {
+	choicelock: {
+		inherit: true,
+		onBeforeMove: function (pokemon, target, move) {
+			if (!(pokemon.getItem().isChoice || (pokemon.volatiles['goldentouch'] && pokemon.volatiles['goldentouch'].item && pokemon.volatiles['goldentouch'].item.isChoice) || (pokemon.volatiles['beastbootleg'] && ((pokemon.volatiles['beastbootleg'].items[0] && pokemon.volatiles['beastbootleg'].items[0].isChoice) || (pokemon.volatiles['beastbootleg'].items[1] && pokemon.volatiles['beastbootleg'].items[1].isChoice)))) || !pokemon.hasMove(this.effectData.move)) {
+				pokemon.removeVolatile('choicelock');
+				return;
+			}
+			if (move.id !== this.effectData.move && move.id !== 'struggle') {
+				// Fails even if the Choice item is being ignored, and no PP is lost
+				this.addMove('move', pokemon, move.name);
+				this.attrLastMove('[still]');
+				this.add('-fail', pokemon);
+				return false;
+			}
+		},
+		onDisableMove: function (pokemon) {
+			if (!(pokemon.getItem().isChoice || (pokemon.volatiles['goldentouch'] && pokemon.volatiles['goldentouch'].item && pokemon.volatiles['goldentouch'].item.isChoice) || (pokemon.volatiles['beastbootleg'] && ((pokemon.volatiles['beastbootleg'].items[0] && pokemon.volatiles['beastbootleg'].items[0].isChoice) || (pokemon.volatiles['beastbootleg'].items[1] && pokemon.volatiles['beastbootleg'].items[1].isChoice)))) || !pokemon.hasMove(this.effectData.move)) {
+				pokemon.removeVolatile('choicelock');
+				return;
+			}
+			if (pokemon.ignoringItem()) {
+				return;
+			}
+			let moves = pokemon.moveset;
+			for (let i = 0; i < moves.length; i++) {
+				if (moves[i].id !== this.effectData.move) {
+					pokemon.disableMove(moves[i].id, false, this.effectData.sourceEffect);
+				}
+			}
+		},
+	},
 	//Therapeutic and Shut Up and Jam allow movement under status at all times (excluding Sleep for the former).
 	par: {
 		name: 'par',
@@ -22,7 +53,7 @@ let BattleStatuses = {
 		},
 		onBeforeMovePriority: 1,
 		onBeforeMove: function (pokemon) {
-			if (this.randomChance(1, 4) && !pokemon.hasAbility('therapeutic') && !pokemon.hasAbility('shutupandjam') && !pokemon.hasAbility('mellowvibe')) {
+			if (this.randomChance(1, 4) && !pokemon.hasAbility('therapeutic') && !pokemon.hasAbility('shutupandjam')) {
 				this.add('cant', pokemon, 'par');
 				return false;
 			}
@@ -58,7 +89,7 @@ let BattleStatuses = {
 				return;
 			}
 			this.add('cant', pokemon, 'frz');
-			if (pokemon.hasAbility('therapeutic') || pokemon.hasAbility('shutupandjam') && !pokemon.hasAbility('mellowvibe')){
+			if (pokemon.hasAbility('healingfat') || pokemon.hasAbility('therapeutic') || pokemon.hasAbility('shutupandjam')){
 				return;
 			}
 			return false;
@@ -315,15 +346,15 @@ afterstorm: {
 		onBasePowerPriority: -1,
 		onBasePower: function (basePower, attacker, defender, move, effect) {
 			if (!attacker.volatiles['atmosphericperversion']){
-				if (this.isWeather('sunnyday') && move.type === 'Fire') return this.chainModify(1/3);
-				if (this.isWeather('solarsnow') && move.type === 'Fire' && !defender.hasType(['Ice', 'Fire', 'Grass'])) return this.chainModify(1/3);
+				if (this.isWeather('sunnyday') && move.type === 'Fire') return this.chainModify([0x0555, 0x1000]);
+				if (this.isWeather('solarsnow') && move.type === 'Fire' && !defender.hasType(['Ice', 'Fire', 'Grass'])) return this.chainModify([0x0547, 0x1000]);
 				if (this.isWeather(['sunnyday', 'solarsnow']) && move.type === 'Water') return this.chainModify(3);
 				if (this.isWeather('desolateland') && move.type === 'Water') return this.chainModify(1.5);
-				if (this.isWeather('sandstorm') && defender.hasType('Rock') && move.category === 'Special') return this.chainModify(2.25);
-				if (this.isWeather('raindance') && move.type === 'Water') return this.chainModify(1/3);
+				if (this.isWeather('sandstorm') && defender.hasType('Rock') && ((move.category === 'Special' && !move.defensiveCategory) || (move.defensiveCategory && move.defensiveCategory === 'Special'))) return this.chainModify(2.25);
+				if (this.isWeather('raindance') && move.type === 'Water') return this.chainModify([0x0555, 0x1000]);
 				if (this.isWeather('raindance') && move.type === 'Fire') return this.chainModify(3);
 				if (this.isWeather('primordialsea') && move.type === 'Fire') return this.chainModify(1.5);
-				if (this.isWeather('shadowdance') && move.type === 'Ghost') return this.chainModify(1/3);
+				if (this.isWeather('shadowdance') && move.type === 'Ghost') return this.chainModify([0x0555, 0x1000]);
 			}
 		},
 	},
@@ -343,7 +374,7 @@ afterstorm: {
 				if (this.isWeather('solarsnow') && move.type === 'Fire' && !defender.hasType(['Ice', 'Fire', 'Grass'])) return this.chainModify(1/3);
 				if (this.isWeather(['sunnyday', 'solarsnow']) && move.type === 'Water') return this.chainModify(3);
 				if (this.isWeather('desolateland') && move.type === 'Water') return this.chainModify(1.5);
-				if (this.isWeather('sandstorm') && defender.hasType('Rock') && move.category === 'Special') return this.chainModify(2.25);
+				if (this.isWeather('sandstorm') && defender.hasType('Rock') && ((move.category === 'Special' && !move.defensiveCategory) || (move.defensiveCategory && move.defensiveCategory === 'Special'))) return this.chainModify(2.25);
 				if (this.isWeather('raindance') && move.type === 'Water') return this.chainModify(1/3);
 				if (this.isWeather('raindance') && move.type === 'Fire') return this.chainModify(3);
 				if (this.isWeather('primordialsea') && move.type === 'Fire') return this.chainModify(1.5);
