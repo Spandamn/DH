@@ -1124,21 +1124,18 @@ exports.BattleAbilities = {
 	},
 	"intimidatingabsorption": {
 		shortDesc: "On switch-in, this Pokemon lowers the Attack of adjacent opponents by 1 stage. This Pokemon heals 1/4 of its max HP when hit by Water moves; Water immunity.",
-		onStart: function(pokemon) {
-			var foeactive = pokemon.side.foe.active;
-			var activated = false;
-			for (var i = 0; i < foeactive.length; i++) {
-				if (!foeactive[i] || !this.isAdjacent(foeactive[i], pokemon)) continue;
+		onStart: function (pokemon) {
+			let activated = false;
+			for (const target of pokemon.side.foe.active) {
+				if (!target || !this.isAdjacent(target, pokemon)) continue;
 				if (!activated) {
-					this.add('-ability', pokemon, 'Intimidating Absorption');
+					this.add('-ability', pokemon, 'Intimidating Absorption', 'boost');
 					activated = true;
 				}
-				if (foeactive[i].volatiles['substitute']) {
-					this.add('-activate', foeactive[i], 'Substitute', 'ability: Intimidating Absorption', '[of] ' + pokemon);
+				if (target.volatiles['substitute']) {
+					this.add('-immune', target, '[msg]');
 				} else {
-					this.boost({
-						atk: -1
-					}, foeactive[i], pokemon);
+					this.boost({atk: -1}, target, pokemon);
 				}
 			}
 		},
