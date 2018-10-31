@@ -66877,17 +66877,10 @@ let BattleLearnsets = {
 		thief: ["7M", "7V", "6M", "5M", "4M", "3M"],
 		toxic: ["7M", "7V", "6M", "5M", "4M", "3M"],
 		waterpulse: ["7T", "6T", "4M", "3M"],
-<<<<<<< HEAD
 		stormthrow: ["7M"],
 		aurasphere: ["7M"],
 		bulkup: ["7M"],
 		thunderpunch: ["7M"],
-=======
-		stormthrow: ["3T"],
-		aurasphere: ["3T"],
-		bulkup: ["3T"],
-		thunderpunch: ["3T"],
->>>>>>> upstream/master
 	}},
 	cryohedral: {learnset: {
 		acidarmor: ["7L17", "6L29", "5L29"],
@@ -67116,19 +67109,11 @@ let BattleLearnsets = {
 		uturn: ["7M", "6M", "5M", "4M"],
 		waterpulse: ["7T", "6T", "4M", "3M"],
 		zenheadbutt: ["7T", "7L33", "6T", "6L33", "5T", "5L37", "4T", "4L37"],
-<<<<<<< HEAD
 		hypervoice: ["7M"],
 		healingwish: ["7M"],
 		swordsdance: ["7M"],
 		leechlife: ["7M"],
 		zingzap: ["7M"],
-=======
-		hypervoice: ["4T"],
-		healingwish: ["4T"],
-		swordsdance: ["4T"],
-		leechlife: ["4T"],
-		zingzap: ["4T"],
->>>>>>> upstream/master
 	}},
 	spotlise: {learnset: {
 		acrobatics: ["7M", "6M", "5M"],
@@ -67215,15 +67200,9 @@ let BattleLearnsets = {
 		waterpulse: ["7T", "6T", "4M", "3M"],
 		wish: ["7L22", "6L21", "5L21", "4L21", "3L21"],
 		zenheadbutt: ["7T", "7L33", "6T", "6L33", "5T", "5L37", "4T", "4L37"],
-<<<<<<< HEAD
 		moonblast: ["7M"],
 		tailglow: ["7M"],
 		healingwish: ["7M"],
-=======
-		moonblast: ["4T"],
-		tailglow: ["4T"],
-		healingwish: ["4T"],
->>>>>>> upstream/master
 	}},
 	diamontink: {learnset: {
 		afteryou: ["7T", "6T"],
@@ -67358,19 +67337,15 @@ let BattleLearnsets = {
 		waterpulse: ["7T", "6T", "4M"],
 		willowisp: ["7M", "6M", "5M", "4M"],
 		wonderroom: ["7T", "6T", "5T"],
-<<<<<<< HEAD
 		sludgebomb: ["7M"],
 		mysticalfire: ["7M"],
 		spiritsteal: ["7M"],
 	}},
 	drampasgrandpa: {learnset: {
-=======
 		sludgebomb: ["4M"],
 		mysticalfire: ["4M"],
 		spiritsteal: ["4M"],
-	}},
-	drampa'sgrandpa: {learnset: {
->>>>>>> upstream/master
+
 		attract: ["7M"],
 		blizzard: ["7M"],
 		block: ["7T"],
@@ -67538,17 +67513,10 @@ let BattleLearnsets = {
 		thunderpunch: ["7T", "6T", "5T"],
 		torment: ["7M", "6M", "5M"],
 		toxic: ["7M", "6M", "5M"],
-<<<<<<< HEAD
 		fireball: ["7M", "5M"],
 		dragonrush: ["7M", "5M"],
 		headsmash: ["7M", "5M"],
 		morningsun: ["7M", "5M"],
-=======
-		fireball: ["6M", "5M"],
-		dragonrush: ["6M", "5M"],
-		headsmash: ["6M", "5M"],
-		morningsun: ["6M", "5M"],
->>>>>>> upstream/master
 	}},
 };
 
