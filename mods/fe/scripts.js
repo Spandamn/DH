@@ -115,7 +115,7 @@ exports.BattleScripts = {
 					}
 				}
 			}
-			if (extraPP > 0 && !(pokemon.hasAbility('diamondarmor') || pokemon.hasAbility('calamity'))) {
+			if (extraPP > 0 && !(pokemon.hasAbility(['diamondarmor', 'calamity']))) {
 				pokemon.deductPP(move, extraPP);
 			}
 		}
@@ -661,7 +661,7 @@ exports.BattleScripts = {
             if (totalItems.includes('ironball')) return true;
             // If a Fire/Flying type uses Burn Up and Roost, it becomes ???/Flying-type, but it's still grounded.
             if (!negateImmunity && this.hasType('Flying') && !('roost' in this.volatiles)) return false;
-            if ((this.hasAbility('levitate') || this.hasAbility('airraider') || this.hasAbility('magneticfield') || this.hasAbility('galelevitation') || this.hasAbility('floatinggrounds') || this.hasAbility('turborise')) && !this.battle.suppressingAttackEvents()) return null;
+            if (this.hasAbility(['levitate', 'airraider', 'magneticfield', 'galelevitation', 'floatinggrounds', 'turborise']) && !this.battle.suppressingAttackEvents()) return null;
             //Compression protects Unleashed Giramini from Ground-type moves, but not Captive.
             if (this.hasAbility('compression') && this.template.species === 'Giramini-Unleashed' && !this.battle.suppressingAttackEvents()) return null;
             if ('magnetrise' in this.volatiles) return false;
