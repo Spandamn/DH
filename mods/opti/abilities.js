@@ -19,8 +19,8 @@ exports.BattleAbilities = {
 	},
 	"jubileespirit": {
 		shortDesc: "40% chance to raise this Pokemon's higher attacking stat after successfully hitting the foe with a Dance move.",
-		onAfterMove: function (damage, target, source, move) {
-			if (move && move.flags['dancer']) {
+		onAfterMove: function (source, move) {
+			if (move && move.flags['dance']) {
 				if (this.randomChance(9, 10)) {
 					let stat = 'atk';
 				let bestStat = 0;
