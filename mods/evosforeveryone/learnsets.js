@@ -67339,13 +67339,8 @@ let BattleLearnsets = {
 		wonderroom: ["7T", "6T", "5T"],
 		sludgebomb: ["7M"],
 		mysticalfire: ["7M"],
-		spiritsteal: ["7M"],
 	}},
 	drampasgrandpa: {learnset: {
-		sludgebomb: ["4M"],
-		mysticalfire: ["4M"],
-		spiritsteal: ["4M"],
-
 		attract: ["7M"],
 		blizzard: ["7M"],
 		block: ["7T"],
