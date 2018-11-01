@@ -1063,8 +1063,6 @@ exports.BattleAbilities = {
 		},
 		id: "rockygrowth",
 		name: "Rocky Growth",
-		rating: 3,
-		num: 211
 	},
 	"pristine": {
 		shortDesc: "Cannot be OHKOed. Immune to major status conditions if its HP is full.",
@@ -1097,12 +1095,12 @@ exports.BattleAbilities = {
 		name: "Pristine",
 	},
 	"innerbody": {
-		shortDesc: "This pokemon cannot flinch, and contact moves have a 33% chance to burn the opponent.",
+		shortDesc: "Inner Focus + Flame Body.",
 		onFlinch: false,
 		onAfterDamage: function(damage, target, source, move) {
 			if (move && move.flags['contact']) {
 				if (this.random(10) < 3) {
-					source.trySetStatus('brn', target, move);
+					source.trySetStatus('brn', target);
 				}
 			}
 		},
@@ -1123,22 +1121,19 @@ exports.BattleAbilities = {
 		name: "Intimidating Fangs",
 	},
 	"intimidatingabsorption": {
-		shortDesc: "On switch-in, this Pokemon lowers the Attack of adjacent opponents by 1 stage. This Pokemon heals 1/4 of its max HP when hit by Water moves; Water immunity.",
-		onStart: function(pokemon) {
-			var foeactive = pokemon.side.foe.active;
-			var activated = false;
-			for (var i = 0; i < foeactive.length; i++) {
-				if (!foeactive[i] || !this.isAdjacent(foeactive[i], pokemon)) continue;
+		shortDesc: "Intimidate + Water Absorb.",
+		onStart: function (pokemon) {
+			let activated = false;
+			for (const target of pokemon.side.foe.active) {
+				if (!target || !this.isAdjacent(target, pokemon)) continue;
 				if (!activated) {
-					this.add('-ability', pokemon, 'Intimidating Absorption');
+					this.add('-ability', pokemon, 'Intimidating Absorption', 'boost');
 					activated = true;
 				}
-				if (foeactive[i].volatiles['substitute']) {
-					this.add('-activate', foeactive[i], 'Substitute', 'ability: Intimidating Absorption', '[of] ' + pokemon);
+				if (target.volatiles['substitute']) {
+					this.add('-immune', target, '[msg]');
 				} else {
-					this.boost({
-						atk: -1
-					}, foeactive[i], pokemon);
+					this.boost({atk: -1}, target, pokemon);
 				}
 			}
 		},
@@ -1166,10 +1161,21 @@ exports.BattleAbilities = {
 				}
 			}
 			if (statsLowered) {
-				this.boost({
-					evasion: 2
-				});
+				target.addVolatile('keenfeet');
+			} else {
+				target.removeVolatile('keenfeet');
 			}
+		},
+		onEnd: function (pokemon) {
+			pokemon.removeVolatile('keenfeet');
+		},
+		effect: {		
+			noCopy: true,
+			onModifyAccuracy: function(accuracy, target) {
+				if (typeof accuracy !== 'number') return;
+				this.debug('Keen Feet - decreasing accuracy');
+				return accuracy * 0.5;
+			},
 		},
 		id: "keen feet",
 		name: "Keen Feet",
@@ -1194,7 +1200,7 @@ exports.BattleAbilities = {
 		onBasePowerPriority: 8,
 		onBasePower: function (basePower, attacker, defender, move) {
 			if (basePower <= 60) {
-				if (pokemon.side.active.length > 1) {
+				if (attacker.side.active.length > 1) {
 					for (const allyActive of attacker.side.active) {
 						if (allyActive && allyActive.position !== attacker.position && !allyActive.fainted && allyActive.hasAbility(['minus', 'plus', 'technician', 'chargedup', 'electronrain', 'foodcoloring', 'electrotechnic', 'positivegrowth', 'codeunknown', 'positivity', 'technicutter', 'sturdytech', 'precision', 'strikeandpass', 'completelyserious', 'guerillawarfare', 'operationovergrow', 'frenzy', 'eyeofhorus', 'technicalsystem', 'engineer', 'pressurizer', 'prodigy', 'techfur', 'bingobongo', 'starburst', 'technologicalarmor'])) {
 							this.debug('Greater Math Surge boost');
@@ -2033,13 +2039,11 @@ exports.BattleAbilities = {
 	},
 	"dreamcrusher": {
 		shortDesc: "The user deals 2x damage to sleeping targets.",
-		onModifyDamage: function(damage, source, pokemon, move) {
-			for (const target of pokemon.side.foe.active) {
+		onModifyDamage: function (damage, source, target, move) {
 			if (!target || !target.hp) continue;
-			if (target.status && target.status == 'slp') {
+			if (target.status && target.status === 'slp') {
 				this.debug('Dream Crusher boost');
 				return this.chainModify(2);
-			}
 			}
 		},
 		id: "dreamcrusher",
@@ -4789,19 +4793,20 @@ exports.BattleAbilities = {
 		onBasePowerPriority: 8,
 		onBasePower: function(basePower, attacker, defender, move) {
 			if (move.flags['pulse']) {
+				if (this.isWeather(['raindance', 'primordialsea'])) {
+					if (move.isInInvertedWeather){
+						return this.chainModify(0.25);
+					} 	else {
+						return this.chainModify(2);
+					}
+				} else if (this.isWeather(['sunnyday', 'desolateland', 'solarsnow'])) {
+					if (move.isInInvertedWeather){
+						return this.chainModify(2);
+					} 	else {
+						return this.chainModify(0.25);
+					}
+				}
 				return this.chainModify(1.5);
-			} else if (move.flags['pulse'] && this.isWeather(['raindance', 'primordialsea'])) {
-				if (pokemon.volatiles['atmosphericperversion'] == pokemon.volatiles['weatherbreak']){
-					return this.chainModify(2);
-				} 	else {
-					return this.chainModify(0.25);
-				}
-			} else if (move.flags['pulse'] && this.isWeather(['sunnyday', 'desolateland', 'solarsnow'])) {
-				if (pokemon.volatiles['atmosphericperversion'] == pokemon.volatiles['weatherbreak']){
-					return this.chainModify(0.25);
-				} 	else {
-					return this.chainModify(2);
-				}
 			}
 		},
 		onModifySpe: function(spe, pokemon) {
