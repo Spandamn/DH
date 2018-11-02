@@ -5564,8 +5564,8 @@ exports.BattleAbilities = {
 		name: "Turborise",
 	},
 	"queenscommand": {
-		shortDesc: "Immune to priority moves. Attack raised by one if hit by one.",
-		onFoeTryMove: function(target, source, effect) {
+		shortDesc: "Priority moves won't work against this Pokémon. Attempts to do so result in +1 to its Attack.",
+		onFoeTryMove: function (target, source, effect) {
 			if ((source.side === this.effectData.target.side || effect.id === 'perishsong') && effect.priority > 0.1 && effect.target !== 'foeSide') {
 				this.attrLastMove('[still]');
 				this.add('cant', this.effectData.target, 'ability: Queens Command', effect, '[of] ' + target);
