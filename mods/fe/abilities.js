@@ -8565,6 +8565,7 @@ exports.BattleAbilities = {
 			}
      	},
 		effect: {
+			noCopy: true,
 			duration: 1,
 			onAnyBeforeMove: function (target, source, move) {
 				if (this.effectData.target === source) return;
@@ -11004,6 +11005,10 @@ exports.BattleAbilities = {
 				}
 			}
 		},
+		effect: {
+			noCopy: true,
+			duration: 0,
+		},
       //TODO: THIS IS INCOMPLETE. If two mons with Weather Break are on the field at the same time, things should only happen as if one mon with said ability was on the field. Also, Weather Ball deals halved damaged instead of doubled and has inverse type effectiveness in inverted weather. 
 		id: "weatherbreak",
 		name: "Weather Break",
@@ -11044,6 +11049,10 @@ exports.BattleAbilities = {
 					target.removeVolatile('atmosphericperversion');
 				}
 			}
+		},
+		effect: {
+			noCopy: true,
+			duration: 0,
 		},
       //TODO: THIS IS INCOMPLETE. If two mons with Weather Break are on the field at the same time, things should only happen as if one mon with said ability was on the field. Also, Weather Ball deals halved damaged instead of doubled and has inverse type effectiveness in inverted weather. 
 		id: "atmosphericperversion",
