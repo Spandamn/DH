@@ -1001,7 +1001,7 @@ exports.BattleAbilities = {
 				if (!target || target.fainted) continue;
 				if (this.isWeather(['hail', 'solarsnow']) && this.random(10) < 3) {
 					if (pokemon.volatiles['atmosphericperversion'] == pokemon.volatiles['weatherbreak']){
-						target.trySetStatus('par', target, effect);
+						target.trySetStatus('par', pokemon, effect);
 					} else {
 						target.cureStatus();
 					}
