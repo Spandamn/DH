@@ -1017,6 +1017,7 @@ exports.BattleAbilities = {
 	"dreadedflames": {
 		shortDesc: "Gains a 1.5x boost to fire moves on the turn of entry, and lowers opponent's Attack on entry.",
 		onStart: function (pokemon) {
+			pokemon.addVolatile('flashfire');
 			let activated = false;
 			for (const target of pokemon.side.foe.active) {
 				if (!target || !this.isAdjacent(target, pokemon)) continue;
@@ -1029,18 +1030,6 @@ exports.BattleAbilities = {
 				} else {
 					this.boost({atk: -1}, target, pokemon);
 				}
-			}
-		},
-		onModifyAtkPriority: 5,
-		onModifyAtk: function(atk, attacker, defender, move) {
-			if (move.type === 'Fire' && attacker.activeTurns > 1) {
-				return this.chainModify(1.5);
-			}
-		},
-		onModifySpAPriority: 5,
-		onModifySpA: function(atk, attacker, defender, move) {
-			if (move.type === 'Fire' && !attacker.activeTurns > 1) {
-				return this.chainModify(1.5);
 			}
 		},
 		id: "dreadedflames",
