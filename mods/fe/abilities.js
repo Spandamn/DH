@@ -9139,10 +9139,10 @@ exports.BattleAbilities = {
 		 move.inversearmor = true;
 	 },
 	 onEffectivenessPriority: 1,
-    onAnyEffectiveness: function(typeMod, source, target, type, move) {
+    onAnyEffectiveness: function(typeMod, target, type, move) {
 		  if (!move.inversearmor && target !== this.effectData.target) return;
         if (move && !this.getImmunity(move, type)) return 1;
-        return -target.runEffectiveness(move);
+        return target.runEffectiveness(move)*-1;
     },
     id: "inversearmor",
     name: "Inverse Armor",
