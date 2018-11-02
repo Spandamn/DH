@@ -1216,17 +1216,17 @@ exports.BattleAbilities = {
 		name: "Math Surge",
 	},
 	"flameessence": {
-		shortDesc: "This Pokemon's attacking stat is multiplied by 1.5 while using a Fire-type attack.",
+		shortDesc: "This Pokemon's Fire-type moves are treated as STAB.",
 		onModifyAtkPriority: 5,
 		onModifyAtk: function (atk, attacker, defender, move) {
-			if (move.type === 'Fire') {
+			if (move.type === 'Fire' && !defender.hasAbility('adaptivebias')) {
 				this.debug('Flame Essence boost');
 				return this.chainModify(1.5);
 			}
 		},
 		onModifySpAPriority: 5,
 		onModifySpA: function (atk, attacker, defender, move) {
-			if (move.type === 'Fire') {
+			if (move.type === 'Fire' && !defender.hasAbility('adaptivebias')) {
 				this.debug('Flame Essence boost');
 				return this.chainModify(1.5);
 			}
@@ -4745,6 +4745,17 @@ exports.BattleAbilities = {
 		shortDesc: "The foe's same-type attack bonus (STAB) is 0.75 instead of 1.5.",
 		onFoeModifyMove: function (move) {
 			move.stab = 0.75;
+		},
+		onSourceModifyAtk: function (atk, attacker, defender, move) {
+			if (attacker.hasAbility('flameessence') && move.type === 'Fire') {
+				return this.chainModify(0.5);
+			}
+		},
+		onModifySpAPriority: 5,
+		onSourceModifySpA: function (atk, attacker, defender, move) {
+			if (attacker.hasAbility('flameessence') && move.type === 'Fire') {
+				return this.chainModify(0.5);
+			}
 		},
 		id: "disconnect",
 		name: "Dis/connect",
