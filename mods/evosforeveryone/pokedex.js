@@ -3784,7 +3784,6 @@ let BattlePokedex = {
 		heightm: 1.7,
 		weightkg: 50.5,
 		color: "Gray",
-		evos: ["skironclad"]
 		eggGroups: ["Flying"],
 	},
 	houndour: {
@@ -7634,7 +7633,6 @@ let BattlePokedex = {
 		heightm: 0.3,
 		weightkg: 0.3,
 		color: "Red",
-		evos: ["rotogeist"],
 		eggGroups: ["Amorphous"],
 	},
 	rotomwash: {
@@ -7650,7 +7648,6 @@ let BattlePokedex = {
 		heightm: 0.3,
 		weightkg: 0.3,
 		color: "Red",
-		evos: ["rotogeist"],
 		eggGroups: ["Amorphous"],
 	},
 	rotomfrost: {
@@ -7666,7 +7663,6 @@ let BattlePokedex = {
 		heightm: 0.3,
 		weightkg: 0.3,
 		color: "Red",
-		evos: ["rotogeist"],
 		eggGroups: ["Amorphous"],
 	},
 	rotomfan: {
@@ -7682,7 +7678,6 @@ let BattlePokedex = {
 		heightm: 0.3,
 		weightkg: 0.3,
 		color: "Red",
-		evos: ["rotogeist"],
 		eggGroups: ["Amorphous"],
 	},
 	rotommow: {
@@ -7698,7 +7693,6 @@ let BattlePokedex = {
 		heightm: 0.3,
 		weightkg: 0.3,
 		color: "Red",
-		evos: ["rotogeist"],
 		eggGroups: ["Amorphous"],
 	},
 	uxie: {
