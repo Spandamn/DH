@@ -522,11 +522,6 @@ class Ladder extends LadderStore {
 
 		formatTable.set(newSearch.userid, newSearch);
 		Ladder.updateSearch(user);
-        if (!user.locked && !Rooms.dragonragearena.isMuted(user) && !Rooms.dragonragearena.disableLadderMessages && user.lastLadderFormat !== this.formatid) {
-            if (Rooms.dragonragearena) Rooms.dragonragearena.add('|c|' + user.group + user.name + '|/me is searching for a ' + Dex.getFormat(this.formatid).name + ' battle!').update();
-            user.lastLadderFormat = this.formatid;
-            user.lastLadderTime = Date.now();
-        }
 	}
 
 	/**
