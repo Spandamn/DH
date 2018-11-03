@@ -45,7 +45,7 @@ exports.BattleScripts = {
 
 		let attrs = '';
 
-		if (move.flags['charge'] && !pokemon.volatiles[move.id]) {
+		if (move.flags['charge'] && !pokemon.volatiles[move.id] || move.id === 'foulmimicry') {
 			attrs = '|[still]'; // suppress the default move animation
 		}
 

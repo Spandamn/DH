@@ -1001,7 +1001,7 @@ exports.BattleAbilities = {
 				if (!target || target.fainted) continue;
 				if (this.isWeather(['hail', 'solarsnow']) && this.random(10) < 3) {
 					if (pokemon.volatiles['atmosphericperversion'] == pokemon.volatiles['weatherbreak']){
-						target.trySetStatus('par', target, effect);
+						target.trySetStatus('par', pokemon, effect);
 					} else {
 						target.cureStatus();
 					}
@@ -1017,6 +1017,7 @@ exports.BattleAbilities = {
 	"dreadedflames": {
 		shortDesc: "Gains a 1.5x boost to fire moves on the turn of entry, and lowers opponent's Attack on entry.",
 		onStart: function (pokemon) {
+			pokemon.addVolatile('flashfire');
 			let activated = false;
 			for (const target of pokemon.side.foe.active) {
 				if (!target || !this.isAdjacent(target, pokemon)) continue;
@@ -1029,18 +1030,6 @@ exports.BattleAbilities = {
 				} else {
 					this.boost({atk: -1}, target, pokemon);
 				}
-			}
-		},
-		onModifyAtkPriority: 5,
-		onModifyAtk: function(atk, attacker, defender, move) {
-			if (move.type === 'Fire' && attacker.activeTurns > 1) {
-				return this.chainModify(1.5);
-			}
-		},
-		onModifySpAPriority: 5,
-		onModifySpA: function(atk, attacker, defender, move) {
-			if (move.type === 'Fire' && !attacker.activeTurns > 1) {
-				return this.chainModify(1.5);
 			}
 		},
 		id: "dreadedflames",
@@ -1216,17 +1205,17 @@ exports.BattleAbilities = {
 		name: "Math Surge",
 	},
 	"flameessence": {
-		shortDesc: "This Pokemon's attacking stat is multiplied by 1.5 while using a Fire-type attack.",
+		shortDesc: "This Pokemon's Fire-type moves are treated as STAB.",
 		onModifyAtkPriority: 5,
 		onModifyAtk: function (atk, attacker, defender, move) {
-			if (move.type === 'Fire') {
+			if (move.type === 'Fire' && !defender.hasAbility('adaptivebias')) {
 				this.debug('Flame Essence boost');
 				return this.chainModify(1.5);
 			}
 		},
 		onModifySpAPriority: 5,
 		onModifySpA: function (atk, attacker, defender, move) {
-			if (move.type === 'Fire') {
+			if (move.type === 'Fire' && !defender.hasAbility('adaptivebias')) {
 				this.debug('Flame Essence boost');
 				return this.chainModify(1.5);
 			}
@@ -4746,6 +4735,17 @@ exports.BattleAbilities = {
 		onFoeModifyMove: function (move) {
 			move.stab = 0.75;
 		},
+		onSourceModifyAtk: function (atk, attacker, defender, move) {
+			if (attacker.hasAbility('flameessence') && move.type === 'Fire') {
+				return this.chainModify(0.5);
+			}
+		},
+		onModifySpAPriority: 5,
+		onSourceModifySpA: function (atk, attacker, defender, move) {
+			if (attacker.hasAbility('flameessence') && move.type === 'Fire') {
+				return this.chainModify(0.5);
+			}
+		},
 		id: "disconnect",
 		name: "Dis/connect",
 	},
@@ -5553,8 +5553,8 @@ exports.BattleAbilities = {
 		name: "Turborise",
 	},
 	"queenscommand": {
-		shortDesc: "Immune to priority moves. Attack raised by one if hit by one.",
-		onFoeTryMove: function(target, source, effect) {
+		shortDesc: "Priority moves won't work against this Pokémon. Attempts to do so result in +1 to its Attack.",
+		onFoeTryMove: function (target, source, effect) {
 			if ((source.side === this.effectData.target.side || effect.id === 'perishsong') && effect.priority > 0.1 && effect.target !== 'foeSide') {
 				this.attrLastMove('[still]');
 				this.add('cant', this.effectData.target, 'ability: Queens Command', effect, '[of] ' + target);
@@ -6774,7 +6774,7 @@ exports.BattleAbilities = {
 				let stat = 'atk';
 				let bestStat = 0;
 				for (let i in target.stats) {
-					if (source.stats[i] > bestStat) {
+					if (target.stats[i] > bestStat) {
 						stat = i;
 						bestStat = target.stats[i];
 					}
@@ -8554,6 +8554,7 @@ exports.BattleAbilities = {
 			}
      	},
 		effect: {
+			noCopy: true,
 			duration: 1,
 			onAnyBeforeMove: function (target, source, move) {
 				if (this.effectData.target === source) return;
@@ -9127,10 +9128,10 @@ exports.BattleAbilities = {
 		 move.inversearmor = true;
 	 },
 	 onEffectivenessPriority: 1,
-    onAnyEffectiveness: function(typeMod, source, target, type, move) {
+    onAnyEffectiveness: function(typeMod, target, type, move) {
 		  if (!move.inversearmor && target !== this.effectData.target) return;
         if (move && !this.getImmunity(move, type)) return 1;
-        return -target.runEffectiveness(move);
+        return target.runEffectiveness(move)*-1;
     },
     id: "inversearmor",
     name: "Inverse Armor",
@@ -10993,6 +10994,10 @@ exports.BattleAbilities = {
 				}
 			}
 		},
+		effect: {
+			noCopy: true,
+			duration: 0,
+		},
       //TODO: THIS IS INCOMPLETE. If two mons with Weather Break are on the field at the same time, things should only happen as if one mon with said ability was on the field. Also, Weather Ball deals halved damaged instead of doubled and has inverse type effectiveness in inverted weather. 
 		id: "weatherbreak",
 		name: "Weather Break",
@@ -11033,6 +11038,10 @@ exports.BattleAbilities = {
 					target.removeVolatile('atmosphericperversion');
 				}
 			}
+		},
+		effect: {
+			noCopy: true,
+			duration: 0,
 		},
       //TODO: THIS IS INCOMPLETE. If two mons with Weather Break are on the field at the same time, things should only happen as if one mon with said ability was on the field. Also, Weather Ball deals halved damaged instead of doubled and has inverse type effectiveness in inverted weather. 
 		id: "atmosphericperversion",
