@@ -647,7 +647,7 @@ exports.BattleTypeChart = {
 	},
 	"Food": {
 		damageTaken: {
-			"Bug": 2,
+			"Bug": 0,
 			"Dark": 0,
 			"Dragon": 1,
 			"Electric": 0,
@@ -655,7 +655,7 @@ exports.BattleTypeChart = {
 			"Fighting": 0,
 			"Fire": 0,
 			"Flying": 0,
-			"Ghost": 0,
+			"Ghost": 2,
 			"Grass": 0,
 			"Ground": 0,
 			"Ice": 2,
