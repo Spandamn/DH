@@ -1191,9 +1191,9 @@ exports.BattleAbilities = {
 		num: 169,
 	},
 	"galewings": {
-		shortDesc: "If this Pokemon is at full HP, its Flying-type moves have their priority increased by 1.",
+		shortDesc: "If this Pokemon is at half or more HP, its Flying-type moves have their priority increased by 1.",
 		onModifyPriority: function (priority, pokemon, target, move) {
-			if (move && move.type === 'Flying' && pokemon.hp === pokemon.maxhp) return priority + 1;
+			if (move && move.type === 'Flying' && pokemon.hp >= pokemon.maxhp / 2) return priority + 1;
 		},
 		id: "galewings",
 		name: "Gale Wings",
@@ -4419,9 +4419,9 @@ exports.BattleAbilities = {
 		num: 128,
 	},
 	"quickflash": {
-		shortDesc: "If this Pokemon is at full HP, its Flying-type moves have their priority increased by 1.",
+		shortDesc: "If this Pokemon is at half or more HP, its Light-type moves have their priority increased by 1.",
 		onModifyPriority: function (priority, pokemon, target, move) {
-			if (move && move.type === 'Light' && pokemon.hp > pokemon.maxhp / 2) return priority + 1;
+			if (move && move.type === 'Light' && pokemon.hp >= pokemon.maxhp / 2) return priority + 1;
 		},
 		id: "quickflash",
 		name: "Quick Flash",
@@ -4443,5 +4443,94 @@ exports.BattleAbilities = {
 		name: "Light Absorb",
 		rating: 3.5,
 		num: 10,
+	},
+	"nourishment": {
+		desc: "If this Pokemon eats a Berry, it raises Atk and Spa in addition to the Berry's effect.",
+		shortDesc: "If this Pokemon eats a Berry, raises Atk and Spa after the Berry's effect.",
+		onEatItem: function (item, pokemon) {
+			this.boost({atk: 1, spa: 1});
+		},
+		id: "nourishment",
+		name: "Nourishment",
+		rating: 2,
+		num: 167,
+	},
+	"chocolate": {
+		shortDesc: "This Pokemon's Normal-type moves become Food type and have 1.2x power.",
+		onModifyMovePriority: -1,
+		onModifyMove: function (move, pokemon) {
+			if (move.type === 'Normal' && move.id !== 'naturalgift' && !move.isZ) {
+				move.type = 'Food';
+				if (move.category !== 'Status') pokemon.addVolatile('chocolate');
+			}
+		},
+		effect: {
+			duration: 1,
+			onBasePowerPriority: 8,
+			onBasePower: function (basePower, pokemon, target, move) {
+				return this.chainModify([0x1333, 0x1000]);
+			},
+		},
+		id: "chocolate",
+		name: "Chocolate",
+		rating: 0,
+		num: 35,
+	},
+	"starvation": {
+		desc: "This Pokemon is immune to Food-type moves and restores 1/4 of its maximum HP, rounded down, when hit by an Food-type move.",
+		shortDesc: "This Pokemon heals 1/4 of its max HP when hit by Food moves; Food immunity.",
+		onTryHit: function (target, source, move) {
+			if (target !== source && move.type == 'Food') {
+				if (!this.heal(target.maxhp / 4)) {
+					this.add('-immune', target, '[msg]', '[from] ability: Starvation');
+				}
+				return null;
+			}
+		},
+		id: "starvation",
+		name: "Starvation",
+		rating: 3.5,
+		num: 10,
+	},
+	"foodpoisoning": {
+		shortDesc: "This Pokemon's Food-Type moves have a 30% chance of poisoning.",
+		// upokecenter says this is implemented as an added secondary effect
+		onModifyMove: function (move) {
+			if (!move || !move.type == 'Food') return;
+			if (!move.secondaries) {
+				move.secondaries = [];
+			}
+			move.secondaries.push({
+				chance: 30,
+				status: 'psn',
+				ability: this.getAbility('foodpoisoning'),
+			});
+		},
+		id: "foodpoisoning",
+		name: "Food Poisoning",
+		rating: 2,
+		num: 143,
+	},
+	"strongstomach": {
+		desc: "If a Pokemon uses a Food- or Poison-type attack against this Pokemon, that Pokemon's attacking stat is halved when calculating the damage to this Pokemon.",
+		shortDesc: "Food/Poison-type moves against this Pokemon deal damage with a halved attacking stat.",
+		onModifyAtkPriority: 6,
+		onSourceModifyAtk: function (atk, attacker, defender, move) {
+			if (move.type === 'Food' || move.type === 'Poison') {
+				this.debug('Strong Stomach weaken');
+				return this.chainModify(0.5);
+			}
+		},
+		onModifySpAPriority: 5,
+		onSourceModifySpA: function (atk, attacker, defender, move) {
+			if (move.type === 'Food' || move.type === 'Poison') {
+				this.debug('Strong Stomach weaken');
+				return this.chainModify(0.5);
+			}
+		},
+		id: "strongstomach",
+		name: "Strong Stomach",
+		rating: 3.5,
+		num: 47,
 	},
 };
