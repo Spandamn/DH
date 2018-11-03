@@ -3723,6 +3723,7 @@ let BattlePokedex = {
 		heightm: 0.6,
 		weightkg: 5,
 		color: "Pink",
+		evos: ["coralossal"],
 		eggGroups: ["Water 1", "Water 3"],
 	},
 	remoraid: {
@@ -3784,6 +3785,7 @@ let BattlePokedex = {
 		heightm: 1.7,
 		weightkg: 50.5,
 		color: "Gray",
+		evos: ["skironclad"],
 		eggGroups: ["Flying"],
 	},
 	houndour: {
@@ -5403,6 +5405,7 @@ let BattlePokedex = {
 		heightm: 1,
 		weightkg: 168,
 		color: "Yellow",
+		evos: ["asmoone"],
 		eggGroups: ["Mineral"],
 	},
 	solrock: {
@@ -5415,6 +5418,7 @@ let BattlePokedex = {
 		heightm: 1.2,
 		weightkg: 154,
 		color: "Red",
+		evos: ["ansunne"],
 		eggGroups: ["Mineral"],
 	},
 	barboach: {
@@ -7633,6 +7637,7 @@ let BattlePokedex = {
 		heightm: 0.3,
 		weightkg: 0.3,
 		color: "Red",
+		evos: ["rotogeist"],
 		eggGroups: ["Amorphous"],
 	},
 	rotomwash: {
@@ -7648,6 +7653,7 @@ let BattlePokedex = {
 		heightm: 0.3,
 		weightkg: 0.3,
 		color: "Red",
+		evos: ["rotogeist"],
 		eggGroups: ["Amorphous"],
 	},
 	rotomfrost: {
@@ -7663,6 +7669,7 @@ let BattlePokedex = {
 		heightm: 0.3,
 		weightkg: 0.3,
 		color: "Red",
+		evos: ["rotogeist"],
 		eggGroups: ["Amorphous"],
 	},
 	rotomfan: {
@@ -7678,6 +7685,7 @@ let BattlePokedex = {
 		heightm: 0.3,
 		weightkg: 0.3,
 		color: "Red",
+		evos: ["rotogeist"],
 		eggGroups: ["Amorphous"],
 	},
 	rotommow: {
@@ -7693,6 +7701,7 @@ let BattlePokedex = {
 		heightm: 0.3,
 		weightkg: 0.3,
 		color: "Red",
+		evos: ["rotogeist"],
 		eggGroups: ["Amorphous"],
 	},
 	uxie: {
@@ -14539,7 +14548,7 @@ let BattlePokedex = {
 		eggGroups: ["Fairy"],
 	},
 	crimsagama: {
-		num: 321.5,
+		num: 900.5,
 		species: "Crimsagama",
 		types: ["Dragon", "Fire"],
 		baseStats: {hp: 87, atk: 130, def: 100, spa: 60, spd: 100, spe: 88},
@@ -14548,6 +14557,39 @@ let BattlePokedex = {
 		weightkg: 4.2,
 		color: "Yellow",
 		eggGroups: ["Fairy"],
+	},
+	coralossal: {
+		num: 901.5,
+		species: "Coralossal",
+		types: ["Water", "Rock"],
+		baseStats: {hp: 80, atk: 65, def: 133, spa: 84, spd: 133, spe: 35},
+		abilities: {0: "Rough Skin", 1: "Natural Cure", H: "Regenerator"},
+		heightm: 0.4,
+		weightkg: 22.2,
+		color: "Yellow",
+		eggGroups: ["Water1", "Water3"],
+	},
+	ansunne: {
+		num: 902.5,
+		species: "Ansunne",
+		types: ["Rock", "Fire"],
+		baseStats: {hp: 100, atk: 130, def: 115, spa: 100, spd: 85, spe: 70},
+		abilities: {0: "Levitate"},
+		heightm: 2,
+		weightkg: 205.2,
+		color: "Yellow",
+		eggGroups: ["Mineral"],
+	},
+	asmoone: {
+		num: 903.5,
+		species: "Asmoone",
+		types: ["Rock", "Fairy"],
+		baseStats: {hp: 100, atk: 85, def: 100, spa: 115, spd: 130, spe: 70},
+		abilities: {0: "Levitate"},
+		heightm: 2,
+		weightkg: 205.2,
+		color: "Yellow",
+		eggGroups: ["Mineral"],
 	},
 };
 

@@ -7854,6 +7854,18 @@ let BattleFormatsData = {
 		tier: "OU",
 		doublesTier: "DOU",
 	},
+	coralossal: {
+		tier: "OU",
+		doublesTier: "DOU",
+	},
+	ansunne: {
+		tier: "OU",
+		doublesTier: "DOU",
+	},
+	asmoone: {
+		tier: "OU",
+		doublesTier: "DOU",
+	},
 };
 
 exports.BattleFormatsData = BattleFormatsData;
