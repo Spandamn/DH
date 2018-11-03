@@ -175,6 +175,26 @@ exports.BattleStatuses = {
 			this.damage(pokemon.maxhp / 16);
 		},
 	},
+	hunger: {
+		effectType: 'Status',
+		onStart: function (target, source, sourceEffect) {
+			if (sourceEffect && sourceEffect.effectType === 'Ability') {
+				this.add('-status', target, 'hunger', '[from] ability: ' + sourceEffect.name, '[of] ' + source);
+			} else {
+				this.add('-status', target, 'hunger');
+			}
+		},
+		onModifySpA: function (spa, pokemon) {
+				return this.chainModify(0.5);
+		},
+		onResidualOrder: 9,
+		onResidual: function (pokemon) {
+				let item = pokemon.getItem();
+				if (pokemon.hasItem && item.isBerry) {
+				pokemon.eatItem();
+			}
+		},
+	},
 	confusion: {
 		// this is a volatile status
 		onStart: function (target, source, sourceEffect) {
