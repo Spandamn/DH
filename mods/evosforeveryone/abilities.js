@@ -4521,6 +4521,48 @@ let BattleAbilities = {
 		rating: 4,
 		num: 228,
 	},
+	"incendiary": {
+		shortDesc: "This Pokemon's attacks are critical hits if the target is poisoned.",
+		onModifyCritRatio: function (critRatio, source, target) {
+			if (target && ['brn'].includes(target.status)) return 5;
+		},
+		id: "incendiary",
+		name: "Incendiary",
+		rating: 2,
+		num: 196,
+	},
+	"atmospear": {
+		desc: "This Pokemon's changes it's type to match the move if it uses a Water-, Ice- or Fire-type move, and also summons Rain, Hail, or Sun at the same time.",
+		shortDesc: "This Pokemon's changes its type and summons weather if it uses a Water-, Ice-, or Fire-type attack.",
+		onPrepareHit: function (source, target, move) {
+			if (move.hasBounced) return;
+			let type = move.type;
+			if (type && ( type === 'Fire' || type === 'Ice' || type === 'Water')) {
+				if ( !source.getTypes().includes( type )){
+					source.setType("Flying");
+					source.addType(type);
+					let newType = "Flying/";
+					newType += type;
+					this.add('-start', source, 'typechange', newType, '[from] Atmospear');
+				}
+				if ( move.type === 'Fire' && !this.isWeather( 'sunnyday')) this.setWeather( 'sunnyday' );
+				if ( move.type === 'Water' && !this.isWeather( 'raindance')) this.setWeather( 'raindance' );
+				if ( move.type === 'Ice' && !this.isWeather( 'hail')) this.setWeather( 'hail' );
+				if ( move.id === "blizzard" ) move.accuracy = true;
+			}
+		},
+		id: "atmospear",
+		name: "Atmospear",
+		rating: 4.5,
+		num: 168,
+	},
+	"defibrillator": {
+		shortDesc: "No competitive use.",
+		id: "defibrillator",
+		name: "Defibrillator",
+		rating: 0,
+		num: 118,
+	},
 };
 
 exports.BattleAbilities = BattleAbilities;

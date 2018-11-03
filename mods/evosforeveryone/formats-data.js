@@ -7866,6 +7866,18 @@ let BattleFormatsData = {
 		tier: "OU",
 		doublesTier: "DOU",
 	},
+	cinderillo: {
+		tier: "OU",
+		doublesTier: "DOU",
+	},
+	elphys: {
+		tier: "OU",
+		doublesTier: "DOU",
+	},
+	meteocule: {
+		tier: "OU",
+		doublesTier: "DOU",
+	},
 };
 
 exports.BattleFormatsData = BattleFormatsData;
