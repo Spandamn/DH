@@ -5269,12 +5269,6 @@ exports.BattleAbilities = {
 	},
 	"hyperprotection": {
 		shortDesc: "This Pokemon is immune to Ground-Type moves. If a move against this Pokémon ended up on a Critical Hit, it won't affect the Pokémon.",
-		onTryHit: function(target, source, move) {
-			if (move && move.effectType === 'Move' && move.type === 'Ground') {
-				this.add('-immune', target, '[msg]', '[from] ability: Hyper Protection');
-				return null;
-			}
-		},
 		onDamage: function (damage, target, source, move) {
 			if (move && move.crit) {
 				this.add('-immune', target, '[msg]', '[from] ability: Hyper Protection');
@@ -6213,7 +6207,7 @@ exports.BattleAbilities = {
 	"enchanted": {
 		shortDesc: "Immune to Fairy and Ground moves. This Pokemon's Normal type moves become Fairy type and have 1.2x power.",
 		onTryHit: function(target, source, move) {
-			if (target !== source && (move.type === 'Ground' || move.type === 'Fairy')) {
+			if (target !== source && move.type === 'Fairy') {
 				this.add('-immune', target, '[msg]', '[from] ability: Enchanted');
 				return null;
 			}
