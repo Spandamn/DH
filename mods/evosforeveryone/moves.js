@@ -19301,7 +19301,7 @@ let BattleMovedex = {
 		contestType: "Cool",
 	},
 	"cloudyterrain": {
-		num: 580,
+		num: 580.5,
 		accuracy: true,
 		basePower: 0,
 		category: "Status",
@@ -19354,7 +19354,7 @@ let BattleMovedex = {
 		contestType: "Beautiful",
 	},
 	"fireball": {
-		num: 394,
+		num: 394.5,
 		accuracy: 100,
 		basePower: 100,
 		category: "Physical",
@@ -19375,6 +19375,53 @@ let BattleMovedex = {
 		type: "Fire",
 		zMovePower: 180,
 		contestType: "Cool",
+	},
+	"wildfire": {
+		num: 609.5,
+		accuracy: 100,
+		basePower: 20,
+		category: "Special",
+		desc: "Has a 100% chance to burn the target.",
+		shortDesc: "100% chance to burn the target.",
+		id: "wildfire",
+		isViable: true,
+		name: "Wildfire ",
+		pp: 20,
+		priority: 0,
+		flags: {contact: 1, protect: 1, mirror: 1},
+		secondary: {
+			chance: 100,
+			status: 'brn',
+		},
+		target: "normal",
+		type: "Fire",
+		zMovePower: 100,
+		contestType: "Cute",
+	},
+	"spiritsteal": {
+		num: 668,
+		accuracy: 100,
+		basePower: 0,
+		category: "Status",
+		desc: "Lowers the target's Special Defense by 1 stage. The user restores its HP equal to the target's Special Defense stat calculated with its stat stage before this move was used. If Big Root is held by the user, the HP recovered is 1.3x normal, rounded half down. Fails if the target's Special Defense stat stage is -6.",
+		shortDesc: "User heals HP=target's SpD stat. Lowers SpD by 1.",
+		id: "spiritsteal",
+		isViable: true,
+		name: "Spirit Steal",
+		pp: 10,
+		priority: 0,
+		flags: {protect: 1, reflectable: 1, mirror: 1, heal: 1},
+		onHit: function (target, source) {
+			if (target.boosts.spd === -6) return false;
+			let spd = target.getStat('spd', false, true);
+			let success = this.boost({spd: -1}, target, source, null, false, true);
+			return this.heal(spd, source, target) || success;
+		},
+		secondary: null,
+		target: "normal",
+		type: "Ghost",
+		zMoveBoost: {def: 1},
+		contestType: "Cute",
 	},
 };
 
