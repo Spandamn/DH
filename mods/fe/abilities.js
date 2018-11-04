@@ -4961,14 +4961,14 @@ exports.BattleAbilities = {
 		shortDesc: "Boosts the power of Water-type moves by 50% as long as the user holds an item.",
 		onModifyAtkPriority: 5,
 		onModifyAtk: function(atk, attacker, defender, move) {
-			if (move.type === 'Water' && attacker.item) {
-				return this.chainModify(2);
+			if (move.type === 'Water' && attacker && attacker.item) {
+				return this.chainModify(1.5);
 			}
 		},
 		onModifySpAPriority: 5,
 		onModifySpA: function(atk, attacker, defender, move) {
-			if (move.type === 'Water' && attacker.item) {
-				return this.chainModify(2);
+			if (move.type === 'Water' && attacker && attacker.item) {
+				return this.chainModify(1.5);
 			}
 		},
 		id: "mysticwave",
