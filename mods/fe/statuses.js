@@ -5,7 +5,7 @@ let BattleStatuses = {
 	choicelock: {
 		inherit: true,
 		onBeforeMove: function (pokemon, target, move) {
-			if (!(pokemon.getItem().isChoice || (pokemon.volatiles['goldentouch'] && pokemon.volatiles['goldentouch'].item && pokemon.volatiles['goldentouch'].item.isChoice) || (pokemon.volatiles['beastbootleg'] && ((pokemon.volatiles['beastbootleg'].items[0] && pokemon.volatiles['beastbootleg'].items[0].isChoice) || (pokemon.volatiles['beastbootleg'].items[1] && pokemon.volatiles['beastbootleg'].items[1].isChoice)))) || !pokemon.hasMove(this.effectData.move)) {
+			if (!(pokemon.getItem().isChoice || (pokemon.volatiles['goldentouch'] && pokemon.volatiles['goldentouch'].item && this.getItem(pokemon.volatiles['goldentouch'].item).isChoice) || (pokemon.volatiles['beastbootleg'] && ((pokemon.volatiles['beastbootleg'].items[0] && this.getItem(pokemon.volatiles['beastbootleg'].items[0]).isChoice) || (pokemon.volatiles['beastbootleg'].items[1] && this.getItem(pokemon.volatiles['beastbootleg'].items[1]).isChoice)))) || !pokemon.hasMove(this.effectData.move)) {
 				pokemon.removeVolatile('choicelock');
 				return;
 			}
