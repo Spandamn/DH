@@ -1622,21 +1622,17 @@ exports.BattleAbilities = {
 	},
 	"errormacro": {
 		shortDesc: "Physical moves hit off of special attack, and vice versa for special attacks. Stance change forms remain.",
-		getCategory: function(move) {
-			move = this.getMove(move);
-			if (move.category === 'Status') return 'Status';
-			if (move.category === 'Physical') return 'Special';
-			return 'Physical';
-		},
 		onModifyMove: function (move){
-			if ((!move.defensiveCategory && move.category === 'Special') || (move.defensiveCategory && move.defensiveCategory === 'Special')) move.defensiveCategory = "Physical";	
-			else if ((!move.defensiveCategory && move.category === 'Physical') || (move.defensiveCategory && move.defensiveCategory === 'Physical')) move.defensiveCategory = "Special";
+			if (move.category === 'Status') return;
+			if (!move.defensiveCategory) move.defensiveCategory = move.category;
+			move.category = (move.category === 'Physical' ? 'Special' : 'Physical');
+			move.defensiveCategory = (move.defensiveCategory === 'Physical' ? 'Special' : 'Physical');
 		},
 		onBeforeMovePriority: 11,
 		onBeforeMove: function(attacker, defender, move) {
-			if (attacker.template.baseSpecies !== 'Aegiline') return;
+			if (attacker.template.baseSpecies !== 'Aegilene') return;
 			if (move.category === 'Status' && move.id !== 'kingsshield') return;
-			var targetSpecies = (move.id === 'kingsshield' ? 'Aegiline' : 'Aegiline-Blade');
+			var targetSpecies = (move.id === 'kingsshield' ? 'Aegilene' : 'Aegilene-Blade');
 			if (attacker.template.species !== targetSpecies && attacker.formeChange(targetSpecies)) {
 				this.add('-formechange', attacker, targetSpecies);
 			}
