@@ -11874,7 +11874,8 @@ exports.BattleAbilities = {
 	"slimedrench": {
 		shortDesc: "If the foe is poisoned, whenever it tries to heal (with an item or move), it takes that amount of damage.",
 		id: "slimedrench",
-		onFoeTryHeal: function (damage, target, source, effect) {
+		onAnyTryHeal: function (damage, target, source, effect) {
+			if (target.side === this.effectData.target.side) return;
 			this.debug("Heal is occurring: " + target + " <- " + source + " :: " + effect.id);
 			if ((target.status === 'tox' || target.status === 'psn') && effect && (effect.effectType === 'Move' || effect.effectType === 'Item')) {
 				this.damage(damage);
