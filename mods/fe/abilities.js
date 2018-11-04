@@ -1622,21 +1622,17 @@ exports.BattleAbilities = {
 	},
 	"errormacro": {
 		shortDesc: "Physical moves hit off of special attack, and vice versa for special attacks. Stance change forms remain.",
-		getCategory: function(move) {
-			move = this.getMove(move);
-			if (move.category === 'Status') return 'Status';
-			if (move.category === 'Physical') return 'Special';
-			return 'Physical';
-		},
 		onModifyMove: function (move){
-			if ((!move.defensiveCategory && move.category === 'Special') || (move.defensiveCategory && move.defensiveCategory === 'Special')) move.defensiveCategory = "Physical";	
-			else if ((!move.defensiveCategory && move.category === 'Physical') || (move.defensiveCategory && move.defensiveCategory === 'Physical')) move.defensiveCategory = "Special";
+			if (move.category === 'Status') return;
+			if (!move.defensiveCategory) move.defensiveCategory = move.category;
+			move.category = (move.category === 'Physical' ? 'Special' : 'Physical');
+			move.defensiveCategory = (move.defensiveCategory === 'Physical' ? 'Special' : 'Physical');
 		},
 		onBeforeMovePriority: 11,
 		onBeforeMove: function(attacker, defender, move) {
-			if (attacker.template.baseSpecies !== 'Aegiline') return;
+			if (attacker.template.baseSpecies !== 'Aegilene') return;
 			if (move.category === 'Status' && move.id !== 'kingsshield') return;
-			var targetSpecies = (move.id === 'kingsshield' ? 'Aegiline' : 'Aegiline-Blade');
+			var targetSpecies = (move.id === 'kingsshield' ? 'Aegilene' : 'Aegilene-Blade');
 			if (attacker.template.species !== targetSpecies && attacker.formeChange(targetSpecies)) {
 				this.add('-formechange', attacker, targetSpecies);
 			}
@@ -4965,14 +4961,14 @@ exports.BattleAbilities = {
 		shortDesc: "Boosts the power of Water-type moves by 50% as long as the user holds an item.",
 		onModifyAtkPriority: 5,
 		onModifyAtk: function(atk, attacker, defender, move) {
-			if (move.type === 'Water' && attacker.item) {
-				return this.chainModify(2);
+			if (move.type === 'Water' && attacker && attacker.item) {
+				return this.chainModify(1.5);
 			}
 		},
 		onModifySpAPriority: 5,
 		onModifySpA: function(atk, attacker, defender, move) {
-			if (move.type === 'Water' && attacker.item) {
-				return this.chainModify(2);
+			if (move.type === 'Water' && attacker && attacker.item) {
+				return this.chainModify(1.5);
 			}
 		},
 		id: "mysticwave",
@@ -5269,12 +5265,6 @@ exports.BattleAbilities = {
 	},
 	"hyperprotection": {
 		shortDesc: "This Pokemon is immune to Ground-Type moves. If a move against this Pokémon ended up on a Critical Hit, it won't affect the Pokémon.",
-		onTryHit: function(target, source, move) {
-			if (move && move.effectType === 'Move' && move.type === 'Ground') {
-				this.add('-immune', target, '[msg]', '[from] ability: Hyper Protection');
-				return null;
-			}
-		},
 		onDamage: function (damage, target, source, move) {
 			if (move && move.crit) {
 				this.add('-immune', target, '[msg]', '[from] ability: Hyper Protection');
@@ -6213,7 +6203,7 @@ exports.BattleAbilities = {
 	"enchanted": {
 		shortDesc: "Immune to Fairy and Ground moves. This Pokemon's Normal type moves become Fairy type and have 1.2x power.",
 		onTryHit: function(target, source, move) {
-			if (target !== source && move.type === 'Ground' || move.type === 'Fairy') {
+			if (target !== source && move.type === 'Fairy') {
 				this.add('-immune', target, '[msg]', '[from] ability: Enchanted');
 				return null;
 			}
@@ -6482,18 +6472,8 @@ exports.BattleAbilities = {
 		onAfterMoveSecondary: function (target, source, move) {
 			if (!source || source === target || !target.hp || !move.totalDamage) return;
 			if (target.hp <= target.maxhp / 2 && target.hp + move.totalDamage > target.maxhp / 2) {
-				if (!this.canSwitch(target.side) || target.forceSwitchFlag || target.switchFlag) return;
-				source.switchFlag = true;
-				target.switchFlag = false;
 				this.add('-activate', target, 'ability: Threatening Glare');
-			}
-		},
-		onAfterDamage: function (damage, target, source, effect) {
-			if (!target.hp || effect.effectType === 'Move') return;
-			if (target.hp <= target.maxhp / 2 && target.hp + damage > target.maxhp / 2) {
-				if (!this.canSwitch(target.side) || target.forceSwitchFlag || target.switchFlag) return;
-				source.switchFlag = true;
-				this.add('-activate', target, 'ability: Threatening Glare');
+				this.runEvent('DragOut', source, target);
 			}
 		},
 		id: "threateningglare",
@@ -9131,7 +9111,7 @@ exports.BattleAbilities = {
     onAnyEffectiveness: function(typeMod, target, type, move) {
 		  if (!move.inversearmor && target !== this.effectData.target) return;
         if (move && !this.getImmunity(move, type)) return 1;
-        return target.runEffectiveness(move)*-1;
+        return typeMod*-1;
     },
     id: "inversearmor",
     name: "Inverse Armor",
@@ -11894,7 +11874,8 @@ exports.BattleAbilities = {
 	"slimedrench": {
 		shortDesc: "If the foe is poisoned, whenever it tries to heal (with an item or move), it takes that amount of damage.",
 		id: "slimedrench",
-		onFoeTryHeal: function (damage, target, source, effect) {
+		onAnyTryHeal: function (damage, target, source, effect) {
+			if (target.side === this.effectData.target.side) return;
 			this.debug("Heal is occurring: " + target + " <- " + source + " :: " + effect.id);
 			if ((target.status === 'tox' || target.status === 'psn') && effect && (effect.effectType === 'Move' || effect.effectType === 'Item')) {
 				this.damage(damage);
