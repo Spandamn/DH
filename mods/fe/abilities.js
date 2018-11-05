@@ -12914,7 +12914,7 @@ exports.BattleAbilities = {
 		onResidualOrder: 27,
 		onResidual: function (pokemon) {
 			if (pokemon.baseTemplate.baseSpecies !== 'Sandgarde' || pokemon.transformed || !pokemon.hp) return;
-			if (this.isWeather('sandstorm') && pokemon.volatiles['atmosphericperversion'] == pokemon.volatiles['weatherbreak']) return;
+			if (this.isWeather('sandstorm') && pokemon.volatiles['atmosphericperversion'] !== pokemon.volatiles['weatherbreak']) return;
 			if (pokemon.template.speciesid === 'sandgardecastle' || (pokemon.hp > pokemon.maxhp / 2 && !(this.isWeather('sandstorm') && this.randomChance(2, 10)))) return;
 			this.add('-activate', pokemon, 'ability: Sandy Construct');
 			pokemon.formeChange('Sandgarde-Castle', this.effect, true);
