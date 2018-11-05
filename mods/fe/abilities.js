@@ -12703,6 +12703,8 @@ exports.BattleAbilities = {
     shortDesc: "If this Pokemon attacks and KOes another Pokemon, it copies that Pokemon's held item's effects. Two effects can be copied this way, the earlier being overwritten if it copies a new one.",
     onStart: function(pokemon) {
         pokemon.addVolatile('beastbootleg');
+		  pokemon.addVolatile('beastbootleg1');
+		  pokemon.addVolatile('beastbootleg2');
     },
     onSourceFaint: function(target, source, effect) {
         if (effect && effect.effectType === 'Move') {
@@ -12729,8 +12731,11 @@ exports.BattleAbilities = {
            	if (!this.singleEvent('TakeItem', target.getItem(), target.itemData, target, source, effect, target.getItem())) return;
            	if (target.getItem() === source.getItem() || (this.effectData.items && (this.getItem(this.effectData.items[0]) === target.getItem() || this.getItem(this.effectData.items[1]) === target.getItem()))) return;
            	if (source.volatiles['goldentouch'] && this.getItem(source.volatiles['goldentouch'].item) === target.getItem()) return;
+				if (this.effectData.items[0]) this.singleEvent('End', target.getItem(), {id: target.getItem().id, target: source}, source);
            	this.effectData.items = [this.effectData.items[1], target.item];
            	this.singleEvent('Start', target.getItem(), {id: target.getItem().id, target: source}, source);
+           	source.volatiles['beastbootleg1'] = {id: this.effectData.items[1], target: source}
+           	if (this.effectData.items[0]) source.volatiles['beastbootleg2'] = {id: this.effectData.items[0], target: source};
          }
     	},
 	 },
