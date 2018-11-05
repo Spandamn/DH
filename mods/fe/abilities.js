@@ -12019,6 +12019,10 @@ exports.BattleAbilities = {
 			this.singleEvent('Start', randomTarget.getItem(), {id: randomTarget.getItem().id, target: pokemon}, pokemon);
 			pokemon.abilityData = {id: randomTarget.getItem().id, target: pokemon};
 		},
+		effect: {
+			noCopy: true,
+			duration: 0,
+		},
 		id: "goldentouch",
 		name: "Golden Touch",
 	},
@@ -12699,7 +12703,6 @@ exports.BattleAbilities = {
     shortDesc: "If this Pokemon attacks and KOes another Pokemon, it copies that Pokemon's held item's effects. Two effects can be copied this way, the earlier being overwritten if it copies a new one.",
     onStart: function(pokemon) {
         pokemon.addVolatile('beastbootleg');
-        pokemon.volatiles['beastbootleg'].items = ['', ''];
     },
     onSourceFaint: function(target, source, effect) {
         if (effect && effect.effectType === 'Move') {
@@ -12712,15 +12715,25 @@ exports.BattleAbilities = {
                 }
             }
             this.boost({[stat]: 1}, source);
-            if (target.item) {
-                if (!this.singleEvent('TakeItem', target.getItem(), target.itemData, target, source, effect, target.getItem())) return;
-                if (target.getItem() === source.getItem() || (source.volatiles['beastbootleg'].items && source.volatiles['beastbootleg'].items.includes(target.getItem().id))) return;
-                if (source.volatiles['goldentouch'] && source.volatiles['goldentouch'].item === target.item) return;
-                source.volatiles['beastbootleg'].items = [source.volatiles['beastbootleg'].items[1], target.item];
-                this.singleEvent('Start', target.getItem(), {id: target.getItem().id, target: source}, source);
-            }
         }
     },
+	 effect: {
+		noCopy: true,
+		duration: 0,
+		onStart: function (target) {
+			this.effectData.items = ['', ''];
+		},
+	   onSourceFaint: function(target, source, effect) {
+			if (!effect || effect.effectType !== 'Move') return;
+			if (target.item) {
+           	if (!this.singleEvent('TakeItem', target.getItem(), target.itemData, target, source, effect, target.getItem())) return;
+           	if (target.getItem() === source.getItem() || (this.effectData.items && (this.getItem(this.effectData.items[0]) === target.getItem() || this.getItem(this.effectData.items[1]) === target.getItem()))) return;
+           	if (source.volatiles['goldentouch'] && this.getItem(source.volatiles['goldentouch'].item) === target.getItem()) return;
+           	this.effectData.items = [this.effectData.items[1], target.item];
+           	this.singleEvent('Start', target.getItem(), {id: target.getItem().id, target: source}, source);
+         }
+    	},
+	 },
     //Implementing volatiles['beastbootleg'].items working its magic likely goes into scripts.js
     id: "beastbootleg",
     name: "Beast Bootleg",
