@@ -12738,6 +12738,10 @@ exports.BattleAbilities = {
            	if (this.effectData.items[0]) source.volatiles['beastbootleg2'] = {id: this.effectData.items[0], target: source};
          }
     	},
+		onEnd: function(target) {
+			target.removeVolatile('beastbootleg1');
+			target.removeVolatile('beastbootleg2');
+		}
 	 },
     //Implementing volatiles['beastbootleg'].items working its magic likely goes into scripts.js
     id: "beastbootleg",
