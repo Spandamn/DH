@@ -10956,12 +10956,6 @@ exports.BattleAbilities = {
 			if (pokemon === this.effectData.target) return;
 			pokemon.addVolatile('weatherbreak');
 		},
-		onAnyDamage: function (damage, target, source, effect) {
-			if (effect && (effect.id === 'sandstorm' || effect.id === 'hail' || effect.id === 'solarsnow') && !target.volatiles['atmosphericperversion']) {
-            this.heal(target.maxhp / 16);
-				return false;
-			}
-		},
 		onEnd: function (pokemon) {
 			for (const side of this.sides) {
 				for (const target of side.active) {
@@ -10977,6 +10971,12 @@ exports.BattleAbilities = {
 		effect: {
 			noCopy: true,
 			duration: 0,
+			onDamage: function (damage, target, source, effect) {
+				if (effect && (effect.id === 'sandstorm' || effect.id === 'hail' || effect.id === 'solarsnow') && !target.volatiles['atmosphericperversion']) {
+   	         this.heal(target.maxhp / 16);
+					return false;
+				}
+			},
 		},
       //TODO: THIS IS INCOMPLETE. If two mons with Weather Break are on the field at the same time, things should only happen as if one mon with said ability was on the field. Also, Weather Ball deals halved damaged instead of doubled and has inverse type effectiveness in inverted weather. 
 		id: "weatherbreak",
@@ -11001,16 +11001,10 @@ exports.BattleAbilities = {
 			if (pokemon === this.effectData.target) return;
 			pokemon.addVolatile('atmosphericperversion');
 		},
-		onAnyDamage: function (damage, target, source, effect) {
-			if (effect && (effect.id === 'sandstorm' || effect.id === 'hail' || effect.id === 'solarsnow') && !target.volatiles['weatherbreak']) {
-            this.heal(target.maxhp / 16);
-				return false;
-			}
-		},
 		onEnd: function (pokemon) {
 			for (const side of this.sides) {
 				for (const target of side.active) {
-					if ((target.hasAbility('atmosphericperversion') || target.hasAbility('weathercontradiction')) && target !== pokemon && !target.ignoringAbility()) return;
+					if (target.hasAbility(['atmosphericperversion', 'weathercontradiction']) && target !== pokemon && !target.ignoringAbility()) return;
 				}
 			}
 			for (const side of this.sides) {
@@ -11022,6 +11016,12 @@ exports.BattleAbilities = {
 		effect: {
 			noCopy: true,
 			duration: 0,
+			onDamage: function (damage, target, source, effect) {
+				if (effect && (effect.id === 'sandstorm' || effect.id === 'hail' || effect.id === 'solarsnow') && !target.volatiles['weatherbreak']) {
+   	         this.heal(target.maxhp / 16);
+					return false;
+				}
+			},
 		},
       //TODO: THIS IS INCOMPLETE. If two mons with Weather Break are on the field at the same time, things should only happen as if one mon with said ability was on the field. Also, Weather Ball deals halved damaged instead of doubled and has inverse type effectiveness in inverted weather. 
 		id: "atmosphericperversion",
@@ -11049,16 +11049,10 @@ exports.BattleAbilities = {
 				boost[i] *= -1;
 			}
 		},
-		onAnyDamage: function (damage, target, source, effect) {
-			if (effect && (effect.id === 'sandstorm' || effect.id === 'hail' || effect.id === 'solarsnow') && !target.volatiles['weatherbreak']) {
-            this.heal(target.maxhp / 16);
-				return false;
-			}
-		},
 		onEnd: function (pokemon) {
 			for (const side of this.sides) {
 				for (const target of side.active) {
-					if ((target.hasAbility('atmosphericperversion') || target.hasAbility('weathercontradiction')) && target !== pokemon && !target.ignoringAbility()) return;
+					if (target.hasAbility(['atmosphericperversion', 'weathercontradiction']) && target !== pokemon && !target.ignoringAbility()) return;
 				}
 			}
 			for (const side of this.sides) {
