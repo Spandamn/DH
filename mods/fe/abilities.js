@@ -2750,13 +2750,13 @@ exports.BattleAbilities = {
 		onFlinch: function(target, source, effect) {
 				let stat = 'atk';
 				let bestStat = 0;
-				for (let i in source.stats) {
-					if (source.stats[i] > bestStat) {
+				for (let i in target.stats) {
+					if (target.stats[i] > bestStat) {
 						stat = i;
-						bestStat = source.stats[i];
+						bestStat = target.stats[i];
 					}
 				}
-				this.boost({[stat]: 1}, source);
+				this.boost({[stat]: 1}, target);
 				return false;
 		},
 		id: "beastsfocus",
@@ -3778,14 +3778,14 @@ exports.BattleAbilities = {
 		name: "Sandmist Surge",
 	},
 	"compactboost": {
-		desc: "Upon knocking out a foe, boost Defense by two stages and highest non-Hp non-Defense stat by one stage.",
+		desc: "Upon knocking out a foe, boost Defense by two stages and highest non-HP, non-Defense stat by one stage.",
 		shortDesc: "If it lands a KO, +2 to Defense and +1 to other most proficient stat.",
 		onSourceFaint: function (target, source, effect) {
 			if (effect && effect.effectType === 'Move') {
 				let stat = 'atk';
 				let bestStat = 0;
 				for (let i in source.stats) {
-					if (source.stats[i] > bestStat && source.stats[i] !== source.getStat('def', true, true)) {
+					if (source.stats[i] > bestStat && i !== 'def') {
 						stat = i;
 						bestStat = source.stats[i];
 					}
@@ -10956,12 +10956,6 @@ exports.BattleAbilities = {
 			if (pokemon === this.effectData.target) return;
 			pokemon.addVolatile('weatherbreak');
 		},
-		onAnyDamage: function (damage, target, source, effect) {
-			if (effect && (effect.id === 'sandstorm' || effect.id === 'hail' || effect.id === 'solarsnow') && !target.volatiles['atmosphericperversion']) {
-            this.heal(target.maxhp / 16);
-				return false;
-			}
-		},
 		onEnd: function (pokemon) {
 			for (const side of this.sides) {
 				for (const target of side.active) {
@@ -10977,6 +10971,12 @@ exports.BattleAbilities = {
 		effect: {
 			noCopy: true,
 			duration: 0,
+			onDamage: function (damage, target, source, effect) {
+				if (effect && (effect.id === 'sandstorm' || effect.id === 'hail' || effect.id === 'solarsnow') && !target.volatiles['atmosphericperversion']) {
+   	         this.heal(target.maxhp / 16);
+					return false;
+				}
+			},
 		},
       //TODO: THIS IS INCOMPLETE. If two mons with Weather Break are on the field at the same time, things should only happen as if one mon with said ability was on the field. Also, Weather Ball deals halved damaged instead of doubled and has inverse type effectiveness in inverted weather. 
 		id: "weatherbreak",
@@ -11001,16 +11001,10 @@ exports.BattleAbilities = {
 			if (pokemon === this.effectData.target) return;
 			pokemon.addVolatile('atmosphericperversion');
 		},
-		onAnyDamage: function (damage, target, source, effect) {
-			if (effect && (effect.id === 'sandstorm' || effect.id === 'hail' || effect.id === 'solarsnow') && !target.volatiles['weatherbreak']) {
-            this.heal(target.maxhp / 16);
-				return false;
-			}
-		},
 		onEnd: function (pokemon) {
 			for (const side of this.sides) {
 				for (const target of side.active) {
-					if ((target.hasAbility('atmosphericperversion') || target.hasAbility('weathercontradiction')) && target !== pokemon && !target.ignoringAbility()) return;
+					if (target.hasAbility(['atmosphericperversion', 'weathercontradiction']) && target !== pokemon && !target.ignoringAbility()) return;
 				}
 			}
 			for (const side of this.sides) {
@@ -11022,6 +11016,12 @@ exports.BattleAbilities = {
 		effect: {
 			noCopy: true,
 			duration: 0,
+			onDamage: function (damage, target, source, effect) {
+				if (effect && (effect.id === 'sandstorm' || effect.id === 'hail' || effect.id === 'solarsnow') && !target.volatiles['weatherbreak']) {
+   	         this.heal(target.maxhp / 16);
+					return false;
+				}
+			},
 		},
       //TODO: THIS IS INCOMPLETE. If two mons with Weather Break are on the field at the same time, things should only happen as if one mon with said ability was on the field. Also, Weather Ball deals halved damaged instead of doubled and has inverse type effectiveness in inverted weather. 
 		id: "atmosphericperversion",
@@ -11049,16 +11049,10 @@ exports.BattleAbilities = {
 				boost[i] *= -1;
 			}
 		},
-		onAnyDamage: function (damage, target, source, effect) {
-			if (effect && (effect.id === 'sandstorm' || effect.id === 'hail' || effect.id === 'solarsnow') && !target.volatiles['weatherbreak']) {
-            this.heal(target.maxhp / 16);
-				return false;
-			}
-		},
 		onEnd: function (pokemon) {
 			for (const side of this.sides) {
 				for (const target of side.active) {
-					if ((target.hasAbility('atmosphericperversion') || target.hasAbility('weathercontradiction')) && target !== pokemon && !target.ignoringAbility()) return;
+					if (target.hasAbility(['atmosphericperversion', 'weathercontradiction']) && target !== pokemon && !target.ignoringAbility()) return;
 				}
 			}
 			for (const side of this.sides) {
@@ -12019,6 +12013,10 @@ exports.BattleAbilities = {
 			this.singleEvent('Start', randomTarget.getItem(), {id: randomTarget.getItem().id, target: pokemon}, pokemon);
 			pokemon.abilityData = {id: randomTarget.getItem().id, target: pokemon};
 		},
+		effect: {
+			noCopy: true,
+			duration: 0,
+		},
 		id: "goldentouch",
 		name: "Golden Touch",
 	},
@@ -12694,22 +12692,51 @@ exports.BattleAbilities = {
     id: "mirageguard",
     name: "Mirage Guard",
 },
-"beastbootleg": {
+	"beastbootleg": {
     desc: "When this Pokemon gets a KO, its highest stat is raised by one stage and it gains the effect of the foe's held item. It can hold up to two effects this way. Items matching the one it actually is holding do not count. After two effects are stored, new effects replace the first effect gained.",
     shortDesc: "If this Pokemon attacks and KOes another Pokemon, it copies that Pokemon's held item's effects. Two effects can be copied this way, the earlier being overwritten if it copies a new one.",
     onStart: function(pokemon) {
         pokemon.addVolatile('beastbootleg');
-        pokemon.volatiles['beastbootleg'].items = ['', ''];
+		  pokemon.addVolatile('beastbootleg1');
+		  pokemon.addVolatile('beastbootleg2');
     },
     onSourceFaint: function(target, source, effect) {
-        if (effect && effect.effectType === 'Move' && target.item) {
-            if (!this.singleEvent('TakeItem', target.getItem(), target.itemData, target, source, effect, target.getItem())) return;
-            if (target.getItem() === source.getItem() || (source.volatiles['beastbootleg'].items && source.volatiles['beastbootleg'].items.includes(target.getItem().id))) return;
-            if (source.volatiles['goldentouch'] && source.volatiles['goldentouch'].item === target.item) return;
-            source.volatiles['beastbootleg'].items = [source.volatiles['beastbootleg'].items[1], target.item];
-				this.singleEvent('Start', target.getItem(), {id: target.getItem().id, target: source}, source);
+        if (effect && effect.effectType === 'Move') {
+            let stat = 'atk';
+            let bestStat = 0;
+            for (let i in source.stats) {
+                if (source.stats[i] > bestStat) {
+                    stat = i;
+                    bestStat = source.stats[i];
+                }
+            }
+            this.boost({[stat]: 1}, source);
         }
     },
+	 effect: {
+		noCopy: true,
+		duration: 0,
+		onStart: function (target) {
+			this.effectData.items = ['', ''];
+		},
+	   onSourceFaint: function(target, source, effect) {
+			if (!effect || effect.effectType !== 'Move') return;
+			if (target.item) {
+           	if (!this.singleEvent('TakeItem', target.getItem(), target.itemData, target, source, effect, target.getItem())) return;
+           	if (target.getItem() === source.getItem() || (this.effectData.items && (this.getItem(this.effectData.items[0]) === target.getItem() || this.getItem(this.effectData.items[1]) === target.getItem()))) return;
+           	if (source.volatiles['goldentouch'] && this.getItem(source.volatiles['goldentouch'].item) === target.getItem()) return;
+				if (this.effectData.items[0]) this.singleEvent('End', target.getItem(), {id: target.getItem().id, target: source}, source);
+           	this.effectData.items = [this.effectData.items[1], target.item];
+           	this.singleEvent('Start', target.getItem(), {id: target.getItem().id, target: source}, source);
+           	source.volatiles['beastbootleg1'] = {id: this.effectData.items[1], target: source}
+           	if (this.effectData.items[0]) source.volatiles['beastbootleg2'] = {id: this.effectData.items[0], target: source};
+         }
+    	},
+		onEnd: function(target) {
+			target.removeVolatile('beastbootleg1');
+			target.removeVolatile('beastbootleg2');
+		}
+	 },
     //Implementing volatiles['beastbootleg'].items working its magic likely goes into scripts.js
     id: "beastbootleg",
     name: "Beast Bootleg",
@@ -12881,7 +12908,7 @@ exports.BattleAbilities = {
 		onResidualOrder: 27,
 		onResidual: function (pokemon) {
 			if (pokemon.baseTemplate.baseSpecies !== 'Sandgarde' || pokemon.transformed || !pokemon.hp) return;
-			if (this.isWeather('sandstorm') && pokemon.volatiles['atmosphericperversion'] == pokemon.volatiles['weatherbreak']) return;
+			if (this.isWeather('sandstorm') && pokemon.volatiles['atmosphericperversion'] !== pokemon.volatiles['weatherbreak']) return;
 			if (pokemon.template.speciesid === 'sandgardecastle' || (pokemon.hp > pokemon.maxhp / 2 && !(this.isWeather('sandstorm') && this.randomChance(2, 10)))) return;
 			this.add('-activate', pokemon, 'ability: Sandy Construct');
 			pokemon.formeChange('Sandgarde-Castle', this.effect, true);
