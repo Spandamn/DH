@@ -3,7 +3,11 @@
 let BattleScripts = {
 	getItem: function (name) {
 		let pokemon = this.getTemplate(name);
-		return pokemon.exists ? Object.assign(pokemon, {transmuteAbility: pokemon.abilities[0]}) : Object.getPrototypeOf(this).getItem.call(this, name);
+		if (pokemon.exists) {
+			pokemon.transmuteAbility = pokemon.abilities[0];
+			return pokemon;
+		}
+		return Object.getPrototypeOf(this).getItem.call(this, name);
 	},
 
 	runMegaEvo: function (pokemon) {
