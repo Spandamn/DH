@@ -45,7 +45,7 @@ let BattleScripts = {
 	},
 
 	canTransmute: function (pokemon) {
-		let transmuteMon = this.battle.getTemplate(pokemon.item);
+		let transmuteMon = this.getTemplate(pokemon.item);
 		if (transmuteMon.effectType !== 'Pokemon') {
 			return null;
 		}
@@ -53,7 +53,7 @@ let BattleScripts = {
 	},
 
 	canMegaEvo: function (pokemon) {
-		if (this.battle.canTransmute(pokemon)) return this.battle.canTransmute(pokemon);
+		if (this.canTransmute(pokemon)) return this.canTransmute(pokemon);
 		let altForme = pokemon.baseTemplate.otherFormes && this.getTemplate(pokemon.baseTemplate.otherFormes[0]);
 		let item = pokemon.getItem();
 		if (altForme && altForme.isMega && altForme.requiredMove && pokemon.baseMoves.includes(toId(altForme.requiredMove)) && !item.zMove) return altForme.species;
