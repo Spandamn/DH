@@ -27,7 +27,7 @@ let BattleScripts = {
 			if (newHP > oldHP) this.add('-heal', pokemon, pokemon.getHealth, '[silent]');
 			else if (newHP < oldHP) this.add('-damage', pokemon, pokemon.getHealth, '[silent]');
 			// Pls no more than one transmutation for each pokemon
-			pokemon.canTransmute = null;
+			pokemon.canMegaEvo = null;
 		} else {
 			let wasMega = pokemon.canMegaEvo;
 			for (const ally of side.pokemon) {
