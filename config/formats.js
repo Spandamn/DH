@@ -7102,6 +7102,31 @@ exports.Formats = [
 		mod: 'fanmadegame',
 	},
 	{
+		name: "[Gen 7] Transmuters [WIP]",
+		desc: [
+			"&bullet; You can transmute into other Pokemon by putting its name in the item slot.",
+			"&bullet; The new transmutation will gain the primary ability and stats (including HP of the itemslot pokemon."
+		],
+		mod: 'transmuters',
+		ruleset: ['[Gen 7] OU'],
+		banlist: ['Smeargle', 'Shedinja', 'Kartana'],
+		/*onBegin: function () {
+			let allPokemon = this.p1.pokemon.concat(this.p2.pokemon);
+			for (let i = 0, len = allPokemon.length; i < len; i++) {
+				let pokemon = allPokemon[i];
+				pokemon.canTransmute = this.canTransmute(pokemon);
+			}
+		},*/
+		onValidateSet: function (set) {
+			let bannedPokes = ['Shedinja', 'Kartana'];
+			let isTransmuter = false;
+			if (set.item) isTransmuter = this.dex.getTemplate(set.item).species;
+			let validator = new this.constructor(Dex.getFormat(this.format.id));
+			let problems = validator.validateSet(Object.assign({}, set, {item: (isTransmuter ? '' : item)}), teamHas) || [];
+			if (isTransmuter && bannedPokes.includes(isTransmuter)) return [`${set.name || set.species} cannot transmute into ${isTransmuter}.`];
+		},
+	},
+	{
 		name: "[Gen 7] Aggression Passion",
 		desc: ["&bullet; Status moves become 80 BP moves of the [Undecided] category."],
 		mod: 'aggressionpassion',
