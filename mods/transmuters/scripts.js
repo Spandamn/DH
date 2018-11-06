@@ -7,7 +7,7 @@ let BattleScripts = {
 	},
 
 	runMegaEvo: function (pokemon) {
-		const templateid = pokemon.canMegaEvo || pokemon.canUltraBurst || pokemon.canTransmute;
+		const templateid = pokemon.canMegaEvo || pokemon.canUltraBurst;
 		if (!templateid) return false;
 		const side = pokemon.side;
 
@@ -19,7 +19,7 @@ let BattleScripts = {
 		}
 
 		pokemon.formeChange(templateid, pokemon.getItem(), true);
-		if (pokemon.canTransmute) {
+		if (this.canTransmute(pokemon)) {
 			let oldHP = pokemon.hp;
 			let newHP = Math.floor(Math.floor(2 * pokemon.template.baseStats['hp'] + pokemon.set.ivs['hp'] + Math.floor(pokemon.set.evs['hp'] / 4) + 100) * pokemon.level / 100 + 10);
 			pokemon.hp = newHP - (pokemon.maxhp - pokemon.hp);
@@ -29,7 +29,6 @@ let BattleScripts = {
 			// Pls no more than one transmutation for each pokemon
 			pokemon.canTransmute = null;
 		} else {
-			console.log("SPANDAN U SO HOT OMFG");
 			let wasMega = pokemon.canMegaEvo;
 			for (const ally of side.pokemon) {
 				if (wasMega) {
