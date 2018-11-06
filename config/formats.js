@@ -7234,9 +7234,9 @@ exports.Formats = [
 		validateSet: function (set, teamHas) {
 			let bannedPokes = ['Shedinja', 'Kartana'];
 			let isTransmuter = false;
-			if (set.item) isTransmuter = this.dex.getTemplate;
+			if (set.item) isTransmuter = this.dex.getTemplate(set.item);
 			let validator = new this.constructor(Dex.getFormat(this.format.id));
-			let problems = validator.validateSet(Object.assign({}, set, {item: (isTransmuter.exists ? '': set.item)}), teamHas) || [];
+			let problems = validator.validateSet(Object.assign({}, set, {item: (isTransmuter.exists ? '' : set.item)}), teamHas) || [];
 			if (isTransmuter.exists && (isTransmuter.num <= 0 || bannedPokes.includes(isTransmuter.species) || isTransmuter.tier === 'Uber' || isTransmuter.isMega)) problems.push(`${set.name || set.species} cannot transmute into ${isTransmuter.species}.`);
 			return problems;
 		},
