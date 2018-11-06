@@ -7236,7 +7236,7 @@ exports.Formats = [
 			let isTransmuter = false;
 			if (set.item) isTransmuter = this.dex.getTemplate(set.item).species;
 			let validator = new this.constructor(Dex.getFormat(this.format.id));
-			let problems = validator.validateSet(Object.assign({}, set, {item: (isTransmuter ? '' : item)}), teamHas) || [];
+			let problems = validator.validateSet(Object.assign({}, set, {item: ''}), teamHas) || [];
 			if (isTransmuter && bannedPokes.includes(isTransmuter)) return [`${set.name || set.species} cannot transmute into ${isTransmuter}.`];
 		},
 	},
