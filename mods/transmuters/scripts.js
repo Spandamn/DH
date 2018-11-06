@@ -123,7 +123,9 @@ let BattleScripts = {
 								this.battle.add('-primal', this);
 							}
 						} else if (source.transmuteAbility) {
-							this.battle.add('-transmute', this, apparentSpecies, source.transmuteAbility);
+							// this.battle.add('-transmute', this, apparentSpecies, source.transmuteAbility); will probably work when i make a client mod for this
+							// but until then
+							this.battle.add('-message', `${this.side.name}'s ${this.species} has Transmuted into ${source.species}!`);
 							this.moveThisTurnResult = true; // Transmutation counts as an action for Truant
 						} else {
 							this.battle.add('-mega', this, apparentSpecies, template.requiredItem);
