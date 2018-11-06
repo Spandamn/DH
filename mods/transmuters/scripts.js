@@ -75,7 +75,7 @@ let BattleScripts = {
 
 			this.template = template;
 
-			this.setType(template.types, true);
+			if (source && !source.transmuteAbility) this.setType(template.types, true);
 			this.apparentType = rawTemplate.types.join('/');
 			this.addedType = template.addedType || '';
 			this.knownType = true;
