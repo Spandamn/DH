@@ -28,17 +28,19 @@ let BattleScripts = {
 			else if (newHP < oldHP) this.add('-damage', pokemon, pokemon.getHealth, '[silent]');
 			// Pls no more than one transmutation for each pokemon
 			pokemon.canTransmute = null;
+		} else {
+			let wasMega = pokemon.canMegaEvo;
+			for (const ally of side.pokemon) {
+				if (wasMega) {
+					ally.canMegaEvo = null;
+				} else {
+					ally.canUltraBurst = null;
+				}
+			}
 		}
 
 		// Limit one mega evolution
-		let wasMega = pokemon.canMegaEvo    ;
-		for (const ally of side.pokemon) {
-			if (wasMega) {
-				ally.canMegaEvo = null;
-			} else {
-				ally.canUltraBurst = null;
-			}
-		}
+		
 
 		this.runEvent('AfterMega', pokemon);
 		return true;
