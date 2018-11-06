@@ -29,6 +29,7 @@ let BattleScripts = {
 			// Pls no more than one transmutation for each pokemon
 			pokemon.canTransmute = null;
 		} else {
+			console.log("SPANDAN U SO HOT OMFG");
 			let wasMega = pokemon.canMegaEvo;
 			for (const ally of side.pokemon) {
 				if (wasMega) {
