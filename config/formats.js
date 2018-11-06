@@ -7231,7 +7231,7 @@ exports.Formats = [
 				pokemon.canTransmute = this.canTransmute(pokemon);
 			}
 		},*/
-		onValidateSet: function (set) {
+		validateSet: function (set, teamHas) {
 			let bannedPokes = ['Shedinja', 'Kartana'];
 			let isTransmuter = false;
 			if (set.item) isTransmuter = this.dex.getTemplate(set.item).species;
