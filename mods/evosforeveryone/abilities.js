@@ -4532,8 +4532,8 @@ let BattleAbilities = {
 		num: 196,
 	},
 	"atmospear": {
-		desc: "This Pokemon's changes it's type to match the move if it uses a Water-, Ice- or Fire-type move, and also summons Rain, Hail, or Sun at the same time.",
-		shortDesc: "This Pokemon's changes its type and summons weather if it uses a Water-, Ice-, or Fire-type attack.",
+		desc: "This Pokemon's changes its secondary type to match the move if it uses a Water-, Ice- or Fire-type move, and also summons Rain, Hail, or Sun at the same time.",
+		shortDesc: "This Pokemon's changes its secondary type and summons weather if it uses a Water-, Ice-, or Fire-type attack.",
 		onPrepareHit: function (source, target, move) {
 			if (move.hasBounced) return;
 			let type = move.type;

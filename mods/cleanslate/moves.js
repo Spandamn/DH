@@ -4236,7 +4236,7 @@ let BattleMovedex = {
 				}
 			},
 			onTerrain: function (pokemon) {
-				if (pokemon.isGrounded() && pokemon.ability === 'overdrive') {
+				if (pokemon.isGrounded() && pokemon.ability.id === 'overdrive') {
 					this.damage(pokemon.maxhp / 8, pokemon, pokemon);
 				}
 				print( pokemon.ability )
