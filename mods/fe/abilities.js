@@ -2048,7 +2048,7 @@ exports.BattleAbilities = {
 		},
 		onTryHit: function(target, source, move) {
 			if (this.isWeather(['hail', 'solarsnow'])) {
-				if (move.type === 'Rock' || move.type === 'Ground' || move.type === 'Steel' || move.type === 'Ice') {
+				if (['Rock', 'Ground', 'Steel', 'Ice'].includes(move.type)) {
 					if (!this.heal(target.maxhp / 16)) {
 						this.add('-immune', target, '[msg]', '[from] ability: Desert Snow');
 					}
@@ -2064,8 +2064,15 @@ exports.BattleAbilities = {
 		onStart: function(pokemon) {
 			this.add('-ability', pokemon, 'Magic Break');
 		},
-		onModifyMove: function(move) {
-			move.ignoreItem = true;
+		onBeforeMovePriority: 0.4,
+		onBeforeMove: function (attacker, defender, move) {
+			defender.addVolatile('magicbreak');
+		},
+		effect: {
+			noCopy: true,
+			onHit: function (target, source, move) {
+				target.removeVolatile('magicbreak');
+			},
 		},
 		id: "magicbreak",
 		name: "Magic Break",
