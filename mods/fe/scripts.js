@@ -661,7 +661,7 @@ exports.BattleScripts = {
             if (totalItems.includes('ironball')) return true;
             // If a Fire/Flying type uses Burn Up and Roost, it becomes ???/Flying-type, but it's still grounded.
             if (!negateImmunity && this.hasType('Flying') && !('roost' in this.volatiles)) return false;
-            if (this.hasAbility(['levitate', 'airraider', 'magneticfield', 'galelevitation', 'floatinggrounds', 'turborise', 'enchanted', 'hyperprotection']) && !this.battle.suppressingAttackEvents()) return null;
+            if (this.hasAbility(['levitate', 'airraider', 'magneticfield', 'galelevitation', 'floatinggrounds', 'turborise', 'enchanted', 'hyperprotection', 'stickyfloat']) && !this.battle.suppressingAttackEvents()) return null;
             //Compression protects Unleashed Giramini from Ground-type moves, but not Captive.
             if (this.hasAbility('compression') && this.template.species === 'Giramini-Unleashed' && !this.battle.suppressingAttackEvents()) return null;
             if ('magnetrise' in this.volatiles) return false;
@@ -687,7 +687,7 @@ exports.BattleScripts = {
                 return false;
             }
 
-            if (!ignoreImmunities && status.id && !(source && (source.hasAbility('ailmentmaster') || ((source.hasAbility('corrosion') || source.hasAbility('poisonpores')) && ['tox', 'psn'].includes(status.id)))) && !(sourceEffect && sourceEffect.effectType === 'Move' && sourceEffect.id === 'thundervirus')) {
+            if (!ignoreImmunities && status.id && !(source && (source.hasAbility('ailmentmaster') || ((source.hasAbility(['corrosion', 'poisonpores'])) && ['tox', 'psn'].includes(status.id)))) && !(sourceEffect && sourceEffect.effectType === 'Move' && sourceEffect.id === 'thundervirus')) {
                 // the game currently never ignores immunities
                 if (!this.runStatusImmunity(status.id === 'tox' ? 'psn' : status.id)) {
                     this.battle.debug('immune to status');
