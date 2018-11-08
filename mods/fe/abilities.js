@@ -4172,7 +4172,7 @@ exports.BattleAbilities = {
 	"lockedshell": {
 		shortDesc: "Immune to priority & status moves.",
 		onImmunity: function(pokemon, move) {
-			if (move.category === 'Status' || move.priority > 0) return false;
+			if (move.category === 'Status' || move.priority > 0.1) return false;
 		},
 		id: "lockedshell",
 		name: "Locked Shell",
