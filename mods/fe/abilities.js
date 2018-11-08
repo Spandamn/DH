@@ -1553,9 +1553,11 @@ exports.BattleAbilities = {
 			if (target !== source && move.type === 'Ground') {
 			this.add('-immune', source, '[msg]', '[from] ability: Syncho Float');
 			let oldAbility = target.setAbility('levitate', target, 'levitate', true);
-				if (oldAbility) {
-					this.add('-activate', target, 'ability: Levitate', oldAbility, '[of] ' + target);
-				}
+			if (oldAbility) {
+				this.add('-activate', target, 'ability: Synchofloat', oldAbility, '[of] ' + target);
+			} else {
+				this.add('-immune', target, '[msg]', '[from] ability: Synchofloat');
+			}
 			return null;
 			}
 		},
