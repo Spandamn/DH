@@ -1238,18 +1238,12 @@ exports.BattleAbilities = {
 		name: "Natural Guard",
 	},
 	"stickyfloat": {
-		shortDesc: "Evades Ground-type moves, and user cannot lose their item",
+		shortDesc: "Sticky Hold + Levitate.",
 		onTakeItem: function(item, pokemon, source) {
 			if (this.suppressingAttackEvents() && pokemon !== this.activePokemon) return;
 			if ((source && source !== pokemon) || this.activeMove.id === 'knockoff') {
 				this.add('-activate', pokemon, 'ability: Sticky Hold');
 				return false;
-			}
-		},
-		onTryHit: function(target, source, move) {
-			if (target !== source && move.type === 'Ground') {
-				this.add('-immune', target, '[msg]', '[from] ability: Sticky Float');
-				return null;
 			}
 		},
 		id: "stickyfloat",
