@@ -382,11 +382,11 @@ exports.BattleAbilities = {
 			if (this.isWeather('sandstorm')) {
 				if (move.type === 'Rock' || move.type === 'Ground' || move.type === 'Steel') {
 					if (move.isInInvertedWeather){
+						this.debug('Inverted Sand Force suppress');
+						return this.chainModify([0x0C4F, 0x1000]);
+					} 	else {
 						this.debug('Sand Force boost');
 						return this.chainModify([0x14CD, 0x1000]);
-					} 	else {
-						this.debug('Inverted Sand Force suppress');
-					return this.chainModify([0x0C4F, 0x1000]);
 					}
 				}
 			}
@@ -2039,10 +2039,15 @@ exports.BattleAbilities = {
 		shortDesc: "This pokemon's Ground/Rock/Steel/Ice attacks do 1.3x in Sandstorm and Hail, opposing attacks of those types heal by 1/16 under the same weather conditions.",
 		onBasePowerPriority: 8,
 		onBasePower: function(basePower, attacker, defender, move) {
-			if (this.isWeather(['hail', 'solarsnow'])) {
-				if (move.type === 'Rock' || move.type === 'Ground' || move.type === 'Steel' || move.type === 'Ice') {
-					this.debug('Desert Snow boost');
-					return this.chainModify([0x14CD, 0x1000]);
+			if (this.isWeather(['hail', 'solarsnow', 'sandstorm'])) {
+				if (['Rock', 'Ground', 'Steel', 'Ice'].includes(move.type)) {
+					if (move.isInInvertedWeather){
+						this.debug('Inverted Desert Snow suppress');
+						return this.chainModify([0x0C4F, 0x1000]);
+					} 	else {
+						this.debug('Desert Snow boost');
+						return this.chainModify([0x14CD, 0x1000]);
+					}
 				}
 			}
 		},
@@ -2056,6 +2061,9 @@ exports.BattleAbilities = {
 				return null;
 			}
 		},
+		onImmunity: function(type, pokemon) {
+			if (type === 'solarsnow' || type === 'sandstorm' || type === 'hail') return false;
+		},
 		id: "desertsnow",
 		name: "Desert Snow",
 	},
@@ -2066,6 +2074,7 @@ exports.BattleAbilities = {
 		},
 		onBeforeMovePriority: 0.4,
 		onBeforeMove: function (attacker, defender, move) {
+			if (attacker === defender) return;
 			defender.addVolatile('magicbreak');
 		},
 		effect: {
@@ -8458,7 +8467,7 @@ exports.BattleAbilities = {
 	},
 	"stanceshield": {
 		desc: "Whenever this Pokémon uses King's Shield or any move that could potentially induce a status condition it switches to its Meteor Form, when this Pokémon uses any attacking move, it switches to its blade form.",
-		shortDesc: "If Aegislash, changes Forme to Blade before attacks and Shield before King's Shield.",
+		shortDesc: "If Minislash, changes Forme to Blade before attacks and Meteor before King's Shield.",
 		onBeforeMovePriority: 0.5,
 		onBeforeMove: function (attacker, defender, move) {
 			if (attacker.template.baseSpecies !== 'Minislash' || attacker.transformed) return;
