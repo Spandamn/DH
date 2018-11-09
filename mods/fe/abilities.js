@@ -2078,6 +2078,13 @@ exports.BattleAbilities = {
 			onHit: function (target, source, move) {
 				target.removeVolatile('magicbreak');
 			},
+			onBeforeMovePriority: 10,
+			onAnyBeforeMove: function (attacker, defender, move) {
+				this.effectData.target.removeVolatile('magicbreak');
+			},
+			onResidual: function (pokemon) {
+				pokemon.removeVolatile('magicbreak');
+			},
 		},
 		id: "magicbreak",
 		name: "Magic Break",
