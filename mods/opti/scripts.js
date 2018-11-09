@@ -2,7 +2,7 @@
 
 exports.BattleScripts = {
 init: function () {
-	this.modData('Learnsets', 'primarina').learnset.backdraft = ['7L1'];
+	this.modData('Learnsets', 'primarina').learnset.whirlpool = ['7L1'];
 this.modData('Learnsets', 'hitmonchan').learnset.backdraft = ['6L1'];
 this.modData('Learnsets', 'hitmonchan').learnset.overclock = ['6L1'];
 this.modData('Learnsets', 'hitmonchan').learnset.overheat = ['6L1'];
