@@ -192,7 +192,7 @@ exports.BattleScripts = {
 			return false;
 		}
 
-		if (!move.negateSecondary && !(move.hasSheerForce && pokemon.hasAbility('sheerforce'))) {
+		if (!move.negateSecondary && !(move.hasSheerForce && (pokemon.hasAbility(['sheerforce', 'topgear', 'sheerfat', 'tetraforce', 'zeroawareness']) || (pokemon.hasAbility('dramaticrage') && move.category === 'Special')))) {
 			this.singleEvent('AfterMoveSecondarySelf', move, null, pokemon, target, move);
 			this.runEvent('AfterMoveSecondarySelf', pokemon, target, move);
 		}
