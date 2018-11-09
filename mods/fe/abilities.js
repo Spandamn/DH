@@ -382,11 +382,11 @@ exports.BattleAbilities = {
 			if (this.isWeather('sandstorm')) {
 				if (move.type === 'Rock' || move.type === 'Ground' || move.type === 'Steel') {
 					if (move.isInInvertedWeather){
+						this.debug('Inverted Sand Force suppress');
+						return this.chainModify([0x0C4F, 0x1000]);
+					} 	else {
 						this.debug('Sand Force boost');
 						return this.chainModify([0x14CD, 0x1000]);
-					} 	else {
-						this.debug('Inverted Sand Force suppress');
-					return this.chainModify([0x0C4F, 0x1000]);
 					}
 				}
 			}
@@ -1238,18 +1238,12 @@ exports.BattleAbilities = {
 		name: "Natural Guard",
 	},
 	"stickyfloat": {
-		shortDesc: "Evades Ground-type moves, and user cannot lose their item",
+		shortDesc: "Sticky Hold + Levitate.",
 		onTakeItem: function(item, pokemon, source) {
 			if (this.suppressingAttackEvents() && pokemon !== this.activePokemon) return;
 			if ((source && source !== pokemon) || this.activeMove.id === 'knockoff') {
 				this.add('-activate', pokemon, 'ability: Sticky Hold');
 				return false;
-			}
-		},
-		onTryHit: function(target, source, move) {
-			if (target !== source && move.type === 'Ground') {
-				this.add('-immune', target, '[msg]', '[from] ability: Sticky Float');
-				return null;
 			}
 		},
 		id: "stickyfloat",
@@ -1559,9 +1553,11 @@ exports.BattleAbilities = {
 			if (target !== source && move.type === 'Ground') {
 			this.add('-immune', source, '[msg]', '[from] ability: Syncho Float');
 			let oldAbility = target.setAbility('levitate', target, 'levitate', true);
-				if (oldAbility) {
-					this.add('-activate', target, 'ability: Levitate', oldAbility, '[of] ' + target);
-				}
+			if (oldAbility) {
+				this.add('-activate', target, 'ability: Synchofloat', oldAbility, '[of] ' + target);
+			} else {
+				this.add('-immune', target, '[msg]', '[from] ability: Synchofloat');
+			}
 			return null;
 			}
 		},
@@ -2039,22 +2035,30 @@ exports.BattleAbilities = {
 		shortDesc: "This pokemon's Ground/Rock/Steel/Ice attacks do 1.3x in Sandstorm and Hail, opposing attacks of those types heal by 1/16 under the same weather conditions.",
 		onBasePowerPriority: 8,
 		onBasePower: function(basePower, attacker, defender, move) {
-			if (this.isWeather(['hail', 'solarsnow'])) {
-				if (move.type === 'Rock' || move.type === 'Ground' || move.type === 'Steel' || move.type === 'Ice') {
-					this.debug('Desert Snow boost');
-					return this.chainModify([0x14CD, 0x1000]);
+			if (this.isWeather(['hail', 'solarsnow', 'sandstorm'])) {
+				if (['Rock', 'Ground', 'Steel', 'Ice'].includes(move.type)) {
+					if (move.isInInvertedWeather){
+						this.debug('Inverted Desert Snow suppress');
+						return this.chainModify([0x0C4F, 0x1000]);
+					} 	else {
+						this.debug('Desert Snow boost');
+						return this.chainModify([0x14CD, 0x1000]);
+					}
 				}
 			}
 		},
 		onTryHit: function(target, source, move) {
 			if (this.isWeather(['hail', 'solarsnow'])) {
-				if (move.type === 'Rock' || move.type === 'Ground' || move.type === 'Steel' || move.type === 'Ice') {
+				if (['Rock', 'Ground', 'Steel', 'Ice'].includes(move.type)) {
 					if (!this.heal(target.maxhp / 16)) {
 						this.add('-immune', target, '[msg]', '[from] ability: Desert Snow');
 					}
 				}
 				return null;
 			}
+		},
+		onImmunity: function(type, pokemon) {
+			if (type === 'solarsnow' || type === 'sandstorm' || type === 'hail') return false;
 		},
 		id: "desertsnow",
 		name: "Desert Snow",
@@ -2064,8 +2068,16 @@ exports.BattleAbilities = {
 		onStart: function(pokemon) {
 			this.add('-ability', pokemon, 'Magic Break');
 		},
-		onModifyMove: function(move) {
-			move.ignoreItem = true;
+		onBeforeMovePriority: 0.4,
+		onBeforeMove: function (attacker, defender, move) {
+			if (attacker === defender) return;
+			defender.addVolatile('magicbreak');
+		},
+		effect: {
+			noCopy: true,
+			onHit: function (target, source, move) {
+				target.removeVolatile('magicbreak');
+			},
 		},
 		id: "magicbreak",
 		name: "Magic Break",
@@ -4165,7 +4177,7 @@ exports.BattleAbilities = {
 	"lockedshell": {
 		shortDesc: "Immune to priority & status moves.",
 		onImmunity: function(pokemon, move) {
-			if (move.category === 'Status' || move.priority > 0) return false;
+			if (move.category === 'Status' || move.priority > 0.1) return false;
 		},
 		id: "lockedshell",
 		name: "Locked Shell",
@@ -8451,7 +8463,7 @@ exports.BattleAbilities = {
 	},
 	"stanceshield": {
 		desc: "Whenever this Pokémon uses King's Shield or any move that could potentially induce a status condition it switches to its Meteor Form, when this Pokémon uses any attacking move, it switches to its blade form.",
-		shortDesc: "If Aegislash, changes Forme to Blade before attacks and Shield before King's Shield.",
+		shortDesc: "If Minislash, changes Forme to Blade before attacks and Meteor before King's Shield.",
 		onBeforeMovePriority: 0.5,
 		onBeforeMove: function (attacker, defender, move) {
 			if (attacker.template.baseSpecies !== 'Minislash' || attacker.transformed) return;
