@@ -92,7 +92,7 @@ exports.BattleMovedex = {
 	},
 	"poisonmelt": {
 		accuracy: 100,
-		basePower: 0,
+		basePower: 70,
 		category: "Special",
 		shortDesc: "This attack hits Steel-types super effectively and has a 30% chance to decrease the target’s SpD by 1 stage.",
 		id: "poisonmelt",
