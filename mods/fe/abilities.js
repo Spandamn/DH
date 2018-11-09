@@ -2369,17 +2369,17 @@ exports.BattleAbilities = {
 		onModifySpA: function (atk, attacker, defender, move) {
 			if (this.isWeather(['sunnday', 'desolateland', 'hail'])) {
 				this.debug('Blaze boost');
-				if (attacker.volatiles['atmosphericperversion'] == attacker.volatiles['weatherbreak']){
-					return this.chainModify(1.5);
-				} else {
+				if (move.isInInvertedWeather){
 					return this.chainModify([0x0AAB, 0x1000]);
+				} else {
+					return this.chainModify(1.5);
 				}
 			} else if (this.isWeather(['solarsnow'])) {
 				this.debug('Blaze boost');
-				if (attacker.volatiles['atmosphericperversion'] == attacker.volatiles['weatherbreak']){
-					return this.chainModify(2.25);
-				} else {
+				if (move.isInInvertedWeather){
 					return this.chainModify([0x071C, 0x1000]);
+				} else {
+					return this.chainModify(2.25);
 				}
 			}
 		},
