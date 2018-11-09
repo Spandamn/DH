@@ -127,8 +127,8 @@ exports.BattleMovedex = {
 		contestType: "Cool",
 	},
 	"hauntingscream": {
-		accuracy: 90,
-		basePower: 100,
+		accuracy: 100,
+		basePower: 90,
 		category: "Special",
 		shortDesc: "30% chance to inflict Perish Song on foe.",
 		id: "hauntingscream",
@@ -203,7 +203,7 @@ exports.BattleMovedex = {
 	"stormstrike": {
 		accuracy: 100,
 		basePower: 50,
-		category: "Special",
+		category: "Physical",
 		desc: "Power doubles during weather effects (except strong winds) and this move's type changes to match; Ice type during Hail, Water type during Rain Dance, Rock type during Sandstorm, and Fire type during Sunny Day.",
 		shortDesc: "Power doubles and type varies in each weather.",
 		id: "stormstrike",
