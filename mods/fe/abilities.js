@@ -8548,8 +8548,9 @@ exports.BattleAbilities = {
 		effect: {
 			noCopy: true,
 			duration: 1,
-			onAnyBeforeMove: function (target, source, move) {
-				if (this.effectData.target === source) return;
+			onBeforeMovePriority: 10,
+			onAnyBeforeMove: function (attacker, defender, move) {
+				if (this.effectData.target === attacker) return;
 				this.effectData.target.removeVolatile('teraarmor');
 			},
 			onResidual: function (pokemon) {
