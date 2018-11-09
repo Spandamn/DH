@@ -116,6 +116,7 @@ exports.BattleMovedex = {
 			this.attrLastMove('[still]');
 			this.add('-anim', source, "Acid Downpour", target);
 		},
+		ignoreImmunity: true,
 		target: "normal",
 		type: "Poison",
 		zMovePower: 175,
