@@ -1659,9 +1659,11 @@ this.modData('Learnsets', 'krokorok').learnset.shadowsky = ['7L1'];
 this.modData('Learnsets', 'krookodile').learnset.shadowsky = ['7L1'];
 this.modData('Learnsets', 'liepard').learnset.shadowsky = ['7L1'];
 this.modData('Learnsets', 'malamar').learnset.shadowsky = ['7L1'];
-this.modData('Learnsets', 'mandibuzz').learnset.shadowsky = ['7L1'];
+this.modData('Learnsets', 'mandibuzz').learnset.shadowsky = ['7L1']; 
 
+// Fire Lash
 
+this.modData('Learnsets', 'lycanrocdusk').learnset.firelash = ['7L1'];
 
     /*for (let i in this.data.Pokedex) {
     let learnset = (this.data.Learnsets[i]) ? this.data.Learnsets[i].learnset : false;
