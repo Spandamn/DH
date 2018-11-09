@@ -2047,14 +2047,20 @@ exports.BattleAbilities = {
 				}
 			}
 		},
+		onSourceModifyDamage: function (damage, source, target, move) {
+			if (!this.isWeather(['hail', 'solarsnow', 'sandstorm'])) return;
+			if (!move.isInInvertedWeather) return; 
+			if (!(['Rock', 'Ground', 'Steel', 'Ice'].includes(move.type))) return;
+			return this.chainModify(1.5) + target.maxhp / 16;
+		},
 		onTryHit: function(target, source, move) {
-			if (this.isWeather(['hail', 'solarsnow'])) {
-				if (['Rock', 'Ground', 'Steel', 'Ice'].includes(move.type)) {
+			if (this.isWeather(['hail', 'solarsnow', 'sandstorm'])) {
+				if (['Rock', 'Ground', 'Steel', 'Ice'].includes(move.type) && !move.isInInvertedWeather) {
 					if (!this.heal(target.maxhp / 16)) {
 						this.add('-immune', target, '[msg]', '[from] ability: Desert Snow');
 					}
+					return null;
 				}
-				return null;
 			}
 		},
 		onImmunity: function(type, pokemon) {
