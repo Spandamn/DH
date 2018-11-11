@@ -5149,6 +5149,8 @@ exports.BattlePokedex = {
 		  prevo: "golone",
 		  evoLevel: 39,
         color: "Brown",
+        heightm: 2.245,
+        weightkg: 191.5,
         eggGroups: ["Mineral"],
     },
     hooporus: {

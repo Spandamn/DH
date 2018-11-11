@@ -2047,14 +2047,20 @@ exports.BattleAbilities = {
 				}
 			}
 		},
+		onSourceModifyDamage: function (damage, source, target, move) {
+			if (!this.isWeather(['hail', 'solarsnow', 'sandstorm'])) return;
+			if (!move.isInInvertedWeather) return; 
+			if (!(['Rock', 'Ground', 'Steel', 'Ice'].includes(move.type))) return;
+			return this.chainModify(1.5) + target.maxhp / 16;
+		},
 		onTryHit: function(target, source, move) {
-			if (this.isWeather(['hail', 'solarsnow'])) {
-				if (['Rock', 'Ground', 'Steel', 'Ice'].includes(move.type)) {
+			if (this.isWeather(['hail', 'solarsnow', 'sandstorm'])) {
+				if (['Rock', 'Ground', 'Steel', 'Ice'].includes(move.type) && !move.isInInvertedWeather) {
 					if (!this.heal(target.maxhp / 16)) {
 						this.add('-immune', target, '[msg]', '[from] ability: Desert Snow');
 					}
+					return null;
 				}
-				return null;
 			}
 		},
 		onImmunity: function(type, pokemon) {
@@ -2077,6 +2083,13 @@ exports.BattleAbilities = {
 			noCopy: true,
 			onHit: function (target, source, move) {
 				target.removeVolatile('magicbreak');
+			},
+			onBeforeMovePriority: 10,
+			onAnyBeforeMove: function (attacker, defender, move) {
+				this.effectData.target.removeVolatile('magicbreak');
+			},
+			onResidual: function (pokemon) {
+				pokemon.removeVolatile('magicbreak');
 			},
 		},
 		id: "magicbreak",
@@ -2356,17 +2369,17 @@ exports.BattleAbilities = {
 		onModifySpA: function (atk, attacker, defender, move) {
 			if (this.isWeather(['sunnday', 'desolateland', 'hail'])) {
 				this.debug('Blaze boost');
-				if (attacker.volatiles['atmosphericperversion'] == attacker.volatiles['weatherbreak']){
-					return this.chainModify(1.5);
-				} else {
+				if (move.isInInvertedWeather){
 					return this.chainModify([0x0AAB, 0x1000]);
+				} else {
+					return this.chainModify(1.5);
 				}
 			} else if (this.isWeather(['solarsnow'])) {
 				this.debug('Blaze boost');
-				if (attacker.volatiles['atmosphericperversion'] == attacker.volatiles['weatherbreak']){
-					return this.chainModify(2.25);
-				} else {
+				if (move.isInInvertedWeather){
 					return this.chainModify([0x071C, 0x1000]);
+				} else {
+					return this.chainModify(2.25);
 				}
 			}
 		},
@@ -3325,7 +3338,7 @@ exports.BattleAbilities = {
 			return accuracy;
 		},
 		onAnyBeforeMove: function(attacker, defender, move) {
-			if (attacker !== defender && defender === this.effectData.target) {
+			if (attacker !== this.effectData.target && attacker !== defender && defender === this.effectData.target) {
 					let bannedAbilities = ['battlebond', 'comatose', 'disguise', 'multitype', 'powerconstruct', 'rkssystem', 'schooling', 'shieldsdown', 'stancechange', 'truant', 'resurrection', 'magicalwand', 'sleepingsystem', 'cursedcloak', 'appropriation', 'disguiseburden', 'hideandseek', 'beastcostume', 'spiralpower', 'optimize', 'prototype', 'typeillusionist', 'godoffertility', 'foundation', 'sandyconstruct', 'victorysystem', 'techequip', 'technicalsystem', 'triagesystem', 'geneticalgorithm', 'effectsetter', 'tacticalcomputer', 'mitosis', 'barbstance', 'errormacro', 'combinationdrive', 'stanceshield', 'unfriend', 'desertmirage', 'sociallife', 'cosmology', 'crystallizedshield', 'compression', 'whatdoesthisdo', 'underpressure', 'poisontouch', 'magician'];
 					if (!bannedAbilities.includes(attacker.getAbility()) && !attacker.getAbility().isUnbreakable){
 	         		attacker.addVolatile('teraarmor');
@@ -8548,8 +8561,9 @@ exports.BattleAbilities = {
 		effect: {
 			noCopy: true,
 			duration: 1,
-			onAnyBeforeMove: function (target, source, move) {
-				if (this.effectData.target === source) return;
+			onBeforeMovePriority: 10,
+			onAnyBeforeMove: function (attacker, defender, move) {
+				if (this.effectData.target === attacker) return;
 				this.effectData.target.removeVolatile('teraarmor');
 			},
 			onResidual: function (pokemon) {
