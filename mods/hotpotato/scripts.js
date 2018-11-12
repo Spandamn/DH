@@ -229,7 +229,7 @@ exports.BattleScripts = {
 		}
 		// Hot Potato here
 		if (pokemon !== target && !moveData.isFutureMove) {
-			if (pokemon.side.sideConditions) {
+			if (Object.keys(pokemon.side.sideConditions).length > 0) {
 				for (let condition of pokemon.side.sideConditions) {
 					target.side.addSideConditions(condition.id);
 					if (pokemon.side.sideConditions.layers) target.side.sideConditions.layers = pokemon.side.sideConditions.layers;
