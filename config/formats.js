@@ -2127,6 +2127,18 @@ exports.Formats = [
 		},
 	},
 	{
+		name: "[Gen 7] Hot Potato",
+		desc: `Moves that deal direct damage to an opponent will 'pass' any hazard, status/volatile effects and stat debuffs currently on your side or Pokemon to your opponent's.`,
+		threads: [
+			`&bullet; <a href="https://www.smogon.com/forums/threads/3643676/">Hot Potato</a>`,
+		],
+
+		mod: 'hotpotato',
+		team: "random",
+		ruleset: ['[Gen 7] OU'],
+		banlist: ['Blast Burn', 'Frenzy Plant', 'Giga Impact', 'Hydro Cannon', 'Hyper Beam', 'Prismatic Laser', 'Roar of Time', 'Rock Wrecker'],
+	},
+	{
 		name: "[Gen 7] Random Top Percentage",
 		mod: 'toppercentage',
 		desc: ["&lt; <a href=\"http://www.smogon.com/forums/threads/top-percentage.3564459/\">Top Percentage</a>"],
