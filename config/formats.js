@@ -3459,7 +3459,7 @@ exports.Formats = [
 		banlist: ['Blast Burn', 'Frenzy Plant', 'Giga Impact', 'Hydro Cannon', 'Hyper Beam', 'Prismatic Laser', 'Roar of Time', 'Rock Wrecker'],
 		onAfterDamage: function (damage, target, pokemon, move) {
 			// Hot Potato here
-			if (!(pokemon !== target && move && move.effectType === 'Move' && !move.isFutureMove)) return;
+			if ((pokemon !== target && move && move.effectType === 'Move' && !move.isFutureMove)) return;
 			if (Object.keys(pokemon.side.sideConditions).length > 0) {
 				for (let i in pokemon.side.sideConditions) {
 					let condition = pokemon.side.sideConditions[i];
@@ -3477,6 +3477,8 @@ exports.Formats = [
 				for (let i in pokemon.boosts) {
 					if (pokemon.boosts[i] < 0) {
 						target.boosts[i] = pokemon.boosts[i];
+						this.add('-setboost', target, i, target.boosts[i], '[silent]');
+						this.add('-setboost', pokemon, i, pokemon.boosts[i], '[silent]');
 						delete pokemon.boosts[i];
 					}
 				}
