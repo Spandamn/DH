@@ -2135,8 +2135,8 @@ exports.Formats = [
 
 		mod: 'hotpotato',
 		team: "random",
-		ruleset: ['[Gen 7] OU'],
-		banlist: ['Blast Burn', 'Frenzy Plant', 'Giga Impact', 'Hydro Cannon', 'Hyper Beam', 'Prismatic Laser', 'Roar of Time', 'Rock Wrecker'],
+		ruleset: ['[Gen 7] Random Battle'],
+		//banlist: ['Blast Burn', 'Frenzy Plant', 'Giga Impact', 'Hydro Cannon', 'Hyper Beam', 'Prismatic Laser', 'Roar of Time', 'Rock Wrecker'],
 	},
 	{
 		name: "[Gen 7] Random Top Percentage",
