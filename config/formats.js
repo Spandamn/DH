@@ -2127,7 +2127,7 @@ exports.Formats = [
 		},
 	},
 	{
-		name: "[Gen 7] Hot Potato",
+		name: "[Gen 7] Random Hot Potato",
 		desc: `Moves that deal direct damage to an opponent will 'pass' any hazard, status/volatile effects and stat debuffs currently on your side or Pokemon to your opponent's.`,
 		threads: [
 			`&bullet; <a href="https://www.smogon.com/forums/threads/3643676/">Hot Potato</a>`,
