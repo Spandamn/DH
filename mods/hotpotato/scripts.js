@@ -295,9 +295,4 @@ exports.BattleScripts = {
 		}
 		return damage;
 	},
-	side: {
-		throwHotPotato: function () {
-
-		},
-	},
 };
