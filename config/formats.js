@@ -3454,10 +3454,10 @@ exports.Formats = [
 			`&bullet; <a href="https://www.smogon.com/forums/threads/3643676/">Hot Potato</a>`,
 		],
 
-		//mod: 'hotpotato',
+		mod: 'hotpotato',
 		ruleset: ['[Gen 7] OU'],
 		banlist: ['Blast Burn', 'Frenzy Plant', 'Giga Impact', 'Hydro Cannon', 'Hyper Beam', 'Prismatic Laser', 'Roar of Time', 'Rock Wrecker'],
-		onAfterDamage: function (damage, target, pokemon = target.side.foe.pokemon[0], move) {
+		/*onAfterDamage: function (damage, target, pokemon = target.side.foe.pokemon[0], move) {
 			// Hot Potato here
 			if ((pokemon !== target && move && move.effectType === 'Move' && !move.isFutureMove)) return;
 			if (Object.keys(pokemon.side.sideConditions).length > 0) {
@@ -3514,7 +3514,7 @@ exports.Formats = [
 					}
 				}
 			}
-		},
+		},*/
 	},
 	{
 		name: "[Gen 7] Inheritance",
