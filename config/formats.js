@@ -3436,6 +3436,17 @@ exports.Formats = [
 		},
 	},
 	{
+		name: "[Gen 7] Hot Potato",
+		desc: `Moves that deal direct damage to an opponent will 'pass' any hazard, status/volatile effects and stat debuffs currently on your side or Pokemon to your opponent's.`,
+		threads: [
+			`&bullet; <a href="https://www.smogon.com/forums/threads/3643676/">Hot Potato</a>`,
+		],
+
+		mod: 'hotpotato',
+		ruleset: ['[Gen 7] OU'],
+		banlist: ['Blast Burn', 'Frenzy Plant', 'Giga Impact', 'Hydro Cannon', 'Hyper Beam', 'Prismatic Laser', 'Roar of Time', 'Rock Wrecker'],
+	},
+	{
 		name: "[Gen 7] Inheritance",
 		desc: [
 			"Pok&eacute;mon may use the ability and moves of another, as long as they forfeit their own learnset.",
