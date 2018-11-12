@@ -3454,9 +3454,65 @@ exports.Formats = [
 			`&bullet; <a href="https://www.smogon.com/forums/threads/3643676/">Hot Potato</a>`,
 		],
 
-		mod: 'hotpotato',
+		//mod: 'hotpotato',
 		ruleset: ['[Gen 7] OU'],
 		banlist: ['Blast Burn', 'Frenzy Plant', 'Giga Impact', 'Hydro Cannon', 'Hyper Beam', 'Prismatic Laser', 'Roar of Time', 'Rock Wrecker'],
+		onAfterDamage: function (damage, target, pokemon, move) {
+			// Hot Potato here
+			if (!(pokemon !== target && move && move.effectType === 'Move' && !move.isFutureMove)) return;
+			if (Object.keys(pokemon.side.sideConditions).length > 0) {
+				for (let i in pokemon.side.sideConditions) {
+					let condition = pokemon.side.sideConditions[i];
+					target.side.addSideConditions(condition.id);
+					if (pokemon.side.sideConditions.layers) target.side.sideConditions.layers = pokemon.side.sideConditions.layers;
+					pokemon.side.removeSideCondition(condition.id);
+				}
+			}
+			if (!target.fainted) {
+				if (pokemon.status) {
+					let status = pokemon.status;
+					pokemon.setStatus('');
+					target.setStatus(status);
+				}
+				for (let i in pokemon.boosts) {
+					if (pokemon.boosts[i] < 0) {
+						target.boosts[i] = pokemon.boosts[i];
+						delete pokemon.boosts[i];
+					}
+				}
+				if (pokemon.volatiles.attract) {
+					target.volatiles.attract = {
+						id: 'attract',
+						source: pokemon,
+						target: target,
+						sourcePosition: 0,
+						sourceEffect: pokemon.volatiles.attract.sourceEffect
+					};
+					pokemon.removeVolatile('attract');
+				}
+				if (pokemon.volatiles.trapped) {
+					target.addVolatile('trapped', pokemon, pokemon.volatiles.trapped.sourceMove, 'trapper');
+					pokemon.removeVolatile('trapped')
+				}
+				if (pokemon.volatiles.partiallytrapped) {
+					target.addVolatile('trapped', pokemon, pokemon.volatiles.partiallytrapped.sourceMove, 'trapper');
+					pokemon.removeVolatile('partiallytrapped')
+				}
+				if (pokemon.volatiles.perishsong) {
+					target.volatiles.perishsong = Object.assign({}, pokemon.volatiles.perishsong);
+					target.volatiles.perishsong.target = target;
+					pokemon.removeVolatile('perishsong');
+					this.add('-start', pokemon, `perish${target.volatiles.perishsong.duration}`, '[silent]');
+				}
+				let passableVolatiles = ['confusion', 'curse', 'disable', 'embargo', 'encore', 'foresight', 'healblock', 'imprison', 'leechseed', 'miracleeye', 'nightmare', 'taunt', 'telekinesis', 'torment'];
+				for (let i in pokemon.volatiles) {
+					if (passableVolatiles.includes(i)) {
+						pokemon.removeVolatile(i);
+						target.addVolatile(i);
+					}
+				}
+			}
+		},
 	},
 	{
 		name: "[Gen 7] Inheritance",
