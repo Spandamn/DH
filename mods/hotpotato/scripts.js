@@ -235,6 +235,7 @@ exports.BattleScripts = {
 					target.side.addSideCondition(condition.id);
 					if (pokemon.side.sideConditions.layers) target.side.sideConditions.layers = pokemon.side.sideConditions.layers;
 					pokemon.side.removeSideCondition(condition.id);
+					this.add('-sideend', pokemon.side, this.getEffect(condition.id).name, '[silent]');
 				}
 			}
 			if (!target.fainted) {
