@@ -239,9 +239,11 @@ exports.BattleScripts = {
 				}
 			}
 			if (pokemon.status) {
-				let status = pokemon.status;
+				let status = pokemon.status, statusData = Object.assign({}, pokemon.statusData);
 				pokemon.setStatus('');
 				target.setStatus(status);
+				target.statusData = statusData;
+				target.statusData.target = target;
 			}
 			for (let i in pokemon.boosts) {
 				if (pokemon.boosts[i] < 0) {
