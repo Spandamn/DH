@@ -2448,6 +2448,7 @@ let BattleLearnsets = {
 		agility: ["7L12", "6L12", "5L12", "4L12"],
 		allyswitch: ["7T"],
 		blizzard: ["7M", "6M", "5M", "4M"],
+		bugbuzz: ["7M", "6M", "5M", "4M"],
 		chargebeam: ["7M", "6M", "5M", "4M"],
 		confide: ["7M", "6M"],
 		conversion: ["7L1", "6L1", "5L1", "4L1"],
