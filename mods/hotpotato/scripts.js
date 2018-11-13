@@ -228,7 +228,7 @@ exports.BattleScripts = {
 			}
 		}
 		// Hot Potato here
-		if (pokemon !== target && !moveData.isFutureMove) {
+		if (pokemon !== target && !moveData.isFutureMove && damage) {
 			if (Object.keys(pokemon.side.sideConditions).length > 0) {
 				for (let i in pokemon.side.sideConditions) {
 					let condition = pokemon.side.sideConditions[i];
