@@ -486,7 +486,8 @@ exports.BattleScripts = {
 				}
 				for (let i in pokemon.boosts) {
 					if (pokemon.boosts[i] < 0) {
-						target.boosts[i] = pokemon.boosts[i];
+						target.boosts[i] += pokemon.boosts[i];
+						if (target.boosts[i] < -6) target.boosts[i] = -6;
 						this.add('-setboost', target, i, target.boosts[i], '[silent]');
 						pokemon.boosts[i] = 0;
 						this.add('-setboost', pokemon, i, pokemon.boosts[i], '[silent]');
