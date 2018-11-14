@@ -24,9 +24,11 @@ exports.BattleAbilities = {
 			if (move && move.flags['dance']) {
 				if (this.randomChance(4, 10)) {
 					if (pokemon.getStat('atk', false, true) > pokemon.getStat('spa', false, true)) {
-						(!this.boost({atk: 1})) {
-					else
-						(!this.boost({spa: 1})) {
+						(!this.boost({atk: 1})) 
+					}
+					else {
+						(!this.boost({spa: 1}))
+					}
 					},
 				},
 			},
