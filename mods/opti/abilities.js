@@ -17,25 +17,28 @@ exports.BattleAbilities = {
 		id: "fluid",
 		name: "Fluid",
 	},
-	"jubileespirit": {
-		shortDesc: "40% chance to raise this Pokemon's higher attacking stat after successfully hitting the foe with a Dance move.",
-		onAfterMove: function (pokemon, move) {
-			for (const source of pokemon.side.active) {
-			if (move && move.flags['dance']) {
-				if (this.randomChance(4, 10)) {
-					if (pokemon.getStat('atk', false, true) > pokemon.getStat('spa', false, true)) {
-						(!this.boost({atk: 1})) 
-					}
-					else {
-						(!this.boost({spa: 1}))
-					}
-					}
-				}
-			},
-		},
-		id: "jubileespirit",
-		name: "Jubilee Spirit",
-	},
+	/*"jubileespirit": {
+    shortDesc: "40% chance to raise this Pokemon's higher attacking stat after successfully hitting the foe with a Dance move.",
+    onAfterMove: function(pokemon, move) {
+        for (const source of pokemon.side.active) {
+            if (move && move.flags['dance']) {
+                if (this.randomChance(4, 10)) {
+                    if (pokemon.getStat('atk', false, true) > pokemon.getStat('spa', false, true)) {
+                        this.boost({
+                            atk: 1
+                        })
+                    } else {
+                        this.boost({
+                            spa: 1
+                        })
+                    }
+                }
+            }
+        }
+    },
+    id: "jubileespirit",
+    name: "Jubilee Spirit",
+},*/
 	"selfrepair": {
 		desc: "This Pokemon is immune to Rock-type moves and restores 1/4 of its maximum HP, rounded down, when hit by a Rock-type move.", //Need to code Stealth Rock + Spike health recovery
 		shortDesc: "This Pokemon heals 1/4 of its max HP when hit by Rock moves, Stealth Rocks or Spikes and removes them on switch-in.",
@@ -55,16 +58,18 @@ exports.BattleAbilities = {
 					this.add('-sideend', pokemon.side, this.getEffect(condition).name, '[from] ability: Self-Repair', '[of] ' + pokemon);
 				}
 			}
-		}
+		},
 		id: "selfrepair",
 		name: "Self-Repair",
 	},
 	"unmelting": {
 		desc: "This Pokemon is immune to Fire-type moves and burns; Takes half damage from Water-type moves.", //Code may be a little messy, need to sort Fire immunity
-		shortDesc: "This Pokemon is immune to Fire Moves and Burns, and takes half damage from Water Moves") {
+		shortDesc: "This Pokemon is immune to Fire Moves and Burns, and takes half damage from Water Moves",
+		onTryHit: function (target, source, move) {
 			if (target !== source && move.type === 'Fire') {
-		      this.add('-immune', target, '[msg]', '[from] ability: Unmelting');
-			},
+					this.add('-immune', target, '[msg]', '[from] ability: Water Absorb');
+				return null;
+			}
 		},
 	   onModifyAtkPriority: 5,
 		onSourceModifyAtk: function (atk, attacker, defender, move) {
