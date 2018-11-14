@@ -29,8 +29,8 @@ exports.BattleAbilities = {
 					else {
 						(!this.boost({spa: 1}))
 					}
-					},
-				},
+					}
+				}
 			},
 		},
 		id: "jubileespirit",
