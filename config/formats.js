@@ -2138,6 +2138,93 @@ exports.Formats = [
 		//banlist: ['Blast Burn', 'Frenzy Plant', 'Giga Impact', 'Hydro Cannon', 'Hyper Beam', 'Prismatic Laser', 'Roar of Time', 'Rock Wrecker'],
 	},
 	{
+		name: "[Gen 7] Random Hot Potato [No Mod]",
+		desc: `Moves that deal direct damage to an opponent will 'pass' any hazard, status/volatile effects and stat debuffs currently on your side or Pokemon to your opponent's.`,
+		threads: [
+			`&bullet; <a href="https://www.smogon.com/forums/threads/3643676/">Hot Potato</a>`,
+		],
+		team: 'random',
+		ruleset: ['[Gen 7] Random Battle'],
+
+	    onAfterMovePriority: -10,
+		onAfterMove: function(pokemon, target, moveData) {
+			if (pokemon === target || moveData.category === 'Status' || !target.hp) return;
+			if (Object.keys(pokemon.side.sideConditions).length > 0) {
+				for (let i in pokemon.side.sideConditions) {
+					let condition = pokemon.side.sideConditions[i];
+					target.side.addSideCondition(condition.id);
+					if (pokemon.side.sideConditions.layers) target.side.sideConditions.layers = pokemon.side.sideConditions.layers;
+					pokemon.side.removeSideCondition(condition.id);
+					this.add('-sideend', pokemon.side, this.getEffect(condition.id).name, '[silent]');
+				}
+			}
+			//status
+			if (pokemon.status) {
+				let status = pokemon.status, statusData = Object.assign({}, pokemon.statusData);
+				pokemon.cureStatus('');
+				target.trySetStatus(status);
+				target.statusData = statusData;
+				target.statusData.target = target;
+			}
+
+			//boosts
+			let boosts = {};
+			for (let i in pokemon.boosts) {
+				if (pokemon.boosts[i] < 0) {
+					boosts[i] = pokemon.boosts[i];
+					pokemon.boosts[i] = 0;
+				}
+			}
+			if (Object.keys(boosts).length) {
+		        this.add('-clearnegativeboost', pokemon);
+				this.boost(boosts, target, pokemon);
+			}
+
+			// attract
+			if (pokemon.volatiles.attract) {
+				target.volatiles.attract = {
+					id: 'attract',
+					source: pokemon,
+					target: target,
+					sourcePosition: 0,
+					sourceEffect: pokemon.volatiles.attract.sourceEffect
+				};
+				pokemon.removeVolatile('attract');
+			}
+
+			//mean look n stuff
+			if (pokemon.volatiles.trapped) {
+				target.addVolatile('trapped', pokemon, pokemon.volatiles.trapped.sourceMove, 'trapper');
+				pokemon.removeVolatile('trapped')
+			}
+
+			//magma storm, infestation, etc
+			if (pokemon.volatiles.partiallytrapped) {
+				target.addVolatile('trapped', pokemon, pokemon.volatiles.partiallytrapped.sourceMove, 'trapper');
+				pokemon.removeVolatile('partiallytrapped')
+			}
+
+			//perish song. exists here because metronome
+			if (pokemon.volatiles.perishsong) {
+				target.volatiles.perishsong = Object.assign({}, pokemon.volatiles.perishsong);
+				target.volatiles.perishsong.target = target;
+				pokemon.removeVolatile('perishsong');
+				this.add('-start', pokemon, `perish${target.volatiles.perishsong.duration}`, '[silent]');
+			}
+
+			// other passable volatiles
+			let passableVolatiles = ['confusion', 'curse', 'disable', 'embargo', 'encore', 'foresight', 'healblock', 'imprison', 'leechseed', 'miracleeye', 'nightmare', 'taunt', 'telekinesis', 'torment'];
+			for (let i in pokemon.volatiles) {
+				if (passableVolatiles.includes(i)) {
+					let duration = pokemon.volatiles[i].duration;
+					pokemon.removeVolatile(i);
+					target.addVolatile(i);
+					if (duration) target.volatiles[i].duration = duration;
+				}
+			}
+		}
+	},
+	{
 		name: "[Gen 7] Random Top Percentage",
 		mod: 'toppercentage',
 		desc: ["&lt; <a href=\"http://www.smogon.com/forums/threads/top-percentage.3564459/\">Top Percentage</a>"],
@@ -3456,6 +3543,94 @@ exports.Formats = [
 		mod: 'hotpotato',
 		ruleset: ['[Gen 7] OU'],
 		banlist: ['Blast Burn', 'Frenzy Plant', 'Giga Impact', 'Hydro Cannon', 'Hyper Beam', 'Perish Song', 'Prismatic Laser', 'Roar of Time', 'Rock Wrecker'],
+	},
+	{
+		name: "[Gen 7] Hot Potato [No Mod]",
+		desc: `Moves that deal direct damage to an opponent will 'pass' any hazard, status/volatile effects and stat debuffs currently on your side or Pokemon to your opponent's.`,
+		threads: [
+			`&bullet; <a href="https://www.smogon.com/forums/threads/3643676/">Hot Potato</a>`,
+		],
+
+		ruleset: ['[Gen 7] OU'],
+		banlist: ['Blast Burn', 'Frenzy Plant', 'Giga Impact', 'Hydro Cannon', 'Hyper Beam', 'Perish Song', 'Prismatic Laser', 'Roar of Time', 'Rock Wrecker'],
+		
+	    onAfterMovePriority: -10,
+		onAfterMove: function(pokemon, target, moveData) {
+			if (pokemon === target || moveData.category === 'Status' || !target.hp) return;
+			if (Object.keys(pokemon.side.sideConditions).length > 0) {
+				for (let i in pokemon.side.sideConditions) {
+					let condition = pokemon.side.sideConditions[i];
+					target.side.addSideCondition(condition.id);
+					if (pokemon.side.sideConditions.layers) target.side.sideConditions.layers = pokemon.side.sideConditions.layers;
+					pokemon.side.removeSideCondition(condition.id);
+					this.add('-sideend', pokemon.side, this.getEffect(condition.id).name, '[silent]');
+				}
+			}
+			//status
+			if (pokemon.status) {
+				let status = pokemon.status, statusData = Object.assign({}, pokemon.statusData);
+				pokemon.cureStatus('');
+				target.trySetStatus(status);
+				target.statusData = statusData;
+				target.statusData.target = target;
+			}
+
+			//boosts
+			let boosts = {};
+			for (let i in pokemon.boosts) {
+				if (pokemon.boosts[i] < 0) {
+					boosts[i] = pokemon.boosts[i];
+					pokemon.boosts[i] = 0;
+				}
+			}
+			if (Object.keys(boosts).length) {
+		        this.add('-clearnegativeboost', pokemon);
+				this.boost(boosts, target, pokemon);
+			}
+
+			// attract
+			if (pokemon.volatiles.attract) {
+				target.volatiles.attract = {
+					id: 'attract',
+					source: pokemon,
+					target: target,
+					sourcePosition: 0,
+					sourceEffect: pokemon.volatiles.attract.sourceEffect
+				};
+				pokemon.removeVolatile('attract');
+			}
+
+			//mean look n stuff
+			if (pokemon.volatiles.trapped) {
+				target.addVolatile('trapped', pokemon, pokemon.volatiles.trapped.sourceMove, 'trapper');
+				pokemon.removeVolatile('trapped')
+			}
+
+			//magma storm, infestation, etc
+			if (pokemon.volatiles.partiallytrapped) {
+				target.addVolatile('trapped', pokemon, pokemon.volatiles.partiallytrapped.sourceMove, 'trapper');
+				pokemon.removeVolatile('partiallytrapped')
+			}
+
+			//perish song. exists here because metronome
+			if (pokemon.volatiles.perishsong) {
+				target.volatiles.perishsong = Object.assign({}, pokemon.volatiles.perishsong);
+				target.volatiles.perishsong.target = target;
+				pokemon.removeVolatile('perishsong');
+				this.add('-start', pokemon, `perish${target.volatiles.perishsong.duration}`, '[silent]');
+			}
+
+			// other passable volatiles
+			let passableVolatiles = ['confusion', 'curse', 'disable', 'embargo', 'encore', 'foresight', 'healblock', 'imprison', 'leechseed', 'miracleeye', 'nightmare', 'taunt', 'telekinesis', 'torment'];
+			for (let i in pokemon.volatiles) {
+				if (passableVolatiles.includes(i)) {
+					let duration = pokemon.volatiles[i].duration;
+					pokemon.removeVolatile(i);
+					target.addVolatile(i);
+					if (duration) target.volatiles[i].duration = duration;
+				}
+			}
+		}
 	},
 	{
 		name: "[Gen 7] Inheritance",

@@ -254,7 +254,6 @@ exports.BattleScripts = {
 				if (pokemon.boosts[i] < 0) {
 					boosts[i] = pokemon.boosts[i];
 					pokemon.boosts[i] = 0;
-					this.add('-setboost', pokemon, i, pokemon.boosts[i], '[silent]');
 				}
 			}
 			if (Object.keys(boosts).length) {
