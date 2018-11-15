@@ -2149,8 +2149,10 @@ exports.Formats = [
 	    onAfterMovePriority: -10,
 		onAfterMove: function(pokemon, target, moveData) {
 			if (pokemon === target || moveData.category === 'Status' || !target.hp) return;
+			let passableConditions = ['stealthrock', 'stickyweb', 'spikes', 'toxicspikes'];
 			if (Object.keys(pokemon.side.sideConditions).length > 0) {
 				for (let i in pokemon.side.sideConditions) {
+					if (!passableConditions.includes(i)) continue;
 					let condition = pokemon.side.sideConditions[i];
 					target.side.addSideCondition(condition.id);
 					if (pokemon.side.sideConditions.layers) target.side.sideConditions.layers = pokemon.side.sideConditions.layers;
@@ -3557,8 +3559,10 @@ exports.Formats = [
 	    onAfterMovePriority: -10,
 		onAfterMove: function(pokemon, target, moveData) {
 			if (pokemon === target || moveData.category === 'Status' || !target.hp) return;
+			let passableConditions = ['stealthrock', 'stickyweb', 'spikes', 'toxicspikes'];
 			if (Object.keys(pokemon.side.sideConditions).length > 0) {
 				for (let i in pokemon.side.sideConditions) {
+					if (!passableConditions.includes(i)) continue;
 					let condition = pokemon.side.sideConditions[i];
 					target.side.addSideCondition(condition.id);
 					if (pokemon.side.sideConditions.layers) target.side.sideConditions.layers = pokemon.side.sideConditions.layers;
