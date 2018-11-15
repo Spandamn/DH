@@ -67,7 +67,7 @@ exports.BattleAbilities = {
 		shortDesc: "This Pokemon is immune to Fire Moves and Burns, and takes half damage from Water Moves",
 		onTryHit: function (target, source, move) {
 			if (target !== source && move.type === 'Fire') {
-					this.add('-immune', target, '[msg]', '[from] ability: Water Absorb');
+					this.add('-immune', target, '[msg]', '[from] ability: Unmelting');
 				return null;
 			}
 		},
@@ -85,14 +85,14 @@ exports.BattleAbilities = {
 		},
 		onUpdate: function (pokemon) {
 			if (pokemon.status === 'brn') {
-				this.add('-activate', pokemon, 'ability: Unfreezing');
+				this.add('-activate', pokemon, 'ability: Unmelting');
 				pokemon.cureStatus();
 			}
 		},
 		onSetStatus: function (status, target, source, effect) {
 			if (status.id !== 'brn') return;
 			if (!effect || !effect.status) return false;
-			this.add('-immune', target, '[msg]', '[from] ability: Unfreezing');
+			this.add('-immune', target, '[msg]', '[from] ability: Unmelting');
 			return false;
 		},
 		id: "unmelting",
