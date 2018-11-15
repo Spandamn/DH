@@ -229,6 +229,7 @@ exports.BattleScripts = {
 		}
 		// Hot Potato here
 		if (pokemon !== target && !moveData.isFutureMove && damage && target.hp) {
+			// side conditions
 			if (Object.keys(pokemon.side.sideConditions).length > 0) {
 				for (let i in pokemon.side.sideConditions) {
 					let condition = pokemon.side.sideConditions[i];
@@ -238,22 +239,30 @@ exports.BattleScripts = {
 					this.add('-sideend', pokemon.side, this.getEffect(condition.id).name, '[silent]');
 				}
 			}
+			//status
 			if (pokemon.status) {
 				let status = pokemon.status, statusData = Object.assign({}, pokemon.statusData);
-				pokemon.setStatus('');
-				target.setStatus(status);
+				pokemon.cureStatus('');
+				target.trySetStatus(status);
 				target.statusData = statusData;
 				target.statusData.target = target;
 			}
+
+			//boosts
+			let boosts = {};
 			for (let i in pokemon.boosts) {
 				if (pokemon.boosts[i] < 0) {
-					target.boosts[i] += pokemon.boosts[i];
-					if (target.boosts[i] < -6) target.boosts[i] = -6;
-					this.add('-setboost', target, i, target.boosts[i], '[silent]');
+					boosts[i] = pokemon.boosts[i];
 					pokemon.boosts[i] = 0;
 					this.add('-setboost', pokemon, i, pokemon.boosts[i], '[silent]');
 				}
 			}
+			if (Object.keys(boosts).length) {
+		        this.add('-clearnegativeboost', pokemon);
+				this.boost(boosts, target, pokemon);
+			}
+
+			// attract
 			if (pokemon.volatiles.attract) {
 				target.volatiles.attract = {
 					id: 'attract',
@@ -264,25 +273,35 @@ exports.BattleScripts = {
 				};
 				pokemon.removeVolatile('attract');
 			}
+
+			//mean look n stuff
 			if (pokemon.volatiles.trapped) {
 				target.addVolatile('trapped', pokemon, pokemon.volatiles.trapped.sourceMove, 'trapper');
 				pokemon.removeVolatile('trapped')
 			}
+
+			//magma storm, infestation, etc
 			if (pokemon.volatiles.partiallytrapped) {
 				target.addVolatile('trapped', pokemon, pokemon.volatiles.partiallytrapped.sourceMove, 'trapper');
 				pokemon.removeVolatile('partiallytrapped')
 			}
+
+			//perish song. exists here because metronome
 			if (pokemon.volatiles.perishsong) {
 				target.volatiles.perishsong = Object.assign({}, pokemon.volatiles.perishsong);
 				target.volatiles.perishsong.target = target;
 				pokemon.removeVolatile('perishsong');
 				this.add('-start', pokemon, `perish${target.volatiles.perishsong.duration}`, '[silent]');
 			}
+
+			// other passable volatiles
 			let passableVolatiles = ['confusion', 'curse', 'disable', 'embargo', 'encore', 'foresight', 'healblock', 'imprison', 'leechseed', 'miracleeye', 'nightmare', 'taunt', 'telekinesis', 'torment'];
 			for (let i in pokemon.volatiles) {
 				if (passableVolatiles.includes(i)) {
+					let duration = pokemon.volatiles[i].duration;
 					pokemon.removeVolatile(i);
 					target.addVolatile(i);
+					if (duration) target.volatiles[i].duration = duration;
 				}
 			}
 		}
