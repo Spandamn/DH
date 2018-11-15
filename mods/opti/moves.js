@@ -297,6 +297,27 @@ exports.BattleMovedex = {
 		type: "Normal",
 		zMovePower: 175,
 	},
+	"regireset": {
+		accuracy: 100,
+		basePower: 100,
+		category: "Special",
+		desc: "No additional effect.",
+		shortDesc: "No additional effect. Hits adjacent Pokemon.",
+		id: "regireset",
+		isViable: true,
+		name: "Regireset",
+		pp: 10,
+		priority: 0,
+		flags: {protect: 1, mirror: 1, sound: 1, authentic: 1},
+		onHit: function (target) {
+			target.clearBoosts();
+			this.add('-clearboost', target);
+		},
+		secondary: null,
+		target: "allAdjacent",
+		type: "Steel",
+		zMovePower: 180,
+	},
 	"checkmate": {
 		accuracy: 100,
 		basePower: 90,
