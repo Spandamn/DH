@@ -978,13 +978,13 @@ regalreversal: {
 		rating: 2,
 		num: 27,
 	},
-    "electricefflux": {
-        shortDesc: "On switch-in, the battlefield is overcharged with electricity until this Ability is not active in battle.",
+    "electricalefflux": {
+        shortDesc: "On switch-in, the battlefield is overcharged with electricity until this Ability is no longer active in battle.",
         onStart: function (source) {
-            this.setTerrain('electricefflux');
+            this.setTerrain('electricalefflux');
         },
-        onAnySetTerrainr: function (target, source, terrain) {
-            if (this.getTerrain().id === 'electricefflux' && !(terrain.id in {electricefflux:1, psychicpour:1, grassygush:1, mistymount:1})) return false;
+        onAnySetTerrain: function (target, source, terrain) {
+            if (this.isTerrain('electricalefflux') && !(terrain.id in {electricalefflux:1, psychicpour:1, grassygush:1, mistymount:1})) return false;
         },
         onEnd: function (pokemon) {
             if (this.terrainData.source !== pokemon) return;
@@ -992,7 +992,7 @@ regalreversal: {
                 for (let j = 0; j < this.sides[i].active.length; j++) {
                     let target = this.sides[i].active[j];
                     if (target === pokemon) continue;
-                    if (target && target.hp && target.hasAbility('electricefflux')) {
+                    if (target && target.hp && target.hasAbility('electricalefflux')) {
                         this.terrainData.source = target;
                         return;
                     }
@@ -1000,8 +1000,57 @@ regalreversal: {
             }
             this.clearTerrain();
         },
-        id: "electricefflux",
-        name: "Electric Efflux",
+		effect: {
+			duration: 0,
+			onSetStatus: function (status, target, source, effect) {
+				if (status.id === 'slp' && target.isGrounded() && !target.isSemiInvulnerable()) {
+					if (effect.effectType === 'Move' && !effect.secondaries) {
+						this.add('-activate', target, 'move: Electrical Efflux');
+					}
+					return false;
+				}
+			},
+			onTryHit: function (target, source, effect) {
+				if (!target.isGrounded() || target.isSemiInvulnerable() || target.side === source.side) return;
+				if (effect && (effect.type !== 'Steel' || effect.target === 'self')) {
+					return;
+				}
+				this.add('-activate', target, 'move: Electrical Efflux');
+				return null;
+			},
+			onTryAddVolatile: function (status, target) {
+				if (!target.isGrounded() || target.isSemiInvulnerable()) return;
+				if (status.id === 'yawn') {
+					this.add('-activate', target, 'move: Electrical Efflux');
+					return null;
+				}
+			},
+			onBasePower: function (basePower, attacker, defender, move) {
+				if (move.type === 'Electric' && attacker.isGrounded() && !attacker.isSemiInvulnerable()) {
+					this.debug('supercharged electric terrain boost');
+					return this.chainModify(1.5);
+				}
+			},
+			onStart: function (battle, source, effect) {
+				if (effect && effect.effectType === 'Ability') {
+					this.add('-fieldstart', 'move: Electrical Efflux', '[from] ability: ' + effect, '[of] ' + source);
+				} else {
+					this.add('-fieldstart', 'move: Electrical Efflux');
+				}
+				for (const side of this.sides) {
+					for (const target of side.active) {
+						if (target && target.hp && target.status === 'slp') target.cureStatus();
+					}
+				}
+			},
+			onResidualOrder: 21,
+			onResidualSubOrder: 2,
+			onEnd: function () {
+				this.add('-fieldend', 'move: Electrical Efflux');
+			},
+		},
+        id: "electricalefflux",
+        name: "Electrical Efflux",
         rating: 5,
         num: 50001,
     },
@@ -1440,12 +1489,12 @@ regalreversal: {
 		num: 179,
 	},
     "grassygush": {
-        shortDesc: "On switch-in, the battlefield is covered with a layer of thick grass until this Ability is not active in battle.",
+        shortDesc: "On switch-in, the battlefield is completely shrouded in grass until this Ability is no longer active in battle.",
         onStart: function (source) {
             this.setTerrain('grassygush');
         },
         onAnySetTerrain: function (target, source, terrain) {
-            if (this.getTerrain().id === 'grassygush' && !(terrain.id in {electricefflux:1, psychicpour:1, grassygush:1, mistymount:1})) return false;
+            if (this.isTerrain('grassygush') && !(terrain.id in {electricalefflux:1, psychicpour:1, grassygush:1, mistymount:1})) return false;
         },
         onEnd: function (pokemon) {
             if (this.terrainData.source !== pokemon) return;
@@ -1461,6 +1510,48 @@ regalreversal: {
             }
             this.clearTerrain();
         },
+		effect: {
+			duration: 0,
+			onSetStatus: function (status, target, source, effect) {
+				if (status.id === 'brn' && target.isGrounded() && !target.isSemiInvulnerable()) {
+					if (effect.effectType === 'Move' && !effect.secondaries) {
+						this.add('-activate', target, 'move: Grassy Gush');
+					}
+					return false;
+				}
+			},
+			onTryHit: function (target, source, effect) {
+				if (!target.isGrounded() || target.isSemiInvulnerable() || target.side === source.side) return;
+				if (effect && ((effect.effectType === 'Move' && effect.type !== 'Ground') || effect.target === 'self')) {
+					return;
+				}
+				this.add('-activate', target, 'move: Grassy Gush');
+				return null;
+			},
+			onBasePower: function (basePower, attacker, defender, move) {
+				let weakenedMoves = ['earthquake', 'bulldoze', 'magnitude'];
+				if (weakenedMoves.includes(move.id)) {
+					this.debug('move weakened by supercharged grassy terrain');
+					return this.chainModify(0.5);
+				}
+				if (move.type === 'Grass' && attacker.isGrounded()) {
+					this.debug('supercharged grassy terrain boost');
+					return this.chainModify(1.5);
+				}
+			},
+			onStart: function (battle, source, effect) {
+				if (effect && effect.effectType === 'Ability') {
+					this.add('-fieldstart', 'move: Grassy Gush', '[from] ability: ' + effect, '[of] ' + source);
+				} else {
+					this.add('-fieldstart', 'move: Grassy Gush');
+				}
+			},
+			onResidualOrder: 21,
+			onResidualSubOrder: 2,
+			onEnd: function () {
+				this.add('-fieldend', 'move: Grassy Gush');
+			},
+		},
         id: "grassygush",
         name: "Grassy Gush",
         rating: 5,
@@ -2237,7 +2328,7 @@ regalreversal: {
             this.setTerrain('mistymount');
         },
         onAnySetTerrain: function (target, source, terrain) {
-            if (this.getTerrain().id === 'mistymount' && !(terrain.id in {electricefflux:1, psychicpour:1, grassygush:1, mistymount:1})) return false;
+            if (this.isTerrain('mistymount') && !(terrain.id in {electricalefflux:1, psychicpour:1, grassygush:1, mistymount:1})) return false;
         },
         onEnd: function (pokemon) {
             if (this.terrainData.source !== pokemon) return;
@@ -2253,6 +2344,46 @@ regalreversal: {
             }
             this.clearTerrain();
         },
+		effect: {
+			duration: 0,
+			onSetStatus: function (status, target, source, effect) {
+				if (!target.isGrounded() || target.isSemiInvulnerable()) return;
+				if (effect && effect.status) {
+					this.add('-activate', target, 'move: Misty Mount');
+				}
+				return false;
+			},
+			onTryAddVolatile: function (status, target, source, effect) {
+				if (!target.isGrounded() || target.isSemiInvulnerable()) return;
+				if (status.id === 'confusion') {
+					if (effect.effectType === 'Move' && !effect.secondaries) this.add('-activate', target, 'move: Misty Mount');
+					return null;
+				}
+			},
+			onBasePower: function (basePower, attacker, defender, move) {
+				if (defender.isGrounded() && !defender.isSemiInvulnerable()) {
+					if (move.type === 'Dragon'){
+						this.debug('misty terrain weaken');
+						return this.chainModify(0.5);
+					} else if (move.type === 'Fairy'){ 
+						this.debug('supercharged misty terrain boost');
+						return this.chainModify(1.5);
+					}
+				}
+			},
+			onStart: function (battle, source, effect) {
+				if (effect && effect.effectType === 'Ability') {
+					this.add('-fieldstart', 'move: Misty Mount', '[from] ability: ' + effect, '[of] ' + source);
+				} else {
+					this.add('-fieldstart', 'move: Misty Mount');
+				}
+			},
+			onResidualOrder: 21,
+			onResidualSubOrder: 2,
+			onEnd: function (side) {
+				this.add('-fieldend', 'Misty Mount');
+			},
+		},
         id: "mistymount",
         name: "Misty Mount",
         rating: 5,
@@ -2916,7 +3047,7 @@ regalreversal: {
             this.setTerrain('psychicpour');
         },
         onAnySetTerrain: function (target, source, terrain) {
-            if (this.getTerrain().id === 'psychicpour' && !(terrain.id in {electricefflux:1, psychicpour:1, grassygush:1, mistymount:1})) return false;
+            if (this.isTerrain('psychicpour') && !(terrain.id in {electricalefflux:1, psychicpour:1, grassygush:1, mistymount:1})) return false;
         },
         onEnd: function (pokemon) {
             if (this.terrainData.source !== pokemon) return;
@@ -2924,7 +3055,7 @@ regalreversal: {
                 for (let j = 0; j < this.sides[i].active.length; j++) {
                     let target = this.sides[i].active[j];
                     if (target === pokemon) continue;
-                    if (target && target.hp && target.hasAbility('psychicpour')) {
+                    if (target && target.hp && target.hasAbility('electricalefflux')) {
                         this.terrainData.source = target;
                         return;
                     }
@@ -2932,6 +3063,42 @@ regalreversal: {
             }
             this.clearTerrain();
         },
+		effect: {
+			duration: 0,
+			onTryHit: function (target, source, effect) {
+				if (!target.isGrounded() || target.isSemiInvulnerable() || target.side === source.side) return;
+				if (effect && ((effect.type !== 'Dark' || effect.priority <= 0.1) || effect.target === 'self')) {
+					return;
+				}
+				this.add('-activate', target, 'move: Psychic Pour');
+				return null;
+			},
+			onTryAddVolatile: function (status, target, source, effect) {
+				if (!target.isGrounded() || target.isSemiInvulnerable()) return;
+				if (status.id === 'confusion') {
+					if (effect.effectType === 'Move' && !effect.secondaries) this.add('-activate', target, 'move: Misty Terrain');
+					return null;
+				}
+			},
+			onBasePower: function (basePower, attacker, defender, move) {
+				if (move.type === 'Psychic' && attacker.isGrounded() && !attacker.isSemiInvulnerable()) {
+					this.debug('supercharged psychic terrain boost');
+					return this.chainModify(1.5);
+				}
+			},
+			onStart: function (battle, source, effect) {
+				if (effect && effect.effectType === 'Ability') {
+					this.add('-fieldstart', 'move: Psychic Pour', '[from] ability: ' + effect, '[of] ' + source);
+				} else {
+					this.add('-fieldstart', 'move: Psychic Pour');
+				}
+			},
+			onResidualOrder: 21,
+			onResidualSubOrder: 2,
+			onEnd: function () {
+				this.add('-fieldend', 'move: Psychic Pour');
+			},
+		},
         id: "psychicpour",
         name: "Psychic Pour",
         rating: 5,
