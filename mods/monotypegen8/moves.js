@@ -1,4 +1,7 @@
-"burningice": {
+'use strict';
+
+exports.BattleMovedex = {
+	"burningice": {
 		num: 126,
 		accuracy: 85,
 		basePower: 110,
@@ -43,3 +46,4 @@
 		zMovePower: 185,
 		contestType: "Beautiful",
 	},
+};

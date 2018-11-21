@@ -7878,6 +7878,78 @@ let BattleFormatsData = {
 		tier: "OU",
 		doublesTier: "DOU",
 	},
+		nia: {
+		tier: "LC",
+		doublesTier: "DLC",
+	},
+	kuji: {
+		tier: "LC",
+		doublesTier: "DLC",
+	},
+	anupipi: {
+		tier: "LC",
+		doublesTier: "DLC",
+	},
+	yveltiny: {
+		tier: "LC",
+		doublesTier: "DLC",
+	},
+	reginys: {
+		tier: "LC",
+		doublesTier: "DLC",
+	},
+	korb: {
+		tier: "LC",
+		doublesTier: "DLC",
+	},
+	grob: {
+		tier: "LC",
+		doublesTier: "DLC",
+	},
+	quazone: {
+		tier: "LC",
+		doublesTier: "DLC",
+	},
+	artizzard: {
+		tier: "LC",
+		doublesTier: "DLC",
+	},
+	zapundo: {
+		tier: "LC",
+		doublesTier: "DLC",
+	},
+	moltinder: {
+		tier: "LC",
+		doublesTier: "DLC",
+	},
+	nymphole: {
+		tier: "LC",
+		doublesTier: "DLC",
+	},
+	gir: {
+		tier: "LC",
+		doublesTier: "DLC",
+	},
+	giraltered: {
+		tier: "LC",
+		doublesTier: "DLC",
+	},
+	pal: {
+		tier: "LC",
+		doublesTier: "DLC",
+	},
+	temphant: {
+		tier: "LC",
+		doublesTier: "DLC",
+	},
+	zorakit: {
+		tier: "LC",
+		doublesTier: "DLC",
+	},
+	mugurem: {
+		tier: "LC",
+		doublesTier: "DLC",
+	},
 };
 
 exports.BattleFormatsData = BattleFormatsData;
