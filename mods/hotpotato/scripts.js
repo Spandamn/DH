@@ -1,8 +1,8 @@
 'use strict';
 exports.BattleScripts = {
-	moveHit: function (target, pokemon, move, moveData, isSecondary, isSelf) {
+	moveHit(target, pokemon, moveOrMoveName, moveData, isSecondary, isSelf) {
 		let damage;
-		move = this.getMoveCopy(move);
+		let move = this.getActiveMove(moveOrMoveName);
 
 		if (!moveData) moveData = move;
 		if (!moveData.flags) moveData.flags = {};
@@ -47,7 +47,10 @@ exports.BattleScripts = {
 			hitResult = this.singleEvent('TryHit', moveData, {}, target, pokemon, move);
 		}
 		if (!hitResult) {
-			if (hitResult === false) this.add('-fail', target);
+			if (hitResult === false) {
+				this.add('-fail', pokemon);
+				this.attrLastMove('[still]');
+			}
 			return false;
 		}
 
@@ -92,7 +95,8 @@ exports.BattleScripts = {
 
 			if (damage === false || damage === null) {
 				if (damage === false && !isSecondary && !isSelf) {
-					this.add('-fail', target);
+					this.add('-fail', pokemon);
+					this.attrLastMove('[still]');
 				}
 				this.debug('damage calculation interrupted');
 				return false;
@@ -119,7 +123,8 @@ exports.BattleScripts = {
 			if (moveData.heal && !target.fainted) {
 				let d = target.heal((this.gen < 5 ? Math.floor : Math.round)(target.maxhp * moveData.heal[0] / moveData.heal[1]));
 				if (!d && d !== 0) {
-					this.add('-fail', target);
+					this.add('-fail', pokemon);
+					this.attrLastMove('[still]');
 					this.debug('heal interrupted');
 					return false;
 				}
@@ -200,7 +205,10 @@ exports.BattleScripts = {
 
 			if (!didSomething && !moveData.self && !moveData.selfdestruct) {
 				if (!isSelf && !isSecondary) {
-					if (didSomething === false) this.add('-fail', pokemon);
+					if (didSomething === false) {
+						this.add('-fail', pokemon);
+						this.attrLastMove('[still]');
+					}
 				}
 				this.debug('move failed because it did nothing');
 				return false;
@@ -311,7 +319,8 @@ exports.BattleScripts = {
 			if (hitResult) {
 				target.forceSwitchFlag = true;
 			} else if (hitResult === false && move.category === 'Status') {
-				this.add('-fail', target);
+				this.add('-fail', pokemon);
+				this.attrLastMove('[still]');
 				return false;
 			}
 		}
