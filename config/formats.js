@@ -67,6 +67,19 @@ exports.Formats = [
 		ruleset: ['[Gen 7] OU'],
 	},
 	{
+		name: "[Gen 7] Prioritize Randoms",
+		desc: [
+			"&bullet; In this format, moves with 60 power or fewer gains +1 priority.",
+		],
+		ruleset: ['[Gen 7] Random Battle'],
+		team: 'random',
+		onModifyPriority: function (priority, pokemon, target, move) {
+			// @ts-ignore
+			if (move.category === 'Status' || move.basePower > 60 || !pokemon) return priority;
+			if (!pokemon.hasAbility('technician')) return priority + 1;
+		},
+	},
+	{
 		name: "[Gen 7] Shared Power [Random]",
 		desc: [
 			`All of the team's abilities are active at once, except those that are restricted.`,
@@ -7415,6 +7428,19 @@ exports.Formats = [
 		ruleset: ['Pokemon', 'Sleep Clause Mod', 'Species Clause', 'Moody Clause', 'Evasion Moves Clause', 'Endless Battle Clause', 'HP Percentage Mod', 'Cancel Mod', 'Team Preview', 'Swagger Clause', 'Baton Pass Clause'],
 		banlist: ['Illegal', 'Unreleased'],
 		mod: 'fanmadegame',
+	},
+	{
+		name: "[Gen 7] Prioritize",
+		desc: [
+			"&bullet; In this format, moves with 60 power or fewer gains +1 priority.",
+		],
+		ruleset: ['[Gen 7] OU'],
+		banlist: ['Mud Slap', 'Hidden Power', 'Storm Throw', 'Frost Breath', 'Tapu Lele'],
+		onModifyPriority: function (priority, pokemon, target, move) {
+			// @ts-ignore
+			if (move.category === 'Status' || move.basePower > 60 || !pokemon) return priority;
+			if (!pokemon.hasAbility('technician')) return priority + 1;
+		},
 	},
 	{
 		name: "[Gen 7] Transmuters [WIP]",
