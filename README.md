@@ -144,8 +144,8 @@ Owner
 
 Staff
 
+- Bär Halberkamp [bumbadadabum] - Development
 - Chris Monsanto [chaos] - Sysadmin
-- Leonardo Julca [Slayer95] - Development
 - Mathieu Dias-Martins [Marty-D] - Research (game mechanics), Development
 - [The Immortal] - Development
 
@@ -155,17 +155,20 @@ Retired Staff
 - Cathy J. Fitzpatrick [cathyjf] - Development, Sysadmin
 - Hugh Gordon [V4] - Research (game mechanics), Development
 - Juanma Serrano [Joim] - Development, Sysadmin
+- Leonardo Julca [Slayer95] - Development
 
 Major Contributors
 
-- Bär Halberkamp [bumbadadabum] - Development
 - Kevin Lau [Ascriptmaster] - Development, Art (battle animations)
 - Konrad Borowski [xfix] - Development
+- Neil Rashbrook [urkerab] - Development
 - Quinton Lee [sirDonovan] - Development
+- [Ridaz] - Art (battle animations)
 
 Contributors
 
 - Andrew Goodsell [Zracknel] - Art (battle weather backdrops)
+- Austin Couturier [Austin] - Development
 - Avery Zimmer [Lyren, SolarisFox] - Development
 - Ben Davies [Morfent] - Development
 - Ben Frengley [TalkTakesTime] - Development
@@ -174,9 +177,8 @@ Contributors
 - Ian Clail [Layell] - Art (battle graphics, sprites)
 - Jeremy Piemonte [panpawn] - Development
 - Kris Johnson [Kris] - Development
-- Neil Rashbrook [urkerab] - Development
+- Leonard Craft III [DaWoblefet] - Research (game mechanics)
 - Robin Vandenbrande [Quinella] - Development
-- [Ridaz] - Art (battle animations)
 - Tobias Mann [asgdf] - Development
 
 DragonHeaven

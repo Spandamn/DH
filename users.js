@@ -218,6 +218,7 @@ function cacheGroupData() {
 
 	let groups = Config.groups;
 	let punishgroups = Config.punishgroups;
+	/** @type {{[k: string]: 'processing' | true}} */
 	let cachedGroups = {};
 
 	/**
@@ -615,7 +616,7 @@ class User {
 			targetUser = target;
 		}
 
-		if (room && room.auth) {
+		if (room && (room.auth || room.parent)) {
 			group = room.getAuth(this);
 			if (targetUser) targetGroup = room.getAuth(targetUser);
 			if (room.isPrivate === true && this.can('makeroom')) group = this.group;
@@ -1556,7 +1557,7 @@ function pruneInactive(threshold) {
 
 /**
  * @param {any} worker
- * @param {string} workerid
+ * @param {string | number} workerid
  * @param {string} socketid
  * @param {string} ip
  * @param {string} protocol
@@ -1583,7 +1584,7 @@ function socketConnect(worker, workerid, socketid, ip, protocol) {
 		if (err) {
 			// It's not clear what sort of condition could cause this.
 			// For now, we'll basically assume it can't happen.
-			require('./lib/crashlogger')(err, 'randomBytes');
+			Monitor.crashlog(err, 'randomBytes');
 			// This is pretty crude, but it's the easiest way to deal
 			// with this case, which should be impossible anyway.
 			user.disconnectAll();
@@ -1599,7 +1600,7 @@ function socketConnect(worker, workerid, socketid, ip, protocol) {
 }
 /**
  * @param {any} worker
- * @param {string} workerid
+ * @param {string | number} workerid
  * @param {string} socketid
  */
 function socketDisconnect(worker, workerid, socketid) {
@@ -1611,7 +1612,7 @@ function socketDisconnect(worker, workerid, socketid) {
 }
 /**
  * @param {any} worker
- * @param {string} workerid
+ * @param {string | number} workerid
  * @param {string} socketid
  * @param {string} message
  */
