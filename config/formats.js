@@ -2191,9 +2191,8 @@ exports.Formats = [
 		team: 'random',
 		ruleset: ['[Gen 7] Random Battle'],
 
-	    onAfterMovePriority: -10,
-		onAfterMove: function(pokemon, target, moveData) {
-			if (pokemon === target || moveData.category === 'Status' || !target.hp) return;
+		onAfterDamage: function (damage, pokemon, target, moveData) {
+			if (pokemon === target || moveData.category === 'Status' || !target.hp || !damage) return;
 			let passableConditions = ['stealthrock', 'stickyweb', 'spikes', 'toxicspikes'];
 			if (Object.keys(pokemon.side.sideConditions).length > 0) {
 				for (let i in pokemon.side.sideConditions) {
@@ -3653,10 +3652,9 @@ exports.Formats = [
 		ruleset: ['[Gen 7] OU'],
 		banlist: ['Blast Burn', 'Frenzy Plant', 'Giga Impact', 'Hydro Cannon', 'Hyper Beam', 'Perish Song', 'Prismatic Laser', 'Roar of Time', 'Rock Wrecker', 'Victini'],
 		unbanlist: ['Aegislash'],
-		
-	    onAfterMovePriority: -10,
-		onAfterMove: function(pokemon, target, moveData) {
-			if (pokemon === target || moveData.category === 'Status' || !target.hp) return;
+
+		onAfterDamage: function(damage, pokemon, target, moveData) {
+			if (pokemon === target || moveData.category === 'Status' || !target.hp || !damage) return;
 			let passableConditions = ['stealthrock', 'stickyweb', 'spikes', 'toxicspikes'];
 			if (Object.keys(pokemon.side.sideConditions).length > 0) {
 				for (let i in pokemon.side.sideConditions) {
