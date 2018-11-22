@@ -3640,7 +3640,8 @@ exports.Formats = [
 
 		mod: 'hotpotato',
 		ruleset: ['[Gen 7] OU'],
-		banlist: ['Blast Burn', 'Frenzy Plant', 'Giga Impact', 'Hydro Cannon', 'Hyper Beam', 'Perish Song', 'Prismatic Laser', 'Roar of Time', 'Rock Wrecker'],
+		banlist: ['Blast Burn', 'Frenzy Plant', 'Giga Impact', 'Hydro Cannon', 'Hyper Beam', 'Perish Song', 'Prismatic Laser', 'Roar of Time', 'Rock Wrecker', 'Victini'],
+		unbanlist: ['Aegislash'],
 	},
 	{
 		name: "[Gen 7] Hot Potato [No Mod]",
@@ -3650,7 +3651,8 @@ exports.Formats = [
 		],
 
 		ruleset: ['[Gen 7] OU'],
-		banlist: ['Blast Burn', 'Frenzy Plant', 'Giga Impact', 'Hydro Cannon', 'Hyper Beam', 'Perish Song', 'Prismatic Laser', 'Roar of Time', 'Rock Wrecker'],
+		banlist: ['Blast Burn', 'Frenzy Plant', 'Giga Impact', 'Hydro Cannon', 'Hyper Beam', 'Perish Song', 'Prismatic Laser', 'Roar of Time', 'Rock Wrecker', 'Victini'],
+		unbanlist: ['Aegislash'],
 		
 	    onAfterMovePriority: -10,
 		onAfterMove: function(pokemon, target, moveData) {
