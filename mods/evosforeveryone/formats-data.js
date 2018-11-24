@@ -7818,6 +7818,66 @@ let BattleFormatsData = {
 		tier: "OU",
 		doublesTier: "DOU",
 	},
+	primebird: {
+		tier: "OU",
+		doublesTier: "DOU",
+	},
+	cryohedral: {
+		tier: "OU",
+		doublesTier: "DOU",
+	},
+	pinceratops: {
+		tier: "OU",
+		doublesTier: "DOU",
+	},
+	cadenescent: {
+		tier: "OU",
+		doublesTier: "DOU",
+	},
+	spotlise: {
+		tier: "OU",
+		doublesTier: "DOU",
+	},
+	diamontink: {
+		tier: "OU",
+		doublesTier: "DOU",
+	},
+	mausolectre: {
+		tier: "OU",
+		doublesTier: "DOU",
+	},
+	drampasgrandpa: {
+		tier: "OU",
+		doublesTier: "DOU",
+	},
+	crimsagama: {
+		tier: "OU",
+		doublesTier: "DOU",
+	},
+	coralossal: {
+		tier: "OU",
+		doublesTier: "DOU",
+	},
+	ansunne: {
+		tier: "OU",
+		doublesTier: "DOU",
+	},
+	asmoone: {
+		tier: "OU",
+		doublesTier: "DOU",
+	},
+	cinderillo: {
+		tier: "OU",
+		doublesTier: "DOU",
+	},
+	elphys: {
+		tier: "OU",
+		doublesTier: "DOU",
+	},
+	meteocule: {
+		tier: "OU",
+		doublesTier: "DOU",
+	},
 };
 
 exports.BattleFormatsData = BattleFormatsData;

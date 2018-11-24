@@ -6250,27 +6250,37 @@ exports.BattleMovedex = {
 		accuracy: true,
 		basePower: 0,
 		category: "Status",
-		desc: "Raises the Attack and Special Attack of Pokemon on the user's side with the Abilities Plus or Minus by 1 stage.",
-		shortDesc: "Raises Atk, Sp. Atk of allies with Plus/Minus by 1.",
+		desc: "Raises Defense by one stage. Next turn, if a Steel typed move is used by user of Gear Up, its power is doubled.",
+		shortDesc: "Raises Defense by one stage. Next turn, if a Steel typed move is used by user of Gear Up, its power is doubled.",
 		id: "gearup",
 		name: "Gear Up",
 		pp: 20,
-		priority: 0,
-		flags: {snatch: 1, authentic: 1},
-		onHitSide: function (side, source) {
-			let targets = [];
-			for (let p in side.active) {
-				if (side.active[p].hasAbility(['plus', 'minus'])) {
-					targets.push(side.active[p]);
+				priority: 0,
+		flags: {snatch: 1},
+		volatileStatus: 'gearup',
+		onHit: function (pokemon) {
+			this.add('-activate', pokemon, 'move: Gear Up');
+		},
+		effect: {
+			duration: 2,
+			onRestart: function (pokemon) {
+				this.effectData.duration = 2;
+			},
+			onBasePowerPriority: 3,
+			onBasePower: function (basePower, attacker, defender, move) {
+				if (move.type === 'Steel') {
+					this.debug('gearup boost');
+					return this.chainModify(2);
 				}
-			}
-			if (!targets.length) return false;
-			for (let i = 0; i < targets.length; i++) this.boost({atk: 1, spa: 1}, targets[i], source, 'move: Gear Up');
+			},
+		},
+		boosts: {
+			def: 1,
 		},
 		secondary: false,
-		target: "allySide",
+		target: "self",
 		type: "Steel",
-		zMoveBoost: {spa: 1},
+		zMoveBoost: {def: 1},
 		contestType: "Clever",
 	},
 	"genesissupernova": {

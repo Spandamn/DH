@@ -4995,11 +4995,11 @@ exports.BattleItems = {
 		spritenum: 656,
 		onTakeItem: false,
 		zMove: "Pulverizing Pancake",
-		zMoveFrom: "Giga Impact",
+		zMoveFrom: "Flatten",
 		zMoveUser: ["Snorlax"],
 		num: 804,
 		gen: 7,
-		desc: "If holder is a Snorlax with Giga Impact, it can use Pulverizing Pancake.",
+		desc: "If holder is a Snorlax with Flatten, it can use Pulverizing Pancake.",
 	},
 	"snowball": {
 		id: "snowball",
@@ -6498,6 +6498,13 @@ exports.BattleItems = {
 		fling: {
 			basePower: 30,
 		},
+			onAfterDamage: function (damage, target, source, move) {
+			if (move.type === 'Light' && target.useItem()) {
+				if (!this.boost({[target.stats.spa > target.stats.atk ? 'spa' : 'atk']: 2})) {
+					return null;
+				}
+			}
+		},
 		num: 545,
 		gen: 5,
 		desc: "Does nothing for now. Check back later!",
@@ -6512,5 +6519,73 @@ exports.BattleItems = {
 		num: 242,
 		gen: 7,
 		desc: "Does nothing for now. Check back later!",
+	},
+	"honey": {
+		id: "honey",
+		name: "Honey",
+		spritenum: 444,
+		fling: {
+			basePower: 10,
+		},
+		onBasePowerPriority: 6,
+		onBasePower: function (basePower, user, target, move) {
+			if (move.type === 'Food') {
+				return this.chainModify([0x1333, 0x1000]);
+			}
+		},
+		num: 251,
+		gen: 3,
+		desc: "Holder's Food-type attacks have 1.2x power.",
+	},
+		"foodiumz": {
+		id: "foodiumz",
+		name: "Foodium Z",
+		spritenum: 632,
+		onPlate: 'Food',
+		onTakeItem: false,
+		zMove: true,
+		zMoveType: "Food",
+		forcedForme: "Arceus-Food",
+		num: 777,
+		gen: 7,
+		desc: "If holder has a Food move, this item allows it to use a Food Z-Move.",
+	},
+	"deliciousplate": {
+		id: "deliciousplate",
+		name: "Delicious Plate",
+		spritenum: 105,
+		onPlate: 'Food',
+		onBasePowerPriority: 6,
+		onBasePower: function (basePower, user, target, move) {
+			if (move && move.type === 'Food') {
+				return this.chainModify([0x1333, 0x1000]);
+			}
+		},
+		onTakeItem: function (item, pokemon, source) {
+			if ((source && source.baseTemplate.num === 493) || pokemon.baseTemplate.num === 493) {
+				return false;
+			}
+			return true;
+		},
+		forcedForme: "Arceus-Food",
+		num: 311,
+		gen: 4,
+		desc: "Holder's Food-type attacks have 1.2x power. Judgment is Food type.",
+	},
+	"foodmemory": {
+		id: "foodmemory",
+		name: "Food Memory",
+		spritenum: 673,
+		onMemory: 'Food',
+		onTakeItem: function (item, pokemon, source) {
+			if ((source && source.baseTemplate.num === 773) || pokemon.baseTemplate.num === 773) {
+				return false;
+			}
+			return true;
+		},
+		forcedForme: "Silvally-Food",
+		num: 909,
+		gen: 7,
+		desc: "Holder's Multi-Attack is Food type.",
 	},
 };

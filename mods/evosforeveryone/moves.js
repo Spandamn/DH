@@ -19300,6 +19300,129 @@ let BattleMovedex = {
 		zMovePower: 100,
 		contestType: "Cool",
 	},
+	"cloudyterrain": {
+		num: 580.5,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		desc: "For 5 turns, the terrain becomes Cloudy Terrain. During the effect, attacks used by grounded Pokemon hit targets with type immunities for neutral damage. Camouflage transforms the user into a Normal type, Nature Power becomes Tri Attack, and Secret Power has a 30% chance to make the opponent flinch. Fails if the current terrain is Cloudy Terrain.",
+		shortDesc: "5 turns. Grounded: Attacks have no type immunities, Ghost damage halved.",
+		id: "cloudyterrain",
+		name: "Cloudy Terrain",
+		pp: 10,
+		priority: 0,
+		flags: {nonsky: 1},
+		terrain: 'cloudyterrain',
+		effect: {
+			duration: 5,
+			durationCallback: function (source, effect) {
+				if (source && source.hasItem('terrainextender')) {
+					return 8;
+				}
+				return 5;
+			},
+			onTryMove: function (pokemon, target, move) {
+				if ( pokemon.isGrounded() ) move.ignoreImmunity = true;
+			},
+			onStart: function (battle, source, effect) {
+				if (effect && effect.effectType === 'Ability') {
+					this.add('-fieldstart', 'move: Cloudy Terrain', '[from] ability: ' + effect, '[of] ' + source);
+				} else {
+					this.add('-fieldstart', 'move: Cloudy Terrain');
+				}
+			},
+			onBasePower: function (basePower, attacker, defender, move) {
+				if (move.type === 'Ghost' && defender.isGrounded() && !defender.isSemiInvulnerable()) {
+					this.debug('cloudy terrain weaken');
+					return this.chainModify(0.5);
+				}
+			},
+			onResidualOrder: 5,
+			onResidualSubOrder: 3,
+			onResidual: function () {
+				this.eachEvent('Terrain');
+			},
+			onEnd: function () {
+				if (!this.effectData.duration) this.eachEvent('Terrain');
+				this.add('-fieldend', 'move: Cloudy Terrain');
+			},
+		},
+		secondary: null,
+		target: "all",
+		type: "Normal",
+		zMoveBoost: {spd: 1},
+		contestType: "Beautiful",
+	},
+	"fireball": {
+		num: 394.5,
+		accuracy: 100,
+		basePower: 100,
+		category: "Physical",
+		desc: "Has a 10% chance to burn the target. If the target lost HP, the user takes recoil damage equal to 33% the HP lost by the target, rounded half up, but not less than 1 HP.",
+		shortDesc: "Has 33% recoil. 10% chance to burn",
+		id: "fireball",
+		isViable: true,
+		name: "Fireball",
+		pp: 15,
+		priority: 0,
+		flags: { protect: 1, mirror: 1 },
+		recoil: [33, 100],
+		secondary: {
+			chance: 10,
+			status: 'brn',
+		},
+		target: "normal",
+		type: "Fire",
+		zMovePower: 180,
+		contestType: "Cool",
+	},
+	"wildfire": {
+		num: 609.5,
+		accuracy: 100,
+		basePower: 20,
+		category: "Special",
+		desc: "Has a 100% chance to burn the target.",
+		shortDesc: "100% chance to burn the target.",
+		id: "wildfire",
+		isViable: true,
+		name: "Wildfire ",
+		pp: 20,
+		priority: 0,
+		flags: {contact: 1, protect: 1, mirror: 1},
+		secondary: {
+			chance: 100,
+			status: 'brn',
+		},
+		target: "normal",
+		type: "Fire",
+		zMovePower: 100,
+		contestType: "Cute",
+	},
+	"spiritsteal": {
+		num: 668,
+		accuracy: 100,
+		basePower: 0,
+		category: "Status",
+		desc: "Lowers the target's Special Defense by 1 stage. The user restores its HP equal to the target's Special Defense stat calculated with its stat stage before this move was used. If Big Root is held by the user, the HP recovered is 1.3x normal, rounded half down. Fails if the target's Special Defense stat stage is -6.",
+		shortDesc: "User heals HP=target's SpD stat. Lowers SpD by 1.",
+		id: "spiritsteal",
+		isViable: true,
+		name: "Spirit Steal",
+		pp: 10,
+		priority: 0,
+		flags: {protect: 1, reflectable: 1, mirror: 1, heal: 1},
+		onHit: function (target, source) {
+			if (target.boosts.spd === -6) return false;
+			let spd = target.getStat('spd', false, true);
+			let success = this.boost({spd: -1}, target, source, null, false, true);
+			return this.heal(spd, source, target) || success;
+		},
+		secondary: null,
+		target: "normal",
+		type: "Ghost",
+		zMoveBoost: {def: 1},
+		contestType: "Cute",
+	},
 };
 
 exports.BattleMovedex = BattleMovedex;

@@ -141,7 +141,7 @@ exports.BattleFormatsData = { //
         tier: "OU",
     },
     archedactylmega: {
-        tier: "OU",
+        tier: "Uber",
         requiredItem: "archedactylite",
     },
     hippopopin: {
@@ -451,6 +451,10 @@ exports.BattleFormatsData = { //
     moltie: {
         tier: "OU",
     },
+    moltiemega: {
+        tier: "Uber",
+        requiredItem: "moltieite",
+    },
     belpet: {
         tier: "LC",
     },
@@ -662,9 +666,13 @@ exports.BattleFormatsData = { //
     dianbro: {
         tier: "OU",
     },
-    dianbromega: {
+    dianbromegad: {
         tier: "OU",
-        requiredItem: "dianbroite",
+        requiredItem: "dianbrodite",
+    },
+    dianbromegas: {
+        tier: "OU",
+        requiredItem: "dianbrosite",
     },
     chatotorus: {
         tier: "OU",
@@ -742,7 +750,7 @@ exports.BattleFormatsData = { //
         tier: "OU",
     },
     lucasolmegal: {
-        tier: "OU",
+        tier: "Uber",
         requiredItem: "lucasollite",
     },
     lucasolmegaa: {
@@ -922,7 +930,7 @@ exports.BattleFormatsData = { //
         tier: "OU",
     },
     gonzap: {
-        tier: "OU",
+        tier: "Uber",
     },
     bouffanine: {
         tier: "OU",
@@ -957,7 +965,7 @@ exports.BattleFormatsData = { //
         tier: "OU",
     },
     alakariomegal: {
-        tier: "OU",
+        tier: "Uber",
         requiredItem: "alakariolite",
     },
     alakariomegaa: {
@@ -1096,6 +1104,10 @@ exports.BattleFormatsData = { //
     kangoruskhan: {
         tier: "OU",
     },
+    kangoruskhanmega: {
+        tier: "Uber",
+        requiredItem: "kangoruskhanite",
+    },
     heebleye: {
         tier: "OU",
     },
@@ -1189,6 +1201,10 @@ exports.BattleFormatsData = { //
     },
     thundurbee: {
         tier: "OU",
+    },
+    thundurbeemega: {
+        tier: "Uber",
+        requiredItem: "thundurbeeite",
     },
     gallatross: {
         tier: "OU",
@@ -1334,7 +1350,7 @@ exports.BattleFormatsData = { //
         tier: "OU",
     },
     lucashadowmega: {
-        tier: "OU",
+        tier: "Uber",
         requiredItem: "lucashadowite",
     },
     cradilego: {
@@ -1759,7 +1775,7 @@ exports.BattleFormatsData = { //
 		 requiredItem: "Red Orb",
     },
     dialcatty: {
-        tier: "OU",
+        tier: "Uber",
     },
     lunatic: {
         tier: "OU",
@@ -1777,58 +1793,58 @@ exports.BattleFormatsData = { //
         tier: "OU",
     },
     omneus: {
-        tier: "OU",
+        tier: "Uber",
     },
     omneusfire: {
-        tier: "OU",
+        tier: "Uber",
     },
     omneuswater: {
-        tier: "OU",
+        tier: "Uber",
     },
     omneuselectric: {
-        tier: "OU",
+        tier: "Uber",
     },
     omneusgrass: {
-        tier: "OU",
+        tier: "Uber",
     },
     omneusice: {
-        tier: "OU",
+        tier: "Uber",
     },
     omneusfighting: {
-        tier: "OU",
+        tier: "Uber",
     },
     omneuspoison: {
-        tier: "OU",
+        tier: "Uber",
     },
     omneusground: {
-        tier: "OU",
+        tier: "Uber",
     },
     omneusflying: {
-        tier: "OU",
+        tier: "Uber",
     },
     omneuspsychic: {
-        tier: "OU",
+        tier: "Uber",
     },
     omneusbug: {
-        tier: "OU",
+        tier: "Uber",
     },
     omneusrock: {
-        tier: "OU",
+        tier: "Uber",
     },
     omneusghost: {
-        tier: "OU",
+        tier: "Uber",
     },
     omneusdragon: {
-        tier: "OU",
+        tier: "Uber",
     },
     omneusdark: {
-        tier: "OU",
+        tier: "Uber",
     },
     omneussteel: {
-        tier: "OU",
+        tier: "Uber",
     },
     omneusfairy: {
-        tier: "OU",
+        tier: "Uber",
     },
     pheralie: {
         tier: "OU",
@@ -1916,7 +1932,7 @@ exports.BattleFormatsData = { //
         tier: "OU",
     },
     dittsey: {
-        tier: "OU",
+        tier: "Uber",
     },
     aravealola: {
         tier: "OU",
@@ -1973,10 +1989,10 @@ exports.BattleFormatsData = { //
         tier: "OU",
     },
     miminja: {
-        tier: "OU",
+        tier: "Uber",
     },
     miminjareborn: {
-        tier: "OU",
+        tier: "Uber",
     },
     murkaleo: {
         tier: "OU",
@@ -1988,7 +2004,7 @@ exports.BattleFormatsData = { //
         tier: "Uber",
     },
     quindamega: {
-		  requireMove: "Dragon Ascent",
+		  requiredMove: "Dragon Ascent",
         tier: "Uber",
     },
     sablegigas: {
@@ -2019,7 +2035,7 @@ exports.BattleFormatsData = { //
         tier: "OU",
     },
     toxicariomega: {
-        tier: "OU",
+        tier: "Uber",
         requiredItem: "toxicarioite",
     },
     washoxchromosome: {
@@ -2065,14 +2081,22 @@ exports.BattleFormatsData = { //
     miniancieore: {
         tier: "OU",
     },
+    minianciemegaore: {
+        tier: "OU",
+        requiredItem: "miniancieoreite",
+    },
     minianciejewel: {
         tier: "OU",
+    },
+    minianciemegaore: {
+        tier: "Uber",
+        requiredItem: "minianciejewelite",
     },
     tapudede: {
         tier: "OU",
     },
     shenala: {
-        tier: "OU",
+        tier: "Uber",
     },
     entir: {
         tier: "OU",
@@ -2103,10 +2127,10 @@ exports.BattleFormatsData = { //
         tier: "OU",
     },
     deoxurkoutlet: {
-        tier: "OU",
+        tier: "Uber",
     },
     dio: {
-        tier: "OU",
+        tier: "Uber",
     },
     generott: {
         tier: "OU",
@@ -2175,7 +2199,7 @@ exports.BattleFormatsData = { //
         tier: "OU",
     },
     peridotmega: {
-        tier: "OU",
+        tier: "Uber",
         requiredItem: "peridotite",
     },
     stundicuno: {
@@ -2198,7 +2222,7 @@ exports.BattleFormatsData = { //
         tier: "OU",
     },
     dad: {
-        tier: "OU",
+        tier: "Uber",
     },
     glaive: {
         tier: "OU",
@@ -2416,6 +2440,10 @@ exports.BattleFormatsData = { //
     kasukabe: {
         tier: "OU",
     },
+    kasukabemega: {
+        tier: "Uber",
+        requiredItem: "kasukabeite",
+    },
     sakamaki: {
         tier: "OU",
     },
@@ -2493,7 +2521,7 @@ exports.BattleFormatsData = { //
         tier: "OU",
     },
     absokomega: {
-        tier: "OU",
+        tier: "Uber",
         requiredItem: "absokoite"
     },
     permafrost: {
@@ -2550,7 +2578,7 @@ exports.BattleFormatsData = { //
         tier: "OU",
     },
     kartariamega: {
-        tier: "OU",
+        tier: "Uber",
         requiredItem: "kartariaite",
     },
     altarbat: {
@@ -2700,7 +2728,7 @@ exports.BattleFormatsData = { //
         tier: "OU",
     },
     diceus: {
-        tier: "OU",
+        tier: "Uber",
     },
     nintwo: {
         tier: "OU",
@@ -2723,10 +2751,10 @@ exports.BattleFormatsData = { //
         tier: "OU",
     },
     kyzor: {
-        tier: "OU",
+        tier: "Uber",
     },
     kyzormega: {
-        tier: "OU",
+        tier: "Uber",
         requiredItem: "kyzorite",
     },
     gumanitoos: {
@@ -2936,7 +2964,7 @@ exports.BattleFormatsData = { //
         tier: "OU",
     },
     enteon: {
-        tier: "OU",
+        tier: "Uber",
     },
     vilossom: {
         tier: "OU",

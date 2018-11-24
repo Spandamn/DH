@@ -217,7 +217,7 @@ exports.commands = {
 	},
 	showdownboilerplatehelp: ["/showdownboilerplate - Links to the Showdown-Boilerplate repository on Github."],
 
-	seen: function (target, room, user) {
+	/*seen: function (target, room, user) {
 		if (!this.runBroadcast()) return;
 		if (!target) return this.parse('/help seen');
 		let targetUser = Users.get(target);
@@ -227,7 +227,7 @@ exports.commands = {
 		if (!seen) return this.sendReplyBox(target + " has never been online on this server.");
 		this.sendReplyBox(target + " was last seen <b>" + moment(seen).fromNow() + "</b>.");
 	},
-	seenhelp: ["/seen - Shows when the user last connected on the server."],
+	seenhelp: ["/seen - Shows when the user last connected on the server."],*/
 	ytmusic: "music",
 	music: function (target, room, user, connection, cmd) {
 		if (!target) return this.parse('/help music');

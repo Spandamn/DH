@@ -67,6 +67,19 @@ exports.Formats = [
 		ruleset: ['[Gen 7] OU'],
 	},
 	{
+		name: "[Gen 7] Prioritize Randoms",
+		desc: [
+			"&bullet; In this format, moves with 60 power or fewer gains +1 priority.",
+		],
+		ruleset: ['[Gen 7] Random Battle'],
+		team: 'random',
+		onModifyPriority: function (priority, pokemon, target, move) {
+			// @ts-ignore
+			if (move.category === 'Status' || move.basePower > 60 || !pokemon) return priority;
+			if (!pokemon.hasAbility('technician')) return priority + 1;
+		},
+	},
+	{
 		name: "[Gen 7] Shared Power [Random]",
 		desc: [
 			`All of the team's abilities are active at once, except those that are restricted.`,
@@ -113,6 +126,38 @@ exports.Formats = [
 			}
 		},
 	},
+	{
+		name: "[Gen 7] Super Staff Bros Brawl",
+		desc: "Super Staff Bros returns for another round! Battle with a random team of pokemon created by the sim staff.",
+		threads: [
+			`&bullet; <a href="https://www.smogon.com/articles/super-staff-bros-brawl">Introduction &amp; Roster</a>`,
+		],
+
+		mod: 'ssb',
+		team: 'randomStaffBros',
+		ruleset: ['HP Percentage Mod', 'Cancel Mod', 'Sleep Clause Mod'],
+		onBegin: function () {
+			this.add('raw|SUPER STAFF BROS <b>BRAWL</b>!!');
+			this.add('message', 'GET READY FOR THE NEXT BATTLE!');
+			this.add(`raw|<div class='broadcast-green'><b>Wondering what all these custom moves, abilities, and items do?<br />Check out the <a href="https://www.smogon.com/articles/super-staff-bros-brawl" target="_blank">Super Staff Bros Brawl Guide</a> and find out!</b></div>`);
+		},
+		onSwitchIn: function (pokemon) {
+			let name = toId(pokemon.illusion ? pokemon.illusion.name : pokemon.name);
+			if (this.getTemplate(name).exists) {
+				// Certain pokemon have volatiles named after their speciesid
+				// To prevent overwriting those, and to prevent accidentaly leaking
+				// that a pokemon is on a team through the onStart even triggering
+				// at the start of a match, users with pokemon names will need their
+				// statuse's to end in "user".
+				name += 'user';
+			}
+			// Add the mon's status effect to it as a volatile.
+			let status = this.getEffect(name);
+			if (status && status.exists) {
+				pokemon.addVolatile(name, pokemon);
+			}
+		},
+},
 	{
 		name: "[Gen 7] Dragon Heaven Super Staff Bros",
 		desc: ["&bullet; The staff here becomes a Pokemon and battles! <br> &bullet; <a href=\"https://github.com/XpRienzo/DragonHeaven/blob/master/mods/dhssb/README.md\">Movesets</a>"],
@@ -2048,7 +2093,6 @@ exports.Formats = [
 			pokemon.side.foe.active[0].addVolatile(sec);
 			sec = statusability[pokemon.side.foe.active[0].ability] ? ("other" + pokemon.side.foe.active[0].ability) : pokemon.side.foe.active[0].ability;
 			pokemon.sec = sec;
-			pokemon.addVolatile(sec);
 		},
 		onSwitchOut: function (pokemon) {
 			if (!pokemon.side.foe.active[0]) return;
@@ -2125,6 +2169,106 @@ exports.Formats = [
 				this.add("-message", pokemon.side.foe.pokemon[0].name + " received " + pokemon.name + "'s " + pokemon.lastM.move + "!");
 			}
 		},
+	},
+	{
+		name: "[Gen 7] Random Hot Potato",
+		desc: `Moves that deal direct damage to an opponent will 'pass' any hazard, status/volatile effects and stat debuffs currently on your side or Pokemon to your opponent's.`,
+		threads: [
+			`&bullet; <a href="https://www.smogon.com/forums/threads/3643676/">Hot Potato</a>`,
+		],
+
+		mod: 'hotpotato',
+		team: "random",
+		ruleset: ['[Gen 7] Random Battle'],
+		//banlist: ['Blast Burn', 'Frenzy Plant', 'Giga Impact', 'Hydro Cannon', 'Hyper Beam', 'Prismatic Laser', 'Roar of Time', 'Rock Wrecker'],
+	},
+	{
+		name: "[Gen 7] Random Hot Potato [No Mod]",
+		desc: `Moves that deal direct damage to an opponent will 'pass' any hazard, status/volatile effects and stat debuffs currently on your side or Pokemon to your opponent's.`,
+		threads: [
+			`&bullet; <a href="https://www.smogon.com/forums/threads/3643676/">Hot Potato</a>`,
+		],
+		team: 'random',
+		ruleset: ['[Gen 7] Random Battle'],
+
+		onAfterDamage: function (damage, pokemon, target, moveData) {
+			if (pokemon === target || moveData.category === 'Status' || !target.hp || !damage) return;
+			let passableConditions = ['stealthrock', 'stickyweb', 'spikes', 'toxicspikes'];
+			if (Object.keys(pokemon.side.sideConditions).length > 0) {
+				for (let i in pokemon.side.sideConditions) {
+					if (!passableConditions.includes(i)) continue;
+					let condition = pokemon.side.sideConditions[i];
+					target.side.addSideCondition(condition.id);
+					if (pokemon.side.sideConditions.layers) target.side.sideConditions.layers = pokemon.side.sideConditions.layers;
+					pokemon.side.removeSideCondition(condition.id);
+					this.add('-sideend', pokemon.side, this.getEffect(condition.id).name, '[silent]');
+				}
+			}
+			//status
+			if (pokemon.status) {
+				let status = pokemon.status, statusData = Object.assign({}, pokemon.statusData);
+				pokemon.cureStatus('');
+				target.trySetStatus(status);
+				target.statusData = statusData;
+				target.statusData.target = target;
+			}
+
+			//boosts
+			let boosts = {};
+			for (let i in pokemon.boosts) {
+				if (pokemon.boosts[i] < 0) {
+					boosts[i] = pokemon.boosts[i];
+					pokemon.boosts[i] = 0;
+				}
+			}
+			if (Object.keys(boosts).length) {
+		        this.add('-clearnegativeboost', pokemon);
+				this.boost(boosts, target, pokemon);
+			}
+
+			// attract
+			if (pokemon.volatiles.attract) {
+				target.volatiles.attract = {
+					id: 'attract',
+					source: pokemon,
+					target: target,
+					sourcePosition: 0,
+					sourceEffect: pokemon.volatiles.attract.sourceEffect
+				};
+				pokemon.removeVolatile('attract');
+			}
+
+			//mean look n stuff
+			if (pokemon.volatiles.trapped) {
+				target.addVolatile('trapped', pokemon, pokemon.volatiles.trapped.sourceMove, 'trapper');
+				pokemon.removeVolatile('trapped')
+			}
+
+			//magma storm, infestation, etc
+			if (pokemon.volatiles.partiallytrapped) {
+				target.addVolatile('trapped', pokemon, pokemon.volatiles.partiallytrapped.sourceMove, 'trapper');
+				pokemon.removeVolatile('partiallytrapped')
+			}
+
+			//perish song. exists here because metronome
+			if (pokemon.volatiles.perishsong) {
+				target.volatiles.perishsong = Object.assign({}, pokemon.volatiles.perishsong);
+				target.volatiles.perishsong.target = target;
+				pokemon.removeVolatile('perishsong');
+				this.add('-start', pokemon, `perish${target.volatiles.perishsong.duration}`, '[silent]');
+			}
+
+			// other passable volatiles
+			let passableVolatiles = ['confusion', 'curse', 'disable', 'embargo', 'encore', 'foresight', 'healblock', 'imprison', 'leechseed', 'miracleeye', 'nightmare', 'taunt', 'telekinesis', 'torment'];
+			for (let i in pokemon.volatiles) {
+				if (passableVolatiles.includes(i)) {
+					let duration = pokemon.volatiles[i].duration;
+					pokemon.removeVolatile(i);
+					target.addVolatile(i);
+					if (duration) target.volatiles[i].duration = duration;
+				}
+			}
+		}
 	},
 	{
 		name: "[Gen 7] Random Top Percentage",
@@ -2256,6 +2400,45 @@ exports.Formats = [
 		},
 		ruleset: ['Pokemon', 'Standard GBU', 'Team Preview'],
 	},
+	// Let's Go!
+	///////////////////////////////////////////////////////////////////
+
+	{
+		section: "Let's Go!",
+		column: 2,
+	},
+	{
+		name: "[Gen 7 Let's Go] OU",
+		threads: [
+			`&bullet; <a href="https://www.smogon.com/forums/threads/3644015/">LGPE OverUsed</a>`,
+		],
+
+		mod: 'letsgo',
+		forcedLevel: 50,
+		ruleset: ['Pokemon', 'Species Clause', 'Nickname Clause', 'Evasion Moves Clause', 'OHKO Clause', 'Sleep Clause Mod', 'HP Percentage Mod', 'Cancel Mod', 'Team Preview'],
+		banlist: ['Illegal', 'Unreleased', 'Uber'],
+	},
+	{
+		name: "[Gen 7 Let's Go] Singles No Restrictions",
+		threads: [
+			`&bullet; <a href="https://www.smogon.com/forums/threads/3643931/">Let's Go! Discussion</a>`,
+		],
+
+		mod: 'letsgo',
+		ruleset: ['Pokemon', 'Allow AVs', 'Endless Battle Clause', 'Team Preview', 'HP Percentage Mod', 'Cancel Mod'],
+		banlist: ['Illegal', 'Unreleased'],
+	},
+	{
+		name: "[Gen 7 Let's Go] Doubles No Restrictions",
+		threads: [
+			`&bullet; <a href="https://www.smogon.com/forums/threads/3643931/">Let's Go! Discussion</a>`,
+		],
+
+		mod: 'letsgo',
+		gameType: 'doubles',
+		ruleset: ['Pokemon', 'Allow AVs', 'Endless Battle Clause', 'Team Preview', 'HP Percentage Mod', 'Cancel Mod'],
+		banlist: ['Illegal', 'Unreleased'],
+	},
 
 	// SM Singles
 	///////////////////////////////////////////////////////////////////
@@ -2275,6 +2458,18 @@ exports.Formats = [
 		ruleset: ['Pokemon', 'Standard', 'Team Preview'],
 		banlist: ['Uber', 'Arena Trap', 'Power Construct', 'Shadow Tag', 'Baton Pass'],
 	},
+	{
+        name: "[Gen 7] OU (No Preview)",
+        desc: [
+			"&bullet; <a href=\"http://www.smogon.com/forums/threads/3608656/\">OU Metagame Discussion</a>",
+			"&bullet; <a href=\"http://www.smogon.com/forums/threads/3587177/\">OU Banlist</a>",
+			"&bullet; <a href=\"http://www.smogon.com/forums/threads/3590726/\">OU Viability Rankings</a>",
+			"&bullet; <a href=\"http://www.smogon.com/forums/threads/3606650/\">OU Sample Teams</a>",
+		],
+        mod: 'gen7',
+        ruleset: ['Pokemon', 'Standard'],
+        banlist: ['Uber', 'Arena Trap', 'Power Construct', 'Shadow Tag', 'Baton Pass'],
+     },
 	{
 		name: "[Gen 7] Ubers",
 		desc: [
@@ -2813,6 +3008,120 @@ exports.Formats = [
 		}
 	},
 	{
+		name: "[Gen 7] Fortemons",
+		desc: `Pok&eacute;mon have all of their moves inherit the properties of the move in their item slot.`,
+		threads: [
+			`&bullet; <a href="https://www.smogon.com/forums/threads/3638520/">Fortemons</a>`,
+		],
+
+		mod: 'gen7',
+		ruleset: ['[Gen 7] OU'],
+		banlist: ['Serene Grace'],
+		restrictedMoves: ['Bide', 'Chatter', 'Dynamic Punch', 'Fake Out', 'Inferno', 'Power Trip', 'Power-Up Punch', 'Pursuit', 'Stored Power', 'Zap Cannon'],
+		validateSet: function (set, teamHas) {
+			const restrictedMoves = this.format.restrictedMoves || [];
+			let item = set.item;
+			let move = this.dex.getMove(set.item);
+			if (!move.exists || move.type === 'Status' || restrictedMoves.includes(move.name) || move.flags['charge']) return this.validateSet(set, teamHas);
+			set.item = '';
+			let problems = this.validateSet(set, teamHas) || [];
+			set.item = item;
+			// @ts-ignore
+			if (this.format.checkLearnset.call(this, move, this.dex.getTemplate(set.species))) problems.push(`${set.species} can't learn ${move.name}.`);
+			// @ts-ignore
+			if (move.secondaries && move.secondaries.some(secondary => secondary.boosts && secondary.boosts.accuracy < 0)) problems.push(`${set.name || set.species}'s move ${move.name} can't be used as an item.`);
+			return problems.length ? problems : null;
+		},
+		checkLearnset: function (move, template, lsetData, set) {
+			if (move.id === 'beatup' || move.id === 'fakeout' || move.damageCallback || move.multihit) return {type: 'invalid'};
+			return this.checkLearnset(move, template, lsetData, set);
+		},
+		onBegin: function () {
+			for (const pokemon of this.p1.pokemon.concat(this.p2.pokemon)) {
+				let move = this.getMove(pokemon.set.item);
+				if (move.exists && move.category !== 'Status') {
+					// @ts-ignore
+					pokemon.forte = move;
+					pokemon.item = 'ultranecroziumz';
+				}
+			}
+		},
+		onModifyPriority: function (priority, pokemon, target, move) {
+			// @ts-ignore
+			if (move.category !== 'Status' && pokemon && pokemon.forte) return priority + pokemon.forte.priority;
+		},
+		onModifyMovePriority: 1,
+		onModifyMove: function (move, pokemon) {
+			// @ts-ignore
+			if (move.category !== 'Status' && pokemon.forte) {
+				// @ts-ignore
+				Object.assign(move.flags, pokemon.forte.flags);
+				// @ts-ignore
+				if (pokemon.forte.self) {
+					// @ts-ignore
+					if (pokemon.forte.self.onHit && move.self && move.self.onHit) {
+						// @ts-ignore
+						for (let i in pokemon.forte.self) {
+							if (i.startsWith('onHit')) continue;
+							// @ts-ignore
+							move.self[i] = pokemon.forte.self[i];
+						}
+					} else {
+						// @ts-ignore
+						move.self = Object.assign(move.self || {}, pokemon.forte.self);
+					}
+				}
+				// @ts-ignore
+				if (pokemon.forte.secondaries) move.secondaries = (move.secondaries || []).concat(pokemon.forte.secondaries);
+				// @ts-ignore
+				move.critRatio = (move.critRatio - 1) + (pokemon.forte.critRatio - 1) + 1;
+				for (let prop of ['basePowerCallback', 'breaksProtect', 'defensiveCategory', 'drain', 'forceSwitch', 'ignoreAbility', 'ignoreDefensive', 'ignoreEvasion', 'ignoreImmunity', 'pseudoWeather', 'recoil', 'selfSwitch', 'sleepUsable', 'stealsBoosts', 'thawsTarget', 'useTargetOffensive', 'volatileStatus', 'willCrit']) {
+					// @ts-ignore
+					if (pokemon.forte[prop]) {
+						// @ts-ignore
+						if (typeof pokemon.forte[prop] === 'number') {
+							// @ts-ignore
+							let num = move[prop] || 0;
+							// @ts-ignore
+							move[prop] = num + pokemon.forte[prop];
+						} else {
+							// @ts-ignore
+							move[prop] = pokemon.forte[prop];
+						}
+					}
+				}
+			}
+		},
+		// @ts-ignore
+		onHitPriority: 1,
+		onHit: function (target, source, move) {
+			// @ts-ignore
+			if (move && move.category !== 'Status' && source.forte) {
+				// @ts-ignore
+				if (source.forte.onHit) this.singleEvent('Hit', source.forte, {}, target, source, move);
+				// @ts-ignore
+				if (source.forte.self && source.forte.self.onHit) this.singleEvent('Hit', source.forte.self, {}, source, source, move);
+				// @ts-ignore
+				if (source.forte.onAfterHit) this.singleEvent('AfterHit', source.forte, {}, target, source, move);
+			}
+		},
+		// @ts-ignore
+		onAfterSubDamagePriority: 1,
+		onAfterSubDamage: function (damage, target, source, move) {
+			// @ts-ignore
+			if (move && move.category !== 'Status' && source.forte && source.forte.onAfterSubDamage) this.singleEvent('AfterSubDamage', source.forte, null, target, source, move);
+		},
+		onModifySecondaries: function (secondaries, target, source, move) {
+			if (secondaries.some(s => !!s.self)) move.selfDropped = false;
+		},
+		// @ts-ignore
+		onAfterMoveSecondarySelfPriority: 1,
+		onAfterMoveSecondarySelf: function (source, target, move) {
+			// @ts-ignore
+			if (move && move.category !== 'Status' && source.forte && source.forte.onAfterMoveSecondarySelf) this.singleEvent('AfterMoveSecondarySelf', source.forte, null, source, target, move);
+		},
+	},
+	{
 		name: "[Gen 7] Tier Shift",
 		ruleset: ['[Gen 7] OU'],
 		desc: ['<a href="http://www.smogon.com/forums/threads/3610073/">Tier Shift</a>: Pokemon get a +10 boost to each stat per tier below OU they are in. UU gets +10, RU +20, NU +30, and PU +40.'],
@@ -3320,6 +3629,108 @@ exports.Formats = [
 			if (template.types.includes(pokemon.hpType)) return;
 			return Object.assign({addedType: pokemon.hpType}, template);
 		},
+	},
+	{
+		name: "[Gen 7] Hot Potato",
+		desc: `Moves that deal direct damage to an opponent will 'pass' any hazard, status/volatile effects and stat debuffs currently on your side or Pokemon to your opponent's.`,
+		threads: [
+			`&bullet; <a href="https://www.smogon.com/forums/threads/3643676/">Hot Potato</a>`,
+		],
+
+		mod: 'hotpotato',
+		ruleset: ['[Gen 7] OU'],
+		banlist: ['Blast Burn', 'Frenzy Plant', 'Giga Impact', 'Hydro Cannon', 'Hyper Beam', 'Perish Song', 'Prismatic Laser', 'Roar of Time', 'Rock Wrecker', 'Victini'],
+		unbanlist: ['Aegislash'],
+	},
+	{
+		name: "[Gen 7] Hot Potato [No Mod]",
+		desc: `Moves that deal direct damage to an opponent will 'pass' any hazard, status/volatile effects and stat debuffs currently on your side or Pokemon to your opponent's.`,
+		threads: [
+			`&bullet; <a href="https://www.smogon.com/forums/threads/3643676/">Hot Potato</a>`,
+		],
+
+		ruleset: ['[Gen 7] OU'],
+		banlist: ['Blast Burn', 'Frenzy Plant', 'Giga Impact', 'Hydro Cannon', 'Hyper Beam', 'Perish Song', 'Prismatic Laser', 'Roar of Time', 'Rock Wrecker', 'Victini'],
+		unbanlist: ['Aegislash'],
+
+		onAfterDamage: function(damage, pokemon, target, moveData) {
+			if (pokemon === target || moveData.category === 'Status' || !target.hp || !damage) return;
+			let passableConditions = ['stealthrock', 'stickyweb', 'spikes', 'toxicspikes'];
+			if (Object.keys(pokemon.side.sideConditions).length > 0) {
+				for (let i in pokemon.side.sideConditions) {
+					if (!passableConditions.includes(i)) continue;
+					let condition = pokemon.side.sideConditions[i];
+					target.side.addSideCondition(condition.id);
+					if (pokemon.side.sideConditions.layers) target.side.sideConditions.layers = pokemon.side.sideConditions.layers;
+					pokemon.side.removeSideCondition(condition.id);
+					this.add('-sideend', pokemon.side, this.getEffect(condition.id).name, '[silent]');
+				}
+			}
+			//status
+			if (pokemon.status) {
+				let status = pokemon.status, statusData = Object.assign({}, pokemon.statusData);
+				pokemon.cureStatus('');
+				target.trySetStatus(status);
+				target.statusData = statusData;
+				target.statusData.target = target;
+			}
+
+			//boosts
+			let boosts = {};
+			for (let i in pokemon.boosts) {
+				if (pokemon.boosts[i] < 0) {
+					boosts[i] = pokemon.boosts[i];
+					pokemon.boosts[i] = 0;
+				}
+			}
+			if (Object.keys(boosts).length) {
+		        this.add('-clearnegativeboost', pokemon);
+				this.boost(boosts, target, pokemon);
+			}
+
+			// attract
+			if (pokemon.volatiles.attract) {
+				target.volatiles.attract = {
+					id: 'attract',
+					source: pokemon,
+					target: target,
+					sourcePosition: 0,
+					sourceEffect: pokemon.volatiles.attract.sourceEffect
+				};
+				pokemon.removeVolatile('attract');
+			}
+
+			//mean look n stuff
+			if (pokemon.volatiles.trapped) {
+				target.addVolatile('trapped', pokemon, pokemon.volatiles.trapped.sourceMove, 'trapper');
+				pokemon.removeVolatile('trapped')
+			}
+
+			//magma storm, infestation, etc
+			if (pokemon.volatiles.partiallytrapped) {
+				target.addVolatile('trapped', pokemon, pokemon.volatiles.partiallytrapped.sourceMove, 'trapper');
+				pokemon.removeVolatile('partiallytrapped')
+			}
+
+			//perish song. exists here because metronome
+			if (pokemon.volatiles.perishsong) {
+				target.volatiles.perishsong = Object.assign({}, pokemon.volatiles.perishsong);
+				target.volatiles.perishsong.target = target;
+				pokemon.removeVolatile('perishsong');
+				this.add('-start', pokemon, `perish${target.volatiles.perishsong.duration}`, '[silent]');
+			}
+
+			// other passable volatiles
+			let passableVolatiles = ['confusion', 'curse', 'disable', 'embargo', 'encore', 'foresight', 'healblock', 'imprison', 'leechseed', 'miracleeye', 'nightmare', 'taunt', 'telekinesis', 'torment'];
+			for (let i in pokemon.volatiles) {
+				if (passableVolatiles.includes(i)) {
+					let duration = pokemon.volatiles[i].duration;
+					pokemon.removeVolatile(i);
+					target.addVolatile(i);
+					if (duration) target.volatiles[i].duration = duration;
+				}
+			}
+		}
 	},
 	{
 		name: "[Gen 7] Inheritance",
@@ -3848,25 +4259,24 @@ exports.Formats = [
 	},
 	{
 		name: "[Gen 7] Partners in Crime",
-		desc: [
-			"Doubles-based metagame where both active ally Pok&eacute;mon share abilities and moves.",
-			"&bullet; <a href=\"http://www.smogon.com/forums/threads/3618488/\">Partners in Crime</a>",
+		desc: `Doubles-based metagame where both active ally Pok&eacute;mon share abilities and moves.`,
+		threads: [
+			`&bullet; <a href="https://www.smogon.com/forums/threads/3618488/">Partners in Crime</a>`,
 		],
 
 		mod: 'pic',
 		gameType: 'doubles',
 		ruleset: ['[Gen 7] Doubles OU', 'Sleep Clause Mod'],
-		banlist: ['Huge Power', 'Imposter', 'Parental Bond', 'Pure Power', 'Wonder Guard', 'Kangaskhanite', 'Mawilite', 'Medichamite', 'Mimic', 'Sketch', 'Transform'],
-		onDisableMovePriority: -1,
+		banlist: ['Kangaskhanite', 'Mawilite', 'Medichamite', 'Huge Power', 'Imposter', 'Normalize', 'Pure Power', 'Wonder Guard', 'Mimic', 'Sketch', 'Transform'],
 		onSwitchInPriority: 2,
 		onSwitchIn: function (pokemon) {
 			if (this.p1.active.every(ally => ally && !ally.fainted)) {
 				let p1a = this.p1.active[0], p1b = this.p1.active[1];
 				if (p1a.ability !== p1b.ability) {
-					let p1a_innate = 'ability' + p1b.ability;
-					p1a.volatiles[p1a_innate] = {id: p1a_innate, target: p1a};
-					let p1b_innate = 'ability' + p1a.ability;
-					p1b.volatiles[p1b_innate] = {id: p1b_innate, target: p1b};
+					let p1aInnate = 'ability' + p1b.ability;
+					p1a.volatiles[p1aInnate] = {id: p1aInnate, target: p1a};
+					let p1bInnate = 'ability' + p1a.ability;
+					p1b.volatiles[p1bInnate] = {id: p1bInnate, target: p1b};
 				}
 			}
 			if (this.p2.active.every(ally => ally && !ally.fainted)) {
@@ -3880,37 +4290,57 @@ exports.Formats = [
 			}
 			let ally = pokemon.side.active.find(ally => ally && ally !== pokemon && !ally.fainted);
 			if (ally && ally.ability !== pokemon.ability) {
+				// @ts-ignore
 				if (!pokemon.innate) {
+					// @ts-ignore
 					pokemon.innate = 'ability' + ally.ability;
+					// @ts-ignore
 					delete pokemon.volatiles[pokemon.innate];
+					// @ts-ignore
 					pokemon.addVolatile(pokemon.innate);
 				}
+				// @ts-ignore
 				if (!ally.innate) {
+					// @ts-ignore
 					ally.innate = 'ability' + pokemon.ability;
+					// @ts-ignore
 					delete ally.volatiles[ally.innate];
+					// @ts-ignore
 					ally.addVolatile(ally.innate);
 				}
 			}
 		},
 		onSwitchOut: function (pokemon) {
+			// @ts-ignore
 			if (pokemon.innate) {
+				// @ts-ignore
 				pokemon.removeVolatile(pokemon.innate);
+				// @ts-ignore
 				delete pokemon.innate;
 			}
 			let ally = pokemon.side.active.find(ally => ally && ally !== pokemon && !ally.fainted);
+			// @ts-ignore
 			if (ally && ally.innate) {
+				// @ts-ignore
 				ally.removeVolatile(ally.innate);
+				// @ts-ignore
 				delete ally.innate;
 			}
 		},
 		onFaint: function (pokemon) {
+			// @ts-ignore
 			if (pokemon.innate) {
+				// @ts-ignore
 				pokemon.removeVolatile(pokemon.innate);
+				// @ts-ignore
 				delete pokemon.innate;
 			}
 			let ally = pokemon.side.active.find(ally => ally && ally !== pokemon && !ally.fainted);
+			// @ts-ignore
 			if (ally && ally.innate) {
+				// @ts-ignore
 				ally.removeVolatile(ally.innate);
+				// @ts-ignore
 				delete ally.innate;
 			}
 		},
@@ -4428,7 +4858,7 @@ exports.Formats = [
   		       "&bullet; <a href=http://www.smogon.com/forums/threads/fusion-moves-fusion-evolution-companion-project.3564805/>Fusion Moves</a>",
   		      ],
   		ruleset: ['Ate Clause', 'Extreme Speed Clause', 'Pokemon', 'Sleep Clause Mod', 'Species Clause', 'Moody Clause', 'Evasion Moves Clause', 'Endless Battle Clause', 'HP Percentage Mod', 'Cancel Mod', 'Team Preview', 'Swagger Clause', 'Baton Pass Clause'],
-		banlist: ['Unreleased', 'Dialcatty', 'Kars', 'Dittsey', 'Diceus', 'Peridot-Mega', 'Kyzor', 'Gonzap', 'Harem', 'Cinshado', 'Enteon', 'Lucashadow-Mega', 'Kahoot', 'Taiwan', 'Passcraft', 'Dad', 'Enteon', 'Entir', 'Necrynx-Ultra', 'Shenala', 'Xurkizard-Mega-Y', 'Archedactyl-Mega', 'Miminja', 'Toxicario-Mega', 'Lucasol-Mega-L', 'Alakario-Mega-L', 'Kangorus-Khan-Mega', 'Absoko-Mega', 'Kartaria-Mega', 'Dio', 'Mendoza', 'Deoxurk-Outlet', 'Omneus','Muddy Seed'], // Mega Kasukabe Necrozerain-Ultra'
+		banlist: ['Unreleased', 'Dialcatty', 'Kars', 'Dittsey', 'Diceus', 'Peridot-Mega', 'Kyzor', 'Gonzap', 'Harem', 'Cinshado', 'Enteon', 'Lucashadow-Mega', 'Taiwan', 'Dad', 'Enteon', 'Entir', 'Necrynx-Ultra', 'Shenala', 'Xurkizard-Mega-Y', 'Archedactyl-Mega', 'Miminja', 'Toxicario-Mega', 'Lucasol-Mega-L', 'Alakario-Mega-L', 'Kangorus-Khan-Mega', 'Absoko-Mega', 'Kartaria-Mega', 'Dio', 'Mendoza', 'Deoxurk-Outlet', 'Omneus','Muddy Seed'], // Mega Kasukabe Necrozerain-Ultra'
 
 		mod: 'fe',
 		onPrepareHit: function(target, source, move) {
@@ -4448,10 +4878,18 @@ exports.Formats = [
 			return temp;
   		},
 		onSwitchIn: function (pokemon) {
-				for (const target of pokemon.side.foe.active) {
-            this.add('-start', pokemon, 'typechange', pokemon.template.types.join('/'), '[silent]');
-				let ability = this.getAbility(target.ability);
-				this.add('raw',ability,ability.shortDesc);
+				if (pokemon.illusion){
+            	this.add('-start', pokemon, 'typechange', pokemon.illusion.template.types.join('/'), '[silent]');
+					let illusionability = this.getAbility(pokemon.illusion.ability);
+					this.add('raw',illusionability,illusionability.shortDesc);
+				} else {
+					let ability = this.getAbility(pokemon.ability);
+					if (pokemon.hasAbility('typeillusionist')){
+       		     this.add('-start', pokemon, 'typechange', pokemon.template.types.join('/'), '[silent]');	
+					} else {
+            		this.add('-start', pokemon, 'typechange', pokemon.getTypes().join('/'), '[silent]');
+					}
+					this.add('raw',ability,ability.shortDesc);
 				}
         },
 		checkLearnset: function (move, template, lsetData, set) {
@@ -4738,7 +5176,7 @@ exports.Formats = [
 				 "&bullet; <a href=https://docs.google.com/spreadsheets/d/18DiYjbZXv1Nm7tU-W0OMgPow0ZO7J2ETJF-hWapwM-o/edit>Sylvemons Archive</a>",
 		      ],
 		ruleset: ['Pokemon', 'Sleep Clause Mod', 'Species Clause', 'Moody Clause', 'Evasion Moves Clause', 'Endless Battle Clause', 'HP Percentage Mod', 'Cancel Mod', 'Team Preview', 'Swagger Clause', 'Baton Pass Clause'],
-		banlist: ['Illegal', 'Uber', 'Arena Trap', 'Time Warp', 'Power Construct', 'Shadow Tag', 'Baton Pass', 'Stalwart + Calm Mind', 'Stakataka', 'Raichu-Alola', 'Regice', 'Articuno', 'Buzzwole + Perseverance', 'Reverse Core'],
+		banlist: ['Illegal', 'Uber', 'Arena Trap', 'Time Warp', 'Power Construct', 'Shadow Tag', 'Baton Pass', 'Stalwart + Calm Mind', 'Stakataka', 'Raichu-Alola', 'Regice', 'Buzzwole + Perseverance', 'Reverse Core'],
 		unbanlist: ['Blaziken'],
 		mod: 'sylvemons',
 	},
@@ -7075,6 +7513,45 @@ exports.Formats = [
 		mod: 'fanmadegame',
 	},
 	{
+		name: "[Gen 7] Prioritize",
+		desc: [
+			"&bullet; In this format, moves with 60 power or fewer gains +1 priority.",
+		],
+		ruleset: ['[Gen 7] OU'],
+		banlist: ['Mud Slap', 'Hidden Power', 'Storm Throw', 'Frost Breath', 'Tapu Lele'],
+		onModifyPriority: function (priority, pokemon, target, move) {
+			// @ts-ignore
+			if (move.category === 'Status' || move.basePower > 60 || !pokemon) return priority;
+			if (!pokemon.hasAbility('technician')) return priority + 1;
+		},
+	},
+	{
+		name: "[Gen 7] Transmuters [WIP]",
+		desc: [
+			"&bullet; You can transmute into other Pokemon by putting its name in the item slot.",
+			"&bullet; The new transmutation will gain the primary ability and stats (including HP of the itemslot pokemon."
+		],
+		mod: 'transmuters',
+		ruleset: ['[Gen 7] OU'],
+		banlist: ['Smeargle', 'Shedinja', 'Kartana'],
+		/*onBegin: function () {
+			let allPokemon = this.p1.pokemon.concat(this.p2.pokemon);
+			for (let i = 0, len = allPokemon.length; i < len; i++) {
+				let pokemon = allPokemon[i];
+				pokemon.canTransmute = this.canTransmute(pokemon);
+			}
+		},*/
+		validateSet: function (set, teamHas) {
+			let bannedPokes = ['Shedinja', 'Kartana'];
+			let isTransmuter = false;
+			if (set.item) isTransmuter = this.dex.getTemplate(set.item);
+			let validator = new this.constructor(Dex.getFormat(this.format.id));
+			let problems = validator.validateSet(Object.assign({}, set, {item: (isTransmuter.exists ? '' : set.item)}), teamHas) || [];
+			if (isTransmuter.exists && (isTransmuter.num <= 0 || bannedPokes.includes(isTransmuter.species) || isTransmuter.tier === 'Uber' || isTransmuter.isMega)) problems.push(`${set.name || set.species} cannot transmute into ${isTransmuter.species}.`);
+			return problems;
+		},
+	},
+	{
 		name: "[Gen 7] Aggression Passion",
 		desc: ["&bullet; Status moves become 80 BP moves of the [Undecided] category."],
 		mod: 'aggressionpassion',
@@ -7163,6 +7640,91 @@ exports.Formats = [
 			if (oMegaTemplate.exists && pokemon.originalSpecies !== oMegaTemplate.baseSpecies) {
 				this.add('-end', pokemon, oMegaTemplate.requiredItem || oMegaTemplate.requiredMove, '[silent]');
 			}
+		},
+	},
+	{
+		name: "[Gen 7] Wild Card [WIP]",
+		desc: `The Ability and Item slot are considered to be wild; allowing entry of moves, abilities and items.`,
+		threads: [
+			`&bullet; <a href="https://www.smogon.com/forums/threads/placeholder/">Wild Card</a>`,
+		],
+
+		mod: 'wildcard',
+		ruleset: ['[Gen 7] OU', 'Sleep Clause Mod'],
+		banlist: ['Kangaskhanite', 'Mawilite', 'Medichamite', 'Huge Power', 'Imposter', 'Normalize', 'Pure Power', 'Wonder Guard', 'Mimic', 'Sketch', 'Transform'],
+		onBegin: function () {
+			let allPokemon = this.p1.pokemon.concat(this.p2.pokemon);
+			for (let i = 0, len = allPokemon.length; i < len; i++) {
+				let pokemon = allPokemon[i];
+				//item slot
+				let itemSlot =  toId(pokemon.item);
+				if (this.getAbility(itemSlot).exists && this.getAbility(itemSlot).effectType === 'Ability') {
+					pokemon.innate = `ability${itemSlot}`;
+					pokemon.item = "";
+				} else if (this.getType(itemSlot).exists && this.getType(itemSlot).effectType === 'Type') {
+					pokemon.types[0] = this.getType(itemSlot).id;
+					pokemon.item = "";
+				} else if (this.getMove(itemSlot).exists && this.getMove(itemSlot).effectType === 'Move') {
+					let move = this.getMove(itemSlot);
+					pokemon.baseMoveSlots.push({
+						move: move.name,
+						id: move.id,
+						pp: ((move.noPPBoosts || move.isZ) ? move.pp : move.pp * 8 / 5),
+						maxpp: ((move.noPPBoosts || move.isZ) ? move.pp : move.pp * 8 / 5),
+						target: move.target,
+						disabled: false,
+						disabledSource: '',
+						used: false,
+					});
+					pokemon.moveSlots = pokemon.baseMoveSlots;
+					pokemon.item = "";
+				}
+
+				//ability slot
+				let abilitySlot = toId(pokemon.ability);
+				if (this.getType(abilitySlot).exists && this.getType(abilitySlot).effectType === 'Type') {
+					pokemon.types[1] = this.getType(abilitySlot).id;
+					pokemon.ability = pokemon.baseAbility = "";
+				} else if (this.getMove(abilitySlot).exists && this.getMove(abilitySlot).effectType === 'Move') {
+					let move = this.getMove(abilitySlot);
+					pokemon.baseMoveSlots.push({
+						move: move.name,
+						id: move.id,
+						pp: ((move.noPPBoosts || move.isZ) ? move.pp : move.pp * 8 / 5),
+						maxpp: ((move.noPPBoosts || move.isZ) ? move.pp : move.pp * 8 / 5),
+						target: move.target,
+						disabled: false,
+						disabledSource: '',
+						used: false,
+					});
+					pokemon.moveSlots = pokemon.baseMoveSlots;
+					pokemon.ability = pokemon.baseAbility = "";
+				}
+			}
+		},
+		validateSet: function (set, teamHas) {
+			let abilityExists = this.dex.getItem(set.ability) || this.dex.getType(set.ability) || this.dex.getAbility(set.ability) || this.dex.getMove(set.ability) || set.ability === '';
+			if (!abilityExists) return [`You have entered gibberish in the ability slot on ${set.name || set.species}.`];
+			let itemExists = this.dex.getItem(set.item) || this.dex.getType(set.item) || this.dex.getAbility(set.item) || this.dex.getMove(set.item) || set.item === '';
+			if (!itemExists) return [`You have entered gibberish in the item slot on ${set.name || set.species}.`];
+			let validator = new this.constructor(Dex.getFormat(this.format.id, ['Ignore Illegal Abilities']));
+			let problems = /*validator.validateSet(Object.assign({}, set, {ability: '', item: ''}), teamHas) ||*/ [];
+			if (set.ability === set.item) problems.push(`You cannot have two of the same thing on a Pokemon. (${set.name || set.species} has two of ${item.name})`);
+			return problems;
+		},
+		onSwitchInPriority: 2,
+		onSwitchIn: function (pokemon) {
+			this.add('-start', pokemon, 'typechange', pokemon.types.join('/'), '[silent]');
+			if (!pokemon.innate) return;
+			pokemon.addVolatile(pokemon.innate);
+		},
+		onSwitchOut: function (pokemon) {
+			if (!pokemon.innate) return;
+			pokemon.removeVolatile(pokemon.innate);
+		},
+		onFaint: function (pokemon) {
+			if (!pokemon.innate) return;
+			pokemon.removeVolatile(pokemon.innate);
 		},
 	},
 	{

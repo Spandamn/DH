@@ -4409,8 +4409,8 @@ let BattleAbilities = {
 		num: 10012,
 	},
 	"enfeeble": {
-		desc: "On switch-in, this Pokemon lowers the Attack of adjacent opposing Pokemon by 1 stage. Pokemon behind a substitute are immune.",
-		shortDesc: "On switch-in, this Pokemon lowers the Attack of adjacent opponents by 1 stage.",
+		desc: "On switch-in, this Pokemon lowers the Special Attack of adjacent opposing Pokemon by 1 stage. Pokemon behind a substitute are immune.",
+		shortDesc: "On switch-in, this Pokemon lowers the Special Attack of adjacent opponents by 1 stage.",
 		onStart: function (pokemon) {
 			let activated = false;
 			for (const target of pokemon.side.foe.active) {
@@ -4430,6 +4430,138 @@ let BattleAbilities = {
 		name: "Enfeeble",
 		rating: 3.5,
 		num: 22,
+	},
+	"wintersgift": {
+		desc: "Raises the Special Attack and Defense of this pokemon and any allies on the field, if Hail is in effect.",
+		shortDesc: "Raises SpA and Def of self and allies in Hail.",
+		onStart: function (pokemon) {
+			delete this.effectData.forme;
+		},
+		onModifySpAPriority: 3,
+		onAllyModifySpA: function (spa) {
+			if (this.isWeather('hail')) {
+				return this.chainModify(1.5);
+			}
+		},
+		onModifyDefPriority: 4,
+		onAllyModifyDef: function (def) {
+			if (this.isWeather('hail')) {
+				return this.chainModify(1.5);
+			}
+		},
+		id: "wintersgift",
+		name: "Winter's Gift",
+		rating: 2.5,
+		num: 122,
+	},
+	"blueice": {
+		desc: "This Pokemon is immune to Fighting-type moves.",
+		shortDesc: "Fighting immunity.",
+		onTryHit: function (target, source, move) {
+			if (target !== source && move.type === 'Fighting') {
+				this.add('-immune', target, '[msg]', '[from] ability: Blue Ice');
+				return null;
+			}
+		},
+		id: "blueice",
+		name: "Blue Ice",
+		rating: 3.5,
+		num: 10,
+	},
+	"battlespirit": {
+		shortDesc: "This Pokemon's attacking stat is multiplied by 1.5 while using a Steel-type attack.",
+		onModifyAtkPriority: 5,
+		onModifyAtk: function (atk, attacker, defender, move) {
+			if (move.type === 'Fighting') {
+				this.debug('Battle Spirit boost');
+				return this.chainModify(1.5);
+			}
+		},
+		onModifySpAPriority: 5,
+		onModifySpA: function (atk, attacker, defender, move) {
+			if (move.type === 'Fighting') {
+				this.debug('Battle Spirit boost');
+				return this.chainModify(1.5);
+			}
+		},
+		id: "battlespirit",
+		name: "Battle Spirit",
+		rating: 3,
+		num: 200,
+	},
+	"ramifications": {
+		desc: "If a Pokemon uses a Dragon- or Rock-type attack against this Pokemon, that Pokemon's attacking stat is halved when calculating the damage to this Pokemon.",
+		shortDesc: "Dragon/Rock-type moves against this Pokemon deal damage with a halved attacking stat.",
+		onModifyAtkPriority: 6,
+		onSourceModifyAtk: function (atk, attacker, defender, move) {
+			if (move.type === 'Dragon' || move.type === 'Rock') {
+				this.debug('Ramifications weaken');
+				return this.chainModify(0.5);
+			}
+		},
+		onModifySpAPriority: 5,
+		onSourceModifySpA: function (atk, attacker, defender, move) {
+			if (move.type === 'Dragon' || move.type === 'Rock') {
+				this.debug('Ramifications weaken');
+				return this.chainModify(0.5);
+			}
+		},
+		id: "ramifications",
+		name: "Ramifications",
+		rating: 3.5,
+		num: 47,
+	},
+	"cloudysurge": {
+		shortDesc: "On switch-in, this Pokemon summons Cloudy Terrain.",
+		onStart: function (source) {
+			this.setTerrain('cloudyterrain');
+		},
+		id: "cloudysurge",
+		name: "Cloudy Surge",
+		rating: 4,
+		num: 228,
+	},
+	"incendiary": {
+		shortDesc: "This Pokemon's attacks are critical hits if the target is poisoned.",
+		onModifyCritRatio: function (critRatio, source, target) {
+			if (target && ['brn'].includes(target.status)) return 5;
+		},
+		id: "incendiary",
+		name: "Incendiary",
+		rating: 2,
+		num: 196,
+	},
+	"atmospear": {
+		desc: "This Pokemon's changes its secondary type to match the move if it uses a Water-, Ice- or Fire-type move, and also summons Rain, Hail, or Sun at the same time.",
+		shortDesc: "This Pokemon's changes its secondary type and summons weather if it uses a Water-, Ice-, or Fire-type attack.",
+		onPrepareHit: function (source, target, move) {
+			if (move.hasBounced) return;
+			let type = move.type;
+			if (type && ( type === 'Fire' || type === 'Ice' || type === 'Water')) {
+				if ( !source.getTypes().includes( type )){
+					source.setType("Flying");
+					source.addType(type);
+					let newType = "Flying/";
+					newType += type;
+					this.add('-start', source, 'typechange', newType, '[from] Atmospear');
+				}
+				if ( move.type === 'Fire' && !this.isWeather( 'sunnyday')) this.setWeather( 'sunnyday' );
+				if ( move.type === 'Water' && !this.isWeather( 'raindance')) this.setWeather( 'raindance' );
+				if ( move.type === 'Ice' && !this.isWeather( 'hail')) this.setWeather( 'hail' );
+				if ( move.id === "blizzard" ) move.accuracy = true;
+			}
+		},
+		id: "atmospear",
+		name: "Atmospear",
+		rating: 4.5,
+		num: 168,
+	},
+	"defibrillator": {
+		shortDesc: "No competitive use.",
+		id: "defibrillator",
+		name: "Defibrillator",
+		rating: 0,
+		num: 118,
 	},
 };
 
