@@ -13748,7 +13748,7 @@ let BattlePokedex = {
 		num: 332,
 		species: "Cacturne",
 		types:["Grass", "Fighting"],
-		baseStats: {hp: 70, atk: 120, def: 57, spa: 118, spd: 70, spe: 65},
+		baseStats: {hp: 70, atk: 120, def: 82, spa: 118, spd: 70, spe: 65},
 		abilities: {0: "Sand Rush", 1: "Sand Veil", H: "Desert Coat"},
 		weightkg: 77.4,
 	},
@@ -13880,6 +13880,17 @@ let BattlePokedex = {
         color: "Red",
         eggGroups: ["Field"],
     },
+	kommoo: {
+		num: 784,
+		species: "Kommo-o",
+		types: ["Dragon", "Ground"],
+		baseStats: {hp: 75, atk: 106, def: 80, spa: 67, spd: 110, spe: 102},
+		abilities: {0: "Battle Armor", H: "Sand Stream"},
+		heightm: 1.6,
+		weightkg: 78.2,
+		color: "Gray",
+		eggGroups: ["Dragon"],
+	},
 };
 
 exports.BattlePokedex = BattlePokedex;
