@@ -2355,6 +2355,7 @@ let BattleLearnsets = {
 		cactusattack: ["7T", "6T", "5T", "4T"],
 		closecombat: ["7T", "6T", "5T", "4T"],
 		vacuumwave: ["7T", "6T", "5T", "4T"],
+		nastyplot: ["7T", "6T", "5T", "4T"],
 	}},
 	ditto: {learnset: {
 		transform: ["7L1", "7V", "7S0", "7V", "6L1", "5L1", "4L1", "3L1"],
