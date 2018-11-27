@@ -4152,6 +4152,7 @@ let BattleAbilities = {
 	"forceofattraction": {
         shortDesc: "On switch-in, this Pokemon summons Gravity.",
         onStart: function (source) {
+			if ( this.effectiveWeather() !== 'none' ) this.add('-weather', 'none');
 			this.addPseudoWeather('gravity', source, source.ability);
         },
         id: "forceofattraction",
