@@ -4808,7 +4808,9 @@ exports.Formats = [
 	},*/
 	{
   		name: "[Gen 7] Clean Slate",
-  		desc: ["&bullet; <a href=https://www.smogon.com/forums/threads/.3639262/>Clean Slate</a>",
+  		desc: [
+			"&bullet; <a href=https://www.smogon.com/forums/threads/.3639262/>Clean Slate</a>",
+			"&bullet; <a href=https://www.smogon.com/forums/threads/clean-slate-resources.3643897/>Clean Slate Resources</a>",
 		      ],
   		ruleset: ['Pokemon', 'Sleep Clause Mod', 'Species Clause', 'Moody Clause', 'Evasion Moves Clause', 'Endless Battle Clause', 'HP Percentage Mod', 'Cancel Mod', 'Team Preview', 'Swagger Clause', 'Baton Pass Clause'],
 		mod: 'cleanslate',
@@ -5027,6 +5029,17 @@ exports.Formats = [
 		onSwitchIn: function (pokemon) {
             this.add('-start', pokemon, 'typechange', pokemon.template.types.join('/'), '[silent]');
         },
+	},
+	{
+		name: "[Gen 7] More Balanced Hackmons",
+		desc: `Anything that can be hacked in-game and is usable in local battles is allowed.`,
+		threads: [
+			`&bullet; <a href="https://www.smogon.com/forums/threads/more-balanced-hackmons-slate-2-submissions-tapu-gang.3644050/">More Balanced Hackmons</a>`,
+		],
+
+		mod: 'gen7',
+		ruleset: ['Pokemon', 'Ability Clause', 'OHKO Clause', 'Evasion Moves Clause', 'CFZ Clause', 'Endless Battle Clause', 'Team Preview', 'HP Percentage Mod', 'Cancel Mod'],
+		banlist: ['Groudon-Primal', 'Arena Trap', 'Huge Power', 'Illusion', 'Innards Out', 'Magnet Pull', 'Moody', 'Parental Bond', 'Protean', 'Psychic Surge', 'Pure Power', 'Shadow Tag', 'Stakeout', 'Water Bubble', 'Wonder Guard', 'Gengarite', 'Chatter', 'Comatose + Sleep Talk'],
 	},
 	{
 		name: "[Gen 7] Move Mastery",
