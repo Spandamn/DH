@@ -67,6 +67,19 @@ exports.Formats = [
 		ruleset: ['[Gen 7] OU'],
 	},
 	{
+		name: "[Gen 7] Prioritize Randoms",
+		desc: [
+			"&bullet; In this format, moves with 60 power or fewer gains +1 priority.",
+		],
+		ruleset: ['[Gen 7] Random Battle'],
+		team: 'random',
+		onModifyPriority: function (priority, pokemon, target, move) {
+			// @ts-ignore
+			if (move.category === 'Status' || move.basePower > 60 || !pokemon) return priority;
+			if (!pokemon.hasAbility('technician')) return priority + 1;
+		},
+	},
+	{
 		name: "[Gen 7] Shared Power [Random]",
 		desc: [
 			`All of the team's abilities are active at once, except those that are restricted.`,
@@ -113,6 +126,38 @@ exports.Formats = [
 			}
 		},
 	},
+	{
+		name: "[Gen 7] Super Staff Bros Brawl",
+		desc: "Super Staff Bros returns for another round! Battle with a random team of pokemon created by the sim staff.",
+		threads: [
+			`&bullet; <a href="https://www.smogon.com/articles/super-staff-bros-brawl">Introduction &amp; Roster</a>`,
+		],
+
+		mod: 'ssb',
+		team: 'randomStaffBros',
+		ruleset: ['HP Percentage Mod', 'Cancel Mod', 'Sleep Clause Mod'],
+		onBegin: function () {
+			this.add('raw|SUPER STAFF BROS <b>BRAWL</b>!!');
+			this.add('message', 'GET READY FOR THE NEXT BATTLE!');
+			this.add(`raw|<div class='broadcast-green'><b>Wondering what all these custom moves, abilities, and items do?<br />Check out the <a href="https://www.smogon.com/articles/super-staff-bros-brawl" target="_blank">Super Staff Bros Brawl Guide</a> and find out!</b></div>`);
+		},
+		onSwitchIn: function (pokemon) {
+			let name = toId(pokemon.illusion ? pokemon.illusion.name : pokemon.name);
+			if (this.getTemplate(name).exists) {
+				// Certain pokemon have volatiles named after their speciesid
+				// To prevent overwriting those, and to prevent accidentaly leaking
+				// that a pokemon is on a team through the onStart even triggering
+				// at the start of a match, users with pokemon names will need their
+				// statuse's to end in "user".
+				name += 'user';
+			}
+			// Add the mon's status effect to it as a volatile.
+			let status = this.getEffect(name);
+			if (status && status.exists) {
+				pokemon.addVolatile(name, pokemon);
+			}
+		},
+},
 	{
 		name: "[Gen 7] Dragon Heaven Super Staff Bros",
 		desc: ["&bullet; The staff here becomes a Pokemon and battles! <br> &bullet; <a href=\"https://github.com/XpRienzo/DragonHeaven/blob/master/mods/dhssb/README.md\">Movesets</a>"],
@@ -2146,9 +2191,8 @@ exports.Formats = [
 		team: 'random',
 		ruleset: ['[Gen 7] Random Battle'],
 
-	    onAfterMovePriority: -10,
-		onAfterMove: function(pokemon, target, moveData) {
-			if (pokemon === target || moveData.category === 'Status' || !target.hp) return;
+		onAfterDamage: function (damage, pokemon, target, moveData) {
+			if (pokemon === target || moveData.category === 'Status' || !target.hp || !damage) return;
 			let passableConditions = ['stealthrock', 'stickyweb', 'spikes', 'toxicspikes'];
 			if (Object.keys(pokemon.side.sideConditions).length > 0) {
 				for (let i in pokemon.side.sideConditions) {
@@ -2356,6 +2400,45 @@ exports.Formats = [
 		},
 		ruleset: ['Pokemon', 'Standard GBU', 'Team Preview'],
 	},
+	// Let's Go!
+	///////////////////////////////////////////////////////////////////
+
+	{
+		section: "Let's Go!",
+		column: 2,
+	},
+	{
+		name: "[Gen 7 Let's Go] OU",
+		threads: [
+			`&bullet; <a href="https://www.smogon.com/forums/threads/3644015/">LGPE OverUsed</a>`,
+		],
+
+		mod: 'letsgo',
+		forcedLevel: 50,
+		ruleset: ['Pokemon', 'Species Clause', 'Nickname Clause', 'Evasion Moves Clause', 'OHKO Clause', 'Sleep Clause Mod', 'HP Percentage Mod', 'Cancel Mod', 'Team Preview'],
+		banlist: ['Illegal', 'Unreleased', 'Uber'],
+	},
+	{
+		name: "[Gen 7 Let's Go] Singles No Restrictions",
+		threads: [
+			`&bullet; <a href="https://www.smogon.com/forums/threads/3643931/">Let's Go! Discussion</a>`,
+		],
+
+		mod: 'letsgo',
+		ruleset: ['Pokemon', 'Allow AVs', 'Endless Battle Clause', 'Team Preview', 'HP Percentage Mod', 'Cancel Mod'],
+		banlist: ['Illegal', 'Unreleased'],
+	},
+	{
+		name: "[Gen 7 Let's Go] Doubles No Restrictions",
+		threads: [
+			`&bullet; <a href="https://www.smogon.com/forums/threads/3643931/">Let's Go! Discussion</a>`,
+		],
+
+		mod: 'letsgo',
+		gameType: 'doubles',
+		ruleset: ['Pokemon', 'Allow AVs', 'Endless Battle Clause', 'Team Preview', 'HP Percentage Mod', 'Cancel Mod'],
+		banlist: ['Illegal', 'Unreleased'],
+	},
 
 	// SM Singles
 	///////////////////////////////////////////////////////////////////
@@ -2375,6 +2458,18 @@ exports.Formats = [
 		ruleset: ['Pokemon', 'Standard', 'Team Preview'],
 		banlist: ['Uber', 'Arena Trap', 'Power Construct', 'Shadow Tag', 'Baton Pass'],
 	},
+	{
+        name: "[Gen 7] OU (No Preview)",
+        desc: [
+			"&bullet; <a href=\"http://www.smogon.com/forums/threads/3608656/\">OU Metagame Discussion</a>",
+			"&bullet; <a href=\"http://www.smogon.com/forums/threads/3587177/\">OU Banlist</a>",
+			"&bullet; <a href=\"http://www.smogon.com/forums/threads/3590726/\">OU Viability Rankings</a>",
+			"&bullet; <a href=\"http://www.smogon.com/forums/threads/3606650/\">OU Sample Teams</a>",
+		],
+        mod: 'gen7',
+        ruleset: ['Pokemon', 'Standard'],
+        banlist: ['Uber', 'Arena Trap', 'Power Construct', 'Shadow Tag', 'Baton Pass'],
+     },
 	{
 		name: "[Gen 7] Ubers",
 		desc: [
@@ -3544,7 +3639,8 @@ exports.Formats = [
 
 		mod: 'hotpotato',
 		ruleset: ['[Gen 7] OU'],
-		banlist: ['Blast Burn', 'Frenzy Plant', 'Giga Impact', 'Hydro Cannon', 'Hyper Beam', 'Perish Song', 'Prismatic Laser', 'Roar of Time', 'Rock Wrecker'],
+		banlist: ['Blast Burn', 'Frenzy Plant', 'Giga Impact', 'Hydro Cannon', 'Hyper Beam', 'Perish Song', 'Prismatic Laser', 'Roar of Time', 'Rock Wrecker', 'Victini'],
+		unbanlist: ['Aegislash'],
 	},
 	{
 		name: "[Gen 7] Hot Potato [No Mod]",
@@ -3554,11 +3650,11 @@ exports.Formats = [
 		],
 
 		ruleset: ['[Gen 7] OU'],
-		banlist: ['Blast Burn', 'Frenzy Plant', 'Giga Impact', 'Hydro Cannon', 'Hyper Beam', 'Perish Song', 'Prismatic Laser', 'Roar of Time', 'Rock Wrecker'],
-		
-	    onAfterMovePriority: -10,
-		onAfterMove: function(pokemon, target, moveData) {
-			if (pokemon === target || moveData.category === 'Status' || !target.hp) return;
+		banlist: ['Blast Burn', 'Frenzy Plant', 'Giga Impact', 'Hydro Cannon', 'Hyper Beam', 'Perish Song', 'Prismatic Laser', 'Roar of Time', 'Rock Wrecker', 'Victini'],
+		unbanlist: ['Aegislash'],
+
+		onAfterDamage: function(damage, pokemon, target, moveData) {
+			if (pokemon === target || moveData.category === 'Status' || !target.hp || !damage) return;
 			let passableConditions = ['stealthrock', 'stickyweb', 'spikes', 'toxicspikes'];
 			if (Object.keys(pokemon.side.sideConditions).length > 0) {
 				for (let i in pokemon.side.sideConditions) {
@@ -7449,6 +7545,19 @@ exports.Formats = [
 		ruleset: ['Pokemon', 'Sleep Clause Mod', 'Species Clause', 'Moody Clause', 'Evasion Moves Clause', 'Endless Battle Clause', 'HP Percentage Mod', 'Cancel Mod', 'Team Preview', 'Swagger Clause', 'Baton Pass Clause'],
 		banlist: ['Illegal', 'Unreleased'],
 		mod: 'fanmadegame',
+	},
+	{
+		name: "[Gen 7] Prioritize",
+		desc: [
+			"&bullet; In this format, moves with 60 power or fewer gains +1 priority.",
+		],
+		ruleset: ['[Gen 7] OU'],
+		banlist: ['Mud Slap', 'Hidden Power', 'Storm Throw', 'Frost Breath', 'Tapu Lele'],
+		onModifyPriority: function (priority, pokemon, target, move) {
+			// @ts-ignore
+			if (move.category === 'Status' || move.basePower > 60 || !pokemon) return priority;
+			if (!pokemon.hasAbility('technician')) return priority + 1;
+		},
 	},
 	{
 		name: "[Gen 7] Transmuters [WIP]",

@@ -10771,47 +10771,34 @@ exports.BattleAbilities = {
 	"apathy": { // TODO: Complete and test this
 		shortDesc: "Whenever this pokemon is afflicted by a status or move restricting affect, it is removed from it and applied to the opposing pokemon. If the effect cannot be inflicted, it is removed. Item induced restrictions do not count.",
 		onAfterSetStatus: function (status, target, source, effect) {
-			this.cureStatus();
-			if (!source || source === target) return;
-			if (effect && effect.id === 'toxicspikes') return;
 			this.add('-activate', target, 'ability: Apathy');
+			this.cureStatus();
+			let targets = [];
+			for (const target2 of target.side.foe.active) {
+				if (!target2 || !target2.hp || target2.status || target2.hasAbility('apathy')) continue;
+				if (target2 === source){
+					targets = [target2];
+					break;
+				}
+				else {
+					targets.push(target2);
+				}
+			}
+			if (!targets.length) return;
+			let newtarget = this.sample(targets);
 			// Hack to make status-prevention abilities think Synchronize is a status move
 			// and show messages when activating against it.
 			// @ts-ignore
 			source.trySetStatus(status, target, {status: status.id, id: 'apathy'});
 		},
-		onUpdate: function (pokemon) {
-			if (pokemon.volatiles['attract']) {
-				this.add('-activate', pokemon, 'ability: Apathy');
-				pokemon.removeVolatile('attract');
-				this.add('-end', pokemon, 'move: Attract', '[from] ability: Apathy');
-			}
-			if (pokemon.volatiles['taunt']) {
-				this.add('-activate', pokemon, 'ability: Apathy');
-				pokemon.removeVolatile('taunt');
-				// Taunt's volatile already sends the -end message when removed
-			}
-			if (pokemon.volatiles['torment']) {
-				this.add('-activate', pokemon, 'ability: Apathy');
-				pokemon.removeVolatile('torment');
-			}
-			if (pokemon.volatiles['encore']) {
-				this.add('-activate', pokemon, 'ability: Apathy');
-				pokemon.removeVolatile('torment');
-			}
-		},
-		onImmunity: function (type, pokemon) {
-			if (type === 'attract') return false;
-		},
-		onTryHit: function (target, source, move) {
-			if (move.id === 'attract' || move.id === 'taunt' || move.id === 'torment' || move.id === 'encore') {
-				this.add('-immune', target, '[msg]', '[from] ability: Apathy');
-				this.useMove(move.id, target, source);
+		onTryAddVolatile: function (status, target, source, effect) {
+			if (['attract', 'disable', 'encore', 'healblock', 'taunt', 'torment'].includes(status.id)) {
+				if (effect.effectType === 'Move' || effect.effectType === 'Ability') {
+					this.add('-activate', target, 'ability: Apathy', '[of] ' + target);
+					if (!source.hasAbility('apathy')) source.addVolatile(status.id);
+				}
 				return null;
 			}
-		},
-		effect: {
-			duration: 1,
 		},
 		id: "apathy",
 		name: "Apathy",

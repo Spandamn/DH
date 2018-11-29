@@ -32,6 +32,7 @@ const FS = require('./lib/fs');
 class Roomlog {
 	/**
 	 * @param {BasicChatRoom} room
+	 * @param {{isMultichannel?: any, autoTruncate?: any, logTimes?: any}} [options]
 	 */
 	constructor(room, options = {}) {
 		this.id = room.id;
@@ -87,9 +88,10 @@ class Roomlog {
 		}
 		log = [];
 		for (let i = 0; i < this.log.length; ++i) {
-			let line = this.log[i];
+			const line = this.log[i];
 			if (line === '|split') {
-				log.push(this.log[i + channel + 1]);
+				const ownLine = this.log[i + channel + 1];
+				if (ownLine) log.push(ownLine);
 				i += 4;
 			} else {
 				log.push(line);
@@ -197,6 +199,7 @@ class Roomlog {
 				const userid = toId(parts[section - 1]);
 				if (userids.includes(userid)) {
 					if (!cleared.includes(userid)) cleared.push(userid);
+					if (this.id.startsWith('battle-')) return true; // Don't remove messages in battle rooms to preserve evidence
 					return false;
 				}
 			}
