@@ -6624,7 +6624,7 @@ let BattleMovedex = {
 			},
 			onStart: function () {
 				this.add('-fieldstart', 'move: Gravity');
-				if ( this.effectiveWeather() !== 'none' ) this.add('-weather', 'none');
+				if ( this.effectiveWeather() !== 'none' ) this.clearWeather();
 				for (const pokemon of this.sides[0].active.concat(this.sides[1].active)) {
 					let applies = false;
 					if (pokemon.removeVolatile('bounce') || pokemon.removeVolatile('fly')) {
