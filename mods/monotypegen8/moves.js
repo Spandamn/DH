@@ -46,4 +46,152 @@ exports.BattleMovedex = {
 		zMovePower: 185,
 		contestType: "Beautiful",
 	},
+	"coaltrap": {
+		num: 390,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		desc: "Sets up a hazard on the opposing side of the field, burning each opposing Pokemon that switches in, unless it is a Flying-type Pokemon or has the Levitate Ability. Can be removed from the opposing side if any opposing Pokemon uses Rapid Spin or Defog successfully, is hit by Defog, or a grounded Poison-type Pokemon switches in. Safeguard prevents the opposing party from being poisoned on switch-in, but a substitute does not.",
+		shortDesc: "Burns grounded foes on switch-in.",
+		id: "coaltrap",
+		isViable: true,
+		name: "Coal Trap",
+		pp: 20,
+		priority: 0,
+		flags: {reflectable: 1, nonsky: 1},
+		sideCondition: 'coaltrap',
+		effect: {
+			// this is a side condition
+			onStart: function (side) {
+				this.add('-sidestart', side, 'move: Coal Trap');
+				this.effectData.layers = 1;
+			},
+			onRestart: function (side) {
+				if (this.effectData.layers >= 1) return false;
+			},
+			onSwitchIn: function (pokemon) {
+				if (!pokemon.isGrounded()) return;
+				if (!pokemon.runImmunity('Fire')) return;
+				if (pokemon.hasType('Fire')) {
+					moveSideCondition('coaltrap'); 
+				} 
+				else {
+					pokemon.trySetStatus('brn', pokemon.side.foe.active[0]);
+				}
+			},
+		},
+		secondary: null,
+		target: "foeSide",
+		type: "Fire",
+		zMoveBoost: {def: 1},
+		contestType: "Clever",
+	},
+	"buzzbomb": {
+		num: 315,
+		accuracy: 90,
+		basePower: 130,
+		category: "Special",
+		desc: "Lowers the user's Special Attack by 2 stages.",
+		shortDesc: "Lowers the user's Sp. Atk by 2.",
+		id: "buzzbomb",
+		isViable: true,
+		name: "Buzz Bomb",
+		pp: 5,
+		priority: 0,
+		flags: {protect: 1, mirror: 1},
+		self: {
+			boosts: {
+				spa: -2,
+			},
+		},
+		secondary: null,
+		target: "normal",
+		type: "Fire",
+		zMovePower: 195,
+		contestType: "Clever",
+	},
+	"crystalbeam": {
+		num: 33,
+		accuracy: 100,
+		basePower: 100,
+		category: "Special",
+		shortDesc: "No additional effect.",
+		id: "crystalbeam",
+		name: "Crystal Beam",
+		pp: 10,
+		priority: 0,
+		flags: {contact: 1, protect: 1, mirror: 1},
+		secondary: null,
+		target: "normal",
+		type: "Rock",
+		zMovePower: 100,
+		contestType: "Beautiful",
+	},
+	"gyrationdimension": {
+		num: 703,
+		accuracy: true,
+		basePower: 170,
+		category: "Physical",
+		desc: "If this move is successful, Trick Room is set up.",
+		shortDesc: "Sets Trick Room.",
+		id: "gyrationdimension",
+		name: "Gyration Dimension",
+		pp: 1,
+		priority: 0,
+		flags: {},
+		isZ: "stakatakiumz",
+		secondary: {
+			chance: 100,
+			self: {
+				onHit: function () {
+					this.add('-fieldstart', 'move: Trick Room', '[of] ' + source);
+			},
+		},
+		target: "normal",
+		type: "Rock",
+		contestType: "Cool",
+	},
+	"ironslash": {
+		num: 331,
+		accuracy: 100,
+		basePower: 25,
+		category: "Physical",
+		desc: "Hits two to five times. Has a 1/3 chance to hit two or three times, and a 1/6 chance to hit four or five times. If one of the hits breaks the target's substitute, it will take damage for the remaining hits. If the user has the Skill Link Ability, this move will always hit five times.",
+		shortDesc: "Hits 2-5 times in one turn.",
+		id: "ironslash",
+		isViable: true,
+		name: "Iron Slash",
+		pp: 30,
+		priority: 0,
+		flags: {bullet: 1, protect: 1, mirror: 1},
+		multihit: [2, 5],
+		secondary: null,
+		target: "normal",
+		type: "Steel",
+		zMovePower: 140,
+		contestType: "Tough",
+	},
+	"fangcharge": {
+		num: 33,
+		accuracy: 100,
+		basePower: 90,
+		category: "Physical",
+		desc: "If the target lost HP, the user takes recoil damage equal to 1/4 the HP lost by the target, rounded half up, but not less than 1 HP. 30% chance to badly poison",
+		shortDesc: "Has 1/4 recoil. May badly poison (30%)",
+		id: "fangcharge",
+		isViable: true,
+		name: "Fang Charge",
+		pp: 15,
+		priority: 0,
+		flags: {contact: 1, protect: 1, mirror: 1},
+		recoil: [1, 4],
+		secondary: {
+			chance: 30,
+			status: 'tox',
+		},
+		target: "normal",
+		type: "Dragon",
+		zMovePower: 175,
+		contestType: "Tough",
+	},
 };
