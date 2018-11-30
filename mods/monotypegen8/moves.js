@@ -145,6 +145,7 @@ exports.BattleMovedex = {
 			self: {
 				onHit: function () {
 					this.add('-fieldstart', 'move: Trick Room', '[of] ' + source);
+				},
 			},
 		},
 		target: "normal",

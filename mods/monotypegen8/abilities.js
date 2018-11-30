@@ -25,7 +25,7 @@ exports.BattleAbilities = {
 	"calloused": {
 		shortDesc: "This pokemon is immune to Stealth Rock and Spikes.",
 		onDamage: function (damage, target, source, effect) {
-			if (effect && effect.id === 'stealthrock') || (effect && effect.id === 'spikes') {
+			if (effect && effect.id === 'stealthrock' || effect && effect.id === 'spikes') {
 				return false;
 			}
 		},
@@ -37,7 +37,7 @@ exports.BattleAbilities = {
 	"crystalcore": {
 		shortDesc: "This Pokemon's attacks become Physical or Special, depending on which attacking stat is highest",
 		onModifyMove: function (move, attacker, defender) {
-			if move.category != "Status"){
+			if ( move.category != "Status" ){
 				if (pokemon.getStat('atk', false, true) > pokemon.getStat('spa', false, true)) { move.category = 'Physical';
 				} else if (pokemon.getStat('spa', false, true) > pokemon.getStat('atk', false, true)) { move.category = 'Special';
 				} else { move.category = 'Physical';
