@@ -31,7 +31,7 @@ let BattleStatuses = {
 			} else {
 				this.add('-weather', 'RainDance');
 			}
-			if (this.getPseudoWeather('gravity')) this.add('-fieldend', 'move: Gravity');
+			if (this.getPseudoWeather('gravity')) this.removePseudoWeather('gravity');
 		},
 		onResidualOrder: 1,
 		onResidual: function () {
@@ -63,7 +63,7 @@ let BattleStatuses = {
 		},
 		onStart: function (battle, source, effect) {
 			this.add('-weather', 'PrimordialSea', '[from] ability: ' + effect, '[of] ' + source);
-			if (this.getPseudoWeather('gravity')) this.add('-fieldend', 'move: Gravity');
+			if (this.getPseudoWeather('gravity')) this.removePseudoWeather('gravity');
 		},
 		onResidualOrder: 1,
 		onResidual: function () {
@@ -103,7 +103,7 @@ let BattleStatuses = {
 			} else {
 				this.add('-weather', 'SunnyDay');
 			}
-			if (this.getPseudoWeather('gravity')) this.add('-fieldend', 'move: Gravity');
+			if (this.getPseudoWeather('gravity')) this.removePseudoWeather('gravity');
 		},
 		onImmunity: function (type) {
 			if (type === 'frz') return false;
@@ -138,7 +138,7 @@ let BattleStatuses = {
 		},
 		onStart: function (battle, source, effect) {
 			this.add('-weather', 'DesolateLand', '[from] ability: ' + effect, '[of] ' + source);
-			if (this.getPseudoWeather('gravity')) this.add('-fieldend', 'move: Gravity');
+			if (this.getPseudoWeather('gravity')) this.removePseudoWeather('gravity');
 		},
 		onImmunity: function (type) {
 			if (type === 'frz') return false;
@@ -179,7 +179,7 @@ let BattleStatuses = {
 			} else {
 				this.add('-weather', 'Sandstorm');
 			}
-			if (this.getPseudoWeather('gravity')) this.add('-fieldend', 'move: Gravity');
+			if (this.getPseudoWeather('gravity')) this.removePseudoWeather('gravity');
 		},
 		onResidualOrder: 1,
 		onResidual: function () {
@@ -212,7 +212,7 @@ let BattleStatuses = {
 			} else {
 				this.add('-weather', 'Hail');
 			}
-			if (this.getPseudoWeather('gravity')) this.add('-fieldend', 'move: Gravity');
+			if (this.getPseudoWeather('gravity')) this.removePseudoWeather('gravity');
 		},
 		onResidualOrder: 1,
 		onResidual: function () {
@@ -240,7 +240,7 @@ let BattleStatuses = {
 		},
 		onStart: function (battle, source, effect) {
 			this.add('-weather', 'DeltaStream', '[from] ability: ' + effect, '[of] ' + source);
-			if (this.getPseudoWeather('gravity')) this.add('-fieldend', 'move: Gravity');
+			if (this.getPseudoWeather('gravity')) this.removePseudoWeather('gravity');
 		},
 		onResidualOrder: 1,
 		onResidual: function () {
