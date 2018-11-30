@@ -19416,7 +19416,7 @@ let BattleMovedex = {
         secondary: null,
 		onPrepareHit: function(target, source, move) {
 			this.attrLastMove('[still]');
-			this.add('-anim', source, "Fake Tears", target);
+			this.add('-anim', source, "Slash", target);
 		},
         target: "normal",
         type: "Rock",

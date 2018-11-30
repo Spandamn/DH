@@ -281,4 +281,8 @@ exports.BattlePokedex = {
 		weightkg: 17.9,
 		eggGroups: ["Fairy"],
 	},
+	ampharosmega: {
+		inherit: true,
+		abilities: {0: "Majestic"},
+	},
 };

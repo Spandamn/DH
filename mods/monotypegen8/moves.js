@@ -18,6 +18,10 @@ exports.BattleMovedex = {
 			chance: 10,
 			status: 'brn',
 		},
+		onPrepareHit: function(target, source, move) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Diamond Storm", target);
+		},
 		target: "normal",
 		type: "Ice",
 		zMovePower: 185,
@@ -28,7 +32,7 @@ exports.BattleMovedex = {
 		num: 126,
 		accuracy: 85,
 		basePower: 110,
-		category: "Special",
+		category: "Physical",
 		desc: "Has a 10% chance to freeze the target.",
 		shortDesc: "10% chance to freeze the target.",
 		id: "freezingfire",
@@ -41,9 +45,64 @@ exports.BattleMovedex = {
 			chance: 10,
 			status: 'frz',
 		},
+		onPrepareHit: function(target, source, move) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Blue Flare", target);
+		},
 		target: "normal",
 		type: "Fire",
 		zMovePower: 185,
+		contestType: "Beautiful",
+	},
+	"cleansingfire": {
+		num: 432,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		desc: "Removes screens, hazards, Safeguard, Mist, and Leech Seed from both sides of the field. If any active pokemon has a status condition, that status condition is cured and the pokemon takes damage equal to 1/16 of their max HP, multiplied by their weakness or resistance to Fire.",
+		shortDesc: "Clears screens, hazards, safeguard, mist, and Leech Seed. Any statused pokemon is cured and takes damage.",
+		id: "cleansingfire",
+		isViable: true,
+		name: "Cleansing Fire",
+		pp: 15,
+		priority: 0,
+		flags: {protect: 1, reflectable: 1, mirror: 1, authentic: 1},
+		onHit: function (target, source, move) {
+			/**@type {?boolean | number} */
+			let success = false;
+			if (( !target.volatiles['substitute'] || move.infiltrates) && ( target.cureStatus()) )
+			{
+				let typeMod = this.clampIntRange(target.runEffectiveness('Fire'), -6, 6);
+				this.damage(target.maxhp * Math.pow(2, typeMod) / 8);
+				success = true;
+			}
+			if ( source.cureStatus() )
+			{
+				let typeMod = this.clampIntRange(source.runEffectiveness('Fire'), -6, 6);
+				this.damage(source.maxhp * Math.pow(2, typeMod) / 8, source);
+				success = true;
+			}
+			let removeAll = ['spikes', 'toxicspikes', 'stealthrock', 'stickyweb', 'reflect', 'lightscreen', 'auroraveil', 'safeguard', 'mist',];
+			for (const sideCondition of removeAll) {
+				if (source.side.removeSideCondition(sideCondition)) {
+					this.add('-sideend', source.side, this.getEffect(sideCondition).name, '[from] move: Cleansing Fire', '[of] ' + source);
+					success = true;
+				}
+				if (target.side.removeSideCondition(sideCondition)) {
+					this.add('-sideend', target.side, this.getEffect(sideCondition).name, '[from] move: Cleansing Fire', '[of] ' + source);
+					success = true;
+				}
+			}
+			return success;
+		},
+		secondary: null,
+		target: "normal",
+		onPrepareHit: function(target, source, move) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Searing Shot", target);
+		},
+		type: "Fire",
+		zMoveBoost: {accuracy: 1},
 		contestType: "Beautiful",
 	},
 	"coaltrap": {
@@ -73,7 +132,8 @@ exports.BattleMovedex = {
 				if (!pokemon.isGrounded()) return;
 				if (!pokemon.runImmunity('Fire')) return;
 				if (pokemon.hasType('Fire')) {
-					moveSideCondition('coaltrap'); 
+					this.add('-sideend', pokemon.side, 'move: Coal Trap', '[of] ' + pokemon);
+					pokemon.side.removeSideCondition('coaltrap');
 				} 
 				else {
 					pokemon.trySetStatus('brn', pokemon.side.foe.active[0]);
@@ -81,6 +141,10 @@ exports.BattleMovedex = {
 			},
 		},
 		secondary: null,
+		onPrepareHit: function(target, source, move) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Lava Plume", target);
+		},
 		target: "foeSide",
 		type: "Fire",
 		zMoveBoost: {def: 1},
@@ -106,6 +170,11 @@ exports.BattleMovedex = {
 		},
 		secondary: null,
 		target: "normal",
+		onPrepareHit: function(target, source, move) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Bug Buzz", target);
+			this.add('-anim', target, "Explosion", source);
+		},
 		type: "Fire",
 		zMovePower: 195,
 		contestType: "Clever",
@@ -123,6 +192,10 @@ exports.BattleMovedex = {
 		flags: {contact: 1, protect: 1, mirror: 1},
 		secondary: null,
 		target: "normal",
+		onPrepareHit: function(target, source, move) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Power Gem", target);
+		},
 		type: "Rock",
 		zMovePower: 100,
 		contestType: "Beautiful",
@@ -148,6 +221,11 @@ exports.BattleMovedex = {
 				},
 			},
 		},
+		onPrepareHit: function(target, source, move) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Focus Energy", target);
+			this.add('-anim', source, "Gyro Ball", target);
+		},
 		target: "normal",
 		type: "Rock",
 		contestType: "Cool",
@@ -168,6 +246,10 @@ exports.BattleMovedex = {
 		multihit: [2, 5],
 		secondary: null,
 		target: "normal",
+		onPrepareHit: function(target, source, move) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Metal Claw", target);
+		},
 		type: "Steel",
 		zMovePower: 140,
 		contestType: "Tough",
@@ -191,8 +273,61 @@ exports.BattleMovedex = {
 			status: 'tox',
 		},
 		target: "normal",
+		onPrepareHit: function(target, source, move) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Dragon Rush", target);
+		},
 		type: "Dragon",
 		zMovePower: 175,
 		contestType: "Tough",
+	},
+	"rapidspin": {
+		inherit: true,
+		self: {
+			onHit: function (pokemon) {
+				if (pokemon.hp && pokemon.removeVolatile('leechseed')) {
+					this.add('-end', pokemon, 'Leech Seed', '[from] move: Rapid Spin', '[of] ' + pokemon);
+				}
+				let sideConditions = ['spikes', 'toxicspikes', 'stealthrock', 'stickyweb', 'coaltrap'];
+				for (const condition of sideConditions) {
+					if (pokemon.hp && pokemon.side.removeSideCondition(condition)) {
+						this.add('-sideend', pokemon.side, this.getEffect(condition).name, '[from] move: Rapid Spin', '[of] ' + pokemon);
+					}
+				}
+				if (pokemon.hp && pokemon.volatiles['partiallytrapped']) {
+					pokemon.removeVolatile('partiallytrapped');
+				}
+			},
+		},
+	},
+	"defog": {
+		inherit: true,
+		onHit: function (target, source, move) {
+			/**@type {?boolean | number} */
+			let success = false;
+			if (!target.volatiles['substitute'] || move.infiltrates) success = this.boost({evasion: -1});
+			let removeTarget = ['reflect', 'lightscreen', 'auroraveil', 'safeguard', 'mist', 'spikes', 'toxicspikes', 'stealthrock', 'stickyweb', 'coaltrap'];
+			let removeAll = ['spikes', 'toxicspikes', 'stealthrock', 'stickyweb', 'coaltrap'];
+			for (const targetCondition of removeTarget) {
+				if (target.side.removeSideCondition(targetCondition)) {
+					if (!removeAll.includes(targetCondition)) continue;
+					this.add('-sideend', target.side, this.getEffect(targetCondition).name, '[from] move: Defog', '[of] ' + target);
+					success = true;
+				}
+			}
+			for (const sideCondition of removeAll) {
+				if (source.side.removeSideCondition(sideCondition)) {
+					this.add('-sideend', source.side, this.getEffect(sideCondition).name, '[from] move: Defog', '[of] ' + source);
+					success = true;
+				}
+			}
+			if (source.hp && source.removeVolatile('leechseed')) {
+				this.add('-end', source, 'Leech Seed', '[from] move: Cleansing Fire', '[of] ' + source);
+			}
+			if (target.hp && target.removeVolatile('leechseed')) {
+				this.add('-end', target, 'Leech Seed', '[from] move: Cleansing Fire', '[of] ' + source);
+			}
+			return success;
+		},
 	},
 };

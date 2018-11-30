@@ -8,19 +8,20 @@ exports.BattleAbilities = {
 			for (const target of pokemon.side.foe.active) {
 				this.add('-ability', pokemon, 'Datamining');
 				let revealStr = "|";
-				let revealName = pokemon.name
+				let revealName = target.name
 				if (target.fainted) continue;
+				this.add('-message', revealName + "'s moveset was revealed!");
 				for (const moveSlot of target.moveSlots) {
-					let move = this.getMove(moveSlot.move);
-					revealStr = revealStr + " " + move.name + " |"
+					let thisMove = this.getMove(moveSlot.move);
+					revealStr = revealStr + " " + thisMove.name + " |"
+					this.add('-message', thisMove.name);
 				}
-				this.add('-message', revealName + "'s moveset was revealed to be " + revealStr);
 			}
 		},
 		id: "datamining",
 		name: "Datamining",
 		rating: 1,
-		num: 108,
+		num: 3.5,
 	},
 	"calloused": {
 		shortDesc: "This pokemon is immune to Stealth Rock and Spikes.",
@@ -32,24 +33,25 @@ exports.BattleAbilities = {
 		id: "calloused",
 		name: "Calloused",
 		rating: 3.5,
-		num: -2,
+		num: 2.5,
 	},
 	"crystalcore": {
 		shortDesc: "This Pokemon's attacks become Physical or Special, depending on which attacking stat is highest",
 		onModifyMove: function (move, attacker, defender) {
 			if ( move.category != "Status" ){
-				if (pokemon.getStat('atk', false, true) > pokemon.getStat('spa', false, true)) { move.category = 'Physical';
-				} else if (pokemon.getStat('spa', false, true) > pokemon.getStat('atk', false, true)) { move.category = 'Special';
+				if (attacker.getStat('atk', false, true) > attacker.getStat('spa', false, true)) { move.category = 'Physical';
+				} else if (attacker.getStat('spa', false, true) > attacker.getStat('atk', false, true)) { move.category = 'Special';
 				} else { move.category = 'Physical';
 				}
 			}
 		},
 		id: "crystalcore",
 		name: "Crystal Core",
+		num: 1.5,
 	},
 	"frozenfire": {
-		desc: "This Pokemon is immune to Fire-type moves. The first time it is hit by a Fire-type move, its attacking stat is multiplied by 1.5 while using a Fire-type attack as long as it remains active and has this Ability. If this Pokemon is frozen, it cannot be defrosted by Fire-type attacks.",
-		shortDesc: "This Pokemon's Fire attacks do 1.5x damage if hit by one Fire move; Fire immunity.",
+		desc: "This Pokemon is immune to Fire-type moves. The first time it is hit by a Fire-type move, its attacking stat is multiplied by 1.5 while using an Ice-type attack as long as it remains active and has this Ability.",
+		shortDesc: "This Pokemon's Ice attacks do 1.5x damage if hit by one Fire move; Fire immunity.",
 		onTryHit: function (target, source, move) {
 			if (target !== source && move.type === 'Fire') {
 				move.accuracy = true;
@@ -88,7 +90,7 @@ exports.BattleAbilities = {
 		id: "frozenfire",
 		name: "Frozen Fire",
 		rating: 3,
-		num: 18,
+		num: 18.5,
 	},
 	"majestic": {
         desc: "On switch-in, this Pokemon lowers the Special Attack of adjacent opposing Pokemon by 1 stage. Pokemon behind a substitute are immune.",
