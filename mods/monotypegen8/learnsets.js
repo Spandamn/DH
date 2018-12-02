@@ -107,7 +107,7 @@ exports.BattleLearnsets = {
 	}},
 	contrunion: {learnset: {
 		burningice: ["7L1"],
-		calmmind: ["7L1"],
+		nastyplot: ["7L1"],
 		earthquake: ["7L1"],
 		fireblast: ["7L1"],
 		focusblast: ["7L1"],
@@ -366,7 +366,6 @@ exports.BattleLearnsets = {
 	magmule: {learnset: {
 		calmmind: ["7L1"],
 		clearsmog: ["7L1"],
-		coaltrap: ["7L1"],
 		earthpower: ["7L1"],
 		energyball: ["7L1"],
 		fireblast: ["7L1"],
