@@ -2869,7 +2869,7 @@ let BattleFormatsData = {
 	},
 	wingull: {
 		randomBattleMoves: ["scald", "icebeam", "tailwind", "uturn", "airslash", "knockoff", "defog"],
-		tier: "LC",
+		tier: "LC Uber",
 	},
 	pelipper: {
 		randomBattleMoves: ["scald", "uturn", "hurricane", "toxic", "roost", "defog", "knockoff"],
@@ -7434,6 +7434,30 @@ let BattleFormatsData = {
 	jumbao: {
 		randomBattleMoves: ["moonblast", "flameburst", "focusblast", "synthesis", "solarbeam", "hiddenpowerground", "healingwish"],
 		isNonstandard: true,
+		tier: "CAP",
+	},
+	caribolt: {
+		randomBattleMoves: ["swordsdance", "quickattack", "powerwhip", "return", "voltswitch"],
+		isNonstandard: true,
+		eventPokemon: [
+			{"generation": 7, "level": 50, "moves": ["celebrate", "hornleech", "wildcharge", "metronome"], "pokeball": "cherishball"},
+		],
+		tier: "CAP",
+	},
+	smokomodo: {
+		randomBattleMoves: ["flareblitz", "earthquake", "hiddenpowerice", "toxic", "stealthrock"],
+		isNonstandard: true,
+		eventPokemon: [
+			{"generation": 7, "level": 50, "moves": ["celebrate", "eruption", "magnitude", "camouflage"], "pokeball": "cherishball"},
+		],
+		tier: "CAP",
+	},
+	snaelstrom: {
+		randomBattleMoves: ["stealthrock", "icebeam", "toxic", "spikyshield", "scald", "rapidspin"],
+		isNonstandard: true,
+		eventPokemon: [
+			{"generation": 7, "level": 50, "moves": ["celebrate", "liquidation", "leechlife", "metronome"], "pokeball": "cherishball"},
+		],
 		tier: "CAP",
 	},
 	syclant: {
