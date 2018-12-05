@@ -2904,6 +2904,7 @@ let BattleLearnsets = {
         afteryou: ["7T", "6T", "5T"],
         allyswitch: ["7T"],
         attract: ["7M", "6M", "5M"],
+		barrier: ["7M", "6M", "5M"],
         calmmind: ["7M", "6M", "5M"],
         chargebeam: ["7M", "6M", "5M"],
         confide: ["7M", "6M"],
