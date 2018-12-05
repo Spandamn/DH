@@ -2947,6 +2947,7 @@ let BattleLearnsets = {
         sleeptalk: ["7M", "6M", "5T"],
         snore: ["7T", "6T", "5T"],
         substitute: ["7M", "6M", "5M"],
+		storedpower: ["7M", "6M", "5M"],
         swagger: ["7M", "6M", "5M"],
         telekinesis: ["7T", "5M"],
         thunderwave: ["7M", "6M", "5M"],
