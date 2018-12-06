@@ -5110,7 +5110,7 @@ onValidateTeam: function (team) {
 			`&bullet; <a href="https://www.smogon.com/forums/threads/more-balanced-hackmons-slate-2-submissions-tapu-gang.3644050/">More Balanced Hackmons</a>`,
 		],
 
-		mod: 'gen7',
+		mod: 'morebalancedhackmons',
 		ruleset: ['Pokemon', 'Ability Clause', 'OHKO Clause', 'Evasion Moves Clause', 'CFZ Clause', 'Endless Battle Clause', 'Team Preview', 'HP Percentage Mod', 'Cancel Mod'],
 		banlist: ['Groudon-Primal', 'Arena Trap', 'Huge Power', 'Illusion', 'Innards Out', 'Magnet Pull', 'Moody', 'Parental Bond', 'Protean', 'Psychic Surge', 'Pure Power', 'Shadow Tag', 'Stakeout', 'Water Bubble', 'Wonder Guard', 'Gengarite', 'Chatter', 'Comatose + Sleep Talk'],
 	},
@@ -9298,7 +9298,7 @@ onValidateTeam: function (team) {
 			`&bullet; <a href="https://www.smogon.com/forums/threads/mega-mirrors-slate-1-voting-abomasnow-absol-aerodactyl.3644178/">Mega Mirrors</a>`,
 		],
 
-		mod: 'gen7',
+		mod: 'megamirrors',
 		ruleset: ['Pokemon', 'Standard', 'Team Preview'],
 		banlist: ['Uber', 'Arena Trap', 'Power Construct', 'Shadow Tag', 'Baton Pass'],
 	},
