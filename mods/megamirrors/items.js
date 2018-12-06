@@ -8,7 +8,7 @@
 			if (item.megaEvolves === source.baseTemplate.baseSpecies) return false;
 			return true;
 		},
-		num: 674,
+		num: 2000,
 		gen: 6,
 		desc: "If held by an Abomasnow, this item allows it to Mega Evolve in battle.",
 	},
@@ -22,7 +22,7 @@
 			if (item.megaEvolves === source.baseTemplate.baseSpecies) return false;
 			return true;
 		},
-		num: 677,
+		num: 2001,
 		gen: 6,
 		desc: "If held by an Absol, this item allows it to Mega Evolve in battle.",
 	},
@@ -36,7 +36,7 @@
 			if (item.megaEvolves === source.baseTemplate.baseSpecies) return false;
 			return true;
 		},
-		num: 672,
+		num: 2002,
 		gen: 6,
 		desc: "If held by an Aerodactyl, this item allows it to Mega Evolve in battle.",
 	},
