@@ -12,7 +12,6 @@ naganadel: {
 		evoLevel: 41,
 		eggGroups: ["Undiscovered"],
 	},
- 
  	mukalola: {
 		num: 89,
 		species: "Muk-Alola",
