@@ -32,6 +32,5 @@ exports.BattleAbilities = {
 		id: "cheatcode",
 		name: "Cheat Code",
 	},
-	},
 };
 exports.BattleAbilities = BattleAbilities;
