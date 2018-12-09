@@ -34,3 +34,4 @@ exports.BattleAbilities = {
 	},
 	},
 };
+exports.BattleAbilities = BattleAbilities;
