@@ -1,5 +1,7 @@
 'use strict';
-exports.BattleMovedex = {
+
+/**@type {{[k: string]: MoveData}} */
+let BattleMovedex = {
 "inverseroom": {
 		accuracy: true,
 		basePower: 0,
