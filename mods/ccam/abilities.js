@@ -1,5 +1,7 @@
 'use strict';
-exports.BattleAbilities = {
+
+/**@type {{[k: string]: AbilityData}} */
+let BattleAbilities = {
 "timechime": {
 		shortDesc: "On switch-in, this Pokemon summons Trick Room.",
 		onStart: function(source) {
