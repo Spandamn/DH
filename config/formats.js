@@ -4893,6 +4893,18 @@ onValidateTeam: function (team) {
         },
   	},
 	{
+  		name: "[Gen 7] Community Create a Pet Mod",
+  		desc: [
+			"&bullet; <a href=https://www.smogon.com/forums/threads/.3644840/>Community Create a Pet Mod</a>",
+		      ],
+  		ruleset: ['Pokemon', 'Sleep Clause Mod', 'Species Clause', 'Moody Clause', 'Evasion Moves Clause', 'Endless Battle Clause', 'HP Percentage Mod', 'Cancel Mod', 'Team Preview', 'Swagger Clause', 'Baton Pass Clause'],
+		mod: 'ccam',
+		banlist: ['Unreleased', 'Illegal'],
+		onSwitchIn: function (pokemon) {
+            this.add('-start', pokemon, 'typechange', pokemon.template.types.join('/'), '[silent]');
+        },
+  	},
+	{
 		name: "[Gen 7] Crossover Chaos",
 		desc: ["&bullet; <a href=https://www.smogon.com/forums/threads/.3623813/>Crossover Chaos</a>",
 		      ],
