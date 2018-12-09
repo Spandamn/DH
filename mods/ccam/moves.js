@@ -100,5 +100,75 @@ let BattleMovedex = {
 		zMoveBoost: {spd: 1},
 		contestType: "Clever",
 	},
+	"craftyshield": {
+		num: 578,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		desc: "The user and its party members are protected from non-damaging attacks made by other Pokemon, including allies, during this turn. Fails if the user moves last this turn or if this move is already in effect for the user's side.",
+		shortDesc: "Protects allies from Status moves this turn.",
+		id: "craftyshield",
+		name: "Crafty Shield",
+		pp: 10,
+		priority: 3,
+		flags: {},
+		sideCondition: 'craftyshield',
+		onTryHitSide: function (side, source) {
+			return !!this.willAct();
+		},
+		effect: {
+			duration: 3,
+			onStart: function (target, source) {
+				this.add('-singleturn', source, 'Crafty Shield');
+			},
+			onTryHitPriority: 3,
+			onTryHit: function (target, source, move) {
+				if (move && (move.target === 'self' || move.category !== 'Status')) return;
+				this.add('-activate', target, 'move: Crafty Shield');
+				source.moveThisTurnResult = true;
+				return null;
+			},
+		},
+		secondary: null,
+		target: "allySide",
+		type: "Fairy",
+		zMoveBoost: {spd: 1},
+		contestType: "Clever",
+	},
+	"safeguard": {
+		inherit: true,
+		priority: 1,
+	},
+	"luckychant": {
+		num: 381,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		desc: "For 5 turns, the user and its party members cannot be struck by a critical hit. Fails if the effect is already active on the user's side.",
+		shortDesc: "For 5 turns, shields user's party from critical hits.",
+		id: "luckychant",
+		name: "Lucky Chant",
+		pp: 30,
+		priority: 0,
+		flags: {snatch: 1},
+		sideCondition: 'luckychant',
+		effect: {
+			//duration: 5,
+			onStart: function (side) {
+				this.add('-sidestart', side, 'move: Lucky Chant'); // "The Lucky Chant shielded [side.name]'s team from critical hits!"
+			},
+			onCriticalHit: false,
+			onResidualOrder: 21,
+			onResidualSubOrder: 5,
+			onEnd: function (side) {
+				this.add('-sideend', side, 'move: Lucky Chant'); // "[side.name]'s team's Lucky Chant wore off!"
+			},
+		},
+		secondary: null,
+		target: "allySide",
+		type: "Normal",
+		zMoveBoost: {evasion: 1},
+		contestType: "Cute",
+	},
 };
 exports.BattleMovedex = BattleMovedex;
