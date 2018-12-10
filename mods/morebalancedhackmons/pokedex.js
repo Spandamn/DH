@@ -1,3 +1,7 @@
+'use strict';
+
+/**@type {{[k: string]: TemplateData}} */
+let BattlePokedex = {
 naganadel: {
 		num: 804,
 		species: "Naganadel",
@@ -76,3 +80,6 @@ tapukoko: {
 		color: "Purple",
 		eggGroups: ["Undiscovered"],
 	},
+};
+
+exports.BattlePokedex = BattlePokedex;
