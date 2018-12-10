@@ -1,3 +1,7 @@
+'use strict';
+
+/**@type {{[k: string]: ItemData}} */
+let BattleItems = {
 	"assaultjacket": {
 		id: "assaultjacket",
 		name: "Assault Jacket",
@@ -20,3 +24,6 @@
 		gen: 6,
 		desc: "Holder's Def is 1.5x, but it can only select damaging moves.",
 	},
+};
+
+exports.BattleItems = BattleItems;
