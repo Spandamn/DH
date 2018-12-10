@@ -1,3 +1,7 @@
+'use strict';
+
+/**@type {{[k: string]: MoveData}} */
+let BattleMovedex = {
 "corrosiveacid": {
 		accuracy: 100,
 		basePower: 80,
@@ -37,3 +41,6 @@
 		zMovePower: 140,
 		contestType: "Beautiful",
 	},
+};
+
+exports.BattleMovedex = BattleMovedex;
