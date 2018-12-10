@@ -1,3 +1,7 @@
+'use strict';
+
+/**@type {{[k: string]: ItemData}} */
+let BattleItems = {
 "abomasitex": {
 		id: "abomasitex",
 		name: "Abomasite X",
@@ -40,3 +44,6 @@
 		gen: 6,
 		desc: "If held by an Aerodactyl, this item allows it to Mega Evolve in battle.",
 	},
+};
+
+exports.BattleItems = BattleItems;
