@@ -229,6 +229,7 @@ exports.BattlePokedex = {
 		types: ["Water", "Fire"],
 		abilities: {0: "Protean", 1: "Regenerator", H: "Mega Launcher"},
 	},
+	deerling: {},
     deerlingwinter: {
     	num: 585,
 		species: "Deerling-Winter",
@@ -281,6 +282,7 @@ exports.BattlePokedex = {
         types: ["Grass", "Ghost"],
         abilities: {0: "Chrolophyll", 1: "Sap Sipper", H: "Shadow Surge"},
     },
+    sawsbuck: {},
     sawsbuckwinter: {
 		num: 586,
 		species: "Sawsbuck-Winter",
