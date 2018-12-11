@@ -1,4 +1,8 @@
-	"savagery": {
+'use strict';
+
+/**@type {{[k: string]: AbilityData}} */
+let BattleAbilities = {
+"savagery": {
 		desc: "This Pokemon's Sp. Attack is raised by 1 stage if it attacks and knocks out another Pokemon.",
 		shortDesc: "This Pokemon's Sp. Attack is raised by 1 stage if it attacks and KOes another Pokemon.",
 		onSourceFaint: function (target, source, effect) {
@@ -11,3 +15,6 @@
 		rating: 3.5,
 		num: 153,
 	},
+};
+
+exports.BattleAbilities = BattleAbilities;

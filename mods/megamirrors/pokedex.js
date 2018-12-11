@@ -1,4 +1,8 @@
-	abomasnowmegax: {
+'use strict';
+
+/**@type {{[k: string]: TemplateData}} */
+let BattlePokedex = {	
+abomasnowmegax: {
 		num: 460,
 		species: "Abomasnow-Mega-X",
 		baseSpecies: "Abomasnow",
@@ -42,3 +46,6 @@
 		color: "Purple",
 		eggGroups: ["Flying"],
 	},
+};
+
+exports.BattlePokedex = BattlePokedex;
