@@ -4998,6 +4998,16 @@ onValidateTeam: function (team) {
            return null
         },
   	},
+		{
+		name: "[Gen 7] Generation SD",
+		threads: [
+			`&bullet; <a href="https://www.smogon.com/forums/threads/.3641374/">Generation SD</a>`,
+		],
+		mod: 'generationsd',
+		gameType: 'doubles',
+		ruleset: ['Pokemon', 'Standard Doubles', 'Swagger Clause', 'Team Preview'],
+		//banlist: ['DUber', 'Power Construct', 'Eevium Z', 'Dark Void', 'Gravity ++ Grass Whistle', 'Gravity ++ Hypnosis', 'Gravity ++ Lovely Kiss', 'Gravity ++ Sing', 'Gravity ++ Sleep Powder'],
+	},
 	{
   		name: "[Gen 7] G-Luke's Ideal World",
   		desc: ["&bullet; <a href=http://www.smogon.com/forums/threads/g-lukes-ideal-world-v1.3627945/>G-Luke's Ideal World</a>",
