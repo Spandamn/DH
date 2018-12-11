@@ -616,6 +616,5 @@ let BattleTypeChart = {
 			"Sound": 0,
 		},
 };
-};
 
 exports.BattleTypeChart = BattleTypeChart;
