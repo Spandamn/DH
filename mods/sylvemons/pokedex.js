@@ -255,9 +255,9 @@ exports.BattlePokedex = {
         types: ["Grass", "Fire"],
         abilities: {0: "Chrolophyll", 1: "Sap Sipper", H: "Drought"},
     },
-    deerling: {
+    deerlingspring: {
     	num: 585,
-		species: "Deerling",
+		species: "Deerling-Spring",
 		baseForme: "Spring",
 		baseStats: {hp: 60, atk: 60, def: 50, spa: 40, spd: 50, spe: 75},
 		heightm: 0.6,
@@ -310,9 +310,9 @@ exports.BattlePokedex = {
         types: ["Grass", "Fire"],
         abilities: {0: "Chrolophyll", 1: "Sap Sipper", H: "Drought"},
     },
-    sawsbuck: {
+    sawsbuckspring: {
 		num: 586,
-		species: "Sawsbuck",
+		species: "Sawsbuck-Spring",
 		baseForme: "Spring",
 		baseStats: {hp: 80, atk: 100, def: 70, spa: 60, spd: 70, spe: 95},
 		heightm: 1.9,
