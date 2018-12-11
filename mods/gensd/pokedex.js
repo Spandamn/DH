@@ -54,7 +54,7 @@ let BattlePokedex = {
 		species: "Crobat",
 		types: ["Blood", "Flying"],
 		baseStats: {hp: 85, atk: 100, def: 80, spa: 70, spd: 80, spe: 130},
-		abilities: {0: "Inner Focus", 1 "Predatory", H: "Infiltrator"},
+		abilities: {0: "Inner Focus", 1: "Predatory", H: "Infiltrator"},
 		heightm: 1.8,
 		weightkg: 75,
 		color: "Purple",
