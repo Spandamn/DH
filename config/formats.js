@@ -5003,7 +5003,7 @@ onValidateTeam: function (team) {
 		threads: [
 			`&bullet; <a href="https://www.smogon.com/forums/threads/.3641374/">Generation SD</a>`,
 		],
-		mod: 'generationsd',
+		mod: 'gensd',
 		gameType: 'doubles',
 		ruleset: ['Pokemon', 'Standard Doubles', 'Swagger Clause', 'Team Preview'],
 		//banlist: ['DUber', 'Power Construct', 'Eevium Z', 'Dark Void', 'Gravity ++ Grass Whistle', 'Gravity ++ Hypnosis', 'Gravity ++ Lovely Kiss', 'Gravity ++ Sing', 'Gravity ++ Sleep Powder'],
