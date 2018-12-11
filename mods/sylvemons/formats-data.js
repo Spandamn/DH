@@ -1,6 +1,6 @@
 'use strict';
 
-let BattleFormatsData - {
+let BattleFormatsData = {
 	sawsbuck: {
 		inherit: true,
 		isNonstandard: true,
