@@ -590,6 +590,7 @@ let BattleTypeChart = {
 			"Food": 2,
 			"Sound": 2,
 		},
+		},
 	"Blood": {
 		damageTaken: {
 			"Bug": 0,
@@ -615,6 +616,7 @@ let BattleTypeChart = {
 			"Food": 2,
 			"Sound": 0,
 		},
+	},
 };
 
 exports.BattleTypeChart = BattleTypeChart;
