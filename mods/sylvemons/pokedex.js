@@ -233,6 +233,7 @@ exports.BattlePokedex = {
     deerlingwinter: {
     	num: 585,
 		species: "Deerling-Winter",
+		baseSpecies: "Deerling",
 		forme: "Winter",
 		formeLetter: 'W',
 		baseStats: {hp: 60, atk: 60, def: 50, spa: 40, spd: 50, spe: 75},
@@ -247,6 +248,7 @@ exports.BattlePokedex = {
     deerlingsummer: {
     	num: 585,
 		species: "Deerling-Summer",
+		baseSpecies: "Deerling",
 		forme: "Summer",
 		formeLetter: 'S',
 		baseStats: {hp: 60, atk: 60, def: 50, spa: 40, spd: 50, spe: 75},
@@ -275,6 +277,7 @@ exports.BattlePokedex = {
     deerlingautumn: {
     	num: 585,
 		species: "Deerling-Autumn",
+		baseSpecies: "Deerling",
 		forme: "Autumn",
 		formeLetter: 'A',
 		baseStats: {hp: 60, atk: 60, def: 50, spa: 40, spd: 50, spe: 75},
@@ -289,6 +292,7 @@ exports.BattlePokedex = {
     sawsbuckwinter: {
 		num: 586,
 		species: "Sawsbuck-Winter",
+		baseSpecies: "Sawsbuck",
 		forme: "Winter",
 		formeLetter: 'W',
 		baseStats: {hp: 80, atk: 100, def: 70, spa: 60, spd: 70, spe: 95},
@@ -304,6 +308,7 @@ exports.BattlePokedex = {
     sawsbucksummer: {
 		num: 586,
 		species: "Sawsbuck-Summer",
+		baseSpecies: "Sawsbuck",
 		forme: "Summer",
 		formeLetter: 'S',
 		baseStats: {hp: 80, atk: 100, def: 70, spa: 60, spd: 70, spe: 95},
@@ -335,6 +340,7 @@ exports.BattlePokedex = {
     sawsbuckautumn: {
 		num: 586,
 		species: "Sawsbuck-Autumn",
+		baseSpecies: "Sawsbuck",
 		forme: "Autumn",
 		formeLetter: 'A',
 		baseStats: {hp: 80, atk: 100, def: 70, spa: 60, spd: 70, spe: 95},
