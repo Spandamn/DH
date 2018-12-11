@@ -5,7 +5,7 @@ let BattleAbilities = {
 "quickflash": {
 		shortDesc: "If this Pokemon is at more than 50% HP, its Light-type moves have their priority increased by 1.",
 		onModifyPriority: function (priority, pokemon, target, move) {
-			if (move && move.type === 'Light' && (pokemon.hp => pokemon.maxhp / 2) return priority + 1;
+			if (move && move.type === 'Light' && (pokemon.hp => pokemon.maxhp / 2)) return priority + 1;
 		},
 		id: "quickflash",
 		name: "Quick Flash",
