@@ -610,7 +610,7 @@ simisear: {
 		types: ["Water", "Food"],
 		genderRatio: {M: 0.875, F: 0.125},
 		baseStats: {hp: 75, atk: 110, def: 63, spa: 110, spd: 63, spe: 111},
-		abilities: {0: "Gluttony", 1: "Gormandize" H: "Torrent"},
+		abilities: {0: "Gluttony", 1: "Gormandize", H: "Torrent"},
 		heightm: 1,
 		weightkg: 29,
 		color: "Blue",
