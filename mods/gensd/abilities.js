@@ -5,7 +5,7 @@ let BattleAbilities = {
 "quickflash": {
 		shortDesc: "If this Pokemon is at more than 50% HP, its Light-type moves have their priority increased by 1.",
 		onModifyPriority: function (priority, pokemon, target, move) {
-			if (move && move.type === 'Light' && (pokemon.hp => pokemon.maxhp / 2)) return priority + 1;
+			if (move && move.type === 'Light' && pokemon.hp > pokemon.maxhp/2) return priority + 1;
 		},
 		id: "quickflash",
 		name: "Quick Flash",
@@ -211,10 +211,10 @@ let BattleAbilities = {
 		num: 224,
 	},
 
-	"battlearmor": {
+	/*"battlearmor": {
 		shortDesc: "This Pokemon cannot be struck by a critical hit.",
 		onCriticalHit: false,
-	}
+
 		if (target === this.activePokemon && source === this.activeTarget) {
 				boosts['atk'] = 0;
 				boosts['spa'] = 0;
@@ -225,7 +225,7 @@ let BattleAbilities = {
 		name: "Battle Armor",
 		rating: 1,
 		num: 4,
-	},
+	},*/
 
 	"berserk": {
 		desc: "When this Pokemon has more than 1/2 its maximum HP and takes damage from an attack bringing it to 1/2 or less of its maximum HP, its Special Attack is raised by 2 stages. This effect applies after all hits from a multi-hit move; Sheer Force prevents it from activating if the move has a secondary effect.",
@@ -393,7 +393,7 @@ onModifyAtkPriority: 5,
 				this.add('-activate', this.effectData.target, 'ability: Flower Veil', '[of] ' + target);
 				return null;
 			}
-		}
+		},
 		onModifyAtkPriority: 5,
 		onModifyAtk: function (atk, attacker, defender, move) {
 			if (move.type === 'Grass') {
@@ -449,7 +449,7 @@ onModifyAtkPriority: 5,
 			if (!warnMoves.length) return;
 			const [warnMoveName, warnTarget] = this.sample(warnMoves);
 			this.add('-activate', pokemon, 'ability: Forewarn', warnMoveName, '[of] ' + warnTarget);
-		}
+		},
 		onStart: function (pokemon) {
 			for (const target of pokemon.side.foe.active) {
 				if (!target || target.fainted) continue;
@@ -457,7 +457,7 @@ onModifyAtkPriority: 5,
 					this.add('-item', target, target.getItem().name, '[from] ability: Frisk', '[of] ' + pokemon, '[identify]');
 				}
 			}
-		}
+		},
 		onStart: function (pokemon) {
 			for (const target of pokemon.side.foe.active) {
 				if (!target || target.fainted) continue;
