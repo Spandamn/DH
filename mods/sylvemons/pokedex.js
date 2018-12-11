@@ -262,7 +262,7 @@ exports.BattlePokedex = {
     },
     deerling: {
     	num: 585,
-		species: "Deerling-Spring",
+		species: "Deerling",
 		baseForme: "Spring",
 		baseStats: {hp: 60, atk: 60, def: 50, spa: 40, spd: 50, spe: 75},
 		heightm: 0.6,
@@ -324,7 +324,7 @@ exports.BattlePokedex = {
     },
     sawsbuck: {
 		num: 586,
-		species: "Sawsbuck-Spring",
+		species: "Sawsbuck",
 		baseForme: "Spring",
 		baseStats: {hp: 80, atk: 100, def: 70, spa: 60, spd: 70, spe: 95},
 		heightm: 1.9,
