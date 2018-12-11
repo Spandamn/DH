@@ -537,7 +537,7 @@ onModifyAtkPriority: 5,
 		name: "Ice Body",
 		rating: 1.5,
 		num: 115,
-
+	},
 "raindish": {
 		desc: "If Rain Dance is active, this Pokemon restores 1/8 of its maximum HP, rounded down, at the end of each turn.",
 		shortDesc: "If Rain Dance is active, this Pokemon heals 1/8 of its max HP each turn.",
