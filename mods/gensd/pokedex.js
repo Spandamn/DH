@@ -240,7 +240,7 @@ beautifly: {
 		species: "Beautifly",
 		types: ["Bug", "Light"],
 		baseStats: {hp: 60, atk: 100, def: 60, spa: 110, spd: 80, spe: 100},
-		abilities: {0: "Swarm", 1: "Tinted Lens" H: "Rivalry"},
+		abilities: {0: "Swarm", 1: "Tinted Lens", H: "Rivalry"},
 		heightm: 1,
 		weightkg: 28.4,
 		color: "Yellow",
