@@ -13,7 +13,22 @@ let BattleAbilities = {
 		rating: 3.5,
 		num: 169,
 	},
-  
+  "levitate": {
+		desc: "This Pokemon is immune to Ground-type moves and restores 1/4 of its maximum HP, rounded down, when hit by a Ground-type move.",
+		shortDesc: "This Pokemon heals 1/4 of its max HP when hit by Ground moves; Ground immunity.",
+		onTryHit: function (target, source, move) {
+			if (target !== source && move.type === 'Ground') {
+				if (!this.heal(target.maxhp / 4)) {
+					this.add('-immune', target, '[from] ability: Ground');
+				}
+				return null;
+			}
+		},
+		id: "levitate",
+		name: "Levitate",
+		rating: 3.5,
+		num: 11,
+	},
   };
 
 exports.BattleAbilities = BattleAbilities;
