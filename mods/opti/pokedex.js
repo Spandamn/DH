@@ -205,6 +205,74 @@
 		 inherit: true,
 		 baseStats: {hp: 103, atk: 103, def: 103, spa: 103, spd: 103, spe: 103}, 
 	 },
+	 silvallybug: {
+		 inherit: true,
+		 baseStats: {hp: 103, atk: 103, def: 103, spa: 103, spd: 103, spe: 103}, 
+	 },
+	 silvallydark: {
+		 inherit: true,
+		 baseStats: {hp: 103, atk: 103, def: 103, spa: 103, spd: 103, spe: 103}, 
+	 },
+	 silvallydragon: {
+		 inherit: true,
+		 baseStats: {hp: 103, atk: 103, def: 103, spa: 103, spd: 103, spe: 103}, 
+	 },
+	 silvallyelectric: {
+		 inherit: true,
+		 baseStats: {hp: 103, atk: 103, def: 103, spa: 103, spd: 103, spe: 103}, 
+	 },
+	 silvallyfairy: {
+		 inherit: true,
+		 baseStats: {hp: 103, atk: 103, def: 103, spa: 103, spd: 103, spe: 103}, 
+	 },
+	 silvallyfighting: {
+		 inherit: true,
+		 baseStats: {hp: 103, atk: 103, def: 103, spa: 103, spd: 103, spe: 103}, 
+	 },
+	 silvallyfire: {
+		 inherit: true,
+		 baseStats: {hp: 103, atk: 103, def: 103, spa: 103, spd: 103, spe: 103}, 
+	 },
+	 silvallyflying: {
+		 inherit: true,
+		 baseStats: {hp: 103, atk: 103, def: 103, spa: 103, spd: 103, spe: 103}, 
+	 },
+	 silvallyghost: {
+		 inherit: true,
+		 baseStats: {hp: 103, atk: 103, def: 103, spa: 103, spd: 103, spe: 103}, 
+	 },
+	 silvallygrass: {
+		 inherit: true,
+		 baseStats: {hp: 103, atk: 103, def: 103, spa: 103, spd: 103, spe: 103}, 
+	 },
+	 silvallyground: {
+		 inherit: true,
+		 baseStats: {hp: 103, atk: 103, def: 103, spa: 103, spd: 103, spe: 103}, 
+	 },
+	 silvallyice: {
+		 inherit: true,
+		 baseStats: {hp: 103, atk: 103, def: 103, spa: 103, spd: 103, spe: 103}, 
+	 },
+	 silvallypoison: {
+		 inherit: true,
+		 baseStats: {hp: 103, atk: 103, def: 103, spa: 103, spd: 103, spe: 103}, 
+	 },
+	 silvallypsychic: {
+		 inherit: true,
+		 baseStats: {hp: 103, atk: 103, def: 103, spa: 103, spd: 103, spe: 103}, 
+	 },
+	 silvallyrock: {
+		 inherit: true,
+		 baseStats: {hp: 103, atk: 103, def: 103, spa: 103, spd: 103, spe: 103}, 
+	 },
+	 silvallysteel: {
+		 inherit: true,
+		 baseStats: {hp: 103, atk: 103, def: 103, spa: 103, spd: 103, spe: 103}, 
+	 },
+	 silvallywater: {
+		 inherit: true,
+		 baseStats: {hp: 103, atk: 103, def: 103, spa: 103, spd: 103, spe: 103}, 
+	 },
 	 wishiwashi: {
 		 inherit: true,
 		 types: ["Water", "Electric"],
