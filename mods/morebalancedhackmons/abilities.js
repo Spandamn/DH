@@ -29,6 +29,23 @@ let BattleAbilities = {
 		rating: 3.5,
 		num: 11,
 	},
+ "versatility": {
+		desc: "This Pokemon's moves not of it's typing gain 1.33x power.",
+		onModifyAtk: function (atk, attacker, defender, move) {
+			if (move.type !== type) {
+				return this.chainModify(1.33);
+			}
+		},
+		onModifySpA: function (atk, attacker, defender, move) {
+			if (move.type !== type) {
+				return this.chainModify(1.33);
+			}
+		},
+		id: "versatility",
+		name: "Versatility",
+		rating: 3.5,
+		num: 11,
+	},
   };
 
 exports.BattleAbilities = BattleAbilities;
