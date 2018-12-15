@@ -31,12 +31,11 @@ let BattleAbilities = {
 	},
  "versatility": {
 		desc: "This Pokemon's moves not of it's typing gain 1.33x power.",
-		onBasePowerPriority: 8,
-		onBasePower: function (basePower, attacker, defender, move) {
-			if (!attack.hasType(move.type)) {
+		onBasePower: function (basePower, pokemon, target, move) {
+			if (!move.stab) {
 				return this.chainModify([0x14CD, 0x1000]);
-			}
-		},
+				}
+				},
 		id: "versatility",
 		name: "Versatility",
 		rating: 3.5,
