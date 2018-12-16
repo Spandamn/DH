@@ -41,36 +41,6 @@ let BattleAbilities = {
 		rating: 3.5,
 		num: 11,
 	},
-	"illuminate": {
-		desc: "This Pokemon always at least resists Ghost and Dark moves."
-		onModifyAtkPriority: 6,
-		onSourceModifyAtk: function (atk, attacker, defender, move) {
-			if (move.type === 'Ghost' && move.typeMod = 0 || move.type === 'Dark' && move.typeMod = 0) {
-				this.debug('Illuminate weaken');
-				return this.chainModify(0.5);
-			}
-		},
-		onModifySpAPriority: 6,
-		onSourceModifySpA: function (spa, attacker, defender, move) {
-			if (move.type === 'Ghost' && move.typeMod = 0 || move.type === 'Dark' && move.typeMod = 0) {
-				this.debug('Illuminate weaken');
-				return this.chainModify(0.5);
-			}
-		},
-		onModifyAtkPriority: 6,
-		onSourceModifyAtk: function (atk, attacker, defender, move) {
-			if (move.type === 'Ghost' && move.typeMod = 1 || move.type === 'Dark' && move.typeMod = 1) {
-				this.debug('Illuminate weaken');
-				return this.chainModify(0.25);
-			}
-		},
-		onModifySpAPriority: 6,
-		onSourceModifySpA: function (atk, attacker, defender, move) {
-			if (move.type === 'Ghost' && move.typeMod = 1 || move.type === 'Dark' && move.typeMod = 1) {
-				this.debug('Illuminate weaken');
-				return this.chainModify(0.25);
-			}
-		},
   };
 
 exports.BattleAbilities = BattleAbilities;
