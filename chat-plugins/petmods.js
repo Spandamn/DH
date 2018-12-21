@@ -440,7 +440,7 @@ evgutter: function (target, room, user) {
 			let speedtierplus = 2.2 * mon.baseStats.atk + 108.9;
 			let speedtier = 2 * mon.baseStats.atk + 99;
 			let speedtierzero = 2 * mon.baseStats.atk + 36;
-			buf += `${speedtierplus}: 252+ ${mon.species}<br>${speedtier}: 252 ${mon.species}<br>${speedtierzero}: 0 ${mon.species}<br>`;
+			buf += `${speedtierplus}: ${mon.species} 252+<br>${speedtier}: ${mon.species} 252<br>${speedtierzero}: ${mon.species} 0<br>`;
 		});
 		this.sendReplyBox(`${buf}</div>`);
 	},
@@ -455,7 +455,7 @@ evgutter: function (target, room, user) {
 			let speedtierplus = 2.2 * mon.baseStats.spa + 108.9;
 			let speedtier = 2 * mon.baseStats.spa + 99;
 			let speedtierzero = 2 * mon.baseStats.spa + 36;
-			buf += `${speedtierplus}: 252+ ${mon.species}<br>${speedtier}: 252 ${mon.species}<br>${speedtierzero}: 0 ${mon.species}<br>`;
+			buf += `${speedtierplus}: ${mon.species} 252+<br>${speedtier}: ${mon.species} 252<br>${speedtierzero}: ${mon.species} 0<br>`;
 		});
 		this.sendReplyBox(`${buf}</div>`);
 	},
