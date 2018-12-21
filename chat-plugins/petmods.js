@@ -435,12 +435,8 @@ evgutter: function (target, room, user) {
 		let feDex = require('../mods/fe/pokedex.js').BattlePokedex;
 		if (!feDex) return this.errorReply("Error Fetching FE Data.");
 		Object.values(feDex).forEach(mon => {
-			let speedtierplusscarf = (2.2 * mon.baseStats.atk + 108.9) * 1.5;
-			let speedtierscarf = (2 * mon.baseStats.atk + 99) * 1.5;
-			let speedtierplus = 2.2 * mon.baseStats.atk + 108.9;
-			let speedtier = 2 * mon.baseStats.atk + 99;
-			let speedtierzero = 2 * mon.baseStats.atk + 36;
-			buf += `${speedtierplus}: ${mon.species} 252+<br>${speedtier}: ${mon.species} 252<br>${speedtierzero}: ${mon.species} 0<br>`;
+			let speedtierplus =mon.baseStats.atk;
+			buf += `${speedtierplus}: ${mon.species}<br>`;
 		});
 		this.sendReplyBox(`${buf}</div>`);
 	},
@@ -450,12 +446,8 @@ evgutter: function (target, room, user) {
 		let feDex = require('../mods/fe/pokedex.js').BattlePokedex;
 		if (!feDex) return this.errorReply("Error Fetching FE Data.");
 		Object.values(feDex).forEach(mon => {
-			let speedtierplusscarf = (2.2 * mon.baseStats.spa + 108.9) * 1.5;
-			let speedtierscarf = (2 * mon.baseStats.spa + 99) * 1.5;
-			let speedtierplus = 2.2 * mon.baseStats.spa + 108.9;
-			let speedtier = 2 * mon.baseStats.spa + 99;
-			let speedtierzero = 2 * mon.baseStats.spa + 36;
-			buf += `${speedtierplus}: ${mon.species} 252+<br>${speedtier}: ${mon.species} 252<br>${speedtierzero}: ${mon.species} 0<br>`;
+			let speedtierplus =mon.baseStats.spa;
+			buf += `${speedtierplus}: ${mon.species}<br>`;
 		});
 		this.sendReplyBox(`${buf}</div>`);
 	},
