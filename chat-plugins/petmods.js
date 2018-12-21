@@ -429,6 +429,36 @@ evgutter: function (target, room, user) {
 		});
 		this.sendReplyBox(`${buf}</div>`);
 	},
+	featk: function (target, room, user) {
+		if (!this.runBroadcast()) return;
+		let buf = `<div class=infobox-limited><center><h2>List Of Fusion Evolution Pokemon</h2></center>`;
+		let feDex = require('../mods/fe/pokedex.js').BattlePokedex;
+		if (!feDex) return this.errorReply("Error Fetching FE Data.");
+		Object.values(feDex).forEach(mon => {
+			let speedtierplusscarf = (2.2 * mon.baseStats.atk + 108.9) * 1.5;
+			let speedtierscarf = (2 * mon.baseStats.atk + 99) * 1.5;
+			let speedtierplus = 2.2 * mon.baseStats.atk + 108.9;
+			let speedtier = 2 * mon.baseStats.atk + 99;
+			let speedtierzero = 2 * mon.baseStats.atk + 36;
+			buf += `${speedtierplus}: 252+ ${mon.species}<br>${speedtier}: 252 ${mon.species}<br>${speedtierzero}: 0 ${mon.species}<br>`;
+		});
+		this.sendReplyBox(`${buf}</div>`);
+	},
+	fespa: function (target, room, user) {
+		if (!this.runBroadcast()) return;
+		let buf = `<div class=infobox-limited><center><h2>List Of Fusion Evolution Pokemon</h2></center>`;
+		let feDex = require('../mods/fe/pokedex.js').BattlePokedex;
+		if (!feDex) return this.errorReply("Error Fetching FE Data.");
+		Object.values(feDex).forEach(mon => {
+			let speedtierplusscarf = (2.2 * mon.baseStats.spa + 108.9) * 1.5;
+			let speedtierscarf = (2 * mon.baseStats.spa + 99) * 1.5;
+			let speedtierplus = 2.2 * mon.baseStats.spa + 108.9;
+			let speedtier = 2 * mon.baseStats.spa + 99;
+			let speedtierzero = 2 * mon.baseStats.spa + 36;
+			buf += `${speedtierplus}: 252+ ${mon.species}<br>${speedtier}: 252 ${mon.species}<br>${speedtierzero}: 0 ${mon.species}<br>`;
+		});
+		this.sendReplyBox(`${buf}</div>`);
+	},
 	eternalspeed: function (target, room, user) {
 		if (!this.runBroadcast()) return;
 		let buf = `<div class=infobox-limited><center><h2>List Of Fusion Evolution Pokemon</h2></center>`;
