@@ -41,6 +41,24 @@ let BattleAbilities = {
 		rating: 3.5,
 		num: 11,
 	},
+	"triage": {
+		shortDesc: "This Pokemon's healing moves have their priority increased by 1.",
+		onModifyPriority: function (priority, pokemon, target, move) {
+			if (move && move.flags['heal']) return priority + 1;
+		},
+		id: "triage",
+		name: "Triage",
+		rating: 3.5,
+		num: 205,
+	},
+	"gravitate": {
+		shortDesc: "On switch-in, this Pokemon summons Gravity.",
+		onStart: function(source) {
+			this.useMove("Gravity", source);
+		},
+		id: "gravitate",
+		name: "Gravitate",
+	},
   };
 
 exports.BattleAbilities = BattleAbilities;
