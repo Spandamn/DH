@@ -148,6 +148,171 @@ let BattleMovedex = {
 		zMovePower: 200,
 		contestType: "Clever",
 	},
+	"airslash": {
+		num: 126,
+		accuracy: 85,
+		basePower: 110,
+		category: "Special",
+		desc: "Has a 10% chance to flinch the target.",
+		shortDesc: "10% chance to flinch the target.",
+		id: "airslash",
+		isViable: true,
+		name: "Air Slash",
+		pp: 5,
+		priority: 0,
+		flags: {protect: 1, mirror: 1},
+		secondary: {
+			chance: 10,
+			volatileStatus: 'flinch',
+		},
+		target: "normal",
+		type: "Flying",
+		zMovePower: 185,
+		contestType: "Beautiful",
+	},
+	"octazooka": {
+		num: 282,
+		accuracy: 100,
+		basePower: 65,
+		category: "Special",
+		desc: "If the target is holding an item that can be removed from it, ignoring the Sticky Hold Ability, this move's power is multiplied by 1.5. If the user has not fainted, the target loses its held item. This move cannot remove Z-Crystals, cause Pokemon with the Sticky Hold Ability to lose their held item, cause Pokemon that can Mega Evolve to lose the Mega Stone for their species, or cause a Kyogre, a Groudon, a Giratina, an Arceus, a Genesect, or a Silvally to lose their Blue Orb, Red Orb, Griseous Orb, Plate, Drive, or Memory respectively. Items lost to this move cannot be regained with Recycle or the Harvest Ability.",
+		shortDesc: "1.5x damage if foe holds an item. Removes item.",
+		id: "octazooka",
+		isViable: true,
+		name: "Octazooka",
+		pp: 20,
+		priority: 0,
+		flags: {contact: 1, protect: 1, mirror: 1},
+		onBasePowerPriority: 4,
+		onBasePower: function (basePower, source, target, move) {
+			let item = target.getItem();
+			if (!this.singleEvent('TakeItem', item, target.itemData, target, source, move, item)) return;
+			if (item.id) {
+				return this.chainModify(1.5);
+			}
+		},
+		onAfterHit: function (target, source) {
+			if (source.hp) {
+				let item = target.takeItem();
+				if (item) {
+					this.add('-enditem', target, item.name, '[from] move: Knock Off', '[of] ' + source);
+				}
+			}
+		},
+		secondary: null,
+		target: "normal",
+		type: "Water",
+		zMovePower: 120,
+		contestType: "Clever",
+	},
+	"healbell": {
+		num: 215,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		desc: "Every Pokemon in the user's party is cured of its major status condition. Active Pokemon with the Soundproof Ability are not cured.",
+		shortDesc: "Cures the user's party of all status conditions.",
+		id: "healbell",
+		isViable: true,
+		name: "Heal Bell",
+		pp: 10,
+		priority: 0,
+		flags: {snatch: 1, sound: 1, distance: 1, authentic: 1},
+		onHit: function (pokemon, source) {
+			this.add('-activate', source, 'move: Heal Bell');
+			let side = pokemon.side;
+			let success = false;
+			for (const ally of side.pokemon) {
+				if (ally.hasAbility('soundproof')) continue;
+				if (ally.cureStatus()) success = true;
+			}
+			return success;
+		},
+		target: "allyTeam",
+		type: "Normal",
+		zMoveEffect: 'heal',
+		contestType: "Beautiful",
+	},
+	"aromatherapy": {
+		num: 312,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		desc: "Every Pokemon in the user's party is cured of its major status condition. Active Pokemon with the Sap Sipper Ability are not cured, unless they are the user.",
+		shortDesc: "Cures the user's party of all status conditions.",
+		id: "aromatherapy",
+		isViable: true,
+		name: "Aromatherapy",
+		pp: 10,
+		priority: 0,
+		flags: {snatch: 1, distance: 1},
+		onHit: function (pokemon, source, move) {
+			this.add('-activate', source, 'move: Aromatherapy');
+			let success = false;
+			for (const ally of pokemon.side.pokemon) {
+				if (ally !== source && ((ally.hasAbility('sapsipper')) ||
+						(ally.volatiles['substitute'] && !move.infiltrates))) {
+					continue;
+				}
+				if (ally.cureStatus()) success = true;
+			}
+			return success;
+		},
+		target: "allyTeam",
+		type: "Grass",
+		zMoveEffect: 'heal',
+		contestType: "Clever",
+	},
+	"secretpower": {
+		num: 686,
+		accuracy: 100,
+		basePower: 90,
+		category: "Physical",
+		desc: "This move's type depends on the user's primary type. If the user's primary type is typeless, this move's type is the user's secondary type if it has one, otherwise the added type from Forest's Curse or Trick-or-Treat. This move is typeless if the user's type is typeless alone.",
+		shortDesc: "Type varies based on the user's primary type.",
+		id: "secretpower",
+		isViable: true,
+		name: "Secret Power",
+		pp: 15,
+		priority: 0,
+		flags: {protect: 1, mirror: 1, dance: 1},
+		onModifyMove: function (move, pokemon) {
+			let type = pokemon.types[0];
+			if (type === "Bird") type = "???";
+			move.type = type;
+		},
+		secondary: null,
+		target: "normal",
+		type: "Normal",
+		zMovePower: 175,
+		contestType: "Beautiful",
+	},
+	"spacialrend": {
+		num: 53,
+		accuracy: 100,
+		basePower: 90,
+		category: "Special",
+		desc: "Has a 10% chance to raise SpA.",
+		shortDesc: "10% chance to raise SpA.",
+		id: "spacialrend",
+		isViable: true,
+		name: "Spacial Rend",
+		pp: 15,
+		priority: 0,
+		flags: {protect: 1, mirror: 1},
+		secondary: {
+			chance: 10,
+			self: {
+				boosts: {
+					spa: 1,
+				},
+			},
+		},
+		target: "normal",
+		type: "Dragon",
+		zMovePower: 175,
+		contestType: "Beautiful",
+	},
 };
 
 exports.BattleMovedex = BattleMovedex;
