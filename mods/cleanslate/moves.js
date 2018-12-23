@@ -4236,7 +4236,7 @@ let BattleMovedex = {
 				}
 			},
 			onTerrain: function (pokemon) {
-				if (pokemon.isGrounded() && pokemon.ability === 'overdrive') {
+				if (pokemon.isGrounded() && pokemon.ability.id === 'overdrive') {
 					this.damage(pokemon.maxhp / 8, pokemon, pokemon);
 				}
 				print( pokemon.ability )
@@ -6624,7 +6624,7 @@ let BattleMovedex = {
 			},
 			onStart: function () {
 				this.add('-fieldstart', 'move: Gravity');
-				if ( this.effectiveWeather() !== 'none' ) this.add('-weather', 'none');
+				if ( this.effectiveWeather() !== 'none' ) this.clearWeather();
 				for (const pokemon of this.sides[0].active.concat(this.sides[1].active)) {
 					let applies = false;
 					if (pokemon.removeVolatile('bounce') || pokemon.removeVolatile('fly')) {
@@ -19416,7 +19416,7 @@ let BattleMovedex = {
         secondary: null,
 		onPrepareHit: function(target, source, move) {
 			this.attrLastMove('[still]');
-			this.add('-anim', source, "Fake Tears", target);
+			this.add('-anim', source, "Slash", target);
 		},
         target: "normal",
         type: "Rock",

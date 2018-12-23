@@ -192,7 +192,7 @@ exports.BattleScripts = {
 			return false;
 		}
 
-		if (!move.negateSecondary && !(move.hasSheerForce && pokemon.hasAbility('sheerforce'))) {
+		if (!move.negateSecondary && !(move.hasSheerForce && (pokemon.hasAbility(['sheerforce', 'topgear', 'sheerfat', 'tetraforce', 'zeroawareness']) || (pokemon.hasAbility('dramaticrage') && move.category === 'Special')))) {
 			this.singleEvent('AfterMoveSecondarySelf', move, null, pokemon, target, move);
 			this.runEvent('AfterMoveSecondarySelf', pokemon, target, move);
 		}
@@ -661,7 +661,7 @@ exports.BattleScripts = {
             if (totalItems.includes('ironball')) return true;
             // If a Fire/Flying type uses Burn Up and Roost, it becomes ???/Flying-type, but it's still grounded.
             if (!negateImmunity && this.hasType('Flying') && !('roost' in this.volatiles)) return false;
-            if (this.hasAbility(['levitate', 'airraider', 'magneticfield', 'galelevitation', 'floatinggrounds', 'turborise']) && !this.battle.suppressingAttackEvents()) return null;
+            if (this.hasAbility(['levitate', 'airraider', 'magneticfield', 'galelevitation', 'floatinggrounds', 'turborise', 'enchanted', 'hyperprotection', 'stickyfloat']) && !this.battle.suppressingAttackEvents()) return null;
             //Compression protects Unleashed Giramini from Ground-type moves, but not Captive.
             if (this.hasAbility('compression') && this.template.species === 'Giramini-Unleashed' && !this.battle.suppressingAttackEvents()) return null;
             if ('magnetrise' in this.volatiles) return false;
@@ -687,7 +687,7 @@ exports.BattleScripts = {
                 return false;
             }
 
-            if (!ignoreImmunities && status.id && !(source && (source.hasAbility('ailmentmaster') || ((source.hasAbility('corrosion') || source.hasAbility('poisonpores')) && ['tox', 'psn'].includes(status.id)))) && !(sourceEffect && sourceEffect.effectType === 'Move' && sourceEffect.id === 'thundervirus')) {
+            if (!ignoreImmunities && status.id && !(source && (source.hasAbility('ailmentmaster') || ((source.hasAbility(['corrosion', 'poisonpores'])) && ['tox', 'psn'].includes(status.id)))) && !(sourceEffect && sourceEffect.effectType === 'Move' && sourceEffect.id === 'thundervirus')) {
                 // the game currently never ignores immunities
                 if (!this.runStatusImmunity(status.id === 'tox' ? 'psn' : status.id)) {
                     this.battle.debug('immune to status');
@@ -730,7 +730,28 @@ exports.BattleScripts = {
             return true;
         },
         ignoringItem() {
-            return !!((this.battle.gen >= 5 && !this.isActive) || ((this.hasAbility('klutz') || this.hasAbility('carelessforce') || this.volatiles['engarde']) && !this.getItem().ignoreKlutz) || this.volatiles['embargo'] || this.battle.pseudoWeather['magicroom']);
+            return !!((this.battle.gen >= 5 && !this.isActive) || ((this.hasAbility(['klutz', 'carelessforce']) || this.volatiles['engarde']) && !this.getItem().ignoreKlutz) || this.volatiles['magicbreak'] || this.volatiles['embargo'] || this.battle.pseudoWeather['magicroom']);
         },
+		  setAbility(ability, source, isFromFormeChange) {
+				if (!this.hp) return false;
+				if (typeof ability === 'string') ability = this.battle.getAbility(ability);
+				let oldAbility = this.ability;
+				if (!isFromFormeChange) {
+					if (['illusion', 'mirageguard', 'justiceillusion', 'adaptableillusion', 'battlebond', 'comatose', 'disguise', 'multitype', 'powerconstruct', 'rkssystem', 'schooling', 'shieldsdown', 'stancechange', 'truant', 'resurrection', 'magicalwand', 'sleepingsystem', 'cursedcloak', 'appropriation', 'disguiseburden', 'hideandseek', 'beastcostume', 'spiralpower', 'optimize', 'prototype', 'typeillusionist', 'godoffertility', 'foundation', 'sandyconstruct', 'victorysystem', 'techequip', 'technicalsystem', 'triagesystem', 'geneticalgorithm', 'effectsetter', 'tacticalcomputer', 'mitosis', 'barbstance', 'errormacro', 'combinationdrive', 'stanceshield', 'unfriend', 'desertmirage', 'sociallife', 'cosmology', 'crystallizedshield', 'compression', 'whatdoesthisdo'].includes(ability.id)) return false;
+					if (['battlebond', 'comatose', 'disguise', 'multitype', 'powerconstruct', 'rkssystem', 'schooling', 'shieldsdown', 'stancechange', 'truant', 'resurrection', 'magicalwand', 'sleepingsystem', 'cursedcloak', 'appropriation', 'disguiseburden', 'hideandseek', 'beastcostume', 'spiralpower', 'optimize', 'prototype', 'typeillusionist', 'godoffertility', 'foundation', 'sandyconstruct', 'victorysystem', 'techequip', 'technicalsystem', 'triagesystem', 'geneticalgorithm', 'effectsetter', 'tacticalcomputer', 'mitosis', 'barbstance', 'errormacro', 'combinationdrive', 'stanceshield', 'unfriend', 'desertmirage', 'sociallife', 'cosmology', 'crystallizedshield', 'compression', 'whatdoesthisdo'].includes(oldAbility)) return false;
+				}
+				if (!this.battle.runEvent('SetAbility', this, source, this.battle.effect, ability)) return false;
+				this.battle.singleEvent('End', this.battle.getAbility(oldAbility), this.abilityData, this, source);
+				if (this.battle.effect && this.battle.effect.effectType === 'Move') {
+					this.battle.add('-endability', this, this.battle.getAbility(oldAbility), '[from] move: ' + this.battle.getMove(this.battle.effect.id));
+				}
+				this.ability = ability.id;
+				this.abilityData = {id: ability.id, target: this};
+				if (ability.id && this.battle.gen > 3) {
+					this.battle.singleEvent('Start', ability, this.abilityData, this, source);
+				}
+				this.abilityOrder = this.battle.abilityOrder++;
+				return oldAbility;
+			},
     },
 };

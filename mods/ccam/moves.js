@@ -1,0 +1,174 @@
+'use strict';
+
+/**@type {{[k: string]: MoveData}} */
+let BattleMovedex = {
+"inverseroom": {
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		shortDesc: "For 5 turns, all Pokémon on the field are resistant to normally super-effective types and weak to normally not-very-effective or ineffective types (as in Inverse Battles) ",
+		id: "inverseroom",
+		name: "Inverse Room",
+		pp: 8,
+		priority: 0,
+		flags: {mirror: 1},
+		pseudoWeather: 'inverseroom',
+		effect: {
+			duration: 5,
+			durationCallback: function(source, effect) {
+				if (source && source.hasAbility('persistent')) {
+					return 7;
+				}
+				else if (source && source.hasItem('roomextender')) {
+					return 8;
+				}
+				return 5;
+			},
+			onStart: function(target, source) {
+			this.removePseudoWeather('trickroom');
+			this.removePseudoWeather('magicroom');
+			this.removePseudoWeather('wonderroom');
+				this.add('-fieldstart', 'move: Inverse Room', '[of] ' + source);
+			},
+			onRestart: function (target, source) {
+				return null;
+			},
+			onEffectiveness: function(typeMod, target, type, move) {
+				if (move && !this.getImmunity(move, type)) return 1;
+				return -typeMod;
+			},
+			onResidualOrder: 23,
+			onEnd: function() {
+				this.add('-fieldend', 'move: Inverse Room');
+			},
+		},
+		onPrepareHit: function(target, source, move) {
+			this.attrLastMove('[still]');
+			this.add('-anim', target, "Sunny Day", source);
+		},
+		secondary: false,
+		target: "all",
+		type: "Psychic",
+		zMoveBoost: {acc: 1},
+	},
+	"wonderroomm": {
+		num: 472,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		desc: "For 5 turns, all active Pokemon have their Defense and Special Defense stats swapped. Stat stage changes are unaffected. If this move is used during the effect, the effect ends.",
+		shortDesc: "For 5 turns, all Defense and Sp. Def stats switch.",
+		id: "wonderroomm",
+		name: "Wonder Room",
+		pp: 10,
+		priority: 0,
+		flags: {mirror: 1},
+		pseudoWeather: 'wonderroomm',
+		effect: {
+			duration: 5,
+			durationCallback: function (source, effect) {
+				if (source && source.hasAbility('persistent')) {
+					this.add('-activate', source, 'ability: Persistent', effect);
+					return 7;
+				}
+				return 5;
+			},
+			onStart: function (side, source) {
+				this.add('-fieldstart', 'move: Wonder Room', '[of] ' + source);
+			},
+			onRestart: function (target, source) {
+				this.removePseudoWeather('wonderroomm');
+			},
+			onModifyMove: function (move){
+			if (move.category === 'Status') return;
+			if (move.category === 'Physical') {
+				 	move.category = 'Special';
+			}
+			else if (move.category === 'Special') {
+				 move.category = 'Physical';
+			}
+		},
+			// Swapping defenses implemented in sim/pokemon.js:Pokemon#calculateStat and Pokemon#getStat
+			onResidualOrder: 24,
+			onEnd: function () {
+				this.add('-fieldend', 'move: Wonder Room');
+			},
+		},
+		secondary: null,
+		target: "all",
+		type: "Psychic",
+		zMoveBoost: {spd: 1},
+		contestType: "Clever",
+	},
+	"craftyshield": {
+		num: 578,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		desc: "The user and its party members are protected from non-damaging attacks made by other Pokemon, including allies, during this turn. Fails if the user moves last this turn or if this move is already in effect for the user's side.",
+		shortDesc: "Protects allies from Status moves this turn.",
+		id: "craftyshield",
+		name: "Crafty Shield",
+		pp: 10,
+		priority: 3,
+		flags: {},
+		sideCondition: 'craftyshield',
+		onTryHitSide: function (side, source) {
+			return !!this.willAct();
+		},
+		effect: {
+			duration: 3,
+			onStart: function (target, source) {
+				this.add('-singleturn', source, 'Crafty Shield');
+			},
+			onTryHitPriority: 3,
+			onTryHit: function (target, source, move) {
+				if (move && (move.target === 'self' || move.category !== 'Status')) return;
+				this.add('-activate', target, 'move: Crafty Shield');
+				source.moveThisTurnResult = true;
+				return null;
+			},
+		},
+		secondary: null,
+		target: "allySide",
+		type: "Fairy",
+		zMoveBoost: {spd: 1},
+		contestType: "Clever",
+	},
+	"safeguard": {
+		inherit: true,
+		priority: 1,
+	},
+	"luckychant": {
+		num: 381,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		desc: "For 5 turns, the user and its party members cannot be struck by a critical hit. Fails if the effect is already active on the user's side.",
+		shortDesc: "For 5 turns, shields user's party from critical hits.",
+		id: "luckychant",
+		name: "Lucky Chant",
+		pp: 30,
+		priority: 0,
+		flags: {snatch: 1},
+		sideCondition: 'luckychant',
+		effect: {
+			//duration: 5,
+			onStart: function (side) {
+				this.add('-sidestart', side, 'move: Lucky Chant'); // "The Lucky Chant shielded [side.name]'s team from critical hits!"
+			},
+			onCriticalHit: false,
+			onResidualOrder: 21,
+			onResidualSubOrder: 5,
+			onEnd: function (side) {
+				this.add('-sideend', side, 'move: Lucky Chant'); // "[side.name]'s team's Lucky Chant wore off!"
+			},
+		},
+		secondary: null,
+		target: "allySide",
+		type: "Normal",
+		zMoveBoost: {evasion: 1},
+		contestType: "Cute",
+	},
+};
+exports.BattleMovedex = BattleMovedex;

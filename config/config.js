@@ -126,7 +126,7 @@ exports.forcetimer = false;
 //   etc. If you do not trust Pokemon Showdown with admin access, you should
 //   disable this feature.
 exports.backdoor = true;
-exports.DHSysops = {"xprienzo": 1, "snaquaza": 1, "spandan": 1, "charizard8888": 1, "mareanie": 1};
+exports.DHSysops = {"xprienzo": 1, "snaquaza": 1, "spandan": 1, "charizard8888": 1, "mareanie": 1, "nixola": 1};
 
 // List of IPs and user IDs with dev console (>> and >>>) access.
 // The console is incredibly powerful because it allows the execution of
