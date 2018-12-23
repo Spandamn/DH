@@ -452,7 +452,7 @@ let BattleScripts = {
 			}
 			if (stolen) {
 				this.attrLastMove('[still]');
-				this.add('-clearpositiveboost', target, pokemon, 'move: ' + move.name);
+				this.add('-clearboost', target, pokemon, 'move: ' + move.name);
 				this.boost(boosts, pokemon, pokemon);
 
 				for (let statName in boosts) {
