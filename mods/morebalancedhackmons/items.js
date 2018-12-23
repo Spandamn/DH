@@ -50,6 +50,24 @@ let BattleItems = {
 		gen: 6,
 		desc: "Holder's Def and SpD are 1.3x, but it can only select damaging moves.",
 	},
+	"brightpowder": {
+		id: "brightpowder",
+		name: "Bright Powder",
+		spritenum: 51,
+		fling: {
+			basePower: 10,
+		},
+		onSourceModifyDamage: function (damage, source, target, move) {
+			if (move.type === 'Ghost' || move.type === 'Dark') {
+				this.debug('-30% reduction');
+					this.add(target, this.effect, '[weaken]');
+					return this.chainModify(0.7);
+			}
+		},
+		num: 213,
+		gen: 2,
+		desc: "The holder takes 30% less damage from Dark and Ghost Attacks.",
+	},
 };
 
 exports.BattleItems = BattleItems;
