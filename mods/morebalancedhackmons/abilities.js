@@ -67,7 +67,7 @@ let BattleAbilities = {
 		id: "magician",
 		name: "Magician",
 	},
-	"scrappy": {
+	"corrosion": {
 		shortDesc: "This Pokemon can hit Steel types with Poison-type moves.",
 		onModifyMovePriority: -5,
 		onModifyMove: function (move) {
@@ -76,8 +76,8 @@ let BattleAbilities = {
 				move.ignoreImmunity['Poison'] = true;
 			}
 		},
-		id: "scrappy",
-		name: "Scrappy",
+		id: "corrosion",
+		name: "Corrosion",
 		rating: 3,
 		num: 113,
 	},
