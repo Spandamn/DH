@@ -285,6 +285,54 @@ exports.BattleStatuses = {
 			if (this.effectData.source && this.effectData.source.isActive) pokemon.tryTrap();
 		},
 	},
+	vomit: {
+			duration: 9999,
+			onStart: function (pokemon) {
+				this.add('-start', pokemon, 'move: Vomit');
+			},
+			onDisableMove: function (pokemon) {
+				for (const moveSlot of pokemon.moveSlots) {
+					if (this.getMove(moveSlot.id).flags['recycle']) {
+						pokemon.disableMove(moveSlot.id);
+					}
+				}
+			},
+			onBeforeMovePriority: 6,
+			onBeforeMove: function (pokemon, target, move) {
+				if (move.flags['recycle'] && !move.isZ) {
+					this.add('cant', pokemon, 'move: Vomit', move);
+					return false;
+				}
+			},
+			onResidualOrder: 17,
+			onEnd: function (pokemon) {
+				this.add('-end', pokemon, 'move: Vomit');
+			},
+	},
+	earlysnack: {
+			duration: 9999,
+			onStart: function (pokemon) {
+				this.add('-start', pokemon, 'move: Early Snack');
+			},
+			onDisableMove: function (pokemon) {
+				for (const moveSlot of pokemon.moveSlots) {
+					if (this.getMove(moveSlot.id).flags['recycle']) {
+						pokemon.disableMove(moveSlot.id);
+					}
+				}
+			},
+			onBeforeMovePriority: 6,
+			onBeforeMove: function (pokemon, target, move) {
+				if (move.flags['recycle'] && !move.isZ) {
+					this.add('cant', pokemon, 'move: Early Snack', move);
+					return false;
+				}
+			},
+			onResidualOrder: 17,
+			onEnd: function (pokemon) {
+				this.add('-end', pokemon, 'move: Early Snack');
+			},
+	},
 	lockedmove: {
 		// Outrage, Thrash, Petal Dance...
 		duration: 2,

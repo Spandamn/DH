@@ -1348,6 +1348,13 @@ exports.BattleAbilities = {
 	},
 	"honeygather": {
 		shortDesc: "No competitive use.",
+		onResidualOrder: 5,
+		onResidualSubOrder: 2,
+		onResidual: function (pokemon) {
+			if (pokemon.item === 'honey') {
+				this.heal(pokemon.maxhp / 8);
+			}
+		},	
 		id: "honeygather",
 		name: "Honey Gather",
 		rating: 0,

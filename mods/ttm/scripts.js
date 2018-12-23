@@ -933,7 +933,18 @@ this.modData('Learnsets', 'claydol').learnset.timeloop = ['7L1'];
 this.modData('Learnsets', 'sigilyph').learnset.timeloop = ['7L1'];
 this.modData('Learnsets', 'dialga').learnset.timeloop = ['7L1'];
 this.modData('Learnsets', 'arceus').learnset.timeloop = ['7L1'];
-
+this.modData('Learnsets', 'malamar').learnset.lightsaber = ['7L1'];
+this.modData('Learnsets', 'necrozma').learnset.lightsaber = ['7L1'];
+this.modData('Learnsets', 'mewtwo').learnset.lightsaber = ['7L1'];
+this.modData('Learnsets', 'absol').learnset.lightsaber = ['7L1'];
+this.modData('Learnsets', 'gallade').learnset.lightsaber = ['7L1'];
+this.modData('Learnsets', 'cresselia').learnset.lightsaber = ['7L1'];
+this.modData('Learnsets', 'kartana').learnset.lightsaber = ['7L1'];
+this.modData('Learnsets', 'aegislash').learnset.lightsaber = ['7L1'];
+this.modData('Learnsets', 'samurott').learnset.lightsaber = ['7L1'];
+this.modData('Learnsets', 'arceus').learnset.lightsaber = ['7L1'];
+this.modData('Learnsets', 'silvally').learnset.lightsaber = ['7L1'];
+this.modData('Learnsets', 'groudon').learnset.lightsaber = ['7L1'];
 	},
 };
 
