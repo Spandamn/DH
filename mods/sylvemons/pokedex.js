@@ -1272,14 +1272,17 @@ exports.BattlePokedex = {
 	},
 	uxie: {
 		inherit: true,
+		types: ["Psychic", "Ghost"],
 		abilities: {0: "Levitate", H: "Dimension Warp"},
 	},
 	mesprit: {
 		inherit: true,
+		types: ["Psychic", "Fairy"],
 		abilities: {0: "Levitate", H: "Dimension Warp"},
 	},
 	azelf: {
 		inherit: true,
+		types: ["Psychic", "Dark"],
 		abilities: {0: "Levitate", H: "Dimension Warp"},
 	},
 	nihilego: {
@@ -1570,4 +1573,24 @@ exports.BattlePokedex = {
 		inherit: true,
       abilities: {0: "Beast Boost", H: "Knight's Blade"},
 	},
+	deoxys: {
+      inherit: true,
+      types: ["Psychic", "Poison"],
+      abilities: {0: "Pressure", H: "Insider"},
+   },
+	deoxysattack: {
+      inherit: true,
+      types: ["Psychic", "Poison"],
+      abilities: {0: "Pressure", H: "Insider"},
+   },
+	deoxysdefense: {
+      inherit: true,
+      types: ["Psychic", "Poison"],
+      abilities: {0: "Pressure", H: "Insider"},
+   },
+	deoxysspeed: {
+      inherit: true,
+      types: ["Psychic", "Poison"],
+      abilities: {0: "Pressure", H: "Insider"},
+   },
 };
