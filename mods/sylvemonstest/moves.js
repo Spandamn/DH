@@ -2005,24 +2005,13 @@ exports.BattleMovedex = {
 		accuracy: 90,
 		basePower: 140,
 		category: "Physical",
-		desc: "Has a 30% chance to paralyze the target. This attack charges on the first turn and executes on the second. If the user is holding a Power Herb, the move completes in one turn.",
+		desc: "Has a 30% chance to paralyze the target.",
 		shortDesc: "Charges turn 1. Hits turn 2. 30% paralyze.",
 		id: "freezeshock",
 		name: "Freeze Shock",
 		pp: 5,
 		priority: 0,
 		flags: {protect: 1, mirror: 1},
-		onTryMove: function (attacker, defender, move) {
-			if (attacker.removeVolatile(move.id)) {
-				return;
-			}
-			this.add('-prepare', attacker, move.name, defender);
-			if (!this.runEvent('ChargeMove', attacker, defender, move)) {
-				return;
-			}
-			attacker.addVolatile('twoturnmove', defender);
-			return null;
-		},
 		secondary: {
 			chance: 30,
 			status: 'par',
@@ -2037,24 +2026,13 @@ exports.BattleMovedex = {
 		accuracy: 90,
 		basePower: 140,
 		category: "Special",
-		desc: "Has a 30% chance to burn the target. This attack charges on the first turn and executes on the second. If the user is holding a Power Herb, the move completes in one turn.",
+		desc: "Has a 30% chance to burn the target.",
 		shortDesc: "Charges turn 1. Hits turn 2. 30% burn.",
 		id: "iceburn",
 		name: "Ice Burn",
 		pp: 5,
 		priority: 0,
 		flags: {protect: 1, mirror: 1},
-		onTryMove: function (attacker, defender, move) {
-			if (attacker.removeVolatile(move.id)) {
-				return;
-			}
-			this.add('-prepare', attacker, move.name, defender);
-			if (!this.runEvent('ChargeMove', attacker, defender, move)) {
-				return;
-			}
-			attacker.addVolatile('twoturnmove', defender);
-			return null;
-		},
 		secondary: {
 			chance: 30,
 			status: 'brn',
