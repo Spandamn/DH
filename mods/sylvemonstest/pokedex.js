@@ -1670,4 +1670,35 @@ exports.BattlePokedex = {
       types: ["Psychic", "Poison"],
       abilities: {0: "Pressure", H: "Insider"},
    },
+	ledian: {
+      inherit: true,
+      types: ["Bug", "Fighting"],
+      abilities: {0: "Swarm", 1: "Early Bird", H: "Huge Power"},
+   },
+	ledyba: {
+      inherit: true,
+      types: ["Bug", "Fighting"],
+      abilities: {0: "Swarm", 1: "Early Bird", H: "Huge Power"},
+   },
+	luxray: {
+      inherit: true,
+      types: ["Electric", "Dark"],
+      abilities: {0: "Guts", 1: "Intimidate", H: "Strong Jaw"},
+   },
+	sandslashalola: {
+		inherit: true,
+      abilities: {0: "Snow Cloak", 1: "Speed Boost", H: "Sole Caliber"},
+	},
+	shuppet: {
+        inherit: true,
+        types: ["Ghost", "Normal"],
+    },
+	banette: {
+        inherit: true,
+        types: ["Ghost", "Normal"],
+    },
+	banettemega: {
+        inherit: true,
+        types: ["Ghost", "Normal"],
+    },
 };
