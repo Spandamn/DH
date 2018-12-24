@@ -158,6 +158,33 @@ tapukoko: {
 		color: "Yellow",
 		eggGroups: ["Undiscovered"],
 	},
+	necrozmaduskmane: {
+		num: 800,
+		species: "Necrozma-Dusk-Mane",
+		baseSpecies: "Necrozma",
+		forme: "Dusk-Mane",
+		formeLetter: "D",
+		types: ["Psychic", "Steel"],
+		gender: "N",
+		baseStats: {hp: 113, atk: 157, def: 127, spa: 103, spd: 127, spe: 73},
+		abilities: {0: "Prism Armor"},
+		heightm: 3.8,
+		weightkg: 460,
+		color: "Yellow",
+		eggGroups: ["Undiscovered"],
+	},
+	lugia: {
+		num: 249,
+		species: "Lugia",
+		types: ["Psychic", "Flying"],
+		gender: "N",
+		baseStats: {hp: 115, atk: 60, def: 130, spa: 90, spd: 175, spe: 110},
+		abilities: {0: "Pressure", H: "Multiscale"},
+		heightm: 5.2,
+		weightkg: 216,
+		color: "White",
+		eggGroups: ["Undiscovered"],
+	},
 };
 
 exports.BattlePokedex = BattlePokedex;
