@@ -101,5 +101,97 @@ let BattleAbilities = {
 		id: "overflow",
 		name: "Overflow",
 	},
+	"flowergift": {
+		shortDesc: "Boosts Atk, SpA and Spe by 50% in Sun.",
+		onModifySpAPriority: 5,
+		onModifySpA: function (spa, pokemon) {
+			if (this.isWeather(['sunnyday', 'desolateland'])) {
+				return this.chainModify(1.5);
+			}
+		},
+		onModifyAtjPriority: 5,
+		onModifyAtk: function (spa, pokemon) {
+			if (this.isWeather(['sunnyday', 'desolateland'])) {
+				return this.chainModify(1.5);
+			}
+		},
+		onModifySpePriority: 5,
+		onModifySpe: function (spa, pokemon) {
+			if (this.isWeather(['sunnyday', 'desolateland'])) {
+				return this.chainModify(1.5);
+			}
+		},
+		id: "flowergift",
+		name: "Flower Gift",
+	},
+	"mowdown": {
+		shortDesc: "The user's moves deal Super Effective damage on Grass-types",
+		onModifyMove: function(move) {
+			move.onEffectiveness = function(typeMod, type) {
+				if (type === 'Grass') return 1;
+			};
+		},
+		id: "mowdown",
+		name: "Mow Down",
+	},
+		"clearbody": {
+		shortDesc: "Prevents other Pokemon from lowering this Pokemon's stat stages.",
+		onBoost: function (boost, target, source, effect) {
+			let showMsg = false;
+			for (let i in boost) {
+				// @ts-ignore
+				if (boost[i] < 0) {
+					// @ts-ignore
+					delete boost[i];
+					showMsg = true;
+				}
+			}
+			if (showMsg && !effect.secondaries) this.add("-fail", target, "unboost", "[from] ability: Clear Body", "[of] " + target);
+		},
+		id: "clearbody",
+		name: "Clear Body",
+		rating: 2,
+		num: 29,
+	},
+	"whitesmoke": {
+		shortDesc: "Prevents other Pokemon from lowering this Pokemon's stat stages.",
+		onBoost: function (boost, target, source, effect) {
+			let showMsg = false;
+			for (let i in boost) {
+				// @ts-ignore
+				if (boost[i] < 0) {
+					// @ts-ignore
+					delete boost[i];
+					showMsg = true;
+				}
+			}
+			if (showMsg && !effect.secondaries) this.add("-fail", target, "unboost", "[from] ability: White Smoke", "[of] " + target);
+		},
+		id: "whitesmoke",
+		name: "White Smoke",
+		rating: 2,
+		num: 73,
+	},
+	"fullmetalbody": {
+		desc: "Prevents other Pokemon from lowering this Pokemon's stat stages. Moongeist Beam, Sunsteel Strike, and the Mold Breaker, Teravolt, and Turboblaze Abilities cannot ignore this Ability.",
+		shortDesc: "Prevents other Pokemon from lowering this Pokemon's stat stages.",
+		onBoost: function (boost, target, source, effect) {
+			let showMsg = false;
+			for (let i in boost) {
+				// @ts-ignore
+				if (boost[i] < 0) {
+					// @ts-ignore
+					delete boost[i];
+					showMsg = true;
+				}
+			}
+			if (showMsg && !effect.secondaries) this.add("-fail", target, "unboost", "[from] ability: Full Metal Body", "[of] " + target);
+		},
+		isUnbreakable: true,
+		id: "fullmetalbody",
+		name: "Full Metal Body",
+		rating: 2,
+		num: 230,
+	},
 };
 exports.BattleAbilities = BattleAbilities;
