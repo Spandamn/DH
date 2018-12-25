@@ -1,6 +1,24 @@
 "use strict";
 
 exports.BattleMovedex = {
+	"booop": {
+		accuracy: 95,
+		basePower: 180,
+		category: "Physical",
+		desc: "V-Create clone but without drops",
+		shortDesc: "V-Create clone but without drops",
+		id: "booop",
+		isViable: true,
+		name: "BOOOP",
+		pp: 5,
+		priority: 0,
+		flags: {contact: 1, protect: 1, mirror: 1},
+		secondary: null,
+		target: "normal",
+		type: "Fire",
+		zMovePower: 220,
+		contestType: "Cool",
+	},
 	"wh0spillsarethese": {
 		accuracy: true,
 		basePower: 0,
