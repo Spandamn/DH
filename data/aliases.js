@@ -28,6 +28,7 @@ let BattleAliases = {
 	"bf": "[Gen 7] Battle Factory",
 	"gen6bf": "[Gen 6] Battle Factory",
 	"ssb": "[Gen 7] Super Staff Bros Brawl",
+	"ccam": "[Gen 7] Community Create a Pet Mod",
 
 	// mega evos
 	"fabio": "Ampharos-Mega",
