@@ -30,6 +30,8 @@ exports.BattleScripts = {
 	  this.modData('Pokedex', 'castformsunny').baseStats['spe'] = 100;
 	  this.modData('Pokedex', 'castformrainy').baseStats['spe'] = 100;
 	  this.modData('Pokedex', 'castformsnowy').baseStats['spe'] = 100;
-
+	  
+	  this.modData('Pokedex', 'keldeo').baseStats['atk'] = 129;
+	  this.modData('Pokedex', 'keldeo').baseStats['spa'] = 72;
   },
   };
