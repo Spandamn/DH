@@ -57,10 +57,12 @@ let BattleMovedex = {
 			onRestart: function (target, source) {
 				return null;
 			},
-			onEffectiveness: function(typeMod, target, type, move) {
-				if (move && !this.getImmunity(move, type)) return 1;
-				return -typeMod;
-			},
+			onEffectiveness: function (typeMod, target, type, move) {
+			// The effectiveness of Freeze Dry on Water isn't reverted
+			if (move && move.id === 'freezedry' && type === 'Water') return;
+			if (move && !this.getImmunity(move, type)) return 1;
+			return -typeMod;
+		},
 			onResidualOrder: 23,
 			onEnd: function() {
 				this.add('-fieldend', 'move: Inverse Room');
