@@ -194,6 +194,71 @@ let BattleMovedex = {
 		zMoveBoost: {evasion: 1},
 		contestType: "Cute",
 	},
-
+	"bloodsucker": {
+		desc: "Adds 33% draining to all contact moves",
+		shortDesc: "Adds 33% draining to all contact moves",
+		onModifyMove: function (move) {
+			if (move.flags['contact']) {
+			move.drain = [1,3];
+			}
+		},
+		id: "bloodsucker",
+		name: "Bloodsucker",
+	},
+	"forecast": {
+		desc: "If this Pokemon is a Castform, its type changes to the current weather condition's type, except Sandstorm.",
+		shortDesc: "If this Pokémon is holding a Weather Rock, its secondary typing becomes Water/Fire/Rock/Ice/Flying/Dark (depending on the rock) and summon the corresponding weather upon entering the field. Under Strong Winds, this mon gains the added Flying type.",
+		onStart: function(pokemon) {
+			if (pokemon.item === 'heatrock') {
+				pokemon.addType('Fire');
+				this.setWeather('sunnyday');
+			} else if (pokemon.item === 'damprock') {
+				pokemon.addType('Water');
+				this.setWeather('raindance');
+			} else if (pokemon.item === 'smoothrock') {
+				pokemon.addType('Rock');
+				this.setWeather('sandstorm');
+			} else if (pokemon.item === 'icyrock') {
+				pokemon.addType('Ice');
+				this.setWeather('hail');
+			} else if (pokemon.item === 'shadowrock') {
+				pokemon.addType('dark');
+				this.setWeather('shadowsky');
+			} else if (pokemon.item === 'breezerock') {
+				pokemon.addType('Flying');
+				this.setWeather('aircurrent');
+			} else if (this.isWeather('deltastream')) {
+				pokemon.addType('Flying');
+			}
+		},
+		onUpdate: function(pokemon) {
+			if (pokemon.baseTemplate.baseSpecies !== 'Castform' || pokemon.transformed) return;
+			let forme = null;
+			switch (this.effectiveWeather()) {
+				case 'sunnyday':
+				case 'desolateland':
+					if (pokemon.template.speciesid !== 'castformsunny') forme = 'Castform-Sunny';
+					break;
+				case 'raindance':
+				case 'primordialsea':
+					if (pokemon.template.speciesid !== 'castformrainy') forme = 'Castform-Rainy';
+					break;
+				case 'hail':
+					if (pokemon.template.speciesid !== 'castformsnowy') forme = 'Castform-Snowy';
+					break;
+				default:
+					if (pokemon.template.speciesid !== 'castform') forme = 'Castform';
+					break;
+			}
+			if (pokemon.isActive && forme) {
+				pokemon.formeChange(forme);
+				this.add('-formechange', pokemon, forme, '[msg]', '[from] ability: Forecast');
+			}
+		},
+		id: "forecast",
+		name: "Forecast",
+		rating: 3,
+		num: 59,
+	},
 };
 exports.BattleMovedex = BattleMovedex;
