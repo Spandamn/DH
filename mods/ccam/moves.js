@@ -105,14 +105,24 @@ let BattleMovedex = {
 			onRestart: function (target, source) {
 				this.removePseudoWeather('wonderroomm');
 			},
+			onModifyMovePriority: 8,
 			onModifyMove: function (move, pokemon){
-			if (move.category === 'Physical') {
+				if (move.category === 'Physical') {
 				 	move.category = 'Special';
 			}
-			else if (move.category === 'Special') {
-				 move.category = 'Physical';
+				else if (move.category === 'Special') {
+				 	move.category = 'Physical';
 			}
-		},
+			},
+			getStat(statName, unboosted, unmodified) {
+				if (unmodified && 'wonderroom' in this.battle.pseudoWeather) {
+			if (statName === 'def') {
+				statName = 'spd';
+			} else if (statName === 'spd') {
+				statName = 'def';
+			}
+				}
+			},
 			// Swapping defenses implemented in sim/pokemon.js:Pokemon#calculateStat and Pokemon#getStat
 			onResidualOrder: 24,
 			onEnd: function () {
