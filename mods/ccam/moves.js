@@ -77,19 +77,19 @@ let BattleMovedex = {
 		type: "Psychic",
 		zMoveBoost: {acc: 1},
 	},
-	"wonderroomm": {
+	"wonderroom": {
 		num: 472,
 		accuracy: true,
 		basePower: 0,
 		category: "Status",
 		desc: "For 5 turns, all active Pokemon have their Defense and Special Defense stats swapped. Stat stage changes are unaffected. If this move is used during the effect, the effect ends.",
 		shortDesc: "For 5 turns, all Defense and Sp. Def stats switch.",
-		id: "wonderroomm",
+		id: "wonderroom",
 		name: "Wonder Room",
 		pp: 10,
 		priority: 0,
 		flags: {mirror: 1},
-		pseudoWeather: 'wonderroomm',
+		pseudoWeather: 'wonderroom',
 		effect: {
 			duration: 5,
 			durationCallback: function (source, effect) {
