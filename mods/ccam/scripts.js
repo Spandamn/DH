@@ -33,5 +33,18 @@ exports.BattleScripts = {
 	  
 	  this.modData('Pokedex', 'keldeo').baseStats['atk'] = 129;
 	  this.modData('Pokedex', 'keldeo').baseStats['spa'] = 72;
+	  
+	  this.modData('Pokedex', 'basculin').types = ['Water', 'Fighting'];
+	  this.modData('Pokedex', 'basculin').baseStats['atk'] = 112;
+	  this.modData('Pokedex', 'basculin').baseStats['spe'] = 108;
+	  
+	  this.modData('Pokedex', 'basculinbluestriped').types = ['Water', 'Rock'];
+	  this.modData('Pokedex', 'basculinbluestriped').baseStats['atk'] = 102;
+	  this.modData('Pokedex', 'basculinbluestriped').baseStats['spe'] = 118;
+	  
+	  this.modData('Pokedex', 'kyuremblack').types = ['Ice', 'Electric'];
+	  this.modData('Pokedex', 'kyuremwhite').types = ['Ice', 'Fire'];
+	  
+	  this.modData('Pokedex', 'cherrimsunshine').types = ['Grass', 'Fire'];
   },
   };
