@@ -107,7 +107,12 @@ let BattleMovedex = {
 			},
 			onModifyMovePriority: 8,
 			onModifyMove: function(move, pokemon) {
-			if (move.category === 'Physical') move.category = 'Special';
+			if (move.category === 'Physical') {
+				move.category = 'Special';
+			}
+			else if (move.category === 'Physical') {
+				move.category = 'Special';
+			}
 		},
 			getStat(statName, unboosted, unmodified) {
 				if (unmodified && 'wonderroom' in this.battle.pseudoWeather) {
