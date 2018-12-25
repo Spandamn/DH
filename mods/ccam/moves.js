@@ -105,8 +105,7 @@ let BattleMovedex = {
 			onRestart: function (target, source) {
 				this.removePseudoWeather('wonderroomm');
 			},
-			onModifyMove: function (move){
-			if (move.category === 'Status') return;
+			onModifyMove: function (move, pokemon){
 			if (move.category === 'Physical') {
 				 	move.category = 'Special';
 			}
