@@ -108,9 +108,11 @@ let BattleMovedex = {
 			onModifyMovePriority: 8,
 			onModifyMove: function (move, pokemon){
 				if (move.category === 'Physical') {
+					this.debug('Wonder Room switching');
 				 	move.category = 'Special';
 			}
 				else if (move.category === 'Special') {
+					this.debug('Wonder Room switching');
 				 	move.category = 'Physical';
 			}
 			},
