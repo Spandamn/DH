@@ -85,5 +85,21 @@ let BattleAbilities = {
 		rating: 3.5,
 		num: 22,
 	},
+	"mudbath": {
+		shortDesc: "On switch-in, this Pokemon summons Mud Sport.",
+		onStart: function(source) {
+			this.useMove("Mud Sport", source);
+		},
+		id: "mudbath",
+		name: "Mud Bath",
+	},
+	"overflow": {
+		shortDesc: "On switch-in, this Pokemon summons Water Sport.",
+		onStart: function(source) {
+			this.useMove("Water Sport", source);
+		},
+		id: "overflow",
+		name: "Overflow",
+	},
 };
 exports.BattleAbilities = BattleAbilities;
