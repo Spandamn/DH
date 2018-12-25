@@ -106,16 +106,9 @@ let BattleMovedex = {
 				this.removePseudoWeather('wonderroomm');
 			},
 			onModifyMovePriority: 8,
-			onModifyMove: function (move, pokemon){
-				if (move.category === 'Physical') {
-					this.debug('Wonder Room switching');
-				 	move.category = 'Special';
-			}
-				else if (move.category === 'Special') {
-					this.debug('Wonder Room switching');
-				 	move.category = 'Physical';
-			}
-			},
+			onModifyMove: function(move, pokemon) {
+			if (move.category === 'Physical') move.category = 'Special';
+		},
 			getStat(statName, unboosted, unmodified) {
 				if (unmodified && 'wonderroom' in this.battle.pseudoWeather) {
 			if (statName === 'def') {
