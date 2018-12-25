@@ -1,6 +1,32 @@
 'use strict';
 
 exports.BattleAbilities = {
+	"iboopu": {
+		shortDesc: "Sets up desolate land and rocks upon entering field.",
+		onStart: function (source) {
+			this.setWeather('desolateland');
+			this.useMove('Stealth Rock', source);
+		},
+		onAnySetWeather: function (target, source, weather) {
+			if (this.getWeather().id === 'desolateland' && !['desolateland', 'primordialsea', 'deltastream'].includes(weather.id)) return false;
+		},
+		onEnd: function (pokemon) {
+			if (this.weatherData.source !== pokemon) return;
+			for (const side of this.sides) {
+				for (const target of side.active) {
+					if (target === pokemon) continue;
+					if (target && target.hp && target.hasAbility('desolateland')) {
+						this.weatherData.source = target;
+						return;
+					}
+				}
+			}
+			this.clearWeather();
+		},
+		id: "iboopu",
+		name: "IBoopU",
+		rating: 5,
+	},
 	"noone": {
 		shortDesc: "Nullifies all abilities on field.",
 		onStart: function(pokemon) {
