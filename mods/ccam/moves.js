@@ -260,5 +260,31 @@ let BattleMovedex = {
 		rating: 3,
 		num: 59,
 	},
+	"technoblast": {
+		num: 546,
+		accuracy: 100,
+		basePower: 120,
+		category: "Special",
+		desc: "This move's type depends on the user's held Drive.",
+		shortDesc: "Type varies based on the held Drive.",
+		id: "technoblast",
+		isViable: true,
+		name: "Techno Blast",
+		pp: 5,
+		priority: 0,
+		flags: {protect: 1, mirror: 1},
+		onModifyMove: function (move, pokemon) {
+			move.type = this.runEvent('Drive', pokemon, null, 'technoblast', 'Normal');
+		},
+		onHit: function (source, pokemon) {
+			let thirdtype = this.runEvent('Drive', pokemon, null, 'technoblast', 'Normal');
+			source.addType(thirdtype);
+		},
+		secondary: null,
+		target: "normal",
+		type: "Normal",
+		zMovePower: 190,
+		contestType: "Cool",
+	},
 };
 exports.BattleMovedex = BattleMovedex;
