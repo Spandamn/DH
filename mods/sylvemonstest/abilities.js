@@ -693,4 +693,19 @@ exports.BattleAbilities = {
 		rating: 3,
 		num: 200,
 	},
+"jackofalltrades": {
+		desc: "This Pokemon's moves not of it's typing gain 1.5x power. This pokemon does not gain STAB.",
+		onModifyMove: function (move) {
+			move.stab = 1;
+		},
+		onBasePower: function (basePower, pokemon, target, move) {
+			if (!move.stab) {
+				return this.chainModify([0x14CD, 0x1000]);
+				}
+				},
+		id: "jackofalltrades",
+		name: "Jack of all Trades",
+		rating: 3.5,
+		num: 11,
+	},
 };
