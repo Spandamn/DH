@@ -248,14 +248,14 @@ let BattleMovedex = {
 			duration: 5,
 			onTryMove: function (source, target, move) {
 				if (move.id === 'spikes' || move.id === 'stealthrock' || move.id === 'stickyweb' || move.id === 'toxicspikes') {
-					return false;
 					this.add('-fail', target);
+					return false;
 					 }
 			},
 			onFoeTryMove: function (source, target, move) {
 				if (move.id === 'spikes' || move.id === 'stealthrock' || move.id === 'stickyweb' || move.id === 'toxicspikes') {
-					return false;
 					this.add('-fail', target);
+					return false;
 					 }
 			},
 			onStart: function (side) {
