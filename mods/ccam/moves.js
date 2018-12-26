@@ -249,7 +249,13 @@ let BattleMovedex = {
 			onTryMove: function (target, source, move) {
 				if (move.id === 'spikes' || move.id === 'stealthrock' || move.id === 'stickyweb' || move.id === 'toxicspikes') {
 					return false;
-					this.add('cant', this.effectData.target, 'ability: Mist');
+					this.add('cant', this.effectData.target, 'move: Mist');
+					 }
+			},
+			onFoeTryMove: function (target, source, move) {
+				if (move.id === 'spikes' || move.id === 'stealthrock' || move.id === 'stickyweb' || move.id === 'toxicspikes') {
+					return false;
+					this.add('cant', this.effectData.target, 'move: Mist');
 					 }
 			},
 			onStart: function (side) {
@@ -262,7 +268,7 @@ let BattleMovedex = {
 			},
 		},
 		secondary: null,
-		target: "all",
+		target: "allySide",
 		type: "Ice",
 		zMoveEffect: 'heal',
 		contestType: "Beautiful",
