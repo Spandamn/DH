@@ -114,7 +114,7 @@ let BattleMovedex = {
 				move.category = 'Special';
 			}
 		},
-			getStat(statName, unboosted, unmodified) {
+			/*getStat(statName, unboosted, unmodified) {
 				if (unmodified && 'wonderroom' in this.battle.pseudoWeather) {
 			if (statName === 'def') {
 				statName = 'spd';
@@ -122,7 +122,7 @@ let BattleMovedex = {
 				statName = 'def';
 			}
 				}
-			},
+			},*/
 			// Swapping defenses implemented in sim/pokemon.js:Pokemon#calculateStat and Pokemon#getStat
 			onResidualOrder: 24,
 			onEnd: function () {
