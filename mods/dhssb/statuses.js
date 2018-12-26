@@ -11,6 +11,9 @@ exports.BattleStatuses = {
 		onSwitchOut: function (pokemon) {
 			this.add('c|+BaneOfAll|gj' + pokemon.side.name + ', save the best till last, huh');
 		},
+		onSourceFaint: function (pokemon) {
+			this.add('c|+BaneOfAll|Ha Ha u just got BOOPED');
+		},
 	},
 	drwh0cares: {
 		exists: true,
