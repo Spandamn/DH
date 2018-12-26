@@ -246,9 +246,10 @@ let BattleMovedex = {
 		sideCondition: 'mist',
 		effect: {
 			duration: 5,
-			onTryMove: function (source, move) {
+			onTryMove: function (target, source, move) {
 				if (move.id === 'spikes' || move.id === 'stealthrock' || move.id === 'stickyweb' || move.id === 'toxicspikes') {
 					return false;
+					this.add('cant', this.effectData.target, 'ability: Mist');
 					 }
 			},
 			onStart: function (side) {
