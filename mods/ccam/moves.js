@@ -249,13 +249,13 @@ let BattleMovedex = {
 			onTryMove: function (target, source, move) {
 				if (move.id === 'spikes' || move.id === 'stealthrock' || move.id === 'stickyweb' || move.id === 'toxicspikes') {
 					return false;
-					this.add('cant', this.effectData.target, 'move: Mist');
+					this.add('-fail', source, 'move');
 					 }
 			},
 			onFoeTryMove: function (target, source, move) {
 				if (move.id === 'spikes' || move.id === 'stealthrock' || move.id === 'stickyweb' || move.id === 'toxicspikes') {
 					return false;
-					this.add('cant', this.effectData.target, 'move: Mist');
+					this.add('-fail', source, 'move');
 					 }
 			},
 			onStart: function (side) {
