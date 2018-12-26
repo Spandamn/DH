@@ -5104,9 +5104,6 @@ onValidateTeam: function (team) {
 		desc: ["&bullet; <a href=https://www.smogon.com/forums/threads/.3634253/>Typing: The Mod</a>",],
 		ruleset: ['Pokemon', 'Sleep Clause Mod', 'Species Clause', 'Moody Clause', 'Evasion Moves Clause', 'Endless Battle Clause', 'HP Percentage Mod', 'Cancel Mod', 'Team Preview', 'Swagger Clause', 'Baton Pass Clause'],
 		//banlist: ['Illegal'],
-		onSwitchIn: function (pokemon) {
-            this.add('-start', pokemon, 'typechange', pokemon.template.types.join('/'), '[silent]');
-        },
 		mod: 'ttm',
 	},
 	{
