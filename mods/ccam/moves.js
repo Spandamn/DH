@@ -101,19 +101,9 @@ let BattleMovedex = {
 			},
 			onStart: function (side, source, pokemon) {
 				this.add('-fieldstart', 'move: Wonder Room', '[of] ' + source);
-				let defstat = pokemon.stats.def;
-				let spdstat = pokemon.stats.spd;
-				pokemon.stats.def = spdstat;
-				pokemon.stats.spd = defstat;
-				
 			},
 			onRestart: function (target, source, pokemon) {
-				this.removePseudoWeather('wonderrooom');
-				let defstat = pokemon.stats.def;
-				let spdstat = pokemon.stats.spd;
-				pokemon.stats.def = spdstat;
-				pokemon.stats.spd = defstat;
-				
+				this.removePseudoWeather('wonderroom');
 			},
 			onModifyMovePriority: 8,
 			onModifyMove: function(move, pokemon) {
@@ -124,7 +114,7 @@ let BattleMovedex = {
 				move.category = 'Special';
 			}
 		},
-			// Swapping defenses implemented in sim/pokemon.js:Pokemon#calculateStat and Pokemon#getStat
+			// Swapping defenses implemented in sim/pokemon.js:Pokemon#calculateStat and Pokemon#getStat // Fix this
 			onResidualOrder: 24,
 			onEnd: function () {
 				this.add('-fieldend', 'move: Wonder Room');
@@ -272,6 +262,46 @@ let BattleMovedex = {
 		type: "Ice",
 		zMoveEffect: 'heal',
 		contestType: "Beautiful",
+	},
+	"mudsport": {
+		num: 300,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		desc: "For 5 turns, all Electric-type attacks used by any active Pokemon have their power multiplied by 0.33. Fails if this effect is already active.",
+		shortDesc: "For 5 turns, Electric-type attacks have 1/3 power.",
+		id: "mudsport",
+		name: "Mud Sport",
+		pp: 15,
+		priority: 0,
+		flags: {nonsky: 1},
+		volatileStatus: 'mudsport',
+		effect: {
+			onStart: function (side, source) {
+				this.add('-fieldstart', 'move: Mud Sport', '[of] ' + source);
+			},
+			onBasePowerPriority: 1,
+			onBasePower: function (basePower, attacker, defender, move) {
+				if (move.type === 'Electric') {
+					this.debug('mud sport weaken');
+					return this.chainModify([0x548, 0x1000]);
+				}
+			},
+			onAfterMove: function (pokemon, target, move) {
+				if (move.type === 'Electric') {
+					pokemon.removeVolatile('mudsport')
+				}
+			},
+			onResidualOrder: 21,
+			onEnd: function () {
+				this.add('-fieldend', 'move: Mud Sport');
+			},
+		},
+		secondary: null,
+		target: "all",
+		type: "Ground",
+		zMoveBoost: {spd: 1},
+		contestType: "Cute",
 	},
 };
 exports.BattleMovedex = BattleMovedex;
