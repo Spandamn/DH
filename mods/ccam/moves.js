@@ -231,5 +231,33 @@ let BattleMovedex = {
 		zMovePower: 190,
 		contestType: "Cool",
 	},
+	"mist": {
+		num: 54,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		desc: "For 5 turns, the user and its party members are protected from having their stat stages lowered by other Pokemon. Fails if the effect is already active on the user's side.",
+		shortDesc: "For 5 turns, protects user's party from stat drops.",
+		id: "mist",
+		name: "Mist",
+		pp: 30,
+		priority: 0,
+		flags: {snatch: 1},
+		sideCondition: 'mist',
+		effect: {
+			duration: 5,
+			onTryHitPriority: 4,
+			onTryHit: function (move) {
+				if (move.id === 'spikes' || move.id === 'stealthrock' || move.id === 'stickyweb' || move.id === 'toxicspikes') {
+					return null;
+					 }
+			},
+		},
+		secondary: null,
+		target: "allySide",
+		type: "Ice",
+		zMoveEffect: 'heal',
+		contestType: "Beautiful",
+	},
 };
 exports.BattleMovedex = BattleMovedex;
