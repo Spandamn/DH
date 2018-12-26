@@ -275,7 +275,30 @@ let BattleMovedex = {
 		pp: 15,
 		priority: 0,
 		flags: {nonsky: 1},
-		volatileStatus: 'mudsport',
+		pseudoWeather: 'mudsport',
+		effect: {
+			onStart: function (side, source) {
+				this.add('-fieldstart', 'move: Mud Sport', '[of] ' + source);
+			},
+			onBasePowerPriority: 1,
+			onBasePower: function (basePower, attacker, defender, move) {
+				if (move.type === 'Electric') {
+					this.debug('mud sport weaken');
+					return this.chainModify([0x548, 0x1000]);
+				}
+			},
+			onAfterMove: function (pokemon, target, move) {
+				if (move.type === 'Electric') {
+					this.add('-fieldend', 'move: Mud Sport');
+					this.removePseudoWeather('mudsport');
+				}
+			},
+			onResidualOrder: 21,
+			onEnd: function () {
+				this.add('-fieldend', 'move: Mud Sport');
+			},
+		},
+		/*volatileStatus: 'mudsport',
 		effect: {
 			onStart: function (side, source) {
 				this.add('-fieldstart', 'move: Mud Sport', '[of] ' + source);
@@ -296,7 +319,7 @@ let BattleMovedex = {
 			onEnd: function () {
 				this.add('-fieldend', 'move: Mud Sport');
 			},
-		},
+		},*/
 		secondary: null,
 		target: "all",
 		type: "Ground",
