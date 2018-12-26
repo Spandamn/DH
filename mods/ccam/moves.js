@@ -258,6 +258,11 @@ let BattleMovedex = {
 					return false;
 					 }
 			},
+			onDamage: function (damage, target, source, effect) {
+			if (effect.id === 'stealthrock') {
+				return false;
+			}
+		},
 			onStart: function (side) {
 				this.add('-sidestart', side, 'Mist');
 			},
