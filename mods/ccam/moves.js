@@ -249,7 +249,7 @@ let BattleMovedex = {
 			onTryHitPriority: 4,
 			onTryHit: function (move) {
 				if (move.id === 'spikes' || move.id === 'stealthrock' || move.id === 'stickyweb' || move.id === 'toxicspikes') {
-					return null;
+					return false;
 					 }
 			},
 		},
