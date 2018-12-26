@@ -248,6 +248,9 @@ let BattleMovedex = {
 				return false;
 			}
 		},
+			onBoost: function (boost, target, source, effect) {
+			if (effect.id === 'stickyweb') return false;
+		},
 			onStart: function (side) {
 				this.add('-sidestart', side, 'Mist');
 			},
