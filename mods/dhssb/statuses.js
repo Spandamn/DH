@@ -1,5 +1,17 @@
 'use strict';
 exports.BattleStatuses = {
+	baneofall: {
+		exists: true,
+		onStart: function () {
+			this.add('c|+BaneOfAll|I will boop u - TO OBLIViON');
+		},
+		onFaint: function(pokemon) {
+			this.add('c|+BaneOfAll|I wasn’t done booping yet no fair!');
+		},
+		onSwitchOut: function (pokemon) {
+			this.add('c|+BaneOfAll|gj' + pokemon.side.name + ', save the best till last, huh');
+		},
+	},
 	drwh0cares: {
 		exists: true,
 		onStart: function () {
