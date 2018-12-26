@@ -247,10 +247,18 @@ let BattleMovedex = {
 		effect: {
 			duration: 5,
 			onTryHitPriority: 4,
-			onTryHit: function (move) {
+			onTryHit: function (target, move) {
 				if (move.id === 'spikes' || move.id === 'stealthrock' || move.id === 'stickyweb' || move.id === 'toxicspikes') {
-					return false;
+					return null;
 					 }
+			},
+			onStart: function (side) {
+				this.add('-sidestart', side, 'Mist');
+			},
+			onResidualOrder: 21,
+			onResidualSubOrder: 3,
+			onEnd: function (side) {
+				this.add('-sideend', side, 'Mist');
 			},
 		},
 		secondary: null,
