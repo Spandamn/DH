@@ -99,11 +99,21 @@ let BattleMovedex = {
 				}
 				return 5;
 			},
-			onStart: function (side, source) {
+			onStart: function (side, source, pokemon) {
 				this.add('-fieldstart', 'move: Wonder Room', '[of] ' + source);
+				let defstat = pokemon.stats.def;
+				let spdstat = pokemon.stats.spd;
+				pokemon.stats.def = spdstat;
+				pokemon.stats.spd = defstat;
+				
 			},
-			onRestart: function (target, source) {
-				this.removePseudoWeather('wonderroomm');
+			onRestart: function (target, source, pokemon) {
+				this.removePseudoWeather('wonderrooom');
+				let defstat = pokemon.stats.def;
+				let spdstat = pokemon.stats.spd;
+				pokemon.stats.def = spdstat;
+				pokemon.stats.spd = defstat;
+				
 			},
 			onModifyMovePriority: 8,
 			onModifyMove: function(move, pokemon) {
@@ -114,15 +124,6 @@ let BattleMovedex = {
 				move.category = 'Special';
 			}
 		},
-			/*getStat(statName, unboosted, unmodified) {
-				if (unmodified && 'wonderroom' in this.battle.pseudoWeather) {
-			if (statName === 'def') {
-				statName = 'spd';
-			} else if (statName === 'spd') {
-				statName = 'def';
-			}
-				}
-			},*/
 			// Swapping defenses implemented in sim/pokemon.js:Pokemon#calculateStat and Pokemon#getStat
 			onResidualOrder: 24,
 			onEnd: function () {
