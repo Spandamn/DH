@@ -12170,7 +12170,7 @@ exports.BattlePokedex = {
 		species: "Passimian",
 		types: ["Fighting", "Food"],
 		baseStats: {hp: 100, atk: 120, def: 90, spa: 40, spd: 60, spe: 80},
-		abilities: {0: "Receiver", 1:, "Nourishment", H: "Defiant"},
+		abilities: {0: "Receiver", 1: "Nourishment", H: "Defiant"},
 		heightm: 2,
 		weightkg: 82.8,
 		color: "White",
