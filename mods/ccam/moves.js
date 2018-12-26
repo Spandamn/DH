@@ -246,8 +246,7 @@ let BattleMovedex = {
 		sideCondition: 'mist',
 		effect: {
 			duration: 5,
-			onTryHitPriority: 4,
-			onTryHit: function (target, move) {
+			onTryMove: function (move) {
 				if (move.id === 'spikes' || move.id === 'stealthrock' || move.id === 'stickyweb' || move.id === 'toxicspikes') {
 					return null;
 					 }
