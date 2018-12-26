@@ -289,7 +289,6 @@ let BattleMovedex = {
 			},
 			onAfterMove: function (pokemon, target, move) {
 				if (move.type === 'Electric') {
-					this.add('-fieldend', 'move: Mud Sport');
 					this.removePseudoWeather('mudsport');
 				}
 			},
@@ -298,31 +297,50 @@ let BattleMovedex = {
 				this.add('-fieldend', 'move: Mud Sport');
 			},
 		},
-		/*volatileStatus: 'mudsport',
+		secondary: null,
+		target: "all",
+		type: "Ground",
+		zMoveBoost: {spd: 1},
+		contestType: "Cute",
+	},
+	"watersport": {
+		num: 346,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		desc: "For 5 turns, all Fire-type attacks used by any active Pokemon have their power multiplied by 0.33. Fails if this effect is already active.",
+		shortDesc: "For 5 turns, Fire-type attacks have 1/3 power.",
+		id: "watersport",
+		name: "Water Sport",
+		pp: 15,
+		priority: 0,
+		flags: {nonsky: 1},
+		pseudoWeather: 'watersport',
 		effect: {
+			duration: 5,
 			onStart: function (side, source) {
-				this.add('-fieldstart', 'move: Mud Sport', '[of] ' + source);
+				this.add('-fieldstart', 'move: Water Sport', '[of] ' + source);
 			},
 			onBasePowerPriority: 1,
 			onBasePower: function (basePower, attacker, defender, move) {
-				if (move.type === 'Electric') {
-					this.debug('mud sport weaken');
+				if (move.type === 'Fire') {
+					this.debug('water sport weaken');
 					return this.chainModify([0x548, 0x1000]);
 				}
 			},
 			onAfterMove: function (pokemon, target, move) {
-				if (move.type === 'Electric') {
-					pokemon.removeVolatile('mudsport')
+				if (move.type === 'Fire') {
+					this.removePseudoWeather('watersport');
 				}
 			},
 			onResidualOrder: 21,
 			onEnd: function () {
-				this.add('-fieldend', 'move: Mud Sport');
+				this.add('-fieldend', 'move: Water Sport');
 			},
-		},*/
+		},
 		secondary: null,
 		target: "all",
-		type: "Ground",
+		type: "Water",
 		zMoveBoost: {spd: 1},
 		contestType: "Cute",
 	},
