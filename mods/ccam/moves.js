@@ -246,16 +246,16 @@ let BattleMovedex = {
 		sideCondition: 'mist',
 		effect: {
 			duration: 5,
-			onTryMove: function (target, source, move) {
+			onTryMove: function (pokemon, move) {
 				if (move.id === 'spikes' || move.id === 'stealthrock' || move.id === 'stickyweb' || move.id === 'toxicspikes') {
 					return false;
-					this.add('-fail', move);
+					this.add('-fail', pokemon);
 					 }
 			},
-			onFoeTryMove: function (target, source, move) {
+			onFoeTryMove: function (pokemon, move) {
 				if (move.id === 'spikes' || move.id === 'stealthrock' || move.id === 'stickyweb' || move.id === 'toxicspikes') {
 					return false;
-					this.add('-fail', move);
+					this.add('-fail', pokemon);
 					 }
 			},
 			onStart: function (side) {
