@@ -923,6 +923,7 @@ let BattleScripts = {
 	},
 
 	canMegaEvo(pokemon) {
+		if (this.pseudoWeather.magicroom) return;
 		let altForme = pokemon.baseTemplate.otherFormes && this.getTemplate(pokemon.baseTemplate.otherFormes[0]);
 		let item = pokemon.getItem();
 		if (altForme && altForme.isMega && altForme.requiredMove && pokemon.baseMoves.includes(toId(altForme.requiredMove)) && !item.zMove) return altForme.species;
