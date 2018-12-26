@@ -262,7 +262,7 @@ let BattleMovedex = {
 			},
 		},
 		secondary: null,
-		target: "allySide",
+		target: "all",
 		type: "Ice",
 		zMoveEffect: 'heal',
 		contestType: "Beautiful",
