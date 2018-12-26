@@ -372,11 +372,14 @@ let BattleMovedex = {
 			onStart: function (target, source) {
 				this.add('-fieldstart', 'move: Magic Room', '[of] ' + source);
 			},
-			canZMove(pokemon) {
+			canZMove (pokemon) {
 				return false;
 			},
-			canMegaEvo(pokemon) {
+			canMegaEvo (pokemon) {
 				return false;
+			},
+			runMegaEvo(pokemon) {
+				return null;
 			},
 			onRestart: function (target, source) {
 				this.removePseudoWeather('magicroom');
