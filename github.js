@@ -11,6 +11,7 @@
  */
 'use strict';
 
+
 let gitConfig = {};
 const git = exports.github = require('githubhook')(gitConfig);
 
@@ -33,7 +34,7 @@ for (let i = 0; i < targetRooms.length; i++) {
 	targetRooms[i] = Rooms(targetRooms[i]);
 }
 let gitBans = {};
-if (targetRooms[0].chatRoomData) targetRooms[0].chatRoomData.gitBans = gitBans;
+if (targetRooms[0] && targetRooms[0].chatRoomData) targetRooms[0].chatRoomData.gitBans = gitBans;
 
 let sendReport = function(html) {
 	for (let curRoom of targetRooms) {
@@ -92,7 +93,7 @@ git.on('pull_request', function pullRequest(repo, ref, result) {
 	let message = "";
 	message += `[<font color='FF00FF'>${repo}</font>] `;
 	message += `<font color='909090'>${result.sender.login}</font> `;
-	message += `${action} pull request <a href="${url}">#${requestNumber}</a>: `;
+	message += `${aciton} pull request <a href="${url}">#${requestNumber}</a>: `;
 	message += result.pull_request.title;
 	sendReport(message);
 });

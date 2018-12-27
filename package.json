@@ -4,6 +4,8 @@
   "description": "The server for the Pokémon Showdown battle simulator",
   "version": "0.11.2",
   "dependencies": {
+    "githubhook": "^1.9.3",
+    "moment": "^2.23.0",
     "probe-image-size": "^4.0.0",
     "sockjs": "0.3.18"
   },
