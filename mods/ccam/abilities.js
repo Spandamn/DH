@@ -29,7 +29,7 @@ let BattleAbilities = {
   	"cheatcode": {
 		shortDesc: "On switch-in, this Pokemon summons Wonder Room.",
 		onStart: function(source) {
-			this.useMove("wonderroomm", source);
+			this.useMove("wonderroom", source);
 		},
 		id: "cheatcode",
 		name: "Cheat Code",
