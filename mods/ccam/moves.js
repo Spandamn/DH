@@ -89,7 +89,7 @@ let BattleMovedex = {
 		pp: 10,
 		priority: 0,
 		flags: {mirror: 1},
-		pseudoWeather: 'wonderroomm',
+		pseudoWeather: 'wonderroom',
 		effect: {
 			duration: 5,
 			durationCallback: function (source, effect) {
@@ -103,7 +103,7 @@ let BattleMovedex = {
 				this.add('-fieldstart', 'move: Wonder Room', '[of] ' + source);
 			},
 			onRestart: function (target, source, pokemon) {
-				this.removePseudoWeather('wonderroomm');
+				this.removePseudoWeather('wonderroom');
 			},
 			onModifyMovePriority: 8,
 			onModifyMove: function(move, pokemon) {
