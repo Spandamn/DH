@@ -821,17 +821,17 @@ let BattleMovedex = {
 	"aurorabeam": {
 		num: 62,
 		accuracy: 100,
-		basePower: 65,
+		basePower: 80,
 		category: "Special",
-		desc: "Has a 10% chance to lower the target's Attack by 1 stage.",
-		shortDesc: "10% chance to lower the foe's Attack by 1.",
+		desc: "Has a 30% chance to lower the target's Attack by 1 stage.",
+		shortDesc: "30% chance to lower the foe's Attack by 1.",
 		id: "aurorabeam",
 		name: "Aurora Beam",
 		pp: 20,
 		priority: 0,
 		flags: {protect: 1, mirror: 1},
 		secondary: {
-			chance: 10,
+			chance: 30,
 			boosts: {
 				atk: -1,
 			},
@@ -8091,6 +8091,11 @@ let BattleMovedex = {
 		self: {
 			volatileStatus: 'mustrecharge',
 		},
+		onAfterMoveSecondarySelf: function (pokemon, target, move) {
+			if (!target || target.fainted || target.hp <= 0) {
+				pokemon.removeVolatile('mustrecharge');
+			}
+		},
 		secondary: false,
 		target: "normal",
 		type: "Light",
@@ -9253,7 +9258,7 @@ let BattleMovedex = {
 	"lightofruin": {
 		num: 617,
 		accuracy: 90,
-		basePower: 140,
+		basePower: 150,
 		category: "Special",
 		desc: "If the target lost HP, the user takes recoil damage equal to 1/2 the HP lost by the target, rounded half up, but not less than 1 HP.",
 		shortDesc: "Has 1/2 recoil.",
@@ -9263,7 +9268,6 @@ let BattleMovedex = {
 		pp: 5,
 		priority: 0,
 		flags: {protect: 1, mirror: 1},
-		isUnreleased: true,
 		recoil: [1, 2],
 		secondary: false,
 		target: "normal",
@@ -9331,6 +9335,14 @@ let BattleMovedex = {
 		flags: {},
 		onModifyMove: function (move, pokemon) {
 			if (pokemon.getStat('atk', false, true) > pokemon.getStat('spa', false, true)) move.category = 'Physical';
+		},
+		onHit: function () {
+			this.add('-weather', 'none');
+			this.add('-fieldend', 'move: Electric Terrain');
+			this.add('-fieldend', 'move: Psychic Terrain');
+			this.add('-fieldend', 'move: Misty Terrain');
+			this.add('-fieldend', 'move: Grassy Terrain');
+			this.add('-fieldend', 'move: Healing Terrain');
 		},
 		ignoreAbility: true,
 		isZ: "ultranecroziumz",
@@ -9594,7 +9606,7 @@ let BattleMovedex = {
 	"lusterpurge": {
 		num: 295,
 		accuracy: 100,
-		basePower: 70,
+		basePower: 110,
 		category: "Special",
 		desc: "Has a 50% chance to lower the target's Special Defense by 1 stage.",
 		shortDesc: "50% chance to lower the target's Sp. Def by 1.",
@@ -12332,9 +12344,12 @@ let BattleMovedex = {
 		name: "Prismatic Laser",
 		pp: 10,
 		priority: 0,
-		flags: {recharge: 1, protect: 1, mirror: 1},
+		flags: {protect: 1, mirror: 1},
 		self: {
-			volatileStatus: 'mustrecharge',
+			boosts: {
+				spd: -1,
+				def: -1,
+			},
 		},
 		secondary: false,
 		target: "normal",
@@ -13509,13 +13524,13 @@ let BattleMovedex = {
 		basePower: 150,
 		category: "Special",
 		desc: "If this move is successful, the user must recharge on the following turn and cannot make a move.",
-		shortDesc: "User takes 1/4 recoil.",
+		shortDesc: "User takes 1/3 recoil.",
 		id: "roaroftime",
 		name: "Roar of Time",
 		pp: 5,
 		priority: 0,
 		flags: {protect: 1, mirror: 1},
-		recoil: [1, 4],
+		recoil: [1, 3],
 		secondary: false,
 		target: "normal",
 		type: "Time",
@@ -14696,16 +14711,17 @@ let BattleMovedex = {
 		basePower: 75,
 		category: "Special",
 		desc: "Has a 10% chance to confuse the target.",
-		shortDesc: "10% chance to confuse the target.",
+		shortDesc: "confuses the target if the target has raised stat changes..",
 		id: "signalbeam",
 		isViable: true,
 		name: "Signal Beam",
 		pp: 15,
 		priority: 0,
 		flags: {protect: 1, mirror: 1},
-		secondary: {
-			chance: 10,
-			volatileStatus: 'confusion',
+		onHit: function (target) {
+			if (target.positiveBoosts) {
+				target.addVolatile('confusion');
+			}
 		},
 		target: "normal",
 		type: "Light",
@@ -16330,7 +16346,7 @@ let BattleMovedex = {
 	},
 	"stoneedge": {
 		num: 444,
-		accuracy: 80,
+		accuracy: 85,
 		basePower: 120,
 		category: "Physical",
 		desc: "No additional effect",
