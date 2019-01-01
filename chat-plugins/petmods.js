@@ -601,7 +601,7 @@ evgutter: function (target, room, user) {
 		let feDex = require('../mods/fe/pokedex.js').BattlePokedex;
 		if (!feDex) return this.errorReply("Error Fetching FE Data.");
 		Object.values(feDex).forEach(mon => {
-			buf += `<option value="${mon.species}"><br>`;
+			buf += `&lt;option value="${mon.species}"&gt;<br>`;
 		});
 		this.sendReplyBox(`${buf}</div>`);
 	},
