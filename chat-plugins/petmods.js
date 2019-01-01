@@ -595,4 +595,14 @@ evgutter: function (target, room, user) {
 		);
 		this.sendReplyBox(`${buf}</div>`);
 	},
+		felist2: function (target, room, user) {
+		if (!this.runBroadcast()) return;
+		let buf = `<div class=infobox-limited><center><h2>List Of Fusion Evolution Pokemon</h2></center>`;
+		let feDex = require('../mods/fe/pokedex.js').BattlePokedex;
+		if (!feDex) return this.errorReply("Error Fetching FE Data.");
+		Object.values(feDex).forEach(mon => {
+			buf += `<option value="${mon.species}"><br>`;
+		});
+		this.sendReplyBox(`${buf}</div>`);
+	},
 };
