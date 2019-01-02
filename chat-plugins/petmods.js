@@ -605,4 +605,14 @@ evgutter: function (target, room, user) {
 		});
 		this.sendReplyBox(`${buf}</div>`);
 	},
+	feabilities2: function (target, room, user) {
+		if (!this.runBroadcast()) return;
+		let buf = `<div class=infobox-limited><center><h2>List Of Coded Fusion Evolution Abilities</h2></center>`;
+		let feDex = require('../mods/fe/abilities.js').BattleAbilities;
+		if (!feDex) return this.errorReply("Error Fetching FE Data.");
+		Object.values(feDex).forEach(ability => {
+			buf += `"${ability.id}":{<br>shortDesc: "${ability.shortDesc}",<br>name: "${ability.name}", <br>id: "${ability.id}",<br>},`;
+		});
+		this.sendReplyBox(`${buf}</div>`);
+	},
 };
