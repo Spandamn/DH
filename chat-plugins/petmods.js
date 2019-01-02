@@ -611,7 +611,7 @@ evgutter: function (target, room, user) {
 		let feDex = require('../mods/fe/abilities.js').BattleAbilities;
 		if (!feDex) return this.errorReply("Error Fetching FE Data.");
 		Object.values(feDex).forEach(ability => {
-			buf += `"${ability.id}":{<br>shortDesc: "${ability.shortDesc}",<br>name: "${ability.name}", <br>id: "${ability.id}",<br>},`;
+			buf += `"${ability.id}":{shortDesc: "${ability.shortDesc}",name: "${ability.name}",id: "${ability.id}",},<br>`;
 		});
 		this.sendReplyBox(`${buf}</div>`);
 	},
