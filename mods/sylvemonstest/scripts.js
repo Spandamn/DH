@@ -1739,6 +1739,332 @@ this.modData('Learnsets', 'azelf').learnset.shadowsky= ['7L1'];
 // Fire Lash
 
 this.modData('Learnsets', 'lycanrocdusk').learnset.firelash = ['7L1'];
+	  
+// Fairy Lock
+this.modData('Learnsets', 'mesprit').learnset.fairylock= ['7L1']; 
+this.modData('Learnsets', 'phione').learnset.fairylock= ['7L1'];
+this.modData('Learnsets', 'manaphy').learnset.fairylock= ['7L1']; 
+this.modData('Learnsets', 'spritzee').learnset.fairylock= ['7L1']; 
+this.modData('Learnsets', 'aromatisse').learnset.fairylock= ['7L1']; 
+this.modData('Learnsets', 'audino').learnset.fairylock= ['7L1']; 
+this.modData('Learnsets', 'azurill').learnset.fairylock= ['7L1']; 
+this.modData('Learnsets', 'marill').learnset.fairylock= ['7L1']; 
+this.modData('Learnsets', 'azumarill').learnset.fairylock= ['7L1']; 
+this.modData('Learnsets', 'shroomish').learnset.fairylock= ['7L1']; 
+this.modData('Learnsets', 'breloom').learnset.fairylock= ['7L1']; 
+this.modData('Learnsets', 'carbink').learnset.fairylock= ['7L1']; 
+this.modData('Learnsets', 'castform').learnset.fairylock= ['7L1']; 
+this.modData('Learnsets', 'cherubi').learnset.fairylock= ['7L1']; 
+this.modData('Learnsets', 'cherrim').learnset.fairylock= ['7L1']; 
+this.modData('Learnsets', 'cleffa').learnset.fairylock= ['7L1']; 
+this.modData('Learnsets', 'clefairy').learnset.fairylock= ['7L1']; 
+this.modData('Learnsets', 'clefable').learnset.fairylock= ['7L1']; 
+this.modData('Learnsets', 'cottonee').learnset.fairylock= ['7L1']; 
+this.modData('Learnsets', 'whimsicott').learnset.fairylock= ['7L1'];
+this.modData('Learnsets', 'cutiefly').learnset.fairylock= ['7L1']; 
+this.modData('Learnsets', 'ribombee').learnset.fairylock= ['7L1']; 
+this.modData('Learnsets', 'dedenne').learnset.fairylock= ['7L1']; 
+this.modData('Learnsets', 'skitty').learnset.fairylock= ['7L1']; 
+this.modData('Learnsets', 'delcatty').learnset.fairylock= ['7L1']; 
+this.modData('Learnsets', 'flabebe').learnset.fairylock= ['7L1']; 
+this.modData('Learnsets', 'floette').learnset.fairylock= ['7L1']; 
+this.modData('Learnsets', 'florges').learnset.fairylock= ['7L1']; 
+this.modData('Learnsets', 'snubbull').learnset.fairylock= ['7L1']; 
+this.modData('Learnsets', 'granbull').learnset.fairylock= ['7L1']; 
+this.modData('Learnsets', 'hoppip').learnset.fairylock= ['7L1']; 
+this.modData('Learnsets', 'skiploom').learnset.fairylock= ['7L1']; 
+this.modData('Learnsets', 'jumpluff').learnset.fairylock= ['7L1']; 
+this.modData('Learnsets', 'igglybuff').learnset.fairylock= ['7L1']; 
+this.modData('Learnsets', 'jigglypuff').learnset.fairylock= ['7L1']; 
+this.modData('Learnsets', 'wigglytuff').learnset.fairylock= ['7L1']; 
+this.modData('Learnsets', 'mawile').learnset.fairylock= ['7L1']; 
+this.modData('Learnsets', 'plusle').learnset.fairylock= ['7L1']; 
+this.modData('Learnsets', 'minun').learnset.fairylock= ['7L1'];
+this.modData('Learnsets', 'pachirisu').learnset.fairylock= ['7L1']; 
+this.modData('Learnsets', 'pichu').learnset.fairylock= ['7L1']; 
+this.modData('Learnsets', 'pikachu').learnset.fairylock= ['7L1']; 
+this.modData('Learnsets', 'raichu').learnset.fairylock= ['7L1']; 
+this.modData('Learnsets', 'raichualola').learnset.fairylock= ['7L1']; 
+this.modData('Learnsets', 'budew').learnset.fairylock= ['7L1']; 
+this.modData('Learnsets', 'roserade').learnset.fairylock= ['7L1']; 
+this.modData('Learnsets', 'roselia').learnset.fairylock= ['7L1']; 
+this.modData('Learnsets', 'swirlix').learnset.fairylock= ['7L1']; 
+this.modData('Learnsets', 'togedemaru').learnset.fairylock= ['7L1']; 
+this.modData('Learnsets', 'togepi').learnset.fairylock= ['7L1']; 
+this.modData('Learnsets', 'togetic').learnset.fairylock= ['7L1']; 
+this.modData('Learnsets', 'togekiss').learnset.fairylock= ['7L1']; 
+this.modData('Learnsets', 'mimikyu').learnset.fairylock= ['7L1']; 
+this.modData('Learnsets', 'xerneas').learnset.fairylock= ['7L1']; 
+this.modData('Learnsets', 'diancie').learnset.fairylock= ['7L1'];
+	  
+// Aquatic Assault
+	
+this.modData('Learnsets', 'keldeo').learnset.aquaticassault= ['7L1']; 
+this.modData('Learnsets', 'corsola').learnset.aquaticassault= ['7L1']; 
+this.modData('Learnsets', 'eelektross').learnset.aquaticassault= ['7L1']; 
+this.modData('Learnsets', 'stunfisk').learnset.aquaticassault= ['7L1']; 
+this.modData('Learnsets', 'armaldo').learnset.aquaticassault= ['7L1']; 
+this.modData('Learnsets', 'cradily').learnset.aquaticassault= ['7L1']; 
+this.modData('Learnsets', 'dragalge').learnset.aquaticassault= ['7L1']; 
+this.modData('Learnsets', 'azumarill').learnset.aquaticassault= ['7L1']; 
+this.modData('Learnsets', 'araquanid').learnset.aquaticassault= ['7L1'];
+this.modData('Learnsets', 'whiscash').learnset.aquaticassault= ['7L1']; 
+this.modData('Learnsets', 'alomomola').learnset.aquaticassault= ['7L1']; 
+this.modData('Learnsets', 'ludicolo').learnset.aquaticassault= ['7L1']; 
+this.modData('Learnsets', 'wishiwashi').learnset.aquaticassault= ['7L1']; 
+this.modData('Learnsets', 'toxapex').learnset.aquaticassault= ['7L1'];
+this.modData('Learnsets', 'gyarados').learnset.aquaticassault= ['7L1']; 
+this.modData('Learnsets', 'swampert').learnset.aquaticassault= ['7L1']; 
+this.modData('Learnsets', 'kyogre').learnset.aquaticassault= ['7L1']; 
+this.modData('Learnsets', 'greninja').learnset.aquaticassault= ['7L1']; 
+this.modData('Learnsets', 'sharpedo').learnset.aquaticassault= ['7L1']; 
+this.modData('Learnsets', 'kingler').learnset.aquaticassault= ['7L1']; 
+this.modData('Learnsets', 'golisopod').learnset.aquaticassault= ['7L1']; 
+this.modData('Learnsets', 'crawdaunt').learnset.aquaticassault= ['7L1']; 
+this.modData('Learnsets', 'palkia').learnset.aquaticassault= ['7L1']; 
+this.modData('Learnsets', 'kabutops').learnset.aquaticassault= ['7L1']; 
+this.modData('Learnsets', 'swampert').learnset.aquaticassault= ['7L1']; 
+this.modData('Learnsets', 'volcanion').learnset.aquaticassault= ['7L1']; 
+this.modData('Learnsets', 'carracosta').learnset.aquaticassault= ['7L1']; 
+this.modData('Learnsets', 'krabby').learnset.aquaticassault= ['7L1']; 
+this.modData('Learnsets', 'feraligatr').learnset.aquaticassault= ['7L1']; 
+this.modData('Learnsets', 'octillery').learnset.aquaticassault= ['7L1']; 
+this.modData('Learnsets', 'floatzel').learnset.aquaticassault= ['7L1']; 
+this.modData('Learnsets', 'barbaracle').learnset.aquaticassault= ['7L1']; 
+this.modData('Learnsets', 'bruxish').learnset.aquaticassault= ['7L1'];
+this.modData('Learnsets', 'huntail').learnset.aquaticassault= ['7L1']; 
+this.modData('Learnsets', 'blastoise').learnset.aquaticassault= ['7L1']; 
+this.modData('Learnsets', 'manaphy').learnset.aquaticassault= ['7L1']; 
+this.modData('Learnsets', 'samurott').learnset.aquaticassault= ['7L1']; 
+this.modData('Learnsets', 'simipour').learnset.aquaticassault= ['7L1']; 
+this.modData('Learnsets', 'poliwrath').learnset.aquaticassault= ['7L1']; 
+this.modData('Learnsets', 'cloyster').learnset.aquaticassault= ['7L1']; 
+this.modData('Learnsets', 'qwilfish').learnset.aquaticassault= ['7L1']; 
+this.modData('Learnsets', 'kingdra').learnset.aquaticassault= ['7L1']; 
+this.modData('Learnsets', 'seismitoad').learnset.aquaticassault= ['7L1']; 
+this.modData('Learnsets', 'seaking').learnset.aquaticassault= ['7L1']; 
+this.modData('Learnsets', 'basculin').learnset.aquaticassault= ['7L1']; 
+this.modData('Learnsets', 'basculinbluestriped').learnset.aquaticassault= ['7L1']; 
+this.modData('Learnsets', 'carvanha').learnset.aquaticassault= ['7L1'];
+this.modData('Learnsets', 'wailord').learnset.aquaticassault= ['7L1'];
+this.modData('Learnsets', 'relicanth').learnset.aquaticassault= ['7L1'];
+this.modData('Learnsets', 'swanna').learnset.aquaticassault= ['7L1'];
+this.modData('Learnsets', 'empoleon').learnset.aquaticassault= ['7L1'];
+this.modData('Learnsets', 'lapras').learnset.aquaticassault= ['7L1'];
+this.modData('Learnsets', 'quagsire').learnset.aquaticassault= ['7L1'];
+this.modData('Learnsets', 'marshtomp').learnset.aquaticassault= ['7L1'];
+this.modData('Learnsets', 'bibarel').learnset.aquaticassault= ['7L1'];
+this.modData('Learnsets', 'gorebyss').learnset.aquaticassault= ['7L1'];
+this.modData('Learnsets', 'gastrodon').learnset.aquaticassault= ['7L1'];
+this.modData('Learnsets', 'golduck').learnset.aquaticassault= ['7L1'];
+this.modData('Learnsets', 'kabuto').learnset.aquaticassault= ['7L1'];
+this.modData('Learnsets', 'croconaw').learnset.aquaticassault= ['7L1'];
+this.modData('Learnsets', 'corphish').learnset.aquaticassault= ['7L1'];
+this.modData('Learnsets', 'walrein').learnset.aquaticassault= ['7L1'];
+this.modData('Learnsets', 'phione').learnset.aquaticassault= ['7L1'];
+	  
+// Fire Fang
+	  
+this.modData('Learnsets', 'raikou').learnset.firefang= ['7L1'];
+this.modData('Learnsets', 'zekrom').learnset.firefang= ['7L1'];
+	  
+// Ice Fang
+	  
+this.modData('Learnsets', 'durant').learnset.icefang= ['7L1'];
+this.modData('Learnsets', 'raikou').learnset.icefang= ['7L1'];
+this.modData('Learnsets', 'zekrom').learnset.icefang= ['7L1'];
+this.modData('Learnsets', 'donphan').learnset.icefang= ['7L1'];
+this.modData('Learnsets', 'druddigon').learnset.icefang= ['7L1'];
+this.modData('Learnsets', 'sandile').learnset.icefang= ['7L1'];
+this.modData('Learnsets', 'krokorok').learnset.icefang= ['7L1'];
+this.modData('Learnsets', 'krookodile').learnset.icefang= ['7L1'];
+this.modData('Learnsets', 'rockruff').learnset.icefang= ['7L1'];
+this.modData('Learnsets', 'lycanroc').learnset.icefang= ['7L1'];
+this.modData('Learnsets', 'lycanrocmidnight').learnset.icefang= ['7L1'];
+this.modData('Learnsets', 'lycanrocdusk').learnset.icefang= ['7L1'];
+this.modData('Learnsets', 'salamence').learnset.icefang= ['7L1'];
+this.modData('Learnsets', 'riolu').learnset.icefang= ['7L1'];
+this.modData('Learnsets', 'lucario').learnset.icefang= ['7L1'];
+	  
+// Thunder Fang
+	  
+this.modData('Learnsets', 'flareon').learnset.thunderfang= ['7L1'];
+this.modData('Learnsets', 'charmander').learnset.thunderfang= ['7L1'];
+this.modData('Learnsets', 'charmeleon').learnset.thunderfang= ['7L1'];
+this.modData('Learnsets', 'charizard').learnset.thunderfang= ['7L1'];
+this.modData('Learnsets', 'darumaka').learnset.thunderfang= ['7L1'];
+this.modData('Learnsets', 'darmanitan').learnset.thunderfang= ['7L1'];
+this.modData('Learnsets', 'entei').learnset.thunderfang= ['7L1'];
+this.modData('Learnsets', 'growlithe').learnset.thunderfang= ['7L1'];
+this.modData('Learnsets', 'heatran').learnset.thunderfang= ['7L1'];
+this.modData('Learnsets', 'incineroar').learnset.thunderfang= ['7L1'];
+this.modData('Learnsets', 'garchomp').learnset.thunderfang= ['7L1'];
+this.modData('Learnsets', 'litten').learnset.thunderfang= ['7L1'];
+this.modData('Learnsets', 'torracat').learnset.thunderfang= ['7L1'];
+this.modData('Learnsets', 'litleo').learnset.thunderfang= ['7L1'];
+this.modData('Learnsets', 'pyroar').learnset.thunderfang= ['7L1'];
+this.modData('Learnsets', 'reshiram').learnset.thunderfang= ['7L1'];
+this.modData('Learnsets', 'riolu').learnset.thunderfang= ['7L1'];
+this.modData('Learnsets', 'lucario').learnset.thunderfang= ['7L1'];
+	  
+// Poison Fang
+	  
+this.modData('Learnsets', 'spinarak').learnset.poisonfang= ['7L1'];
+this.modData('Learnsets', 'ariados').learnset.poisonfang= ['7L1'];
+this.modData('Learnsets', 'mareanie').learnset.poisonfang= ['7L1'];
+this.modData('Learnsets', 'toxapex').learnset.poisonfang= ['7L1'];
+this.modData('Learnsets', 'dustox').learnset.poisonfang= ['7L1'];
+this.modData('Learnsets', 'durant').learnset.poisonfang= ['7L1'];
+this.modData('Learnsets', 'scrafty').learnset.poisonfang= ['7L1'];
+this.modData('Learnsets', 'scolipede').learnset.poisonfang= ['7L1'];
+	  
+// Psychic Fangs
+	  
+this.modData('Learnsets', 'espeon').learnset.psychicfangs= ['7L1'];
+this.modData('Learnsets', 'tyrunt').learnset.psychicfangs= ['7L1'];
+this.modData('Learnsets', 'tyrantrum').learnset.psychicfangs= ['7L1'];
+this.modData('Learnsets', 'silvally').learnset.psychicfangs= ['7L1'];
+this.modData('Learnsets', 'granbull').learnset.psychicfangs= ['7L1'];
+this.modData('Learnsets', 'mawile').learnset.psychicfangs= ['7L1'];
+this.modData('Learnsets', 'luxray').learnset.psychicfangs= ['7L1'];
+	  
+// Fire Punch
+	  
+this.modData('Learnsets', 'buzzwole').learnset.firepunch= ['7L1'];
+this.modData('Learnsets', 'riolu').learnset.firepunch= ['7L1'];
+this.modData('Learnsets', 'lucario').learnset.firepunch= ['7L1'];
+this.modData('Learnsets', 'kyuremwhite').learnset.firepunch= ['7L1'];
+this.modData('Learnsets', 'dedenne').learnset.firepunch= ['7L1'];
+this.modData('Learnsets', 'pachirisu').learnset.firepunch= ['7L1'];
+this.modData('Learnsets', 'plusle').learnset.firepunch= ['7L1'];
+this.modData('Learnsets', 'minun').learnset.firepunch= ['7L1'];
+this.modData('Learnsets', 'pichu').learnset.firepunch= ['7L1'];
+this.modData('Learnsets', 'pikachu').learnset.firepunch= ['7L1'];
+this.modData('Learnsets', 'raichu').learnset.firepunch= ['7L1'];
+this.modData('Learnsets', 'raichualola').learnset.firepunch= ['7L1'];
+this.modData('Learnsets', 'thundurus').learnset.firepunch= ['7L1'];
+this.modData('Learnsets', 'thundurustherian').learnset.firepunch= ['7L1'];
+	  
+// Thunder Punch
+	  
+this.modData('Learnsets', 'sandshrewalola').learnset.thunderpunch= ['7L1'];
+this.modData('Learnsets', 'sandslashalola').learnset.thunderpunch= ['7L1'];
+this.modData('Learnsets', 'snover').learnset.thunderpunch= ['7L1'];
+this.modData('Learnsets', 'abomasnow').learnset.thunderpunch= ['7L1'];
+this.modData('Learnsets', 'smoochum').learnset.thunderpunch= ['7L1'];
+this.modData('Learnsets', 'jynx').learnset.thunderpunch= ['7L1'];
+this.modData('Learnsets', 'sneasel').learnset.thunderpunch= ['7L1'];
+this.modData('Learnsets', 'weavile').learnset.thunderpunch= ['7L1'];
+this.modData('Learnsets', 'delibird').learnset.thunderpunch= ['7L1'];
+this.modData('Learnsets', 'wooper').learnset.thunderpunch= ['7L1'];
+this.modData('Learnsets', 'quagsire').learnset.thunderpunch= ['7L1'];
+this.modData('Learnsets', 'marshtomp').learnset.thunderpunch= ['7L1'];
+this.modData('Learnsets', 'swampert').learnset.thunderpunch= ['7L1'];
+this.modData('Learnsets', 'seismitoad').learnset.thunderpunch= ['7L1'];
+this.modData('Learnsets', 'kyuremblack').learnset.thunderpunch= ['7L1'];
+this.modData('Learnsets', 'darumaka').learnset.thunderpunch= ['7L1'];
+this.modData('Learnsets', 'darmanitan').learnset.thunderpunch= ['7L1'];
+this.modData('Learnsets', 'pansear').learnset.thunderpunch= ['7L1'];
+this.modData('Learnsets', 'simisear').learnset.thunderpunch= ['7L1'];
+	  
+// Ice Punch
+	  
+this.modData('Learnsets', 'zeraora').learnset.icepunch= ['7L1'];
+this.modData('Learnsets', 'zekrom').learnset.icepunch= ['7L1'];
+this.modData('Learnsets', 'kyurem').learnset.icepunch= ['7L1'];
+this.modData('Learnsets', 'kyuremblack').learnset.icepunch= ['7L1'];
+this.modData('Learnsets', 'kyuremwhite').learnset.icepunch= ['7L1'];
+this.modData('Learnsets', 'thundurus').learnset.icepunch= ['7L1'];
+this.modData('Learnsets', 'cranidos').learnset.icepunch= ['7L1'];
+this.modData('Learnsets', 'rampardos').learnset.icepunch= ['7L1'];
+this.modData('Learnsets', 'marowak').learnset.icepunch= ['7L1'];
+this.modData('Learnsets', 'druddigon').learnset.icepunch= ['7L1'];
+this.modData('Learnsets', 'eelektross').learnset.icepunch= ['7L1'];
+this.modData('Learnsets', 'flaafy').learnset.icepunch= ['7L1'];
+this.modData('Learnsets', 'ampharos').learnset.icepunch= ['7L1'];
+this.modData('Learnsets', 'flygon').learnset.icepunch= ['7L1'];
+this.modData('Learnsets', 'geodude').learnset.icepunch= ['7L1'];
+this.modData('Learnsets', 'graveler').learnset.icepunch= ['7L1'];
+this.modData('Learnsets', 'golem').learnset.icepunch= ['7L1'];
+this.modData('Learnsets', 'geodudealola').learnset.icepunch= ['7L1'];
+this.modData('Learnsets', 'graveleralola').learnset.icepunch= ['7L1'];
+this.modData('Learnsets', 'golemalola').learnset.icepunch= ['7L1'];
+this.modData('Learnsets', 'goodra').learnset.icepunch= ['7L1'];
+this.modData('Learnsets', 'hawlucha').learnset.icepunch= ['7L1'];
+this.modData('Learnsets', 'heliolisk').learnset.icepunch= ['7L1'];
+this.modData('Learnsets', 'lycanrocmidnight').learnset.icepunch= ['7L1'];
+	  
+// Shadow Punch
+	  
+this.modData('Learnsets', 'ledyba').learnset.shadowpunch= ['7L1'];
+this.modData('Learnsets', 'ledian').learnset.shadowpunch= ['7L1'];
+this.modData('Learnsets', 'cofagrigus').learnset.shadowpunch= ['7L1'];
+this.modData('Learnsets', 'kadabra').learnset.shadowpunch= ['7L1'];
+this.modData('Learnsets', 'alakazam').learnset.shadowpunch= ['7L1'];
+this.modData('Learnsets', 'reuniclus').learnset.shadowpunch= ['7L1'];
+this.modData('Learnsets', 'hitmonchan').learnset.shadowpunch= ['7L1'];
+this.modData('Learnsets', 'sableye').learnset.shadowpunch= ['7L1'];
+this.modData('Learnsets', 'phantump').learnset.shadowpunch= ['7L1'];
+this.modData('Learnsets', 'trevenant').learnset.shadowpunch= ['7L1'];
+this.modData('Learnsets', 'banette').learnset.shadowpunch= ['7L1'];
+this.modData('Learnsets', 'hoopa').learnset.shadowpunch= ['7L1'];
+this.modData('Learnsets', 'sandygast').learnset.shadowpunch= ['7L1'];
+this.modData('Learnsets', 'chandelure').learnset.shadowpunch= ['7L1'];
+this.modData('Learnsets', 'froslass').learnset.shadowpunch= ['7L1'];
+this.modData('Learnsets', 'marowakalola').learnset.shadowpunch= ['7L1'];
+	  
+// Hot Tag 
+	  
+this.modData('Learnsets', 'incineroar').learnset.hottag = ['7L1'];
+this.modData('Learnsets', 'hawlucha').learnset.hottag = ['7L1'];
+this.modData('Learnsets', 'hariyama').learnset.hottag = ['7L1'];
+this.modData('Learnsets', 'darmanitan').learnset.hottag = ['7L1'];
+this.modData('Learnsets', 'simisear').learnset.hottag = ['7L1'];
+this.modData('Learnsets', 'plusle').learnset.hottag = ['7L1'];
+this.modData('Learnsets', 'minun').learnset.hottag = ['7L1'];
+this.modData('Learnsets', 'victini').learnset.hottag = ['7L1'];
+this.modData('Learnsets', 'pichu').learnset.hottag = ['7L1'];
+this.modData('Learnsets', 'heracross').learnset.hottag = ['7L1'];
+this.modData('Learnsets', 'lopunny').learnset.hottag = ['7L1'];
+this.modData('Learnsets', 'nidoqueen').learnset.hottag = ['7L1'];
+this.modData('Learnsets', 'torchic').learnset.hottag = ['7L1'];
+this.modData('Learnsets', 'breloom').learnset.hottag = ['7L1'];
+this.modData('Learnsets', 'chesnaught').learnset.hottag = ['7L1'];
+this.modData('Learnsets', 'timburr').learnset.hottag = ['7L1'];
+this.modData('Learnsets', 'combusken').learnset.hottag = ['7L1'];
+this.modData('Learnsets', 'blaziken').learnset.hottag = ['7L1'];
+this.modData('Learnsets', 'pikachu').learnset.hottag = ['7L1'];
+this.modData('Learnsets', 'raichu').learnset.hottag = ['7L1'];
+this.modData('Learnsets', 'gurdurr').learnset.hottag = ['7L1'];
+this.modData('Learnsets', 'conkeldurr').learnset.hottag = ['7L1'];
+this.modData('Learnsets', 'croagunk').learnset.hottag = ['7L1'];
+this.modData('Learnsets', 'toxicroak').learnset.hottag = ['7L1'];
+this.modData('Learnsets', 'tepig').learnset.hottag = ['7L1'];
+this.modData('Learnsets', 'pignite').learnset.hottag = ['7L1'];
+this.modData('Learnsets', 'emboar').learnset.hottag = ['7L1'];
+this.modData('Learnsets', 'makuhita').learnset.hottag = ['7L1'];
+this.modData('Learnsets', 'tyrogue').learnset.hottag = ['7L1'];
+this.modData('Learnsets', 'hitmonlee').learnset.hottag = ['7L1'];
+this.modData('Learnsets', 'hitmontop').learnset.hottag = ['7L1'];
+this.modData('Learnsets', 'hitmonchan').learnset.hottag = ['7L1'];
+this.modData('Learnsets', 'lopunny').learnset.hottag = ['7L1'];
+this.modData('Learnsets', 'machop').learnset.hottag = ['7L1'];
+this.modData('Learnsets', 'machoke').learnset.hottag = ['7L1'];
+this.modData('Learnsets', 'machamp').learnset.hottag = ['7L1'];
+this.modData('Learnsets', 'mankey').learnset.hottag = ['7L1'];
+this.modData('Learnsets', 'primeape').learnset.hottag = ['7L1'];
+this.modData('Learnsets', 'mienfoo').learnset.hottag = ['7L1'];
+this.modData('Learnsets', 'mienshao').learnset.hottag = ['7L1'];
+this.modData('Learnsets', 'pancham').learnset.hottag = ['7L1'];
+this.modData('Learnsets', 'pangoro').learnset.hottag = ['7L1'];
+this.modData('Learnsets', 'poliwrath').learnset.hottag = ['7L1'];
+this.modData('Learnsets', 'sawk').learnset.hottag = ['7L1'];
+this.modData('Learnsets', 'throh').learnset.hottag = ['7L1'];
+this.modData('Learnsets', '').learnset.hottag = ['7L1'];
+this.modData('Learnsets', '').learnset.hottag = ['7L1'];
+this.modData('Learnsets', '').learnset.hottag = ['7L1'];
+this.modData('Learnsets', '').learnset.hottag = ['7L1'];
+this.modData('Learnsets', '').learnset.hottag = ['7L1'];
 
     /*for (let i in this.data.Pokedex) {
     let learnset = (this.data.Learnsets[i]) ? this.data.Learnsets[i].learnset : false;
