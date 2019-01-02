@@ -193,6 +193,78 @@ let BattleItems = {
 		gen: 4,
 		desc: "Holder's use of Gravity lasts 8 turns instead of 5.",
 	},
+	"grassyseed": {
+		id: "grassyseed",
+		name: "Grassy Seed",
+		spritenum: 251,
+		onTakeItem: false,
+		fling: {
+			basePower: 10,
+		},
+		onModifyDefPriority: 1,
+		onModifyDef: function (def, pokemon) {
+			if (pokemon.baseTemplate.baseSpecies === 'Tapu Bulu') {
+				return this.chainModify(1.25);
+			}
+		},
+		num: 236,
+		gen: 2,
+		desc: "If held by a Tapu Bulu, its Defense is 1.25x.",
+	},
+	"electricseed": {
+		id: "electricseed",
+		name: "Electric Seed",
+		spritenum: 251,
+		onTakeItem: false,
+		fling: {
+			basePower: 10,
+		},
+		onModifySpePriority: 1,
+		onModifySpe: function (spe, pokemon) {
+			if (pokemon.baseTemplate.baseSpecies === 'Tapu Koko') {
+				return this.chainModify(1.25);
+			}
+		},
+		num: 236,
+		gen: 2,
+		desc: "If held by a Tapu Koko, its Speed is 1.25x.",
+	},
+	"mistyseed": {
+		id: "mistyseed",
+		name: "Misty Seed",
+		spritenum: 251,
+		onTakeItem: false,
+		fling: {
+			basePower: 10,
+		},
+		onModifySpDPriority: 1,
+		onModifySpD: function (spd, pokemon) {
+			if (pokemon.baseTemplate.baseSpecies === 'Tapu Fini') {
+				return this.chainModify(1.25);
+			}
+		},
+		num: 236,
+		gen: 2,
+		desc: "If held by a Tapu Fini, its Sp. Defense is 1.25x.",
+	},
+	"psychicseed": {
+		id: "psychicseed",
+		name: "Psychic Seed",
+		spritenum: 251,
+		onTakeItem: false,
+		fling: {
+			basePower: 10,
+		},
+		onModifySpAPriority: 1,
+		onModifySpA: function (spa, pokemon) {
+			if (pokemon.baseTemplate.baseSpecies === 'Tapu Lele') {
+				return this.chainModify(1.25);
+			}
+		},
+		num: 236,
+		gen: 2,
+		desc: "If held by a Tapu Lele, its Sp. Attack is 1.25x.",
+	},
 };
 
 exports.BattleItems = BattleItems;
