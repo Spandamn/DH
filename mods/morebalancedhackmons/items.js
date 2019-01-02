@@ -182,6 +182,17 @@ let BattleItems = {
 		gen: 4,
 		desc: "Holder's use of Room moves lasts 8 turns instead of 5.",
 	},
+	"ironball": {
+		id: "ironball",
+		name: "Iron Ball",
+		spritenum: 224,
+		fling: {
+			basePower: 130,
+		},
+		num: 278,
+		gen: 4,
+		desc: "Holder's use of Gravity lasts 8 turns instead of 5.",
+	},
 };
 
 exports.BattleItems = BattleItems;
