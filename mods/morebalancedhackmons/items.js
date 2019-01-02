@@ -68,6 +68,46 @@ let BattleItems = {
 		gen: 2,
 		desc: "The holder takes 30% less damage from Dark and Ghost Attacks.",
 	},
+	"mentalherb": {
+		id: "mentalherb",
+		name: "Mental Herb",
+		spritenum: 285,
+		fling: {
+			basePower: 10,
+			effect: function (pokemon) {
+				let conditions = ['attract', 'taunt', 'encore', 'torment', 'disable', 'healblock'];
+				for (const firstCondition of conditions) {
+					if (pokemon.volatiles[firstCondition]) {
+						for (const secondCondition of conditions) {
+							pokemon.removeVolatile(secondCondition);
+							if (firstCondition === 'attract' && secondCondition === 'attract') {
+								this.add(pokemon, 'move: Attract', '[from] item: Mental Herb');
+							}
+						}
+						return;
+					}
+				}
+			},
+		},
+		onUpdate: function (pokemon) {
+			let conditions = ['attract', 'taunt', 'encore', 'torment', 'disable', 'healblock'];
+			for (const firstCondition of conditions) {
+				if (pokemon.volatiles[firstCondition]) {
+					if (!pokemon.useItem()) return;
+					for (const secondCondition of conditions) {
+						pokemon.removeVolatile(secondCondition);
+						if (firstCondition === 'attract' && secondCondition === 'attract') {
+							this.add(pokemon, 'move: Attract', '[from] item: Mental Herb');
+						}
+					}
+					return;
+				}
+			}
+		},
+		num: 219,
+		gen: 3,
+		desc: "Cures holder of Attract, Disable, Encore, Heal Block, Taunt, Torment.",
+	},
 };
 
 exports.BattleItems = BattleItems;
