@@ -615,4 +615,14 @@ evgutter: function (target, room, user) {
 		});
 		this.sendReplyBox(`${buf}</div>`);
 	},
+	abilities2: function (target, room, user) {
+		if (!this.runBroadcast()) return;
+		let buf = `<div class=infobox-limited><center><h2>List Of Coded Fusion Evolution Abilities</h2></center>`;
+		let feDex = require('../data/abilities.js').BattleAbilities;
+		if (!feDex) return this.errorReply("Error Fetching FE Data.");
+		Object.values(feDex).forEach(ability => {
+			buf += `"${ability.id}":{shortDesc: "${ability.shortDesc}",name: "${ability.name}",id: "${ability.id}",},<br>`;
+		});
+		this.sendReplyBox(`${buf}</div>`);
+	},
 };
