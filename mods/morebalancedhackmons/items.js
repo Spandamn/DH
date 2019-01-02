@@ -132,6 +132,56 @@ let BattleItems = {
 		gen: 7,
 		desc: "If held by a Kyurem, Kyurem-Black, or Kyurem-White with Ice Burn, it can use Searing Absolute Zero",
 	},
+	"wonderroom": {
+		num: 472,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		desc: "For 5 turns, all active Pokemon have their Defense and Special Defense stats swapped. Stat stage changes are unaffected. If this move is used during the effect, the effect ends.",
+		shortDesc: "For 5 turns, all Defense and Sp. Def stats switch.",
+		id: "wonderroom",
+		name: "Wonder Room",
+		pp: 10,
+		priority: 0,
+		flags: {mirror: 1},
+		pseudoWeather: 'wonderroom',
+		effect: {
+			duration: 5,
+			durationCallback: function (source, effect) {
+			if (source && source.hasItem('roomlock')) {
+				return 8;
+			}
+			return 5;
+		},
+			onStart: function (side, source) {
+				this.add('-fieldstart', 'move: Wonder Room', '[of] ' + source);
+			},
+			onRestart: function (target, source) {
+				this.removePseudoWeather('wonderroom');
+			},
+			// Swapping defenses implemented in sim/pokemon.js:Pokemon#calculateStat and Pokemon#getStat
+			onResidualOrder: 24,
+			onEnd: function () {
+				this.add('-fieldend', 'move: Wonder Room');
+			},
+		},
+		secondary: null,
+		target: "all",
+		type: "Psychic",
+		zMoveBoost: {spd: 1},
+		contestType: "Clever",
+	},
+	"roomlock": {
+		id: "roomlock",
+		name: "Room Lock",
+		spritenum: 88,
+		fling: {
+			basePower: 60,
+		},
+		num: 285,
+		gen: 4,
+		desc: "Holder's use of Room moves lasts 8 turns instead of 5.",
+	},
 };
 
 exports.BattleItems = BattleItems;
