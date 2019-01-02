@@ -108,6 +108,30 @@ let BattleItems = {
 		gen: 3,
 		desc: "Cures holder of Attract, Disable, Encore, Heal Block, Taunt, Torment.",
 	},
+	"zekriumz": {
+		id: "zekriumz",
+		name: "Zekrium Z",
+		spritenum: 656,
+		onTakeItem: false,
+		zMove: "Shocking Absolute Zero",
+		zMoveFrom: "Freeze Shock",
+		zMoveUser: ["Kyurem-Black", "Kyurem-White", "Kyurem"],
+		num: 804,
+		gen: 7,
+		desc: "If held by a Kyurem, Kyurem-Black, or Kyurem-White with Freeze Shock, it can use Shocking Absolute Zero.",
+	},
+	"reshiumz": {
+		id: "reshiumz",
+		name: "Reshium Z",
+		spritenum: 656,
+		onTakeItem: false,
+		zMove: "Searing Absolute Zero",
+		zMoveFrom: "Ice Burn",
+		zMoveUser: ["Kyurem-Black", "Kyurem-White", "Kyurem"],
+		num: 804,
+		gen: 7,
+		desc: "If held by a Kyurem, Kyurem-Black, or Kyurem-White with Ice Burn, it can use Searing Absolute Zero",
+	},
 };
 
 exports.BattleItems = BattleItems;
