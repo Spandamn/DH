@@ -906,6 +906,123 @@ let BattleMovedex = {
 		type: "Ice",
 		contestType: "Cool",
 	},
+	"wonderroom": {
+		num: 472,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		desc: "For 5 turns, all active Pokemon have their Defense and Special Defense stats swapped. Stat stage changes are unaffected. If this move is used during the effect, the effect ends.",
+		shortDesc: "For 5 turns, all Defense and Sp. Def stats switch.",
+		id: "wonderroom",
+		name: "Wonder Room",
+		pp: 10,
+		priority: 0,
+		flags: {mirror: 1},
+		pseudoWeather: 'wonderroom',
+		effect: {
+			duration: 5,
+			durationCallback: function (source, effect) {
+			if (source && source.hasItem('roomlock')) {
+				return 8;
+			}
+			return 5;
+		},
+			onStart: function (side, source) {
+				this.add('-fieldstart', 'move: Wonder Room', '[of] ' + source);
+			},
+			onRestart: function (target, source) {
+				this.removePseudoWeather('wonderroom');
+			},
+			// Swapping defenses implemented in sim/pokemon.js:Pokemon#calculateStat and Pokemon#getStat
+			onResidualOrder: 24,
+			onEnd: function () {
+				this.add('-fieldend', 'move: Wonder Room');
+			},
+		},
+		secondary: null,
+		target: "all",
+		type: "Psychic",
+		zMoveBoost: {spd: 1},
+		contestType: "Clever",
+	},
+	"trickroom": {
+		num: 433,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		desc: "For 5 turns, the Speed of every Pokemon is recalculated for the purposes of determining turn order. During the effect, each Pokemon's Speed is considered to be (10000 - its normal Speed), and if this value is greater than 8191, 8192 is subtracted from it. If this move is used during the effect, the effect ends.",
+		shortDesc: "For 5 turns, slower Pokemon move first.",
+		id: "trickroom",
+		name: "Trick Room",
+		pp: 5,
+		priority: -7,
+		flags: {mirror: 1},
+		pseudoWeather: 'trickroom',
+		effect: {
+			duration: 5,
+			durationCallback: function (source, effect) {
+			if (source && source.hasItem('roomlock')) {
+				return 8;
+			}
+			return 5;
+		},
+			onStart: function (target, source) {
+				this.add('-fieldstart', 'move: Trick Room', '[of] ' + source);
+			},
+			onRestart: function (target, source) {
+				this.removePseudoWeather('trickroom');
+			},
+			// Speed modification is changed in Pokemon.getActionSpeed() in sim/pokemon.js
+			onResidualOrder: 23,
+			onEnd: function () {
+				this.add('-fieldend', 'move: Trick Room');
+			},
+		},
+		secondary: null,
+		target: "all",
+		type: "Psychic",
+		zMoveBoost: {accuracy: 1},
+		contestType: "Clever",
+	},
+	"magicroom": {
+		num: 478,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		desc: "For 5 turns, the held items of all active Pokemon have no effect. An item's effect of causing forme changes is unaffected, but any other effects from such items are negated. During the effect, Fling and Natural Gift are prevented from being used by all active Pokemon. If this move is used during the effect, the effect ends.",
+		shortDesc: "For 5 turns, all held items have no effect.",
+		id: "magicroom",
+		name: "Magic Room",
+		pp: 10,
+		priority: 0,
+		flags: {mirror: 1},
+		pseudoWeather: 'magicroom',
+		effect: {
+			duration: 5,
+			durationCallback: function (source, effect) {
+			if (source && source.hasItem('roomlock')) {
+				return 8;
+			}
+			return 5;
+		},
+			onStart: function (target, source) {
+				this.add('-fieldstart', 'move: Magic Room', '[of] ' + source);
+			},
+			onRestart: function (target, source) {
+				this.removePseudoWeather('magicroom');
+			},
+			// Item suppression implemented in Pokemon.ignoringItem() within sim/pokemon.js
+			onResidualOrder: 25,
+			onEnd: function () {
+				this.add('-fieldend', 'move: Magic Room', '[of] ' + this.effectData.source);
+			},
+		},
+		secondary: null,
+		target: "all",
+		type: "Psychic",
+		zMoveBoost: {spd: 1},
+		contestType: "Clever",
+	},
 };
 
 exports.BattleMovedex = BattleMovedex;
