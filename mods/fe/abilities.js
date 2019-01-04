@@ -10203,7 +10203,7 @@ exports.BattleAbilities = {
 		name: "Power Saver",
 	},
 	"christmasparade": {
-		shortDesc: "Super effective attacks against this Pokemon becomes Ice-type and do 0.75x damage. Normal-type moves become Ice-type and do 1.75x damage.",
+		shortDesc: "Super effective attacks against this Pokemon becomes Ice-type and do 0.75x damage. Normal-type moves become Ice-type and do 1.45x damage.",
 		onModifyMovePriority: -1,
 		onFoeModifyMove: function (source, target, move) {
 		},
@@ -10220,7 +10220,7 @@ exports.BattleAbilities = {
 		},
 		onBasePowerPriority: 8,
 		onBasePower: function (basePower, pokemon, target, move) {
-			if (move.christmasparadeboosted) return this.chainModify(1.75);
+			if (move.christmasparadeboosted) return this.chainModify(1.45);
 		},
 		onSourceModifyDamage: function (damage, source, target, move) {
 			if (move.christmasparade) {
