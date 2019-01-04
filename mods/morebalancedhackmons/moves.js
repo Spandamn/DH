@@ -824,7 +824,7 @@ let BattleMovedex = {
 	},
 	"freezeshock": {
 		num: 553,
-		accuracy: 90,
+		accuracy: 100,
 		basePower: 100,
 		category: "Physical",
 		desc: "Has a 30% chance to paralyze the target.",
@@ -845,7 +845,7 @@ let BattleMovedex = {
 	},
 	"iceburn": {
 		num: 554,
-		accuracy: 90,
+		accuracy: 100,
 		basePower: 100,
 		category: "Special",
 		desc: "Has a 30% chance to burn the target.",
@@ -1039,7 +1039,7 @@ let BattleMovedex = {
 		effect: {
 			duration: 5,
 			durationCallback: function (source, effect) {
-			if (source && source.hasItem('roomlock')) {
+			if (source && source.hasItem('ironball')) {
 				return 8;
 			}
 			return 5;
