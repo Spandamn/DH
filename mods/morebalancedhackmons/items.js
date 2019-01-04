@@ -226,6 +226,61 @@ let BattleItems = {
 		gen: 2,
 		desc: "If held by a Tapu Lele, its Sp. Attack is 1.25x.",
 	},
+	"bigroot": {
+		id: "bigroot",
+		name: "Big Root",
+		spritenum: 29,
+		fling: {
+			basePower: 10,
+		},
+		onTryHealPriority: 1,
+		onTryHeal: function (damage, target, source, effect) {
+			/**@type {{[k: string]: number}} */
+			let heals = {drain: 1, leechseed: 1, ingrain: 1, aquaring: 1, strengthsap: 1};
+			if (heals[effect.id]) {
+				return Math.ceil((damage * 1.3) - 0.5); // Big Root rounds half down
+			}
+		},
+		num: 296,
+		gen: 4,
+		desc: "Holder gains 1.4x HP from draining/Aqua Ring/Ingrain/Leech Seed/Strength Sap.",
+	},
+	"lustrousorb": {
+		id: "lustrousorb",
+		name: "Lustrous Orb",
+		spritenum: 265,
+		onTakeItem: false,
+		fling: {
+			basePower: 60,
+		},
+		onBasePowerPriority: 6,
+		onBasePower: function (basePower, user, target, move) {
+			if (move && user.baseTemplate.species === 'Palkia' && (move.type === 'Water' || move.type === 'Dragon')) {
+				return this.chainModify([0x1333, 0x1000]);
+			}
+		},
+		num: 136,
+		gen: 4,
+		desc: "If held by a Palkia, its Water- and Dragon-type attacks have 1.2x power.",
+	},
+	"adamantorb": {
+		id: "adamantorb",
+		name: "Adamant Orb",
+		spritenum: 4,
+		onTakeItem: false,
+		fling: {
+			basePower: 60,
+		},
+		onBasePowerPriority: 6,
+		onBasePower: function (basePower, user, target, move) {
+			if (move && user.baseTemplate.species === 'Dialga' && (move.type === 'Steel' || move.type === 'Dragon')) {
+				return this.chainModify([0x1333, 0x1000]);
+			}
+		},
+		num: 135,
+		gen: 4,
+		desc: "If held by a Dialga, its Steel- and Dragon-type attacks have 1.2x power.",
+	},
 };
 
 exports.BattleItems = BattleItems;
