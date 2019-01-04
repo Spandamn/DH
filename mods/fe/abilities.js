@@ -8181,7 +8181,7 @@ exports.BattleAbilities = {
 	},
 	"twofaced": {
 	    desc: "This Pokemon's stat changes are reversed, unless they affect this Pokemon's highest non-HP stat. When this Pokemon recieves a stat change affected by the first part of this ability or knocks out an opponent, its highest non-HP stat is raised by one stage. If two stats are tied for the highest, neither of them are affected by the inverse stat changes.",
-	    shortDesc: "All stats except for the highest have inverted stat changes. The highest stat is boosted whenever this Pokemon lands a KO or has a different stat changed.",
+	    shortDesc: "All stats except for the highest have inverted stat changes. The highest stat is boosted whenever this Pokemon lands a KO or has a different stat changed. If two stats tie, both stats are ignored in the boost reversal.",
 	    onBoost: function(boost, target, source, effect) {
 	        if (effect && effect.id === 'zpower') return;
 	        let stat = 'atk';
