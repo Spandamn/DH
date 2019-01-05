@@ -595,6 +595,22 @@ evgutter: function (target, room, user) {
 		);
 		this.sendReplyBox(`${buf}</div>`);
 	},
+		datalistool3: function (target, room, user) {
+		if (!this.runBroadcast()) return;
+		let buf = `<div class=infobox-limited><center><h2>List Of Moves</h2></center>`;
+		let feDex = require('../data/pokedex.js').BattlePokedex;
+		if (!feDex) return this.errorReply("Error Fetching FE Data.");
+		Object.values(feDex).forEach(mon => {
+			if (mon.types[1] === undefined) {
+			buf += `if (fuse1 === '${mon.species}') {<br>document.getElementById("typearea").innerHTML = "&lt;img src="http://play.pokemonshowdown.com/sprites/types/${mon.types[0]}.png"&gt;&lt;img src=""&gt;<br>`;
+			}
+			else {
+					buf += `if (fuse1 === '${mon.species}') {<br>document.getElementById("typearea").innerHTML = "&lt;img src="http://play.pokemonshowdown.com/sprites/types/${mon.types[0]}.png"&gt;&lt;img src=""&gt;&lt;img src="http://play.pokemonshowdown.com/sprites/types/${mon.types[1]}.png"&gt;&lt;img src=""&gt;<br>`;
+			}	 
+		}
+		);
+		this.sendReplyBox(`${buf}</div>`);
+	},
 		felist2: function (target, room, user) {
 		if (!this.runBroadcast()) return;
 		let buf = `<div class=infobox-limited><center><h2>List Of Fusion Evolution Pokemon</h2></center>`;
