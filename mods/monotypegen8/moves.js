@@ -227,7 +227,7 @@ exports.BattleMovedex = {
 			this.add('-anim', source, "Gyro Ball", target);
 		},
 		target: "normal",
-		type: "Rock",
+		type: "Steel",
 		contestType: "Cool",
 	},
 	"ironslash": {
