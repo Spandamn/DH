@@ -216,9 +216,16 @@ exports.BattleMovedex = {
 		secondary: {
 			chance: 100,
 			self: {
-				onHit: function () {
-					this.add('-fieldstart', 'move: Trick Room', '[of] ' + source);
-				},
+				onHit: function (target, source) {
+				this.add('-fieldstart', 'move: Trick Room', '[of] ' + source);
+			},
+			onRestart: function (target, source) {
+				this.removePseudoWeather('trickroom');
+			},
+			// Speed modification is changed in Pokemon.getActionSpeed() in sim/pokemon.js
+			onResidualOrder: 23,
+			onEnd: function () {
+				this.add('-fieldend', 'move: Trick Room');
 			},
 		},
 		onPrepareHit: function(target, source, move) {
