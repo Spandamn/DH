@@ -93,7 +93,6 @@ let BattleItems = {
 			let conditions = ['attract', 'taunt', 'encore', 'torment', 'disable', 'healblock'];
 			for (const firstCondition of conditions) {
 				if (pokemon.volatiles[firstCondition]) {
-					if (!pokemon.useItem()) return;
 					for (const secondCondition of conditions) {
 						pokemon.removeVolatile(secondCondition);
 						if (firstCondition === 'attract' && secondCondition === 'attract') {
@@ -116,7 +115,7 @@ let BattleItems = {
 		zMove: "Shocking Absolute Zero",
 		zMoveFrom: "Freeze Shock",
 		zMoveUser: ["Kyurem-Black", "Kyurem-White", "Kyurem"],
-		num: 804,
+		num: 1000,
 		gen: 7,
 		desc: "If held by a Kyurem, Kyurem-Black, or Kyurem-White with Freeze Shock, it can use Shocking Absolute Zero.",
 	},
@@ -128,48 +127,9 @@ let BattleItems = {
 		zMove: "Searing Absolute Zero",
 		zMoveFrom: "Ice Burn",
 		zMoveUser: ["Kyurem-Black", "Kyurem-White", "Kyurem"],
-		num: 804,
+		num: 1000,
 		gen: 7,
 		desc: "If held by a Kyurem, Kyurem-Black, or Kyurem-White with Ice Burn, it can use Searing Absolute Zero",
-	},
-	"wonderroom": {
-		num: 472,
-		accuracy: true,
-		basePower: 0,
-		category: "Status",
-		desc: "For 5 turns, all active Pokemon have their Defense and Special Defense stats swapped. Stat stage changes are unaffected. If this move is used during the effect, the effect ends.",
-		shortDesc: "For 5 turns, all Defense and Sp. Def stats switch.",
-		id: "wonderroom",
-		name: "Wonder Room",
-		pp: 10,
-		priority: 0,
-		flags: {mirror: 1},
-		pseudoWeather: 'wonderroom',
-		effect: {
-			duration: 5,
-			durationCallback: function (source, effect) {
-			if (source && source.hasItem('roomlock')) {
-				return 8;
-			}
-			return 5;
-		},
-			onStart: function (side, source) {
-				this.add('-fieldstart', 'move: Wonder Room', '[of] ' + source);
-			},
-			onRestart: function (target, source) {
-				this.removePseudoWeather('wonderroom');
-			},
-			// Swapping defenses implemented in sim/pokemon.js:Pokemon#calculateStat and Pokemon#getStat
-			onResidualOrder: 24,
-			onEnd: function () {
-				this.add('-fieldend', 'move: Wonder Room');
-			},
-		},
-		secondary: null,
-		target: "all",
-		type: "Psychic",
-		zMoveBoost: {spd: 1},
-		contestType: "Clever",
 	},
 	"roomlock": {
 		id: "roomlock",
@@ -264,6 +224,61 @@ let BattleItems = {
 		num: 236,
 		gen: 2,
 		desc: "If held by a Tapu Lele, its Sp. Attack is 1.25x.",
+	},
+	"bigroot": {
+		id: "bigroot",
+		name: "Big Root",
+		spritenum: 29,
+		fling: {
+			basePower: 10,
+		},
+		onTryHealPriority: 1,
+		onTryHeal: function (damage, target, source, effect) {
+			/**@type {{[k: string]: number}} */
+			let heals = {drain: 1, leechseed: 1, ingrain: 1, aquaring: 1, strengthsap: 1};
+			if (heals[effect.id]) {
+				return Math.ceil((damage * 1.3) - 0.5); // Big Root rounds half down
+			}
+		},
+		num: 296,
+		gen: 4,
+		desc: "Holder gains 1.4x HP from draining/Aqua Ring/Ingrain/Leech Seed/Strength Sap.",
+	},
+	"lustrousorb": {
+		id: "lustrousorb",
+		name: "Lustrous Orb",
+		spritenum: 265,
+		onTakeItem: false,
+		fling: {
+			basePower: 60,
+		},
+		onBasePowerPriority: 6,
+		onBasePower: function (basePower, user, target, move) {
+			if (move && user.baseTemplate.species === 'Palkia' && (move.type === 'Water' || move.type === 'Dragon')) {
+				return this.chainModify([0x1333, 0x1000]);
+			}
+		},
+		num: 136,
+		gen: 4,
+		desc: "If held by a Palkia, its Water- and Dragon-type attacks have 1.2x power.",
+	},
+	"adamantorb": {
+		id: "adamantorb",
+		name: "Adamant Orb",
+		spritenum: 4,
+		onTakeItem: false,
+		fling: {
+			basePower: 60,
+		},
+		onBasePowerPriority: 6,
+		onBasePower: function (basePower, user, target, move) {
+			if (move && user.baseTemplate.species === 'Dialga' && (move.type === 'Steel' || move.type === 'Dragon')) {
+				return this.chainModify([0x1333, 0x1000]);
+			}
+		},
+		num: 135,
+		gen: 4,
+		desc: "If held by a Dialga, its Steel- and Dragon-type attacks have 1.2x power.",
 	},
 };
 
