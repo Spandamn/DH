@@ -602,10 +602,10 @@ evgutter: function (target, room, user) {
 		if (!feDex) return this.errorReply("Error Fetching FE Data.");
 		Object.values(feDex).forEach(mon => {
 			if (mon.types[1] === undefined) {
-			buf += `if (fuse1 === '${mon.species}') {<br>document.getElementById("typearea").innerHTML = "&lt;img src="http://play.pokemonshowdown.com/sprites/types/${mon.types[0]}.png&gt;";<br>}<br>`;
+			buf += `if (fuse1 === '${mon.species}') {<br>document.getElementById("typearea1").innerHTML = "&lt;img src=http://play.pokemonshowdown.com/sprites/types/${mon.types[0]}.png&gt;";<br>}<br>`;
 			}
 			else {
-					buf += `if (fuse1 === '${mon.species}') {<br>document.getElementById("typearea").innerHTML = "&lt;img src="http://play.pokemonshowdown.com/sprites/types/${mon.types[0]}.png"&gt;&lt;img src="http://play.pokemonshowdown.com/sprites/types/${mon.types[1]}.png&gt;";<br>}<br>`;
+					buf += `if (fuse1 === '${mon.species}') {<br>document.getElementById("typearea1").innerHTML = "&lt;img src=http://play.pokemonshowdown.com/sprites/types/${mon.types[0]}.png"&gt;&lt;img src=http://play.pokemonshowdown.com/sprites/types/${mon.types[1]}.png&gt;";<br>}<br>`;
 			}	 
 		}
 		);
