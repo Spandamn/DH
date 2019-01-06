@@ -1313,7 +1313,7 @@ exports.BattlePokedex = {
 		abilities: {0: "Pressure", H: "Infiltrator"},
 		prevo: "spiritomb",
 		},
-	      burrowbit: {
+	   burrowbit: {
 		num: 100158,
 		species: "Burrowbit",
 		types: ["Ground"],
