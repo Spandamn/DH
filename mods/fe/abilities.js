@@ -4106,7 +4106,7 @@ exports.BattleAbilities = {
 		name: "Sound Soul",
 	},
 	"phasethrough": {
-		shortDesc: "Frisk + Natural Care",
+		shortDesc: "Frisk + Natural Cure",
 		onStart: function(pokemon) {
 			for (const target of pokemon.side.foe.active) {
 				if (!target || target.fainted) continue;
@@ -4137,12 +4137,20 @@ exports.BattleAbilities = {
 				}
 				let template = this.getTemplate(curPoke.species);
 				// pokemon can't get Natural Cure
-				if (Object.values(template.abilities).indexOf('Natural Cure') < 0) {
+				
+				let canHaveCure = Object.values(template.abilities).indexOf('Natural Cure');
+				let canHaveSand = Object.values(template.abilities).indexOf('Sand Spa');
+				let canHavePhase = Object.values(template.abilities).indexOf('Phase Through');		
+				if (canHaveCure < 0 && canHaveSand < 0 && canHavePhase < 0) {
 					// this.add('-message', "" + curPoke + " skipped: no Natural Cure");
 					continue;
 				}
 				// pokemon's ability is known to be Natural Cure
-				if (!template.abilities['1'] && !template.abilities['H']) {
+				let possibleAbilities = 0;
+				if (canHaveCure) possibleAbilities++;
+				if (canHaveSand) possibleAbilities++;
+				if (canHavePhase) possibleAbilities++;
+				if (possibleAbilities >= 3 || (!template.abilities['1'] && (!template.abilities['H'] || possibleAbilities == 2))) {
 					// this.add('-message', "" + curPoke + " skipped: only one ability");
 					continue;
 				}
@@ -4151,7 +4159,7 @@ exports.BattleAbilities = {
 					// this.add('-message', "" + curPoke + " skipped: not switching");
 					continue;
 				}
-				if (curPoke.hasAbility('naturalcure')) {
+				if (curPoke.hasAbility(['naturalcure', 'phasethrough', 'sandspa'])) {
 					// this.add('-message', "" + curPoke + " confirmed: could be Natural Cure (and is)");
 					cureList.push(curPoke);
 				} else {
@@ -12932,5 +12940,282 @@ exports.BattleAbilities = {
 		},
 		id: "sandyconstruct",
 		name: "Sandy Construct",
+	},
+	"cosmicbelly": {
+		shortDesc: "If this Pokemon is at full HP, damage taken from attacks is halved.",
+		onSourceModifyDamage: function (damage, source, target, move) {
+			if (target.hp >= target.maxhp) {
+				this.debug('Cosmic Belly weaken');
+				return this.chainModify(0.5);
+			}
+		},
+		id: "cosmicbelly",
+		name: "Cosmic Belly",
+	},
+	"powerscale": {
+		shortDesc: "This Pokemon's Defense and Special Defense are doubled.",
+		onModifyDefPriority: 6,
+		onModifyDef: function (def) {
+			return this.chainModify(2);
+		},
+		onModifySpDPriority: 6,
+		onModifySpD: function (spd) {
+			return this.chainModify(2);
+		},
+		id: "powerscale",
+		name: "Powerscale",
+	},
+	"shadowscale": {		
+		desc: "This Pokemon's Defense and Special Defense are doubled. Moongeist Beam, Sunsteel Strike, and the Mold Breaker, Teravolt, and Turboblaze Abilities cannot ignore this Ability.",
+		shortDesc: "This Pokemon's Defense and Special Defense are doubled.",
+		onModifyDefPriority: 6,
+		onModifyDef: function (def) {
+			return this.chainModify(2);
+		},
+		onModifySpDPriority: 6,
+		onModifySpD: function (spd) {
+			return this.chainModify(2);
+		},
+		isUnbreakable: true,
+		id: "shadowscale",
+		name: "Shadowscale",
+	},
+	"naturalcure": {
+		shortDesc: "This Pokemon has its major status condition cured when it switches out.",
+		onCheckShow: function(pokemon) {
+			// This is complicated
+			// For the most part, in-game, it's obvious whether or not Natural Cure activated,
+			// since you can see how many of your opponent's pokemon are statused.
+			// The only ambiguous situation happens in Doubles/Triples, where multiple pokemon
+			// that could have Natural Cure switch out, but only some of them get cured.
+			if (pokemon.side.active.length === 1) return;
+			if (pokemon.showCure === true || pokemon.showCure === false) return;
+			let cureList = [];
+			let noCureCount = 0;
+			for (const curPoke of pokemon.side.active) {
+				// pokemon not statused
+				if (!curPoke || !curPoke.status) {
+					// this.add('-message', "" + curPoke + " skipped: not statused or doesn't exist");
+					continue;
+				}
+				if (curPoke.showCure) {
+					// this.add('-message', "" + curPoke + " skipped: Natural Cure already known");
+					continue;
+				}
+				let template = this.getTemplate(curPoke.species);
+				// pokemon can't get Natural Cure
+				
+				let canHaveCure = Object.values(template.abilities).indexOf('Natural Cure');
+				let canHaveSand = Object.values(template.abilities).indexOf('Sand Spa');
+				let canHavePhase = Object.values(template.abilities).indexOf('Phase Through');		
+				if (canHaveCure < 0 && canHaveSand < 0 && canHavePhase < 0) {
+					// this.add('-message', "" + curPoke + " skipped: no Natural Cure");
+					continue;
+				}
+				// pokemon's ability is known to be Natural Cure
+				let possibleAbilities = 0;
+				if (canHaveCure) possibleAbilities++;
+				if (canHaveSand) possibleAbilities++;
+				if (canHavePhase) possibleAbilities++;
+				if (possibleAbilities >= 3 || (!template.abilities['1'] && (!template.abilities['H'] || possibleAbilities == 2))) {
+					// this.add('-message', "" + curPoke + " skipped: only one ability");
+					continue;
+				}
+				// pokemon isn't switching this turn
+				if (curPoke !== pokemon && !this.willSwitch(curPoke)) {
+					// this.add('-message', "" + curPoke + " skipped: not switching");
+					continue;
+				}
+				if (curPoke.hasAbility(['naturalcure', 'phasethrough', 'sandspa'])) {
+					// this.add('-message', "" + curPoke + " confirmed: could be Natural Cure (and is)");
+					cureList.push(curPoke);
+				} else {
+					// this.add('-message', "" + curPoke + " confirmed: could be Natural Cure (but isn't)");
+					noCureCount++;
+				}
+			}
+			if (!cureList.length || !noCureCount) {
+				// It's possible to know what pokemon were cured
+				for (const pokemon of cureList) {
+					pokemon.showCure = true;
+				}
+			} else {
+				// It's not possible to know what pokemon were cured
+				// Unlike a -hint, this is real information that battlers need, so we use a -message
+				this.add('-message', "(" + cureList.length + " of " + pokemon.side.name + "'s pokemon " + (cureList.length === 1 ? "was" : "were") + " cured by Natural Cure.)");
+				for (const pokemon of cureList) {
+					pokemon.showCure = false;
+				}
+			}
+		},
+		onSwitchOut: function (pokemon) {
+			if (!pokemon.status) return;
+
+			// if pokemon.showCure is undefined, it was skipped because its ability
+			// is known
+			if (pokemon.showCure === undefined) pokemon.showCure = true;
+
+			if (pokemon.showCure) this.add('-curestatus', pokemon, pokemon.status, '[from] ability: Natural Cure');
+			pokemon.setStatus('');
+
+			// only reset .showCure if it's false
+			// (once you know a Pokemon has Natural Cure, its cures are always known)
+			if (!pokemon.showCure) delete pokemon.showCure;
+		},
+		id: "naturalcure",
+		name: "Natural Cure",
+		rating: 3.5,
+		num: 30,
+	},
+	"sandspa": {
+		desc: "On switch-in, this Pokemon summons Sandstorm and removes any major status problems. If Sandstorm is active, this Pokemon cannot gain a major status condition and Rest will fail for it. This Pokemon summons Sandstorm and has its major status condition cured when it switches out.",
+		shortDesc: "On switch-in, this Pokemon summons Sandstorm and removes its own statuses. If Sandstorm is active, this Pokemon cannot be statused and Rest will fail for it. This Pokemon summons Sandstorm and has its major status condition cured when it switches out.",
+		onStart: function (source) {
+			this.setWeather('sandstorm');
+			source.setStatus('');
+		},
+		onCheckShow: function(pokemon) {
+			// This is complicated
+			// For the most part, in-game, it's obvious whether or not Natural Cure activated,
+			// since you can see how many of your opponent's pokemon are statused.
+			// The only ambiguous situation happens in Doubles/Triples, where multiple pokemon
+			// that could have Natural Cure switch out, but only some of them get cured.
+			if (pokemon.side.active.length === 1) return;
+			if (pokemon.showCure === true || pokemon.showCure === false) return;
+			let cureList = [];
+			let noCureCount = 0;
+			for (const curPoke of pokemon.side.active) {
+				// pokemon not statused
+				if (!curPoke || !curPoke.status) {
+					// this.add('-message', "" + curPoke + " skipped: not statused or doesn't exist");
+					continue;
+				}
+				if (curPoke.showCure) {
+					// this.add('-message', "" + curPoke + " skipped: Natural Cure already known");
+					continue;
+				}
+				let template = this.getTemplate(curPoke.species);
+				// pokemon can't get Natural Cure
+				
+				let canHaveCure = Object.values(template.abilities).indexOf('Natural Cure');
+				let canHaveSand = Object.values(template.abilities).indexOf('Sand Spa');
+				let canHavePhase = Object.values(template.abilities).indexOf('Phase Through');		
+				if (canHaveCure < 0 && canHaveSand < 0 && canHavePhase < 0) {
+					// this.add('-message', "" + curPoke + " skipped: no Natural Cure");
+					continue;
+				}
+				// pokemon's ability is known to be Natural Cure
+				let possibleAbilities = 0;
+				if (canHaveCure) possibleAbilities++;
+				if (canHaveSand) possibleAbilities++;
+				if (canHavePhase) possibleAbilities++;
+				if (possibleAbilities >= 3 || (!template.abilities['1'] && (!template.abilities['H'] || possibleAbilities == 2))) {
+					// this.add('-message', "" + curPoke + " skipped: only one ability");
+					continue;
+				}
+				// pokemon isn't switching this turn
+				if (curPoke !== pokemon && !this.willSwitch(curPoke)) {
+					// this.add('-message', "" + curPoke + " skipped: not switching");
+					continue;
+				}
+				if (curPoke.hasAbility(['naturalcure', 'phasethrough', 'sandspa'])) {
+					// this.add('-message', "" + curPoke + " confirmed: could be Natural Cure (and is)");
+					cureList.push(curPoke);
+				} else {
+					// this.add('-message', "" + curPoke + " confirmed: could be Natural Cure (but isn't)");
+					noCureCount++;
+				}
+			}
+			if (!cureList.length || !noCureCount) {
+				// It's possible to know what pokemon were cured
+				for (const pokemon of cureList) {
+					pokemon.showCure = true;
+				}
+			} else {
+				// It's not possible to know what pokemon were cured
+				// Unlike a -hint, this is real information that battlers need, so we use a -message
+				this.add('-message', "(" + cureList.length + " of " + pokemon.side.name + "'s pokemon " + (cureList.length === 1 ? "was" : "were") + " cured by Natural Cure.)");
+				for (const pokemon of cureList) {
+					pokemon.showCure = false;
+				}
+			}
+		},
+		onSetStatus: function (status, target, source, effect) {
+			if (this.isWeather('sandstorm')) {
+				if (effect && effect.status) this.add('-immune', target, '[from] ability: Sand Spa');
+				return false;
+			}
+		},
+		onTryAddVolatile: function (status, target) {
+			if (status.id === 'yawn' && this.isWeather('sandstorm')) {
+				this.add('-immune', target, '[from] ability: Sand Spa');
+				return null;
+			}
+		},
+		onSwitchOut: function (pokemon) {
+			this.setWeather('sandstorm');
+			if (!pokemon.status) return;
+
+			// if pokemon.showCure is undefined, it was skipped because its ability
+			// is known
+			if (pokemon.showCure === undefined) pokemon.showCure = true;
+
+			if (pokemon.showCure) this.add('-curestatus', pokemon, pokemon.status, '[from] ability: Sand Spa');
+			pokemon.setStatus('');
+
+			// only reset .showCure if it's false
+			// (once you know a Pokemon has Natural Cure, its cures are always known)
+			if (!pokemon.showCure) delete pokemon.showCure;
+		},
+		id: "sandspa",
+		name: "Sand Spa",
+	},
+	"bunsofsteel": {
+		desc: "This Pokemon has the resistances of Steel types. This ability does not protect the Pokemon from Poison-type moves.",
+		shortDesc: "This Pokemon has the resistances, but not immunities, of Steel types.",
+		onEffectiveness: function(typeMod, target, type, move) {
+			if (move.type === 'Poison') return;
+			let typeCheck = this.getEffectiveness(move, 'Steel');
+			typeCheck = this.singleEvent('Effectiveness', move, null, 'Steel', move, null, typeCheck);
+			if (typeCheck < 0){
+				return typeMod - 1;
+			}
+			return typeMod;
+		},
+		id: "bunsofsteel",
+		name: "Buns of Steel",
+	},
+	"shocked": {
+		desc: "This Pokemon is immune to Electric-type, Dark-type, Bug-type, and Ghost-type moves and raises its Speed by 1 stage when hit by any of the aforementioned types of move.",
+		shortDesc: "This Pokemon's Speed is raised by 1 if hit by an Electric/Dark/Bug/Ghost move; Immunity to aforementioned types.",
+		onTryHit: function (target, source, move) {
+			if (target !== source && ['Electric', 'Dark', 'Bug', 'Ghost'].includes(move.type)) {
+				if (!this.boost({spe: 1})) {
+					this.add('-immune', target, '[from] ability: Shocked');
+				}
+				return null;
+			}
+		},
+		id: "shocked",
+		name: "Shocked",
+	},
+	"meaty": {
+		desc: "If this Pokemon is at full HP, it survives one hit with at least a third of its HP. OHKO moves fail when used against this Pokemon.",
+		shortDesc: "If this Pokemon is at full HP, it survives one hit with at least a third of its HP. Immune to OHKO.",
+		onTryHit: function (pokemon, target, move) {
+			if (move.ohko) {
+				this.add('-immune', pokemon, '[from] ability: Meaty');
+				return null;
+			}
+		},
+		onDamagePriority: -100,
+		onDamage: function (damage, target, source, effect) {
+			if (target.hp === target.maxhp && damage > target.hp / 3 && effect && effect.effectType === 'Move') {
+				this.add('-ability', target, 'Meaty');
+				return Math.ceil(target.hp / 1.5);
+			}
+		},
+		id: "meaty",
+		name: "Meaty",
 	},
 };
