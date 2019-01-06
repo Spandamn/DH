@@ -213,26 +213,6 @@ exports.BattleMovedex = {
 		priority: 0,
 		flags: {},
 		isZ: "stakatakiumz",
-		secondary: {
-			chance: 100,
-			self: {
-				onHit: function (target, source) {
-				this.add('-fieldstart', 'move: Trick Room', '[of] ' + source);
-			},
-			onRestart: function (target, source) {
-				this.removePseudoWeather('trickroom');
-			},
-			// Speed modification is changed in Pokemon.getActionSpeed() in sim/pokemon.js
-			onResidualOrder: 23,
-			onEnd: function () {
-				this.add('-fieldend', 'move: Trick Room');
-			},
-		},
-		onPrepareHit: function(target, source, move) {
-			this.attrLastMove('[still]');
-			this.add('-anim', source, "Focus Energy", target);
-			this.add('-anim', source, "Gyro Ball", target);
-		},
 		target: "normal",
 		type: "Steel",
 		contestType: "Cool",
