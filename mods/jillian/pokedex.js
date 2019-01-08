@@ -1358,7 +1358,7 @@ exports.BattlePokedex = {
 		species: "Calacles",
 		types: ["Psychic", "Dark"],
 		baseStats: {hp: 106, atk: 122, def: 108, spa: 73, spd: 85, spe: 83},
-		abilities: {0: "Contrary", 1:"Suction Cups", H "Dark Aura"},
+		abilities: {0: "Contrary", 1:"Suction Cups", H: "Dark Aura"},
 		prevo: "malamar",
 		},
 	   kelpeen: {
@@ -1366,7 +1366,7 @@ exports.BattlePokedex = {
 		species: "Kelpeen",
 		types: ["Poison", "Water"],
 		baseStats: {hp: 70, atk: 85, def: 85, spa: 75, spd: 75, spe: 45},
-		abilities: {0: "Poison Point", 1:"Poison Touch", H "Adaptability"},
+		abilities: {0: "Poison Point", 1:"Poison Touch", H: "Adaptability"},
 		evos: ["kelpdra"],
 		prevo: "skrelp",
 		},
@@ -1375,7 +1375,7 @@ exports.BattlePokedex = {
 		species: "Kelpdra",
 		types: ["Poison", "Dragon"],
 		baseStats: {hp: 95, atk: 110, def: 95, spa: 105, spd: 135, spe: 55},
-		abilities: {0: "Poison Point", 1:"Poison Touch", H "Adaptability"},
+		abilities: {0: "Poison Point", 1:"Poison Touch", H: "Adaptability"},
 		prevo: "kelpeen",
 		},
 	   fuzruff: {
@@ -1399,7 +1399,7 @@ exports.BattlePokedex = {
 		species: "Repsolar",
 		types: ["Electric", "Fire"],
 		baseStats: {hp: 72, atk: 70, def: 72, spa: 124, spd: 110, spe: 127},
-		abilities: {0: "Dry Skin", 1: "Electric Surge", H "Solar Power"},
+		abilities: {0: "Dry Skin", 1: "Electric Surge", H: "Solar Power"},
 		prevo: "heliolisk",
 		},
 	   hawlito: {
@@ -1407,7 +1407,7 @@ exports.BattlePokedex = {
 		species: "Hawlito",
 		types: ["Fighting"],
 		baseStats: {hp: 65, atk: 76, def: 51, spa: 56, spd: 43, spe: 96},
-		abilities: {0: "Limber", 1: "Unburden", H "Mold Breaker"},
+		abilities: {0: "Limber", 1: "Unburden", H: "Mold Breaker"},
 		evos: ["hawlucha"],
 		},
 	   hawpeon: {
@@ -1423,7 +1423,7 @@ exports.BattlePokedex = {
 		species: "Denfounee",
 		types: ["Electric", "Fairy"],
 		baseStats: {hp: 85, atk: 65, def: 73, spa: 97, spd: 83, spe: 125},
-		abilities: {0: "Cheek Pouch", 1: "Pixilate", H "Magnetism"},
+		abilities: {0: "Cheek Pouch", 1: "Pixilate", H: "Magnetism"},
 		prevo: "dedenne",
 		},
 	   caribur: {
@@ -1431,7 +1431,7 @@ exports.BattlePokedex = {
 		species: "Caribur",
 		types: ["Rock", "Fairy"],
 		baseStats: {hp: 77, atk: 179, def: 72, spa: 179, spd: 72, spe: 77},
-		abilities: {0: "Clear Body", 1: "Serene Grace", H "Sturdy"},
+		abilities: {0: "Clear Body", 1: "Serene Grace", H: "Sturdy"},
 		prevo: "carbink",
 		},
 	   carbank: {
@@ -1439,7 +1439,7 @@ exports.BattlePokedex = {
 		species: "Carbank",
 		types: ["Rock", "Fairy"],
 		baseStats: {hp: 77, atk: 72, def: 179, spa: 72, spd: 179, spe: 77},
-		abilities: {0: "Clear Body", 1: "Solid Rock", H "Sturdy"},
+		abilities: {0: "Clear Body", 1: "Solid Rock", H: "Sturdy"},
 		prevo: "carbink",
 		},
 	   locklept: {
@@ -1447,7 +1447,7 @@ exports.BattlePokedex = {
 		species: "Locklept",
 		types: ["Steel", "Fairy"],
 		baseStats: {hp: 82, atk: 110, def: 130, spa: 110, spd: 126, spe: 93},
-		abilities: {0: "Prankster", 1: "Iron Barbs", H "Magician"},
+		abilities: {0: "Prankster", 1: "Iron Barbs", H: "Magician"},
 		prevo: "klefki",
 		},
 	   kledamourki: {
@@ -1455,7 +1455,7 @@ exports.BattlePokedex = {
 		species: "Kledamourki",
 		types: ["Steel", "Fairy"],
 		baseStats: {hp: 82, atk: 130, def: 126, spa: 130, spd: 110, spe: 93},
-		abilities: {0: "Prankster", 1: "Magic Bounce", H "Magician"},
+		abilities: {0: "Prankster", 1: "Magic Bounce", H: "Magician"},
 		prevo: "klefki",
 		},
       quagsire: {
