@@ -2060,11 +2060,6 @@ this.modData('Learnsets', 'pangoro').learnset.hottag = ['7L1'];
 this.modData('Learnsets', 'poliwrath').learnset.hottag = ['7L1'];
 this.modData('Learnsets', 'sawk').learnset.hottag = ['7L1'];
 this.modData('Learnsets', 'throh').learnset.hottag = ['7L1'];
-this.modData('Learnsets', '').learnset.hottag = ['7L1'];
-this.modData('Learnsets', '').learnset.hottag = ['7L1'];
-this.modData('Learnsets', '').learnset.hottag = ['7L1'];
-this.modData('Learnsets', '').learnset.hottag = ['7L1'];
-this.modData('Learnsets', '').learnset.hottag = ['7L1'];
 
     /*for (let i in this.data.Pokedex) {
     let learnset = (this.data.Learnsets[i]) ? this.data.Learnsets[i].learnset : false;
