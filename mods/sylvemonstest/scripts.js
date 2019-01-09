@@ -1844,7 +1844,6 @@ this.modData('Learnsets', 'kingdra').learnset.aquaticassault= ['7L1'];
 this.modData('Learnsets', 'seismitoad').learnset.aquaticassault= ['7L1']; 
 this.modData('Learnsets', 'seaking').learnset.aquaticassault= ['7L1']; 
 this.modData('Learnsets', 'basculin').learnset.aquaticassault= ['7L1']; 
-this.modData('Learnsets', 'basculinbluestriped').learnset.aquaticassault= ['7L1']; 
 this.modData('Learnsets', 'carvanha').learnset.aquaticassault= ['7L1'];
 this.modData('Learnsets', 'wailord').learnset.aquaticassault= ['7L1'];
 this.modData('Learnsets', 'relicanth').learnset.aquaticassault= ['7L1'];
