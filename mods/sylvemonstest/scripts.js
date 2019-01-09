@@ -1942,7 +1942,7 @@ this.modData('Learnsets', 'pikachu').learnset.firepunch= ['7L1'];
 this.modData('Learnsets', 'raichu').learnset.firepunch= ['7L1'];
 this.modData('Learnsets', 'raichualola').learnset.firepunch= ['7L1'];
 this.modData('Learnsets', 'thundurus').learnset.firepunch= ['7L1'];
-this.modData('Learnsets', 'thundurustherian').learnset.firepunch= ['7L1'];
+this.modData('Learnsets', 'thundurus').learnset.firepunch= ['7L1'];
 	  
 // Thunder Punch
 	  
