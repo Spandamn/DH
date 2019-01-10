@@ -1861,6 +1861,7 @@ this.modData('Learnsets', 'croconaw').learnset.aquaticassault= ['7L1'];
 this.modData('Learnsets', 'corphish').learnset.aquaticassault= ['7L1'];
 this.modData('Learnsets', 'walrein').learnset.aquaticassault= ['7L1'];
 this.modData('Learnsets', 'phione').learnset.aquaticassault= ['7L1'];
+this.modData('Learnsets', 'greninjaash').learnset.aquaticassault= ['7L1']; 
 	  
 // Fire Fang
 	  
