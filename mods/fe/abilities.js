@@ -8416,10 +8416,26 @@ exports.BattleAbilities = {
 	"chainheal": {
 		shortDesc: "Upon switching out, this Pokemon is healed for 1/3 of its max HP. Its replacement's ability is then replaced with Chain Heal.",
 		onBeforeSwitchOut: function (pokemon){
-			pokemon.side.addSideCondition('chainheal', pokemon, 'chainheal');
+			pokemon.side.addSideCondition('chainheal');
+			pokemon.side.sideConditions['chainheal'].sourceEffect = pokemon;
 		},
 		onSwitchOut: function (pokemon) {
 			pokemon.heal(pokemon.maxhp / 3);
+		},
+		effect: {
+			onStart: function (side, source, sourceEffect) {
+				this.effectData.position = source.position;
+			},
+			onSwitchInPriority: 1,
+			onSwitchIn: function (target) {
+				if (!target.fainted && target.position === this.effectData.position) {
+					let oldAbility = source.setAbility('chainheal', target);
+					if (oldAbility) {
+						this.add('-activate', target, 'ability: Chain Heal', this.getAbility(oldAbility).name, '[of] ' + this.effectData.sourceEffect);
+					}
+					target.side.removeSideCondition('chainheal');
+				}
+			},
 		},
 		id: "chainheal",
 		name: "Chain Heal",
