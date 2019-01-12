@@ -4986,7 +4986,7 @@ onValidateTeam: function (team) {
 					this.add('raw',illusionability,illusionability.shortDesc);
 				} else {
 					let ability = this.getAbility(pokemon.ability);
-					if (pokemon.hasAbility('typeillusionist')){
+					if (pokemon.hasAbility('typeillusionist') || pokemon.hasAbility('sleepingsystem')){
        		     this.add('-start', pokemon, 'typechange', pokemon.template.types.join('/'), '[silent]');	
 					} else {
             		this.add('-start', pokemon, 'typechange', pokemon.getTypes().join('/'), '[silent]');
