@@ -1650,24 +1650,4 @@ exports.BattlePokedex = {
 		inherit: true,
       abilities: {0: "Beast Boost", H: "Knight's Blade"},
 	},
-	deoxys: {
-      inherit: true,
-      types: ["Psychic", "Poison"],
-      abilities: {0: "Pressure", H: "Insider"},
-   },
-	deoxysattack: {
-      inherit: true,
-      types: ["Psychic", "Poison"],
-      abilities: {0: "Pressure", H: "Insider"},
-   },
-	deoxysdefense: {
-      inherit: true,
-      types: ["Psychic", "Poison"],
-      abilities: {0: "Pressure", H: "Insider"},
-   },
-	deoxysspeed: {
-      inherit: true,
-      types: ["Psychic", "Poison"],
-      abilities: {0: "Pressure", H: "Insider"},
-   },
 };

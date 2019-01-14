@@ -1,10 +1,10 @@
-'use strict';
+'use strict'; // Ctrl + F: HEREE
 
 const CHOOSABLE_TARGETS = new Set(['normal', 'any', 'adjacentAlly', 'adjacentAllyOrSelf', 'adjacentFoe']);
 
 /**@type {BattleScriptsData} */
 let BattleScripts = {
-	gen: 7,
+		gen: 7,
 	/**
 	 * runMove is the "outside" move caller. It handles deducting PP,
 	 * flinching, full paralysis, etc. All the stuff up to and including
@@ -25,10 +25,12 @@ let BattleScripts = {
 			if (changedMove && changedMove !== true) {
 				baseMove = this.getActiveMove(changedMove);
 				if (pranksterBoosted) baseMove.pranksterBoosted = pranksterBoosted;
-				target = this.resolveTarget(pokemon, baseMove);
+				target = null;
 			}
 		}
 		let move = zMove ? this.getActiveZMove(baseMove, pokemon) : baseMove;
+
+		if (!target && target !== false) target = this.resolveTarget(pokemon, move);
 
 		move.isExternal = externalMove;
 
@@ -155,7 +157,7 @@ let BattleScripts = {
 			if (!move.hasBounced) move.pranksterBoosted = this.activeMove.pranksterBoosted;
 		}
 		let baseTarget = move.target;
-		if (target === undefined) target = this.resolveTarget(pokemon, move);
+		if (!target && target !== false) target = this.resolveTarget(pokemon, move);
 		if (move.target === 'self' || move.target === 'allies') {
 			target = pokemon;
 		}
@@ -193,9 +195,9 @@ let BattleScripts = {
 
 		if (zMove) this.runZPower(move, pokemon);
 
-		if (!target) {
+		if (target === false) {
 			this.attrLastMove('[notarget]');
-			this.add(this.gen >= 5 ? '-fail' : '-notarget', pokemon);
+			this.add('-notarget');
 			if (move.target === 'normal') pokemon.isStaleCon = 0;
 			return false;
 		}
@@ -231,7 +233,7 @@ let BattleScripts = {
 			this.faint(pokemon, pokemon, move);
 		}
 
-		/** @type {number | false | undefined} */
+		/**@type {number | false} */
 		let damage = false;
 		if (move.target === 'all' || move.target === 'foeSide' || move.target === 'allySide' || move.target === 'allyTeam') {
 			damage = this.tryMoveHit(target, pokemon, move);
@@ -239,7 +241,7 @@ let BattleScripts = {
 		} else if (move.target === 'allAdjacent' || move.target === 'allAdjacentFoes') {
 			if (!targets.length) {
 				this.attrLastMove('[notarget]');
-				this.add(this.gen >= 5 ? '-fail' : '-notarget', pokemon);
+				this.add('-notarget');
 				return false;
 			}
 			if (targets.length > 1) move.spreadHit = true;
@@ -250,7 +252,7 @@ let BattleScripts = {
 					moveResult = true;
 					hitTargets.push(source.toString().substr(0, 3));
 				}
-				if (damage) {
+				if (damage !== false) {
 					damage += hitResult || 0;
 				} else {
 					damage = hitResult;
@@ -267,7 +269,7 @@ let BattleScripts = {
 			}
 			if (lacksTarget && !move.isFutureMove) {
 				this.attrLastMove('[notarget]');
-				this.add(this.gen >= 5 ? '-fail' : '-notarget', pokemon);
+				this.add('-notarget');
 				if (move.target === 'normal') pokemon.isStaleCon = 0;
 				return false;
 			}
@@ -445,26 +447,26 @@ let BattleScripts = {
 			for (let statName in target.boosts) {
 				// @ts-ignore
 				let stage = target.boosts[statName];
-				if (stage > 0 || stage < 0) {
+				if (stage > 0) {
 					boosts[statName] = stage;
 					stolen = true;
 				}
 			}
 			if (stolen) {
 				this.attrLastMove('[still]');
-				this.add('-clearboost', target, pokemon, 'move: ' + move.name);
+				this.add('-clearpositiveboost', target, pokemon, 'move: ' + move.name);
 				this.boost(boosts, pokemon, pokemon);
 
 				for (let statName in boosts) {
 					boosts[statName] = 0;
 				}
 				target.setBoost(boosts);
-				this.addMove('-anim', pokemon, "Spectral Thief", target);
+				this.add('-anim', pokemon, "Spectral Thief", target);
 			}
 		}
 
 		move.totalDamage = 0;
-		/** @type {number | false | undefined} */
+		/**@type {number | false} */
 		let damage = 0;
 		pokemon.lastDamage = 0;
 		if (move.multihit) {
@@ -483,7 +485,7 @@ let BattleScripts = {
 			}
 			hits = Math.floor(hits);
 			let nullDamage = true;
-			/** @type {number | false | undefined} */
+			/**@type {number | false} */
 			let moveDamage;
 			// There is no need to recursively check the ´sleepUsable´ flag as Sleep Talk can only be used while asleep.
 			let isSleepUsable = move.sleepUsable || this.getMove(move.sourceEffect).sleepUsable;
@@ -567,13 +569,12 @@ let BattleScripts = {
 		return damage;
 	},
 	moveHit(target, pokemon, moveOrMoveName, moveData, isSecondary, isSelf) {
-		/** @type {number | false | null | undefined} */
-		let damage = undefined;
+		let damage;
 		let move = this.getActiveMove(moveOrMoveName);
 
 		if (!moveData) moveData = move;
 		if (!moveData.flags) moveData.flags = {};
-		/** @type {?boolean | number} */
+		/**@type {?boolean | number} */
 		let hitResult = true;
 
 		// TryHit events:
@@ -700,7 +701,7 @@ let BattleScripts = {
 			}
 			if (moveData.status) {
 				hitResult = target.trySetStatus(moveData.status, pokemon, moveData.ability ? moveData.ability : move);
-				if (!hitResult && move.status) return false;
+				if (!hitResult && move.status) return hitResult;
 				didSomething = didSomething || hitResult;
 			}
 			if (moveData.forceStatus) {
@@ -728,7 +729,7 @@ let BattleScripts = {
 				didSomething = didSomething || hitResult;
 			}
 			if (moveData.forceSwitch) {
-				hitResult = !!this.canSwitch(target.side);
+				hitResult = this.canSwitch(target.side);
 				didSomething = didSomething || hitResult;
 			}
 			if (moveData.selfSwitch) {
@@ -895,7 +896,7 @@ let BattleScripts = {
 	},
 
 	canZMove(pokemon) {
-		if (pokemon.side.zMoveUsed || (pokemon.transformed && (pokemon.template.isMega || pokemon.template.isPrimal || pokemon.template.forme === "Ultra"))) return;
+		if (pokemon.side.zMoveUsed || this.pseudoWeather.magicroom || (pokemon.transformed && (pokemon.template.isMega || pokemon.template.isPrimal || pokemon.template.forme === "Ultra"))) return;
 		let item = pokemon.getItem();
 		if (!item.zMove) return;
 		if (item.zMoveUser && !item.zMoveUser.includes(pokemon.template.species)) return;
@@ -922,10 +923,11 @@ let BattleScripts = {
 	},
 
 	canMegaEvo(pokemon) {
+		if (this.pseudoWeather.magicroom) return;
 		let altForme = pokemon.baseTemplate.otherFormes && this.getTemplate(pokemon.baseTemplate.otherFormes[0]);
 		let item = pokemon.getItem();
 		if (altForme && altForme.isMega && altForme.requiredMove && pokemon.baseMoves.includes(toId(altForme.requiredMove)) && !item.zMove) return altForme.species;
-		if (item.megaEvolves !== pokemon.baseTemplate.baseSpecies || item.megaStone === pokemon.species) {
+		if (this.pseudoWeather.magicroom || item.megaEvolves !== pokemon.baseTemplate.baseSpecies || item.megaStone === pokemon.species) {
 			return null;
 		}
 		return item.megaStone;
@@ -1018,6 +1020,52 @@ let BattleScripts = {
 	targetTypeChoices(targetType) {
 		return CHOOSABLE_TARGETS.has(targetType);
 	},
-};
-
+	
+  init: function() { // HEREE
+  this.modData('Learnsets', 'darmanitan').learnset.slackoff = ['7L1'];
+  this.modData('Learnsets', 'sawsbuck').learnset.seasonalstrike = ['7L1'];
+  this.modData('Learnsets', 'kyuremblack').learnset.freezedry = ['7L1'];
+	  
+	  this.modData('Pokedex', 'castform').baseStats['atk'] = 100;
+	  this.modData('Pokedex', 'castformsunny').baseStats['atk'] = 100;
+	  this.modData('Pokedex', 'castformrainy').baseStats['atk'] = 100;
+	  this.modData('Pokedex', 'castformsnowy').baseStats['atk'] = 100;
+	  
+	  this.modData('Pokedex', 'castform').baseStats['def'] = 100;
+	  this.modData('Pokedex', 'castformsunny').baseStats['def'] = 100;
+	  this.modData('Pokedex', 'castformrainy').baseStats['def'] = 100;
+	  this.modData('Pokedex', 'castformsnowy').baseStats['def'] = 100;
+	  
+	  this.modData('Pokedex', 'castform').baseStats['spa'] = 100;
+	  this.modData('Pokedex', 'castformsunny').baseStats['spa'] = 100;
+	  this.modData('Pokedex', 'castformrainy').baseStats['spa'] = 100;
+	  this.modData('Pokedex', 'castformsnowy').baseStats['spa'] = 100;
+	  
+	  this.modData('Pokedex', 'castform').baseStats['spd'] = 100;
+	  this.modData('Pokedex', 'castformsunny').baseStats['spd'] = 100;
+	  this.modData('Pokedex', 'castformrainy').baseStats['spd'] = 100;
+	  this.modData('Pokedex', 'castformsnowy').baseStats['spd'] = 100;
+	  
+	  this.modData('Pokedex', 'castform').baseStats['spe'] = 100;
+	  this.modData('Pokedex', 'castformsunny').baseStats['spe'] = 100;
+	  this.modData('Pokedex', 'castformrainy').baseStats['spe'] = 100;
+	  this.modData('Pokedex', 'castformsnowy').baseStats['spe'] = 100;
+	  
+	  this.modData('Pokedex', 'keldeo').baseStats['atk'] = 129;
+	  this.modData('Pokedex', 'keldeo').baseStats['spa'] = 72;
+	  
+	  this.modData('Pokedex', 'basculin').types = ['Water', 'Fighting'];
+	  this.modData('Pokedex', 'basculin').baseStats['atk'] = 112;
+	  this.modData('Pokedex', 'basculin').baseStats['spe'] = 108;
+	  
+	  this.modData('Pokedex', 'basculinbluestriped').types = ['Water', 'Rock'];
+	  this.modData('Pokedex', 'basculinbluestriped').baseStats['atk'] = 102;
+	  this.modData('Pokedex', 'basculinbluestriped').baseStats['spe'] = 118;
+	  
+	  this.modData('Pokedex', 'kyuremblack').types = ['Ice', 'Electric'];
+	  this.modData('Pokedex', 'kyuremwhite').types = ['Ice', 'Fire'];
+	  
+	  this.modData('Pokedex', 'cherrimsunshine').types = ['Grass', 'Fire'];
+  },
+  };
 exports.BattleScripts = BattleScripts;

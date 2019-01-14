@@ -4897,7 +4897,7 @@ onValidateTeam: function (team) {
   		desc: [
 			"&bullet; <a href=https://www.smogon.com/forums/threads/.3644840/>Community Create a Pet Mod</a>",
 		      ],
-  		ruleset: ['Pokemon', 'Sleep Clause Mod', 'Species Clause', 'Moody Clause', 'Evasion Moves Clause', 'Endless Battle Clause', 'HP Percentage Mod', 'Cancel Mod', 'Team Preview', 'Swagger Clause', 'Baton Pass Clause'],
+  		ruleset: ['Pokemon2', 'Sleep Clause Mod', 'Species Clause', 'Moody Clause', 'Evasion Moves Clause', 'Endless Battle Clause', 'HP Percentage Mod', 'Cancel Mod', 'Team Preview', 'Swagger Clause', 'Baton Pass Clause'],
 		mod: 'ccam',
 		banlist: ['Unreleased', 'Illegal'],
 		onSwitchIn: function (pokemon) {
@@ -4972,7 +4972,7 @@ onValidateTeam: function (team) {
   		onModifyTemplate: function (template, pokemon, source) {
   			//This hack is for something important: The Pokemon's Sprite.
   			if (!template.base) return template;
-  			let temp = Objcet.assign({}, template);
+  			let temp = Object.assign({}, template);
   			temp.species = temp.baseSpecies = template.base;
 			pokemon.name = template.species;
 			pokemon.fullname = `${pokemon.side.id}: ${pokemon.name}`;
@@ -4986,7 +4986,7 @@ onValidateTeam: function (team) {
 					this.add('raw',illusionability,illusionability.shortDesc);
 				} else {
 					let ability = this.getAbility(pokemon.ability);
-					if (pokemon.hasAbility('typeillusionist')){
+					if (pokemon.hasAbility('typeillusionist') || pokemon.hasAbility('sleepingsystem')){
        		     this.add('-start', pokemon, 'typechange', pokemon.template.types.join('/'), '[silent]');	
 					} else {
             		this.add('-start', pokemon, 'typechange', pokemon.getTypes().join('/'), '[silent]');

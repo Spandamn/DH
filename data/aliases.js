@@ -17,6 +17,8 @@ let BattleAliases = {
 	"bstriples": "[Gen 6] Battle Spot Triples",
 	"bssf": "[Gen 7] BSS Factory",
 	"bh": "[Gen 7] Balanced Hackmons",
+	"mbh": "[Gen 7] More Balanced Hackmons",
+	"mg8": "[Gen 7] Monotype Gen 8",
 	"mnm": "[Gen 7] Mix and Mega",
 	"aaa": "[Gen 7] Almost Any Ability",
 	"pic": "[Gen 7] Partners in Crime",
@@ -28,6 +30,7 @@ let BattleAliases = {
 	"bf": "[Gen 7] Battle Factory",
 	"gen6bf": "[Gen 6] Battle Factory",
 	"ssb": "[Gen 7] Super Staff Bros Brawl",
+	"ccam": "[Gen 7] Community Create a Pet Mod",
 
 	// mega evos
 	"fabio": "Ampharos-Mega",

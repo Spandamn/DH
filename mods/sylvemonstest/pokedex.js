@@ -1102,7 +1102,7 @@ exports.BattlePokedex = {
 	umbreon: {
 		inherit: true,
 		types: ["Dark"],
-      abilities: {0: "Synchronize", 1: "Shadow Surge", H: "Inner Focus"},
+      abilities: {0: "Synchronize", 1: "Shadow Surge", H: "Dark Rising"},
 	},
 	leafeon: {
 		inherit: true,
@@ -1670,4 +1670,128 @@ exports.BattlePokedex = {
       types: ["Psychic", "Poison"],
       abilities: {0: "Pressure", H: "Insider"},
    },
+	ledian: {
+      inherit: true,
+      types: ["Bug", "Fighting"],
+      abilities: {0: "Swarm", 1: "Early Bird", H: "Huge Power"},
+   },
+	ledyba: {
+      inherit: true,
+      types: ["Bug", "Fighting"],
+      abilities: {0: "Swarm", 1: "Early Bird", H: "Huge Power"},
+   },
+	luxray: {
+      inherit: true,
+      types: ["Electric", "Dark"],
+      abilities: {0: "Guts", 1: "Intimidate", H: "Strong Jaw"},
+   },
+	sandslashalola: {
+		inherit: true,
+      abilities: {0: "Snow Cloak", 1: "Speed Boost", H: "Slush Rush"},
+	},
+	shuppet: {
+        inherit: true,
+        types: ["Ghost", "Normal"],
+    },
+	banette: {
+        inherit: true,
+        types: ["Ghost", "Normal"],
+		  abilities: {0: "Insomnia", 1: "Dark Rising", H: "Cursed Body"},
+    },
+	banettemega: {
+        inherit: true,
+        types: ["Ghost", "Normal"],
+    },
+	honchkrow: {
+		inherit: true,
+      abilities: {0: "Dark Rising", 1: "Super Luck", H: "Moxie"},
+	},
+	hoopaunbound: {
+		inherit: true,
+      abilities: {0: "Magician", H: "Dark Rising"},
+	},
+	bisharp: {
+		inherit: true,
+      abilities: {0: "Defiant", 1: "Inner Focus", H: "Dark Rising"},
+	},
+	pangoro: {
+		inherit: true,
+      abilities: {0: "Iron Fist", 1: "Mold Breaker", H: "Dark Rising"},
+	},
+	weavile: {
+		inherit: true,
+      abilities: {0: "Pressure", 1: "Dark Rising", H: "Pickpocket"},
+	},
+	shiftry: {
+		inherit: true,
+      abilities: {0: "Chlorophyll", 1: "Early Bird", H: "Dark Rising"},
+	},
+	nuzleaf: {
+		inherit: true,
+      abilities: {0: "Chlorophyll", 1: "Early Bird", H: "Dark Rising"},
+	},
+	popplio: {
+		inherit: true,
+      abilities: {0: "Torrent", 1: "Jack of all Trades", H: "Liquid Voice"},
+	},
+	brionne: {
+		inherit: true,
+      abilities: {0: "Torrent", 1: "Jack of all Trades", H: "Liquid Voice"},
+	},
+	primarina: {
+		inherit: true,
+      abilities: {0: "Torrent", 1: "Jack of all Trades", H: "Liquid Voice"},
+	},
+	mimejr: {
+		inherit: true,
+      abilities: {0: "Soundproof", 1: "Jack of all Trades", H: "Technician"},
+	},
+	mrmime: {
+		inherit: true,
+      abilities: {0: "Soundproof", 1: "Jack of all Trades", H: "Technician"},
+	},
+	kecleon: {
+		inherit: true,
+      abilities: {0: "Color Change", 1: "Jack of all Trades", H: "Protean"},
+	},
+	smeargle: {
+		inherit: true,
+      abilities: {0: "Own Tempo", 1: "Technician", H: "Moody"},
+	},
+	sigilyph: {
+		inherit: true,
+      abilities: {0: "Jack of all Trades", 1: "Magic Guard", H: "Tinted Lens"},
+	},
+	absol: {
+		inherit: true,
+      abilities: {0: "Pressure", 1: "Jack of all Trades", H: "Justified"},
+	},
+	hoopaconfined: {
+		inherit: true,
+      abilities: {0: "Jack of all Trades", 1: "Dimension Warp", H: "Magic Healing"},
+	},
+	sudowoodo: {
+		inherit: true,
+      abilities: {0: "Sturdy", 1: "Rock Head", H: "Jack of all Trades"},
+	},
+	zorua: {
+		inherit: true,
+      abilities: {0: "Illusion", H: "Jack of all Trades"},
+	},
+	zoroark: {
+		inherit: true,
+      abilities: {0: "Illusion", H: "Jack of all Trades"},
+	},
+	drampa: {
+		inherit: true,
+      abilities: {0: "Berserk", 1: "Jack of all Trades", H: "Cloud Nine"},
+	},
+	unown: {
+		inherit: true,
+      abilities: {0: "Levitate", H: "Jack of all Trades"},
+	},
+	blacephalon: {
+		inherit: true,
+      abilities: {0: "Beast Boost", H: "Jack of all Trades"},
+	},
 };
