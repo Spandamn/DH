@@ -19,6 +19,7 @@ let BattleAliases = {
 	"bh": "[Gen 7] Balanced Hackmons",
 	"mbh": "[Gen 7] More Balanced Hackmons",
 	"mg8": "[Gen 7] Monotype Gen 8",
+	"spookdex": "[Gen 7] The Pokedex According to Spook",
 	"mnm": "[Gen 7] Mix and Mega",
 	"aaa": "[Gen 7] Almost Any Ability",
 	"pic": "[Gen 7] Partners in Crime",

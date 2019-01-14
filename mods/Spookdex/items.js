@@ -6567,6 +6567,30 @@ let BattleItems = {
 		gen: 6,
 		desc: "If held by a Chimecho, this item allows it to Mega Evolve in battle.",
 	},
+	"klinklangiumz": {
+		id: "klinklangiumz",
+		name: "Klinklangium Z",
+		spritenum: 655,
+		onTakeItem: false,
+		zMove: "Automaton Mishmash",
+		zMoveFrom: "Gear Grind",
+		zMoveUser: ["Klinklang"],
+		num: 803,
+		gen: 7,
+		desc: "If held by a Klinklang with Gear Grind, it can use Automaton Mishmash.",
+	},
+	"butterfriumz": {
+		id: "butterfriumz",
+		name: "Butterfrium Z",
+		spritenum: 655,
+		onTakeItem: false,
+		zMove: "Quivering Blades",
+		zMoveFrom: "Quiver Dance",
+		zMoveUser: ["Butterfree"],
+		num: 803,
+		gen: 7,
+		desc: "If held by a Butterfree with Quiver Dance, it can use Quivering Blades.",
+	},
 };
 
 exports.BattleItems = BattleItems;

@@ -1910,16 +1910,11 @@ let BattleAbilities = {
 	"minus": {
 		desc: "If an active ally has this Ability or the Ability Plus, this Pokemon's Special Attack is multiplied by 1.5.",
 		shortDesc: "If an active ally has this Ability or the Ability Plus, this Pokemon's Sp. Atk is 1.5x.",
-		onModifySpAPriority: 5,
-		onModifySpA: function (spa, pokemon) {
-			if (pokemon.side.active.length === 1) {
-				return;
-			}
-			for (const allyActive of pokemon.side.active) {
-				if (allyActive && allyActive.position !== pokemon.position && !allyActive.fainted && allyActive.hasAbility(['minus', 'plus'])) {
-					return this.chainModify(1.5);
-				}
-			}
+		onModifyAtkPriority: 5,
+		onModifyAtk: function (atk, pokemon) {
+			if (pokemon.hasType('Electric')) {
+				return this.chainModify(1.5);
+			}	
 		},
 		id: "minus",
 		name: "Minus",
@@ -2365,13 +2360,8 @@ let BattleAbilities = {
 		shortDesc: "If an active ally has this Ability or the Ability Minus, this Pokemon's Sp. Atk is 1.5x.",
 		onModifySpAPriority: 5,
 		onModifySpA: function (spa, pokemon) {
-			if (pokemon.side.active.length === 1) {
-				return;
-			}
-			for (const allyActive of pokemon.side.active) {
-				if (allyActive && allyActive.position !== pokemon.position && !allyActive.fainted && allyActive.hasAbility(['minus', 'plus'])) {
-					return this.chainModify(1.5);
-				}
+			if (pokemon.hasType('Electric')) {
+				return this.chainModify(1.5);
 			}
 		},
 		id: "plus",
@@ -4242,6 +4232,60 @@ let BattleAbilities = {
 		name: "Flytrap",
 		rating: 4.5,
 		num: 42,
+	},
+	"hivemind": {
+		desc: "This Pokemon's damaging moves become multi-hit moves that hit twice. The second hit has its damage quartered. Does not affect multi-hit moves or moves that have multiple targets.",
+		shortDesc: "This Pokemon's damaging Bug-type moves hit twice. The second hit has its damage halved.",
+		onPrepareHit: function (source, target, move) {
+			if (['iceball', 'rollout'].includes(move.id)) return;
+			if (pokemon.hasType('Bug') && move.type === 'Bug' && move.category !== 'Status' && !move.selfdestruct && !move.multihit && !move.flags['charge'] && !move.spreadHit && !move.isZ) {
+				move.multihit = 2;
+				move.hasHivemind = true;
+				move.hit = 0;
+			}
+		},
+		onBasePowerPriority: 8,
+		onBasePower: function (basePower, pokemon, target, move) {
+			// @ts-ignore
+			if (move.hasHivemind && ++move.hit > 1) return this.chainModify(0.5);
+		},
+		onSourceModifySecondaries: function (secondaries, target, source, move) {
+			// @ts-ignore
+			if (move.hasHivemind && move.id === 'secretpower' && move.hit < 2) {
+				// hack to prevent accidentally suppressing King's Rock/Razor Fang
+				return secondaries.filter(effect => effect.volatileStatus === 'flinch');
+			}
+		},
+		id: "hivemind",
+		name: "Hivemind",
+		rating: 5,
+		num: 184,
+	},
+	"toughgrip": {
+		desc: "If an active ally has this Ability or the Ability Plus, this Pokemon's Special Attack is multiplied by 1.5.",
+		shortDesc: "This Pokemon's partial-trapping moves last 8 turns.",
+		id: "toughgrip",
+		name: "Tough Grip",
+		rating: 0,
+		num: 58,
+	},
+	"volatile": {
+		desc: "If this Pokemon is hit by an attack, there is a 30% chance that move gets disabled unless one of the attacker's moves is already disabled.",
+		shortDesc: "If this Pokemon is hit by an attack, there is a 30% chance that move gets disabled.",
+		onAfterDamage: function (damage, target, source, move) {
+			if (move.category === 'Physical' || move.category === 'Special') {
+				if (this.randomChance(1, 3)) {
+					return this.chainModify(1.5);
+					move.recoil.push({
+						[1, 4];
+					});
+				}
+			}
+		},
+		id: "volatile",
+		name: "Volatile",
+		rating: 2,
+		num: 130,
 	},
 };
 
