@@ -1510,6 +1510,8 @@ exports.BattleAbilities = {
 	"hardbody": {
 		shortDesc: "Stat drops inflicted either by moves, abilities or status are ignored.",
 		onBoost: function(boost, target, source, effect) {
+			if (source && target === source) return;
+			let showMsg = false;
 			if (boost[i] < 0) {
 				delete boost[i];
 				showMsg = true;
@@ -1521,8 +1523,8 @@ exports.BattleAbilities = {
 				return this.chainModify(2);
 			}
 		},
-		onModifyAtk: function(atk, pokemon) {
-			if (pokemon.status === 'brn') {
+		onModifyAtk: function(atk, attacker, defender, move) {
+			if (attacker.status === 'brn' && move.id !== 'facade') {
 				return this.chainModify(2);
 			}
 		},
@@ -13233,5 +13235,36 @@ exports.BattleAbilities = {
 		},
 		id: "meaty",
 		name: "Meaty",
+	},
+	"marvelousdiver": {
+		desc: "If this Pokemon has a major status condition, its Defense and Speed multiplied by 1.5. If Rain Dance is active, these stats double instead.",
+		shortDesc: "If this Pokemon is statused, its Defense and Speed are 1.5x, 2x in Rain Dance instead.",
+		onModifyDefPriority: 6,
+		onModifyDef: function (def, pokemon) {
+			if (pokemon.status) {
+				if (!this.isWeather(['raindance', 'primordialsea'])) {
+					return this.chainModify(1.5);
+				} else if (pokemon.volatiles['atmosphericperversion'] == pokemon.volatiles['weatherbreak']){
+					return this.chainModify(2);
+				}
+			}
+		},
+		onModifySpe: function (spe, pokemon) {
+			if (pokemon.status) {
+				if (!this.isWeather(['raindance', 'primordialsea'])) {
+					if (pokemon.status === 'par'){
+						return this.chainModify(3);
+					}
+					return this.chainModify(1.5);
+				} else if (pokemon.volatiles['atmosphericperversion'] == pokemon.volatiles['weatherbreak']){
+					if (pokemon.status === 'par'){
+						return this.chainModify(4);
+					}
+					return this.chainModify(2);
+				}
+			}
+		},
+		id: "marvelousdiver",
+		name: "Marvelous Diver",
 	},
 };
