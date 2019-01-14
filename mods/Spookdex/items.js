@@ -6591,6 +6591,62 @@ let BattleItems = {
 		gen: 7,
 		desc: "If held by a Butterfree with Quiver Dance, it can use Quivering Blades.",
 	},
+	"heatmorite": {
+		id: "heatmorite",
+		name: "Heatmorite",
+		spritenum: 585,
+		megaStone: "Heatmor-Mega",
+		megaEvolves: "Heatmor",
+		onTakeItem: function (item, source) {
+			if (item.megaEvolves === source.baseTemplate.baseSpecies) return false;
+			return true;
+		},
+		num: 660,
+		gen: 6,
+		desc: "If held by a Heatmor, this item allows it to Mega Evolve in battle.",
+	},
+	"klefkinite": {
+		id: "klefkinite",
+		name: "Klefkinite",
+		spritenum: 585,
+		megaStone: "Klefkinite-Mega",
+		megaEvolves: "Klefkinite",
+		onTakeItem: function (item, source) {
+			if (item.megaEvolves === source.baseTemplate.baseSpecies) return false;
+			return true;
+		},
+		num: 660,
+		gen: 6,
+		desc: "If held by a Klefki, this item allows it to Mega Evolve in battle.",
+	},
+	"vespiquenite": {
+		id: "vespiquenite",
+		name: "Vespiquenite",
+		spritenum: 585,
+		megaStone: "Vespiquen-Mega",
+		megaEvolves: "Vespiquen",
+		onTakeItem: function (item, source) {
+			if (item.megaEvolves === source.baseTemplate.baseSpecies) return false;
+			return true;
+		},
+		num: 660,
+		gen: 6,
+		desc: "If held by a Vespiquen, this item allows it to Mega Evolve in battle.",
+	},
+	"cryogonite": {
+		id: "cryogonite",
+		name: "Cryogonite",
+		spritenum: 585,
+		megaStone: "Cryogonal-Mega",
+		megaEvolves: "Cryogonal",
+		onTakeItem: function (item, source) {
+			if (item.megaEvolves === source.baseTemplate.baseSpecies) return false;
+			return true;
+		},
+		num: 660,
+		gen: 6,
+		desc: "If held by a Cryogonal, this item allows it to Mega Evolve in battle.",
+	},
 };
 
 exports.BattleItems = BattleItems;
