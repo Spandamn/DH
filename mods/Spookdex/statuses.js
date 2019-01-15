@@ -173,7 +173,6 @@ let BattleStatuses = {
 		},
 		onModifySpA: function (spa, pokemon) {
 				return this.chainModify(0.5);
-			}
 		},
 		onResidualOrder: 9,
 		onResidual: function (pokemon) {
