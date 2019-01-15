@@ -119,6 +119,13 @@ this.modData('Learnsets', 'zoroark').learnset.gloomyday = ['7L1'];
 this.modData('Learnsets', 'zorua').learnset.gloomyday = ['7L1'];
 this.modData('Learnsets', 'zweilous').learnset.gloomyday = ['7L1'];
 this.modData('Learnsets', 'pinsir').learnset.megahorn = ['7L1'];
+this.modData('Learnsets', 'ampharos').learnset.tailglow = ['7L1'];
+this.modData('Learnsets', 'goodra').learnset.playrough = ['7L1'];
+this.modData('Learnsets', 'klefki').learnset.darkpulse = ['7L1'];
+this.modData('Learnsets', 'klefki').learnset.knockoff = ['7L1'];
+this.modData('Learnsets', 'klefki').learnset.moonlight = ['7L1'];
+this.modData('Learnsets', 'klefki').learnset.gigadrain = ['7L1'];
+this.modData('Learnsets', 'klefki').learnset.recover = ['7L1'];
 },
 };
 

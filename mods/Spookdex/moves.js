@@ -2998,7 +2998,6 @@ let BattleMovedex = {
 		pp: 10,
 		priority: 0,
 		flags: {authentic: 1},
-		volatileStatus: 'curse',
 		onModifyMove: function (move, source, target) {
 			if (!source.hasType('Ghost')) {
 				// @ts-ignore
@@ -3014,17 +3013,8 @@ let BattleMovedex = {
 				return false;
 			}
 		},
-		onHit: function (target, source) {
-			this.directDamage(source.maxhp / 2, source, source);
-		},
-		effect: {
-			onStart: function (pokemon, source) {
-				this.add('-start', pokemon, 'Curse', '[of] ' + source);
-			},
-			onResidualOrder: 10,
-			onResidual: function (pokemon) {
-				this.damage(pokemon.maxhp / 4);
-			},
+		onHit: function (target, pokemon) {
+			target.trySetStatus('crs', pokemon);
 		},
 		secondary: false,
 		target: "normal",
@@ -14354,10 +14344,10 @@ let BattleMovedex = {
 	"shadowball": {
 		num: 247,
 		accuracy: 100,
-		basePower: 80,
+		basePower: 90,
 		category: "Special",
 		desc: "Has a 20% chance to lower the target's Special Defense by 1 stage.",
-		shortDesc: "20% chance to lower the target's Sp. Def by 1.",
+		shortDesc: "10% chance to curse the target.",
 		id: "shadowball",
 		isViable: true,
 		name: "Shadow Ball",
@@ -14365,10 +14355,8 @@ let BattleMovedex = {
 		priority: 0,
 		flags: {bullet: 1, protect: 1, mirror: 1},
 		secondary: {
-			chance: 20,
-			boosts: {
-				spd: -1,
-			},
+			chance: 10,
+			status: 'crs',
 		},
 		target: "normal",
 		type: "Ghost",
@@ -14467,17 +14455,20 @@ let BattleMovedex = {
 	"shadowpunch": {
 		num: 325,
 		accuracy: true,
-		basePower: 60,
+		basePower: 75,
 		category: "Physical",
 		desc: "This move does not check accuracy.",
-		shortDesc: "This move does not check accuracy.",
+		shortDesc: "This move does not check accuracy. 10% chance to curse the target.",
 		id: "shadowpunch",
 		isViable: true,
 		name: "Shadow Punch",
 		pp: 20,
 		priority: 0,
 		flags: {contact: 1, protect: 1, mirror: 1, punch: 1},
-		secondary: false,
+		secondary: {
+			chance: 10,
+			status: 'crs',
+		},
 		target: "normal",
 		type: "Ghost",
 		zMovePower: 120,
@@ -19298,11 +19289,180 @@ let BattleMovedex = {
 		pp: 5,
 		priority: 0,
 		flags: {protect: 1, reflectable: 1, mirror: 1, mystery: 1},
+		onHit: function (target, source, move) {
+			let targetAbility = target.getTypes(true).filter(type => type !== '???');
+			let sourceAbility = source.getTypes(true).filter(type => type !== '???');
+			if (target.side === source.side) {
+				this.add('-activate', source, 'move: Skill Swap', '', '', '[of] ' + target);
+			} else {
+				this.add('-activate', source, 'move: Skill Swap', targetAbility, sourceAbility, '[of] ' + target);
+			}
+			this.singleEvent('End', sourceAbility, source.abilityData, source);
+			this.singleEvent('End', targetAbility, target.abilityData, target);
+			if (targetAbility.id !== sourceAbility.id) {
+				source.ability = targetAbility.id;
+				target.ability = sourceAbility.id;
+				source.abilityData = {id: toId(source.ability), target: source};
+				target.abilityData = {id: toId(target.ability), target: target};
+			}
+			this.singleEvent('Start', targetAbility, source.abilityData, source);
+			this.singleEvent('Start', sourceAbility, target.abilityData, target);
+		},
 		secondary: false,
 		target: "normal",
 		type: "Ice",
 		zMoveEffect: 'heal',
 		contestType: "Clever",
+	},
+	"automatonmishmash": {
+		num: 700,
+		accuracy: true,
+		basePower: 180,
+		category: "Physical",
+		desc: "Has a 30% chance to flinch the target.",
+		shortDesc: "30% chance to flinch the target.",
+		id: "automatonmishmash",
+		name: "Automaton Mishmash",
+		pp: 1,
+		priority: 0,
+		flags: {},
+		isZ: "klinklangiumz",
+		secondary: {
+			chance: 50,
+			volatileStatus: 'flinch',
+		},
+		target: "normal",
+		type: "Steel",
+		contestType: "Cool",
+	},
+	"quiveringblades": {
+		num: 700,
+		accuracy: true,
+		basePower: 180,
+		category: "Special",
+		desc: "Raises the user's Sp. Atk, Sp. Def, Speed by 1.",
+		shortDesc: "Raises the user's Sp. Atk, Sp. Def, Speed by 1.",
+		id: "quiveringblades",
+		name: "Quivering Blades",
+		pp: 1,
+		priority: 0,
+		flags: {},
+		isZ: "butterfriumz",
+		boosts: {
+			spa: 1,
+			spd: 1,
+			spe: 1,
+		},
+		target: "normal",
+		type: "Bug",
+		contestType: "Cool",
+	},
+	"glomp": {
+		num: 413,
+		accuracy: 100,
+		basePower: 120,
+		category: "Physical",
+		desc: "If the target lost HP, the user takes recoil damage equal to 33% the HP lost by the target, rounded half up, but not less than 1 HP.",
+		shortDesc: "Has 33% recoil.",
+		id: "glomp",
+		isViable: true,
+		name: "Glomp",
+		pp: 15,
+		priority: 0,
+		flags: {contact: 1, protect: 1, mirror: 1, contact: 1},
+		recoil: [33, 100],
+		secondary: false,
+		target: "any",
+		type: "Fairy",
+		zMovePower: 190,
+		contestType: "Cool",
+	},
+	"shadowphase": {
+		num: 421,
+		accuracy: 100,
+		basePower: 90,
+		category: "Physical",
+		desc: "Has a higher chance for a critical hit.",
+		shortDesc: "No additional effect..",
+		id: "shadowphase",
+		isViable: true,
+		name: "Shadow Phase",
+		pp: 15,
+		priority: 0,
+		flags: {contact: 1, protect: 1, mirror: 1},
+		secondary: false,
+		target: "normal",
+		type: "Ghost",
+		zMovePower: 140,
+		contestType: "Cool",
+	},
+	"incapacitate": {
+		num: 264,
+		accuracy: 90,
+		basePower: 0,
+		category: "Status",
+		desc: "The user loses its focus and does nothing if it is hit by a damaging attack this turn before it can execute the move.",
+		shortDesc: "Puts the foe to sleep. Fails if the user takes damage before it hits.",
+		id: "incapacitate",
+		isViable: true,
+		name: "Incapacitate",
+		pp: 5,
+		priority: -3,
+		flags: {contact: 1, protect: 1},
+		status: 'slp',
+		beforeTurnCallback: function (pokemon) {
+			pokemon.addVolatile('incapacitate');
+		},
+		beforeMoveCallback: function (pokemon) {
+			if (pokemon.volatiles['incapacitate'] && pokemon.volatiles['incapacitate'].lostFocus) {
+				this.add('cant', pokemon, 'Incapacitate', 'Incapacitate');
+				return true;
+			}
+		},
+		effect: {
+			duration: 1,
+			onStart: function (pokemon) {
+				this.add('-singleturn', pokemon, 'move: Incapacitate');
+			},
+			onHit: function (pokemon, source, move) {
+				if (move.category !== 'Status') {
+					pokemon.volatiles['incapacitate'].lostFocus = true;
+				}
+			},
+		},
+		secondary: false,
+		target: "normal",
+		type: "Normal",
+		zMoveBoost: {def: 1},
+		contestType: "Tough",
+	},
+	"alolanwhip": {
+		num: 421,
+		accuracy: 100,
+		basePower: 100,
+		basePowerCallback: function (pokemon, target) {
+			if (target.hp <= target.maxhp * (3/2)) {
+				return 80;
+			}
+			if (target.hp <= target.maxhp / 2) {
+				return 60;
+			}
+			return 100;
+		},
+		category: "Physical",
+		desc: "Has a higher chance for a critical hit.",
+		shortDesc: "Base power varies based on target's current HP.",
+		id: "alolanwhip",
+		isViable: true,
+		name: "Alolan Whip",
+		pp: 5,
+		priority: 0,
+		flags: {contact: 1, protect: 1, mirror: 1},
+		secondary: false,
+		target: "normal",
+		type: "Dark",
+		zMovePower: 180,
+		contestType: "Cool",
 	},
 };
 
