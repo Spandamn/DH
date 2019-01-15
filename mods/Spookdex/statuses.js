@@ -173,7 +173,6 @@ let BattleStatuses = {
 		},
 		onModifySpA: function (spa, pokemon) {
 				return this.chainModify(0.5);
-			}
 		},
 		onResidualOrder: 9,
 		onResidual: function (pokemon) {
@@ -255,7 +254,7 @@ let BattleStatuses = {
 		num: 0,
 		duration: 5,
 		durationCallback: function (target, source) {
-			if (source.hasItem('gripclaw') || source.hasAbility('toughgrip') return 8;
+			if (source.hasItem('gripclaw') || source.hasAbility('toughgrip')) return 8;
 			return this.random(5, 7);
 		},
 		onStart: function (pokemon, source) {
