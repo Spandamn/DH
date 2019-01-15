@@ -20,6 +20,8 @@ let BattleAliases = {
 	"mbh": "[Gen 7] More Balanced Hackmons",
 	"mg8": "[Gen 7] Monotype Gen 8",
 	"spookdex": "[Gen 7] The Pokedex According to Spook",
+	"e4e": "[Gen 7] Evos for Everyone"
+	"cs": "[Gen 7] Clean Slate"
 	"mnm": "[Gen 7] Mix and Mega",
 	"aaa": "[Gen 7] Almost Any Ability",
 	"pic": "[Gen 7] Partners in Crime",
@@ -735,7 +737,6 @@ let BattleAliases = {
 	"10mv": "10,000,000 Volt Thunderbolt",
 	"10mvt": "10,000,000 Volt Thunderbolt",
 	"clangorous": "Clangorous Soulblaze",
-	"cs": "Clangorous Soulblaze",
 	"ee": "Extreme Evoboost",
 	"extreme": "Extreme Evoboost",
 	"genesis": "Genesis Supernova",

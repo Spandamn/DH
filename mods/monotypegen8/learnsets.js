@@ -233,7 +233,7 @@ exports.BattleLearnsets = {
 		knockoff: ["7L1"],
 		lightscreen: ["7L1"],
 		poisonfang: ["7L1"],
-		psychicfang: ["7L1"],
+		psychicfangs: ["7L1"],
 		rapidspin: ["7L1"],
 		reflect: ["7L1"],
 		swordsdance: ["7L1"],
