@@ -227,6 +227,18 @@ exports.BattlePokedex = {
 		weightkg: 0.22,
 		eggGroups: ["Amporpous"],
 	},
+	spirisheetbusted: {
+		num: 923,
+		species: "Spirisheet-Busted",
+		baseSpecies: "Spirisheet",
+		forme: "Busted",
+		formeLetter: "B",
+		types: ["Ghost", "Normal"],
+		baseStats: {hp: 65, atk: 70, def: 70, spa: 90, spd: 125, spe: 110},
+		abilities: {0: "Magic Guard", 1: "Magic Bounce", H: "Disguise"},
+		weightkg: 0.22,
+		eggGroups: ["Amporpous"],
+	},
 	temprasect: {
 		num: 924,
 		species: "Temprasect",
