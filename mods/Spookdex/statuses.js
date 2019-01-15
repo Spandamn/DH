@@ -159,6 +159,27 @@ let BattleStatuses = {
 			this.damage(this.clampIntRange(pokemon.maxhp / 16, 1) * this.effectData.stage);
 		},
 	},
+	crs: {
+		name: 'cursed',
+		id: 'crs',
+		num: 0,
+		effectType: 'Status',
+		onStart: function (target, source, sourceEffect) {
+			if (sourceEffect && sourceEffect.effectType === 'Ability') {
+				this.add('-status', target, 'crs', '[from] ability: ' + sourceEffect.name, '[of] ' + source);
+			} else {
+				this.add('-status', target, 'crs');
+			}
+		},
+		onModifySpA: function (spa, pokemon) {
+				return this.chainModify(0.5);
+			}
+		},
+		onResidualOrder: 9,
+		onResidual: function (pokemon) {
+			this.damage(pokemon.maxhp / 16);
+		},
+	},
 	confusion: {
 		name: 'confusion',
 		id: 'confusion',
@@ -234,7 +255,7 @@ let BattleStatuses = {
 		num: 0,
 		duration: 5,
 		durationCallback: function (target, source) {
-			if (source.hasItem('gripclaw')) return 8;
+			if (source.hasItem('gripclaw') || source.hasAbility('toughgrip') return 8;
 			return this.random(5, 7);
 		},
 		onStart: function (pokemon, source) {

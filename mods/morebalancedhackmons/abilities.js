@@ -120,8 +120,8 @@ let BattleAbilities = {
 		onTryHit: function (target, source, move) {
 			if (target !== source && move.type === 'Rock') {
 					this.add('-immune', target, '[from] ability: Metal Armor');
-				}
 				return null;
+			}
 		},
 		id: "metalarmor",
 		name: "Metal Armor",
