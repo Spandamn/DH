@@ -254,7 +254,7 @@ let BattleStatuses = {
 		num: 0,
 		duration: 5,
 		durationCallback: function (target, source) {
-			if (source.hasItem('gripclaw') || source.hasAbility('toughgrip') return 8;
+			if (source.hasItem('gripclaw') || source.hasAbility('toughgrip')) return 8;
 			return this.random(5, 7);
 		},
 		onStart: function (pokemon, source) {

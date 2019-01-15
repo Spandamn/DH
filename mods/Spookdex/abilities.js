@@ -4272,13 +4272,11 @@ let BattleAbilities = {
 	"volatile": {
 		desc: "If this Pokemon is hit by an attack, there is a 30% chance that move gets disabled unless one of the attacker's moves is already disabled.",
 		shortDesc: "If this Pokemon is hit by an attack, there is a 30% chance that move gets disabled.",
-		onAfterDamage: function (damage, target, source, move) {
+		onAfterDamage: function (damage, target, pokemon, source, move) {
 			if (move.category === 'Physical' || move.category === 'Special') {
 				if (this.randomChance(1, 3)) {
 					return this.chainModify(1.5);
-					move.recoil.push({
-						[1, 4];
-					});
+					this.damage(pokemon.maxhp / 10);
 				}
 			}
 		},
