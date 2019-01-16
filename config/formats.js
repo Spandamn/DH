@@ -4312,6 +4312,19 @@ exports.Formats = [
 			}
 		},
 	},
+		{
+		name: "[Gen 7] Protean Palace",
+		desc: ["&bullet; <a href=\"http://www.smogon.com/forums/threads/protean-palace.3496299/\">Protean Palace</a>"],
+		mod: 'gen7',
+		ruleset: ['[Gen 7] OU'],
+		onPrepareHit: function(source, target, move) {
+			var type = move.type;
+			if (type && type !== '???' && source.getTypes().join() !== type) {
+				if (!source.setType(type)) return;
+				this.add('-start', source, 'typechange', type);
+			}
+		}
+	},
 	{
 		name: "[Gen 7] Reversed",
 		desc: `Every Pok&eacute;mon has its base Atk and Sp. Atk stat, as well as its base Def and Sp. Def stat, swapped.`,
@@ -4528,6 +4541,7 @@ exports.Formats = [
 		name: "[Gen 7] VoltTurn Mayhem",
 		desc: ["&bullet; <a href=\"http://www.smogon.com/forums/threads/voltturn-mayhem-lcotm.3527847/\">VoltTurn Mayhem</a>"],
 		ruleset: ['[Gen 7] OU'],
+		mod: 'gen7',
 		onModifyMove: function(move) {
 			if (move.target && !move.nonGhostTarget && (move.target === "normal" || move.target === "any" || move.target === "randomNormal" || move.target === "allAdjacent" || move.target === "allAdjacentFoes")) {
 				move.selfSwitch = true;
