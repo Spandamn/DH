@@ -15,7 +15,6 @@ let BattleItems = {
 		},
 		num: -1,
 		gen: 7,
-		isNonstandard: true,
 		desc: "If held by a Electivire, this item allows it to Mega Evolve in battle.",
 	},
 
