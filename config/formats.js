@@ -2878,7 +2878,7 @@ exports.Formats = [
 		],
 
 		mod: 'gen7',
-		searchShow: false,
+		//searchShow: false,
 		ruleset: ['[Gen 7] OU', 'Inverse Mod'],
 		banlist: ['Hoopa-Unbound', 'Kyurem-Black', 'Serperior'],
 		unbanlist: ['Aegislash', 'Dialga', 'Giratina', 'Pheromosa', 'Solgaleo', 'Lucarionite'],
@@ -8749,7 +8749,6 @@ onValidateTeam: function (team) {
 		desc: ["&bullet; <a href=\"http://www.smogon.com/forums/threads/3599594/\">CAP LC</a>"],
 
 		mod: 'gen7',
-		searchShow: false,
 		maxLevel: 5,
 		ruleset: ['[Gen 7] LC', 'Allow CAP'],
 	},
