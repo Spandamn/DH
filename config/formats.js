@@ -6333,7 +6333,7 @@ exports.Formats = [
 
 	{
 		section: "US/UM Doubles",
-		column: 7,
+		column: 6,
 	},
 	{
 		name: "[Gen 7] Random Doubles Battle",
