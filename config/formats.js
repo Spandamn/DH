@@ -5304,7 +5304,7 @@ exports.Formats = [
 	// Old Other Metagames ///////////////////////////////////////////////////////////////////
 	{
 		section: "Old Other Metagames",
-		column: 5,
+		column: 6,
 	},
 	{
 		name: "Anti-Vaxxers",
@@ -6455,7 +6455,7 @@ exports.Formats = [
 	},
 	{
 		section: "From Submissions/Workshop",
-		column: 3,
+		column: 5,
 	},
 	{
 		name: "[Gen 7] Quantumbility",
@@ -6876,7 +6876,7 @@ exports.Formats = [
 	},
 	{
 		section: "Experimental Metagames",
-		column: 3,
+		column: 5,
 	},
 	{
 		name: "[Gen 7] Anything Goes (No Soul Dew Nerf)",
