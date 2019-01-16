@@ -2405,7 +2405,7 @@ exports.Formats = [
 
 	{
 		section: "Let's Go!",
-		column: 2,
+		column: 1,
 	},
 	{
 		name: "[Gen 7 Let's Go] OU",
@@ -2444,6 +2444,7 @@ exports.Formats = [
 	///////////////////////////////////////////////////////////////////
 	{
 		section: "SM Singles",
+		column: 1,
 	},
 	{
 		name: "[Gen 7] OU",
@@ -2749,6 +2750,7 @@ onValidateTeam: function (team) {
 
 	{
 		section: "US/UM Doubles",
+		column: 1,
 	},
 	{
 		name: "[Gen 7] Random Doubles Battle",
