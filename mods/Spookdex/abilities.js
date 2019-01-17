@@ -4239,9 +4239,11 @@ let BattleAbilities = {
 		onPrepareHit: function (source, target, move) {
 			if (['iceball', 'rollout'].includes(move.id)) return;
 			if (pokemon.hasType('Bug') && move.type === 'Bug' && move.category !== 'Status' && !move.selfdestruct && !move.multihit && !move.flags['charge'] && !move.spreadHit && !move.isZ) {
-				move.multihit = 2;
-				move.hasHivemind = true;
-				move.hit = 0;
+				if (this.randomChance(1, 2)) {
+					move.multihit = 2;
+					move.hasHivemind = true;
+					move.hit = 0;
+				}
 			}
 		},
 		onBasePowerPriority: 8,
@@ -4271,13 +4273,12 @@ let BattleAbilities = {
 	},
 	"volatile": {
 		desc: "If this Pokemon is hit by an attack, there is a 30% chance that move gets disabled unless one of the attacker's moves is already disabled.",
-		shortDesc: "If this Pokemon is hit by an attack, there is a 30% chance that move gets disabled.",
-		onAfterDamage: function (damage, target, pokemon, source, move) {
-			if (move.category === 'Physical' || move.category === 'Special') {
-				if (this.randomChance(1, 3)) {
-					return this.chainModify(1.5);
-					this.damage(pokemon.maxhp / 10);
-				}
+		shortDesc: "This Pokemon's moves do 1.2x Power, but loses 10% of HP each turn.",
+		onBasePower: function (basePower, pokemon, target, move) {
+			return this.chainModify([0x1333, 0x1000]);
+		},
+		onResidual: function (pokemon, source, effect) {
+				this.damage(pokemon.maxhp / 10);
 			}
 		},
 		id: "volatile",

@@ -6610,7 +6610,7 @@ let BattleItems = {
 		name: "Klefkinite",
 		spritenum: 585,
 		megaStone: "Klefkinite-Mega",
-		megaEvolves: "Klefkinite",
+		megaEvolves: "Klefki",
 		onTakeItem: function (item, source) {
 			if (item.megaEvolves === source.baseTemplate.baseSpecies) return false;
 			return true;
