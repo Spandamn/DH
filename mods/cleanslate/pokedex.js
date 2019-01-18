@@ -469,7 +469,7 @@ let BattlePokedex = {
         forme: "Midnight",
         formeLetter: "M",
         types: ["Rock", "Ghost"],
-        baseStats: {hp: 65, atk: 110, def: 45, spa: 115, spd: 45, spe: 100},
+        baseStats: {hp: 65, atk: 110, def: 45, spa: 115, spd: 45, spe: 107},
         abilities: {0: "No Guard", 1: "Lone Wolf", H: "Moxie"},
         heightm: 1.1,
         weightkg: 25,
