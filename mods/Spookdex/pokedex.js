@@ -7718,7 +7718,7 @@ let BattlePokedex = {
 		species: "Dusknoir",
 		types: ["Ghost", "Fighting"],
 		baseStats: {hp: 45, atk: 100, def: 135, spa: 65, spd: 135, spe: 45},
-		abilities: {0: "Pressure", 1: "Tough Grip" H: "Frisk", S: "Shadow Tag"},
+		abilities: {0: "Pressure", 1: "Tough Grip", H: "Frisk", S: "Shadow Tag"},
 		heightm: 2.2,
 		weightkg: 106.6,
 		color: "Black",
