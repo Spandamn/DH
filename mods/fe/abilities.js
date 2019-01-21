@@ -5089,9 +5089,21 @@ exports.BattleAbilities = {
 		name: "Venom Glare",
 	},
 	"terrorize": {
-		shortDesc: "On switch-in, the bearer poisons adjacent opponents.",
-		onStart: function(target, source) {
-			source.addVolatile('gastroacid');
+		shortDesc: "On switch-in, the bearer negates the abilities of adjacent opponents.",
+		onStart: function(pokemon) {
+			let activated = false;
+			for (const target of pokemon.side.foe.active) {
+				if (!target || !this.isAdjacent(target, pokemon)) continue;
+				if (!activated) {
+					this.add('-ability', pokemon, 'Terrorize', 'boost');
+					activated = true;
+				}
+				if (target.volatiles['substitute']) {
+					this.add('-immune', target);
+				} else {
+					target.addVolatile('gastroacid');
+				}
+			}
 		},
 		id: "terrorize",
 		name: "Terrorize",
@@ -13266,5 +13278,71 @@ exports.BattleAbilities = {
 		},
 		id: "marvelousdiver",
 		name: "Marvelous Diver",
+	},
+	"antivirus": {
+		shortDesc: "This Pokemon's Defense and Special Defense are tripled.",
+		onModifyDefPriority: 6,
+		onModifyDef: function (def) {
+			return this.chainModify(3);
+		},
+		onModifySpDPriority: 6,
+		onModifySpD: function (spd) {
+			return this.chainModify(3);
+		},
+		id: "antivirus",
+		name: "Antivirus",
+	},
+	"antivirus": {
+		shortDesc: "This Pokemon's Defense and Special Defense are tripled.",
+		onModifyDefPriority: 6,
+		onModifyDef: function (def) {
+			return this.chainModify(3);
+		},
+		onModifySpDPriority: 6,
+		onModifySpD: function (spd) {
+			return this.chainModify(3);
+		},
+		id: "antivirus",
+		name: "Antivirus",
+	},
+	"disruption": {
+		shortDesc: "On switch-in, the bearer negates the abilities of adjacent opponents and lowers each's Attack by 1 stage.",
+		onStart: function(pokemon) {
+			let activated = false;
+			for (const target of pokemon.side.foe.active) {
+				if (!target || !this.isAdjacent(target, pokemon)) continue;
+				if (!activated) {
+					this.add('-ability', pokemon, 'Disruption', 'boost');
+					activated = true;
+				}
+				if (target.volatiles['substitute']) {
+					this.add('-immune', target);
+				} else {
+					this.boost({atk: -1}, target, pokemon);
+					target.addVolatile('gastroacid');
+				}
+			}
+		},
+		id: "disruption",
+		name: "Disruption",
+	},
+	"stasis": {
+		shortDesc: "Clear Body + Levitate.",
+		//Levitate effects implemented in scripts.js:pokemon:isGrounded()
+		onBoost: function (boost, target, source, effect) {
+			if (source && target === source) return;
+			let showMsg = false;
+			for (let i in boost) {
+				// @ts-ignore
+				if (boost[i] < 0) {
+					// @ts-ignore
+					delete boost[i];
+					showMsg = true;
+				}
+			}
+			if (showMsg && !effect.secondaries) this.add("-fail", target, "unboost", "[from] ability: Stasis", "[of] " + target);
+		},
+		id: "stasis",
+		name: "Stasis",
 	},
 };
