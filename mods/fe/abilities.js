@@ -5089,9 +5089,21 @@ exports.BattleAbilities = {
 		name: "Venom Glare",
 	},
 	"terrorize": {
-		shortDesc: "On switch-in, the bearer poisons adjacent opponents.",
-		onStart: function(target, source) {
-			source.addVolatile('gastroacid');
+		shortDesc: "On switch-in, the bearer negates the abilities of adjacent opponents.",
+		onStart: function(pokemon) {
+			let activated = false;
+			for (const target of pokemon.side.foe.active) {
+				if (!target || !this.isAdjacent(target, pokemon)) continue;
+				if (!activated) {
+					this.add('-ability', pokemon, 'Terrorize', 'boost');
+					activated = true;
+				}
+				if (target.volatiles['substitute']) {
+					this.add('-immune', target);
+				} else {
+					target.addVolatile('gastroacid');
+				}
+			}
 		},
 		id: "terrorize",
 		name: "Terrorize",
@@ -13266,5 +13278,134 @@ exports.BattleAbilities = {
 		},
 		id: "marvelousdiver",
 		name: "Marvelous Diver",
+	},
+	"antivirus": {
+		shortDesc: "This Pokemon's Defense and Special Defense are tripled.",
+		onModifyDefPriority: 6,
+		onModifyDef: function (def) {
+			return this.chainModify(3);
+		},
+		onModifySpDPriority: 6,
+		onModifySpD: function (spd) {
+			return this.chainModify(3);
+		},
+		id: "antivirus",
+		name: "Antivirus",
+	},
+	"antivirus": {
+		shortDesc: "This Pokemon's Defense and Special Defense are tripled.",
+		onModifyDefPriority: 6,
+		onModifyDef: function (def) {
+			return this.chainModify(3);
+		},
+		onModifySpDPriority: 6,
+		onModifySpD: function (spd) {
+			return this.chainModify(3);
+		},
+		id: "antivirus",
+		name: "Antivirus",
+	},
+	"disruption": {
+		shortDesc: "On switch-in, the bearer negates the abilities of adjacent opponents and lowers each's Attack by 1 stage.",
+		onStart: function(pokemon) {
+			let activated = false;
+			for (const target of pokemon.side.foe.active) {
+				if (!target || !this.isAdjacent(target, pokemon)) continue;
+				if (!activated) {
+					this.add('-ability', pokemon, 'Disruption', 'boost');
+					activated = true;
+				}
+				if (target.volatiles['substitute']) {
+					this.add('-immune', target);
+				} else {
+					this.boost({atk: -1}, target, pokemon);
+					target.addVolatile('gastroacid');
+				}
+			}
+		},
+		id: "disruption",
+		name: "Disruption",
+	},
+	"stasis": {
+		shortDesc: "Clear Body + Levitate.",
+		//Levitate effects implemented in scripts.js:pokemon:isGrounded()
+		onBoost: function (boost, target, source, effect) {
+			if (source && target === source) return;
+			let showMsg = false;
+			for (let i in boost) {
+				// @ts-ignore
+				if (boost[i] < 0) {
+					// @ts-ignore
+					delete boost[i];
+					showMsg = true;
+				}
+			}
+			if (showMsg && !effect.secondaries) this.add("-fail", target, "unboost", "[from] ability: Stasis", "[of] " + target);
+		},
+		id: "stasis",
+		name: "Stasis",
+	},
+	"beastspride": {
+		desc: "This Pokemon forces an opponent to switch out at the end of each full turn it has been on the field.",
+		shortDesc: "This Pokemon forces an opponent to switch out at the end of each full turn on the field.",
+		onResidualOrder: 26,
+		onResidual: function (pokemon) {
+			if (pokemon.activeTurns) {
+				this.useMove('roar', pokemon);
+			}
+		},
+		id: "beastspride",
+		name: "Beast's Pride",
+	},
+	"strangeways": {
+		desc: "On switch-in, if any opposing Pokemon has an attack that is super effective on this Pokemon or an OHKO move, this Pokemon disables it. Counter, Metal Burst, and Mirror Coat count as attacking moves of their respective types, while Hidden Power, Judgment, Natural Gift, Techno Blast, and Weather Ball are considered Normal-type moves.",
+		shortDesc: "On switch-in, if any foe has a supereffective or OHKO move, that move is disabled.",
+		onTryHit: function (target, source, move) {
+			if (!target.activeTurns && (move.category !== 'Status' && (this.getImmunity(move.type, target) && this.getEffectiveness(move.type, target) > 0 || move.ohko))) {
+				this.add('-activate', target, 'ability: Strangeways');
+				return false;
+			}
+		},
+		onStart: function (pokemon) {
+			for (const target of pokemon.side.foe.active) {
+				if (target.fainted) continue;
+				for (const moveSlot of target.moveSlots) {
+					let move = this.getMove(moveSlot.move);
+					if (move.category !== 'Status' && (this.getImmunity(move.type, pokemon) && this.getEffectiveness(move.type, pokemon) > 0 || move.ohko)) {
+						target.disableMove(moveSlot.id);
+						return;
+					}
+				}
+			}
+		},
+		id: "strangeways",
+		name: "Strangeways",
+	},
+	"wondrousscales": {
+		desc: "This Pokemon's Defense is doubled. If this Pokemon has a major status condition, its Defense is tripled instead",
+		shortDesc: "This Pokemon's Defense is doubled. If statused, its Defense is tripled instead.",
+		onModifyDefPriority: 6,
+		onModifyDef: function (def, pokemon) {
+			if (pokemon.status) {
+				return this.chainModify(3);
+			}
+			return this.chainModify(2);
+		},
+		id: "wondrousscales",
+		name: "Wondrous Scales",
+	},
+	"slippery": {
+		shortDesc: "This Pokemon's Status and Ice-type moves have priority raised by 1 and act as if Hail is active, but Dark types are immune.",
+		onModifyPriority: function (priority, pokemon, target, move) {
+			if (move && (move.category === 'Status' || move.type === 'Ice')) {
+				move.pranksterBoosted = true;
+				return priority + 1;
+			}
+		},
+		onImmunity: function (type, pokemon) {
+			if (type === 'hail') return false;
+		},
+		id: "slippery",
+		name: "Slippery",
 	},
 };

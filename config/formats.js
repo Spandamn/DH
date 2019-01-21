@@ -4821,16 +4821,16 @@ exports.Formats = [
 			this.add('-anim', source, "Celebrate", target);
 			}
 		},
-  		onModifyTemplate: function (template, pokemon, source) {
-  			//This hack is for something important: The Pokemon's Sprite.
-  			if (!template.base) return template;
-  			let temp = Object.assign({}, template);
-  			temp.species = temp.baseSpecies = template.base;
-			pokemon.name = template.species;
-			pokemon.fullname = `${pokemon.side.id}: ${pokemon.name}`;
-			pokemon.id = pokemon.fullname;
-			return temp;
-  		},
+//   		onModifyTemplate: function (template, pokemon, source) {
+//   			//This hack is for something important: The Pokemon's Sprite.
+//   			if (!template.base) return template;
+//   			let temp = Object.assign({}, template);
+//   			temp.species = temp.baseSpecies = template.base;
+// 			pokemon.name = template.species;
+// 			pokemon.fullname = `${pokemon.side.id}: ${pokemon.name}`;
+// 			pokemon.id = pokemon.fullname;
+// 			return temp;
+//   		},
 		onSwitchIn: function (pokemon) {
 				if (pokemon.illusion){
             	this.add('-start', pokemon, 'typechange', pokemon.illusion.template.types.join('/'), '[silent]');
