@@ -13381,4 +13381,31 @@ exports.BattleAbilities = {
 		id: "strangeways",
 		name: "Strangeways",
 	},
+	"wondrousscales": {
+		desc: "This Pokemon's Defense is doubled. If this Pokemon has a major status condition, its Defense is tripled instead",
+		shortDesc: "This Pokemon's Defense is doubled. If statused, its Defense is tripled instead.",
+		onModifyDefPriority: 6,
+		onModifyDef: function (def, pokemon) {
+			if (pokemon.status) {
+				return this.chainModify(3);
+			}
+			return this.chainModify(2);
+		},
+		id: "wondrousscales",
+		name: "Wondrous Scales",
+	},
+	"slippery": {
+		shortDesc: "This Pokemon's Status and Ice-type moves have priority raised by 1 and act as if Hail is active, but Dark types are immune.",
+		onModifyPriority: function (priority, pokemon, target, move) {
+			if (move && (move.category === 'Status' || move.type === 'Ice')) {
+				move.pranksterBoosted = true;
+				return priority + 1;
+			}
+		},
+		onImmunity: function (type, pokemon) {
+			if (type === 'hail') return false;
+		},
+		id: "slippery",
+		name: "Slippery",
+	},
 };
