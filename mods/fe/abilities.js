@@ -13345,4 +13345,40 @@ exports.BattleAbilities = {
 		id: "stasis",
 		name: "Stasis",
 	},
+	"beastspride": {
+		desc: "This Pokemon forces an opponent to switch out at the end of each full turn it has been on the field.",
+		shortDesc: "This Pokemon forces an opponent to switch out at the end of each full turn on the field.",
+		onResidualOrder: 26,
+		onResidual: function (pokemon) {
+			if (pokemon.activeTurns) {
+				this.useMove('roar', pokemon);
+			}
+		},
+		id: "beastspride",
+		name: "Beast's Pride",
+	},
+	"strangeways": {
+		desc: "On switch-in, if any opposing Pokemon has an attack that is super effective on this Pokemon or an OHKO move, this Pokemon disables it. Counter, Metal Burst, and Mirror Coat count as attacking moves of their respective types, while Hidden Power, Judgment, Natural Gift, Techno Blast, and Weather Ball are considered Normal-type moves.",
+		shortDesc: "On switch-in, if any foe has a supereffective or OHKO move, that move is disabled.",
+		onTryHit: function (target, source, move) {
+			if (!target.activeTurns && (move.category !== 'Status' && (this.getImmunity(move.type, target) && this.getEffectiveness(move.type, target) > 0 || move.ohko))) {
+				this.add('-activate', target, 'ability: Strangeways');
+				return false;
+			}
+		},
+		onStart: function (pokemon) {
+			for (const target of pokemon.side.foe.active) {
+				if (target.fainted) continue;
+				for (const moveSlot of target.moveSlots) {
+					let move = this.getMove(moveSlot.move);
+					if (move.category !== 'Status' && (this.getImmunity(move.type, pokemon) && this.getEffectiveness(move.type, pokemon) > 0 || move.ohko)) {
+						target.disableMove(moveSlot.id);
+						return;
+					}
+				}
+			}
+		},
+		id: "strangeways",
+		name: "Strangeways",
+	},
 };
