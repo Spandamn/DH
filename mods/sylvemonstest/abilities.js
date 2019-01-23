@@ -708,4 +708,92 @@ exports.BattleAbilities = {
 		rating: 3.5,
 		num: 11,
 	},
+	"cutecharm": {
+		desc: "On switch-in, this Pokemon lowers the Sp. Attack of adjacent opposing Pokemon by 1 stage. Pokemon behind a substitute are immune.",
+		shortDesc: "On switch-in, this Pokemon lowers the Sp. Attack of adjacent opponents by 1 stage.",
+		onStart: function (pokemon) {
+			let activated = false;
+			for (const target of pokemon.side.foe.active) {
+				if (!target || !this.isAdjacent(target, pokemon)) continue;
+				if (!activated) {
+					this.add('-ability', pokemon, 'Cute Charm', 'boost');
+					activated = true;
+				}
+				if (target.volatiles['substitute']) {
+					this.add('-immune', target);
+				} else {
+					this.boost({spa: -1}, target, pokemon);
+				}
+			}
+		},
+		id: "cutecharm",
+		name: "Cute Charm",
+		rating: 3.5,
+		num: 22,
+	},
+	"blockmaster": {
+		desc: "This Pokemon is immune to punch moves, excepting Sucker Punch.",
+		shortDesc: "Makes user immune to punch moves, excepting Sucker Punch.",
+		onTryHit: function (pokemon, target, move) {
+			if (move.flags['punch']) {
+				this.add('-immune', pokemon, '[from] ability: Block Master');
+				return null;
+			}
+		},
+		id: "blockmaster",
+		name: "Block Master",
+		rating: 3.5,
+		num: 171,
+	},
+	"justified": {
+		desc: "Prevents adjacent opposing Dark-type Pokemon from choosing to switch out unless they are immune to trapping.",
+		shortDesc: "Prevents adjacent Dark-type foes from choosing to switch.",
+		onFoeTrapPokemon: function (pokemon) {
+			if (pokemon.hasType('Dark') && this.isAdjacent(pokemon, this.effectData.target)) {
+				pokemon.tryTrap(true);
+			}
+		},
+		onFoeMaybeTrapPokemon: function (pokemon, source) {
+			if (!source) source = this.effectData.target;
+			if ((!pokemon.knownType || pokemon.hasType('Dark')) && this.isAdjacent(pokemon, source)) {
+				pokemon.maybeTrapped = true;
+			}
+		},
+		id: "justified",
+		name: "Justified",
+		rating: 4.5,
+		num: 42,
+	},
+	"shadowtag": {
+		shortDesc: "Traps Ghost types and takes 1/2 damage from Ghost-type moves.",
+		onFoeTrapPokemon: function (pokemon) {
+			if (pokemon.hasType('Ghost') && this.isAdjacent(pokemon, this.effectData.target)) {
+				pokemon.tryTrap(true);
+			}
+		},
+		onFoeMaybeTrapPokemon: function (pokemon, source) {
+			if (!source) source = this.effectData.target;
+			if ((!pokemon.knownType || pokemon.hasType('Ghost')) && this.isAdjacent(pokemon, source)) {
+				pokemon.maybeTrapped = true;
+			}
+		},
+        onModifyAtkPriority: 6,
+		onSourceModifyAtk: function (atk, attacker, defender, move) {
+			if (move.type === 'Ghost') {
+				this.debug('Shadow Tag weaken');
+				return this.chainModify(0.5);
+			}
+		},
+		onModifySpAPriority: 5,
+		onSourceModifySpA: function (atk, attacker, defender, move) {
+			if (move.type === 'Ghost') {
+				this.debug('Shadow Tag weaken');
+				return this.chainModify(0.5);
+			}
+		},
+			onFoeImmunity: function (type, pokemon) {
+			if (type === 'trapped') return true;
+		id: "shadowtag",
+		name: "Shadow Tag",
+	},
 };
