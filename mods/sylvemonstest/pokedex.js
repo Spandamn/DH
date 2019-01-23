@@ -581,7 +581,7 @@ exports.BattlePokedex = {
 	escavalier: {
 		inherit: true,
 		types: ["Bug", "Steel"],
-      abilities: {0: "Guard Up", 1: "Shell Armor", H: "Knight's Blade"},
+      abilities: {0: "Guard Up", 1: "Swarm", H: "Knight's Blade"},
 	},
 	pawniard: {
 		inherit: true,
