@@ -42,7 +42,7 @@ exports.BattlePokedex = {
     musharna: {
         inherit: true,
         types: ["Psychic", "Fairy"],
-        abilities: {0: "Time Warp", 1: "Synchronize", H: "Telepathy"},
+        abilities: {0: "Time Warp", 1: "Synchronize", H: "Comatose"},
     },
     spritzee: {
         inherit: true,
@@ -1151,8 +1151,8 @@ exports.BattlePokedex = {
 	},
 	lugia: {
 		inherit: true,
-		types: ["Water", "Dragon"],
-      abilities: {0: "Pressure", 1: "Drizzle", H: "Multiscale"},
+		types: ["Psychic", "Flying"],
+      abilities: {0: "Air Current", 1: "Drizzle", H: "Multiscale"},
 	},
 	regirock: {
 		inherit: true,
@@ -1793,5 +1793,23 @@ exports.BattlePokedex = {
 	blacephalon: {
 		inherit: true,
       abilities: {0: "Beast Boost", H: "Jack of all Trades"},
+	},
+	komala: {
+		inherit: true,
+		types: ["Normal", "Grass"],
+      abilities: {0: "Comatose", H: "Fur Coat"},
+	},
+	accelgor: {
+		inherit: true,
+		types: ["Bug", "Dark"],
+      abilities: {0: "Hydration", 1: "Sticky Hold", H: "Swarm"},
+	},
+	archen: {
+		inherit: true,
+      abilities: {0: "Defeatist", H: "Early Bird"},
+	},
+	archeops: {
+		inherit: true,
+      abilities: {0: "Defeatist", H: "Early Bird"},
 	},
 };
