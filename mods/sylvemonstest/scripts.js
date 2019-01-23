@@ -1037,7 +1037,7 @@ exports.BattleScripts = {
     this.modData('Learnsets', 'yveltal').learnset.pragmastrike = ['7L1'];
     this.modData('Learnsets', 'incineroar').learnset.pragmastrike = ['7L1'];
 
-
+// Pokemon Buffs
 	 this.modData('Learnsets', 'solgaleo').learnset.flamebullet= ['7L1'];
     this.modData('Learnsets', 'solgaleo').learnset.incinerate= ['7L1'];
     this.modData('Learnsets', 'solgaleo').learnset.willowisp= ['7L1'];
@@ -1295,6 +1295,23 @@ exports.BattleScripts = {
 	 this.modData('Learnsets', 'silvally').learnset.darkpulse= ['7L1'];
 	 this.modData('Learnsets', 'silvally').learnset.knockoff= ['7L1'];
 	 this.modData('Learnsets', 'silvally').learnset.nastyplot= ['7L1'];
+	 this.modData('Learnsets', 'komala').learnset.rest= ['7L1'];
+	 this.modData('Learnsets', 'komala').learnset.slackoff= ['7L1'];
+	 this.modData('Learnsets', 'accelgor').learnset.taunt= ['7L1'];
+	 this.modData('Learnsets', 'accelgor').learnset.darkpulse= ['7L1'];
+	 this.modData('Learnsets', 'accelgor').learnset.throatchop= ['7L1'];
+	 this.modData('Learnsets', 'accelgor').learnset.foulplay= ['7L1'];
+	 this.modData('Learnsets', 'accelgor').learnset.pragmastrike= ['7L1'];
+	 this.modData('Learnsets', 'accelgor').learnset.swordsdance= ['7L1'];
+	 this.modData('Learnsets', 'accelgor').learnset.calmmind= ['7L1'];
+	 this.modData('Learnsets', 'archen').learnset.dragondance= ['7L1'];
+	 this.modData('Learnsets', 'archen').learnset.bravebird= ['7L1'];
+	 this.modData('Learnsets', 'archen').learnset.powergem= ['7L1'];
+	 this.modData('Learnsets', 'archeops').learnset.meteorshower= ['7L1'];
+	 this.modData('Learnsets', 'archeops').learnset.dragondance= ['7L1'];
+	 this.modData('Learnsets', 'archeops').learnset.bravebird= ['7L1'];
+	 this.modData('Learnsets', 'archeops').learnset.powergem= ['7L1'];
+	 this.modData('Learnsets', 'archeops').learnset.meteorshower= ['7L1'];
 	  
 // trickroom 
 this.modData('Learnsets', 'palkia').learnset.trickroom = ['7L1'];
