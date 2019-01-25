@@ -62,7 +62,7 @@ abomasnowmegax: {
 		forme: "Mega-X",
 		formeLetter: "M",
 		types: ["Psychic"],
-		baseStats: {hp: 55, atk: 135, def: 50, spa: 135, spd: 95, spe: 135},
+		baseStats: {hp: 55, atk: 135, def: 45, spa: 135, spd: 95, spe: 135},
 		abilities: {0: "Sheer Force"},
 		weightkg: 48,
 	},
