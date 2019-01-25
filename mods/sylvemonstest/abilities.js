@@ -764,36 +764,4 @@ exports.BattleAbilities = {
 		rating: 4.5,
 		num: 42,
 	},
-	"shadowtag": {
-		shortDesc: "Traps Ghost types and takes 1/2 damage from Ghost-type moves.",
-		onFoeTrapPokemon: function (pokemon) {
-			if (pokemon.hasType('Ghost') && this.isAdjacent(pokemon, this.effectData.target)) {
-				pokemon.tryTrap(true);
-			}
-		},
-		onFoeMaybeTrapPokemon: function (pokemon, source) {
-			if (!source) source = this.effectData.target;
-			if ((!pokemon.knownType || pokemon.hasType('Ghost')) && this.isAdjacent(pokemon, source)) {
-				pokemon.maybeTrapped = true;
-			}
-		},
-        onModifyAtkPriority: 6,
-		onSourceModifyAtk: function (atk, attacker, defender, move) {
-			if (move.type === 'Ghost') {
-				this.debug('Shadow Tag weaken');
-				return this.chainModify(0.5);
-			}
-		},
-		onModifySpAPriority: 5,
-		onSourceModifySpA: function (atk, attacker, defender, move) {
-			if (move.type === 'Ghost') {
-				this.debug('Shadow Tag weaken');
-				return this.chainModify(0.5);
-			}
-		},
-			onFoeImmunity: function (type, pokemon) {
-			if (type === 'trapped') return true;
-		id: "shadowtag",
-		name: "Shadow Tag",
-	},
 };
