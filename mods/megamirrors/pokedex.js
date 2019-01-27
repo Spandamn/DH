@@ -136,6 +136,36 @@ abomasnowmegax: {
 		abilities: {0: "Regenerator"},
 		weightkg: 320.5,
 	},
+	dianciemegay: {
+		species: "Diancie-Mega-Y",
+		baseSpecies: "Diancie",
+		forme: "Mega-Y",
+		formeLetter: "M",
+		types: ["Rock", "Fairy"],
+		baseStats: {hp: 50, atk: 120, def: 180, spa: 120, spd: 180, spe: 50},
+		abilities: {0: "Prankster"},
+		weightkg: 27.8,
+	},
+	gallademegay: {
+		species: "Gallade-Mega-Y",
+		baseSpecies: "Gallade",
+		forme: "Mega-Y",
+		formeLetter: "M",
+		types: ["Psychic", "Fighting"],
+		baseStats: {hp: 68, atk: 105, def: 95, spa: 145, spd: 125, spe: 80},
+		abilities: {0: "Prankster"},
+		weightkg: 56.4,
+	},
+	gardevoirmegax: {
+		species: "Gardevoir-Mega-X",
+		baseSpecies: "Gardevoir",
+		forme: "Mega-X",
+		formeLetter: "M",
+		types: ["Psychic", "Grass"],
+		baseStats: {hp: 68, atk: 65, def: 130, spa: 155, spd: 130, spe: 70},
+		abilities: {0: "Triage"},
+		weightkg: 48.4,
+	},
 };
 
 exports.BattlePokedex = BattlePokedex;
