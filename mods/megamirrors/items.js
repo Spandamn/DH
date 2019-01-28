@@ -170,6 +170,48 @@ let BattleItems = {
 		gen: 6,
 		desc: "If held by a Camerupt, this item allows it to Mega Evolve in battle.",
 	},
+	"diancitey": {
+		id: "diancitey",
+		name: "Diancite Y",
+		spritenum: 577,
+		megaStone: "Diancie-Mega-Y",
+		megaEvolves: "Diancie",
+		onTakeItem: function (item, source) {
+			if (item.megaEvolves === source.baseTemplate.baseSpecies) return false;
+			return true;
+		},
+		num: 2012,
+		gen: 6,
+		desc: "If held by an Diancie, this item allows it to Mega Evolve in battle.",
+	},
+	"galladitey": {
+		id: "galladitey",
+		name: "Galladite Y",
+		spritenum: 577,
+		megaStone: "Gallade-Mega-Y",
+		megaEvolves: "Gallade",
+		onTakeItem: function (item, source) {
+			if (item.megaEvolves === source.baseTemplate.baseSpecies) return false;
+			return true;
+		},
+		num: 2013,
+		gen: 6,
+		desc: "If held by an Gallade, this item allows it to Mega Evolve in battle.",
+	},
+	"gardevoiritex": {
+		id: "gardevoiritex",
+		name: "Gardevoirite X",
+		spritenum: 577,
+		megaStone: "Gardevoir-Mega-X",
+		megaEvolves: "Gardevoir",
+		onTakeItem: function (item, source) {
+			if (item.megaEvolves === source.baseTemplate.baseSpecies) return false;
+			return true;
+		},
+		num: 2014,
+		gen: 6,
+		desc: "If held by a Gardevoir, this item allows it to Mega Evolve in battle.",
+	},
 };
 
 exports.BattleItems = BattleItems;
