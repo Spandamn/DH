@@ -210,7 +210,7 @@ let BattleItems = {
 		},
 		num: 2014,
 		gen: 6,
-		desc: "If held by a Camerupt, this item allows it to Mega Evolve in battle.",
+		desc: "If held by a Gardevoir, this item allows it to Mega Evolve in battle.",
 	},
 };
 
