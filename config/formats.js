@@ -3827,7 +3827,7 @@ exports.Formats = [
 		desc: ["&bullet; <a href=\"https://www.smogon.com/forums/threads/3566648/\">Megamons</a>"],
 		mod: 'gen7',
 		ruleset: ['Species Clause', 'Nickname Clause', 'Moody Clause', 'OHKO Clause', 'Evasion Moves Clause', 'Swagger Clause', 'Mega Rayquaza Clause', 'Sleep Clause Mod', 'Endless Battle Clause', 'HP Percentage Mod', 'Cancel Mod', 'Team Preview'],
-		banlist: ['Unreleased', 'Illegal', 'Gengar-Mega', 'Mewtwo-Mega-X', 'Mewtwo-Mega-Y', 'Rayquaza-Mega'],
+		banlist: ['Unreleased', 'Illegal', 'Gengar-Mega', 'Mewtwo-Mega-Y', 'Rayquaza-Mega'],
 		onValidateTeam: function(team) {
 			let problems = [];
 			let kyurems = 0;
@@ -4821,16 +4821,16 @@ exports.Formats = [
 			this.add('-anim', source, "Celebrate", target);
 			}
 		},
-  		onModifyTemplate: function (template, pokemon, source) {
-  			//This hack is for something important: The Pokemon's Sprite.
-  			if (!template.base) return template;
-  			let temp = Object.assign({}, template);
-  			temp.species = temp.baseSpecies = template.base;
-			pokemon.name = template.species;
-			pokemon.fullname = `${pokemon.side.id}: ${pokemon.name}`;
-			pokemon.id = pokemon.fullname;
-			return temp;
-  		},
+//   		onModifyTemplate: function (template, pokemon, source) {
+//   			//This hack is for something important: The Pokemon's Sprite.
+//   			if (!template.base) return template;
+//   			let temp = Object.assign({}, template);
+//   			temp.species = temp.baseSpecies = template.base;
+// 			pokemon.name = template.species;
+// 			pokemon.fullname = `${pokemon.side.id}: ${pokemon.name}`;
+// 			pokemon.id = pokemon.fullname;
+// 			return temp;
+//   		},
 		onSwitchIn: function (pokemon) {
 				if (pokemon.illusion){
             	this.add('-start', pokemon, 'typechange', pokemon.illusion.template.types.join('/'), '[silent]');
@@ -4954,7 +4954,7 @@ exports.Formats = [
 	{
 		name: "[Gen 7] The Pokedex According to Spook",
 		desc: ["&bullet; <a href=https://www.smogon.com/forums/threads/the-pokedex-according-to-spook.3645318/>The Pokedex According to Spook</a>",],
-		ruleset: ['Pokemon', 'Sleep Clause Mod', 'Species Clause', 'Moody Clause', 'Evasion Moves Clause', 'Endless Battle Clause', 'HP Percentage Mod', 'Cancel Mod', 'Team Preview', 'Swagger Clause', 'Baton Pass Clause'],
+		ruleset: ['Pokemon', 'Standard', 'Team Preview'],
 		//banlist: ['Illegal'],
 		mod: 'Spookdex',
 	},

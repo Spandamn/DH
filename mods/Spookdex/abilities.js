@@ -4279,7 +4279,6 @@ let BattleAbilities = {
 		},
 		onResidual: function (pokemon, source, effect) {
 				this.damage(pokemon.maxhp / 10);
-			}
 		},
 		id: "volatile",
 		name: "Volatile",
