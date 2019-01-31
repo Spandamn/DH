@@ -1812,4 +1812,36 @@ exports.BattlePokedex = {
 		inherit: true,
       abilities: {0: "Defeatist", H: "Early Bird"},
 	},
+	trubbish: {
+		inherit: true,
+		types: ["Poison", "Steel"],
+      abilities: {0: "Stench", 1: "Liquid Ooze", H: "Regenerator"},
+	},
+	garbodor: {
+		inherit: true,
+		types: ["Poison", "Steel"],
+      abilities: {0: "Stench", 1: "Liquid Ooze", H: "Regenerator"},
+	},
+	cofagrigus: {
+		inherit: true,
+		types: ["Ghost", "Steel"],
+      abilities: {0: "Mummy", H: "Filter"},
+	},
+	regigigas: {
+		inherit: true,
+      abilities: {0: "Slow Start", 1: "Thick Fat", H: "Colossal Titan"},
+	},
+	unfezant: {
+		inherit: true,
+      abilities: {0: "Super Luck", 1: "Air Stream", H: "Technician"},
+	},
+	huntail: {
+		inherit: true,
+		types: ["Water", "Dark"],
+      abilities: {0: "Swift Swim", H: "Strong Jaw"},
+	},
+	gorebyss: {
+		inherit: true,
+		types: ["Water", "Fairy"],
+	},
 };

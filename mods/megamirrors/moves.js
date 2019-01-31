@@ -2,7 +2,6 @@
 
 /**@type {{[k: string]: MoveData}} */
 let BattleMovedex = {
-
 "mindtap": {
 		num: 577,
 		accuracy: 100,
@@ -21,8 +20,6 @@ let BattleMovedex = {
 		type: "Psychic",
 		zMovePower: 100,
 		contestType: "Cute",
-	},
-
 	},
 };
 

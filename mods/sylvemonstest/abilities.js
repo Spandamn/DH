@@ -764,4 +764,59 @@ exports.BattleAbilities = {
 		rating: 4.5,
 		num: 42,
 	},
+	"magicwarp": {
+		shortDesc: "On switch-in, this Pokemon summons Magic Room.",
+		onStart: function(source) {
+			this.useMove("Magic Room", source);
+		},
+		id: "magicwarp",
+		name: "Magic Warp",
+	},
+	"spacewarp": {
+		shortDesc: "On switch-in, this Pokemon summons Wonder Room.",
+		onStart: function(source) {
+			this.useMove("Wonder Room", source);
+		},
+		id: "spacewarp",
+		name: "Space Warp",
+	},
+	"stall": {
+		shortDesc: "This Pokemon moves last among Pokemon using the same or greater priority moves. This pokemon's moves have 1.5x power.",
+		onModifyPriority: function (priority) {
+			return Math.round(priority) - 0.1;
+		},
+		onModifyAtkPriority: 5,
+		onModifyAtk: function (atk) {
+			return this.chainModify(1.5);
+		},
+		onModifySpAPriority: 5,
+		onModifySpA: function (spa) {
+			return this.chainModify(1.5);
+		},
+		id: "stall",
+		name: "Stall",
+		rating: -1,
+		num: 100,
+	},
+	"colossaltitan": {
+		shortDesc: "This Pokemon's attacking stat is multiplied by 1.2 while using a Steel, Ice, or Rock-type attack.",
+		onModifyAtkPriority: 5,
+		onModifyAtk: function (atk, attacker, defender, move) {
+			if (move.type === 'Steel' || move.type === 'Rock' || move.type === 'Ice') {
+				this.debug('Colossal Titan boost');
+				return this.chainModify(1.2);
+			}
+		},
+		onModifySpAPriority: 5,
+		onModifySpA: function (atk, attacker, defender, move) {
+			if (move.type === 'Steel' || move.type === 'Rock' || move.type === 'Ice') {
+				this.debug('Colossal Titan boost');
+				return this.chainModify(1.2);
+			}
+		},
+		id: "colossaltitan",
+		name: "Colossal Titan",
+		rating: 3,
+		num: 200,
+	},
 };

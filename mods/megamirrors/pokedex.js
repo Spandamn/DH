@@ -143,7 +143,7 @@ abomasnowmegax: {
 		formeLetter: "M",
 		types: ["Rock", "Fairy"],
 		baseStats: {hp: 50, atk: 120, def: 180, spa: 120, spd: 180, spe: 50},
-		abilities: {0: "Prankster"},
+		abilities: {0: "Levitate"},
 		weightkg: 27.8,
 	},
 	gallademegay: {
@@ -153,7 +153,7 @@ abomasnowmegax: {
 		formeLetter: "M",
 		types: ["Psychic", "Fighting"],
 		baseStats: {hp: 68, atk: 105, def: 95, spa: 145, spd: 125, spe: 80},
-		abilities: {0: "Prankster"},
+		abilities: {0: "Technician"},
 		weightkg: 56.4,
 	},
 	gardevoirmegax: {
