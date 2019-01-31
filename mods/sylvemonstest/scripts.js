@@ -1037,7 +1037,7 @@ exports.BattleScripts = {
     this.modData('Learnsets', 'yveltal').learnset.pragmastrike = ['7L1'];
     this.modData('Learnsets', 'incineroar').learnset.pragmastrike = ['7L1'];
 
-// Pokemon Buffs
+// Pokemon Buffs / Adjustments
 	 this.modData('Learnsets', 'solgaleo').learnset.flamebullet= ['7L1'];
     this.modData('Learnsets', 'solgaleo').learnset.incinerate= ['7L1'];
     this.modData('Learnsets', 'solgaleo').learnset.willowisp= ['7L1'];
@@ -1347,6 +1347,20 @@ this.modData('Learnsets', 'porygon').learnset.trickroom = ['7L1'];
 this.modData('Learnsets', 'porygon2').learnset.trickroom = ['7L1'];
 this.modData('Learnsets', 'porygonz').learnset.trickroom = ['7L1'];
 this.modData('Learnsets', 'kecleon').learnset.trickroom = ['7L1'];
+this.modData('Learnsets', 'huntail').learnset.payback = ['7L1'];
+this.modData('Learnsets', 'huntail').learnset.foulplay = ['7L1'];
+this.modData('Learnsets', 'huntail').learnset.taunt = ['7L1'];
+this.modData('Learnsets', 'huntail').learnset.pursuit = ['7L1'];
+this.modData('Learnsets', 'huntail').learnset.hypervoice = ['7L1'];
+this.modData('Learnsets', 'huntail').learnset.darkpulse = ['7L1'];
+this.modData('Learnsets', 'huntail').learnset.playrough = ['7L1'];
+this.modData('Learnsets', 'gorebyss').learnset.moonblast = ['7L1'];
+this.modData('Learnsets', 'gorebyss').learnset.dazzlinggleam = ['7L1'];
+this.modData('Learnsets', 'gorebyss').learnset.sweetkiss = ['7L1'];
+this.modData('Learnsets', 'gorebyss').learnset.charm = ['7L1'];
+this.modData('Learnsets', 'gorebyss').learnset.hypervoice = ['7L1'];
+this.modData('Learnsets', 'gorebyss').learnset.playrough = ['7L1'];
+this.modData('Learnsets', 'gorebyss').learnset.darkpulse = ['7L1'];
 
 // magicroom 
 this.modData('Learnsets', 'palkia').learnset.magicroom = ['7L1'];
