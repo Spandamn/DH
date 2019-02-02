@@ -2836,7 +2836,7 @@ exports.Formats = [
 			return problems;
 		}
 	},
-	{
+	/*{
 		name: "[Gen 7] Tier Shift",
 		ruleset: ['[Gen 7] OU'],
 		desc: ['<a href="http://www.smogon.com/forums/threads/3610073/">Tier Shift</a>: Pokemon get a +10 boost to each stat per tier below OU they are in. UU gets +10, RU +20, NU +30, and PU +40.'],
@@ -2869,7 +2869,7 @@ exports.Formats = [
 			pokemon.tierShifted = true;
 			return tierShift;
 		},
-	},
+	},*/
 	{
 		name: "[Gen 7] Inverse",
 		desc: [
