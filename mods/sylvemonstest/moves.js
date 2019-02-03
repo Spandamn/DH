@@ -2042,4 +2042,237 @@ exports.BattleMovedex = {
 		zMovePower: 200,
 		contestType: "Beautiful",
 	},
+	"flamewheel": {
+		num: 228,
+		accuracy: 100,
+		basePower: 40,
+		basePowerCallback: function (pokemon, target, move) {
+			// You can't get here unless the pursuit succeeds
+			if (target.beingCalledBack) {
+				this.debug('Flame Wheel damage boost');
+				return move.basePower * 2;
+			}
+			return move.basePower;
+		},
+		category: "Physical",
+		desc: "If an opposing Pokemon switches out this turn, this move hits that Pokemon before it leaves the field, even if it was not the original target. If the user moves after an opponent using Parting Shot, U-turn, or Volt Switch, but not Baton Pass, it will hit that opponent before it leaves the field. Power doubles and no accuracy check is done if the user hits an opponent switching out, and the user's turn is over; if an opponent faints from this, the replacement Pokemon does not become active until the end of the turn.",
+		shortDesc: "Power doubles if a foe is switching out.",
+		id: "flamewheel",
+		isViable: true,
+		name: "Flame Wheel",
+		pp: 20,
+		priority: 0,
+		flags: {contact: 1, protect: 1, mirror: 1},
+		beforeTurnCallback: function (pokemon) {
+			for (const side of this.sides) {
+				if (side === pokemon.side) continue;
+				side.addSideCondition('flamewheel', pokemon);
+				if (!side.sideConditions['flamewheel'].sources) {
+					side.sideConditions['flamewheel'].sources = [];
+				}
+				side.sideConditions['flamewheel'].sources.push(pokemon);
+			}
+		},
+		onModifyMove: function (move, source, target) {
+			if (target && target.beingCalledBack) move.accuracy = true;
+		},
+		onTryHit: function (target, pokemon) {
+			target.side.removeSideCondition('flamewheel');
+		},
+		effect: {
+			duration: 1,
+			onBeforeSwitchOut: function (pokemon) {
+				this.debug('Flame Wheel start');
+				let alreadyAdded = false;
+				for (const source of this.effectData.sources) {
+					if (!this.cancelMove(source) || !source.hp) continue;
+					if (!alreadyAdded) {
+						this.add('-activate', pokemon, 'move: Flame Wheel');
+						alreadyAdded = true;
+					}
+					// Run through each action in queue to check if the Pursuit user is supposed to Mega Evolve this turn.
+					// If it is, then Mega Evolve before moving.
+					if (source.canMegaEvo || source.canUltraBurst) {
+						for (const [actionIndex, action] of this.queue.entries()) {
+							if (action.pokemon === source && action.choice === 'megaEvo') {
+								this.runMegaEvo(source);
+								this.queue.splice(actionIndex, 1);
+								break;
+							}
+						}
+					}
+					this.runMove('flamewheel', source, this.getTargetLoc(pokemon, source));
+				}
+			},
+		},
+		secondary: null,
+		target: "normal",
+		type: "Fire",
+		zMovePower: 100,
+		contestType: "Clever",
+	},
+	"heartbeat": {
+		num: 331,
+		accuracy: 100,
+		basePower: 25,
+		category: "Physical",
+		desc: "Hits two to five times. Has a 1/3 chance to hit two or three times, and a 1/6 chance to hit four or five times. If one of the hits breaks the target's substitute, it will take damage for the remaining hits. If the user has the Skill Link Ability, this move will always hit five times.",
+		shortDesc: "Hits 2-5 times in one turn.",
+		id: "heartbeat",
+		isViable: true,
+		name: "Heartbeat",
+		pp: 30,
+		priority: 0,
+		flags: {bullet: 1, protect: 1, mirror: 1, sound: 1},
+		multihit: [2, 5],
+		secondary: null,
+		target: "normal",
+		type: "Fairy",
+		zMovePower: 140,
+		contestType: "Cool",
+	},
+	"metalsound": {
+		num: 618,
+		accuracy: 85,
+		basePower: 110,
+		category: "Special",
+		desc: "30% chance to lower SpD.",
+		shortDesc: "30% chance to lower SpD. Hits adjacent foes.",
+		id: "metalsound",
+		isViable: true,
+		name: "Metal Sound",
+		pp: 10,
+		priority: 0,
+		flags: {protect: 1, pulse: 1, mirror: 1, sound: 1},
+		secondary: {
+			chance: 30,
+			boosts: {
+				spd: -1,
+			},
+		},
+		target: "allAdjacentFoes",
+		type: "Steel",
+		zMovePower: 185,
+		contestType: "Beautiful",
+	},
+	   "mudslap": {
+		num: 98,
+		accuracy: 100,
+		basePower: 40,
+		category: "Physical",
+		desc: "No additional effect.",
+		shortDesc: "Usually goes first.",
+		id: "mudslap",
+		isViable: true,
+		name: "Mud Slap",
+		pp: 30,
+		priority: 1,
+		flags: {contact: 1, protect: 1, mirror: 1},
+		secondary: null,
+		target: "normal",
+		type: "Ground",
+		zMovePower: 100,
+		contestType: "Cool",
+	},
+	"aurasphere": {
+		num: 396,
+		accuracy: true,
+		basePower: 90,
+		category: "Special",
+		shortDesc: "10% chance to lower the target's Sp. Def by 1.",
+		id: "aurasphere",
+		isViable: true,
+		name: "Aura Sphere",
+		pp: 20,
+		priority: 0,
+		flags: {bullet: 1, protect: 1, pulse: 1, mirror: 1, distance: 1},
+		secondary: {
+			chance: 10,
+			boosts: {
+				spd: -1,
+			},
+		},
+		target: "any",
+		type: "Fighting",
+		zMovePower: 160,
+		contestType: "Beautiful",
+	},
+	"crushgrip": {
+		num: 462,
+		accuracy: 100,
+		basePower: 120,
+		category: "Physical",
+		shortDesc: "No additional effect.",
+		id: "crushgrip",
+		name: "Crush Grip",
+		pp: 5,
+		priority: 0,
+		flags: {contact: 1, protect: 1, mirror: 1},
+		secondary: null,
+		target: "normal",
+		type: "Normal",
+		zMovePower: 190,
+		contestType: "Tough",
+	},
+	"psychocut": {
+		num: 473,
+		accuracy: 100,
+		basePower: 70,
+		category: "Physical",
+		defensiveCategory: "Special",
+		desc: "Deals damage to the target based on its Sp. Defense instead of Defense.",
+		shortDesc: "Damages target based on Sp. Def, not Def.",
+		id: "psychocut",
+		isViable: true,
+		name: "Psycho Cut",
+		pp: 10,
+		priority: 0,
+		flags: {protect: 1, mirror: 1},
+		secondary: null,
+		target: "normal",
+		type: "Psychic",
+		zMovePower: 160,
+		contestType: "Beautiful",
+	},
+	"skyuppercut": {
+		num: 573,
+		accuracy: 100,
+		basePower: 70,
+		category: "Special",
+		desc: "This move's type effectiveness against Flying is changed to be super effective no matter what this move's type is.",
+		shortDesc: "Super effective on Flying.",
+		id: "skyuppercut",
+		isViable: true,
+		name: "Sky Uppercut",
+		pp: 20,
+		priority: 0,
+		flags: {contact: 1, protect: 1, mirror: 1},
+		onEffectiveness: function (typeMod, target, type) {
+			if (type === 'Flying') return 1;
+		},
+		target: "normal",
+		type: "Ice",
+		zMovePower: 140,
+		contestType: "Beautiful",
+	},
+	"riverstream": {
+		num: 369,
+		accuracy: 100,
+		basePower: 70,
+		category: "Physical",
+		desc: "If this move is successful and the user has not fainted, the user switches out even if it is trapped and is replaced immediately by a selected party member. The user does not switch out if there are no unfainted party members, or if the target switched out using an Eject Button or through the effect of the Emergency Exit or Wimp Out Abilities.",
+		shortDesc: "User switches out after damaging the target.",
+		id: "riverstream",
+		isViable: true,
+		name: "River Stream",
+		pp: 20,
+		priority: 0,
+		flags: {contact: 1, protect: 1, mirror: 1},
+		selfSwitch: true,
+		secondary: null,
+		target: "normal",
+		type: "Water",
+		zMovePower: 140,
+		contestType: "Cute",
+	},
 };

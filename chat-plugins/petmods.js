@@ -631,6 +631,23 @@ evgutter: function (target, room, user) {
 		});
 		this.sendReplyBox(`${buf}</div>`);
 	},
+	/*sylvespeed: function (target, room, user) {
+		if (!this.runBroadcast()) return;
+		let buf = `<div class=infobox-limited><center><h2>List Of Fusion Evolution Pokemon</h2></center>`;
+		let feDex = require('../data/pokedex.js').BattlePokedex;
+		if (!feDex) return this.errorReply("Error Fetching FE Data.");
+		Object.values(feDex).forEach(mon => {
+			let speedtierplusscarf = Math.floor((2.2 * mon.baseStats.spe + 108.9) * 1.5);
+			let speedtierscarf = Math.floor((2 * mon.baseStats.spe + 99) * 1.5);
+			let speedtierplus = Math.floor(2.2 * mon.baseStats.spe + 108.9);
+			let speedtier = Math.floor(2 * mon.baseStats.spe + 99);
+			let speedtierzero = Math.floor(2 * mon.baseStats.spe + 36);
+			if (mon === '' || mon ==== '') {
+			buf += `${speedtierplus}: Fast+ ${mon.species}<br>${speedtier}: Fast ${mon.species}<br>${speedtierzero}: Bulky ${mon.species}<br>`;
+			}
+			});
+		this.sendReplyBox(`${buf}</div>`);
+	},*/
 	abilities2: function (target, room, user) {
 		if (!this.runBroadcast()) return;
 		let buf = `<div class=infobox-limited><center><h2>List Of Coded Fusion Evolution Abilities</h2></center>`;
@@ -641,4 +658,5 @@ evgutter: function (target, room, user) {
 		});
 		this.sendReplyBox(`${buf}</div>`);
 	},
+		
 };

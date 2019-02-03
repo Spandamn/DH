@@ -2431,6 +2431,34 @@ cresselia: {
 		color: "Blue",
 		eggGroups: ["Bug"],
 	},
+	
+	// Mega Evolutions
+	
+	electiviremega: {
+num: 466, 
+species: "Electivire-Mega", 
+baseSpecies: "Electivire", 
+forme: "Mega", 
+formeLetter: "M", 
+types:["Electric", "Fighting "],
+baseStats: {hp: 75, atk: 153, def: 67, spa: 145, spd: 95, spe: 105}, 
+abilities: {0: "Sheer Force"}, 
+weightkg: 138.6, 
+evoLevel: 1,
+}, 
+	magmortarmega: {
+num: 467, 
+species: "Magmortar-Mega", 
+baseSpecies: "Magmortar", 
+forme: "Mega", 
+formeLetter: "M", 
+types:["Fire", "Poison "],
+baseStats: {hp: 75, atk: 145, def: 67, spa: 155, spd: 95, spe: 103}, 
+abilities: {0: "Technician"}, 
+weightkg: 68, 
+evoLevel: 1,
+}, 
+	
 };
 
 exports.BattlePokedex = BattlePokedex;
