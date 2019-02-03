@@ -42,7 +42,7 @@ exports.BattlePokedex = {
     musharna: {
         inherit: true,
         types: ["Psychic", "Fairy"],
-        abilities: {0: "Time Warp", 1: "Synchronize", H: "Telepathy"},
+        abilities: {0: "Time Warp", 1: "Synchronize", H: "Comatose"},
     },
     spritzee: {
         inherit: true,
@@ -581,7 +581,7 @@ exports.BattlePokedex = {
 	escavalier: {
 		inherit: true,
 		types: ["Bug", "Steel"],
-      abilities: {0: "Guard Up", 1: "Shell Armor", H: "Knight's Blade"},
+      abilities: {0: "Guard Up", 1: "Swarm", H: "Knight's Blade"},
 	},
 	pawniard: {
 		inherit: true,
@@ -1151,8 +1151,8 @@ exports.BattlePokedex = {
 	},
 	lugia: {
 		inherit: true,
-		types: ["Water", "Dragon"],
-      abilities: {0: "Pressure", 1: "Drizzle", H: "Multiscale"},
+		types: ["Psychic", "Flying"],
+      abilities: {0: "Air Current", 1: "Drizzle", H: "Multiscale"},
 	},
 	regirock: {
 		inherit: true,
@@ -1793,5 +1793,55 @@ exports.BattlePokedex = {
 	blacephalon: {
 		inherit: true,
       abilities: {0: "Beast Boost", H: "Jack of all Trades"},
+	},
+	komala: {
+		inherit: true,
+		types: ["Normal", "Grass"],
+      abilities: {0: "Comatose", H: "Fur Coat"},
+	},
+	accelgor: {
+		inherit: true,
+		types: ["Bug", "Dark"],
+      abilities: {0: "Hydration", 1: "Sticky Hold", H: "Swarm"},
+	},
+	archen: {
+		inherit: true,
+      abilities: {0: "Defeatist", H: "Early Bird"},
+	},
+	archeops: {
+		inherit: true,
+      abilities: {0: "Defeatist", H: "Early Bird"},
+	},
+	trubbish: {
+		inherit: true,
+		types: ["Poison", "Steel"],
+      abilities: {0: "Stench", 1: "Liquid Ooze", H: "Regenerator"},
+	},
+	garbodor: {
+		inherit: true,
+		types: ["Poison", "Steel"],
+      abilities: {0: "Stench", 1: "Liquid Ooze", H: "Regenerator"},
+	},
+	cofagrigus: {
+		inherit: true,
+		types: ["Ghost", "Steel"],
+      abilities: {0: "Mummy", H: "Filter"},
+	},
+	regigigas: {
+		inherit: true,
+      abilities: {0: "Slow Start", 1: "Thick Fat", H: "Colossal Titan"},
+	},
+	unfezant: {
+		inherit: true,
+      abilities: {0: "Super Luck", 1: "Air Stream", H: "Technician"},
+	},
+	huntail: {
+		inherit: true,
+		types: ["Water", "Dark"],
+      abilities: {0: "Swift Swim", H: "Strong Jaw"},
+	},
+	gorebyss: {
+		inherit: true,
+		types: ["Water", "Fairy"],
 	},
 };

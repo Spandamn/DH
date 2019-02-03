@@ -1415,7 +1415,7 @@ exports.BattlePokedex = {
 		species: "Hawpeon",
 		types: ["Fighting", "Flying"],
 		baseStats: {hp: 91, atk: 114, def: 89, spa: 91, spd: 78, spe: 131},
-		abilities: {0: "Limber", 1: "Unburden", H "Mold Breaker"},
+		abilities: {0: "Limber", 1: "Unburden", H: "Mold Breaker"},
 		prevo: "hawlucha",
 		},
 	   denfounee: {

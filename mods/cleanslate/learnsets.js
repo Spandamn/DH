@@ -631,6 +631,15 @@ let BattleLearnsets = {
         knockoff: ["7L1"],
         taunt: ["7L1"],
         viciousmockery: ["7L1"],
+		  aurorabeam: ["7L1"],
+		  avalanche: ["7L1"],
+		  blizzard: ["7L1"],
+		  frostbreath: ["7L1"],
+		  icebeam: ["7L1"],
+		  iceshard: ["7L1"],
+		  iciclecrash: ["7L1"],
+		  iciclespear: ["7L1"],
+		  icywind: ["7L1"],
     }},
  
 	flaaffy: {learnset: {
@@ -708,9 +717,10 @@ let BattleLearnsets = {
         healbell: ["7M"],
         earthpower: ["7M"],
         moonlight: ["7M"],
-		airslash: ["7M"],
-		defog: ["7M"],
-		tailwind: ["7M"],
+		  airslash: ["7M"],
+		  defog: ["7M"],
+		  tailwind: ["7M"],
+		  roost: ["7L1"],
     }},
  
 	swalot: {learnset: {
@@ -2194,6 +2204,8 @@ let BattleLearnsets = {
 		wonderroom: ["7T", "6T", "5T"],
 		zenheadbutt: ["7T", "6T", "5T", "4T"],
 		earthpower: ["7T", "6T", "5T", "4T"],
+		moonlight: ["7L1"],
+		uturn: ["7L1"],
 	}},
 	trevenant: {learnset: {
 		allyswitch: ["7T"],
@@ -2762,7 +2774,12 @@ let BattleLearnsets = {
         xscissor: ["7M"],
         zapcannon: ["7L41"],
         ancientpower: ["7L16"],
-		mudshot: ["7L16"],
+		  nastyplot: ["7L1"],
+		  powergem: ["7L1"],
+		  earthpower: ["7L1"],
+		  energyball: ["7L1"],
+			mudshot: ["7L16"],
+			
     }},
  
 	xurkitree: {learnset: {

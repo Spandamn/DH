@@ -4184,10 +4184,10 @@ let BattleAbilities = {
         num: 22.5,
     },
 	"extremebulk": {
-        shortDesc: "If Gravity is active, this Pokemon's Attack is doubled.",
+        shortDesc: "If Gravity is active, this Pokemon's Attack is 1.5x.",
         onModifyAtk: function (atk, pokemon) {
             if (this.getPseudoWeather('gravity')) {
-                return this.chainModify(2);
+                return this.chainModify(1.5);
             }
         },
         id: "extremebulk",
