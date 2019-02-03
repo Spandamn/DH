@@ -4236,7 +4236,7 @@ let BattleAbilities = {
 	"hivemind": {
 		desc: "This Pokemon's damaging moves become multi-hit moves that hit twice. The second hit has its damage quartered. Does not affect multi-hit moves or moves that have multiple targets.",
 		shortDesc: "This Pokemon's damaging Bug-type moves hit twice. The second hit has its damage halved.",
-		onPrepareHit: function (source, target, move) {
+		onPrepareHit: function (source, target, move, pokemon) {
 			if (['iceball', 'rollout'].includes(move.id)) return;
 			if (pokemon.hasType('Bug') && move.type === 'Bug' && move.category !== 'Status' && !move.selfdestruct && !move.multihit && !move.flags['charge'] && !move.spreadHit && !move.isZ) {
 				if (this.randomChance(1, 2)) {

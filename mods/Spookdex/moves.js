@@ -1207,8 +1207,8 @@ let BattleMovedex = {
 		pp: 10,
 		priority: 0,
 		flags: {snatch: 1},
-		onHit: function (target) {
-			if (target.hp <= target.maxhp / 2 || target.boosts.atk >= 6 || target.maxhp === 1) { // Shedinja clause
+		onHit: function (target) {			
+			if (target.hp <= target.maxhp / 2 || target.boosts.atk >= 6 || target.maxhp === 1 && !target.ateBerry) { // Shedinja clause
 				return false;
 			}
 			this.directDamage(target.maxhp / 2);
@@ -3570,7 +3570,7 @@ let BattleMovedex = {
 			volatileStatus: 'confusion',
 		},
 		target: "normal",
-		type: "Normal",
+		type: "Fighting",
 		zMovePower: 140,
 		contestType: "Cute",
 	},
@@ -14325,8 +14325,8 @@ let BattleMovedex = {
 	"selfdestruct": {
 		num: 120,
 		accuracy: 100,
-		basePower: 200,
-		category: "Physical",
+		basePower: 250,
+		category: "Special",
 		desc: "The user faints after using this move, even if this move fails for having no target. This move is prevented from executing if any active Pokemon has the Ability Damp.",
 		shortDesc: "Hits adjacent Pokemon. The user faints.",
 		id: "selfdestruct",
@@ -14507,6 +14507,8 @@ let BattleMovedex = {
 		flags: {snatch: 1},
 		boosts: {
 			atk: 1,
+			spa: 1,
+			accuracy: 1,
 		},
 		secondary: false,
 		target: "self",
@@ -19348,10 +19350,12 @@ let BattleMovedex = {
 		priority: 0,
 		flags: {},
 		isZ: "butterfriumz",
-		boosts: {
-			spa: 1,
-			spd: 1,
-			spe: 1,
+		selfBoost: {
+			boosts: {
+				spa: 1,
+				spd: 1,
+				spe: 1,
+			},
 		},
 		target: "normal",
 		type: "Bug",
