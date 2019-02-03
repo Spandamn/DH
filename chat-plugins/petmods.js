@@ -631,7 +631,7 @@ evgutter: function (target, room, user) {
 		});
 		this.sendReplyBox(`${buf}</div>`);
 	},
-	/*sylvespeed: function (target, room, user) {
+	sylvespeed: function (target, room, user) {
 		if (!this.runBroadcast()) return;
 		let buf = `<div class=infobox-limited><center><h2>List Of Fusion Evolution Pokemon</h2></center>`;
 		let feDex = require('../data/pokedex.js').BattlePokedex;
@@ -642,12 +642,12 @@ evgutter: function (target, room, user) {
 			let speedtierplus = Math.floor(2.2 * mon.baseStats.spe + 108.9);
 			let speedtier = Math.floor(2 * mon.baseStats.spe + 99);
 			let speedtierzero = Math.floor(2 * mon.baseStats.spe + 36);
-			if (mon === '' || mon ==== '') {
+			if (mon.id === "chansey" || mon.id === "jirachi" || mon.id === "hawlucha" || mon.id === "kartana" || mon.id === "magearna" || mon.id === "scizormega" || mon.id === "tapukoko" || mon.id === "ashgreninja" || mon.id === "landorustherian" || mon.id === "tapulele" || mon.id === "tornadusincarnate" || mon.id === "greninja" || mon.id === "heatran" || mon.id === "keldeo" || mon.id === "pinsirmega" || mon.id === "serperior" || mon.id === "tapubulu" || mon.id === "toxapex" || mon.id === "aerodactylmega" || mon.id === "articuno" || mon.id === "charizardmegax" || mon.id === "emolga" || mon.id === "ferrothorn" || mon.id === "infernape" || mon.id === "klinklang" || mon.id === "mawilemega" || mon.id === "medichammega" || mon.id === "zapdos" || mon.id === "alakazammega" || mon.id === "celesteela" || mon.id === "flygon" || mon.id === "gallademega" || mon.id === "goodra" || mon.id === "nihilego" || mon.id === "parasect" || mon.id === "raichu" || mon.id === "togedemaru" || mon.id === "celebi" || mon.id === "latiosmega" || mon.id === "meloettapirouette" || mon.id === "metagross" || mon.id === "palossand" || mon.id === "slaking" || mon.id === "tapufini" || mon.id === "wishiwashi" || mon.id === "xurkitree" || mon.id === "azumarill" || mon.id === "garchomp" || mon.id === "latiasmega" || mon.id === "manaphy" || mon.id === "mimikyu" || mon.id === "scizor" || mon.id === "terrakion" || mon.id === "venusaurmega" || mon.id === "latios" || mon.id === "staraptor" || mon.id === "victini" || mon.id === "garchompmega" || mon.id === "meloetta" || mon.id === "skarmory" || mon.id === "shuckle") {
 			buf += `${speedtierplus}: Fast+ ${mon.species}<br>${speedtier}: Fast ${mon.species}<br>${speedtierzero}: Bulky ${mon.species}<br>`;
 			}
 			});
 		this.sendReplyBox(`${buf}</div>`);
-	},*/
+	},
 	abilities2: function (target, room, user) {
 		if (!this.runBroadcast()) return;
 		let buf = `<div class=infobox-limited><center><h2>List Of Coded Fusion Evolution Abilities</h2></center>`;
