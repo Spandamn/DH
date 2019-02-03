@@ -7258,7 +7258,7 @@ exports.Formats = [
 		desc: ["Mons from the Sevii, Seafoam, Whirl Islands, and Alola only",],
 		mod: 'gen7',
 		ruleset: ['Pokemon', 'Sleep Clause Mod', 'Species Clause', 'Moody Clause', 'Evasion Moves Clause', 'Endless Battle Clause', 'HP Percentage Mod', 'Cancel Mod','Swagger Clause', 'Baton Pass Clause'],
-		banlist: ['Illegal','Abomasnow','Absol','Accelgor','Aegislash','Aerodactyl','Aggron','Aipom','Alomomola','Altaria','Amaura','Ambipom','Amoonguss','Ampharos','Anorith','Arbok','Arceus','Archen','Archeops','Armaldo','Aromatisse','Aron','Articuno','Audino','Aurorus','Avalugg','Axew','Azelf','Azumarill','Azurill','Baltoy','Banette','Barbaracle','Barboach','Basculin','Bastiodon','Bayleef','Beartic','Beautifly','Beheeyem','Beldum','Bergmite','Bibarel','Bidoof','Binacle','Blastoise','Blaziken','Blitzle','Boldore','Bonsly','Bouffalant','Braixen','Braviary','Breloom','Bronzong','Bronzor','Budew','Buizel','Bulbasaur','Bunnelby','Burmy','Cacnea','Cacturne','Camerupt','Carbink','Carnivine','Carracosta','Carvanha','Cascoon','Castform','Celebi','Chandelure','Charizard','Charmander','Charmeleon','Chatot','Cherrim','Cherubi','Chesnaught','Chespin','Chikorita','Chimchar','Chimecho','Chinchou','Chingling','Cinccino','Clamperl','Clauncher','Clawitzer','Claydol','Cobalion','Cofagrigus','Combee','Combusken','Conkeldurr','Corphish','Corsola','Cottonee','Cradily','Cranidos','Crawdaunt','Cresselia','Croagunk','Croconaw','Crustle','Cryogonal','Cubchoo','Cyndaquil','Darkrai','Darmanitan','Darumaka','Dedenne','Deerling','Deino','Delcatty','Delphox','Deoxys','Dewott','Dialga','Diancie','Diggersby','Diglett','Ditto','Dodrio','Doduo','Doublade','Dragalge','Drapion','Drifblim','Drifloon','Drilbur','Druddigon','Ducklett','Dugtrio','Duosion','Durant','Dusclops','Dusknoir','Duskull','Dustox','Dwebble','Eelektrik','Eelektross','Eevee','Ekans','Electabuzz','Electivire','Electrike','Electrode','Elekid','Elgyem','Emboar','Emolga','Empoleon','Entei','Escavalier','Espeon','Espurr','Excadrill','Exeggcute','Exeggutor','Exploud','Farfetchd','Feebas','Fennekin','Feraligatr','Ferroseed','Ferrothorn','Finneon','Flaaffy','Flabébé','Flareon','Fletchinder','Fletchling','Floatzel','Floette','Florges','Foongus','Forretress','Fraxure','Frillish','Froakie','Frogadier','Froslass','Furfrou','Gabite','Gallade','Galvantula','Garbodor','Garchomp','Gardevoir','Gastrodon','Genesect','Geodude','Gible','Gigalith','Girafarig','Giratina','Glaceon','Glalie','Glameow','Gligar','Gliscor','Gogoat','Goldeen','Golett','Golurk','Goodra','Goomy','Gorebyss','Gothita','Gothitelle','Gothorita','Gourgeist','Granbull','Greninja','Grimer','Grotle','Groudon','Grovyle','Growlithe','Grumpig','Gulpin','Gurdurr','Hariyama','Haxorus','Heatmor','Heatran','Heliolisk','Helioptile','Herdier','Hippopotas','Hippowdon','Hitmonchan','Hitmonlee','Hitmontop','Ho-Oh','Honedge','Hoopa','Hoothoot','Houndoom','Houndour','Huntail','Hydreigon','Igglybuff','Illumise','Infernape','Inkay','Ivysaur','Jellicent','Jigglypuff','Jirachi','Jolteon','Joltik','Jynx','Kabuto','Kabutops','Kangaskhan','Karrablast','Kecleon','Keldeo','Kirlia','Klang','Klefki','Klink','Klinklang','Koffing','Kricketot','Kricketune','Krokorok','Krookodile','Kyogre','Kyurem','Lairon','Lampent','Landorus','Lanturn','Latias','Latios','Leafeon','Leavanny','Lickilicky','Lickitung','Liepard','Lileep','Lilligant','Lillipup','Linoone','Litleo','Litwick','Lombre','Lotad','Loudred','Lucario','Ludicolo','Lugia','Lumineon','Lunatone','Luvdisc','Luxio','Luxray','Magmar','Makuhita','Malamar','Manaphy','Mandibuzz','Manectric','Mankey','Mantine','Mantyke','Maractus','Mareep','Marill','Marshtomp','Masquerain','Medicham','Meditite','Meganium','Meloetta','Meowstic','Mesprit','Metagross','Metang','Mew','Mewtwo','Mienfoo','Mienshao','Mightyena','Milotic','Miltank','MimeJr.','Minccino','Minun','Moltres','Monferno','Mothim','Mr.Mime','Mudkip','Muk','Munchlax','Munna','Musharna','Nidoking','Nidoqueen','Nidoran-F','Nidoran-M','Nidorina','Nidorino','Nincada','Ninetales','Ninjask','Noctowl','Noibat','Noivern','Nosepass','Numel','Nuzleaf','Omanyte','Omastar','Oshawott','Pachirisu','Palkia','Palpitoad','Pancham','Pangoro','Panpour','Pansage','Pansear','Paras','Parasect','Patrat','Persian','Petilil','Phantump','Phione','Pichu','Pidove','Pignite','Pikachu','Pineco','Piplup','Plusle','Politoed','Poliwag','Poliwhirl','Poliwrath','Poochyena','Primeape','Prinplup','Probopass','Pumpkaboo','Purrloin','Purugly','Pyroar','Quagsire','Quilava','Quilladin','Qwilfish','Raichu','Raikou','Ralts','Rampardos','Raticate','Rattata','Rayquaza','Regice','Regigigas','Regirock','Registeel','Relicanth','Reshiram','Reuniclus','Rhydon','Rhyhorn','Rhyperior','Riolu','Roggenrola','Roselia','Roserade','Rotom','Rufflet','Samurott','Sandile','Sandshrew','Sandslash','Sawk','Sawsbuck','Scatterbug','Sceptile','Scolipede','Scrafty','Scraggy','Seaking','Sealeo','Seedot','Seismitoad','Serperior','Servine','Seviper','Sewaddle','Sharpedo','Shaymin','Shedinja','Shellos','Shelmet','Shieldon','Shiftry','Shinx','Shroomish','Shuckle','Shuppet','Sigilyph','Silcoon','Simipour','Simisage','Simisear','Skiddo','Skitty','Skorupi','Skrelp','Skuntank','Slaking','Slakoth','Sliggoo','Slurpuff','Smeargle','Smoochum','Snivy','Snorlax','Snorunt','Snover','Snubbull','Solosis','Solrock','Spewpa','Spheal','Spinda','Spiritomb','Spoink','Spritzee','Squirtle','Stantler','Staraptor','Staravia','Starly','Stoutland','Stunfisk','Stunky','Sudowoodo','Suicune','Sunflora','Sunkern','Surskit','Swablu','Swadloon','Swalot','Swampert','Swanna','Swellow','Swirlix','Swoobat','Sylveon','Taillow','Talonflame','Tangela','Tauros','Teddiursa','Tentacool','Tentacruel','Tepig','Terrakion','Throh','Thundurus','Timburr','Tirtouga','Togekiss','Togepi','Togetic','Torchic','Torkoal','Tornadus','Torterra','Totodile','Toxicroak','Tranquill','Trapinch','Treecko','Trevenant','Tropius','Trubbish','Turtwig','Tympole','Tynamo','Typhlosion','Tyrantrum','Tyrogue','Tyrunt','Umbreon','Unfezant','Ursaring','Uxie','Vanillish','Vanillite','Vanilluxe','Vaporeon','Venipede','Venusaur','Vespiquen','Vibrava','Victini','Vigoroth','Virizion','Vivillon','Volbeat','Volcanion','Voltorb','Vullaby','Vulpix','Wailmer','Wailord','Walrein','Wartortle','Watchog',' Weezing','Whimsicott','Whirlipede','Whiscash','Whismur','Wigglytuff','Woobat','Wooper','Wormadam','Wurmple','Xerneas','Yamask','Yveltal','Zangoose','Zapdos','Zebstrika','Zekrom','Zigzagoon','Zoroark','Zorua','Zweilous'],
+		banlist: ['Illegal','Abomasnow','Absol','Accelgor','Aegislash','Aerodactyl','Aggron','Aipom','Alomomola','Altaria','Amaura','Ambipom','Amoonguss','Ampharos','Anorith','Arbok','Arceus','Archen','Archeops','Armaldo','Aromatisse','Aron','Articuno','Audino','Aurorus','Avalugg','Axew','Azelf','Azumarill','Azurill','Baltoy','Banette','Barbaracle','Barboach','Basculin','Bastiodon','Bayleef','Beartic','Beautifly','Beheeyem','Beldum','Bergmite','Bibarel','Bidoof','Binacle','Blastoise','Blaziken','Blitzle','Boldore','Bonsly','Bouffalant','Braixen','Braviary','Breloom','Bronzong','Bronzor','Budew','Buizel','Bulbasaur','Bunnelby','Burmy','Cacnea','Cacturne','Camerupt','Carbink','Carnivine','Carracosta','Carvanha','Cascoon','Castform','Celebi','Chandelure','Charizard','Charmander','Charmeleon','Chatot','Cherrim','Cherubi','Chesnaught','Chespin','Chikorita','Chimchar','Chimecho','Chinchou','Chingling','Cinccino','Clamperl','Clauncher','Clawitzer','Claydol','Cobalion','Cofagrigus','Combee','Combusken','Conkeldurr','Corphish','Corsola','Cottonee','Cradily','Cranidos','Crawdaunt','Cresselia','Croagunk','Croconaw','Crustle','Cryogonal','Cubchoo','Cyndaquil','Darkrai','Darmanitan','Darumaka','Dedenne','Deerling','Deino','Delcatty','Delphox','Deoxys','Dewott','Dialga','Diancie','Diggersby','Diglett','Ditto','Dodrio','Doduo','Doublade','Dragalge','Drapion','Drifblim','Drifloon','Drilbur','Druddigon','Ducklett','Dugtrio','Duosion','Durant','Dusclops','Dusknoir','Duskull','Dustox','Dwebble','Eelektrik','Eelektross','Eevee','Ekans','Electabuzz','Electivire','Electrike','Electrode','Elekid','Elgyem','Emboar','Emolga','Empoleon','Entei','Escavalier','Espeon','Espurr','Excadrill','Exeggcute','Exeggutor','Exploud','Farfetchd','Feebas','Fennekin','Feraligatr','Ferroseed','Ferrothorn','Finneon','Flaaffy','Flabébé','Flareon','Fletchinder','Fletchling','Floatzel','Floette','Florges','Foongus','Forretress','Fraxure','Frillish','Froakie','Frogadier','Froslass','Furfrou','Gabite','Gallade','Galvantula','Garbodor','Garchomp','Gardevoir','Gastrodon','Genesect','Geodude','Gible','Gigalith','Girafarig','Giratina','Glaceon','Glalie','Glameow','Gligar','Gliscor','Gogoat','Goldeen','Golett','Golurk','Goodra','Goomy','Gorebyss','Gothita','Gothitelle','Gothorita','Gourgeist','Granbull','Greninja','Grimer','Grotle','Groudon','Grovyle','Growlithe','Grumpig','Gulpin','Gurdurr','Hariyama','Haxorus','Heatmor','Heatran','Heliolisk','Helioptile','Herdier','Hippopotas','Hippowdon','Hitmonchan','Hitmonlee','Hitmontop','Ho-Oh','Honedge','Hoopa','Hoothoot','Houndoom','Houndour','Huntail','Hydreigon','Igglybuff','Illumise','Infernape','Inkay','Ivysaur','Jellicent','Jigglypuff','Jirachi','Jolteon','Joltik','Jynx','Kabuto','Kabutops','Kangaskhan','Karrablast','Kecleon','Keldeo','Kirlia','Klang','Klefki','Klink','Klinklang','Koffing','Kricketot','Kricketune','Krokorok','Krookodile','Kyogre','Kyurem','Lairon','Lampent','Landorus','Lanturn','Latias','Latios','Leafeon','Leavanny','Lickilicky','Lickitung','Liepard','Lileep','Lilligant','Lillipup','Linoone','Litleo','Litwick','Lombre','Lotad','Loudred','Lucario','Ludicolo','Lugia','Lumineon','Lunatone','Luvdisc','Luxio','Luxray','Magmar','Makuhita','Malamar','Manaphy','Mandibuzz','Manectric','Mankey','Mantine','Mantyke','Maractus','Mareep','Marill','Marshtomp','Masquerain','Medicham','Meditite','Meganium','Meloetta','Meowstic','Mesprit','Metagross','Metang','Mew','Mewtwo','Mienfoo','Mienshao','Mightyena','Milotic','Miltank','MimeJr.','Minccino','Minun','Moltres','Monferno','Mothim','Mr.Mime','Mudkip','Muk','Munchlax','Munna','Musharna','Nidoking','Nidoqueen','Nidoran-F','Nidoran-M','Nidorina','Nidorino','Nincada','Ninetales','Ninjask','Noctowl','Noibat','Noivern','Nosepass','Numel','Nuzleaf','Omanyte','Omastar','Oshawott','Pachirisu','Palkia','Palpitoad','Pancham','Pangoro','Panpour','Pansage','Pansear','Paras','Parasect','Patrat','Persian','Petilil','Phantump','Phione','Pichu','Pidove','Pignite','Pikachu','Pineco','Piplup','Plusle','Politoed','Poliwag','Poliwhirl','Poliwrath','Poochyena','Primeape','Prinplup','Probopass','Pumpkaboo','Purrloin','Purugly','Pyroar','Quagsire','Quilava','Quilladin','Qwilfish','Raichu','Raikou','Ralts','Rampardos','Raticate','Rattata','Rayquaza','Regice','Regigigas','Regirock','Registeel','Relicanth','Reshiram','Reuniclus','Rhydon','Rhyhorn','Rhyperior','Riolu','Roggenrola','Roselia','Roserade','Rotom','Rufflet','Samurott','Sandile','Sandshrew','Sandslash','Sawk','Sawsbuck','Scatterbug','Sceptile','Scolipede','Scrafty','Scraggy','Seaking','Sealeo','Seedot','Seismitoad','Serperior','Servine','Seviper','Sewaddle','Sharpedo','Shaymin','Shedinja','Shellos','Shelmet','Shieldon','Shiftry','Shinx','Shroomish','Shuckle','Shuppet','Sigilyph','Silcoon','Simipour','Simisage','Simisear','Skiddo','Skitty','Skorupi','Skrelp','Skuntank','Slaking','Slakoth','Sliggoo','Slurpuff','Smeargle','Smoochum','Snivy','Snorlax','Snorunt','Snover','Snubbull','Solosis','Solrock','Spewpa','Spheal','Spinda','Spiritomb','Spoink','Spritzee','Squirtle','Stantler','Staraptor','Staravia','Starly','Stoutland','Stunfisk','Stunky','Sudowoodo','Suicune','Sunflora','Sunkern','Surskit','Swablu','Swadloon','Swalot','Swampert','Swanna','Swellow','Swirlix','Swoobat','Sylveon','Taillow','Talonflame','Tangela','Tauros','Teddiursa','Tentacool','Tentacruel','Tepig','Terrakion','Throh','Thundurus','Timburr','Tirtouga','Togekiss','Togepi','Togetic','Torchic','Torkoal','Tornadus','Torterra','Totodile','Toxicroak','Tranquill','Trapinch','Treecko','Trevenant','Tropius','Trubbish','Turtwig','Tympole','Tynamo','Typhlosion','Tyrantrum','Tyrogue','Tyrunt','Umbreon','Unfezant','Ursaring','Uxie','Vanillish','Vanillite','Vanilluxe','Vaporeon','Venipede','Venusaur','Vespiquen','Vibrava','Victini','Vigoroth','Virizion','Vivillon','Volbeat','Volcanion','Voltorb','Vullaby','Vulpix','Wailmer','Wailord','Walrein','Wartortle','Watchog',' Weezing','Whimsicott','Whirlipede','Whiscash','Whismur','Wigglytuff','Woobat','Wooper','Wormadam','Wurmple','Xerneas','Yamask','Yveltal','Zangoose','Zapdos','Zebstrika','Zekrom','Zigzagoon','Zoroark','Zorua','Zweilous'],
 	},
 	{
   		name: "[Gen 7] Mememons",
@@ -8127,7 +8127,399 @@ exports.Formats = [
 		section: "Mashups",
 		column: 4,
 	},
-	{
+	//copied and pasted from docs some of these so might be some bugs.
+	  {
+        name: "[Gen 7 Let's Go] Pure Hackmons",
+        desc: `Bring three Pok&eacute;mon to Team Preview and choose one to battle.`,
+        threads: [`&bullet; <a href="https://www.smogon.com/forums/threads/3587523/">1v1</a>`],
+
+        mod: 'letsgo',
+        ruleset: ['Pokemon', 'Team Preview'],
+        banlist: [' '],
+    },
+          {
+        name: "[Gen 7 Let's Go] 1v1 AG",
+        desc: `Bring three Pok&eacute;mon to Team Preview and choose one to battle.`,
+        threads: [`&bullet; <a href="https://www.smogon.com/forums/threads/3587523/">1v1</a>`],
+
+        mod: 'letsgo',
+        forcedLevel: 50,
+        teamLength: {
+            validate: [1, 3],
+            battle: 1,
+        },
+        ruleset: ['Pokemon', 'Species Clause', 'Nickname Clause', 'OHKO Clause', 'Evasion Moves Clause', 'Accuracy Moves Clause', 'Swagger Clause', 'HP Percentage Mod', 'Cancel Mod', 'Team Preview'],
+        banlist: ['Illegal', 'Unreleased'],
+    },
+  {
+        name: "[Gen 7 Let's Go] 1v1 PH",
+        desc: `Bring three Pok&eacute;mon to Team Preview and choose one to battle.`,
+        threads: [`&bullet; <a href="https://www.smogon.com/forums/threads/3587523/">1v1</a>`],
+
+        mod: 'letsgo',
+        forcedLevel: 50,
+        teamLength: {
+            validate: [1, 3],
+            battle: 1,
+        },
+        ruleset: ['Pokemon', 'Team Preview'],
+        banlist: [' '],
+    },
+  {  name: "[Gen 7] Mix and Mega + Camomons",
+        desc: `Mix and Mega and Camomons`,
+        threads: [
+            `&bullet; <a href="https://www.smogon.com/forums/threads/3587740/">Mix and Mega</a>`,
+            `&bullet; <a href="https://www.smogon.com/forums/threads/3591580/">Mix and Mega Resources</a>`,
+        ],
+
+        mod: 'mixandmega',
+        ruleset: ['Pokemon', 'Standard', 'Team Preview', 'Cancel Mod', 'HP Percentage Mod', 'Endless Battle Clause'],
+        onModifyTemplate: function (template, target, source) {
+            if (!source) return;
+            let types = [...new Set(target.baseMoveSlots.slice(0, 2).map(move => this.getMove(move.id).type))];
+            return Object.assign({}, template, {types: types});
+        },
+  onValidateTeam: function (team) {
+            /**@type {{[k: string]: true}} */
+            let itemTable = {};
+            for (const set of team) {
+                let item = this.getItem(set.item);
+      if (!item) continue;
+                if (itemTable[item.id] && item.megaStone) return ["You are limited to one of each Mega Stone.", "(You have more than one " + this.getItem(item).name + ")"];
+                if (itemTable[item.id] && ['blueorb', 'redorb'].includes(item.id)) return ["You are limited to one of each Primal Orb.", "(You have more than one " + this.getItem(item).name + ")"];
+                itemTable[item.id] = true;
+            }
+        },
+        
+        onValidateSet: function (set, format) {
+            let template = this.getTemplate(set.species || set.name);
+            let item = this.getItem(set.item);
+            if (!item.megaEvolves && !['blueorb', 'redorb', 'ultranecroziumz'].includes(item.id)) return;
+            if (template.baseSpecies === item.megaEvolves || (template.baseSpecies === 'Groudon' && item.id === 'redorb') || (template.baseSpecies === 'Kyogre' && item.id === 'blueorb') || (template.species.substr(0, 9) === 'Necrozma-' && item.id === 'ultranecroziumz')) return;
+            let uberStones = format.restrictedStones || [];
+            let uberPokemon = format.canMega || [];
+            if (uberPokemon.includes(template.name) || set.ability === 'Power Construct' || uberStones.includes(item.name)) return ["" + template.species + " is not allowed to hold " + item.name + "."];
+        },
+     onBegin: function () {
+            for (const pokemon of this.p1.pokemon.concat(this.p2.pokemon)) {
+                pokemon.originalSpecies = pokemon.baseTemplate.species;
+            }
+        },
+        onSwitchIn: function (pokemon) {
+            let oMegaTemplate = this.getTemplate(pokemon.template.originalMega);
+            if (oMegaTemplate.exists && pokemon.originalSpecies !== oMegaTemplate.baseSpecies) {
+                // Place volatiles on the Pokémon to show its mega-evolved condition and details
+                this.add('-start', pokemon, oMegaTemplate.requiredItem || oMegaTemplate.requiredMove, '[silent]');
+                let oTemplate = this.getTemplate(pokemon.originalSpecies);
+                if (oTemplate.types.length !== pokemon.template.types.length || oTemplate.types[1] !== pokemon.template.types[1]) {
+                    this.add('-start', pokemon, 'typechange', pokemon.template.types.join('/'), '[silent]');
+                }
+            }
+        },
+        onSwitchOut: function (pokemon) {
+            let oMegaTemplate = this.getTemplate(pokemon.template.originalMega);
+            if (oMegaTemplate.exists && pokemon.originalSpecies !== oMegaTemplate.baseSpecies) {
+                this.add('-end', pokemon, oMegaTemplate.requiredItem || oMegaTemplate.requiredMove, '[silent]');
+            }
+        },
+    },
+   {
+        name: "[Gen 7] Mix and Mega AG",
+        desc: `Mega Stones and Primal Orbs can be used on almost any Pok&eacute;mon with no Mega Evolution limit.`,
+        threads: [
+            `&bullet; <a href="https://www.smogon.com/forums/threads/3587740/">Mix and Mega</a>`,
+            `&bullet; <a href="https://www.smogon.com/forums/threads/3591580/">Mix and Mega Resources</a>`,
+        ],
+
+        mod: 'mixandmega',
+        ruleset: ['Pokemon', 'Standard', 'Team Preview', 'Cancel Mod', 'HP Percentage Mod', 'Endless Battle Clause'],
+        
+  onValidateTeam: function (team) {
+            /**@type {{[k: string]: true}} */
+            let itemTable = {};
+            for (const set of team) {
+                let item = this.getItem(set.item);
+      if (!item) continue;
+                if (itemTable[item.id] && item.megaStone) return ["You are limited to one of each Mega Stone.", "(You have more than one " + this.getItem(item).name + ")"];
+                if (itemTable[item.id] && ['blueorb', 'redorb'].includes(item.id)) return ["You are limited to one of each Primal Orb.", "(You have more than one " + this.getItem(item).name + ")"];
+                itemTable[item.id] = true;
+            }
+        },
+        
+        onValidateSet: function (set, format) {
+            let template = this.getTemplate(set.species || set.name);
+            let item = this.getItem(set.item);
+            if (!item.megaEvolves && !['blueorb', 'redorb', 'ultranecroziumz'].includes(item.id)) return;
+            if (template.baseSpecies === item.megaEvolves || (template.baseSpecies === 'Groudon' && item.id === 'redorb') || (template.baseSpecies === 'Kyogre' && item.id === 'blueorb') || (template.species.substr(0, 9) === 'Necrozma-' && item.id === 'ultranecroziumz')) return;
+            let uberStones = format.restrictedStones || [];
+            let uberPokemon = format.canMega || [];
+            if (uberPokemon.includes(template.name) || set.ability === 'Power Construct' || uberStones.includes(item.name)) return ["" + template.species + " is not allowed to hold " + item.name + "."];
+        },
+     onBegin: function () {
+            for (const pokemon of this.p1.pokemon.concat(this.p2.pokemon)) {
+                pokemon.originalSpecies = pokemon.baseTemplate.species;
+            }
+        },
+        onSwitchIn: function (pokemon) {
+            let oMegaTemplate = this.getTemplate(pokemon.template.originalMega);
+            if (oMegaTemplate.exists && pokemon.originalSpecies !== oMegaTemplate.baseSpecies) {
+                // Place volatiles on the Pokémon to show its mega-evolved condition and details
+                this.add('-start', pokemon, oMegaTemplate.requiredItem || oMegaTemplate.requiredMove, '[silent]');
+                let oTemplate = this.getTemplate(pokemon.originalSpecies);
+                if (oTemplate.types.length !== pokemon.template.types.length || oTemplate.types[1] !== pokemon.template.types[1]) {
+                    this.add('-start', pokemon, 'typechange', pokemon.template.types.join('/'), '[silent]');
+                }
+            }
+        },
+        onSwitchOut: function (pokemon) {
+            let oMegaTemplate = this.getTemplate(pokemon.template.originalMega);
+            if (oMegaTemplate.exists && pokemon.originalSpecies !== oMegaTemplate.baseSpecies) {
+                this.add('-end', pokemon, oMegaTemplate.requiredItem || oMegaTemplate.requiredMove, '[silent]');
+            }
+        },
+    },
+     {
+        name: "[Gen 7] Mix and Mega STABmons",
+        desc: `Mega Stones and Primal Orbs can be used on almost any Pok&eacute;mon with no Mega Evolution limit.`,
+        threads: [
+            `&bullet; <a href="https://www.smogon.com/forums/threads/3587740/">Mix and Mega</a>`,
+            `&bullet; <a href="https://www.smogon.com/forums/threads/3591580/">Mix and Mega Resources</a>`,
+        ],
+
+        mod: 'mixandmega',
+        ruleset: ['Pokemon', 'Standard', 'Mega Rayquaza Clause', 'Team Preview', 'STABmons Move Legality'],
+        banlist: ['Shadow Tag', 'Gengarite', 'Baton Pass', 'Electrify'],
+        restrictedStones: ['Beedrillite', 'Blazikenite', 'Kangaskhanite', 'Mawilite', 'Medichamite', 'Pidgeotite', 'Ultranecrozium Z'],
+        cannotMega: [
+            'Arceus', 'Deoxys', 'Deoxys-Attack', 'Deoxys-Speed', 'Dialga', 'Dragonite', 'Giratina', 'Groudon', 'Ho-Oh', 'Kyogre',
+            'Kyurem-Black', 'Kyurem-White', 'Lugia', 'Lunala', 'Marshadow', 'Mewtwo', 'Naganadel', 'Necrozma-Dawn-Wings', 'Necrozma-Dusk-Mane',
+            'Palkia', 'Pheromosa', 'Rayquaza', 'Regigigas', 'Reshiram', 'Slaking', 'Solgaleo', 'Xerneas', 'Yveltal', 'Zekrom',
+        ],
+        onValidateTeam: function (team) {
+            /**@type {{[k: string]: true}} */
+            let itemTable = {};
+            for (const set of team) {
+                let item = this.getItem(set.item);
+                if (!item) continue;
+                if (itemTable[item.id] && item.megaStone) return ["You are limited to one of each Mega Stone.", "(You have more than one " + this.getItem(item).name + ")"];
+                if (itemTable[item.id] && ['blueorb', 'redorb'].includes(item.id)) return ["You are limited to one of each Primal Orb.", "(You have more than one " + this.getItem(item).name + ")"];
+                itemTable[item.id] = true;
+            }
+        },
+        onValidateSet: function (set, format) {
+            let template = this.getTemplate(set.species || set.name);
+            let item = this.getItem(set.item);
+            if (!item.megaEvolves && !['blueorb', 'redorb', 'ultranecroziumz'].includes(item.id)) return;
+            if (template.baseSpecies === item.megaEvolves || (template.baseSpecies === 'Groudon' && item.id === 'redorb') || (template.baseSpecies === 'Kyogre' && item.id === 'blueorb') || (template.species.substr(0, 9) === 'Necrozma-' && item.id === 'ultranecroziumz')) return;
+            let uberStones = format.restrictedStones || [];
+            let uberPokemon = format.cannotMega || [];
+            if (uberPokemon.includes(template.name) || set.ability === 'Power Construct' || uberStones.includes(item.name)) return ["" + template.species + " is not allowed to hold " + item.name + "."];
+        },
+        onBegin: function () {
+            for (const pokemon of this.p1.pokemon.concat(this.p2.pokemon)) {
+                pokemon.originalSpecies = pokemon.baseTemplate.species;
+            }
+        },
+        onSwitchIn: function (pokemon) {
+            let oMegaTemplate = this.getTemplate(pokemon.template.originalMega);
+            if (oMegaTemplate.exists && pokemon.originalSpecies !== oMegaTemplate.baseSpecies) {
+                // Place volatiles on the Pokémon to show its mega-evolved condition and details
+                this.add('-start', pokemon, oMegaTemplate.requiredItem || oMegaTemplate.requiredMove, '[silent]');
+                let oTemplate = this.getTemplate(pokemon.originalSpecies);
+                if (oTemplate.types.length !== pokemon.template.types.length || oTemplate.types[1] !== pokemon.template.types[1]) {
+                    this.add('-start', pokemon, 'typechange', pokemon.template.types.join('/'), '[silent]');
+                }
+            }
+        },
+        onSwitchOut: function (pokemon) {
+            let oMegaTemplate = this.getTemplate(pokemon.template.originalMega);
+            if (oMegaTemplate.exists && pokemon.originalSpecies !== oMegaTemplate.baseSpecies) {
+                this.add('-end', pokemon, oMegaTemplate.requiredItem || oMegaTemplate.requiredMove, '[silent]');
+            }
+        },
+    },
+    
+    {
+        name: "[Gen 7] Almost Any Ability STABmons",
+        desc: `Pok&eacute;mon can use any ability, barring the few that are restricted to their natural users.`,
+        threads: [
+            `&bullet; <a href="https://www.smogon.com/forums/threads/3587901/">Almost Any Ability</a>`,
+            `&bullet; <a href="https://www.smogon.com/forums/threads/3595753/">AAA Resources</a>`,
+        ],
+
+        mod: 'gen7',
+        ruleset: ['[Gen 7] OU', 'Ability Clause', 'Ignore Illegal Abilities', 'STABmons Move Legality'],
+        banlist: ['Archeops', 'Dragonite', 'Hoopa-Unbound', 'Kartana', 'Keldeo', 'Kyurem-Black', 'Regigigas', 'Shedinja', 'Slaking', 'Terrakion', 'Zygarde-Base'],
+        unbanlist: ['Aegislash', 'Genesect', 'Landorus', 'Metagross-Mega', 'Naganadel'],
+        restrictedAbilities: [
+            'Comatose', 'Contrary', 'Fluffy', 'Fur Coat', 'Huge Power', 'Illusion', 'Imposter', 'Innards Out',
+            'Parental Bond', 'Protean', 'Pure Power', 'Simple', 'Speed Boost', 'Stakeout', 'Water Bubble', 'Wonder Guard',
+        ],
+        onValidateSet: function (set, format) {
+            let restrictedAbilities = format.restrictedAbilities || [];
+            if (restrictedAbilities.includes(set.ability)) {
+                let template = this.getTemplate(set.species || set.name);
+                let legalAbility = false;
+                for (let i in template.abilities) {
+                    // @ts-ignore
+                    if (set.ability === template.abilities[i]) legalAbility = true;
+                }
+                if (!legalAbility) return ['The ability ' + set.ability + ' is banned on Pok\u00e9mon that do not naturally have it.'];
+            }
+        },
+    },
+  {
+        name: "[Gen 7] Almost Any Ability Let's Go",
+        desc: `Pok&eacute;mon can use any ability, barring the few that are restricted to their natural users.`,
+        threads: [
+            `&bullet; <a href="https://www.smogon.com/forums/threads/3587901/">Almost Any Ability</a>`,
+            `&bullet; <a href="https://www.smogon.com/forums/threads/3595753/">AAA Resources</a>`,
+        ],
+
+        mod: 'letsgo',
+        ruleset: ['[Gen 7] OU', 'Ability Clause', 'Ignore Illegal Abilities'],
+        banlist: ['Archeops', 'Dragonite', 'Hoopa-Unbound', 'Kartana', 'Keldeo', 'Kyurem-Black', 'Regigigas', 'Shedinja', 'Slaking', 'Terrakion', 'Zygarde-Base'],
+        unbanlist: ['Aegislash', 'Genesect', 'Landorus', 'Metagross-Mega', 'Naganadel'],
+        restrictedAbilities: [
+            'Comatose', 'Contrary', 'Fluffy', 'Fur Coat', 'Huge Power', 'Illusion', 'Imposter', 'Innards Out',
+            'Parental Bond', 'Protean', 'Pure Power', 'Simple', 'Speed Boost', 'Stakeout', 'Water Bubble', 'Wonder Guard',
+        ],
+        onValidateSet: function (set, format) {
+            let restrictedAbilities = format.restrictedAbilities || [];
+            if (restrictedAbilities.includes(set.ability)) {
+                let template = this.getTemplate(set.species || set.name);
+                let legalAbility = false;
+                for (let i in template.abilities) {
+                    // @ts-ignore
+                    if (set.ability === template.abilities[i]) legalAbility = true;
+                }
+                if (!legalAbility) return ['The ability ' + set.ability + ' is banned on Pok\u00e9mon that do not naturally have it.'];
+            }
+        },
+    },
+  {
+        name: "[Gen 7] Almost Any Ability Ubers",
+        desc: `Pok&eacute;mon can use any ability, barring the few that are restricted to their natural users.`,
+        threads: [
+            `&bullet; <a href="https://www.smogon.com/forums/threads/3587901/">Almost Any Ability</a>`,
+            `&bullet; <a href="https://www.smogon.com/forums/threads/3595753/">AAA Resources</a>`,
+        ],
+
+        mod: 'gen7',
+        ruleset: ['[Gen 7] Ubers', 'Ability Clause', 'Ignore Illegal Abilities'],
+        banlist: ['Necrozma-Dusk-Mane'],
+        restrictedAbilities: [
+            'Comatose', 'Contrary', 'Fluffy', 'Fur Coat', 'Huge Power', 'Illusion', 'Imposter', 'Innards Out',
+            'Parental Bond', 'Protean', 'Pure Power', 'Simple', 'Speed Boost', 'Stakeout', 'Water Bubble', 'Wonder Guard',
+        ],
+        onValidateSet: function (set, format) {
+            let restrictedAbilities = format.restrictedAbilities || [];
+            if (restrictedAbilities.includes(set.ability)) {
+                let template = this.getTemplate(set.species || set.name);
+                let legalAbility = false;
+                for (let i in template.abilities) {
+                    // @ts-ignore
+                    if (set.ability === template.abilities[i]) legalAbility = true;
+                }
+                if (!legalAbility) return ['The ability ' + set.ability + ' is banned on Pok\u00e9mon that do not naturally have it.'];
+            }
+        },
+    },
+ 
+     {
+        name: "[Gen 7] STAAABmons",
+        desc: `Pok&eacute;mon can use any move of their typing, in addition to the moves they can normally learn.`,
+        threads: [
+            `&bullet; <a href="https://www.smogon.com/forums/threads/3587949/">STABmons</a>`,
+        ],
+
+        mod: 'gen7',
+        searchShow: false,
+        ruleset: ['[Gen 7] OU', 'STABmons Move Legality', 'Ability Clause', 'Ignore Illegal Abilities'],
+        banlist: ['Aerodactyl-Mega', 'Blacephalon', 'Kartana', 'Komala', 'Kyurem-Black', 'Porygon-Z', 'Silvally', 'Tapu Koko', 'Tapu Lele', 'King\'s Rock', 'Razor Fang', 'Weavile', 'Zygarde'],
+        restrictedMoves: ['Acupressure', 'Belly Drum', 'Chatter', 'Extreme Speed', 'Geomancy', 'Lovely Kiss', 'Shell Smash', 'Shift Gear', 'Spore', 'Thousand Arrows'],
+    },
+  {
+        name: "[Gen 7] STABmons Ubers",
+        desc: `Pok&eacute;mon can use any move of their typing, in addition to the moves they can normally learn.`,
+        threads: [
+            `&bullet; <a href="https://www.smogon.com/forums/threads/3587949/">STABmons</a>`,
+        ],
+
+        mod: 'gen7',
+        searchShow: true,
+        ruleset: ['[Gen 7] OU', 'STABmons Move Legality'],
+        banlist: ['Komala'],
+        restrictedMoves: ['Acupressure', 'Belly Drum', 'Chatter', 'Extreme Speed', 'Geomancy', 'Lovely Kiss', 'Shell Smash', 'Shift Gear', 'Spore', 'Thousand Arrows'],
+    },
+  {
+        name: "[Gen 7] Camomons",
+        desc: `Pok&eacute;mon change type to match their first two moves.`,
+        threads: [
+            `&bullet; <a href="https://www.smogon.com/forums/threads/3598418/">Camomons</a>`,
+        ],
+        mod: 'gen7',
+        searchShow: true,
+        ruleset: ['[Gen 7] OU'],
+        banlist: ['Kartana', 'Kyurem-Black', 'Shedinja'],
+        onModifyTemplate: function (template, target, source) {
+            if (!source) return;
+            let types = [...new Set(target.baseMoveSlots.slice(0, 2).map(move => this.getMove(move.id).type))];
+            return Object.assign({}, template, {types: types});
+        },
+        onSwitchIn: function (pokemon) {
+            this.add('-start', pokemon, 'typechange', pokemon.types.join('/'), '[silent]');
+        },
+        onAfterMega: function (pokemon) {
+            this.add('-start', pokemon, 'typechange', pokemon.types.join('/'), '[silent]');
+        },
+    },
+    {
+        name: "[Gen 7] Camomons AG",
+        desc: `Pok&eacute;mon change type to match their first two moves.`,
+        threads: [
+            `&bullet; <a href="https://www.smogon.com/forums/threads/3598418/">Camomons</a>`,
+        ],
+        mod: 'gen7',
+        searchShow: true,
+        ruleset: ['[Gen 7] AG'],
+        onModifyTemplate: function (template, target, source) {
+            if (!source) return;
+            let types = [...new Set(target.baseMoveSlots.slice(0, 2).map(move => this.getMove(move.id).type))];
+            return Object.assign({}, template, {types: types});
+        },
+        onSwitchIn: function (pokemon) {
+            this.add('-start', pokemon, 'typechange', pokemon.types.join('/'), '[silent]');
+        },
+        onAfterMega: function (pokemon) {
+            this.add('-start', pokemon, 'typechange', pokemon.types.join('/'), '[silent]');
+        },
+    },
+  {
+        name: "[Gen 7] Camomons AAA",
+        desc: `Pok&eacute;mon change type to match their first two moves.`,
+        threads: [
+            `&bullet; <a href="https://www.smogon.com/forums/threads/3598418/">Camomons</a>`,
+        ],
+        mod: 'gen7',
+        searchShow: true,
+        ruleset: ['[Gen 7] OU', 'Ignore Illegal Abilities', 'Ability Clause'],
+        banlist: ['Kartana', 'Kyurem-Black', 'Shedinja'],
+        unbanlist: ['Genesect', 'Naganadel', 'Metagrossite', 'Metagross-Mega'],
+    
+    onModifyTemplate: function (template, target, source) {
+            if (!source) return;
+            let types = [...new Set(target.baseMoveSlots.slice(0, 2).map(move => this.getMove(move.id).type))];
+            return Object.assign({}, template, {types: types});
+        },
+        onSwitchIn: function (pokemon) {
+            this.add('-start', pokemon, 'typechange', pokemon.types.join('/'), '[silent]');
+        },
+        onAfterMega: function (pokemon) {
+            this.add('-start', pokemon, 'typechange', pokemon.types.join('/'), '[silent]');
+        },
+    }, 
+    {
     name: "[Gen 7] 1v1 AAA",
     desc: [
         "Almost Any Ability 1v1",
