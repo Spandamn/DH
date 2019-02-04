@@ -211,7 +211,7 @@ exports.BattleAbilities = {
 			this.removePseudoWeather('trickroom');
 			this.removePseudoWeather('magicroom');
 			this.removePseudoWeather('wonderroom');
-			//	this.removePseudoWeather('inverseroom');
+			this.removePseudoWeather('inverseroom');
 			let sideConditions = ['spikes', 'toxicspikes', 'stealthrock', 'stickyweb'];
 			for (const condition of sideConditions) {
 				if (pokemon.hp && pokemon.side.removeSideCondition(condition)) {
