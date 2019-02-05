@@ -3068,7 +3068,7 @@ exports.Formats = [
 			target.volatiles = {};
 		},
 	},
-	{
+	/*{
 		name: "[Gen 7] Camomons",
 		desc: [
 			"Pok&eacute;mon change type to match their first two moves.",
@@ -3089,7 +3089,7 @@ exports.Formats = [
 		onSwitchIn: function (pokemon) {
 			this.add('-start', pokemon, 'typechange', pokemon.types.join('/'), '[silent]');
 		},
-	},
+	},*/
 	{
 		name: "[Gen 7] Chimera 1v1",
 		desc: [
