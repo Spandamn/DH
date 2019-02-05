@@ -3070,6 +3070,7 @@ exports.Formats = [
 	},
 		{
 		name: "[Gen 7] Camomons",
+			//code has been tested
 		desc: `Pok&eacute;mon change type to match their first two moves.`,
 		threads: [
 			`&bullet; <a href="https://www.smogon.com/forums/threads/3598418/">Camomons</a>`,
