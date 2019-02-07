@@ -4254,6 +4254,7 @@ exports.Formats = [
 		onBegin: function () {
 			for (let s = 0; s < this.sides.length; s++) {
 				for (let i = 0; i < this.sides[s].pokemon.length; i++) {
+					let pokemon = this.sides[s].pokemon[i];
 					let partnerIndexs = [i - 1, i + 1];
 					partnerIndexs.map(j => {
 						if (j < 0) return this.sides[s].pokemon.length - 1;
