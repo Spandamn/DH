@@ -248,46 +248,6 @@ distor: function (target, room, user, connection, cmd) {
 	this.sendReplyBox('<div class="message"><ul class="utilichart"><li class="result"><span class="col numcol"><b>Istor</b></span> <span class="col iconcol"><span style="background:transparent url(//play.pokemonshowdown.com/sprites/smicons-sheet.png?a1) no-repeat scroll -40px -2430px"></span></span> <span class="col pokemonnamecol" style="white-space:nowrap"><a href="https://github.com/XpRienzo/DragonHeaven/blob/master/mods/aurora/README.md" target="_blank">Yddraig</a></span> <span class="col typecol"><img src="//play.pokemonshowdown.com/sprites/types/Dragon.png" alt="Dragon" height="14" width="32"></span> <span style="float:left;min-height:26px"><span class="col abilitycol">Infernal Scales / Shed Skin</span><span class="col abilitycol"></span></span><span style="float:left;min-height:26px"><span class="col statcol"><em>HP</em><br>60</span> <span class="col statcol"><em>Atk</em><br>60</span> <span class="col statcol"><em>Def</em><br>55</span> <span class="col statcol"><em>SpA</em><br>75</span> <span class="col statcol"><em>SpD</em><br>55</span> <span class="col statcol"><em>Spe</em><br>85</span> <span class="col bstcol"><em>BST<br>390</em></span> </span></li><li style="clear:both"></li></ul></div>');	
 	
 	},
-	tell: function (target, room, user, connection) {
-		if (!target) return this.parse('/help tell');
-		target = this.splitTarget(target);
-		let targetUser = this.targetUser;
-		if (!target) {
-			this.sendReply("You forgot the comma.");
-			return this.parse('/help tell');
-		}
-
-		if (targetUser && targetUser.connected) {
-			return this.parse('/pm ' + this.targetUsername + ', ' + target);
-		}
-
-		if (user.locked) return this.popupReply("You may not send offline messages when locked.");
-		if (target.length > 255) return this.popupReply("Your message is too long to be sent as an offline message (>255 characters).");
-
-		if (Config.tellrank === 'autoconfirmed' && !user.autoconfirmed) {
-			return this.popupReply("You must be autoconfirmed to send an offline message.");
-		} else if (!Config.tellrank || Config.groupsranking.indexOf(user.group) < Config.groupsranking.indexOf(Config.tellrank)) {
-			return this.popupReply("You cannot send an offline message because offline messaging is " +
-				(!Config.tellrank ? "disabled" : "only available to users of rank " + Config.tellrank + " and above") + ".");
-		}
-
-		let userid = toId(this.targetUsername);
-		if (userid.length > 18) return this.popupReply("\"" + this.targetUsername + "\" is not a legal username.");
-
-		let sendSuccess = Tells.addTell(user, userid, target);
-		if (!sendSuccess) {
-			if (sendSuccess === false) {
-				return this.popupReply("User " + this.targetUsername + " has too many offline messages queued.");
-			} else {
-				return this.popupReply("You have too many outgoing offline messages queued. Please wait until some have been received or have expired.");
-			}
-		}
-		return connection.send('|pm|' + user.getIdentity() + '|' +
-			(targetUser ? targetUser.getIdentity() : ' ' + this.targetUsername) +
-			"|/text This user is currently offline. Your message will be delivered when they are next online.");
-	},
-	tellhelp: ["/tell [username], [message] - Send a message to an offline user that will be received when they log in."],
-
 	credits: function (target, room, user) {
 		let color = require('../config/color'), hashColor = function(name, bold) {
 			return (bold ? "<b>" : "") + "<font color=" + color(name) + ">" + (Users(name) && Users(name).connected && Users.getExact(name) ? Chat.escapeHTML(Users.getExact(name).name) : Chat.escapeHTML(name)) + "</font>" + (bold ? "</b>" : "");
