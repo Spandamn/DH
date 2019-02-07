@@ -4257,10 +4257,8 @@ exports.Formats = [
 				for (let i = 0; i < side.pokemon.length; i++) {
 					let pokemon = side.pokemon[i];
 					let partnerIndexs = [i - 1, i + 1];
-					partnerIndexs.map(j => {
-						if (j < 0) return side.pokemon.length - 1;
-						if (j >= side.pokemon.length) return 0;
-					});
+					if (partnerIndexs[0] < 0) partnerIndexs[0] = side.pokemon.length - 1;
+					if (partnerIndexs[1] >= side.pokemon.length) partnerIndexs[1] = 0; 
 					pokemon.innates = [side.pokemon[partnerIndexs[0]].ability, side.pokemon[partnerIndexs[1]].ability];
 				}
 			}
