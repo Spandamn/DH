@@ -3030,7 +3030,7 @@ const commands = {
 				// uncache the sim/dex.js dependency tree
 				Chat.uncacheDir('./sim');
 				Chat.uncacheDir('./data');
-				Chat.uncache('../config/formats');
+				Chat.uncache('config/formats');
 				// reload sim/dex.js
 				global.Dex = require('../sim/dex');
 				// rebuild the formats list
