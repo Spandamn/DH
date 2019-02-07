@@ -2332,60 +2332,6 @@ exports.Formats = [
 		},
 	},
 	{
-		name: "[Gen 7] Random Pokebilities",
-		desc: ["&bullet; <a href=\"http://www.smogon.com/forums/threads/pokébilities.3588652\">Pokebilities</a>: A Pokemon can have all of its abilities at the same time."],
-		ruleset: ["Random Battle"],
-		team: 'random',
-		mod: 'pokebilities',
-		ruleset: ['PotD', 'Pokemon', 'Sleep Clause Mod', 'HP Percentage Mod', 'Cancel Mod'],
-		onSwitchInPriority: 1,
-		onBegin: function() {
-			let statusability = {
-				"aerilate": true,
-				"aurabreak": true,
-				"flashfire": true,
-				"parentalbond": true,
-				"pixilate": true,
-				"refrigerate": true,
-				"sheerforce": true,
-				"slowstart": true,
-				"truant": true,
-				"unburden": true,
-				"zenmode": true
-			};
-			let bans = this.data.Formats.gen7ou.banlist;
-			bans.push("Battle Bond");
-			for (let p = 0; p < this.sides.length; p++) {
-				for (let i = 0; i < this.sides[p].pokemon.length; i++) {
-					let pokemon = this.sides[p].pokemon[i];
-					let template = this.getTemplate(pokemon.species);
-					this.sides[p].pokemon[i].innates = [];
-
-					for (let a in template.abilities) {
-						if (toId(a) == 'h' && template.unreleasedHidden) continue;
-						if (toId(template.abilities[a]) === pokemon.ability) continue;
-						if (statusability[toId(template.abilities[a])])
-							this.sides[p].pokemon[i].innates.push("other" + toId(template.abilities[a]));
-						else
-							this.sides[p].pokemon[i].innates.push(toId(template.abilities[a]));
-					}
-				}
-			}
-		},
-		onSwitchIn: function(pokemon) {
-			for (let i = 0; i < pokemon.innates.length; i++) {
-				if (!pokemon.volatiles[pokemon.innates[i]])
-					pokemon.addVolatile(pokemon.innates[i]);
-			}
-		},
-		onAfterMega: function(pokemon) {
-			for (let i = 0; i < pokemon.innates.length; i++) {
-				pokemon.removeVolatile(pokemon.innates[i]);
-			}
-		},
-	},
-
-	{
 		name: "[Gen 7] BSS Factory",
 		desc: [
 			"Randomised 3v3 Singles featuring Pok&eacute;mon and movesets popular in Battle Spot Singles.",
@@ -4226,56 +4172,31 @@ exports.Formats = [
 	},
 	{
 		name: "[Gen 7] Pokebilities",
-		desc: ["&bullet; <a href=\"http://www.smogon.com/forums/threads/3588652/\">Pokebilities</a>: A Pokemon has all of its abilities active at the same time."],
-		mod: 'pokebilities',
-		ruleset: ["OU"],
-		onSwitchInPriority: 1,
-		onBegin: function() {
-			let statusability = {
-				"aerilate": true,
-				"aurabreak": true,
-				"flashfire": true,
-				"parentalbond": true,
-				"pixilate": true,
-				"refrigerate": true,
-				"sheerforce": true,
-				"slowstart": true,
-				"truant": true,
-				"unburden": true,
-				"zenmode": true
-			};
-			for (let p = 0; p < this.sides.length; p++) {
-				for (let i = 0; i < this.sides[p].pokemon.length; i++) {
-					let pokemon = this.sides[p].pokemon[i];
-					let template = this.getTemplate(pokemon.species);
-					this.sides[p].pokemon[i].innates = [];
-					let bans = this.data.Formats.gen7ou.banlist;
-					bans.push("Battle Bond");
-					for (let a in template.abilities) {
-						for (let k = 0; k < bans.length; k++) {
-							if (toId(bans[k]) === toId(template.abilities[a])) continue;
-						}
+		desc: `Pok&eacute;mon have all of their released Abilities simultaneously.`,
+		threads: [
+			`&bullet; <a href="https://www.smogon.com/forums/threads/3588652/">Pok&eacute;bilities</a>`,
+		],
 
-						if (toId(a) == 'h' && template.unreleasedHidden) continue;
-						if (toId(template.abilities[a]) == pokemon.ability) continue;
-						if (statusability[toId(template.abilities[a])])
-							this.sides[p].pokemon[i].innates.push("other" + toId(template.abilities[a]));
-						else
-							this.sides[p].pokemon[i].innates.push(toId(template.abilities[a]));
-					}
+		mod: 'pokebilities',
+		ruleset: ['[Gen 7] OU'],
+		banlist: ['Bibarel', 'Bidoof', 'Diglett', 'Dugtrio', 'Excadrill', 'Glalie', 'Gothita', 'Gothitelle', 'Gothorita', 'Octillery', 'Remoraid', 'Smeargle', 'Snorunt', 'Trapinch', 'Wobbuffet', 'Wynaut'],
+		onBegin: function () {
+			let allPokemon = this.p1.pokemon.concat(this.p2.pokemon);
+			for (let pokemon of allPokemon) {
+				if (pokemon.ability === toId(pokemon.template.abilities['S'])) {
+					continue;
 				}
+				// @ts-ignore
+				pokemon.innates = Object.keys(pokemon.template.abilities).filter(key => key !== 'S' && (key !== 'H' || !pokemon.template.unreleasedHidden)).map(key => toId(pokemon.template.abilities[key])).filter(ability => ability !== pokemon.ability);
 			}
 		},
-		onSwitchIn: function(pokemon) {
-			for (let i = 0; i < pokemon.innates.length; i++) {
-				if (!pokemon.volatiles[pokemon.innates[i]])
-					pokemon.addVolatile(pokemon.innates[i]);
-			}
+		onSwitchInPriority: 2,
+		onSwitchIn: function (pokemon) {
+			if (pokemon.innates) pokemon.innates.forEach(innate => pokemon.addVolatile("ability" + innate, pokemon));
 		},
-		onAfterMega: function(pokemon) {
-			for (let i = 0; i < pokemon.innates.length; i++) {
-				pokemon.removeVolatile(pokemon.innates[i]);
-			}
+		onAfterMega: function (pokemon) {
+			Object.keys(pokemon.volatiles).filter(innate => innate.startsWith('ability')).forEach(innate => pokemon.removeVolatile(innate));
+			pokemon.innates = undefined;
 		},
 	},
 	{

@@ -314,6 +314,7 @@ let BattleFormats = {
 		},
 		banlist: [
 			'Chansey + Charm + Seismic Toss', 'Chansey + Charm + Psywave',
+			'Blissey + Charm + Seismic Toss', 'Blissey + Charm + Psywave',
 			'Shiftry + Leaf Blade + Sucker Punch',
 		],
 	},
@@ -673,6 +674,18 @@ let BattleFormats = {
 		banlist: ['10,000,000 Volt Thunderbolt', 'Acid Downpour', 'All-Out Pummeling', 'Black Hole Eclipse', 'Bloom Doom', 'Breakneck Blitz', 'Catastropika', 'Clangorous Soulblaze', 'Continental Crush', 'Corkscrew Crash', 'Devastating Drake', 'Extreme Evoboost', 'Genesis Supernova', 'Gigavolt Havoc', 'Guardian of Alola', 'Hydro Vortex', 'Inferno Overdrive', 'Let\'s Snuggle Forever', 'Light That Burns the Sky', 'Malicious Moonsault', 'Menacing Moonraze Maelstrom', 'Never-Ending Nightmare', 'Oceanic Operetta', 'Pulverizing Pancake', 'Savage Spin-Out', 'Searing Sunraze Smash', 'Shattered Psyche', 'Sinister Arrow Raid', 'Soul-Stealing 7-Star Strike', 'Splintered Stormshards', 'Stoked Sparksurfer', 'Subzero Slammer', 'Supersonic Skystrike', 'Tectonic Rage', 'Twinkle Tackle'],
 		onStart: function () {
 			this.add('rule', 'CFZ Clause: Crystal-free Z-Moves are banned');
+		},
+	},
+	zmoveclause: {
+		effectType: 'ValidatorRule',
+		name: 'Z-Move Clause',
+		desc: "Bans Pok&eacute;mon from holding Z-Crystals",
+		onValidateSet: function (set) {
+			const item = this.getItem(set.item);
+			if (item.zMove) return [`${set.name || set.species}'s item ${item.name} is banned by Z-Move Clause.`];
+		},
+		onStart: function () {
+			this.add('rule', 'Z-Move Clause: Z-Moves are banned');
 		},
 	},
 	hppercentagemod: {

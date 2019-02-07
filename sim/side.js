@@ -155,6 +155,7 @@ class Side {
 			pokemon: [],
 		};
 		for (const pokemon of this.pokemon) {
+			/**@type {AnyObject} */
 			let entry = {
 				ident: pokemon.fullname,
 				details: pokemon.details,
@@ -177,7 +178,6 @@ class Side {
 				item: pokemon.item,
 				pokeball: pokemon.pokeball,
 			};
-			// @ts-ignore
 			if (this.battle.gen > 6) entry.ability = pokemon.ability;
 			data.pokemon.push(entry);
 		}
@@ -192,26 +192,29 @@ class Side {
 
 	/**
 	 * @param {string | Effect} status
-	 * @param {Pokemon?} source
+	 * @param {Pokemon? | 'debug'} source
 	 * @param {Effect?} sourceEffect
+	 * @return {boolean} success
 	 */
 	addSideCondition(status, source = null, sourceEffect = null) {
+		if (!source && this.battle.event && this.battle.event.target) source = this.battle.event.target;
+		if (source === 'debug') source = this.active[0];
+		if (!source) throw new Error(`setting sidecond without a source`);
+
 		status = this.battle.getEffect(status);
 		if (this.sideConditions[status.id]) {
 			if (!status.onRestart) return false;
 			return this.battle.singleEvent('Restart', status, this.sideConditions[status.id], this, source, sourceEffect);
 		}
-		this.sideConditions[status.id] = {id: status.id};
-		this.sideConditions[status.id].target = this;
-		if (source) {
-			this.sideConditions[status.id].source = source;
-			this.sideConditions[status.id].sourcePosition = source.position;
-		}
-		if (status.duration) {
-			this.sideConditions[status.id].duration = status.duration;
-		}
+		this.sideConditions[status.id] = {
+			id: status.id,
+			target: this,
+			source: source,
+			sourcePosition: source.position,
+			duration: status.duration,
+		};
 		if (status.durationCallback) {
-			this.sideConditions[status.id].duration = status.durationCallback.call(this.battle, this, source, sourceEffect);
+			this.sideConditions[status.id].duration = status.durationCallback.call(this.battle, this.active[0], source, sourceEffect);
 		}
 		if (!this.battle.singleEvent('Start', status, this.sideConditions[status.id], this, source, sourceEffect)) {
 			delete this.sideConditions[status.id];

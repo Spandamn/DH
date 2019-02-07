@@ -470,7 +470,7 @@ class RandomTeams extends Dex.ModdedDex {
 		];
 		// Moves which boost Attack AND Special Attack:
 		let MixedSetup = [
-			'conversion', 'growth', 'shellsmash', 'workup',
+			'conversion', 'growth', 'happyhour', 'shellsmash', 'workup',
 		];
 		// Moves which boost Speed:
 		let SpeedSetup = [
@@ -487,7 +487,7 @@ class RandomTeams extends Dex.ModdedDex {
 			let move = this.getMove(moveId);
 			let moveid = move.id;
 			let movetype = move.type;
-			if (moveid === 'judgment' || moveid === 'multiattack') movetype = Object.keys(hasType)[0];
+			if (['judgment', 'multiattack', 'revelationdance'].includes(moveid)) movetype = Object.keys(hasType)[0];
 			if (move.damage || move.damageCallback) {
 				// Moves that do a set amount of damage:
 				counter['damage']++;
@@ -711,12 +711,12 @@ class RandomTeams extends Dex.ModdedDex {
 				switch (moveid) {
 				// Not very useful without their supporting moves
 				case 'clangingscales': case 'happyhour':
-					if (teamDetails.zMove || hasMove['rest']) rejected = true;
+					if (teamDetails.zMove || hasMove['rest'] && hasMove['sleeptalk']) rejected = true;
 					break;
 				case 'cottonguard': case 'defendorder':
 					if (!counter['recovery'] && !hasMove['rest']) rejected = true;
 					break;
-				case 'dig': case 'fly':
+				case 'bounce': case 'dig': case 'fly':
 					if (teamDetails.zMove || counter.setupType !== 'Physical') rejected = true;
 					break;
 				case 'focuspunch':
@@ -812,7 +812,7 @@ class RandomTeams extends Dex.ModdedDex {
 					if (hasMove['rest'] || hasMove['lightscreen'] && hasMove['reflect']) rejected = true;
 					break;
 				case 'pursuit':
-					if (counter.setupType || (hasMove['rest'] && hasMove['sleeptalk']) || (hasMove['knockoff'] && !hasType['Dark'])) rejected = true;
+					if (counter.setupType || (hasMove['rest'] && hasMove['sleeptalk']) || counter['Dark'] > 2 || (hasMove['knockoff'] && !hasType['Dark'])) rejected = true;
 					break;
 				case 'rapidspin':
 					if (counter.setupType || teamDetails.hazardClear) rejected = true;
@@ -1032,7 +1032,7 @@ class RandomTeams extends Dex.ModdedDex {
 					break;
 				case 'psychocut': case 'zenheadbutt':
 					if ((hasMove['psychic'] || hasMove['psyshock']) && counter.setupType !== 'Physical') rejected = true;
-					if (hasMove['rest'] && hasMove['sleeptalk'] && (hasMove['superpower'] || movePool.includes('superpower'))) rejected = true;
+					if (hasAbility['Contrary'] && !counter.setupType && !!counter['physicalpool']) rejected = true;
 					break;
 				case 'psyshock':
 					if (movePool.length > 1) {
@@ -1144,9 +1144,9 @@ class RandomTeams extends Dex.ModdedDex {
 				// @ts-ignore
 				if (!rejected && (counter['physicalsetup'] + counter['specialsetup'] < 2 && (!counter.setupType || counter.setupType === 'Mixed' || (move.category !== counter.setupType && move.category !== 'Status') || counter[counter.setupType] + counter.Status > 3)) &&
 					((counter.damagingMoves.length === 0 && !hasMove['metalburst']) ||
-					(!counter.stab && (counter.Status < 2 || counter.setupType || template.types.length > 1 || (template.types[0] !== 'Normal' && template.types[0] !== 'Psychic') || !hasMove['icebeam']) && (counter['physicalpool'] || counter['specialpool'])) ||
+					(!counter.stab && (template.types.length > 1 || (template.types[0] !== 'Normal' && template.types[0] !== 'Psychic') || !hasMove['icebeam'] || template.baseStats.spa >= template.baseStats.spd) && (!!counter['physicalpool'] || !!counter['specialpool'])) ||
 					(hasType['Bug'] && (movePool.includes('megahorn') || movePool.includes('pinmissile') || (hasType['Flying'] && !hasMove['hurricane'] && movePool.includes('bugbuzz')))) ||
-					((hasType['Dark'] && !counter['Dark']) || hasMove['suckerpunch'] && counter.stab < template.types.length) ||
+					((hasType['Dark'] && !counter['Dark']) || hasMove['suckerpunch'] && !hasAbility['Contrary'] && counter.stab < template.types.length) ||
 					(hasType['Dragon'] && !counter['Dragon'] && !hasAbility['Aerilate'] && !hasAbility['Pixilate'] && !hasMove['rest'] && !hasMove['sleeptalk']) ||
 					(hasType['Electric'] && !counter['Electric'] && !hasAbility['Galvanize']) ||
 					(hasType['Fighting'] && !counter['Fighting'] && (counter.setupType || !counter['Status'])) ||
@@ -1361,7 +1361,7 @@ class RandomTeams extends Dex.ModdedDex {
 		item = !isDoubles ? 'Leftovers' : 'Sitrus Berry';
 		if (template.requiredItems) {
 			// @ts-ignore
-			if (template.baseSpecies === 'Arceus' && (hasMove['judgment'] || !counter[template.types[0]])) {
+			if (template.baseSpecies === 'Arceus' && (hasMove['judgment'] || !counter[template.types[0]] || teamDetails.zMove)) {
 				// Judgment doesn't change type with Z-Crystals
 				item = template.requiredItems[0];
 			} else {
@@ -1641,7 +1641,8 @@ class RandomTeams extends Dex.ModdedDex {
 			if (hasMove['substitute'] && hasMove['reversal']) {
 				// Reversal users should be able to use four Substitutes
 				if (hp % 4 > 0) break;
-			} else if (hasMove['substitute'] && (item === 'Sitrus Berry' || ability === 'Power Construct' && item !== 'Leftovers')) {
+			} else if (hasMove['substitute'] && (item === 'Petaya Berry' || item === 'Sitrus Berry' || ability === 'Power Construct' && item !== 'Leftovers')) {
+				// Three Substitutes should activate Petaya Berry for Dedenne
 				// Two Substitutes should activate Sitrus Berry or Power Construct
 				if (hp % 4 === 0) break;
 			} else if (hasMove['bellydrum'] && (item === 'Sitrus Berry' || ability === 'Gluttony')) {

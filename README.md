@@ -159,14 +159,18 @@ Retired Staff
 
 Major Contributors
 
+- Andrew Werner [HoeenHero] - Development
 - Kevin Lau [Ascriptmaster] - Development, Art (battle animations)
 - Konrad Borowski [xfix] - Development
 - Neil Rashbrook [urkerab] - Development
 - Quinton Lee [sirDonovan] - Development
 - [Ridaz] - Art (battle animations)
+- Tobias Mann [asgdf] - Development
+- William [MacChaeger] - Development
 
 Contributors
 
+- Alexander B. [mathfreak231] - Development
 - Andrew Goodsell [Zracknel] - Art (battle weather backdrops)
 - Austin Couturier [Austin] - Development
 - Avery Zimmer [Lyren, SolarisFox] - Development
@@ -176,10 +180,12 @@ Contributors
 - [Honko] - Development
 - Ian Clail [Layell] - Art (battle graphics, sprites)
 - Jeremy Piemonte [panpawn] - Development
+- [jumbowhales] - Development
 - Kris Johnson [Kris] - Development
 - Leonard Craft III [DaWoblefet] - Research (game mechanics)
+- Luke Harmon-Vellotti [moo, CheeseMuffin] - Development
 - Robin Vandenbrande [Quinella] - Development
-- Tobias Mann [asgdf] - Development
+- Russell Jones [SadisticMystic] - Research (game mechanics)
 
 DragonHeaven
 
