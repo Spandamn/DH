@@ -80,53 +80,6 @@ exports.Formats = [
 		},
 	},
 	{
-		name: "[Gen 7] Shared Power [Random]",
-		desc: [
-			`All of the team's abilities are active at once, except those that are restricted.`,
-			`&bullet; <a href="http://www.smogon.com/forums/threads/3623341/">Shared Power</a>`,
-		],
-		team: 'randomFactory',
-		mod: 'sharedpower',
-		ruleset: ['[Gen 7] OU', 'Evasion Abilities Clause'],
-		/*banlist: ['Gyarados-Mega', 'Shedinja'],
-		unbanlist: ['Aegislash', 'Blaziken', 'Blaziken-Mega', 'Deoxys-Defense'],*/
-		restrictedAbilities: [
-			'Chlorophyll', 'Comatose', 'Fluffy', 'Fur Coat', 'Huge Power', 'Illusion', 'Imposter', 'Mold Breaker',
-			'Protean', 'Pure Power', 'Quick Feet', 'Rattled', 'Sand Rush', 'Simple', 'Slush Rush', 'Speed Boost',
-			'Surge Surfer', 'Swift Swim', 'Teravolt', 'Tinted Lens', 'Trace', 'Unburden', 'Water Bubble', 'Weak Armor',
-		],
-		onBeforeSwitchIn: function (pokemon) {
-			let restrictedAbilities = this.getFormat().restrictedAbilities.map(toId);
-			for (const ally of pokemon.side.pokemon) {
-				if (ally.baseAbility !== pokemon.baseAbility && !restrictedAbilities.includes(ally.baseAbility)) {
-					let effect = 'ability' + ally.baseAbility;
-					pokemon.volatiles[effect] = {id: effect, target: pokemon};
-				}
-			}
-		},
-		onSwitchInPriority: 2,
-		onSwitchIn: function (pokemon) {
-			let restrictedAbilities = this.getFormat().restrictedAbilities.map(toId);
-			for (const ally of pokemon.side.pokemon) {
-				if (ally.baseAbility !== pokemon.baseAbility && !restrictedAbilities.includes(ally.baseAbility)) {
-					let effect = 'ability' + ally.baseAbility;
-					delete pokemon.volatiles[effect];
-					pokemon.addVolatile(effect);
-				}
-			}
-		},
-		onAfterMega: function (pokemon) {
-			let restrictedAbilities = this.getFormat().restrictedAbilities.map(toId);
-			pokemon.removeVolatile('ability' + pokemon.baseAbility);
-			for (const ally of pokemon.side.pokemon) {
-				if (ally.baseAbility !== pokemon.baseAbility && !restrictedAbilities.includes(ally.baseAbility)) {
-					let effect = 'ability' + ally.baseAbility;
-					pokemon.addVolatile(effect);
-				}
-			}
-		},
-	},
-	{
 		name: "[Gen 7] Super Staff Bros Brawl",
 		desc: "Super Staff Bros returns for another round! Battle with a random team of pokemon created by the sim staff.",
 		threads: [
@@ -4293,52 +4246,34 @@ exports.Formats = [
 		},
 	},
 	{
-		name: "[Gen 7] Shared Power",
-		desc: ["&bullet; All Pokemon on your team have all the abilities of your team."],
+		name: "[Gen 7] Shared Power New",
+		desc: ["&bullet; Every Pokemon on the team shares its ability with the two Pokemon surrounding it."],
 		mod: 'pokebilities',
 		ruleset: ["[Gen 7] OU"],
-		onSwitchInPriority: 1,
-		onBegin: function() {
-			let statusability = {
-				"aerilate": true,
-				"aurabreak": true,
-				"flashfire": true,
-				"parentalbond": true,
-				"pixilate": true,
-				"refrigerate": true,
-				"sheerforce": true,
-				"slowstart": true,
-				"truant": true,
-				"unburden": true,
-				"zenmode": true
-			};
-			for (let p = 0; p < this.sides.length; p++) {
-				for (let i = 0; i < this.sides[p].pokemon.length; i++) {
-					let pokemon = this.sides[p].pokemon[i];
-					this.sides[p].pokemon[i].innates = [];
-					let bans = this.data.Formats.gen7ou.banlist;
-					bans.push("Battle Bond");
-					for (let a in this.sides[p].pokemon) {
-						if (bans.includes(this.sides[p].pokemon[a].baseAbility)) continue;
-						if (this.sides[p].pokemon[a].baseAbility === pokemon.ability) continue;
-						if (statusability[this.sides[p].pokemon[a].baseAbility]) {
-							this.sides[p].pokemon[i].innates.push("other" + this.sides[p].pokemon[a].baseAbility);
-						} else {
-							this.sides[p].pokemon[i].innates.push(this.sides[p].pokemon[a].baseAbility);
-						}
-					}
+		banlist: ['Shedinja', 'Huge Power', 'Pure Power', 'Speed Boost', 'Illusion', 'Fur Coat'],
+		onBegin: function () {
+			for (let s = 0; s < this.sides.length; s++) {
+				for (let i = 0; i < this.sides[s].pokemon.length; i++) {
+					let partnerIndexs = [i - 1, i + 1];
+					partnerIndexs.map(j => {
+						if (i < 0) return this.sides[s].pokemon.length - 1;
+						if (i >= this.sides[s].pokemon.length) return 0;
+					});
+					pokemon.innates = [this.sides[s].pokemon[partnerIndexs[0]].ability, this.sides[s].pokemon[partnerIndexs[1]].ability];
 				}
 			}
 		},
-		onSwitchIn: function(pokemon) {
-			for (let i = 0; i < pokemon.innates.length; i++) {
-				if (!pokemon.volatiles[pokemon.innates[i]])
-					pokemon.addVolatile(pokemon.innates[i]);
-			}
+		onSwitchInPriority: 2,
+		onSwitchIn: function (pokemon) {
+			if (pokemon.innates) pokemon.innates.forEach(innate => pokemon.addVolatile("ability" + innate, pokemon));
+		},
+		onAfterMega: function (pokemon) {
+			Object.keys(pokemon.volatiles).filter(innate => innate.startsWith('ability')).forEach(innate => pokemon.removeVolatile(innate));
+			pokemon.innates = undefined;
 		},
 	},
 	{
-		name: "[Gen 7] Shared Power Test",
+		name: "[Gen 7] Shared Power Old",
 		desc: [
 			`All of the team's abilities are active at once, except those that are restricted.`,
 			`&bullet; <a href="http://www.smogon.com/forums/threads/3623341/">Shared Power</a>`,
