@@ -101,6 +101,33 @@ let BattleAbilities = {
 		id: "illuminate",
 		name: "Illuminate",
 	},
+	"wonderguard": {
+		shortDesc: "On switch-in, this Pokemon summons Wonder Room.",
+		onStart: function(source) {
+			this.useMove("Wonder Room", source);
+		},
+		id: "wonderguard",
+		name: "Wonder Guard",
+	},
+	"metalarmor": {
+		desc: "This Pokemon is immune to Rock-type moves and Stealth Rock.",
+		shortDesc: "This Pokemon is immune to Rock-type moves and Stealth Rock.",
+		onDamage: function (damage, target, source, effect) {
+			if (effect && effect.id === 'stealthrock') {
+				return false;
+			}
+		},
+		onTryHit: function (target, source, move) {
+			if (target !== source && move.type === 'Rock') {
+					this.add('-immune', target, '[from] ability: Metal Armor');
+				return null;
+			}
+		},
+		id: "metalarmor",
+		name: "Metal Armor",
+		rating: 3.5,
+		num: 11,
+	},
   };
 
 exports.BattleAbilities = BattleAbilities;

@@ -173,6 +173,10 @@ exports.BattleItems = {
 				}
 			}
 		},
+		onTakeItem: function(item, source) {
+			if (source.baseTemplate.baseSpecies === 'Wishiwashi') return false;
+			return true;
+		},
 		fling: {
 			basePower: 20,
 		},

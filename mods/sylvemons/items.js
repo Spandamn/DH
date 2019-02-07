@@ -182,6 +182,10 @@ exports.BattleItems = {
 				return this.chainModify([0x1333, 0x1000]);
 			}
 		},
+		onTakeItem: function(item, source) {
+			if (source.baseTemplate.baseSpecies === 'Wishiwashi') return false;
+			return true;
+		},
 		gen: 7,
 		desc: "If holder is a Wishiwashi, it becomes School Form. It's ability becomes Intimidate. Water moves are boosted by 1.2x",
 	},

@@ -1510,6 +1510,8 @@ exports.BattleAbilities = {
 	"hardbody": {
 		shortDesc: "Stat drops inflicted either by moves, abilities or status are ignored.",
 		onBoost: function(boost, target, source, effect) {
+			if (source && target === source) return;
+			let showMsg = false;
 			if (boost[i] < 0) {
 				delete boost[i];
 				showMsg = true;
@@ -1521,8 +1523,8 @@ exports.BattleAbilities = {
 				return this.chainModify(2);
 			}
 		},
-		onModifyAtk: function(atk, pokemon) {
-			if (pokemon.status === 'brn') {
+		onModifyAtk: function(atk, attacker, defender, move) {
+			if (attacker.status === 'brn' && move.id !== 'facade') {
 				return this.chainModify(2);
 			}
 		},
@@ -4106,7 +4108,7 @@ exports.BattleAbilities = {
 		name: "Sound Soul",
 	},
 	"phasethrough": {
-		shortDesc: "Frisk + Natural Care",
+		shortDesc: "Frisk + Natural Cure",
 		onStart: function(pokemon) {
 			for (const target of pokemon.side.foe.active) {
 				if (!target || target.fainted) continue;
@@ -4137,12 +4139,20 @@ exports.BattleAbilities = {
 				}
 				let template = this.getTemplate(curPoke.species);
 				// pokemon can't get Natural Cure
-				if (Object.values(template.abilities).indexOf('Natural Cure') < 0) {
+				
+				let canHaveCure = Object.values(template.abilities).indexOf('Natural Cure');
+				let canHaveSand = Object.values(template.abilities).indexOf('Sand Spa');
+				let canHavePhase = Object.values(template.abilities).indexOf('Phase Through');		
+				if (canHaveCure < 0 && canHaveSand < 0 && canHavePhase < 0) {
 					// this.add('-message', "" + curPoke + " skipped: no Natural Cure");
 					continue;
 				}
 				// pokemon's ability is known to be Natural Cure
-				if (!template.abilities['1'] && !template.abilities['H']) {
+				let possibleAbilities = 0;
+				if (canHaveCure) possibleAbilities++;
+				if (canHaveSand) possibleAbilities++;
+				if (canHavePhase) possibleAbilities++;
+				if (possibleAbilities >= 3 || (!template.abilities['1'] && (!template.abilities['H'] || possibleAbilities == 2))) {
 					// this.add('-message', "" + curPoke + " skipped: only one ability");
 					continue;
 				}
@@ -4151,7 +4161,7 @@ exports.BattleAbilities = {
 					// this.add('-message', "" + curPoke + " skipped: not switching");
 					continue;
 				}
-				if (curPoke.hasAbility('naturalcure')) {
+				if (curPoke.hasAbility(['naturalcure', 'phasethrough', 'sandspa'])) {
 					// this.add('-message', "" + curPoke + " confirmed: could be Natural Cure (and is)");
 					cureList.push(curPoke);
 				} else {
@@ -5079,9 +5089,21 @@ exports.BattleAbilities = {
 		name: "Venom Glare",
 	},
 	"terrorize": {
-		shortDesc: "On switch-in, the bearer poisons adjacent opponents.",
-		onStart: function(target, source) {
-			source.addVolatile('gastroacid');
+		shortDesc: "On switch-in, the bearer negates the abilities of adjacent opponents.",
+		onStart: function(pokemon) {
+			let activated = false;
+			for (const target of pokemon.side.foe.active) {
+				if (!target || !this.isAdjacent(target, pokemon)) continue;
+				if (!activated) {
+					this.add('-ability', pokemon, 'Terrorize', 'boost');
+					activated = true;
+				}
+				if (target.volatiles['substitute']) {
+					this.add('-immune', target);
+				} else {
+					target.addVolatile('gastroacid');
+				}
+			}
 		},
 		id: "terrorize",
 		name: "Terrorize",
@@ -8181,7 +8203,7 @@ exports.BattleAbilities = {
 	},
 	"twofaced": {
 	    desc: "This Pokemon's stat changes are reversed, unless they affect this Pokemon's highest non-HP stat. When this Pokemon recieves a stat change affected by the first part of this ability or knocks out an opponent, its highest non-HP stat is raised by one stage. If two stats are tied for the highest, neither of them are affected by the inverse stat changes.",
-	    shortDesc: "All stats except for the highest have inverted stat changes. The highest stat is boosted whenever this Pokemon lands a KO or has a different stat changed.",
+	    shortDesc: "All stats except for the highest have inverted stat changes. The highest stat is boosted whenever this Pokemon lands a KO or has a different stat changed. If two stats tie, both stats are ignored in the boost reversal.",
 	    onBoost: function(boost, target, source, effect) {
 	        if (effect && effect.id === 'zpower') return;
 	        let stat = 'atk';
@@ -8408,10 +8430,26 @@ exports.BattleAbilities = {
 	"chainheal": {
 		shortDesc: "Upon switching out, this Pokemon is healed for 1/3 of its max HP. Its replacement's ability is then replaced with Chain Heal.",
 		onBeforeSwitchOut: function (pokemon){
-			pokemon.side.addSideCondition('chainheal', pokemon, 'chainheal');
+			pokemon.side.addSideCondition('chainheal');
+			pokemon.side.sideConditions['chainheal'].sourceEffect = pokemon;
 		},
 		onSwitchOut: function (pokemon) {
 			pokemon.heal(pokemon.maxhp / 3);
+		},
+		effect: {
+			onStart: function (side, source, sourceEffect) {
+				this.effectData.position = source.position;
+			},
+			onSwitchInPriority: 1,
+			onSwitchIn: function (target) {
+				if (!target.fainted && target.position === this.effectData.position) {
+					let oldAbility = source.setAbility('chainheal', target);
+					if (oldAbility) {
+						this.add('-activate', target, 'ability: Chain Heal', this.getAbility(oldAbility).name, '[of] ' + this.effectData.sourceEffect);
+					}
+					target.side.removeSideCondition('chainheal');
+				}
+			},
 		},
 		id: "chainheal",
 		name: "Chain Heal",
@@ -10203,7 +10241,7 @@ exports.BattleAbilities = {
 		name: "Power Saver",
 	},
 	"christmasparade": {
-		shortDesc: "Super effective attacks against this Pokemon becomes Ice-type and do 0.75x damage. Normal-type moves become Ice-type and do 1.75x damage.",
+		shortDesc: "Super effective attacks against this Pokemon becomes Ice-type and do 0.75x damage. Normal-type moves become Ice-type and do 1.45x damage.",
 		onModifyMovePriority: -1,
 		onFoeModifyMove: function (source, target, move) {
 		},
@@ -10220,7 +10258,7 @@ exports.BattleAbilities = {
 		},
 		onBasePowerPriority: 8,
 		onBasePower: function (basePower, pokemon, target, move) {
-			if (move.christmasparadeboosted) return this.chainModify(1.75);
+			if (move.christmasparadeboosted) return this.chainModify(1.45);
 		},
 		onSourceModifyDamage: function (damage, source, target, move) {
 			if (move.christmasparade) {
@@ -12932,5 +12970,442 @@ exports.BattleAbilities = {
 		},
 		id: "sandyconstruct",
 		name: "Sandy Construct",
+	},
+	"cosmicbelly": {
+		shortDesc: "If this Pokemon is at full HP, damage taken from attacks is halved.",
+		onSourceModifyDamage: function (damage, source, target, move) {
+			if (target.hp >= target.maxhp) {
+				this.debug('Cosmic Belly weaken');
+				return this.chainModify(0.5);
+			}
+		},
+		id: "cosmicbelly",
+		name: "Cosmic Belly",
+	},
+	"powerscale": {
+		shortDesc: "This Pokemon's Defense and Special Defense are doubled.",
+		onModifyDefPriority: 6,
+		onModifyDef: function (def) {
+			return this.chainModify(2);
+		},
+		onModifySpDPriority: 6,
+		onModifySpD: function (spd) {
+			return this.chainModify(2);
+		},
+		id: "powerscale",
+		name: "Powerscale",
+	},
+	"shadowscale": {		
+		desc: "This Pokemon's Defense and Special Defense are doubled. Moongeist Beam, Sunsteel Strike, and the Mold Breaker, Teravolt, and Turboblaze Abilities cannot ignore this Ability.",
+		shortDesc: "This Pokemon's Defense and Special Defense are doubled.",
+		onModifyDefPriority: 6,
+		onModifyDef: function (def) {
+			return this.chainModify(2);
+		},
+		onModifySpDPriority: 6,
+		onModifySpD: function (spd) {
+			return this.chainModify(2);
+		},
+		isUnbreakable: true,
+		id: "shadowscale",
+		name: "Shadowscale",
+	},
+	"naturalcure": {
+		shortDesc: "This Pokemon has its major status condition cured when it switches out.",
+		onCheckShow: function(pokemon) {
+			// This is complicated
+			// For the most part, in-game, it's obvious whether or not Natural Cure activated,
+			// since you can see how many of your opponent's pokemon are statused.
+			// The only ambiguous situation happens in Doubles/Triples, where multiple pokemon
+			// that could have Natural Cure switch out, but only some of them get cured.
+			if (pokemon.side.active.length === 1) return;
+			if (pokemon.showCure === true || pokemon.showCure === false) return;
+			let cureList = [];
+			let noCureCount = 0;
+			for (const curPoke of pokemon.side.active) {
+				// pokemon not statused
+				if (!curPoke || !curPoke.status) {
+					// this.add('-message', "" + curPoke + " skipped: not statused or doesn't exist");
+					continue;
+				}
+				if (curPoke.showCure) {
+					// this.add('-message', "" + curPoke + " skipped: Natural Cure already known");
+					continue;
+				}
+				let template = this.getTemplate(curPoke.species);
+				// pokemon can't get Natural Cure
+				
+				let canHaveCure = Object.values(template.abilities).indexOf('Natural Cure');
+				let canHaveSand = Object.values(template.abilities).indexOf('Sand Spa');
+				let canHavePhase = Object.values(template.abilities).indexOf('Phase Through');		
+				if (canHaveCure < 0 && canHaveSand < 0 && canHavePhase < 0) {
+					// this.add('-message', "" + curPoke + " skipped: no Natural Cure");
+					continue;
+				}
+				// pokemon's ability is known to be Natural Cure
+				let possibleAbilities = 0;
+				if (canHaveCure) possibleAbilities++;
+				if (canHaveSand) possibleAbilities++;
+				if (canHavePhase) possibleAbilities++;
+				if (possibleAbilities >= 3 || (!template.abilities['1'] && (!template.abilities['H'] || possibleAbilities == 2))) {
+					// this.add('-message', "" + curPoke + " skipped: only one ability");
+					continue;
+				}
+				// pokemon isn't switching this turn
+				if (curPoke !== pokemon && !this.willSwitch(curPoke)) {
+					// this.add('-message', "" + curPoke + " skipped: not switching");
+					continue;
+				}
+				if (curPoke.hasAbility(['naturalcure', 'phasethrough', 'sandspa'])) {
+					// this.add('-message', "" + curPoke + " confirmed: could be Natural Cure (and is)");
+					cureList.push(curPoke);
+				} else {
+					// this.add('-message', "" + curPoke + " confirmed: could be Natural Cure (but isn't)");
+					noCureCount++;
+				}
+			}
+			if (!cureList.length || !noCureCount) {
+				// It's possible to know what pokemon were cured
+				for (const pokemon of cureList) {
+					pokemon.showCure = true;
+				}
+			} else {
+				// It's not possible to know what pokemon were cured
+				// Unlike a -hint, this is real information that battlers need, so we use a -message
+				this.add('-message', "(" + cureList.length + " of " + pokemon.side.name + "'s pokemon " + (cureList.length === 1 ? "was" : "were") + " cured by Natural Cure.)");
+				for (const pokemon of cureList) {
+					pokemon.showCure = false;
+				}
+			}
+		},
+		onSwitchOut: function (pokemon) {
+			if (!pokemon.status) return;
+
+			// if pokemon.showCure is undefined, it was skipped because its ability
+			// is known
+			if (pokemon.showCure === undefined) pokemon.showCure = true;
+
+			if (pokemon.showCure) this.add('-curestatus', pokemon, pokemon.status, '[from] ability: Natural Cure');
+			pokemon.setStatus('');
+
+			// only reset .showCure if it's false
+			// (once you know a Pokemon has Natural Cure, its cures are always known)
+			if (!pokemon.showCure) delete pokemon.showCure;
+		},
+		id: "naturalcure",
+		name: "Natural Cure",
+		rating: 3.5,
+		num: 30,
+	},
+	"sandspa": {
+		desc: "On switch-in, this Pokemon summons Sandstorm and removes any major status problems. If Sandstorm is active, this Pokemon cannot gain a major status condition and Rest will fail for it. This Pokemon summons Sandstorm and has its major status condition cured when it switches out.",
+		shortDesc: "On switch-in, this Pokemon summons Sandstorm and removes its own statuses. If Sandstorm is active, this Pokemon cannot be statused and Rest will fail for it. This Pokemon summons Sandstorm and has its major status condition cured when it switches out.",
+		onStart: function (source) {
+			this.setWeather('sandstorm');
+			source.setStatus('');
+		},
+		onCheckShow: function(pokemon) {
+			// This is complicated
+			// For the most part, in-game, it's obvious whether or not Natural Cure activated,
+			// since you can see how many of your opponent's pokemon are statused.
+			// The only ambiguous situation happens in Doubles/Triples, where multiple pokemon
+			// that could have Natural Cure switch out, but only some of them get cured.
+			if (pokemon.side.active.length === 1) return;
+			if (pokemon.showCure === true || pokemon.showCure === false) return;
+			let cureList = [];
+			let noCureCount = 0;
+			for (const curPoke of pokemon.side.active) {
+				// pokemon not statused
+				if (!curPoke || !curPoke.status) {
+					// this.add('-message', "" + curPoke + " skipped: not statused or doesn't exist");
+					continue;
+				}
+				if (curPoke.showCure) {
+					// this.add('-message', "" + curPoke + " skipped: Natural Cure already known");
+					continue;
+				}
+				let template = this.getTemplate(curPoke.species);
+				// pokemon can't get Natural Cure
+				
+				let canHaveCure = Object.values(template.abilities).indexOf('Natural Cure');
+				let canHaveSand = Object.values(template.abilities).indexOf('Sand Spa');
+				let canHavePhase = Object.values(template.abilities).indexOf('Phase Through');		
+				if (canHaveCure < 0 && canHaveSand < 0 && canHavePhase < 0) {
+					// this.add('-message', "" + curPoke + " skipped: no Natural Cure");
+					continue;
+				}
+				// pokemon's ability is known to be Natural Cure
+				let possibleAbilities = 0;
+				if (canHaveCure) possibleAbilities++;
+				if (canHaveSand) possibleAbilities++;
+				if (canHavePhase) possibleAbilities++;
+				if (possibleAbilities >= 3 || (!template.abilities['1'] && (!template.abilities['H'] || possibleAbilities == 2))) {
+					// this.add('-message', "" + curPoke + " skipped: only one ability");
+					continue;
+				}
+				// pokemon isn't switching this turn
+				if (curPoke !== pokemon && !this.willSwitch(curPoke)) {
+					// this.add('-message', "" + curPoke + " skipped: not switching");
+					continue;
+				}
+				if (curPoke.hasAbility(['naturalcure', 'phasethrough', 'sandspa'])) {
+					// this.add('-message', "" + curPoke + " confirmed: could be Natural Cure (and is)");
+					cureList.push(curPoke);
+				} else {
+					// this.add('-message', "" + curPoke + " confirmed: could be Natural Cure (but isn't)");
+					noCureCount++;
+				}
+			}
+			if (!cureList.length || !noCureCount) {
+				// It's possible to know what pokemon were cured
+				for (const pokemon of cureList) {
+					pokemon.showCure = true;
+				}
+			} else {
+				// It's not possible to know what pokemon were cured
+				// Unlike a -hint, this is real information that battlers need, so we use a -message
+				this.add('-message', "(" + cureList.length + " of " + pokemon.side.name + "'s pokemon " + (cureList.length === 1 ? "was" : "were") + " cured by Natural Cure.)");
+				for (const pokemon of cureList) {
+					pokemon.showCure = false;
+				}
+			}
+		},
+		onSetStatus: function (status, target, source, effect) {
+			if (this.isWeather('sandstorm')) {
+				if (effect && effect.status) this.add('-immune', target, '[from] ability: Sand Spa');
+				return false;
+			}
+		},
+		onTryAddVolatile: function (status, target) {
+			if (status.id === 'yawn' && this.isWeather('sandstorm')) {
+				this.add('-immune', target, '[from] ability: Sand Spa');
+				return null;
+			}
+		},
+		onSwitchOut: function (pokemon) {
+			this.setWeather('sandstorm');
+			if (!pokemon.status) return;
+
+			// if pokemon.showCure is undefined, it was skipped because its ability
+			// is known
+			if (pokemon.showCure === undefined) pokemon.showCure = true;
+
+			if (pokemon.showCure) this.add('-curestatus', pokemon, pokemon.status, '[from] ability: Sand Spa');
+			pokemon.setStatus('');
+
+			// only reset .showCure if it's false
+			// (once you know a Pokemon has Natural Cure, its cures are always known)
+			if (!pokemon.showCure) delete pokemon.showCure;
+		},
+		id: "sandspa",
+		name: "Sand Spa",
+	},
+	"bunsofsteel": {
+		desc: "This Pokemon has the resistances of Steel types. This ability does not protect the Pokemon from Poison-type moves.",
+		shortDesc: "This Pokemon has the resistances, but not immunities, of Steel types.",
+		onEffectiveness: function(typeMod, target, type, move) {
+			if (move.type === 'Poison') return;
+			let typeCheck = this.getEffectiveness(move, 'Steel');
+			typeCheck = this.singleEvent('Effectiveness', move, null, 'Steel', move, null, typeCheck);
+			if (typeCheck < 0){
+				return typeMod - 1;
+			}
+			return typeMod;
+		},
+		id: "bunsofsteel",
+		name: "Buns of Steel",
+	},
+	"shocked": {
+		desc: "This Pokemon is immune to Electric-type, Dark-type, Bug-type, and Ghost-type moves and raises its Speed by 1 stage when hit by any of the aforementioned types of move.",
+		shortDesc: "This Pokemon's Speed is raised by 1 if hit by an Electric/Dark/Bug/Ghost move; Immunity to aforementioned types.",
+		onTryHit: function (target, source, move) {
+			if (target !== source && ['Electric', 'Dark', 'Bug', 'Ghost'].includes(move.type)) {
+				if (!this.boost({spe: 1})) {
+					this.add('-immune', target, '[from] ability: Shocked');
+				}
+				return null;
+			}
+		},
+		id: "shocked",
+		name: "Shocked",
+	},
+	"meaty": {
+		desc: "If this Pokemon is at full HP, it survives one hit with at least a third of its HP. OHKO moves fail when used against this Pokemon.",
+		shortDesc: "If this Pokemon is at full HP, it survives one hit with at least a third of its HP. Immune to OHKO.",
+		onTryHit: function (pokemon, target, move) {
+			if (move.ohko) {
+				this.add('-immune', pokemon, '[from] ability: Meaty');
+				return null;
+			}
+		},
+		onDamagePriority: -100,
+		onDamage: function (damage, target, source, effect) {
+			if (target.hp === target.maxhp && damage > target.hp / 3 && effect && effect.effectType === 'Move') {
+				this.add('-ability', target, 'Meaty');
+				return Math.ceil(target.hp / 1.5);
+			}
+		},
+		id: "meaty",
+		name: "Meaty",
+	},
+	"marvelousdiver": {
+		desc: "If this Pokemon has a major status condition, its Defense and Speed multiplied by 1.5. If Rain Dance is active, these stats double instead.",
+		shortDesc: "If this Pokemon is statused, its Defense and Speed are 1.5x, 2x in Rain Dance instead.",
+		onModifyDefPriority: 6,
+		onModifyDef: function (def, pokemon) {
+			if (pokemon.status) {
+				if (!this.isWeather(['raindance', 'primordialsea'])) {
+					return this.chainModify(1.5);
+				} else if (pokemon.volatiles['atmosphericperversion'] == pokemon.volatiles['weatherbreak']){
+					return this.chainModify(2);
+				}
+			}
+		},
+		onModifySpe: function (spe, pokemon) {
+			if (pokemon.status) {
+				if (!this.isWeather(['raindance', 'primordialsea'])) {
+					if (pokemon.status === 'par'){
+						return this.chainModify(3);
+					}
+					return this.chainModify(1.5);
+				} else if (pokemon.volatiles['atmosphericperversion'] == pokemon.volatiles['weatherbreak']){
+					if (pokemon.status === 'par'){
+						return this.chainModify(4);
+					}
+					return this.chainModify(2);
+				}
+			}
+		},
+		id: "marvelousdiver",
+		name: "Marvelous Diver",
+	},
+	"antivirus": {
+		shortDesc: "This Pokemon's Defense and Special Defense are tripled.",
+		onModifyDefPriority: 6,
+		onModifyDef: function (def) {
+			return this.chainModify(3);
+		},
+		onModifySpDPriority: 6,
+		onModifySpD: function (spd) {
+			return this.chainModify(3);
+		},
+		id: "antivirus",
+		name: "Antivirus",
+	},
+	"antivirus": {
+		shortDesc: "This Pokemon's Defense and Special Defense are tripled.",
+		onModifyDefPriority: 6,
+		onModifyDef: function (def) {
+			return this.chainModify(3);
+		},
+		onModifySpDPriority: 6,
+		onModifySpD: function (spd) {
+			return this.chainModify(3);
+		},
+		id: "antivirus",
+		name: "Antivirus",
+	},
+	"disruption": {
+		shortDesc: "On switch-in, the bearer negates the abilities of adjacent opponents and lowers each's Attack by 1 stage.",
+		onStart: function(pokemon) {
+			let activated = false;
+			for (const target of pokemon.side.foe.active) {
+				if (!target || !this.isAdjacent(target, pokemon)) continue;
+				if (!activated) {
+					this.add('-ability', pokemon, 'Disruption', 'boost');
+					activated = true;
+				}
+				if (target.volatiles['substitute']) {
+					this.add('-immune', target);
+				} else {
+					this.boost({atk: -1}, target, pokemon);
+					target.addVolatile('gastroacid');
+				}
+			}
+		},
+		id: "disruption",
+		name: "Disruption",
+	},
+	"stasis": {
+		shortDesc: "Clear Body + Levitate.",
+		//Levitate effects implemented in scripts.js:pokemon:isGrounded()
+		onBoost: function (boost, target, source, effect) {
+			if (source && target === source) return;
+			let showMsg = false;
+			for (let i in boost) {
+				// @ts-ignore
+				if (boost[i] < 0) {
+					// @ts-ignore
+					delete boost[i];
+					showMsg = true;
+				}
+			}
+			if (showMsg && !effect.secondaries) this.add("-fail", target, "unboost", "[from] ability: Stasis", "[of] " + target);
+		},
+		id: "stasis",
+		name: "Stasis",
+	},
+	"beastspride": {
+		desc: "This Pokemon forces an opponent to switch out at the end of each full turn it has been on the field.",
+		shortDesc: "This Pokemon forces an opponent to switch out at the end of each full turn on the field.",
+		onResidualOrder: 26,
+		onResidual: function (pokemon) {
+			if (pokemon.activeTurns) {
+				this.useMove('roar', pokemon);
+			}
+		},
+		id: "beastspride",
+		name: "Beast's Pride",
+	},
+	"strangeways": {
+		desc: "On switch-in, if any opposing Pokemon has an attack that is super effective on this Pokemon or an OHKO move, this Pokemon disables it. Counter, Metal Burst, and Mirror Coat count as attacking moves of their respective types, while Hidden Power, Judgment, Natural Gift, Techno Blast, and Weather Ball are considered Normal-type moves.",
+		shortDesc: "On switch-in, if any foe has a supereffective or OHKO move, that move is disabled.",
+		onTryHit: function (target, source, move) {
+			if (!target.activeTurns && (move.category !== 'Status' && (this.getImmunity(move.type, target) && this.getEffectiveness(move.type, target) > 0 || move.ohko))) {
+				this.add('-activate', target, 'ability: Strangeways');
+				return false;
+			}
+		},
+		onStart: function (pokemon) {
+			for (const target of pokemon.side.foe.active) {
+				if (target.fainted) continue;
+				for (const moveSlot of target.moveSlots) {
+					let move = this.getMove(moveSlot.move);
+					if (move.category !== 'Status' && (this.getImmunity(move.type, pokemon) && this.getEffectiveness(move.type, pokemon) > 0 || move.ohko)) {
+						target.disableMove(moveSlot.id);
+						return;
+					}
+				}
+			}
+		},
+		id: "strangeways",
+		name: "Strangeways",
+	},
+	"wondrousscales": {
+		desc: "This Pokemon's Defense is doubled. If this Pokemon has a major status condition, its Defense is tripled instead",
+		shortDesc: "This Pokemon's Defense is doubled. If statused, its Defense is tripled instead.",
+		onModifyDefPriority: 6,
+		onModifyDef: function (def, pokemon) {
+			if (pokemon.status) {
+				return this.chainModify(3);
+			}
+			return this.chainModify(2);
+		},
+		id: "wondrousscales",
+		name: "Wondrous Scales",
+	},
+	"slippery": {
+		shortDesc: "This Pokemon's Status and Ice-type moves have priority raised by 1 and act as if Hail is active, but Dark types are immune.",
+		onModifyPriority: function (priority, pokemon, target, move) {
+			if (move && (move.category === 'Status' || move.type === 'Ice')) {
+				move.pranksterBoosted = true;
+				return priority + 1;
+			}
+		},
+		onImmunity: function (type, pokemon) {
+			if (type === 'hail') return false;
+		},
+		id: "slippery",
+		name: "Slippery",
 	},
 };

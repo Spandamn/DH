@@ -115,4 +115,44 @@ exports.BattleAbilities = {
         rating: 3.5,
         num: 22.5,
     },
+	"disguise": {
+		desc: "If this Pokemon is a Mimikyu or Spirisheet, the first hit it takes in battle deals 0 neutral damage. Its disguise is then broken and it changes to Busted Form. Confusion damage also breaks the disguise.",
+		shortDesc: "If this Pokemon is a Mimikyu, the first hit it takes in battle deals 0 neutral damage.",
+		onDamagePriority: 1,
+		onDamage: function (damage, target, source, effect) {
+			if (effect && effect.effectType === 'Move' 
+				&& ['spiritsheet', 'mimikyu', 'mimikyutotem'].includes(target.template.speciesid)
+				&& !target.transformed) 
+			{
+				this.add('-activate', target, 'ability: Disguise');
+				this.effectData.busted = true;
+				return 0;
+			}
+		},
+		onEffectiveness: function (typeMod, target, type, move) {
+			if (!this.activeTarget) return;
+			let pokemon = this.activeTarget;
+			if (!['spiritsheet', 'mimikyu', 'mimikyutotem'].includes(pokemon.template.speciesid) 
+				|| pokemon.transformed 
+				|| (pokemon.volatiles['substitute'] 
+					&& !(move.flags['authentic'] 
+					|| move.infiltrates))) 
+				return;
+			if (!pokemon.runImmunity(move.type)) return;
+			return 0;
+		},
+		onUpdate: function (pokemon) {
+			if (['mimikyu', 'mimikyutotem'].includes(pokemon.template.speciesid) && this.effectData.busted) {
+				let templateid = pokemon.template.speciesid === 'mimikyutotem' ? 'Mimikyu-Busted-Totem' : 'Mimikyu-Busted';
+				pokemon.formeChange(templateid, this.effect, true);
+			}
+			if (pokemon.template.speciesid === 'spirisheet' && this.effectData.busted) {
+				pokemon.formeChange(spirisheet-busted, this.effect, true);
+			}
+		},
+		id: "disguise",
+		name: "Disguise",
+		rating: 4,
+		num: 209,
+	},
 };

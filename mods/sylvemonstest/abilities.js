@@ -211,7 +211,7 @@ exports.BattleAbilities = {
 			this.removePseudoWeather('trickroom');
 			this.removePseudoWeather('magicroom');
 			this.removePseudoWeather('wonderroom');
-			//	this.removePseudoWeather('inverseroom');
+			this.removePseudoWeather('inverseroom');
 			let sideConditions = ['spikes', 'toxicspikes', 'stealthrock', 'stickyweb'];
 			for (const condition of sideConditions) {
 				if (pokemon.hp && pokemon.side.removeSideCondition(condition)) {
@@ -707,5 +707,116 @@ exports.BattleAbilities = {
 		name: "Jack of all Trades",
 		rating: 3.5,
 		num: 11,
+	},
+	"cutecharm": {
+		desc: "On switch-in, this Pokemon lowers the Sp. Attack of adjacent opposing Pokemon by 1 stage. Pokemon behind a substitute are immune.",
+		shortDesc: "On switch-in, this Pokemon lowers the Sp. Attack of adjacent opponents by 1 stage.",
+		onStart: function (pokemon) {
+			let activated = false;
+			for (const target of pokemon.side.foe.active) {
+				if (!target || !this.isAdjacent(target, pokemon)) continue;
+				if (!activated) {
+					this.add('-ability', pokemon, 'Cute Charm', 'boost');
+					activated = true;
+				}
+				if (target.volatiles['substitute']) {
+					this.add('-immune', target);
+				} else {
+					this.boost({spa: -1}, target, pokemon);
+				}
+			}
+		},
+		id: "cutecharm",
+		name: "Cute Charm",
+		rating: 3.5,
+		num: 22,
+	},
+	"blockmaster": {
+		desc: "This Pokemon is immune to punch moves, excepting Sucker Punch.",
+		shortDesc: "Makes user immune to punch moves, excepting Sucker Punch.",
+		onTryHit: function (pokemon, target, move) {
+			if (move.flags['punch']) {
+				this.add('-immune', pokemon, '[from] ability: Block Master');
+				return null;
+			}
+		},
+		id: "blockmaster",
+		name: "Block Master",
+		rating: 3.5,
+		num: 171,
+	},
+	"justified": {
+		desc: "Prevents adjacent opposing Dark-type Pokemon from choosing to switch out unless they are immune to trapping.",
+		shortDesc: "Prevents adjacent Dark-type foes from choosing to switch.",
+		onFoeTrapPokemon: function (pokemon) {
+			if (pokemon.hasType('Dark') && this.isAdjacent(pokemon, this.effectData.target)) {
+				pokemon.tryTrap(true);
+			}
+		},
+		onFoeMaybeTrapPokemon: function (pokemon, source) {
+			if (!source) source = this.effectData.target;
+			if ((!pokemon.knownType || pokemon.hasType('Dark')) && this.isAdjacent(pokemon, source)) {
+				pokemon.maybeTrapped = true;
+			}
+		},
+		id: "justified",
+		name: "Justified",
+		rating: 4.5,
+		num: 42,
+	},
+	"magicwarp": {
+		shortDesc: "On switch-in, this Pokemon summons Magic Room.",
+		onStart: function(source) {
+			this.useMove("Magic Room", source);
+		},
+		id: "magicwarp",
+		name: "Magic Warp",
+	},
+	"spacewarp": {
+		shortDesc: "On switch-in, this Pokemon summons Wonder Room.",
+		onStart: function(source) {
+			this.useMove("Wonder Room", source);
+		},
+		id: "spacewarp",
+		name: "Space Warp",
+	},
+	"stall": {
+		shortDesc: "This Pokemon moves last among Pokemon using the same or greater priority moves. This pokemon's moves have 1.5x power.",
+		onModifyPriority: function (priority) {
+			return Math.round(priority) - 0.1;
+		},
+		onModifyAtkPriority: 5,
+		onModifyAtk: function (atk) {
+			return this.chainModify(1.5);
+		},
+		onModifySpAPriority: 5,
+		onModifySpA: function (spa) {
+			return this.chainModify(1.5);
+		},
+		id: "stall",
+		name: "Stall",
+		rating: -1,
+		num: 100,
+	},
+	"colossaltitan": {
+		shortDesc: "This Pokemon's attacking stat is multiplied by 1.2 while using a Steel, Ice, or Rock-type attack.",
+		onModifyAtkPriority: 5,
+		onModifyAtk: function (atk, attacker, defender, move) {
+			if (move.type === 'Steel' || move.type === 'Rock' || move.type === 'Ice') {
+				this.debug('Colossal Titan boost');
+				return this.chainModify(1.2);
+			}
+		},
+		onModifySpAPriority: 5,
+		onModifySpA: function (atk, attacker, defender, move) {
+			if (move.type === 'Steel' || move.type === 'Rock' || move.type === 'Ice') {
+				this.debug('Colossal Titan boost');
+				return this.chainModify(1.2);
+			}
+		},
+		id: "colossaltitan",
+		name: "Colossal Titan",
+		rating: 3,
+		num: 200,
 	},
 };

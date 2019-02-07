@@ -589,10 +589,78 @@ evgutter: function (target, room, user) {
 		if (!feDex) return this.errorReply("Error Fetching FE Data.");
 		Object.values(feDex).forEach(mon => {
 			if (mon.forme !== 'Mega') {
-			buf += `if (pokemon === '${mon.species}') {<br>num = ${mon.num}; <br>document.getElementById("oldhp").innerHTML = "${mon.baseStats.hp}"; <br>document.getElementById("oldatk").innerHTML = "${mon.baseStats.atk}"; <br>document.getElementById("olddef").innerHTML = "${mon.baseStats.def}"; <br>document.getElementById("oldspa").innerHTML = "${mon.baseStats.spa}"; <br>document.getElementById("oldspd").innerHTML = "${mon.baseStats.spd}"; <br>document.getElementById("oldspe").innerHTML = "${mon.baseStats.spe}"; <br>wt = "${mon.weightkg}; <br>}`;
+			buf += `if (fuse1 === '${mon.species}') {<br>num = ${mon.num}; <br>document.getElementById("oldhp").innerHTML = "${mon.baseStats.hp}"; <br>document.getElementById("oldatk").innerHTML = "${mon.baseStats.atk}"; <br>document.getElementById("olddef").innerHTML = "${mon.baseStats.def}"; <br>document.getElementById("oldspa").innerHTML = "${mon.baseStats.spa}"; <br>document.getElementById("oldspd").innerHTML = "${mon.baseStats.spd}"; <br>document.getElementById("oldspe").innerHTML = "${mon.baseStats.spe}"; <br>wt = "${mon.weightkg}; <br>}<br>`;
 			}
 		}
 		);
 		this.sendReplyBox(`${buf}</div>`);
 	},
+		datalistool3: function (target, room, user) {
+		if (!this.runBroadcast()) return;
+		let buf = `<div class=infobox-limited><center><h2>List Of Moves</h2></center>`;
+		let feDex = require('../data/pokedex.js').BattlePokedex;
+		if (!feDex) return this.errorReply("Error Fetching FE Data.");
+		Object.values(feDex).forEach(mon => {
+			if (mon.types[1] === undefined) {
+			buf += `if (fuse1 === '${mon.species}') {<br>document.getElementById("typearea1").innerHTML = "&lt;img src=http://play.pokemonshowdown.com/sprites/types/${mon.types[0]}.png&gt;";<br>document.getElementById("oldhp").innerHTML = "${mon.baseStats.hp}"; <br>document.getElementById("oldatk").innerHTML = "${mon.baseStats.atk}"; <br>document.getElementById("olddef").innerHTML = "${mon.baseStats.def}"; <br>document.getElementById("oldspa").innerHTML = "${mon.baseStats.spa}"; <br>document.getElementById("oldspd").innerHTML = "${mon.baseStats.spd}"; <br>document.getElementById("oldspe").innerHTML = "${mon.baseStats.spe}"; <br>wt = "${mon.weightkg}; <br>}<br>if (fuse2 === '${mon.species}') {<br>document.getElementById("typearea1").innerHTML = "&lt;img src=http://play.pokemonshowdown.com/sprites/types/${mon.types[0]}.png&gt;";<br>document.getElementById("oldhp").innerHTML = "${mon.baseStats.hp}"; <br>document.getElementById("oldatk").innerHTML = "${mon.baseStats.atk}"; <br>document.getElementById("olddef").innerHTML = "${mon.baseStats.def}"; <br>document.getElementById("oldspa").innerHTML = "${mon.baseStats.spa}"; <br>document.getElementById("oldspd").innerHTML = "${mon.baseStats.spd}"; <br>document.getElementById("oldspe").innerHTML = "${mon.baseStats.spe}"; <br>wt = "${mon.weightkg}; <br>}<br>`;
+			}
+				else {
+					buf += `if (fuse1 === '${mon.species}') {<br>document.getElementById("typearea1").innerHTML = "&lt;img src=http://play.pokemonshowdown.com/sprites/types/${mon.types[0]}.png&gt;&lt;img src=http://play.pokemonshowdown.com/sprites/types/${mon.types[1]}.png&gt;";<br>document.getElementById("oldhp").innerHTML = "${mon.baseStats.hp}"; <br>document.getElementById("oldatk").innerHTML = "${mon.baseStats.atk}"; <br>document.getElementById("olddef").innerHTML = "${mon.baseStats.def}"; <br>document.getElementById("oldspa").innerHTML = "${mon.baseStats.spa}"; <br>document.getElementById("oldspd").innerHTML = "${mon.baseStats.spd}"; <br>document.getElementById("oldspe").innerHTML = "${mon.baseStats.spe}"; <br>wt = "${mon.weightkg}; <br>}<br>if (fuse2 === '${mon.species}') {<br>document.getElementById("typearea1").innerHTML = "&lt;img src=http://play.pokemonshowdown.com/sprites/types/${mon.types[0]}.png&gt;&lt;img src=http://play.pokemonshowdown.com/sprites/types/${mon.types[1]}.png&gt;";<br>document.getElementById("oldhp").innerHTML = "${mon.baseStats.hp}"; <br>document.getElementById("oldatk").innerHTML = "${mon.baseStats.atk}"; <br>document.getElementById("olddef").innerHTML = "${mon.baseStats.def}"; <br>document.getElementById("oldspa").innerHTML = "${mon.baseStats.spa}"; <br>document.getElementById("oldspd").innerHTML = "${mon.baseStats.spd}"; <br>document.getElementById("oldspe").innerHTML = "${mon.baseStats.spe}"; <br>wt = "${mon.weightkg}; <br>}<br>`;
+			}
+		}
+		);
+		this.sendReplyBox(`${buf}</div>`);
+	},
+		felist2: function (target, room, user) {
+		if (!this.runBroadcast()) return;
+		let buf = `<div class=infobox-limited><center><h2>List Of Fusion Evolution Pokemon</h2></center>`;
+		let feDex = require('../mods/fe/pokedex.js').BattlePokedex;
+		if (!feDex) return this.errorReply("Error Fetching FE Data.");
+		Object.values(feDex).forEach(mon => {
+			buf += `&lt;option value="${mon.species}"&gt;<br>`;
+		});
+		this.sendReplyBox(`${buf}</div>`);
+	},
+	feabilities2: function (target, room, user) {
+		if (!this.runBroadcast()) return;
+		let buf = `<div class=infobox-limited><center><h2>List Of Coded Fusion Evolution Abilities</h2></center>`;
+		let feDex = require('../mods/fe/abilities.js').BattleAbilities;
+		if (!feDex) return this.errorReply("Error Fetching FE Data.");
+		Object.values(feDex).forEach(ability => {
+			buf += `"${ability.id}":{shortDesc: "${ability.shortDesc}",name: "${ability.name}",id: "${ability.id}",},<br>`;
+		});
+		this.sendReplyBox(`${buf}</div>`);
+	},
+	sylvespeed: function (target, room, user) {
+		if (!this.runBroadcast()) return;
+		let buf = `<div class=infobox-limited><center><h2>List Of Fusion Evolution Pokemon</h2></center>`;
+		let feDex = require('../data/pokedex.js').BattlePokedex;
+		if (!feDex) return this.errorReply("Error Fetching FE Data.");
+		Object.values(feDex).forEach(mon => {
+			let speedtierplusscarf = Math.floor((2.2 * mon.baseStats.spe + 108.9) * 1.5);
+			let speedtierscarf = Math.floor((2 * mon.baseStats.spe + 99) * 1.5);
+			let speedtierplus = Math.floor(2.2 * mon.baseStats.spe + 108.9);
+			let speedtier = Math.floor(2 * mon.baseStats.spe + 99);
+			let speedtierzero = Math.floor(2 * mon.baseStats.spe + 36);
+			if (mon.species === "Chansey" || mon.species === "Jirachi" || mon.species === "Hawlucha" || mon.species === "Kartana" || mon.species === "Magearna" || mon.species === "Scizor-Mega" || mon.species === "Tapu Koko" || mon.species === "Greninja-Ash" || mon.species === "Landorus-Therian" || mon.species === "Tapu Lele" || mon.species === "Tornadus" || mon.species === "Greninja" || mon.species === "Heatran" || mon.species === "Keldeo" || mon.species === "Pinsir-Mega" || mon.species === "Serperior" || mon.species === "Tapu Bulu" || mon.species === "Toxapex" || mon.species === "Aerodactyl-Mega" || mon.species === "Articuno" || mon.species === "Charizard-Mega-X" || mon.species === "Emolga" || mon.species === "Ferrothorn" || mon.species === "Infernape" || mon.species === "Klinklang" || mon.species === "Mawile-Mega" || mon.species === "Medicham-Mega" || mon.species === "Zapdos" || mon.species === "AlakazamMega" || mon.species === "Celesteela" || mon.species === "Flygon" || mon.species === "Gallade-Mega" || mon.species === "Goodra" || mon.species === "Nihilego" || mon.species === "Parasect" || mon.species === "Raichu" || mon.species === "Togedemaru" || mon.species === "Celebi" || mon.species === "Latios-Mega" || mon.species === "Meloetta-Pirouette" || mon.species === "Metagross" || mon.species === "Palossand" || mon.species === "Slaking" || mon.species === "Tapu Fini" || mon.species === "Wishiwashi" || mon.species === "Xurkitree" || mon.species === "Azumarill" || mon.species === "Garchomp" || mon.species === "Latias-Mega" || mon.species === "Manaphy" || mon.species === "Mimikyu" || mon.species === "Scizor" || mon.species === "Terrakion" || mon.species === "Venusaur-Mega" || mon.species === "Latios" || mon.species === "Staraptor" || mon.species === "Victini" || mon.species === "Garchomp-Mega" || mon.species === "Meloetta" || mon.species === "Skarmory" || mon.species === "Shuckle") {
+			buf += `${speedtierplus}: Fast+ ${mon.species}<br>${speedtier}: Fast ${mon.species}<br>${speedtierzero}: Bulky ${mon.species}<br>`;
+			}
+			if (mon.forme !== "Mega") {
+				buf += `${speedtierplusscarf}: +1 Fast+ ${mon.species}<br>${speedtierscarf}: +1 Fast ${mon.species}<br>`;
+			}
+			
+			});
+		this.sendReplyBox(`${buf}</div>`);
+	},
+	abilities2: function (target, room, user) {
+		if (!this.runBroadcast()) return;
+		let buf = `<div class=infobox-limited><center><h2>List Of Coded Fusion Evolution Abilities</h2></center>`;
+		let feDex = require('../data/abilities.js').BattleAbilities;
+		if (!feDex) return this.errorReply("Error Fetching FE Data.");
+		Object.values(feDex).forEach(ability => {
+			buf += `"${ability.id}":{shortDesc: "${ability.shortDesc}",name: "${ability.name}",id: "${ability.id}",},<br>`;
+		});
+		this.sendReplyBox(`${buf}</div>`);
+	},
+		
 };

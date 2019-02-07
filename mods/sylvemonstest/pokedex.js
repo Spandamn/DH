@@ -42,7 +42,7 @@ exports.BattlePokedex = {
     musharna: {
         inherit: true,
         types: ["Psychic", "Fairy"],
-        abilities: {0: "Time Warp", 1: "Synchronize", H: "Telepathy"},
+        abilities: {0: "Time Warp", 1: "Synchronize", H: "Comatose"},
     },
     spritzee: {
         inherit: true,
@@ -581,7 +581,7 @@ exports.BattlePokedex = {
 	escavalier: {
 		inherit: true,
 		types: ["Bug", "Steel"],
-      abilities: {0: "Guard Up", 1: "Shell Armor", H: "Knight's Blade"},
+      abilities: {0: "Guard Up", 1: "Swarm", H: "Knight's Blade"},
 	},
 	pawniard: {
 		inherit: true,
@@ -1102,7 +1102,7 @@ exports.BattlePokedex = {
 	umbreon: {
 		inherit: true,
 		types: ["Dark"],
-      abilities: {0: "Synchronize", 1: "Shadow Surge", H: "Inner Focus"},
+      abilities: {0: "Synchronize", 1: "Shadow Surge", H: "Dark Rising"},
 	},
 	leafeon: {
 		inherit: true,
@@ -1151,8 +1151,8 @@ exports.BattlePokedex = {
 	},
 	lugia: {
 		inherit: true,
-		types: ["Water", "Dragon"],
-      abilities: {0: "Pressure", 1: "Drizzle", H: "Multiscale"},
+		types: ["Psychic", "Flying"],
+      abilities: {0: "Air Current", 1: "Drizzle", H: "Multiscale"},
 	},
 	regirock: {
 		inherit: true,
@@ -1687,7 +1687,7 @@ exports.BattlePokedex = {
    },
 	sandslashalola: {
 		inherit: true,
-      abilities: {0: "Snow Cloak", 1: "Speed Boost", H: "Sole Caliber"},
+      abilities: {0: "Snow Cloak", 1: "Speed Boost", H: "Slush Rush"},
 	},
 	shuppet: {
         inherit: true,
@@ -1696,9 +1696,152 @@ exports.BattlePokedex = {
 	banette: {
         inherit: true,
         types: ["Ghost", "Normal"],
+		  abilities: {0: "Insomnia", 1: "Dark Rising", H: "Cursed Body"},
     },
 	banettemega: {
         inherit: true,
         types: ["Ghost", "Normal"],
     },
+	honchkrow: {
+		inherit: true,
+      abilities: {0: "Dark Rising", 1: "Super Luck", H: "Moxie"},
+	},
+	hoopaunbound: {
+		inherit: true,
+      abilities: {0: "Magician", H: "Dark Rising"},
+	},
+	bisharp: {
+		inherit: true,
+      abilities: {0: "Defiant", 1: "Inner Focus", H: "Dark Rising"},
+	},
+	pangoro: {
+		inherit: true,
+      abilities: {0: "Iron Fist", 1: "Mold Breaker", H: "Dark Rising"},
+	},
+	weavile: {
+		inherit: true,
+      abilities: {0: "Pressure", 1: "Dark Rising", H: "Pickpocket"},
+	},
+	shiftry: {
+		inherit: true,
+      abilities: {0: "Chlorophyll", 1: "Early Bird", H: "Dark Rising"},
+	},
+	nuzleaf: {
+		inherit: true,
+      abilities: {0: "Chlorophyll", 1: "Early Bird", H: "Dark Rising"},
+	},
+	popplio: {
+		inherit: true,
+      abilities: {0: "Torrent", 1: "Jack of all Trades", H: "Liquid Voice"},
+	},
+	brionne: {
+		inherit: true,
+      abilities: {0: "Torrent", 1: "Jack of all Trades", H: "Liquid Voice"},
+	},
+	primarina: {
+		inherit: true,
+      abilities: {0: "Torrent", 1: "Jack of all Trades", H: "Liquid Voice"},
+	},
+	mimejr: {
+		inherit: true,
+      abilities: {0: "Soundproof", 1: "Jack of all Trades", H: "Technician"},
+	},
+	mrmime: {
+		inherit: true,
+      abilities: {0: "Soundproof", 1: "Jack of all Trades", H: "Technician"},
+	},
+	kecleon: {
+		inherit: true,
+      abilities: {0: "Color Change", 1: "Jack of all Trades", H: "Protean"},
+	},
+	smeargle: {
+		inherit: true,
+      abilities: {0: "Own Tempo", 1: "Technician", H: "Moody"},
+	},
+	sigilyph: {
+		inherit: true,
+      abilities: {0: "Jack of all Trades", 1: "Magic Guard", H: "Tinted Lens"},
+	},
+	absol: {
+		inherit: true,
+      abilities: {0: "Pressure", 1: "Jack of all Trades", H: "Justified"},
+	},
+	hoopaconfined: {
+		inherit: true,
+      abilities: {0: "Jack of all Trades", 1: "Dimension Warp", H: "Magic Healing"},
+	},
+	sudowoodo: {
+		inherit: true,
+      abilities: {0: "Sturdy", 1: "Rock Head", H: "Jack of all Trades"},
+	},
+	zorua: {
+		inherit: true,
+      abilities: {0: "Illusion", H: "Jack of all Trades"},
+	},
+	zoroark: {
+		inherit: true,
+      abilities: {0: "Illusion", H: "Jack of all Trades"},
+	},
+	drampa: {
+		inherit: true,
+      abilities: {0: "Berserk", 1: "Jack of all Trades", H: "Cloud Nine"},
+	},
+	unown: {
+		inherit: true,
+      abilities: {0: "Levitate", H: "Jack of all Trades"},
+	},
+	blacephalon: {
+		inherit: true,
+      abilities: {0: "Beast Boost", H: "Jack of all Trades"},
+	},
+	komala: {
+		inherit: true,
+		types: ["Normal", "Grass"],
+      abilities: {0: "Comatose", H: "Fur Coat"},
+	},
+	accelgor: {
+		inherit: true,
+		types: ["Bug", "Dark"],
+      abilities: {0: "Hydration", 1: "Sticky Hold", H: "Swarm"},
+	},
+	archen: {
+		inherit: true,
+      abilities: {0: "Defeatist", H: "Early Bird"},
+	},
+	archeops: {
+		inherit: true,
+      abilities: {0: "Defeatist", H: "Early Bird"},
+	},
+	trubbish: {
+		inherit: true,
+		types: ["Poison", "Steel"],
+      abilities: {0: "Stench", 1: "Liquid Ooze", H: "Regenerator"},
+	},
+	garbodor: {
+		inherit: true,
+		types: ["Poison", "Steel"],
+      abilities: {0: "Stench", 1: "Liquid Ooze", H: "Regenerator"},
+	},
+	cofagrigus: {
+		inherit: true,
+		types: ["Ghost", "Steel"],
+      abilities: {0: "Mummy", H: "Filter"},
+	},
+	regigigas: {
+		inherit: true,
+      abilities: {0: "Slow Start", 1: "Thick Fat", H: "Colossal Titan"},
+	},
+	unfezant: {
+		inherit: true,
+      abilities: {0: "Super Luck", 1: "Air Stream", H: "Technician"},
+	},
+	huntail: {
+		inherit: true,
+		types: ["Water", "Dark"],
+      abilities: {0: "Swift Swim", H: "Strong Jaw"},
+	},
+	gorebyss: {
+		inherit: true,
+		types: ["Water", "Fairy"],
+	},
 };
