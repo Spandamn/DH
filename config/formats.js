@@ -4252,15 +4252,16 @@ exports.Formats = [
 		ruleset: ["[Gen 7] OU"],
 		banlist: ['Shedinja', 'Huge Power', 'Pure Power', 'Speed Boost', 'Illusion', 'Fur Coat'],
 		onBegin: function () {
-			for (let s = 0; s < this.sides.length; s++) {
-				for (let i = 0; i < this.sides[s].pokemon.length; i++) {
-					let pokemon = this.sides[s].pokemon[i];
+			for (let s = 1; s <= 2; s++) {
+				let side = this[`p${s}`];
+				for (let i = 0; i < side.pokemon.length; i++) {
+					let pokemon = side.pokemon[i];
 					let partnerIndexs = [i - 1, i + 1];
 					partnerIndexs.map(j => {
-						if (j < 0) return this.sides[s].pokemon.length - 1;
-						if (j >= this.sides[s].pokemon.length) return 0;
+						if (j < 0) return side.pokemon.length - 1;
+						if (j >= side.pokemon.length) return 0;
 					});
-					pokemon.innates = [this.sides[s].pokemon[partnerIndexs[0]].ability, this.sides[s].pokemon[partnerIndexs[1]].ability];
+					pokemon.innates = [side.pokemon[partnerIndexs[0]].ability, side.pokemon[partnerIndexs[1]].ability];
 				}
 			}
 		},
