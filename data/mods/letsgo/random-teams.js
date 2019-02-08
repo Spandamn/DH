@@ -1,6 +1,6 @@
 'use strict';
 
-const RandomTeams = require('../../random-teams');
+const RandomTeams = require('../../../random-teams');
 
 class RandomLetsGoTeams extends RandomTeams {
 	/**

@@ -1,6 +1,6 @@
 'use strict';
 
-const RandomTeams = require('../../data/random-teams');
+const RandomTeams = require('../../../data/random-teams');
 
 class RandomSeasonalTeams extends RandomTeams {
 	randomSeasonalMeleeTeam(side) {

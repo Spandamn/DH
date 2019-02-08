@@ -249,7 +249,7 @@ distor: function (target, room, user, connection, cmd) {
 	
 	},
 	credits: function (target, room, user) {
-		let color = require('../config/color'), hashColor = function(name, bold) {
+		let color = require('../../config/color'), hashColor = function(name, bold) {
 			return (bold ? "<b>" : "") + "<font color=" + color(name) + ">" + (Users(name) && Users(name).connected && Users.getExact(name) ? Chat.escapeHTML(Users.getExact(name).name) : Chat.escapeHTML(name)) + "</font>" + (bold ? "</b>" : "");
 		};
 		this.popupReply("|html|" + "<font size=4><center><u><b>Dragon Heaven Credits!</b></u></center></font><br />" +

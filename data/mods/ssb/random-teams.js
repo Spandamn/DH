@@ -16,7 +16,7 @@
  * @property {boolean=} shiny
  */
 
-const RandomTeams = require('../../random-teams');
+const RandomTeams = require('../../../random-teams');
 
 class RandomStaffBrosTeams extends RandomTeams {
 	randomStaffBrosTeam() {
