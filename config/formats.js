@@ -4144,7 +4144,7 @@ exports.Formats = [
 			}
 		},
 		onModifyTemplate: function (template, pokemon) {
-			if (!!pokemon || !pokemon.isActive) return template;
+			if (!pokemon || !pokemon.isActive) return template;
 			Object.keys(pokemon.volatiles).filter(innate => innate.startsWith('ability')).forEach(innate => pokemon.removeVolatile(innate));
 			pokemon.innates = undefined;
 		},
