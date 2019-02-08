@@ -4133,7 +4133,7 @@ exports.Formats = [
 		mod: 'pokebilities',
 		ruleset: ['[Gen 7] OU'],
 		banlist: ['Bibarel', 'Bidoof', 'Diglett', 'Dugtrio', 'Excadrill', 'Glalie', 'Gothita', 'Gothitelle', 'Gothorita', 'Octillery', 'Remoraid', 'Smeargle', 'Snorunt', 'Trapinch', 'Wobbuffet', 'Wynaut'],
-		onBegin: function () {
+		/*onBegin: function () {
 			let allPokemon = this.p1.pokemon.concat(this.p2.pokemon);
 			for (let pokemon of allPokemon) {
 				if (pokemon.ability === toId(pokemon.template.abilities['S'])) {
@@ -4142,15 +4142,21 @@ exports.Formats = [
 				// @ts-ignore
 				pokemon.innates = Object.keys(pokemon.template.abilities).filter(key => key !== 'S' && (key !== 'H' || !pokemon.template.unreleasedHidden)).map(key => toId(pokemon.template.abilities[key])).filter(ability => ability !== pokemon.ability);
 			}
+		},*/
+		onModifyTemplate: function (template, pokemon) {
+			let innates = Object.keys(template.abilities).filter(key => key !== 'S' && (key !== 'H' || !pokemon.template.unreleasedHidden)).map(key => toId(template.abilities[key])).filter(ability => ability !== pokemon.ability);
+			if (pokemon.volatiles && pokemon.innates) Object.keys(pokemon.volatiles).filter(innate => innate.startsWith('ability')).forEach(innate => pokemon.removeVolatile(innate));
+			pokemon.innates = innates;
+			pokemon.innates.forEach(innate => pokemon.addVolatile("ability" + innate, pokemon));
 		},
 		onSwitchInPriority: 2,
 		onSwitchIn: function (pokemon) {
 			if (pokemon.innates) pokemon.innates.forEach(innate => pokemon.addVolatile("ability" + innate, pokemon));
 		},
-		onAfterMega: function (pokemon) {
+		/*onAfterMega: function (pokemon) {
 			Object.keys(pokemon.volatiles).filter(innate => innate.startsWith('ability')).forEach(innate => pokemon.removeVolatile(innate));
 			pokemon.innates = undefined;
-		},
+		},*/
 	},
 	{
 		name: "[Gen 7] Poketrade",
