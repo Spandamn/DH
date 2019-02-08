@@ -4256,20 +4256,18 @@ exports.Formats = [
 				let side = this[`p${s}`];
 				for (let i = 0; i < side.pokemon.length; i++) {
 					let pokemon = side.pokemon[i];
-					let partnerIndexs = [i - 1, i + 1];
-					if (partnerIndexs[0] < 0) partnerIndexs[0] = side.pokemon.length - 1;
-					if (partnerIndexs[1] >= side.pokemon.length) partnerIndexs[1] = 0; 
-					pokemon.innates = [side.pokemon[partnerIndexs[0]].ability, side.pokemon[partnerIndexs[1]].ability];
+					pokemon.innatePartners = [
+						side.pokemon[i - 1] || side.pokemon[side.pokemon.length - 1],
+						side.pokemon[i + 1] || side.pokemon[0],
+					];
+					/* if (!pokemon.innatePartners[0]) pokemon.innatePartners[0] = side.pokemon[side.pokemon.length - 1];
+					if (!pokemon.innatePartners[1]) pokemon.innatePartners[1] = side.pokemon[0]; */
 				}
 			}
 		},
 		onSwitchInPriority: 2,
 		onSwitchIn: function (pokemon) {
-			if (pokemon.innates) pokemon.innates.forEach(innate => pokemon.addVolatile("ability" + innate, pokemon));
-		},
-		onAfterMega: function (pokemon) {
-			Object.keys(pokemon.volatiles).filter(innate => innate.startsWith('ability')).forEach(innate => pokemon.removeVolatile(innate));
-			pokemon.innates = undefined;
+			if (pokemon.innatePartners) pokemon.innatePartners.forEach(partner => pokemon.addVolatile("ability" + partner.ability, pokemon));
 		},
 	},
 	{
