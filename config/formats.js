@@ -4143,18 +4143,13 @@ exports.Formats = [
 				pokemon.innates = Object.keys(pokemon.template.abilities).filter(key => key !== 'S' && (key !== 'H' || !pokemon.template.unreleasedHidden)).map(key => toId(pokemon.template.abilities[key])).filter(ability => ability !== pokemon.ability);
 			}
 		},
-		onModifyTemplate: function (template, pokemon) {
-			if (!pokemon || !pokemon.isActive) 
-				return template;
-			Object.keys(pokemon.volatiles).filter(innate => innate.startsWith('ability')).forEach(innate => {
-				this.battle.singleEvent('End', this.battle.getEffect(innate), pokemon.volatiles[innate], this);
-				delete pokemon.volatiles[innate];
-			});
-			pokemon.innates = undefined;
-		},
 		onSwitchInPriority: 2,
 		onSwitchIn: function (pokemon) {
 			if (pokemon.innates) pokemon.innates.forEach(innate => pokemon.addVolatile("ability" + innate, pokemon));
+		},
+		onAfterMega: function (pokemon) {
+			Object.keys(pokemon.volatiles).filter(innate => innate.startsWith('ability')).forEach(innate => pokemon.removeVolatile(innate));
+			pokemon.innates = undefined;
 		},
 	},
 	{
