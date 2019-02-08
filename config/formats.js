@@ -4144,7 +4144,7 @@ exports.Formats = [
 			}
 		},*/
 		onModifyTemplate: function (template, pokemon) {
-			let innates = Object.keys(template.abilities).filter(key => key !== 'S' && (key !== 'H' || !pokemon.template.unreleasedHidden)).map(key => toId(template.abilities[key])).filter(ability => ability !== pokemon.ability);
+			let innates = Object.keys(template.abilities).filter(key => key !== 'S' && (key !== 'H' || !template.unreleasedHidden)).map(key => toId(template.abilities[key])).filter(ability => ability !== pokemon.ability);
 			if (pokemon.volatiles && pokemon.innates) Object.keys(pokemon.volatiles).filter(innate => innate.startsWith('ability')).forEach(innate => pokemon.removeVolatile(innate));
 			pokemon.innates = innates;
 			pokemon.innates.forEach(innate => pokemon.addVolatile("ability" + innate, pokemon));
