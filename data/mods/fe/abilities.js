@@ -2053,16 +2053,21 @@ exports.BattleAbilities = {
 			if (!this.isWeather(['hail', 'solarsnow', 'sandstorm'])) return;
 			if (!move.isInInvertedWeather) return; 
 			if (!(['Rock', 'Ground', 'Steel', 'Ice'].includes(move.type))) return;
-			return this.chainModify(1.5) + target.maxhp / 16;
+			//x1.5 damage plus 6.25% of target's max health when inverted
+			//MaxHP can't exceed 714; That / 232 = 3.077, so any damage above 4 pre-modification can't cause a Hexadecimal Overflow
+			if (damage < 4){
+				return Math.floor(damage*1.5 + target.maxhp / 16);
+			}
+			let morechipdamage = 0x0000;
+			if (damage) morechipdamage += Math.floor(6144 + (target.maxhp/damage)*256);
+			return this.chainModify([morechipdamage, 0x1000]);
 		},
 		onTryHit: function(target, source, move) {
-			if (this.isWeather(['hail', 'solarsnow', 'sandstorm'])) {
-				if (['Rock', 'Ground', 'Steel', 'Ice'].includes(move.type) && !move.isInInvertedWeather) {
-					if (!this.heal(target.maxhp / 16)) {
-						this.add('-immune', target, '[msg]', '[from] ability: Desert Snow');
-					}
-					return null;
+			if (this.isWeather(['hail', 'solarsnow', 'sandstorm']) && ['Rock', 'Ground', 'Steel', 'Ice'].includes(move.type) && !move.isInInvertedWeather) {
+				if (!this.heal(target.maxhp / 16)) {
+					this.add('-immune', target, '[msg]', '[from] ability: Desert Snow');
 				}
+				return null;
 			}
 		},
 		onImmunity: function(type, pokemon) {
