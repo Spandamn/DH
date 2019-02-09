@@ -283,7 +283,7 @@ exports.grouplist = [
 		id: "admin",
 		name: "Administrator",
 		root: true,
-		globalonly: true,
+		//globalonly: true,
 	},
 	{
 		symbol: '&',
