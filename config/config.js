@@ -316,6 +316,7 @@ exports.grouplist = [
 		inherit: '#',
 		jurisdiction: 'u',
 		roomowner: true,
+		tournamentsmanagement: true,
 		roomonly: true,
 	},
 	{
@@ -354,6 +355,7 @@ exports.grouplist = [
 		name: "Bot",
 		inherit: '@',
 		jurisdiction: 'u',
+		tournamentsmanagement: true,
 		declare: true,
 		addhtml: true,
 	},
@@ -371,6 +373,7 @@ exports.grouplist = [
 		ip: true,
 		alts: '@u',
 		tournaments: true,
+		tournamentsmanagement: true,
 		game: true,
 	},
 	{
@@ -391,6 +394,7 @@ exports.grouplist = [
 		bypassblocks: 'u%@&~',
 		receiveauthmessages: true,
 		tournamentsmoderation: true,
+		tournamentsmanagement: true,
 		jeopardy: true,
 		joinbattle: true,
 		minigame: true,
