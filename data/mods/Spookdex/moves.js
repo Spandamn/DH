@@ -1208,7 +1208,7 @@ let BattleMovedex = {
 		priority: 0,
 		flags: {snatch: 1},
 		onHit: function (target) {			
-			if (target.hp <= target.maxhp / 2 || target.boosts.atk >= 6 || target.maxhp === 1 && !target.ateBerry) { // Shedinja clause
+			if (target.hp <= target.maxhp / 2 || target.boosts.atk >= 6 || target.maxhp === 1 || !target.ateBerry) { // Shedinja clause
 				return false;
 			}
 			this.directDamage(target.maxhp / 2);
@@ -16396,8 +16396,9 @@ let BattleMovedex = {
 		onHit: function (target, source) {
 			if (target.boosts.atk === -6) return false;
 			let atk = target.getStat('atk', false, true);
+			let taste = atk * 0.5
 			let success = this.boost({atk: -1}, target, source, null, false, true);
-			return this.heal(atk, source, target) || success;
+			return this.heal(taste, source, target) || success;
 		},
 		secondary: false,
 		target: "normal",
@@ -19338,18 +19339,17 @@ let BattleMovedex = {
 		contestType: "Cool",
 	},
 	"quiveringblades": {
-		num: 700,
+		num: 728,
 		accuracy: true,
-		basePower: 180,
+		basePower: 185,
 		category: "Special",
-		desc: "Raises the user's Sp. Atk, Sp. Def, Speed by 1.",
-		shortDesc: "Raises the user's Sp. Atk, Sp. Def, Speed by 1.",
+		desc: "Raises the user's Special Attack, Special Defense, and Speed by 1 stage.",
+		shortDesc: "Raises the user's SpAtk/SpDef/Spe by 1.",
 		id: "quiveringblades",
 		name: "Quivering Blades",
 		pp: 1,
 		priority: 0,
-		flags: {},
-		isZ: "butterfriumz",
+		flags: {authentic: 1},
 		selfBoost: {
 			boosts: {
 				spa: 1,
@@ -19357,7 +19357,11 @@ let BattleMovedex = {
 				spe: 1,
 			},
 		},
-		target: "normal",
+		isZ: "butterfriumz",
+		secondary: {
+			// Sheer Force negates the selfBoost even though it is not secondary
+		},
+		target: "allAdjacentFoes",
 		type: "Bug",
 		contestType: "Cool",
 	},
