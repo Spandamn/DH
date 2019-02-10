@@ -376,7 +376,7 @@ let BattlePokedex = {
 		num: 474,
 		species: "Porygon-Z",
 		types: ["Bug"],
-		baseStats: {hp: 85, atk: 85, def: 70, spa: 120, spd: 75, spe: 65},
+		baseStats: {hp: 85, atk: 85, def: 90, spa: 120, spd: 95, spe: 65},
 		abilities: {0: "Malware", 1: "Download", H: "Analytic"},
 		weightkg: 34,
 	},
