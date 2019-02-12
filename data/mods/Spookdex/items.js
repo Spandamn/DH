@@ -6516,7 +6516,7 @@ let BattleItems = {
 	},
 	"vilepluminite": {
 		id: "vilepluminite",
-		name: "Vilepliminite",
+		name: "Vilepluminite",
 		spritenum: 585,
 		megaStone: "Vileplume-Mega",
 		megaEvolves: "Vileplume",
@@ -6664,6 +6664,103 @@ let BattleItems = {
 		gen: 6,
 		desc: "If held by a Cryogonal, this item allows it to Mega Evolve in battle.",
 	},
+	"moldymoss": {
+		id: "moldymoss",
+		name: "Moldy Moss",
+		spritenum: 515,
+		fling: {
+			basePower: 30,
+		},
+		naturalGift: {
+			basePower: 80,
+			type: "Poison",
+		},
+		onResidualOrder: 26,
+		onResidualSubOrder: 2,
+		onResidual: function (pokemon) {
+			let result = this.random(3);
+			if (result === 0) {
+				pokemon.trySetStatus('brn', source);
+			} else if (result === 1) {
+				pokemon.trySetStatus('par', source);
+			} else {
+				pokemon.trySetStatus('psn', source);
+			}
+		},
+		num: 272,
+		gen: 4,
+		desc: "At the end of every turn, this item attempts to either burn, paralyze, or poison the holder.",
+	},
+	"oldmoss": {
+		id: "oldmoss",
+		name: "Old Moss",
+		spritenum: 515,
+		fling: {
+			basePower: 30,
+		},
+		naturalGift: {
+			basePower: 80,
+			type: "Grass",
+		},
+		onResidualOrder: 5,
+		onResidualSubOrder: 2,
+		onResidual: function (pokemon) {
+			if (this.isTerrain('grassyterrain')) return;
+			if (pokemon.hasType('Grass')) {
+				this.heal(pokemon.maxhp / 16);
+			} else {
+				this.damage(pokemon.maxhp / 8);
+			}
+		},
+		onTerrain: function (pokemon) {
+			if (!this.isTerrain('grassyterrain')) return;
+			if (pokemon.hasType('Grass')) {
+				this.heal(pokemon.maxhp / 16);
+			} else {
+				this.damage(pokemon.maxhp / 8);
+			}
+		},
+		num: 272,
+		gen: 4,
+		desc: "Each turn, if holder is a Grass type, restores 1/16 max HP; loses 1/8 if not.",
+	},
+	"heavymoss": {
+		id: "heavymoss",
+		name: "Heavy Moss",
+		spritenum: 515,
+		fling: {
+			basePower: 30,
+		},
+		naturalGift: {
+			basePower: 80,
+			type: "Steel",
+		},
+		onModifyWeight: function (weight) {
+			return weight * 2;
+		},
+		num: 272,
+		gen: 4,
+		desc: "The holder's weight is doubled. The holder is also grounded.",
+	},
+	"lightmoss": {
+		id: "lightmoss",
+		name: "Light Moss",
+		spritenum: 515,
+		fling: {
+			basePower: 30,
+		},
+		naturalGift: {
+			basePower: 80,
+			type: "Flying",
+		},
+		onModifyWeight: function (weight) {
+			return weight / 2;
+		},
+		num: 272,
+		gen: 4,
+		desc: "The holder's weight is halved. The holder also evades entry hazards.",
+	},
+	
 };
 
 exports.BattleItems = BattleItems;

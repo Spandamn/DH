@@ -819,7 +819,7 @@ let BattleStatuses = {
 			let type = 'Normal';
 			if (pokemon.ability === 'rkssystem') {
 				// @ts-ignore
-				type = pokemon.getItem().onMemory;
+				type = pokemon.getItem().onMemory || pokemon.getItem().zMoveType;
 				// @ts-ignore
 				if (!type || type === true) {
 					type = 'Normal';

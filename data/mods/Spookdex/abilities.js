@@ -1778,7 +1778,7 @@ let BattleAbilities = {
 			if (target === source || move.hasBounced || !move.flags['reflectable']) {
 				return;
 			}
-			let newMove = this.getMoveCopy(move.id);
+			let newMove = this.getActiveMove(move.id);
 			newMove.hasBounced = true;
 			newMove.pranksterBoosted = false;
 			this.useMove(newMove, target, source);
@@ -1788,7 +1788,7 @@ let BattleAbilities = {
 			if (target.side === source.side || move.hasBounced || !move.flags['reflectable']) {
 				return;
 			}
-			let newMove = this.getMoveCopy(move.id);
+			let newMove = this.getActiveMove(move.id);
 			newMove.hasBounced = true;
 			newMove.pranksterBoosted = false;
 			this.useMove(newMove, this.effectData.target, source);
@@ -4235,25 +4235,20 @@ let BattleAbilities = {
 	},
 	"hivemind": {
 		desc: "This Pokemon's damaging moves become multi-hit moves that hit twice. The second hit has its damage quartered. Does not affect multi-hit moves or moves that have multiple targets.",
-		shortDesc: "This Pokemon's damaging Bug-type moves hit twice. The second hit has its damage halved.",
-		onPrepareHit: function (source, target, move, pokemon) {
+		shortDesc: "This Pokemon's damaging moves hit twice. The second hit has its damage quartered.",
+		onPrepareHit: function (source, target, move) {
 			if (['iceball', 'rollout'].includes(move.id)) return;
-			if (pokemon.hasType('Bug') && move.type === 'Bug' && move.category !== 'Status' && !move.selfdestruct && !move.multihit && !move.flags['charge'] && !move.spreadHit && !move.isZ) {
-				if (this.randomChance(1, 2)) {
-					move.multihit = 2;
-					move.hasHivemind = true;
-					move.hit = 0;
-				}
+			if (source.hasType('Bug') && move.type === 'Bug' && move.category !== 'Status' && !move.selfdestruct && !move.multihit && !move.flags['charge'] && !move.spreadHit && !move.isZ) {
+				move.multihit = 2;
+				move.multihitType = 'hivemind';
 			}
 		},
 		onBasePowerPriority: 8,
 		onBasePower: function (basePower, pokemon, target, move) {
-			// @ts-ignore
-			if (move.hasHivemind && ++move.hit > 1) return this.chainModify(0.5);
+			if (move.multihitType === 'hivemind' && move.hit > 1) return this.chainModify(0.5);
 		},
 		onSourceModifySecondaries: function (secondaries, target, source, move) {
-			// @ts-ignore
-			if (move.hasHivemind && move.id === 'secretpower' && move.hit < 2) {
+			if (move.multihitType === 'hivemind' && move.id === 'secretpower' && move.hit < 2) {
 				// hack to prevent accidentally suppressing King's Rock/Razor Fang
 				return secondaries.filter(effect => effect.volatileStatus === 'flinch');
 			}
@@ -4275,7 +4270,7 @@ let BattleAbilities = {
 		desc: "If this Pokemon is hit by an attack, there is a 30% chance that move gets disabled unless one of the attacker's moves is already disabled.",
 		shortDesc: "This Pokemon's moves do 1.2x Power, but loses 10% of HP each turn.",
 		onBasePower: function (basePower, pokemon, target, move) {
-			return this.chainModify([0x1333, 0x1000]);
+			return this.chainModify([0x1800, 0x1000]);
 		},
 		onResidual: function (pokemon, source, effect) {
 				this.damage(pokemon.maxhp / 10);
@@ -4284,6 +4279,34 @@ let BattleAbilities = {
 		name: "Volatile",
 		rating: 2,
 		num: 130,
+	},
+	"mossygrowth": {
+		desc: "If the last item this Pokemon used is a Berry, there is a 50% chance it gets restored at the end of each turn. If Sunny Day is active, this chance is 100%.",
+		shortDesc: "If this Pokemon has no item, it gains a random moss on turn's end.",
+		id: "mossygrowth",
+		name: "Mossy Growth",
+		onResidualOrder: 26,
+		onResidualSubOrder: 1,
+		onResidual: function (pokemon) {
+				if (pokemon.hp && !pokemon.item) {
+					let result = this.random(4);
+				if (result === 0) {
+					pokemon.setItem('Old Moss');
+					this.add('-item', pokemon, 'Old Moss', '[from] ability: Mossy Growth');
+				} else if (result === 1) {
+					pokemon.setItem('Light Moss');
+					this.add('-item', pokemon, 'Light Moss', '[from] ability: Mossy Growth');
+				} else if (result === 1) {
+					pokemon.setItem('Heavy Moss');
+					this.add('-item', pokemon, 'Heavy Moss', '[from] ability: Mossy Growth');
+				} else {
+					pokemon.setItem('Moldy Moss');
+					this.add('-item', pokemon, 'Moldy Moss', '[from] ability: Mossy Growth');
+				}
+			}
+		},
+		rating: 2.5,
+		num: 139,
 	},
 };
 
