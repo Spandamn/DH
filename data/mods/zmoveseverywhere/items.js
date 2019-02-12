@@ -1,8 +1,8 @@
 'use strict';
 exports.BattleItems = {
-    "venusaurumz": {
-        id: "venusaurumz",
-        name: "Venusaurum-Z",
+    "venusauriumz": {
+        id: "venusauriumz",
+        name: "Venusaurium-Z",
         onTakeItem: false,
         zMove: "Swampy Smackdown",
         zMoveFrom: "Energy Ball",
