@@ -9894,8 +9894,8 @@ exports.BattleAbilities = {
 				if (target.position !== this.effectData.sourcePosition) {
 					return;
 				}
-				if (!target.fainted) {
-					target.boost({spa: 1});
+				if (target && !target.fainted && target.hp > 0) {
+					this.boost({spa: 1}, target);
 				}
 				if (!positions.some(affected => affected === true)) {
 					target.side.removeSideCondition('compassionatesoul');
