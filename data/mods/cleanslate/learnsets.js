@@ -2529,6 +2529,8 @@ let BattleLearnsets = {
 		zenheadbutt: ["7T", "6T", "5T", "4T"],
 		infestation: ["7T", "6T", "5T", "4T"],
 		leechlife: ["7T", "6T", "5T", "4T"],
+		quiverdance: ["7T", "7L29", "6T", "6L29", "5T", "5L29", "4T", "4L29"],
+		heatwave: ["7T", "7L29", "6T", "6L29", "5T", "5L29", "4T", "4L29"],
 	}},
 	druddigon: {learnset: {
 		aerialace: ["7M", "6M", "5M"],
