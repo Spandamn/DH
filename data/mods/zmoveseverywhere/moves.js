@@ -20,7 +20,7 @@ exports.BattleMovedex = {
 		},
 		target: "normal",
 		type: "Grass",
-		isZ: "venusaurumz",
+		isZ: "venusauriumz",
 	},
 	"intensifiedinferno": {
 		accuracy: true,
