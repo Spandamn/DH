@@ -1,6 +1,6 @@
-'use strict';
+/*'use strict';
 
-exports.BattleScripts = {
+/*exports.BattleScripts = {
 	runMove: function (move, pokemon, targetLoc, sourceEffect, zMove) {
 		let target = this.getTarget(pokemon, zMove || move, targetLoc);
 		if (!sourceEffect && toId(move) !== 'struggle' && !zMove) {
@@ -27,7 +27,7 @@ exports.BattleScripts = {
 			this.clearActiveMove(true);
 			return;
 		} */
-		if (!this.runEvent('BeforeMove', pokemon, target, move)) {
+		/*if (!this.runEvent('BeforeMove', pokemon, target, move)) {
 			this.runEvent('MoveAborted', pokemon, target, move);
 			// Prevent Pursuit from running again against a slower U-turn/Volt Switch/Parting Shot
 			pokemon.moveThisTurn = true;
@@ -107,4 +107,4 @@ exports.BattleScripts = {
 		}
 		if (atLeastOne) return zMoves;
 	},
-};
+};*/
