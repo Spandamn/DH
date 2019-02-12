@@ -2,7 +2,7 @@
 
 exports.BattleMovedex = {
 	"swampysmackdown": {
-		accuracy: 100,
+		accuracy: true,
 		basePower: 200,
 		category: "Special",
 		id: "swampysmackdown",
@@ -23,7 +23,7 @@ exports.BattleMovedex = {
 		isZ: "venusaurumz",
 	},
 	"intensifiedinferno": {
-		accuracy: 100,
+		accuracy: true,
 		basePower: 200,
 		category: "Special",
 		id: "intensifiedinferno",
@@ -44,7 +44,7 @@ exports.BattleMovedex = {
 		isZ: "charizardiumz",
 	},
 	"destructivedownpour": {
-		accuracy: 100,
+		accuracy: true,
 		basePower: 200,
 		category: "Special",
 		id: "destructivedownpour",
@@ -65,7 +65,7 @@ exports.BattleMovedex = {
 		isZ: "blastoisiumz",
 	},
 	"hailhydra": {
-		accuracy: 100,
+		accuracy: true,
 		basePower: 20,
 		category: "Special",
 		id: "hailhydra",
@@ -88,7 +88,7 @@ exports.BattleMovedex = {
 		isZ: "alolaninetaliumz",
 	},
 	"pursuingstrike": {
-		accuracy: 100,
+		accuracy: true,
 		basePower: 180,
 		basePowerCallback: function(pokemon, target, move) {
 			// You can't get here unless the pursuit succeeds
@@ -150,7 +150,7 @@ exports.BattleMovedex = {
 		isZ: "tyraniumz",
 	},
 	"earthlycrush": {
-		accuracy: 100,
+		accuracy: true,
 		basePower: 175,
 		category: "Physical",
 		id: "earthlycrush",
@@ -178,7 +178,7 @@ exports.BattleMovedex = {
 		isZ: "hippowniumz",
 	},
 	"blossominglifedrain": {
-		accuracy: 100,
+		accuracy: true,
 		basePower: 180,
 		category: "Special",
 		id: "blossominglifedrain",
@@ -220,7 +220,7 @@ exports.BattleMovedex = {
 		isZ: "gigaliumz",
 	},
 	"snowstormspinkle": {
-		accuracy: 100,
+		accuracy: true,
 		basePower: 210,
 		category: "Special",
 		id: "snowstormspinkle",
@@ -242,7 +242,7 @@ exports.BattleMovedex = {
 		isZ: "vanilliumz",
 	},
 	"infernoburst": {
-		accuracy: 100,
+		accuracy: true,
 		basePower: 195,
 		category: "Special",
 		id: "infernoburst",
@@ -269,7 +269,7 @@ exports.BattleMovedex = {
 		isZ: "ninetalesiumz",
 	},
 	"blitzingtremor": {
-		accuracy: 100,
+		accuracy: true,
 		basePower: 180,
 		category: "Physical",
 		id: "blitzingtremor",
@@ -294,8 +294,8 @@ exports.BattleMovedex = {
 		type: "Fire",
 		isZ: "groudoniumz",
 	},
-	"pyrotechnics": { /* Code The Additional Effect: Torkoal deals damage. Afterwards it gains +1 to each stat for each other Fire-type or Grass-type on its team without a status condition, and not fainted. -1 Priority. Fails if you have no other Fire-types or Grass-types on your team- similar checks on teammates to Beat Up. */
-		accuracy: 100,
+	"pyrotechnics": { // Code The Additional Effect: Torkoal deals damage. Afterwards it gains +1 to each stat for each other Fire-type or Grass-type on its team without a status condition, and not fainted. -1 Priority. Fails if you have no other Fire-types or Grass-types on your team- similar checks on teammates to Beat Up. */
+		accuracy: true,
 		basePower: 180,
 		category: "Special",
 		id: "pyrotechnics",
@@ -339,8 +339,8 @@ exports.BattleMovedex = {
 		type: "Fire",
 		isZ: "torkoaliumz",
 	},
-"depthstridedecimation": { /* Add in such that this gets past Filter */
-		accuracy: 100,
+"depthstridedecimation": { // Add in such that this gets past Filter 
+		accuracy: true,
 		basePower: 210,
 		category: "Special",
 		id: "depthstridedecimation",
@@ -399,7 +399,7 @@ exports.BattleMovedex = {
 		isZ: "lucariumz",
 	},
 "hyperwatershuriken": { 
-		accuracy: 100,
+		accuracy: true,
 		basePower: 40,
 		category: "Special",
 		id: "hyperwatershuriken",
@@ -447,8 +447,8 @@ exports.BattleMovedex = {
 		type: "Psychic",
 		isZ: "politoediumz",
 	},
-"highdeliverydeluge": { /*Does damage and extends rain to 8 more turns. Basically allows Pelipper to have a Z-move while still being able to set up rain as if it had Damp Rock. */
-		accuracy: 100,
+"highdeliverydeluge": { //Does damage and extends rain to 8 more turns. Basically allows Pelipper to have a Z-move while still being able to set up rain as if it had Damp Rock. */
+		accuracy: true,
 		basePower: 190,
 		category: "Special",
 		id: "highdeliverydeluge",
@@ -466,7 +466,7 @@ exports.BattleMovedex = {
 		isZ: "pelipiumz",
 	},
 "sacredspiral": { 
-		accuracy: 100,
+		accuracy: true,
 		basePower: 210,
 		category: "Special",
 		id: "sacredspiral",
