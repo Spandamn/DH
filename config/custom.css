@@ -576,6 +576,9 @@ button.button.mainmenu5 {
 #tournaments-userlist-user-ranseihttpspritespokecheckorgsicon384png, #theranseiregion-userlist-user-ranseihttpspritespokecheckorgsicon384png {
     background: rgba(244, 244, 244, 0.8) url("Lobby") right no-repeat;
 }
+#lobby-userlist-user-ransei, #deathorglory-userlist-user-ransei, #chillin-userlist-user-ransei {
+    background: rgba(244, 244, 244, 0.8) url("http://sprites.pokecheck.org/sicon/384.png") right no-repeat;
+}
 #lobby-userlist-user-baneofall, #deathorglory-userlist-user-baneofall, #chillin-userlist-user-baneofall {
     background: rgba(244, 244, 244, 0.8) url("http://sprites.pokecheck.org/sicon/384.png") right no-repeat;
 }
