@@ -677,11 +677,17 @@ button.button.mainmenu5 {
 li[id*="charizard8888"] {
     background: rgba(244,244,244,0.8) url("http://www.pokestadium.com/assets/img/sprites/misc/icons/charizard-mega-x.png") no-repeat right
 }
+li[id*="aquaticpanic"] {
+	background: rgba(244,244,244,0.8) url("https://www.serebii.net/pokedex-sm/icon/103-a.png") no repeat right
+}
 li[id*="ggdaca"] {
     background: rgba(244,244,244,0.8) url("https://pldh.net/media/pokexycons/384-mega.png") no-repeat right
 }
 li[id*="winona"] {
     background: rgba(244,244,244,0.8) url("http://i.imgur.com/joKdbXU.gif") no-repeat right
+}
+li[id*="aquaticpanic"] {
+    background: rgba(244,244,244,0.8) url("https://www.serebii.net/pokedex-sm/icon/103-a.png") no-repeat right
 }
 li[id*="bbgun999"] {
     background: rgba(244,244,244,0.8) url("http://www.pokestadium.com/assets/img/sprites/misc/icons/goodra.png") no-repeat right
