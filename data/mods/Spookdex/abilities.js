@@ -4308,6 +4308,53 @@ let BattleAbilities = {
 		rating: 2.5,
 		num: 139,
 	},
+	"ironleg": {
+		desc: "This Pokemon's punch-based attacks have their power multiplied by 1.2.",
+		shortDesc: "This Pokemon's kick-based attacks have 1.2x power.",
+		onBasePowerPriority: 8,
+		onBasePower: function (basePower, attacker, defender, move) {
+			if (move.flags['kick']) {
+				this.debug('Iron Leg boost');
+				return this.chainModify([0x1333, 0x1000]);
+			}
+		},
+		id: "ironleg",
+		name: "Iron Leg",
+		rating: 3,
+		num: 89,
+	},
+	"toxinabsorb": {
+		desc: "This Pokemon is immune to Poison-type moves and restores 1/4 of its maximum HP, rounded down, when hit by an Poison-type move.",
+		shortDesc: "This Pokemon heals 1/4 of its max HP when hit by Poison moves; Electric immunity.",
+		onTryHit: function (target, source, move) {
+			if (target !== source && move.type === 'Poison') {
+				if (!this.heal(target.maxhp / 4)) {
+					this.add('-immune', target, '[msg]', '[from] ability: Toxin Absorb');
+				}
+				return null;
+			}
+		},
+		id: "toxinabsorb",
+		name: "Toxin Absorb",
+		rating: 3.5,
+		num: 10,
+	},
+	"windsurfer": {
+		desc: "This Pokemon is immune to Flying-type moves and raises its Speed by 1 stage when hit by an Flying-type move.",
+		shortDesc: "This Pokemon's Speed is raised 1 stage if hit by an Flying move; Flying immunity.",
+		onTryHit: function (target, source, move) {
+			if (target !== source && move.type === 'Flying') {
+				if (!this.boost({spe: 1})) {
+					this.add('-immune', target, '[msg]', '[from] ability: Wind Surfer');
+				}
+				return null;
+			}
+		},
+		id: "windsurfer",
+		name: "Wind Surfer",
+		rating: 3,
+		num: 78,
+	},
 };
 
 exports.BattleAbilities = BattleAbilities;

@@ -233,6 +233,25 @@ this.modData('Learnsets', 'dusknoir').learnset.closecombat = ['7L1'];
 	this.modData('Learnsets', 'doublade').learnset.sharpen = ['7L1'];
 	this.modData('Learnsets', 'octillery').learnset.aurasphere = ['7L1'];
 	this.modData('Learnsets', 'glalie').learnset.glare = ['7L1'];
+	this.modData('Learnsets', 'bewear').learnset.playrough = ['7L1'];
+	this.modData('Learnsets', 'poliwrath').learnset.icehammer = ['7L1'];
+	this.modData('Learnsets', 'poliwrath').learnset.superpower = ['7L1'];
+	this.modData('Learnsets', 'poliwrath').learnset.drainpunch = ['7L1'];
+	this.modData('Learnsets', 'aurorus').learnset.auroraveil = ['7L1'];
+	this.modData('Learnsets', 'incineroar').learnset.alolanwhip = ['7L1'];
+	this.modData('Learnsets', 'tsareena').learnset.pixiekick = ['7L1'];
+	this.modData('Learnsets', 'hitmonlee').learnset.copperkick = ['7L1'];
+	this.modData('Learnsets', 'scizor').learnset.copperkick = ['7L1'];
+	this.modData('Learnsets', 'lopunny').learnset.pixiekick = ['7L1'];
+	this.modData('Learnsets', 'lucario').learnset.copperkick = ['7L1'];
+	this.modData('Learnsets', 'furret').learnset.pixiekick = ['7L1'];
+	this.modData('Learnsets', 'chatot').learnset.onbeat = ['7L1'];
+	this.modData('Learnsets', 'clefairy').learnset.onbeat = ['7L1'];
+	this.modData('Learnsets', 'blissey').learnset.onbeat = ['7L1'];
+	this.modData('Learnsets', 'celebi').learnset.onbeat = ['7L1'];
+	this.modData('Learnsets', 'medicham').learnset.onbeat = ['7L1'];
+	this.modData('Learnsets', 'kecleon').learnset.onbeat = ['7L1'];
+
 },
 };
 

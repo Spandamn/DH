@@ -6760,7 +6760,23 @@ let BattleItems = {
 		gen: 4,
 		desc: "The holder's weight is halved. The holder also evades entry hazards.",
 	},
-	
+	"cursedorb": {
+		id: "cursedorb",
+		name: "Cursed Orb",
+		spritenum: 145,
+		fling: {
+			basePower: 30,
+			status: 'crs',
+		},
+		onResidualOrder: 26,
+		onResidualSubOrder: 2,
+		onResidual: function (pokemon) {
+			pokemon.trySetStatus('crs', pokemon);
+		},
+		num: 273,
+		gen: 4,
+		desc: "At the end of every turn, this item attempts to curse the holder.",
+	},
 };
 
 exports.BattleItems = BattleItems;
