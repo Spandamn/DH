@@ -1,4 +1,5 @@
 'use strict';
+const feDex = require('../../data/mods/fe/pokedex.js').BattlePokedex;
 
 exports.commands = {
 
@@ -21,7 +22,7 @@ learnistor: function(target, room, user) {
 	istorlist: function (target, room, user) {
 		if (!this.runBroadcast()) return;
 		let buf = `<div class=infobox-limited><center><h2>List Of Istor Pokemon</h2></center>`;
-		let istorDex = require('../mods/istor/pokedex.js').BattlePokedex;
+		let istorDex = require('../../data/mods/istor/pokedex.js').BattlePokedex;
 		if (!istorDex) return this.errorReply("Error Fetching Istor Data.");
 		Object.values(istorDex).forEach(mon => {
 			buf += `<button name="send" value="/dt ${mon.species}, Istor" style="background:none;border:none;">${mon.species}</button><br>`;
@@ -32,8 +33,8 @@ learnistor: function(target, room, user) {
 	crossoverchaos: function (target, room, user) {
 		if (!this.runBroadcast()) return;
 		let buf = `<div class=infobox-limited><center><h2>List Of Crossover Chaos Pokemon</h2></center>`;
-		let feDex = require('../mods/crossoverchaos/pokedex.js').BattlePokedex;
-		if (!feDex) return this.errorReply("Error Fetching FE Data.");
+		let feDex = require('../../data/mods/crossoverchaos/pokedex.js').BattlePokedex;
+		if (!feDex) return this.errorReply("Error Fetching Crossover Chaos Data.");
 		Object.values(feDex).forEach(mon => {
 			buf += `<button name="send" value="/dt ${mon.species}, crossoverchaos" style="background:none;border:none;">${mon.species}</button><br>`;
 		});
@@ -43,7 +44,7 @@ learnistor: function(target, room, user) {
 	crossovermoves: function (target, room, user) {
 		if (!this.runBroadcast()) return;
 		let buf = `<div class=infobox-limited><center><h2>List Of Crossover Chaos Moves</h2></center>`;
-		let eternalDex = require('../mods/crossoverchaos/moves.js').BattleMovedex;
+		let eternalDex = require('../../data/mods/crossoverchaos/moves.js').BattleMovedex;
 		if (!eternalDex) return this.errorReply("Error Fetching Eternal Data.");
 		Object.values(eternalDex).forEach(move => {
 			buf += `<button name="send" value="/dt ${move.id}, crossoverchaos" style="background:none;border:none;">${move.id}</button><br>`;
@@ -53,7 +54,6 @@ learnistor: function(target, room, user) {
 	felist: function (target, room, user) {
 		if (!this.runBroadcast()) return;
 		let buf = `<div class=infobox-limited><center><h2>List Of Fusion Evolution Pokemon</h2></center>`;
-		let feDex = require('../data/mods/fe/pokedex.js').BattlePokedex;
 		if (!feDex) return this.errorReply("Error Fetching FE Data.");
 		Object.values(feDex).forEach(mon => {
 			buf += `<button name="send" value="/dt ${mon.species}, FE" style="background:none;border:none;">${mon.species}</button><br>`;
@@ -64,7 +64,6 @@ learnistor: function(target, room, user) {
 	fedex: function (target, room, user) {
 		if (!this.runBroadcast()) return;
 		let buf = `<div class=infobox-limited><center><h2>Fusion Evolution Lab Reports</h2></center>`;
-		let feDex = require('../mods/fe/pokedex.js').BattlePokedex;
 		if (!feDex) return this.errorReply("Error Fetching FE Data.");
 		Object.values(feDex).forEach(mon => {
 			let separated = target.split(" ");
@@ -82,7 +81,7 @@ learnistor: function(target, room, user) {
 		mfastone: function (target, room, user) {
 		if (!this.runBroadcast()) return;
 		let buf = `<center><img src="https://play.pokemonshowdown.com/sprites/xyani/marshadow.gif" widht="48" height="63"><h3>Megas For All Mega Stones</h3><img src="https://play.pokemonshowdown.com/sprites/xyani/marshadow.gif" widht="48" height="63"></center>`;
-		let sylveDex = require('../mods/megasforall/items.js').BattleItems;
+		let sylveDex = require('../../data/mods/megasforall/items.js').BattleItems;
 		if (!sylveDex) return this.errorReply("Error Fetching MFA Data.");
 		Object.values(sylveDex).forEach(item => {
 			let separated = target.split(" ");
@@ -96,7 +95,7 @@ learnistor: function(target, room, user) {
 	nerfmons: function (target, room, user) {
 		if (!this.runBroadcast()) return;
 		let buf = `<div class=infobox-limited><center><h2>List Of Nerfed Pokemon</h2></center>`;
-		let feDex = require('../mods/nerfmons/pokedex.js').BattlePokedex;
+		let feDex = require('../../data/mods/nerfmons/pokedex.js').BattlePokedex;
 		if (!feDex) return this.errorReply("Error Fetching Nerf Data.");
 		Object.values(feDex).forEach(mon => {
 			buf += `<button name="send" value="/dt ${mon.species}, nerfmons" style="background:none;border:none;">${mon.species}</button><br>`;
@@ -107,7 +106,7 @@ learnistor: function(target, room, user) {
 	optimons: function (target, room, user) {
 		if (!this.runBroadcast()) return;
 		let buf = `<div class=infobox-limited><center><h2>List Of Optimized Pokemon</h2></center>`;
-		let feDex = require('../mods/opti/pokedex.js').BattlePokedex;
+		let feDex = require('../../data/mods/opti/pokedex.js').BattlePokedex;
 		if (!feDex) return this.errorReply("Error Fetching Opti Data.");
 		Object.values(feDex).forEach(mon => {
 			buf += `<button name="send" value="/dt ${mon.species}, opti" style="background:none;border:none;">${mon.species}</button><br>`;
@@ -118,7 +117,7 @@ learnistor: function(target, room, user) {
 	jillianlist: function (target, room, user) {
 		if (!this.runBroadcast()) return;
 		let buf = `<div class=infobox-limited><center><h2>List Of Jillian Pokemon</h2></center>`;
-		let jillianDex = require('../mods/jillian/pokedex.js').BattlePokedex;
+		let jillianDex = require('../../data/mods/jillian/pokedex.js').BattlePokedex;
 		if (!jillianDex) return this.errorReply("Error Fetching Istor Data.");
 		Object.values(jillianDex).forEach(mon => {
 			buf += `<button name="send" value="/dt ${mon.species}, Jillian" style="background:none;border:none;">${mon.species}</button><br>`;
@@ -129,7 +128,7 @@ learnistor: function(target, room, user) {
 	eternalmons: function (target, room, user) {
 		if (!this.runBroadcast()) return;
 		let buf = `<div class=infobox-limited><center><h2>List Of Eternal Pokemon</h2></center>`;
-		let jillianDex = require('../mods/eternal/pokedex.js').BattlePokedex;
+		let jillianDex = require('../../data/mods/eternal/pokedex.js').BattlePokedex;
 		if (!jillianDex) return this.errorReply("Error Fetching Istor Data.");
 		Object.values(jillianDex).forEach(mon => {
 			buf += `<button name="send" value="/dt ${mon.species}, Eternal" style="background:none;border:none;">${mon.species}</button><br>`;
@@ -140,7 +139,7 @@ learnistor: function(target, room, user) {
 	eternallearn: function (target, room, user) {
 		if (!this.runBroadcast()) return;
 		let buf = `<div class=infobox-limited><center><h2>List Of Eternal Pokemon</h2></center>`;
-		let jillianDex = require('../mods/eternal/pokedex.js').BattlePokedex;
+		let jillianDex = require('../../data/mods/eternal/pokedex.js').BattlePokedex;
 		if (!jillianDex) return this.errorReply("Error Fetching Istor Data.");
 		Object.values(jillianDex).forEach(mon => {
 			buf += `this.modData('Learnsets', '${mon.baseSpecies}').learnset.move = ['7L1']&#59; <br>`;
@@ -151,7 +150,7 @@ learnistor: function(target, room, user) {
 	eternalmoves: function (target, room, user) {
 		if (!this.runBroadcast()) return;
 		let buf = `<div class=infobox-limited><center><h2>List Of Eternal Pokemon Moves</h2></center>`;
-		let eternalDex = require('../mods/eternal/moves.js').BattleMovedex;
+		let eternalDex = require('../../data/mods/eternal/moves.js').BattleMovedex;
 		if (!eternalDex) return this.errorReply("Error Fetching Eternal Data.");
 		Object.values(eternalDex).forEach(move => {
 			buf += `<button name="send" value="/dt ${move.id}, Eternal" style="background:none;border:none;">${move.id}</button><br>`;
@@ -161,7 +160,7 @@ learnistor: function(target, room, user) {
 	fusionmoves: function (target, room, user) {
 		if (!this.runBroadcast()) return;
 		let buf = `<div class=infobox-limited><center><h2>List Of Fusion Pokemon Moves</h2></center>`;
-		let eternalDex = require('../mods/fe/moves.js').BattleMovedex;
+		let eternalDex = require('../../data/mods/fe/moves.js').BattleMovedex;
 		if (!eternalDex) return this.errorReply("Error Fetching Fusion Data.");
 		Object.values(eternalDex).forEach(move => {
 			buf += `<button name="send" value="/dt ${move.id}, Fusion" style="background:none;border:none;">${move.name}</button><br>`;
@@ -171,7 +170,7 @@ learnistor: function(target, room, user) {
 	femovescalc: function (target, room, user) {
 		if (!this.runBroadcast()) return;
 		let buf = `<div class=infobox-limited><center><h2>List Of Fusion Pokemon Moves</h2></center>`;
-		let eternalDex = require('../mods/fe/moves.js').BattleMovedex;
+		let eternalDex = require('../../data/mods/fe/moves.js').BattleMovedex;
 		if (!eternalDex) return this.errorReply("Error Fetching Fusion Data.");
 		Object.values(eternalDex).forEach(move => {
 			buf += `'${move.name}':{<br>bp:${move.basePower}, <br>type:'${move.type}',<br>category:'${move.category}',<br>},<br>`;
@@ -181,7 +180,7 @@ learnistor: function(target, room, user) {
 	usv: function (target, room, user) {
 		if (!this.runBroadcast()) return;
 		let buf = `<div class=infobox-limited><center><h2>List Of Ultra Space Variants Pokemon</h2></center>`;
-		let jillianDex = require('../mods/usv/pokedex.js').BattlePokedex;
+		let jillianDex = require('../../data/mods/usv/pokedex.js').BattlePokedex;
 		if (!jillianDex) return this.errorReply("Error Fetching Istor Data.");
 		Object.values(jillianDex).forEach(mon => {
 			buf += `<button name="send" value="/dt ${mon.species}, Usv" style="background:none;border:none;">${mon.species}</button><br>`;
@@ -192,7 +191,7 @@ learnistor: function(target, room, user) {
 	clovermons: function (target, room, user) {
 		if (!this.runBroadcast()) return;
 		let buf = `<div class=infobox-limited><center><h2>List Of Clovermons</h2></center>`;
-		let jillianDex = require('../mods/clovermons/pokedex.js').BattlePokedex;
+		let jillianDex = require('../../data/mods/clovermons/pokedex.js').BattlePokedex;
 		if (!jillianDex) return this.errorReply("Error Fetching Istor Data.");
 		Object.values(jillianDex).forEach(mon => {
 			buf += `<button name="send" value="/dt ${mon.species}, Clovermons" style="background:none;border:none;">${mon.species}</button><br>`;
@@ -203,7 +202,7 @@ learnistor: function(target, room, user) {
 		eeveed: function (target, room, user) {
 		if (!this.runBroadcast()) return;
 		let buf = `<div class=infobox-limited><center><h2>List Of Eeeved Pokemon</h2></center>`;
-		let jillianDex = require('../mods/eeveed/pokedex.js').BattlePokedex;
+		let jillianDex = require('../../data/mods/eeveed/pokedex.js').BattlePokedex;
 		if (!jillianDex) return this.errorReply("Error Fetching Istor Data.");
 		Object.values(jillianDex).forEach(mon => {
 			buf += `<button name="send" value="/dt ${mon.species}, eeveed" style="background:none;border:none;">${mon.species}</button><br>`;
@@ -214,7 +213,7 @@ learnistor: function(target, room, user) {
 	eeveedmegas: function (target, room, user) {
 		if (!this.runBroadcast()) return;
 		let buf = `<div class=infobox-limited><center><h2>List Of Eeveed Mega Stones</h2></center>`;
-		let feDex = require('../mods/eeveed/items.js').BattleItems;
+		let feDex = require('../../data/mods/eeveed/items.js').BattleItems;
 		if (!feDex) return this.errorReply("Error Fetching FE Data.");
 		Object.values(feDex).forEach(item => {
 			buf += `<button name="send" value="/dt ${item.name}, FE" style="background:none;border:none;">${item.id}</button><br>`;
@@ -225,7 +224,7 @@ learnistor: function(target, room, user) {
 	eeveedabilities: function (target, room, user) {
 		if (!this.runBroadcast()) return;
 		let buf = `<div class=infobox-limited><center><h2>List Of Coded Eeveed Abilities</h2></center>`;
-		let feDex = require('../mods/eeveed/abilities.js').BattleAbilities;
+		let feDex = require('../../data/mods/eeveed/abilities.js').BattleAbilities;
 		if (!feDex) return this.errorReply("Error Fetching Eeveed Data.");
 		Object.values(feDex).forEach(ability => {
 			buf += `<b>${ability.name}</b>: ${ability.shortDesc}<br>`;
@@ -235,7 +234,7 @@ learnistor: function(target, room, user) {
 	eeveedlearnsets: function (target, room, user) {
 		if (!this.runBroadcast()) return;
 		let buf = `<div class=infobox-limited><center><h2>List Of Eeveed Movepools</h2></center>`;
-		let feDex = require('../mods/eeveed/learnsets.js').BattleLearnsets;
+		let feDex = require('../../data/mods/eeveed/learnsets.js').BattleLearnsets;
 		if (!feDex) return this.errorReply("Error Fetching Eeveed Data.");
 		Object.values(feDex).forEach(movepool => {
 			buf += `<b>${movepool}</b>:<br> ${movepool.learnset.value}<br>`;
@@ -245,7 +244,7 @@ learnistor: function(target, room, user) {
 	tnfg: function (target, room, user) {
 		if (!this.runBroadcast()) return;
 		let buf = `<div class=infobox-limited><center><h2>List Of PTNFG Pokemon</h2></center>`;
-		let jillianDex = require('../mods/thefirstnewgen/pokedex.js').BattlePokedex;
+		let jillianDex = require('../../data/mods/thefirstnewgen/pokedex.js').BattlePokedex;
 		if (!jillianDex) return this.errorReply("Error Fetching Istor Data.");
 		Object.values(jillianDex).forEach(mon => {
 			buf += `<button name="send" value="/dt ${mon.species}, thefirstnewgen" style="background:none;border:none;">${mon.species}</button><br>`;
@@ -257,7 +256,7 @@ learnistor: function(target, room, user) {
 		mfa: function (target, room, user) {
 		if (!this.runBroadcast()) return;
 		let buf = `<div class=infobox-limited><center><h2>List Of MFA Pokemon</h2><br>Clickable list!</center>`;
-		let mfaDex = require('../mods/megasforall/pokedex.js').BattlePokedex;
+		let mfaDex = require('../../data/mods/megasforall/pokedex.js').BattlePokedex;
 		if (!mfaDex) return this.errorReply("Error Fetching MFA Data.");
 		Object.values(mfaDex).forEach(mon => {
 			buf += `<button name="send" value="/dt ${mon.species}, megasforall" style="background:none;border:none;">${mon.species}</button><br>`;
@@ -268,7 +267,7 @@ learnistor: function(target, room, user) {
 	mfaitem: function (target, room, user) {
 		if (!this.runBroadcast()) return;
 		let buf = `<div class=infobox-limited><center><h2>List Of MFA Pokemon</h2><br>Clickable list!</center>`;
-		let mfaDex = require('../mods/megasforall/formats-data.js').BattleFormatsData ;
+		let mfaDex = require('../../data/mods/megasforall/formats-data.js').BattleFormatsData ;
 		if (!mfaDex) return this.errorReply("Error Fetching MFA Data.");
 		Object.values(mfaDex).forEach(mon => {
 			buf += `requiredItem: &quot;${mon.requiredItem}&quot;<br>`;
@@ -279,7 +278,7 @@ learnistor: function(target, room, user) {
 	 alola: function (target, room, user) {
 		if (!this.runBroadcast()) return;
 		let buf = `<div class=infobox-limited><center><h2>List Of Alola Formes Pokemon</h2></center>`;
-		let jillianDex = require('../mods/alola/pokedex.js').BattlePokedex;
+		let jillianDex = require('../../data/mods/alola/pokedex.js').BattlePokedex;
 		if (!jillianDex) return this.errorReply("Error Fetching Istor Data.");
 		Object.values(jillianDex).forEach(mon => {
 			buf += `<button name="send" value="/dt ${mon.species}, alola" style="background:none;border:none;">${mon.species}</button><br>`;
@@ -290,7 +289,7 @@ learnistor: function(target, room, user) {
 	femegas: function (target, room, user) {
 		if (!this.runBroadcast()) return;
 		let buf = `<div class=infobox-limited><center><h2>List Of Fusion Evolution Mega Stones</h2></center>`;
-		let feDex = require('../mods/fe/items.js').BattleItems;
+		let feDex = require('../../data/mods/fe/items.js').BattleItems;
 		if (!feDex) return this.errorReply("Error Fetching FE Data.");
 		Object.values(feDex).forEach(item => {
 			buf += `<button name="send" value="/dt ${item.name}, FE" style="background:none;border:none;">${item.id}</button><br>`;
@@ -301,7 +300,7 @@ learnistor: function(target, room, user) {
 	feabilities: function (target, room, user) {
 		if (!this.runBroadcast()) return;
 		let buf = `<div class=infobox-limited><center><h2>List Of Coded Fusion Evolution Abilities</h2></center>`;
-		let feDex = require('../mods/fe/abilities.js').BattleAbilities;
+		let feDex = require('../../data/mods/fe/abilities.js').BattleAbilities;
 		if (!feDex) return this.errorReply("Error Fetching FE Data.");
 		Object.values(feDex).forEach(ability => {
 			buf += `<button name="send" value="/dt ${ability.id}, FE" style="background:none;border:none;">${ability.name}</button><br>`;
@@ -311,7 +310,7 @@ learnistor: function(target, room, user) {
 	feate: function (target, room, user) {
 		if (!this.runBroadcast()) return;
 		let buf = `<div class=infobox-limited><center><h2>List Of Coded Fusion Evolution Abilities</h2></center>`;
-		let feDex = require('../mods/fe/abilities.js').BattleAbilities;
+		let feDex = require('../../data/mods/fe/abilities.js').BattleAbilities;
 		if (!feDex) return this.errorReply("Error Fetching FE Data.");
 		Object.values(feDex).forEach(ability => {
 			if (ability.name.includes('ate')) {
@@ -323,7 +322,7 @@ learnistor: function(target, room, user) {
 	sylvemoves: function (target, room, user) {
 		if (!this.runBroadcast()) return;
 		let buf = `<div class=infobox-limited><center><h2>List Of Coded Fusion Moves</h2></center>`;
-		let sylveDex = require('../mods/fe/moves.js').BattleMovedex;
+		let sylveDex = require('../../data/mods/fe/moves.js').BattleMovedex;
 		if (!sylveDex) return this.errorReply("Error Fetching FE Data.");
 		Object.values(sylveDex).forEach(move => {
 			buf += `<button name="send" value="/dt ${move.id}, FE" style="background:none;border:none;">${move.id}</button><br>`;
@@ -333,7 +332,7 @@ learnistor: function(target, room, user) {
 sylveitems: function (target, room, user) {
 		if (!this.runBroadcast()) return;
 		let buf = `<div class=infobox-limited><center><h2>List Of Sylvemons Items Additions/Alterations</h2></center>`;
-		let sylveDex = require('../mods/sylvemons/items.js').BattleItems;
+		let sylveDex = require('../../data/mods/sylvemons/items.js').BattleItems;
 		if (!sylveDex) return this.errorReply("Error Fetching Sylvemons Data.");
 		Object.values(sylveDex).forEach(item => {
 			buf += `<button name="send" value="/dt ${item.id}, Sylvemons" style="background:none;border:none;">${item.id}</button><br>`;
@@ -343,7 +342,7 @@ sylveitems: function (target, room, user) {
 	sylvemoves: function (target, room, user) {
 		if (!this.runBroadcast()) return;
 		let buf = `<div class=infobox-limited><center><h2>List Of Sylvemons Moves Additions/Alterations</h2></center>`;
-		let sylveDex = require('../mods/sylvemons/moves.js').BattleMovedex;
+		let sylveDex = require('../../data/mods/sylvemons/moves.js').BattleMovedex;
 		if (!sylveDex) return this.errorReply("Error Fetching Sylvemons Data.");
 		Object.values(sylveDex).forEach(move => {
 			buf += `<button name="send" value="/dt ${move.id}, Sylvemons" style="background:none;border:none;">${move.id}</button><br>`;
@@ -353,7 +352,7 @@ sylveitems: function (target, room, user) {
 	sylveabilities: function (target, room, user) {
 		if (!this.runBroadcast()) return;
 		let buf = `<div class=infobox-limited><center><h2>List Of Sylvemons Abilities Additions/Alterations</h2></center>`;
-		let sylveDex = require('../mods/sylvemons/abilities.js').BattleAbilities;
+		let sylveDex = require('../../data/mods/sylvemons/abilities.js').BattleAbilities;
 		if (!sylveDex) return this.errorReply("Error Fetching Sylvemons Data.");
 		Object.values(sylveDex).forEach(ability => {
 			buf += `<button name="send" value="/dt ${ability.id}, Sylvemons" style="background:none;border:none;">${ability.id}</button><br>`;
@@ -363,7 +362,7 @@ sylveitems: function (target, room, user) {
 gutter: function (target, room, user) {
 		if (!this.runBroadcast()) return;
 		let buf = `<div class=infobox-limited><center><h2>List Of Alola Formes Pokemon</h2></center>`;
-		let jillianDex = require('../mods/fe/pokedex.js').BattlePokedex;
+		let jillianDex = require('../../data/mods/fe/pokedex.js').BattlePokedex;
 		if (!jillianDex) return this.errorReply("Error Fetching Istor Data.");
 		Object.values(jillianDex).forEach(mon => {
 			buf += `&quot;${mon.species}&quot;: {<br> &quot;t1&quot;: &quot;${mon.types[0]}&quot;, <br>&quot;t2&quot;: &quot;${mon.types[1]}&quot;,<br> &quot;bs&quot;: { <br>&quot;hp&quot;: ${mon.baseStats.hp}, <br>&quot;at&quot;: ${mon.baseStats.atk}, <br> &quot;df&quot;: ${mon.baseStats.def}, <br> &quot;sa&quot;: ${mon.baseStats.spa},<br>&quot;sd&quot;: ${mon.baseStats.spd}, <br>&quot;sp&quot;: ${mon.baseStats.spe} <br> }, <br> },<br>`;
@@ -373,7 +372,7 @@ gutter: function (target, room, user) {
 	egutter: function (target, room, user) {
 		if (!this.runBroadcast()) return;
 		let buf = `<div class=infobox-limited><center><h2>List Of Alola Formes Pokemon</h2></center>`;
-		let jillianDex = require('../mods/eternal/pokedex.js').BattlePokedex;
+		let jillianDex = require('../../data/mods/eternal/pokedex.js').BattlePokedex;
 		if (!jillianDex) return this.errorReply("Error Fetching Istor Data.");
 		Object.values(jillianDex).forEach(mon => {
 			buf += `&quot;${mon.species}&quot;: {<br> &quot;t1&quot;: &quot;${mon.types[0]}&quot;, <br>&quot;t2&quot;: &quot;${mon.types[1]}&quot;,<br> &quot;bs&quot;: { <br>&quot;hp&quot;: ${mon.baseStats.hp}, <br>&quot;at&quot;: ${mon.baseStats.atk}, <br> &quot;df&quot;: ${mon.baseStats.def}, <br> &quot;sa&quot;: ${mon.baseStats.spa},<br>&quot;sd&quot;: ${mon.baseStats.spd}, <br>&quot;sp&quot;: ${mon.baseStats.spe} <br> }, <br> &quot;w&quot;: ${mon.weightkg}<br> },<br>`;
@@ -383,7 +382,7 @@ gutter: function (target, room, user) {
 		mgutter: function (target, room, user) {
 		if (!this.runBroadcast()) return;
 		let buf = `<div class=infobox-limited><center><h2>List Of Alola Formes Pokemon</h2></center>`;
-		let jillianDex = require('../mods/megasforall/pokedex.js').BattlePokedex;
+		let jillianDex = require('../../data/mods/megasforall/pokedex.js').BattlePokedex;
 		if (!jillianDex) return this.errorReply("Error Fetching Istor Data.");
 		Object.values(jillianDex).forEach(mon => {
 			if (mon.forme === 'Mega') {
@@ -394,7 +393,7 @@ gutter: function (target, room, user) {
 evgutter: function (target, room, user) {
 		if (!this.runBroadcast()) return;
 		let buf = `<div class=infobox-limited><center><h2>List Of Alola Formes Pokemon</h2></center>`;
-		let jillianDex = require('../mods/eeveed/pokedex.js').BattlePokedex;
+		let jillianDex = require('../../data/mods/eeveed/pokedex.js').BattlePokedex;
 		if (!jillianDex) return this.errorReply("Error Fetching Istor Data.");
 		Object.values(jillianDex).forEach(mon => {
 			if (mon.num > 9000) {
@@ -406,7 +405,7 @@ evgutter: function (target, room, user) {
 	egutter2: function (target, room, user) {
 		if (!this.runBroadcast()) return;
 		let buf = `<div class=infobox-limited><center><h2>List Of Alola Formes Pokemon</h2></center>`;
-		let jillianDex = require('../mods/eternal/moves.js').BattlePokedex;
+		let jillianDex = require('../../data/mods/eternal/moves.js').BattlePokedex;
 		if (!jillianDex) return this.errorReply("Error Fetching Istor Data.");
 		Object.values(jillianDex).forEach(move => {
 			buf += `'${move.name}': {<br> ${move.basePower}, 'category': ${move.category},<br>},`;
@@ -417,7 +416,6 @@ evgutter: function (target, room, user) {
 	fespeed: function (target, room, user) {
 		if (!this.runBroadcast()) return;
 		let buf = `<div class=infobox-limited><center><h2>List Of Fusion Evolution Pokemon</h2></center>`;
-		let feDex = require('../mods/fe/pokedex.js').BattlePokedex;
 		if (!feDex) return this.errorReply("Error Fetching FE Data.");
 		Object.values(feDex).forEach(mon => {
 			let speedtierplusscarf = (2.2 * mon.baseStats.spe + 108.9) * 1.5;
@@ -432,7 +430,6 @@ evgutter: function (target, room, user) {
 	featk: function (target, room, user) {
 		if (!this.runBroadcast()) return;
 		let buf = `<div class=infobox-limited><center><h2>List Of Fusion Evolution Pokemon</h2></center>`;
-		let feDex = require('../mods/fe/pokedex.js').BattlePokedex;
 		if (!feDex) return this.errorReply("Error Fetching FE Data.");
 		Object.values(feDex).forEach(mon => {
 			let speedtierplus =mon.baseStats.atk;
@@ -443,7 +440,6 @@ evgutter: function (target, room, user) {
 	fespa: function (target, room, user) {
 		if (!this.runBroadcast()) return;
 		let buf = `<div class=infobox-limited><center><h2>List Of Fusion Evolution Pokemon</h2></center>`;
-		let feDex = require('../mods/fe/pokedex.js').BattlePokedex;
 		if (!feDex) return this.errorReply("Error Fetching FE Data.");
 		Object.values(feDex).forEach(mon => {
 			let speedtierplus =mon.baseStats.spa;
@@ -454,7 +450,7 @@ evgutter: function (target, room, user) {
 	eternalspeed: function (target, room, user) {
 		if (!this.runBroadcast()) return;
 		let buf = `<div class=infobox-limited><center><h2>List Of Fusion Evolution Pokemon</h2></center>`;
-		let feDex = require('../mods/eternal/pokedex.js').BattlePokedex;
+		let feDex = require('../../data/mods/eternal/pokedex.js').BattlePokedex;
 		if (!feDex) return this.errorReply("Error Fetching FE Data.");
 		Object.values(feDex).forEach(mon => {
 			let speedtierplusscarf = (2.2 * mon.baseStats.spe + 108.9) * 1.5;
@@ -469,7 +465,7 @@ evgutter: function (target, room, user) {
 	typeoptspeed: function (target, room, user) {
 		if (!this.runBroadcast()) return;
 		let buf = `<div class=infobox-limited><center><h2>List Of Fusion Evolution Pokemon</h2></center>`;
-		let feDex = require('../mods/typeopt/pokedex.js').BattlePokedex;
+		let feDex = require('../../data/mods/typeopt/pokedex.js').BattlePokedex;
 		if (!feDex) return this.errorReply("Error Fetching FE Data.");
 		Object.values(feDex).forEach(mon => {
 			let speedtierplusscarf = (2.2 * mon.baseStats.spe + 108.9) * 1.5;
@@ -485,7 +481,7 @@ evgutter: function (target, room, user) {
 	mfaspeed: function (target, room, user) {
 		if (!this.runBroadcast()) return;
 		let buf = `<div class=infobox-limited><center><h2>List Of Fusion Evolution Pokemon</h2></center>`;
-		let feDex = require('../mods/megasforall/pokedex.js').BattlePokedex;
+		let feDex = require('../../data/mods/megasforall/pokedex.js').BattlePokedex;
 		if (!feDex) return this.errorReply("Error Fetching FE Data.");
 		Object.values(feDex).forEach(mon => {
 			let speedtierplusscarf = (2.2 * mon.baseStats.spe + 108.9) * 1.5;
@@ -503,7 +499,6 @@ evgutter: function (target, room, user) {
 	fespeedscarf: function (target, room, user) {
 		if (!this.runBroadcast()) return;
 		let buf = `<div class=infobox-limited><center><h2>List Of Fusion Evolution Pokemon</h2></center>`;
-		let feDex = require('../mods/fe/pokedex.js').BattlePokedex;
 		if (!feDex) return this.errorReply("Error Fetching FE Data.");
 		Object.values(feDex).forEach(mon => {
 			let speedtierplusscarf = (2.2 * mon.baseStats.spe + 108.9) * 1.5;
@@ -519,7 +514,7 @@ evgutter: function (target, room, user) {
 	apdata: function (target, room, user) {
 		if (!this.runBroadcast()) return;
 		let buf = `<div class=infobox-limited><center><h2>List Of Moves</h2></center>`;
-		let feDex = require('../data/moves.js').BattleMovedex;
+		let feDex = require('../../data/moves.js').BattleMovedex;
 		if (!feDex) return this.errorReply("Error Fetching FE Data.");
 		Object.values(feDex).forEach(move => {
 			if (move.category === 'Status' && move.target !=="normal" & move.boosts || move.volatileStatus) {
@@ -561,7 +556,7 @@ evgutter: function (target, room, user) {
 	epcheck: function (target, room, user) {
 		if (!this.runBroadcast()) return;
 		let buf = `<div class=infobox-limited><center><h2>List Of Eternal Pokemon Moves</h2></center>`;
-		let eternalDex = require('../mods/eternal/moves.js').BattleMovedex;
+		let eternalDex = require('../../data/mods/eternal/moves.js').BattleMovedex;
 		if (!eternalDex) return this.errorReply("Error Fetching Eternal Data.");
 		Object.values(eternalDex).forEach(move => {
 			if (!move.onPrepareHit) {
@@ -573,7 +568,7 @@ evgutter: function (target, room, user) {
 	sylvecheck: function (target, room, user) {
 		if (!this.runBroadcast()) return;
 		let buf = `<div class=infobox-limited><center><h2>List Of Eternal Pokemon Moves</h2></center>`;
-		let eternalDex = require('../mods/sylvemons/moves.js').BattleMovedex;
+		let eternalDex = require('../../data/mods/sylvemons/moves.js').BattleMovedex;
 		if (!eternalDex) return this.errorReply("Error Fetching Eternal Data.");
 		Object.values(eternalDex).forEach(move => {
 			if (!move.onPrepareHit) {
@@ -614,7 +609,6 @@ evgutter: function (target, room, user) {
 		felist2: function (target, room, user) {
 		if (!this.runBroadcast()) return;
 		let buf = `<div class=infobox-limited><center><h2>List Of Fusion Evolution Pokemon</h2></center>`;
-		let feDex = require('../mods/fe/pokedex.js').BattlePokedex;
 		if (!feDex) return this.errorReply("Error Fetching FE Data.");
 		Object.values(feDex).forEach(mon => {
 			buf += `&lt;option value="${mon.species}"&gt;<br>`;
@@ -624,7 +618,7 @@ evgutter: function (target, room, user) {
 	feabilities2: function (target, room, user) {
 		if (!this.runBroadcast()) return;
 		let buf = `<div class=infobox-limited><center><h2>List Of Coded Fusion Evolution Abilities</h2></center>`;
-		let feDex = require('../mods/fe/abilities.js').BattleAbilities;
+		let feDex = require('../../data/mods/fe/abilities.js').BattleAbilities;
 		if (!feDex) return this.errorReply("Error Fetching FE Data.");
 		Object.values(feDex).forEach(ability => {
 			buf += `"${ability.id}":{shortDesc: "${ability.shortDesc}",name: "${ability.name}",id: "${ability.id}",},<br>`;
