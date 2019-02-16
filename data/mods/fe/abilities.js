@@ -13283,7 +13283,7 @@ exports.BattleAbilities = {
 		id: "marvelousdiver",
 		name: "Marvelous Diver",
 	},
-	"antivirus": {
+	"hardware": {
 		shortDesc: "This Pokemon's Defense and Special Defense are tripled.",
 		onModifyDefPriority: 6,
 		onModifyDef: function (def) {
@@ -13293,21 +13293,8 @@ exports.BattleAbilities = {
 		onModifySpD: function (spd) {
 			return this.chainModify(3);
 		},
-		id: "antivirus",
-		name: "Antivirus",
-	},
-	"antivirus": {
-		shortDesc: "This Pokemon's Defense and Special Defense are tripled.",
-		onModifyDefPriority: 6,
-		onModifyDef: function (def) {
-			return this.chainModify(3);
-		},
-		onModifySpDPriority: 6,
-		onModifySpD: function (spd) {
-			return this.chainModify(3);
-		},
-		id: "antivirus",
-		name: "Antivirus",
+		id: "hardware",
+		name: "Hardware",
 	},
 	"disruption": {
 		shortDesc: "On switch-in, the bearer negates the abilities of adjacent opponents and lowers each's Attack by 1 stage.",
