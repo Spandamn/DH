@@ -6342,7 +6342,7 @@ exports.BattleAbilities = {
 		name: "Electrotorrent",
 	},
 	"darksurge": {
-		shortDesc: "On switch-in, this Pokemon summons Dark Terrain.",
+		shortDesc: "On switch-in, this Pokemon summons Dark Terrain. The effects are identical to Electric Terrain, but powers up Dark-type moves instead of Electric-type moves.",
 		onStart: function (source) {
 			this.setTerrain('darkterrain');
 		},
@@ -13472,5 +13472,13 @@ exports.BattleAbilities = {
 		},
 		id: "hydra",
 		name: "Hydra",
+	},
+	"kelpsurge": {
+		shortDesc: "On switch-in, this Pokemon summons Kelp Terrain. Grounded Pokemon will have x1.5 power on Grass- and Water-type moves and restore 6.25% of their HP each turn, but STABs of neither aforementioned type have halved power.",
+		onStart: function (source) {
+			this.setTerrain('kelpterrain');
+		},
+		id: "kelpterrain",
+		name: "Kelp Surge",
 	},
 };
