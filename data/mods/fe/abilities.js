@@ -9872,7 +9872,6 @@ exports.BattleAbilities = {
 		},
 		onSwitchOut: function (pokemon) {
 			pokemon.cureStatus();
-			pokemon.side.addSideCondition('compassionatesoul');
 		},
 		effect: {
 			duration: 2,
@@ -13412,5 +13411,66 @@ exports.BattleAbilities = {
 		},
 		id: "slippery",
 		name: "Slippery",
+	},
+	"hydra": {
+		shortDesc: "Every time this Pokemon KOs another Pokemon, it heals 33% of it's HP and its highest stat is raised by 1. When switching out, it restores 33.3% of its HP and the switch-in gets +1 to their highest stat.",
+		onSourceFaint: function (target, source, effect) {
+			if (effect && effect.effectType === 'Move') {
+				this.heal(source.maxhp / 3);
+				let stat = 'atk';
+				let bestStat = 0;
+				for (let i in source.stats) {
+					if (source.stats[i] > bestStat) {
+						stat = i;
+						bestStat = source.stats[i];
+					}
+				}
+				this.boost({[stat]: 1}, source);
+			}
+		},
+		onBeforeSwitchOut: function (pokemon) {
+			pokemon.side.addSideCondition('hydra');
+		},
+		onSwitchOut: function (pokemon) {
+			pokemon.heal(pokemon.maxhp / 3);
+		},
+		effect: {
+			duration: 2,
+			onStart: function (side, source) {
+				this.debug('Hydra started on ' + side.name);
+				this.effectData.positions = [];
+				// @ts-ignore
+				for (const i of side.active.keys()) {
+					this.effectData.positions[i] = false;
+				}
+				this.effectData.positions[source.position] = true;
+			},
+			onRestart: function (side, source) {
+				this.effectData.positions[source.position] = true;
+			},
+			onSwitchInPriority: 1,
+			onSwitchIn: function (target) {
+				const positions = /**@type {boolean[]} */ (this.effectData.positions);
+				if (target.position !== this.effectData.sourcePosition) {
+					return;
+				}
+				if (target && !target.fainted && target.hp > 0) {
+					let stat = 'atk';
+					let bestStat = 0;
+					for (let i in target.stats) {
+						if (target.stats[i] > bestStat) {
+							stat = i;
+							bestStat = target.stats[i];
+						}
+					}
+					this.boost({[stat]: 1}, target);
+				}
+				if (!positions.some(affected => affected === true)) {
+					target.side.removeSideCondition('hydra');
+				}
+			},
+		},
+		id: "hydra",
+		name: "Hydra",
 	},
 };
