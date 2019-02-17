@@ -218,6 +218,7 @@ exports.github = {
 exports.replsocketprefix = './logs/repl/';
 exports.replsocketmode = 0o600;
 
+const fs = require('fs');
 exports.ssl = {
     port: 8051,
     options: {
