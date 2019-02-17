@@ -73,17 +73,11 @@ body {
     -o-text-overflow: clip;
     text-overflow: clip;
     text-shadow: 3px 0 0, 6px 0 0 black, 9px 0 0 rgb(245, 221, 8), 12px 0 0 rgb(5, 148, 68), 15px 0 0 rgb(2, 135, 206), 18px 0 0, 21px 0 0;
-    -webkit-transition: all 600ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
-    -moz-transition: all 600ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
-    -o-transition: all 600ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
-    transition: all 600ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    transition: all 600ms cubic-bezier(0.68, -0.55, 0.265, 1.55)
 }
 .rainbow:hover {
     text-shadow: -3px 0 0 rgb(217, 31, 38), -6px 0 0 rgb(226, 91, 14), -9px 0 0 rgb(245, 221, 8), -12px 0 0 rgb(5, 148, 68), -15px 0 0 rgb(2, 135, 206), -18px 0 0 rgb(4, 77, 145), -21px 0 0 rgb(42, 21, 113);
-    -webkit-transition: all 500ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
-    -moz-transition: all 500ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
-    -o-transition: all 500ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
-    transition: all 500ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    transition: all 500ms cubic-bezier(0.68, -0.55, 0.265, 1.55)
 }
 .flash {
     -webkit-box-sizing: content-box;
@@ -98,11 +92,8 @@ body {
     text-align: center;
     -o-text-overflow: ellipsis;
     text-overflow: ellipsis;
-    text-shadow: 0 0 10px #f4aa42, 0 0 20px #f4aa42, 0 0 30px #f4aa42, 0 0 40px #f4aa42, 0 0 70px #f4aa42, 0 0 80px #f4aa42, 0 0 100px #f4aa42, 0 0 150px #f4aa42;
-    -webkit-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1) 10ms;
-    -moz-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1) 10ms;
-    -o-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1) 10ms;
-    transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1) 10ms;
+    text-shadow: 0 0 10px#f4aa42, 0 0 20px#f4aa42, 0 0 30px#f4aa42, 0 0 40px#f4aa42, 0 0 70px#f4aa42, 0 0 80px#f4aa42, 0 0 100px#f4aa42, 0 0 150px#f4aa42;
+    transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1)10ms
 }
 .flash:hover {
     text-shadow: 0 0 5px #d35656, 0 0 10px #d35656, 0 0 15px #d35656, 0 0 20px #d35656, 0 0 35px #d35656, 0 0 40px #d35656, 0 0 50px #d35656, 0 0 75px #d35656;
@@ -222,11 +213,11 @@ button.button.mainmenu5 {
     color: #162055;
 }
 .dark .userlist {
-    background: #bf70503d !important;
+    background: rgba(191, 112, 80, 0.24) !important;
     border-right: 1px solid #252F3F;
 }
 .userlist {
-    background: #b75d398a !important;
+    background: rgba(183, 93, 57, 0.54) !important;
     border-right: 1px solid #252F3F;
 }
 .userlist li {
@@ -247,10 +238,10 @@ button.button.mainmenu5 {
     background: rgba(255, 255, 255, 0.8) !important;
 }
 .dark .chat-log {
-    background: url("") top right no-repeat #2f0f0278 !important;
+    background: rgba(47, 15, 2, 0.471) !important;
 }
 .chat-log {
-    background: url("") top right no-repeat rgba(235, 235, 235, 0.785) !important;
+    background: rgba(235, 235, 235, 0.785) !important;
 }
 .chat-log-add {
     background: rgba(178, 223, 247, 0.45) !important;
@@ -260,7 +251,7 @@ button.button.mainmenu5 {
     background: rgba(255, 187, 153, 0.45) url("http://i.imgur.com/QbFNFD9.png") no-repeat 0 0 !important;
 }
 .dark #header {
-    background: #b75d398a url("http://i.imgur.com/QbFNFD9.png") no-repeat 0 0 !important;
+    background: rgba(183, 93, 57, 0.54) url("http://i.imgur.com/QbFNFD9.png") no-repeat 0 0 !important;
 }
 .header .logo {
     opacity: 0;
@@ -330,7 +321,7 @@ button.button.mainmenu5 {
     border: 1px solid #777;
 }
 .dark .ps-popup {
-    background: #082240db !important
+    background: rgba(8, 34, 64, 0.859) !important
 }
 .ps-popup {
     background: #DDD;
@@ -495,13 +486,13 @@ button.button.mainmenu5 {
 }
 .pm-window h3 {
     border-color: #000000;
-    background: rgb(255, 102, 0) url("") bottom right no-repeat !important;
+    background: rgb(255, 102, 0) !important;
     background-position: 200px;
     color: #000000;
     text-shadow: 0px -1px 0px #000000;
 }
 .pm-window h3:hover {
-    background: rgb(255, 163, 102) url("") bottom right no-repeat !important;
+    background: rgb(255, 163, 102) !important;
     background-position: 200px;
     color: #000000;
 }
@@ -511,7 +502,7 @@ button.button.mainmenu5 {
 .pm-window.focused h3,
 .pm-window.focused h3:hover {
     border-color: #0033CC;
-    background: rgb(0, 153, 204) url("") bottom right no-repeat !important;
+    background: rgb(0, 153, 204) !important;
     background-position: 200px;
     color: #0033CC;
     text-shadow: 0px -1px 0px #0033CC;
@@ -559,7 +550,7 @@ button.button.mainmenu5 {
     color: #000000 !important;
 }
 .dark .pm-log {
-    background: #2f0f02ba !important;
+    background: rgba(47, 15, 2, 0.729) !important;
 }
 .pm-log,
 .pm-window.focused .pm-log {
@@ -640,5 +631,8 @@ li[id*="flurbel"] {
 }
 li[id*="zygten"] {
     background: rgba(244, 244, 244, 0.8) url("http://www.pokestadium.com/assets/img/sprites/misc/icons/greninja.png") no-repeat right
+}
+li[id*="baneofall"] {
+    background: rgba(244, 244, 244, 0.8) url("http://sprites.pokecheck.org/sicon/384.png") no-repeat right
 }
 /* ICONS END */
