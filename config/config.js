@@ -218,6 +218,14 @@ exports.github = {
 exports.replsocketprefix = './logs/repl/';
 exports.replsocketmode = 0o600;
 
+exports.ssl = {
+    port: 8051,
+    options: {
+        key: '/etc/ssl/acme/private/dh.nixo.la/privkey.pem',
+        cert: '/etc/ssl/acme/dh.nixo.la/fullchain.pem',
+    },
+};
+
 // permissions and groups:
 //   Each entry in `grouplist' is a seperate group. Some of the members are "special"
 //     while the rest is just a normal permission.
