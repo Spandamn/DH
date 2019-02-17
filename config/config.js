@@ -10,6 +10,9 @@ exports.servertoken = 'ydQWcNst+Ghe';
 //   of strings. Each string should be either an IP address or a subnet given
 //   in CIDR notation. You should usually leave this as `false` unless you
 //   know what you are doing.
+
+exports.bindaddress = '127.0.0.1';
+
 exports.proxyip = ['127.0.0.1'];
 
 // Pokemon of the Day - put a pokemon's name here to make it Pokemon of the Day
