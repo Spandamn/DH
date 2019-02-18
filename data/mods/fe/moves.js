@@ -221,6 +221,66 @@ exports.BattleMovedex = {
 		zMoveBoost: {spe: 1},
 		//contestType: "Clever",
 	},
+	"kelpterrain": {
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		desc: "For 5 turns, the terrain becomes Kelp Terrain. During the effect, the power of Water- and Grass-type attacks made by grounded Pokemon is multiplied by 1.5 and grounded Pokemon cannot fall asleep; Pokemon already asleep do not wake up. Camouflage transforms the user into an Water type, Nature Power becomes Grass Pledge, and Secret Power has a 30% chance to cause paralysis. Fails if the current terrain is Kelp Terrain.",
+		shortDesc: "5 turns. Grounded: +Water/Grass power, +1/16 max HP, decreased STAB unless Water or Grass.",
+		id: "kelpterrain",
+		name: "Kelp Terrain",
+		pp: 10,
+		priority: 0,
+		flags: {nonsky: 1},
+		terrain: 'kelpterrain',
+		effect: {
+			duration: 5,
+			durationCallback: function (source, effect) {
+				if (source && source.hasItem('terrainextender')) {
+					return 8;
+				}
+				return 5;
+			},
+			onBasePower: function (basePower, attacker, defender, move) {
+				if (['Grass', 'Water'].includes(move.type) && attacker.isGrounded()) {
+					this.debug('kelp terrain boost');
+					return this.chainModify(1.5);
+				}
+				if (attacker.hasType(move.type)) {
+					//Grass- and Water-type moves get the boost and return, preventing them from reaching this.
+					this.debug('move weakened by kelp terrain');
+					return this.chainModify(0.5);
+				}
+			},
+			onStart: function (battle, source, effect) {
+				if (effect && effect.effectType === 'Ability') {
+					this.add('-fieldstart', 'move: Kelp Terrain', '[from] ability: ' + effect, '[of] ' + source);
+				} else {
+					this.add('-fieldstart', 'move: Kelp Terrain');
+				}
+			},
+			onResidualOrder: 5,
+			onResidualSubOrder: 3,
+			onResidual: function () {
+				this.eachEvent('Terrain');
+			},
+			onTerrain: function (pokemon) {
+				if (pokemon.isGrounded() && !pokemon.isSemiInvulnerable()) {
+					this.debug('Pokemon is grounded, healing through Kelp Terrain.');
+					this.heal(pokemon.maxhp / 16, pokemon, pokemon);
+				}
+			},
+			onEnd: function () {
+				if (!this.effectData.duration) this.eachEvent('Terrain');
+				this.add('-fieldend', 'move: Kelp Terrain');
+			},
+		},
+		secondary: false,
+		target: "all",
+		type: "Water",
+		zMoveBoost: {def: 1},
+		//contestType: "Clever",
+	},
 	"gastroacid": {
 		inherit: true,
 		num: 380,

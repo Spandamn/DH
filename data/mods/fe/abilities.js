@@ -6342,7 +6342,7 @@ exports.BattleAbilities = {
 		name: "Electrotorrent",
 	},
 	"darksurge": {
-		shortDesc: "On switch-in, this Pokemon summons Dark Terrain.",
+		shortDesc: "On switch-in, this Pokemon summons Dark Terrain. The effects are identical to Electric Terrain, but powers up Dark-type moves instead of Electric-type moves.",
 		onStart: function (source) {
 			this.setTerrain('darkterrain');
 		},
@@ -9872,7 +9872,6 @@ exports.BattleAbilities = {
 		},
 		onSwitchOut: function (pokemon) {
 			pokemon.cureStatus();
-			pokemon.side.addSideCondition('compassionatesoul');
 		},
 		effect: {
 			duration: 2,
@@ -13284,7 +13283,7 @@ exports.BattleAbilities = {
 		id: "marvelousdiver",
 		name: "Marvelous Diver",
 	},
-	"antivirus": {
+	"hardware": {
 		shortDesc: "This Pokemon's Defense and Special Defense are tripled.",
 		onModifyDefPriority: 6,
 		onModifyDef: function (def) {
@@ -13294,21 +13293,8 @@ exports.BattleAbilities = {
 		onModifySpD: function (spd) {
 			return this.chainModify(3);
 		},
-		id: "antivirus",
-		name: "Antivirus",
-	},
-	"antivirus": {
-		shortDesc: "This Pokemon's Defense and Special Defense are tripled.",
-		onModifyDefPriority: 6,
-		onModifyDef: function (def) {
-			return this.chainModify(3);
-		},
-		onModifySpDPriority: 6,
-		onModifySpD: function (spd) {
-			return this.chainModify(3);
-		},
-		id: "antivirus",
-		name: "Antivirus",
+		id: "hardware",
+		name: "Hardware",
 	},
 	"disruption": {
 		shortDesc: "On switch-in, the bearer negates the abilities of adjacent opponents and lowers each's Attack by 1 stage.",
@@ -13412,5 +13398,74 @@ exports.BattleAbilities = {
 		},
 		id: "slippery",
 		name: "Slippery",
+	},
+	"hydra": {
+		shortDesc: "Every time this Pokemon KOs another Pokemon, it heals 33% of it's HP and its highest stat is raised by 1. When switching out, it restores 33.3% of its HP and the switch-in gets +1 to their highest stat.",
+		onSourceFaint: function (target, source, effect) {
+			if (effect && effect.effectType === 'Move') {
+				this.heal(source.maxhp / 3);
+				let stat = 'atk';
+				let bestStat = 0;
+				for (let i in source.stats) {
+					if (source.stats[i] > bestStat) {
+						stat = i;
+						bestStat = source.stats[i];
+					}
+				}
+				this.boost({[stat]: 1}, source);
+			}
+		},
+		onBeforeSwitchOut: function (pokemon) {
+			pokemon.side.addSideCondition('hydra');
+		},
+		onSwitchOut: function (pokemon) {
+			pokemon.heal(pokemon.maxhp / 3);
+		},
+		effect: {
+			duration: 2,
+			onStart: function (side, source) {
+				this.debug('Hydra started on ' + side.name);
+				this.effectData.positions = [];
+				// @ts-ignore
+				for (const i of side.active.keys()) {
+					this.effectData.positions[i] = false;
+				}
+				this.effectData.positions[source.position] = true;
+			},
+			onRestart: function (side, source) {
+				this.effectData.positions[source.position] = true;
+			},
+			onSwitchInPriority: 1,
+			onSwitchIn: function (target) {
+				const positions = /**@type {boolean[]} */ (this.effectData.positions);
+				if (target.position !== this.effectData.sourcePosition) {
+					return;
+				}
+				if (target && !target.fainted && target.hp > 0) {
+					let stat = 'atk';
+					let bestStat = 0;
+					for (let i in target.stats) {
+						if (target.stats[i] > bestStat) {
+							stat = i;
+							bestStat = target.stats[i];
+						}
+					}
+					this.boost({[stat]: 1}, target);
+				}
+				if (!positions.some(affected => affected === true)) {
+					target.side.removeSideCondition('hydra');
+				}
+			},
+		},
+		id: "hydra",
+		name: "Hydra",
+	},
+	"kelpsurge": {
+		shortDesc: "On switch-in, this Pokemon summons Kelp Terrain. Grounded Pokemon will have x1.5 power on Grass- and Water-type moves and restore 6.25% of their HP each turn, but STABs of neither aforementioned type have halved power.",
+		onStart: function (source) {
+			this.setTerrain('kelpterrain');
+		},
+		id: "kelpterrain",
+		name: "Kelp Surge",
 	},
 };
