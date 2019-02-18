@@ -494,4 +494,47 @@ exports.BattleMovedex = {
 		isZ: "omastatiumz",
 	},
 	
+	"omnitemporalblast": {
+		accuracy: true,
+		basePower: 150,
+		category: "Special",
+		desc: "Hits once, the damage calculated normally. Hits again two turns after this move is used, the damage calculated independently from the first hit. At the end of that turn, the damage is calculated at that time and dealt to the Pokemon at the position the target had when the move was used. If the user is no longer active at the time, damage is calculated based on the user's natural Special Attack stat, types, and level, with no boosts from its held item or Ability. Fails if this move or Doom Desire is already in effect for the target's position.",
+		shortDesc: "Deals damage on the turn used, then hits that same position two turns later.",
+		id: "omnitemporalblast",
+		name: "Omnitemporal Blast",
+		pp: 1,
+		priority: 0,
+		flags: {},
+		secondary: {
+			chance: 100,
+			onHit: function (source, target) {
+				target.side.addSideCondition('futuremove');
+				if (target.side.sideConditions['futuremove'].positions[target.position]) {
+					return false;
+				}
+				target.side.sideConditions['futuremove'].positions[target.position] = {
+					duration: 3,
+					move: 'omnitemporalblast',
+					source: source,
+					moveData: {
+						id: 'omnitemporalblast',
+						name: "Omnitemporal Blast",
+						accuracy: true,
+						basePower: 150,
+						category: "Special",
+						priority: 0,
+						flags: {},
+						effectType: 'Move',
+						isFutureMove: true,
+						type: 'Psychic',
+					},
+				};
+				this.add('-start', source, 'move: Omnitemporal Blast');
+			},
+		},
+		secondary: null,
+		target: "normal",
+		type: "Psychic",
+		isZ: "celebiumz",
+	},
 };
