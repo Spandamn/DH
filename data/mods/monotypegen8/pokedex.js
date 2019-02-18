@@ -403,4 +403,18 @@ exports.BattlePokedex = {
 		evoLevel: 30,
 		eggGroups: ["Bug", "Water 3"],
 	},
+	eevee: {
+		num: 133,
+		species: "Eevee",
+		types: ["Normal"],
+		genderRatio: {M: 0.875, F: 0.125},
+		baseStats: {hp: 55, atk: 55, def: 50, spa: 45, spd: 65, spe: 55},
+		abilities: {0: "Run Away", 1: "Adaptability", H: "Anticipation"},
+		heightm: 0.3,
+		weightkg: 6.5,
+		color: "Brown",
+		evos: ["vaporeon", "jolteon", "flareon", "espeon", "umbreon", "leafeon", "glaceon", "sylveon", "zephyreon", "turfeon", "poiseon"],
+		eggGroups: ["Field"],
+		otherFormes: ["eeveestarter"],
+	},
 };
