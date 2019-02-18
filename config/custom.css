@@ -215,6 +215,9 @@ button.button.mainmenu5 {
     background: rgba(191, 112, 80, 0.24);
     border-right: 1px solid #252F3F;
 }
+.dark .userlist strong, .dark .userlist span {
+    text-shadow: 1px 1px 2px #000;
+}
 .userlist {
     background: rgba(183, 93, 57, 0.54);
     border-right: 1px solid #252F3F;
