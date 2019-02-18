@@ -28,6 +28,7 @@ let BattleScripts = {
 	this.modData('Learnsets', 'zephyryeon').learnset.uturn = ['7L1'];
 	this.modData('Learnsets', 'zephyryeon').learnset.wish = ['7L1'];
 
+	this.modData('Learnsets', 'golisopod').learnset.healorder = ['7L1'];
 	
 	},
 };
