@@ -108,4 +108,13 @@ exports.BattleItems = {
         zMoveUser: ["Torkoal"],
         desc: "If the holder is Torkoal with the move Heat Wave, it can use Pyrotechnics.",
     },
+     "celebiumz": {
+        id: "celebiumz",
+        name: "Celebium-Z",
+        onTakeItem: false,
+        zMove: "Omnitemporal Blast",
+        zMoveFrom: "Future Sight",
+        zMoveUser: ["Celebi"],
+        desc: "If the holder is Celebi with the move Future Sight, it can use Omnitemporal Blast.",
+    },
 };
