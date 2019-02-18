@@ -136,7 +136,6 @@ body {
     border-color: black;
 }
 .dark .ps-room.ps-room-light {
-    background: rgba(255, 204, 153, 0.79);
     border-color: #a2745f;
 }
 .dark .ps-room.ps-room-light.scrollable {
