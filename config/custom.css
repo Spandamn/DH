@@ -6,14 +6,14 @@ body {
 }
 .button {
     color: black;
-    background: #ff9966!important;
-    border: solid 1px black!important
+    background: #ff9966;
+    border: solid 1px black
 }
 .menugroup .button:hover,
 .menugroup .button:active {
     color: white;
-    background: #ff9966!important;
-    border: solid 1px black!important
+    background: #ff9966;
+    border: solid 1px black
 }
 .astext {
     border: none;
@@ -66,7 +66,6 @@ body {
     box-sizing: content-box;
     cursor: pointer;
     border: none;
-    font: Jokerman;
     font-size: 60px;
     color: rgba(0, 0, 0, 0);
     text-align: center;
@@ -118,7 +117,7 @@ body {
 .textbox:hover,
 .textbox:focus {
     border: 1px solid #252F3F;
-    box-shadow: none !important;
+    box-shadow: none ;
 }
 .closebutton,
 .minimizebutton {
@@ -213,11 +212,11 @@ button.button.mainmenu5 {
     color: #162055;
 }
 .dark .userlist {
-    background: rgba(191, 112, 80, 0.24) !important;
+    background: rgba(191, 112, 80, 0.24) ;
     border-right: 1px solid #252F3F;
 }
 .userlist {
-    background: rgba(183, 93, 57, 0.54) !important;
+    background: rgba(183, 93, 57, 0.54) ;
     border-right: 1px solid #252F3F;
 }
 .userlist li {
@@ -235,23 +234,23 @@ button.button.mainmenu5 {
     border-bottom-color: #AAA;
 }
 .dark .userlist li button:hover {
-    background: rgba(255, 255, 255, 0.8) !important;
+    background: rgba(255, 255, 255, 0.8) ;
 }
 .dark .chat-log {
-    background: rgba(47, 15, 2, 0.471) !important;
+    background: rgba(47, 15, 2, 0.471) ;
 }
 .chat-log {
-    background: rgba(235, 235, 235, 0.785) !important;
+    background: rgba(235, 235, 235, 0.785) ;
 }
 .chat-log-add {
-    background: rgba(178, 223, 247, 0.45) !important;
+    background: rgba(178, 223, 247, 0.45) ;
     border-top: 1px solid #252F3F;
 }
 #header {
-    background: rgba(255, 187, 153, 0.45) url("http://i.imgur.com/QbFNFD9.png") no-repeat 0 0 !important;
+    background: rgba(255, 187, 153, 0.45) url("http://i.imgur.com/QbFNFD9.png") no-repeat 0 0 ;
 }
 .dark #header {
-    background: rgba(183, 93, 57, 0.54) url("http://i.imgur.com/QbFNFD9.png") no-repeat 0 0 !important;
+    background: rgba(183, 93, 57, 0.54) url("http://i.imgur.com/QbFNFD9.png") no-repeat 0 0 ;
 }
 .header .logo {
     opacity: 0;
@@ -267,7 +266,7 @@ button.button.mainmenu5 {
     background: rgba(255, 187, 153, 0.45);
 }
 .label {
-    text-shadow: none !important;
+    text-shadow: none ;
     font-style: italic;
 }
 .maintabbarbottom {
@@ -321,7 +320,7 @@ button.button.mainmenu5 {
     border: 1px solid #777;
 }
 .dark .ps-popup {
-    background: rgba(8, 34, 64, 0.859) !important
+    background: rgba(8, 34, 64, 0.859) 
 }
 .ps-popup {
     background: #DDD;
@@ -410,7 +409,7 @@ button.button.mainmenu5 {
 
 /*Battle CSS*/
 .backdrop {
-    background: url(http://cdn.wallpapersafari.com/31/60/sFZiGV.jpg) !important;
+    background: url(http://cdn.wallpapersafari.com/31/60/sFZiGV.jpg) ;
     opacity: 0.6;
 }
 .battle-log .chat {
@@ -450,49 +449,49 @@ button.button.mainmenu5 {
 }
 .turnstatus-protect {
     background: url(http://i.imgur.com/RVxCoHz.png);
-    opacity: 1!important;
-    height: 103px!important;
-    width: 150px!important;
+    opacity: 1;
+    height: 103px;
+    width: 150px;
     border-radius: 0;
     border-width: 0;
     box-shadow: none;
 }
 .sidecondition-safeguard {
     background: url(http://i.imgur.com/FrCoWCW.png);
-    opacity: 0.6!important;
-    height: 90px!important;
-    width: 130px!important;
+    opacity: 0.6;
+    height: 90px;
+    width: 130px;
     border-radius: 0;
     border-width: 0;
     box-shadow: none;
 }
 .sidecondition-reflect {
     background: url(http://i.imgur.com/X1XDxVB.png);
-    opacity: 0.7!important;
-    height: 90px!important;
-    width: 130px!important;
+    opacity: 0.7;
+    height: 90px;
+    width: 130px;
     border-radius: 0;
     border-width: 0;
     box-shadow: none;
 }
 .sidecondition-lightscreen {
     background: url(http://i.imgur.com/8eLftNA.png);
-    opacity: 0.6!important;
-    height: 90px!important;
-    width: 130px!important;
+    opacity: 0.6;
+    height: 90px;
+    width: 130px;
     border-radius: 0;
     border-width: 0;
     box-shadow: none;
 }
 .pm-window h3 {
     border-color: #000000;
-    background: rgb(255, 102, 0) !important;
+    background: rgb(255, 102, 0) ;
     background-position: 200px;
     color: #000000;
     text-shadow: 0px -1px 0px #000000;
 }
 .pm-window h3:hover {
-    background: rgb(255, 163, 102) !important;
+    background: rgb(255, 163, 102) ;
     background-position: 200px;
     color: #000000;
 }
@@ -502,7 +501,7 @@ button.button.mainmenu5 {
 .pm-window.focused h3,
 .pm-window.focused h3:hover {
     border-color: #0033CC;
-    background: rgb(0, 153, 204) !important;
+    background: rgb(0, 153, 204) ;
     background-position: 200px;
     color: #0033CC;
     text-shadow: 0px -1px 0px #0033CC;
@@ -519,7 +518,7 @@ button.button.mainmenu5 {
     color: #CCFFFF;
 }
 .pm-window h3 .closebutton:hover + .minimizebutton {
-    color: #CCFFFF !important;
+    color: #CCFFFF ;
 }
 .message-pm {
     color: #000000;
@@ -547,10 +546,10 @@ button.button.mainmenu5 {
     color: #000000;
 }
 .pm-window h3.pm-notifying .closebutton:hover + .minimizebutton {
-    color: #000000 !important;
+    color: #000000 ;
 }
 .dark .pm-log {
-    background: rgba(47, 15, 2, 0.729) !important;
+    background: rgba(47, 15, 2, 0.729) ;
 }
 .pm-log,
 .pm-window.focused .pm-log {
@@ -591,7 +590,7 @@ button.button.mainmenu5 {
     color: #F9CA6C;
 }
 .ps-room .battle-controls {
-    background: transparent !important;
+    background: transparent ;
 }
 .lobby-userlist-users {
     background: url("http://pldh.net/media/pokecons_action/484.gif") right no-repeat;
