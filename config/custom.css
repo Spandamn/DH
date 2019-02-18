@@ -524,9 +524,9 @@ button.button.mainmenu5 {
     color: #000000;
 }
 .pm-window h3.pm-notifying {
-    border-color: #3399ff;
-    background: #3399ff;
-    color: #2367DE;
+    border-color: #000000;
+    background: #10ffe9;
+    color: #002bff;
     text-shadow: none;
 }
 .pm-window h3.pm-notifying:hover {
