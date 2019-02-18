@@ -135,6 +135,10 @@ body {
     background: rgba(255, 204, 153, 0.79);
     border-color: black;
 }
+.dark .ps-room.ps-room-light {
+    background: rgba(255, 204, 153, 0.79);
+    border-color: #a2745f;
+}
 .dark .ps-room.ps-room-light.scrollable {
     background: rgba(120, 70, 50, 0.7);
     border-color: black;
@@ -213,7 +217,7 @@ button.button.mainmenu5 {
 }
 .dark .userlist {
     background: rgba(191, 112, 80, 0.24);
-    border-right: 1px solid #252F3F;
+    border-right: 1px solid#a2745f;
 }
 .dark .userlist strong, .dark .userlist span {
     text-shadow: 1px 1px 2px #000;
@@ -251,6 +255,7 @@ button.button.mainmenu5 {
 }
 .dark .chat-log-add {
     background: rgba(47,15,2,0.471);
+	 border-top: 1px solid #a2745f;
 }
 #header {
     background: rgba(255, 187, 153, 0.45) url("http://i.imgur.com/QbFNFD9.png") no-repeat 0 0;
