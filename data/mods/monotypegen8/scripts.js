@@ -15,6 +15,20 @@ let BattleScripts = {
 		this.modData('Learnsets', 'smeargle').learnset.crystalbeam = ['7L1'];
 		
 		this.modData('Learnsets', 'heatmor').learnset.coaltrap = ['7L1'];
+		
+	this.modData('Learnsets', 'zephyryeon').learnset.airslash = ['7L1'];
+	this.modData('Learnsets', 'zephyryeon').learnset.defog = ['7L1'];
+	this.modData('Learnsets', 'zephyryeon').learnset.heatwave = ['7L1'];
+	this.modData('Learnsets', 'zephyryeon').learnset.hurricane = ['7L1'];
+	this.modData('Learnsets', 'zephyryeon').learnset.hypervoice = ['7L1'];
+	this.modData('Learnsets', 'zephyryeon').learnset.roost = ['7L1'];
+	this.modData('Learnsets', 'zephyryeon').learnset.shadowball = ['7L1'];
+	this.modData('Learnsets', 'zephyryeon').learnset.tailwind = ['7L1'];
+	this.modData('Learnsets', 'zephyryeon').learnset.thunderbolt = ['7L1'];
+	this.modData('Learnsets', 'zephyryeon').learnset.uturn = ['7L1'];
+	this.modData('Learnsets', 'zephyryeon').learnset.wish = ['7L1'];
+
+	
 	},
 };
 

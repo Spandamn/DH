@@ -155,4 +155,17 @@ exports.BattleAbilities = {
 		rating: 4,
 		num: 209,
 	},
+	"bravado": {
+		desc: "This Pokemon's SpA is raised by 1 stage if it attacks and knocks out another Pokemon.",
+		shortDesc: "This Pokemon's SpA is raised by 1 stage if it attacks and KOes another Pokemon.",
+		onSourceFaint(target, source, effect) {
+			if (effect && effect.effectType === 'Move') {
+				this.boost({spa: 1}, source);
+			}
+		},
+		id: "bravado",
+		name: "Bravado",
+		rating: 3.5,
+		num: 153,
+	},
 };
