@@ -5957,19 +5957,20 @@ exports.BattleAbilities = {
 	"rejuvenation": {
 		shortDesc: "Every time this Pokemon KOs another Pokemon, it heals 33% of it's HP. If this Pokemon is at full health, it's highest non-HP stat will be increased by 1 stage instead.",
 		onSourceFaint: function (target, source, effect) {
-			if (effect && effect.effectType === 'Move' && source.hp === source.maxhp) {
-				let stat = 'atk';
-				let bestStat = 0;
-				for (let i in source.stats) {
-					if (source.stats[i] > bestStat) {
-						stat = i;
-						bestStat = source.stats[i];
+			if (effect && effect.effectType === 'Move') {
+				if (source.hp === source.maxhp){
+					let stat = 'atk';
+					let bestStat = 0;
+					for (let i in source.stats) {
+						if (source.stats[i] > bestStat) {
+							stat = i;
+							bestStat = source.stats[i];
+						}
 					}
+					this.boost({[stat]: 1}, source);
+				} else {
+					this.heal(source.maxhp / 3, source);
 				}
-				this.boost({[stat]: 1}, source);
-			}
-			else if (effect && effect.effectType === 'Move') {
-				this.heal(source.maxhp / 3);
 			}
 		},
 		id: "rejuvenation",
@@ -9895,8 +9896,6 @@ exports.BattleAbilities = {
 				}
 				if (target && !target.fainted && target.hp > 0) {
 					this.boost({spa: 1}, target);
-				}
-				if (!positions.some(affected => affected === true)) {
 					target.side.removeSideCondition('compassionatesoul');
 				}
 			},
@@ -13403,7 +13402,7 @@ exports.BattleAbilities = {
 		shortDesc: "Every time this Pokemon KOs another Pokemon, it heals 33% of it's HP and its highest stat is raised by 1. When switching out, it restores 33.3% of its HP and the switch-in gets +1 to their highest stat.",
 		onSourceFaint: function (target, source, effect) {
 			if (effect && effect.effectType === 'Move') {
-				this.heal(source.maxhp / 3);
+				this.heal(source.maxhp / 3, source);
 				let stat = 'atk';
 				let bestStat = 0;
 				for (let i in source.stats) {
@@ -13451,8 +13450,6 @@ exports.BattleAbilities = {
 						}
 					}
 					this.boost({[stat]: 1}, target);
-				}
-				if (!positions.some(affected => affected === true)) {
 					target.side.removeSideCondition('hydra');
 				}
 			},
