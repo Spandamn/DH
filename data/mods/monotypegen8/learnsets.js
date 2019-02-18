@@ -569,8 +569,8 @@ exports.BattleLearnsets = {
 		buzzbomb: ["7L1"],
 		flamethrower: ["7L1"],
 		focusblast: ["7L1"],
-		hypnosis: ["7L1"],
-		nastyplot: ["7L1"],
+		uturn: ["7L1"],
+		spikes: ["7L1"],
 		roost: ["7L1"],
 		substitute: ["7L1"],
 		protect: ["7L1"],
@@ -578,6 +578,7 @@ exports.BattleLearnsets = {
 		rest: ["7L1"],
 		sleeptalk: ["7L1"],
 		toxic: ["7L1"],
+		thunderbolt: ["7L1"],
 	}},
 	thunderusa: {learnset: {
 		bulkup: ["7L1"],
