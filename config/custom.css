@@ -212,11 +212,11 @@ button.button.mainmenu5 {
     color: #162055;
 }
 .dark .userlist {
-    background: rgba(191, 112, 80, 0.24) !important;
+    background: rgba(191, 112, 80, 0.24);
     border-right: 1px solid #252F3F;
 }
 .userlist {
-    background: rgba(183, 93, 57, 0.54) !important;
+    background: rgba(183, 93, 57, 0.54);
     border-right: 1px solid #252F3F;
 }
 .userlist li {
@@ -234,23 +234,23 @@ button.button.mainmenu5 {
     border-bottom-color: #AAA;
 }
 .dark .userlist li button:hover {
-    background: rgba(255, 255, 255, 0.8) !important;
+    background: rgba(255, 255, 255, 0.8);
 }
 .dark .chat-log {
-    background: rgba(47, 15, 2, 0.471) !important;
+    background: rgba(47, 15, 2, 0.471);
 }
 .chat-log {
-    background: rgba(235, 235, 235, 0.785) !important;
+    background: rgba(235, 235, 235, 0.785);
 }
 .chat-log-add {
-    background: rgba(178, 223, 247, 0.45) !important;
+    background: rgba(178, 223, 247, 0.45);
     border-top: 1px solid #252F3F;
 }
 #header {
-    background: rgba(255, 187, 153, 0.45) url("http://i.imgur.com/QbFNFD9.png") no-repeat 0 0 !important;
+    background: rgba(255, 187, 153, 0.45) url("http://i.imgur.com/QbFNFD9.png") no-repeat 0 0;
 }
 .dark #header {
-    background: rgba(183, 93, 57, 0.54) url("http://i.imgur.com/QbFNFD9.png") no-repeat 0 0 !important;
+    background: rgba(183, 93, 57, 0.54) url("http://i.imgur.com/QbFNFD9.png") no-repeat 0 0;
 }
 .header .logo {
     opacity: 0;
