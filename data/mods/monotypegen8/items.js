@@ -17,7 +17,6 @@ let BattleItems = {
 		gen: 7,
 		desc: "If held by a Electivire, this item allows it to Mega Evolve in battle.",
 	},
-
 "stakatakiumz": {
 		id: "stakatakiumz",
 		name: "Stakatakium Z",
@@ -30,7 +29,17 @@ let BattleItems = {
 		gen: 7,
 		desc: "If held by a Stakataka with Gyro Ball, it can use Gyration Dimension.",
 	},
-
+"roomextender": {
+		id: "roomextender",
+		name: "Room Extender",
+		spritenum: 662,
+		fling: {
+			basePower: 60,
+		},
+		num: 879,
+		gen: 7,
+		desc: "Holder's use of Magic/Wonder/Trick Room lasts 8 turns instead of 5.",
+	},
 };
 
 exports.BattleItems = BattleItems;
