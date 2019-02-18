@@ -249,6 +249,9 @@ button.button.mainmenu5 {
     background: rgba(178, 223, 247, 0.45);
     border-top: 1px solid #252F3F;
 }
+.dark .chat-log-add {
+    background: rgba(47,15,2,0.471);
+}
 #header {
     background: rgba(255, 187, 153, 0.45) url("http://i.imgur.com/QbFNFD9.png") no-repeat 0 0;
 }
