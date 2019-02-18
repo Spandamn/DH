@@ -230,7 +230,7 @@ button.button.mainmenu5 {
     color: #252F3F;
 }
 .dark .userlist li {
-    background-color: #cc816982;
+    background-color: rgba(204, 129, 105, 0.5098039215686274);
     border-bottom-color: #AAA;
 }
 .dark .userlist li button:hover {
