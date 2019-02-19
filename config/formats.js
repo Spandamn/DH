@@ -2452,6 +2452,18 @@ exports.Formats = [
 		banlist: ['Tomohawk + Earth Power', 'Tomohawk + Reflect'],
 	},
 	{
+		name: "[Gen 7] Flash CAP",
+		desc: [
+			"&bullet; <a href=\"http://www.smogon.com/forums/threads/3587865/\">CAP Metagame Discussion</a>",
+			"&bullet; <a href=\"http://www.smogon.com/forums/threads/3597893/\">CAP Viability Rankings</a>",
+			"&bullet; <a href=\"http://www.smogon.com/forums/posts/7203358/\">CAP Sample Teams</a>",
+		],
+
+		mod: 'flashcap',
+		ruleset: ['[Gen 7] OU', 'Allow CAP'],
+		banlist: ['Tomohawk + Earth Power', 'Tomohawk + Reflect'],
+	},
+	{
 		name: "[Gen 7] Battle Spot Singles",
 		desc: [
 			"&bullet; <a href=\"http://www.smogon.com/forums/threads/3601012/\">Introduction to Battle Spot Singles</a>",
@@ -8120,7 +8132,6 @@ exports.Formats = [
 		name: "[Gen 7] 1v1 Linked",
 		desc: `The first two moves in a Pok&eacute;mon's moveset are used simultaneously.`,
 		threads: [
-			`&bullet; <a href="https://www.smogon.com/forums/threads/3627804/">Linked</a>`,
 		],
 		mod: 'linked',
 		ruleset: ['[Gen 7] OU'],
