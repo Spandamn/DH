@@ -37,221 +37,263 @@ Ratings and how they work:
 */
 
 'use strict';
-
 exports.BattleAbilities = {
-	'forsee': {
-	shortDesc: "Uses Future Sight on switch out.",
-	onSwitchOut: function(source) {
-		this.useMove('Future Sight', source);
-	},
-	id: "forsee",
-	name: "Forsee",
-}, 
-"supremesamurai": {
-	shortDesc: "The user's Blade-based moves (Cross Poison, Cut, Fury Cutter, Leaf Blade, Megahorn, Night Slash, Psycho Cut, Razor Shell, Sacred Sword, Secret Sword, Slash, Smart Strike, Solar Blade, X-Scissor) are always a critical hit.",
-	onModifyMove: function(move) {
-		if (move.name === 'Cross Poison' || move.name === 'Cut' || move.name === 'Fury Cutter' || move.name === 'Leaf Blade' || move.name === 'Megahorn' || move.name === 'Night Slash' || move.name === 'Psycho Cut' || move.name === 'Razor Shell' || move.name === 'Sacred Sword' || move.name === 'Secret Sword' || move.name === 'Slash' || move.name === 'Smart Strike' || move.name === 'Solar Blade' || move.name === 'X-Scissor') {
-			move.willCrit = true;
-		}
-	},
-	id: "supremesamurai",
-	name: "Supreme Samurai",
-},
-	"entomb": {
-		shortDesc: "Traps Ghost types and has +4 priority when targeting them.",
-		onFoeTrapPokemon: function (pokemon) {
-			if (pokemon.hasType('Ghost') && this.isAdjacent(pokemon, this.effectData.target)) {
-				pokemon.tryTrap(true);
-			}
-		},
-		onFoeMaybeTrapPokemon: function (pokemon, source) {
-			if (!source) source = this.effectData.target;
-			if ((!pokemon.knownType || pokemon.hasType('Ghost')) && this.isAdjacent(pokemon, source)) {
-				pokemon.maybeTrapped = true;
-			}
-		},
-        onModifyPriority: function (priority, pokemon) {
-			for (const target of pokemon.side.foe.active) {
-			if (!target || target.fainted) continue;
-                        if (target.hasType('Ghost')) return priority +4;
-                        }
-		},
-	/*	onFoeSwitchOut: function (pokemon) {
-			for (const source of pokemon.side.foe.active) {
-			if (!source || source.fainted) continue;
-			if (pokemon.hasType('Ghost') && this.isAdjacent(pokemon, this.effectData.target)) {
-				this.add('-ability', source, 'Entomb');
-				return null;
-			}
-			}
-			},*/
-			onFoeImmunity: function (type, pokemon) {
-			//for (const target of pokemon.side.foe.active) {
-			//if (!target || target.fainted) continue;
-			if (type === 'trapped') return true;
-		//	}
-		},
-		id: "entomb",
-		name: "Entomb",
-	},
+        'forsee': {
+            shortDesc: "Uses Future Sight on switch out.",
+            onSwitchOut: function(source) {
+                this.useMove('Future Sight', source);
+            },
+            id: "forsee",
+            name: "Forsee",
+        },
+        "supremesamurai": {
+            shortDesc: "The user's Blade-based moves (Cross Poison, Cut, Fury Cutter, Leaf Blade, Megahorn, Night Slash, Psycho Cut, Razor Shell, Sacred Sword, Secret Sword, Slash, Smart Strike, Solar Blade, X-Scissor) are always a critical hit.",
+            onModifyMove: function(move) {
+                if (['Cross Poison', 'Cut', 'Fury Cutter', 'Leaf Blade', 'Megahorn', 'Night Slash', 'Psycho Cut', 'Razor Shell', 'Sacred Sword', 'Secret Sword', 'Slash', 'Smart Strike', 'Solar Blade', 'X-Scissor'].includes(move.name)) {
+                    move.willCrit = true;
+                }
+            },
+            id: "supremesamurai",
+            name: "Supreme Samurai",
+        },
+        "entomb": {
+            shortDesc: "Traps Ghost types and has +4 priority when targeting them.",
+            onFoeTrapPokemon: function(pokemon) {
+                if (pokemon.hasType('Ghost') && this.isAdjacent(pokemon, this.effectData.target)) {
+                    pokemon.tryTrap(true);
+                }
+            },
+            onFoeMaybeTrapPokemon: function(pokemon, source) {
+                if (!source) source = this.effectData.target;
+                if ((!pokemon.knownType || pokemon.hasType('Ghost')) && this.isAdjacent(pokemon, source)) {
+                    pokemon.maybeTrapped = true;
+                }
+            },
+            onModifyPriority: function(priority, pokemon) {
+                for (const target of pokemon.side.foe.active) {
+                    if (!target || target.fainted) continue;
+                    if (target.hasType('Ghost')) return priority + 4;
+                }
+            },
+            /*	onFoeSwitchOut: function (pokemon) {
+            		for (const source of pokemon.side.foe.active) {
+            		if (!source || source.fainted) continue;
+            		if (pokemon.hasType('Ghost') && this.isAdjacent(pokemon, this.effectData.target)) {
+            			this.add('-ability', source, 'Entomb');
+            			return null;
+            		}
+            		}
+            		},*/
+            onFoeImmunity: function(type, pokemon) {
+                //for (const target of pokemon.side.foe.active) {
+                //if (!target || target.fainted) continue;
+                if (type === 'trapped') return true;
+                //	}
+            },
+            id: "entomb",
+            name: "Entomb",
+        },
 
-regalreversal: {
-	shortDesc: "Super-effective attacks used against this Pokemon have their damage reduced by 25% and do 50% recoil to the user.",
-	onSourceModifyDamage: function(damage, source, target, move) {
-		if (move.typeMod > 0) {
-			return this.chainModify(0.75);
-			move.regalRecoil = true;
-		}
-	},
-	onFoeModifyMove: function (move) {
-			if (move.regalRecoil = true) {
-				move.recoil = [1, 2];
-			}
-		},
-    id: "regalreversal",
-	name: "Regal Reversal",
-},
-	"absolutezero": {
-		shortDesc: "Freezes opponent upon switch-in.",
-		onStart: function(source) {
-			this.useMove('Freeze', source);
-		},
-		id: "absolutezero",
-		name: "Absolute Zero",
-	},
-	"acidicpoison": {
-		shortDesc: "This Pokemon can hit Steel types with Poison moves.",
-		onModifyMovePriority: -5,
-		onModifyMove: function (move) {
-			if (!move.ignoreImmunity) move.ignoreImmunity = {};
-			if (move.ignoreImmunity !== true) {
-				move.ignoreImmunity['Poison'] = true;
-			}
-		},
-		id: "acidicpoison",
-		name: "Acidic Poison",
-		rating: 3,
-		num: 113,
-	},
-	"adaptability": {
-		desc: "This Pokemon's moves that match one of its types have a same-type attack bonus (STAB) of 2 instead of 1.5.",
-		shortDesc: "This Pokemon's same-type attack bonus (STAB) is 2 instead of 1.5.",
-		onModifyMove: function (move) {
-			move.stab = 2;
-		},
-		id: "adaptability",
-		name: "Adaptability",
-		rating: 4,
-		num: 91,
-	},
-	"aftermath": {
-		desc: "If this Pokemon is knocked out with a contact move, that move's user loses 1/4 of its maximum HP, rounded down. If any active Pokemon has the Ability Damp, this effect is prevented.",
-		shortDesc: "If this Pokemon is KOed with a contact move, that move's user loses 1/4 its max HP.",
-		id: "aftermath",
-		name: "Aftermath",
-		onAfterDamageOrder: 1,
-		onAfterDamage: function (damage, target, source, move) {
-			if (source && source !== target && move && move.flags['contact'] && !target.hp) {
-				this.damage(source.maxhp / 4, source, target);
-			}
-		},
-		rating: 2.5,
-		num: 106,
-	},
-	"aerilate": {
-		desc: "This Pokemon's Normal-type moves become Flying-type moves and have their power multiplied by 1.2. This effect comes after other effects that change a move's type, but before Ion Deluge and Electrify's effects.",
-		shortDesc: "This Pokemon's Normal-type moves become Flying type and have 1.2x power.",
-		onModifyMovePriority: -1,
-		onModifyMove: function (move, pokemon) {
-			if (move.type === 'Normal' && move.id !== 'naturalgift' && !move.isZ) {
-				move.type = 'Flying';
-				if (move.category !== 'Status') pokemon.addVolatile('aerilate');
-			}
-		},
-		effect: {
-			duration: 1,
-			onBasePowerPriority: 8,
-			onBasePower: function (basePower, pokemon, target, move) {
-				return this.chainModify([0x1333, 0x1000]);
-			},
-		},
-		id: "aerilate",
-		name: "Aerilate",
-		rating: 4,
-		num: 185,
-	},
-	"airlock": {
-		shortDesc: "While this Pokemon is active, the effects of weather conditions are disabled.",
-		onStart: function (pokemon) {
-			this.add('-ability', pokemon, 'Air Lock');
-		},
-		suppressWeather: true,
-		id: "airlock",
-		name: "Air Lock",
-		rating: 3,
-		num: 76,
-	},
-	"analytic": {
-		desc: "The power of this Pokemon's move is multiplied by 1.3 if it is the last to move in a turn. Does not affect Doom Desire and Future Sight.",
-		shortDesc: "This Pokemon's attacks have 1.3x power if it is the last to move in a turn.",
-		onBasePowerPriority: 8,
-		onBasePower: function (basePower, pokemon) {
-			let boosted = true;
-			let allActives = pokemon.side.active.concat(pokemon.side.foe.active);
-			for (let i = 0; i < allActives.length; i++) {
-				let target = allActives[i];
-				if (target === pokemon) continue;
-				if (this.willMove(target)) {
-					boosted = false;
-					break;
-				}
-			}
-			if (boosted) {
-				this.debug('Analytic boost');
-				return this.chainModify([0x14CD, 0x1000]);
-			}
-		},
-		id: "analytic",
-		name: "Analytic",
-		rating: 2.5,
-		num: 148,
-	},
-	"angerpoint": {
-		desc: "If this Pokemon, but not its substitute, is struck by a critical hit, its Attack is raised by 12 stages.",
-		shortDesc: "If this Pokemon (not its substitute) takes a critical hit, its Attack is raised 12 stages.",
-		onHit: function (target, source, move) {
-			if (!target.hp) return;
-			if (move && move.effectType === 'Move' && move.crit) {
-				target.setBoost({atk: 6});
-				this.add('-setboost', target, 'atk', 12, '[from] ability: Anger Point');
-			}
-		},
-		id: "angerpoint",
-		name: "Anger Point",
-		rating: 2,
-		num: 83,
-	},
-	"anticipation": {
-		desc: "On switch-in, this Pokemon is alerted if any opposing Pokemon has an attack that is super effective on this Pokemon, or an OHKO move. Counter, Metal Burst, and Mirror Coat count as attacking moves of their respective types, while Hidden Power, Judgment, Natural Gift, Techno Blast, and Weather Ball are considered Normal-type moves.",
-		shortDesc: "On switch-in, this Pokemon shudders if any foe has a supereffective or OHKO move.",
-		onStart: function (pokemon) {
-			let targets = pokemon.side.foe.active;
-			for (let i = 0; i < targets.length; i++) {
-				if (!targets[i] || targets[i].fainted) continue;
-				for (let j = 0; j < targets[i].moveset.length; j++) {
-					let move = this.getMove(targets[i].moveset[j].move);
-					if (move.category !== 'Status' && (this.getImmunity(move.type, pokemon) && this.getEffectiveness(move.type, pokemon) > 0 || move.ohko)) {
-						this.add('-ability', pokemon, 'Anticipation');
-						return;
+        regalreversal: {
+            shortDesc: "Super-effective attacks used against this Pokemon have their damage reduced by 25% and do 50% recoil to the user.",
+            onSourceModifyDamage: function(damage, source, target, move) {
+                if (move.typeMod > 0) {
+                    return this.chainModify(0.75);
+                    move.regalRecoil = true;
+                }
+            },
+            onFoeModifyMove: function(move) {
+                if (move.regalRecoil = true && move.typeMod > 0) {
+                    move.recoil = [1, 2];
+                }
+            },
+            id: "regalreversal",
+            name: "Regal Reversal",
+        },
+        "absolutezero": {
+            shortDesc: "Freezes opponent upon switch-in.",
+            onStart: function(source) {
+                this.useMove('Freeze', source);
+            },
+            id: "absolutezero",
+            name: "Absolute Zero",
+        },
+        buoyancy: {
+            shortDesc: "Swift Swim + Water Veil.",
+				onUpdate: function (pokemon) {
+					if (pokemon.status === 'brn') {
+						this.add('-activate', pokemon, 'ability: Water Veil');
+						pokemon.cureStatus();
 					}
-				}
-			}
-		},
-		id: "anticipation",
-		name: "Anticipation",
-		rating: 1,
-		num: 107,
-	},
+				},
+				onSetStatus: function (status, target, source, effect) {
+					if (status.id !== 'brn') return;
+					if (!effect || !effect.status) return false;
+					this.add('-immune', target, '[from] ability: Buoyancy');
+					return false;
+				},
+            onModifySpe: function(spe, pokemon) {
+                if (this.isWeather(['raindance', 'primordialsea'])) {
+                    return this.chainModify(2);
+                }
+            },
+            id: "buoyancy",
+            name: "Buoyancy",
+        },
+        thunderclaws: {
+            shortDesc: "Tough Claws + Volt Absorb.",
+				onBasePowerPriority: 8,
+				onBasePower: function (basePower, attacker, defender, move) {
+					if (move.flags['contact']) {
+						return this.chainModify([0x14CD, 0x1000]);
+					}
+				},
+				onTryHit: function (target, source, move) {
+					if (target !== source && move.type === 'Electric') {
+						if (!this.heal(target.maxhp / 4)) {
+							this.add('-immune', target, '[from] ability: Thunder Claws');
+						}
+						return null;
+					}
+				},
+            id: "thunderclaws",
+            name: "Thunder Claws",
+        },
+        "acidicpoison": {
+            shortDesc: "This Pokemon can hit Steel types with Poison moves.",
+            onModifyMovePriority: -5,
+            onModifyMove: function(move) {
+                if (!move.ignoreImmunity) move.ignoreImmunity = {};
+                if (move.ignoreImmunity !== true) {
+                    move.ignoreImmunity['Poison'] = true;
+                }
+            },
+            id: "acidicpoison",
+            name: "Acidic Poison",
+            rating: 3,
+            num: 113,
+        },
+        "adaptability": {
+            desc: "This Pokemon's moves that match one of its types have a same-type attack bonus (STAB) of 2 instead of 1.5.",
+            shortDesc: "This Pokemon's same-type attack bonus (STAB) is 2 instead of 1.5.",
+            onModifyMove: function(move) {
+                move.stab = 2;
+            },
+            id: "adaptability",
+            name: "Adaptability",
+            rating: 4,
+            num: 91,
+        },
+        "aftermath": {
+            desc: "If this Pokemon is knocked out with a contact move, that move's user loses 1/4 of its maximum HP, rounded down. If any active Pokemon has the Ability Damp, this effect is prevented.",
+            shortDesc: "If this Pokemon is KOed with a contact move, that move's user loses 1/4 its max HP.",
+            id: "aftermath",
+            name: "Aftermath",
+            onAfterDamageOrder: 1,
+            onAfterDamage: function(damage, target, source, move) {
+                if (source && source !== target && move && move.flags['contact'] && !target.hp) {
+                    this.damage(source.maxhp / 4, source, target);
+                }
+            },
+            rating: 2.5,
+            num: 106,
+        },
+        "aerilate": {
+            desc: "This Pokemon's Normal-type moves become Flying-type moves and have their power multiplied by 1.2. This effect comes after other effects that change a move's type, but before Ion Deluge and Electrify's effects.",
+            shortDesc: "This Pokemon's Normal-type moves become Flying type and have 1.2x power.",
+            onModifyMovePriority: -1,
+            onModifyMove: function(move, pokemon) {
+                if (move.type === 'Normal' && move.id !== 'naturalgift' && !move.isZ) {
+                    move.type = 'Flying';
+                    if (move.category !== 'Status') pokemon.addVolatile('aerilate');
+                }
+            },
+            effect: {
+                duration: 1,
+                onBasePowerPriority: 8,
+                onBasePower: function(basePower, pokemon, target, move) {
+                    return this.chainModify([0x1333, 0x1000]);
+                },
+            },
+            id: "aerilate",
+            name: "Aerilate",
+            rating: 4,
+            num: 185,
+        },
+        "airlock": {
+            shortDesc: "While this Pokemon is active, the effects of weather conditions are disabled.",
+            onStart: function(pokemon) {
+                this.add('-ability', pokemon, 'Air Lock');
+            },
+            suppressWeather: true,
+            id: "airlock",
+            name: "Air Lock",
+            rating: 3,
+            num: 76,
+        },
+        "analytic": {
+            desc: "The power of this Pokemon's move is multiplied by 1.3 if it is the last to move in a turn. Does not affect Doom Desire and Future Sight.",
+            shortDesc: "This Pokemon's attacks have 1.3x power if it is the last to move in a turn.",
+            onBasePowerPriority: 8,
+            onBasePower: function(basePower, pokemon) {
+                let boosted = true;
+                let allActives = pokemon.side.active.concat(pokemon.side.foe.active);
+                for (let i = 0; i < allActives.length; i++) {
+                    let target = allActives[i];
+                    if (target === pokemon) continue;
+                    if (this.willMove(target)) {
+                        boosted = false;
+                        break;
+                    }
+                }
+                if (boosted) {
+                    this.debug('Analytic boost');
+                    return this.chainModify([0x14CD, 0x1000]);
+                }
+            },
+            id: "analytic",
+            name: "Analytic",
+            rating: 2.5,
+            num: 148,
+        },
+        "angerpoint": {
+            desc: "If this Pokemon, but not its substitute, is struck by a critical hit, its Attack is raised by 12 stages.",
+            shortDesc: "If this Pokemon (not its substitute) takes a critical hit, its Attack is raised 12 stages.",
+            onHit: function(target, source, move) {
+                if (!target.hp) return;
+                if (move && move.effectType === 'Move' && move.crit) {
+                    target.setBoost({
+                        atk: 6
+                    });
+                    this.add('-setboost', target, 'atk', 12, '[from] ability: Anger Point');
+                }
+            },
+            id: "angerpoint",
+            name: "Anger Point",
+            rating: 2,
+            num: 83,
+        },
+        "anticipation": {
+            desc: "On switch-in, this Pokemon is alerted if any opposing Pokemon has an attack that is super effective on this Pokemon, or an OHKO move. Counter, Metal Burst, and Mirror Coat count as attacking moves of their respective types, while Hidden Power, Judgment, Natural Gift, Techno Blast, and Weather Ball are considered Normal-type moves.",
+            shortDesc: "On switch-in, this Pokemon shudders if any foe has a supereffective or OHKO move.",
+            onStart: function(pokemon) {
+                let targets = pokemon.side.foe.active;
+                for (let i = 0; i < targets.length; i++) {
+                    if (!targets[i] || targets[i].fainted) continue;
+                    for (let j = 0; j < targets[i].moveset.length; j++) {
+                        let move = this.getMove(targets[i].moveset[j].move);
+                        if (move.category !== 'Status' && (this.getImmunity(move.type, pokemon) && this.getEffectiveness(move.type, pokemon) > 0 || move.ohko)) {
+                            this.add('-ability', pokemon, 'Anticipation');
+                            return;
+                        }
+                    }
+                }
+            },
+            id: "anticipation",
+            name: "Anticipation",
+            rating: 1,
+            num: 107,
+        },
 	"archeroflegend": {
 		shortDesc: "This Pokemon's non-contact moves have their power multiplied by 1.3.",
 		onBasePowerPriority: 8,
@@ -4779,6 +4821,5 @@ regalreversal: {
 		id: "volcanichaze",
 		name: "Volcanic Haze",
 		rating: 3.5,
-		num: 22,
 	},
 };
