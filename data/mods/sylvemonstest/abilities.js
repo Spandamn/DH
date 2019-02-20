@@ -819,4 +819,12 @@ exports.BattleAbilities = {
 		rating: 3,
 		num: 200,
 	},
+	"bellchime": {
+		shortDesc: "On switch-in, this Pokemon summons Heal Bell.",
+		onStart: function(source) {
+			this.useMove("Heal Bell", source);
+		},
+		id: "bellchime",
+		name: "Bell Chime",
+	},
 };
