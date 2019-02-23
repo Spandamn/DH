@@ -901,10 +901,12 @@ exports.BattleMovedex = {
 		priority: 0,
 		flags: {protect: 1, mirror: 1},
 		onModifyMove: function (move) {
-			if (this.isWeather(['raindance', 'primordialsea']) === move.isInInvertedWeather) {
-				move.accuracy = true;
-			} else if (this.isWeather(['sunnyday', 'desolateland', 'solarsnow']) === move.isInInvertedWeather) {
-				move.accuracy = 50;
+			if (this.isWeather(['raindance', 'primordialsea', 'sunnyday', 'desolateland', 'solarsnow'])){
+				if (this.isWeather(['raindance', 'primordialsea']) === move.isInInvertedWeather) {
+					move.accuracy = 50;
+				} else {
+					move.accuracy = true;
+				}
 			}
 		},
 		secondary: {
