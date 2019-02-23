@@ -93,7 +93,6 @@ exports.BattleAbilities = {
             id: "entomb",
             name: "Entomb",
         },
-
         regalreversal: {
             shortDesc: "Super-effective attacks used against this Pokemon have their damage reduced by 25% and do 50% recoil to the user.",
             onSourceModifyDamage: function(damage, source, target, move) {
@@ -103,9 +102,9 @@ exports.BattleAbilities = {
                 }
             },
             onFoeModifyMove: function(move) {
-                if (move.regalRecoil = true && move.typeMod > 0) {
-                    move.recoil = [1, 2];
-                }
+               if (move.regalRecoil && move.typeMod > 0) {
+						move.recoil = [1, 2];
+               }
             },
             id: "regalreversal",
             name: "Regal Reversal",
