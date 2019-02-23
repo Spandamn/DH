@@ -821,7 +821,7 @@ let BattleMovedex = {
 	"aurorabeam": {
 		num: 62,
 		accuracy: 100,
-		basePower: 65,
+		basePower: 95,
 		category: "Special",
 		desc: "Has a 10% chance to lower the target's Attack by 1 stage.",
 		shortDesc: "10% chance to lower the foe's Attack by 1.",
@@ -1415,7 +1415,7 @@ let BattleMovedex = {
 		name: "Blaze Kick",
 		pp: 10,
 		priority: 0,
-		flags: {contact: 1, protect: 1, mirror: 1},
+		flags: {contact: 1, protect: 1, mirror: 1, kick: 1},
 		critRatio: 2,
 		secondary: {
 			chance: 10,
@@ -3668,7 +3668,7 @@ let BattleMovedex = {
 		name: "Double Kick",
 		pp: 30,
 		priority: 0,
-		flags: {contact: 1, protect: 1, mirror: 1},
+		flags: {contact: 1, protect: 1, mirror: 1, kick: 1},
 		multihit: 2,
 		secondary: false,
 		target: "normal",
@@ -7830,7 +7830,7 @@ let BattleMovedex = {
 		name: "High Jump Kick",
 		pp: 10,
 		priority: 0,
-		flags: {contact: 1, protect: 1, mirror: 1, gravity: 1},
+		flags: {contact: 1, protect: 1, mirror: 1, gravity: 1, kick: 1},
 		hasCustomRecoil: true,
 		onMoveFail: function (target, source, move) {
 			this.damage(source.maxhp / 2, source, source, 'highjumpkick');
@@ -8787,7 +8787,7 @@ let BattleMovedex = {
 		name: "Jump Kick",
 		pp: 10,
 		priority: 0,
-		flags: {contact: 1, protect: 1, mirror: 1, gravity: 1},
+		flags: {contact: 1, protect: 1, mirror: 1, gravity: 1, kick: 1},
 		hasCustomRecoil: true,
 		onMoveFail: function (target, source, move) {
 			this.damage(source.maxhp / 2, source, source, 'jumpkick');
@@ -9436,7 +9436,7 @@ let BattleMovedex = {
 		name: "Low Kick",
 		pp: 20,
 		priority: 0,
-		flags: {contact: 1, protect: 1, mirror: 1},
+		flags: {contact: 1, protect: 1, mirror: 1, kick: 1},
 		secondary: false,
 		target: "normal",
 		type: "Fighting",
@@ -10059,7 +10059,7 @@ let BattleMovedex = {
 		name: "Mega Kick",
 		pp: 5,
 		priority: 0,
-		flags: {contact: 1, protect: 1, mirror: 1},
+		flags: {contact: 1, protect: 1, mirror: 1, kick: 1},
 		secondary: false,
 		target: "normal",
 		type: "Normal",
@@ -13727,7 +13727,7 @@ let BattleMovedex = {
 		name: "Rolling Kick",
 		pp: 15,
 		priority: 0,
-		flags: {contact: 1, protect: 1, mirror: 1},
+		flags: {contact: 1, protect: 1, mirror: 1, kick: 1},
 		secondary: {
 			chance: 30,
 			volatileStatus: 'flinch',
@@ -16248,7 +16248,7 @@ let BattleMovedex = {
 		name: "Stomp",
 		pp: 20,
 		priority: 0,
-		flags: {contact: 1, protect: 1, mirror: 1, nonsky: 1},
+		flags: {contact: 1, protect: 1, mirror: 1, nonsky: 1, kick: 1},
 		secondary: {
 			chance: 30,
 			volatileStatus: 'flinch',
@@ -18009,7 +18009,7 @@ let BattleMovedex = {
 		name: "Triple Kick",
 		pp: 10,
 		priority: 0,
-		flags: {contact: 1, protect: 1, mirror: 1},
+		flags: {contact: 1, protect: 1, mirror: 1, kick: 1},
 		multihit: 3,
 		multiaccuracy: true,
 		secondary: false,
@@ -18029,7 +18029,7 @@ let BattleMovedex = {
 		name: "Trop Kick",
 		pp: 15,
 		priority: 0,
-		flags: {contact: 1, protect: 1, mirror: 1},
+		flags: {contact: 1, protect: 1, mirror: 1, kick: 1},
 		secondary: {
 			chance: 100,
 			boosts: {
@@ -18678,6 +18678,10 @@ let BattleMovedex = {
 				move.type = 'Ice';
 				move.basePower *= 2;
 				break;
+			case 'overcast':
+				move.type = 'Dark';
+				move.basePower *= 2;
+				break;
 			}
 		},
 		secondary: false,
@@ -19276,46 +19280,13 @@ let BattleMovedex = {
 		weather: 'overcast',
 		secondary: false,
 		target: "all",
+		onPrepareHit: function(target, source) {	
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Dark Pulse", target);
+		},
 		type: "Dark",
 		zMoveBoost: {spe: 1},
 		contestType: "Beautiful",
-	},
-	"jinglejumble": {
-		num: 571,
-		accuracy: 100,
-		basePower: 0,
-		category: "Status",
-		desc: "Causes the Grass type to be added to the target, effectively making it have two or three types. Fails if the target is already a Grass type. If Trick-or-Treat adds a type to the target, it replaces the type added by this move and vice versa.",
-		shortDesc: "Does nothing. (For Now!)",
-		id: "jinglejumble",
-		name: "Jingle Jumble",
-		pp: 5,
-		priority: 0,
-		flags: {protect: 1, reflectable: 1, mirror: 1, mystery: 1},
-		onHit: function (target, source, move) {
-			let targetAbility = target.getTypes(true).filter(type => type !== '???');
-			let sourceAbility = source.getTypes(true).filter(type => type !== '???');
-			if (target.side === source.side) {
-				this.add('-activate', source, 'move: Skill Swap', '', '', '[of] ' + target);
-			} else {
-				this.add('-activate', source, 'move: Skill Swap', targetAbility, sourceAbility, '[of] ' + target);
-			}
-			this.singleEvent('End', sourceAbility, source.abilityData, source);
-			this.singleEvent('End', targetAbility, target.abilityData, target);
-			if (targetAbility.id !== sourceAbility.id) {
-				source.ability = targetAbility.id;
-				target.ability = sourceAbility.id;
-				source.abilityData = {id: toId(source.ability), target: source};
-				target.abilityData = {id: toId(target.ability), target: target};
-			}
-			this.singleEvent('Start', targetAbility, source.abilityData, source);
-			this.singleEvent('Start', sourceAbility, target.abilityData, target);
-		},
-		secondary: false,
-		target: "normal",
-		type: "Ice",
-		zMoveEffect: 'heal',
-		contestType: "Clever",
 	},
 	"automatonmishmash": {
 		num: 700,
@@ -19333,6 +19304,10 @@ let BattleMovedex = {
 		secondary: {
 			chance: 50,
 			volatileStatus: 'flinch',
+		},
+		onPrepareHit: function(target, source) {	
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Gear Grind", target);
 		},
 		target: "normal",
 		type: "Steel",
@@ -19361,6 +19336,10 @@ let BattleMovedex = {
 		secondary: {
 			// Sheer Force negates the selfBoost even though it is not secondary
 		},
+		onPrepareHit: function(target, source) {	
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Silver Wind", target);
+		},
 		target: "allAdjacentFoes",
 		type: "Bug",
 		contestType: "Cool",
@@ -19380,6 +19359,10 @@ let BattleMovedex = {
 		flags: {contact: 1, protect: 1, mirror: 1, contact: 1},
 		recoil: [33, 100],
 		secondary: false,
+		onPrepareHit: function(target, source) {	
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Play Rough", target);
+		},
 		target: "any",
 		type: "Fairy",
 		zMovePower: 190,
@@ -19399,6 +19382,10 @@ let BattleMovedex = {
 		priority: 0,
 		flags: {contact: 1, protect: 1, mirror: 1},
 		secondary: false,
+		onPrepareHit: function(target, source) {	
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Shadow Strike", target);
+		},
 		target: "normal",
 		type: "Ghost",
 		zMovePower: 140,
@@ -19439,6 +19426,10 @@ let BattleMovedex = {
 			},
 		},
 		secondary: false,
+		onPrepareHit: function(target, source) {	
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Wrap", target);
+		},
 		target: "normal",
 		type: "Normal",
 		zMoveBoost: {def: 1},
@@ -19467,6 +19458,10 @@ let BattleMovedex = {
 		priority: 0,
 		flags: {contact: 1, protect: 1, mirror: 1},
 		secondary: false,
+		onPrepareHit: function(target, source) {	
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Power Trip", target);
+		},
 		target: "normal",
 		type: "Dark",
 		zMovePower: 180,
@@ -19486,10 +19481,113 @@ let BattleMovedex = {
 		flags: {contact: 1, protect: 1, mirror: 1},
 		volatileStatus: 'partiallytrapped',
 		secondary: false,
+		onPrepareHit: function(target, source) {	
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Shadow Strike", target);
+		},
 		target: "normal",
 		type: "Ghost",
 		zMovePower: 100,
 		contestType: "Beautiful",
+	},
+	"onbeat": {
+		num: 118,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		desc: "A random move is selected for use, other than After You, Assist, Baneful Bunker, Beak Blast, Belch, Bestow, Celebrate, Chatter, Copycat, Counter, Covet, Crafty Shield, Destiny Bond, Detect, Diamond Storm, Endure, Feint, Fleur Cannon, Focus Punch, Follow Me, Freeze Shock, Helping Hand, Hold Hands, Hyperspace Hole, Ice Burn, Instruct, King's Shield, Light of Ruin, Mat Block, Me First, Metronome, Mimic, Mind Blown, Mirror Coat, Mirror Move, Nature Power, Photon Geyser, Plasma Fists, Protect, Quash, Quick Guard, Rage Powder, Relic Song, Secret Sword, Shell Trap, Sketch, Sleep Talk, Snarl, Snatch, Snore, Spectral Thief, Spiky Shield, Spotlight, Steam Eruption, Struggle, Switcheroo, Techno Blast, Thief, Thousand Arrows, Thousand Waves, Transform, Trick, V-create, or Wide Guard.",
+		shortDesc: "Picks a random move of the user's primary type.",
+		id: "onbeat",
+		name: "On-Beat",
+		pp: 10,
+		priority: 0,
+		flags: {},
+		noMetronome: ['afteryou', 'assist', 'banefulbunker', 'beakblast', 'belch', 'bestow', 'celebrate', 'chatter', 'copycat', 'counter', 'covet', 'craftyshield', 'destinybond', 'detect', 'diamondstorm', 'dragonascent', 'endure', 'feint', 'fleurcannon', 'focuspunch', 'followme', 'freezeshock', 'helpinghand', 'holdhands', 'hyperspacefury', 'hyperspacehole', 'iceburn', 'instruct', 'kingsshield', 'lightofruin', 'matblock', 'mefirst', 'metronome', 'mimic', 'mindblown', 'mirrorcoat', 'mirrormove', 'naturepower', 'originpulse', 'photongeyser', 'plasmafists', 'precipiceblades', 'protect', 'quash', 'quickguard', 'ragepowder', 'relicsong', 'secretsword', 'shelltrap', 'sketch', 'sleeptalk', 'snarl', 'snatch', 'snore', 'spectralthief', 'spikyshield', 'spotlight', 'steameruption', 'struggle', 'switcheroo', 'technoblast', 'thief', 'thousandarrows', 'thousandwaves', 'transform', 'trick', 'vcreate', 'wideguard'],
+		onHit: function (target, source, effect, pokemon) {
+			let moves = [];
+			for (let i in exports.BattleMovedex) {
+				let move = exports.BattleMovedex[i];
+				if (i !== move.id) continue;
+				if (move.isZ || move.isNonstandard) continue;
+				let type = pokemon.types[0];
+				if (move.type = type) continue;
+				// @ts-ignore
+				if (effect.noMetronome.includes(move.id)) continue;
+				if (this.getMove(i).gen > this.gen) continue;
+				moves.push(move);
+			}
+			let randomMove = '';
+			if (moves.length) {
+				moves.sort((a, b) => a.num - b.num);
+				randomMove = this.sample(moves).id;
+			}
+			if (!randomMove) {
+				return false;
+			}
+			this.useMove(randomMove, target);
+		},
+		onPrepareHit: function(target, source) {	
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Tail Whip", target);
+		},
+		secondary: false,
+		target: "self",
+		type: "Normal",
+		contestType: "Cute",
+	},
+	"copperkick": {
+		num: 688,
+		accuracy: 100,
+		basePower: 70,
+		category: "Physical",
+		desc: "Has a 100% chance to lower the target's Attack by 1 stage.",
+		shortDesc: "100% chance to lower the target's Speed by 1.",
+		id: "copperkick",
+		name: "Copper Kick",
+		pp: 15,
+		priority: 0,
+		flags: {contact: 1, protect: 1, mirror: 1, kick: 1},
+		secondary: {
+			chance: 100,
+			boosts: {
+				spe: -1,
+			},
+		},
+		onPrepareHit: function(target, source) {	
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Iron Head", target);
+		},
+		target: "normal",
+		type: "Steel",
+		zMovePower: 140,
+		contestType: "Cute",
+	},
+	"pixiekick": {
+		num: 688,
+		accuracy: 100,
+		basePower: 70,
+		category: "Physical",
+		desc: "Has a 100% chance to lower the target's Attack by 1 stage.",
+		shortDesc: "100% chance to lower the target's Special Attack by 1.",
+		id: "pixiekick",
+		name: "Pixie Kick",
+		pp: 15,
+		priority: 0,
+		flags: {contact: 1, protect: 1, mirror: 1, kick: 1},
+		secondary: {
+			chance: 100,
+			boosts: {
+				spa: -1,
+			},
+		},
+		onPrepareHit: function(target, source) {	
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Play Rough", target);
+		},
+		target: "normal",
+		type: "Fairy",
+		zMovePower: 140,
+		contestType: "Cute",
 	},
 };
 
