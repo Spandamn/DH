@@ -117,4 +117,13 @@ exports.BattleItems = {
         zMoveUser: ["Celebi"],
         desc: "If the holder is Celebi with the move Future Sight, it can use Omnitemporal Blast.",
     },
+     "regigigiumz": {
+        id: "regigigiumz",
+        name: "Regigigium-Z",
+        onTakeItem: false,
+        zMove: "Ancient Servant's Ascension",
+        zMoveFrom: "Crush Grip",
+        zMoveUser: ["Regigigas"],
+        desc: "If the holder is Regigigas with the move Crush Grip, it can use Ancient Servant's Ascension.",
+    },
 };
