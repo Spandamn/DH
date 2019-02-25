@@ -531,9 +531,53 @@ exports.BattleMovedex = {
 				}
 			},
 		},
+		onPrepareHit: function(target, source) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Psychic", target);
+		},
 		secondary: null,
 		target: "normal",
 		type: "Psychic",
 		isZ: "celebiumz",
+	},
+"ancientservantsascension": { 
+		accuracy: true,
+		basePower: 73,
+		category: "Physical",
+		id: "ancientservantsascension",
+		shortDesc: "Negates ability before damage. Hits three times, the first hit Rock-type, the second Ice-type and the third Steel-type.",
+		isViable: true,
+		name: "Ancient Servant's Ascension",
+		pp: 1,
+		priority: 0,
+		multihit: 3,
+		multihitType: 'ancientservantsascension',
+		flags: {},
+		onPrepareHit: function(target, source) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Rock Slide", target);
+			this.add('-anim', source, "Icicle Crash", target);
+			this.add('-anim', source, "Magnet Bomb", target);
+			source.addVolatile('gastroacid');
+		},
+		onModifyMove: function (move, pokemon) {
+			switch (move.hit){
+				case 1:
+					move.type = 'Rock';
+					break;
+				case 2:
+					move.type = 'Ice';
+					break;
+				case 3:
+					move.type = 'Steel';
+					break;
+				//Will never reach this point but in case it does...
+				default:
+					break;
+			}
+		},
+		target: "normal",
+		type: "Normal",
+		isZ: "regigigiumz",
 	},
 };
