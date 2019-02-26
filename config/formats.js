@@ -6828,6 +6828,12 @@ exports.Formats = [
 		desc: ['Surprise Motherfucker'],
 		mod: 'gen7',
 		team: 'random',
+		onBegin: function () {
+			let allPokemon = this.p1.pokemon.concat(this.p2.pokemon);
+			for (let pokemon of allPokemon) {
+				pokemon.ability = pokemon.ability = 'cutecharm';
+			}
+		},
 		onModifyTemplate: function (template, pokemon) {
 			if (pokemon.metronomed) return template;
 			pokemon.item = 'leppaberry';
