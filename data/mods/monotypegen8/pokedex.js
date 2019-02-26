@@ -298,7 +298,7 @@ exports.BattlePokedex = {
 		abilities: {0: "Majestic"},
 	},
 	faenister: {
-		num: 929,
+		num: 930,
 		species: "Faenister",
 		types: ["Dark", "Fairy"],
 		baseStats: {hp: 81, atk: 63, def: 73, spa: 109, spd: 97, spe: 109},
@@ -307,7 +307,7 @@ exports.BattlePokedex = {
 		eggGroups: ["Fairy", "Human-Like"],
 	},
 	tigresh: {
-		num: 929,
+		num: 931,
 		species: "Tigresh",
 		types: ["Fire", "Psychic"],
 		baseStats: {hp: 80, atk: 100, def: 75, spa: 110, spd: 80, spe: 85},
@@ -316,7 +316,7 @@ exports.BattlePokedex = {
 		eggGroups: ["Field", "Human-Like"],
 	},
 	zephyreon: {
-		num: 929,
+		num: 932,
 		species: "Zephyreon",
 		types: ["Flying"],
 		baseStats: {hp: 95, atk: 60, def: 65, spa: 110, spd: 65, spe: 130},
@@ -326,7 +326,7 @@ exports.BattlePokedex = {
 		eggGroups: ["Field"],
 	},
 	comparsnip: {
-		num: 929,
+		num: 933,
 		species: "Comparsnip",
 		types: ["Grass", "Dark"],
 		baseStats: {hp: 79, atk: 108, def: 62, spa: 81, spd: 108, spe: 92},
@@ -335,7 +335,7 @@ exports.BattlePokedex = {
 		eggGroups: ["Grass"],
 	},
 	amazonda: {
-		num: 929,
+		num: 934,
 		species: "Amazonda",
 		types: ["Grass", "Ground"],
 		baseStats: {hp: 75, atk: 100, def: 80, spa: 70, spd: 105, spe: 95},
@@ -344,7 +344,7 @@ exports.BattlePokedex = {
 		eggGroups: ["Field", "Dragon"],
 	},
 	turfeon: {
-		num: 929,
+		num: 935,
 		species: "Turfeon",
 		types: ["Ground"],
 		baseStats: {hp: 65, atk: 130, def: 110, spa: 65, spd: 60, spe: 95},
@@ -354,7 +354,7 @@ exports.BattlePokedex = {
 		eggGroups: ["Field"],
 	},
 	canadensail: {
-		num: 929,
+		num: 936,
 		species: "Canadensail",
 		types: ["Normal", "Water"],
 		baseStats: {hp: 100, atk: 110, def: 95, spa: 110, spd: 95, spe: 90},
@@ -363,7 +363,7 @@ exports.BattlePokedex = {
 		eggGroups: ["Field"],
 	},
 	poiseon: {
-		num: 929,
+		num: 937,
 		species: "Poiseon",
 		types: ["Poison"],
 		baseStats: {hp: 95, atk: 110, def: 65, spa: 65, spd: 60, spe: 130},
@@ -373,7 +373,7 @@ exports.BattlePokedex = {
 		eggGroups: ["Field"],
 	},
 	flooduel: {
-		num: 929,
+		num: 938,
 		species: "Flooduel",
 		types: ["Water", "Fighting"],
 		baseStats: {hp: 55, atk: 92, def: 101, spa: 111, spd: 60, spe: 111},
@@ -382,7 +382,7 @@ exports.BattlePokedex = {
 		eggGroups: ["Water 1"],
 	},
 	corwhal: {
-		num: 929,
+		num: 939,
 		species: "Corwhal",
 		types: ["Water", "Ice"],
 		baseStats: {hp: 90, atk: 91, def: 60, spa: 112, spd: 62, spe: 115},
