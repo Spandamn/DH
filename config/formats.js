@@ -56,7 +56,7 @@ exports.Formats = [
 		team: 'randomCC',
 		ruleset: ['Pokemon', 'HP Percentage Mod', 'Cancel Mod'],
 	},
-	{	//creds: Kris n me
+	/*{	//creds: Kris n me
 		name: "[Gen 7] Linked Randoms [WIP]",
 		desc: [
 			`The first two moves in a Pok&eacute;mon's moveset are used simultaneously.`,
@@ -65,7 +65,7 @@ exports.Formats = [
 		team: 'randomFactory',
 		mod: 'linked',
 		ruleset: ['[Gen 7] OU'],
-	},
+	},*/
 	{
 		name: "[Gen 7] Prioritize Randoms",
 		desc: [
