@@ -6835,8 +6835,9 @@ exports.Formats = [
 		},
 		onBeforeMovePriority: 5,
 		onBeforeMove: function (attacker, defender, move) {
+			if (attacker.removeVolatile('metroman')) return;
 			let metroman = {
-				duration: 1,
+				//duration: 1,
 				onStart: function () {
 					this.useMove('metronome', attacker);
 				}
