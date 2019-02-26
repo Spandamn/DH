@@ -6831,7 +6831,10 @@ exports.Formats = [
 		onBegin: function () {
 			let allPokemon = this.p1.pokemon.concat(this.p2.pokemon);
 			for (let pokemon of allPokemon) {
-				pokemon.ability = pokemon.ability = 'cutecharm';
+					pokemon.level = 100;
+					/*pokemon.set.ability = 'cutecharm';
+					pokemon.set.item = 'leppaberry';*/
+				},
 			}
 		},
 		onModifyTemplate: function (template, pokemon) {
