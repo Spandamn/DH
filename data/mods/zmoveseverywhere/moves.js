@@ -545,7 +545,7 @@ exports.BattleMovedex = {
 		basePower: 73,
 		category: "Physical",
 		id: "ancientservantsascension",
-		shortDesc: "Negates ability before damage. Hits three times, the first hit Rock-type, the second Ice-type and the third Steel-type.",
+		shortDesc: "Negates user's ability before damage. Hits three times, the first hit Rock-type, the second Ice-type and the third Steel-type.",
 		isViable: true,
 		name: "Ancient Servant's Ascension",
 		pp: 1,
