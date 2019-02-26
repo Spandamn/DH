@@ -6832,10 +6832,21 @@ exports.Formats = [
 			if (pokemon.metronomed) return template;
 			return Object.assign({metronomed: true}, this.getTemplate('Clefable'));
 		},
-		onModifyMove: function (move, pokemon) {
+		onBeforeMovePriority: 5,
+		onBeforeMove: function (attacker, defender, move) {
+			if (attacker.removeVolatile('metroman')) return false;
+			let metroman = {
+				duration: 1,
+				onStart: function () {
+					this.useMove('metronome', attacker);
+				}
+			};
+			attacker.addVolatile(metroman);
+		},
+		/*onBeforeMove: function (move, pokemon) {
 			if (pokemon.lastMove === 'metronome') return move;
 			return Object.assign({metronomed: true}, this.getMove('Metronome'));
-		},
+		},*/
 	},
 	{
 		name: "[Gen 7] Prioritize",
