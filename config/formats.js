@@ -2145,7 +2145,7 @@ exports.Formats = [
 		ruleset: ['[Gen 7] Random Battle'],
 
 		onAfterDamage: function (damage, pokemon, target, moveData) {
-			if (pokemon === target || moveData.category === 'Status' || !target.hp || !damage) return;
+			if (pokemon === target || moveData.category === 'Status' || (target && !target.hp) || !damage) return;
 			let passableConditions = ['stealthrock', 'stickyweb', 'spikes', 'toxicspikes'];
 			if (Object.keys(pokemon.side.sideConditions).length > 0) {
 				for (let i in pokemon.side.sideConditions) {

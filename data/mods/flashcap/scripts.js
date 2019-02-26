@@ -35,5 +35,5 @@ exports.BattleScripts = {
    this.modData('Learnsets', 'froxbite').learnset.workup = ['7L1'];
    this.modData('Learnsets', 'froxbite').learnset.hydropump = ['7L1'];
    this.modData('Learnsets', 'froxbite').learnset.substitute = ['7L1'];
-  
+  },
 };
