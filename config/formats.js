@@ -6823,6 +6823,19 @@ exports.Formats = [
 		mod: 'fanmadegame',
 	},
 	{
+		name: "[Gen 7] Metromans",
+		ruleset: ['[Gen 7] Pure Hackmons'],
+		desc: ['Surprise Motherfucker'],
+		mod: 'gen7',
+		team: 'random',
+		onModifyTemplate: function (template, pokemon) {
+			return this.getTemplate('Clefable');
+		},
+		onModifyMove: function (move) {
+			return this.getMove('Metronome');
+		},
+	},
+	{
 		name: "[Gen 7] Prioritize",
 		desc: [
 			"&bullet; In this format, moves with 60 power or fewer gains +1 priority.",
