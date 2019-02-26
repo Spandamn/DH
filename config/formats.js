@@ -6834,7 +6834,7 @@ exports.Formats = [
 					pokemon.level = 100;
 					/*pokemon.set.ability = 'cutecharm';
 					pokemon.set.item = 'leppaberry';*/
-				},
+				}
 			}
 		},
 		onModifyTemplate: function (template, pokemon) {
