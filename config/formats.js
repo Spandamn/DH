@@ -1819,7 +1819,7 @@ exports.Formats = [
 		},
 		mod: 'gen7', //this can be replaced with a seperate mod folder if you wanted it to
 		ruleset: ['Pokemon', 'HP Percentage Mod', 'Cancel Mod'],
-	},*/
+	},
 	{
 		name: "[Gen 7] Random Benjamin Butterfree",
 		desc: ["&bullet; <a href=\"http://www.smogon.com/forums/threads/benjamin-butterfree-aka-pokemon-deevolution.3581895/\">Benjamin Butterfee (Pokemon DeEvolution)</a>"],
@@ -1868,7 +1868,7 @@ exports.Formats = [
 			target.cureStatus('[silent]');
 			target.volatiles = {};
 		},
-	},
+	},*/
 	{
 		name: "[Gen 7] Random Camomon",
 		desc: [
