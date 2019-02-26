@@ -530,7 +530,7 @@ exports.BattleMovedex = {
 		},
 		onPrepareHit: function(target, source) {
 			this.attrLastMove('[still]');
-			this.add('-anim', source, "Psychic", target);
+			this.add('-anim', source, "Psycho Boost", target);
 		},
 		secondary: null,
 		target: "normal",
