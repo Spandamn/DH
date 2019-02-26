@@ -561,7 +561,9 @@ exports.BattleMovedex = {
 		},
 		onTryHit: function (target, pokemon) {
 			// Ability is discarded before damage is calculated.
-			pokemon.addVolatile('gastroacid');
+			if (target.runImmunity('Rock')) {
+				pokemon.addVolatile('gastroacid');
+			}
 		},
 		onModifyMove: function (move, pokemon) {
 			switch (move.hit){
