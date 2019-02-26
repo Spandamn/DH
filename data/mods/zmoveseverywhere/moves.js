@@ -499,13 +499,13 @@ exports.BattleMovedex = {
 		basePower: 150,
 		category: "Special",
 		desc: "Hits once, the damage calculated normally. Hits again two turns after this move is used, the damage calculated independently from the first hit. At the end of that turn, the damage is calculated at that time and dealt to the Pokemon at the position the target had when the move was used. If the user is no longer active at the time, damage is calculated based on the user's natural Special Attack stat, types, and level, with no boosts from its held item or Ability. Fails if this move or Doom Desire is already in effect for the target's position.",
-		shortDesc: "Deals damage on the turn used, then hits that same position two turns later.",
+		shortDesc: "Hits again two turns after being used.",
 		id: "omnitemporalblast",
 		name: "Omnitemporal Blast",
 		pp: 1,
 		priority: 0,
 		flags: {},
-		onHit: function (source, target) {
+		onHit: function (target, source) {
 			target.side.addSideCondition('futuremove');
 			if (!target.side.sideConditions['futuremove'].positions[target.position]) {
 				target.side.sideConditions['futuremove'].positions[target.position] = {
@@ -530,7 +530,7 @@ exports.BattleMovedex = {
 		},
 		onPrepareHit: function(target, source) {
 			this.attrLastMove('[still]');
-			this.add('-anim', source, "Psycho Boost", target);
+			this.add('-anim', source, "Psychic", target);
 		},
 		secondary: null,
 		target: "normal",
