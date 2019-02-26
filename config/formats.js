@@ -6835,9 +6835,9 @@ exports.Formats = [
 		},
 		onBeforeMovePriority: 5,
 		onBeforeMove: function (attacker, defender, move) {
-			if (move.charge && attacker.removeVolatile('metroman')) return move;
+			if (move.charge && attacker.volatiles['metroman']) return move;
 			let metroman = {
-				//duration: 1,
+				duration: 1,
 				onStart: function () {
 					this.useMove('metronome', attacker);
 				}
