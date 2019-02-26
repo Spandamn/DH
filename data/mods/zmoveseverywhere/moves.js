@@ -558,7 +558,10 @@ exports.BattleMovedex = {
 			this.add('-anim', source, "Rock Slide", target);
 			this.add('-anim', source, "Icicle Crash", target);
 			this.add('-anim', source, "Magnet Bomb", target);
-			source.addVolatile('gastroacid');
+		},
+		onTryHit: function (pokemon) {
+			// Ability is discarded before damage is calculated.
+			pokemon.addVolatile('gastroacid');
 		},
 		onModifyMove: function (move, pokemon) {
 			switch (move.hit){
