@@ -6830,6 +6830,7 @@ exports.Formats = [
 		team: 'random',
 		onModifyTemplate: function (template, pokemon) {
 			if (pokemon.metronomed) return template;
+			pokemon.item = 'leppaberry';
 			return Object.assign({metronomed: true}, this.getTemplate('Clefable'));
 		},
 		onBeforeMovePriority: 5,
