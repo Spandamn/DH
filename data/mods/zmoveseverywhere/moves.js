@@ -505,35 +505,32 @@ exports.BattleMovedex = {
 		pp: 1,
 		priority: 0,
 		flags: {},
-		secondary: {
-			chance: 100,
-			onHit: function (source, target) {
-				target.side.addSideCondition('futuremove');
-				if (!target.side.sideConditions['futuremove'].positions[target.position]) {
-					target.side.sideConditions['futuremove'].positions[target.position] = {
-						duration: 3,
-						move: 'omnitemporalblast',
-						source: source,
-						moveData: {
-							id: 'omnitemporalblast',
-							name: "Omnitemporal Blast",
-							accuracy: true,
-							basePower: 150,
-							category: "Special",
-							priority: 0,
-							flags: {},
-							effectType: 'Move',
-							isFutureMove: true,
-							type: 'Psychic',
-						},
-					};
-					this.add('-start', source, 'move: Omnitemporal Blast');
-				}
-			},
+		onHit: function (source, target) {
+			target.side.addSideCondition('futuremove');
+			if (!target.side.sideConditions['futuremove'].positions[target.position]) {
+				target.side.sideConditions['futuremove'].positions[target.position] = {
+					duration: 3,
+					move: 'omnitemporalblast',
+					source: source,
+					moveData: {
+						id: 'omnitemporalblast',
+						name: "Omnitemporal Blast",
+						accuracy: true,
+						basePower: 150,
+						category: "Special",
+						priority: 0,
+						flags: {},
+						effectType: 'Move',
+						isFutureMove: true,
+						type: 'Psychic',
+					},
+				};
+				this.add('-start', source, 'move: Omnitemporal Blast');
+			}
 		},
 		onPrepareHit: function(target, source) {
 			this.attrLastMove('[still]');
-			this.add('-anim', source, "Psychic", target);
+			this.add('-anim', source, "Psycho Boost", target);
 		},
 		secondary: null,
 		target: "normal",
