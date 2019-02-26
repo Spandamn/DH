@@ -6831,7 +6831,7 @@ exports.Formats = [
 		onModifyTemplate: function (template, pokemon) {
 			if (pokemon.metronomed) return template;
 			pokemon.item = 'leppaberry';
-			return Object.assign({metronomed: true}, this.getTemplate('Clefable'));
+			return Object.assign({metronomed: true, ability: 'cutecharm'}, this.getTemplate('Clefable'));
 		},
 		onBeforeMovePriority: 5,
 		onBeforeMove: function (attacker, defender, move) {
@@ -6843,6 +6843,10 @@ exports.Formats = [
 			};
 			attacker.addVolatile(metroman);
 			return false;
+		},
+		onModifyPriority: function (priority, pokemon, target, move) {
+			// @ts-ignore
+			return 0;
 		},
 		/*onBeforeMove: function (move, pokemon) {
 			if (pokemon.lastMove === 'metronome') return move;
