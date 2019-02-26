@@ -847,4 +847,17 @@ corwhal: {learnset: {
 	uturn: ["7L1"],
 }},
 
+zephyreon: {learnset: {	
+	airslash: ['7L1'],
+	defog: ['7L1'],
+	heatwave: ['7L1'],
+	hurricane: ['7L1'],
+	hypervoice: ['7L1'],
+	roost: ['7L1'],
+	shadowball: ['7L1'],
+	tailwind: ['7L1'],
+	thunderbolt: ['7L1'],
+	uturn: ['7L1'],
+	wish: ['7L1'],
+}},
 };
