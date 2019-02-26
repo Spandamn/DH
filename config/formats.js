@@ -6834,7 +6834,6 @@ exports.Formats = [
 		},
 		onBeforeMovePriority: 5,
 		onBeforeMove: function (attacker, defender, move) {
-			if (attacker.removeVolatile('metroman')) return false;
 			let metroman = {
 				duration: 1,
 				onStart: function () {
@@ -6842,6 +6841,7 @@ exports.Formats = [
 				}
 			};
 			attacker.addVolatile(metroman);
+			return false;
 		},
 		/*onBeforeMove: function (move, pokemon) {
 			if (pokemon.lastMove === 'metronome') return move;
