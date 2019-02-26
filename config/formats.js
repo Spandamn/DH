@@ -6829,10 +6829,15 @@ exports.Formats = [
 		mod: 'gen7',
 		team: 'random',
 		onModifyTemplate: function (template, pokemon) {
-			return this.getTemplate('Clefable');
+			if (pokemon.metronomed) return template;
+			pokemon.metronomed = true;
+			return Object.assign({metronomed: true}, this.getTemplate('Clefable'));
+
 		},
 		onModifyMove: function (move) {
-			return this.getMove('Metronome');
+			if (move.metronomed) return move;
+			move.metronomed = true;
+			return Object.assign({metronomed: true}, this.getMove('Metronome'));
 		},
 	},
 	{
