@@ -559,9 +559,9 @@ exports.BattleMovedex = {
 			this.add('-anim', source, "Icicle Crash", target);
 			this.add('-anim', source, "Magnet Bomb", target);
 		},
-		onTryHit: function (pokemon) {
+		onTryHit: function (target, source, move) {
 			// Ability is discarded before damage is calculated.
-			pokemon.addVolatile('gastroacid');
+			source.addVolatile('gastroacid');
 		},
 		onModifyMove: function (move, pokemon) {
 			switch (move.hit){
