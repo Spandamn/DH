@@ -6830,13 +6830,10 @@ exports.Formats = [
 		team: 'random',
 		onModifyTemplate: function (template, pokemon) {
 			if (pokemon.metronomed) return template;
-			pokemon.metronomed = true;
 			return Object.assign({metronomed: true}, this.getTemplate('Clefable'));
-
 		},
-		onModifyMove: function (move) {
-			if (move.metronomed) return move;
-			move.metronomed = true;
+		onModifyMove: function (move, pokemon) {
+			if (pokemon.lastMove === 'metronome') return move;
 			return Object.assign({metronomed: true}, this.getMove('Metronome'));
 		},
 	},
