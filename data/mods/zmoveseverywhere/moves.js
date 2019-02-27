@@ -499,41 +499,76 @@ exports.BattleMovedex = {
 		basePower: 150,
 		category: "Special",
 		desc: "Hits once, the damage calculated normally. Hits again two turns after this move is used, the damage calculated independently from the first hit. At the end of that turn, the damage is calculated at that time and dealt to the Pokemon at the position the target had when the move was used. If the user is no longer active at the time, damage is calculated based on the user's natural Special Attack stat, types, and level, with no boosts from its held item or Ability. Fails if this move or Doom Desire is already in effect for the target's position.",
-		shortDesc: "Deals damage on the turn used, then hits that same position two turns later.",
+		shortDesc: "Hits again two turns after being used.",
 		id: "omnitemporalblast",
 		name: "Omnitemporal Blast",
 		pp: 1,
 		priority: 0,
 		flags: {},
-		secondary: {
-			chance: 100,
-			onHit: function (source, target) {
-				target.side.addSideCondition('futuremove');
-				if (!target.side.sideConditions['futuremove'].positions[target.position]) {
-					target.side.sideConditions['futuremove'].positions[target.position] = {
-						duration: 3,
-						move: 'omnitemporalblast',
-						source: source,
-						moveData: {
-							id: 'omnitemporalblast',
-							name: "Omnitemporal Blast",
-							accuracy: true,
-							basePower: 150,
-							category: "Special",
-							priority: 0,
-							flags: {},
-							effectType: 'Move',
-							isFutureMove: true,
-							type: 'Psychic',
-						},
-					};
-					this.add('-start', source, 'move: Omnitemporal Blast');
-				}
-			},
+		onHit: function (target, source) {
+			target.side.addSideCondition('futuremove');
+			if (!target.side.sideConditions['futuremove'].positions[target.position]) {
+				target.side.sideConditions['futuremove'].positions[target.position] = {
+					duration: 3,
+					move: 'omnitemporalblast',
+					source: source,
+					moveData: {
+						id: 'omnitemporalblast',
+						name: "Omnitemporal Blast",
+						accuracy: true,
+						basePower: 150,
+						category: "Special",
+						priority: 0,
+						flags: {},
+						effectType: 'Move',
+						isFutureMove: true,
+						type: 'Psychic',
+					},
+				};
+				this.add('-start', source, 'move: Omnitemporal Blast');
+			}
+		},
+		onPrepareHit: function(target, source) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Psycho Boost", target);
 		},
 		secondary: null,
 		target: "normal",
 		type: "Psychic",
 		isZ: "celebiumz",
+	},
+"ancientservantsascension": { 
+		accuracy: true,
+		basePower: 73,
+		category: "Physical",
+		id: "ancientservantsascension",
+		shortDesc: "Negates user's ability before damage. Hits three times, the first hit Rock-type, the second Ice-type and the third Steel-type.",
+		isViable: true,
+		name: "Ancient Servant's Ascension",
+		pp: 1,
+		priority: 0,
+		multihit: 3,
+		multihitType: 'ancientservantsascension',
+		flags: {},
+		onPrepareHit: function(target, source) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Rock Slide", target);
+			this.add('-anim', source, "Icicle Crash", target);
+			this.add('-anim', source, "Magnet Bomb", target);
+		},
+		onTryHit: function (target, pokemon) {
+			// Ability is discarded before damage is calculated.
+			if (target.runImmunity('Rock')) {
+				pokemon.addVolatile('gastroacid');
+				pokemon.volatiles.gastroacid.duration = 1; // I guess we could try this
+			}
+		},
+		onModifyMove: function (move, pokemon) {
+			let type = ['Rock', 'Ice', 'Steel'];
+			move.type = type[move.hit - 1] || '???';
+		},
+		target: "normal",
+		type: "Normal",
+		isZ: "regigigiumz",
 	},
 };
