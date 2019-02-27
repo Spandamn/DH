@@ -560,23 +560,12 @@ exports.BattleMovedex = {
 			// Ability is discarded before damage is calculated.
 			if (target.runImmunity('Rock')) {
 				pokemon.addVolatile('gastroacid');
+				pokemon.volatiles.gastroacid.duration = 1; // I guess we could try this
 			}
 		},
 		onModifyMove: function (move, pokemon) {
-			switch (move.hit){
-				case 1:
-					move.type = 'Rock';
-					break;
-				case 2:
-					move.type = 'Ice';
-					break;
-				case 3:
-					move.type = 'Steel';
-					break;
-				//Will never reach this point but in case it does...
-				default:
-					break;
-			}
+			let type = ['Rock', 'Ice', 'Steel'];
+			move.type = type[move.hit - 1] || '???';
 		},
 		target: "normal",
 		type: "Normal",
