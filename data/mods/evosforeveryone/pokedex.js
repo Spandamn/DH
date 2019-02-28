@@ -14601,7 +14601,7 @@ let BattlePokedex = {
 		num: 906.5,
 		species: "Meteocule",
 		types: ["Flying"],
-		baseStats: {hp: 90, atk: 90, def: 90, spa: 85, spd: 85, spe: 90},
+		baseStats: {hp: 90, atk: 90, def: 85, spa: 90, spd: 85, spe: 90},
 		abilities: {0: "Atmospear"},
 		heightm: 0.5,
 		weightkg: 12.2,
