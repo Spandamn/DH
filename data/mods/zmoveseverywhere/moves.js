@@ -353,7 +353,7 @@ exports.BattleMovedex = {
 		accuracy: true,
 		basePower: 210,
 		category: "Special",
-		shortDesc: "Ignores abilities that nullify Water-type moves and Desolate Land.",
+		shortDesc: "Ignores abilities that nullify Water-type moves and Desolate Land to hit.",
 		id: "depthstridedecimation",
 		isViable: true,
 		name: "Depthstride Decimation",
@@ -378,6 +378,7 @@ exports.BattleMovedex = {
 		accuracy: true,
 		basePower: 0,
 		category: "Status",
+		shortDesc: "Until the end of the next turn, user's moves crit. Raises all stats by 1 (not acc/eva)",
 		id: "inneraurafocus",
 		isViable: true,
 		name: "Inner Aura Focus",
@@ -385,32 +386,20 @@ exports.BattleMovedex = {
 		priority: 0,
 		flags: {},
 		volatileStatus: 'laserfocus',
-		effect: {
-			duration: 2,
-			onStart: function (pokemon) {
-				this.add('-start', pokemon, 'move: Laser Focus');
-			},
-			onModifyCritRatio: function (critRatio) {
-				return 5;
-			},
-		},
-		secondary: {
-			chance: 100,
-			self: {
-				boosts: {
-					atk: 1,
-					def: 1,
-					spa: 1,
-					spd: 1,
-					spe: 1,
-				},
+		self: {
+			boosts: {
+				atk: 1,
+				def: 1,
+				spa: 1,
+				spd: 1,
+				spe: 1,
 			},
 		},
 		onPrepareHit: function(target, source) {
 			this.attrLastMove('[still]');
-			this.add('-anim', source, "Tail Glow", target);
+			this.add('-anim', source, "Tail Glow", source);
 		},
-		target: "normal",
+		target: "self",
 		type: "Normal",
 		isZ: "lucariumz",
 	},
@@ -418,6 +407,13 @@ exports.BattleMovedex = {
 		accuracy: true,
 		basePower: 40,
 		category: "Special",
+		basePowerCallback: function (pokemon, target, move) {
+			if (pokemon.template.species === 'Greninja-Ash' && pokemon.hasAbility('battlebond')) {
+				move.breaksProtect = true;
+				return move.basePower+20;
+			}
+		},
+		shortDesc: "Usually goes first. Hits 5 times in one turn. If used by Ash-Greninja, breaks protect and has 60 power per hit.",
 		id: "hyperwatershuriken",
 		isViable: true,
 		name: "Hyper Water Shuriken",
@@ -445,6 +441,7 @@ exports.BattleMovedex = {
 		id: "toadshypnospiral",
 		isViable: true,
 		name: "Toad's Hypno-Spiral",
+		shortDesc: "Causes the target to fall asleep. Prevents the target from switching out.",
 		pp: 1,
 		priority: 0,
 		flags: {},
@@ -467,6 +464,7 @@ exports.BattleMovedex = {
 		accuracy: true,
 		basePower: 190,
 		category: "Special",
+		shortDesc: "Summons Rain Dance.",
 		id: "highdeliverydeluge",
 		isViable: true,
 		name: "High Delivery Deluge",
@@ -477,6 +475,7 @@ exports.BattleMovedex = {
 			this.attrLastMove('[still]');
 			this.add('-anim', source, "Hydro Vortex", target);
 		},
+		weather: 'RainDance',
 		target: "normal",
 		type: "Water",
 		isZ: "pelipiumz",
@@ -485,6 +484,7 @@ exports.BattleMovedex = {
 		accuracy: true,
 		basePower: 210,
 		category: "Special",
+		shortDesc: "Boosts user's Def/SpA/Spe by 1 after damage.",
 		id: "sacredspiral",
 		isViable: true,
 		name: "Sacred Spiral",
