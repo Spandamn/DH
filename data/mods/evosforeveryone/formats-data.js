@@ -7950,6 +7950,118 @@ let BattleFormatsData = {
 		tier: "LC",
 		doublesTier: "DLC",
 	},
+		alloyal: {
+		tier: "OU",
+		doublesTier: "DOU",
+	},
+	mongrail: {
+		tier: "OU",
+		doublesTier: "DOU",
+	},
+	sorattle: {
+		tier: "OU",
+		doublesTier: "DOU",
+	},
+	ectitan: {
+		tier: "OU",
+		doublesTier: "DOU",
+	},
+	mosskiff: {
+		tier: "OU",
+		doublesTier: "DOU",
+	},
+	chimpanceive: {
+		tier: "OU",
+		doublesTier: "DOU",
+	},
+	oranchakra: {
+		tier: "OU",
+		doublesTier: "DOU",
+	},
+	alominium: {
+		tier: "OU",
+		doublesTier: "DOU",
+	},
+	enlok: {
+		tier: "OU",
+		doublesTier: "DOU",
+	},
+	floundoom: {
+		tier: "OU",
+		doublesTier: "DOU",
+	},
+	bananasauros: {
+		tier: "OU",
+		doublesTier: "DOU",
+	},
+	photodocus: {
+		tier: "OU",
+		doublesTier: "DOU",
+	},
+	coelacrash: {
+		tier: "OU",
+		doublesTier: "DOU",
+	},
+	ditzy: {
+		tier: "OU",
+		doublesTier: "DOU",
+	},
+	omage: {
+		tier: "OU",
+		doublesTier: "DOU",
+	},
+	herold: {
+		tier: "OU",
+		doublesTier: "DOU",
+	},
+	chattakeet: {
+		tier: "OU",
+		doublesTier: "DOU",
+	},
+	emolgarus: {
+		tier: "OU",
+		doublesTier: "DOU",
+	},
+	compleppo: {
+		tier: "OU",
+		doublesTier: "DOU",
+	},
+	cheylormeteor: {
+		tier: "OU",
+		doublesTier: "DOU",
+	},
+	cheylorcore: {
+		tier: "OU",
+		doublesTier: "DOU",
+	},
+	orbitar: {
+		tier: "OU",
+		doublesTier: "DOU",
+	},
+	cowfort: {
+		tier: "OU",
+		doublesTier: "DOU",
+	},
+	audimorte: {
+		tier: "OU",
+		doublesTier: "DOU",
+	},
+	audimortemega: {
+		tier: "OU",
+		doublesTier: "DOU",
+	},
+	beltrachi: {
+		tier: "OU",
+		doublesTier: "DOU",
+	},
+	mettalo: {
+		tier: "OU",
+		doublesTier: "DOU",
+	},
+	alfouffalo: {
+		tier: "OU",
+		doublesTier: "DOU",
+	},
 };
 
 exports.BattleFormatsData = BattleFormatsData;
