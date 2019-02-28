@@ -65221,7 +65221,7 @@ let BattleLearnsets = {
 		nastyplot: ["7L1"],
 		focusblast: ["7L1"],
 	}},
-	glyphite: {learnset: {
+	glyphlite: {learnset: {
 		aerialace: ["7M", "6M", "5M"],
 		aircutter: ["7L21", "6L21", "5L21"],
 		airslash: ["7L41", "6L41", "5L41"],
@@ -65403,7 +65403,7 @@ let BattleLearnsets = {
 		hiddenpower: ["7M", "7L1", "7V", "6L1", "5L1", "4L1", "3L1"],
 		psychic: ["7L1"],
 		shadowball: ["7L1"],
-		tailglow: ["7L1"],
+		nastyplot: ["7L1"],
 		flamethrower: ["7L1"],
 		thunderbolt: ["7L1"],
 		icebeam: ["7L1"],
@@ -65417,7 +65417,7 @@ let BattleLearnsets = {
 		hiddenpower: ["7M", "7L1", "7V", "6L1", "5L1", "4L1", "3L1"],
 		psychic: ["7L1"],
 		shadowball: ["7L1"],
-		tailglow: ["7L1"],
+		nastyplot: ["7L1"],
 		flamethrower: ["7L1"],
 		thunderbolt: ["7L1"],
 		icebeam: ["7L1"],

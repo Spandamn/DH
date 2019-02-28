@@ -19452,6 +19452,17 @@ let BattleMovedex = {
 			onHit: function (pokemon) {
 				pokemon.removeVolatile( 'burrow' )
 			},
+			onTryPrimaryHitPriority: -2,
+			onTryPrimaryHit: function (target, source, move) {
+				if (target === source || move.flags['authentic'] || move.infiltrates) {
+					return;
+				}
+				let damage = this.getDamage(source, target, move);
+				if (!damage && damage !== 0) {
+					this.add('-fail', target);
+					return null;
+				}
+			},
 			onResidualOrder: 15,
 			onEnd: function (target) {
 				this.add('-end', target, 'Burrow');
