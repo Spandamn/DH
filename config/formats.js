@@ -3040,12 +3040,12 @@ exports.Formats = [
 			for (let i = 0; i < 2; i++) {
 				if (!pokemons[4].moves[i]) continue;
 				chimera.moves.push(pokemons[4].moves[i]);
-				chimera.moveset.push(pokemons[4].moveset[i]);
+				chimera.moveset.push(pokemons[4].moveSlots[i]);
 			}
 			for (let i = 2; i < 4; i++) {
 				if (!pokemons[5].moves[i]) continue;
 				chimera.moves.push(pokemons[5].moves[i]);
-				chimera.moveset.push(pokemons[5].moveset[i]);
+				chimera.moveset.push(pokemons[5].moveSlots[i]);
 			}
 			chimera.canMegaEvo = false;
 			pokemon.species = chimera.species;
