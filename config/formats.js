@@ -3724,7 +3724,7 @@ exports.Formats = [
 		],
 		ruleset: ['Species Clause', 'Nickname Clause', 'Moody Clause', 'OHKO Clause', 'Evasion Moves Clause', 'Swagger Clause', 'Mega Rayquaza Clause', 'Sleep Clause Mod', 'Endless Battle Clause', 'HP Percentage Mod', 'Cancel Mod', 'Team Preview'],
 		banlist: ['Unreleased', 'Illegal', 'Blaziken-Mega', 'Gengar-Mega', 'Mewtwo-Mega-Y'],
-		onValidateTeam: function(team) {
+		/*onValidateTeam: function(team) {
 			let problems = [];
 			let kyurems = 0;
 			for (let i = 0; i < team.length; i++) {
@@ -3737,7 +3737,7 @@ exports.Formats = [
 				}
 			}
 			return problems;
-		},
+		},*/
 		onChangeSet: function(set, format) {
 			let item = this.getItem(set.item);
 			let template = this.getTemplate(set.species);
