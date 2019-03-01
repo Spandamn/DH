@@ -67873,7 +67873,7 @@ let BattleLearnsets = {
 		nastyplot: ["7T"],
 		thunder: ["7T"],
 	}},
-	heatmor: {learnset: {
+	cinderillo: {learnset: {
 		aerialace: ["7M", "6M", "5M"],
 		amnesia: ["7L47", "6L44", "5L46"],
 		attract: ["7M", "6M", "5M"],

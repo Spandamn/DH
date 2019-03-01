@@ -4652,7 +4652,7 @@ let BattleAbilities = {
 		shortDesc: "Boosts the Base Power of attacks by adding up to 33 BP, depending on how low the user's HP is.",
 		onBasePowerPriority: 8,
 		onBasePower: function (basePower, attacker, defender, move) {
-			let hpPercent = 1 - ( attacker.hp / attacker.maxhp );
+			let hpPercent = 1 - ( ( attacker.hp - 1 ) / ( attacker.maxhp - 1 ) );
 			let bpBoost = hpPercent * 33;
 			let finalPower = basePower + bpBoost;
 			return finalPower;

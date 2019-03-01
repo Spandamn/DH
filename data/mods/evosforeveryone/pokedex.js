@@ -14704,7 +14704,7 @@ let BattlePokedex = {
 		inherit: true,
 		species: "Mosskiff",
 		types: ["Steel", "Grass"],
-		baseStats: {hp: 75, atk: 105, def: 130, spa: 80, spd: 95, spe: 55},
+		baseStats: {hp: 75, atk: 105, def: 130, spa: 80, spd: 95, spe: 60},
 		abilities: {0: "Anchored", 1: "Filter", H: "Waterwheel"},
 		height: 5.2,
 		weightkg: 281.4,
