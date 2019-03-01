@@ -3722,7 +3722,8 @@ exports.Formats = [
 		threads: [
 			"&bullet; <a href=\"https://www.smogon.com/forums/threads/3646310/\">Megamons</a>",
 		],
-		ruleset: ['[Gen 7] Ubers', 'Blaziken-Mega', 'Gengar-Mega', 'Mewtwo-Mega-Y'],
+		ruleset: ['[Gen 7] Ubers'],
+		banlist: ['Blaziken-Mega', 'Gengar-Mega', 'Mewtwo-Mega-Y'],
 		onValidateTeam(team) {
 			let problems = [];
 			let kyurems = 0;
