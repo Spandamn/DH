@@ -3020,7 +3020,6 @@ exports.Formats = [
 			pokemon.side.pokemonLeft = 1;
 			pokemon.baseTemplate = this.deepClone(pokemon.baseTemplate);
 			pokemon.item = allies[1].item;
-			pokemon.ability = pokemon.baseAbility = allies[2].ability;
 			// @ts-ignore
 			pokemon.baseTemplate.baseStats = allies[3].baseTemplate.baseStats;
 			pokemon.set.evs = allies[3].set.evs;
@@ -3031,6 +3030,7 @@ exports.Formats = [
 			// @ts-ignore
 			pokemon.baseTemplate.baseSpecies = pokemon.baseTemplate.species += '-Chimera';
 			pokemon.formeChange(pokemon.baseTemplate);
+			pokemon.ability = pokemon.baseAbility = allies[2].ability;
 		},
 	},
 	{
