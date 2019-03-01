@@ -3021,8 +3021,7 @@ exports.Formats = [
 			chimera.set = Object.assign({}, pokemons[0].set);
 			chimera.set.name = chimera.set.name || pokemons[0].species;
 			chimera.item = pokemons[1].item;
-			chimera.ability = pokemons[2].ability;
-			chimera.baseAbility = pokemons[2].baseAbility;
+			chimera.ability = chimera.baseAbility = pokemons[2].ability;
 			chimera.BSTBak = Object.assign({}, pokemons[3].baseStats);
 			chimera.set.evs = pokemons[3].set.evs;
 			chimera.set.level = pokemons[3].set.level;
@@ -3719,11 +3718,12 @@ exports.Formats = [
 	},
 	{
 		name: "[Gen 7] Megamons",
-		desc: ["&bullet; <a href=\"https://www.smogon.com/forums/threads/3566648/\">Megamons</a>"],
-		mod: 'gen7',
-		ruleset: ['Species Clause', 'Nickname Clause', 'Moody Clause', 'OHKO Clause', 'Evasion Moves Clause', 'Swagger Clause', 'Mega Rayquaza Clause', 'Sleep Clause Mod', 'Endless Battle Clause', 'HP Percentage Mod', 'Cancel Mod', 'Team Preview'],
-		banlist: ['Unreleased', 'Illegal', 'Gengar-Mega', 'Mewtwo-Mega-Y', 'Rayquaza-Mega'],
-		onValidateTeam: function(team) {
+		desc: "Mega Evolutions can be used without Mega Stones, as if they were normal Pok&eacute;mon.",
+		threads: [
+			"&bullet; <a href=\"https://www.smogon.com/forums/threads/3646310/\">Megamons</a>",
+		],
+		ruleset: ['[Gen 7] Ubers', 'Blaziken-Mega', 'Gengar-Mega', 'Mewtwo-Mega-Y'],
+		onValidateTeam(team) {
 			let problems = [];
 			let kyurems = 0;
 			for (let i = 0; i < team.length; i++) {
@@ -3737,7 +3737,7 @@ exports.Formats = [
 			}
 			return problems;
 		},
-		onChangeSet: function(set, format) {
+		onChangeSet(set, format) {
 			let item = this.getItem(set.item);
 			let template = this.getTemplate(set.species);
 			let problems = [];
@@ -3860,7 +3860,7 @@ exports.Formats = [
 
 			return problems;
 		},
-		onSwitchIn: function(pokemon) {
+		onSwitchIn(pokemon) {
 			let item = pokemon.getItem();
 			if (item.megaEvolves && pokemon.template.species === item.megaEvolves) {
 				pokemon.canMegaEvo = item.megaStone;
