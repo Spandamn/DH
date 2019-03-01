@@ -19603,7 +19603,7 @@ let BattleMovedex = {
 		},
 		secondary: null,
 		target: "normal",
-		type: "Normal",
+		type: "Water",
 		zMovePower: 120,
 		contestType: "Clever",
 	},
