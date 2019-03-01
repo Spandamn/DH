@@ -3889,7 +3889,7 @@ exports.Formats = [
 				if (template.requiredAbility && set.ability !== template.requiredAbility) {
 					problems.push(`${(set.name || set.species)} needs the ability ${template.requiredAbility}.`); // No cases currently.
 				}
-				if (template.requiredItems && !template.requiredItems.includes(item.name)) {
+				if (template.requiredItems && !template.requiredItems.includes(item.name) && !template.isMega) {
 					problems.push(`${(set.name || set.species)} needs to hold ${Chat.plural(template.requiredItems.length, "either ") + template.requiredItems.join(" or ")}.`); // Memory/Drive/Griseous Orb/Plate/Z-Crystal - Forme mismatch
 				}
 				if (template.requiredMove && set.moves.indexOf(toId(template.requiredMove)) < 0) {
