@@ -3724,7 +3724,7 @@ exports.Formats = [
 		],
 		ruleset: ['[Gen 7] Ubers'],
 		banlist: ['Blaziken-Mega', 'Gengar-Mega', 'Mewtwo-Mega-Y'],
-		onValidateTeam(team) {
+		onValidateTeam: function(team) {
 			let problems = [];
 			let kyurems = 0;
 			for (let i = 0; i < team.length; i++) {
@@ -3738,7 +3738,7 @@ exports.Formats = [
 			}
 			return problems;
 		},
-		onChangeSet(set, format) {
+		onChangeSet: function(set, format) {
 			let item = this.getItem(set.item);
 			let template = this.getTemplate(set.species);
 			let problems = [];
@@ -3861,7 +3861,7 @@ exports.Formats = [
 
 			return problems;
 		},
-		onSwitchIn(pokemon) {
+		onSwitchIn: function(pokemon) {
 			let item = pokemon.getItem();
 			if (item.megaEvolves && pokemon.template.species === item.megaEvolves) {
 				pokemon.canMegaEvo = item.megaStone;
