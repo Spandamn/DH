@@ -3001,6 +3001,37 @@ exports.Formats = [
 		onAfterMega: function (pokemon) {
 			this.add('-start', pokemon, 'typechange', pokemon.types.join('/'), '[silent]');
 		},
+	},{
+		name: "[Gen 7] Chimera",
+		desc: "Bring 6 Pok&eacute;mon and choose their order at Team Preview. The lead Pok&eacute;mon then receives the Item, Ability, Stats and Moves of the other five Pok&eacute;mon, who play no further part in the battle.",
+		threads: [
+			"&bullet; <a href=\"https://www.smogon.com/forums/threads/3607451/\">Chimera</a>",
+		],
+
+		mod: 'gen7',
+		teamLength: {
+			validate: [6, 6],
+			battle: 6,
+		},
+		ruleset: ['Pokemon', 'Moody Clause', 'OHKO Clause', 'Evasion Moves Clause', 'Endless Battle Clause', 'HP Percentage Mod', 'Cancel Mod', 'Team Preview'],
+		banlist: ['Illegal', 'Unreleased', 'Shedinja', 'Smeargle', 'Huge Power', 'Pure Power', 'Focus Sash', 'Dark Void', 'Grass Whistle', 'Hypnosis', 'Lovely Kiss', 'Perish Song', 'Sing', 'Sleep Powder', 'Spore', 'Transform'],
+		onBeforeSwitchIn(pokemon) {
+			let allies = pokemon.side.pokemon;
+			pokemon.side.pokemonLeft = 1;
+			pokemon.baseTemplate = this.deepClone(pokemon.baseTemplate);
+			pokemon.item = allies[1].item;
+			pokemon.ability = pokemon.baseAbility = allies[2].ability;
+			// @ts-ignore
+			pokemon.baseTemplate.baseStats = allies[3].baseTemplate.baseStats;
+			pokemon.set.evs = allies[3].set.evs;
+			pokemon.set.ivs = pokemon.baseIvs = allies[3].set.ivs;
+			pokemon.hpType = pokemon.baseHpType = allies[3].baseHpType;
+			pokemon.moveSlots = pokemon.baseMoveSlots = allies[4].baseMoveSlots.slice(0, 2).concat(allies[5].baseMoveSlots.slice(2)).filter((move, index, moveSlots) => moveSlots.find(othermove => othermove.id === move.id) === move);
+			pokemon.canMegaEvo = null;
+			// @ts-ignore
+			pokemon.baseTemplate.baseSpecies = pokemon.baseTemplate.species += '-Chimera';
+			pokemon.formeChange(pokemon.baseTemplate);
+		},
 	},
 	{
 		name: "[Gen 7] Chimera 1v1",
