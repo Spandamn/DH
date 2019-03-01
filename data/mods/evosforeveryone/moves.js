@@ -19374,6 +19374,10 @@ let BattleMovedex = {
 			chance: 10,
 			status: 'brn',
 		},
+		onPrepareHit: function(target, source, move) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Flame Charge", target);
+		},
 		target: "normal",
 		type: "Fire",
 		zMovePower: 180,
@@ -19395,6 +19399,10 @@ let BattleMovedex = {
 		secondary: {
 			chance: 100,
 			status: 'brn',
+		},
+		onPrepareHit: function(target, source, move) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Inferno", target);
 		},
 		target: "normal",
 		type: "Fire",
@@ -19421,6 +19429,10 @@ let BattleMovedex = {
 			return this.heal(spd, source, target) || success;
 		},
 		secondary: null,
+		onPrepareHit: function(target, source, move) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Spectral Thief", target);
+		},
 		target: "normal",
 		type: "Ghost",
 		zMoveBoost: {def: 1},
@@ -19496,6 +19508,10 @@ let BattleMovedex = {
 			}
 		},
 		secondary: null,
+		onPrepareHit: function(target, source, move) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Extreme Speed", target);
+		},
 		target: "normal",
 		type: "Normal",
 		zMovePower: 130,
@@ -19535,6 +19551,10 @@ let BattleMovedex = {
 		},
 		secondary: null,
 		target: "normal",
+		onPrepareHit: function(target, source, move) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Punishment", target);
+		},
 		type: "Dark",
 		zMovePower: 150,
 		contestType: "Tough",
@@ -19554,6 +19574,10 @@ let BattleMovedex = {
 		flags: {contact: 1, protect: 1, mirror: 1, tail: 1},
 		forceSwitch: true,
 		target: "normal",
+		onPrepareHit: function(target, source, move) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Fairy Lock", target);
+		},
 		type: "Steel",
 		zMovePower: 120,
 		contestType: "Clever",
@@ -19573,6 +19597,10 @@ let BattleMovedex = {
 		flags: {contact: 1, protect: 1, mirror: 1},
 		secondary: null,
 		target: "normal",
+		onPrepareHit: function(target, source, move) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Flash", target);
+		},
 		type: "Fairy",
 		zMovePower: 100,
 		contestType: "Beautiful",
@@ -19591,8 +19619,8 @@ let BattleMovedex = {
 		priority: 0,
 		flags: {contact: 1, protect: 1, mirror: 1},
 		self: {
-			onHit: function (pokemon) {
-				if ( pokemon.hasAbility('anchored')) return;
+			onHit: function ( pokemon, target ) {
+				if ( pokemon.hasAbility('anchored') || target.hasAbility('anchored')) return;
 				let sideConditions = ['spikes', 'toxicspikes', 'stealthrock', 'stickyweb'];
 				for (const condition of sideConditions) {
 					if (pokemon.hp && pokemon.side.removeSideCondition(condition)) {
@@ -19604,6 +19632,10 @@ let BattleMovedex = {
 		secondary: null,
 		target: "normal",
 		type: "Water",
+		onPrepareHit: function(target, source, move) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Surf", target);
+		},
 		zMovePower: 120,
 		contestType: "Clever",
 	},
@@ -19623,6 +19655,10 @@ let BattleMovedex = {
 		critRatio: 2,
 		secondary: null,
 		target: "normal",
+		onPrepareHit: function(target, source, move) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Smart Strike", target);
+		},
 		type: "Steel",
 		zMovePower: 175,
 		contestType: "Cool",
@@ -19646,6 +19682,10 @@ let BattleMovedex = {
 			status: 'par',
 		},
 		target: "normal",
+		onPrepareHit: function(target, source, move) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Ancient Power", target);
+		},
 		type: "Rock",
 		zMovePower: 190,
 		contestType: "Tough",
@@ -19670,6 +19710,10 @@ let BattleMovedex = {
 		},
 		secondary: null,
 		target: "normal",
+		onPrepareHit: function(target, source, move) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Draco Meteor", target);
+		},
 		type: "Rock",
 		zMovePower: 195,
 		contestType: "Beautiful",
@@ -19677,10 +19721,10 @@ let BattleMovedex = {
 	"ozoneburst": {
 		num: 403,
 		accuracy: 100,
-		basePower: 65,
+		basePower: 70,
 		category: "Special",
-		desc: "Deals 50% more damage is the user is below 50% HP.",
-		shortDesc: "Deals 50% more damage is the user is below 50% HP.",
+		desc: "Deals 50% more damage if the user is below 50% HP.",
+		shortDesc: "Deals 50% more damage if the user is below 50% HP.",
 		id: "ozoneburst",
 		isViable: true,
 		name: "Ozone Burst",
@@ -19694,6 +19738,10 @@ let BattleMovedex = {
 		priority: 0,
 		flags: {protect: 1, mirror: 1, distance: 1},
 		target: "any",
+		onPrepareHit: function(target, source, move) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Oblivion Wing", target);
+		},
 		type: "Flying",
 		zMovePower: 130,
 		contestType: "Cool",
