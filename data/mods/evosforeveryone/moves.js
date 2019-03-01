@@ -19536,7 +19536,7 @@ let BattleMovedex = {
 		secondary: null,
 		target: "normal",
 		type: "Dark",
-		zMoveBoost: {spa: 1},
+		zMovePower: 150,
 		contestType: "Tough",
 	},
 	"unlock": {
@@ -19604,7 +19604,7 @@ let BattleMovedex = {
 		secondary: null,
 		target: "normal",
 		type: "Normal",
-		zMovePower: 100,
+		zMovePower: 120,
 		contestType: "Clever",
 	},
 	"tinfins": {
@@ -19677,13 +19677,13 @@ let BattleMovedex = {
 	"ozoneburst": {
 		num: 403,
 		accuracy: 100,
-		basePower: 75,
+		basePower: 65,
 		category: "Special",
-		desc: "Has a 30% chance to flinch the target.",
-		shortDesc: "30% chance to flinch the target.",
-		id: "airslash",
+		desc: "Deals 50% more damage is the user is below 50% HP.",
+		shortDesc: "Deals 50% more damage is the user is below 50% HP.",
+		id: "ozoneburst",
 		isViable: true,
-		name: "Air Slash",
+		name: "Ozone Burst",
 		onBasePowerPriority: 4,
 		onBasePower: function (basePower, pokemon, target) {
 			if (pokemon.hp * 2 <= pokemon.maxhp) {
@@ -19695,7 +19695,7 @@ let BattleMovedex = {
 		flags: {protect: 1, mirror: 1, distance: 1},
 		target: "any",
 		type: "Flying",
-		zMovePower: 140,
+		zMovePower: 130,
 		contestType: "Cool",
 	},
 	"antigravity": {

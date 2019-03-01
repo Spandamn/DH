@@ -3028,13 +3028,19 @@ let BattleAbilities = {
 			}
 		},
 		onSetStatus: function (status, target, source, effect) {
-			if (target.template.speciesid !== 'miniormeteor' || target.transformed) return;
+			if ((target.template.speciesid !== 'miniormeteor' 
+				&& target.template.speciesid !== 'chelyormeteor' )
+				|| target.transformed) 
+					return;
 			if (!effect || !effect.status) return false;
 			this.add('-immune', target, '[msg]', '[from] ability: Shields Down');
 			return false;
 		},
 		onTryAddVolatile: function (status, target) {
-			if (target.template.speciesid !== 'miniormeteor' || target.transformed) return;
+			if ((target.template.speciesid !== 'miniormeteor' 
+				&& target.template.speciesid !== 'chelyormeteor' )
+				|| target.transformed) 
+					return;
 			if (status.id !== 'yawn') return;
 			this.add('-immune', target, '[msg]', '[from] ability: Shields Down');
 			return null;
@@ -4772,7 +4778,7 @@ let BattleAbilities = {
 		num: 47,
 	},
 	"paintstroke": {
-		desc: "Upon landing an attack, this pokemon passes its stat drops and staus conditions to the target.",
+		desc: "When this pokemon uses a move, the opponents type changes to match that move.",
 		shortDesc: "This pokemon's attacks pass its stat drops and staus conditions to the target.",
 		onSourceHit: function (target, source, move) {
 			if (!target.setType(move.type) || target === source ) return false;

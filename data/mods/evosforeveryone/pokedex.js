@@ -2439,6 +2439,7 @@ let BattlePokedex = {
 		heightm: 0.3,
 		weightkg: 4,
 		color: "Purple",
+		evos: ["mettalo"],
 		eggGroups: ["Ditto"],
 	},
 	eevee: {
@@ -3902,6 +3903,7 @@ let BattlePokedex = {
 		heightm: 1.2,
 		weightkg: 58,
 		color: "White",
+		evos: ["beltrachi"],
 		eggGroups: ["Field"],
 	},
 	tyrogue: {
@@ -5267,6 +5269,7 @@ let BattlePokedex = {
 		heightm: 1.1,
 		weightkg: 5,
 		color: "Brown",
+		evos: ["ditzy"],
 		eggGroups: ["Field", "Human-Like"],
 	},
 	trapinch: {
@@ -5382,6 +5385,7 @@ let BattlePokedex = {
 		heightm: 1.3,
 		weightkg: 40.3,
 		color: "White",
+		evos: ['mongrail'],
 		eggGroups: ["Field"],
 	},
 	seviper: {
@@ -5393,6 +5397,7 @@ let BattlePokedex = {
 		heightm: 2.7,
 		weightkg: 52.5,
 		color: "Black",
+		evos: ['seviper'],
 		eggGroups: ["Field", "Dragon"],
 	},
 	lunatone: {
@@ -5721,6 +5726,7 @@ let BattlePokedex = {
 		heightm: 2,
 		weightkg: 100,
 		color: "Green",
+		evos: ["bananasauros", "photodocus"],
 		eggGroups: ["Monster", "Grass"],
 	},
 	chimecho: {
@@ -5746,6 +5752,7 @@ let BattlePokedex = {
 		weightkg: 47,
 		color: "White",
 		eggGroups: ["Field"],
+		evos: ["herold", "omage"],
 		otherFormes: ["absolmega"],
 	},
 	absolmega: {
@@ -5901,6 +5908,7 @@ let BattlePokedex = {
 		heightm: 1,
 		weightkg: 23.4,
 		color: "Gray",
+		evos: ["coelacrash"],
 		eggGroups: ["Water 1", "Water 2"],
 	},
 	luvdisc: {
@@ -8662,6 +8670,7 @@ let BattlePokedex = {
 		weightkg: 31,
 		color: "Pink",
 		eggGroups: ["Fairy"],
+		evos: ["audimorte"],
 		otherFormes: ["audinomega"],
 	},
 	audinomega: {
@@ -9439,6 +9448,7 @@ let BattlePokedex = {
 		heightm: 0.4,
 		weightkg: 5,
 		color: "White",
+		evos: ["emolgarus"],
 		eggGroups: ["Field"],
 	},
 	karrablast: {
@@ -9525,6 +9535,7 @@ let BattlePokedex = {
 		heightm: 1.2,
 		weightkg: 31.6,
 		color: "Pink",
+		evos: ['alominium'],
 		eggGroups: ["Water 1", "Water 2"],
 	},
 	joltik: {
@@ -9833,6 +9844,7 @@ let BattlePokedex = {
 		heightm: 0.7,
 		weightkg: 11,
 		color: "Brown",
+		evos: ["floundoom"],
 		eggGroups: ["Water 1", "Amorphous"],
 	},
 	mienfoo: {
@@ -9933,6 +9945,7 @@ let BattlePokedex = {
 		heightm: 1.6,
 		weightkg: 94.6,
 		color: "Brown",
+		evos: ["alfouffalo"],
 		eggGroups: ["Field"],
 	},
 	rufflet: {
@@ -10009,7 +10022,8 @@ let BattlePokedex = {
 		abilities: {0: "Swarm", 1: "Hustle", H: "Truant"},
 		heightm: 0.3,
 		weightkg: 33,
-		color: "Gray",
+		color: "Gray"
+		evos: ['alloyal'],
 		eggGroups: ["Bug"],
 	},
 	deino: {
@@ -11179,6 +11193,7 @@ let BattlePokedex = {
 		heightm: 0.8,
 		weightkg: 21.5,
 		color: "Green",
+		evos: ["compleppo"],
 		eggGroups: ["Human-Like"],
 	},
 	dedenne: {
@@ -11253,6 +11268,7 @@ let BattlePokedex = {
 		heightm: 0.2,
 		weightkg: 3,
 		color: "Gray",
+		evos: ["enlok"],
 		eggGroups: ["Mineral"],
 	},
 	phantump: {
@@ -12347,6 +12363,7 @@ let BattlePokedex = {
 		heightm: 1.5,
 		weightkg: 76,
 		color: "White",
+		evos: ['oranchakra'],
 		eggGroups: ["Field"],
 	},
 	passimian: {
@@ -12358,6 +12375,7 @@ let BattlePokedex = {
 		heightm: 2,
 		weightkg: 82.8,
 		color: "White",
+		evos: ['chimpanceive'],
 		eggGroups: ["Field"],
 	},
 	wimpod: {
@@ -12749,6 +12767,7 @@ let BattlePokedex = {
 		heightm: 0.3,
 		weightkg: 0.3,
 		color: "Red",
+		evos: ["chelyor", "orbitar"],
 		eggGroups: ["Mineral"],
 		otherFormes: ["miniormeteor"],
 		otherForms: ["miniororange", "minioryellow", "miniorgreen", "miniorblue", "miniorindigo", "miniorviolet"],
@@ -12766,6 +12785,7 @@ let BattlePokedex = {
 		heightm: 0.3,
 		weightkg: 40,
 		color: "Brown",
+		evos: ["chelyorneteor", "orbitar"],
 		eggGroups: ["Mineral"],
 	},
 	komala: {
@@ -12904,6 +12924,7 @@ let BattlePokedex = {
 		heightm: 3.9,
 		weightkg: 210,
 		color: "Green",
+		evos: ['mosskiff', 'ectitan'],
 		eggGroups: ["Mineral"],
 	},
 	jangmoo: {
@@ -14671,7 +14692,7 @@ let BattlePokedex = {
 		inherit: true,
 		species: "Ectitan",
 		types: ["Steel", "Ghost"],
-		baseStats: {hp: 75, atk: 130, def: 100, spa: 60, spd: 130, spe: 60},
+		baseStats: {hp: 75, atk: 130, def: 95, spa: 60, spd: 125, spe: 60},
 		abilities: {0: "Cornered", 1: "Water Absorb", H: "Rock Head"},
 		height: 5.2,
 		weightkg: 281.4,
@@ -14683,7 +14704,7 @@ let BattlePokedex = {
 		inherit: true,
 		species: "Mosskiff",
 		types: ["Steel", "Grass"],
-		baseStats: {hp: 75, atk: 105, def: 140, spa: 80, spd: 100, spe: 55},
+		baseStats: {hp: 75, atk: 105, def: 130, spa: 80, spd: 95, spe: 55},
 		abilities: {0: "Anchored", 1: "Filter", H: "Waterwheel"},
 		height: 5.2,
 		weightkg: 281.4,
@@ -14863,7 +14884,7 @@ let BattlePokedex = {
 		inherit: true,
 		species: "Cheylor-Meteor",
 		types: ["Rock", "Flying"],
-		baseStats: {hp: 70, atk: 85, def: 110, spa: 85, spd: 110, spe: 60},
+		baseStats: {hp: 70, atk: 85, def: 105, spa: 85, spd: 105, spe: 60},
 		abilities: {0: "Shields Down"},
 		height: 0.4,
 		weightkg: 53.6,
@@ -14875,11 +14896,11 @@ let BattlePokedex = {
 		inherit: true,
 		species: "Cheylor",
 		types: ["Rock", "Flying"],
-		baseStats: {hp: 70, atk: 120, def: 70, spa: 120, spd: 70, spe: 120},
+		baseStats: {hp: 70, atk: 115, def: 70, spa: 115, spd: 70, spe: 120},
 		abilities: {0: "Shields Down"},
 		height: 0.4,
 		weightkg: 53.6,
-		prevo: "miniormeteor",
+		prevo: "minior",
 		eggGroups: ["Mineral"],
 	},
 	orbitar: {
