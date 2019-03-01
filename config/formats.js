@@ -3010,11 +3010,9 @@ exports.Formats = [
 		mod: 'chimera1v1',
 		ruleset: ['Pokemon', 'Moody Clause', 'OHKO Clause', 'Evasion Moves Clause', 'Endless Battle Clause', 'HP Percentage Mod', 'Cancel Mod', 'Team Preview'],
 		banlist: ['Illegal', 'Unreleased', 'Shedinja', 'Smeargle', 'Huge Power', 'Pure Power', 'Focus Sash', 'Dark Void', 'Grass Whistle', 'Hypnosis', 'Lovely Kiss', 'Perish Song', 'Sing', 'Sleep Powder', 'Spore', 'Transform'],
-		onBegin: function () {
-			for (let s = 0; s < this.sides.length; s++) {
-				this.sides[s].pokemon[5].baseBaseAbility = this.sides[s].pokemon[5].baseAbility;
-				this.sides[s].pokemon[5].baseAbility = 'illusion';
-			}
+		teamLength: {
+			validate: [6, 6],
+			battle: 6,
 		},
 		onBeforeSwitchIn: function (pokemon) {
 			let chimera = {}, pokemons = pokemon.side.pokemon;
@@ -3035,19 +3033,7 @@ exports.Formats = [
 			chimera.level = pokemons[3].level;
 			chimera.set.hpType = chimera.hpType = pokemons[3].hpType;
 			chimera.hp = chimera.maxhp = pokemons[3].maxhp;
-			chimera.moves = chimera.baseMoves = [];
-			chimera.moveset = chimera.baseMoveset = [];
-			for (let i = 0; i < 2; i++) {
-				if (!pokemons[4].moves[i]) continue;
-				chimera.moves.push(pokemons[4].moves[i]);
-				chimera.moveset.push(pokemons[4].moveSlots[i]);
-			}
-			for (let i = 2; i < 4; i++) {
-				if (!pokemons[5].moves[i]) continue;
-				chimera.moves.push(pokemons[5].moves[i]);
-				chimera.moveset.push(pokemons[5].moveSlots[i]);
-			}
-			chimera.canMegaEvo = false;
+			pokemon.moveSlots = pokemon.baseMoveSlots = pokemons[4].baseMoveSlots.slice(0, 2).concat(pokemons[5].baseMoveSlots.slice(2)).filter((move, index, moveSlots) => moveSlots.find(othermove => othermove.id === move.id) === move);
 			pokemon.species = chimera.species;
 			pokemon.baseTemplate = pokemon.template = Object.assign(this.getTemplate(pokemon.species), chimera);
 			pokemon.formeChange(pokemon.template);
