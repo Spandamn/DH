@@ -3008,8 +3008,8 @@ exports.Formats = [
 			"&bullet; <a href=\"http://www.smogon.com/forums/threads/3607451/\">Chimera 1v1</a>: The six Pokemon in your team are fused",
 		],
 		mod: 'chimera1v1',
-		ruleset: ['Pokemon', 'Standard', 'OHKO Clause','Evasion Clause','Species Clause','Endless Battle Clause', 'Team Preview'],
-		banlist: ['Shedinja','Smeargle','Pure Power','Huge Power','Moody','Focus Sash','Perish Song','Transform'],
+		ruleset: ['Pokemon', 'Moody Clause', 'OHKO Clause', 'Evasion Moves Clause', 'Endless Battle Clause', 'HP Percentage Mod', 'Cancel Mod', 'Team Preview'],
+		banlist: ['Illegal', 'Unreleased', 'Shedinja', 'Smeargle', 'Huge Power', 'Pure Power', 'Focus Sash', 'Dark Void', 'Grass Whistle', 'Hypnosis', 'Lovely Kiss', 'Perish Song', 'Sing', 'Sleep Powder', 'Spore', 'Transform'],
 		onBegin: function () {
 			for (let s = 0; s < this.sides.length; s++) {
 				this.sides[s].pokemon[5].baseBaseAbility = this.sides[s].pokemon[5].baseAbility;
@@ -6841,8 +6841,7 @@ exports.Formats = [
 			pokemon.item = 'leppaberry';
 			return Object.assign({metronomed: true, ability: 'cutecharm'}, this.getTemplate('Clefable'));
 		},
-		onBeforeMovePriority: 5,
-		onBeforeMove: function (attacker, defender, move) {
+		onModifyMove: function (move, attacker) {
 			if (move.charge && attacker.volatiles['metroman']) return move;
 			let metroman = {
 				duration: 1,
