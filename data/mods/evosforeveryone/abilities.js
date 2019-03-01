@@ -2984,26 +2984,45 @@ let BattleAbilities = {
 		desc: "If this Pokemon is a Minior, it changes to its Core forme if it has 1/2 or less of its maximum HP, and changes to Meteor Form if it has more than 1/2 its maximum HP. This check is done on switch-in and at the end of each turn. While in its Meteor Form, it cannot become affected by major status conditions. Moongeist Beam, Sunsteel Strike, and the Mold Breaker, Teravolt, and Turboblaze Abilities cannot ignore this Ability.",
 		shortDesc: "If Minior, switch-in/end of turn it changes to Core at 1/2 max HP or less, else Meteor.",
 		onStart: function (pokemon) {
-			if (pokemon.baseTemplate.baseSpecies !== 'Minior' || pokemon.transformed) return;
+			if (( pokemon.baseTemplate.baseSpecies !== 'Minior' 
+				&& pokemon.baseTemplate.baseSpecies !== 'Chelyor' ) 
+				|| pokemon.transformed) 
+			return;
 			if (pokemon.hp > pokemon.maxhp / 2) {
 				if (pokemon.template.speciesid === 'minior') {
 					pokemon.formeChange('Minior-Meteor');
 				}
+				if (pokemon.template.speciesid === 'chelyor') {
+					pokemon.formeChange('Chelyor-Meteor');
+				}
 			} else {
 				if (pokemon.template.speciesid !== 'minior') {
+					pokemon.formeChange(pokemon.set.species);
+				}
+				if (pokemon.template.speciesid !== 'chelyor') {
 					pokemon.formeChange(pokemon.set.species);
 				}
 			}
 		},
 		onResidualOrder: 27,
 		onResidual: function (pokemon) {
-			if (pokemon.baseTemplate.baseSpecies !== 'Minior' || pokemon.transformed || !pokemon.hp) return;
+			if (( pokemon.baseTemplate.baseSpecies !== 'Minior' 
+				&& pokemon.baseTemplate.baseSpecies !== 'Chelyor' ) 
+				|| pokemon.transformed 
+				|| !pokemon.hp ) 
+			return;
 			if (pokemon.hp > pokemon.maxhp / 2) {
 				if (pokemon.template.speciesid === 'minior') {
 					pokemon.formeChange('Minior-Meteor');
 				}
+				if (pokemon.template.speciesid === 'chelyor') {
+					pokemon.formeChange('Chelyor-Meteor');
+				}
 			} else {
 				if (pokemon.template.speciesid !== 'minior') {
+					pokemon.formeChange(pokemon.set.species);
+				}
+				if (pokemon.template.speciesid !== 'chelyor') {
 					pokemon.formeChange(pokemon.set.species);
 				}
 			}
@@ -4562,6 +4581,239 @@ let BattleAbilities = {
 		name: "Defibrillator",
 		rating: 0,
 		num: 118,
+	},
+	"survivor": {
+		desc: "If this Pokemon is poisoned, its Defense and Special Defense are multiplied by 1.2.",
+		shortDesc: "If this Pokemon is poisoned, its Def and SpD are boosted by 20%.",
+		onModifyDefPriority: 5,
+		onModifyDef: function (atk, pokemon) {
+			if (pokemon.status === 'psn' || pokemon.status === 'tox') {
+				return this.chainModify(1.2);
+			}
+		},
+		onModifySpDPriority: 5,
+		onModifySpD: function (atk, pokemon) {
+			if (pokemon.status === 'psn' || pokemon.status === 'tox') {
+				return this.chainModify(1.2);
+			}
+		}, 
+		onDamage: function (damage, target, source, effect) {
+			if (effect.id === 'psn' || effect.id === 'tox') {
+				return false;
+			}
+		},
+		id: "survivor",
+		name: "Survivor",
+		rating: 3,
+		num: 62,
+	},
+	"vengeful": {
+		shortDesc: "This pokemon gains +1 attack when it lands a resisted attack. Resisted attacks deal 25% less damage.",
+		onModifyDamage: function (damage, source, target, move) {
+			if (move && move.typeMod < 0) {
+				this.boost({atk: 1});
+				return this.chainModify(0.75);
+			}
+		},
+		id: "vengeful",
+		name: "Vengeful",
+		rating: 3,
+		num: 233,
+	},
+	"stinger": {
+		desc: "This Pokemon's tail-based attacks have perfect accuracy and a 30% chance to badly poison their target.",
+		shortDesc: "This Pokemon's tail-based attacks have 1.2x power. Sucker Punch is not boosted.",
+		onModifyMovePriority: -1,
+		onModifyMove: function (move) {
+			if (!move || !move.flags['tail']) return;
+			move.accuracy = 100;
+			if (!move.secondaries) {
+				move.secondaries = [];
+			}
+			move.secondaries.push({
+				chance: 30,
+				status: 'tox',
+				ability: this.getAbility('stinger'),
+			});
+		},
+		id: "stinger",
+		name: "Stinger",
+		rating: 3,
+		num: 89,
+	},
+	"cornered": {
+		desc: "Boosts the Base Power of attacks by adding up to 33 BP, depending on how low the user's HP is.",
+		shortDesc: "Boosts the Base Power of attacks by adding up to 33 BP, depending on how low the user's HP is.",
+		onBasePowerPriority: 8,
+		onBasePower: function (basePower, attacker, defender, move) {
+			let hpPercent = 1 - ( attacker.hp / attacker.maxhp );
+			let bpBoost = hpPercent * 33;
+			let finalPower = basePower + bpBoost;
+			return finalPower;
+		},
+		id: "cornered",
+		name: "Cornered",
+		rating: 2.5,
+		num: 138,
+	},
+	"anchored": {
+		shortDesc: "No competitive use.",
+		id: "anchored",
+		name: "Anchored",
+		rating: 0,
+		num: 118,
+	},
+	"waterwheel": {
+		shortDesc: "This Pokemon's attacking stat is multiplied by 1.5 while using a Water-type attack.",
+		onModifyAtkPriority: 5,
+		onModifyAtk: function (atk, attacker, defender, move) {
+			if (move.type === 'Water') {
+				this.debug('Waterwheel boost');
+				return this.chainModify(1.5);
+			}
+		},
+		onModifySpAPriority: 5,
+		onModifySpA: function (atk, attacker, defender, move) {
+			if (move.type === 'Water') {
+				this.debug('Waterwheel boost');
+				return this.chainModify(1.5);
+			}
+		},
+		id: "waterwheel",
+		name: "Waterwheel",
+		rating: 3,
+		num: 200,
+	},
+	"mindbend": {
+		shortDesc: "Inverts this pokemon's defensive type matchups.",
+		id: "mindbend",
+		name: "Mind Bend",
+		onEffectiveness: function (typeMod, target, type, move) {
+			return typeMod *-1;
+		},
+		rating: 0,
+		num: 118,
+	},
+	"psychophant": {
+		desc: "Upon landing an attack, this pokemon passes its stat drops and staus conditions to the target.",
+		shortDesc: "This pokemon's attacks pass its stat drops and staus conditions to the target.",
+		onSourceHit: function (target, source, move) {
+			if (!move || !target) return;
+			if (target !== source && move.category !== 'Status') {
+				let targetBoosts = {};
+				let sourceBoosts = {};
+
+				for (let i in target.boosts) {
+					// @ts-ignore
+					if ( targetBoosts[i] < 0 ) targetBoosts[i] = target.boosts[i];
+					// @ts-ignore
+					if ( sourceBoosts[i] < 0 ) sourceBoosts[i] = source.boosts[i];
+				}
+
+				target.setBoost(sourceBoosts);
+				source.setBoost(targetBoosts);
+				
+				this.add('-swapboost', source, target, '[from] ability: Psychophant');
+				
+				if (source.status) {
+					if ( target.trySetStatus( source.status, target.side.foe.active[0])) source.cureStatus();
+				}
+			}
+		},
+		id: "psychophant",
+		name: "Psychophant",
+		rating: 1.5,
+		num: 170,
+	},
+	"burrowing": {
+		shortDesc: "On switch-in, this Pokemon summons Rain Dance.",
+		onStart: function (source) {
+			source.addVolatile('burrow');
+		},
+		id: "burrowing",
+		name: "Burrowing",
+		rating: 4.5,
+		num: 2,
+	},
+	"parrotvoice": {
+		desc: "This Pokemon's sound-based moves become Flying-type moves. This effect comes after other effects that change a move's type, but before Ion Deluge and Electrify's effects.",
+		shortDesc: "This Pokemon's sound-based moves become Flying type.",
+		onModifyMovePriority: -1,
+		onModifyMove: function (move) {
+			if (move.flags['sound']) {
+				move.type = 'Flying';
+			}
+		},
+		id: "parrotvoice",
+		name: "Parrot Voice",
+		rating: 2.5,
+		num: 204,
+	},
+	"unfazed": {
+		desc: "If a Pokemon uses a Bug- or Dark-type attack against this Pokemon, that Pokemon's attacking stat is halved when calculating the damage to this Pokemon.",
+		shortDesc: "Bug/Dark-type moves against this Pokemon deal damage with a halved attacking stat.",
+		onModifyAtkPriority: 6,
+		onSourceModifyAtk: function (atk, attacker, defender, move) {
+			if (move.type === 'Bug' || move.type === 'Dark') {
+				this.debug('Unfazed weaken');
+				return this.chainModify(0.5);
+			}
+		},
+		onModifySpAPriority: 5,
+		onSourceModifySpA: function (atk, attacker, defender, move) {
+			if (move.type === 'Bug' || move.type === 'Dark') {
+				this.debug('Unfazed weaken');
+				return this.chainModify(0.5);
+			}
+		},
+		id: "unfazed",
+		name: "Unfazed",
+		rating: 3.5,
+		num: 47,
+	},
+	"paintstroke": {
+		desc: "Upon landing an attack, this pokemon passes its stat drops and staus conditions to the target.",
+		shortDesc: "This pokemon's attacks pass its stat drops and staus conditions to the target.",
+		onSourceHit: function (target, source, move) {
+			if (!target.setType(move.type) || target === source ) return false;
+			this.add('-start', target, 'typechange', move.type ); 
+		},
+		id: "paintstroke",
+		name: "Paint Stroke",
+		rating: 1.5,
+		num: 170,
+	},
+	"zerogravity": {
+		desc: "Upon landing an attack, this pokemon passes its stat drops and staus conditions to the target.",
+		shortDesc: "This pokemon's attacks pass its stat drops and staus conditions to the target.",
+		onStart: function (source) {
+			this.addPseudoWeather('antigravity');
+		},
+		id: "zerogravity",
+		name: "Zero Gravity",
+		rating: 1.5,
+		num: 170,
+	},
+	"fortresswall": {
+		shortDesc: "This pokemon's Speed and Attack are raised by 10%, but it can't switch moves.",
+		onDisableMove: function (pokemon) {
+			for (const moveSlot of pokemon.moveSlots) {
+				let move = this.getMove(moveSlot.move);
+				if ( move.category === "Status" ) pokemon.disableMove(moveSlot.id);
+			}
+		},
+		onModifyAtkPriority: 1,
+		onModifyAtk: function (atk) {
+			return this.chainModify(1.1);
+		},
+		onModifyDefPriority: 1,
+		onModifyDef: function (spe) {
+			return this.chainModify(1.1);
+		},
+		id: "fortresswall",
+		name: "Fortress Wall",
+		rating: 3.5,
+		num: 10008,
 	},
 };
 
