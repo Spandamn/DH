@@ -10,7 +10,7 @@ let BattleScripts = {
 			if (bannedPokemon.includes(pokemon.species)) continue;
 			if (pokemon.forme && pokemon.forme.includes('Mega')) {
 				this.modData('Pokedex', i).gen = 7;
-				this.modData('Pokedex', i).isMega = true;
+				//this.modData('Pokedex', i).isMega = true;
 				this.modData('Pokedex', i).battleOnly = false;
 				delete this.modData('FormatsData', i).requiredItem;
 			}
