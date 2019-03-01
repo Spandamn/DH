@@ -240,8 +240,8 @@ exports.BattleMovedex = {
 			this.attrLastMove('[still]');
 			this.add('-anim', source, "Blizzard", target);
 		},
-		onHit: function(target, source, move) {
-			this.add('-sidestart', source.side, 'move: Tailwind');
+		self: {
+			sideCondition: 'tailwind',
 		},
 		weather: 'hail',
 		target: "normal",
