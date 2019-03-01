@@ -3722,8 +3722,8 @@ exports.Formats = [
 		threads: [
 			"&bullet; <a href=\"https://www.smogon.com/forums/threads/3646310/\">Megamons</a>",
 		],
-		ruleset: ['[Gen 7] Ubers'],
-		banlist: ['Blaziken-Mega', 'Gengar-Mega', 'Mewtwo-Mega-Y'],
+		ruleset: ['Species Clause', 'Nickname Clause', 'Moody Clause', 'OHKO Clause', 'Evasion Moves Clause', 'Swagger Clause', 'Mega Rayquaza Clause', 'Sleep Clause Mod', 'Endless Battle Clause', 'HP Percentage Mod', 'Cancel Mod', 'Team Preview'],
+		banlist: ['Unreleased', 'Illegal', 'Blaziken-Mega', 'Gengar-Mega', 'Mewtwo-Mega-Y'],
 		onValidateTeam: function(team) {
 			let problems = [];
 			let kyurems = 0;
