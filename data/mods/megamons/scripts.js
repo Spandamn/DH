@@ -18,7 +18,7 @@ let BattleScripts = {
 				case 'Mega-X':
 				case 'Mega-Y':
 					this.modData('Pokedex', i).gen = 7;
-					//this.modData('Pokedex', i).isMega = true;
+					this.modData('Pokedex', i).isMega = true;
 					this.modData('Pokedex', i).battleOnly = false;
 					delete this.modData('FormatsData', i).requiredItem;
 				}
