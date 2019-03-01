@@ -3007,7 +3007,7 @@ exports.Formats = [
 		desc: [
 			"&bullet; <a href=\"http://www.smogon.com/forums/threads/3607451/\">Chimera 1v1</a>: The six Pokemon in your team are fused",
 		],
-		mod: 'chimera1v1',
+		//mod: 'chimera1v1',
 		ruleset: ['Pokemon', 'Moody Clause', 'OHKO Clause', 'Evasion Moves Clause', 'Endless Battle Clause', 'HP Percentage Mod', 'Cancel Mod', 'Team Preview'],
 		banlist: ['Illegal', 'Unreleased', 'Shedinja', 'Smeargle', 'Huge Power', 'Pure Power', 'Focus Sash', 'Dark Void', 'Grass Whistle', 'Hypnosis', 'Lovely Kiss', 'Perish Song', 'Sing', 'Sleep Powder', 'Spore', 'Transform'],
 		teamLength: {
@@ -3016,9 +3016,6 @@ exports.Formats = [
 		},
 		onBeforeSwitchIn: function (pokemon) {
 			let chimera = {}, pokemons = pokemon.side.pokemon;
-			for (let i = 0; i < pokemons.length; i++) {
-				if (pokemons[i].baseBaseAbility) pokemons[i].baseAbility = pokemons[i].ability = pokemons[i].baseBaseAbility;
-			}
 			chimera.types = Object.assign([], pokemons[0].types);
 			chimera.species = chimera.baseSpecies = pokemons[0].species;
 			chimera.set = Object.assign({}, pokemons[0].set);
