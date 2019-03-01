@@ -5,6 +5,7 @@ exports.BattleMovedex = {
 		accuracy: true,
 		basePower: 200,
 		category: "Special",
+		shortDesc: "Summons a swamp on the target's side of the field, quartering the Speed of any Pokemon on that side.",
 		id: "swampysmackdown",
 		isViable: true,
 		name: "Swampy Smackdown",
@@ -26,6 +27,7 @@ exports.BattleMovedex = {
 		accuracy: true,
 		basePower: 200,
 		category: "Special",
+		shortDesc: "Summons a sea of flames on the target's side of the field, causing any non-Fire-types to lose 12.5% of their Maximum HP at the end of each turn.",
 		id: "intensifiedinferno",
 		isViable: true,
 		name: "Intensified Inferno",
@@ -47,6 +49,7 @@ exports.BattleMovedex = {
 		accuracy: true,
 		basePower: 200,
 		category: "Special",
+		shortDesc: "Summons a rainbow on the user's side of the field, doubling the chances of any secondaries.",
 		id: "destructivedownpour",
 		isViable: true,
 		name: "Destructive Downpour",
@@ -68,6 +71,7 @@ exports.BattleMovedex = {
 		accuracy: true,
 		basePower: 20,
 		category: "Special",
+		shortDesc: "5% chance to Freeze on each hit.",
 		id: "hailhydra",
 		isViable: true,
 		name: "Hail Hydra",
@@ -79,7 +83,7 @@ exports.BattleMovedex = {
 			this.add('-anim', source, "Icicle Spear", target);
 		},
 		secondary: {
-			chance: 10,
+			chance: 5,
 			status: 'frz',
 		},
 		multihit: 9,
@@ -91,14 +95,15 @@ exports.BattleMovedex = {
 		accuracy: true,
 		basePower: 180,
 		basePowerCallback: function(pokemon, target, move) {
-			// You can't get here unless the pursuit succeeds
-			if (target.beingCalledBack) {
+			// You can't get here unless the pursuit succeeds or the target is protecting
+			if (target.beingCalledBack || target.volatiles['stall']) {
 				this.debug('Pursuit damage boost');
 				return move.basePower * 2;
 			}
 			return move.basePower;
 		},
 		category: "Physical",
+		shortDesc: "Power doubles if a foe is switching out or protecting.",
 		id: "pursuingstrike",
 		isViable: true,
 		name: "Pursuing Strike",
@@ -153,6 +158,7 @@ exports.BattleMovedex = {
 		accuracy: true,
 		basePower: 175,
 		category: "Physical",
+		shortDesc: "Stealth Rock is set up on both sides of the field. Becomes Rock-type instead against targets immune to Ground.",
 		id: "earthlycrush",
 		isViable: true,
 		name: "Earthly Crush",
@@ -174,13 +180,13 @@ exports.BattleMovedex = {
 		},
 		target: "normal",
 		type: "Ground",
-		multihit: 2,
 		isZ: "hippowniumz",
 	},
 	"blossominglifedrain": {
 		accuracy: true,
 		basePower: 180,
 		category: "Special",
+		shortDesc: "User recovers 66.7% of damage dealt.",
 		id: "blossominglifedrain",
 		isViable: true,
 		name: "Blossoming Life Drain",
@@ -200,6 +206,7 @@ exports.BattleMovedex = {
 		accuracy: true,
 		basePower: 0,
 		category: "Status",
+		shortDesc: "Maximizes Speed and raises the user's Attack by 2.",
 		id: "honingrocks",
 		isViable: true,
 		name: "Honing Rocks",
@@ -216,13 +223,13 @@ exports.BattleMovedex = {
 		},
 		target: "self",
 		type: "Rock",
-		drain: [2, 3],
 		isZ: "gigaliumz",
 	},
 	"snowstormspinkle": {
 		accuracy: true,
 		basePower: 210,
 		category: "Special",
+		shortDesc: "Sets up Tailwind and Hail after dealing damage.",
 		id: "snowstormspinkle",
 		isViable: true,
 		name: "Snowstorm Spinkle",
@@ -245,6 +252,7 @@ exports.BattleMovedex = {
 		accuracy: true,
 		basePower: 195,
 		category: "Special",
+		shortDesc: "100% chance to raise the user's Special Attack by 3.",
 		id: "infernoburst",
 		isViable: true,
 		name: "Inferno Burst",
@@ -272,6 +280,7 @@ exports.BattleMovedex = {
 		accuracy: true,
 		basePower: 180,
 		category: "Physical",
+		shortDesc: "Combines Fire in its type effectiveness.",
 		id: "blitzingtremor",
 		isViable: true,
 		name: "Blitzing Tremor",
@@ -279,7 +288,8 @@ exports.BattleMovedex = {
 		priority: 0,
 		flags: {},
 		onEffectiveness: function (typeMod, type, move) {
-			return typeMod + this.getEffectiveness('Ground', type);
+			// @ts-ignore
+			return typeMod + this.getEffectiveness('Fire', type);
 		},
 		secondary: {
 			chance: 70,
@@ -291,7 +301,7 @@ exports.BattleMovedex = {
 			this.add('-anim', source, "Earthly Crust", target);
 		},
 		target: "normal",
-		type: "Fire",
+		type: "Ground",
 		isZ: "groudoniumz",
 	},
 	"pyrotechnics": { // Code The Additional Effect: Torkoal deals damage. Afterwards it gains +1 to each stat for each other Fire-type or Grass-type on its team without a status condition, and not fainted. -1 Priority. Fails if you have no other Fire-types or Grass-types on your team- similar checks on teammates to Beat Up. */
@@ -343,6 +353,7 @@ exports.BattleMovedex = {
 		accuracy: true,
 		basePower: 210,
 		category: "Special",
+		shortDesc: "Ignores abilities that nullify Water-type moves and Desolate Land to hit.",
 		id: "depthstridedecimation",
 		isViable: true,
 		name: "Depthstride Decimation",
@@ -353,7 +364,12 @@ exports.BattleMovedex = {
 			this.attrLastMove('[still]');
 			this.add('-anim', source, "Hydro Vortex", target);
 		},
-		suppressWeather: true,
+		onModifyMove: function (move, pokemon, target) {
+			if (target.hasAbility(['waterabsorb', 'stormdrain'])){
+				move.ignoreAbility = true;
+			}
+		},
+		//Ignoring Desolate Land will be coded into statuses.js.
 		target: "normal",
 		type: "Water",
 		isZ: "kyogriumz",
@@ -362,6 +378,7 @@ exports.BattleMovedex = {
 		accuracy: true,
 		basePower: 0,
 		category: "Status",
+		shortDesc: "Until the end of the next turn, user's moves crit. Raises all stats by 1 (not acc/eva)",
 		id: "inneraurafocus",
 		isViable: true,
 		name: "Inner Aura Focus",
@@ -369,32 +386,20 @@ exports.BattleMovedex = {
 		priority: 0,
 		flags: {},
 		volatileStatus: 'laserfocus',
-		effect: {
-			duration: 2,
-			onStart: function (pokemon) {
-				this.add('-start', pokemon, 'move: Laser Focus');
-			},
-			onModifyCritRatio: function (critRatio) {
-				return 5;
-			},
-		},
-		secondary: {
-			chance: 100,
-			self: {
-				boosts: {
-					atk: 1,
-					def: 1,
-					spa: 1,
-					spd: 1,
-					spe: 1,
-				},
+		self: {
+			boosts: {
+				atk: 1,
+				def: 1,
+				spa: 1,
+				spd: 1,
+				spe: 1,
 			},
 		},
 		onPrepareHit: function(target, source) {
 			this.attrLastMove('[still]');
-			this.add('-anim', source, "Tail Glow", target);
+			this.add('-anim', source, "Tail Glow", source);
 		},
-		target: "normal",
+		target: "self",
 		type: "Normal",
 		isZ: "lucariumz",
 	},
@@ -402,6 +407,13 @@ exports.BattleMovedex = {
 		accuracy: true,
 		basePower: 40,
 		category: "Special",
+		basePowerCallback: function (pokemon, target, move) {
+			if (pokemon.template.species === 'Greninja-Ash' && pokemon.hasAbility('battlebond')) {
+				move.breaksProtect = true;
+				return move.basePower+20;
+			}
+		},
+		shortDesc: "Usually goes first. Hits 5 times in one turn. If used by Ash-Greninja, breaks protect and has 60 power per hit.",
 		id: "hyperwatershuriken",
 		isViable: true,
 		name: "Hyper Water Shuriken",
@@ -429,6 +441,7 @@ exports.BattleMovedex = {
 		id: "toadshypnospiral",
 		isViable: true,
 		name: "Toad's Hypno-Spiral",
+		shortDesc: "Causes the target to fall asleep. Prevents the target from switching out.",
 		pp: 1,
 		priority: 0,
 		flags: {},
@@ -451,6 +464,7 @@ exports.BattleMovedex = {
 		accuracy: true,
 		basePower: 190,
 		category: "Special",
+		shortDesc: "Summons Rain Dance.",
 		id: "highdeliverydeluge",
 		isViable: true,
 		name: "High Delivery Deluge",
@@ -461,6 +475,7 @@ exports.BattleMovedex = {
 			this.attrLastMove('[still]');
 			this.add('-anim', source, "Hydro Vortex", target);
 		},
+		weather: 'RainDance',
 		target: "normal",
 		type: "Water",
 		isZ: "pelipiumz",
@@ -469,6 +484,7 @@ exports.BattleMovedex = {
 		accuracy: true,
 		basePower: 210,
 		category: "Special",
+		shortDesc: "Boosts user's Def/SpA/Spe by 1 after damage.",
 		id: "sacredspiral",
 		isViable: true,
 		name: "Sacred Spiral",
@@ -542,7 +558,7 @@ exports.BattleMovedex = {
 		basePower: 73,
 		category: "Physical",
 		id: "ancientservantsascension",
-		shortDesc: "Negates user's ability before damage. Hits three times, the first hit Rock-type, the second Ice-type and the third Steel-type.",
+		shortDesc: "Suppresses user's ability before damage. Hits three times, the first hit Rock-type, the second Ice-type and the third Steel-type.",
 		isViable: true,
 		name: "Ancient Servant's Ascension",
 		pp: 1,
@@ -560,7 +576,6 @@ exports.BattleMovedex = {
 			// Ability is discarded before damage is calculated.
 			if (target.runImmunity('Rock')) {
 				pokemon.addVolatile('gastroacid');
-				pokemon.volatiles.gastroacid.duration = 1; // I guess we could try this
 			}
 		},
 		onModifyMove: function (move, pokemon) {
