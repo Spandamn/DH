@@ -3756,7 +3756,7 @@ exports.Formats = [
 
 		mod: 'megamons',
 		ruleset: ['Species Clause', 'Nickname Clause', 'Moody Clause', 'OHKO Clause', 'Evasion Moves Clause', 'Swagger Clause', 'Mega Rayquaza Clause', 'Sleep Clause Mod', 'Endless Battle Clause', 'HP Percentage Mod', 'Cancel Mod', 'Team Preview'],
-		banlist: ['Unreleased', 'Illegal', 'Blaziken-Mega', 'Gengar-Mega', 'Mewtwo-Mega-Y'],
+		banlist: ['Unreleased', 'Illegal'],
 	},
 	{
 		name: "[Gen 7] Mergemons",
