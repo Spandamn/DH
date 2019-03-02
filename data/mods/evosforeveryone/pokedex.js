@@ -10022,7 +10022,7 @@ let BattlePokedex = {
 		abilities: {0: "Swarm", 1: "Hustle", H: "Truant"},
 		heightm: 0.3,
 		weightkg: 33,
-		color: "Gray"
+		color: "Gray",
 		evos: ['alloyal'],
 		eggGroups: ["Bug"],
 	},

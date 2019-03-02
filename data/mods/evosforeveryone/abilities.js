@@ -4695,7 +4695,15 @@ let BattleAbilities = {
 		id: "mindbend",
 		name: "Mind Bend",
 		onEffectiveness: function (typeMod, target, type, move) {
-			return typeMod *-1;
+			if (move && !this.getImmunity(move, type)) return 1;
+			return -typeMod;
+		},
+		onModifyMove: function (move) {
+			move.typeMod = move.typeMod *-1
+			move.ignoreImmunity = true;
+		},
+		onSourceModifyMove: function (move) {
+			move.ignoreImmunity = true;
 		},
 		rating: 0,
 		num: 118,

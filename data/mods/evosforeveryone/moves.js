@@ -19786,9 +19786,70 @@ let BattleMovedex = {
 		},
 		secondary: null,
 		target: "all",
+		onPrepareHit: function(target, source, move) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Gravity", target);
+		},
 		type: "Psychic",
 		zMoveBoost: {spa: 1},
 		contestType: "Clever",
+	},
+	"energyblock": {
+		num: 694,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		desc: "For 5 turns, the user and its party members take 0.5x damage from physical and special attacks, or 0.66x damage if in a Double Battle; does not reduce damage further with Reflect or Light Screen. Critical hits ignore this protection. It is removed from the user's side if the user or an ally is successfully hit by Brick Break, Psychic Fangs, or Defog. Brick Break and Psychic Fangs remove the effect before damage is calculated. Lasts for 8 turns if the user is holding Light Clay. Fails unless Trick Room is active.",
+		shortDesc: "For 5 turns, damage to allies is halved. Trick Room only.",
+		id: "energyblock",
+		isViable: true,
+		name: "Energy Block",
+		pp: 20,
+		priority: 0,
+		flags: {snatch: 1},
+		sideCondition: 'energyblock',
+		onTryHitSide: function () {
+			if (!this.pseudoWeather.trickroom) return false;
+		},
+		effect: {
+			duration: 5,
+			durationCallback: function (target, source, effect) {
+				if (source && source.hasItem('lightclay')) {
+					return 8;
+				}
+				return 5;
+			},
+			onAnyModifyDamage: function (damage, source, target, move) {
+				if (target !== source && target.side === this.effectData.target) {
+					if ((target.side.sideConditions['reflect'] && this.getCategory(move) === 'Physical') ||
+							(target.side.sideConditions['lightscreen'] && this.getCategory(move) === 'Special')) {
+						return;
+					}
+					if (!move.crit && !move.infiltrates) {
+						this.debug('Energy Block weaken');
+						if (target.side.active.length > 1) return this.chainModify([0xAAC, 0x1000]);
+						return this.chainModify(0.5);
+					}
+				}
+			},
+			onStart: function (side) {
+				this.add('-sidestart', side, 'move: Energy Block');
+			},
+			onResidualOrder: 21,
+			onResidualSubOrder: 1,
+			onEnd: function (side) {
+				this.add('-sideend', side, 'move: Energy Block');
+			},
+		},
+		secondary: null,
+		target: "allySide",
+		type: "Psychic",
+		onPrepareHit: function(target, source, move) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Safeguard", target);
+		},
+		zMoveBoost: {spe: 1},
+		contestType: "Beautiful",
 	},
 };
 
