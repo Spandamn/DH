@@ -180,4 +180,13 @@ exports.BattleItems = {
         zMoveUser: ["Regigigas"],
         desc: "If the holder is Regigigas with the move Crush Grip, it can use Ancient Servant's Ascension.",
     },
+     "gothitelliumz": {
+        id: "gothitelliumz",
+        name: "Gothitellium Z",
+        onTakeItem: false,
+        zMove: "Celestial Curse",
+        zMoveFrom: "Future Sight",
+        zMoveUser: ["Gothitelle"],
+        desc: "If the holder is Gothitelle with the move Future Sight, it can use Celestial Curse.",
+    },
 };
