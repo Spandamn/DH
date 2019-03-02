@@ -174,9 +174,9 @@ exports.BattleMovedex = {
 				move.type = 'Rock';
 			}
 		},
-		onHit: function (target, source, move) {
-			this.add('-sidestart', source.side, 'move: Stealth Rock');
-			this.add('-sidestart', target.side, 'move: Stealth Rock');
+		sideCondition: 'stealthrock',
+		self: {
+			sideCondition: 'stealthrock',
 		},
 		target: "normal",
 		type: "Ground",
@@ -570,7 +570,7 @@ exports.BattleMovedex = {
 			this.attrLastMove('[still]');
 			this.add('-anim', source, "Rock Slide", target);
 			this.add('-anim', source, "Icicle Crash", target);
-			this.add('-anim', source, "Magnet Bomb", target);
+			this.add('-anim', source, "Metal Burst", target);
 		},
 		onTryHit: function (target, pokemon) {
 			// Ability is discarded before damage is calculated.
