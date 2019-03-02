@@ -14884,7 +14884,7 @@ let BattlePokedex = {
 		inherit: true,
 		species: "Cheylor-Meteor",
 		types: ["Rock", "Flying"],
-		baseStats: {hp: 70, atk: 85, def: 105, spa: 85, spd: 105, spe: 60},
+		baseStats: {hp: 70, atk: 80, def: 110, spa: 80, spd: 110, spe: 60},
 		abilities: {0: "Shields Down"},
 		height: 0.4,
 		weightkg: 53.6,
