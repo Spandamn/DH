@@ -174,9 +174,9 @@ exports.BattleMovedex = {
 				move.type = 'Rock';
 			}
 		},
-		onHit: function (target, source, move) {
-			this.add('-sidestart', source.side, 'move: Stealth Rock');
-			this.add('-sidestart', target.side, 'move: Stealth Rock');
+		sideCondition: 'stealthrock',
+		self: {
+			sideCondition: 'stealthrock',
 		},
 		target: "normal",
 		type: "Ground",
@@ -240,8 +240,8 @@ exports.BattleMovedex = {
 			this.attrLastMove('[still]');
 			this.add('-anim', source, "Blizzard", target);
 		},
-		onHit: function(target, source, move) {
-			this.add('-sidestart', source.side, 'move: Tailwind');
+		self: {
+			sideCondition: 'tailwind',
 		},
 		weather: 'hail',
 		target: "normal",
@@ -570,7 +570,7 @@ exports.BattleMovedex = {
 			this.attrLastMove('[still]');
 			this.add('-anim', source, "Rock Slide", target);
 			this.add('-anim', source, "Icicle Crash", target);
-			this.add('-anim', source, "Magnet Bomb", target);
+			this.add('-anim', source, "Metal Burst", target);
 		},
 		onTryHit: function (target, pokemon) {
 			// Ability is discarded before damage is calculated.
@@ -585,5 +585,31 @@ exports.BattleMovedex = {
 		target: "normal",
 		type: "Normal",
 		isZ: "regigigiumz",
+	},
+	"celestialcurse": {
+		accuracy: true,
+		basePower: 0,
+		damageCallback: function (pokemon, target) {
+			if (target.hp > 0){
+				return target.hp - 1;
+			}
+			return 1;
+		},
+		category: "Special",
+		desc: "Deals damage to the target equal to its current HP minus one, but not less than 1 HP.",
+		shortDesc: "Target is brought down to 1HP.",
+		id: "celestialcurse",
+		isViable: true,
+		name: "Celestial Curse",
+		pp: 1,
+		priority: 0,
+		flags: {},
+		onPrepareHit: function(target, source) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Psystrike", target);
+		},
+		target: "normal",
+		type: "Psychic",
+		isZ: "gothitelliumz",
 	},
 };
