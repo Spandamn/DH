@@ -19374,6 +19374,10 @@ let BattleMovedex = {
 			chance: 10,
 			status: 'brn',
 		},
+		onPrepareHit: function(target, source, move) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Flame Charge", target);
+		},
 		target: "normal",
 		type: "Fire",
 		zMovePower: 180,
@@ -19395,6 +19399,10 @@ let BattleMovedex = {
 		secondary: {
 			chance: 100,
 			status: 'brn',
+		},
+		onPrepareHit: function(target, source, move) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Inferno", target);
 		},
 		target: "normal",
 		type: "Fire",
@@ -19421,6 +19429,10 @@ let BattleMovedex = {
 			return this.heal(spd, source, target) || success;
 		},
 		secondary: null,
+		onPrepareHit: function(target, source, move) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Spectral Thief", target);
+		},
 		target: "normal",
 		type: "Ghost",
 		zMoveBoost: {def: 1},
@@ -19496,6 +19508,10 @@ let BattleMovedex = {
 			}
 		},
 		secondary: null,
+		onPrepareHit: function(target, source, move) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Extreme Speed", target);
+		},
 		target: "normal",
 		type: "Normal",
 		zMovePower: 130,
@@ -19535,8 +19551,12 @@ let BattleMovedex = {
 		},
 		secondary: null,
 		target: "normal",
+		onPrepareHit: function(target, source, move) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Punishment", target);
+		},
 		type: "Dark",
-		zMoveBoost: {spa: 1},
+		zMovePower: 150,
 		contestType: "Tough",
 	},
 	"unlock": {
@@ -19554,6 +19574,10 @@ let BattleMovedex = {
 		flags: {contact: 1, protect: 1, mirror: 1, tail: 1},
 		forceSwitch: true,
 		target: "normal",
+		onPrepareHit: function(target, source, move) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Fairy Lock", target);
+		},
 		type: "Steel",
 		zMovePower: 120,
 		contestType: "Clever",
@@ -19573,6 +19597,10 @@ let BattleMovedex = {
 		flags: {contact: 1, protect: 1, mirror: 1},
 		secondary: null,
 		target: "normal",
+		onPrepareHit: function(target, source, move) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Flash", target);
+		},
 		type: "Fairy",
 		zMovePower: 100,
 		contestType: "Beautiful",
@@ -19591,8 +19619,8 @@ let BattleMovedex = {
 		priority: 0,
 		flags: {contact: 1, protect: 1, mirror: 1},
 		self: {
-			onHit: function (pokemon) {
-				if ( pokemon.hasAbility('anchored')) return;
+			onHit: function ( pokemon, target ) {
+				if ( pokemon.hasAbility('anchored') || target.hasAbility('anchored')) return;
 				let sideConditions = ['spikes', 'toxicspikes', 'stealthrock', 'stickyweb'];
 				for (const condition of sideConditions) {
 					if (pokemon.hp && pokemon.side.removeSideCondition(condition)) {
@@ -19603,8 +19631,12 @@ let BattleMovedex = {
 		},
 		secondary: null,
 		target: "normal",
-		type: "Normal",
-		zMovePower: 100,
+		type: "Water",
+		onPrepareHit: function(target, source, move) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Surf", target);
+		},
+		zMovePower: 120,
 		contestType: "Clever",
 	},
 	"tinfins": {
@@ -19623,6 +19655,10 @@ let BattleMovedex = {
 		critRatio: 2,
 		secondary: null,
 		target: "normal",
+		onPrepareHit: function(target, source, move) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Smart Strike", target);
+		},
 		type: "Steel",
 		zMovePower: 175,
 		contestType: "Cool",
@@ -19646,6 +19682,10 @@ let BattleMovedex = {
 			status: 'par',
 		},
 		target: "normal",
+		onPrepareHit: function(target, source, move) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Ancient Power", target);
+		},
 		type: "Rock",
 		zMovePower: 190,
 		contestType: "Tough",
@@ -19670,6 +19710,10 @@ let BattleMovedex = {
 		},
 		secondary: null,
 		target: "normal",
+		onPrepareHit: function(target, source, move) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Draco Meteor", target);
+		},
 		type: "Rock",
 		zMovePower: 195,
 		contestType: "Beautiful",
@@ -19677,13 +19721,13 @@ let BattleMovedex = {
 	"ozoneburst": {
 		num: 403,
 		accuracy: 100,
-		basePower: 75,
+		basePower: 70,
 		category: "Special",
-		desc: "Has a 30% chance to flinch the target.",
-		shortDesc: "30% chance to flinch the target.",
-		id: "airslash",
+		desc: "Deals 50% more damage if the user is below 50% HP.",
+		shortDesc: "Deals 50% more damage if the user is below 50% HP.",
+		id: "ozoneburst",
 		isViable: true,
-		name: "Air Slash",
+		name: "Ozone Burst",
 		onBasePowerPriority: 4,
 		onBasePower: function (basePower, pokemon, target) {
 			if (pokemon.hp * 2 <= pokemon.maxhp) {
@@ -19694,8 +19738,12 @@ let BattleMovedex = {
 		priority: 0,
 		flags: {protect: 1, mirror: 1, distance: 1},
 		target: "any",
+		onPrepareHit: function(target, source, move) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Oblivion Wing", target);
+		},
 		type: "Flying",
-		zMovePower: 140,
+		zMovePower: 130,
 		contestType: "Cool",
 	},
 	"antigravity": {
@@ -19738,9 +19786,112 @@ let BattleMovedex = {
 		},
 		secondary: null,
 		target: "all",
+		onPrepareHit: function(target, source, move) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Gravity", target);
+		},
 		type: "Psychic",
 		zMoveBoost: {spa: 1},
 		contestType: "Clever",
+	},
+	"energyblock": {
+		num: 694,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		desc: "For 5 turns, the user and its party members take 0.5x damage from physical and special attacks, or 0.66x damage if in a Double Battle; does not reduce damage further with Reflect or Light Screen. Critical hits ignore this protection. It is removed from the user's side if the user or an ally is successfully hit by Brick Break, Psychic Fangs, or Defog. Brick Break and Psychic Fangs remove the effect before damage is calculated. Lasts for 8 turns if the user is holding Light Clay. Fails unless Trick Room is active.",
+		shortDesc: "For 5 turns, damage to allies is halved. Trick Room only.",
+		id: "energyblock",
+		isViable: true,
+		name: "Energy Block",
+		pp: 20,
+		priority: 0,
+		flags: {snatch: 1},
+		sideCondition: 'energyblock',
+		onTryHitSide: function () {
+			if (!this.pseudoWeather.trickroom) return false;
+		},
+		effect: {
+			duration: 5,
+			durationCallback: function (target, source, effect) {
+				if (source && source.hasItem('lightclay')) {
+					return 8;
+				}
+				return 5;
+			},
+			onAnyModifyDamage: function (damage, source, target, move) {
+				if (target !== source && target.side === this.effectData.target) {
+					if ((target.side.sideConditions['reflect'] && this.getCategory(move) === 'Physical') ||
+							(target.side.sideConditions['lightscreen'] && this.getCategory(move) === 'Special')) {
+						return;
+					}
+					if (!move.crit && !move.infiltrates) {
+						this.debug('Energy Block weaken');
+						if (target.side.active.length > 1) return this.chainModify([0xAAC, 0x1000]);
+						return this.chainModify(0.5);
+					}
+				}
+			},
+			onStart: function (side) {
+				this.add('-sidestart', side, 'move: Energy Block');
+			},
+			onResidualOrder: 21,
+			onResidualSubOrder: 1,
+			onEnd: function (side) {
+				this.add('-sideend', side, 'move: Energy Block');
+			},
+		},
+		secondary: null,
+		target: "allySide",
+		type: "Psychic",
+		onPrepareHit: function(target, source, move) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Safeguard", target);
+		},
+		zMoveBoost: {spe: 1},
+		contestType: "Beautiful",
+	},
+	"mindbend": {
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		shortDesc: "For 5 turns, all Pokémon on the field are resistant to normally super-effective types and weak to normally not-very-effective or ineffective types (as in Inverse Battles) ",
+		id: "mindbend",
+		name: "Mind Bend",
+		pp: 8,
+		priority: 0,
+		flags: {mirror: 1},
+		pseudoWeather: 'mindbend',
+		effect: {
+			onStart: function(target, source) {
+				this.add('-fieldstart', 'ability: Mind Bend', '[of] ' + target);
+				this.effectData.source = target;
+			},
+			onResidual: function () {
+				let source = this.effectData.source;
+				if ( source.fainted ) this.removePseudoWeather('mindbend');
+				return null;
+			},
+			onModifyMove: function (move) {
+				move.ignoreImmunity = true;
+			},
+			onEffectiveness: function(typeMod, target, type, move) {
+				if (move && !this.getImmunity(move, type)) return 1;
+				return -typeMod;
+			},
+			onResidualOrder: 23,
+			onEnd: function() {
+				this.add('-fieldend', 'ability: Mind Bend');
+			},
+		},
+		onPrepareHit: function(target, source, move) {
+			this.attrLastMove('[still]');
+			this.add('-anim', target, "Trick Room", source);
+		},
+		secondary: false,
+		target: "all",
+		type: "Psychic",
+		zMoveBoost: {acc: 1},
 	},
 };
 

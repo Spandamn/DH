@@ -3028,13 +3028,19 @@ let BattleAbilities = {
 			}
 		},
 		onSetStatus: function (status, target, source, effect) {
-			if (target.template.speciesid !== 'miniormeteor' || target.transformed) return;
+			if ((target.template.speciesid !== 'miniormeteor' 
+				&& target.template.speciesid !== 'chelyormeteor' )
+				|| target.transformed) 
+					return;
 			if (!effect || !effect.status) return false;
 			this.add('-immune', target, '[msg]', '[from] ability: Shields Down');
 			return false;
 		},
 		onTryAddVolatile: function (status, target) {
-			if (target.template.speciesid !== 'miniormeteor' || target.transformed) return;
+			if ((target.template.speciesid !== 'miniormeteor' 
+				&& target.template.speciesid !== 'chelyormeteor' )
+				|| target.transformed) 
+					return;
 			if (status.id !== 'yawn') return;
 			this.add('-immune', target, '[msg]', '[from] ability: Shields Down');
 			return null;
@@ -4646,7 +4652,7 @@ let BattleAbilities = {
 		shortDesc: "Boosts the Base Power of attacks by adding up to 33 BP, depending on how low the user's HP is.",
 		onBasePowerPriority: 8,
 		onBasePower: function (basePower, attacker, defender, move) {
-			let hpPercent = 1 - ( attacker.hp / attacker.maxhp );
+			let hpPercent = 1 - ( ( attacker.hp - 1 ) / ( attacker.maxhp - 1 ) );
 			let bpBoost = hpPercent * 33;
 			let finalPower = basePower + bpBoost;
 			return finalPower;
@@ -4688,8 +4694,11 @@ let BattleAbilities = {
 		shortDesc: "Inverts this pokemon's defensive type matchups.",
 		id: "mindbend",
 		name: "Mind Bend",
-		onEffectiveness: function (typeMod, target, type, move) {
-			return typeMod *-1;
+		onStart: function (source) {
+			this.addPseudoWeather('mindbend');
+		},
+		onSwitchOut: function(source) {
+			this.removePseudoWeather('mindbend');
 		},
 		rating: 0,
 		num: 118,
@@ -4772,7 +4781,7 @@ let BattleAbilities = {
 		num: 47,
 	},
 	"paintstroke": {
-		desc: "Upon landing an attack, this pokemon passes its stat drops and staus conditions to the target.",
+		desc: "When this pokemon uses a move, the opponents type changes to match that move.",
 		shortDesc: "This pokemon's attacks pass its stat drops and staus conditions to the target.",
 		onSourceHit: function (target, source, move) {
 			if (!target.setType(move.type) || target === source ) return false;

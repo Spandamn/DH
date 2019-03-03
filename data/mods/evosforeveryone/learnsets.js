@@ -67873,7 +67873,7 @@ let BattleLearnsets = {
 		nastyplot: ["7T"],
 		thunder: ["7T"],
 	}},
-	heatmor: {learnset: {
+	cinderillo: {learnset: {
 		aerialace: ["7M", "6M", "5M"],
 		amnesia: ["7L47", "6L44", "5L46"],
 		attract: ["7M", "6M", "5M"],
@@ -69447,7 +69447,7 @@ let BattleLearnsets = {
 		cut: ["6M", "5M"],
 		dig: ["7L31", "6M", "6L41", "5M", "5L41"],
 		doubleteam: ["7M", "6M", "5M"],
-		earthquake: ["7L1"],
+		drillrun: ["7L1"],
 		endeavor: ["7T", "6T", "5T"],
 		endure: ["7E", "6E", "5D", "5E"],
 		energyball: ["7M", "6M", "5M"],
@@ -70851,7 +70851,6 @@ let BattleLearnsets = {
 		electroball: ["7L26", "6L26", "5L26"],
 		electroweb: ["7T", "6T"],
 		encore: ["7L38", "6L38", "5L38"],
-		extremespeed: ["7L1"],
 		facade: ["7M", "6M", "5M"],
 		flash: ["6M", "5M"],
 		fling: ["7M", "6M", "5M"],
