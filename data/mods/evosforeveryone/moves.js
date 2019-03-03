@@ -19851,6 +19851,48 @@ let BattleMovedex = {
 		zMoveBoost: {spe: 1},
 		contestType: "Beautiful",
 	},
+	"mindbend": {
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		shortDesc: "For 5 turns, all Pokémon on the field are resistant to normally super-effective types and weak to normally not-very-effective or ineffective types (as in Inverse Battles) ",
+		id: "mindbend",
+		name: "Mind Bend",
+		pp: 8,
+		priority: 0,
+		flags: {mirror: 1},
+		pseudoWeather: 'mindbend',
+		effect: {
+			onStart: function(target, source) {
+				this.add('-fieldstart', 'ability: Mind Bend', '[of] ' + target);
+				this.effectData.source = target;
+			},
+			onResidual: function () {
+				let source = this.effectData.source;
+				if ( source.fainted ) this.removePseudoWeather('mindbend');
+				return null;
+			},
+			onModifyMove: function (move) {
+				move.ignoreImmunity = true;
+			},
+			onEffectiveness: function(typeMod, target, type, move) {
+				if (move && !this.getImmunity(move, type)) return 1;
+				return -typeMod;
+			},
+			onResidualOrder: 23,
+			onEnd: function() {
+				this.add('-fieldend', 'ability: Mind Bend');
+			},
+		},
+		onPrepareHit: function(target, source, move) {
+			this.attrLastMove('[still]');
+			this.add('-anim', target, "Trick Room", source);
+		},
+		secondary: false,
+		target: "all",
+		type: "Psychic",
+		zMoveBoost: {acc: 1},
+	},
 };
 
 exports.BattleMovedex = BattleMovedex;

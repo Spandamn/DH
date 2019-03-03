@@ -4694,16 +4694,11 @@ let BattleAbilities = {
 		shortDesc: "Inverts this pokemon's defensive type matchups.",
 		id: "mindbend",
 		name: "Mind Bend",
-		onEffectiveness: function (typeMod, target, type, move) {
-			if (move && !this.getImmunity(move, type)) return 1;
-			return -typeMod;
+		onStart: function (source) {
+			this.addPseudoWeather('mindbend');
 		},
-		onModifyMove: function (move) {
-			move.typeMod = move.typeMod *-1
-			move.ignoreImmunity = true;
-		},
-		onSourceModifyMove: function (move) {
-			move.ignoreImmunity = true;
+		onSwitchOut: function(source) {
+			this.removePseudoWeather('mindbend');
 		},
 		rating: 0,
 		num: 118,
