@@ -14499,7 +14499,7 @@ let BattleMovedex = {
 		basePower: 0,
 		category: "Status",
 		desc: "Raises the user's Attack by 1 stage.",
-		shortDesc: "Raises the user's Attack by 1.",
+		shortDesc: "Raises the user's Atk, SpA, and Acc by 1.",
 		id: "sharpen",
 		name: "Sharpen",
 		pp: 30,
