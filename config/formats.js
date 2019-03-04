@@ -4698,6 +4698,8 @@ exports.Formats = [
 		name: "[Gen 7] The Pokedex According to Spook",
 		desc: ["&bullet; <a href=https://www.smogon.com/forums/threads/the-pokedex-according-to-spook.3645318/>The Pokedex According to Spook</a>",],
 		ruleset: ['Pokemon', 'Standard', 'Team Preview'],
+		unbanlist: ['Aegislash', 'Aegislash-Blade'],
+		banlist: ['Stance Change', 'Ubers'],
 		//banlist: ['Illegal'],
 		mod: 'Spookdex',
 	},

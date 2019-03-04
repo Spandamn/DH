@@ -6777,6 +6777,34 @@ let BattleItems = {
 		gen: 4,
 		desc: "At the end of every turn, this item attempts to curse the holder.",
 	},
+	"poryzite": {
+		id: "poryzite",
+		name: "Poryzite",
+		spritenum: 576,
+		megaStone: "Porygon-Z-Mega",
+		megaEvolves: "Porygon-Z",
+		onTakeItem: function (item, source) {
+			if (item.megaEvolves === source.baseTemplate.baseSpecies) return false;
+			return true;
+		},
+		num: 677,
+		gen: 6,
+		desc: "If held by an Porygon-Z, this item allows it to Mega Evolve in battle.",
+	},
+	"electrodite": {
+		id: "electrodite",
+		name: "Electrodite",
+		spritenum: 576,
+		megaStone: "Electrode-Mega",
+		megaEvolves: "Electrode",
+		onTakeItem: function (item, source) {
+			if (item.megaEvolves === source.baseTemplate.baseSpecies) return false;
+			return true;
+		},
+		num: 677,
+		gen: 6,
+		desc: "If held by an Electrode, this item allows it to Mega Evolve in battle.",
+	},
 };
 
 exports.BattleItems = BattleItems;
