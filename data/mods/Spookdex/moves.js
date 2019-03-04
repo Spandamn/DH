@@ -17803,7 +17803,7 @@ let BattleMovedex = {
 		pp: 20,
 		priority: 0,
 		flags: {protect: 1, reflectable: 1, mirror: 1},
-		status: 'psn',
+		status: 'tox',
 		boosts: {
 			spe: -1,
 		},
@@ -19503,14 +19503,14 @@ let BattleMovedex = {
 		priority: 0,
 		flags: {},
 		noMetronome: ['afteryou', 'assist', 'banefulbunker', 'beakblast', 'belch', 'bestow', 'celebrate', 'chatter', 'copycat', 'counter', 'covet', 'craftyshield', 'destinybond', 'detect', 'diamondstorm', 'dragonascent', 'endure', 'feint', 'fleurcannon', 'focuspunch', 'followme', 'freezeshock', 'helpinghand', 'holdhands', 'hyperspacefury', 'hyperspacehole', 'iceburn', 'instruct', 'kingsshield', 'lightofruin', 'matblock', 'mefirst', 'metronome', 'mimic', 'mindblown', 'mirrorcoat', 'mirrormove', 'naturepower', 'originpulse', 'photongeyser', 'plasmafists', 'precipiceblades', 'protect', 'quash', 'quickguard', 'ragepowder', 'relicsong', 'secretsword', 'shelltrap', 'sketch', 'sleeptalk', 'snarl', 'snatch', 'snore', 'spectralthief', 'spikyshield', 'spotlight', 'steameruption', 'struggle', 'switcheroo', 'technoblast', 'thief', 'thousandarrows', 'thousandwaves', 'transform', 'trick', 'vcreate', 'wideguard'],
-		onHit: function (target, source, effect, pokemon) {
+		onHit: function (target, source, effect) {
 			let moves = [];
 			for (let i in exports.BattleMovedex) {
 				let move = exports.BattleMovedex[i];
 				if (i !== move.id) continue;
 				if (move.isZ || move.isNonstandard) continue;
-				let type = pokemon.types[0];
-				if (move.type = type) continue;
+				let type = source.types[0];
+				if (move.type !== type) continue;
 				// @ts-ignore
 				if (effect.noMetronome.includes(move.id)) continue;
 				if (this.getMove(i).gen > this.gen) continue;
@@ -19587,6 +19587,40 @@ let BattleMovedex = {
 		target: "normal",
 		type: "Fairy",
 		zMovePower: 140,
+		contestType: "Cute",
+	},
+	"psycheout": {
+		num: 252,
+		accuracy: 100,
+		basePower: 50,
+		category: "Special",
+		desc: "Has a 100% chance to flinch the target. Fails unless it is the user's first turn on the field.",
+		shortDesc: "Hits first. First turn out only. 100% flinch chance.",
+		id: "psycheout",
+		isViable: true,
+		name: "Psyche-Out",
+		pp: 10,
+		priority: 3,
+		flags: {contact: 1, protect: 1, mirror: 1},
+		onTry: function (pokemon, target) {
+			if (pokemon.activeTurns > 1) {
+				this.attrLastMove('[still]');
+				this.add('-fail', pokemon);
+				this.add('-hint', "Psyche-Out only works on your first turn out.");
+				return null;
+			}
+		},
+		secondary: {
+			chance: 100,
+			volatileStatus: 'flinch',
+		},
+		onPrepareHit: function(target, source) {	
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Psywave", target);
+		},
+		target: "normal",
+		type: "Psychic",
+		zMovePower: 100,
 		contestType: "Cute",
 	},
 };

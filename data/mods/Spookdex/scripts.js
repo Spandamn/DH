@@ -251,7 +251,17 @@ this.modData('Learnsets', 'dusknoir').learnset.closecombat = ['7L1'];
 	this.modData('Learnsets', 'celebi').learnset.onbeat = ['7L1'];
 	this.modData('Learnsets', 'medicham').learnset.onbeat = ['7L1'];
 	this.modData('Learnsets', 'kecleon').learnset.onbeat = ['7L1'];
-
+	this.modData('Learnsets', 'vikavolt').learnset.hypervoice = ['7L1'];
+	this.modData('Learnsets', 'alakazam').learnset.psycheout = ['7L1'];
+	this.modData('Learnsets', 'beheeyem').learnset.psycheout = ['7L1'];
+	this.modData('Learnsets', 'persian').learnset.psycheout = ['7L1'];
+	this.modData('Learnsets', 'persianalola').learnset.psycheout = ['7L1'];
+	this.modData('Learnsets', 'oranguru').learnset.psycheout = ['7L1'];
+	this.modData('Learnsets', 'reuniclus').learnset.psycheout = ['7L1'];
+	this.modData('Learnsets', 'sigilyph').learnset.psycheout = ['7L1'];
+	this.modData('Learnsets', 'metagross').learnset.psycheout = ['7L1'];
+	this.modData('Learnsets', 'slowking').learnset.psycheout = ['7L1'];
+	this.modData('Learnsets', 'gothitelle').learnset.psycheout = ['7L1'];
 },
 };
 

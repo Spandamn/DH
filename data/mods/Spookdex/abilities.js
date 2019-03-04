@@ -164,17 +164,15 @@ let BattleAbilities = {
 	},
 	"arenatrap": {
 		desc: "Prevents adjacent opposing Pokemon from choosing to switch out unless they are immune to trapping or are airborne.",
-		shortDesc: "Prevents adjacent foes from choosing to switch unless they are airborne.",
+		shortDesc: "Prevents adjacent Ground-type foes from choosing to switch.",
 		onFoeTrapPokemon: function (pokemon) {
-			if (!this.isAdjacent(pokemon, this.effectData.target)) return;
-			if (pokemon.isGrounded()) {
+			if (pokemon.hasType('Ground') && this.isAdjacent(pokemon, this.effectData.target)) {
 				pokemon.tryTrap(true);
 			}
 		},
 		onFoeMaybeTrapPokemon: function (pokemon, source) {
 			if (!source) source = this.effectData.target;
-			if (!this.isAdjacent(pokemon, source)) return;
-			if (pokemon.isGrounded(!pokemon.knownType)) { // Negate immunity if the type is unknown
+			if ((!pokemon.knownType || pokemon.hasType('Ground')) && this.isAdjacent(pokemon, source)) {
 				pokemon.maybeTrapped = true;
 			}
 		},
@@ -2936,15 +2934,15 @@ let BattleAbilities = {
 	},
 	"shadowtag": {
 		desc: "Prevents adjacent opposing Pokemon from choosing to switch out unless they are immune to trapping or also have this Ability.",
-		shortDesc: "Prevents adjacent foes from choosing to switch unless they also have this Ability.",
+		shortDesc: "Prevents adjacent Psychic-type foes from choosing to switch.",
 		onFoeTrapPokemon: function (pokemon) {
-			if (!pokemon.hasAbility('shadowtag') && this.isAdjacent(pokemon, this.effectData.target)) {
+			if (pokemon.hasType('Psychic') && this.isAdjacent(pokemon, this.effectData.target)) {
 				pokemon.tryTrap(true);
 			}
 		},
 		onFoeMaybeTrapPokemon: function (pokemon, source) {
 			if (!source) source = this.effectData.target;
-			if (!pokemon.hasAbility('shadowtag') && this.isAdjacent(pokemon, source)) {
+			if ((!pokemon.knownType || pokemon.hasType('Psychic')) && this.isAdjacent(pokemon, source)) {
 				pokemon.maybeTrapped = true;
 			}
 		},
@@ -4354,6 +4352,51 @@ let BattleAbilities = {
 		name: "Wind Surfer",
 		rating: 3,
 		num: 78,
+	},
+	"sharpshadow": {
+		shortDesc: "This Pokemon's Ghost-type moves have their priority increased by 1.",
+		onModifyPriority: function (priority, pokemon, target, move) {
+			if (move && move.type === 'Ghost') return priority + 1;
+		},
+		id: "sharpshadow",
+		name: "Sharp Shadow",
+		rating: 3,
+		num: 177,
+	},
+	"metallicbond": {
+		shortDesc: "This Pokemon gains the Steel-type on switch-in.",
+		onStart: function (target) {
+			if (target.hasType('Steel')) return false;
+			if (!target.addType('Steel')) return false;
+			this.add('-start', target, 'typeadd', 'Steel', '[from] ability: Metallic Bond');
+		},
+		id: "metallicbond",
+		name: "Metallic Bond",
+		rating: 3,
+		num: 177,
+	},
+	"silksifter": {
+		desc: "On switch-in, this Pokemon lowers the Speed of adjacent opposing Pokemon by 1 stage. Pokemon behind a substitute are immune.",
+		shortDesc: "On switch-in, this Pokemon lowers the Speed of adjacent opponents by 1 stage.",
+		onStart: function (pokemon) {
+			let activated = false;
+			for (const target of pokemon.side.foe.active) {
+				if (!target || !this.isAdjacent(target, pokemon)) continue;
+				if (!activated) {
+					this.add('-ability', pokemon, 'Silk Sifter', 'boost');
+					activated = true;
+				}
+				if (target.volatiles['substitute']) {
+					this.add('-immune', target, '[msg]');
+				} else {
+					this.boost({spe: -1}, target, pokemon);
+				}
+			}
+		},
+		id: "silksifter",
+		name: "Silk Sifter",
+		rating: 3.5,
+		num: 22,
 	},
 };
 
