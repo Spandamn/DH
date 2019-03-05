@@ -453,10 +453,15 @@ exports.BattlePokedex = {
 		types: ["Psychic"],
       abilities: {0: "Etheral Fist"},
 	},
+	dusclops: {
+		inherit: true,
+		types: ["Ghost", "Fighting"],
+      abilities: {0: "Pressure", 1: "Etheral Fist", H: "Mummy"},
+	},
 	dusknoir: {
 		inherit: true,
-		types: ["Ghost"],
-      abilities: {0: "Pressure", 1: "Etheral Fist", H: "Frisk"},
+		types: ["Ghost", "Fighting"],
+      abilities: {0: "Pressure", 1: "Etheral Fist", H: "Iron Fist"},
 	},
 	shaymin: {
 		inherit: true,
@@ -782,17 +787,17 @@ exports.BattlePokedex = {
 	wormadam: {
 		inherit: true,
 		types: ["Bug", "Grass"],
-      abilities: {0: "Anticipation", 1: "Guard Up", H: "Overcoat"},
+      abilities: {0: "Fluffy", 1: "Guard Up", H: "Overcoat"},
 	},
 	wormadamsandy: {
 		inherit: true,
 		types: ["Bug", "Ground"],
-      abilities: {0: "Anticipation", 1: "Guard Up", H: "Overcoat"},
+      abilities: {0: "Fluffy", 1: "Guard Up", H: "Overcoat"},
 	},
 	wormadamtrash: {
 		inherit: true,
 		types: ["Bug", "Steel"],
-      abilities: {0: "Anticipation", 1: "Guard Up", H: "Overcoat"},
+      abilities: {0: "Fluffy", 1: "Guard Up", H: "Overcoat"},
 	},
 	mothim: {
 		inherit: true,
@@ -926,7 +931,7 @@ exports.BattlePokedex = {
 	},
 	floatzel: {
 		inherit: true,
-		types: ["Water"],
+		types: ["Water", "Fighting"],
       abilities: {0: "Swift Swim", 1: "Technician", H: "Water Veil"},
 	},
 	beldum: {
@@ -1838,10 +1843,31 @@ exports.BattlePokedex = {
 	huntail: {
 		inherit: true,
 		types: ["Water", "Dark"],
-      abilities: {0: "Swift Swim", H: "Strong Jaw"},
+      abilities: {0: "Swift Swim", 1: "Shark Bait", H: "Strong Jaw"},
 	},
 	gorebyss: {
 		inherit: true,
 		types: ["Water", "Fairy"],
+		abilities: {0: "Swift Swim", 1: "Liquid Voice", H: "Hydration"},
+	},
+	passimian: {
+		inherit: true,
+		types: ["Fighting", "Grass"],
+		abilities: {0: "Skill Link", 1: "Disperal", H: "Triage"},
+	},
+	mienshao: {
+		inherit: true,
+		types: ["Fighting", "Fairy"],
+      abilities: {0: "Pixilate", 1: "Regenerator", H: "Reckless"},
+	},
+	furret: {
+		inherit: true,
+		types: ["Normal", "Fairy"],
+      abilities: {0: "Run Away", 1: "Cute Charm", H: "Pixilate"},
+	},
+	sentret: {
+		inherit: true,
+		types: ["Normal", "Fairy"],
+      abilities: {0: "Run Away", 1: "Cute Charm", H: "Pixilate"},
 	},
 };
