@@ -498,10 +498,15 @@ exports.BattlePokedex = {
 		types: ["Ghost", "Grass"],
       abilities: {0: "Natural Cure", 1: "Disperal", H: "Harvest"},
 	},
+	minccino: {
+		inherit: true,
+		types: ["Normal", "Fairy"],
+      abilities: {0: "Cute Charm", 1: "Housekeeping", H: "Skill Link"},
+	},
 	cinccino: {
 		inherit: true,
-		types: ["Normal"],
-      abilities: {0: "Cute Charm", 1: "Housekeeping", H: "Skill Link"},
+		types: ["Normal", "Fairy"],
+      abilities: {0: "Fur Coat", 1: "Housekeeping", H: "Skill Link"},
 	},
 	jirachi: {
 		inherit: true,
@@ -1862,12 +1867,60 @@ exports.BattlePokedex = {
 	},
 	furret: {
 		inherit: true,
-		types: ["Normal", "Fairy"],
+		types: ["Fairy"],
       abilities: {0: "Run Away", 1: "Cute Charm", H: "Pixilate"},
 	},
 	sentret: {
 		inherit: true,
-		types: ["Normal", "Fairy"],
+		types: ["Fairy"],
       abilities: {0: "Run Away", 1: "Cute Charm", H: "Pixilate"},
+	},
+	masquerain: {
+		inherit: true,
+		types: ["Bug", "Water"],
+	},
+	arbok: {
+		inherit: true,
+		types: ["Poison", "Dragon"],
+      abilities: {0: "Intimidate", 1: "Shed Skin", H: "Strong Jaw"},
+	},
+	beartic: {
+		inherit: true,
+		types: ["Ice", "Fighting"],
+      abilities: {0: "Adaptability", 1: "Slush Rush", H: "Swift Swim"},
+	},
+	pansage: {
+		inherit: true,
+		types: ["Grass", "Normal"],
+      abilities: {0: "Gluttony", H: "Overgrow"},
+	},
+	simisage: {
+		inherit: true,
+		types: ["Grass", "Normal"],
+      abilities: {0: "Gluttony", H: "Overgrow"},
+	},
+	panpour: {
+		inherit: true,
+		types: ["Water", "Normal"],
+      abilities: {0: "Gluttony", H: "Torrent"},
+	},
+	simipour: {
+		inherit: true,
+		types: ["Water", "Normal"],
+      abilities: {0: "Gluttony", H: "Torrent"},
+	},
+	pansear: {
+		inherit: true,
+		types: ["Fire", "Normal"],
+      abilities: {0: "Gluttony", H: "Blaze"},
+	},
+	simisear: {
+		inherit: true,
+		types: ["Fire", "Normal"],
+      abilities: {0: "Gluttony", H: "Blaze"},
+	},
+	stoutland: {
+		inherit: true,
+		types: ["Normal", "Ground"],
 	},
 };
