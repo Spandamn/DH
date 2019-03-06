@@ -212,6 +212,76 @@ let BattleItems = {
 		gen: 6,
 		desc: "If held by a Gardevoir, this item allows it to Mega Evolve in battle.",
 	},
+	"gengaritex": {
+		id: "gengaritex",
+		name: "Gengarite X",
+		spritenum: 577,
+		megaStone: "Gengar-Mega-X",
+		megaEvolves: "Gengar",
+		onTakeItem: function (item, source) {
+			if (item.megaEvolves === source.baseTemplate.baseSpecies) return false;
+			return true;
+		},
+		num: 2015,
+		gen: 6,
+		desc: "If held by a Gengar, this item allows it to Mega Evolve in battle.",
+	},
+	"glalititex": {
+		id: "glalititex",
+		name: "Glalitite X",
+		spritenum: 577,
+		megaStone: "Glalie-Mega-X",
+		megaEvolves: "Glalie",
+		onTakeItem: function (item, source) {
+			if (item.megaEvolves === source.baseTemplate.baseSpecies) return false;
+			return true;
+		},
+		num: 2016,
+		gen: 6,
+		desc: "If held by a Glalie, this item allows it to Mega Evolve in battle.",
+	},
+	"gyaradositey": {
+		id: "gyaradositey",
+		name: "Gyaradosite Y",
+		spritenum: 577,
+		megaStone: "Gyarados-Mega-Y",
+		megaEvolves: "Gyarados",
+		onTakeItem: function (item, source) {
+			if (item.megaEvolves === source.baseTemplate.baseSpecies) return false;
+			return true;
+		},
+		num: 2017,
+		gen: 6,
+		desc: "If held by a Gyarados, this item allows it to Mega Evolve in battle.",
+	},
+	"houndoomitex": {
+		id: "houndoomitex",
+		name: "Houndoom X",
+		spritenum: 577,
+		megaStone: "Houndoom-Mega-X",
+		megaEvolves: "Houndoom",
+		onTakeItem: function (item, source) {
+			if (item.megaEvolves === source.baseTemplate.baseSpecies) return false;
+			return true;
+		},
+		num: 2018,
+		gen: 6,
+		desc: "If held by a Houndoom, this item allows it to Mega Evolve in battle.",
+	},
+	"kangaskhanitey": {
+		id: "kangaskhanitey",
+		name: "Kangaskhanite X",
+		spritenum: 577,
+		megaStone: "Kangaskhan-Mega-X",
+		megaEvolves: "Kangaskhan",
+		onTakeItem: function (item, source) {
+			if (item.megaEvolves === source.baseTemplate.baseSpecies) return false;
+			return true;
+		},
+		num: 2019,
+		gen: 6,
+		desc: "If held by a Kangaskhan, this item allows it to Mega Evolve in battle.",
+	},
 };
 
 exports.BattleItems = BattleItems;
