@@ -557,6 +557,8 @@ let BattleLearnsets = {
         toxic: ["7M", "6M", "5M", "4M", "3M"],
         trick: ["7T", "6T", "5T", "4T"],
         zenheadbutt: ["7T", "7L32", "6T", "6L29", "5T", "5L62", "5S3", "5S2", "4T", "4L62", "4S0"],
+		  blizzard: ["7T", "7L32", "6T", "6L29", "5T", "5L62", "5S3", "5S2", "4T", "4L62", "4S0"],
+		  auroraveil: ["7T", "7L32", "6T", "6L29", "5T", "5L62", "5S3", "5S2", "4T", "4L62", "4S0"],
     }},
  
     cloyster: {learnset: {

@@ -827,4 +827,14 @@ exports.BattleAbilities = {
 		id: "bellchime",
 		name: "Bell Chime",
 	},
+	"hasty": {
+		shortDesc: "This Pokemon's attacks do not have to charge/recharge.",
+		onModifyMove(move) {
+			delete move.flags['charge', 'recharge'];
+		},
+		id: "hasty",
+		name: "Hasty",
+		rating: 1.5,
+		num: 203,
+	},
 };
