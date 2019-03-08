@@ -13465,4 +13465,22 @@ exports.BattleAbilities = {
 		id: "kelpterrain",
 		name: "Kelp Surge",
 	},
+	"adblock": {
+		desc: "If a Pokemon uses an attack with secondary effects against this Pokemon, that Pokemon's higher attacking stat copies this Pokemon's corresponding stat when calculating the damage to this Pokemon.",
+		shortDesc: "Foe's higher attacking stat copies this Pokemon's corresponding stat when using a move with secondary effects.",
+		onModifyAtkPriority: 7,
+		onSourceModifyAtk: function (atk, attacker, defender, move) {
+			if (move.secondaries && attacker.getStat('atk', false, true) > attacker.getStat('spa', false, true)) {
+				return defender.getStat('atk', false, true);
+			}
+		},
+		onModifySpAPriority: 7,
+		onSourceModifySpA: function (atk, attacker, defender, move) {
+			if (move.secondaries && attacker.getStat('atk', false, true) < attacker.getStat('spa', false, true)) {
+				return defender.getStat('spa', false, true);
+			}
+		},
+		id: "adblock",
+		name: "Adblock",
+	},
 };
