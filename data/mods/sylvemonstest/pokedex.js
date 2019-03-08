@@ -406,12 +406,12 @@ exports.BattlePokedex = {
 	chingling: {
 		inherit: true,
 		types: ["Psychic"],
-		abilities: {0: "Levitate", 1: "Magic Warp", H: "Magic Healing"},
+		abilities: {0: "Bell Chime", 1: "Magic Warp", H: "Magic Healing"},
 	},
 	chimecho: {
 		inherit: true,
 		types: ["Psychic"],
-		abilities: {0: "Levitate", 1: "Magic Warp", H: "Magic Healing"},
+		abilities: {0: "Bell Chime", 1: "Magic Warp", H: "Magic Healing"},
 	},
 	sigilyph: {
 		inherit: true,
@@ -516,7 +516,7 @@ exports.BattlePokedex = {
 	delcatty: {
 		inherit: true,
 		types: ["Normal"],
-      abilities: {0: "Cute Charm", 1: "Normalize", H: "Housekeeping"},
+      abilities: {0: "Cute Charm", 1: "Bell Chime", H: "Housekeeping"},
 	},
 	igglybuff: {
 		inherit: true,
@@ -611,7 +611,7 @@ exports.BattlePokedex = {
 	maractus: {
 		inherit: true,
 		types: ["Grass"],
-      abilities: {0: "Water Absorb", 1: "Chlorophyll", H: "Forecast"},
+      abilities: {0: "Water Absorb", 1: "Hasty", H: "Forecast"},
 	},
 	
 	celebi: {
@@ -682,12 +682,12 @@ exports.BattlePokedex = {
 	skrelp: {
 		inherit: true,
 		types: ["Poison", "Water"],
-      abilities: {0: "Corrosion", 1: "Poison Touch", H: "Adaptability"},
+      abilities: {0: "Corrosion", 1: "Mimetism", H: "Adaptability"},
 	},
 	dragalge: {
 		inherit: true,
 		types: ["Poison", "Dragon"],
-      abilities: {0: "Corrosion", 1: "Poison Touch", H: "Adaptability"},
+      abilities: {0: "Corrosion", 1: "Mimetism", H: "Adaptability"},
 	},
 	drifblim: {
 		inherit: true,
@@ -752,17 +752,17 @@ exports.BattlePokedex = {
 	sewaddle: {
 		inherit: true,
 		types: ["Bug", "Grass"],
-      abilities: {0: "Grassy Surge", 1: "Chlorophyll", H: "Overcoat"},
+      abilities: {0: "Grassy Surge", 1: "Chlorophyll", H: "Mimetism"},
 	},
 	swadloon: {
 		inherit: true,
 		types: ["Bug", "Grass"],
-      abilities: {0: "Grassy Surge", 1: "Chlorophyll", H: "Guard Up"},
+      abilities: {0: "Grassy Surge", 1: "Chlorophyll", H: "Mimetism"},
 	},
 	leavanny: {
 		inherit: true,
 		types: ["Bug", "Grass"],
-      abilities: {0: "Grassy Surge", 1: "Chlorophyll", H: "Overcoat"},
+      abilities: {0: "Grassy Surge", 1: "Chlorophyll", H: "Mimetism"},
 	},
 	spewpa: {
 		inherit: true,
@@ -807,7 +807,7 @@ exports.BattlePokedex = {
 	mothim: {
 		inherit: true,
 		types: ["Bug", "Flying"],
-      abilities: {0: "Swarm", 1: "Guard Up", H: "Tinted Lens"},
+      abilities: {0: "Swarm", 1: "Mimetism", H: "Tinted Lens"},
 	},
 	gardevoir: {
 		inherit: true,
@@ -867,7 +867,7 @@ exports.BattlePokedex = {
 	dodrio: {
 		inherit: true,
 		types: ["Normal", "Flying"],
-      abilities: {0: "Run Away", 1: "Scrappy", H: "Sole Caliber"},
+      abilities: {0: "Quick Feet", 1: "Scrappy", H: "Sole Caliber"},
 	},
 	pichu: {
 		inherit: true,
@@ -1222,17 +1222,17 @@ exports.BattlePokedex = {
 	flabebe: {
 		inherit: true,
 		types: ["Fairy"],
-      abilities: {0: "Flower Veil", 1: "Misty Surge", H: "Symbiosis"},
+      abilities: {0: "Flower Veil", 1: "Misty Surge", H: "Mimetism"},
 	},
 	floette: {
 		inherit: true,
 		types: ["Fairy"],
-      abilities: {0: "Flower Veil", 1: "Misty Surge", H: "Symbiosis"},
+      abilities: {0: "Flower Veil", 1: "Misty Surge", H: "Mimetism"},
 	},
 	florges: {
 		inherit: true,
 		types: ["Fairy"],
-      abilities: {0: "Flower Veil", 1: "Misty Surge", H: "Symbiosis"},
+      abilities: {0: "Flower Veil", 1: "Misty Surge", H: "Mimetism"},
 	},
 	mareep: {
 		inherit: true,
@@ -1350,6 +1350,14 @@ exports.BattlePokedex = {
 		inherit: true,
       abilities: {0: "Bulletproof", 1: "Ice Body", H: "Sturdy"},
 	},
+	rhyhorn: {
+		inherit: true,
+      abilities: {0: "Lighting Rod", 1: "Solid Rock", H: "Hasty"},
+	},
+	rhydon: {
+		inherit: true,
+      abilities: {0: "Lightning Rod", 1: "Solid Rock", H: "Hasty"},
+	},
 	rhyperior: {
 		inherit: true,
       abilities: {0: "Bulletproof", 1: "Solid Rock", H: "Stall"},
@@ -1459,7 +1467,7 @@ exports.BattlePokedex = {
 	},
 	stunfisk: {
 		inherit: true,
-      abilities: {0: "Static", 1: "Shark Bait", H: "Sand Veil"},
+      abilities: {0: "Mimetism", 1: "Shark Bait", H: "Sand Veil"},
 	},
 	cherubi: {
 		inherit: true,
@@ -1627,7 +1635,7 @@ exports.BattlePokedex = {
 	},
 	hitmonlee: {
 		inherit: true,
-      abilities: {0: "Sole Caliber", 1: "Reckless", H: "Unburden"},
+      abilities: {0: "Sole Caliber", 1: "Reckless", H: "Quick Feet"},
 	},
 	golduck: {
 		inherit: true,
@@ -1767,7 +1775,7 @@ exports.BattlePokedex = {
 	},
 	kecleon: {
 		inherit: true,
-      abilities: {0: "Color Change", 1: "Jack of all Trades", H: "Protean"},
+      abilities: {0: "Mimetism", 1: "Jack of all Trades", H: "Protean"},
 	},
 	smeargle: {
 		inherit: true,
@@ -1787,7 +1795,7 @@ exports.BattlePokedex = {
 	},
 	sudowoodo: {
 		inherit: true,
-      abilities: {0: "Sturdy", 1: "Rock Head", H: "Jack of all Trades"},
+      abilities: {0: "Mimetism", 1: "Rock Head", H: "Jack of all Trades"},
 	},
 	zorua: {
 		inherit: true,
@@ -1934,11 +1942,11 @@ exports.BattlePokedex = {
 	},
 	staryu: {
 		inherit: true,
-		abilities: {0: "Regenerator", 1: "Natural Cure", H: "Analytic"},
+		abilities: {0: "Regenerator", 1: "Mimetism", H: "Analytic"},
 	},
 	starmie: {
 		inherit: true,
-		abilities: {0: "Regenerator", 1: "Natural Cure", H: "Analytic"},
+		abilities: {0: "Regenerator", 1: "Mimetism", H: "Analytic"},
 	},
 	sceptilemega: {
 		inherit: true,
@@ -2006,11 +2014,11 @@ exports.BattlePokedex = {
 	},
 	bronzor: {
 		inherit: true,
-      abilities: {0: "Levitate", 1: "Heatproof", H: "Magic Warp"},
+      abilities: {0: "Levitate", 1: "Heatproof", H: "Bell Chime"},
 	},
 	bronzong: {
 		inherit: true,
-      abilities: {0: "Levitate", 1: "Heatproof", H: "Magic Warp"},
+      abilities: {0: "Levitate", 1: "Heatproof", H: "Bell Chime"},
 	},
 	celesteela: {
 		inherit: true,
@@ -2023,5 +2031,125 @@ exports.BattlePokedex = {
 	naganadel: {
 		inherit: true,
       abilities: {0: "Beast Boost", H: "Corrosion"},
+	},
+	skitty: {
+		inherit: true,
+      abilities: {0: "Cute Charm", 1: "Bell Chime", H: "Wonder Skin"},
+	},
+	bellsprout: {
+		inherit: true,
+      abilities: {0: "Chlorophyll", 1: "Bell Chime", H: "Gluttony"},
+	},
+	weepinbell: {
+		inherit: true,
+      abilities: {0: "Chlorophyll", 1: "Bell Chime", H: "Gluttony"},
+	},
+	victreebel: {
+		inherit: true,
+      abilities: {0: "Chlorophyll", 1: "Bell Chime", H: "Gluttony"},
+	},
+	miltank: {
+		inherit: true,
+      abilities: {0: "Thick Fat", 1: "Scrappy", H: "Bell Chime"},
+	},
+	ponyta: {
+		inherit: true,
+      abilities: {0: "Quick Feet", 1: "Flash Fire", H: "Flame Body"},
+	},
+	rapidash: {
+		inherit: true,
+      abilities: {0: "Quick Feet", 1: "Flash Fire", H: "Flame Body"},
+	},
+	electrike: {
+		inherit: true,
+      abilities: {0: "Static", 1: "Lighting Rod", H: "Quick Feet"},
+	},
+	manectric: {
+		inherit: true,
+      abilities: {0: "Static", 1: "Lighting Rod", H: "Quick Feet"},
+	},
+	blitzle: {
+		inherit: true,
+      abilities: {0: "Quick Feet", 1: "Motor Drive", H: "Sap Sipper"},
+	},
+	zebstrika: {
+		inherit: true,
+      abilities: {0: "Quick Feet", 1: "Motor Drive", H: "Sap Sipper"},
+	},
+	swirlix: {
+		inherit: true,
+      abilities: {0: "Sweet Veil", 1: "Hasty", H: "Unburden"},
+	},
+	slurpuff: {
+		inherit: true,
+      abilities: {0: "Sweet Veil", 1: "Hasty", H: "Unburden"},
+	},
+	pumpkaboo: {
+		inherit: true,
+      abilities: {0: "Hasty", 1: "Frisk", H: "Insomnia"},
+	},
+	gourgeist: {
+		inherit: true,
+      abilities: {0: "Hasty", 1: "Frisk", H: "Insomnia"},
+	},
+	pumpkaboosmall: {
+		inherit: true,
+      abilities: {0: "Hasty", 1: "Frisk", H: "Insomnia"},
+	},
+	gourgeistsmall: {
+		inherit: true,
+      abilities: {0: "Hasty", 1: "Frisk", H: "Insomnia"},
+	},
+	pumpkaboolarge: {
+		inherit: true,
+      abilities: {0: "Hasty", 1: "Frisk", H: "Insomnia"},
+	},
+	gourgeistlarge: {
+		inherit: true,
+      abilities: {0: "Hasty", 1: "Frisk", H: "Insomnia"},
+	},
+	pumpkaboosuper: {
+		inherit: true,
+      abilities: {0: "Hasty", 1: "Frisk", H: "Insomnia"},
+	},
+	gourgeistsuper: {
+		inherit: true,
+      abilities: {0: "Hasty", 1: "Frisk", H: "Insomnia"},
+	},
+	pidgey: {
+		inherit: true,
+      abilities: {0: "Keen Eye", 1: "Tangled Feet", H: "Hasty"},
+	},
+	pidgeotto: {
+		inherit: true,
+      abilities: {0: "Keen Eye", 1: "Tangled Feet", H: "Hasty"},
+	},
+	pidgeot: {
+		inherit: true,
+      abilities: {0: "Keen Eye", 1: "Tangled Feet", H: "Hasty"},
+	},
+	farfetchd: {
+		inherit: true,
+      abilities: {0: "Hasty", 1: "Inner Focus", H: "Defiant"},
+	},
+	vikavolt: {
+		inherit: true,
+      abilities: {0: "Levitate", H: "Hasty"},
+	},
+	dugtrio: {
+		inherit: true,
+      abilities: {0: "Hasty", 1: "Arena Trap", H: "Sand Force"},
+	},
+	corsola: {
+		inherit: true,
+      abilities: {0: "Mimetism", 1: "Natural Cure", H: "Regenerator"},
+	},
+	crustle: {
+		inherit: true,
+      abilities: {0: "Sturdy", 1: "Shell Armor", H: "Mimetism"},
+	},
+	dwebble: {
+		inherit: true,
+      abilities: {0: "Sturdy", 1: "Shell Armor", H: "Mimetism"},
 	},
 };
