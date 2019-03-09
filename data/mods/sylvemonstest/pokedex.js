@@ -116,6 +116,27 @@ exports.BattlePokedex = {
 	rotomfan: {
 		inherit: true,
 		types: ["Electric", "Steel"],
+		abilities: {0: "Levitate", H: "Battery"
+	},
+	rotommow: {
+		inherit: true,
+		abilities: {0: "Levitate", H: "Battery"},
+	},
+	rotomwash: {
+		inherit: true,
+		abilities: {0: "Levitate", H: "Battery"},
+	},
+	rotomheat: {
+		inherit: true,
+		abilities: {0: "Levitate", H: "Battery"},
+	},
+	rotom: {
+		inherit: true,
+		abilities: {0: "Levitate", H: "Battery"},
+	},
+	rotomfrost: {
+		inherit: true,
+		abilities: {0: "Levitate", H: "Battery"},
 	},
 	granbull: {
 		inherit: true,
@@ -917,17 +938,17 @@ exports.BattlePokedex = {
 	klink: {
 		inherit: true,
 		types: ["Steel"],
-      abilities: {0: "Plus", 1: "Minus", H: "Technician"},
+      abilities: {0: "Battery", 1: "Minus", H: "Technician"},
 	},
 	klang: {
 		inherit: true,
 		types: ["Steel"],
-      abilities: {0: "Plus", 1: "Minus", H: "Technician"},
+      abilities: {0: "Battery", 1: "Minus", H: "Technician"},
 	},
 	klinklang: {
 		inherit: true,
 		types: ["Steel"],
-      abilities: {0: "Plus", 1: "Minus", H: "Technician"},
+      abilities: {0: "Battery", 1: "Minus", H: "Technician"},
 	},
 	buizel: {
 		inherit: true,
@@ -1479,11 +1500,11 @@ exports.BattlePokedex = {
 	},
 	helioptile: {
 		inherit: true,
-      abilities: {0: "Dry Skin", 1: "Bask", H: "Solar Power"},
+      abilities: {0: "Dry Skin", 1: "Bask", H: "Battery"},
 	},
 	heliolisk: {
 		inherit: true,
-      abilities: {0: "Dry Skin", 1: "Bask", H: "Solar Power"},
+      abilities: {0: "Dry Skin", 1: "Bask", H: "Battery"},
 	},
 	charmander: {
 		inherit: true,
@@ -1503,15 +1524,15 @@ exports.BattlePokedex = {
 	},
 	lotad: {
 		inherit: true,
-      abilities: {0: "Swift Swim", 1: "Wet Suit", H: "Own Tempo"},
+      abilities: {0: "Swift Swim", 1: "Wet Suit", H: "Oblivious"},
 	},
 	lombre: {
 		inherit: true,
-      abilities: {0: "Swift Swim", 1: "Wet Suit", H: "Own Tempo"},
+      abilities: {0: "Swift Swim", 1: "Wet Suit", H: "Oblivious"},
 	},
 	ludicolo: {
 		inherit: true,
-      abilities: {0: "Swift Swim", 1: "Wet Suit", H: "Own Tempo"},
+      abilities: {0: "Swift Swim", 1: "Wet Suit", H: "Oblivious"},
 	},
 	surskit: {
 		inherit: true,
@@ -1539,7 +1560,7 @@ exports.BattlePokedex = {
 	},
 	turtonator: {
 		inherit: true,
-      abilities: {0: "Shell Armor", H: "Stamina"},
+      abilities: {0: "Shell Armor", 1: "Immovable", H: "Stamina"},
 	},
 	mewtwo: {
 		inherit: true,
@@ -1623,11 +1644,11 @@ exports.BattlePokedex = {
 	},
 	voltorb: {
 		inherit: true,
-      abilities: {0: "Soundproof", 1: "Electric Surge", H: "Aftermath"},
+      abilities: {0: "Battery", 1: "Electric Surge", H: "Aftermath"},
 	},
 	electrode: {
 		inherit: true,
-      abilities: {0: "Soundproof", 1: "Electric Surge", H: "Aftermath"},
+      abilities: {0: "Battery", 1: "Electric Surge", H: "Aftermath"},
 	},
 	exeggutor: {
 		inherit: true,
@@ -2070,11 +2091,11 @@ exports.BattlePokedex = {
 	},
 	blitzle: {
 		inherit: true,
-      abilities: {0: "Quick Feet", 1: "Motor Drive", H: "Sap Sipper"},
+      abilities: {0: "Quick Feet", 1: "Battery", H: "Sap Sipper"},
 	},
 	zebstrika: {
 		inherit: true,
-      abilities: {0: "Quick Feet", 1: "Motor Drive", H: "Sap Sipper"},
+      abilities: {0: "Quick Feet", 1: "Battery", H: "Sap Sipper"},
 	},
 	swirlix: {
 		inherit: true,
@@ -2134,7 +2155,7 @@ exports.BattlePokedex = {
 	},
 	vikavolt: {
 		inherit: true,
-      abilities: {0: "Levitate", H: "Hasty"},
+      abilities: {0: "Levitate", 1: "Battery", H: "Hasty"},
 	},
 	dugtrio: {
 		inherit: true,
@@ -2151,5 +2172,61 @@ exports.BattlePokedex = {
 	dwebble: {
 		inherit: true,
       abilities: {0: "Sturdy", 1: "Shell Armor", H: "Mimetism"},
+	},
+	corsola: {
+		inherit: true,
+      abilities: {0: "Mimetism", 1: "Natural Cure", H: "Regenerator"},
+	},
+	elekid: {
+		inherit: true,
+      abilities: {0: "Static", 1: "Battery", H: "Vital Spirit"},
+	},
+	electabuzz: {
+		inherit: true,
+      abilities: {0: "Static", 1: "Battery", H: "Vital Spirit"},
+	},
+	electivire: {
+		inherit: true,
+      abilities: {0: "Motor Drive", 1: "Battery", H: "Vital Spirit"},
+	},
+	joltik: {
+		inherit: true,
+      abilities: {0: "Compound Eyes", 1: "Battery", H: "Swarm"},
+	},
+	galvantula: {
+		inherit: true,
+      abilities: {0: "Compound Eyes", 1: "Battery", H: "Swarm"},
+	},
+	tynamo: {
+		inherit: true,
+      abilities: {0: "Levitate", H: "Battery"},
+	},
+	eelektrik: {
+		inherit: true,
+      abilities: {0: "Levitate", H: "Battery"},
+	},
+	eelektross: {
+		inherit: true,
+      abilities: {0: "Levitate", H: "Battery"},
+	},
+	geodude: {
+		inherit: true,
+      abilities: {0: "Immovable", 1: "Sturdy", H: "Sand Veil"},
+	},
+	graveler: {
+		inherit: true,
+      abilities: {0: "Immovable", 1: "Sturdy", H: "Sand Veil"},
+	},
+	golem: {
+		inherit: true,
+      abilities: {0: "Immovable", 1: "Sturdy", H: "Sand Veil"},
+	},
+	probopass: {
+		inherit: true,
+      abilities: {0: "Sturdy", 1: "Magnet Pull", H: "Immovable"},
+	},
+	cosmoem: {
+		inherit: true,
+      abilities: {0: "Sturdy", H: "Immovable"},
 	},
 };
