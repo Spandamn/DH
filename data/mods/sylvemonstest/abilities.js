@@ -837,4 +837,25 @@ exports.BattleAbilities = {
 		rating: 1.5,
 		num: 203,
 	},
+	"battery": {
+		shortDesc: "This Pokemon's attacking stat is 1.5x with Electric attacks.",
+		onModifyAtkPriority: 5,
+		onModifyAtk: function(atk, attacker, defender, move) {
+			if (move.type === 'Electric') {
+				this.debug('Battery boost');
+				return this.chainModify(1.5);
+			}
+		},
+		onModifySpAPriority: 5,
+		onModifySpA: function(atk, attacker, defender, move) {
+			if (move.type === 'Electric') {
+				this.debug('Battery boost');
+				return this.chainModify(1.5);
+			}
+		},
+		id: "battery",
+		name: "Battery",
+		rating: 2,
+		num: 66,
+	},
 };
