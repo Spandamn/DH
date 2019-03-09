@@ -98,7 +98,7 @@ exports.BattlePokedex = {
 	parasect: {
 		inherit: true,
 		types: ["Bug", "Ghost"],
-		abilities: {0: "Effect Spore", 1: "Cursed Body", H: "Prankster"},
+		abilities: {0: "Bloodsucker", 1: "Cursed Body", H: "Prankster"},
 	},
 	mawile: {
 		inherit: true,
@@ -567,17 +567,17 @@ exports.BattlePokedex = {
 	litwick: {
 		inherit: true,
 		types: ["Ghost", "Fire"],
-      abilities: {0: "Flash Fire", 1: "Mind Trick", H: "Infiltrator"},
+      abilities: {0: "Bloodsucker", 1: "Mind Trick", H: "Infiltrator"},
 	},
 	lampent: {
 		inherit: true,
 		types: ["Ghost", "Fire"],
-      abilities: {0: "Flash Fire", 1: "Mind Trick", H: "Infiltrator"},
+      abilities: {0: "Bloodsucker", 1: "Mind Trick", H: "Infiltrator"},
 	},
 	chandelure: {
 		inherit: true,
 		types: ["Ghost", "Fire"],
-      abilities: {0: "Flash Fire", 1: "Mind Trick", H: "Infiltrator"},
+      abilities: {0: "Bloodsucker", 1: "Mind Trick", H: "Infiltrator"},
 	},
 	drowzee: {
 		inherit: true,
@@ -1424,7 +1424,7 @@ exports.BattlePokedex = {
 	},
 	buzzwole: {
 		inherit: true,
-		abilities: {0: "Beast Boost", H: "Perseverance"},
+		abilities: {0: "Beast Boost", H: "Bloodsucker"},
 	},
 	pheromosa: {
 		inherit: true,
@@ -1580,7 +1580,7 @@ exports.BattlePokedex = {
 	},
 	drampa: {
 		inherit: true,
-      abilities: {0: "Infuriation", 1: "Sap Sipper", H: "Cloud Nine"},
+      abilities: {0: "Infuriation", 1: "Sap Sipper", H: "Oblivious"},
 	},
 	whismur: {
 		inherit: true,
@@ -1887,7 +1887,7 @@ exports.BattlePokedex = {
 	gorebyss: {
 		inherit: true,
 		types: ["Water", "Fairy"],
-		abilities: {0: "Swift Swim", 1: "Liquid Voice", H: "Hydration"},
+		abilities: {0: "Swift Swim", 1: "Liquid Voice", H: "Bloodsucker"},
 	},
 	passimian: {
 		inherit: true,
@@ -1926,32 +1926,32 @@ exports.BattlePokedex = {
 	pansage: {
 		inherit: true,
 		types: ["Grass", "Normal"],
-      abilities: {0: "Gluttony", H: "Overgrow"},
+      abilities: {0: "Gluttony", 1: "Oblivious", H: "Overgrow"},
 	},
 	simisage: {
 		inherit: true,
 		types: ["Grass", "Normal"],
-      abilities: {0: "Gluttony", H: "Overgrow"},
+      abilities: {0: "Gluttony", 1: "Oblivious", H: "Overgrow"},
 	},
 	panpour: {
 		inherit: true,
 		types: ["Water", "Normal"],
-      abilities: {0: "Gluttony", H: "Torrent"},
+      abilities: {0: "Gluttony", 1: "Oblivious", H: "Torrent"},
 	},
 	simipour: {
 		inherit: true,
 		types: ["Water", "Normal"],
-      abilities: {0: "Gluttony", H: "Torrent"},
+      abilities: {0: "Gluttony", 1: "Oblivious", H: "Torrent"},
 	},
 	pansear: {
 		inherit: true,
 		types: ["Fire", "Normal"],
-      abilities: {0: "Gluttony", H: "Blaze"},
+      abilities: {0: "Gluttony", 1: "Oblivious", H: "Blaze"},
 	},
 	simisear: {
 		inherit: true,
 		types: ["Fire", "Normal"],
-      abilities: {0: "Gluttony", H: "Blaze"},
+      abilities: {0: "Gluttony", 1: "Oblivious", H: "Blaze"},
 	},
 	stoutland: {
 		inherit: true,
@@ -2067,7 +2067,7 @@ exports.BattlePokedex = {
 	},
 	victreebel: {
 		inherit: true,
-      abilities: {0: "Chlorophyll", 1: "Bell Chime", H: "Gluttony"},
+      abilities: {0: "Chlorophyll", 1: "Bell Chime", H: "Bloodsucker"},
 	},
 	miltank: {
 		inherit: true,
@@ -2228,5 +2228,61 @@ exports.BattlePokedex = {
 	cosmoem: {
 		inherit: true,
       abilities: {0: "Sturdy", H: "Immovable"},
+	},
+	camerupt: {
+		inherit: true,
+      abilities: {0: "Oblivious", 1: "Solid Rock", H: "Anger Point"},
+	},
+	zubat: {
+		inherit: true,
+      abilities: {0: "Inner Focus", 1: "Bloodsucker", H: "Infiltrator"},
+	},
+	golbat: {
+		inherit: true,
+      abilities: {0: "Inner Focus", 1: "Bloodsucker", H: "Infiltrator"},
+	},
+	crobat: {
+		inherit: true,
+      abilities: {0: "Inner Focus", 1: "Bloodsucker", H: "Infiltrator"},
+	},
+	gliscor: {
+		inherit: true,
+      abilities: {0: "Bloodsucker", 1: "Sand Veil", H: "Poison Heal"},
+	},
+	woobat: {
+		inherit: true,
+      abilities: {0: "Unaware", 1: "Bloodsucker", H: "Simple"},
+	},
+	swoobat: {
+		inherit: true,
+      abilities: {0: "Unaware", 1: "Bloodsucker", H: "Simple"},
+	},
+	cutiefly: {
+		inherit: true,
+      abilities: {0: "Bloodsucker", 1: "Shield Dust", H: "Sweet Veil"},
+	},
+	ribombee: {
+		inherit: true,
+      abilities: {0: "Bloodsucker", 1: "Shield Dust", H: "Sweet Veil"},
+	},
+	beautifly: {
+		inherit: true,
+      abilities: {0: "Swarm", 1: "Bloodsucker", H: "Rivalry"},
+	},
+	vileplume: {
+		inherit: true,
+      abilities: {0: "Chlorophyll", 1: "Bloodsucker", H: "Effect Spore"},
+	},
+	carnivine: {
+		inherit: true,
+      abilities: {0: "Levitate", H: "Bloodsucker"},
+	},
+	spinarak: {
+		inherit: true,
+      abilities: {0: "Swarm", 1: "Bloodsucker", H: "Sniper"},
+	},
+	ariados: {
+		inherit: true,
+      abilities: {0: "Swarm", 1: "Bloodsucker", H: "Sniper"},
 	},
 };
