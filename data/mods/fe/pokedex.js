@@ -7892,7 +7892,7 @@ darkchomp: {
             spe: 112
         },
         abilities: {
-            0: "Magnetic Surge"
+            0: "Charged Up"
         },
         heightm: 0.51,
         weightkg: 42.6,
