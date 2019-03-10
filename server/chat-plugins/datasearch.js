@@ -448,7 +448,7 @@ function runDexsearch(target, cmd, canAll, message) {
 				}
 				order = `${target.substr(0, 3) === 'asc' ? '+' : '-'}${stat}`;
 				orGroup.skip = true;
-				continue;
+				break;
 			}
 
 			if (target.substr(0, 6) === 'random' && cmd === 'randpoke') {
@@ -621,7 +621,7 @@ function runDexsearch(target, cmd, canAll, message) {
 		let stat = order.substr(1);
 		let sort = order[0];
 		searches.sort((a, b) => {
-			if (!(stat in a.baseStats)) {
+			if (!a.baseStats[stat]) {
 				if (sort === '+') return a[stat] - b[stat];
 				if (sort === '-') return b[stat] - a[stat];
 			} else {
