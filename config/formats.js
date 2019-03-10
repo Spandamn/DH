@@ -4259,7 +4259,6 @@ exports.Formats = [
 		banlist: ['Slaking', 'Regigigas'],
 		validateSet: function(set, teamHas) {
 			if (!this.validateSet(set, teamHas).length) return [];
-			let bannedTrademarks = [Assist, Baneful bunker, Block, Copycat, Detect, Mat Block, Mean Look, Nature Power, Protect, Roar, Spider Web, Spiky Shield, Whirlwind];
 			let ability = Dex.getAbility(set.ability);
 			let template = Dex.getTemplate(set.species);
 			if (!set.moves.includes(ability.id) && !set.moves.includes(ability.name) && !this.checkLearnset(ability.id, template, {
