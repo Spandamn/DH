@@ -759,12 +759,11 @@ function runDexsearch(target, cmd, canAll, message) {
 		let stat = order.substr(1);
 		let sort = order[0];
 		results.sort((a, b) => {
+			let mon1 = mod.getTemplate(sort === '+' ? a : b), mon2 = mod.getTemplate(sort === '+' ? a : b);
 			if (!a.baseStats[stat]) {
-				if (sort === '+') return a[stat] - b[stat];
-				if (sort === '-') return b[stat] - a[stat];
+				return a[stat] - b[stat];
 			} else {
-				if (sort === '+') return a.baseStats[stat] - b.baseStats[stat];
-				if (sort === '-') return b.baseStats[stat] - a.baseStats[stat];
+				return a.baseStats[stat] - b.baseStats[stat];
 			}
 		})
 	}
