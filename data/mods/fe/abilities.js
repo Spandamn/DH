@@ -10909,7 +10909,7 @@ exports.BattleAbilities = {
 						}
 					}
 				}
-				pokemon.stats[stat] = target.stats[stat];
+				pokemon.stats[stat] = bestStat;
 		},
 		onSourceFaint: function (target, source, effect) {
 			if (effect && effect.effectType === 'Move') {
