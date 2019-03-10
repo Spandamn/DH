@@ -4252,14 +4252,14 @@ exports.Formats = [
 	},
 	{
 		name: "[Gen 7] Trademarked",
-		desc: ["&bullet; <a href=\"http://www.smogon.com/forums/threads/trademarked.3572949/\">Trademarked</a>"],
-		column: 1,
+		desc: ["&bullet; <a href=\"https://www.smogon.com/forums/threads/3647897/\">Trademarked</a>"],
 
 		mod: 'trademarked',
-		ruleset: ['[Gen 7] OU', 'trademarkclause'],
-		banlist: ['Slaking', 'Regigigas', 'Nature Power'],
+		ruleset: ['[Gen 7] OU'],
+		banlist: ['Slaking', 'Regigigas'],
 		validateSet: function(set, teamHas) {
 			if (!this.validateSet(set, teamHas).length) return [];
+			let bannedTrademarks = [Assist, Baneful bunker, Block, Copycat, Detect, Mat Block, Mean Look, Nature Power, Protect, Roar, Spider Web, Spiky Shield, Whirlwind];
 			let ability = Dex.getAbility(set.ability);
 			let template = Dex.getTemplate(set.species);
 			if (!set.moves.includes(ability.id) && !set.moves.includes(ability.name) && !this.checkLearnset(ability.id, template, {
@@ -4267,12 +4267,24 @@ exports.Formats = [
 				})) {
 				template = Object.assign({}, template);
 				template.abilities = {
-					0: ability.name
+					0: ability.name,
 				};
 			}
 			return this.validateSet(set, teamHas, template);
 		},
-
+		onValidateTeam: function (team) {
+			let tms = [];
+			let problems = [];
+			for (let set of team) {
+				let ability = this.getMove(set.ability);
+				if (ability.effectType === 'Move' && tms.includes(ability)) {
+					problems.push(`You cannot have more than one of ${ability.name} as a trademark.`);
+				} else {
+					tms.push(ability.id);
+				}
+			}
+			return problems;
+		},
 	},
 	{
 		name: "[Gen 7] Ultimate Z",
