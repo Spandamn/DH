@@ -4252,7 +4252,11 @@ exports.Formats = [
 	},
 	{
 		name: "[Gen 7] Trademarked",
-		desc: ["&bullet; <a href=\"https://www.smogon.com/forums/threads/3647897/\">Trademarked</a>"],
+		desc: [
+			"&bullet; <a href=\"https://www.smogon.com/forums/threads/3647897/\">Trademarked</a>",
+			"You can put a status move that the pokemon learns in its abiity slot to have it activate on switch in.",
+			"Assist, Baneful Bunker, Block, Copycat, Detect, Mat Block, Mean Look, Nature Power, Protect, Roar, Spider Web, Spiky Shield, Sleep inducing moves and Whirlwind are banned as trademarks."
+		],
 
 		mod: 'trademarked',
 		ruleset: ['[Gen 7] OU'],
