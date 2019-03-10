@@ -764,7 +764,13 @@ function runDexsearch(target, cmd, canAll, message) {
 			results.sort((a, b) => {
 				let mon1 = mod.getTemplate(sort === '+' ? a : b), mon2 = mod.getTemplate(sort === '+' ? b : a);
 				if (!mon1.baseStats[stat]) {
-					return mon1[stat] - mon1[stat];
+					if (mon1.stat - mon2.stat > 0) {
+						return 1;
+					} else if (mon1.stat === mon2.stat) {
+						return 0;
+					} else {
+						return -1;
+					}
 				} else {
 					return mon1.baseStats[stat] - mon2.baseStats[stat];
 				}
