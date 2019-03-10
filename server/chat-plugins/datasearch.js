@@ -1271,7 +1271,7 @@ function runMovesearch(target, cmd, canAll, message) {
 			let prop = order.substr(1);
 			let sort = order[0];
 			results.sort((a, b) => {
-				let move1 = dex[sort === '+' ? a : b], move2 = dex[sort === '+' ? b : a];
+				let move1 = dex[toId(sort === '+' ? a : b)], move2 = dex[toId(sort === '+' ? b : a)];
 				return move1[prop] - move2[prop];
 			});
 		}
