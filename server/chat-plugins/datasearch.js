@@ -763,17 +763,26 @@ function runDexsearch(target, cmd, canAll, message) {
 			let sort = order[0];
 			results.sort((a, b) => {
 				let mon1 = mod.getTemplate(sort === '+' ? a : b), mon2 = mod.getTemplate(sort === '+' ? b : a);
-				if (!mon1.baseStats[stat]) {
-					if (mon1.stat - mon2.stat > 0) {
-						return 1;
-					} else if (mon1.stat === mon2.stat) {
-						return 0;
-					} else {
-						return -1;
+				let monStat1, monStat2;
+				if (stat === 'bst') {
+					for (let monStats in mon1.baseStats) {
+						monStat1 += mon1.baseStats[monStats];
+						monStat2 += mon2.baseStats[monStats];
 					}
+				} else if (stat === 'weight') {
+					monStat1 = mon1.weightkg;
+					monStat2 = mon2.weightkg;
+				} else if (stat === 'height') {
+					monStat1 = mon1.heightm;
+					monStat2 = mon2.heightm;
+				} else if (stat === 'gen') {
+					monStat1 = mon1.gen;
+					monStat2 = mon2.gen;
 				} else {
-					return mon1.baseStats[stat] - mon2.baseStats[stat];
+					monStat1 = mon1.baseStats[stat];
+					monStat2 = mon2.baseStats[stat];
 				}
+				return monStat1 - monStat2;
 			})
 		}
 		let notShown = 0;
