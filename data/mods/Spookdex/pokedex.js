@@ -3396,7 +3396,7 @@ let BattlePokedex = {
 		num: 192,
 		species: "Sunflora",
 		types: ["Grass", "Fire"],
-		baseStats: {hp: 75, atk: 75, def: 55, spa: 105, spd: 85, spe: 30},
+		baseStats: {hp: 75, atk: 75, def: 95, spa: 105, spd: 85, spe: 30},
 		abilities: {0: "Chlorophyll", 1: "Solar Power", H: "Early Bird", S: "Harvest"},
 		heightm: 0.8,
 		weightkg: 8.5,
@@ -5762,7 +5762,7 @@ let BattlePokedex = {
 	shuppet: {
 		num: 353,
 		species: "Shuppet",
-		types: ["Ghost"],
+		types: ["Ghost", "Normal"],
 		baseStats: {hp: 44, atk: 75, def: 35, spa: 63, spd: 33, spe: 45},
 		abilities: {0: "Insomnia", 1: "Frisk", H: "Cursed Body", S: "Sharp Shadow"},
 		heightm: 0.6,
@@ -5774,7 +5774,7 @@ let BattlePokedex = {
 	banette: {
 		num: 354,
 		species: "Banette",
-		types: ["Ghost"],
+		types: ["Ghost", "Normal"],
 		baseStats: {hp: 64, atk: 115, def: 65, spa: 83, spd: 63, spe: 65},
 		abilities: {0: "Insomnia", 1: "Frisk", H: "Cursed Body", S: "Sharp Shadow"},
 		heightm: 1.1,
@@ -5791,7 +5791,7 @@ let BattlePokedex = {
 		baseSpecies: "Banette",
 		forme: "Mega",
 		formeLetter: "M",
-		types: ["Ghost"],
+		types: ["Ghost", "Dark"],
 		baseStats: {hp: 64, atk: 165, def: 75, spa: 93, spd: 83, spe: 75},
 		abilities: {0: "Prankster"},
 		heightm: 1.2,
@@ -8990,7 +8990,7 @@ let BattlePokedex = {
 	venipede: {
 		num: 543,
 		species: "Venipede",
-		types: ["Bug", "Poison"],
+		types: ["Bug", "Dragon"],
 		baseStats: {hp: 30, atk: 45, def: 59, spa: 30, spd: 39, spe: 57},
 		abilities: {0: "Poison Point", 1: "Swarm", H: "Speed Boost", S: "Battle Armor"},
 		heightm: 0.4,
@@ -9002,7 +9002,7 @@ let BattlePokedex = {
 	whirlipede: {
 		num: 544,
 		species: "Whirlipede",
-		types: ["Bug", "Poison"],
+		types: ["Bug", "Dragon"],
 		baseStats: {hp: 40, atk: 55, def: 99, spa: 40, spd: 79, spe: 47},
 		abilities: {0: "Poison Point", 1: "Swarm", H: "Speed Boost", S: "Battle Armor"},
 		heightm: 1.2,
@@ -9016,7 +9016,7 @@ let BattlePokedex = {
 	scolipede: {
 		num: 545,
 		species: "Scolipede",
-		types: ["Bug", "Poison"],
+		types: ["Bug", "Dragon"],
 		baseStats: {hp: 60, atk: 100, def: 89, spa: 55, spd: 69, spe: 112},
 		abilities: {0: "Poison Point", 1: "Swarm", H: "Speed Boost", S: "Battle Armor"},
 		heightm: 2.5,
