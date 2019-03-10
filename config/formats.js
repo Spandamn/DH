@@ -4263,7 +4263,7 @@ exports.Formats = [
 			if (!this.validateSet(set, teamHas).length) return [];
 			let ability = Dex.getAbility(set.ability);
 			let template = Dex.getTemplate(set.species);
-			if (!set.moves.includes(ability.id) && !set.moves.includes(ability.name) && !this.checkLearnset(ability.id, template, {
+			if (!set.moves.includes(ability.id) && !set.moves.includes(ability.name) && !this.checkLearnset(`move:${ability.id}`, template, {
 					set: set
 				})) {
 				template = Object.assign({}, template);
