@@ -817,6 +817,7 @@ function runMovesearch(target, cmd, canAll, message) {
 		allTypes[toId(i)] = i;
 	}
 	let showAll = false;
+	let order = null;
 	let lsetData = {};
 	let targetMon = '';
 	let randomOutput = 0;
@@ -883,6 +884,21 @@ function runMovesearch(target, cmd, canAll, message) {
 				showAll = true;
 				orGroup.skip = true;
 				continue;
+			}
+
+			if (target.substr(0, 3) === 'asc' || target.substr(0, 3) === 'des') {
+				if (parameters.length > 1) return {reply: `The parameter '${target.substr(0, 3)}' cannot have alternative parameters`};
+				let prop = target.split(' ')[1];
+				switch (toId(prop)) {
+				case 'basepower': prop = 'basePower'; break;
+				case 'bp': prop = 'basePower'; break;
+				case 'power': prop = 'basePower'; break;
+				case 'acc': prop = 'accuracy'; break;
+				}
+				if (!allProperties.includes(prop)) return {reply: `'${escapeHTML(target)}' did not contain a valid property.`};
+				order = `${target.substr(0, 3) === 'asc' ? '+' : '-'}${prop}`;
+				orGroup.skip = true;
+				break;
 			}
 
 			if (target === 'recovery') {
@@ -1251,6 +1267,14 @@ function runMovesearch(target, cmd, canAll, message) {
 	}
 	if (results.length > 1) {
 		results.sort();
+		if (order) {
+			let prop = order.substr(1);
+			let sort = order[0];
+			results.sort((a, b) => {
+				let move1 = mod.getMove(sort === '+' ? a : b), move2 = mod.getMove(sort === '+' ? b : a);
+				return move1[prop] - move2[prop];
+			});
+		}
 		let notShown = 0;
 		if (!showAll && results.length > RESULTS_MAX_LENGTH + 5) {
 			notShown = results.length - RESULTS_MAX_LENGTH;
