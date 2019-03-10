@@ -760,10 +760,10 @@ function runDexsearch(target, cmd, canAll, message) {
 		let sort = order[0];
 		results.sort((a, b) => {
 			let mon1 = mod.getTemplate(sort === '+' ? a : b), mon2 = mod.getTemplate(sort === '+' ? a : b);
-			if (!a.baseStats[stat]) {
-				return a[stat] - b[stat];
+			if (!mon1.baseStats[stat]) {
+				return mon1[stat] - mon1[stat];
 			} else {
-				return a.baseStats[stat] - b.baseStats[stat];
+				return mon1.baseStats[stat] - mon2.baseStats[stat];
 			}
 		})
 	}
