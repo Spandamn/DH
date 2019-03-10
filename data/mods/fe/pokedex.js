@@ -23942,4 +23942,234 @@ auroritarmega: {
         weightkg: 66,
      	  eggGroups: ["Amorphous"],
     },
+	    zalula: {
+        num: 7500594,
+        species: "Zalula",
+        types: ["Fairy", "Ghost"],
+        baseStats: {
+            hp: 130,
+            atk: 81,
+            def: 100,
+            spa: 98,
+            spd: 105,
+            spe: 73
+        },
+        abilities: {
+            0: "Shadow Scale"
+        },
+		  color: "Blue",
+        heightm: 2.4,
+        weightkg: 74.25,
+     	  eggGroups: ["Undiscovered"],
+    },
+	    lazugari: {
+        num: 7500595,
+        species: "Lazugari",
+        types: ["Water", "Psychic"],
+        baseStats: {
+            hp: 120,
+            atk: 75,
+            def: 120,
+            spa: 75,
+            spd: 120,
+            spe: 80
+        },
+        abilities: {
+            0: "Power Scale"
+        },
+		  color: "Blue",
+        heightm: 3,
+        weightkg: 122.25,
+     	  eggGroups: ["Undiscovered"],
+    },
+	    amooh: {
+        num: 7500596,
+        species: "Amo-Oh",
+        types: ["Poison", "Flying"],
+        baseStats: {
+            hp: 130,
+            atk: 112,
+            def: 105,
+            spa: 102,
+            spd: 122,
+            spe: 65
+        },
+        abilities: {
+            0: "Regenerator"
+        },
+		  color: "Red",
+        heightm: 2.2,
+        weightkg: 104.75,
+     	  eggGroups: ["Undiscovered"],
+    },
+	    celenitar: {
+        num: 7500597,
+        species: "Celenitar",
+        types: ["Grass", "Rock"],
+        baseStats: {
+            hp: 105,
+            atk: 120,
+            def: 115,
+            spa: 99,
+            spd: 100,
+            spe: 100
+        },
+        abilities: {
+            0: "Sand Spa"
+        },
+		  color: "Green",
+        heightm: 1.3,
+        weightkg: 103.5,
+     	  eggGroups: ["Undiscovered"],
+    },
+    celenitarmega: {
+        num: 7500597,
+        species: "Celenitar-Mega",
+        baseSpecies: "Celenitar",
+        forme: "Mega",
+        formeLetter: "M",
+        types: ["Grass", "Rock"],
+        baseStats: {
+            hp: 105,
+            atk: 150,
+            def: 155,
+            spa: 99,
+            spd: 120,
+            spe: 110
+        },
+        abilities: {
+            0: "Sand Stream"
+        },
+        heightm: 1.8,
+        weightkg: 156.5,
+        color: "Green",
+        eggGroups: ["Undiscovered"],
+    },
+	    perperioralola: {
+        num: 7500598,
+        species: "Perperior-Alola",
+        types: ["Dark", "Ground"],
+        baseStats: {
+            hp: 100,
+            atk: 110,
+            def: 105,
+            spa: 75,
+            spd: 70,
+            spe: 87
+        },
+        abilities: {
+            0: "Shocked"
+        },
+		  color: "Gray",
+        heightm: 1.75,
+        weightkg: 157.9,
+     	  eggGroups: ["Field"],
+    },
+	    helltank: {
+        num: 7500599,
+        species: "Helltank",
+        types: ["Ghost", "Normal"],
+		  gender: "N",
+        baseStats: {
+            hp: 84,
+            atk: 105,
+            def: 120,
+            spa: 63,
+            spd: 100,
+            spe: 70
+        },
+        abilities: {
+            0: "Buns of Steel"
+        },
+		  color: "Green",
+        heightm: 2.55,
+        weightkg: 142.75,
+     	  eggGroups: ["Undiscovered"],
+    },
+	    bastiosaur: {
+        num: 7500600,
+        species: "Bastiosaur",
+        types: ["Steel", "Poison"],
+        baseStats: {
+            hp: 80,
+            atk: 77,
+            def: 135,
+            spa: 83,
+            spd: 129,
+            spe: 65
+        },
+        abilities: {
+            0: "Meaty"
+        },
+		  color: "Green",
+        heightm: 1.65,
+        weightkg: 124.75,
+     	  eggGroups: ["Monster"],
+    },
+    bastiosaurmega: {
+        num: 7500600,
+        species: "Bastiosaur-Mega",
+        baseSpecies: "Bastiosaur",
+        forme: "Mega",
+        formeLetter: "M",
+        types: ["Steel", "Poison"],
+        baseStats: {
+            hp: 80,
+            atk: 95,
+            def: 175,
+            spa: 105,
+            spd: 149,
+            spe: 65
+        },
+        abilities: {
+            0: "Thick Fat"
+        },
+        heightm: 2.05,
+        weightkg: 180.25,
+        color: "Green",
+        eggGroups: ["Monster"],
+    },
+	    aggralugg: {
+        num: 7500601,
+        species: "Aggralugg",
+        types: ["Steel", "Ice"],
+        baseStats: {
+            hp: 97,
+            atk: 128,
+            def: 197,
+            spa: 67,
+            spd: 68,
+            spe: 54
+        },
+        abilities: {
+            0: "Sturdy"
+        },
+		  color: "Blue",
+        heightm: 2.05,
+        weightkg: 432.5,
+     	  eggGroups: ["Monster"],
+    },
+    aggraluggmega: {
+        num: 7500601,
+        species: "Aggralugg-Mega",
+        baseSpecies: "Aggralugg",
+        forme: "Mega",
+        formeLetter: "M",
+        types: ["Steel"],
+        baseStats: {
+            hp: 97,
+            atk: 158,
+            def: 247,
+            spa: 67,
+            spd: 88,
+            spe: 54
+        },
+        abilities: {
+            0: "Filter"
+        },
+        heightm: 2.15,
+        weightkg: 467.5,
+        color: "Blue",
+        eggGroups: ["Monster"],
+    },
 };
