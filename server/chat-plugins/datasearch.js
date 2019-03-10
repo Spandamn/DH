@@ -617,19 +617,6 @@ function runDexsearch(target, cmd, canAll, message) {
 	// Prioritize searches with the least alternatives.
 	const accumulateKeyCount = (count, searchData) => count + (typeof searchData === 'object' ? Object.keys(searchData).length : 0);
 	searches.sort((a, b) => Object.values(a).reduce(accumulateKeyCount, 0) - Object.values(b).reduce(accumulateKeyCount, 0));
-	if (order) {
-		let stat = order.substr(1);
-		let sort = order[0];
-		searches.sort((a, b) => {
-			if (!a.baseStats[stat]) {
-				if (sort === '+') return a[stat] - b[stat];
-				if (sort === '-') return b[stat] - a[stat];
-			} else {
-				if (sort === '+') return a.baseStats[stat] - b.baseStats[stat];
-				if (sort === '-') return b.baseStats[stat] - a.baseStats[stat];
-			}
-		})
-	}
 
 	let lsetData = {};
 	for (const alts of searches) {
@@ -766,6 +753,20 @@ function runDexsearch(target, cmd, canAll, message) {
 
 	if (randomOutput && randomOutput < results.length) {
 		results = Dex.shuffle(results).slice(0, randomOutput);
+	}
+
+	if (order) {
+		let stat = order.substr(1);
+		let sort = order[0];
+		results.sort((a, b) => {
+			if (!a.baseStats[stat]) {
+				if (sort === '+') return a[stat] - b[stat];
+				if (sort === '-') return b[stat] - a[stat];
+			} else {
+				if (sort === '+') return a.baseStats[stat] - b.baseStats[stat];
+				if (sort === '-') return b.baseStats[stat] - a.baseStats[stat];
+			}
+		})
 	}
 
 	let resultsStr = (message === "" ? message : `<span style="color:#999999;">${escapeHTML(message)}:</span><br />`);
