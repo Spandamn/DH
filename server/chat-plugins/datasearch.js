@@ -193,6 +193,7 @@ exports.commands = {
 		`Z-stat boosts must be preceded with 'zboosts ', e.g., 'zboosts accuracy' searches for all Status moves with Z-Effects that boost the user's accuracy.`,
 		`Moves that have a Z-Effect of fully restoring the user's health can be searched for with 'zrecovery'.`,
 		`Inequality ranges use the characters '>' and '<' though they behave as '≥' and '≤', e.g., 'bp > 100' searches for all moves equal to and greater than 100 base power.`,
+		`'asc' or 'des' followed by a move property will arrange the names in ascending or descending order of that property respectively, e.g., asc basepower will arrange moves in ascending order of their basepowers.`,
 		`Parameters can be excluded through the use of '!', e.g., !water type' excludes all Water-type moves.`,
 		`Valid flags are: authentic (bypasses substitute), bite, bullet, contact, defrost, powder, protect, pulse, punch, secondary, snatch, and sound.`,
 		`A search that includes '!protect' will show all moves that bypass protection.`,
