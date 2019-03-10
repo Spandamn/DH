@@ -448,7 +448,7 @@ function runDexsearch(target, cmd, canAll, message) {
 				}
 				order = `${target.substr(0, 3) === 'asc' ? '+' : '-'}${stat}`;
 				orGroup.skip = true;
-				break;
+				continue;
 			}
 
 			if (target.substr(0, 6) === 'random' && cmd === 'randpoke') {
