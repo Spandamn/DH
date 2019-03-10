@@ -755,22 +755,21 @@ function runDexsearch(target, cmd, canAll, message) {
 		results = Dex.shuffle(results).slice(0, randomOutput);
 	}
 
-	if (order) {
-		let stat = order.substr(1);
-		let sort = order[0];
-		results.sort((a, b) => {
-			let mon1 = mod.getTemplate(sort === '+' ? a : b), mon2 = mod.getTemplate(sort === '+' ? a : b);
-			if (!mon1.baseStats[stat]) {
-				return mon1[stat] - mon1[stat];
-			} else {
-				return mon1.baseStats[stat] - mon2.baseStats[stat];
-			}
-		})
-	}
-
 	let resultsStr = (message === "" ? message : `<span style="color:#999999;">${escapeHTML(message)}:</span><br />`);
 	if (results.length > 1) {
 		results.sort();
+		if (order) {
+			let stat = order.substr(1);
+			let sort = order[0];
+			results.sort((a, b) => {
+				let mon1 = mod.getTemplate(sort === '+' ? a : b), mon2 = mod.getTemplate(sort === '+' ? a : b);
+				if (!mon1.baseStats[stat]) {
+					return mon1[stat] - mon1[stat];
+				} else {
+					return mon1.baseStats[stat] - mon2.baseStats[stat];
+				}
+			})
+		}
 		let notShown = 0;
 		if (!showAll && results.length > RESULTS_MAX_LENGTH + 5) {
 			notShown = results.length - RESULTS_MAX_LENGTH;
