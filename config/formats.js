@@ -12,6 +12,20 @@ exports.Formats = [
 		column: 1,
 	},
 	{
+		name: "[Gen 7] 0v0",
+
+		mod: 'gen7',
+		team: 'randomCC',
+		ruleset: ['Pokemon', 'HP Percentage Mod', 'Cancel Mod'],
+		onBegin: function () {
+			this.sides.forEach(side => {
+				side.pokemon = [];
+				side.pokemonLeft = 0;
+			})
+			this.win(this.sides[this.random(2)]);
+		}
+	},
+	{
 		name: "[Gen 7] BH Battle Factory",
 
 		mod: 'gen7',
@@ -55,21 +69,6 @@ exports.Formats = [
 		mod: 'gen7',
 		team: 'randomCC',
 		ruleset: ['Pokemon', 'HP Percentage Mod', 'Cancel Mod'],
-	},
-	{
-		name: "[Gen 7] 0v0",
-		column: 1,
-
-		mod: 'gen7',
-		team: 'randomCC',
-		ruleset: ['Pokemon', 'HP Percentage Mod', 'Cancel Mod'],
-		onBegin: function () {
-			this.sides.forEach(side => {
-				side.pokemon = [];
-				side.pokemonLeft = 0;
-			})
-			this.win(this.sides[this.random(2)]);
-		}
 	},
 	/*{	//creds: Kris n me
 		name: "[Gen 7] Linked Randoms [WIP]",
