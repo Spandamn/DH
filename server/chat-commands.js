@@ -3047,15 +3047,9 @@ const commands = {
 				});
 				Chat.uncacheDir('./.sim-dist');
 				Chat.uncacheDir('./data');
-<<<<<<< HEAD
-				Chat.uncache('config/formats');
-				// reload sim/dex.js
-				global.Dex = require('../sim/dex');
-=======
 				Chat.uncache('./config/formats');
 				// reload .sim-dist/dex.js
 				global.Dex = require('../.sim-dist/dex');
->>>>>>> 5828a60663f9c40c1dda97ebb719b6e9a70a673d
 				// rebuild the formats list
 				delete Rooms.global.formatList;
 				// respawn validator processes

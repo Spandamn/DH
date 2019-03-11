@@ -151,14 +151,10 @@ TeamValidatorAsync.PM.spawn();
  * Start up the REPL server
  *********************************************************/
 
-<<<<<<< HEAD
-require('../lib/repl').start('app', cmd => eval(cmd));
+require('../.lib-dist/repl').Repl.start('app', cmd => eval(cmd));
 
 /*********************************************************
  * Github plugin
  *********************************************************/
 
 require('./github.js');
-=======
-require('../.lib-dist/repl').Repl.start('app', cmd => eval(cmd));
->>>>>>> 5828a60663f9c40c1dda97ebb719b6e9a70a673d
