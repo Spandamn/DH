@@ -283,7 +283,7 @@ function runDexsearch(target, cmd, canAll, message) {
 	let allEggGroups = {'amorphous': 'Amorphous', 'bug': 'Bug', 'ditto': 'Ditto', 'dragon': 'Dragon', 'fairy': 'Fairy', 'field': 'Field', 'flying': 'Flying', 'grass': 'Grass', 'humanlike': 'Human-Like', 'mineral': 'Mineral', 'monster': 'Monster', 'undiscovered': 'Undiscovered', 'water1': 'Water 1', 'water2': 'Water 2', 'water3': 'Water 3', __proto__: null};
 	let allStats = ['hp', 'atk', 'def', 'spa', 'spd', 'spe', 'bst', 'weight', 'height', 'gen'];
 	let showAll = false;
-	let orders = null;
+	let order = null;
 	let megaSearch = null;
 	let capSearch = null;
 	let randomOutput = 0;
@@ -440,8 +440,7 @@ function runDexsearch(target, cmd, canAll, message) {
 				case 'generation': stat = 'gen'; break;
 				}
 				if (!allStats.includes(stat)) return {reply: `'${escapeHTML(target)}' did not contain a valid stat.`};
-				if (!orders) orders = [];
-				orders.push(`${stat}${target.endsWith(' asc') ? '+' : '-'}`);
+				order = `${stat}${target.endsWith(' asc') ? '+' : '-'}`;
 				orGroup.skip = true;
 				break;
 			}
@@ -774,33 +773,31 @@ function runDexsearch(target, cmd, canAll, message) {
 	let resultsStr = (message === "" ? message : `<span style="color:#999999;">${escapeHTML(message)}:</span><br />`);
 	if (results.length > 1) {
 		results.sort();
-		if (orders) {
-			orders.forEach(order => {
-				let stat = order.substr(0, order.length - 1);
-				let sort = order[order.length - 1];
-				results.sort((a, b) => {
-					let mon1 = mod.getTemplate(sort === '+' ? a : b), mon2 = mod.getTemplate(sort === '+' ? b : a);
-					let monStat1, monStat2;
-					if (stat === 'bst') {
-						for (let monStats in mon1.baseStats) {
-							monStat1 += mon1.baseStats[monStats];
-							monStat2 += mon2.baseStats[monStats];
-						}
-					} else if (stat === 'weight') {
-						monStat1 = mon1.weightkg;
-						monStat2 = mon2.weightkg;
-					} else if (stat === 'height') {
-						monStat1 = mon1.heightm;
-						monStat2 = mon2.heightm;
-					} else if (stat === 'gen') {
-						monStat1 = mon1.gen;
-						monStat2 = mon2.gen;
-					} else {
-						monStat1 = mon1.baseStats[stat];
-						monStat2 = mon2.baseStats[stat];
+		if (order) {
+			let stat = order.substr(0, order.length - 1);
+			let sort = order[order.length - 1];
+			results.sort((a, b) => {
+				let mon1 = mod.getTemplate(sort === '+' ? a : b), mon2 = mod.getTemplate(sort === '+' ? b : a);
+				let monStat1, monStat2;
+				if (stat === 'bst') {
+					for (let monStats in mon1.baseStats) {
+						monStat1 += mon1.baseStats[monStats];
+						monStat2 += mon2.baseStats[monStats];
 					}
-					return monStat1 - monStat2;
-				});
+				} else if (stat === 'weight') {
+					monStat1 = mon1.weightkg;
+					monStat2 = mon2.weightkg;
+				} else if (stat === 'height') {
+					monStat1 = mon1.heightm;
+					monStat2 = mon2.heightm;
+				} else if (stat === 'gen') {
+					monStat1 = mon1.gen;
+					monStat2 = mon2.gen;
+				} else {
+					monStat1 = mon1.baseStats[stat];
+					monStat2 = mon2.baseStats[stat];
+				}
+				return monStat1 - monStat2;
 			});
 		}
 		let notShown = 0;
