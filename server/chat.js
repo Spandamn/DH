@@ -26,7 +26,7 @@ To reload chat commands:
 'use strict';
 /** @typedef {GlobalRoom | GameRoom | ChatRoom} Room */
 
-/** @typedef {(query: string[], user: User, connection: Connection) => (string | null | void)} PageHandler */
+/** @typedef {(this: PageContext, query: string[], user: User, connection: Connection) => (Promise<string | null | void> | string | null | void)} PageHandler */
 /** @typedef {{[k: string]: PageHandler | PageTable}} PageTable */
 
 /** @typedef {(this: CommandContext, target: string, room: ChatRoom | GameRoom, user: User, connection: Connection, cmd: string, message: string) => (void)} ChatHandler */
@@ -53,7 +53,10 @@ const MAX_PARSE_RECURSION = 10;
 const VALID_COMMAND_TOKENS = '/!';
 const BROADCAST_TOKEN = '!';
 
-const FS = require('../lib/fs');
+const TRANSLATION_DIRECTORY = 'translations/';
+
+/** @type {typeof import('../lib/fs').FS} */
+const FS = require(/** @type {any} */('../.lib-dist/fs')).FS;
 
 /** @type {(url: string) => Promise<{width: number, height: number}>} */
 // @ts-ignore ignoring until there is a ts typedef available for this module.
@@ -256,22 +259,252 @@ Chat.nicknamefilter = function (nickname, user) {
 };
 
 /*********************************************************
+ * Translations
+ *********************************************************/
+
+Chat.languages = new Map();
+Chat.translations = new Map();
+
+FS(TRANSLATION_DIRECTORY).readdir().then(files => {
+	for (let fname of files) {
+		if (!fname.endsWith('.json')) continue;
+
+		/**
+		 * @type {{name: string?, strings: {[k: string]: string}?}} content
+		 */
+		const content = require(`../${TRANSLATION_DIRECTORY}${fname}`);
+		const id = fname.slice(0, -5);
+
+		Chat.languages.set(id, content.name || "Unknown Language");
+		Chat.translations.set(id, new Map());
+
+		if (content.strings) {
+			for (const key in content.strings) {
+				/** @type {string[]} */
+				const keyLabels = [];
+				/** @type {string[]} */
+				const valLabels = [];
+				const newKey = key.replace(/\${.+?}/g, string => {
+					keyLabels.push(string);
+					return '${}';
+				}).replace(/\[TN: ?.+?\]/g, '');
+				const val = content.strings[key].replace(/\${.+?}/g, string => {
+					valLabels.push(string);
+					return '${}';
+				}).replace(/\[TN: ?.+?\]/g, '');
+				Chat.translations.get(id).set(newKey, [val, keyLabels, valLabels]);
+			}
+		}
+	}
+});
+
+/**
+ * @param {string?} language
+ * @param {TemplateStringsArray | string} strings
+ * @param {any[]} keys
+ */
+Chat.tr = function (language, strings, ...keys) {
+	if (!language) language = 'english';
+	language = toId(language);
+	if (!Chat.translations.has(language)) throw new Error(`Trying to translate to a nonexistent language: ${language}`);
+	if (!strings.length) {
+		// @ts-ignore no this isn't any type
+		return (function (strings, ...keys) {
+			Chat.tr(language, strings, ...keys);
+		});
+	}
+
+	// If strings is an array (normally the case), combine before translating.
+	let string = Array.isArray(strings) ? strings.join('${}') : strings;
+
+	const entry = Chat.translations.get(language).get(string);
+	let [translated, keyLabels, valLabels] = entry;
+	if (!translated) translated = string;
+
+	// Replace the gaps in the template string
+	if (keys.length) {
+		let reconstructed = '';
+
+		const left = keyLabels.slice();
+		for (let [i, str] of translated.split('${}').entries()) {
+			reconstructed += str;
+			if (keys[i]) {
+				let index = left.indexOf(valLabels[i]);
+				if (index < 0) {
+					// @ts-ignore why
+					index = left.findIndex(val => !!val);
+				}
+				if (index < 0) index = i;
+				reconstructed += keys[index];
+				left[index] = null;
+			}
+		}
+
+		translated = reconstructed;
+	}
+	return translated;
+};
+
+/*********************************************************
  * Parser
  *********************************************************/
 
-class CommandContext {
+class MessageContext {
+	/**
+	 * @param {User} user
+	 * @param {string?} [language]
+	 */
+	constructor(user, language = null) {
+		this.recursionDepth = 0;
+
+		this.user = user;
+		this.language = language;
+	}
+
+	/**
+	 * @param {string} target
+	 */
+	splitOne(target) {
+		let commaIndex = target.indexOf(',');
+		if (commaIndex < 0) {
+			return [target.trim(), ''];
+		}
+		return [target.substr(0, commaIndex).trim(), target.substr(commaIndex + 1).trim()];
+	}
+	/**
+	 * @param {string} text
+	 */
+	meansYes(text) {
+		switch (text.toLowerCase().trim()) {
+		case 'on': case 'enable': case 'yes': case 'true':
+			return true;
+		}
+		return false;
+	}
+	/**
+	 * @param {string} text
+	 */
+	meansNo(text) {
+		switch (text.toLowerCase().trim()) {
+		case 'off': case 'disable': case 'no': case 'false':
+			return true;
+		}
+		return false;
+	}
+
+	/**
+	 * @param {TemplateStringsArray | string} strings
+	 * @param {any[]} keys
+	 */
+	tr(strings, ...keys) {
+		return Chat.tr(this.language, strings, ...keys);
+	}
+}
+
+class PageContext extends MessageContext {
+	/**
+	 * @param {{pageid: string, user: User, connection: Connection, language?: string}} options
+	 */
+	constructor(options) {
+		super(options.user, options.language);
+
+		this.connection = options.connection;
+		this.room = Rooms('global');
+		this.pageid = options.pageid;
+
+		this.initialized = false;
+		this.title = 'Page';
+	}
+
+	/**
+	 * @param {string} permission
+	 * @param {string | User?} target
+	 * @param {BasicChatRoom?} room
+	 */
+	can(permission, target = null, room = null) {
+		if (!this.user.can(permission, target, room)) {
+			this.send(`<h2>Permission denied.</h2>`);
+			return false;
+		}
+		return true;
+	}
+
+	/**
+	 * @param {string?} [pageid]
+	 */
+	extractRoom(pageid) {
+		if (!pageid) pageid = this.pageid;
+		let parts = pageid.split('-');
+
+		// Since we assume pageids are all in the form of view-pagename-roomid
+		// if someone is calling this function, so this is the only case we cover (for now)
+		const room = Rooms(parts[2]);
+		if (!room) {
+			this.send(`<h2>Invalid room.</h2>`);
+			return false;
+		}
+
+		this.room = room;
+		return room.id;
+	}
+
+	/**
+	 * @param {string} content
+	 */
+	send(content) {
+		if (!content.startsWith('|deinit')) {
+			const roomid = this.room !== Rooms.global ? `[${this.room.id}] ` : '';
+			if (!this.initialized) {
+				content = `|init|html\n|title|${roomid}${this.title}\n|pagehtml|${content}`;
+				this.initialized = true;
+			} else {
+				content = `|title|${roomid}${this.title}\n|pagehtml|${content}`;
+			}
+		}
+		this.connection.send(`>${this.pageid}\n${content}`);
+	}
+
+	close() {
+		this.send('|deinit');
+	}
+
+	/**
+	 * @param {string?} [pageid]
+	 */
+	async resolve(pageid) {
+		if (pageid) this.pageid = pageid;
+
+		let parts = this.pageid.split('-');
+		/** @type {any} */
+		let handler = Chat.pages;
+		parts.shift();
+		while (handler) {
+			if (typeof handler === 'function') {
+				let res = await handler.bind(this)(parts, this.user, this.connection);
+				if (typeof res === 'string') {
+					this.send(res);
+					res = undefined;
+				}
+				return res;
+			}
+			handler = handler[parts.shift() || 'default'];
+		}
+	}
+}
+
+class CommandContext extends MessageContext {
 	/**
 	 * @param {{message: string, room: Room, user: User, connection: Connection, pmTarget?: User, cmd?: string, cmdToken?: string, target?: string, fullCmd?: string}} options
 	 */
 	constructor(options) {
+		super(options.user, options.room && options.room.language ? options.room.language : options.user.language);
+
 		this.message = options.message || ``;
-		this.recursionDepth = 0;
 
 		// message context
-		this.room = options.room;
-		this.user = options.user;
-		this.connection = options.connection;
 		this.pmTarget = options.pmTarget;
+		this.room = options.room;
+		this.connection = options.connection;
 
 		// command context
 		this.cmd = options.cmd || '';
@@ -826,26 +1059,6 @@ class CommandContext {
 		return true;
 	}
 	/**
-	 * @param {string} text
-	 */
-	meansYes(text) {
-		switch (text.toLowerCase().trim()) {
-		case 'on': case 'enable': case 'yes': case 'true':
-			return true;
-		}
-		return false;
-	}
-	/**
-	 * @param {string} text
-	 */
-	meansNo(text) {
-		switch (text.toLowerCase().trim()) {
-		case 'off': case 'disable': case 'no': case 'false':
-			return true;
-		}
-		return false;
-	}
-	/**
 	 * @param {string?} message
 	 * @param {GameRoom | ChatRoom?} room
 	 * @param {User?} targetUser
@@ -1139,16 +1352,7 @@ class CommandContext {
 		this.splitTarget(target, exactName);
 		return this.targetUser;
 	}
-	/**
-	 * @param {string} target
-	 */
-	splitOne(target) {
-		let commaIndex = target.indexOf(',');
-		if (commaIndex < 0) {
-			return [target.trim(), ''];
-		}
-		return [target.substr(0, commaIndex).trim(), target.substr(commaIndex + 1).trim()];
-	}
+
 	/**
 	 * Given a message in the form "USERNAME" or "USERNAME, MORE", splits
 	 * it apart:
@@ -1176,6 +1380,8 @@ class CommandContext {
 		return rest;
 	}
 }
+Chat.MessageContext = MessageContext;
+Chat.PageContext = PageContext;
 Chat.CommandContext = CommandContext;
 
 /**
@@ -1532,10 +1738,13 @@ Chat.getDataPokemonHTML = function (template, gen = 7, tier = '') {
 		} else {
 			buf += '<span class="col abilitycol">' + template.abilities['0'] + '</span>';
 		}
-		if (template.abilities['S']) {
-			buf += '<span class="col twoabilitycol' + (template.unreleasedHidden ? ' unreleasedhacol' : '') + '"><em>' + template.abilities['H'] + '<br />' + template.abilities['S'] + '</em></span>';
+		if (template.abilities['H'] && template.abilities['S']) {
+			buf += '<span class="col twoabilitycol' + (template.unreleasedHidden ? ' unreleasedhacol' : '') + '"><em>' + template.abilities['H'] + '<br />(' + template.abilities['S'] + ')</em></span>';
 		} else if (template.abilities['H']) {
 			buf += '<span class="col abilitycol' + (template.unreleasedHidden ? ' unreleasedhacol' : '') + '"><em>' + template.abilities['H'] + '</em></span>';
+		} else if (template.abilities['S']) {
+			// special case for Zygarde
+			buf += '<span class="col abilitycol"><em>(' + template.abilities['S'] + ')</em></span>';
 		} else {
 			buf += '<span class="col abilitycol"></span>';
 		}
@@ -1721,4 +1930,13 @@ Chat.namefilterwhitelist = new Map();
 Chat.registerMonitor = function (id, entry) {
 	if (!Chat.filterWords[id]) Chat.filterWords[id] = [];
 	Chat.monitors[id] = entry;
+};
+
+/**
+ * @param {string} pageid
+ * @param {User} user
+ * @param {Connection} connection
+ */
+Chat.resolvePage = function (pageid, user, connection) {
+	return (new PageContext({pageid: pageid, user: user, connection: connection})).resolve();
 };

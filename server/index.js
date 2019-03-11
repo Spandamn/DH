@@ -20,7 +20,7 @@
  *   rooms.js. There's also a global room which every user is in, and
  *   handles miscellaneous things like welcoming the user.
  *
- * Dex - from sim/dex.js
+ * Dex - from .sim-dist/dex.js
  *
  *   Handles getting data about Pokemon, items, etc.
  *
@@ -55,25 +55,17 @@ try {
 	throw new Error("We require Node.js version 10 or later; you're using " + process.version);
 }
 try {
-	require.resolve('sockjs');
+	require.resolve('../.sim-dist/index');
 } catch (e) {
-	throw new Error("Dependencies are unmet; run node pokemon-showdown before launching Pokemon Showdown again.");
+	throw new Error("Dependencies are unmet; run `node build` before launching Pokemon Showdown again.");
 }
 
-const FS = require('../lib/fs');
+const FS = require('../.lib-dist/fs').FS;
 
 /*********************************************************
  * Load configuration
  *********************************************************/
 
-try {
-	// @ts-ignore This file doesn't exist on the repository, so Travis checks fail if this isn't ignored
-	require.resolve('../config/config');
-} catch (err) {
-	if (err.code !== 'MODULE_NOT_FOUND') throw err; // should never happen
-	throw new Error('config.js does not exist; run node pokemon-showdown to set up the default config file before launching Pokemon Showdown again.');
-}
-// @ts-ignore This file doesn't exist on the repository, so Travis checks fail if this isn't ignored
 global.Config = require('../config/config');
 
 global.Monitor = require('./monitor');
@@ -96,18 +88,18 @@ if (Config.watchconfig) {
  * Set up most of our globals
  *********************************************************/
 
-global.Dex = require('../sim/dex');
+global.Dex = require('../.sim-dist/dex');
 global.toId = Dex.getId;
 
 global.LoginServer = require('./loginserver');
 
 global.Ladders = require('./ladders');
 
+global.Chat = require('./chat');
+
 global.Users = require('./users');
 
 global.Punishments = require('./punishments');
-
-global.Chat = require('./chat');
 
 global.Rooms = require('./rooms');
 
@@ -159,6 +151,7 @@ TeamValidatorAsync.PM.spawn();
  * Start up the REPL server
  *********************************************************/
 
+<<<<<<< HEAD
 require('../lib/repl').start('app', cmd => eval(cmd));
 
 /*********************************************************
@@ -166,3 +159,6 @@ require('../lib/repl').start('app', cmd => eval(cmd));
  *********************************************************/
 
 require('./github.js');
+=======
+require('../.lib-dist/repl').Repl.start('app', cmd => eval(cmd));
+>>>>>>> 5828a60663f9c40c1dda97ebb719b6e9a70a673d
