@@ -6738,6 +6738,9 @@ let BattleItems = {
 		onModifyWeight: function (weight) {
 			return weight * 2;
 		},
+		onStart: function (pokemon) {
+			pokemon.addVolatile('smackdown')
+		},
 		num: 272,
 		gen: 4,
 		desc: "The holder's weight is doubled. The holder is also grounded.",
@@ -6755,6 +6758,11 @@ let BattleItems = {
 		},
 		onModifyWeight: function (weight) {
 			return weight / 2;
+		},
+		onDamage: function (damage, target, source, effect) {
+			if (effect && effect.id === 'stealthrock' || effect.id === 'spikes' || effect.id === 'toxicspikes' || effect.id === 'stickyweb') {
+				return false;
+			}
 		},
 		num: 272,
 		gen: 4,
