@@ -18,10 +18,6 @@ exports.Formats = [
 		team: 'randomCC',
 		ruleset: ['Pokemon', 'HP Percentage Mod', 'Cancel Mod'],
 		onBegin: function () {
-			this.sides.forEach(side => {
-				side.pokemon = [];
-				side.pokemonLeft = 0;
-			})
 			this.win(this.sides[this.random(2)]);
 		}
 	},
