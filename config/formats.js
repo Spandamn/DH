@@ -8037,8 +8037,29 @@ exports.Formats = [
             'Flash', 'Kinesis', 'Leaf Tornado', 'Mirror Shot', 'Mud Bomb', 'Mud-Slap', 'Muddy Water', 'Night Daze', 'Octazooka', 'Sand Attack', 'Smokescreen'
         ],
     },
-    {
+	{
         name: "[Gen 5] 1v1",
+        desc: [
+            "Bring one Pok&eacute;mon and battle with it.",
+            "&bullet; <a href=\"http://www.smogon.com/forums/threads/gen-v-1-vs-1-metagame.3483807/\">BW 1v1</a>"
+        ],
+ 
+        mod: 'gen5',
+        teamLength: {
+            validate: [1, 3],
+            battle: 1,
+        },
+        ruleset: ['Pokemon', 'Nickname Clause', 'Moody Clause', 'OHKO Clause', 'Evasion Moves Clause', 'Swagger Clause', 'Endless Battle Clause', 'HP Percentage Mod', 'Cancel Mod'],
+        banlist: [
+            'Illegal', 'Unreleased',
+            'Arceus', 'Blaziken', 'Darkrai', 'Deoxys-A', 'Deoxys-Base', 'Dialga', 'Giratina', 'Giratina-O', 'Groudon', 'Ho-Oh', 'Kyurem-W', 'Lugia', 'Mewtwo', 'Palkia', 'Rayquaza', 'Reshiram', 'Shaymin-S', 'Zekrom',
+            'Perish Song',
+            'Chansey + Charm + Seismic Toss',
+            'Focus Sash', 'Soul Dew'
+        ],
+    },
+    {
+        name: "[Gen 5] 1v1 [No Preview]",
         desc: [
             "Bring one Pok&eacute;mon and battle with it.",
             "&bullet; <a href=\"http://www.smogon.com/forums/threads/gen-v-1-vs-1-metagame.3483807/\">BW 1v1</a>"
@@ -8056,7 +8077,28 @@ exports.Formats = [
             'Perish Song',
             'Chansey + Charm + Seismic Toss',
             'Focus Sash', 'Soul Dew'
+       ],
+    },
+	{
+        name: "[Gen 4] 1v1",
+        desc: [
+            "Bring one Pok&eacute;mon and battle with it.",
+            "&bullet; <a href=\"http://www.smogon.com/forums/threads/gen-v-1-vs-1-metagame.3483807/\">BW 1v1</a>"
         ],
+ 
+        mod: 'gen4',
+        teamLength: {
+            validate: [1, 3],
+            battle: 1,
+        },
+        ruleset: ['Pokemon', 'Nickname Clause', 'Moody Clause', 'OHKO Clause', 'Evasion Moves Clause', 'Swagger Clause', 'Endless Battle Clause', 'HP Percentage Mod', 'Cancel Mod'],
+        /*banlist: [
+            'Illegal', 'Unreleased',
+            'Arceus', 'Blaziken', 'Darkrai', 'Deoxys-A', 'Deoxys-Base', 'Dialga', 'Giratina', 'Giratina-O', 'Groudon', 'Ho-Oh', 'Kyurem-W', 'Lugia', 'Mewtwo', 'Palkia', 'Rayquaza', 'Reshiram', 'Shaymin-S', 'Zekrom',
+            'Perish Song',
+            'Chansey + Charm + Seismic Toss',
+            'Focus Sash', 'Soul Dew'
+        ],*/
     },
 	{
 		name: "[Gen 7] 1v1 Linked",
