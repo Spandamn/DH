@@ -13067,7 +13067,7 @@ exports.BattleAbilities = {
 		},
 		isUnbreakable: true,
 		id: "shadowscale",
-		name: "Shadowscale",
+		name: "Shadow Scale",
 	},
 	"naturalcure": {
 		shortDesc: "This Pokemon has its major status condition cured when it switches out.",
