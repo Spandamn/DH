@@ -2778,7 +2778,7 @@ exports.BattleAbilities = {
 		name: "Champion\'s Spirit",
 	},
 	"beastsfocus": {
-		shortDesc: "If Pokémon would be flinched, buffs highest non-HP stat instead.",
+		shortDesc: "If this Pokemon would be flinched, buffs highest non-HP stat instead.",
 		onFlinch: function(pokemon) {
 				let statName = 'atk';
 				let bestStat = 0;
@@ -7180,25 +7180,6 @@ exports.BattleAbilities = {
 		id: "strikeandpass",
 		name: "Strike and Pass",
 	},
-	"beastsfocus": {
-		shortDesc: "If PokÃ©mon would be flinched, buffs highest non-HP stat by 1 instead.",
-		onFlinch: function(target, source, effect) {
-			if (effect && effect.effectType === 'Move') {
-				let stat = 'atk';
-				let bestStat = 0;
-				for (let i in target.stats) {
-					if (target.stats[i] > bestStat) {
-						stat = i;
-						bestStat = target.stats[i];
-					}
-					this.boost({[stat]: 1}, source);
-				}
-         	return false;
-         }
-		},
-		id: "beastsfocus",
-		name: "Beasts Focus",
-	},
 	"poisonveil": {
 		shortDesc: "Can't have stats lowered nor can be statused; Poison is inflicted on whoever tries to inflict either on the holder.",
 		onAfterSetStatus: function (status, target, source, effect) {
@@ -7765,11 +7746,11 @@ exports.BattleAbilities = {
 				for (s in source.storedStats) {
 					if (source.storedStats[s] > bestStat) {
 						statalpha = s;
-						bestStat = source.stats[s];
+						bestStat = source.storedStats[s];
 					}
 					if (source.storedStats[s] < worstStat) {
 						statbeta = s;
-						worstStat = source.stats[s];
+						worstStat = source.storedStats[s];
 					}
 				}
             if (bestStat !== worstStat){
@@ -9427,15 +9408,17 @@ exports.BattleAbilities = {
 		},
 		onSourceFaint: function (target, source, effect) {
 			if (effect && effect.effectType === 'Move' && target.activeTurns < source.activeTurns) {
-				let stat = 'atk';
+				let statName = 'atk';
 				let bestStat = 0;
-				for (let i in source.stats) {
-					if (source.stats[i] > bestStat) {
-						stat = i;
-						bestStat = source.stats[i];
+				/** @type {StatNameExceptHP} */
+				let s;
+				for (s in source.storedStats) {
+					if (source.storedStats[s] > bestStat) {
+						statName = s;
+						bestStat = source.storedStats[s];
 					}
 				}
-				this.boost({[stat]: 1}, source);
+				this.boost({[statName]: 1}, source);
 			}
 		},
 		id: "noimmigrants",
@@ -10015,11 +9998,11 @@ exports.BattleAbilities = {
 				else if (pokemon.getNature().minus === 'spe'){
 				    spemod = 0.9;
 				}
-				pokemon.stats['atk'] = Math.floor((Math.floor(((2*warnBp+pokemon.set.ivs['atk']+pokemon.set.evs['atk']/4)*100)/pokemon.level + 5))*atkmod);
-				pokemon.stats['def'] = Math.floor((Math.floor(((2*warnBp+pokemon.set.ivs['def']+pokemon.set.evs['def']/4)*100)/pokemon.level + 5))*defmod);
-				pokemon.stats['spa'] = Math.floor((Math.floor(((2*warnBp+pokemon.set.ivs['spa']+pokemon.set.evs['spa']/4)*100)/pokemon.level + 5))*spamod);
-				pokemon.stats['spd'] = Math.floor((Math.floor(((2*warnBp+pokemon.set.ivs['spd']+pokemon.set.evs['spd']/4)*100)/pokemon.level + 5))*spdmod);
-				pokemon.stats['spe'] = Math.floor((Math.floor(((2*warnBp+pokemon.set.ivs['spe']+pokemon.set.evs['spe']/4)*100)/pokemon.level + 5))*spemod);
+				pokemon.storedStats['atk'] = Math.floor((Math.floor(((2*warnBp+pokemon.set.ivs['atk']+pokemon.set.evs['atk']/4)*100)/pokemon.level + 5))*atkmod);
+				pokemon.storedStats['def'] = Math.floor((Math.floor(((2*warnBp+pokemon.set.ivs['def']+pokemon.set.evs['def']/4)*100)/pokemon.level + 5))*defmod);
+				pokemon.storedStats['spa'] = Math.floor((Math.floor(((2*warnBp+pokemon.set.ivs['spa']+pokemon.set.evs['spa']/4)*100)/pokemon.level + 5))*spamod);
+				pokemon.storedStats['spd'] = Math.floor((Math.floor(((2*warnBp+pokemon.set.ivs['spd']+pokemon.set.evs['spd']/4)*100)/pokemon.level + 5))*spdmod);
+				pokemon.storedStats['spe'] = Math.floor((Math.floor(((2*warnBp+pokemon.set.ivs['spe']+pokemon.set.evs['spe']/4)*100)/pokemon.level + 5))*spemod);
 			}
 		},
 		id: "movestat",
