@@ -8063,7 +8063,7 @@ exports.Formats = [
             validate: [1, 3],
             battle: 1,
         },
-        ruleset: ['Pokemon', 'Nickname Clause', 'Moody Clause', 'OHKO Clause', 'Evasion Moves Clause', 'Swagger Clause', 'Endless Battle Clause', 'HP Percentage Mod', 'Cancel Mod'],
+        ruleset: ['Team Preview', 'Pokemon', 'Nickname Clause', 'Moody Clause', 'OHKO Clause', 'Evasion Moves Clause', 'Swagger Clause', 'Endless Battle Clause', 'HP Percentage Mod', 'Cancel Mod'],
         banlist: [
             'Illegal', 'Unreleased',
             'Arceus', 'Blaziken', 'Darkrai', 'Deoxys-A', 'Deoxys-Base', 'Dialga', 'Giratina', 'Giratina-O', 'Groudon', 'Ho-Oh', 'Kyurem-W', 'Lugia', 'Mewtwo', 'Palkia', 'Rayquaza', 'Reshiram', 'Shaymin-S', 'Zekrom',
@@ -8105,7 +8105,7 @@ exports.Formats = [
             validate: [1, 3],
             battle: 1,
         },
-        ruleset: ['Pokemon', 'Nickname Clause', 'Moody Clause', 'OHKO Clause', 'Evasion Moves Clause', 'Swagger Clause', 'Endless Battle Clause', 'HP Percentage Mod', 'Cancel Mod'],
+        ruleset: ['Team Preview', 'Pokemon', 'Nickname Clause', 'Moody Clause', 'OHKO Clause', 'Evasion Moves Clause', 'Swagger Clause', 'Endless Battle Clause', 'HP Percentage Mod', 'Cancel Mod'],
         /*banlist: [
             'Illegal', 'Unreleased',
             'Arceus', 'Blaziken', 'Darkrai', 'Deoxys-A', 'Deoxys-Base', 'Dialga', 'Giratina', 'Giratina-O', 'Groudon', 'Ho-Oh', 'Kyurem-W', 'Lugia', 'Mewtwo', 'Palkia', 'Rayquaza', 'Reshiram', 'Shaymin-S', 'Zekrom',
