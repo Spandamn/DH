@@ -116,7 +116,7 @@ exports.BattlePokedex = {
 	rotomfan: {
 		inherit: true,
 		types: ["Electric", "Steel"],
-		abilities: {0: "Levitate", H: "Battery"
+		abilities: {0: "Levitate", H: "Battery"},
 	},
 	rotommow: {
 		inherit: true,
