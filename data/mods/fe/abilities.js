@@ -2779,16 +2779,18 @@ exports.BattleAbilities = {
 	},
 	"beastsfocus": {
 		shortDesc: "If Pokémon would be flinched, buffs highest non-HP stat instead.",
-		onFlinch: function(target, source, effect) {
-				let stat = 'atk';
+		onFlinch: function(pokemon) {
+				let statName = 'atk';
 				let bestStat = 0;
-				for (let i in target.stats) {
-					if (target.stats[i] > bestStat) {
-						stat = i;
-						bestStat = target.stats[i];
+				/** @type {StatNameExceptHP} */
+				let s;
+				for (s in pokemon.storedStats) {
+					if (pokemon.storedStats[s] > bestStat) {
+						statName = s;
+						bestStat = pokemon.storedStats[s];
 					}
 				}
-				this.boost({[stat]: 1}, target);
+				this.boost({[statName]: 1}, pokemon);
 				return false;
 		},
 		id: "beastsfocus",
@@ -3811,18 +3813,20 @@ exports.BattleAbilities = {
 	},
 	"compactboost": {
 		desc: "Upon knocking out a foe, boost Defense by two stages and highest non-HP, non-Defense stat by one stage.",
-		shortDesc: "If it lands a KO, +2 to Defense and +1 to other most proficient stat.",
+		shortDesc: "If this Pokemon lands a KO, +2 to Defense and +1 to other most proficient stat.",
 		onSourceFaint: function (target, source, effect) {
 			if (effect && effect.effectType === 'Move') {
-				let stat = 'atk';
+				let statName = 'atk';
 				let bestStat = 0;
-				for (let i in source.stats) {
-					if (source.stats[i] > bestStat && i !== 'def') {
-						stat = i;
-						bestStat = source.stats[i];
+				/** @type {StatNameExceptHP} */
+				let s;
+				for (s in source.storedStats) {
+					if (source.storedStats[s] > bestStat && s !== 'def') {
+						statName = s;
+						bestStat = source.storedStats[s];
 					}
 				}
-				this.boost({[stat]: 1, def: 2}, source);
+				this.boost({[statName]: 1, def: 2}, source);
 			}
 		},
 		id: "compactboost",
@@ -5457,49 +5461,50 @@ exports.BattleAbilities = {
 		name: "Ashes to Ashes",
 	},
 	"beastbarbs": {
-		shortDesc: "When hit by direct contact,the Pokémon's highest non-HP stat is boosted by one stage.",
+		shortDesc: "When hit by direct contact, the Pokémon's highest non-HP stat is boosted by one stage.",
 		onAfterDamageOrder: 1,
 		onAfterDamage: function(damage, target, source, move) {
 			if (move && move.flags['contact']) {
-				let stat = 'atk';
+				let statName = 'atk';
 				let bestStat = 0;
-				for (let i in target.stats) {
-					if (target.stats[i] > bestStat) {
-						stat = i;
-						bestStat = target.stats[i];
+				/** @type {StatNameExceptHP} */
+				let s;
+				for (s in target.storedStats) {
+					if (target.storedStats[s] > bestStat) {
+						statName = s;
+						bestStat = target.storedStats[s];
 					}
 				}
-				this.boost({[stat]: 1}, target);
+				this.boost({[statName]: 1}, target);
 			}
 		},
 		id: "beastbarbs",
 		name: "Beast Barbs",
 	},
 	"subdue": {
-        shortDesc: "Lowers the opponent's highest stat by one, and boosts that same stat by one on yourself upon switch-in.",
+        shortDesc: "Upon switch-in, -1 to each opponent's higher stat and +1 to said stat on this Pokemon.",
         onStart: function (pokemon) {
             let activated = false;
             for (const target of pokemon.side.foe.active) {
-                let stat = 'atk';
-                let bestStat = 0;
-                for (let i in target.stats) {
-                    if (target.stats[i] > bestStat) {
-                        stat = i;
-                        bestStat = target.stats[i];
-                    }
-                }
                 if (!target || !this.isAdjacent(target, pokemon)) continue;
                 if (!activated) {
-                   if(pokemon.ability === "subdue") {
- 								this.add('-ability', pokemon, 'Subdue', 'boost');
-							}
                     activated = true;
                 }
                 if (target.volatiles['substitute']) {
                     this.add('-immune', target, '[msg]');
                 } else {
-                    this.boost({[stat]: -1}, target, pokemon);
-                    this.boost({[stat]: 1}, pokemon);
+							let statName = 'atk';
+							let bestStat = 0;
+							/** @type {StatNameExceptHP} */
+							let s;
+							for (s in target.storedStats) {
+								if (target.storedStats[s] > bestStat) {
+									statName = s;
+									bestStat = target.storedStats[s];
+								}
+							}
+                     this.boost({[statName]: -1}, target);
+							this.boost({[statName]: 1}, pokemon);
                 }
             }
         },
@@ -5779,76 +5784,87 @@ exports.BattleAbilities = {
 		name: "Pixie Absorb",
 	},
 	"peerpressure": {
-		shortDesc: "The opponent's highest non-HP stat is halved.",
+		shortDesc: "The opponent's highest non-HP stat is halved. This Pokemon uses 2PP per move.",
+		//TODO: I had to go when fixing all this. 
 		onStart: function (pokemon) {
 			this.add('-ability', pokemon, 'Peer Pressure');
 		},
 		onFoeModifyAtkPriority: 5,
 		onFoeModifyAtk: function(atk, pokemon) {
-			let stat = 'atk';
-			let bestStat = 0;
-			for (let i in pokemon.stats) {
-				if (pokemon.stats[i] > bestStat) {
-					stat = i;
-					bestStat = pokemon.stats[i];
+				let statName = 'atk';
+				let bestStat = 0;
+				/** @type {StatNameExceptHP} */
+				let s;
+				for (s in pokemon.storedStats) {
+					if (pokemon.storedStats[s] > bestStat) {
+						statName = s;
+						bestStat = pokemon.storedStats[s];
+					}
 				}
-			}
-			if (stat === 'atk' && !pokemon.hasAbility('hardbody')) {     
+			if (statName === 'atk' && !pokemon.hasAbility('hardbody')) {     
           return this.chainModify(0.5);
 			}
 		},
 		onFoeModifyDefPriority: 6,
 		onFoeModifyDef: function(def, pokemon) {
-			let stat = 'atk';
-			let bestStat = 0;
-			for (let i in pokemon.stats) {
-				if (pokemon.stats[i] > bestStat) {
-					stat = i;
-					bestStat = pokemon.stats[i];
+				let statName = 'atk';
+				let bestStat = 0;
+				/** @type {StatNameExceptHP} */
+				let s;
+				for (s in pokemon.storedStats) {
+					if (pokemon.storedStats[s] > bestStat) {
+						statName = s;
+						bestStat = pokemon.storedStats[s];
+					}
 				}
-			}
-			if (stat === 'def' && !pokemon.hasAbility('hardbody')) {
+			if (statName === 'def' && !pokemon.hasAbility('hardbody')) {
 				return this.chainModify(0.5);
 			}
 		},
 		onFoeModifySpAPriority: 5,
 		onFoeModifySpA: function(spa, pokemon) {
-			let stat = 'atk';
-			let bestStat = 0;
-			for (let i in pokemon.stats) {
-				if (pokemon.stats[i] > bestStat) {
-					stat = i;
-					bestStat = pokemon.stats[i];
+				let statName = 'atk';
+				let bestStat = 0;
+				/** @type {StatNameExceptHP} */
+				let s;
+				for (s in pokemon.storedStats) {
+					if (pokemon.storedStats[s] > bestStat) {
+						statName = s;
+						bestStat = pokemon.storedStats[s];
+					}
 				}
-			}
-			if (stat === 'spa' && !pokemon.hasAbility('hardbody')) {
+			if (statName === 'spa' && !pokemon.hasAbility('hardbody')) {
 				return this.chainModify(0.5);
 			}
 		},
 		onFoeModifySpDPriority: 5,
 		onFoeModifySpD: function(spd, pokemon) {
-			let stat = 'atk';
-			let bestStat = 0;
-			for (let i in pokemon.stats) {
-				if (pokemon.stats[i] > bestStat) {
-					stat = i;
-					bestStat = pokemon.stats[i];
+				let statName = 'atk';
+				let bestStat = 0;
+				/** @type {StatNameExceptHP} */
+				let s;
+				for (s in pokemon.storedStats) {
+					if (pokemon.storedStats[s] > bestStat) {
+						statName = s;
+						bestStat = pokemon.storedStats[s];
+					}
 				}
-			}
-			if (stat === 'spd' && !pokemon.hasAbility('hardbody')) {
+			if (statName === 'spd' && !pokemon.hasAbility('hardbody')) {
 				return this.chainModify(0.5);
 			}
 		},
 		onFoeModifySpe: function(spe, pokemon) {
-			let stat = 'atk';
-			let bestStat = 0;
-			for (let i in pokemon.stats) {
-				if (pokemon.stats[i] > bestStat) {
-					stat = i;
-					bestStat = pokemon.stats[i];
+				let statName = 'atk';
+				let bestStat = 0;
+				/** @type {StatNameExceptHP} */
+				let s;
+				for (s in pokemon.storedStats) {
+					if (pokemon.storedStats[s] > bestStat) {
+						statName = s;
+						bestStat = pokemon.storedStats[s];
+					}
 				}
-			}
-			if (stat === 'spe' && !pokemon.hasAbility('hardbody')) {
+			if (statName === 'spe' && !pokemon.hasAbility('hardbody')) {
 				return this.chainModify(0.5);
             }
 		},
@@ -5959,15 +5975,16 @@ exports.BattleAbilities = {
 		onSourceFaint: function (target, source, effect) {
 			if (effect && effect.effectType === 'Move') {
 				if (source.hp === source.maxhp){
-					let stat = 'atk';
-					let bestStat = 0;
-					for (let i in source.stats) {
-						if (source.stats[i] > bestStat) {
-							stat = i;
-							bestStat = source.stats[i];
-						}
+				let statName = 'atk';
+				let bestStat = 0;
+				/** @type {StatNameExceptHP} */
+				let s;
+				for (s in source.storedStats) {
+					if (source.storedStats[s] > bestStat) {
+						statName = s;
+						bestStat = source.storedStats[s];
 					}
-					this.boost({[stat]: 1}, source);
+				}
 				} else {
 					this.heal(source.maxhp / 3, source);
 				}
@@ -6013,36 +6030,37 @@ exports.BattleAbilities = {
 		name: "Foundation",
 	},
 	"barbsboost": {
-		shortDesc: "When defeating an opponent or when touched by a contact move, boost the user's highest non-HP stat by one stage. An attacker loses 1/8 HP when using a contact move on this Pokémon.",
+		shortDesc: "When defeating an opponent or when touched by a contact move, boost this Pokemon's highest stat by one stage. An attacker loses 1/8 HP when using a contact move on this Pokémon.",
 		onAfterDamageOrder: 1,
-		onAfterDamage: function (damage, pokemon, source, move) {
-			for (const target of pokemon.side.foe.active) {
-				if (!target || target.fainted) continue;
-			let stat = 'atk';
-				let bestStat = 0;
-				for (let i in source.stats) {
-					if (source.stats[i] > bestStat) {
-						stat = i;
-						bestStat = source.stats[i];
+		onAfterDamage: function (damage, target, source, move) {
+				if (source && target !== source && move && move.flags['contact']) {
+					this.damage(source.maxhp / 8, source, target);
+					let statName = 'atk';
+					let bestStat = 0;
+					/** @type {StatNameExceptHP} */
+					let s;
+					for (s in target.storedStats) {
+						if (target.storedStats[s] > bestStat) {
+							statName = s;
+							bestStat = target.storedStats[s];
+						}
 					}
+					this.boost({[statName]: 1}, target);
 				}
-				if (target && target !== source && move && move.flags['contact']) {
-					this.damage(target.maxhp / 8, target, source);
-					this.boost({[stat]: 1}, source);
-				}
-			}
 		},
 		onSourceFaint: function (target, source, effect) {
 			if (effect && effect.effectType === 'Move') {
-				let stat = 'atk';
+				let statName = 'atk';
 				let bestStat = 0;
-				for (let i in source.stats) {
-					if (source.stats[i] > bestStat) {
-						stat = i;
-						bestStat = source.stats[i];
+				/** @type {StatNameExceptHP} */
+				let s;
+				for (s in source.storedStats) {
+					if (source.storedStats[s] > bestStat) {
+						statName = s;
+						bestStat = source.storedStats[s];
 					}
 				}
-				this.boost({[stat]: 1}, source);
+				this.boost({[statName]: 1}, source);
 			}
 		},
 		id: "barbsboost",
@@ -6102,18 +6120,20 @@ exports.BattleAbilities = {
 		onResidualOrder: 26,
 		onResidualSubOrder: 1,
 		onResidual: function (pokemon) {
-			let stat = 'atk';
-				let bestStat = 0;
-				for (let i in pokemon.stats) {
-					if (pokemon.stats[i] > bestStat) {
-						stat = i;
-						bestStat = pokemon.stats[i];
-					}
-				}
 			if (this.randomChance(1, 2)) {
 				if (pokemon.hp && !pokemon.item && this.getItem(pokemon.lastItem).isBerry) {
 					pokemon.setItem(pokemon.lastItem);
-					this.boost({[stat]: 1}, pokemon);
+					let statName = 'atk';
+					let bestStat = 0;
+					/** @type {StatNameExceptHP} */
+					let s;
+					for (s in pokemon.storedStats) {
+						if (pokemon.storedStats[s] > bestStat) {
+							statName = s;
+							bestStat = pokemon.storedStats[s];
+						}
+					}
+					this.boost({[statName]: 1}, pokemon);
 					pokemon.lastItem = '';
 					this.add('-item', pokemon, pokemon.getItem(), '[from] ability: Stat Harvesting');
 					}
@@ -6224,17 +6244,19 @@ exports.BattleAbilities = {
 			if ((source.side === this.effectData.target.side || effect.id === 'perishsong') && effect.priority > 0.1 && effect.target !== 'foeSide') {
 				this.attrLastMove('[still]');
 				this.add('cant', this.effectData.target, 'ability: Dazzle Beast', effect, '[of] ' + target);
-					let stat = 'atk';
-					let bestStat = 0;
-					for (let i in source.stats) {
-						if (source.stats[i] > bestStat) {
-							stat = i;
-							bestStat = source.stats[i];
-						}
+				let statName = 'atk';
+				let bestStat = 0;
+				/** @type {StatNameExceptHP} */
+				let s;
+				for (s in target.storedStats) {
+					if (target.storedStats[s] > bestStat) {
+						statName = s;
+						bestStat = target.storedStats[s];
 					}
-					this.boost({[stat]: 1}, source);
-					return false;
 				}
+				this.boost({[statName]: 1}, source);
+				return false;
+			}
 		},
 		id: "dazzlebeast",
 		name: "Dazzle Beast",
@@ -6243,8 +6265,8 @@ exports.BattleAbilities = {
 		shortDesc: "On switch-in, the opposing Pokemon's ability is changed to Truant.",
 		onSwitchInPriority: 1,
 		onSwitchIn: function	(pokemon, source, move) {
-		for (const target of pokemon.side.foe.active) {
-		let oldAbility = target.setAbility('truant', target, 'truant', true);
+			for (const target of pokemon.side.foe.active) {
+				let oldAbility = target.setAbility('truant', target, 'truant', true);
 				if (oldAbility) {
 					this.add('-activate', target, 'ability: Truant', oldAbility, '[of] ' + target);
 				}
@@ -6305,22 +6327,25 @@ exports.BattleAbilities = {
 		name: "Ground Leecher",
 	},
 	"bloodthirst": {
-		shortDesc: "This Pokemon's Attack and the highest stat is raised by 1 if it attacks and KOes another Pokemon.",
+		shortDesc: "This Pokemon's Attack and the highest stat are raised by 1 if it attacks and KOes another Pokemon. The stat boosts from this will always total to 2.",
 		onSourceFaint: function (target, source, effect) {
 			if (effect && effect.effectType === 'Move') {
-				let stat = 'atk';
+				let statName = 'atk';
 				let bestStat = 0;
-				for (let i in source.stats) {
-					if (source.stats[i] > bestStat) {
-						stat = i;
-						bestStat = source.stats[i];
+				/** @type {StatNameExceptHP} */
+				let s;
+				for (s in source.storedStats) {
+					if (source.storedStats[s] > bestStat) {
+						statName = s;
+						bestStat = source.storedStats[s];
 					}
 				}
-				if (stat === 'atk'){
+				this.boost({[statName]: 1}, source);
+				if (statName === 'atk'){
 					this.boost({atk: 2}, source);
 				}
 				else {
-					this.boost({atk: 1, [stat]: 1}, source);
+					this.boost({atk: 1, [statName]: 1}, source);
 				}
 			}
 		},
@@ -6554,7 +6579,7 @@ exports.BattleAbilities = {
 		},
 		onWeather: function (target, source, effect) {
 			if (effect.id === 'sunnyday' || effect.id === 'desolateland' || effect.id === 'solarsnow') {
-				if (pokemon.volatiles['atmosphericperversion'] == pokemon.volatiles['weatherbreak']){
+				if (target.volatiles['atmosphericperversion'] == target.volatiles['weatherbreak']){
 					this.heal(target.maxhp / 8);
 				} else {
 					this.damage(target.maxhp / 8, target, target);
@@ -6650,31 +6675,36 @@ exports.BattleAbilities = {
 		shortDesc: "Whenever this pokemon get hit with a water type move or scores a KO, the highest non-hp stat get boosted by a stage and recover ¼ of its max hp. Also has a water immunity.",
 		onSourceFaint: function (target, source, effect) {
 			if (effect && effect.effectType === 'Move') {
-				let stat = 'atk';
+				let statName = 'atk';
 				let bestStat = 0;
-				for (let i in source.stats) {
-					if (source.stats[i] > bestStat) {
-						stat = i;
-						bestStat = source.stats[i];
+				/** @type {StatNameExceptHP} */
+				let s;
+				for (s in source.storedStats) {
+					if (source.storedStats[s] > bestStat) {
+						statName = s;
+						bestStat = source.storedStats[s];
 					}
 				}
-				this.boost({[stat]: 1}, source);
+				this.boost({[statName]: 1}, source);
 				this.heal(source.maxhp / 4);
 			}
 		},
 		onTryHit: function (target, source, move) {
 			if (target !== source && move.type === 'Water') {
-				let stat = 'atk';
+				let statName = 'atk';
 				let bestStat = 0;
-				for (let i in source.stats) {
-					if (target.stats[i] > bestStat) {
-						stat = i;
-						bestStat = target.stats[i];
+				/** @type {StatNameExceptHP} */
+				let s;
+				for (s in source.storedStats) {
+					if (source.storedStats[s] > bestStat) {
+						statName = s;
+						bestStat = source.storedStats[s];
 					}
 				}
-					this.heal(target.maxhp / 4);
-					this.boost({[stat]: 1}, target);
+				this.boost({[statName]: 1}, source);
+				if (!this.heal(target.maxhp / 4)){
 					this.add('-immune', target, '[msg]', '[from] ability: Aqua Booster');
+				}
 				return null;
 			}
 		},
@@ -6804,15 +6834,17 @@ exports.BattleAbilities = {
 		shortDesc: "Boosts this Pokemon's highest stat instead of taking indirect damage.",
 		onDamage: function (damage, target, source, effect) {
 			if (effect.effectType !== 'Move') {
-				let stat = 'atk';
+				let statName = 'atk';
 				let bestStat = 0;
-				for (let i in target.stats) {
-					if (target.stats[i] > bestStat) {
-						stat = i;
-						bestStat = target.stats[i];
+				/** @type {StatNameExceptHP} */
+				let s;
+				for (s in target.storedStats) {
+					if (target.storedStats[s] > bestStat) {
+						statName = s;
+						bestStat = target.storedStats[s];
 					}
 				}
-				this.boost({[stat]: 1}, target);
+				this.boost({[statName]: 1}, target);
 				return false;
 			}
 		},
@@ -6842,20 +6874,22 @@ exports.BattleAbilities = {
 		onStart: function (pokemon) {
 			let activated = false;
 			for (const target of pokemon.side.foe.active) {
-				let stat = 'atk';
+				if (!target || !this.isAdjacent(target, pokemon)) continue;
+				let statName = 'atk';
 				let bestStat = 0;
-				for (let i in target.stats) {
-					if (target.stats[i] > bestStat) {
-						stat = i;
-						bestStat = target.stats[i];
+				/** @type {StatNameExceptHP} */
+				let s;
+				for (s in target.storedStats) {
+					if (target.storedStats[s] > bestStat) {
+						statName = s;
+						bestStat = target.storedStats[s];
 					}
 				}
-				if (!target || !this.isAdjacent(target, pokemon)) continue;
 				if (!activated) {
 					this.add('-ability', pokemon, 'Frisky Beast', 'boost');
 					activated = true;
 				}
-				this.boost({[stat]: 1}, pokemon);
+				this.boost({[statName]: 1}, pokemon);
 				
 			}
 		},
@@ -7452,33 +7486,35 @@ exports.BattleAbilities = {
 	"insidioustentacles": {
 		shortDesc: "If this Pokemon lands or is hit by a contact move, the other Pokemon's highest stat is decreased by 1 stage and it gets trapped.",
 		onSourceHit: function (target, source, move) {
-			if (!move || !move.flags['contact'] || target.volatiles['substitute']) return;
-				let activated = false;
-            let stat = 'atk';
-            let bestStat = 0;
-            for (let i in target.stats) {
-                if (target.stats[i] > bestStat) {
-                    stat = i;
-						  bestStat = target.stats[i];
-                }
-            }
-            this.boost({[stat]: -1}, target, source);
+				if (!move || !move.flags['contact'] || target.volatiles['substitute']) return;
+				let statName = 'atk';
+				let bestStat = 0;
+				/** @type {StatNameExceptHP} */
+				let s;
+				for (s in target.storedStats) {
+					if (target.storedStats[s] > bestStat) {
+						statName = s;
+						bestStat = target.storedStats[s];
+					}
+				}
+				this.boost({[statName]: -1}, target);
             if (source.isActive) target.addVolatile('trapped', source, move, 'trapper');
 		},
 		onAfterDamageOrder: 1,
 		onAfterDamage: function (damage, target, source, move) {
 			if (source && source !== target && move && move.flags['contact']) {
-				let activated = false;
-            let stat = 'atk';
-            let bestStat = 0;
-            for (let i in target.stats) {
-                if (target.stats[i] > bestStat) {
-                    stat = i;
-						  bestStat = target.stats[i];
-                }
-            }
-                this.boost({[stat]: -1}, source, target);
-                if (target.isActive) source.addVolatile('trapped', target, move, 'trapper');
+				let statName = 'atk';
+				let bestStat = 0;
+				/** @type {StatNameExceptHP} */
+				let s;
+				for (s in source.storedStats) {
+					if (source.storedStats[s] > bestStat) {
+						statName = s;
+						bestStat = source.storedStats[s];
+					}
+				}
+				this.boost({[statName]: -1}, source);
+            if (target.isActive) source.addVolatile('trapped', target, move, 'trapper');
 			}
 		},
 		id: "insidioustentacles",
@@ -7722,25 +7758,26 @@ exports.BattleAbilities = {
 		onSourceFaint: function (target, source, effect) {
 			if (effect && effect.effectType === 'Move') {
 				let statalpha = 'atk';
-                                let statbeta = 'atk';
+            let statbeta = 'atk';
 				let bestStat = 0;
-                                let worstStat = source.stats['atk'];
-				for (let i in source.stats) {
-					if (source.stats[i] > bestStat) {
-						statalpha = i;
-						bestStat = source.stats[i];
+            let worstStat = source.storedStats['spe'];
+				let s;
+				for (s in source.storedStats) {
+					if (source.storedStats[s] > bestStat) {
+						statalpha = s;
+						bestStat = source.stats[s];
 					}
-					if (source.stats[i] < worstStat) {
-						statbeta = i;
-						worstStat = source.stats[i];
+					if (source.storedStats[s] < worstStat) {
+						statbeta = s;
+						worstStat = source.stats[s];
 					}
 				}
-                                if (bestStat !== worstStat){
+            if (bestStat !== worstStat){
 				  this.boost({[statalpha]: 2, [statbeta]: -1}, source);
-                                } else {
-                                  //Event that literally every single stat on this mon is equal
-                                  this.boost({atk: 2, spe: -1}, source);
-                                }
+            } else {
+					//Event that literally every single stat on this mon is equal
+				   this.boost({atk: 2, spe: -1}, source);
+            }
 			}
 		},
 		id: "extremist",
@@ -7958,40 +7995,38 @@ exports.BattleAbilities = {
 		name: "Fearless",
 	},
 	"limbenhancers": {
-		desc: "When this Pokemon knocks out an opponent, this Pokemon's highest stat is raised by one stage. Its highest stat and defense cannot be lowered by other Pokemon, increasing if this were to happen.",
-		shortDesc: "This Pokemon's Defense and other highest stat cannot be lowered, instead being raised by 1. The latter is also raised by 1 if it attacks and KOes another Pokemon.",
+		desc: "When this Pokemon knocks out an opponent, this Pokemon's highest stat is raised by one stage. Its highest stat cannot be lowered by other Pokemon.",
+		shortDesc: "This Pokemon's highest stat cannot be lowered, and is raised by 1 if it attacks and KOes another Pokemon.",
 		onBoost: function (boost, target, source, effect) {
 			if (source && target === source) return;
-			if (boost.def && boost.def < 0) {
-				delete boost.def;
-				if (!effect.secondaries) this.add("-fail", target, "unboost", "Defense", "[from] ability: Limb Enhancers", "[of] " + target);
-				this.boost({def: 1}, target);
-			}
-			let stat = 'atk';
-				let bestStat = 0;
-				for (let i in target.stats) {
-					if (source.stats[i] > bestStat && i !== 'def') {
-						stat = i;
-						bestStat = target.stats[i];
-					}
+			let statName = 'atk';
+			let bestStat = 0;
+			/** @type {StatNameExceptHP} */
+			let s;
+			for (s in target.storedStats) {
+				if (target.storedStats[s] > bestStat) {
+					statName = s;
+					bestStat = target.storedStats[s];
 				}
-			if (boost[stat] && boost[stat] < 0) {
-				delete boost[stat];
-				if (!effect.secondaries) this.add("-fail", target, "unboost", stat, "[from] ability: Limb Enhancers", "[of] " + target);
-				this.boost({[stat]: 1}, target);
+			}
+			if (boost[statName] && boost[statName] < 0) {
+				delete boost[statName];
+				if (!effect.secondaries) this.add("-fail", target, "unboost", statName, "[from] ability: Limb Enhancers", "[of] " + target);
 			}
 		},
 		onSourceFaint: function (target, source, effect) {
 			if (effect && effect.effectType === 'Move') {
-				let stat = 'atk';
+				let statName = 'atk';
 				let bestStat = 0;
-				for (let i in source.stats) {
-					if (source.stats[i] > bestStat) {
-						stat = i;
-						bestStat = source.stats[i];
+				/** @type {StatNameExceptHP} */
+				let s;
+				for (s in source.storedStats) {
+					if (source.storedStats[s] > bestStat) {
+						statName = s;
+						bestStat = source.storedStats[s];
 					}
 				}
-				this.boost({[stat]: 1}, source);
+				this.boost({[statName]: 1}, source);
 			}
 		},
 		id: "limbenhancers",
@@ -8055,17 +8090,19 @@ exports.BattleAbilities = {
 		onSourceHit: function (target, source, effect) {
 			if (target && ['psn', 'tox'].includes(target.status)){
             if (effect && effect.effectType === 'Move') {
-				let stat = 'atk';
-				let bestStat = 0;
-				for (let i in source.stats) {
-					if (source.stats[i] > bestStat) {
-						stat = i;
-						bestStat = source.stats[i];
+					let statName = 'atk';
+					let bestStat = 0;
+					/** @type {StatNameExceptHP} */
+					let s;
+					for (s in source.storedStats) {
+						if (source.storedStats[s] > bestStat) {
+							statName = s;
+							bestStat = source.storedStats[s];
+						}
 					}
+					this.boost({[statName]: 1}, source);
 				}
-				this.boost({[stat]: 1}, source);
-			}
-                        }
+         }
 		},
 		id: "mercilessbeast",
 		name: "Merciless Beast",
@@ -8210,40 +8247,42 @@ exports.BattleAbilities = {
 	"twofaced": {
 	    desc: "This Pokemon's stat changes are reversed, unless they affect this Pokemon's highest non-HP stat. When this Pokemon recieves a stat change affected by the first part of this ability or knocks out an opponent, its highest non-HP stat is raised by one stage. If two stats are tied for the highest, neither of them are affected by the inverse stat changes.",
 	    shortDesc: "All stats except for the highest have inverted stat changes. The highest stat is boosted whenever this Pokemon lands a KO or has a different stat changed. If two stats tie, both stats are ignored in the boost reversal.",
-	    onBoost: function(boost, target, source, effect) {
+			onBoost(boost, target, source, effect) {
 	        if (effect && effect.id === 'zpower') return;
-	        let stat = 'atk';
-	        let bestStat = 0;
-	        for (let i in source.stats) {
-	            if (source.stats[i] > bestStat) {
-	                stat = i;
-	                bestStat = source.stats[i];
-	            }
-	        }
+				let statName = 'atk';
+				let bestStat = 0;
+				/** @type {StatNameExceptHP} */
+				let s;
+				for (s in target.storedStats) {
+					if (target.storedStats[s] > bestStat) {
+						statName = s;
+						bestStat = target.storedStats[s];
+					}
+				}
 			  let statsflipped = 0;
 	        for (let i in boost) {
 	            // @ts-ignore
-	            if (source.stats[i] != bestStat) {
+	            if (target.storedStats[i] != bestStat) {
 	                boost[i] *= -1;
 						 statsflipped = statsflipped + 1;
 	            }
 	        }
-           boost[stat] = boost[stat] + statsflipped;
+           boost[statName] = boost[statName] + statsflipped;
 	    },
 	    onSourceFaint: function(target, source, effect) {
-	        if (effect && effect.effectType === 'Move') {
-	            let stat = 'atk';
-	            let bestStat = 0;
-	            for (let i in source.stats) {
-	                if (source.stats[i] > bestStat) {
-	                    stat = i;
-	                    bestStat = source.stats[i];
-	                }
-	            }
-	            this.boost({
-	                [stat]: 1
-	            }, source);
-	        }
+			if (effect && effect.effectType === 'Move') {
+				let statName = 'atk';
+				let bestStat = 0;
+				/** @type {StatNameExceptHP} */
+				let s;
+				for (s in source.storedStats) {
+					if (source.storedStats[s] > bestStat) {
+						statName = s;
+						bestStat = source.storedStats[s];
+					}
+				}
+				this.boost({[statName]: 1}, source);
+			}
 	    },
 	    id: "twofaced",
 	    name: "Two-Faced",
@@ -8273,15 +8312,17 @@ exports.BattleAbilities = {
                 }
             }
             if (buffed || target.hasType('Ghost')) {
-                let stat = 'atk';
-                let bestStat = 0;
-                for (let i in source.stats) {
-                    if (source.stats[i] > bestStat) {
-                        stat = i;
-                        bestStat = source.stats[i];
-                    }
-                }
-                this.boost({[stat]: 1}, source);
+					let statName = 'atk';
+					let bestStat = 0;
+					/** @type {StatNameExceptHP} */
+					let s;
+					for (s in source.storedStats) {
+						if (source.storedStats[s] > bestStat) {
+							statName = s;
+							bestStat = source.storedStats[s];
+						}
+					}
+					this.boost({[statName]: 1}, source);
             }
         }
     },
@@ -8302,15 +8343,17 @@ exports.BattleAbilities = {
 	    shortDesc: "If this Pokemon is statused, its highest stat is 1.5x; Ignores status-based reductions to this stat.",
 	    onModifyAtkPriority: 5,
 		 onModifyAtk: function (atk, attacker, defender, move) {
-	        let stat = 'atk';
-	        let bestStat = 0;
-	        for (let i in attacker.stats) {
-	            if (attacker.stats[i] > bestStat) {
-	                stat = i;
-	                bestStat = attacker.stats[i];
-	            }
-	        }
-	        if (attacker.status && stat === 'atk') {
+				let statName = 'atk';
+				let bestStat = 0;
+				/** @type {StatNameExceptHP} */
+				let s;
+				for (s in attacker.storedStats) {
+					if (attacker.storedStats[s] > bestStat) {
+						statName = s;
+						bestStat = attacker.storedStats[s];
+					}
+				}
+	        if (attacker.status && statName === 'atk') {
 	            if (attacker.status === 'brn' && move.id !== 'facade') {
 	                return this.chainModify(3);
 	            } else {
@@ -8320,56 +8363,64 @@ exports.BattleAbilities = {
 	    },
 	    onModifyDefPriority: 6,
 	    onModifyDef: function(def, pokemon) {
-	        let stat = 'atk';
-	        let bestStat = 0;
-	        for (let i in pokemon.stats) {
-	            if (pokemon.stats[i] > bestStat) {
-	                stat = i;
-	                bestStat = pokemon.stats[i];
-	            }
-	        }
-	        if (pokemon.status && stat === 'def') {
-	            return this.chainModify(1.5);
+				let statName = 'atk';
+				let bestStat = 0;
+				/** @type {StatNameExceptHP} */
+				let s;
+				for (s in pokemon.storedStats) {
+					if (pokemon.storedStats[s] > bestStat) {
+						statName = s;
+						bestStat = pokemon.storedStats[s];
+					}
+				}
+	        if (pokemon.status && statName === 'def') {
+	           return this.chainModify(1.5);
 	        }
 	    },
 	    onModifySpAPriority: 5,
 	    onModifySpA: function(spa, pokemon) {
-	        let stat = 'atk';
-	        let bestStat = 0;
-	        for (let i in pokemon.stats) {
-	            if (pokemon.stats[i] > bestStat) {
-	                stat = i;
-	                bestStat = pokemon.stats[i];
-	            }
-	        }
-	        if (pokemon.status && stat === 'spa') {
-	            return this.chainModify(1.5);
+				let statName = 'atk';
+				let bestStat = 0;
+				/** @type {StatNameExceptHP} */
+				let s;
+				for (s in pokemon.storedStats) {
+					if (pokemon.storedStats[s] > bestStat) {
+						statName = s;
+						bestStat = pokemon.storedStats[s];
+					}
+				}
+	        if (pokemon.status && statName === 'spa') {
+	           return this.chainModify(1.5);
 	        }
 	    },
 	    onModifySpDPriority: 5,
 	    onModifySpD: function(spd, pokemon) {
-	        let stat = 'atk';
-	        let bestStat = 0;
-	        for (let i in pokemon.stats) {
-	            if (pokemon.stats[i] > bestStat) {
-	                stat = i;
-	                bestStat = pokemon.stats[i];
-	            }
-	        }
-	        if (pokemon.status && stat === 'spd') {
-	            return this.chainModify(1.5);
+				let statName = 'atk';
+				let bestStat = 0;
+				/** @type {StatNameExceptHP} */
+				let s;
+				for (s in pokemon.storedStats) {
+					if (pokemon.storedStats[s] > bestStat) {
+						statName = s;
+						bestStat = pokemon.storedStats[s];
+					}
+				}
+	        if (pokemon.status && statName === 'spd') {
+	           return this.chainModify(1.5);
 	        }
 	    },
 	    onModifySpe: function(spe, pokemon) {
-	        let stat = 'atk';
-	        let bestStat = 0;
-	        for (let i in pokemon.stats) {
-	            if (pokemon.stats[i] > bestStat) {
-	                stat = i;
-	                bestStat = pokemon.stats[i];
-	            }
-	        }
-	        if (pokemon.status && stat === 'spe') {
+				let statName = 'atk';
+				let bestStat = 0;
+				/** @type {StatNameExceptHP} */
+				let s;
+				for (s in pokemon.storedStats) {
+					if (pokemon.storedStats[s] > bestStat) {
+						statName = s;
+						bestStat = pokemon.storedStats[s];
+					}
+				}
+	        if (pokemon.status && statName === 'spe') {
 	            if (pokemon.status === 'par') {
 	                return this.chainModify(3);
 	            } else {
@@ -8691,21 +8742,11 @@ exports.BattleAbilities = {
 		name: "Mix Tape",
 		},
 	"beastroar": {
-        shortDesc: "Lowers the foe’s highest stat by 1 stage.",
+      shortDesc: "Lowers the foe’s highest stat by 1 stage upon Switch-in.",
 		onStart: function (pokemon) {
-			for (const target of pokemon.side.foe.active) {
-				if (!target || target.fainted) continue;
-			let stat = 'atk';
-				let bestStat = 0;
-				for (let i in target.stats) {
-					if (target.stats[i] > bestStat) {
-						stat = i;
-						bestStat = target.stats[i];
-					}
-				}
 			let activated = false;
 			for (const target of pokemon.side.foe.active) {
-				if (!target || !this.isAdjacent(target, pokemon)) continue;
+				if (!target || target.fainted || !this.isAdjacent(target, pokemon)) continue;
 				if (!activated) {
 					this.add('-ability', pokemon, 'Beast Roar', 'boost');
 					activated = true;
@@ -8713,9 +8754,18 @@ exports.BattleAbilities = {
 				if (target.volatiles['substitute']) {
 					this.add('-immune', target, '[msg]');
 				} else {
-					this.boost({[stat]: -1}, target, pokemon);
+					let statName = 'atk';
+					let bestStat = 0;
+					/** @type {StatNameExceptHP} */
+					let s;
+					for (s in target.storedStats) {
+						if (target.storedStats[s] > bestStat) {
+							statName = s;
+							bestStat = target.storedStats[s];
+						}
+					}
+					this.boost({[statName]: -1}, target, pokemon);
 				}
-			}
 			}
 		},
         id: "beastroar",
@@ -9065,15 +9115,17 @@ exports.BattleAbilities = {
 		},
 		onSourceFaint: function (target, source, effect) {
 			if (effect && effect.effectType === 'Move' && effect.type === 'Steel') {
-				let stat = 'atk';
+				let statName = 'atk';
 				let bestStat = 0;
-				for (let i in source.stats) {
-					if (source.stats[i] > bestStat) {
-						stat = i;
-						bestStat = source.stats[i];
+				/** @type {StatNameExceptHP} */
+				let s;
+				for (s in source.storedStats) {
+					if (source.storedStats[s] > bestStat) {
+						statName = s;
+						bestStat = source.storedStats[s];
 					}
 				}
-				this.boost({[stat]: 2}, source);
+				this.boost({[statName]: 2}, source);
 			}
 		},
 		id: "metalmonster",
@@ -9360,19 +9412,21 @@ exports.BattleAbilities = {
 	},
 	"noimmigrants": {
 		shortDesc: "If a Pokémon switches in, this Pokémon's highest stat is raised by one, and if the Pokémon is knocked out, this Pokémon receives another +1 boost to its highest stat.",
-		onFoeSwitchIn: function (target, source, effect) {
-				let stat = 'atk';
+		onFoeSwitchIn: function (pokemon) {
+				let statName = 'atk';
 				let bestStat = 0;
-				for (let i in source.stats) {
-					if (source.stats[i] > bestStat) {
-						stat = i;
-						bestStat = source.stats[i];
+				/** @type {StatNameExceptHP} */
+				let s;
+				for (s in this.effectData.target.storedStats) {
+					if (this.effectData.target.storedStats[s] > bestStat) {
+						statName = s;
+						bestStat = this.effectData.target.storedStats[s];
 					}
-				this.boost({[stat]: 1}, source);
-			}
+				}
+				this.boost({[statName]: 1}, this.effectData.target);
 		},
 		onSourceFaint: function (target, source, effect) {
-			if (effect && effect.effectType === 'Move') {
+			if (effect && effect.effectType === 'Move' && target.activeTurns < source.activeTurns) {
 				let stat = 'atk';
 				let bestStat = 0;
 				for (let i in source.stats) {
@@ -10004,15 +10058,17 @@ exports.BattleAbilities = {
 		},
 		onSourceFaint: function (target, source, effect) {
 			if (effect && effect.effectType === 'Move') {
-				let stat = 'atk';
+				let statName = 'atk';
 				let bestStat = 0;
-				for (let i in source.stats) {
-					if (source.stats[i] > bestStat) {
-						stat = i;
-						bestStat = source.stats[i];
+				/** @type {StatNameExceptHP} */
+				let s;
+				for (s in source.storedStats) {
+					if (source.storedStats[s] > bestStat) {
+						statName = s;
+						bestStat = source.storedStats[s];
 					}
 				}
-				this.boost({[stat]: 1}, source);
+				this.boost({[statName]: 1}, source);
 			}
 		},
 		onWeather: function (pokemon) {
@@ -10021,18 +10077,20 @@ exports.BattleAbilities = {
 		effect: {
 			duration: 1,
 			onStart: function (pokemon) {
-				let stat = 'atk';
+				let statName = 'atk';
 				let bestStat = 0;
-				for (let i in pokemon.stats) {
-					if (pokemon.stats[i] > bestStat) {
-						stat = i;
-						bestStat = pokemon.stats[i];
+				/** @type {StatNameExceptHP} */
+				let s;
+				for (s in pokemon.storedStats) {
+					if (pokemon.storedStats[s] > bestStat) {
+						statName = s;
+						bestStat = pokemon.storedStats[s];
 					}
 				}
 				if (pokemon.volatiles['atmosphericperversion'] == pokemon.volatiles['weatherbreak']){
-					this.boost({[stat]: 1}, pokemon);
+					this.boost({[statName]: 1}, pokemon);
 				} else {
-					this.boost({[stat]: -1}, pokemon);
+					this.boost({[statName]: -1}, pokemon);
 				}
 			}
 		},
@@ -10616,15 +10674,17 @@ exports.BattleAbilities = {
 		id: "farmersdelight",
 		name: "Farmer's Delight",
 		onEatItem: function (item, pokemon) {
-				let stat = 'atk';
+				let statName = 'atk';
 				let bestStat = 0;
-				for (let i in pokemon.stats) {
-				if (pokemon.stats[i] > bestStat) {
-					stat = i;
-					bestStat = pokemon.stats[i];
+				/** @type {StatNameExceptHP} */
+				let s;
+				for (s in pokemon.storedStats) {
+					if (pokemon.storedStats[s] > bestStat) {
+						statName = s;
+						bestStat = pokemon.storedStats[s];
 					}
 				}
-				this.boost({[stat]: 1}, pokemon);
+				this.boost({[statName]: 1}, pokemon);
 		},
 		onResidualOrder: 26,
 		onResidualSubOrder: 1,
@@ -10639,18 +10699,20 @@ exports.BattleAbilities = {
 		},
 		onSourceFaint: function (target, source, effect) {
 			if (effect && effect.effectType === 'Move') {
-				let stat = 'atk';
+				let statName = 'atk';
 				let bestStat = 0;
-				for (let i in source.stats) {
-					if (source.stats[i] > bestStat) {
-						stat = i;
-						bestStat = source.stats[i];
+				/** @type {StatNameExceptHP} */
+				let s;
+				for (s in source.storedStats) {
+					if (source.storedStats[s] > bestStat) {
+						statName = s;
+						bestStat = source.storedStats[s];
 					}
 				}
-				this.boost({[stat]: 1}, source);
+				this.boost({[statName]: 1}, source);
 				source.setItem(source.lastItem);
-					source.lastItem = '';
-					this.add('-item', source, source.getItem(), '[from] ability: Farmer\'s Delight');
+				source.lastItem = '';
+				this.add('-item', source, source.getItem(), '[from] ability: Farmer\'s Delight');
 			}
 		},
 	},
@@ -10770,30 +10832,25 @@ exports.BattleAbilities = {
 	},
 	"inflate": {
 		desc: "After each consecutive kill, This pokemon gets +1 Special Attack, and +1 to it's highest stat. If Highest stat is Special Attack, then the second boost will be nullified.",
-		shortDesc: "After each consecutive kill, This pokemon gets +1 Special Attack, and +1 to it's highest stat. If Highest stat is Special Attack, then the second boost will be nullified.",
-		onSourceFaint: function (target, source, effect) {
+		shortDesc: "This Pokemon's highest stat and Special Attack are raised by 1 if it attacks and KOes another Pokemon. If Special Attack is the highest, only that will raise, and by 1 stage.",
+		onSourceFaint(target, source, effect) {
 			if (effect && effect.effectType === 'Move') {
-				source.addVolatile('hotairballoon');
-			}
-		},
-		effect: {
-			onRestart: function (target, source, effect) {
-				let stat = 'atk';
+				let statName = 'atk';
 				let bestStat = 0;
-				for (let i in source.stats) {
-					if (source.stats[i] > bestStat) {
-						stat = i;
-						bestStat = source.stats[i];
+				/** @type {StatNameExceptHP} */
+				let s;
+				for (s in source.storedStats) {
+					if (source.storedStats[s] > bestStat) {
+						statName = s;
+						bestStat = source.storedStats[s];
 					}
 				}
-				if (stat === 'spa') {
+				if (s === 'spa'){
 					this.boost({spa: 1}, source);
+				} else {
+					this.boost({[statName]: 1, spa: 1}, source);
 				}
-				else {
-					this.boost({spa: 1, [stat]: 1}, source);
-				}
-				source.removeVolatile('hotairballoon');
-			},
+			}
 		},
 		id: "inflate",
 		name: "Inflate",
@@ -10898,30 +10955,34 @@ exports.BattleAbilities = {
 	"beastscopycat": {
 		shortDesc: "Upon switchin in, replace one of user's stats with the foe's highest non-HP stat. Upon knocking a foe out, this Pokémon's highest stat is raised by one stage.",
 		onStart: function (pokemon) {
-				let stat = 'atk';
+				let statName = 'atk';
 				let bestStat = 0;
+				/** @type {StatNameExceptHP} */
 				for (const target of pokemon.side.foe.active) {
 					if (!target || !this.isAdjacent(target, pokemon)) continue;
-					for (let i in target.stats) {
-						if (target.stats[i] > bestStat) {
-							stat = i;
-							bestStat = target.stats[i];
+					let s;
+					for (s in target.storedStats) {
+						if (target.storedStats[s] > bestStat) {
+							statName = s;
+							bestStat = target.storedStats[s];
 						}
 					}
 				}
-				pokemon.stats[stat] = bestStat;
+				pokemon.storedStats[statName] = bestStat;
 		},
 		onSourceFaint: function (target, source, effect) {
 			if (effect && effect.effectType === 'Move') {
-				let stat = 'atk';
+				let statName = 'atk';
 				let bestStat = 0;
-				for (let i in source.stats) {
-					if (source.stats[i] > bestStat) {
-						stat = i;
-						bestStat = source.stats[i];
+				/** @type {StatNameExceptHP} */
+				let s;
+				for (s in source.storedStats) {
+					if (source.storedStats[s] > bestStat) {
+						statName = s;
+						bestStat = source.storedStats[s];
 					}
 				}
-				this.boost({[stat]: 1}, source);
+				this.boost({[statName]: 1}, source);
 			}
 		},
 		id: "beastscopycat",
@@ -10961,35 +11022,39 @@ exports.BattleAbilities = {
 		shortDesc: "Highest non-HP stat can't be lowered by external means. If this would happen or if this Pokémon is to land a KO, it gets +1 to that stat.",
 		onBoost: function (boost, target, source, effect) {
 			if (source && target === source) return;
-			let stat = 'atk';
+				let statName = 'atk';
 				let bestStat = 0;
-				for (let i in target.stats) {
-					if (target.stats[i] > bestStat) {
-						stat = i;
-						bestStat = target.stats[i];
+				/** @type {StatNameExceptHP} */
+				let s;
+				for (s in target.storedStats) {
+					if (target.storedStats[s] > bestStat) {
+						statName = s;
+						bestStat = target.storedStats[s];
 					}
 				}
-			if (boost[stat] && boost[stat] < 0) {
+			if (boost[statName] && boost[statName] < 0) {
 				if (effect.secondaries){
-					delete boost[stat];
+					delete boost[statName];
 				}
 				else {
-					boost[stat] = 1;
-					this.add("-fail", target, "unboost", stat, "[from] ability: Beast Eye", "[of] " + target);
+					boost[statName] = 1;
+					this.add("-fail", target, "unboost", statName, "[from] ability: Beast Eye", "[of] " + target);
 				}
 			}
 		},
 		onSourceFaint: function (target, source, effect) {
 			if (effect && effect.effectType === 'Move') {
-				let stat = 'atk';
+				let statName = 'atk';
 				let bestStat = 0;
-				for (let i in source.stats) {
-					if (source.stats[i] > bestStat) {
-						stat = i;
-						bestStat = source.stats[i];
+				/** @type {StatNameExceptHP} */
+				let s;
+				for (s in source.storedStats) {
+					if (source.storedStats[s] > bestStat) {
+						statName = s;
+						bestStat = source.storedStats[s];
 					}
 				}
-				this.boost({[stat]: 1}, source);
+				this.boost({[statName]: 1}, source);
 			}
 		},
 		id: "beasteye",
@@ -12304,16 +12369,18 @@ exports.BattleAbilities = {
 					}
 					target.setBoost(boosts);
 				}
-				let stat = 'atk';
+				let statName = 'atk';
 				let bestStat = 0;
-				for (let i in target.stats) {
-					if (target.stats[i] > bestStat) {
-						stat = i;
-						bestStat = target.stats[i];
+				/** @type {StatNameExceptHP} */
+				let s;
+				for (s in target.storedStats) {
+					if (target.storedStats[s] > bestStat) {
+						statName = s;
+						bestStat = target.storedStats[s];
 					}
 				}
-				this.boost({[stat]: -1}, target, source);
-				this.boost({[stat]: 1}, source);
+				this.boost({[statName]: -1}, target, source);
+				this.boost({[statName]: 1}, source);
 			}
 		},
 		onAfterMoveSecondary: function (target, source, move) {
@@ -12337,16 +12404,18 @@ exports.BattleAbilities = {
 					}
 					source.setBoost(boosts);
 				}
-				let stat = 'atk';
+				let statName = 'atk';
 				let bestStat = 0;
-				for (let i in source.stats) {
-					if (source.stats[i] > bestStat) {
-						stat = i;
-						bestStat = source.stats[i];
+				/** @type {StatNameExceptHP} */
+				let s;
+				for (s in source.storedStats) {
+					if (source.storedStats[s] > bestStat) {
+						statName = s;
+						bestStat = source.storedStats[s];
 					}
 				}
-				this.boost({[stat]: -1}, source, target);
-				this.boost({[stat]: 1}, target);
+				this.boost({[statName]: -1}, source, target);
+				this.boost({[statName]: 1}, target);
 			}
 		},
 		id: "memestealer",
@@ -12415,29 +12484,31 @@ exports.BattleAbilities = {
             if (['figyberry', 'aguavberry', 'wikiberry', 'magoberry', 'iapapaberry', 'liechiberry', 'ganlonberry', 'salacberry', 'petayaberry', 'apicotberry', 'lansatberry', 'micleberry', 'custapberry'].includes(source.getItem())) {
                 source.eatItem();
             }
-            let stat = 'atk';
-            let bestStat = 0;
-            for (let i in source.stats) {
-                if (source.stats[i] > bestStat) {
-                    stat = i;
-                    bestStat = source.stats[i];
-                }
-            }
-            this.boost({
-                [stat]: 1
-            }, source);
+				let statName = 'atk';
+				let bestStat = 0;
+				/** @type {StatNameExceptHP} */
+				let s;
+				for (s in source.storedStats) {
+					if (source.storedStats[s] > bestStat) {
+						statName = s;
+						bestStat = source.storedStats[s];
+					}
+				}
+				this.boost({[statName]: 1}, source);
         }
     },
     onEatItem: function(item, pokemon) {
-        let stat = 'atk';
-        let bestStat = 0;
-        for (let i in pokemon.stats) {
-            if (pokemon.stats[i] > bestStat) {
-                stat = i;
-                bestStat = pokemon.stats[i];
-            }
-        }
-        this.boost({[stat]: 1}, pokemon);
+				let statName = 'atk';
+				let bestStat = 0;
+				/** @type {StatNameExceptHP} */
+				let s;
+				for (s in pokemon.storedStats) {
+					if (pokemon.storedStats[s] > bestStat) {
+						statName = s;
+						bestStat = pokemon.storedStats[s];
+					}
+				}
+				this.boost({[statName]: 1}, pokemon);
     },
     id: "bloodmadecrops",
     name: "Blood-Made Crops",
@@ -12756,15 +12827,17 @@ exports.BattleAbilities = {
     },
     onSourceFaint: function(target, source, effect) {
         if (effect && effect.effectType === 'Move') {
-            let stat = 'atk';
-            let bestStat = 0;
-            for (let i in source.stats) {
-                if (source.stats[i] > bestStat) {
-                    stat = i;
-                    bestStat = source.stats[i];
-                }
-            }
-            this.boost({[stat]: 1}, source);
+				let statName = 'atk';
+				let bestStat = 0;
+				/** @type {StatNameExceptHP} */
+				let s;
+				for (s in source.storedStats) {
+					if (source.storedStats[s] > bestStat) {
+						statName = s;
+						bestStat = source.storedStats[s];
+					}
+				}
+				this.boost({[statName]: 1}, source);
         }
     },
 	 effect: {
@@ -13403,15 +13476,19 @@ exports.BattleAbilities = {
 		onSourceFaint: function (target, source, effect) {
 			if (effect && effect.effectType === 'Move') {
 				this.heal(source.maxhp / 3, source);
-				let stat = 'atk';
-				let bestStat = 0;
-				for (let i in source.stats) {
-					if (source.stats[i] > bestStat) {
-						stat = i;
-						bestStat = source.stats[i];
+				if (effect && effect.effectType === 'Move') {
+					let statName = 'atk';
+					let bestStat = 0;
+					/** @type {StatNameExceptHP} */
+					let s;
+					for (s in source.storedStats) {
+						if (source.storedStats[s] > bestStat) {
+							statName = s;
+							bestStat = source.storedStats[s];
+						}
 					}
+					this.boost({[statName]: 1}, source);
 				}
-				this.boost({[stat]: 1}, source);
 			}
 		},
 		onBeforeSwitchOut: function (pokemon) {
@@ -13421,7 +13498,7 @@ exports.BattleAbilities = {
 			pokemon.heal(pokemon.maxhp / 3);
 		},
 		effect: {
-			duration: 2,
+			duration: 1,
 			onStart: function (side, source) {
 				this.debug('Hydra started on ' + side.name);
 				this.effectData.positions = [];
@@ -13438,18 +13515,20 @@ exports.BattleAbilities = {
 			onSwitchIn: function (target) {
 				const positions = /**@type {boolean[]} */ (this.effectData.positions);
 				if (target.position !== this.effectData.sourcePosition) {
-					return;
+						return;
 				}
 				if (target && !target.fainted && target.hp > 0) {
-					let stat = 'atk';
+					let statName = 'atk';
 					let bestStat = 0;
-					for (let i in target.stats) {
-						if (target.stats[i] > bestStat) {
-							stat = i;
-							bestStat = target.stats[i];
+					/** @type {StatNameExceptHP} */
+					let s;
+					for (s in target.storedStats) {
+						if (target.storedStats[s] > bestStat) {
+							statName = s;
+							bestStat = target.storedStats[s];
 						}
 					}
-					this.boost({[stat]: 1}, target);
+					this.boost({[statName]: 1}, target);
 					target.side.removeSideCondition('hydra');
 				}
 			},
