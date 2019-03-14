@@ -11,11 +11,12 @@ let BattleScripts = {
 	// BattlePokemon scripts.
 	pokemon: {
 		getStat(statName, unboosted, unmodified) {
-			statName = toId(statName);
-			if (statName === 'hp') return this.maxhp;
+			statName = /** @type {StatNameExceptHP} */(toId(statName));
+			// @ts-ignore - type checking prevents 'hp' from being passed, but we're paranoid
+			if (statName === 'hp') throw new Error("Please read `maxhp` directly");
 
 			// base stat
-			let stat = this.stats[statName];
+			let stat = this.storedStats[statName];
 
 			// Stat boosts.
 			if (!unboosted) {
@@ -245,8 +246,6 @@ let BattleScripts = {
 			move.totalDamage = damage;
 		}
 		if (move.category !== 'Status') {
-			// FIXME: The stored damage should be calculated ignoring Substitute.
-			// https://github.com/Zarel/Pokemon-Showdown/issues/2598
 			target.gotAttacked(move, damage, pokemon);
 		}
 		if (move.ohko) this.add('-ohko');
@@ -261,6 +260,7 @@ let BattleScripts = {
 		}
 		return damage;
 	},
+	/** @return {number | undefined | false} */
 	moveHit(target, pokemon, move, moveData, isSecondary, isSelf) {
 		/** @type {number | false | null | undefined} */
 		let damage = undefined;
@@ -423,6 +423,8 @@ let BattleScripts = {
 					let effectChance = Math.floor((secondary.chance || 100) * 255 / 100);
 					if (typeof secondary.chance === 'undefined' || this.randomChance(effectChance, 256)) {
 						this.moveHit(target, pokemon, move, secondary, true, isSelf);
+					} else if (effectChance === 255) {
+						this.hint("In Gen 2, moves with a 100% secondary effect chance will not trigger in 1/256 uses.");
 					}
 				}
 			}
@@ -548,7 +550,9 @@ let BattleScripts = {
 		let defender = target;
 		if (move.useTargetOffensive) attacker = target;
 		if (move.useSourceDefensive) defender = pokemon;
+		/** @type {StatNameExceptHP} */
 		let atkType = (move.category === 'Physical') ? 'atk' : 'spa';
+		/** @type {StatNameExceptHP} */
 		let defType = (move.defensiveCategory === 'Physical') ? 'def' : 'spd';
 		let unboosted = false;
 		let noburndrop = false;
@@ -588,7 +592,6 @@ let BattleScripts = {
 			defense = target.getStat(defType, true, true);
 		}
 
-		// Gen 2 Present has a glitched damage calculation using the secondary types of the Pokemon for the Attacker's Level and Defender's Defense.
 		if (move.id === 'present') {
 			/**@type {{[k: string]: number}} */
 			const typeIndexes = {"Normal": 0, "Fighting": 1, "Flying": 2, "Poison": 3, "Ground": 4, "Rock": 5, "Bug": 7, "Ghost": 8, "Steel": 9, "Fire": 20, "Water": 21, "Grass": 22, "Electric": 23, "Psychic": 24, "Ice": 25, "Dragon": 26, "Dark": 27};
@@ -602,11 +605,15 @@ let BattleScripts = {
 			if (move.crit) {
 				level *= 2;
 			}
+			this.hint("Gen 2 Present has a glitched damage calculation using the secondary types of the Pokemon for the Attacker's Level and Defender's Defense.", true);
 		}
 
-		// When either attack or defense are higher than 256, they are both divided by 4 and moded by 256.
-		// This is what cuases the roll over bugs.
+		// When either attack or defense are higher than 256, they are both divided by 4 and modded by 256.
+		// This is what causes the rollover bugs.
 		if (attack >= 256 || defense >= 256) {
+			if (attack >= 1024 || defense >= 1024) {
+				this.hint("In Gen 2, a stat will roll over to a small number if it is larger than 1024.");
+			}
 			attack = this.clampIntRange(Math.floor(attack / 4) % 256, 1);
 			defense = this.clampIntRange(Math.floor(defense / 4) % 256, 1);
 		}

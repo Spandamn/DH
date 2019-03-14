@@ -29,7 +29,7 @@ exports.commands = {
 	ds6: 'dexsearch',
 	ds7: 'dexsearch',
 	dsearch: 'dexsearch',
-	dexsearch: function (target, room, user, connection, cmd, message) {
+	dexsearch(target, room, user, connection, cmd, message) {
 		if (!this.canBroadcast()) return;
 		if (!target) return this.parse('/help dexsearch');
 		let targetGen = parseInt(cmd[cmd.length - 1]);
@@ -57,11 +57,12 @@ exports.commands = {
 		`/dexsearch [parameter], [parameter], [parameter], ... - Searches for Pok\u00e9mon that fulfill the selected criteria`,
 		`Search categories are: type, tier, color, moves, ability, gen, resists, recovery, priority, stat, weight, height, egg group.`,
 		`Valid colors are: green, red, blue, white, brown, yellow, purple, pink, gray and black.`,
-		`Valid tiers are: Uber/OU/UUBL/UU/RUBL/RU/NUBL/NU/PUBL/PU/NFE/LC/LCUber/CAP/CAP NFE/CAP LC.`,
-		`Valid doubles tiers are: DUber/DOU/DBL/DUU.`,
+		`Valid tiers are: Uber/OU/UUBL/UU/RUBL/RU/NUBL/NU/PUBL/PU/ZU/NFE/LC/LC Uber/CAP/CAP NFE/CAP LC.`,
+		`Valid doubles tiers are: DUber/DOU/DBL/DUU/DNU.`,
 		`Types can be searched for by either having the type precede 'type' or just using the type itself as a parameter, e.g., both 'fire type' and 'fire' show all Fire types; however, using 'psychic' as a parameter will show all Pok\u00e9mon that learn the move Psychic and not Psychic types.`,
 		`'resists' followed by a type will show Pok\u00e9mon that resist that typing, e.g., 'resists normal'.`,
 		`'weak' followed by a type will show Pok\u00e9mon that are weak to that typing, e.g., 'weak fire'.`,
+		`'asc' or 'desc' following a stat will show the Pok\u00e9mon in ascending or descending order of that stat respectively, e.g., 'speed asc'.`,
 		`Inequality ranges use the characters '>=' for '≥' and '<=' for '≤', e.g., 'hp <= 95' searches all Pok\u00e9mon with HP less than or equal to 95.`,
 		`Parameters can be excluded through the use of '!', e.g., '!water type' excludes all water types.`,
 		`The parameter 'mega' can be added to search for Mega Evolutions only, and the parameter 'NFE' can be added to search not-fully evolved Pok\u00e9mon only.`,
@@ -74,7 +75,7 @@ exports.commands = {
 	'!randommove': true,
 	rollmove: 'randommove',
 	randmove: 'randommove',
-	randommove: function (target, room, user, connection, cmd, message) {
+	randommove(target, room, user, connection, cmd, message) {
 		if (!this.canBroadcast(true)) return;
 		let targets = target.split(",");
 		let targetsBuffer = [];
@@ -118,7 +119,7 @@ exports.commands = {
 	'!randompokemon': true,
 	rollpokemon: 'randompokemon',
 	randpoke: 'randompokemon',
-	randompokemon: function (target, room, user, connection, cmd, message) {
+	randompokemon(target, room, user, connection, cmd, message) {
 		if (!this.canBroadcast(true)) return;
 		let targets = target.split(",");
 		let targetsBuffer = [];
@@ -163,7 +164,7 @@ exports.commands = {
 	'!movesearch': true,
 	ms: 'movesearch',
 	msearch: 'movesearch',
-	movesearch: function (target, room, user, connection, cmd, message) {
+	movesearch(target, room, user, connection, cmd, message) {
 		if (!this.canBroadcast()) return;
 		if (!target) return this.parse('/help movesearch');
 
@@ -193,6 +194,7 @@ exports.commands = {
 		`Moves that have a Z-Effect of fully restoring the user's health can be searched for with 'zrecovery'.`,
 		`Inequality ranges use the characters '>' and '<' though they behave as '≥' and '≤', e.g., 'bp > 100' searches for all moves equal to and greater than 100 base power.`,
 		`Parameters can be excluded through the use of '!', e.g., !water type' excludes all Water-type moves.`,
+		`'asc' or 'desc' following a move property will arrange the names in ascending or descending order of that property respectively, e.g., basepower asc will arrange moves in ascending order of their basepowers.`,
 		`Valid flags are: authentic (bypasses substitute), bite, bullet, contact, defrost, powder, protect, pulse, punch, secondary, snatch, and sound.`,
 		`A search that includes '!protect' will show all moves that bypass protection.`,
 		`Parameters separated with '|' will be searched as alternatives for each other, e.g., 'fire | water' searches for all moves that are either Fire type or Water type.`,
@@ -203,7 +205,7 @@ exports.commands = {
 	'!itemsearch': true,
 	isearch: 'itemsearch',
 	is: 'itemsearch',
-	itemsearch: function (target, room, user, connection, cmd, message) {
+	itemsearch(target, room, user, connection, cmd, message) {
 		if (!this.canBroadcast()) return;
 		if (!target) return this.parse('/help itemsearch');
 
@@ -241,7 +243,7 @@ exports.commands = {
 	dpplearn: 'learn',
 	bw2learn: 'learn',
 	oraslearn: 'learn',
-	learn: function (target, room, user, connection, cmd, message) {
+	learn(target, room, user, connection, cmd, message) {
 		if (!this.canBroadcast()) return;
 		if (!target) return this.parse('/help learn');
 
@@ -261,7 +263,7 @@ exports.commands = {
 	},
 	learnhelp: [
 		`/learn [ruleset], [pokemon], [move, move, ...] - Displays how the Pok\u00e9mon can learn the given moves, if it can at all.`,
-		`!learn [ruleset], [pokemon], [move, move, ...] - Show everyone that information. Requires: + % @ * # & ~`,
+		`!learn [ruleset], [pokemon], [move, move, ...] - Show everyone that information. Requires: + % @ # & ~`,
 		`Specifying a ruleset is entirely optional. The ruleset can be a format, a generation (e.g.: gen3) or 'pentagon'. A value of 'pentagon' indicates that trading from previous generations is not allowed.`,
 		`/learn5 displays how the Pok\u00e9mon can learn the given moves at level 5, if it can at all.`,
 		`/learnall displays all of the possible fathers for egg moves.`,
@@ -272,7 +274,7 @@ exports.commands = {
 function runDexsearch(target, cmd, canAll, message) {
 	let searches = [];
 	let allTiers = {'uber': 'Uber', 'ubers': 'Uber', 'ou': 'OU', 'uubl': 'UUBL', 'uu': 'UU', 'rubl': 'RUBL', 'ru': 'RU', 'nubl': 'NUBL', 'nu': 'NU', 'publ': 'PUBL', 'pu': 'PU', 'zu': '(PU)', 'nfe': 'NFE', 'lcuber': 'LC Uber', 'lcubers': 'LC Uber', 'lc': 'LC', 'cap': 'CAP', 'caplc': 'CAP LC', 'capnfe': 'CAP NFE', __proto__: null};
-	let allDoublesTiers = {'doublesubers': 'DUber', 'doublesuber': 'DUber', 'duber': 'DUber', 'dubers': 'DUber', 'doublesou': 'DOU', 'dou': 'DOU', 'doublesbl': 'DBL', 'dbl': 'DBL', 'doublesuu': 'DUU', 'duu': 'DUU', __proto__: null};
+	let allDoublesTiers = {'doublesubers': 'DUber', 'doublesuber': 'DUber', 'duber': 'DUber', 'dubers': 'DUber', 'doublesou': 'DOU', 'dou': 'DOU', 'doublesbl': 'DBL', 'dbl': 'DBL', 'doublesuu': 'DUU', 'duu': 'DUU', 'doublesnu': '(DUU)', 'dnu': '(DUU)', __proto__: null};
 	let allTypes = Object.create(null);
 	for (let i in Dex.data.TypeChart) {
 		allTypes[toId(i)] = i;
@@ -281,6 +283,7 @@ function runDexsearch(target, cmd, canAll, message) {
 	let allEggGroups = {'amorphous': 'Amorphous', 'bug': 'Bug', 'ditto': 'Ditto', 'dragon': 'Dragon', 'fairy': 'Fairy', 'field': 'Field', 'flying': 'Flying', 'grass': 'Grass', 'humanlike': 'Human-Like', 'mineral': 'Mineral', 'monster': 'Monster', 'undiscovered': 'Undiscovered', 'water1': 'Water 1', 'water2': 'Water 2', 'water3': 'Water 3', __proto__: null};
 	let allStats = ['hp', 'atk', 'def', 'spa', 'spd', 'spe', 'bst', 'weight', 'height', 'gen'];
 	let showAll = false;
+	let order = null;
 	let megaSearch = null;
 	let capSearch = null;
 	let randomOutput = 0;
@@ -417,6 +420,29 @@ function runDexsearch(target, cmd, canAll, message) {
 				if (invalid) return {reply: invalid};
 				orGroup.gens[targetInt] = !isNotSearch;
 				continue;
+			}
+
+			if (target.endsWith(' asc') || target.endsWith(' desc')) {
+				if (parameters.length > 1) return {reply: `The parameter '${target.split(' ')[1]}' cannot have alternative parameters`};
+				let stat = target.split(' ')[0];
+				switch (toId(stat)) {
+				case 'attack': stat = 'atk'; break;
+				case 'defense': stat = 'def'; break;
+				case 'specialattack': stat = 'spa'; break;
+				case 'spc': stat = 'spa'; break;
+				case 'special': stat = 'spa'; break;
+				case 'spatk': stat = 'spa'; break;
+				case 'specialdefense': stat = 'spd'; break;
+				case 'spdef': stat = 'spd'; break;
+				case 'speed': stat = 'spe'; break;
+				case 'wt': stat = 'weight'; break;
+				case 'ht': stat = 'height'; break;
+				case 'generation': stat = 'gen'; break;
+				}
+				if (!allStats.includes(stat)) return {reply: `'${escapeHTML(target)}' did not contain a valid stat.`};
+				order = `${stat}${target.endsWith(' asc') ? '+' : '-'}`;
+				orGroup.skip = true;
+				break;
 			}
 
 			if (target === 'all') {
@@ -621,13 +647,26 @@ function runDexsearch(target, cmd, canAll, message) {
 				if (tier[0] === '(' && tier !== '(PU)') tier = tier.slice(1, -1);
 				if (alts.tiers[tier]) continue;
 				if (Object.values(alts.tiers).includes(false) && alts.tiers[tier] !== false) continue;
-				// some LC Pokemon are also in other tiers and need to be handled separately
-				if (alts.tiers.LC && !dex[mon].prevo && dex[mon].evos.some(evo => mod.getTemplate(evo).gen <= mod.gen) && !Dex.formats.gen7lc.banlist.includes(dex[mon].species) && !Dex.formats.gen7lc.banlist.includes(dex[mon].species + "-Base") && tier !== 'NFE') continue;
+				// LC handling, checks for LC Pokemon in higher tiers that need to be handled separately,
+				// as well as event-only Pokemon that are not eligible for LC despite being the first stage
+				let format = Dex.getFormat('gen' + maxGen + 'lc');
+				if (!format.exists) format = Dex.getFormat('gen7lc');
+				if (alts.tiers.LC && !dex[mon].prevo && dex[mon].evos.some(evo => mod.getTemplate(evo).gen <= mod.gen) && !format.banlist.includes(dex[mon].species) && !format.banlist.includes(dex[mon].species + "-Base")) {
+					if (dex[mon].eventPokemon && dex[mon].eventOnly) {
+						let validEvents = 0;
+						for (const event of dex[mon].eventPokemon) {
+							if (event.level && event.level <= 5) validEvents++;
+						}
+						if (validEvents > 0) continue;
+					} else {
+						continue;
+					}
+				}
 			}
 
 			if (alts.doublesTiers && Object.keys(alts.doublesTiers).length) {
 				let tier = dex[mon].doublesTier;
-				if (tier && tier[0] === '(') tier = tier.slice(1, -1);
+				if (tier && tier[0] === '(' && tier !== '(DUU)') tier = tier.slice(1, -1);
 				if (alts.doublesTiers[tier]) continue;
 				if (Object.values(alts.doublesTiers).includes(false) && alts.doublesTiers[tier] !== false) continue;
 			}
@@ -734,6 +773,33 @@ function runDexsearch(target, cmd, canAll, message) {
 	let resultsStr = (message === "" ? message : `<span style="color:#999999;">${escapeHTML(message)}:</span><br />`);
 	if (results.length > 1) {
 		results.sort();
+		if (order) {
+			let stat = order.substr(0, order.length - 1);
+			let sort = order[order.length - 1];
+			results.sort((a, b) => {
+				let mon1 = mod.getTemplate(sort === '+' ? a : b), mon2 = mod.getTemplate(sort === '+' ? b : a);
+				let monStat1, monStat2;
+				if (stat === 'bst') {
+					for (let monStats in mon1.baseStats) {
+						monStat1 += mon1.baseStats[monStats];
+						monStat2 += mon2.baseStats[monStats];
+					}
+				} else if (stat === 'weight') {
+					monStat1 = mon1.weightkg;
+					monStat2 = mon2.weightkg;
+				} else if (stat === 'height') {
+					monStat1 = mon1.heightm;
+					monStat2 = mon2.heightm;
+				} else if (stat === 'gen') {
+					monStat1 = mon1.gen;
+					monStat2 = mon2.gen;
+				} else {
+					monStat1 = mon1.baseStats[stat];
+					monStat2 = mon2.baseStats[stat];
+				}
+				return monStat1 - monStat2;
+			});
+		}
 		let notShown = 0;
 		if (!showAll && results.length > RESULTS_MAX_LENGTH + 5) {
 			notShown = results.length - RESULTS_MAX_LENGTH;
@@ -765,6 +831,7 @@ function runMovesearch(target, cmd, canAll, message) {
 		allTypes[toId(i)] = i;
 	}
 	let showAll = false;
+	let order = null;
 	let lsetData = {};
 	let targetMon = '';
 	let randomOutput = 0;
@@ -831,6 +898,21 @@ function runMovesearch(target, cmd, canAll, message) {
 				showAll = true;
 				orGroup.skip = true;
 				continue;
+			}
+
+			if (target.endsWith(' asc') || target.endsWith(' desc')) {
+				if (parameters.length > 1) return {reply: `The parameter '${target.split(' ')[1]}' cannot have alternative parameters`};
+				let prop = target.split(' ')[0];
+				switch (toId(prop)) {
+				case 'basepower': prop = 'basePower'; break;
+				case 'bp': prop = 'basePower'; break;
+				case 'power': prop = 'basePower'; break;
+				case 'acc': prop = 'accuracy'; break;
+				}
+				if (!allProperties.includes(prop)) return {reply: `'${escapeHTML(target)}' did not contain a valid property.`};
+				order = `${prop}${target.endsWith(' asc') ? '+' : '-'}`;
+				orGroup.skip = true;
+				break;
 			}
 
 			if (target === 'recovery') {
@@ -1108,7 +1190,7 @@ function runMovesearch(target, cmd, canAll, message) {
 				}
 				if (typeof alts.property[prop].greater === "number") {
 					if ((dex[move][prop] === true && dex[move].category !== "status") ||
-					     dex[move][prop] > alts.property[prop].greater) {
+						dex[move][prop] > alts.property[prop].greater) {
 						matched = true;
 						break;
 					}
@@ -1199,12 +1281,34 @@ function runMovesearch(target, cmd, canAll, message) {
 	}
 	if (results.length > 1) {
 		results.sort();
+		if (order) {
+			let prop = order.substr(0, order.length - 1);
+			let sort = order[order.length - 1];
+			results.sort((a, b) => {
+				let move1 = dex[toId(sort === '+' ? a : b)], move2 = dex[toId(sort === '+' ? b : a)];
+				if (move1[prop] === true) {
+					if (move2[prop] === true) {
+						return 0;
+					} else {
+						return 1;
+					}
+				} else if (move2[prop] === true) {
+					if (move1[prop] === true) {
+						return 0;
+					} else {
+						return -1;
+					}
+				} else {
+					return move1[prop] - move2[prop];
+				}
+			});
+		}
 		let notShown = 0;
 		if (!showAll && results.length > RESULTS_MAX_LENGTH + 5) {
 			notShown = results.length - RESULTS_MAX_LENGTH;
 			results = results.slice(0, RESULTS_MAX_LENGTH);
 		}
-		resultsStr += results.map(result => `<a href="//dex.pokemonshowdown.com/moves/${toId(result)}" target="_blank" class="subtle" style="white-space:nowrap">${result}</a>`).join(", ");
+		resultsStr += results.map(result => `<a href="//dex.pokemonshowdown.com/moves/${toId(result)}" target="_blank" class="subtle" style="white-space:nowrap">${result}</a>${order ? ' (' + (dex[toId(result)][order.substr(0, order.length - 1)] === true ? '-' : dex[toId(result)][order.substr(0, order.length - 1)]) + ')' : ''}`).join(", ");
 		if (notShown) {
 			resultsStr += `, and ${notShown} more. <span style="color:#999999;">Redo the search with ', all' at the end to show all results.</span>`;
 		}
@@ -1567,7 +1671,7 @@ function runSearch(query) {
  * Process manager
  *********************************************************/
 
-const QueryProcessManager = require('../../lib/process-manager').QueryProcessManager;
+const QueryProcessManager = require('../../.lib-dist/process-manager').QueryProcessManager;
 
 const PM = new QueryProcessManager(module, async query => {
 	try {
@@ -1586,7 +1690,7 @@ const PM = new QueryProcessManager(module, async query => {
 			return null;
 		}
 	} catch (err) {
-		require('../../lib/crashlogger')(err, 'A search query', query);
+		Monitor.crashlog(err, 'A search query', query);
 	}
 	return {error: "Sorry! Our search engine crashed on your query. We've been automatically notified and will fix this crash."};
 });
@@ -1594,19 +1698,31 @@ const PM = new QueryProcessManager(module, async query => {
 if (!PM.isParentProcess) {
 	// This is a child process!
 	global.Config = require('../../config/config');
-
+	// @ts-ignore ???
+	global.Monitor = {
+		/**
+		 * @param {Error} error
+		 * @param {string} source
+		 * @param {{}?} details
+		 */
+		crashlog(error, source = 'A datasearch process', details = null) {
+			const repr = JSON.stringify([error.name, error.message, source, details]);
+			// @ts-ignore
+			process.send(`THROW\n@!!@${repr}\n${error.stack}`);
+		},
+	};
 	if (Config.crashguard) {
 		process.on('uncaughtException', err => {
-			require('../../lib/crashlogger')(err, 'A dexsearch process');
+			Monitor.crashlog(err, 'A dexsearch process');
 		});
 	}
 
-	global.Dex = require('../../sim/dex');
+	global.Dex = require('../../.sim-dist/dex');
 	global.toId = Dex.getId;
 	Dex.includeData();
-	global.TeamValidator = require('../../sim/team-validator');
+	global.TeamValidator = require('../../.sim-dist/team-validator').TeamValidator;
 
-	require('../../lib/repl').start('dexsearch', cmd => eval(cmd));
+	require('../../.lib-dist/repl').Repl.start('dexsearch', cmd => eval(cmd));
 } else {
 	PM.spawn(MAX_PROCESSES);
 }

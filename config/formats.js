@@ -12,6 +12,20 @@ exports.Formats = [
 		column: 1,
 	},
 	{
+		name: "[Gen 7] 0v0",
+
+		mod: 'gen7',
+		team: 'randomCC',
+		ruleset: ['Pokemon', 'HP Percentage Mod', 'Cancel Mod'],
+		onBegin: function () {
+			this.sides.forEach(side => {
+				side.pokemon = [];
+				side.pokemonLeft = 0;
+			})
+			this.win(this.sides[this.random(2)]);
+		}
+	},
+	{
 		name: "[Gen 7] BH Battle Factory",
 
 		mod: 'gen7',
@@ -4252,27 +4266,40 @@ exports.Formats = [
 	},
 	{
 		name: "[Gen 7] Trademarked",
-		desc: ["&bullet; <a href=\"http://www.smogon.com/forums/threads/trademarked.3572949/\">Trademarked</a>"],
-		column: 1,
+		desc: [
+			"&bullet; <a href=\"https://www.smogon.com/forums/threads/3647897/\">Trademarked</a><br />&bullet; You can put a status move that the pokemon learns in its abiity slot to have it activate on switch in.<br />&bullet; Assist, Baneful Bunker, Block, Copycat, Detect, Mat Block, Mean Look, Nature Power, Protect, Roar, Spider Web, Spiky Shield, Sleep inducing moves and Whirlwind are banned as trademarks.",
+		],
 
 		mod: 'trademarked',
-		ruleset: ['[Gen 7] OU', 'trademarkclause'],
-		banlist: ['Slaking', 'Regigigas', 'Nature Power'],
+		ruleset: ['[Gen 7] OU'],
+		banlist: ['Slaking', 'Regigigas'],
 		validateSet: function(set, teamHas) {
 			if (!this.validateSet(set, teamHas).length) return [];
 			let ability = Dex.getAbility(set.ability);
 			let template = Dex.getTemplate(set.species);
-			if (!set.moves.includes(ability.id) && !set.moves.includes(ability.name) && !this.checkLearnset(ability.id, template, {
+			if (!set.moves.includes(ability.id) && !set.moves.includes(ability.name) && !this.checkLearnset(`move:${ability.id}`, template, {
 					set: set
 				})) {
 				template = Object.assign({}, template);
 				template.abilities = {
-					0: ability.name
+					0: ability.name,
 				};
 			}
 			return this.validateSet(set, teamHas, template);
 		},
-
+		onValidateTeam: function (team) {
+			let tms = [];
+			let problems = [];
+			for (let set of team) {
+				let ability = this.getMove(set.ability);
+				if (ability.effectType === 'Move' && tms.includes(ability)) {
+					problems.push(`You cannot have more than one of ${ability.name} as a trademark.`);
+				} else {
+					tms.push(ability.id);
+				}
+			}
+			return problems;
+		},
 	},
 	{
 		name: "[Gen 7] Ultimate Z",
@@ -4698,7 +4725,7 @@ exports.Formats = [
 		name: "[Gen 7] The Pokedex According to Spook",
 		desc: ["&bullet; <a href=https://www.smogon.com/forums/threads/the-pokedex-according-to-spook.3645318/>The Pokedex According to Spook</a>",],
 		ruleset: ['Pokemon', 'Standard', 'Team Preview'],
-		unbanlist: ['Aegislash', 'Aegislash-Blade'. 'Shadow Tag', 'Arena Trap'],
+		//unbanlist: ['Aegislash', 'Aegislash-Blade'. 'Shadow Tag', 'Arena Trap'],
 		banlist: ['Stance Change', 'Uber'],
 		//banlist: ['Illegal'],
 		mod: 'Spookdex',
@@ -8024,8 +8051,29 @@ exports.Formats = [
             'Flash', 'Kinesis', 'Leaf Tornado', 'Mirror Shot', 'Mud Bomb', 'Mud-Slap', 'Muddy Water', 'Night Daze', 'Octazooka', 'Sand Attack', 'Smokescreen'
         ],
     },
-    {
+	{
         name: "[Gen 5] 1v1",
+        desc: [
+            "Bring one Pok&eacute;mon and battle with it.",
+            "&bullet; <a href=\"http://www.smogon.com/forums/threads/gen-v-1-vs-1-metagame.3483807/\">BW 1v1</a>"
+        ],
+ 
+        mod: 'gen5',
+        teamLength: {
+            validate: [1, 3],
+            battle: 1,
+        },
+        ruleset: ['Team Preview', 'Pokemon', 'Nickname Clause', 'Moody Clause', 'OHKO Clause', 'Evasion Moves Clause', 'Swagger Clause', 'Endless Battle Clause', 'HP Percentage Mod', 'Cancel Mod'],
+        banlist: [
+            'Illegal', 'Unreleased',
+            'Arceus', 'Blaziken', 'Darkrai', 'Deoxys-A', 'Deoxys-Base', 'Dialga', 'Giratina', 'Giratina-O', 'Groudon', 'Ho-Oh', 'Kyurem-W', 'Lugia', 'Mewtwo', 'Palkia', 'Rayquaza', 'Reshiram', 'Shaymin-S', 'Zekrom',
+            'Perish Song',
+            'Chansey + Charm + Seismic Toss',
+            'Focus Sash', 'Soul Dew'
+        ],
+    },
+    {
+        name: "[Gen 5] 1v1 [No Preview]",
         desc: [
             "Bring one Pok&eacute;mon and battle with it.",
             "&bullet; <a href=\"http://www.smogon.com/forums/threads/gen-v-1-vs-1-metagame.3483807/\">BW 1v1</a>"
@@ -8043,7 +8091,28 @@ exports.Formats = [
             'Perish Song',
             'Chansey + Charm + Seismic Toss',
             'Focus Sash', 'Soul Dew'
+       ],
+    },
+	{
+        name: "[Gen 4] 1v1",
+        desc: [
+            "Bring one Pok&eacute;mon and battle with it.",
+            "&bullet; <a href=\"http://www.smogon.com/forums/threads/gen-v-1-vs-1-metagame.3483807/\">BW 1v1</a>"
         ],
+ 
+        mod: 'gen4',
+        teamLength: {
+            validate: [1, 3],
+            battle: 1,
+        },
+        ruleset: ['Team Preview', 'Pokemon', 'Nickname Clause', 'Moody Clause', 'OHKO Clause', 'Evasion Moves Clause', 'Swagger Clause', 'Endless Battle Clause', 'HP Percentage Mod', 'Cancel Mod'],
+        /*banlist: [
+            'Illegal', 'Unreleased',
+            'Arceus', 'Blaziken', 'Darkrai', 'Deoxys-A', 'Deoxys-Base', 'Dialga', 'Giratina', 'Giratina-O', 'Groudon', 'Ho-Oh', 'Kyurem-W', 'Lugia', 'Mewtwo', 'Palkia', 'Rayquaza', 'Reshiram', 'Shaymin-S', 'Zekrom',
+            'Perish Song',
+            'Chansey + Charm + Seismic Toss',
+            'Focus Sash', 'Soul Dew'
+        ],*/
     },
 	{
 		name: "[Gen 7] 1v1 Linked",

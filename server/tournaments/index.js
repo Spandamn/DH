@@ -98,13 +98,13 @@ class Tournament {
 		}
 
 		let isErrored = false;
-		this.generator.getUsers().forEach(user => {
+		for (const user of this.generator.getUsers()) {
 			let error = generator.addUser(user);
 			if (typeof error === 'string') {
 				output.sendReply(`|tournament|error|${error}`);
 				isErrored = true;
 			}
-		});
+		}
 
 		if (isErrored) return;
 
@@ -154,13 +154,13 @@ class Tournament {
 	forceEnd() {
 		if (this.isTournamentStarted) {
 			if (this.autoDisqualifyTimer) clearTimeout(this.autoDisqualifyTimer);
-			this.inProgressMatches.forEach(match => {
+			for (const match of this.inProgressMatches.values()) {
 				if (match) {
 					match.room.tour = null;
 					match.room.parent = null;
 					match.room.addRaw(`<div class="broadcast-red"><b>The tournament was forcefully ended.</b><br />You can finish playing, but this battle is no longer considered a tournament battle.</div>`);
 				}
-			});
+			}
 		} else if (this.autoStartTimer) {
 			clearTimeout(this.autoStartTimer);
 		}
@@ -234,13 +234,12 @@ class Tournament {
 		if (this.isTournamentStarted && this.isAvailableMatchesInvalidated) {
 			this.availableMatchesCache = this.getAvailableMatches();
 			this.isAvailableMatchesInvalidated = false;
-
-			this.availableMatchesCache.challenges.forEach((opponents, player) => {
+			for (const [player, opponents] of this.availableMatchesCache.challenges) {
 				player.sendRoom(`|tournament|update|${JSON.stringify({challenges: usersToNames(opponents)})}`);
-			});
-			this.availableMatchesCache.challengeBys.forEach((opponents, player) => {
+			}
+			for (const [player, opponents] of this.availableMatchesCache.challengeBys) {
 				player.sendRoom(`|tournament|update|${JSON.stringify({challengeBys: usersToNames(opponents)})}`);
-			});
+			}
 		}
 		this.room.send('|tournament|updateEnd');
 	}
@@ -390,18 +389,18 @@ class Tournament {
 
 				if (node.team) node.team = node.team.name;
 
-				node.children.forEach(child => {
+				for (const child of node.children) {
 					queue.push(child);
-				});
+				}
 			}
 		} else if (data.type === 'table') {
 			if (this.isTournamentStarted) {
-				data.tableContents.forEach((row, r) => {
+				for (const [r, row] of data.tableContents.entries()) {
 					let pendingChallenge = this.pendingChallenges.get(data.tableHeaders.rows[r]);
 					let inProgressMatch = this.inProgressMatches.get(data.tableHeaders.rows[r]);
 					if (pendingChallenge || inProgressMatch) {
-						row.forEach((cell, c) => {
-							if (!cell) return;
+						for (const [c, cell] of row.entries()) {
+							if (!cell) continue;
 
 							if (pendingChallenge && data.tableHeaders.cols[c] === pendingChallenge.to) {
 								cell.state = 'challenging';
@@ -411,9 +410,9 @@ class Tournament {
 								cell.state = 'inprogress';
 								cell.room = inProgressMatch.room.id;
 							}
-						});
+						}
 					}
-				});
+				}
 			}
 			data.tableHeaders.cols = usersToNames(data.tableHeaders.cols);
 			data.tableHeaders.rows = usersToNames(data.tableHeaders.rows);
@@ -443,13 +442,13 @@ class Tournament {
 		this.autoDisqualifyWarnings = new Map();
 		this.lastActionTimes = new Map();
 		const now = Date.now();
-		users.forEach(user => {
+		for (const user of users) {
 			this.availableMatches.set(user, new Map());
 			this.inProgressMatches.set(user, null);
 			this.pendingChallenges.set(user, null);
 			this.disqualifiedUsers.set(user, false);
 			this.lastActionTimes.set(user, now);
-		});
+		}
 
 		this.isTournamentStarted = true;
 		if (this.autoStartTimer) clearTimeout(this.autoStartTimer);
@@ -472,7 +471,7 @@ class Tournament {
 		const challengeBys = new Map();
 		const oldAvailableMatches = new Map();
 
-		users.forEach(user => {
+		for (const user of users) {
 			challenges.set(user, []);
 			challengeBys.set(user, []);
 
@@ -483,21 +482,21 @@ class Tournament {
 				availableMatches.clear();
 			}
 			oldAvailableMatches.set(user, oldAvailableMatch);
-		});
+		}
 
-		matches.forEach(match => {
+		for (const match of matches) {
 			challenges.get(match[0]).push(match[1]);
 			challengeBys.get(match[1]).push(match[0]);
 
 			this.availableMatches.get(match[0]).set(match[1], true);
-		});
+		}
 
 		const now = Date.now();
-		this.availableMatches.forEach((availableMatches, user) => {
-			if (oldAvailableMatches.get(user)) return;
+		for (const [user, availableMatches] of this.availableMatches) {
+			if (oldAvailableMatches.get(user)) continue;
 
 			if (availableMatches.size) this.lastActionTimes.set(user, now);
-		});
+		}
 
 		return {
 			challenges: challenges,
@@ -564,9 +563,9 @@ class Tournament {
 		}
 
 		let matchTo = null;
-		this.inProgressMatches.forEach((match, playerFrom) => {
+		for (const [playerFrom, match] of this.inProgressMatches) {
 			if (match && match.to === player) matchTo = playerFrom;
-		});
+		}
 		if (matchTo) {
 			this.generator.setUserBusy(matchTo, false);
 			let matchRoom = this.inProgressMatches.get(matchTo).room;
@@ -645,16 +644,16 @@ class Tournament {
 		}
 		if (this.autoDisqualifyTimer) clearTimeout(this.autoDisqualifyTimer);
 		const now = Date.now();
-		this.lastActionTimes.forEach((time, player) => {
+		for (const [player, time] of this.lastActionTimes) {
 			let availableMatches = false;
 			if (this.availableMatches.get(player).size) availableMatches = true;
 			const pendingChallenge = this.pendingChallenges.get(player);
 
 			if (!availableMatches && !pendingChallenge) {
 				this.autoDisqualifyWarnings.delete(player);
-				return;
+				continue;
 			}
-			if (pendingChallenge && pendingChallenge.to) return;
+			if (pendingChallenge && pendingChallenge.to) continue;
 
 			if (now > time + this.autoDisqualifyTimeout && this.autoDisqualifyWarnings.has(player)) {
 				let reason;
@@ -666,7 +665,7 @@ class Tournament {
 				this.disqualifyUser(player.userid, output, reason);
 				this.room.update();
 			} else if (now > time + this.autoDisqualifyTimeout - AUTO_DISQUALIFY_WARNING_TIMEOUT) {
-				if (this.autoDisqualifyWarnings.has(player)) return;
+				if (this.autoDisqualifyWarnings.has(player)) continue;
 				let remainingTime = this.autoDisqualifyTimeout - now + time;
 				if (remainingTime <= 0) {
 					remainingTime = AUTO_DISQUALIFY_WARNING_TIMEOUT;
@@ -678,7 +677,7 @@ class Tournament {
 			} else {
 				this.autoDisqualifyWarnings.delete(player);
 			}
-		});
+		}
 		if (!this.isEnded) this.autoDisqualifyTimer = setTimeout(() => this.runAutoDisqualify(), this.autoDisqualifyTimeout);
 	}
 
@@ -813,7 +812,7 @@ class Tournament {
 		this.update();
 	}
 	forfeit(user) {
-		this.disqualifyUser(user.userid, null, "You left the tournament", true);
+		return this.disqualifyUser(user.userid, null, "You left the tournament", true);
 	}
 	onConnect(user, connection) {
 		this.updateFor(user, connection);
@@ -998,12 +997,12 @@ const commands = {
 	basic: {
 		j: 'join',
 		in: 'join',
-		join: function (tournament, user) {
+		join(tournament, user) {
 			tournament.addUser(user, false, this);
 		},
 		l: 'leave',
 		out: 'leave',
-		leave: function (tournament, user) {
+		leave(tournament, user) {
 			if (tournament.isTournamentStarted) {
 				if (tournament.generator.getUsers(true).some(player => player.userid === user.userid)) {
 					tournament.disqualifyUser(user.userid, this, null, true);
@@ -1014,28 +1013,28 @@ const commands = {
 				tournament.removeUser(user, this);
 			}
 		},
-		getusers: function (tournament) {
+		getusers(tournament) {
 			if (!this.runBroadcast()) return;
 			let users = usersToNames(tournament.generator.getUsers(true).sort());
 			this.sendReplyBox(`<strong>${users.length} users remain in this tournament:</strong><br />${Chat.escapeHTML(users.join(', '))}`);
 		},
-		getupdate: function (tournament, user) {
+		getupdate(tournament, user) {
 			tournament.updateFor(user);
 			this.sendReply("Your tournament bracket has been updated.");
 		},
-		challenge: function (tournament, user, params, cmd) {
+		challenge(tournament, user, params, cmd) {
 			if (params.length < 1) {
 				return this.sendReply(`Usage: ${cmd} <user>`);
 			}
 			tournament.challenge(user, toId(params[0]), this);
 		},
-		cancelchallenge: function (tournament, user) {
+		cancelchallenge(tournament, user) {
 			tournament.cancelChallenge(user, this);
 		},
-		acceptchallenge: function (tournament, user) {
+		acceptchallenge(tournament, user) {
 			tournament.acceptChallenge(user, this);
 		},
-		vtm: function (tournament, user, params, cmd, connection) {
+		vtm(tournament, user, params, cmd, connection) {
 			if (Monitor.countPrepBattle(connection.ip, connection)) {
 				return;
 			}
@@ -1053,7 +1052,7 @@ const commands = {
 		viewruleset: 'viewcustomrules',
 		viewbanlist: 'viewcustomrules',
 		viewrules: 'viewcustomrules',
-		viewcustomrules: function (tournament) {
+		viewcustomrules(tournament) {
 			if (!this.runBroadcast()) return;
 			if (tournament.customRules.length < 1) {
 				return this.errorReply("The tournament does not have any custom rules.");
@@ -1062,7 +1061,7 @@ const commands = {
 		},
 	},
 	creation: {
-		settype: function (tournament, user, params, cmd) {
+		settype(tournament, user, params, cmd) {
 			if (params.length < 1) {
 				return this.sendReply(`Usage: ${cmd} <type> [, <comma-separated arguments>]`);
 			}
@@ -1088,7 +1087,7 @@ const commands = {
 		cap: 'setplayercap',
 		playercap: 'setplayercap',
 		setcap: 'setplayercap',
-		setplayercap: function (tournament, user, params, cmd) {
+		setplayercap(tournament, user, params, cmd) {
 			if (params.length < 1) {
 				if (tournament.playerCap) {
 					return this.sendReply(`Usage: ${cmd} <cap>; The current player cap is ${tournament.playerCap}`);
@@ -1125,7 +1124,7 @@ const commands = {
 		},
 		end: 'delete',
 		stop: 'delete',
-		delete: function (tournament, user) {
+		delete(tournament, user) {
 			if (deleteTournament(tournament.room.id, this)) {
 				this.privateModAction(`(${user.name} forcibly ended a tournament.)`);
 				this.modlog('TOUR END');
@@ -1134,7 +1133,7 @@ const commands = {
 		ruleset: 'customrules',
 		banlist: 'customrules',
 		rules: 'customrules',
-		customrules: function (tournament, user, params, cmd) {
+		customrules(tournament, user, params, cmd) {
 			if (cmd === 'banlist') {
 				return this.errorReply('The new syntax is: /tour rules -bannedthing, +unbannedthing, !removedrule, addedrule');
 			}
@@ -1155,7 +1154,7 @@ const commands = {
 		clearruleset: 'clearcustomrules',
 		clearbanlist: 'clearcustomrules',
 		clearrules: 'clearcustomrules',
-		clearcustomrules: function (tournament, user) {
+		clearcustomrules(tournament, user) {
 			if (tournament.isTournamentStarted) {
 				return this.errorReply("The custom rules cannot be changed once the tournament has started.");
 			}
@@ -1170,7 +1169,7 @@ const commands = {
 		},
 		name: 'setname',
 		customname: 'setname',
-		setname: function (tournament, user, params, cmd) {
+		setname(tournament, user, params, cmd) {
 			if (params.length < 1) {
 				return this.sendReply(`Usage: ${cmd} <comma-separated arguments>`);
 			}
@@ -1186,7 +1185,7 @@ const commands = {
 			tournament.update();
 		},
 		resetname: 'clearname',
-		clearname: function (tournament, user) {
+		clearname(tournament, user) {
 			if (tournament.format === tournament.originalFormat) return this.errorReply("The tournament does not have a name.");
 			tournament.format = tournament.originalFormat;
 			this.room.send(`|tournament|update|${JSON.stringify({format: tournament.format})}`);
@@ -1197,13 +1196,13 @@ const commands = {
 	},
 	moderation: {
 		begin: 'start',
-		start: function (tournament, user) {
+		start(tournament, user) {
 			if (tournament.startTournament(this)) {
 				this.room.sendMods(`(${user.name} started the tournament.)`);
 			}
 		},
 		dq: 'disqualify',
-		disqualify: function (tournament, user, params, cmd) {
+		disqualify(tournament, user, params, cmd) {
 			if (params.length < 1) {
 				return this.sendReply(`Usage: ${cmd} <user>`);
 			}
@@ -1220,7 +1219,7 @@ const commands = {
 			}
 		},
 		autostart: 'setautostart',
-		setautostart: function (tournament, user, params, cmd) {
+		setautostart(tournament, user, params, cmd) {
 			if (params.length < 1) {
 				return this.sendReply(`Usage: ${cmd} <on|minutes|off>`);
 			}
@@ -1251,7 +1250,7 @@ const commands = {
 			}
 		},
 		autodq: 'setautodq',
-		setautodq: function (tournament, user, params, cmd) {
+		setautodq(tournament, user, params, cmd) {
 			if (params.length < 1) {
 				if (tournament.autoDisqualifyTimeout !== Infinity) {
 					return this.sendReply(`Usage: ${cmd} <minutes|off>; The current automatic disqualify timer is set to ${(tournament.autoDisqualifyTimeout / 1000 / 60)} minute(s)`);
@@ -1267,7 +1266,7 @@ const commands = {
 				this.modlog('TOUR AUTODQ', null, timeout === Infinity ? 'off' : params[0]);
 			}
 		},
-		runautodq: function (tournament, user) {
+		runautodq(tournament, user) {
 			if (tournament.autoDisqualifyTimeout === Infinity) return this.errorReply("The automatic tournament disqualify timer is not set.");
 			tournament.runAutoDisqualify(this);
 			this.roomlog(`${user.name} used /tour runautodq`);
@@ -1275,7 +1274,7 @@ const commands = {
 		scout: 'setscouting',
 		scouting: 'setscouting',
 		setscout: 'setscouting',
-		setscouting: function (tournament, user, params, cmd) {
+		setscouting(tournament, user, params, cmd) {
 			if (params.length < 1) {
 				if (tournament.scouting) {
 					return this.sendReply("This tournament allows spectating other battles while in a tournament.");
@@ -1304,7 +1303,7 @@ const commands = {
 			}
 		},
 		modjoin: 'setmodjoin',
-		setmodjoin: function (tournament, user, params, cmd) {
+		setmodjoin(tournament, user, params, cmd) {
 			if (params.length < 1) {
 				if (tournament.modjoin) {
 					return this.sendReply("This tournament allows players to modjoin their battles.");
@@ -1330,7 +1329,7 @@ const commands = {
 				return this.sendReply(`Usage: ${cmd} <allow|disallow>`);
 			}
 		},
-		forcetimer: function (tournament, user, params, cmd) {
+		forcetimer(tournament, user, params, cmd) {
 			const option = params.length ? params[0].toLowerCase() : 'on';
 			if (this.meansYes(option)) {
 				tournament.forceTimer = true;
@@ -1346,7 +1345,7 @@ const commands = {
 				return this.sendReply(`Usage: ${cmd} <on|off>`);
 			}
 		},
-		banuser: function (tournament, user, params, cmd) {
+		banuser(tournament, user, params, cmd) {
 			if (params.length < 1) {
 				return this.sendReply(`Usage: ${cmd} <user>, <reason>`);
 			}
@@ -1373,7 +1372,7 @@ const commands = {
 			if (reason) reason = ` (${reason})`;
 			this.privateModAction(`${targetUser.name || targetUserid} was banned from joining tournaments by ${user.name}.${reason}`);
 		},
-		unbanuser: function (tournament, user, params, cmd) {
+		unbanuser(tournament, user, params, cmd) {
 			if (params.length < 1) {
 				return this.sendReply(`Usage: ${cmd} <user>`);
 			}

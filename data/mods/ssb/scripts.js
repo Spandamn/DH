@@ -56,7 +56,7 @@ let BattleScripts = {
 				if (!pokemon.deductPP(baseMove, null, target) && (move.id !== 'struggle')) {
 					this.add('cant', pokemon, 'nopp', move);
 					let gameConsole = [null, 'Game Boy', 'Game Boy', 'Game Boy Advance', 'DS', 'DS'][this.gen] || '3DS';
-					this.add('-hint', "This is not a bug, this is really how it works on the " + gameConsole + "; try it yourself if you don't believe us.");
+					this.hint(`This is not a bug, this is really how it works on the ${gameConsole}; try it yourself if you don't believe us.`);
 					this.clearActiveMove(true);
 					pokemon.moveThisTurnResult = false;
 					return;
@@ -97,7 +97,7 @@ let BattleScripts = {
 			}
 			// Dancer activates in order of lowest speed stat to highest
 			// Ties go to whichever Pokemon has had the ability for the least amount of time
-			dancers.sort(function (a, b) { return -(b.stats['spe'] - a.stats['spe']) || b.abilityOrder - a.abilityOrder; });
+			dancers.sort(function (a, b) { return -(b.storedStats['spe'] - a.storedStats['spe']) || b.abilityOrder - a.abilityOrder; });
 			for (const dancer of dancers) {
 				if (this.faintMessages()) break;
 				this.add('-activate', dancer, 'ability: Dancer');
@@ -287,6 +287,7 @@ let BattleScripts = {
 		}
 		// Always run a terrain end event to prevent a visual glitch with custom terrains
 		if (prevTerrain) this.singleEvent('End', this.getEffect(prevTerrain), prevTerrainData, this);
+		this.runEvent('TerrainStart', source, source, status);
 		return true;
 	},
 	pokemon: {

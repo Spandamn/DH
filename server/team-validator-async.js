@@ -32,9 +32,10 @@ class ValidatorAsync {
  * Process manager
  *********************************************************/
 
-const QueryProcessManager = require('../lib/process-manager').QueryProcessManager;
+/** @type {typeof import('../lib/process-manager').QueryProcessManager} */
+const QueryProcessManager = require(/** @type {any} */('../.lib-dist/process-manager')).QueryProcessManager;
 
-/**@type {QueryProcessManager} */
+/** @type {QueryProcessManager} */
 // @ts-ignore
 const PM = new QueryProcessManager(module, async message => {
 	let {formatid, removeNicknames, team} = message;
@@ -44,7 +45,7 @@ const PM = new QueryProcessManager(module, async message => {
 	try {
 		problems = TeamValidator(formatid).validateTeam(parsedTeam, removeNicknames);
 	} catch (err) {
-		require('../lib/crashlogger')(err, 'A team validation', {
+		require(/** @type {any} */('../.lib-dist/crashlogger'))(err, 'A team validation', {
 			formatid: formatid,
 			team: team,
 		});
@@ -64,7 +65,8 @@ if (!PM.isParentProcess) {
 	// This is a child process!
 	// @ts-ignore This file doesn't exist on the repository, so Travis checks fail if this isn't ignored
 	global.Config = require('../config/config');
-	global.TeamValidator = require('../sim/team-validator');
+
+	global.TeamValidator = require(/** @type {any} */ ('../.sim-dist/team-validator')).TeamValidator;
 	// @ts-ignore ???
 	global.Monitor = {
 		/**
@@ -88,11 +90,13 @@ if (!PM.isParentProcess) {
 		});
 	}
 
-	global.Dex = require('../sim/dex').includeData();
+	global.Dex = require(/** @type {any} */ ('../.sim-dist/dex')).includeData();
 	global.toId = Dex.getId;
 	global.Chat = require('./chat');
 
-	require('../lib/repl').start(`team-validator-${process.pid}`, cmd => eval(cmd));
+	/** @type {typeof import('../lib/repl').Repl} */
+	const Repl = require(/** @type {any} */('../.lib-dist/repl')).Repl;
+	Repl.start(`team-validator-${process.pid}`, cmd => eval(cmd));
 } else {
 	PM.spawn(global.Config ? Config.validatorprocesses : 1);
 }

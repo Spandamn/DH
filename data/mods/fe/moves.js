@@ -3014,7 +3014,7 @@ exports.BattleMovedex = {
         secondary: {
             chance: 100,
             onHit: function(target) {
-                if (target.stats.def > target.stats.spd) target.addVolatile('confusion');
+                if (target.getStat('def') > target.getStat('spd')) target.addVolatile('confusion');
             },
         },
         target: "normal",
@@ -9442,7 +9442,7 @@ exports.BattleMovedex = {
 		basePower: 0,
 		category: "Status",
 		desc: "The user uses the first move known by the last unfainted team member. This team member's attacking stat is copied during the move. Does not select itself or Z-Moves.",
-		shortDesc: "Uses the first move known by the last unfainted team member. This copies the team member's attacking stat.",
+		shortDesc: "Uses the first move known by the last unfainted team member. The copied move uses said team member's attacking stat as it's used.",
 		id: "foulmimicry",
 		name: "Foul Mimicry",
 		pp: 20,
@@ -9469,14 +9469,14 @@ exports.BattleMovedex = {
 				return false;
 			}
 			//Copy the teammate's attacking stat before use.
-			let phys = 0 + target.stats['atk'];
-			let spec = 0 + target.stats['spa'];
-			target.stats['atk'] = pokemon.stats['atk'];
-			target.stats['spa'] = pokemon.stats['spa'];
+			let phys = 0 + target.storedStats['atk'];
+			let spec = 0 + target.storedStats['spa'];
+			target.storedStats['atk'] = pokemon.storedStats['atk'];
+			target.storedStats['spa'] = pokemon.storedStats['spa'];
 			this.useMove(move, target);
 			//Then restore it.
-			target.stats['atk'] = phys;
-			target.stats['spa'] = spec;
+			target.storedStats['atk'] = phys;
+			target.storedStats['spa'] = spec;
 		},
 		secondary: false,
 		target: "self",
@@ -9646,15 +9646,17 @@ exports.BattleMovedex = {
 		secondary: {
 			chance: 100,
 			onHit: function (target, source) {
-				let stat = 'atk';
+				let statName = 'atk';
 				let bestStat = 0;
-				for (let i in target.stats) {
-					if (target.stats[i] > bestStat) {
-						stat = i;
-						bestStat = target.stats[i];
+				/** @type {StatNameExceptHP} */
+				let s;
+				for (s in target.storedStats) {
+					if (target.storedStats[s] > bestStat) {
+						statName = s;
+						bestStat = target.storedStats[s];
 					}
 				}
-				this.boost({[stat]: -1}, target, source);
+				this.boost({[statName]: 1}, target);
 			},
 		},
 		ignoreAbility: true,
@@ -9796,6 +9798,87 @@ exports.BattleMovedex = {
 		target: "all",
 		type: "Ghost",
 		zMoveBoost: {spe: 1},
+	},
+	"substitute": {
+		num: 164,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		desc: "The user takes 1/4 of its maximum HP, rounded down, and puts it into a substitute to take its place in battle. The substitute is removed once enough damage is inflicted on it, or if the user switches out or faints. Baton Pass can be used to transfer the substitute to an ally, and the substitute will keep its remaining HP. Until the substitute is broken, it receives damage from all attacks made by other Pokemon and shields the user from status effects and stat stage changes caused by other Pokemon. Sound-based moves and Pokemon with the Infiltrator Ability ignore substitutes. The user still takes normal damage from weather and status effects while behind its substitute. If the substitute breaks during a multi-hit attack, the user will take damage from any remaining hits. If a substitute is created while the user is trapped by a binding move, the binding effect ends immediately. Fails if the user does not have enough HP remaining to create a substitute without fainting, or if it already has a substitute.",
+		shortDesc: "User takes 1/4 its max HP to put in a substitute.",
+		id: "substitute",
+		isViable: true,
+		name: "Substitute",
+		pp: 10,
+		priority: 0,
+		flags: {snatch: 1, nonsky: 1},
+		volatileStatus: 'Substitute',
+		onTryHit: function (target) {
+			if (target.volatiles['substitute']) {
+				this.add('-fail', target, 'move: Substitute');
+				return null;
+			}
+			if (target.hp <= target.maxhp / 4 || target.maxhp === 1) { // Shedinja clause
+				this.add('-fail', target, 'move: Substitute', '[weak]');
+				return null;
+			}
+		},
+		onHit: function (target) {
+			this.directDamage(target.maxhp / 4);
+		},
+		effect: {
+			onStart: function (target) {
+				this.add('-start', target, 'Substitute');
+				this.effectData.hp = Math.floor(target.maxhp / 4);
+				delete target.volatiles['partiallytrapped'];
+			},
+			onTryPrimaryHitPriority: -1,
+			onTryPrimaryHit: function (target, source, move) {
+				if (target === source || move.flags['authentic'] || move.infiltrates) {
+					return;
+				}
+				let damage = this.getDamage(source, target, move);
+				if (!damage && damage !== 0) {
+					this.add('-fail', source);
+					this.attrLastMove('[still]');
+					return null;
+				}
+				damage = this.runEvent('SubDamage', target, source, move, damage);
+				if (!damage) {
+					return damage;
+				}
+				if (damage > target.volatiles['substitute'].hp) {
+					damage = /** @type {number} */ (target.volatiles['substitute'].hp);
+				}
+				target.volatiles['substitute'].hp -= damage;
+				source.lastDamage = damage;
+				if (target.volatiles['substitute'].hp <= 0) {
+					if (target.hasAbility('blessedprotection')){
+						source.addVolatile('disable');
+					}
+					target.removeVolatile('substitute');
+				} else {
+					this.add('-activate', target, 'move: Substitute', '[damage]');
+				}
+				if (move.recoil) {
+					this.damage(this.calcRecoilDamage(damage, move), source, target, 'recoil');
+				}
+				if (move.drain) {
+					this.heal(Math.ceil(damage * move.drain[0] / move.drain[1]), source, target, 'drain');
+				}
+				this.singleEvent('AfterSubDamage', move, null, target, source, move, damage);
+				this.runEvent('AfterSubDamage', target, source, move, damage);
+				return 0; // hit
+			},
+			onEnd: function (target) {
+				this.add('-end', target, 'Substitute');
+			},
+		},
+		secondary: null,
+		target: "self",
+		type: "Normal",
+		zMoveEffect: 'clearnegativeboost',
+		contestType: "Cute",
 	},
 };
 

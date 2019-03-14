@@ -1,6 +1,7 @@
 'use strict';
 
-const FS = require('../../lib/fs');
+/** @type {typeof import('../../lib/fs').FS} */
+const FS = require(/** @type {any} */('../../.lib-dist/fs')).FS;
 
 const MONITOR_FILE = 'config/chat-plugins/chat-monitor.tsv';
 const WRITE_THROTTLE_TIME = 5 * 60 * 1000;
@@ -227,7 +228,7 @@ let chatfilter = function (message, user, room) {
 let namefilter = function (name, user) {
 	let id = toId(name);
 	if (Chat.namefilterwhitelist.has(id)) return name;
-	if (id === user.trackRename) return '';
+	if (id === toId(user.trackRename)) return '';
 	let lcName = name.replace(/\u039d/g, 'N').toLowerCase().replace(/[\u200b\u007F\u00AD]/g, '').replace(/\u03bf/g, 'o').replace(/\u043e/g, 'o').replace(/\u0430/g, 'a').replace(/\u0435/g, 'e').replace(/\u039d/g, 'e');
 	// Remove false positives.
 	lcName = lcName.replace('herapist', '').replace('grape', '').replace('scrape', '');
@@ -284,7 +285,7 @@ let nicknamefilter = function (name, user) {
 			}
 			if (matched) {
 				if (Chat.monitors[list].punishment === 'AUTOLOCK') {
-					Punishments.autolock(user, Rooms('staff'), `NameMonitor`, `inappropriate Pokémon nickname: ${name}`, `${user.name} - using an inappropriate Pokémon nickname: ${name}`, false, user.name);
+					Punishments.autolock(user, Rooms('staff'), `NameMonitor`, `inappropriate Pokémon nickname: ${name}`, `${user.name} - using an inappropriate Pokémon nickname: ${name}`, true);
 				}
 				line[3]++;
 				saveFilters();
@@ -296,17 +297,13 @@ let nicknamefilter = function (name, user) {
 	return name;
 };
 
-/** @typedef {(query: string[], user: User, connection: Connection) => (string | null | void)} PageHandler */
-/** @typedef {{[k: string]: PageHandler | PageTable}} PageTable */
-
 /** @type {PageTable} */
 const pages = {
 	filters(query, user, connection) {
 		if (!user.named) return Rooms.RETRY_AFTER_LOGIN;
-		let buf = `|title|Filters\n|pagehtml|<div class="pad ladder"><h2>Filters</h2>`;
-		if (!user.can('lock')) {
-			return buf + `<p>Access denied</p></div>`;
-		}
+		this.title = 'Filters';
+		let buf = `<div class="pad ladder"><h2>Filters</h2>`;
+		if (!this.can('lock')) return;
 		let content = ``;
 		for (const key in Chat.monitors) {
 			content += `<tr><th colspan="2"><h3>${Chat.monitors[key].label} <span style="font-size:8pt;">[${key}]</span></h3></tr></th>`;
@@ -345,7 +342,7 @@ exports.pages = pages;
 let commands = {
 	filters: 'filter',
 	filter: {
-		add: function (target, room, user) {
+		add(target, room, user) {
 			if (!this.can('updateserver')) return false;
 
 			let [list, ...rest] = target.split(',');
@@ -390,7 +387,7 @@ let commands = {
 				return this.sendReply(`'${word}' was added to the ${list} list.`);
 			}
 		},
-		remove: function (target, room, user) {
+		remove(target, room, user) {
 			if (!this.can('updateserver')) return false;
 
 			let [list, ...words] = target.split(',').map(param => param.trim());
@@ -418,19 +415,19 @@ let commands = {
 		},
 		'': 'view',
 		list: 'view',
-		view: function (target, room, user) {
+		view(target, room, user) {
 			this.parse(`/join view-filters`);
 		},
-		help: function (target, room, user) {
+		help(target, room, user) {
 			this.parse(`/help filter`);
 		},
 	},
 	filterhelp: [
 		`- /filter add list, word, reason - Adds a word to the given filter list. Requires: ~`,
 		`- /filter remove list, words - Removes words from the given filter list. Requires: ~`,
-		`- /filter view - Opens the list of filtered words. Requires: % @ * & ~`,
+		`- /filter view - Opens the list of filtered words. Requires: % @ & ~`,
 	],
-	allowname: function (target, room, user) {
+	allowname(target, room, user) {
 		if (!this.can('forcerename')) return false;
 		target = toId(target);
 		if (!target) return this.errorReply(`Syntax: /allowname username`);

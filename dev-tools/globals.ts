@@ -1,8 +1,8 @@
-type Battle = import('./../sim/battle')
+type Battle = import('./../sim/battle').Battle
 type ModdedDex = typeof import('./../sim/dex')
-type Pokemon = import('./../sim/pokemon')
-type Side = import('./../sim/side')
-type Validator = ReturnType<typeof import('./../sim/team-validator')>
+type Pokemon = import('./../sim/pokemon').Pokemon
+type Side = import('./../sim/side').Side
+type Validator = import('./../sim/team-validator').Validator
 
 type PageTable = import('./../server/chat').PageTable
 type ChatCommands = import('./../server/chat').ChatCommands
@@ -27,10 +27,13 @@ declare let Sockets: typeof import('../server/sockets');
 declare let TeamValidatorAsync: typeof import('../server/team-validator-async');
 
 type GenderName = 'M' | 'F' | 'N' | '';
-type StatName = 'hp' | 'atk' | 'def' | 'spa' | 'spd' | 'spe';
-type StatsTable = {hp: number, atk: number, def: number, spa: number, spd: number, spe: number};
+type StatNameExceptHP = 'atk' | 'def' | 'spa' | 'spd' | 'spe';
+type StatName = 'hp' | StatNameExceptHP;
+type StatsExceptHPTable = {[stat in StatNameExceptHP]: number};
+type StatsTable = {[stat in StatName]: number };
 type SparseStatsTable = Partial<StatsTable>;
-type BoostsTable = {atk: number, def: number, spa: number, spd: number, spe: number, accuracy: number, evasion: number};
+type BoostName = StatNameExceptHP | 'accuracy' | 'evasion';
+type BoostsTable = {[boost in BoostName]: number };
 type SparseBoostsTable = Partial<BoostsTable>;
 type PokemonSet = {
 	name: string,
@@ -117,13 +120,14 @@ type PokemonSources = {
 type EventInfo = {
 	generation: number,
 	level?: number,
-	shiny?: true | 1,
+	shiny?: boolean | 1,
 	gender?: GenderName,
 	nature?: string,
 	ivs?: SparseStatsTable,
 	perfectIVs?: number,
 	isHidden?: boolean,
 	abilities?: string[],
+	maxEggMoves?: number,
 	moves?: string[],
 	pokeball?: string,
 	from?: string,
@@ -185,6 +189,7 @@ interface EventMethods {
 	onAnyDamage?: (this: Battle, damage: number, target: Pokemon, source: Pokemon, effect: Effect) => void
 	onAnyBasePower?: (this: Battle, basePower: number, source: Pokemon, target: Pokemon, move: ActiveMove) => void
 	onAnySetWeather?: (this: Battle, target: Pokemon, source: Pokemon, weather: PureEffect) => void
+	onAnyTerrainStart?: (this: Battle) => void
 	onAnyModifyDamage?: (this: Battle, damage: number, source: Pokemon, target: Pokemon, move: ActiveMove) => void
 	onAnyRedirectTarget?: (this: Battle, target: Pokemon, source: Pokemon, source2: Pokemon, move: ActiveMove) => void
 	onAnyAccuracy?: (this: Battle, accuracy: number, target: Pokemon, source: Pokemon, move: ActiveMove) => void
@@ -302,7 +307,7 @@ interface EffectData extends EventMethods {
 	affectsFainted?: boolean
 	counterMax?: number
 	desc?: string
-	drain?: number[]
+	drain?: [number, number]
 	duration?: number
 	effect?: Partial<EffectData>
 	effectType?: string
@@ -370,10 +375,10 @@ interface ModdedEffectData extends Partial<EffectData> {
 	inherit?: boolean
 }
 
-type EffectTypes = 'Effect' | 'Pokemon' | 'Move' | 'Item' | 'Ability' | 'Format' | 'Ruleset' | 'Weather' | 'Status' | 'Rule' | 'ValidatorRule'
+type EffectType = 'Effect' | 'Pokemon' | 'Move' | 'Item' | 'Ability' | 'Format' | 'Ruleset' | 'Weather' | 'Status' | 'Rule' | 'ValidatorRule'
 
 interface BasicEffect extends EffectData {
-	effectType: EffectTypes
+	effectType: EffectType
 	exists: boolean
 	flags: AnyObject
 	fullname: string
@@ -558,6 +563,7 @@ type TemplateAbility = {0: string, 1?: string, H?: string, S?: string}
 interface TemplateData {
 	abilities: TemplateAbility
 	baseStats: StatsTable
+	canHatch?: boolean
 	color: string
 	eggGroups: string[]
 	heightm: number
@@ -569,7 +575,10 @@ interface TemplateData {
 	baseSpecies?: string
 	evoLevel?: number
 	evoMove?: string
+	evoCondition?: string
+	evoItem?: string
 	evos?: string[]
+	evoType?: 'trade' | 'stone' | 'levelMove' | 'levelExtra' | 'levelFriendship' | 'levelHold'
 	forme?: string
 	formeLetter?: string
 	gender?: GenderName
@@ -588,6 +597,7 @@ interface TemplateFormatsData {
 	battleOnly?: boolean
 	comboMoves?: string[]
 	doublesTier?: string
+	encounters?: EventInfo[]
 	essentialMove?: string
 	eventOnly?: boolean
 	eventPokemon?: EventInfo[]
@@ -635,7 +645,6 @@ interface Template extends Readonly<BasicEffect & TemplateData & TemplateFormats
 	readonly isMega?: boolean
 	readonly isPrimal?: boolean
 	readonly learnset?: {[k: string]: MoveSource[]}
-	readonly originalMega?: string
 }
 
 type GameType = 'singles' | 'doubles' | 'triples' | 'rotation'
@@ -671,7 +680,6 @@ interface FormatsData extends EventMethods {
 	noChangeForme?: boolean
 	onBasePowerPriority?: number
 	onModifyMovePriority?: number
-	onStartPriority?: number
 	onSwitchInPriority?: number
 	rated?: boolean
 	requirePentagon?: boolean
@@ -692,7 +700,7 @@ interface FormatsData extends EventMethods {
 	onAfterMega?: (this: Battle, pokemon: Pokemon) => void
 	onBegin?: (this: Battle) => void
 	onChangeSet?: (this: ModdedDex, set: PokemonSet, format: Format, setHas?: AnyObject, teamHas?: AnyObject) => string[] | void
-	onModifyTemplate?: (this: Battle, template: Template, target: Pokemon, source: Pokemon) => Template | void
+	onModifyTemplate?: (this: Battle, template: Template, target: Pokemon, source: Pokemon, effect: Effect) => Template | void
 	onTeamPreview?: (this: Battle) => void
 	onValidateSet?: (this: ModdedDex, set: PokemonSet, format: Format, setHas: AnyObject, teamHas: AnyObject) => string[] | void
 	onValidateTeam?: (this: ModdedDex, team: PokemonSet[], format: Format, teamHas: AnyObject) => string[] | void
@@ -714,17 +722,17 @@ interface RuleTable extends Map<string, string> {
 	getReason: (key: string) => string
 }
 
-interface Format extends BasicEffect, FormatsData {
-	effectType: 'Format' | 'Ruleset' | 'Rule' | 'ValidatorRule'
-	baseRuleset: string[]
-	banlist: string[]
-	customRules: string[] | null
-	defaultLevel: number
-	maxLevel: number
-	noLog: boolean
-	ruleset: string[]
+interface Format extends Readonly<BasicEffect & FormatsData> {
+	readonly effectType: 'Format' | 'Ruleset' | 'Rule' | 'ValidatorRule'
+	readonly baseRuleset: string[]
+	readonly banlist: string[]
+	readonly customRules: string[] | null
+	readonly defaultLevel: number
+	readonly maxLevel: number
+	readonly noLog: boolean
+	readonly ruleset: string[]
+	readonly unbanlist: string[]
 	ruleTable: RuleTable | null
-	unbanlist: string[]
 }
 
 interface BattleScriptsData {
@@ -755,14 +763,14 @@ interface ModdedBattleSide {
 
 interface ModdedBattlePokemon {
 	boostBy?: (this: Pokemon, boost: SparseBoostsTable) => boolean
-	calculateStat?: (this: Pokemon, statName: string, boost: number, modifier?: number) => number
+	calculateStat?: (this: Pokemon, statName: StatNameExceptHP, boost: number, modifier?: number) => number
 	getActionSpeed?: (this: Pokemon) => number
 	getRequestData?: (this: Pokemon) => {moves: {move: string, id: string, target?: string, disabled?: boolean}[], maybeDisabled?: boolean, trapped?: boolean, maybeTrapped?: boolean, canMegaEvo?: boolean, canUltraBurst?: boolean, canZMove?: AnyObject | null}
-	getStat?: (this: Pokemon, statName: string, unboosted?: boolean, unmodified?: boolean) => number
+	getStat?: (this: Pokemon, statName: StatNameExceptHP, unboosted?: boolean, unmodified?: boolean) => number
 	getWeight?: (this: Pokemon) => number
 	hasAbility?: (this: Pokemon, ability: string | string[]) => boolean
 	isGrounded?: (this: Pokemon, negateImmunity: boolean | undefined) => boolean | null
-	modifyStat?: (this: Pokemon, statName: string, modifier: number) => void
+	modifyStat?: (this: Pokemon, statName: StatNameExceptHP, modifier: number) => void
 	moveUsed?: (this: Pokemon, move: Move, targetLoc?: number) => void
 	recalculateStats?: (this: Pokemon) => void
 	setAbility?: (this: Pokemon, ability: string | Ability, source: Pokemon | null, isFromFormeChange: boolean) => string | false
@@ -776,7 +784,7 @@ interface ModdedBattleScriptsData extends Partial<BattleScriptsData> {
 	side?: ModdedBattleSide
 	boost?: (this: Battle, boost: SparseBoostsTable, target: Pokemon, source?: Pokemon | null, effect?: Effect | string | null, isSecondary?: boolean, isSelf?: boolean) => boolean | null | 0
 	debug?: (this: Battle, activity: string) => void
-	getDamage?: (this: Battle, pokemon: Pokemon, target: Pokemon, move: string | number | ActiveMove, suppressMessages: boolean) => number
+	getDamage?: (this: Battle, pokemon: Pokemon, target: Pokemon, move: string | number | ActiveMove, suppressMessages: boolean) => number | undefined | null | false
 	getEffect?: (this: Battle, name: string | Effect | null) => Effect
 	init?: (this: Battle) => void
 	modifyDamage?: (this: Battle, baseDamage: number, pokemon: Pokemon, target: Pokemon, move: ActiveMove, suppressMessages?: boolean) => void
@@ -801,15 +809,15 @@ interface ModdedTypeData extends Partial<TypeData> {
 	inherit?: boolean
 }
 
-interface TypeInfo extends TypeData {
-	effectType: 'Type' | 'EffectType'
-	exists: boolean
-	gen: number
-	HPdvs: SparseStatsTable
-	HPivs: SparseStatsTable
-	id: string
-	name: string
-	toString: () => string
+interface TypeInfo extends Readonly<TypeData> {
+	readonly effectType: 'Type' | 'EffectType'
+	readonly exists: boolean
+	readonly gen: number
+	readonly HPdvs: SparseStatsTable
+	readonly HPivs: SparseStatsTable
+	readonly id: string
+	readonly name: string
+	readonly toString: () => string
 }
 
 interface Actions {

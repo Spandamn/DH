@@ -13,7 +13,8 @@
 
 'use strict';
 
-const FS = require('../lib/fs');
+/** @type {typeof import('../lib/fs').FS} */
+const FS = require(/** @type {any} */('../.lib-dist/fs')).FS;
 
 /** 5 seconds */
 const TICK_TIME = 5;
@@ -32,10 +33,10 @@ const DISCONNECTION_BANK_TIME = 300;
 // time after a player disabling the timer before they can re-enable it
 const TIMER_COOLDOWN = 20 * SECONDS;
 
-class BattlePlayer {
+class RoomBattlePlayer {
 	/**
 	 * @param {User} user
-	 * @param {Battle} game
+	 * @param {RoomBattle} game
 	 * @param {PlayerSlot} slot
 	 */
 	constructor(user, game, slot) {
@@ -90,12 +91,12 @@ class BattlePlayer {
 	}
 }
 
-class BattleTimer {
+class RoomBattleTimer {
 	/**
-	 * @param {Battle} battle
+	 * @param {RoomBattle} battle
 	 */
 	constructor(battle) {
-		/** @type {Battle} */
+		/** @type {RoomBattle} */
 		this.battle = battle;
 
 		/** @type {NodeJS.Timer?} */
@@ -244,7 +245,7 @@ class BattleTimer {
 				addPerTurn -= TICK_TIME;
 			}
 			// after turn 200ish: 10s/turn -> 7s/turn
-			if (this.battle.requestCount > 400 && this.battle.requestCount % 2) {
+			if (this.battle.requestCount > 400 && Math.floor(this.battle.requestCount / 2) % 2) {
 				addPerTurn = 0;
 			}
 		}
@@ -402,7 +403,7 @@ class BattleTimer {
  * @property {string} choice
  */
 
-class Battle {
+class RoomBattle {
 	/**
 	 * @param {GameRoom} room
 	 * @param {string} formatid
@@ -429,13 +430,13 @@ class Battle {
 		this.ended = false;
 		this.active = false;
 
-		/** @type {{[userid: string]: BattlePlayer}} */
+		/** @type {{[userid: string]: RoomBattlePlayer}} */
 		this.players = Object.create(null);
 		this.playerCount = 0;
 		this.playerCap = 2;
-		/** @type {BattlePlayer?} */
+		/** @type {RoomBattlePlayer?} */
 		this.p1 = null;
-		/** @type {BattlePlayer?} */
+		/** @type {RoomBattlePlayer?} */
 		this.p2 = null;
 
 		/**
@@ -451,7 +452,7 @@ class Battle {
 			p1: /** @type {BattleRequestTracker} */ ({rqid: 0, request: '', isWait: 'cantUndo', choice: ''}),
 			p2: /** @type {BattleRequestTracker} */ ({rqid: 0, request: '', isWait: 'cantUndo', choice: ''}),
 		};
-		this.timer = new BattleTimer(this);
+		this.timer = new RoomBattleTimer(this);
 
 		// data to be logged
 		/**
@@ -947,7 +948,7 @@ class Battle {
 
 		if (this[slot]) throw new Error(`Player already exists in ${slot} in ${this.id}`);
 		let slotNum = parseInt(slot.charAt(1)) - 1;
-		let player = new BattlePlayer(user, this, slot);
+		let player = new RoomBattlePlayer(user, this, slot);
 		this[slot] = player;
 		this.playerNames[slotNum] = player.name;
 
@@ -1014,19 +1015,21 @@ class Battle {
 	}
 }
 
-exports.RoomBattlePlayer = BattlePlayer;
-exports.RoomBattleTimer = BattleTimer;
-exports.RoomBattle = Battle;
+exports.RoomBattlePlayer = RoomBattlePlayer;
+exports.RoomBattleTimer = RoomBattleTimer;
+exports.RoomBattle = RoomBattle;
 
 /*********************************************************
  * Process manager
  *********************************************************/
 
-const StreamProcessManager = require('../lib/process-manager').StreamProcessManager;
+/** @type {typeof import('../lib/process-manager').StreamProcessManager} */
+const StreamProcessManager = require(/** @type {any} */('../.lib-dist/process-manager')).StreamProcessManager;
 
 const PM = new StreamProcessManager(module, () => {
-	const BattleStream = require('../sim/battle-stream').BattleStream;
-	return new BattleStream();
+	/** @type {typeof import('../sim/battle-stream').BattleStream} */
+	const BattleStream = require(/** @type {any} */ ('../.sim-dist/battle-stream')).BattleStream;
+	return new BattleStream({keepAlive: true});
 });
 
 if (!PM.isParentProcess) {
@@ -1066,7 +1069,9 @@ if (!PM.isParentProcess) {
 		});
 	}
 
-	require('../lib/repl').start(`sim-${process.pid}`, cmd => eval(cmd));
+	/** @type {typeof import('../lib/repl').Repl} */
+	const Repl = require(/** @type {any} */('../.lib-dist/repl')).Repl;
+	Repl.start(`sim-${process.pid}`, cmd => eval(cmd));
 } else {
 	PM.spawn(global.Config ? Config.simulatorprocesses : 1);
 }

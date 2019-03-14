@@ -410,7 +410,7 @@ exports.BattleMovedex = {
 		basePowerCallback: function (pokemon, target, move) {
 			if (pokemon.template.species === 'Greninja-Ash' && pokemon.hasAbility('battlebond')) {
 				move.breaksProtect = true;
-				return move.basePower+20;
+				return move.basePower + 20;
 			}
 		},
 		shortDesc: "Usually goes first. Hits 5 times in one turn. If used by Ash-Greninja, breaks protect and has 60 power per hit.",
@@ -431,7 +431,7 @@ exports.BattleMovedex = {
 		},
 		target: "normal",
 		type: "Water",
-		isZ: "grenjiumz",
+		isZ: "greninjiumz",
 	},
 		
 "toadshypnospiral": { 
@@ -482,9 +482,9 @@ exports.BattleMovedex = {
 	},
 "sacredspiral": { 
 		accuracy: true,
-		basePower: 210,
+		basePower: 190,
 		category: "Special",
-		shortDesc: "Boosts user's Def/SpA/Spe by 1 after damage.",
+		shortDesc: "Boosts user's Def/SpD/Spe by 1 after damage.",
 		id: "sacredspiral",
 		isViable: true,
 		name: "Sacred Spiral",
