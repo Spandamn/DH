@@ -3014,7 +3014,7 @@ exports.BattleMovedex = {
         secondary: {
             chance: 100,
             onHit: function(target) {
-                if (target.stats.def > target.stats.spd) target.addVolatile('confusion');
+                if (target.getStat('def') > target.getStat('spd')) target.addVolatile('confusion');
             },
         },
         target: "normal",
@@ -9442,7 +9442,7 @@ exports.BattleMovedex = {
 		basePower: 0,
 		category: "Status",
 		desc: "The user uses the first move known by the last unfainted team member. This team member's attacking stat is copied during the move. Does not select itself or Z-Moves.",
-		shortDesc: "Uses the first move known by the last unfainted team member. This copies the team member's attacking stat.",
+		shortDesc: "Uses the first move known by the last unfainted team member. The copied move uses said team member's attacking stat as it's used.",
 		id: "foulmimicry",
 		name: "Foul Mimicry",
 		pp: 20,
@@ -9469,14 +9469,14 @@ exports.BattleMovedex = {
 				return false;
 			}
 			//Copy the teammate's attacking stat before use.
-			let phys = 0 + target.stats['atk'];
-			let spec = 0 + target.stats['spa'];
-			target.stats['atk'] = pokemon.stats['atk'];
-			target.stats['spa'] = pokemon.stats['spa'];
+			let phys = 0 + target.storedStats['atk'];
+			let spec = 0 + target.storedStats['spa'];
+			target.storedStats['atk'] = pokemon.storedStats['atk'];
+			target.storedStats['spa'] = pokemon.storedStats['spa'];
 			this.useMove(move, target);
 			//Then restore it.
-			target.stats['atk'] = phys;
-			target.stats['spa'] = spec;
+			target.storedStats['atk'] = phys;
+			target.storedStats['spa'] = spec;
 		},
 		secondary: false,
 		target: "self",
@@ -9646,15 +9646,17 @@ exports.BattleMovedex = {
 		secondary: {
 			chance: 100,
 			onHit: function (target, source) {
-				let stat = 'atk';
+				let statName = 'atk';
 				let bestStat = 0;
-				for (let i in target.stats) {
-					if (target.stats[i] > bestStat) {
-						stat = i;
-						bestStat = target.stats[i];
+				/** @type {StatNameExceptHP} */
+				let s;
+				for (s in target.storedStats) {
+					if (target.storedStats[s] > bestStat) {
+						statName = s;
+						bestStat = target.storedStats[s];
 					}
 				}
-				this.boost({[stat]: -1}, target, source);
+				this.boost({[statName]: 1}, target);
 			},
 		},
 		ignoreAbility: true,
