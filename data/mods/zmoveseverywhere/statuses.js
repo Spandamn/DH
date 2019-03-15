@@ -36,6 +36,30 @@ let BattleStatuses = {
 			this.add('-weather', 'none');
 		},
 	},
+	
+	catostrophiccontinentcrash: {
+		name: 'catostrophiccontinentcrash',
+		id: 'catostrophiccontinentcrash',
+		num: 0,
+		duration: 3,
+		onStart(pokemon, source) {
+			this.add('-activate', pokemon, 'move: ' + this.effectData.sourceEffect, '[of] ' + source);
+		},
+		onResidualOrder: 11,
+		onResidual(pokemon) {
+			if (this.effectData.source && (!this.effectData.source.isActive || this.effectData.source.hp <= 0 || !this.effectData.source.activeTurns)) {
+				delete pokemon.volatiles['partiallytrapped'];
+				this.add('-end', pokemon, this.effectData.sourceEffect, '[partiallytrapped]', '[silent]');
+				return;
+			}
+		},
+		onEnd(pokemon) {
+			this.add('-end', pokemon, this.effectData.sourceEffect, '[partiallytrapped]');
+		},
+		onTrapPokemon(pokemon) {
+			if (this.effectData.source && this.effectData.source.isActive) pokemon.tryTrap();
+		},
+	},
 
 };
 
