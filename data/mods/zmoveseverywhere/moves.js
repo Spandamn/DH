@@ -1,5 +1,4 @@
 "use strict";
-
 exports.BattleMovedex = {
 	"swampysmackdown": {
 		accuracy: true,
@@ -16,7 +15,7 @@ exports.BattleMovedex = {
 			this.attrLastMove('[still]');
 			this.add('-anim', source, "Frenzy Plant", target);
 		},
-		onHit: function (target, source, move) {
+		onHit: function(target, source, move) {
 			target.side.addSideCondition('grasspledge');
 		},
 		target: "normal",
@@ -38,7 +37,7 @@ exports.BattleMovedex = {
 			this.attrLastMove('[still]');
 			this.add('-anim', source, "Blast Burn", target);
 		},
-		onHit: function (target, source, move) {
+		onHit: function(target, source, move) {
 			target.side.addSideCondition('firepledge');
 		},
 		target: "normal",
@@ -60,7 +59,7 @@ exports.BattleMovedex = {
 			this.attrLastMove('[still]');
 			this.add('-anim', source, "Hydro Cannon", target);
 		},
-		onHit: function (target, source, move) {
+		onHit: function(target, source, move) {
 			source.side.addSideCondition('waterpledge');
 		},
 		target: "normal",
@@ -287,7 +286,7 @@ exports.BattleMovedex = {
 		pp: 1,
 		priority: 0,
 		flags: {},
-		onEffectiveness: function (typeMod, type, move) {
+		onEffectiveness: function(typeMod, type, move) {
 			// @ts-ignore
 			return typeMod + this.getEffectiveness('Fire', type);
 		},
@@ -316,8 +315,14 @@ exports.BattleMovedex = {
 		flags: {},
 		onHit: function(target, source, move) {
 			source.addVolatile("pyrotechnics");
-			for(let i=0;i<source.volatiles.pyrotechnics.index;i++) {
-				this.boost({atk:1, def:1, spa:1, spd:1, spe:1}, source, source, source.volatiles.pyrotechnics);
+			for (let i = 0; i < source.volatiles.pyrotechnics.index; i++) {
+				this.boost({
+					atk: 1,
+					def: 1,
+					spa: 1,
+					spd: 1,
+					spe: 1
+				}, source, source, source.volatiles.pyrotechnics);
 			}
 		},
 		onPrepareHit: function(target, source) {
@@ -326,30 +331,27 @@ exports.BattleMovedex = {
 		},
 		effect: {
 			duration: 1,
-			onStart: function (pokemon) {
+			onStart: function(pokemon) {
 				this.effectData.index = 0;
-				while (pokemon.side.pokemon[this.effectData.index] !== pokemon &&
-					(!pokemon.side.pokemon[this.effectData.index] ||
-					pokemon.side.pokemon[this.effectData.index].fainted ||
-					pokemon.side.pokemon[this.effectData.index].status)) {
+				while (pokemon.side.pokemon[this.effectData.index] !== pokemon && (!pokemon.side.pokemon[this.effectData.index] || pokemon.side.pokemon[this.effectData.index].fainted || pokemon.side.pokemon[this.effectData.index].status)) {
 					this.effectData.index++;
 				}
 			},
-			onRestart: function (pokemon) {
+			onRestart: function(pokemon) {
 				do {
 					this.effectData.index++;
 					if (this.effectData.index >= 6) break;
 				} while (!pokemon.side.pokemon[this.effectData.index] || pokemon.side.pokemon[this.effectData.index].fainted || pokemon.side.pokemon[this.effectData.index].status);
 			},
 		},
-		onAfterMove: function (pokemon) {
+		onAfterMove: function(pokemon) {
 			pokemon.removeVolatile('pyrotechnics');
 		},
 		target: "normal",
 		type: "Fire",
 		isZ: "torkoaliumz",
 	},
-"depthstridedecimation": { // Add in such that this gets past Filter 
+	"depthstridedecimation": { // Add in such that this gets past Filter 
 		accuracy: true,
 		basePower: 210,
 		category: "Special",
@@ -364,8 +366,8 @@ exports.BattleMovedex = {
 			this.attrLastMove('[still]');
 			this.add('-anim', source, "Hydro Vortex", target);
 		},
-		onModifyMove: function (move, pokemon, target) {
-			if (target.hasAbility(['waterabsorb', 'stormdrain'])){
+		onModifyMove: function(move, pokemon, target) {
+			if (target.hasAbility(['waterabsorb', 'stormdrain'])) {
 				move.ignoreAbility = true;
 			}
 		},
@@ -374,7 +376,7 @@ exports.BattleMovedex = {
 		type: "Water",
 		isZ: "kyogriumz",
 	},
-"inneraurafocus": { 
+	"inneraurafocus": {
 		accuracy: true,
 		basePower: 0,
 		category: "Status",
@@ -403,11 +405,11 @@ exports.BattleMovedex = {
 		type: "Normal",
 		isZ: "lucariumz",
 	},
-"hyperwatershuriken": { 
+	"hyperwatershuriken": {
 		accuracy: true,
 		basePower: 40,
 		category: "Special",
-		basePowerCallback: function (pokemon, target, move) {
+		basePowerCallback: function(pokemon, target, move) {
 			if (pokemon.template.species === 'Greninja-Ash' && pokemon.hasAbility('battlebond')) {
 				move.breaksProtect = true;
 				return move.basePower + 20;
@@ -433,8 +435,7 @@ exports.BattleMovedex = {
 		type: "Water",
 		isZ: "greninjiumz",
 	},
-		
-"toadshypnospiral": { 
+	"toadshypnospiral": {
 		accuracy: true,
 		basePower: 0,
 		category: "Special",
@@ -446,7 +447,7 @@ exports.BattleMovedex = {
 		priority: 0,
 		flags: {},
 		status: 'slp',
-		onHit: function (target, source, move) {
+		onHit: function(target, source, move) {
 			if (!target.addVolatile('trapped', source, move, 'trapper')) {
 				this.add('-fail', target);
 			}
@@ -460,7 +461,7 @@ exports.BattleMovedex = {
 		type: "Psychic",
 		isZ: "politoediumz",
 	},
-"highdeliverydeluge": { //Does damage and extends rain to 8 more turns. Basically allows Pelipper to have a Z-move while still being able to set up rain as if it had Damp Rock. */
+	"highdeliverydeluge": { //Does damage and extends rain to 8 more turns. Basically allows Pelipper to have a Z-move while still being able to set up rain as if it had Damp Rock. */
 		accuracy: true,
 		basePower: 190,
 		category: "Special",
@@ -480,7 +481,7 @@ exports.BattleMovedex = {
 		type: "Water",
 		isZ: "pelipiumz",
 	},
-"sacredspiral": { 
+	"sacredspiral": {
 		accuracy: true,
 		basePower: 190,
 		category: "Special",
@@ -509,7 +510,6 @@ exports.BattleMovedex = {
 		type: "Water",
 		isZ: "omastatiumz",
 	},
-	
 	"omnitemporalblast": {
 		accuracy: true,
 		basePower: 150,
@@ -521,7 +521,7 @@ exports.BattleMovedex = {
 		pp: 1,
 		priority: 0,
 		flags: {},
-		onHit: function (target, source) {
+		onHit: function(target, source) {
 			target.side.addSideCondition('futuremove');
 			if (!target.side.sideConditions['futuremove'].positions[target.position]) {
 				target.side.sideConditions['futuremove'].positions[target.position] = {
@@ -553,7 +553,7 @@ exports.BattleMovedex = {
 		type: "Psychic",
 		isZ: "celebiumz",
 	},
-"ancientservantsascension": { 
+	"ancientservantsascension": {
 		accuracy: true,
 		basePower: 73,
 		category: "Physical",
@@ -572,13 +572,13 @@ exports.BattleMovedex = {
 			this.add('-anim', source, "Icicle Crash", target);
 			this.add('-anim', source, "Metal Burst", target);
 		},
-		onTryHit: function (target, pokemon) {
+		onTryHit: function(target, pokemon) {
 			// Ability is discarded before damage is calculated.
 			if (target.runImmunity('Rock')) {
 				pokemon.addVolatile('gastroacid');
 			}
 		},
-		onModifyMove: function (move, pokemon) {
+		onModifyMove: function(move, pokemon) {
 			let type = ['Rock', 'Ice', 'Steel'];
 			move.type = type[move.hit - 1] || '???';
 		},
@@ -589,8 +589,8 @@ exports.BattleMovedex = {
 	"celestialcurse": {
 		accuracy: true,
 		basePower: 0,
-		damageCallback: function (pokemon, target) {
-			if (target.hp > 0){
+		damageCallback: function(pokemon, target) {
+			if (target.hp > 0) {
 				return target.hp - 1;
 			}
 			return 1;
@@ -612,315 +612,366 @@ exports.BattleMovedex = {
 		type: "Psychic",
 		isZ: "gothitelliumz",
 	},
-	"catostrophiccontinentcrash": { 
-basePower: 190, 
-accuracy: true, 
-category: "Physical",
-shortDesc: "Z-Move Effect: The opponent cannot switch for 3 turns.", 
-id: "catostrophiccontinentcrash", 
-name: "Catostrophic Continent Crash", 
-pp: 1,
-priority: 0, 
-flags: {}, 
-onPrepareHit: function(target, source) {	this.attrLastMove('[still]');this.add('-anim', source, "Revelation Dance", target);},
-volatileStatus: 'catostrophiccontinentcrash',
-target: "normal",
-type: "Grass", 
-isZ: "torteriumz",
-},
+	"catostrophiccontinentcrash": {
+		basePower: 190,
+		accuracy: true,
+		category: "Physical",
+		shortDesc: "Z-Move Effect: The opponent cannot switch for 3 turns.",
+		id: "catostrophiccontinentcrash",
+		name: "Catostrophic Continent Crash",
+		pp: 1,
+		priority: 0,
+		flags: {},
+		onPrepareHit: function(target, source) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Revelation Dance", target);
+		},
+		volatileStatus: 'catostrophiccontinentcrash',
+		target: "normal",
+		type: "Grass",
+		isZ: "torteriumz",
+	},
 	"superiorstrike": {
-basePower: 190, 
-accuracy: true, 
-category: "Physical", 
-shortDesc: "Lowers the opponent’s Defense and Special Defense by 1 stage but forces Empoleon to switch out (although you can choose who replaces it).", 
-id: "superiorstrike", 
-name: "Superior Strike", 
-pp: 1,
-priority: 0, 
-flags: {}, 
-boosts: {
+		basePower: 190,
+		accuracy: true,
+		category: "Physical",
+		shortDesc: "Lowers the opponent’s Defense and Special Defense by 1 stage but forces Empoleon to switch out (although you can choose who replaces it).",
+		id: "superiorstrike",
+		name: "Superior Strike",
+		pp: 1,
+		priority: 0,
+		flags: {},
+		boosts: {
 			def: -1,
 			spd: -1,
 		},
-selfSwitch: true,
-onPrepareHit: function(target, source) {	this.attrLastMove('[still]');this.add('-anim', source, "Revelation Dance", target);},
-target: "normal",
-type: "Water", 
-isZ: "empoliumz",
-},
-"infernalflareup": { // TODO: Code the second effect
-basePower: 180, 
-accuracy: true, 
-category: "Physical", 
-shortDesc: "Gains a Flash Fire boost. Deals 20% more damage for every other Fire-type in the party (stacks additively).", 
-id: "infernalflareup", 
-name: "Infernal Flare Up", 
-pp: 1,
-priority: 0, 
-flags: {}, 
-self: {
-	volatileStatus: 'flashfire'
-},
-onPrepareHit: function(target, source) {	this.attrLastMove('[still]');this.add('-anim', source, "Revelation Dance", target);},
-target: "normal",
-type: "Fire", 
-isZ: "infernapiumz",
-},
-"crashingcococraze": {
-basePower: 195, 
-accuracy: true, 
-category: "Physical", 
-shortDesc: "Raises Speed and Attack by 2 stages", 
-id: "crashingcoco craze", 
-name: "Crashing Coco Craze", 
-pp: 1,
-priority: 0, 
-flags: {}, 
-selfBoost: {
+		selfSwitch: true,
+		onPrepareHit: function(target, source) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Revelation Dance", target);
+		},
+		target: "normal",
+		type: "Water",
+		isZ: "empoliumz",
+	},
+	"infernalflareup": { // TODO: Code the second effect
+		basePower: 180,
+		accuracy: true,
+		category: "Physical",
+		shortDesc: "Gains a Flash Fire boost. Deals 20% more damage for every other Fire-type in the party (stacks additively).",
+		id: "infernalflareup",
+		name: "Infernal Flare Up",
+		pp: 1,
+		priority: 0,
+		flags: {},
+		self: {
+			volatileStatus: 'flashfire'
+		},
+		onPrepareHit: function(target, source) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Revelation Dance", target);
+		},
+		target: "normal",
+		type: "Fire",
+		isZ: "infernapiumz",
+	},
+	"crashingcococraze": {
+		basePower: 195,
+		accuracy: true,
+		category: "Physical",
+		shortDesc: "Raises Speed and Attack by 2 stages",
+		id: "crashingcoco craze",
+		name: "Crashing Coco Craze",
+		pp: 1,
+		priority: 0,
+		flags: {},
+		selfBoost: {
 			boosts: {
 				spe: 2,
 				atk: 2,
 			},
 		},
-onPrepareHit: function(target, source) {	this.attrLastMove('[still]');this.add('-anim', source, "Revelation Dance", target);},
-target: "normal",
-type: "Dragon", 
-isZ: "exeggutiumz",
-},
+		onPrepareHit: function(target, source) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Revelation Dance", target);
+		},
+		target: "normal",
+		type: "Dragon",
+		isZ: "exeggutiumz",
+	},
 	"frozenflechettes": {
-basePower: 175, 
-accuracy: true, 
-category: "Physical", 
-shortDesc: "Sets Hail and a layer of Spikes.", 
-id: "frozenflechettes", 
-name: "Frozen Flechettes", 
-pp: 1,
-priority: 0, 
-flags: {},
-sideCondition: 'spikes',
-weather: 'hail',
-onPrepareHit: function(target, source) {	this.attrLastMove('[still]');this.add('-anim', source, "Revelation Dance", target);},
-target: "normal",
-type: "Ice", 
-isZ: "alolaslashiumz",
-},
+		basePower: 175,
+		accuracy: true,
+		category: "Physical",
+		shortDesc: "Sets Hail and a layer of Spikes.",
+		id: "frozenflechettes",
+		name: "Frozen Flechettes",
+		pp: 1,
+		priority: 0,
+		flags: {},
+		sideCondition: 'spikes',
+		weather: 'hail',
+		onPrepareHit: function(target, source) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Revelation Dance", target);
+		},
+		target: "normal",
+		type: "Ice",
+		isZ: "alolaslashiumz",
+	},
 	"indestructablehairwhips": {
-basePower: 175, 
-accuracy: true, 
-category: "Physical", 
-shortDesc: "Drops the foe's Defense by 1 stage and causes it to flinch.", 
-id: "indestructablehairwhips", 
-name: "Indestructable Hair Whips", 
-pp: 1,
-priority: 0, 
-flags: {}, 
-volatileStatus: 'flinch',
-boosts: {
+		basePower: 175,
+		accuracy: true,
+		category: "Physical",
+		shortDesc: "Drops the foe's Defense by 1 stage and causes it to flinch.",
+		id: "indestructablehairwhips",
+		name: "Indestructable Hair Whips",
+		pp: 1,
+		priority: 0,
+		flags: {},
+		volatileStatus: 'flinch',
+		boosts: {
 			def: -1,
 		},
-onPrepareHit: function(target, source) {	this.attrLastMove('[still]');this.add('-anim', source, "Revelation Dance", target);},
-target: "normal",
-type: "Steel", 
-isZ: "alodugtriumz",
-},
-"venomousfangbite": {
-basePower: 175, 
-accuracy: true, 
-category: "Physical", 
-shortDesc: "Badly poisons the target.", 
-id: "venomousfangbite", 
-name: "Venomous Fang Bite", 
-pp: 1,
-priority: 0, 
-flags: {}, 
-status: 'tox',
-onPrepareHit: function(target, source) {	this.attrLastMove('[still]');this.add('-anim', source, "Revelation Dance", target);},
-target: "normal",
-type: "Poison", 
-isZ: "arbokiumz",
-},
+		onPrepareHit: function(target, source) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Revelation Dance", target);
+		},
+		target: "normal",
+		type: "Steel",
+		isZ: "alodugtriumz",
+	},
+	"venomousfangbite": {
+		basePower: 175,
+		accuracy: true,
+		category: "Physical",
+		shortDesc: "Badly poisons the target.",
+		id: "venomousfangbite",
+		name: "Venomous Fang Bite",
+		pp: 1,
+		priority: 0,
+		flags: {},
+		status: 'tox',
+		onPrepareHit: function(target, source) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Revelation Dance", target);
+		},
+		target: "normal",
+		type: "Poison",
+		isZ: "arbokiumz",
+	},
 	"strikingjawcrush": {
-basePower: 180, 
-accuracy: true, 
-category: "Physical", 
-shortDesc: "No additional effect.", 
-id: "strikingjawcrush", 
-name: "Striking Jaw Crush", 
-pp: 1,
-priority: 0, 
-flags: {}, 
-onPrepareHit: function(target, source) {	this.attrLastMove('[still]');this.add('-anim', source, "Revelation Dance", target);},
-target: "normal",
-type: "Dark", 
-isZ: "aloraticiumz",
-},
+		basePower: 180,
+		accuracy: true,
+		category: "Physical",
+		shortDesc: "No additional effect.",
+		id: "strikingjawcrush",
+		name: "Striking Jaw Crush",
+		pp: 1,
+		priority: 0,
+		flags: {},
+		onPrepareHit: function(target, source) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Revelation Dance", target);
+		},
+		target: "normal",
+		type: "Dark",
+		isZ: "aloraticiumz",
+	},
 	"emperor'snewland": {
-basePower: 185, 
-accuracy: true, 
-category: "Physical", 
-shortDesc: "Target gets -1 Evasion.", 
-id: "emperorsnewland", 
-name: "Emperor's New Land", 
-pp: 1,
-priority: 0, 
-flags: {},
-boosts: {
-		eva: -1,
-},
-onPrepareHit: function(target, source) {	this.attrLastMove('[still]');this.add('-anim', source, "Revelation Dance", target);},
-target: "normal",
-type: "Ground", 
-isZ: "kingiumz",
-},
+		basePower: 185,
+		accuracy: true,
+		category: "Physical",
+		shortDesc: "Target gets -1 Evasion.",
+		id: "emperorsnewland",
+		name: "Emperor's New Land",
+		pp: 1,
+		priority: 0,
+		flags: {},
+		boosts: {
+			eva: -1,
+		},
+		onPrepareHit: function(target, source) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Revelation Dance", target);
+		},
+		target: "normal",
+		type: "Ground",
+		isZ: "kingiumz",
+	},
 	"goldencoinbarrage": {
-basePower: 40, 
-accuracy: true, 
-category: "Physical", 
-shortDesc: "Attack hits 5 times. Each hit heightens Meowth speed by 1, to a total of 5 stages. Prize money will be tripled after battle.", 
-id: "goldencoinbarrage", 
-name: "Golden Coin Barrage", 
-pp: 1,
-priority: 0, 
-flags: {},
-multihit: 5,
-selfBoost: {
+		basePower: 40,
+		accuracy: true,
+		category: "Physical",
+		shortDesc: "Attack hits 5 times. Each hit heightens Meowth speed by 1, to a total of 5 stages. Prize money will be tripled after battle.",
+		id: "goldencoinbarrage",
+		name: "Golden Coin Barrage",
+		pp: 1,
+		priority: 0,
+		flags: {},
+		multihit: 5,
+		selfBoost: {
 			boosts: {
 				spe: 1,
 			},
 		},
-onPrepareHit: function(target, source) {	this.attrLastMove('[still]');this.add('-anim', source, "Revelation Dance", target);},
-target: "normal",
-type: "Normal", 
-isZ: "meowthiumz",
-},
+		onPrepareHit: function(target, source) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Revelation Dance", target);
+		},
+		target: "normal",
+		type: "Normal",
+		isZ: "meowthiumz",
+	},
 	"partingburst": {
-basePower: 0, 
-accuracy: true, 
-category: "Status", 
-shortDesc: "Lowers all stats by 1 stage and switches out. (Acc/Eva excluded)", 
-id: "partingburst", 
-name: "Parting Burst", 
-pp: 1,
-priority: 0, 
-flags: {},
-selfSwitch: true,
-boosts: {
+		basePower: 0,
+		accuracy: true,
+		category: "Status",
+		shortDesc: "Lowers all stats by 1 stage and switches out. (Acc/Eva excluded)",
+		id: "partingburst",
+		name: "Parting Burst",
+		pp: 1,
+		priority: 0,
+		flags: {},
+		selfSwitch: true,
+		boosts: {
 			atk: -1,
 			def: -1,
 			spa: -1,
 			spd: -1,
 			spe: -1
 		},
-onPrepareHit: function(target, source) {	this.attrLastMove('[still]');this.add('-anim', source, "Revelation Dance", target);},
-target: "normal",
-type: "Dark", 
-isZ: "alopersiumz",
-},
+		onPrepareHit: function(target, source) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Revelation Dance", target);
+		},
+		target: "normal",
+		type: "Dark",
+		isZ: "alopersiumz",
+	},
 	"stampedingsolarstrike": {
-basePower: 190, 
-accuracy: true, 
-category: "Physical", 
-shortDesc: "Changes the weather to Sunlight prior to damage. Increases Speed by 1 stage. Burns the target.", 
-id: "stampedingsolarstrike", 
-name: "Stampeding Solar Strike", 
-pp: 1,
-priority: 0, 
-flags: {},
-weather: 'sunnyday',
-status: 'brn',
-selfBoost: {
+		basePower: 190,
+		accuracy: true,
+		category: "Physical",
+		shortDesc: "Changes the weather to Sunlight prior to damage. Increases Speed by 1 stage. Burns the target.",
+		id: "stampedingsolarstrike",
+		name: "Stampeding Solar Strike",
+		pp: 1,
+		priority: 0,
+		flags: {},
+		weather: 'sunnyday',
+		status: 'brn',
+		selfBoost: {
 			boosts: {
 				spe: 1,
 			},
 		},
-onPrepareHit: function(target, source) {	this.attrLastMove('[still]');this.add('-anim', source, "Revelation Dance", target);},
-target: "normal",
-type: "Fire", 
-isZ: "rapidashiumz",
-},
+		onPrepareHit: function(target, source) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Revelation Dance", target);
+		},
+		target: "normal",
+		type: "Fire",
+		isZ: "rapidashiumz",
+	},
 	"necroticburst": {
-basePower: 195, 
-accuracy: true, 
-category: "Physical", 
-shortDesc: "Hits all adjacent foes, has a 50% chance to poison the target(s).", 
-id: "necroticburst", 
-name: "Necrotic Burst", 
-pp: 1,
-priority: 0, 
-flags: {},
-secondary: {
+		basePower: 195,
+		accuracy: true,
+		category: "Physical",
+		shortDesc: "Hits all adjacent foes, has a 50% chance to poison the target(s).",
+		id: "necroticburst",
+		name: "Necrotic Burst",
+		pp: 1,
+		priority: 0,
+		flags: {},
+		secondary: {
 			chance: 50,
 			status: 'psn',
 		},
-onPrepareHit: function(target, source) {	this.attrLastMove('[still]');this.add('-anim', source, "Revelation Dance", target);},
-target: "allAdjacentFoes",
-type: "Poison", 
-isZ: "alomukiumz",
-},
+		onPrepareHit: function(target, source) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Revelation Dance", target);
+		},
+		target: "allAdjacentFoes",
+		type: "Poison",
+		isZ: "alomukiumz",
+	},
 	"sneakyshadestrike": {
-basePower: 170, 
-accuracy: true, 
-category: "Special", 
-shortDesc: "Drains 25% of the damage dealt.", 
-id: "sneakyshadestrike", 
-name: "Sneaky Shade Strike", 
-pp: 1,
-priority: 0, 
-flags: {},
-drain: [1, 4],
-onPrepareHit: function(target, source) {	this.attrLastMove('[still]');this.add('-anim', source, "Revelation Dance", target);},
-target: "normal",
-type: "Ghost", 
-isZ: "gengariumz",
-},
-"superrazorcrusher": {
-basePower: 185, 
-accuracy: true, 
-category: "Physical", 
-shortDesc: "Ignores defensive stat boosts. Drops target's Defense by 2 stages. ", 
-id: "superrazorcrusher", 
-name: "Super Razor Crusher", 
-pp: 1,
-priority: 0,
-flags: {},
-boosts: {
+		basePower: 170,
+		accuracy: true,
+		category: "Special",
+		shortDesc: "Drains 25% of the damage dealt.",
+		id: "sneakyshadestrike",
+		name: "Sneaky Shade Strike",
+		pp: 1,
+		priority: 0,
+		flags: {},
+		drain: [1, 4],
+		onPrepareHit: function(target, source) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Revelation Dance", target);
+		},
+		target: "normal",
+		type: "Ghost",
+		isZ: "gengariumz",
+	},
+	"superrazorcrusher": {
+		basePower: 185,
+		accuracy: true,
+		category: "Physical",
+		shortDesc: "Ignores defensive stat boosts. Drops target's Defense by 2 stages. ",
+		id: "superrazorcrusher",
+		name: "Super Razor Crusher",
+		pp: 1,
+		priority: 0,
+		flags: {},
+		boosts: {
 			def: -2,
 		},
-ignoreDefensive: true,
-ignoreEvasion: true,
-onPrepareHit: function(target, source) {	this.attrLastMove('[still]');this.add('-anim', source, "Revelation Dance", target);},
-target: "normal",
-type: "Bug", 
-isZ: "pinsiriumz",
-},
+		ignoreDefensive: true,
+		ignoreEvasion: true,
+		onPrepareHit: function(target, source) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Revelation Dance", target);
+		},
+		target: "normal",
+		type: "Bug",
+		isZ: "pinsiriumz",
+	},
 	"annihilatingancientamber": {
-basePower: 200, 
-accuracy: true, 
-category: "Physical", 
-shortDesc: "No additional effect.", 
-id: "annihilatingancientamber", 
-name: "Annihilating Ancient Amber", 
-pp: 1,
-priority: 0, 
-flags: {}, 
-onPrepareHit: function(target, source) {	this.attrLastMove('[still]');this.add('-anim', source, "Revelation Dance", target);},
-target: "normal",
-type: "Flying", 
-isZ: "amberiumz",
-},
+		basePower: 200,
+		accuracy: true,
+		category: "Physical",
+		shortDesc: "No additional effect.",
+		id: "annihilatingancientamber",
+		name: "Annihilating Ancient Amber",
+		pp: 1,
+		priority: 0,
+		flags: {},
+		onPrepareHit: function(target, source) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Revelation Dance", target);
+		},
+		target: "normal",
+		type: "Flying",
+		isZ: "amberiumz",
+	},
 	"supernovastrike": {
-basePower: 200, 
-accuracy: true, 
-category: "Special",
-defensiveCategory: "Physical",
-shortDesc: "Calculates damage using foe's Defense, sets up Psychic Terrain.", 
-id: "supernovastrike", 
-name: "Supernova Strike", 
-pp: 1,
-priority: 0, 
-flags: {}, 
-onPrepareHit: function(target, source) {	this.attrLastMove('[still]');this.add('-anim', source, "Revelation Dance", target);},
-secondary: {
+		basePower: 200,
+		accuracy: true,
+		category: "Special",
+		defensiveCategory: "Physical",
+		shortDesc: "Calculates damage using foe's Defense, sets up Psychic Terrain.",
+		id: "supernovastrike",
+		name: "Supernova Strike",
+		pp: 1,
+		priority: 0,
+		flags: {},
+		onPrepareHit: function(target, source) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Revelation Dance", target);
+		},
+		secondary: {
 			chance: 100,
 			self: {
 				onHit() {
@@ -928,147 +979,171 @@ secondary: {
 				},
 			},
 		},
-target: "normal",
-type: "Psychic", 
-isZ: "mewtwoniumz",
-},
+		target: "normal",
+		type: "Psychic",
+		isZ: "mewtwoniumz",
+	},
 	"fantasticforestfortress": {
-basePower: 180, 
-accuracy: true, 
-category: "Physical", 
-shortDesc: "Sets up Light Screen and Reflect.", 
-id: "fantasticforestfortress", 
-name: "Fantastic Forest Fortress", 
-pp: 1,
-priority: 0, 
-flags: {},
-sideCondition: ['reflect', 'lightscreen'],
-onPrepareHit: function(target, source) {	this.attrLastMove('[still]');this.add('-anim', source, "Revelation Dance", target);},
-target: "normal",
-type: "Grass", 
-isZ: "meganiumz",
-},
-"eruptiondestruction": { // TODO: Code the effect
-basePower: 210, 
-accuracy: true, 
-category: "Special", 
-shortDesc: "Removes all field effects.", 
-id: "eruptiondestruction", 
-name: "Eruption Destruction", 
-pp: 1,
-priority: 0, 
-flags: {}, 
-onPrepareHit: function(target, source) {	this.attrLastMove('[still]');this.add('-anim', source, "Revelation Dance", target);},
-target: "normal",
-type: "Fire", 
-isZ: "typhlosiumz",
-},
+		basePower: 180,
+		accuracy: true,
+		category: "Physical",
+		shortDesc: "Sets up Light Screen and Reflect.",
+		id: "fantasticforestfortress",
+		name: "Fantastic Forest Fortress",
+		pp: 1,
+		priority: 0,
+		flags: {},
+		sideCondition: ['reflect', 'lightscreen'],
+		onPrepareHit: function(target, source) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Revelation Dance", target);
+		},
+		target: "normal",
+		type: "Grass",
+		isZ: "meganiumz",
+	},
+	"eruptiondestruction": { // TODO: Code the effect
+		basePower: 210,
+		accuracy: true,
+		category: "Special",
+		shortDesc: "Removes all field effects.",
+		id: "eruptiondestruction",
+		name: "Eruption Destruction",
+		pp: 1,
+		priority: 0,
+		flags: {},
+		onPrepareHit: function(target, source) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Revelation Dance", target);
+		},
+		target: "normal",
+		type: "Fire",
+		isZ: "typhlosiumz",
+	},
 	"ferociousdeathroll": { // TODO: Code the effect
-basePower: 190, 
-accuracy: true, 
-category: "Physical", 
-shortDesc: "After dealing damage all grounded water type Pokemon have their Attack and Special Attack raised by one stage (similar to Rototiller).", 
-id: "ferociousdeathroll", 
-name: "Ferocious Death Roll", 
-pp: 1,
-priority: 0, 
-flags: {}, 
-onPrepareHit: function(target, source) {	this.attrLastMove('[still]');this.add('-anim', source, "Revelation Dance", target);},
-target: "normal",
-type: "Water", 
-isZ: "feraligatiumz",
-},
-	"toad'shypnospiral": {
-basePower: 0, 
-accuracy: true, 
-category: "Special", 
-shortDesc: "Puts the opponent to sleep, and prevents them from switching out.", 
-id: "toad'shypnospiral", 
-name: "Toad's Hypno-Spiral", 
-pp: 1,
-priority: 0, 
-flags: {},
-status: 'slp',
-onPrepareHit: function(target, source) {	this.attrLastMove('[still]');this.add('-anim', source, "Revelation Dance", target);},
-onHit(target, source, move) {
+		basePower: 190,
+		accuracy: true,
+		category: "Physical",
+		shortDesc: "After dealing damage all grounded water type Pokemon have their Attack and Special Attack raised by one stage (similar to Rototiller).",
+		id: "ferociousdeathroll",
+		name: "Ferocious Death Roll",
+		pp: 1,
+		priority: 0,
+		flags: {},
+		onPrepareHit: function(target, source) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Revelation Dance", target);
+		},
+		target: "normal",
+		type: "Water",
+		isZ: "feraligatiumz",
+	},
+	"toadshypnospiral": {
+		basePower: 0,
+		accuracy: true,
+		category: "Special",
+		shortDesc: "Puts the opponent to sleep, and prevents them from switching out.",
+		id: "toadshypnospiral",
+		name: "Toad's Hypno-Spiral",
+		pp: 1,
+		priority: 0,
+		flags: {},
+		status: 'slp',
+		onPrepareHit: function(target, source) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Revelation Dance", target);
+		},
+		onHit(target, source, move) {
 			return target.addVolatile('trapped', source, move, 'trapper');
 		},
-target: "normal",
-type: "Psychic", 
-isZ: "politoediumz",
-},
+		target: "normal",
+		type: "Psychic",
+		isZ: "politoediumz",
+	},
 	"rhinorush": {
-basePower: 195, 
-accuracy: true, 
-category: "Physical", 
-shortDesc: "Forces the target to switch to a random ally.", 
-id: "rhinorush", 
-name: "Rhino Rush", 
-pp: 1,
-priority: 0, 
-flags: {}, 
-onPrepareHit: function(target, source) {	this.attrLastMove('[still]');this.add('-anim', source, "Revelation Dance", target);},
-forceSwitch: true,
-target: "normal",
-type: "Bug", 
-isZ: "hercroniumz",
-},
+		basePower: 195,
+		accuracy: true,
+		category: "Physical",
+		shortDesc: "Forces the target to switch to a random ally.",
+		id: "rhinorush",
+		name: "Rhino Rush",
+		pp: 1,
+		priority: 0,
+		flags: {},
+		onPrepareHit: function(target, source) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Revelation Dance", target);
+		},
+		forceSwitch: true,
+		target: "normal",
+		type: "Bug",
+		isZ: "hercroniumz",
+	},
 	"atimeforgiving": { // TODO: Code the second effect
-basePower: 100, 
-accuracy: true, 
-category: "Physical", 
-shortDesc: "Always deals Super Effective damage. If used on an ally, heals 50% of the target's max HP instead.", 
-id: "atimeforgiving", 
-name: "A Time For Giving", 
-pp: 1,
-priority: 0, 
-flags: {}, 
-onPrepareHit: function(target, source) {	this.attrLastMove('[still]');this.add('-anim', source, "Revelation Dance", target);},
-onEffectiveness(typeMod, target, type) {
+		basePower: 100,
+		accuracy: true,
+		category: "Physical",
+		shortDesc: "Always deals Super Effective damage. If used on an ally, heals 50% of the target's max HP instead.",
+		id: "atimeforgiving",
+		name: "A Time For Giving",
+		pp: 1,
+		priority: 0,
+		flags: {},
+		onPrepareHit: function(target, source) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Revelation Dance", target);
+		},
+		onEffectiveness(typeMod, target, type) {
 			return 1;
-},
-target: "normal",
-type: "Normal", 
-isZ: "delibiumz",
-},
+		},
+		target: "normal",
+		type: "Normal",
+		isZ: "delibiumz",
+	},
 	"roseofkojin": {
-basePower: 180, 
-accuracy: true, 
-category: "Physical", 
-shortDesc: "Target is trapped and damaged for three turns.", 
-id: "roseofkojin", 
-name: "Rose of Kōjin", 
-pp: 1,
-priority: 0, 
-flags: {}, 
-onPrepareHit: function(target, source) {	this.attrLastMove('[still]');this.add('-anim', source, "Revelation Dance", target);},
-volatileStatus: 'partiallytrapped',
-target: "normal",
-type: "Fire", 
-isZ: "enteiumz",
-},
+		basePower: 180,
+		accuracy: true,
+		category: "Physical",
+		shortDesc: "Target is trapped and damaged for three turns.",
+		id: "roseofkojin",
+		name: "Rose of Kōjin",
+		pp: 1,
+		priority: 0,
+		flags: {},
+		onPrepareHit: function(target, source) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Revelation Dance", target);
+		},
+		volatileStatus: 'partiallytrapped',
+		target: "normal",
+		type: "Fire",
+		isZ: "enteiumz",
+	},
 	"mythicaltempest": {
-basePower: 180, 
-accuracy: true, 
-category: "Special", 
-shortDesc: "Sets Heavy Rain and Psychic Terrain, changes the enemy's type to Water after damage", 
-id: "mythicaltempest", 
-name: "Mythical Tempest", 
-pp: 1,
-priority: 0, 
-flags: {}, 
-onPrepareHit: function(target, source) {	this.attrLastMove('[still]');this.add('-anim', source, "Revelation Dance", target);},
-terrain: 'psychicterrain',
-weather: 'primordialsea',
-onHit(target) {
+		basePower: 180,
+		accuracy: true,
+		category: "Special",
+		shortDesc: "Sets Heavy Rain and Psychic Terrain, changes the enemy's type to Water after damage",
+		id: "mythicaltempest",
+		name: "Mythical Tempest",
+		pp: 1,
+		priority: 0,
+		flags: {},
+		onPrepareHit: function(target, source) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Revelation Dance", target);
+		},
+		terrain: 'psychicterrain',
+		weather: 'primordialsea',
+		onHit(target) {
 			if (!target.setType('Water')) {
 				this.add('-fail', target);
 				return null;
 			}
 			this.add('-start', target, 'typechange', 'Water');
 		},
-target: "normal",
-type: "Flying", 
-isZ: "lugiumz",
-},
+		target: "normal",
+		type: "Flying",
+		isZ: "lugiumz",
+	},
 };
