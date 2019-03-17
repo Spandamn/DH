@@ -157,6 +157,16 @@ learnistor: function(target, room, user) {
 		});
 		this.sendReplyBox(`${buf}</div>`);
 	},
+		zmoves: function (target, room, user) {
+		if (!this.runBroadcast()) return;
+		let buf = `<div class=infobox-limited><center><h2>List Of Z-Moves</h2></center>`;
+		let eternalDex = require('../../data/mods/zmoveseverywhere/moves.js').BattleMovedex;
+		if (!eternalDex) return this.errorReply("Error Fetching Eternal Data.");
+		Object.values(eternalDex).forEach(move => {
+			buf += `<button name="send" value="/dt ${move.id}, zmoveseverywhere" style="background:none;border:none;">${move.name}</button><br>`;
+		});
+		this.sendReplyBox(`${buf}</div>`);
+	},
 	fusionmoves: function (target, room, user) {
 		if (!this.runBroadcast()) return;
 		let buf = `<div class=infobox-limited><center><h2>List Of Fusion Pokemon Moves</h2></center>`;
