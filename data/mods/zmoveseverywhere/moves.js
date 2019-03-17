@@ -778,7 +778,7 @@ exports.BattleMovedex = {
 		type: "Dark",
 		isZ: "aloraticiumz",
 	},
-	"emperor'snewland": {
+	"emperorsnewland": {
 		basePower: 185,
 		accuracy: true,
 		category: "Physical",
