@@ -522,4 +522,14 @@ exports.BattleItems = {
 		zMoveUser: ["Muk-Alola"],
 		desc: "If the holder is a Muk-Alola with the move Gunk Shot, it can use Necrotic Burst.",
 	},
+	"serperiumz":{
+id: "serperiumz",
+name: "Serperium-Z",
+onTakeItem: false,
+zMove: "Noble Forest Serpent",
+zMoveFrom: "Glare",
+zMoveUser: ["Serperior"],
+desc: "If the holder is a Serperior with the move Glare, it can use Noble Forest Serpent.",
+},
+	
 };
