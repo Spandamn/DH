@@ -615,7 +615,7 @@ exports.BattleMovedex = {
 	"catostrophiccontinentcrash": { 
 basePower: 190, 
 accuracy: true, 
-category: "Physical",,
+category: "Physical",
 shortDesc: "Z-Move Effect: The opponent cannot switch for 3 turns.", 
 id: "catostrophiccontinentcrash", 
 name: "Catostrophic Continent Crash", 
