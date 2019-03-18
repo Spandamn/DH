@@ -1789,7 +1789,7 @@ exports.BattleMovedex = {
 		id: "fortressofthorns",
 		isViable: true,
 		name: "Fortress of Thorns",
-		pp: 10,
+		pp: 1,
 		priority: 4,
 		flags: {},
 		stallingMove: true,
