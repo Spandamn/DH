@@ -439,7 +439,7 @@ exports.BattleMovedex = {
     "toadshypnospiral": {
         accuracy: true,
         basePower: 0,
-        category: "Special",
+        category: "Status",
         id: "toadshypnospiral",
         isViable: true,
         name: "Toad's Hypno-Spiral",
@@ -1039,28 +1039,6 @@ exports.BattleMovedex = {
         type: "Water",
         isZ: "feraligatiumz",
     },
-    "toadshypnospiral": {
-        basePower: 0,
-        accuracy: true,
-        category: "Special",
-        shortDesc: "Puts the opponent to sleep, and prevents them from switching out.",
-        id: "toadshypnospiral",
-        name: "Toad's Hypno-Spiral",
-        pp: 1,
-        priority: 0,
-        flags: {},
-        status: 'slp',
-        onPrepareHit: function(target, source) {
-            this.attrLastMove('[still]');
-            this.add('-anim', source, "Revelation Dance", target);
-        },
-        onHit(target, source, move) {
-            return target.addVolatile('trapped', source, move, 'trapper');
-        },
-        target: "normal",
-        type: "Psychic",
-        isZ: "politoediumz",
-    },
     "rhinorush": {
         basePower: 195,
         accuracy: true,
@@ -1218,7 +1196,7 @@ exports.BattleMovedex = {
     "sleightofhand": {
         basePower: 0,
         accuracy: true,
-        category: "Special",
+        category: "Status",
         shortDesc: "Changes the target's ability to Stall.",
         id: "sleightofhand",
         name: "Sleight of Hand",
@@ -1245,7 +1223,7 @@ exports.BattleMovedex = {
         basePower: 200,
         accuracy: true,
         category: "Physical",
-        shortDesc: "+2 Atk +1 Def",
+        shortDesc: "+2 Atk, +1 Def",
         id: "harshtoothhoning",
         name: "Harsh Tooth Honing",
         pp: 1,
@@ -1254,7 +1232,7 @@ exports.BattleMovedex = {
         selfBoost: {
             boosts: {
                 atk: 2,
-                def: 2,
+                def: 1,
             },
         },
         onPrepareHit: function(target, source) {
@@ -1375,36 +1353,6 @@ exports.BattleMovedex = {
         type: "Normal",
         isZ: "drifbliumz",
     },
-    "inneraurafocus": {
-        basePower: 0,
-        accuracy: true,
-        category: "Status",
-        shortDesc: "Raises Attack, Defense, Special Attack, Special Defense and Speed by one and the next hit will be a guaranteed critical hit.",
-        id: "inneraurafocus",
-        name: "Inner Aura Focus",
-        pp: 1,
-        priority: 0,
-        flags: {},
-        selfBoost: {
-            boosts: {
-                atk: 1,
-                def: 1,
-                spa: 1,
-                spd: 1,
-                spe: 1,
-            },
-        },
-        self: {
-            volatileStatus: 'laserfocus',
-        },
-        onPrepareHit: function(target, source) {
-            this.attrLastMove('[still]');
-            this.add('-anim', source, "Revelation Dance", target);
-        },
-        target: "normal",
-        type: "Normal",
-        isZ: "lucariumz",
-    },
     "nobleforestserpent": {
         basePower: 0,
         accuracy: true,
@@ -1467,7 +1415,7 @@ exports.BattleMovedex = {
         },
         onPrepareHit: function(target, source) {
             this.attrLastMove('[still]');
-            this.add('-anim', source, "Revelation Dance", target);
+            this.add('-anim', source, "Blue Flare", target);
         },
         target: "normal",
         type: "Ghost",
