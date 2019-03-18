@@ -3567,4 +3567,37 @@ tier: "OU",
 swalokumlol: {
 tier: "OU",
 },
+zalula: {
+tier: "OU",
+},
+lazugari: {
+tier: "OU",
+},
+amooh: {
+tier: "OU",
+},
+celenitar: {
+tier: "OU",
+},
+celenitarmega: {
+tier: "OU",
+},
+perperioralola: {
+tier: "OU",
+},
+helltank: {
+tier: "OU",
+},
+bastiosaur: {
+tier: "OU",
+},
+bastiosaurmega: {
+tier: "OU",
+},
+aggralugg: {
+tier: "OU",
+},
+aggraluggmega: {
+tier: "OU",
+},
 };
