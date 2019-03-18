@@ -675,4 +675,13 @@ zMoveFrom: "Plasma Fists",
 zMoveUser: ["Zeraora"],
 desc: "If the holder is a Zeraora with the move Plasma Fists, it can use Grasp of All Energy.",
 },
+	"chesniumz": {
+		id: "chesniumz",
+		name: "Chesnium Z",
+		onTakeItem: false,
+		zMove: "Fortress of Thorns",
+		zMoveFrom: "Spiky Shield",
+		zMoveUser: ["Chesnaught"],
+		desc: "If the holder is Chesnaught with the move Spiky Shield, it can use Fortress of Thorns.",
+	},
 };
