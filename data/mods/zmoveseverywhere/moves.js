@@ -1645,5 +1645,82 @@ target: "normal",
 type: "Steel", 
 isZ: "kartaniumz",
 },
-	
+	"nagavenombomb": {
+basePower: 200, 
+accuracy: true, 
+category: "Special", 
+shortDesc: "Traps the target, lowers their Special Defense and Speed by 1 stage each, and badly poisons them.", 
+id: "nagavenombomb", 
+name: "Naga Venom Bomb", 
+pp: 1,
+priority: 0, 
+flags: {},
+		boosts: {
+			spd: -1,
+			spe: -1,
+		},
+status: 'tox',
+onHit(target, source, move) {
+			return target.addVolatile('trapped', source, move, 'trapper');
+		},
+onPrepareHit: function(target, source) {	this.attrLastMove('[still]');this.add('-anim', source, "Revelation Dance", target);},
+target: "normal",
+type: "Poison", 
+isZ: "naganadeliumz",
+},
+	"thestackattacks": {
+basePower: 200, 
+accuracy: true, 
+category: "Physical", 
+shortDesc: "Activates Trick Room.", 
+id: "thestackattacks", 
+name: "The Stack Attacks", 
+pp: 1,
+priority: 0, 
+flags: {},
+pseudoWeather: 'trickroom',
+onPrepareHit: function(target, source) {	this.attrLastMove('[still]');this.add('-anim', source, "Revelation Dance", target);},
+target: "normal",
+type: "Rock", 
+isZ: "stakatakiumz",
+},
+	"nuclearfireworksdisplay": {
+basePower: 200, 
+accuracy: true, 
+category: "Special", 
+shortDesc: "No additional effect.", 
+id: "nuclearfireworksdisplay", 
+name: "Nuclear Fireworks Display", 
+pp: 1,
+priority: 0, 
+flags: {}, 
+onPrepareHit: function(target, source) {	this.attrLastMove('[still]');this.add('-anim', source, "Revelation Dance", target);},
+target: "normal",
+type: "Fire", 
+isZ: "blacephaliumz",
+},
+	"graspofallenergy": {
+basePower: 180, 
+accuracy: true, 
+category: "Physical", 
+shortDesc: "Transforms the opponent’s ability to Normalize and sets Ion Deluge.", 
+id: "graspofallenergy", 
+name: "Grasp of All Energy", 
+pp: 1,
+priority: 0, 
+flags: {},
+pseudoWeather: 'iondeluge',
+onHit(pokemon) {
+			let oldAbility = pokemon.setAbility('normalize');
+			if (oldAbility) {
+				this.add('-ability', pokemon, 'Normalize', '[from] move: Grasp of All Energy');
+				return;
+			}
+			return false;
+		},
+onPrepareHit: function(target, source) {	this.attrLastMove('[still]');this.add('-anim', source, "Revelation Dance", target);},
+target: "normal",
+type: "Electric", 
+isZ: "zeraoriumz",
+},
 };
