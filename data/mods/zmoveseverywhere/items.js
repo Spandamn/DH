@@ -729,4 +729,13 @@ zMoveFrom: "Razor Shell",
 zMoveUser: ["Samurott"],
 desc: "If the holder is a Samurott with the move Razor Shell, it can use Sharp Shell Strike.",
 },
+	"spindiumz":{
+id: "spindiumz",
+name: "Spindium-Z",
+onTakeItem: false,
+zMove: "Clumsy Commotion",
+zMoveFrom: "Teeter Dance",
+zMoveUser: ["Spinda"],
+desc: "If the holder is a Spinda with the move Teeter Dance, it can use Clumsy Commotion.",
+},
 };
