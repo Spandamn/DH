@@ -1933,6 +1933,7 @@ self: {
 				},
 				onHit: function(pokemon) {
 				pokemon.cureStatus();
+				this.heal(pokemon.maxhp);
 			},
 },
 onPrepareHit: function(target, source) {	this.attrLastMove('[still]');this.add('-anim', source, "Revelation Dance", target);},
