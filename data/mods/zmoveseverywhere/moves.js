@@ -581,7 +581,7 @@ exports.BattleMovedex = {
         },
         onModifyMove: function(move, pokemon) {
             let type = ['Rock', 'Ice', 'Steel'];
-            move.type = type[move.hit - 1];
+            move.type = type[move.hit - 1] || '???';
         },
         target: "normal",
         type: "Normal",
