@@ -1819,12 +1819,12 @@ pp: 1,
 priority: 0, 
 flags: {},
 status: 'slp',
-self: {onTryMove(pokemon) {
+self: {onTryMove: function(pokemon) {
 			if (pokemon.hp < pokemon.maxhp && pokemon.status !== 'slp' && !pokemon.hasAbility('comatose')) return;
 			this.add('-fail', pokemon);
 			return null;
 		},
-		onHit(target) {
+		onHit: function(target) {
 			if (!target.setStatus('slp')) return false;
 			target.addVolatile('lovelylullaby');
 			target.statusData.time = 3;
@@ -1864,7 +1864,7 @@ name: "Flaming Force Out",
 pp: 1,
 priority: 0, 
 flags: {},
-onAfterMove(source, target, move) {
+onAfterMove: function(source, target, move) {
 			if (source.weightkg > target.weightkg) {
 				move.forceSwitch: true;
 			}
@@ -1885,7 +1885,7 @@ pp: 1,
 priority: 0, 
 flags: {},
 multihit: 5,
-onHit(move) {
+onHit: function(move) {
 		if (move.hit === 2 || move.hit === 4) {
 			move.boosts = {def: -1};
 		}
