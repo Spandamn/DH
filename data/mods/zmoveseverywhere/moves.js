@@ -1926,16 +1926,12 @@ pp: 1,
 priority: 0, 
 flags: {},
 volatileStatus: 'confusion',
-selfBoost: {
-			boosts: {
-				spe: -2,
-				atk: -2,
-},
 self: {
-			onHit(pokemon) {
-				pokemon.cureStatus();
-			},
-		},
+				boosts: {
+					atk: -2,
+					spe: -2,
+				},
+},
 onPrepareHit: function(target, source) {	this.attrLastMove('[still]');this.add('-anim', source, "Revelation Dance", target);},
 target: "normal",
 type: "allAdjacent", 
