@@ -566,7 +566,7 @@ exports.BattleMovedex = {
         pp: 1,
         priority: 0,
         multihit: 3,
-        //multihitType: 'ancientservantsascension',
+        multihitType: 'ancientservantsascension',
         flags: {},
         onPrepareHit: function(target, source) {
             this.attrLastMove('[still]');
@@ -578,12 +578,12 @@ exports.BattleMovedex = {
             // Ability is discarded before damage is calculated.
             if (target.runImmunity('Rock')) {
                 pokemon.addVolatile('gastroacid');
-            } 
+            }
         },
 		  onModifyMovePriority: 8,
         onModifyMove: function(move, pokemon) {
             let type = ['Rock', 'Ice', 'Steel'];
-            move.type = type[move.hit - 1];
+            move.type = type[move.hit - 1] || '???';
         },
         target: "normal",
         type: "Normal",
@@ -1785,4 +1785,114 @@ exports.BattleMovedex = {
 		type: "Grass",
       isZ: "chesniumz",
 	},
+	"royalwave": {
+basePower: 200, 
+accuracy: true, 
+category: "Special", 
+shortDesc: "Target's Defence and Special Defence are lowered by one stage. If user has Sheer Force, damage is multiplied by 1.3 instead.", 
+id: "royalwave", 
+name: "Royal Wave", 
+pp: 1,
+priority: 0, 
+flags: {},
+onModifyMove (move, source) {
+			if (source.hasAbility('sheerforce')) {
+				move.basePower *= 1.3;
+			} else {
+				move.boosts = {def: -1, spd: -1};
+			}
+		},
+
+onPrepareHit: function(target, source) {	this.attrLastMove('[still]');this.add('-anim', source, "Revelation Dance", target);},
+target: "normal",
+type: "Ground", 
+isZ: "nidoquiumz",
+},
+	"lovelylullaby": {
+basePower: 0, 
+accuracy: true, 
+category: "Status", 
+shortDesc: "The foe falls asleep. The user also falls asleep, but is fully healed up and will wake up twice as fast as normal.", 
+id: "lovelylullaby", 
+name: "Lovely Lullaby", 
+pp: 1,
+priority: 0, 
+flags: {},
+status: 'slp',
+self: {onTryMove(pokemon) {
+			if (pokemon.hp < pokemon.maxhp && pokemon.status !== 'slp' && !pokemon.hasAbility('comatose')) return;
+			this.add('-fail', pokemon);
+			return null;
+		},
+		onHit(target) {
+			if (!target.setStatus('slp')) return false;
+			target.addVolatile('lovelylullaby');
+			target.statusData.time = 3;
+			target.statusData.startTime = 3;
+			this.heal(target.maxhp); //Aeshetic only as the healing happens after you fall asleep in-game
+			this.add('-status', target, 'slp', '[from] move: Lovely Lullaby');
+		},
+		},
+onPrepareHit: function(target, source) {	this.attrLastMove('[still]');this.add('-anim', source, "Revelation Dance", target);},
+target: "normal",
+type: "Fairy", 
+isZ: "wiggliumz",
+},
+	"highdeliverydeluge": {
+basePower: 190, 
+accuracy: true, 
+category: "Special", 
+shortDesc: "Summons Rain", 
+id: "highdeliverydeluge", 
+name: "High Delivery Deluge", 
+pp: 1,
+priority: 0, 
+flags: {},
+weather: 'RainDance',
+onPrepareHit: function(target, source) {	this.attrLastMove('[still]');this.add('-anim', source, "Revelation Dance", target);},
+target: "normal",
+type: "Water", 
+isZ: "pelipiumz",
+},
+	"flamingforceout": {
+basePower: 200, 
+accuracy: true, 
+category: "Physical", 
+shortDesc: "If the target is lighter than Emboar, it gets forcibly switched out.", 
+id: "flamingforceout", 
+name: "Flaming Force Out", 
+pp: 1,
+priority: 0, 
+flags: {},
+onAfterMove(source, target, move) {
+			if (source.weightkg > target.weightkg) {
+				move.forceSwitch: true;
+			}
+		},
+onPrepareHit: function(target, source) {	this.attrLastMove('[still]');this.add('-anim', source, "Revelation Dance", target);},
+target: "normal",
+type: "Fire", 
+isZ: "emboariumz",
+},
+	"sharpshellstrike": {
+basePower: 40, 
+accuracy: true, 
+category: "Physical", 
+shortDesc: "Hits five times. The second and fourth hit always lower the foe's Defense by 1 stage.", 
+id: "sharpshellstrike", 
+name: "Sharp Shell Strike", 
+pp: 1,
+priority: 0, 
+flags: {},
+multihit: 5,
+onHit(move) {
+		if (move.hit === 2 || move.hit === 4) {
+			move.boosts = {def: -1};
+		}
+},
+onPrepareHit: function(target, source) {	this.attrLastMove('[still]');this.add('-anim', source, "Revelation Dance", target);},
+target: "normal",
+type: "Water", 
+isZ: "samurottiumz",
+},
 };
