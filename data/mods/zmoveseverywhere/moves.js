@@ -1915,7 +1915,7 @@ exports.BattleMovedex = {
 		type: "Water",
 		isZ: "samurottiumz",
 	},
-	/*"clumsycommotion": {
+"clumsycommotion": {
 basePower: 0, 
 accuracy: true, 
 category: "Status", 
@@ -1932,14 +1932,13 @@ selfBoost: {
 				atk: -2,
 },
 self: {
-	onHit: function(source) {
-			source.cureStatus();
-			//this.heal(Math.ceil(source.maxhp), source);
+			onHit(pokemon) {
+				pokemon.cureStatus();
+			},
 		},
-},
 onPrepareHit: function(target, source) {	this.attrLastMove('[still]');this.add('-anim', source, "Revelation Dance", target);},
 target: "normal",
 type: "allAdjacent", 
 isZ: "spindiumz",
-},*/
+},
 };
