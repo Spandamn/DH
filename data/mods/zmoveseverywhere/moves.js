@@ -415,6 +415,7 @@ exports.BattleMovedex = {
                 move.breaksProtect = true;
                 return move.basePower + 20;
             }
+			  return move.basePower;
         },
         shortDesc: "Usually goes first. Hits 5 times in one turn. If used by Ash-Greninja, breaks protect and has 60 power per hit.",
         id: "hyperwatershuriken",
