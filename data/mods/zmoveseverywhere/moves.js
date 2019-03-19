@@ -409,7 +409,7 @@ exports.BattleMovedex = {
         accuracy: true,
         basePower: 40,
         category: "Special",
-        breaksProtect: true,
+        //breaksProtect: true,
         basePowerCallback: function(pokemon, target, move) {
             if (pokemon.template.species === 'Greninja-Ash' && pokemon.hasAbility('battlebond')) {
                 move.breaksProtect = true;
