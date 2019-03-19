@@ -566,7 +566,7 @@ exports.BattleMovedex = {
         pp: 1,
         priority: 0,
         multihit: 3,
-        multihitType: 'ancientservantsascension',
+        //multihitType: 'ancientservantsascension',
         flags: {},
         onPrepareHit: function(target, source) {
             this.attrLastMove('[still]');
@@ -578,11 +578,12 @@ exports.BattleMovedex = {
             // Ability is discarded before damage is calculated.
             if (target.runImmunity('Rock')) {
                 pokemon.addVolatile('gastroacid');
-            }
+            } 
         },
+		  onModifyMovePriority: 8,
         onModifyMove: function(move, pokemon) {
             let type = ['Rock', 'Ice', 'Steel'];
-            move.type = type[move.hit - 1] || '???';
+            move.type = type[move.hit - 1];
         },
         target: "normal",
         type: "Normal",
