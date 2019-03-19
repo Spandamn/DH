@@ -1932,9 +1932,9 @@ selfBoost: {
 				atk: -2,
 			},
 self: {
-	onHit(source) {
+	onHit: function(source) {
 			source.cureStatus();
-			this.heal(Math.ceil(source.maxhp), source);
+			//this.heal(Math.ceil(source.maxhp), source);
 		},
 },
 onPrepareHit: function(target, source) {	this.attrLastMove('[still]');this.add('-anim', source, "Revelation Dance", target);},
