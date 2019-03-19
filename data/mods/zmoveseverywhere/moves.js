@@ -1878,7 +1878,7 @@ exports.BattleMovedex = {
 		flags: {},
 		onAfterMove: function(source, target, move) {
 			if (source.weightkg > target.weightkg) {
-				move.forceSwitch: true;
+				move.forceSwitch = true;
 			}
 		},
 		onPrepareHit: function(target, source) {
@@ -1915,4 +1915,31 @@ exports.BattleMovedex = {
 		type: "Water",
 		isZ: "samurottiumz",
 	},
+	"clumsycommotion": {
+basePower: 0, 
+accuracy: true, 
+category: "Status", 
+shortDesc: "Restores HP to full and heals any status ailments but lowers Attack and Speed by two stages. Confuses all adjacent Pokemon.", 
+id: "clumsycommotion", 
+name: "Clumsy Commotion", 
+pp: 1,
+priority: 0, 
+flags: {},
+volatileStatus: 'confusion',
+selfBoost: {
+			boosts: {
+				spe: -2,
+				atk: -2,
+			},
+self: {
+	heal: [1, 1],
+	onHit(source) {
+			source.cureStatus();
+		},
+},
+onPrepareHit: function(target, source) {	this.attrLastMove('[still]');this.add('-anim', source, "Revelation Dance", target);},
+target: "normal",
+type: "allAdjacent", 
+isZ: "spindiumz",
+},
 };
