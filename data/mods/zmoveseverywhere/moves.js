@@ -1915,7 +1915,7 @@ exports.BattleMovedex = {
 		type: "Water",
 		isZ: "samurottiumz",
 	},
-	"clumsycommotion": {
+	/*"clumsycommotion": {
 basePower: 0, 
 accuracy: true, 
 category: "Status", 
@@ -1930,7 +1930,7 @@ selfBoost: {
 			boosts: {
 				spe: -2,
 				atk: -2,
-			},
+},
 self: {
 	onHit: function(source) {
 			source.cureStatus();
@@ -1941,5 +1941,5 @@ onPrepareHit: function(target, source) {	this.attrLastMove('[still]');this.add('
 target: "normal",
 type: "allAdjacent", 
 isZ: "spindiumz",
-},
+},*/
 };
