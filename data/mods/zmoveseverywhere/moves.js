@@ -1931,6 +1931,9 @@ self: {
 					atk: -2,
 					spe: -2,
 				},
+				onHit: function(pokemon) {
+				pokemon.cureStatus();
+			},
 },
 onPrepareHit: function(target, source) {	this.attrLastMove('[still]');this.add('-anim', source, "Revelation Dance", target);},
 target: "normal",
