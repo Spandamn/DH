@@ -675,7 +675,7 @@ exports.BattleAbilities = {
 	},
 "darkrising": {
 		shortDesc: "This Pokemon's highest stat is raised by one when switching into Shadow Sky.",
-	onUpdate: function(pokemon) {
+	onUpdate: function(source) {
 			if (this.isWeather(['shadowsky'])) {
 			let stat = 'atk';
 				let bestStat = 0;
@@ -832,6 +832,15 @@ exports.BattleAbilities = {
 		onModifyMove(move) {
 			delete move.flags['charge', 'recharge'];
 		},
+		onChargeMove: function (pokemon, target, move) {
+				this.debug('power herb - remove charge turn for ' + move.id);
+				return false; // skip charge turn
+		},
+		onUpdate: function (pokemon) {
+			if (pokemon.volatiles['mustrecharge']) {
+				pokemon.removeVolatile('mustrecharge');
+			}
+		},
 		id: "hasty",
 		name: "Hasty",
 		rating: 1.5,
@@ -858,4 +867,37 @@ exports.BattleAbilities = {
 		rating: 2,
 		num: 66,
 	},
+	"immovable": {
+		shortDesc: "This Pokémon takes 50% from all attacks when paralyzed.",
+		onSourceModifyDamage(damage, source, target, move) {
+			let mod = 1;
+			if (target.status === 'par') {
+			mod /= 2;
+			}
+			return this.chainModify(mod);
+		},
+		id: "immovable",
+		name: "Immovable",
+	},
+	"bloodsucker": {
+		shortDesc: "Boosts the power of healing moves by 1.33x and heals for 50% more. Only affects damaging healing moves.",
+		onBasePowerPriority: 8,
+		onBasePower(basePower, attacker, defender, move) {
+			if (move.flags['heal'] && move.category != "Status") {
+				this.debug('Bloodsucker boost');
+				return this.chainModify(1.33);
+			}
+		},
+		onTryHealPriority: 1,
+		onTryHeal(damage, target, source, effect) {
+			/**@type {{[k: string]: number}} */
+			let heals = {drain: 1};
+			if (heals[effect.id]) {
+				return this.chainModify(1.5);
+			}
+		},
+		id: "bloodsucker",
+		name: "Bloodsucker",
+	},
+	
 };
