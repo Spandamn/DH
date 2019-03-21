@@ -186,6 +186,7 @@ tapukoko: {
 		eggGroups: ["Undiscovered"],
 	},
 	mamoswine: {
+	inherit: true,
 	num: 1.5,
 	species: "Mamoswine",
 	types: ["Ice", "Ground"],
