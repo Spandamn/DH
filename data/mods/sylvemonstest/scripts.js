@@ -2658,7 +2658,7 @@ this.modData('Learnsets', 'lurantis').learnset.leaftornado= ['7L1'];
 	  
 	  // Dragon Fang
 this.modData('Learnsets', 'bagon').learnset.dragonfang= ['7L1'];
-this.modData('Learnsets', 'shellgon').learnset.dragonfang= ['7L1'];
+this.modData('Learnsets', 'shelgon').learnset.dragonfang= ['7L1'];
 this.modData('Learnsets', 'salamence').learnset.dragonfang= ['7L1'];
 this.modData('Learnsets', 'charizard').learnset.dragonfang= ['7L1'];
 this.modData('Learnsets', 'deino').learnset.dragonfang= ['7L1'];
