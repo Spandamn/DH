@@ -2209,5 +2209,51 @@ exports.BattleMovedex = {
     type: "Ghost",
     isZ: "luniumz",
 },
-	
+	"distortedstrike": {
+basePower: 180, 
+accuracy: true, 
+category: "Physical", 
+shortDesc: "Uses the effect of Topsy Turvy on the opponent before damage. After damage, switches the user to Origin Forme.", 
+id: "distortedstrike", 
+name: "Distorted Strike", 
+pp: 1,
+priority: 0, 
+flags: {}, 
+onPrepareHit: function(target, source) {	this.attrLastMove('[still]');this.add('-anim', source, "Revelation Dance", target);},
+onTryHit: function(target) {
+			let success = false;
+			for (let i in target.boosts) {
+				// @ts-ignore
+				if (target.boosts[i] === 0) continue;
+				// @ts-ignore
+				target.boosts[i] = -target.boosts[i];
+				success = true;
+			}
+			if (!success) return false;
+			this.add('-invertboost', target, '[from] move: Topsy-Turvy');
+		},
+onHit: function(pokemon) {
+			this.add('-move', pokemon, 'Distorted Strike');
+			this.add('-formechange', pokemon, 'Giratina-Origin', '[msg]');
+			pokemon.formeChange("Giratina-Origin");
+		},
+target: "normal",
+type: "Ghost", 
+isZ: "giratiniumz",
+},
+	"technoburst": {
+basePower: 50, 
+accuracy: true, 
+category: "Special", 
+shortDesc: "Hits 5 times, first hit is Fire-typed, second one is Water-typed, third one is Electric-typed, fourth one is Ice-typed and the last one is Normal-typed. After dealing damage, Genesect gains either an Attack or Special Attack boost, depending on the defenses of the foe it just knocked out.", 
+id: "technoburst", 
+name: "Techno Burst", 
+pp: 1,
+priority: 0, 
+flags: {}, 
+onPrepareHit: function(target, source) {	this.attrLastMove('[still]');this.add('-anim', source, "Revelation Dance", target);},
+target: "normal",
+type: "Normal", 
+isZ: "genesectiumz",
+},
 };
