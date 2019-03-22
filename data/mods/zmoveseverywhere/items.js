@@ -819,5 +819,22 @@ zMoveFrom: "Moongeist Beam",
 zMoveUser: ["Lunala"],
 desc: "If the holder is a Lunala with the move Moongeist Beam, it can use Lunatic Laser.",
 },
-	
+	"giratiniumz":{
+id: "giratiniumz",
+name: "Giratinium-Z",
+onTakeItem: false,
+zMove: "Distorted Strike",
+zMoveFrom: "Shadow Force",
+zMoveUser: ["Giratina"],
+desc: "If the holder is a Giratina with the move Shadow Force, it can use Distorted Strike.",
+},
+	"genesectiumz":{
+id: "genesectiumz",
+name: "Genesectium-Z",
+onTakeItem: false,
+zMove: "Techno Burst",
+zMoveFrom: "Techno Blast",
+zMoveUser: ["Genesect"],
+desc: "If the holder is a Genesect with the move Techno Blast, it can use Techno Burst.",
+},
 };
