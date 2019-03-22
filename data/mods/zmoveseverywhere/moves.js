@@ -557,7 +557,7 @@ exports.BattleMovedex = {
 	},
 	"ancientservantsascension": {
 		accuracy: true,
-		basePower: 73,
+		basePower: 0,
 		category: "Physical",
 		id: "ancientservantsascension",
 		shortDesc: "Suppresses user's ability before damage. Hits three times, the first hit Rock-type, the second Ice-type and the third Steel-type.",
@@ -565,13 +565,56 @@ exports.BattleMovedex = {
 		name: "Ancient Servant's Ascension",
 		pp: 1,
 		priority: 0,
-		multihit: 3,
-		multihitType: 'ancientservantsascension',
+		flags: {},
+		onTryHit: function(target, source) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Tail Glow", source);
+			this.useMove("ancientservantsascensionrock", source);
+			this.useMove("ancientservantsascensionice", source);
+			this.useMove("ancientservantsascensionsteel", source);
+		},
+		target: "normal",
+		type: "Normal",
+		isZ: "regigigiumz",
+	},
+	"ancientservantsascensionrock": {
+		accuracy: true,
+		basePower: 73,
+		category: "Physical",
+		id: "ancientservantsascensionrock",
+		shortDesc: "Suppresses user's ability before damage. Hits three times, the first hit Rock-type, the second Ice-type and the third Steel-type.",
+		isViable: true,
+		name: "Ancient Servant's Ascension",
+		pp: 1,
+		priority: 0,
 		flags: {},
 		onPrepareHit: function(target, source) {
 			this.attrLastMove('[still]');
 			this.add('-anim', source, "Rock Slide", target);
-			this.add('-anim', source, "Icicle Crash", target);
+		},
+		onTryHit: function(target, pokemon) {
+			// Ability is discarded before damage is calculated.
+			if (target.runImmunity('Rock')) {
+				pokemon.addVolatile('gastroacid');
+			}
+		},
+		target: "normal",
+		type: "Rock",
+		isZ: "regigigiumz",
+	},
+	"ancientservantsascensionice": {
+		accuracy: true,
+		basePower: 73,
+		category: "Physical",
+		id: "ancientservantsascensionice",
+		shortDesc: "Suppresses user's ability before damage. Hits three times, the first hit Rock-type, the second Ice-type and the third Steel-type.",
+		isViable: true,
+		name: "Ancient Servant's Ascension",
+		pp: 1,
+		priority: 0,
+		flags: {},
+		onPrepareHit: function(target, source) {
+			this.attrLastMove('[still]');
 			this.add('-anim', source, "Metal Burst", target);
 		},
 		onTryHit: function(target, pokemon) {
@@ -580,13 +623,33 @@ exports.BattleMovedex = {
 				pokemon.addVolatile('gastroacid');
 			}
 		},
-		onModifyMovePriority: 8,
-		onModifyMove: function(move, pokemon) {
-			let type = ['Rock', 'Ice', 'Steel'];
-			move.type = type[move.hit - 1] || '???';
+		target: "normal",
+		type: "Ice",
+		isZ: "regigigiumz",
+	},
+	"ancientservantsascensionsteel": {
+		accuracy: true,
+		basePower: 73,
+		category: "Physical",
+		id: "ancientservantsascensionsteel",
+		shortDesc: "Suppresses user's ability before damage. Hits three times, the first hit Rock-type, the second Ice-type and the third Steel-type.",
+		isViable: true,
+		name: "Ancient Servant's Ascension",
+		pp: 1,
+		priority: 0,
+		flags: {},
+		onPrepareHit: function(target, source) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Icicle Crash", target);
+		},
+		onTryHit: function(target, pokemon) {
+			// Ability is discarded before damage is calculated.
+			if (target.runImmunity('Rock')) {
+				pokemon.addVolatile('gastroacid');
+			}
 		},
 		target: "normal",
-		type: "Normal",
+		type: "Steel",
 		isZ: "regigigiumz",
 	},
 	"celestialcurse": {
