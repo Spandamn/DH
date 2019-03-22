@@ -945,12 +945,13 @@ exports.BattleMovedex = {
 		basePower: 200,
 		accuracy: true,
 		category: "Physical",
-		shortDesc: "No additional effect.",
+		shortDesc: "Summons Stealth Rock on the target's side of the field.",
 		id: "annihilatingancientamber",
 		name: "Annihilating Ancient Amber",
 		pp: 1,
 		priority: 0,
 		flags: {},
+		sideCondition: 'stealthrock',
 		onPrepareHit: function(target, source) {
 			this.attrLastMove('[still]');
 			this.add('-anim', source, "Revelation Dance", target);
@@ -1359,7 +1360,7 @@ exports.BattleMovedex = {
 		basePower: 0,
 		accuracy: true,
 		category: "Status",
-		shortDesc: "Target becomes paralyzed, confused, and its Attack, Special Attack, and Speed are lowered by 1 stage each.",
+		shortDesc: "Inflicts Confusion, Paralysis, and -1 Atk/SpA/Spe.",
 		id: "nobleforestserpent",
 		name: "Noble Forest Serpent",
 		pp: 1,
@@ -1369,9 +1370,7 @@ exports.BattleMovedex = {
 		volatileStatus: 'confusion',
 		boosts: {
 			atk: -1,
-			def: -1,
 			spa: -1,
-			spd: -1,
 			spe: -1,
 		},
 		onPrepareHit: function(target, source) {
@@ -1392,7 +1391,7 @@ exports.BattleMovedex = {
 		name: "Rock-Crushing Grip",
 		pp: 1,
 		priority: 0,
-		flags: {},
+		flags: {contact: 1},
 		onPrepareHit: function(target, source) {
 			this.attrLastMove('[still]');
 			this.add('-anim', source, "Revelation Dance", target);
@@ -1427,7 +1426,7 @@ exports.BattleMovedex = {
 		basePower: 175,
 		accuracy: true,
 		category: "Special",
-		shortDesc: "Lowers the target's Attack and Special Attack by 1 stage.",
+		shortDesc: "Lowers Target's Atk, Sp.Atk by 1.",
 		id: "searingspell",
 		name: "Searing Spell",
 		pp: 1,
@@ -1449,7 +1448,7 @@ exports.BattleMovedex = {
 		basePower: 190,
 		accuracy: true,
 		category: "Physical",
-		shortDesc: "50% recoil",
+		shortDesc: "50% recoil.",
 		id: "blazingbulletstrike",
 		name: "Blazing Bullet Strike",
 		pp: 1,
@@ -1468,7 +1467,7 @@ exports.BattleMovedex = {
 		basePower: 150,
 		accuracy: true,
 		category: "Special",
-		shortDesc: "Steals opponent's stat boosts and regains health from half the damage.",
+		shortDesc: "Steals opponent's stat boosts and regains health from half the damage dealt.",
 		id: "drainingribbondance",
 		name: "Draining Ribbon Dance",
 		pp: 1,
@@ -1488,7 +1487,7 @@ exports.BattleMovedex = {
 		basePower: 200,
 		accuracy: true,
 		category: "Special",
-		shortDesc: "Fire-types moves of Volcanion are boosted by 1.5x post this attack, sets up Stealth Rock on the foe's side and traps the foe. Burns the foe 100% of the time.",
+		shortDesc: "User has x1.5 power to Fire moves after this attack. Stealth Rock is set up on the foe's side. Traps and burns the target 100% of the time.",
 		id: "ignitedflareoutburst",
 		name: "Ignited Flare Outburst",
 		pp: 1,
@@ -1513,7 +1512,7 @@ exports.BattleMovedex = {
 		basePower: 200,
 		accuracy: true,
 		category: "Physical",
-		shortDesc: "Burns the target. Toucannon gets a Flash Fire boost, but has its Special Attack stat decreased by two stages.",
+		shortDesc: "Burns the target. x1.5 power to user's Fire-type moves after this attack, but lowers the user's Sp. Atk by 2.",
 		id: "beakoverdrive",
 		name: "Beak Overdrive",
 		pp: 1,
@@ -1549,7 +1548,7 @@ exports.BattleMovedex = {
 		forceSwitch: true,
 		onPrepareHit: function(target, source) {
 			this.attrLastMove('[still]');
-			this.add('-anim', source, "Revelation Dance", target);
+			this.add('-anim', source, "High Horsepower", target);
 		},
 		target: "normal",
 		type: "Ground",
@@ -1580,7 +1579,7 @@ exports.BattleMovedex = {
 		basePower: 195,
 		accuracy: true,
 		category: "Special",
-		shortDesc: "Drains half the damage done to the target.",
+		shortDesc: "Drains 50% of damage done to the target.",
 		id: "abhorrentabsorbingabyss",
 		name: "Abhorrent Absorbing Abyss",
 		pp: 1,
@@ -1599,7 +1598,7 @@ exports.BattleMovedex = {
 		basePower: 220,
 		accuracy: true,
 		category: "Special",
-		shortDesc: "+1 SpA but it gets confused.",
+		shortDesc: "+1 SpA, but inflicts confusion on self.",
 		id: "relicdragonroar",
 		name: "Relic Dragon Roar",
 		pp: 1,
@@ -1625,7 +1624,7 @@ exports.BattleMovedex = {
 		basePower: 160,
 		accuracy: true,
 		category: "Physical",
-		shortDesc: "Sets up Grassy Terrain.",
+		shortDesc: "Summons Grassy Terrain.",
 		id: "slaughteringslash",
 		name: "Slaughtering Slash",
 		pp: 1,
@@ -1634,7 +1633,7 @@ exports.BattleMovedex = {
 		terrain: 'grassyterrain',
 		onPrepareHit: function(target, source) {
 			this.attrLastMove('[still]');
-			this.add('-anim', source, "Revelation Dance", target);
+			this.add('-anim', source, "Razor Wind", target);
 		},
 		target: "normal",
 		type: "Steel",
@@ -1660,7 +1659,7 @@ exports.BattleMovedex = {
 		},
 		onPrepareHit: function(target, source) {
 			this.attrLastMove('[still]');
-			this.add('-anim', source, "Revelation Dance", target);
+			this.add('-anim', source, "Acid Downpour", target);
 		},
 		target: "normal",
 		type: "Poison",
@@ -1670,7 +1669,7 @@ exports.BattleMovedex = {
 		basePower: 200,
 		accuracy: true,
 		category: "Physical",
-		shortDesc: "Activates Trick Room.",
+		shortDesc: "Summons Trick Room.",
 		id: "thestackattacks",
 		name: "The Stack Attacks",
 		pp: 1,
@@ -1679,7 +1678,7 @@ exports.BattleMovedex = {
 		pseudoWeather: 'trickroom',
 		onPrepareHit: function(target, source) {
 			this.attrLastMove('[still]');
-			this.add('-anim', source, "Revelation Dance", target);
+			this.add('-anim', source, "Rock Slide", target);
 		},
 		target: "normal",
 		type: "Rock",
@@ -1697,7 +1696,7 @@ exports.BattleMovedex = {
 		flags: {},
 		onPrepareHit: function(target, source) {
 			this.attrLastMove('[still]');
-			this.add('-anim', source, "Revelation Dance", target);
+			this.add('-anim', source, "Mind Blown", target);
 		},
 		target: "normal",
 		type: "Fire",
@@ -1707,7 +1706,7 @@ exports.BattleMovedex = {
 		basePower: 180,
 		accuracy: true,
 		category: "Physical",
-		shortDesc: "Transforms the opponent’s ability to Normalize and sets Ion Deluge.",
+		shortDesc: "Transforms the opponent’s ability to Normalize and summons Ion Deluge.",
 		id: "graspofallenergy",
 		name: "Grasp of All Energy",
 		pp: 1,
@@ -1789,7 +1788,7 @@ exports.BattleMovedex = {
 		basePower: 200,
 		accuracy: true,
 		category: "Special",
-		shortDesc: "Target's Defence and Special Defence are lowered by one stage. If user has Sheer Force, damage is multiplied by 1.3 instead.",
+		shortDesc: "-1 to target's Def, SpD. If user has Sheer Force, damage is multiplied by 1.3 instead.",
 		id: "royalwave",
 		name: "Royal Wave",
 		pp: 1,
@@ -1817,7 +1816,7 @@ exports.BattleMovedex = {
 		basePower: 0,
 		accuracy: true,
 		category: "Status",
-		shortDesc: "The foe falls asleep. The user also falls asleep, but is fully healed up and will wake up twice as fast as normal.",
+		shortDesc: "The target and user both fall asleep, but the user fully heals up and will wake up twice as fast as normal.",
 		id: "lovelylullaby",
 		name: "Lovely Lullaby",
 		pp: 1,
@@ -1847,30 +1846,11 @@ exports.BattleMovedex = {
 		type: "Fairy",
 		isZ: "wiggliumz",
 	},
-	"highdeliverydeluge": {
-		basePower: 190,
-		accuracy: true,
-		category: "Special",
-		shortDesc: "Summons Rain",
-		id: "highdeliverydeluge",
-		name: "High Delivery Deluge",
-		pp: 1,
-		priority: 0,
-		flags: {},
-		weather: 'RainDance',
-		onPrepareHit: function(target, source) {
-			this.attrLastMove('[still]');
-			this.add('-anim', source, "Revelation Dance", target);
-		},
-		target: "normal",
-		type: "Water",
-		isZ: "pelipiumz",
-	},
 	"flamingforceout": {
 		basePower: 200,
 		accuracy: true,
 		category: "Physical",
-		shortDesc: "If the target is lighter than Emboar, it gets forcibly switched out.",
+		shortDesc: "If the target is lighter than the user, it gets forcibly switched out.",
 		id: "flamingforceout",
 		name: "Flaming Force Out",
 		pp: 1,
@@ -1893,7 +1873,7 @@ exports.BattleMovedex = {
 		basePower: 40,
 		accuracy: true,
 		category: "Physical",
-		shortDesc: "Hits five times. The second and fourth hit always lower the foe's Defense by 1 stage.",
+		shortDesc: "Hits five times. The second and fourth hits always lower the foe's Defense by 1 stage.",
 		id: "sharpshellstrike",
 		name: "Sharp Shell Strike",
 		pp: 1,
@@ -1915,226 +1895,256 @@ exports.BattleMovedex = {
 		type: "Water",
 		isZ: "samurottiumz",
 	},
-"clumsycommotion": {
-basePower: 0, 
-accuracy: true, 
-category: "Status", 
-shortDesc: "Restores HP to full and heals any status ailments but lowers Attack and Speed by two stages. Confuses all adjacent Pokemon.", 
-id: "clumsycommotion", 
-name: "Clumsy Commotion", 
-pp: 1,
-priority: 0, 
-flags: {},
-volatileStatus: 'confusion',
-self: {
-				boosts: {
-					atk: -2,
-					spe: -2,
-				},
-				onHit: function(pokemon) {
-				pokemon.cureStatus();
-				this.heal(pokemon.maxhp);
-			},
+	"clumsycommotion": {
+    basePower: 0,
+    accuracy: true,
+    category: "Status",
+    shortDesc: "Restores HP to full and heals any status ailments but lowers Attack and Speed by two stages. Confuses all adjacent Pokemon.",
+    id: "clumsycommotion",
+    name: "Clumsy Commotion",
+    pp: 1,
+    priority: 0,
+    flags: {},
+    volatileStatus: 'confusion',
+    self: {
+        boosts: {
+            atk: -2,
+            spe: -2,
+        },
+        onHit: function(pokemon) {
+            pokemon.cureStatus();
+            this.heal(pokemon.maxhp);
+        },
+    },
+    onPrepareHit: function(target, source) {
+        this.attrLastMove('[still]');
+        this.add('-anim', source, "Revelation Dance", target);
+    },
+    target: "normal",
+    type: "allAdjacent",
+    isZ: "spindiumz",
 },
-onPrepareHit: function(target, source) {	this.attrLastMove('[still]');this.add('-anim', source, "Revelation Dance", target);},
-target: "normal",
-type: "allAdjacent", 
-isZ: "spindiumz",
+"loyaltylunge": {
+    basePower: 0,
+    basePowerCallback(pokemon) {
+        return Math.floor((pokemon.happiness) * 101 / 255) + 102;
+    },
+    accuracy: true,
+    category: "Physical",
+    shortDesc: "Increases with happiness (102BP at minimum, 203BP at maximum).",
+    id: "loyaltylunge",
+    name: "Loyalty Lunge",
+    pp: 1,
+    priority: 0,
+    flags: {},
+    onPrepareHit: function(target, source) {
+        this.attrLastMove('[still]');
+        this.add('-anim', source, "Revelation Dance", target);
+    },
+    target: "normal",
+    type: "Normal",
+    isZ: "loppiumz",
 },
-	"loyaltylunge": {
-basePower: 0,
-basePowerCallback(pokemon) {
-			return Math.floor((pokemon.happiness) * 101/255) + 102;
-		},
-accuracy: true, 
-category: "Physical", 
-shortDesc: "Increases with happiness (102BP at minimum, 203BP at maximum).", 
-id: "loyaltylunge", 
-name: "Loyalty Lunge", 
-pp: 1,
-priority: 0, 
-flags: {}, 
-onPrepareHit: function(target, source) {	this.attrLastMove('[still]');this.add('-anim', source, "Revelation Dance", target);},
-target: "normal",
-type: "Normal", 
-isZ: "loppiumz",
+"timecrash": {
+    basePower: 180,
+    accuracy: true,
+    category: "Special",
+    shortDesc: "+1 Priority and calls Doom Desire after damage.",
+    id: "timecrash",
+    name: "Time Crash",
+    pp: 1,
+    priority: 1,
+    flags: {},
+    onAfterHit: function(target, pokemon) {
+        this.useMove("Doom Desire", pokemon);
+    },
+    onPrepareHit: function(target, source) {
+        this.attrLastMove('[still]');
+        this.add('-anim', source, "Revelation Dance", target);
+    },
+    target: "normal",
+    type: "Dragon",
+    isZ: "dialgiumz",
 },
-	"timecrash": {
-basePower: 180, 
-accuracy: true, 
-category: "Special", 
-shortDesc: "+1 Priority and calls Doom Desire after damage.", 
-id: "timecrash", 
-name: "Time Crash", 
-pp: 1,
-priority: 0, 
-flags: {},
-onAfterHit: function(target, pokemon) {
-			this.useMove("Doom Desire", pokemon);
-		},
-onPrepareHit: function(target, source) {	this.attrLastMove('[still]');this.add('-anim', source, "Revelation Dance", target);},
-target: "normal",
-type: "Dragon", 
-isZ: "dialgiumz",
+"zealouszephyrzap": {
+    basePower: 180,
+    accuracy: true,
+    category: "Physical",
+    shortDesc: "Changes the Terrain to Electric Terrain prior to damage. Increases Speed by 1 stage. Paralyses the target.",
+    id: "zealouszephyrzap",
+    name: "Zealous Zephyr Zap",
+    pp: 1,
+    priority: 0,
+    flags: {},
+    terrain: 'electricterrain',
+    status: 'par',
+    selfBoost: {
+        boosts: {
+            spe: 1,
+        },
+    },
+    onPrepareHit: function(target, source) {
+        this.attrLastMove('[still]');
+        this.add('-anim', source, "Revelation Dance", target);
+    },
+    target: "normal",
+    type: "Electric",
+    isZ: "zebstrikiumz",
 },
-	"zealouszephyrzap": {
-basePower: 180, 
-accuracy: true, 
-category: "Physical", 
-shortDesc: "Changes the Terrain to Electric Terrain prior to damage. Increases Speed by 1 stage. Paralyses the target.", 
-id: "zealouszephyrzap", 
-name: "Zealous Zephyr Zap", 
-pp: 1,
-priority: 0, 
-flags: {},
-terrain: 'electricterrain',
-status: 'par',
-		selfBoost: {
-			boosts: {
-				spe: 1,
-			},
-		},
-onPrepareHit: function(target, source) {	this.attrLastMove('[still]');this.add('-anim', source, "Revelation Dance", target);},
-target: "normal",
-type: "Electric", 
-isZ: "zebstrikiumz",
+"jackfrostscruelty": {
+    basePower: 200,
+    accuracy: true,
+    category: "Special",
+    shortDesc: "Summons Hail. Super-effective against Water-types. 30% chance of freezing the target(s).",
+    id: "jackfrostscruelty",
+    name: "Jack Frost's Cruelty",
+    pp: 1,
+    priority: 0,
+    flags: {},
+    weather: 'hail',
+    onEffectiveness(typeMod, target, type) {
+        if (type === 'Water') return 1;
+    },
+    secondary: {
+        chance: 30,
+        status: 'frz',
+    },
+    onPrepareHit: function(target, source) {
+        this.attrLastMove('[still]');
+        this.add('-anim', source, "Revelation Dance", target);
+    },
+    target: "allAdjacentFoes",
+    type: "Ice",
+    isZ: "jackfrostiumz",
 },
-	"jackfrostscruelty": {
-basePower: 200, 
-accuracy: true, 
-category: "Special", 
-shortDesc: "Summons Hail. Super-effective against Water-types. 30% chance of freezing the target(s).", 
-id: "jackfrostscruelty", 
-name: "Jack Frost's Cruelty", 
-pp: 1,
-priority: 0, 
-flags: {},
-weather: 'hail',
-onEffectiveness(typeMod, target, type) {
-			if (type === 'Water') return 1;
-		},
-		secondary: {
-			chance: 30,
-			status: 'frz',
-		},
-onPrepareHit: function(target, source) {	this.attrLastMove('[still]');this.add('-anim', source, "Revelation Dance", target);},
-target: "allAdjacentFoes",
-type: "Ice", 
-isZ: "jackfrostiumz",
+"ignisveritatis": {
+    basePower: 200,
+    accuracy: true,
+    category: "Special",
+    shortDesc: "Sets the weather to harsh sunlight. Base Power doubles if the Z-Move Fulgur Idealis was used immediately beforehand.",
+    id: "ignisveritatis",
+    name: "Ignis Veritatis",
+    pp: 1,
+    priority: 0,
+    flags: {},
+    weather: 'desolateland',
+    onBasePowerPriority: 4,
+    onBasePower(basePower, pokemon) {
+        for (const active of pokemon.side.active) {
+            if (active && active.moveThisTurn === 'fulguridealis') {
+                this.debug('double power');
+                return this.chainModify(2);
+            }
+        }
+    },
+    onPrepareHit: function(target, source) {
+        this.attrLastMove('[still]');
+        this.add('-anim', source, "Overheat", target);
+    },
+    target: "normal",
+    type: "Fire",
+    isZ: "reshiramiumz",
 },
-	"ignisveritatis": {
-basePower: 200, 
-accuracy: true, 
-category: "Special", 
-shortDesc: "Sets the weather to harsh sunlight. Base Power doubles if the Z-Move Fulgur Idealis was used immediately beforehand. Kyurem-White can also use this Z-Move.", 
-id: "ignisveritatis", 
-name: "Ignis Veritatis", 
-pp: 1,
-priority: 0, 
-flags: {},
-weather: 'desolateland',
-onBasePowerPriority: 4,
-		onBasePower(basePower, pokemon) {
-			for (const active of pokemon.side.active) {
-				if (active && active.moveThisTurn === 'fulguridealis') {
-					this.debug('double power');
-					return this.chainModify(2);
-				}
-			}
-		},
-onPrepareHit: function(target, source) {	this.attrLastMove('[still]');this.add('-anim', source, "Revelation Dance", target);},
-target: "normal",
-type: "Fire", 
-isZ: "reshiramiumz",
+"fulguridealis": {
+    basePower: 200,
+    accuracy: true,
+    category: "Physical",
+    shortDesc: "Sets the weather to heavy rain. Base Power doubles if the Z-Move Ignis Veritatis was used immediately beforehand.",
+    id: "fulguridealis",
+    name: "Fulgur Idealis",
+    pp: 1,
+    priority: 0,
+    flags: {},
+    weather: 'primordialsea',
+    onBasePowerPriority: 4,
+    onBasePower(basePower, pokemon) {
+        for (const active of pokemon.side.active) {
+            if (active && active.moveThisTurn === 'ignisveritatis') {
+                this.debug('double power');
+                return this.chainModify(2);
+            }
+        }
+    },
+    onPrepareHit: function(target, source) {
+        this.attrLastMove('[still]');
+        this.add('-anim', source, "Bolt Strike", target);
+    },
+    target: "normal",
+    type: "Electric",
+    isZ: "zekromiumz",
 },
-	"fulguridealis": {
-basePower: 200, 
-accuracy: true, 
-category: "Physical", 
-shortDesc: "Sets the weather to heavy rain. Base Power doubles if the Z-Move Ignis Veritatis was used immediately beforehand. Kyurem-Black can also use this Z-Move.", 
-id: "fulguridealis", 
-name: "Fulgur Idealis", 
-pp: 1,
-priority: 0, 
-flags: {},
-weather: 'primordialsea',
-onBasePowerPriority: 4,
-		onBasePower(basePower, pokemon) {
-			for (const active of pokemon.side.active) {
-				if (active && active.moveThisTurn === 'ignisveritatis') {
-					this.debug('double power');
-					return this.chainModify(2);
-				}
-			}
-		},
-onPrepareHit: function(target, source) {	this.attrLastMove('[still]');this.add('-anim', source, "Revelation Dance", target);},
-target: "normal",
-type: "Electric", 
-isZ: "zekromiumz",
+"shockingshellhell": {
+    basePower: 180,
+    accuracy: true,
+    category: "Special",
+    shortDesc: "Inflicts burn. +2Atk/SpA/Spe and -1 Def/SpD to user.",
+    id: "shockingshellhell",
+    name: "Shocking Shell Hell",
+    pp: 1,
+    priority: 0,
+    flags: {},
+    status: 'brn',
+    selfBoost: {
+        boosts: {
+            atk: 2,
+            spa: 2,
+            spe: 2,
+            def: -1,
+            spd: -1,
+        },
+    },
+    onPrepareHit: function(target, source) {
+        this.attrLastMove('[still]');
+        this.add('-anim', source, "Revelation Dance", target);
+    },
+    target: "normal",
+    type: "Fire",
+    isZ: "turtoniumz",
 },
-	"shockingshellhell": {
-basePower: 180, 
-accuracy: true, 
-category: "Special", 
-shortDesc: "Burns the foe and gains a Shell Smash boost.", 
-id: "shockingshellhell", 
-name: "Shocking Shell Hell", 
-pp: 1,
-priority: 0, 
-flags: {},
-status: 'brn',
-selfBoost: {
-			boosts: {
-				atk: 2,
-				spa: 2,
-				spe: 2,
-				def: -1,
-				spd: -1,
-			},
-		},
-onPrepareHit: function(target, source) {	this.attrLastMove('[still]');this.add('-anim', source, "Revelation Dance", target);},
-target: "normal",
-type: "Fire", 
-isZ: "turtoniumz",
+"dwarfstarcrush": {
+    basePower: 200,
+    accuracy: true,
+    category: "Physical",
+    shortDesc: "Combines Fire in its type effectiveness. Ignores abilities and stat changes.",
+    id: "dwarfstarcrush",
+    name: "Dwarf Star Crush",
+    pp: 1,
+    priority: 0,
+    flags: {},
+    onEffectiveness(typeMod, target, type, move) {
+        return typeMod + this.getEffectiveness('Fire', type);
+    },
+    ignoreAbility: true,
+    ignoreDefensive: true,
+    ignoreEvasion: true,
+    onPrepareHit: function(target, source) {
+        this.attrLastMove('[still]');
+        this.add('-anim', source, "Revelation Dance", target);
+    },
+    target: "normal",
+    type: "Steel",
+    isZ: "soliumz",
 },
-	"dwarfstarcrush": {
-basePower: 200, 
-accuracy: true, 
-category: "Physical", 
-shortDesc: "Combines Fire in its type effectiveness. Ignores abilities and stat changes.", 
-id: "dwarfstarcrush", 
-name: "Dwarf Star Crush", 
-pp: 1,
-priority: 0, 
-flags: {},
-onEffectiveness(typeMod, target, type, move) {
-			return typeMod + this.getEffectiveness('Fire', type);
-		},
-ignoreAbility: true,
-ignoreDefensive: true,
-ignoreEvasion: true,
-onPrepareHit: function(target, source) {	this.attrLastMove('[still]');this.add('-anim', source, "Revelation Dance", target);},
-target: "normal",
-type: "Steel", 
-isZ: "soliumz",
-},
-	"lunaticlaser": {
-basePower: 200, 
-accuracy: true, 
-category: "Special", 
-shortDesc: "Ignores abilities and stat changes.", 
-id: "lunaticlaser", 
-name: "Lunatic Laser", 
-pp: 1,
-priority: 0, 
-flags: {},
-ignoreAbility: true,
-ignoreDefensive: true,
-ignoreEvasion: true,
-onPrepareHit: function(target, source) {	this.attrLastMove('[still]');this.add('-anim', source, "Revelation Dance", target);},
-target: "normal",
-type: "Ghost", 
-isZ: "luniumz",
+"lunaticlaser": {
+    basePower: 200,
+    accuracy: true,
+    category: "Special",
+    shortDesc: "Ignores abilities and stat changes.",
+    id: "lunaticlaser",
+    name: "Lunatic Laser",
+    pp: 1,
+    priority: 0,
+    flags: {},
+    ignoreAbility: true,
+    ignoreDefensive: true,
+    ignoreEvasion: true,
+    onPrepareHit: function(target, source) {
+        this.attrLastMove('[still]');
+        this.add('-anim', source, "Revelation Dance", target);
+    },
+    target: "normal",
+    type: "Ghost",
+    isZ: "luniumz",
 },
 	
 };
