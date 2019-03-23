@@ -419,16 +419,6 @@ gutter: function (target, room, user) {
 });
 		this.sendReplyBox(`${buf}</div>`);
 	},
-	mg8gutter: function (target, room, user) {
-		if (!this.runBroadcast()) return;
-		let buf = `<div class=infobox-limited><center><h2>List Of Alola Formes Pokemon</h2></center>`;
-		let jillianDex = require('../../data/mods/monotypegen8/pokedex.js').BattlePokedex;
-		if (!jillianDex) return this.errorReply("Error Fetching Istor Data.");
-		Object.values(jillianDex).forEach(mon => {
-			buf += `&quot;${mon.species}&quot;, ${mon.types[0]}`;
-});
-		this.sendReplyBox(`${buf}</div>`);
-	},
 		mgutter: function (target, room, user) {
 		if (!this.runBroadcast()) return;
 		let buf = `<div class=infobox-limited><center><h2>List Of Alola Formes Pokemon</h2></center>`;
