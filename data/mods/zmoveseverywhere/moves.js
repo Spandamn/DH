@@ -557,7 +557,7 @@ exports.BattleMovedex = {
 	},
 	"ancientservantsascension": {
 		accuracy: true,
-		basePower: 0,
+		basePower: 73,
 		category: "Physical",
 		id: "ancientservantsascension",
 		shortDesc: "Suppresses user's ability before damage. Hits three times, the first hit Rock-type, the second Ice-type and the third Steel-type.",
@@ -570,8 +570,20 @@ exports.BattleMovedex = {
 			this.attrLastMove('[still]');
 			this.add('-anim', source, "Tail Glow", source);
 			this.useMove("ancientservantsascensionrock", source);
-			this.useMove("ancientservantsascensionice", source);
-			this.useMove("ancientservantsascensionsteel", source);
+			if (target.runImmunity('Rock')) {
+				if (target.fainted){
+					this.add('-hitcount', target, 1);
+				} else {
+					this.useMove("ancientservantsascensionice", source);
+					if (target.fainted){
+						this.add('-hitcount', target, 2);
+					} else {
+						this.useMove("ancientservantsascensionsteel", source);
+						this.add('-hitcount', target, 3);
+					}
+				}
+			}
+			return null;
 		},
 		target: "normal",
 		type: "Normal",
@@ -584,18 +596,15 @@ exports.BattleMovedex = {
 		id: "ancientservantsascensionrock",
 		shortDesc: "Suppresses user's ability before damage. Hits three times, the first hit Rock-type, the second Ice-type and the third Steel-type.",
 		isViable: true,
-		name: "Ancient Servant's Ascension",
+		name: "Ancient Servant's Ascension (Rock)",
 		pp: 1,
 		priority: 0,
 		flags: {},
 		onPrepareHit: function(target, source) {
 			this.attrLastMove('[still]');
 			this.add('-anim', source, "Rock Slide", target);
-		},
-		onTryHit: function(target, pokemon) {
-			// Ability is discarded before damage is calculated.
 			if (target.runImmunity('Rock')) {
-				pokemon.addVolatile('gastroacid');
+				source.addVolatile('gastroacid');
 			}
 		},
 		target: "normal",
@@ -609,19 +618,13 @@ exports.BattleMovedex = {
 		id: "ancientservantsascensionice",
 		shortDesc: "Suppresses user's ability before damage. Hits three times, the first hit Rock-type, the second Ice-type and the third Steel-type.",
 		isViable: true,
-		name: "Ancient Servant's Ascension",
+		name: "Ancient Servant's Ascension (Ice)",
 		pp: 1,
 		priority: 0,
 		flags: {},
 		onPrepareHit: function(target, source) {
 			this.attrLastMove('[still]');
-			this.add('-anim', source, "Metal Burst", target);
-		},
-		onTryHit: function(target, pokemon) {
-			// Ability is discarded before damage is calculated.
-			if (target.runImmunity('Rock')) {
-				pokemon.addVolatile('gastroacid');
-			}
+			this.add('-anim', source, "Icicle Crash", target);
 		},
 		target: "normal",
 		type: "Ice",
@@ -634,19 +637,13 @@ exports.BattleMovedex = {
 		id: "ancientservantsascensionsteel",
 		shortDesc: "Suppresses user's ability before damage. Hits three times, the first hit Rock-type, the second Ice-type and the third Steel-type.",
 		isViable: true,
-		name: "Ancient Servant's Ascension",
+		name: "Ancient Servant's Ascension (Steel)",
 		pp: 1,
 		priority: 0,
 		flags: {},
 		onPrepareHit: function(target, source) {
 			this.attrLastMove('[still]');
-			this.add('-anim', source, "Icicle Crash", target);
-		},
-		onTryHit: function(target, pokemon) {
-			// Ability is discarded before damage is calculated.
-			if (target.runImmunity('Rock')) {
-				pokemon.addVolatile('gastroacid');
-			}
+			this.add('-anim', source, "Metal Burst", target);
 		},
 		target: "normal",
 		type: "Steel",
@@ -663,7 +660,7 @@ exports.BattleMovedex = {
 		},
 		category: "Special",
 		desc: "Deals damage to the target equal to its current HP minus one, but not less than 1 HP.",
-		shortDesc: "Target is brought down to 1HP.",
+		shortDesc: "Target is brought down to 1HP. (min. 1 damage)",
 		id: "celestialcurse",
 		isViable: true,
 		name: "Celestial Curse",
@@ -2210,50 +2207,172 @@ exports.BattleMovedex = {
     isZ: "luniumz",
 },
 	"distortedstrike": {
-basePower: 180, 
-accuracy: true, 
-category: "Physical", 
-shortDesc: "Uses the effect of Topsy Turvy on the opponent before damage. After damage, switches the user to Origin Forme.", 
-id: "distortedstrike", 
-name: "Distorted Strike", 
-pp: 1,
-priority: 0, 
-flags: {}, 
-onPrepareHit: function(target, source) {	this.attrLastMove('[still]');this.add('-anim', source, "Revelation Dance", target);},
-onTryHit: function(target) {
-			let success = false;
-			for (let i in target.boosts) {
-				// @ts-ignore
-				if (target.boosts[i] === 0) continue;
-				// @ts-ignore
-				target.boosts[i] = -target.boosts[i];
-				success = true;
-			}
-			if (!success) return false;
-			this.add('-invertboost', target, '[from] move: Topsy-Turvy');
-		},
-onHit: function(pokemon) {
-			this.add('-move', pokemon, 'Distorted Strike');
-			this.add('-formechange', pokemon, 'Giratina-Origin', '[msg]');
-			pokemon.formeChange("Giratina-Origin");
-		},
-target: "normal",
-type: "Ghost", 
-isZ: "giratiniumz",
+    basePower: 180,
+    accuracy: true,
+    category: "Physical",
+    shortDesc: "Uses the effect of Topsy Turvy on the opponent before damage. After damage, switches the user to Origin Forme.",
+    id: "distortedstrike",
+    name: "Distorted Strike",
+    pp: 1,
+    priority: 0,
+    flags: {},
+    onPrepareHit: function(target, source) {
+        this.attrLastMove('[still]');
+        this.add('-anim', source, "Revelation Dance", target);
+    },
+    onTryHit: function(target) {
+        let success = false;
+        for (let i in target.boosts) {
+            // @ts-ignore
+            if (target.boosts[i] === 0) continue;
+            // @ts-ignore
+            target.boosts[i] = -target.boosts[i];
+            success = true;
+        }
+        if (!success) return false;
+        this.add('-invertboost', target, '[from] move: Distorted Strike');
+    },
+    onHit: function(pokemon) {
+        this.add('-move', pokemon, 'Distorted Strike');
+        this.add('-formechange', pokemon, 'Giratina-Origin', '[msg]');
+        pokemon.formeChange("Giratina-Origin");
+    },
+    target: "normal",
+    type: "Ghost",
+    isZ: "giratiniumz",
 },
 	"technoburst": {
-basePower: 50, 
-accuracy: true, 
-category: "Special", 
-shortDesc: "Hits 5 times, first hit is Fire-typed, second one is Water-typed, third one is Electric-typed, fourth one is Ice-typed and the last one is Normal-typed. After dealing damage, Genesect gains either an Attack or Special Attack boost, depending on the defenses of the foe it just knocked out.", 
-id: "technoburst", 
-name: "Techno Burst", 
-pp: 1,
-priority: 0, 
-flags: {}, 
-onPrepareHit: function(target, source) {	this.attrLastMove('[still]');this.add('-anim', source, "Revelation Dance", target);},
-target: "normal",
-type: "Normal", 
-isZ: "genesectiumz",
-},
+    basePower: 50,
+    accuracy: true,
+    category: "Special",
+    shortDesc: "Hits 5 times, first hit is Fire-typed, second one is Water-typed, third one is Electric-typed, fourth one is Ice-typed and the last one is Normal-typed. After dealing damage, Genesect gains either an Attack or Special Attack boost, depending on the defenses of the foe it just knocked out.",
+    id: "technoburst",
+    name: "Techno Burst",
+    pp: 1,
+    priority: 0,
+    flags: {},
+    onPrepareHit: function(target, source) {
+        this.attrLastMove('[still]');
+		  this.useMove('technoburstfire', source);
+		  if (target.fainted){
+				this.add('-hitcount', target, 1);
+			   return null;
+		  }
+		  this.useMove('technoburstwater', source);
+		  if (target.fainted){
+				this.add('-hitcount', target, 2);
+			   return null;
+		  }
+		  this.useMove('technoburstelectric', source);
+		  if (target.fainted){
+				this.add('-hitcount', target, 3);
+			   return null;
+		  }
+		  this.useMove('technoburstice', source);
+		  if (target.fainted){
+				this.add('-hitcount', target, 4);
+			   return null;
+		  }
+		  this.addMove('move', source, 'Techno Burst (Normal)', target + '[still]');
+		  this.add('-anim', source, "Techno Blast", target);
+    },
+	 onAfterMoveSecondarySelf(pokemon, target, move) {
+		this.add('-hitcount', target, 5);
+		if (!target || target.fainted || target.hp <= 0){
+			if (target.getStat('def', false, true) < target.getStat('spd', false, true)){
+				this.boost({atk: 1}, pokemon, pokemon, move);
+			} else {
+				this.boost({spa: 1}, pokemon, pokemon, move);
+			}
+		}
+	 },
+    target: "normal",
+    type: "Normal",
+    isZ: "genesectiumz",
+	},
+	"technoburstfire": {
+		accuracy: true,
+		basePower: 50,
+		category: "Special",
+		id: "technoburstfire",
+  	   shortDesc: "Hits 5 times, first hit is Fire-typed, second one is Water-typed, third one is Electric-typed, fourth one is Ice-typed and the last one is Normal-typed. After dealing damage, Genesect gains either an Attack or Special Attack boost, depending on the defenses of the foe it just knocked out.",
+		isViable: true,
+		name: "Techno Burst (Fire)",
+		pp: 1,
+		priority: 0,
+		flags: {},
+		onPrepareHit: function(target, source) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Techno Blast", target);
+		},
+		onAfterMoveSecondarySelf(pokemon, target, move) {
+			if (!target || target.fainted || target.hp <= 0){
+				if (target.getStat('def', false, true) < target.getStat('spd', false, true)){
+					this.boost({atk: 1}, pokemon, pokemon, move);
+				} else {
+					this.boost({spa: 1}, pokemon, pokemon, move);
+				}
+			}
+		},
+		target: "normal",
+  	   type: "Fire",
+      isZ: "genesectiumz",
+	},
+	"technoburstwater": {
+		accuracy: true,
+		basePower: 50,
+		category: "Special",
+		id: "technoburstfire",
+  	   shortDesc: "Hits 5 times, first hit is Fire-typed, second one is Water-typed, third one is Electric-typed, fourth one is Ice-typed and the last one is Normal-typed. After dealing damage, Genesect gains either an Attack or Special Attack boost, depending on the defenses of the foe it just knocked out.",
+		isViable: true,
+		name: "Techno Burst (Water)",
+		pp: 1,
+		priority: 0,
+		flags: {},
+		onPrepareHit: function(target, source) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Techno Blast", target);
+		},
+		target: "normal",
+  	   type: "Water",
+      isZ: "genesectiumz",
+	},
+	"technoburstelectric": {
+		accuracy: true,
+		basePower: 50,
+		category: "Special",
+		id: "technoburstfire",
+  	   shortDesc: "Hits 5 times, first hit is Fire-typed, second one is Water-typed, third one is Electric-typed, fourth one is Ice-typed and the last one is Normal-typed. After dealing damage, Genesect gains either an Attack or Special Attack boost, depending on the defenses of the foe it just knocked out.",
+		isViable: true,
+		name: "Techno Burst (Electric)",
+		pp: 1,
+		priority: 0,
+		flags: {},
+		onPrepareHit: function(target, source) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Techno Blast", target);
+		},
+		target: "normal",
+  	   type: "Electric",
+      isZ: "genesectiumz",
+	},
+	"technoburstice": {
+		accuracy: true,
+		basePower: 50,
+		category: "Special",
+		id: "technoburstfire",
+  	   shortDesc: "Hits 5 times, first hit is Fire-typed, second one is Water-typed, third one is Electric-typed, fourth one is Ice-typed and the last one is Normal-typed. After dealing damage, Genesect gains either an Attack or Special Attack boost, depending on the defenses of the foe it just knocked out.",
+		isViable: true,
+		name: "Techno Burst (Ice)",
+		pp: 1,
+		priority: 0,
+		flags: {},
+		onPrepareHit: function(target, source) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Techno Blast", target);
+		},
+		target: "normal",
+  	   type: "Ice",
+      isZ: "genesectiumz",
+	},
 };
