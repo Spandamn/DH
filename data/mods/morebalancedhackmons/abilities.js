@@ -2,14 +2,14 @@
 
 /**@type {{[k: string]: AbilityData}} */
 let BattleAbilities = {
-"fluffycloak": {
+"fluffycoat": {
 		shortDesc: "This Pokemon's Sp. Defense is 1.5x.",
-		onModifyDefPriority: 6,
-		onModifyDef: function (spd) {
+		onModifySpDPriority: 6,
+		onModifySpD: function (spd) {
 			return this.chainModify(1.5);
 		},
-		id: "fluffycloak",
-		name: "Fluffy Cloak",
+		id: "fluffycoat",
+		name: "Fluffy Coat",
 		rating: 3.5,
 		num: 169,
 	},
