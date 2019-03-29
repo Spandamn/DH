@@ -2480,6 +2480,10 @@ exports.BattleMovedex = {
 				spe: 1,
 			},
 		},
+		onPrepareHit: function(target, source) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Land's Wrath", target);
+		},
 		onModifyMove(move, source, target) {
 			if (source.template.species !== 'Zygarde-Complete') {
 				delete move.selfBoost.boosts.def;
