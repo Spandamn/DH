@@ -2412,6 +2412,10 @@ exports.BattleMovedex = {
 		pp: 1,
 		priority: 0,
 		flags: {},
+		onPrepareHit: function(target, source) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Geomancy", target);
+		},
 		onHit(pokemon, source) {
 			this.add('-activate', source, 'move: Aura of Life');
 			let side = pokemon.side;
@@ -2438,6 +2442,10 @@ exports.BattleMovedex = {
 		pp: 1,
 		priority: 0,
 		flags: {},
+		onPrepareHit: function(target, source) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Night Daze", target);
+		},
 		onModifyMove(move, pokemon, target) {
 			let side = target.side;
 			let success = 0;
