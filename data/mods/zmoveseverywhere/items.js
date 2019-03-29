@@ -855,4 +855,13 @@ zMoveFrom: "Oblivion Wing",
 zMoveUser: ["Yveltal"],
 desc: "If the holder is a Yveltal with the move Oblivion Wing, it can use Aura of Death.",
 },
+	"zygardiumz":{
+id: "zygardiumz",
+name: "Zygardium-Z",
+onTakeItem: false,
+zMove: "Bring Order to the World",
+zMoveFrom: "Thousand Waves",
+zMoveUser: ["Zygarde-10%", "Zygarde", "Zygarde-Complete"],
+desc: "If the holder is a Zygarde forme with the move Thousand Waves, it can use Bring Order to the World.",
+},
 };
