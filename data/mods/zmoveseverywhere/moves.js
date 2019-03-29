@@ -2461,4 +2461,50 @@ exports.BattleMovedex = {
 		type: "Dark",
 		isZ: "yveltiumz",
 	},
+	"bringordertotheworld": {
+		accuracy: true,
+		basePower: 200,
+		category: "Physical",
+		desc: "Any hazards active on either side become active on both. User gains a boost to its Attack in 10%, Attack and Speed in 50%, and all stats barring Accuracy, Evasion, and Special Attack for Complete.",
+		shortDesc: "Any hazards active on either side become active on both. Raises user's Atk by 1 if 10%, Atk/Spe by 1 if 50%, and Atk/Def/SpD/Spe by 1 if Complete.",
+		id: "bringordertotheworld",
+		name: "Bring Order to the World",
+		pp: 1,
+		priority: 0,
+		flags: {},
+		selfBoost: {
+			boosts: {
+				atk: 1,
+				def: 1,
+				spd: 1,
+				spe: 1,
+			},
+		},
+		onModifyMove(move, source, target) {
+			if (source.template.species !== 'Zygarde-Complete') {
+				delete move.selfBoost.boosts.def;
+				delete move.selfBoost.boosts.spd;
+				if (source.template.species === 'Zygarde-10%'){
+					delete move.selfBoost.boosts.spe;
+				}
+			}
+		},
+		onHit(pokemon) {
+			let sideConditions = ['spikes', 'toxicspikes', 'stealthrock', 'stickyweb'];
+			if (pokemon.hp){
+				for (const side of this.sides) {
+					for (const condition of sideConditions) {
+						let sideCondition = side.sideConditions[condition];
+						if sideCondition && !side.foe.sideConditions[condition]) {
+							side.foe.addSideCondition(condition);
+							if (sideCondition.layers) side.foe.sideConditions[condition].layers = sideCondition.layers;
+						}
+					}
+				}
+			}
+		},
+		isZ: "zygardiumz",
+		target: "allAdjacentFoes",
+		type: "Ground",
+	},
 };
