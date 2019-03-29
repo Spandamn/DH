@@ -609,7 +609,7 @@ exports.BattleMovedex = {
 		},
 		target: "normal",
 		type: "Rock",
-		isZ: "regigigiumz",
+		zMovePower: 73,
 	},
 	"ancientservantsascensionice": {
 		accuracy: true,
@@ -628,7 +628,7 @@ exports.BattleMovedex = {
 		},
 		target: "normal",
 		type: "Ice",
-		isZ: "regigigiumz",
+		zMovePower: 73,
 	},
 	"ancientservantsascensionsteel": {
 		accuracy: true,
@@ -647,7 +647,7 @@ exports.BattleMovedex = {
 		},
 		target: "normal",
 		type: "Steel",
-		isZ: "regigigiumz",
+		zMovePower: 73,
 	},
 	"celestialcurse": {
 		accuracy: true,
@@ -2316,7 +2316,7 @@ exports.BattleMovedex = {
 		},
 		target: "normal",
   	   type: "Fire",
-      isZ: "genesectiumz",
+		zMovePower: 50,
 	},
 	"technoburstwater": {
 		accuracy: true,
@@ -2335,7 +2335,7 @@ exports.BattleMovedex = {
 		},
 		target: "normal",
   	   type: "Water",
-      isZ: "genesectiumz",
+		zMovePower: 50,
 	},
 	"technoburstelectric": {
 		accuracy: true,
@@ -2354,7 +2354,7 @@ exports.BattleMovedex = {
 		},
 		target: "normal",
   	   type: "Electric",
-      isZ: "genesectiumz",
+		zMovePower: 50,
 	},
 	"technoburstice": {
 		accuracy: true,
@@ -2373,6 +2373,31 @@ exports.BattleMovedex = {
 		},
 		target: "normal",
   	   type: "Ice",
-      isZ: "genesectiumz",
+		zMovePower: 50,
+	},
+	"metronome": {
+		inherit: true,
+		noMetronome: ['afteryou', 'assist', 'banefulbunker', 'beakblast', 'belch', 'bestow', 'celebrate', 'chatter', 'copycat', 'counter', 'covet', 'craftyshield', 'destinybond', 'detect', 'diamondstorm', 'dragonascent', 'endure', 'feint', 'fleurcannon', 'focuspunch', 'followme', 'freezeshock', 'helpinghand', 'holdhands', 'hyperspacefury', 'hyperspacehole', 'iceburn', 'instruct', 'kingsshield', 'lightofruin', 'matblock', 'mefirst', 'metronome', 'mimic', 'mindblown', 'mirrorcoat', 'mirrormove', 'naturepower', 'originpulse', 'photongeyser', 'plasmafists', 'precipiceblades', 'protect', 'quash', 'quickguard', 'ragepowder', 'relicsong', 'secretsword', 'shelltrap', 'sketch', 'sleeptalk', 'snarl', 'snatch', 'snore', 'spectralthief', 'spikyshield', 'spotlight', 'steameruption', 'struggle', 'switcheroo', 'technoblast', 'thief', 'thousandarrows', 'thousandwaves', 'transform', 'trick', 'vcreate', 'wideguard', 'technoburstfire', 'technoburstice', 'technoburstelectric', 'technoburstwater', 'ancientservantsascensionrock', 'ancientservantsascensionice', 'ancientservantsascensionsteel'],
+		onHit(target, source, effect) {
+			let moves = [];
+			for (let i in exports.BattleMovedex) {
+				let move = exports.BattleMovedex[i];
+				if (i !== move.id) continue;
+				if (move.isZ || move.isNonstandard) continue;
+				// @ts-ignore
+				if (effect.noMetronome.includes(move.id)) continue;
+				if (this.getMove(i).gen > this.gen) continue;
+				moves.push(move);
+			}
+			let randomMove = '';
+			if (moves.length) {
+				moves.sort((a, b) => a.num - b.num);
+				randomMove = this.sample(moves).id;
+			}
+			if (!randomMove) {
+				return false;
+			}
+			this.useMove(randomMove, target);
+		},
 	},
 };
