@@ -159,18 +159,18 @@ solarsnow: {
 		effectType: 'Weather',
 		duration: 0,
 		onTryMove: function (target, source, effect) {
-			if (effect.type === 'Water' && effect.category !== 'Status' && (source.volatiles['weatherbreak'] == source.volatiles['atmosphericperversion'])) {
+			if (effect.type === 'Water' && effect.category !== 'Status' && (source.volatiles['weatherbreak'] || source.volatiles['atmosphericperversion']) && !(source.volatiles['weatherbreak'] && source.volatiles['atmosphericperversion'])) {
 				this.debug('Desolate Land water suppress');
 				this.add('-fail', source, effect, '[from] Desolate Land');
 				return null;
-			} else if (effect.type === 'Fire' && effect.category !== 'Status' && (source.volatiles['weatherbreak'] != source.volatiles['atmosphericperversion'])) {
+			} else if (effect.type === 'Fire' && effect.category !== 'Status' && (source.volatiles['weatherbreak'] || source.volatiles['atmosphericperversion']) && !(source.volatiles['weatherbreak'] && source.volatiles['atmosphericperversion'])) {
 				this.debug('Inverted Desolate Land fire suppress');
 				this.add('-fail', source, effect, '[from] Desolate Land');
 				return null;
 			}
 		},
 		onWeatherModifyDamage: function (damage, attacker, defender, move) {
-			if (move.type === 'Fire' && (source.volatiles['weatherbreak'] == source.volatiles['atmosphericperversion'])) {
+			if (move.type === 'Fire' &&  && (attacker.volatiles['weatherbreak'] || attacker.volatiles['atmosphericperversion']) && !(attacker.volatiles['weatherbreak'] && attacker.volatiles['atmosphericperversion'])) {
 				this.debug('Sunny Day fire boost');
 				return this.chainModify(1.5);
 			}
@@ -198,18 +198,18 @@ solarsnow: {
 		effectType: 'Weather',
 		duration: 0,
 		onTryMove: function (target, source, effect) {
-			if (effect.type === 'Fire' && effect.category !== 'Status' && (source.volatiles['weatherbreak'] == source.volatiles['atmosphericperversion'])) {
+			if (effect.type === 'Fire' && effect.category !== 'Status' && (source.volatiles['weatherbreak'] || source.volatiles['atmosphericperversion']) && !(source.volatiles['weatherbreak'] && source.volatiles['atmosphericperversion'])) {
 				this.debug('Primordial Sea fire suppress');
 				this.add('-fail', source, effect, '[from] Primordial Sea');
 				return null;
-			} else if (effect.type === 'Water' && effect.category !== 'Status' && (source.volatiles['weatherbreak'] != source.volatiles['atmosphericperversion'])) {
+			} else if (effect.type === 'Water' && effect.category !== 'Status' && (source.volatiles['weatherbreak'] || source.volatiles['atmosphericperversion']) && !(source.volatiles['weatherbreak'] && source.volatiles['atmosphericperversion'])) {
 				this.debug('Inverted Primordial Sea water suppress');
 				this.add('-fail', source, effect, '[from] Primordial Sea');
 				return null;
 			}
 		},
 		onWeatherModifyDamage: function (damage, attacker, defender, move) {
-			if (move.type === 'Water' && (source.volatiles['weatherbreak'] == source.volatiles['atmosphericperversion'])) {
+			if (move.type === 'Water' &&  && (attacker.volatiles['weatherbreak'] || attacker.volatiles['atmosphericperversion']) && !(attacker.volatiles['weatherbreak'] && attacker.volatiles['atmosphericperversion'])) {
 				this.debug('Rain water boost');
 				return this.chainModify(1.5);
 			}
@@ -370,15 +370,15 @@ afterstorm: {
 		onBasePowerPriority: -1,
 		onBasePower: function (basePower, attacker, defender, move, effect) {
 			if (!attacker.volatiles['weatherbreak']){
-				if (this.isWeather('sunnyday') && move.type === 'Fire') return this.chainModify(1/3);
+				if (this.isWeather('sunnyday') && move.type === 'Fire') return this.chainModify([0x0555, 0x1000]);
 				if (this.isWeather('solarsnow') && move.type === 'Fire' && !defender.hasType(['Ice', 'Fire', 'Grass'])) return this.chainModify(1/3);
 				if (this.isWeather(['sunnyday', 'solarsnow']) && move.type === 'Water') return this.chainModify(3);
 				if (this.isWeather('desolateland') && move.type === 'Water') return this.chainModify(1.5);
 				if (this.isWeather('sandstorm') && defender.hasType('Rock') && ((move.category === 'Special' && !move.defensiveCategory) || (move.defensiveCategory && move.defensiveCategory === 'Special'))) return this.chainModify(2.25);
-				if (this.isWeather('raindance') && move.type === 'Water') return this.chainModify(1/3);
+				if (this.isWeather('raindance') && move.type === 'Water') return this.chainModify([0x0555, 0x1000]);
 				if (this.isWeather('raindance') && move.type === 'Fire') return this.chainModify(3);
 				if (this.isWeather('primordialsea') && move.type === 'Fire') return this.chainModify(1.5);
-				if (this.isWeather('shadowdance') && move.type === 'Ghost') return this.chainModify(1/3);
+				if (this.isWeather('shadowdance') && move.type === 'Ghost') return this.chainModify([0x0555, 0x1000]);
 			}
 		},
 	},
