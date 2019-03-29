@@ -2400,4 +2400,57 @@ exports.BattleMovedex = {
 			this.useMove(randomMove, target);
 		},
 	},
+	"auraoflife": {
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		desc: "Every Pokemon in the user's party is cured of its major status condition. The user also has its Sp. Attack, Sp. Defense, and Speed raised by 1 stage each for each teammate cured.",
+		shortDesc: "Cures the user's party of all status conditions. +1 SpA/SpD/Spe for each status condition cured.",
+		id: "auraoflife",
+		isViable: true,
+		name: "Aura of Life",
+		pp: 1,
+		priority: 0,
+		flags: {},
+		onHit(pokemon, source) {
+			this.add('-activate', source, 'move: Aura of Life');
+			let side = pokemon.side;
+			let success = 0;
+			for (const ally of side.pokemon) {
+				if (ally.cureStatus()) success += 1;
+			}
+			if (success) this.boost({spa: success, spd: success, spe: success}, pokemon);
+			return success;
+		},
+		target: "allyTeam",
+		type: "Fairy",
+		isZ: "xerniumz",
+	},
+	"auraofdeath": {
+		accuracy: true,
+		basePower: 185,
+		category: "Special",
+		desc: "The user is healed for 1/6 of its Max HP and has its Sp. Attack and Speed raised by 1 stage each for each of the target's fainted teammates.",
+		shortDesc: "+1 SpA/Spe and 1/6 of user's Max HP restored for each of the target's fainted teammates.",
+		id: "auraofdeath",
+		isViable: true,
+		name: "Aura of Death",
+		pp: 1,
+		priority: 0,
+		flags: {},
+		onModifyMove(move, pokemon, target) {
+			let side = target.side;
+			let success = 0;
+			for (const ally of side.pokemon) {
+				if (ally.fainted) success += 1;
+			}
+			if (success){ 
+				move.boosts = {spa: success, spe: success};
+				move.heal = [success, 6];
+			}
+		},
+		target: "normal",
+		type: "Dark",
+		isZ: "yveltiumz",
+	},
 };
