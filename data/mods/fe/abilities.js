@@ -11079,6 +11079,25 @@ exports.BattleAbilities = {
 					return false;
 				}
 			},
+		onTryPrimaryHit: function (target, source, move) {
+			if (!source.volatiles['atmosphericperversion']){
+				move.isInInvertedWeather = true;
+			}
+		},
+		onBasePowerPriority: -1,
+		onBasePower: function (basePower, attacker, defender, move, effect) {
+			if (!attacker.volatiles['atmosphericperversion']){
+				if (this.isWeather('sunnyday') && move.type === 'Fire') return this.chainModify([0x0555, 0x1000]);
+				if (this.isWeather('solarsnow') && move.type === 'Fire' && !defender.hasType(['Ice', 'Fire', 'Grass'])) return this.chainModify([0x0547, 0x1000]);
+				if (this.isWeather(['sunnyday', 'solarsnow']) && move.type === 'Water') return this.chainModify(3);
+				if (this.isWeather('desolateland') && move.type === 'Water') return this.chainModify(1.5);
+				if (this.isWeather('sandstorm') && defender.hasType('Rock') && ((move.category === 'Special' && !move.defensiveCategory) || (move.defensiveCategory && move.defensiveCategory === 'Special'))) return this.chainModify(2.25);
+				if (this.isWeather('raindance') && move.type === 'Water') return this.chainModify([0x0555, 0x1000]);
+				if (this.isWeather('raindance') && move.type === 'Fire') return this.chainModify(3);
+				if (this.isWeather('primordialsea') && move.type === 'Fire') return this.chainModify(1.5);
+				if (this.isWeather('shadowdance') && move.type === 'Ghost') return this.chainModify([0x0555, 0x1000]);
+			}
+		},
 		},
       //TODO: THIS IS INCOMPLETE. If two mons with Weather Break are on the field at the same time, things should only happen as if one mon with said ability was on the field. Also, Weather Ball deals halved damaged instead of doubled and has inverse type effectiveness in inverted weather. 
 		id: "weatherbreak",
@@ -11124,6 +11143,25 @@ exports.BattleAbilities = {
 					return false;
 				}
 			},
+		onTryPrimaryHit: function (target, source, move) {
+			if (!source.volatiles['weatherbreak']){
+				move.isInInvertedWeather = true;
+			}
+		},
+		onBasePowerPriority: -1,
+		onBasePower: function (basePower, attacker, defender, move, effect) {
+			if (!attacker.volatiles['weatherbreak']){
+				if (this.isWeather('sunnyday') && move.type === 'Fire') return this.chainModify([0x0555, 0x1000]);
+				if (this.isWeather('solarsnow') && move.type === 'Fire' && !defender.hasType(['Ice', 'Fire', 'Grass'])) return this.chainModify([0x0547, 0x1000]);
+				if (this.isWeather(['sunnyday', 'solarsnow']) && move.type === 'Water') return this.chainModify(3);
+				if (this.isWeather('desolateland') && move.type === 'Water') return this.chainModify(1.5);
+				if (this.isWeather('sandstorm') && defender.hasType('Rock') && ((move.category === 'Special' && !move.defensiveCategory) || (move.defensiveCategory && move.defensiveCategory === 'Special'))) return this.chainModify(2.25);
+				if (this.isWeather('raindance') && move.type === 'Water') return this.chainModify([0x0555, 0x1000]);
+				if (this.isWeather('raindance') && move.type === 'Fire') return this.chainModify(3);
+				if (this.isWeather('primordialsea') && move.type === 'Fire') return this.chainModify(1.5);
+				if (this.isWeather('shadowdance') && move.type === 'Ghost') return this.chainModify([0x0555, 0x1000]);
+			}
+		},
 		},
       //TODO: THIS IS INCOMPLETE. If two mons with Weather Break are on the field at the same time, things should only happen as if one mon with said ability was on the field. Also, Weather Ball deals halved damaged instead of doubled and has inverse type effectiveness in inverted weather. 
 		id: "atmosphericperversion",
