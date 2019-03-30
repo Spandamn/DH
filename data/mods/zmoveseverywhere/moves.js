@@ -588,6 +588,9 @@ exports.BattleMovedex = {
 			}
 			return null;
 		},
+		onAfterHit: function(target, source) {
+				source.removeVolatile('gastroacid');
+		},
 		target: "normal",
 		type: "Normal",
 		isZ: "regigigiumz",
