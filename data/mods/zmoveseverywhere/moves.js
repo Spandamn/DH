@@ -566,6 +566,9 @@ exports.BattleMovedex = {
 		pp: 1,
 		priority: 0,
 		flags: {},
+		onPrepareHit: function(target, source) {
+				source.addVolatile('gastroacid');
+		},
 		onTryHit: function(target, source) {
 			this.attrLastMove('[still]');
 			this.add('-anim', source, "Tail Glow", source);
