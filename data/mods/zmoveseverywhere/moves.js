@@ -2461,7 +2461,12 @@ exports.BattleMovedex = {
 		type: "Dark",
 		isZ: "yveltiumz",
 	},
-	"bringordertotheworld": {
+	/* Temporarily commented
+	The server needs to restart because of a crash: /home/spandan/DH/data/mods/zmoveseverywhere/moves.js:2502
+if sideCondition && !side.foe.sideConditions[condition]) {
+Please restart the server.
+*/
+	/*"bringordertotheworld": {
 		accuracy: true,
 		basePower: 200,
 		category: "Physical",
@@ -2510,5 +2515,5 @@ exports.BattleMovedex = {
 		isZ: "zygardiumz",
 		target: "allAdjacentFoes",
 		type: "Ground",
-	},
+	},*/
 };
