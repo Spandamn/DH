@@ -609,7 +609,7 @@ exports.BattleMovedex = {
 		},
 		target: "normal",
 		type: "Rock",
-		isZ: "regigigiumz",
+		zMovePower: 73,
 	},
 	"ancientservantsascensionice": {
 		accuracy: true,
@@ -628,7 +628,7 @@ exports.BattleMovedex = {
 		},
 		target: "normal",
 		type: "Ice",
-		isZ: "regigigiumz",
+		zMovePower: 73,
 	},
 	"ancientservantsascensionsteel": {
 		accuracy: true,
@@ -647,7 +647,7 @@ exports.BattleMovedex = {
 		},
 		target: "normal",
 		type: "Steel",
-		isZ: "regigigiumz",
+		zMovePower: 73,
 	},
 	"celestialcurse": {
 		accuracy: true,
@@ -2316,7 +2316,7 @@ exports.BattleMovedex = {
 		},
 		target: "normal",
   	   type: "Fire",
-      isZ: "genesectiumz",
+		zMovePower: 50,
 	},
 	"technoburstwater": {
 		accuracy: true,
@@ -2335,7 +2335,7 @@ exports.BattleMovedex = {
 		},
 		target: "normal",
   	   type: "Water",
-      isZ: "genesectiumz",
+		zMovePower: 50,
 	},
 	"technoburstelectric": {
 		accuracy: true,
@@ -2354,7 +2354,7 @@ exports.BattleMovedex = {
 		},
 		target: "normal",
   	   type: "Electric",
-      isZ: "genesectiumz",
+		zMovePower: 50,
 	},
 	"technoburstice": {
 		accuracy: true,
@@ -2373,6 +2373,142 @@ exports.BattleMovedex = {
 		},
 		target: "normal",
   	   type: "Ice",
-      isZ: "genesectiumz",
+		zMovePower: 50,
+	},
+	"metronome": {
+		inherit: true,
+		noMetronome: ['afteryou', 'assist', 'banefulbunker', 'beakblast', 'belch', 'bestow', 'celebrate', 'chatter', 'copycat', 'counter', 'covet', 'craftyshield', 'destinybond', 'detect', 'diamondstorm', 'dragonascent', 'endure', 'feint', 'fleurcannon', 'focuspunch', 'followme', 'freezeshock', 'helpinghand', 'holdhands', 'hyperspacefury', 'hyperspacehole', 'iceburn', 'instruct', 'kingsshield', 'lightofruin', 'matblock', 'mefirst', 'metronome', 'mimic', 'mindblown', 'mirrorcoat', 'mirrormove', 'naturepower', 'originpulse', 'photongeyser', 'plasmafists', 'precipiceblades', 'protect', 'quash', 'quickguard', 'ragepowder', 'relicsong', 'secretsword', 'shelltrap', 'sketch', 'sleeptalk', 'snarl', 'snatch', 'snore', 'spectralthief', 'spikyshield', 'spotlight', 'steameruption', 'struggle', 'switcheroo', 'technoblast', 'thief', 'thousandarrows', 'thousandwaves', 'transform', 'trick', 'vcreate', 'wideguard', 'technoburstfire', 'technoburstice', 'technoburstelectric', 'technoburstwater', 'ancientservantsascensionrock', 'ancientservantsascensionice', 'ancientservantsascensionsteel'],
+		onHit(target, source, effect) {
+			let moves = [];
+			for (let i in exports.BattleMovedex) {
+				let move = exports.BattleMovedex[i];
+				if (i !== move.id) continue;
+				if (move.isZ || move.isNonstandard) continue;
+				// @ts-ignore
+				if (effect.noMetronome.includes(move.id)) continue;
+				if (this.getMove(i).gen > this.gen) continue;
+				moves.push(move);
+			}
+			let randomMove = '';
+			if (moves.length) {
+				moves.sort((a, b) => a.num - b.num);
+				randomMove = this.sample(moves).id;
+			}
+			if (!randomMove) {
+				return false;
+			}
+			this.useMove(randomMove, target);
+		},
+	},
+	"auraoflife": {
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		desc: "Every Pokemon in the user's party is cured of its major status condition. The user also has its Sp. Attack, Sp. Defense, and Speed raised by 1 stage each for each teammate cured.",
+		shortDesc: "Cures the user's party of all status conditions. +1 SpA/SpD/Spe for each status condition cured.",
+		id: "auraoflife",
+		isViable: true,
+		name: "Aura of Life",
+		pp: 1,
+		priority: 0,
+		flags: {},
+		onPrepareHit: function(target, source) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Geomancy", target);
+		},
+		onHit(pokemon, source) {
+			this.add('-activate', source, 'move: Aura of Life');
+			let side = pokemon.side;
+			let success = 0;
+			for (const ally of side.pokemon) {
+				if (ally.cureStatus()) success += 1;
+			}
+			if (success) this.boost({spa: success, spd: success, spe: success}, pokemon);
+			return success;
+		},
+		target: "allyTeam",
+		type: "Fairy",
+		isZ: "xerniumz",
+	},
+	"auraofdeath": {
+		accuracy: true,
+		basePower: 185,
+		category: "Special",
+		desc: "The user is healed for 1/6 of its Max HP and has its Sp. Attack and Speed raised by 1 stage each for each of the target's fainted teammates.",
+		shortDesc: "+1 SpA/Spe and 1/6 of user's Max HP restored for each of the target's fainted teammates.",
+		id: "auraofdeath",
+		isViable: true,
+		name: "Aura of Death",
+		pp: 1,
+		priority: 0,
+		flags: {},
+		onPrepareHit: function(target, source) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Night Daze", target);
+		},
+		onModifyMove(move, pokemon, target) {
+			let side = target.side;
+			let success = 0;
+			for (const ally of side.pokemon) {
+				if (ally.fainted) success += 1;
+			}
+			if (success){ 
+				move.boosts = {spa: success, spe: success};
+				move.heal = [success, 6];
+			}
+		},
+		target: "normal",
+		type: "Dark",
+		isZ: "yveltiumz",
+	},
+	"bringordertotheworld": {
+		accuracy: true,
+		basePower: 200,
+		category: "Physical",
+		desc: "Any hazards active on either side become active on both. User gains a boost to its Attack in 10%, Attack and Speed in 50%, and all stats barring Accuracy, Evasion, and Special Attack for Complete.",
+		shortDesc: "Any hazards active on either side become active on both. Raises user's Atk by 1 if 10%, Atk/Spe by 1 if 50%, and Atk/Def/SpD/Spe by 1 if Complete.",
+		id: "bringordertotheworld",
+		name: "Bring Order to the World",
+		pp: 1,
+		priority: 0,
+		flags: {},
+		selfBoost: {
+			boosts: {
+				atk: 1,
+				def: 1,
+				spd: 1,
+				spe: 1,
+			},
+		},
+		onPrepareHit: function(target, source) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Land's Wrath", target);
+		},
+		onModifyMove(move, source, target) {
+			if (source.template.species !== 'Zygarde-Complete') {
+				delete move.selfBoost.boosts.def;
+				delete move.selfBoost.boosts.spd;
+				if (source.template.species === 'Zygarde-10%'){
+					delete move.selfBoost.boosts.spe;
+				}
+			}
+		},
+		onHit(pokemon) {
+			let sideConditions = ['spikes', 'toxicspikes', 'stealthrock', 'stickyweb'];
+			if (pokemon.hp){
+				for (const side of this.sides) {
+					for (const condition of sideConditions) {
+						let sideCondition = side.sideConditions[condition];
+						if sideCondition && !side.foe.sideConditions[condition]) {
+							side.foe.addSideCondition(condition);
+							if (sideCondition.layers) side.foe.sideConditions[condition].layers = sideCondition.layers;
+						}
+					}
+				}
+			}
+		},
+		isZ: "zygardiumz",
+		target: "allAdjacentFoes",
+		type: "Ground",
 	},
 };
