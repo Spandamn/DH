@@ -2488,10 +2488,10 @@ exports.BattleMovedex = {
 			if (source.template.species !== 'Zygarde-Complete') {
 				delete move.selfBoost.boosts.def;
 				delete move.selfBoost.boosts.spd;
-				if (source.template.species === 'Zygarde-10%'){
+			}
+			else if (source.template.species === 'Zygarde-10%'){
 					delete move.selfBoost.boosts.spe;
 				}
-			}
 		},
 		onHit(pokemon) {
 			let sideConditions = ['spikes', 'toxicspikes', 'stealthrock', 'stickyweb'];
