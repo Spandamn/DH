@@ -170,7 +170,7 @@ solarsnow: {
 			}
 		},
 		onWeatherModifyDamage: function (damage, attacker, defender, move) {
-			if (move.type === 'Fire' &&  && (attacker.volatiles['weatherbreak'] || attacker.volatiles['atmosphericperversion']) && !(attacker.volatiles['weatherbreak'] && attacker.volatiles['atmosphericperversion'])) {
+			if (move.type === 'Fire' && (attacker.volatiles['weatherbreak'] || attacker.volatiles['atmosphericperversion']) && !(attacker.volatiles['weatherbreak'] && attacker.volatiles['atmosphericperversion'])) {
 				this.debug('Sunny Day fire boost');
 				return this.chainModify(1.5);
 			}
@@ -209,7 +209,7 @@ solarsnow: {
 			}
 		},
 		onWeatherModifyDamage: function (damage, attacker, defender, move) {
-			if (move.type === 'Water' &&  && (attacker.volatiles['weatherbreak'] || attacker.volatiles['atmosphericperversion']) && !(attacker.volatiles['weatherbreak'] && attacker.volatiles['atmosphericperversion'])) {
+			if (move.type === 'Water' && (attacker.volatiles['weatherbreak'] || attacker.volatiles['atmosphericperversion']) && !(attacker.volatiles['weatherbreak'] && attacker.volatiles['atmosphericperversion'])) {
 				this.debug('Rain water boost');
 				return this.chainModify(1.5);
 			}
@@ -281,7 +281,7 @@ afterstorm: {
     },
 	 onModifyDamagePriority: -2,
     onWeatherModifyDamage: function(damage, attacker, defender, move) {
-			if (move.secondaries == move.isInInvertedWeather) {
+			if (!(move.secondaries && move.isInInvertedWeather) && (move.secondaries || move.isInInvertedWeather)) {
             this.debug('Rainbow Sky suppress');
             return this.chainModify(0.5);
         } else {
