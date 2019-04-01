@@ -1686,6 +1686,9 @@ export class Battle extends Dex.ModdedDex {
 
 		if (format.onBegin) {
 			format.onBegin.call(this);
+			// Extension: Battles may be determined by script at the onBegin stage
+			// e.g. 0vs0 game mod.
+			if (this.ended) return;
 		}
 		for (const rule of this.getRuleTable(format).keys()) {
 			if (rule.startsWith('+') || rule.startsWith('-') || rule.startsWith('!')) continue;
