@@ -22,7 +22,7 @@ class Announcement {
 
 	generateAnnouncement(ended = false, option = 0) {
 		let icon = `<span style="border:1px solid #${ended ? '777;color:#555' : '6A6;color:#484'};border-radius:4px;padding:0 3px">Announcement</span>`;
-		let output = `<div class="infobox"><p style="margin: 2px 0 5px 0">${icon} <strong style="font-size:11pt">${this.getAnnouncementMarkup()}</strong></p></div>`;
+		let output = `<div class="broadcast-blue"><p style="margin: 2px 0 5px 0">${icon} <strong style="font-size:11pt">${this.getAnnouncementMarkup()}</strong></p></div>`;
 		return output;
 	}
 
