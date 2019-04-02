@@ -48,7 +48,7 @@ class Announcement {
 	}
 }
 
-exports.Poll = Poll;
+exports.Announcement = Announcement;
 
 /** @type {ChatCommands} */
 const commands = {
