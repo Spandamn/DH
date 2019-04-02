@@ -65,10 +65,10 @@ const commands = {
 		new(target, room, user, connection, cmd, message) {
 			if (!target) return this.parse('/help announcement new');
 			target = target.trim();
-			if (room.battle) return this.errorReply("Announcements do not support polls.");
+			if (room.battle) return this.errorReply("Announcements do not support announcements.");
 
 			let text = Chat.filter(this, target, user, room, connection);
-			if (target !== text) return this.errorReply("You are not allowed to use filtered words in polls.");
+			if (target !== text) return this.errorReply("You are not allowed to use filtered words in announcements.");
 
 			const supportHTML = cmd === 'htmlcreate';
 
