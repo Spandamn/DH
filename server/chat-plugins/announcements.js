@@ -35,6 +35,10 @@ class Announcement {
 		recipient.sendTo(this.room, `|uhtml|announcement${this.announcementNumber}|${this.generateAnnouncement()}`);
 	}
 
+	display() {
+		let announcement = this.generateAnnouncement();
+		thisUser.sendTo(this.room, `|uhtml|announcement${this.announcementNumber}|${announcement}`);
+	}
 	/**
 	 * @param {User} user
 	 * @param {Connection?} [connection]
