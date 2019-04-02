@@ -1044,6 +1044,7 @@ class BasicChatRoom extends BasicRoom {
 		/** @type {any} */
 		// TODO: strongly type polls
 		this.poll = null;
+		this.announcement = null;
 
 		// room settings
 		this.desc = '';
@@ -1266,6 +1267,7 @@ class BasicChatRoom extends BasicRoom {
 	onConnect(user, connection) {
 		let userList = this.userList ? this.userList : this.getUserList();
 		this.sendUser(connection, '|init|chat\n|title|' + this.title + '\n' + userList + '\n' + this.log.getScrollback() + this.getIntroMessage(user));
+		if (this.announcement) this.announcement.onConnect(user, connection);
 		if (this.poll) this.poll.onConnect(user, connection);
 		if (this.game && this.game.onConnect) this.game.onConnect(user, connection);
 	}
@@ -1284,6 +1286,7 @@ class BasicChatRoom extends BasicRoom {
 		this.users[user.userid] = user;
 		this.userCount++;
 
+		if (this.announcement) this.announcement.onConnect(user, connection);
 		if (this.poll) this.poll.onConnect(user, connection);
 		if (this.game && this.game.onJoin) this.game.onJoin(user, connection);
 		return true;
