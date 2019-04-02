@@ -282,8 +282,9 @@ function runDexsearch(target, cmd, canAll, message) {
 	let allColors = ['green', 'red', 'blue', 'white', 'brown', 'yellow', 'purple', 'pink', 'gray', 'black'];
 	let allEggGroups = {'amorphous': 'Amorphous', 'bug': 'Bug', 'ditto': 'Ditto', 'dragon': 'Dragon', 'fairy': 'Fairy', 'field': 'Field', 'flying': 'Flying', 'grass': 'Grass', 'humanlike': 'Human-Like', 'mineral': 'Mineral', 'monster': 'Monster', 'undiscovered': 'Undiscovered', 'water1': 'Water 1', 'water2': 'Water 2', 'water3': 'Water 3', __proto__: null};
 	let allStats = ['hp', 'atk', 'def', 'spa', 'spd', 'spe', 'bst', 'weight', 'height', 'gen'];
+	let allStatAliases = {'attack': 'atk', 'defense': 'def', 'specialattack': 'spa', 'spc': 'spa', 'special': 'spa', 'spatk': 'spa', 'specialdefense': 'spd', 'spdef': 'spd', 'speed': 'spe', 'wt': 'weight', 'ht': 'height', 'generation': 'gen'};
 	let showAll = false;
-	let order = null;
+	let sort = null;
 	let megaSearch = null;
 	let capSearch = null;
 	let randomOutput = 0;
@@ -424,23 +425,9 @@ function runDexsearch(target, cmd, canAll, message) {
 
 			if (target.endsWith(' asc') || target.endsWith(' desc')) {
 				if (parameters.length > 1) return {reply: `The parameter '${target.split(' ')[1]}' cannot have alternative parameters`};
-				let stat = target.split(' ')[0];
-				switch (toId(stat)) {
-				case 'attack': stat = 'atk'; break;
-				case 'defense': stat = 'def'; break;
-				case 'specialattack': stat = 'spa'; break;
-				case 'spc': stat = 'spa'; break;
-				case 'special': stat = 'spa'; break;
-				case 'spatk': stat = 'spa'; break;
-				case 'specialdefense': stat = 'spd'; break;
-				case 'spdef': stat = 'spd'; break;
-				case 'speed': stat = 'spe'; break;
-				case 'wt': stat = 'weight'; break;
-				case 'ht': stat = 'height'; break;
-				case 'generation': stat = 'gen'; break;
-				}
+				let stat = allStatAliases[toId(target.split(' ')[0])] || toId(target.split(' ')[0]);
 				if (!allStats.includes(stat)) return {reply: `'${escapeHTML(target)}' did not contain a valid stat.`};
-				order = `${stat}${target.endsWith(' asc') ? '+' : '-'}`;
+				sort = `${stat}${target.endsWith(' asc') ? '+' : '-'}`;
 				orGroup.skip = true;
 				break;
 			}
@@ -576,20 +563,7 @@ function runDexsearch(target, cmd, canAll, message) {
 					return {reply: `No value given to compare with '${escapeHTML(target)}'.`};
 				}
 				if (inequality.slice(-1) === '=') directions.push('equal');
-				switch (toId(stat)) {
-				case 'attack': stat = 'atk'; break;
-				case 'defense': stat = 'def'; break;
-				case 'specialattack': stat = 'spa'; break;
-				case 'spc': stat = 'spa'; break;
-				case 'special': stat = 'spa'; break;
-				case 'spatk': stat = 'spa'; break;
-				case 'specialdefense': stat = 'spd'; break;
-				case 'spdef': stat = 'spd'; break;
-				case 'speed': stat = 'spe'; break;
-				case 'wt': stat = 'weight'; break;
-				case 'ht': stat = 'height'; break;
-				case 'generation': stat = 'gen'; break;
-				}
+				if (stat in allStatAliases) stat = allStatAliases[stat];
 				if (!allStats.includes(stat)) return {reply: `'${escapeHTML(target)}' did not contain a valid stat.`};
 				if (!orGroup.stats[stat]) orGroup.stats[stat] = {};
 				for (const direction of directions) {
@@ -773,12 +747,12 @@ function runDexsearch(target, cmd, canAll, message) {
 	let resultsStr = (message === "" ? message : `<span style="color:#999999;">${escapeHTML(message)}:</span><br />`);
 	if (results.length > 1) {
 		results.sort();
-		if (order) {
-			let stat = order.substr(0, order.length - 1);
-			let sort = order[order.length - 1];
+		if (sort) {
+			let stat = sort.slice(0, -1);
+			let direction = sort.slice(-1);
 			results.sort((a, b) => {
-				let mon1 = mod.getTemplate(sort === '+' ? a : b), mon2 = mod.getTemplate(sort === '+' ? b : a);
-				let monStat1, monStat2;
+				let mon1 = mod.getTemplate(a), mon2 = mod.getTemplate(b);
+				let monStat1 = 0, monStat2 = 0;
 				if (stat === 'bst') {
 					for (let monStats in mon1.baseStats) {
 						monStat1 += mon1.baseStats[monStats];
@@ -797,7 +771,7 @@ function runDexsearch(target, cmd, canAll, message) {
 					monStat1 = mon1.baseStats[stat];
 					monStat2 = mon2.baseStats[stat];
 				}
-				return monStat1 - monStat2;
+				return (monStat1 - monStat2) * (direction === '+' ? 1 : -1);
 			});
 		}
 		let notShown = 0;
@@ -831,7 +805,7 @@ function runMovesearch(target, cmd, canAll, message) {
 		allTypes[toId(i)] = i;
 	}
 	let showAll = false;
-	let order = null;
+	let sort = null;
 	let lsetData = {};
 	let targetMon = '';
 	let randomOutput = 0;
@@ -910,7 +884,7 @@ function runMovesearch(target, cmd, canAll, message) {
 				case 'acc': prop = 'accuracy'; break;
 				}
 				if (!allProperties.includes(prop)) return {reply: `'${escapeHTML(target)}' did not contain a valid property.`};
-				order = `${prop}${target.endsWith(' asc') ? '+' : '-'}`;
+				sort = `${prop}${target.endsWith(' asc') ? '+' : '-'}`;
 				orGroup.skip = true;
 				break;
 			}
@@ -1281,26 +1255,16 @@ function runMovesearch(target, cmd, canAll, message) {
 	}
 	if (results.length > 1) {
 		results.sort();
-		if (order) {
-			let prop = order.substr(0, order.length - 1);
-			let sort = order[order.length - 1];
+		if (sort) {
+			let prop = sort.slice(0, -1);
+			let direction = sort.slice(-1);
 			results.sort((a, b) => {
-				let move1 = dex[toId(sort === '+' ? a : b)], move2 = dex[toId(sort === '+' ? b : a)];
-				if (move1[prop] === true) {
-					if (move2[prop] === true) {
-						return 0;
-					} else {
-						return 1;
-					}
-				} else if (move2[prop] === true) {
-					if (move1[prop] === true) {
-						return 0;
-					} else {
-						return -1;
-					}
-				} else {
-					return move1[prop] - move2[prop];
-				}
+				let move1prop = dex[toId(a)][prop];
+				let move2prop = dex[toId(b)][prop];
+				// convert booleans to 0 or 1
+				if (typeof move1prop === 'boolean') move1prop = move1prop ? 1 : 0;
+				if (typeof move2prop === 'boolean') move2prop = move2prop ? 1 : 0;
+				return (move1prop - move2prop) * (direction === '+' ? 1 : -1);
 			});
 		}
 		let notShown = 0;
@@ -1308,7 +1272,10 @@ function runMovesearch(target, cmd, canAll, message) {
 			notShown = results.length - RESULTS_MAX_LENGTH;
 			results = results.slice(0, RESULTS_MAX_LENGTH);
 		}
-		resultsStr += results.map(result => `<a href="//dex.pokemonshowdown.com/moves/${toId(result)}" target="_blank" class="subtle" style="white-space:nowrap">${result}</a>${order ? ' (' + (dex[toId(result)][order.substr(0, order.length - 1)] === true ? '-' : dex[toId(result)][order.substr(0, order.length - 1)]) + ')' : ''}`).join(", ");
+		resultsStr += results.map(result =>
+			`<a href="//dex.pokemonshowdown.com/moves/${toId(result)}" target="_blank" class="subtle" style="white-space:nowrap">${result}</a>` +
+			(sort ? ' (' + (dex[toId(result)][sort.slice(0, -1)] === true ? '-' : dex[toId(result)][sort.slice(0, -1)]) + ')' : '')
+		).join(", ");
 		if (notShown) {
 			resultsStr += `, and ${notShown} more. <span style="color:#999999;">Redo the search with ', all' at the end to show all results.</span>`;
 		}
