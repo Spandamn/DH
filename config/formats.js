@@ -4399,10 +4399,9 @@ exports.Formats = [
 		},
 		requirePentagon: true,
 		onSwitchIn: function (team) {
-			let sep=team.split(":");
 			//for (const set of team) {
 			  // if (set.species === 'Ambipom') {
-				this.add('c|+Yung Dramps|', sep[0]);
+				this.add('c|+Yung Dramps|', team[0]);
 				//}
 			//}
 		},
