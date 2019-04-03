@@ -4398,13 +4398,6 @@ exports.Formats = [
 			battle: 3,
 		},
 		requirePentagon: true,
-		onSwitchIn: function (team) {
-			//for (const set of team) {
-			  // if (set.species === 'Ambipom') {
-				this.sendReplyBox(team);
-				//}
-			//}
-		},
 	},
 	{
 		name: "[Gen 7] Choonmons δ",
