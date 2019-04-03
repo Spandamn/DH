@@ -37,10 +37,12 @@ let BattleAbilities = {
 
 "protectivepowder": { // Vivillon, Cutiefly line
 		shortDesc: "Allied Bug types use Powder on switch in.",
-		onStart: function(source) { // onAllyStart: 
-                    if (source.hasType('Bug')) {
-			this.useMove("Powder", source);
-                        }
+		onAllyStart: function(pokemon) { // onAllyStart: 
+			for (const allyActive of pokemon.side.active) {
+          if (allyActive.hasType('Bug') && !pokemon.active) {
+			 this.useMove("Powder", pokemon);
+            }
+			}
 		},
 		id: "protectivepowder",
 		name: "Protective Powder",
