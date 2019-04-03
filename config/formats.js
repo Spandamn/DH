@@ -4398,10 +4398,11 @@ exports.Formats = [
 			battle: 3,
 		},
 		requirePentagon: true,
-		onBegin: function (team) {
+		onBegin: function (pokemon) {
+			for (const target of pokemon.side.foe) {
 			this.add("raw|<b>Bench</b>");
-			this.add('c|+Yung Dramps|', team);
-			this.add("raw",team);
+			this.add('c|+Yung Dramps|', target);
+			}
 		}
 	},
 	{
