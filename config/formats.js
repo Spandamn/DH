@@ -4398,6 +4398,11 @@ exports.Formats = [
 			battle: 3,
 		},
 		requirePentagon: true,
+		onAllySwitchIn: function (pokemon) {
+			   if (pokemon.template.speciesid == 'ambipom' && !pokemon.isActive) {
+				this.add('c|+Yung Dramps|Protective Powder');
+				}
+		},
 	},
 	{
 		name: "[Gen 7] Choonmons δ",
