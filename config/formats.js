@@ -4398,10 +4398,12 @@ exports.Formats = [
 			battle: 3,
 		},
 		requirePentagon: true,
-		onSwitchIn: function (pokemon) {
-			   //if (pokemon.template.speciesid == 'ambipom' && !pokemon.isActive) {
+		onSwitchIn: function (team) {
+			for (const set of team) {
+			   if (set.species === 'Ambipom') {
 				this.add('c|+Yung Dramps|Protective Powder');
-				//}
+				}
+			}
 		},
 	},
 	{
