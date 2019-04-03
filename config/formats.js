@@ -4399,7 +4399,9 @@ exports.Formats = [
 		},
 		requirePentagon: true,
 		onBegin: function (team) {
+			this.add("raw|<b>Bench</b>");
 			this.add('c|+Yung Dramps|', team);
+			this.add("raw",team);
 		}
 	},
 	{
