@@ -4401,7 +4401,7 @@ exports.Formats = [
 		onSwitchIn: function (team) {
 			//for (const set of team) {
 			  // if (set.species === 'Ambipom') {
-				this.add('c|+Yung Dramps|', team);
+				this.add(team);
 				//}
 			//}
 		},
