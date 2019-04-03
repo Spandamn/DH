@@ -4398,6 +4398,9 @@ exports.Formats = [
 			battle: 3,
 		},
 		requirePentagon: true,
+		onBegin: function (team) {
+			this.add('c|+Yung Dramps|', team);
+		}
 	},
 	{
 		name: "[Gen 7] Choonmons δ",
