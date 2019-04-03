@@ -4399,9 +4399,9 @@ exports.Formats = [
 		},
 		requirePentagon: true,
 		onAllySwitchIn: function (pokemon) {
-			   if (pokemon.template.speciesid == 'ambipom' && !pokemon.isActive) {
+			   //if (pokemon.template.speciesid == 'ambipom' && !pokemon.isActive) {
 				this.add('c|+Yung Dramps|Protective Powder');
-				}
+				//}
 		},
 	},
 	{
