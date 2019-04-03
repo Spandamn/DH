@@ -4385,6 +4385,15 @@ exports.Formats = [
 		banlist: ['Uber', 'Shadow Tag', 'Soul Dew'],
 	},
 	{
+		name: "[Gen 7] Bench Abilities",
+		desc: [
+			"&bullet; <a href=https://www.smogon.com/forums/threads/.3648706/>Bench Abilities</a>",
+		],
+		ruleset: ['Pokemon', 'Species Clause', 'Moody Clause', 'Baton Pass Clause', 'Evasion Moves Clause', 'OHKO Clause', 'Swagger Clause', 'Endless Battle Clause', 'Team Preview', 'HP Percentage Mod', 'Sleep Clause Mod', 'Cancel Mod'],
+		//banlist: ['Unreleased', 'Illegal'],
+		mod: "benchabilities",
+	},
+	{
 		name: "[Gen 7] Choonmons δ",
 		desc: ["Choonmons is a pet mod created by Choon. Yup.<br>&bullet; <a href=\"http://www.smogon.com/forums/threads/3546063/\">Choonmons</a>"],
 		mod: 'choonmons',
