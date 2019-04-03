@@ -10,7 +10,7 @@ let BattleScripts = {
 	gen: 2,
 	// BattlePokemon scripts.
 	pokemon: {
-		getStat(statName, unboosted, unmodified) {
+		getStat(statName, unboosted, unmodified, fastReturn) {
 			statName = /** @type {StatNameExceptHP} */(toId(statName));
 			// @ts-ignore - type checking prevents 'hp' from being passed, but we're paranoid
 			if (statName === 'hp') throw new Error("Please read `maxhp` directly");
@@ -46,6 +46,7 @@ let BattleScripts = {
 
 			// Gen 2 caps stats at 999 and min is 1.
 			stat = this.battle.clampIntRange(stat, 1, 999);
+			if (fastReturn) return stat;
 
 			// Screens
 			if (!unboosted) {
@@ -62,6 +63,35 @@ let BattleScripts = {
 			}
 
 			return stat;
+		},
+		boostBy(boost) {
+			let delta = 0;
+			for (let i in boost) {
+				// @ts-ignore
+				delta = boost[i];
+				// @ts-ignore
+				if (delta > 0 && this.getStat(i, false, true, true) === 999) {
+					delta = 0;
+					continue;
+				}
+				// @ts-ignore
+				this.boosts[i] += delta;
+				// @ts-ignore
+				if (this.boosts[i] > 6) {
+					// @ts-ignore
+					delta -= this.boosts[i] - 6;
+					// @ts-ignore
+					this.boosts[i] = 6;
+				}
+				// @ts-ignore
+				if (this.boosts[i] < -6) {
+					// @ts-ignore
+					delta -= this.boosts[i] - (-6);
+					// @ts-ignore
+					this.boosts[i] = -6;
+				}
+			}
+			return delta;
 		},
 	},
 	// Battle scripts.
@@ -357,11 +387,11 @@ let BattleScripts = {
 				didSomething = didSomething || hitResult;
 			}
 			if (moveData.weather) {
-				hitResult = this.setWeather(moveData.weather, pokemon, move);
+				hitResult = this.field.setWeather(moveData.weather, pokemon, move);
 				didSomething = didSomething || hitResult;
 			}
 			if (moveData.pseudoWeather) {
-				hitResult = this.addPseudoWeather(moveData.pseudoWeather, pokemon, move);
+				hitResult = this.field.addPseudoWeather(moveData.pseudoWeather, pokemon, move);
 				didSomething = didSomething || hitResult;
 			}
 			if (moveData.forceSwitch) {
@@ -635,9 +665,9 @@ let BattleScripts = {
 		damage += 2;
 
 		// Weather modifiers
-		if ((this.isWeather('raindance') && type === 'Water') || (this.isWeather('sunnyday') && type === 'Fire')) {
+		if ((this.field.isWeather('raindance') && type === 'Water') || (this.field.isWeather('sunnyday') && type === 'Fire')) {
 			damage = Math.floor(damage * 1.5);
-		} else if ((this.isWeather('raindance') && (type === 'Fire' || move.id === 'solarbeam')) || (this.isWeather('sunnyday') && type === 'Water')) {
+		} else if ((this.field.isWeather('raindance') && (type === 'Fire' || move.id === 'solarbeam')) || (this.field.isWeather('sunnyday') && type === 'Water')) {
 			damage = Math.floor(damage / 2);
 		}
 

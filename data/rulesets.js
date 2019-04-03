@@ -169,8 +169,8 @@ let BattleFormats = {
 			}
 
 			if (item.isNonstandard) {
-				if (item.isNonstandard === 'gen2') {
-					problems.push(item.name + ' does not exist outside of gen 2.');
+				if (item.isNonstandard === 'Past' || item.isNonstandard === 'Future') {
+					problems.push(item.name + ' does not exist in this generation.');
 				} else if (!allowCAP) {
 					problems.push(item.name + ' does not exist.');
 				}
@@ -391,11 +391,9 @@ let BattleFormats = {
 		desc: "Allows each player to see the Pok&eacute;mon on their opponent's team before they choose their lead Pok&eacute;mon",
 		onBegin() {
 			this.add('clearpoke');
-			for (const side of this.sides) {
-				for (const pokemon of side.pokemon) {
-					let details = pokemon.details.replace(/(Arceus|Gourgeist|Genesect|Pumpkaboo|Silvally)(-[a-zA-Z?]+)?/g, '$1-*').replace(', shiny', '');
-					this.add('poke', pokemon.side.id, details, pokemon.item ? 'item' : '');
-				}
+			for (const pokemon of this.getAllPokemon()) {
+				let details = pokemon.details.replace(/(Arceus|Gourgeist|Genesect|Pumpkaboo|Silvally)(-[a-zA-Z?]+)?/g, '$1-*').replace(', shiny', '');
+				this.add('poke', pokemon.side.id, details, pokemon.item ? 'item' : '');
 			}
 		},
 		onTeamPreview() {
@@ -408,10 +406,11 @@ let BattleFormats = {
 		desc: "Only allows Pok&eacute;mon that can evolve and don't have any prior evolutions",
 		onValidateSet(set) {
 			let template = this.getTemplate(set.species || set.name);
-			if (template.prevo) {
+			if (template.prevo && this.getTemplate(template.prevo).gen <= this.gen) {
 				return [set.species + " isn't the first in its evolution family."];
 			}
-			if (!template.nfe) {
+			let futureGenEvo = template.evos && this.getTemplate(template.evos[0]).gen > this.gen;
+			if (!template.nfe || futureGenEvo) {
 				return [set.species + " doesn't have an evolution family."];
 			}
 		},
@@ -806,10 +805,8 @@ let BattleFormats = {
 		desc: "Prevents Rayquaza from mega evolving",
 		onBegin() {
 			this.add('rule', 'Mega Rayquaza Clause: You cannot mega evolve Rayquaza');
-			for (const side of this.sides) {
-				for (const pokemon of side.pokemon) {
-					if (pokemon.speciesid === 'rayquaza') pokemon.canMegaEvo = null;
-				}
+			for (const pokemon of this.getAllPokemon()) {
+				if (pokemon.speciesid === 'rayquaza') pokemon.canMegaEvo = null;
 			}
 		},
 	},
