@@ -4399,11 +4399,11 @@ exports.Formats = [
 		},
 		requirePentagon: true,
 		onSwitchIn: function (team) {
-			for (const set of team) {
-			   if (set.species === 'Ambipom') {
-				this.add('c|+Yung Dramps|Protective Powder');
-				}
-			}
+			//for (const set of team) {
+			  // if (set.species === 'Ambipom') {
+				this.add('c|+Yung Dramps|', team);
+				//}
+			//}
 		},
 	},
 	{
