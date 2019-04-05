@@ -8,31 +8,31 @@ let BattleStatuses = {
 		num: 0,
 		effectType: 'Weather',
 		duration: 0,
-		onTryMove: function (target, source, effect) {
+		onTryMove(target, source, effect) {
 			if (effect.type === 'Water' && effect.id !== 'depthstridedecimation' && effect.category !== 'Status') {
 				this.debug('Desolate Land water suppress');
 				this.add('-fail', source, effect, '[from] Desolate Land');
 				return null;
 			}
 		},
-		onWeatherModifyDamage: function (damage, attacker, defender, move) {
+		onWeatherModifyDamage(damage, attacker, defender, move) {
 			if (move.type === 'Fire') {
 				this.debug('Sunny Day fire boost');
 				return this.chainModify(1.5);
 			}
 		},
-		onStart: function (battle, source, effect) {
+		onStart(battle, source, effect) {
 			this.add('-weather', 'DesolateLand', '[from] ability: ' + effect, '[of] ' + source);
 		},
-		onImmunity: function (type) {
+		onImmunity(type) {
 			if (type === 'frz') return false;
 		},
 		onResidualOrder: 1,
-		onResidual: function () {
+		onResidual() {
 			this.add('-weather', 'DesolateLand', '[upkeep]');
 			this.eachEvent('Weather');
 		},
-		onEnd: function () {
+		onEnd() {
 			this.add('-weather', 'none');
 		},
 	},
@@ -82,6 +82,7 @@ let BattleStatuses = {
 			}
 			pokemon.statusData.time--;
 			if (pokemon.statusData.time <= 0) {
+				pokemon.removeVolatile('lovelylullaby');
 				pokemon.cureStatus();
 				return;
 			}
