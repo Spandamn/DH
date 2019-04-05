@@ -853,7 +853,7 @@ exports.BattleAbilities = {
 	"electricsurge": {
 		shortDesc: "On switch-in, this Pokemon summons Electric Terrain.",
 		onStart: function (source) {
-			this.setTerrain('electricterrain');
+			this.useMove("Electric Terrain", source);
 		},
 		id: "electricsurge",
 		name: "Electric Surge",
@@ -1256,7 +1256,7 @@ exports.BattleAbilities = {
 	"grassysurge": {
 		shortDesc: "On switch-in, this Pokemon summons Grassy Terrain.",
 		onStart: function (source) {
-			this.setTerrain('grassyterrain');
+			this.useMove("Grassy Terrain", source);
 		},
 		id: "grassysurge",
 		name: "Grassy Surge",
@@ -1956,7 +1956,7 @@ exports.BattleAbilities = {
 	"mistysurge": {
 		shortDesc: "On switch-in, this Pokemon summons Misty Terrain.",
 		onStart: function (source) {
-			this.setTerrain('mistyterrain');
+			this.useMove("Misty Terrain", source);
 		},
 		id: "mistysurge",
 		name: "Misty Surge",
@@ -2591,7 +2591,7 @@ exports.BattleAbilities = {
 	"psychicsurge": {
 		shortDesc: "On switch-in, this Pokemon summons Psychic Terrain.",
 		onStart: function (source) {
-			this.setTerrain('psychicterrain');
+			this.useMove("Psychic Terrain", source);
 		},
 		id: "psychicsurge",
 		name: "Psychic Surge",
@@ -4251,7 +4251,7 @@ exports.BattleAbilities = {
 	"healingsurge": {
 		shortDesc: "On switch-in, this Pokemon summons Healing Terrain.",
 		onStart: function (source) {
-			this.setTerrain('healingterrain');
+			this.useMove("Healing Terrain", source);
 		},
 		id: "healingsurge",
 		name: "Healing Surge",
