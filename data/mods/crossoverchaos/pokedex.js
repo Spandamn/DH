@@ -8,7 +8,7 @@ exports.BattlePokedex = {
 	
 	kirby: {
 		num: 6000001,
-		species: "Kirby",
+		species: "Kirby", /* Kirby Series */
 		types: ["Flying"],
 		gender: "M",
 		baseStats: {hp: 130, atk: 120, def: 80, spa: 120, spd: 80, spe: 70}, //"No holding back" version is 150/140/90/140/90/90
@@ -258,7 +258,7 @@ exports.BattlePokedex = {
 	
 	inkling: {
 		num: 6000002,
-		species: "Inkling",
+		species: "Inkling", /* Splatoon Series */
 		baseForme: "Squid",
 		types: ["Poison"],
 		baseStats: {hp: 70, atk: 60, def: 65, spa: 90, spd: 85, spe: 130},
@@ -279,7 +279,7 @@ exports.BattlePokedex = {
 	
 	corrin: {
 		num: 6000003, 
-		species: "Corrin",
+		species: "Corrin", /* Fire Emblem: Fates */
 		baseForme: "Human",
 		types:["Dragon", "Fighting"],
 		baseStats: {hp: 90, atk: 125, def: 95, spa: 85, spd: 65, spe: 115}, 
@@ -289,7 +289,7 @@ exports.BattlePokedex = {
 	
 	corrindragon: {
 		num: 6000003,
-		species: "Corrin-Dragon",
+		species: "Corrin-Dragon", /* Fire Emblem: Fates */
 		baseSpecies: "Corrin",
 		forme: "Dragon",
 		formeLetter: "D",
