@@ -277,6 +277,27 @@ exports.BattlePokedex = {
 		abilities: {0: "Inky Surge", H: "Soundproof"},
 	},
 	
+	corrin: {
+		num: 6000003, 
+		species: "Corrin",
+		baseForme: "Human",
+		types:["Dragon", "Fighting"],
+		baseStats: {hp: 90, atk: 125, def: 95, spa: 85, spd: 65, spe: 115}, 
+		abilities: {0: "Dragon's Blood"},
+		otherFormes: ["inklingkid"],
+	},
+	
+	corrindragon: {
+		num: 6000003,
+		species: "Corrin-Dragon",
+		baseSpecies: "Corrin",
+		forme: "Dragon",
+		formeLetter: "D",
+		types: ["Dragon", "Water"],
+		baseStats: {hp: 90, atk: 110, def: 130, spa: 140, spd: 115, spe: 75}, 
+		abilities: {0: "Dragon's Blood"},
+	},
+	
      
 //    /* mario: {
 // 		num: 6000001,
