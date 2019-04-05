@@ -2472,7 +2472,9 @@ exports.BattleMovedex = {
 if sideCondition && !side.foe.sideConditions[condition]) {
 Please restart the server.
 */
-	/*"bringordertotheworld": {
+	/*FOUND IT: There was a missing parenthesis.*/
+	
+	"bringordertotheworld": {
 		accuracy: true,
 		basePower: 200,
 		category: "Physical",
@@ -2500,9 +2502,9 @@ Please restart the server.
 				delete move.selfBoost.boosts.def;
 				delete move.selfBoost.boosts.spd;
 			}
-			else if (source.template.species === 'Zygarde-10%'){
-					delete move.selfBoost.boosts.spe;
-				}
+			if (source.template.species === 'Zygarde-10%'){
+				delete move.selfBoost.boosts.spe;
+			}
 		},
 		onHit(pokemon) {
 			let sideConditions = ['spikes', 'toxicspikes', 'stealthrock', 'stickyweb'];
@@ -2510,10 +2512,11 @@ Please restart the server.
 				for (const side of this.sides) {
 					for (const condition of sideConditions) {
 						let sideCondition = side.sideConditions[condition];
-						if sideCondition && !side.foe.sideConditions[condition]) {
+						if (sideCondition && !side.foe.sideConditions[condition]) {
 							side.foe.addSideCondition(condition);
 							if (sideCondition.layers) side.foe.sideConditions[condition].layers = sideCondition.layers;
 						}
+						if (sideCondition.layers && side.foe.sideConditions[condition] && side.foe.sideConditions[condition].layers && sideCondition.layers < side.foe.sideCondition[condition].layers) sideCondition.layers = side.foe.sideConditions[condition].layers;
 					}
 				}
 			}
@@ -2521,5 +2524,5 @@ Please restart the server.
 		isZ: "zygardiumz",
 		target: "allAdjacentFoes",
 		type: "Ground",
-	},*/
+	},
 };
