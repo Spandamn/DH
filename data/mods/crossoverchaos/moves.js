@@ -93,7 +93,7 @@ let BattleMovedex = {
 			num: 40004,
 			accuracy: 100,
 			basePower: 20,
-			basePowerCallback: function (pokemon, target) {
+			basePowerCallback(pokemon, target) {
 				let power = 20 + 20 * target.positiveBoosts();
 				if (power > 200) power = 200;
 				return power;
@@ -123,7 +123,7 @@ let BattleMovedex = {
 			pp: 1,
 			priority: 0,
 			flags: {contact: 1},
-			onModifyMove: function (move, pokemon, target) {
+			onModifyMove(move, pokemon, target) {
 				if (target.getStat('def', false, true) > target.getStat('spd', false, true)) move.category = 'Special';	
 			},
 			isZ: "shulkiumz",
