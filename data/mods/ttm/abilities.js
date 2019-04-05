@@ -4289,7 +4289,7 @@ exports.BattleAbilities = {
 	"temporalshift": {
 		shortDesc: "On switch-in, this Pokemon summons Trick Room.",
 		onStart: function (source) {
-			this.addPseudoWeather('trickroom');
+			this.useMove("Trick Room", source);
 		},
 		id: "temporalshift",
 		name: "Temporal Shift",
@@ -4337,7 +4337,7 @@ exports.BattleAbilities = {
 	"gravitypull": {
 		shortDesc: "On switch-in, this Pokemon summons Gravity.",
 		onStart: function (source) {
-			this.addPseudoWeather('gravity');
+			this.useMove("Gravity", source);
 		},
 		id: "gravitypull",
 		name: "gravitypull",
