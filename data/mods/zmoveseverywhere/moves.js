@@ -937,7 +937,7 @@ exports.BattleMovedex = {
 		},
 		onPrepareHit(target, source) {
 			this.attrLastMove('[still]');
-			this.add('-anim', source, "Revelation Dance", target);
+			this.add('-anim', source, "Flare Blitz", target);
 		},
 		target: "normal",
 		type: "Fire",
@@ -978,7 +978,7 @@ exports.BattleMovedex = {
 		drain: [1, 4],
 		onPrepareHit(target, source) {
 			this.attrLastMove('[still]');
-			this.add('-anim', source, "Revelation Dance", target);
+			this.add('-anim', source, "Shadow Sneak", target);
 		},
 		target: "normal",
 		type: "Ghost",
@@ -1094,7 +1094,7 @@ exports.BattleMovedex = {
 		basePower: 190,
 		accuracy: true,
 		category: "Physical",
-		shortDesc: "After dealing damage all grounded water type Pokemon have their Attack and Special Attack raised by one stage (similar to Rototiller).",
+		shortDesc: "After dealing damage, all grounded water type Pokemon have their Attack and Special Attack raised by one stage (similar to Rototiller).",
 		id: "ferociousdeathroll",
 		name: "Ferocious Death Roll",
 		pp: 1,
@@ -1102,7 +1102,20 @@ exports.BattleMovedex = {
 		flags: {},
 		onPrepareHit(target, source) {
 			this.attrLastMove('[still]');
-			this.add('-anim', source, "Revelation Dance", target);
+			this.add('-anim', source, "Dive", target);
+		},
+		onHit(target, source) {
+			let targets = [];
+			for (const pokemon of this.getAllActive()) {
+				if (!pokemon.runImmunity('Ground'))	continue;
+				if (pokemon.hasType('Water')) {
+					// This effect affects every grounded Water-type Pokemon in play.
+					targets.push(pokemon);
+				}
+			}
+			for (const pokemon of targets) {
+				this.boost({atk: 1, spa: 1}, pokemon, source);
+			}
 		},
 		target: "normal",
 		type: "Water",
@@ -1127,7 +1140,7 @@ exports.BattleMovedex = {
 		type: "Bug",
 		isZ: "hercroniumz",
 	},
-	"atimeforgiving": { // TODO: Code the second effect
+	"atimeforgiving": {
 		basePower: 100,
 		accuracy: true,
 		category: "Physical",
@@ -1860,19 +1873,16 @@ exports.BattleMovedex = {
 		pp: 1,
 		priority: 0,
 		flags: {},
-		onModifyMove(move, source) {
-			if (source.hasAbility('sheerforce')) {
-				move.basePower *= 1.3;
-			} else {
-				move.boosts = {
-					def: -1,
-					spd: -1
-				};
-			}
+		secondary: {
+			chance: 100,
+			boosts: {
+				def: -1,
+				spd: -1
+			},
 		},
 		onPrepareHit(target, source) {
 			this.attrLastMove('[still]');
-			this.add('-anim', source, "Revelation Dance", target);
+			this.add('-anim', source, "Earth Power", target);
 		},
 		target: "normal",
 		type: "Ground",
