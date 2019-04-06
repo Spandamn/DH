@@ -152,6 +152,35 @@ let BattleMovedex = {
 			zMovePower: 140,
 			contestType: "Tough",
 		},
+		"starspit": {
+			num: 40007,
+			accuracy: 100,
+			basePower: 80,
+			basePowerCallback(pokemon, target, move) {
+				if (target.newlySwitched || this.willMove(target)) {
+					this.debug('Payback NOT boosted');
+					return move.basePower;
+				}
+				this.debug('Payback damage boost');
+				return move.basePower * 1.5;
+			},
+			category: "Physical",
+			desc: "Power multiplies by 1.5 if the user moves after the target this turn, including actions taken through Instruct or the Dancer Ability. Switching in does not count as an action. This move becomes a physical attack if the user's Attack is greater than its Special Attack, including stat stage changes.",
+			shortDesc: "Power multiplies by 1.5 if the user moves after the target. Physical if user's Atk > Sp. Atk.",
+			id: "starspit",
+			name: "Star Spit",
+			pp: 15,
+			priority: 0,
+			flags: {protect: 1, mirror: 1},
+			onModifyMove(move, pokemon) {
+				if (pokemon.getStat('atk', false, true) > pokemon.getStat('spa', false, true)) move.category = 'Physical';
+			},
+			secondary: null,
+			target: "normal",
+			type: "Flying",
+			zMovePower: 160,
+			contestType: "Cute",
+		},
 // "digslash": {
 //         num: 40000,
 //         accuracy: 100,
