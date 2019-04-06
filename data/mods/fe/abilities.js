@@ -716,7 +716,7 @@ exports.BattleAbilities = {
 	"cactuspower": {
 		shortDesc: "Summons Sandstorm upon switching in. Grass-type moves have their power increased 20%.",
 		onStart(source) {
-			this.setWeather('sandstorm');
+			this.field.setWeather('sandstorm');
 		},
 		onModifyAtk(atk, attacker, defender, move) {
 			if (move.type === 'Grass') {
@@ -972,7 +972,7 @@ exports.BattleAbilities = {
 	"sandaura": {
 		shortDesc: "Sand Stream + Sand Veil.",
 		onStart(source) {
-			this.setWeather('sandstorm');
+			this.field.setWeather('sandstorm');
 		},
 		onImmunity(type, pokemon) {
 			if (type === 'sandstorm') return false;
@@ -1858,7 +1858,7 @@ exports.BattleAbilities = {
 				if (action.choice === 'runPrimal' && action.pokemon === source && source.template.speciesid === 'kyogre') return;
 				if (action.choice !== 'runSwitch' && action.choice !== 'runPrimal') break;
 			}
-			this.setWeather('raindance');
+			this.field.setWeather('raindance');
 		},
 		id: "hydrostream",
 		name: "Hydro Stream",
@@ -1887,7 +1887,7 @@ exports.BattleAbilities = {
 				if (this.queue[i].choice === 'runPrimal' && this.queue[i].pokemon === source && source.template.speciesid === 'groudon') return;
 				if (this.queue[i].choice !== 'runSwitch' && this.queue[i].choice !== 'runPrimal') break;
 			}
-			this.setWeather('sunnyday');
+			this.field.setWeather('sunnyday');
 		},
 		id: "leafstream",
 		name: "Leaf Stream",
@@ -2973,7 +2973,7 @@ exports.BattleAbilities = {
 				if (action.choice === 'runPrimal' && action.pokemon === source && source.template.speciesid === 'kyonun') return;
 				if (action.choice !== 'runSwitch' && action.choice !== 'runPrimal') break;
 			}
-			this.setWeather('raindance');
+			this.field.setWeather('raindance');
 		},
 		onModifySpAPriority: 5,
 		onModifySpA(spa, pokemon) {
@@ -3008,7 +3008,7 @@ exports.BattleAbilities = {
 		desc: "On switch-in, summons Misty Terrain. In that terrain, its Electric- and Fairy-type moves have 1.5x power.",
 		shortDesc: "Summons Misty Terrain. In it, Fairy- and Electric-type moves have 1.5x power.",
 		onStart(source) {
-			this.setTerrain('mistyterrain');
+			this.field.setTerrain('mistyterrain');
 		},
 		onBasePowerPriority: 8,
 		onBasePower(basePower, pokemon, target, move) {
@@ -3420,12 +3420,12 @@ exports.BattleAbilities = {
 	"photosynthesissurge": {
 		shortDesc: "Drought + Grassy Surge.",
 		onStart(source) {
-			this.setTerrain('grassyterrain');
+			this.field.setTerrain('grassyterrain');
 			for (let i = 0; i < this.queue.length; i++) {
 				if (this.queue[i].choice === 'runPrimal' && this.queue[i].pokemon === source && source.template.speciesid === 'groudon') return;
 				if (this.queue[i].choice !== 'runSwitch' && this.queue[i].choice !== 'runPrimal') break;
 			}
-			this.setWeather('sunnyday');
+			this.field.setWeather('sunnyday');
 		},
 		id: "photosynthesissurge",
 		name: "Photosynthesis Surge",
@@ -3604,12 +3604,12 @@ exports.BattleAbilities = {
 	"thunderstormsurge": {
 		shortDesc: "Drizzle + Electric Surge.",
 		onStart(source) {
-			this.setTerrain('electricterrain');
+			this.field.setTerrain('electricterrain');
 			for (const action of this.queue) {
 				if (action.choice === 'runPrimal' && action.pokemon === source && source.template.speciesid === 'kyogre') return;
 				if (action.choice !== 'runSwitch' && action.choice !== 'runPrimal') break;
 			}
-			this.setWeather('raindance');
+			this.field.setWeather('raindance');
 		},
 		id: "thunderstormsurge",
 		name: "Thunderstorm Surge",
@@ -3672,8 +3672,8 @@ exports.BattleAbilities = {
 	"brainfreezesurge": {
 		shortDesc: "Snow Warning + Psychic Surge.",
 		onStart(source) {
-			this.setTerrain('psychicterrain');
-			this.setWeather('hail');
+			this.field.setTerrain('psychicterrain');
+			this.field.setWeather('hail');
 		},
 		id: "brainfreezesurge",
 		name: "Brainfreeze Surge",
@@ -3752,8 +3752,8 @@ exports.BattleAbilities = {
 	"sandmistsurge": {
 		shortDesc: "Sand Stream + Misty Surge.",
 		onStart(source) {
-			this.setTerrain('mistyterrain');
-			this.setWeather('sandstorm');
+			this.field.setTerrain('mistyterrain');
+			this.field.setWeather('sandstorm');
 		},
 		id: "sandmistsurge",
 		name: "Sandmist Surge",
@@ -4412,7 +4412,7 @@ exports.BattleAbilities = {
 	"snowabsorb": {
 		shortDesc: "On switch-in, this Pokemon summons Hail. Ice-type moves and hail are negated to restore 25% or 12.5% of this Pokemon's HP, respectively.",
 		onStart(source) {
-			this.setWeather('hail');
+			this.field.setWeather('hail');
 		},
 		onTryHit(target, source, move) {
 			if (target !== source && move.type === 'Ice') {
@@ -4453,7 +4453,7 @@ exports.BattleAbilities = {
 	"blizzardblur": {
 		shortDesc: "Summons Hail upon switch-in. This Pokemon's Speed is doubled in and cannot be damaged by hail.",
 		onStart(source) {
-			this.setWeather('hail');
+			this.field.setWeather('hail');
 		},
 		onModifySpe(spe, pokemon) {
 			if (this.field.isWeather(['hail', 'solarsnow'])) {
@@ -4493,7 +4493,7 @@ exports.BattleAbilities = {
 		shortDesc: "This Pokemon is immune to Electric, Fire and Grass-type moves. If targetted by one, this Pokemon's Special Attack is raised by one stage, and harsh sunlight appears.",
 		onTryHit(target, source, move) {
 			if (target !== source && move.type === 'Electric' || move.type === 'Fire' || move.type === 'Grass') {
-				this.setWeather('desolateland');
+				this.field.setWeather('desolateland');
 				if (!this.boost({
 						spa: 1
 					})) {
@@ -4608,7 +4608,7 @@ exports.BattleAbilities = {
 				if (action.choice === 'runPrimal' && action.pokemon === source && source.template.speciesid === 'kyogre') return;
 				if (action.choice !== 'runSwitch' && action.choice !== 'runPrimal') break;
 			}
-			this.setWeather('raindance');
+			this.field.setWeather('raindance');
 		},
 		onWeather(target, source, effect) {
 			if (effect.id === 'raindance' || effect.id === 'primordialsea') {
@@ -5295,7 +5295,7 @@ exports.BattleAbilities = {
 		shortDesc: "The user summons a sandstorm, and while the user is in a sandstorm, all moves used by all pokemon cost double PP.",
 		onStart(pokemon) {
 			this.add('-ability', pokemon, 'Sandy Storm');
-			this.setWeather('sandstorm');
+			this.field.setWeather('sandstorm');
 		},
 		onAnyDeductPP(target, source) {
 			if (!this.field.isWeather('sandstorm')) return;
@@ -5371,7 +5371,7 @@ exports.BattleAbilities = {
 	"serenesurge": {
 		shortDesc: "Upon switching in, set Psychic Terrain. During this Psychic Terrain, all affected Pokemon's moves have their secondary effect chances doubled.",
 		onStart(source) {
-			this.setTerrain('psychicterrain');
+			this.field.setTerrain('psychicterrain');
 		},
 		onModifyMovePriority: -2,
 		onModifyMove(move, target, source) {
@@ -6306,7 +6306,7 @@ exports.BattleAbilities = {
 				if (action.choice === 'runPrimal' && action.pokemon === source && source.template.speciesid === 'kyogre') return;
 				if (action.choice !== 'runSwitch' && action.choice !== 'runPrimal') break;
 			}
-			this.setWeather('raindance');
+			this.field.setWeather('raindance');
 			for (const target of pokemon.side.foe.active) {
 			source.setStatus('par', target);
 			}
@@ -6317,7 +6317,7 @@ exports.BattleAbilities = {
 	"darksurge": {
 		shortDesc: "On switch-in, this Pokemon summons Dark Terrain. The effects are identical to Electric Terrain, but powers up Dark-type moves instead of Electric-type moves.",
 		onStart(source) {
-			this.setTerrain('darkterrain');
+			this.field.setTerrain('darkterrain');
 		},
 		id: "darksurge",
 		name: "Dark Surge",
@@ -6771,7 +6771,7 @@ exports.BattleAbilities = {
 	"solarsnow": {
 		shortDesc: "On switch-in, this Pokemon summons a combination of Sun and Hail.",
 		onStart(source) {
-			this.setWeather('solarsnow');
+			this.field.setWeather('solarsnow');
 		},
 		id: "solarsnow",
 		name: "Solar Snow",
@@ -7337,7 +7337,7 @@ exports.BattleAbilities = {
 	"grassyheal": {
 		shortDesc: "Activates Grassy Terrain for 5 turns when the Pokemon enters a battle. HP is restored by 1/8th of the maximum HP every turn while Grassy Terrain is active. Immune to Poison under Grassy Terrain.",
 		onStart(source) {
-			this.setTerrain('grassyterrain');
+			this.field.setTerrain('grassyterrain');
 		},
 		onSetStatus(status, target, source, effect) {
 			if (this.field.isTerrain('grassyterrain') && (status.id === 'psn' || status.id === 'tox')) {
@@ -8459,7 +8459,7 @@ exports.BattleAbilities = {
                 //TODO: Prevent Air Lock, Cloud Nine, etc. from working. Dunno if Atmospheric Perversion affects this hail so ;d
 		onStart(source) {
                         //Code to make it last a very long time will be under Hail's code.
-			this.setWeather('hail');
+			this.field.setWeather('hail');
 		},
 		onAnySetWeather(target, source, weather) {
 			if (this.getWeather().id === 'hail') return false;
@@ -8781,14 +8781,14 @@ exports.BattleAbilities = {
 		desc: "This Pokemon summons hail when it switches in. In hail or when it is targeted by an Electric-type move, this Pokemon heals 25% of its HP back and summons Hail; Electric immunity.",
 		shortDesc: "Summons hail upon switch-in; This Pokemon heals 1/4 of its max HP and summons hail when hit by Electric moves or under hail; Immune to both.",
 		onStart(source) {
-			this.setWeather('hail');
+			this.field.setWeather('hail');
 		},
 		onTryHit(target, source, move) {
 			if (target !== source && move.type === 'Electric') {
 				if (!this.heal(target.maxhp / 4)) {
 					this.add('-immune', target, '[msg]', '[from] ability: Snow Sucker');
 				}
-            this.setWeather('hail');
+            this.field.setWeather('hail');
 				return null;
 			}
 		},
@@ -8813,14 +8813,14 @@ exports.BattleAbilities = {
 		onUpdate(pokemon) {
 			if (pokemon.status === 'brn') {
 				this.add('-activate', pokemon, 'ability: Water Veil');
-            this.setWeather('hail');
+            this.field.setWeather('hail');
 				pokemon.cureStatus();
 			}
 		},
 		onSetStatus(status, target, source, effect) {
 			if (status.id !== 'brn') return;
 			if (!effect || !effect.status) return false;
-         if (!this.setWeather('hail')){
+         if (!this.field.setWeather('hail')){
 			    this.add('-immune', target, '[msg]', '[from] ability: Hail Veil');
          }
 			return false;
@@ -8902,7 +8902,7 @@ exports.BattleAbilities = {
 		desc: "Upon switching in, the user summons Sandstorm for 5 turns (8 if holding Smooth Rock). If skies are clear and the user is hit by direct damage that would KO it, the user instead survives at 1 HP and summons Sandstorm again.",
 		shortDesc: "On switch-in, this Pokemon summons Sandstorm. It cannot be OHKO'd in clear skies, and summons Sandstorm if this would happen.",
 		onStart(source) {
-			this.setWeather('sandstorm');
+			this.field.setWeather('sandstorm');
 		},
 		onTryHit(pokemon, target, move) {
 			if (move.ohko) {
@@ -8914,7 +8914,7 @@ exports.BattleAbilities = {
 		onDamage(damage, target, source, effect) {
 			if (target.hp === target.maxhp && damage >= target.hp && effect && effect.effectType === 'Move' && !this.field.isWeather()) {
 				this.add('-ability', target, 'Solid Sand');
-			        this.setWeather('sandstorm');
+			        this.field.setWeather('sandstorm');
 				return target.hp - 1;
 			}
 		},
@@ -9131,7 +9131,7 @@ exports.BattleAbilities = {
 			}
 		},
 		onSwitchIn(source) {
-			this.setTerrain('beautifulterrain');
+			this.field.setTerrain('beautifulterrain');
 		},
 		id: "beautifulobliterationweapon",
 		name: "Beautiful Obliteration Weapon",
@@ -9291,7 +9291,7 @@ exports.BattleAbilities = {
 		desc: "This Pokemon summons Radioactive Terrain upon switching in. Radioactive Terrain multiplies the power of Electric and Poison-type moves 1.5x and poisons anything that can be poisoned. When this terrain fades, this ability functions just like Poison Point.",
 		shortDesc: "On switch-in, this Pokemon summons Radioactive Terrain, which powers up Electric- and Poison-type moves and poisons anything that can be poisoned. Contact can inflict poison.",
 		onStart(source) {
-			this.setTerrain('radioactiveterrain');
+			this.field.setTerrain('radioactiveterrain');
 		},
 		id: "radioactivesurge",
 		name: "Radioactive Surge",
@@ -9598,15 +9598,15 @@ exports.BattleAbilities = {
 			let activated = true;
 			if (type === 'Fire') {
 				pokemon.setType(['Electric', 'Fire']);
-				this.setWeather('sunnyday');
+				this.field.setWeather('sunnyday');
 			}
 			else if (type === 'Water') {
 				pokemon.setType(['Electric', 'Water']);
-				this.setWeather('raindance');
+				this.field.setWeather('raindance');
 			}
 			else if (type === 'Ice') {
 				pokemon.setType(['Electric', 'Ice']);
-				this.setWeather('hail');
+				this.field.setWeather('hail');
 			} else {
 				activated = false;	
 			}
@@ -9787,18 +9787,18 @@ exports.BattleAbilities = {
 		id: "cosmology",
 		name: "Cosmology",
 	},
-	"summonspirits": {
+	"hauntedstorm": {
 		shortDesc: "On switch-in, this Pokemon summons Spirit Skies.",
 		onStart(source) {
-			this.setWeather('shadowdance');
+			this.field.setWeather('shadowdance');
 		},
-		id: "summonspirits",
-		name: "Summon Spirits",
+		id: "hauntedstorm",
+		name: "Haunted Storm",
 	},
 	"rockysurge": {
 		shortDesc: "On switch-in, this Pokemon summons Rocky Terrain.",
 		onStart(source) {
-			this.setTerrain('rockyterrain');
+			this.field.setTerrain('rockyterrain');
 		},
 		id: "rockysurge",
 		name: "Rocky Surge",
@@ -11226,7 +11226,7 @@ exports.BattleAbilities = {
 		desc: "Summons Rainbow Sky for 5 turns; during Rainbow Sky, moves have their secondary effect chance doubled and said moves have 50% more power; moves with no secondary effect inflict 50% less damage (also moves afflicted by Sheer Force and variants that nullify secondary effect).",
 		shortDesc: "On switch-in, this Pokemon summons Rainbow Sky for five turns.",
 		onStart(source) {
-			this.setWeather('afterstorm');
+			this.field.setWeather('afterstorm');
 		},
 		id: "afterstorm",
 		name: "Afterstorm",
@@ -11357,7 +11357,7 @@ exports.BattleAbilities = {
 				if (action.choice === 'runPrimal' && action.pokemon === source && source.template.speciesid === 'kyogre') return;
 				if (action.choice !== 'runSwitch' && action.choice !== 'runPrimal') break;
 			}
-			if (this.setWeather('raindance')) {
+			if (this.field.setWeather('raindance')) {
 				this.heal(source.maxhp / 3);
 				this.add('-activate', source, 'ability: Rain Regen');
 			}
@@ -12729,7 +12729,7 @@ exports.BattleAbilities = {
             }
         }
         if (showMsg && !effect.secondaries) this.add("-fail", target, "unboost", "[from] ability: Tour To Russia", "[of] " + target);
-        if (summonHail) this.setWeather('hail');
+        if (summonHail) this.field.setWeather('hail');
     },
     onResidualOrder: 26,
     onResidualSubOrder: 1,
@@ -13153,7 +13153,7 @@ exports.BattleAbilities = {
 		desc: "On switch-in, this Pokemon summons Sandstorm and removes any major status problems. If Sandstorm is active, this Pokemon cannot gain a major status condition and Rest will fail for it. This Pokemon summons Sandstorm and has its major status condition cured when it switches out.",
 		shortDesc: "On switch-in, this Pokemon summons Sandstorm and removes its own statuses. If Sandstorm is active, this Pokemon cannot be statused and Rest will fail for it. This Pokemon summons Sandstorm and has its major status condition cured when it switches out.",
 		onStart(source) {
-			this.setWeather('sandstorm');
+			this.field.setWeather('sandstorm');
 			source.setStatus('');
 		},
 		onCheckShow(pokemon) {
@@ -13235,7 +13235,7 @@ exports.BattleAbilities = {
 			}
 		},
 		onSwitchOut(pokemon) {
-			this.setWeather('sandstorm');
+			this.field.setWeather('sandstorm');
 			if (!pokemon.status) return;
 
 			// if pokemon.showCure is undefined, it was skipped because its ability
@@ -13515,7 +13515,7 @@ exports.BattleAbilities = {
 	"kelpsurge": {
 		shortDesc: "On switch-in, this Pokemon summons Kelp Terrain. Grounded Pokemon will have x1.5 power on Grass- and Water-type moves and restore 6.25% of their HP each turn, but STABs of neither aforementioned type have halved power.",
 		onStart(source) {
-			this.setTerrain('kelpterrain');
+			this.field.setTerrain('kelpterrain');
 		},
 		id: "kelpterrain",
 		name: "Kelp Surge",
