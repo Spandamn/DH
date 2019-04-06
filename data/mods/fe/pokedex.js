@@ -7469,7 +7469,7 @@ darkchomp: {
             spe: 65
         },
         abilities: {
-            0: "Summon Spirits"
+            0: "Haunted Storm"
         },
         heightm: 0.455,
         weightkg: 16.65,
