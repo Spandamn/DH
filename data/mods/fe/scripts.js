@@ -171,7 +171,7 @@ exports.BattleScripts = {
     },
 
 
-    tryMoveHit: function(target, pokemon, move) {
+    tryMoveHit(target, pokemon, move) {
         this.setActiveMove(move, pokemon, target);
         move.zBrokeProtect = false;
         let hitResult = true;
@@ -439,8 +439,7 @@ exports.BattleScripts = {
 
         return damage;
     },
-
-    canUltraBurst: function(pokemon) {
+    canUltraBurst(pokemon) {
         if (pokemon.getItem().id === 'ultranecroziumz') {
             switch (pokemon.baseTemplate.species) {
                 case 'Necrozma-Dusk-Mane':
@@ -469,7 +468,7 @@ exports.BattleScripts = {
         return null;
     },
 
-    runMegaEvo: function(pokemon) {
+    runMegaEvo(pokemon) {
         const templateid = pokemon.canMegaEvo || pokemon.canUltraBurst;
         if (!templateid) return false;
         const side = pokemon.side;
@@ -633,7 +632,7 @@ exports.BattleScripts = {
             return speed & 0x1FFF;
         },
         isGrounded(negateImmunity = false) {
-            if ('gravity' in this.battle.pseudoWeather) return true;
+            if ('gravity' in this.battle.field.pseudoWeather) return true;
             if ('ingrain' in this.volatiles && this.battle.gen >= 4) return true;
             if ('smackdown' in this.volatiles) return true;
             let item = (this.ignoringItem() ? '' : this.item);
@@ -713,7 +712,7 @@ exports.BattleScripts = {
             return true;
         },
         ignoringItem() {
-            return !!((this.battle.gen >= 5 && !this.isActive) || ((this.hasAbility(['klutz', 'carelessforce']) || this.volatiles['engarde']) && !this.getItem().ignoreKlutz) || this.volatiles['magicbreak'] || this.volatiles['embargo'] || this.battle.pseudoWeather['magicroom']);
+            return !!((this.battle.gen >= 5 && !this.isActive) || ((this.hasAbility(['klutz', 'carelessforce']) || this.volatiles['engarde']) && !this.getItem().ignoreKlutz) || this.volatiles['magicbreak'] || this.volatiles['embargo'] || this.battle.field.pseudoWeather['magicroom']);
         },
         setAbility(ability, source, isFromFormeChange) {
             if (!this.hp) return false;

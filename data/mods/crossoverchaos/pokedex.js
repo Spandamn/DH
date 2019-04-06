@@ -258,7 +258,7 @@ exports.BattlePokedex = {
 	
 	inkling: {
 		num: 6000002,
-		species: "Inkling",
+		species: "Inkling", /* Splatoon */
 		baseForme: "Squid",
 		types: ["Poison"],
 		baseStats: {hp: 70, atk: 60, def: 65, spa: 90, spd: 85, spe: 130},
@@ -275,6 +275,50 @@ exports.BattlePokedex = {
 		types: ["Poison", "Normal"],
 		baseStats: {hp: 80, atk: 90, def: 65, spa: 120, spd: 95, spe: 100},
 		abilities: {0: "Inky Surge", H: "Soundproof"},
+	},
+	
+	corrin: {
+		num: 6000003, 
+		species: "Corrin", /* Fire Emblem: Fates */
+		baseForme: "Human",
+		types:["Dragon", "Fighting"],
+		baseStats: {hp: 90, atk: 125, def: 95, spa: 85, spd: 65, spe: 115}, 
+		abilities: {0: "Dragon's Blood"},
+		otherFormes: ["inklingkid"],
+	},
+	
+	corrindragon: {
+		num: 6000003,
+		species: "Corrin-Dragon",
+		baseSpecies: "Corrin",
+		forme: "Dragon",
+		formeLetter: "D",
+		types: ["Dragon", "Water"],
+		baseStats: {hp: 90, atk: 110, def: 130, spa: 140, spd: 115, spe: 75}, 
+		abilities: {0: "Dragon's Blood"},
+	},
+	
+	dedede: {
+		num: 6000004, 
+		species: "Dedede", /* Kirby */
+		baseForme: "King",
+		types: ["Normal", "Flying"],
+		gender: "M",
+		baseStats: {hp: 130, atk: 150, def: 110, spa: 70, spd: 70, spe: 70}, 
+		abilities: {0: "Thick Fat", 1: "Gluttony", H: "Hammer Royale"},
+		otherFormes: ["dededemasked"],
+	},
+	
+	dededemasked: {
+		num: 6000004,
+		species: "Dedede-Masked",
+		baseSpecies: "Dedede",
+		forme: "Masked",
+		formeLetter: "M",
+		types: ["Electric", "Flying"],
+		gender: "M",
+		baseStats: {hp: 130, atk: 180, def: 130, spa: 80, spd: 80, spe: 100}, 
+		abilities: {0: "Thick Fat", 1: "Gluttony", H: "Hammer Royale"},
 	},
 	
      

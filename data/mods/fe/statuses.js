@@ -4,7 +4,7 @@
 let BattleStatuses = {
 //         choicelock: {
 //             inherit: true,
-//             onBeforeMove: function(pokemon, target, move) {
+//             onBeforeMove(pokemon, target, move) {
 //                 if (!(pokemon.getItem().isChoice || (pokemon.volatiles['goldentouch'] && pokemon.volatiles['goldentouch'].item && this.getItem(pokemon.volatiles['goldentouch'].item).isChoice) || (pokemon.volatiles['beastbootleg'] && ((pokemon.volatiles['beastbootleg'].items[0] && this.getItem(pokemon.volatiles['beastbootleg'].items[0]).isChoice) || (pokemon.volatiles['beastbootleg'].items[1] && this.getItem(pokemon.volatiles['beastbootleg'].items[1]).isChoice)))) || !pokemon.hasMove(this.effectData.move)) {
 //                     pokemon.removeVolatile('choicelock');
 //                     return;
@@ -17,7 +17,7 @@ let BattleStatuses = {
 //                     return false;
 //                 }
 //             },
-//             onDisableMove: function(pokemon) {
+//             onDisableMove(pokemon) {
 //                 if (!(pokemon.getItem().isChoice || (pokemon.volatiles['goldentouch'] && pokemon.volatiles['goldentouch'].item && pokemon.volatiles['goldentouch'].item.isChoice) || (pokemon.volatiles['beastbootleg'] && ((pokemon.volatiles['beastbootleg'].items[0] && pokemon.volatiles['beastbootleg'].items[0].isChoice) || (pokemon.volatiles['beastbootleg'].items[1] && pokemon.volatiles['beastbootleg'].items[1].isChoice)))) || !pokemon.hasMove(this.effectData.move)) {
 //                     pokemon.removeVolatile('choicelock');
 //                     return;
@@ -39,20 +39,20 @@ let BattleStatuses = {
 		id: 'par',
 		num: 0,
 		effectType: 'Status',
-		onStart: function (target, source, sourceEffect) {
+		onStart(target, source, sourceEffect) {
 			if (sourceEffect && sourceEffect.effectType === 'Ability') {
 				this.add('-status', target, 'par', '[from] ability: ' + sourceEffect.name, '[of] ' + source);
 			} else {
 				this.add('-status', target, 'par');
 			}
 		},
-		onModifySpe: function (spe, pokemon) {
+		onModifySpe(spe, pokemon) {
 			if (!pokemon.hasAbility('quickfeet')) {
 				return this.chainModify(0.5);
 			}
 		},
 		onBeforeMovePriority: 1,
-		onBeforeMove: function (pokemon) {
+		onBeforeMove(pokemon) {
 			if (this.randomChance(1, 4) && !pokemon.hasAbility('therapeutic') && !pokemon.hasAbility('shutupandjam')) {
 				this.add('cant', pokemon, 'par');
 				return false;
@@ -64,7 +64,7 @@ let BattleStatuses = {
 		id: 'frz',
 		num: 0,
 		effectType: 'Status',
-		onStart: function (target, source, sourceEffect) {
+		onStart(target, source, sourceEffect) {
 			if (sourceEffect && sourceEffect.effectType === 'Ability') {
 				this.add('-status', target, 'frz', '[from] ability: ' + sourceEffect.name, '[of] ' + source);
 			} else {
@@ -82,7 +82,7 @@ let BattleStatuses = {
 			}
 		},
 		onBeforeMovePriority: 10,
-		onBeforeMove: function (pokemon, target, move) {
+		onBeforeMove(pokemon, target, move) {
 			if (move.flags['defrost']) return;
 			if (this.randomChance(1, 5)) {
 				pokemon.cureStatus();
@@ -94,13 +94,13 @@ let BattleStatuses = {
 			}
 			return false;
 		},
-		onModifyMove: function (move, pokemon) {
+		onModifyMove(move, pokemon) {
 			if (move.flags['defrost']) {
 				this.add('-curestatus', pokemon, 'frz', '[from] move: ' + move);
 				pokemon.setStatus('');
 			}
 		},
-		onHit: function (target, source, move) {
+		onHit(target, source, move) {
 			if (move.thawsTarget || move.type === 'Fire' && move.category !== 'Status') {
 				target.cureStatus();
 			}
@@ -112,13 +112,13 @@ solarsnow: {
 		num: 0,
 		effectType: 'Weather',
 		duration: 5,
-		durationCallback: function (source, effect) {
+		durationCallback(source, effect) {
 			if (source && (source.hasItem('icyrock') || source.hasItem('heatrock'))) {
 				return 8;
 			}
 			return 5;
 		},
-		onWeatherModifyDamage: function (damage, attacker, defender, move) {
+		onWeatherModifyDamage(damage, attacker, defender, move) {
 			if (move.type === 'Fire' && !(defender.hasType('Grass') || defender.hasType('Fire') || defender.hasType('Ice'))) {
 				this.debug('Solar Snow fire boost');
 				return this.chainModify(1.5);
@@ -128,7 +128,7 @@ solarsnow: {
 				return this.chainModify(0.5);
 			}
 		},
-		onStart: function (battle, source, effect) {
+		onStart(battle, source, effect) {
 			if (effect && effect.effectType === 'Ability') {
 				if (this.gen <= 5) this.effectData.duration = 0;
 				this.add('-weather', 'SolarSnow', '[from] ability: ' + effect, '[of] ' + source);
@@ -138,16 +138,16 @@ solarsnow: {
 			}
 		},
 		onResidualOrder: 1,
-		onResidual: function () {
+		onResidual() {
 			this.add('-weather', 'SolarSnow', '[upkeep]');
-			if (this.isWeather('solarsnow')) this.eachEvent('Weather');
+			if (this.field.isWeather('solarsnow')) this.eachEvent('Weather');
 		},
-		onWeather: function (target) {
+		onWeather(target) {
          if (!target.hasType('Grass') && !target.hasType('Fire') && !target.hasType('Ice')){
 			  this.damage(target.maxhp / 16);
-                        }
+         }
 		},
-		onEnd: function () {
+		onEnd() {
 			this.add('-weather', 'none');
 		},
 	},
@@ -158,7 +158,7 @@ solarsnow: {
 		num: 0,
 		effectType: 'Weather',
 		duration: 0,
-		onTryMove: function (target, source, effect) {
+		onTryMove(target, source, effect) {
 			if (effect.type === 'Water' && effect.category !== 'Status' && (source.volatiles['weatherbreak'] || source.volatiles['atmosphericperversion']) && !(source.volatiles['weatherbreak'] && source.volatiles['atmosphericperversion'])) {
 				this.debug('Desolate Land water suppress');
 				this.add('-fail', source, effect, '[from] Desolate Land');
@@ -169,24 +169,24 @@ solarsnow: {
 				return null;
 			}
 		},
-		onWeatherModifyDamage: function (damage, attacker, defender, move) {
+		onWeatherModifyDamage(damage, attacker, defender, move) {
 			if (move.type === 'Fire' && (attacker.volatiles['weatherbreak'] || attacker.volatiles['atmosphericperversion']) && !(attacker.volatiles['weatherbreak'] && attacker.volatiles['atmosphericperversion'])) {
 				this.debug('Sunny Day fire boost');
 				return this.chainModify(1.5);
 			}
 		},
-		onStart: function (battle, source, effect) {
+		onStart(battle, source, effect) {
 			this.add('-weather', 'DesolateLand', '[from] ability: ' + effect, '[of] ' + source);
 		},
-		onImmunity: function (type) {
+		onImmunity(type) {
 			if (type === 'frz') return false;
 		},
 		onResidualOrder: 1,
-		onResidual: function () {
+		onResidual() {
 			this.add('-weather', 'DesolateLand', '[upkeep]');
 			this.eachEvent('Weather');
 		},
-		onEnd: function () {
+		onEnd() {
 			this.add('-weather', 'none');
 		},
 	},
@@ -197,7 +197,7 @@ solarsnow: {
 		num: 0,
 		effectType: 'Weather',
 		duration: 0,
-		onTryMove: function (target, source, effect) {
+		onTryMove(target, source, effect) {
 			if (effect.type === 'Fire' && effect.category !== 'Status' && (source.volatiles['weatherbreak'] || source.volatiles['atmosphericperversion']) && !(source.volatiles['weatherbreak'] && source.volatiles['atmosphericperversion'])) {
 				this.debug('Primordial Sea fire suppress');
 				this.add('-fail', source, effect, '[from] Primordial Sea');
@@ -208,21 +208,21 @@ solarsnow: {
 				return null;
 			}
 		},
-		onWeatherModifyDamage: function (damage, attacker, defender, move) {
+		onWeatherModifyDamage(damage, attacker, defender, move) {
 			if (move.type === 'Water' && (attacker.volatiles['weatherbreak'] || attacker.volatiles['atmosphericperversion']) && !(attacker.volatiles['weatherbreak'] && attacker.volatiles['atmosphericperversion'])) {
 				this.debug('Rain water boost');
 				return this.chainModify(1.5);
 			}
 		},
-		onStart: function (battle, source, effect) {
+		onStart(battle, source, effect) {
 			this.add('-weather', 'PrimordialSea', '[from] ability: ' + effect, '[of] ' + source);
 		},
 		onResidualOrder: 1,
-		onResidual: function () {
+		onResidual() {
 			this.add('-weather', 'PrimordialSea', '[upkeep]');
 			this.eachEvent('Weather');
 		},
-		onEnd: function () {
+		onEnd() {
 			this.add('-weather', 'none');
 		},
 	},
@@ -232,19 +232,19 @@ shadowdance: {
     num: 0,
     effectType: 'Weather',
     duration: 5,
-    durationCallback: function(source, effect) {
+    durationCallback(source, effect) {
         if (source && (source.hasItem('damprock'))) {
             return 8;
         }
         return 5;
     },
-    onWeatherModifyDamage: function(damage, attacker, defender, move) {
+    onWeatherModifyDamage(damage, attacker, defender, move) {
         if (move.type === 'Ghost') {
             this.debug('Spirit Storm ghost boost');
             return this.chainModify(1.5);
         }
     },
-    onStart: function(battle, source, effect) {
+    onStart(battle, source, effect) {
         if (effect && effect.effectType === 'Ability') {
             if (this.gen <= 5) this.effectData.duration = 0;
             this.add('-weather', 'ShadowDance', '[from] ability: ' + effect, '[of] ' + source);
@@ -254,18 +254,22 @@ shadowdance: {
         }
     },
     onResidualOrder: 1,
-    onResidual: function() {
+    onResidual() {
         this.add('-weather', 'ShadowDance', '[upkeep]');
-        if (this.isWeather('shadowdance')) this.eachEvent('Weather');
+        if (this.field.isWeather('shadowdance')) this.eachEvent('Weather');
     },
-    onWeather: function(target) {
+    onWeather(target) {
         if (!target.hasType('Water') && !target.hasType('Ghost')) {
             for (const moveSlot of target.moveSlots) {
-                moveSlot.pp = moveSlot.pp - 2;
+					 if ((target.volatiles['atmosphericperversion'] && target.volatiles['weatherbreak']) || !(target.volatiles['atmosphericperversion'] || target.volatiles['weatherbreak'])){
+          	       target.deductPP(moveSlot.id, 2)
+					 } else {
+						 moveSlot.pp++;
+					 }
             }
         }
     },
-    onEnd: function() {
+    onEnd() {
         this.add('-weather', 'none');
     },
 },
@@ -276,11 +280,11 @@ afterstorm: {
     num: 0,
     effectType: 'Weather',
     duration: 5,
-    durationCallback: function(source, effect) {
+    durationCallback(source, effect) {
         return 5;
     },
 	 onModifyDamagePriority: -2,
-    onWeatherModifyDamage: function(damage, attacker, defender, move) {
+    onWeatherModifyDamage(damage, attacker, defender, move) {
 			if (!(move.secondaries && move.isInInvertedWeather) && (move.secondaries || move.isInInvertedWeather)) {
             this.debug('Rainbow Sky suppress');
             return this.chainModify(0.5);
@@ -290,7 +294,7 @@ afterstorm: {
         }
     },
 	 onModifyMovePriority: -2,
-	 onWeatherModifyMove: function(attacker, defender, move) {
+	 onWeatherModifyMove(attacker, defender, move) {
 			if (move.secondaries) {
 				this.debug('doubling secondary chance');
 				if (move.isInInvertedWeather) {
@@ -303,7 +307,7 @@ afterstorm: {
 				}
 			}
 	 },
-    onStart: function(battle, source, effect) {
+    onStart(battle, source, effect) {
         if (effect && effect.effectType === 'Ability') {
             if (this.gen <= 5) this.effectData.duration = 0;
             this.add('-weather', 'Afterstorm', '[from] ability: ' + effect, '[of] ' + source);
@@ -313,11 +317,11 @@ afterstorm: {
         }
     },
     onResidualOrder: 1,
-    onResidual: function() {
+    onResidual() {
         this.add('-weather', 'Afterstorm', '[upkeep]');
-        if (this.isWeather('afterstorm')) this.eachEvent('Weather');
+        if (this.field.isWeather('afterstorm')) this.eachEvent('Weather');
     },
-    onEnd: function() {
+    onEnd() {
         this.add('-weather', 'none');
     },
 },
@@ -326,7 +330,7 @@ afterstorm: {
 		id: 'titanicstrength',
 		num: 0,
 		duration: 1,
-			onUpdate: function (pokemon) {
+			onUpdate(pokemon) {
 				if (!pokemon.item && pokemon.volatiles['titanicstrength']) {
 				this.add('-start', pokemon, 'ability: Titanic Strength', '[silent]');
 				this.boost({atk: 12}, pokemon);
@@ -339,7 +343,7 @@ afterstorm: {
 		id: 'vitality',
 		num: 7500209,
 		onSwitchInPriority: 101,
-		onSwitchIn: function (pokemon) {
+		onSwitchIn(pokemon) {
 			let type = 'Normal';
 			if (pokemon.ability === 'rkssystem') {
 				// @ts-ignore
@@ -361,7 +365,7 @@ afterstorm: {
 		id: 'omneus',
 		num: 7500255,
 		onSwitchInPriority: 101,
-		onSwitchIn: function (pokemon) {
+		onSwitchIn(pokemon) {
 			let type = 'Normal';
 			if (pokemon.ability === 'spiralpower') {
 				// @ts-ignore
@@ -383,7 +387,7 @@ afterstorm: {
 		id: 'valcro',
 		num: 7500216,
 		onSwitchInPriority: 101,
-		onSwitchIn: function (pokemon) {
+		onSwitchIn(pokemon) {
 			let type = 'Normal';
 			if (pokemon.ability === 'techequip') {
 				// @ts-ignore
@@ -399,7 +403,7 @@ afterstorm: {
 				pokemon.setType([type, 'Flying'], true);
 			}
 		},
-		onTryHit: function (target, source, move) {
+		onTryHit(target, source, move) {
 			let type = 'Normal';
 			type = target.getItem().onMemory;
 			if (target !== source && move.type === type) {
@@ -413,7 +417,7 @@ afterstorm: {
 		id: 'smelly',
 		num: 7500217,
 		onSwitchInPriority: 101,
-		onSwitchIn: function (pokemon) {
+		onSwitchIn(pokemon) {
 			let type = 'Normal';
 			if (pokemon.ability === 'technicalsystem') {
 				// @ts-ignore
@@ -431,7 +435,7 @@ afterstorm: {
 		id: 'covally',
 		num: 7500243,
 		onSwitchInPriority: 101,
-		onSwitchIn: function (pokemon) {
+		onSwitchIn(pokemon) {
 			let type = 'Normal';
 			if (pokemon.ability === 'triagesystem') {
 				// @ts-ignore
@@ -447,7 +451,7 @@ afterstorm: {
 				pokemon.setType([type, 'Fairy'], true);
 			}
 		},
-		onModifyPriority: function (priority, pokemon, target, move) {
+		onModifyPriority(priority, pokemon, target, move) {
 			let type = 'Normal';
 			if (pokemon.ability === 'triagesystem') {
 				// @ts-ignore
