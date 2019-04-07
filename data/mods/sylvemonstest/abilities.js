@@ -17,7 +17,7 @@ exports.BattleAbilities = {
 				pokemon.addType('Ice');
 				this.setWeather('hail');
 			} else if (pokemon.item === 'shadowrock') {
-				pokemon.addType('dark');
+				pokemon.addType('Dark');
 				this.setWeather('shadowsky');
 			} else if (pokemon.item === 'breezerock') {
 				pokemon.addType('Flying');
