@@ -3600,4 +3600,169 @@ tier: "OU",
 aggraluggmega: {
 tier: "OU",
 },
+audigardez: {
+tier: "OU",
+},
+audigardezdoctor: {
+tier: "OU",
+},
+audigardezmega: {
+tier: "OU",
+},
+audigardezdoctormega: {
+tier: "OU",
+},
+reggaeton: {
+tier: "OU",
+},
+reggaetonmega: {
+tier: "OU",
+},
+happory: {
+tier: "OU",
+},
+porysey2: {
+tier: "OU",
+},
+slowkumuku: {
+tier: "OU",
+},
+slowkumukumega: {
+tier: "OU",
+},
+azumatic: {
+tier: "OU",
+},
+eelrock: {
+tier: "OU",
+},
+masquero: {
+tier: "OU",
+},
+forastero: {
+tier: "OU",
+},
+pachkia: {
+tier: "OU",
+},
+sableice: {
+tier: "OU",
+},
+sableicemega: {
+tier: "OU",
+},
+sabulu: {
+tier: "OU",
+},
+sabulumega: {
+tier: "OU",
+},
+dugdalealola: {
+tier: "OU",
+},
+golemprime: {
+tier: "OU",
+},
+metabrave: {
+tier: "OU",
+},
+metabraveumega: {
+tier: "OU",
+},
+reversemartian: {
+tier: "OU",
+},
+pinthim: {
+tier: "OU",
+},
+pinthimmega: {
+tier: "OU",
+},
+hug: {
+tier: "OU",
+},
+broking: {
+tier: "OU",
+},
+brokingmega: {
+tier: "OU",
+},
+thor: {
+tier: "OU",
+},
+thornordic: {
+tier: "OU",
+},
+finiscor: {
+tier: "OU",
+},
+salad: {
+tier: "OU",
+},
+saladmega: {
+tier: "OU",
+},
+chulu: {
+tier: "OU",
+},
+chulumega: {
+tier: "OU",
+},
+sabletina: {
+tier: "OU",
+},
+sabletinamega: {
+tier: "OU",
+},
+swolesteela: {
+tier: "OU",
+},
+fifa: {
+tier: "OU",
+},
+drapominable: {
+tier: "OU",
+},
+diabeetus: {
+tier: "OU",
+},
+cashquaza: {
+tier: "OU",
+},
+cashquazamega: {
+tier: "OU",
+},
+xanatu: {
+tier: "OU",
+},
+volcarde: {
+tier: "OU",
+},
+fifa: {
+tier: "OU",
+},
+drapominable: {
+tier: "OU",
+},
+diabeetus: {
+tier: "OU",
+},
+ceremoni: {
+tier: "OU",
+},
+ceremonirobe: {
+tier: "OU",
+},
+ceremonibowl: {
+tier: "OU",
+},
+ceremonibranch: {
+tier: "OU",
+},
+ceremonijewel: {
+tier: "OU",
+},
+ceremonishell: {
+tier: "OU",
+},
 };
