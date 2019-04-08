@@ -472,7 +472,7 @@ exports.BattleItems = {
 			basePower: 10,
 		},
 		onUpdate: function(pokemon) {
-			if (this.pseudoWeather.trickroom && pokemon.useItem()) {
+			if (this.field.pseudoWeather.trickroom && pokemon.useItem()) {
 				this.boost({
 					spe: -1
 				});
@@ -522,7 +522,7 @@ exports.BattleItems = {
 			if (type === 'hail') return false;
 		},
 		onModifySpe: function(spe) {
-			if (this.isWeather('hail')) {
+			if (this.field.isWeather('hail')) {
 				return this.chainModify(2);
 			}
 		},
@@ -563,7 +563,7 @@ exports.BattleItems = {
 	"weatherwarriorscrystal": {
 		shortDesc: "When a weather is active, increases the holder's Atk and Sp Atk stats by 1 stage each.",
 		onUpdate: function(pokemon) {
-			if (this.isWeather(['sunnyday', 'desolateland', 'hail', 'rainyday', 'primordialsea', 'sandstream', 'shadowsky', 'aircurrent']) && pokemon.useItem()) {
+			if (this.field.isWeather(['sunnyday', 'desolateland', 'hail', 'rainyday', 'primordialsea', 'sandstream', 'shadowsky', 'aircurrent']) && pokemon.useItem()) {
 				this.boost({
 					atk: 1,
 					spa: 1
