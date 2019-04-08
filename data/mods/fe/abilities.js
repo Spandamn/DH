@@ -563,7 +563,41 @@ exports.BattleAbilities = {
 		name: "Huge Torrent",
 	},
 	"flashweather": {
-		shortDesc: "In Sun, absorbs Fire moves, in Rain Water, in Hail Ice, and in Sand, Rock.",
+		shortDesc: "In Sun, absorbs Fire moves, in Rain Water, in Hail Ice, and in Sand, Rock. If Chandeform, changes secondary type to match the weather.",
+		onUpdate(pokemon) {
+			if (pokemon.baseTemplate.baseSpecies !== 'Chandeform' || pokemon.transformed) return;
+			let forme = null;
+			switch (this.field.effectiveWeather()) {
+			case 'sunnyday':
+			case 'desolateland':
+         case 'solarsnow':
+				if (pokemon.template.speciesid !== 'chandeformsunny') forme = 'Chandeform-Sunny';
+				break;
+			case 'raindance':
+			case 'primordialsea':
+				if (pokemon.template.speciesid !== 'chandeformrainy') forme = 'Chandeform-Rainy';
+				break;
+			case 'hail':
+				if (pokemon.template.speciesid !== 'chandeformsnowy') forme = 'Chandeform-Snowy';
+				break;
+			case 'sandstorm':
+				if (pokemon.template.speciesid !== 'chandeformsandy') forme = 'Chandeform-Sandy';
+				break;
+			case 'shadowdance':
+				if (pokemon.template.speciesid !== 'chandeformspooky') forme = 'Chandeform-Spooky';
+				break;
+			case 'cactuspower':
+				if (pokemon.template.speciesid !== 'chandeformprickly') forme = 'Chandeform-Prickly';
+				break;
+			default:
+				if (pokemon.template.speciesid !== 'chandeform') forme = 'Chandeform';
+				break;
+			}
+			if (pokemon.isActive && forme) {
+				pokemon.formeChange(forme);
+				this.add('-formechange', pokemon, forme, '[msg]', '[from] ability: Flash Weather');
+			}
+		},
 		onTryHit(target, source, move) {
 			if (target !== source && target.volatiles['atmosphericperversion'] === target.volatiles['weatherbreak']){
 				if (move.type === 'Fire' && this.field.isWeather(['sunnyday', 'desolateland', 'solarsnow'])) {
@@ -6982,24 +7016,22 @@ exports.BattleAbilities = {
 				return false;
 			}
 		},
-		onModifyAtkPriority: 5,
-		onModifyAtk(atk, pokemon) {
-			if (pokemon.status === 'brn') {
+		onModifyAtk(atk, attacker, defender, move) {
+			if (attacker.status === 'brn' && move.id !== 'facade') {
 				return this.chainModify(2);
 			}
-			},
+		},
 		onModifySpe(spe, pokemon) {
 			if (pokemon.status === 'par') {
 				return this.chainModify(2);
 			}
-			},
+		},
 		onResidual(pokemon) {
 			if (!pokemon.hp) return;
-				if (pokemon.status === 'par' || pokemon.status === 'slp') {
-					this.heal(target.maxhp / 8);
+				if (pokemon.status === 'par' || pokemon.status === 'slp' || pokemon.status === 'frz') {
+					this.heal(pokemon.maxhp / 8);
 				}
 		},
-                //TODO: Allow holder to move if Frozen; Prevent Full Paralysis
 		id: "therapeutic",
 		name: "Therapeutic",
 	},
