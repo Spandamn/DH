@@ -11121,12 +11121,6 @@ exports.BattleAbilities = {
 					return false;
 				}
 			},
-			onModifySpDPriority: 10,
-			onModifySpD(spd, pokemon) {
-				if (pokemon.hasType('Rock') && this.field.isWeather('sandstorm')) {
-					return this.modify(spd, [0x071C,0x1000]);
-				}
-			},
 		onTryPrimaryHit(target, source, move) {
 			if (!source.volatiles['atmosphericperversion']){
 				move.isInInvertedWeather = true;
@@ -11187,12 +11181,6 @@ exports.BattleAbilities = {
 				if (effect && (effect.id === 'sandstorm' || effect.id === 'hail' || effect.id === 'solarsnow' || effect.id === 'cactuspower') && !target.volatiles['weatherbreak']) {
    	         this.heal(target.maxhp / 16);
 					return false;
-				}
-			},
-			onModifySpDPriority: 10,
-			onModifySpD(spd, pokemon) {
-				if (pokemon.hasType('Rock') && this.field.isWeather('sandstorm')) {
-					return this.modify(spd, [0x071C,0x1000]);
 				}
 			},
 			onTryPrimaryHit(target, source, move) {
