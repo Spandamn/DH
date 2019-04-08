@@ -70,9 +70,9 @@ exports.BattleMovedex = {
 				return 5;
 			},
 			onStart: function(target, source) {
-			this.removePseudoWeather('trickroom');
-			this.removePseudoWeather('magicroom');
-			this.removePseudoWeather('wonderroom');
+			this.field.removePseudoWeather('trickroom');
+			this.field.removePseudoWeather('magicroom');
+			this.field.removePseudoWeather('wonderroom');
 				this.add('-fieldstart', 'move: Inverse Room', '[of] ' + source);
 			},
 			onRestart: function (target, source) {
@@ -216,7 +216,7 @@ exports.BattleMovedex = {
 			mirror: 1
 		},
 		onModifyMove: function(move) {
-			switch (this.effectiveWeather()) {
+			switch (this.field.effectiveWeather()) {
 				case 'sunnyday':
 				case 'desolateland':
 					move.type = 'Fire';
@@ -401,10 +401,10 @@ exports.BattleMovedex = {
 			return success;
 		},
 		onTryHit: function(target, source) {
-			this.removePseudoWeather('trickroom');
-			this.removePseudoWeather('magicroom');
-			this.removePseudoWeather('wonderroom');
-			this.removePseudoWeather('inverseroom');
+			this.field.removePseudoWeather('trickroom');
+			this.field.removePseudoWeather('magicroom');
+			this.field.removePseudoWeather('wonderroom');
+			this.field.removePseudoWeather('inverseroom');
 		},
 		secondary: false,
 		target: "normal",
@@ -427,10 +427,10 @@ exports.BattleMovedex = {
 		priority: 0,
 		flags: {},
 		onTryHit: function(target, source) {
-			this.removePseudoWeather('trickroom');
-			this.removePseudoWeather('magicroom');
-			this.removePseudoWeather('wonderroom');
-			this.removePseudoWeather('inverseroom');
+			this.field.removePseudoWeather('trickroom');
+			this.field.removePseudoWeather('magicroom');
+			this.field.removePseudoWeather('wonderroom');
+			this.field.removePseudoWeather('inverseroom');
 		},
 		onHit: function() {
 			this.clearTerrain();
@@ -457,10 +457,10 @@ exports.BattleMovedex = {
 			authentic: 1
 		},
 		onHitField: function(target, source) {
-			this.removePseudoWeather('trickroom');
-			this.removePseudoWeather('magicroom');
-			this.removePseudoWeather('wonderroom');
-			this.removePseudoWeather('inverseroom');
+			this.field.removePseudoWeather('trickroom');
+			this.field.removePseudoWeather('magicroom');
+			this.field.removePseudoWeather('wonderroom');
+			this.field.removePseudoWeather('inverseroom');
 			this.add('-clearallboost');
 			for (let i = 0; i < this.sides.length; i++) {
 				for (let j = 0; j < this.sides[i].active.length; j++) {
@@ -497,10 +497,10 @@ exports.BattleMovedex = {
 			},
 		},
 		onTryHit: function(target, source) {
-			this.removePseudoWeather('trickroom');
-			this.removePseudoWeather('magicroom');
-			this.removePseudoWeather('wonderroom');
-			this.removePseudoWeather('inverseroom');
+			this.field.removePseudoWeather('trickroom');
+			this.field.removePseudoWeather('magicroom');
+			this.field.removePseudoWeather('wonderroom');
+			this.field.removePseudoWeather('inverseroom');
 		},
 		target: "allAdjacent",
 		type: "Ground",
@@ -688,7 +688,7 @@ exports.BattleMovedex = {
 			heal: 1
 		},
 		onHit: function(pokemon) {
-			if (this.isWeather(['raindance', 'primordialsea'])) {
+			if (this.field.isWeather(['raindance', 'primordialsea'])) {
 				return this.heal(this.modify(pokemon.maxhp, 0.667));
 			} else {
 				return this.heal(this.modify(pokemon.maxhp, 0.5));
@@ -815,7 +815,7 @@ exports.BattleMovedex = {
 			heal: 1
 		},
 		onHit: function(pokemon) {
-			if (this.isWeather(['hail', 'sandstorm'])) {
+			if (this.field.isWeather(['hail', 'sandstorm'])) {
 				return this.heal(this.modify(pokemon.maxhp, 0.667));
 			} else {
 				return this.heal(this.modify(pokemon.maxhp, 0.5));
@@ -925,7 +925,7 @@ exports.BattleMovedex = {
 			heal: 1
 		},
 		onHit: function(pokemon) {
-			if (this.isWeather(['desolateland', 'sunnyday'])) {
+			if (this.field.isWeather(['desolateland', 'sunnyday'])) {
 				return this.heal(this.modify(pokemon.maxhp, 0.667));
 			} else {
 				return this.heal(this.modify(pokemon.maxhp, 0.5));
@@ -952,7 +952,7 @@ exports.BattleMovedex = {
 			heal: 1
 		},
 		onHit: function(pokemon) {
-			if (this.isWeather(['desolateland', 'sunnyday'])) {
+			if (this.field.isWeather(['desolateland', 'sunnyday'])) {
 				return this.heal(this.modify(pokemon.maxhp, 0.667));
 			} else {
 				return this.heal(this.modify(pokemon.maxhp, 0.5));
@@ -979,7 +979,7 @@ exports.BattleMovedex = {
 			heal: 1
 		},
 		onHit: function(pokemon) {
-			if (this.isWeather(['desolateland', 'sunnyday'])) {
+			if (this.field.isWeather(['desolateland', 'sunnyday'])) {
 				return this.heal(this.modify(pokemon.maxhp, 0.667));
 			} else {
 				return this.heal(this.modify(pokemon.maxhp, 0.5));
@@ -1350,9 +1350,9 @@ exports.BattleMovedex = {
 			distance: 1
 		},
 		onModifyMove: function(move) {
-			if (this.isWeather(['raindance', 'primordialsea', 'aircurrent'])) {
+			if (this.field.isWeather(['raindance', 'primordialsea', 'aircurrent'])) {
 				move.accuracy = true;
-			} else if (this.isWeather(['sunnyday', 'desolateland'])) {
+			} else if (this.field.isWeather(['sunnyday', 'desolateland'])) {
 				move.accuracy = 50;
 			}
 		},
@@ -1386,7 +1386,7 @@ exports.BattleMovedex = {
 			mirror: 1
 		},
 		onModifyMove: function(move) {
-			switch (this.effectiveWeather()) {
+			switch (this.field.effectiveWeather()) {
 				case 'sunnyday':
 				case 'desolateland':
 					move.type = 'Fire';
@@ -1439,9 +1439,9 @@ exports.BattleMovedex = {
 				return 5;
 			},
 			onStart: function(target, source) {
-			this.removePseudoWeather('magicroom');
-			this.removePseudoWeather('wonderroom');
-			this.removePseudoWeather('inverseroom');
+			this.field.removePseudoWeather('magicroom');
+			this.field.removePseudoWeather('wonderroom');
+			this.field.removePseudoWeather('inverseroom');
 				this.add('-fieldstart', 'move: Trick Room', '[of] ' + source);
 			},
 			onRestart: function(target, source) {
@@ -1487,9 +1487,9 @@ exports.BattleMovedex = {
 				return 5;
 			},
 			onStart: function(target, source) {
-			this.removePseudoWeather('trickroom');
-			this.removePseudoWeather('wonderroom');
-			this.removePseudoWeather('inverseroom');
+			this.field.removePseudoWeather('trickroom');
+			this.field.removePseudoWeather('wonderroom');
+			this.field.removePseudoWeather('inverseroom');
 				this.add('-fieldstart', 'move: Magic Room', '[of] ' + source);
 			},
 			onRestart: function(target, source) {
@@ -1534,13 +1534,13 @@ exports.BattleMovedex = {
 				return 5;
 			},
 			onStart: function (side, source) {
-			this.removePseudoWeather('trickroom');
-			this.removePseudoWeather('magicroom');
-			this.removePseudoWeather('inverseroom');
+			this.field.removePseudoWeather('trickroom');
+			this.field.removePseudoWeather('magicroom');
+			this.field.removePseudoWeather('inverseroom');
 				this.add('-fieldstart', 'move: Wonder Room', '[of] ' + source);
 			},
 			onRestart: function (target, source) {
-				this.removePseudoWeather('wonderroom');
+				this.field.removePseudoWeather('wonderroom');
 			},
 			// Swapping defenses implemented in sim/pokemon.js:Pokemon#calculateStat and Pokemon#getStat
 			onResidualOrder: 24,
@@ -1685,7 +1685,7 @@ exports.BattleMovedex = {
 		accuracy: 100,
 		basePower: 75,
 		basePowerCallback: function (pokemon, target, move) {
-			if (this.pseudoWeather.trickroom || this.pseudoWeather.wonderroom || this.pseudoWeather.inverseroom || this.pseudoWeather.magicroom) {
+			if (this.field.pseudoWeather.trickroom || this.field.pseudoWeather.wonderroom || this.field.pseudoWeather.inverseroom || this.field.pseudoWeather.magicroom) {
 				return move.basePower * 1.5;
 			}
 			return move.basePower;
@@ -1703,10 +1703,10 @@ exports.BattleMovedex = {
 		},
 		secondary: false,
 		onAfterHit: function(target, source) {
-			this.removePseudoWeather('trickroom');
-			this.removePseudoWeather('magicroom');
-			this.removePseudoWeather('wonderroom');
-			this.removePseudoWeather('inverseroom');
+			this.field.removePseudoWeather('trickroom');
+			this.field.removePseudoWeather('magicroom');
+			this.field.removePseudoWeather('wonderroom');
+			this.field.removePseudoWeather('inverseroom');
 		},
 		onPrepareHit: function(target, source, move) {
 			this.attrLastMove('[still]');
