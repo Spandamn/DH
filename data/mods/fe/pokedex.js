@@ -243,6 +243,145 @@ exports.BattlePokedex = {
         weightkg: 17.55,
         color: "Black",
         eggGroups: ["Amorphous"],
+        otherFormes: ["chandeformsunny", "chandeformrainy", "chandeformsnowy", "chandeformsandy", "chandeformspooky", "chandeformprickly"],
+    },
+    chandeformsunny: {
+        num: 75004,
+        species: "Chandeform-Sunny",
+        baseSpecies: "Chandeform",
+        forme: "Sunny",
+        formeLetter: "S",
+        types: ["Ghost", "Fire"],
+        baseStats: {
+            hp: 75,
+            atk: 72,
+            def: 90,
+            spa: 117,
+            spd: 90,
+            spe: 85
+        },
+        abilities: {
+            0: "Flash Weather"
+        },
+        heightm: 0.645,
+        weightkg: 17.55,
+        color: "Black",
+        eggGroups: ["Amorphous"],
+    },
+    chandeformrainy: {
+        num: 75004,
+        species: "Chandeform-Rainy",
+        baseSpecies: "Chandeform",
+        forme: "Rainy",
+        formeLetter: "R",
+        types: ["Ghost", "Water"],
+        baseStats: {
+            hp: 75,
+            atk: 72,
+            def: 90,
+            spa: 117,
+            spd: 90,
+            spe: 85
+        },
+        abilities: {
+            0: "Flash Weather"
+        },
+        heightm: 0.645,
+        weightkg: 17.55,
+        color: "Black",
+        eggGroups: ["Amorphous"],
+    },
+    chandeformsnowy: {
+        num: 75004,
+        species: "Chandeform-Snowy",
+        baseSpecies: "Chandeform",
+        forme: "Snowy",
+        formeLetter: "S",
+        types: ["Ghost", "Ice"],
+        baseStats: {
+            hp: 75,
+            atk: 72,
+            def: 90,
+            spa: 117,
+            spd: 90,
+            spe: 85
+        },
+        abilities: {
+            0: "Flash Weather"
+        },
+        heightm: 0.645,
+        weightkg: 17.55,
+        color: "Black",
+        eggGroups: ["Amorphous"],
+    },
+    chandeformsandy: {
+        num: 75004,
+        species: "Chandeform-Sandy",
+        baseSpecies: "Chandeform",
+        forme: "Sandy",
+        formeLetter: "S",
+        types: ["Ghost", "Rock"],
+        baseStats: {
+            hp: 75,
+            atk: 72,
+            def: 90,
+            spa: 117,
+            spd: 90,
+            spe: 85
+        },
+        abilities: {
+            0: "Flash Weather"
+        },
+        heightm: 0.645,
+        weightkg: 17.55,
+        color: "Black",
+        eggGroups: ["Amorphous"],
+    },
+    chandeformspooky: {
+        num: 75004,
+        species: "Chandeform-Spooky",
+        baseSpecies: "Chandeform",
+        forme: "Spooky",
+        formeLetter: "S",
+        types: ["Ghost"],
+        baseStats: {
+            hp: 75,
+            atk: 72,
+            def: 90,
+            spa: 117,
+            spd: 90,
+            spe: 85
+        },
+        abilities: {
+            0: "Flash Weather"
+        },
+        heightm: 0.645,
+        weightkg: 17.55,
+        color: "Black",
+        eggGroups: ["Amorphous"],
+    },
+    chandeformprickly: {
+        num: 75004,
+        species: "Chandeform-Prickly",
+        baseSpecies: "Chandeform",
+        forme: "Prickly",
+        formeLetter: "P",
+        types: ["Ghost", "Grass"],
+        baseStats: {
+            hp: 75,
+            atk: 72,
+            def: 90,
+            spa: 117,
+            spd: 90,
+            spe: 85
+        },
+        abilities: {
+            0: "Flash Weather"
+        },
+        heightm: 0.645,
+        weightkg: 17.55,
+        color: "Black",
+        eggGroups: ["Amorphous"],
     },
     dynamiss: {
         num: 75015,
@@ -7326,7 +7465,7 @@ darkchomp: {
         weightkg: 16.65,
         color: "Gray",
         eggGroups: ["Undiscovered"],
-        otherFormes: ["polyform2sunny", "polyform2sunsnow", "polyform2rainy", "polyform2snowy", "polyform2sandy", "polyform2spooky"],
+        otherFormes: ["polyform2sunny", "polyform2sunsnow", "polyform2rainy", "polyform2snowy", "polyform2sandy", "polyform2spooky", "polyform2prickly"],
     },
     polyform2sunny: {
         num: 7500137,
@@ -7475,6 +7614,31 @@ darkchomp: {
         heightm: 0.455,
         weightkg: 16.65,
         color: "Purple",
+        eggGroups: ["Undiscovered"],
+    },
+    polyform2pricky: {
+        num: 7500137,
+        species: "Polyform2",
+        species: "Polyform2-Prickly",
+        baseSpecies: "Polyform2",
+        forme: "Prickly",
+        formeLetter: "P",
+        types: ["Ghost", "Grass"],
+        gender: "N",
+        baseStats: {
+            hp: 98,
+            atk: 75,
+            def: 90,
+            spa: 91,
+            spd: 90,
+            spe: 65
+        },
+        abilities: {
+            0: "Cactus Power"
+        },
+        heightm: 0.455,
+        weightkg: 16.65,
+        color: "Green",
         eggGroups: ["Undiscovered"],
     },
     swaggy: {
@@ -8138,7 +8302,7 @@ darkchomp: {
         weightkg: 5.05,
         color: "Gray",
         eggGroups: ["Fairy"],
-     	  otherFormes: ["cherformsunny", "cherformrainy", "cherformsnowy", "cherformsandy", "cherformspooky"],
+     	  otherFormes: ["cherformsunny", "cherformrainy", "cherformsnowy", "cherformsandy", "cherformspooky", "cherformprickly"],
     },
     cherformsunny: {
         num: 7500154,
@@ -8253,6 +8417,29 @@ darkchomp: {
         heightm: 0.405,
         weightkg: 5.05,
         color: "Purple",
+        eggGroups: ["Fairy"],
+    },
+    cherformprickly: {
+        num: 7500154,
+        species: "Cherform-Prickly",
+        baseSpecies: "Cherform",
+        forme: "Prickly",
+        formeLetter: "P",
+        types: ["Grass"],
+        baseStats: {
+            hp: 80,
+            atk: 75,
+            def: 80,
+            spa: 88,
+            spd: 84,
+            spe: 87
+        },
+        abilities: {
+            0: "Weather Front"
+        },
+        heightm: 0.405,
+        weightkg: 5.05,
+        color: "Green",
         eggGroups: ["Fairy"],
     },
     porymask: {
