@@ -1036,7 +1036,7 @@ exports.BattleMovedex = {
 		priority: 0,
 		flags: {bullet: 1, protect: 1, mirror: 1},
 		onModifyMove(move, pokemon) {
-			switch (this.effectiveWeather()) {
+			switch (this.field.effectiveWeather()) {
 			case 'sunnyday':
 			case 'desolateland':
 				move.type = 'Fire';
@@ -3358,10 +3358,10 @@ exports.BattleMovedex = {
             mirror: 1
         },
         onHitField(target, source, effect) {
-            if (this.pseudoWeather['negativezone']) {
-                this.removePseudoWeather('negativezone', source, effect, '[of] ' + source);
+            if (this.field.pseudoWeather['negativezone']) {
+                this.field.removePseudoWeather('negativezone', source, effect, '[of] ' + source);
             } else {
-                this.addPseudoWeather('negativezone', source, effect, '[of] ' + source);
+                this.field.addPseudoWeather('negativezone', source, effect, '[of] ' + source);
             }
         },
         effect: {
@@ -4148,7 +4148,7 @@ exports.BattleMovedex = {
             mirror: 1
         },
         onModifyMove(move) {
-            switch (this.effectiveWeather()) {
+            switch (this.field.effectiveWeather()) {
                 case 'sunnyday':
                 case 'desolateland':
                     move.type = 'Fire';
@@ -5632,7 +5632,7 @@ exports.BattleMovedex = {
             chance: 100,
             self: {
                 onHit() {
-                    this.setWeather('sunnyday');
+                    this.field.setWeather('sunnyday');
                 },
             },
         },
