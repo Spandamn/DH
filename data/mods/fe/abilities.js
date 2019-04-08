@@ -611,22 +611,22 @@ exports.BattleAbilities = {
 					}
 					return null;
 				} else if (move.type === 'Rock' && this.field.isWeather(['sandstorm'])) {
-					if (!this.heal(target.maxhp / 4)) {
+					if (!target.addVolatile('flashweatherrock')) {
 						this.add('-immune', target, '[msg]', '[from] ability: Flash Weather');
 					}
 					return null;
 				} else if (move.type === 'Ice' && this.field.isWeather(['hail', 'solarsnow'])) {
-					if (!this.heal(target.maxhp / 4)) {
+					if (!target.addVolatile('flashweatherice')) {
 						this.add('-immune', target, '[msg]', '[from] ability: Flash Weather');
 					}
 					return null;
 				} else if (move.type === 'Ghost' && this.field.isWeather(['shadowdance'])) {
-					if (!this.heal(target.maxhp / 4)) {
+					if (!target.addVolatile('flashweatherghost')) {
 						this.add('-immune', target, '[msg]', '[from] ability: Flash Weather');
 					}
 					return null;
 				} else if (move.type === 'Grass' && this.field.isWeather(['cactuspower'])) {
-					if (!this.heal(target.maxhp / 4)) {
+					if (!target.addVolatile('flashweathergrass')) {
 						this.add('-immune', target, '[msg]', '[from] ability: Flash Weather');
 					}
 					return null;
