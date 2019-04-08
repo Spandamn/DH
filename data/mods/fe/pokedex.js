@@ -201,7 +201,7 @@ exports.BattlePokedex = {
     azuninja: {
         num: 75003,
         species: "Azuninja",
-        types: ["Water"],
+        types: ["Water", "Dark"],
         genderRatio: {
             M: 0.75,
             F: 0.25
@@ -321,15 +321,15 @@ exports.BattlePokedex = {
             F: 0.25
         },
         baseStats: {
-            hp: 96,
-            atk: 166,
-            def: 85,
-            spa: 72,
-            spd: 70,
-            spe: 87
+            hp: 101,
+            atk: 171,
+            def: 90,
+            spa: 77,
+            spd: 75,
+            spe: 92
         },
         abilities: {
-            0: "Intense Rivalry"
+            0: "Mold Breaker"
         },
         heightm: 1.7,
         weightkg: 104,
@@ -415,7 +415,7 @@ exports.BattlePokedex = {
             spe: 101
         },
         abilities: {
-            0: "Land Shark"
+            0: "Veil of Intimidation"
         },
         heightm: 4.205,
         weightkg: 165,
@@ -1010,7 +1010,7 @@ exports.BattlePokedex = {
             spe: 74
         },
         abilities: {
-            0: "Snow Force"
+            0: "Slush Rush"
         },
         heightm: 0.35,
         weightkg: 7.5,
@@ -1031,7 +1031,7 @@ exports.BattlePokedex = {
             spe: 94
         },
         abilities: {
-            0: "Snow Force"
+            0: "Slush Rush"
         },
 		  prevo: "drilnub",
 		  evoLevel: 30,
@@ -1096,7 +1096,7 @@ exports.BattlePokedex = {
             spe: 110
         },
         abilities: {
-            0: "Technicutter"
+            0: "First Aid"
         },
         heightm: 1.755,
         weightkg: 49.25,
@@ -4926,7 +4926,7 @@ exports.BattlePokedex = {
         weightkg: 18.9,
 		  prevo: "happipi",
 		  evos: ["blisskiss"],
-		  evoLevel: 2,
+	     evoType: "levelFriendship",
         color: "White",
         eggGroups: ["Fairy"],
     },
@@ -4949,7 +4949,8 @@ exports.BattlePokedex = {
         heightm: 1.5,
         weightkg: 42.4,
 		  prevo: "chantic",
-		  evoLevel: 2,
+		  evoType: "stone",
+		  evoItem: "Shiny Stone",
         color: "White",
         eggGroups: ["Fairy"],
     },
@@ -14499,9 +14500,10 @@ celebi: {
         },
         color: "Blue",
 		 prevo: "eevee",
-		 evoLevel: 2,
-        heightm: 1,
-        weightkg: 26.25,
+		 evoType: "levelExtra",
+		 evoCondition: "with a Water-type move and two levels of Affection",
+       heightm: 1,
+       weightkg: 26.25,
 		 eggGroups: ["Field"],
     },
     raptalon: {
