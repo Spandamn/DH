@@ -843,17 +843,17 @@ exports.BattleItems = {
 		fling: {
 			basePower: 10,
 		},
-		onStart: function (pokemon) {
+		onStart(pokemon) {
 			if (pokemon.volatiles['choicelock']) {
 				this.debug('removing choicelock: ' + pokemon.volatiles.choicelock);
 			}
 			pokemon.removeVolatile('choicelock');
 		},
-		onModifyMove: function (move, pokemon) {
+		onModifyMove(move, pokemon) {
 			pokemon.addVolatile('choicelock');
 		},
 		onModifyAtkPriority: 1,
-		onModifyAtk: function (atk) {
+		onModifyAtk(atk) {
 			return this.chainModify(1.5);
 		},
 		isChoice: true,
