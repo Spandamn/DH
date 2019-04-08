@@ -653,10 +653,10 @@ let BattleAbilities = {
 		desc: "On switch-in, the weather becomes strong winds that remove the weaknesses of the Flying type from Flying-type Pokemon. This weather remains in effect until this Ability is no longer active for any Pokemon, or the weather is changed by Desolate Land or Primordial Sea.",
 		shortDesc: "On switch-in, strong winds begin until this Ability is not active in battle.",
 		onStart: function (source) {
-			this.setWeather('deltastream');
+			this.field.setWeather('deltastream');
 		},
 		onAnySetWeather: function (target, source, weather) {
-			if (this.getWeather().id === 'deltastream' && !['desolateland', 'primordialsea', 'deltastream'].includes(weather.id)) return false;
+			if (this.field.getWeather().id === 'deltastream' && !['desolateland', 'primordialsea', 'deltastream'].includes(weather.id)) return false;
 		},
 		onEnd: function (pokemon) {
 			if (this.field.weatherData.source !== pokemon) return;
@@ -680,10 +680,10 @@ let BattleAbilities = {
 		desc: "On switch-in, the weather becomes extremely harsh sunlight that prevents damaging Water-type moves from executing, in addition to all the effects of Sunny Day. This weather remains in effect until this Ability is no longer active for any Pokemon, or the weather is changed by Delta Stream or Primordial Sea.",
 		shortDesc: "On switch-in, extremely harsh sunlight begins until this Ability is not active in battle.",
 		onStart: function (source) {
-			this.setWeather('desolateland');
+			this.field.setWeather('desolateland');
 		},
 		onAnySetWeather: function (target, source, weather) {
-			if (this.getWeather().id === 'desolateland' && !['desolateland', 'primordialsea', 'deltastream'].includes(weather.id)) return false;
+			if (this.field.getWeather().id === 'desolateland' && !['desolateland', 'primordialsea', 'deltastream'].includes(weather.id)) return false;
 		},
 		onEnd: function (pokemon) {
 			if (this.field.weatherData.source !== pokemon) return;
@@ -761,7 +761,7 @@ let BattleAbilities = {
 				if (action.choice === 'runPrimal' && action.pokemon === source && source.template.speciesid === 'kyogre') return;
 				if (action.choice !== 'runSwitch' && action.choice !== 'runPrimal') break;
 			}
-			this.setWeather('raindance');
+			this.field.setWeather('raindance');
 		},
 		id: "drizzle",
 		name: "Drizzle",
@@ -775,7 +775,7 @@ let BattleAbilities = {
 				if (action.choice === 'runPrimal' && action.pokemon === source && source.template.speciesid === 'groudon') return;
 				if (action.choice !== 'runSwitch' && action.choice !== 'runPrimal') break;
 			}
-			this.setWeather('sunnyday');
+			this.field.setWeather('sunnyday');
 		},
 		id: "drought",
 		name: "Drought",
@@ -2486,10 +2486,10 @@ let BattleAbilities = {
 		desc: "On switch-in, the weather becomes heavy rain that prevents damaging Fire-type moves from executing, in addition to all the effects of Rain Dance. This weather remains in effect until this Ability is no longer active for any Pokemon, or the weather is changed by Delta Stream or Desolate Land.",
 		shortDesc: "On switch-in, heavy rain begins until this Ability is not active in battle.",
 		onStart: function (source) {
-			this.setWeather('primordialsea');
+			this.field.setWeather('primordialsea');
 		},
 		onAnySetWeather: function (target, source, weather) {
-			if (this.getWeather().id === 'primordialsea' && !['desolateland', 'primordialsea', 'deltastream'].includes(weather.id)) return false;
+			if (this.field.getWeather().id === 'primordialsea' && !['desolateland', 'primordialsea', 'deltastream'].includes(weather.id)) return false;
 		},
 		onEnd: function (pokemon) {
 			if (this.field.weatherData.source !== pokemon) return;
@@ -2777,7 +2777,7 @@ let BattleAbilities = {
 	"sandstream": {
 		shortDesc: "On switch-in, this Pokemon summons Sandstorm.",
 		onStart: function (source) {
-			this.setWeather('sandstorm');
+			this.field.setWeather('sandstorm');
 		},
 		id: "sandstream",
 		name: "Sand Stream",
@@ -3131,7 +3131,7 @@ let BattleAbilities = {
 	"snowwarning": {
 		shortDesc: "On switch-in, this Pokemon summons Hail.",
 		onStart: function (source) {
-			this.setWeather('hail');
+			this.field.setWeather('hail');
 		},
 		id: "snowwarning",
 		name: "Snow Warning",
