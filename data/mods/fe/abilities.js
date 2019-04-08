@@ -8462,20 +8462,20 @@ exports.BattleAbilities = {
 			this.field.setWeather('hail');
 		},
 		onAnySetWeather(target, source, weather) {
-			if (this.getWeather().id === 'hail') return false;
+			if (this.field.getWeather().id === 'hail') return false;
 		},
 		onEnd(pokemon) {
-			if (this.weatherData.source !== pokemon) return;
+			if (this.field.weatherData.source !== pokemon) return;
 			for (const side of this.sides) {
 				for (const target of side.active) {
 					if (target === pokemon) continue;
 					if (target && target.hp && target.hasAbility('agelessblizzard')) {
-						this.weatherData.source = target;
+						this.field.weatherData.source = target;
 						return;
 					}
 				}
 			}
-			this.clearWeather();
+			this.field.clearWeather();
 		},
 		id: "agelessblizzard",
 		name: "Ageless Blizzard",
@@ -11594,20 +11594,20 @@ exports.BattleAbilities = {
 		// airborneness implemented in pokemon.js:Pokemon#isGrounded; The following is just in case it doesn't work.
 		
 // 		onBoost(boost, target, source, effect) {
-// 			if ((effect.id === 'cosmicweb' || effect.id === 'stickyweb' || effect.id === 'slipperyweb') && !this.pseudoWeather['gravity'] && target.item !== 'ironball') return false;
+// 			if ((effect.id === 'cosmicweb' || effect.id === 'stickyweb' || effect.id === 'slipperyweb') && !this.field.pseudoWeather['gravity'] && target.item !== 'ironball') return false;
 // 		},
 // 		onDamage(damage, target, source, effect) {
-// 			if (effect && effect.id === 'spikes' && !this.pseudoWeather['gravity'] && !target.volatiles['smackdown'] && !target.item !== 'ironball') {
+// 			if (effect && effect.id === 'spikes' && !this.field.pseudoWeather['gravity'] && !target.volatiles['smackdown'] && !target.item !== 'ironball') {
 // 				return false;
 // 			}
 // 		},
 // 		onUpdate(pokemon) {
-// 			if (!pokemon.volatiles['magnetrise'] && !this.pseudoWeather['gravity'] && !pokemon.volatiles['smackdown'] && pokemon.item !== 'ironball'){
+// 			if (!pokemon.volatiles['magnetrise'] && !this.field.pseudoWeather['gravity'] && !pokemon.volatiles['smackdown'] && pokemon.item !== 'ironball'){
 // 				pokemon.addVolatile('magnetrise');
 // 			}
 // 		},
 // 		onSetStatus(status, target, source, effect) {
-// 			if (target.item === 'ironball' || this.pseudoWeather['gravity'] || target.volatiles['smackdown']) return;
+// 			if (target.item === 'ironball' || this.field.pseudoWeather['gravity'] || target.volatiles['smackdown']) return;
 // 			if (!effect || !effect.status) return false;
 // 			if (effect.id === 'toxicspikes' || effect.id === 'stickyvenom') return false;
 // 		},
@@ -12949,7 +12949,7 @@ exports.BattleAbilities = {
     desc: "As long as this Pokemon is active, slower Pokeon move first. This Pokemon's Speed is lowered by 1 stage at the end of each full turn it has been on the field.",
     shortDesc: "As long as this Pokemon is active, slower Pokemon move first. At the end of each turn, its Speed is reduced by 1 stage. Trick Room cannot be used when this Pokemon is active.",
     onStart(source) {
-        this.addPseudoWeather('sluggishaura');
+        this.field.addPseudoWeather('sluggishaura');
     },
     onAnyTryMove(target, source, effect) {
         if (effect.effectType === 'Move' && effect.id === 'trickroom' && this.field.pseudoWeather.sluggishaura) {
@@ -12966,7 +12966,7 @@ exports.BattleAbilities = {
                 }
             }
         }
-        this.removePseudoWeather('sluggishaura');
+        this.field.removePseudoWeather('sluggishaura');
     },
     onResidualOrder: 26,
     onResidualSubOrder: 1,
