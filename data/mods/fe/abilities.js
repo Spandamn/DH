@@ -889,23 +889,21 @@ exports.BattleAbilities = {
 		name: "Serene Focus",
 	},
 	"torrentveil": {
-		shortDesc: "At 1/3 or less of its max HP, this Pokemon's attacking stat is 1.5x with Water attacks and the Pokemon has 1.25x evasion.",
+		shortDesc: "At 1/3 or less of its max HP or under Sandstorm, this Pokemon's attacking stat is 1.5x with Water attacks. These boosts do not stack.",
 		onModifyAtkPriority: 5,
 		onModifyAtk(atk, attacker, defender, move) {
-			if (move.type === 'Water' && attacker.hp <= attacker.maxhp / 3) {
+			if (move.isInInvertedWeather && this.field.isWeather(['sandstorm', 'cactuspower'])) return;
+			if (move.type === 'Water' && (attacker.hp <= attacker.maxhp / 3 || this.field.isWeather(['sandstorm', 'cactuspower']))) {
+				this.debug('Torrent boost');
 				return this.chainModify(1.5);
 			}
 		},
 		onModifySpAPriority: 5,
 		onModifySpA(atk, attacker, defender, move) {
-			if (move.type === 'Water' && attacker.hp <= attacker.maxhp / 3) {
+			if (move.isInInvertedWeather && this.field.isWeather(['sandstorm', 'cactuspower'])) return;
+			if (move.type === 'Water' && (attacker.hp <= attacker.maxhp / 3 || this.field.isWeather(['sandstorm', 'cactuspower']))) {
+				this.debug('Torrent boost');
 				return this.chainModify(1.5);
-			}
-		},
-		onModifyAccuracy(accuracy, target) {
-			if (typeof accuracy !== 'number') return;
-			if (target.hp <= target.maxhp / 3) {
-				return accuracy * 0.8;
 			}
 		},
 		id: "torrentveil",
@@ -13560,5 +13558,24 @@ exports.BattleAbilities = {
 		},
 		id: "adblock",
 		name: "Adblock",
+	},
+	"slippery": {
+		desc: "This Pokemon's Status and Ice moves have priority raised by 1 and act as if Hail is active, but Dark types are immune. Using a boosted move restores 6.25% of this Pokemon's HP after use. If Sunny Day is active, this ability treats affected moves as if Solar Snow were active instead.",
+		shortDesc: "This Pokemon's Status and Ice moves have priority raised by 1 and act as if Hail is active, but Dark types are immune. Using a boosted move restores 6.25% of this Pokemon's HP after use.",
+		onModifyPriority(priority, pokemon, target, move) {
+			if (move && (move.category === 'Status' || move.type === 'Ice')) {
+				move.pranksterBoosted = true;
+				return priority + 1;
+			}
+		},
+		onSourceHit(target, source, move) {
+			if (!move || !target) return;
+			if (move.pranksterBoosted) {
+				this.heal(source.maxhp / 16, source, source);
+			}
+		},
+		//Relevant edits are made wherever applicable.
+		id: "slippery",
+		name: "Slippery",
 	},
 };
