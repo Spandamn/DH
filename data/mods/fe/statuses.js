@@ -382,6 +382,9 @@ afterstorm: {
 			},
 	},
 		flashweatherice: {
+			name: 'flashweatherice',
+			id: 'flashweatherice',
+			num: 0,
 			noCopy: true, // doesn't get copied by Baton Pass
 			onStart(target) {
 				this.add('-start', target, 'ability: Flash Weather');
@@ -405,6 +408,9 @@ afterstorm: {
 			},
 		},
 		flashweatherrock: {
+			name: 'flashweatherrock',
+			id: 'flashweatherrock',
+			num: 0,
 			noCopy: true, // doesn't get copied by Baton Pass
 			onStart(target) {
 				this.add('-start', target, 'ability: Flash Weather');
@@ -428,6 +434,9 @@ afterstorm: {
 			},
 		},
 		flashweatherghost: {
+			name: 'flashweatherghost',
+			id: 'flashweatherghost',
+			num: 0,
 			noCopy: true, // doesn't get copied by Baton Pass
 			onStart(target) {
 				this.add('-start', target, 'ability: Flash Weather');
@@ -451,6 +460,9 @@ afterstorm: {
 			},
 		},
 		flashweathergrass: {
+			name: 'flashweathergrass',
+			id: 'flashweathergrass',
+			num: 0,
 			noCopy: true, // doesn't get copied by Baton Pass
 			onStart(target) {
 				this.add('-start', target, 'ability: Flash Weather');
