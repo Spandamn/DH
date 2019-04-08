@@ -325,6 +325,49 @@ afterstorm: {
         this.add('-weather', 'none');
     },
 },
+	cactusforce: {
+		name: 'CactusForce',
+		id: 'cactusforce',
+		num: 0,
+		effectType: 'Weather',
+		duration: 5,
+		durationCallback(source, effect) {
+			if (source && source.hasItem('smoothrock')) {
+				return 8;
+			}
+			return 5;
+		},
+		// This should be applied directly to the stat before any of the other modifiers are chained
+		// So we give it increased priority.
+		onModifySpDPriority: 10,
+		onModifySpD(spd, pokemon) {
+			if (pokemon.hasType(['Rock', 'Grass']) && this.field.isWeather('cactusforce')) {
+				if ((pokemon.volatiles['atmosphericperversion'] && pokemon.volatiles['weatherbreak']) || !(pokemon.volatiles['atmosphericperversion'] || pokemon.volatiles['weatherbreak'])){
+					return this.modify(spd, 1.5);
+				}
+				return this.modify(spd, [0x0AAB, 0x1000]);
+			}
+		},
+		onStart(battle, source, effect) {
+			if (effect && effect.effectType === 'Ability') {
+				if (this.gen <= 5) this.effectData.duration = 0;
+				this.add('-weather', 'CactusForce', '[from] ability: ' + effect, '[of] ' + source);
+			} else {
+				this.add('-weather', 'CactusForce');
+			}
+		},
+		onResidualOrder: 1,
+		onResidual() {
+			this.add('-weather', 'CactusForce', '[upkeep]');
+			if (this.field.isWeather('cactusforce')) this.eachEvent('Weather');
+		},
+		onWeather(target) {
+			this.damage(target.maxhp / 16);
+		},
+		onEnd() {
+			this.add('-weather', 'none');
+		},
+	},
 	titanicstrength: {
 		name: 'TitanicStrength',
 		id: 'titanicstrength',
