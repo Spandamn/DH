@@ -384,20 +384,29 @@ exports.BattleStatuses = {
 		},
 	},
 	choicelock: {
-		onStart: function (pokemon) {
-			if (!this.activeMove.id || this.activeMove.sourceEffect && this.activeMove.sourceEffect !== this.activeMove.id) return false;
+		name: 'choicelock',
+		id: 'choicelock',
+		num: 0,
+		noCopy: true,
+		onStart(pokemon) {
+			if (!this.activeMove) throw new Error("Battle.activeMove is null");
+			if (!this.activeMove.id || this.activeMove.hasBounced) return false;
 			this.effectData.move = this.activeMove.id;
 		},
-		onBeforeMove: function (pokemon, target, move) {
-			if (move.id !== this.effectData.move && move.id !== 'struggle') {
-				// Fails even if the Choice item is being ignored, and no PP is lost
+		onBeforeMove(pokemon, target, move) {
+			if (!pokemon.getItem().isChoice) {
+				pokemon.removeVolatile('choicelock');
+				return;
+			}
+			if (!pokemon.ignoringItem() && move.id !== this.effectData.move && move.id !== 'struggle') {
+				// Fails unless the Choice item is being ignored, and no PP is lost
 				this.addMove('move', pokemon, move.name);
 				this.attrLastMove('[still]');
 				this.add('-fail', pokemon);
 				return false;
 			}
 		},
-		onDisableMove: function (pokemon) {
+		onDisableMove(pokemon) {
 			if (!pokemon.getItem().isChoice || !pokemon.hasMove(this.effectData.move)) {
 				pokemon.removeVolatile('choicelock');
 				return;
@@ -405,10 +414,9 @@ exports.BattleStatuses = {
 			if (pokemon.ignoringItem()) {
 				return;
 			}
-			let moves = pokemon.moveset;
-			for (let i = 0; i < moves.length; i++) {
-				if (moves[i].id !== this.effectData.move) {
-					pokemon.disableMove(moves[i].id, false, this.effectData.sourceEffect);
+			for (const moveSlot of pokemon.moveSlots) {
+				if (moveSlot.id !== this.effectData.move) {
+					pokemon.disableMove(moveSlot.id, false, this.effectData.sourceEffect);
 				}
 			}
 		},
