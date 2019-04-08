@@ -11042,7 +11042,7 @@ exports.BattleAbilities = {
 			noCopy: true,
 			duration: 0,
 			onDamage(damage, target, source, effect) {
-				if (effect && (effect.id === 'sandstorm' || effect.id === 'hail' || effect.id === 'solarsnow') && !target.volatiles['atmosphericperversion']) {
+				if (effect && (effect.id === 'sandstorm' || effect.id === 'hail' || effect.id === 'solarsnow' || effect.id === 'cactuspower') && !target.volatiles['atmosphericperversion']) {
    	         this.heal(target.maxhp / 16);
 					return false;
 				}
@@ -11110,7 +11110,7 @@ exports.BattleAbilities = {
 			noCopy: true,
 			duration: 0,
 			onDamage(damage, target, source, effect) {
-				if (effect && (effect.id === 'sandstorm' || effect.id === 'hail' || effect.id === 'solarsnow') && !target.volatiles['weatherbreak']) {
+				if (effect && (effect.id === 'sandstorm' || effect.id === 'hail' || effect.id === 'solarsnow' || effect.id === 'cactuspower') && !target.volatiles['weatherbreak']) {
    	         this.heal(target.maxhp / 16);
 					return false;
 				}
