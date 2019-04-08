@@ -2416,7 +2416,7 @@ exports.BattleAbilities = {
 		shortDesc: "During hail or sun, this Pokemon's Special Attack is 1.5x and recovers 1/16 HP every turn. Stacks when both are active.",
 		onModifySpAPriority: 5,
 		onModifySpA(atk, attacker, defender, move) {
-			if (this.field.isWeather(['sunnday', 'desolateland', 'hail'])) {
+			if (this.field.isWeather(['sunnyday', 'desolateland', 'hail'])) {
 				this.debug('Kindle boost');
 				if (move.isInInvertedWeather){
 					return this.chainModify([0x0AAB, 0x1000]);
