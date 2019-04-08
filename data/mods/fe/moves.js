@@ -3758,10 +3758,10 @@ exports.BattleMovedex = {
             protect: 1,
             mirror: 1
         },
-        onModifyMove(move) {
-            if (this.field.isWeather(['sunnyday', 'desolateland'])) {
+			onModifyMove(move, source, target) {
+            if ((this.field.isWeather(['sunnyday', 'desolateland', 'solarsnow']) === move.isInInvertedWeather) || (this.field.isWeather('hail') || source.hasAbility('slippery')) !== move.isInInvertedWeather) {
                 move.accuracy = true;
-            } else if (this.field.isWeather('hail')) {
+            } else if ((this.field.isWeather(['sunnyday', 'desolateland', 'solarsnow']) !== move.isInInvertedWeather) || (this.field.isWeather('hail') || source.hasAbility('slippery')) === move.isInInvertedWeather) {
                 move.accuracy = 60;
             }
         },
@@ -7517,11 +7517,16 @@ exports.BattleMovedex = {
 		pp: 5,
 		priority: 0,
 		flags: {contact: 1, protect: 1, mirror: 1},
-		onModifyMove(move) {
-		    if (this.field.isWeather('hail')) {
-		        move.accuracy = true;
-				  delete move.recoil;
-		    }
+		onModifyMove(move, source, target) {
+			if (this.field.isWeather(['hail', 'solarsnow']) || source.hasAbility('slippery')){
+				 if (move.isInInvertedWeather) {
+					 move.recoil = [move.recoil[0]*3, move.recoil[1]*2];
+					 move.accuracy = 50;
+				  } else {
+					 delete move.recoil;
+					 move.accuracy = true;
+					}
+			}
 		},
 		recoil: [1, 2],
 		secondary: false,
