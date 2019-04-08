@@ -484,7 +484,7 @@ exports.BattlePokedex = {
             spe: 60
         },
         abilities: {
-            0: "Normal Veil"
+            0: "Normalized Enemy"
         },
         heightm: 1.4,
         weightkg: 70.5,
@@ -506,7 +506,7 @@ exports.BattlePokedex = {
             spe: 75
         },
         abilities: {
-            0: "Normal Veil"
+            0: "Normalized Enemy"
         },
         heightm: 7.795,
         weightkg: 215.3,
