@@ -853,7 +853,7 @@ exports.BattleAbilities = {
 	"electricsurge": {
 		shortDesc: "On switch-in, this Pokemon summons Electric Terrain.",
 		onStart: function (source) {
-			this.useMove("Electric Terrain", source);
+			this.field.setTerrain('electricterrain')
 		},
 		id: "electricsurge",
 		name: "Electric Surge",
@@ -1256,7 +1256,7 @@ exports.BattleAbilities = {
 	"grassysurge": {
 		shortDesc: "On switch-in, this Pokemon summons Grassy Terrain.",
 		onStart: function (source) {
-			this.useMove("Grassy Terrain", source);
+			this.field.setTerrain('grassyterrain');
 		},
 		id: "grassysurge",
 		name: "Grassy Surge",
@@ -1956,7 +1956,7 @@ exports.BattleAbilities = {
 	"mistysurge": {
 		shortDesc: "On switch-in, this Pokemon summons Misty Terrain.",
 		onStart: function (source) {
-			this.useMove("Misty Terrain", source);
+			this.field.setTerrain('mistyterrain');
 		},
 		id: "mistysurge",
 		name: "Misty Surge",
@@ -2592,6 +2592,7 @@ exports.BattleAbilities = {
 		shortDesc: "On switch-in, this Pokemon summons Psychic Terrain.",
 		onStart: function (source) {
 			this.useMove("Psychic Terrain", source);
+			this.field.setTerrain('psychicterrain');
 		},
 		id: "psychicsurge",
 		name: "Psychic Surge",
@@ -4251,7 +4252,7 @@ exports.BattleAbilities = {
 	"healingsurge": {
 		shortDesc: "On switch-in, this Pokemon summons Healing Terrain.",
 		onStart: function (source) {
-			this.useMove("Healing Terrain", source);
+			this.field.setTerrain('healingterrain');
 		},
 		id: "healingsurge",
 		name: "Healing Surge",
@@ -4289,7 +4290,7 @@ exports.BattleAbilities = {
 	"temporalshift": {
 		shortDesc: "On switch-in, this Pokemon summons Trick Room.",
 		onStart: function (source) {
-			this.useMove("Trick Room", source);
+			this.field.addPseudoWeather('trickroom');
 		},
 		id: "temporalshift",
 		name: "Temporal Shift",
@@ -4337,7 +4338,7 @@ exports.BattleAbilities = {
 	"gravitypull": {
 		shortDesc: "On switch-in, this Pokemon summons Gravity.",
 		onStart: function (source) {
-			this.useMove("Gravity", source);
+			this.field.addPseudoWeather('gravity');
 		},
 		id: "gravitypull",
 		name: "gravitypull",
