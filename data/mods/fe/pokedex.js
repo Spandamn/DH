@@ -201,7 +201,7 @@ exports.BattlePokedex = {
     azuninja: {
         num: 75003,
         species: "Azuninja",
-        types: ["Water"],
+        types: ["Water", "Dark"],
         genderRatio: {
             M: 0.75,
             F: 0.25
@@ -228,6 +228,145 @@ exports.BattlePokedex = {
         num: 75004,
         species: "Chandeform",
         types: ["Ghost", "Normal"],
+        baseStats: {
+            hp: 75,
+            atk: 72,
+            def: 90,
+            spa: 117,
+            spd: 90,
+            spe: 85
+        },
+        abilities: {
+            0: "Flash Weather"
+        },
+        heightm: 0.645,
+        weightkg: 17.55,
+        color: "Black",
+        eggGroups: ["Amorphous"],
+        otherFormes: ["chandeformsunny", "chandeformrainy", "chandeformsnowy", "chandeformsandy", "chandeformspooky", "chandeformprickly"],
+    },
+    chandeformsunny: {
+        num: 75004,
+        species: "Chandeform-Sunny",
+        baseSpecies: "Chandeform",
+        forme: "Sunny",
+        formeLetter: "S",
+        types: ["Ghost", "Fire"],
+        baseStats: {
+            hp: 75,
+            atk: 72,
+            def: 90,
+            spa: 117,
+            spd: 90,
+            spe: 85
+        },
+        abilities: {
+            0: "Flash Weather"
+        },
+        heightm: 0.645,
+        weightkg: 17.55,
+        color: "Black",
+        eggGroups: ["Amorphous"],
+    },
+    chandeformrainy: {
+        num: 75004,
+        species: "Chandeform-Rainy",
+        baseSpecies: "Chandeform",
+        forme: "Rainy",
+        formeLetter: "R",
+        types: ["Ghost", "Water"],
+        baseStats: {
+            hp: 75,
+            atk: 72,
+            def: 90,
+            spa: 117,
+            spd: 90,
+            spe: 85
+        },
+        abilities: {
+            0: "Flash Weather"
+        },
+        heightm: 0.645,
+        weightkg: 17.55,
+        color: "Black",
+        eggGroups: ["Amorphous"],
+    },
+    chandeformsnowy: {
+        num: 75004,
+        species: "Chandeform-Snowy",
+        baseSpecies: "Chandeform",
+        forme: "Snowy",
+        formeLetter: "S",
+        types: ["Ghost", "Ice"],
+        baseStats: {
+            hp: 75,
+            atk: 72,
+            def: 90,
+            spa: 117,
+            spd: 90,
+            spe: 85
+        },
+        abilities: {
+            0: "Flash Weather"
+        },
+        heightm: 0.645,
+        weightkg: 17.55,
+        color: "Black",
+        eggGroups: ["Amorphous"],
+    },
+    chandeformsandy: {
+        num: 75004,
+        species: "Chandeform-Sandy",
+        baseSpecies: "Chandeform",
+        forme: "Sandy",
+        formeLetter: "S",
+        types: ["Ghost", "Rock"],
+        baseStats: {
+            hp: 75,
+            atk: 72,
+            def: 90,
+            spa: 117,
+            spd: 90,
+            spe: 85
+        },
+        abilities: {
+            0: "Flash Weather"
+        },
+        heightm: 0.645,
+        weightkg: 17.55,
+        color: "Black",
+        eggGroups: ["Amorphous"],
+    },
+    chandeformspooky: {
+        num: 75004,
+        species: "Chandeform-Spooky",
+        baseSpecies: "Chandeform",
+        forme: "Spooky",
+        formeLetter: "S",
+        types: ["Ghost"],
+        baseStats: {
+            hp: 75,
+            atk: 72,
+            def: 90,
+            spa: 117,
+            spd: 90,
+            spe: 85
+        },
+        abilities: {
+            0: "Flash Weather"
+        },
+        heightm: 0.645,
+        weightkg: 17.55,
+        color: "Black",
+        eggGroups: ["Amorphous"],
+    },
+    chandeformprickly: {
+        num: 75004,
+        species: "Chandeform-Prickly",
+        baseSpecies: "Chandeform",
+        forme: "Prickly",
+        formeLetter: "P",
+        types: ["Ghost", "Grass"],
         baseStats: {
             hp: 75,
             atk: 72,
@@ -321,15 +460,15 @@ exports.BattlePokedex = {
             F: 0.25
         },
         baseStats: {
-            hp: 96,
-            atk: 166,
-            def: 85,
-            spa: 72,
-            spd: 70,
-            spe: 87
+            hp: 101,
+            atk: 171,
+            def: 90,
+            spa: 77,
+            spd: 75,
+            spe: 92
         },
         abilities: {
-            0: "Intense Rivalry"
+            0: "Mold Breaker"
         },
         heightm: 1.7,
         weightkg: 104,
@@ -415,7 +554,7 @@ exports.BattlePokedex = {
             spe: 101
         },
         abilities: {
-            0: "Land Shark"
+            0: "Veil of Intimidation"
         },
         heightm: 4.205,
         weightkg: 165,
@@ -484,7 +623,7 @@ exports.BattlePokedex = {
             spe: 60
         },
         abilities: {
-            0: "Normal Veil"
+            0: "Normalized Enemy"
         },
         heightm: 1.4,
         weightkg: 70.5,
@@ -506,7 +645,7 @@ exports.BattlePokedex = {
             spe: 75
         },
         abilities: {
-            0: "Normal Veil"
+            0: "Normalized Enemy"
         },
         heightm: 7.795,
         weightkg: 215.3,
@@ -1010,7 +1149,7 @@ exports.BattlePokedex = {
             spe: 74
         },
         abilities: {
-            0: "Snow Force"
+            0: "Slush Rush"
         },
         heightm: 0.35,
         weightkg: 7.5,
@@ -1031,7 +1170,7 @@ exports.BattlePokedex = {
             spe: 94
         },
         abilities: {
-            0: "Snow Force"
+            0: "Slush Rush"
         },
 		  prevo: "drilnub",
 		  evoLevel: 30,
@@ -1096,7 +1235,7 @@ exports.BattlePokedex = {
             spe: 110
         },
         abilities: {
-            0: "Technicutter"
+            0: "First Aid"
         },
         heightm: 1.755,
         weightkg: 49.25,
@@ -4926,7 +5065,7 @@ exports.BattlePokedex = {
         weightkg: 18.9,
 		  prevo: "happipi",
 		  evos: ["blisskiss"],
-		  evoLevel: 2,
+	     evoType: "levelFriendship",
         color: "White",
         eggGroups: ["Fairy"],
     },
@@ -4949,7 +5088,8 @@ exports.BattlePokedex = {
         heightm: 1.5,
         weightkg: 42.4,
 		  prevo: "chantic",
-		  evoLevel: 2,
+		  evoType: "stone",
+		  evoItem: "Shiny Stone",
         color: "White",
         eggGroups: ["Fairy"],
     },
@@ -7325,7 +7465,7 @@ darkchomp: {
         weightkg: 16.65,
         color: "Gray",
         eggGroups: ["Undiscovered"],
-        otherFormes: ["polyform2sunny", "polyform2sunsnow", "polyform2rainy", "polyform2snowy", "polyform2sandy", "polyform2spooky"],
+        otherFormes: ["polyform2sunny", "polyform2sunsnow", "polyform2rainy", "polyform2snowy", "polyform2sandy", "polyform2spooky", "polyform2prickly"],
     },
     polyform2sunny: {
         num: 7500137,
@@ -7474,6 +7614,31 @@ darkchomp: {
         heightm: 0.455,
         weightkg: 16.65,
         color: "Purple",
+        eggGroups: ["Undiscovered"],
+    },
+    polyform2pricky: {
+        num: 7500137,
+        species: "Polyform2",
+        species: "Polyform2-Prickly",
+        baseSpecies: "Polyform2",
+        forme: "Prickly",
+        formeLetter: "P",
+        types: ["Ghost", "Grass"],
+        gender: "N",
+        baseStats: {
+            hp: 98,
+            atk: 75,
+            def: 90,
+            spa: 91,
+            spd: 90,
+            spe: 65
+        },
+        abilities: {
+            0: "Cactus Power"
+        },
+        heightm: 0.455,
+        weightkg: 16.65,
+        color: "Green",
         eggGroups: ["Undiscovered"],
     },
     swaggy: {
@@ -8137,7 +8302,7 @@ darkchomp: {
         weightkg: 5.05,
         color: "Gray",
         eggGroups: ["Fairy"],
-     	  otherFormes: ["cherformsunny", "cherformrainy", "cherformsnowy", "cherformsandy", "cherformspooky"],
+     	  otherFormes: ["cherformsunny", "cherformrainy", "cherformsnowy", "cherformsandy", "cherformspooky", "cherformprickly"],
     },
     cherformsunny: {
         num: 7500154,
@@ -8252,6 +8417,29 @@ darkchomp: {
         heightm: 0.405,
         weightkg: 5.05,
         color: "Purple",
+        eggGroups: ["Fairy"],
+    },
+    cherformprickly: {
+        num: 7500154,
+        species: "Cherform-Prickly",
+        baseSpecies: "Cherform",
+        forme: "Prickly",
+        formeLetter: "P",
+        types: ["Grass"],
+        baseStats: {
+            hp: 80,
+            atk: 75,
+            def: 80,
+            spa: 88,
+            spd: 84,
+            spe: 87
+        },
+        abilities: {
+            0: "Weather Front"
+        },
+        heightm: 0.405,
+        weightkg: 5.05,
+        color: "Green",
         eggGroups: ["Fairy"],
     },
     porymask: {
@@ -14499,9 +14687,10 @@ celebi: {
         },
         color: "Blue",
 		 prevo: "eevee",
-		 evoLevel: 2,
-        heightm: 1,
-        weightkg: 26.25,
+		 evoType: "levelExtra",
+		 evoCondition: "with a Water-type move and two levels of Affection",
+       heightm: 1,
+       weightkg: 26.25,
 		 eggGroups: ["Field"],
     },
     raptalon: {

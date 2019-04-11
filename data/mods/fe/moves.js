@@ -594,7 +594,7 @@ exports.BattleMovedex = {
 				return;
 			}
 			this.add('-prepare', attacker, move.name, defender);
-			if ((this.field.isWeather(['raindance', 'primordialsea', 'sandstorm', 'hail']) && move.isInInvertedWeather) || (this.field.isWeather(['sunnyday', 'desolateland', 'solarsnow']) && !move.isInInvertedWeather) || !this.runEvent('ChargeMove', attacker, defender, move)) {
+			if ((this.field.isWeather(['raindance', 'primordialsea', 'sandstorm', 'hail']) && move.isInInvertedWeather) || (this.field.isWeather(['sunnyday', 'desolateland', 'solarsnow', 'cactuspower']) && !move.isInInvertedWeather) || !this.runEvent('ChargeMove', attacker, defender, move)) {
 				this.add('-anim', attacker, move.name, defender);
 				return;
 			}
@@ -603,7 +603,7 @@ exports.BattleMovedex = {
 		},
 		onBasePowerPriority: 4,
 		onBasePower(basePower, pokemon, target) {
-			if ((this.field.isWeather(['raindance', 'primordialsea', 'sandstorm', 'hail']) && (pokemon.volatiles['weatherbreak'] === pokemon.volatiles['atmosphericperversion'])) || (this.field.isWeather(['sunnyday', 'desolateland', 'solarsnow']) && (pokemon.volatiles['weatherbreak'] !== pokemon.volatiles['atmosphericperversion']))) {
+			if ((this.field.isWeather(['raindance', 'primordialsea', 'sandstorm', 'hail']) && (pokemon.volatiles['weatherbreak'] === pokemon.volatiles['atmosphericperversion'])) || (this.field.isWeather(['sunnyday', 'desolateland', 'solarsnow', 'cactuspower']) && (pokemon.volatiles['weatherbreak'] !== pokemon.volatiles['atmosphericperversion']))) {
 				this.debug('weakened by weather');
 				return this.chainModify(0.5);
 			}
@@ -632,7 +632,7 @@ exports.BattleMovedex = {
 				return;
 			}
 			this.add('-prepare', attacker, move.name, defender);
-			if (this.field.isWeather(['sunnyday', 'desolateland', 'solarsnow']) || !this.runEvent('ChargeMove', attacker, defender, move)) {
+			if ((this.field.isWeather(['raindance', 'primordialsea', 'sandstorm', 'hail']) && move.isInInvertedWeather) || (this.field.isWeather(['sunnyday', 'desolateland', 'solarsnow', 'cactuspower']) && !move.isInInvertedWeather) || !this.runEvent('ChargeMove', attacker, defender, move)) {
 				this.add('-anim', attacker, move.name, defender);
 				return;
 			}
@@ -641,7 +641,7 @@ exports.BattleMovedex = {
 		},
 		onBasePowerPriority: 4,
 		onBasePower(basePower, pokemon, target) {
-			if (this.field.isWeather(['raindance', 'primordialsea', 'sandstorm', 'hail'])) {
+			if ((this.field.isWeather(['raindance', 'primordialsea', 'sandstorm', 'hail']) && (pokemon.volatiles['weatherbreak'] === pokemon.volatiles['atmosphericperversion'])) || (this.field.isWeather(['sunnyday', 'desolateland', 'solarsnow', 'cactuspower']) && (pokemon.volatiles['weatherbreak'] !== pokemon.volatiles['atmosphericperversion']))) {
 				this.debug('weakened by weather');
 				return this.chainModify(0.5);
 			}
@@ -667,9 +667,9 @@ exports.BattleMovedex = {
 		priority: 0,
 		flags: {snatch: 1, heal: 1},
 		onHit(pokemon) {
-			if ((this.field.isWeather(['sunnyday', 'desolateland', 'solarsnow']) && (pokemon.volatiles['atmosphericperversion'] === pokemon.volatiles['weatherbreak'])) || (this.field.isWeather(['raindance', 'primordialsea', 'sandstorm', 'hail']) == (pokemon.volatiles['atmosphericperversion'] !== pokemon.volatiles['weatherbreak']))) {
+			if ((this.field.isWeather(['sunnyday', 'desolateland', 'solarsnow']) && (pokemon.volatiles['atmosphericperversion'] === pokemon.volatiles['weatherbreak'])) || (this.field.isWeather(['raindance', 'primordialsea', 'sandstorm', 'hail', 'cactuspower']) == (pokemon.volatiles['atmosphericperversion'] !== pokemon.volatiles['weatherbreak']))) {
 				return this.heal(this.modify(pokemon.maxhp, 0.667));
-			} else if ((this.field.isWeather(['sunnyday', 'desolateland', 'solarsnow']) && (pokemon.volatiles['atmosphericperversion'] !== pokemon.volatiles['weatherbreak'])) || (this.field.isWeather(['raindance', 'primordialsea', 'sandstorm', 'hail']) == (pokemon.volatiles['atmosphericperversion'] === pokemon.volatiles['weatherbreak']))) {
+			} else if ((this.field.isWeather(['sunnyday', 'desolateland', 'solarsnow']) && (pokemon.volatiles['atmosphericperversion'] !== pokemon.volatiles['weatherbreak'])) || (this.field.isWeather(['raindance', 'primordialsea', 'sandstorm', 'hail', 'cactuspower']) == (pokemon.volatiles['atmosphericperversion'] === pokemon.volatiles['weatherbreak']))) {
 				return this.heal(this.modify(pokemon.maxhp, 0.25));
 			} else {
 				return this.heal(this.modify(pokemon.maxhp, 0.5));
@@ -696,9 +696,9 @@ exports.BattleMovedex = {
 		priority: 0,
 		flags: {snatch: 1, heal: 1},
 		onHit(pokemon) {
-			if ((this.field.isWeather(['sunnyday', 'desolateland', 'solarsnow']) && (pokemon.volatiles['atmosphericperversion'] === pokemon.volatiles['weatherbreak'])) || (this.field.isWeather(['raindance', 'primordialsea', 'sandstorm', 'hail']) == (pokemon.volatiles['atmosphericperversion'] !== pokemon.volatiles['weatherbreak']))) {
+			if ((this.field.isWeather(['sunnyday', 'desolateland', 'solarsnow']) && (pokemon.volatiles['atmosphericperversion'] === pokemon.volatiles['weatherbreak'])) || (this.field.isWeather(['raindance', 'primordialsea', 'sandstorm', 'hail', 'cactuspower']) == (pokemon.volatiles['atmosphericperversion'] !== pokemon.volatiles['weatherbreak']))) {
 				return this.heal(this.modify(pokemon.maxhp, 0.667));
-			} else if ((this.field.isWeather(['sunnyday', 'desolateland', 'solarsnow']) && (pokemon.volatiles['atmosphericperversion'] !== pokemon.volatiles['weatherbreak'])) || (this.field.isWeather(['raindance', 'primordialsea', 'sandstorm', 'hail']) == (pokemon.volatiles['atmosphericperversion'] === pokemon.volatiles['weatherbreak']))) {
+			} else if ((this.field.isWeather(['sunnyday', 'desolateland', 'solarsnow']) && (pokemon.volatiles['atmosphericperversion'] !== pokemon.volatiles['weatherbreak'])) || (this.field.isWeather(['raindance', 'primordialsea', 'sandstorm', 'hail', 'cactuspower']) == (pokemon.volatiles['atmosphericperversion'] === pokemon.volatiles['weatherbreak']))) {
 				return this.heal(this.modify(pokemon.maxhp, 0.25));
 			} else {
 				return this.heal(this.modify(pokemon.maxhp, 0.5));
@@ -725,9 +725,9 @@ exports.BattleMovedex = {
 		priority: 0,
 		flags: {snatch: 1, heal: 1},
 		onHit(pokemon) {
-			if ((this.field.isWeather(['sunnyday', 'desolateland', 'solarsnow']) && (pokemon.volatiles['atmosphericperversion'] === pokemon.volatiles['weatherbreak'])) || (this.field.isWeather(['raindance', 'primordialsea', 'sandstorm', 'hail']) == (pokemon.volatiles['atmosphericperversion'] !== pokemon.volatiles['weatherbreak']))) {
+			if ((this.field.isWeather(['sunnyday', 'desolateland', 'solarsnow']) && (pokemon.volatiles['atmosphericperversion'] === pokemon.volatiles['weatherbreak'])) || ((pokemon.hasAbility('slippery') || this.field.isWeather(['raindance', 'primordialsea', 'sandstorm', 'hail', 'cactuspower'])) == (pokemon.volatiles['atmosphericperversion'] !== pokemon.volatiles['weatherbreak']))) {
 				return this.heal(this.modify(pokemon.maxhp, 0.667));
-			} else if ((this.field.isWeather(['sunnyday', 'desolateland', 'solarsnow']) && (pokemon.volatiles['atmosphericperversion'] !== pokemon.volatiles['weatherbreak'])) || (this.field.isWeather(['raindance', 'primordialsea', 'sandstorm', 'hail']) == (pokemon.volatiles['atmosphericperversion'] === pokemon.volatiles['weatherbreak']))) {
+			} else if ((this.field.isWeather(['sunnyday', 'desolateland', 'solarsnow']) && (pokemon.volatiles['atmosphericperversion'] !== pokemon.volatiles['weatherbreak'])) || ((pokemon.hasAbility('slippery') || this.field.isWeather(['raindance', 'primordialsea', 'sandstorm', 'hail', 'cactuspower'])) == (pokemon.volatiles['atmosphericperversion'] === pokemon.volatiles['weatherbreak']))) {
 				return this.heal(this.modify(pokemon.maxhp, 0.25));
 			} else {
 				return this.heal(this.modify(pokemon.maxhp, 0.5));
@@ -753,8 +753,8 @@ exports.BattleMovedex = {
 		pp: 5,
 		priority: 0,
 		flags: {protect: 1, mirror: 1},
-		onModifyMove(move) {
-			if (this.field.isWeather(['hail', 'solarsnow'])){
+		onModifyMove(move, source, target) {
+			if (this.field.isWeather(['hail', 'solarsnow']) || source.hasAbility('slippery')){
 				 if (move.isInInvertedWeather) move.accuracy = 50;
 				 else move.accuracy = true;
 			}
@@ -783,8 +783,8 @@ exports.BattleMovedex = {
 		priority: 0,
 		flags: {snatch: 1},
 		sideCondition: 'auroraveil',
-		onTryHitSide() {
-			if (!this.field.isWeather(['hail', 'solarsnow'])) return false;
+		onTryHitSide(side, source) {
+			if (!this.field.isWeather(['hail', 'solarsnow']) && !source.hasAbility('slippery')) return false;
 		},
 		effect: {
 			duration: 5,
@@ -946,7 +946,7 @@ exports.BattleMovedex = {
 		effect: {
 			duration: 2,
 			onImmunity(type, pokemon) {
-				if (type === 'sandstorm' || type === 'hail' || type === 'solarsnow') return false;
+				if (type === 'sandstorm' || type === 'hail' || type === 'solarsnow' || type === 'cactuspower') return false;
 			},
 			onTryImmunity(target, source, move) {
 				if (move.id === 'earthquake' || move.id === 'magnitude' || move.id === 'helpinghand') {
@@ -998,7 +998,7 @@ exports.BattleMovedex = {
 		effect: {
 			duration: 2,
 			onImmunity(type, pokemon) {
-				if (type === 'sandstorm' || type === 'hail' || type === 'solarsnow') return false;
+				if (type === 'sandstorm' || type === 'hail' || type === 'solarsnow' || type === 'cactuspower') return false;
 			},
 			onTryImmunity(target, source, move) {
 				if (move.id === 'surf' || move.id === 'whirlpool' || move.id === 'helpinghand') {
@@ -1082,6 +1082,14 @@ exports.BattleMovedex = {
 			case 'solarsnow':
 				move.type = 'Fire';
 		      move.solarsnowboosted = true;
+				if (pokemon.volatiles['atmosphericperversion'] == pokemon.volatiles['weatherbreak']){
+					move.basePower *= 2;
+				} else {
+					move.basePower *= 0.5;
+				}
+				break;
+			case 'cactuspower':
+				move.type = 'Grass';
 				if (pokemon.volatiles['atmosphericperversion'] == pokemon.volatiles['weatherbreak']){
 					move.basePower *= 2;
 				} else {
@@ -3750,10 +3758,10 @@ exports.BattleMovedex = {
             protect: 1,
             mirror: 1
         },
-        onModifyMove(move) {
-            if (this.field.isWeather(['sunnyday', 'desolateland'])) {
+			onModifyMove(move, source, target) {
+            if ((this.field.isWeather(['sunnyday', 'desolateland', 'solarsnow']) === move.isInInvertedWeather) || (this.field.isWeather('hail') || source.hasAbility('slippery')) !== move.isInInvertedWeather) {
                 move.accuracy = true;
-            } else if (this.field.isWeather('hail')) {
+            } else if ((this.field.isWeather(['sunnyday', 'desolateland', 'solarsnow']) !== move.isInInvertedWeather) || (this.field.isWeather('hail') || source.hasAbility('slippery')) === move.isInInvertedWeather) {
                 move.accuracy = 60;
             }
         },
@@ -4130,10 +4138,6 @@ exports.BattleMovedex = {
     "pollutionball": {
         accuracy: 95,
         basePower: 50,
-        basePowerCallback(pokemon, target, move) {
-            if (this.field.weather) return move.basePower * 2;
-            return move.basePower;
-        },
         category: "Special",
         desc: "Has a 100% chance to poison the target. Power doubles during weather effects and this move's type changes to match; Ice type during Hail, Water type during Rain Dance, Rock type during Sandstorm, and Fire type during Sunny Day.",
         shortDesc: "100% chance to poison the target. Power doubles and type varies in each weather.",
@@ -4147,24 +4151,80 @@ exports.BattleMovedex = {
             protect: 1,
             mirror: 1
         },
-        onModifyMove(move) {
-            switch (this.field.effectiveWeather()) {
-                case 'sunnyday':
-                case 'desolateland':
-                    move.type = 'Fire';
-                    break;
-                case 'raindance':
-                case 'primordialsea':
-                    move.type = 'Water';
-                    break;
-                case 'sandstorm':
-                    move.type = 'Rock';
-                    break;
-                case 'hail':
-                    move.type = 'Ice';
-                    break;
-            }
-        },
+		onModifyMove(move, pokemon) {
+			switch (this.field.effectiveWeather()) {
+			case 'sunnyday':
+			case 'desolateland':
+				move.type = 'Fire';
+				if (pokemon.volatiles['atmosphericperversion'] == pokemon.volatiles['weatherbreak']){
+					move.basePower *= 2;
+				} else {
+					move.basePower *= 0.5;
+				}
+				break;
+			case 'raindance':
+			case 'primordialsea':
+				move.type = 'Water';
+				if (pokemon.volatiles['atmosphericperversion'] == pokemon.volatiles['weatherbreak']){
+					move.basePower *= 2;
+				} else {
+					move.basePower *= 0.5;
+				}
+				break;
+			case 'sandstorm':
+				move.type = 'Rock';
+				if (pokemon.volatiles['atmosphericperversion'] == pokemon.volatiles['weatherbreak']){
+					move.basePower *= 2;
+				} else {
+					move.basePower *= 0.5;
+				}
+				break;
+			case 'hail':
+				move.type = 'Ice';
+				if (pokemon.volatiles['atmosphericperversion'] == pokemon.volatiles['weatherbreak']){
+					move.basePower *= 2;
+				} else {
+					move.basePower *= 0.5;
+				}
+				break;
+			case 'shadowdance':
+				move.type = 'Ghost';
+				if (pokemon.volatiles['atmosphericperversion'] == pokemon.volatiles['weatherbreak']){
+					move.basePower *= 2;
+				} else {
+					move.basePower *= 0.5;
+				}
+				break;
+			case 'solarsnow':
+				move.type = 'Fire';
+		      move.solarsnowboosted = true;
+				if (pokemon.volatiles['atmosphericperversion'] == pokemon.volatiles['weatherbreak']){
+					move.basePower *= 2;
+				} else {
+					move.basePower *= 0.5;
+				}
+				break;
+			case 'cactuspower':
+				move.type = 'Grass';
+				if (pokemon.volatiles['atmosphericperversion'] == pokemon.volatiles['weatherbreak']){
+					move.basePower *= 2;
+				} else {
+					move.basePower *= 0.5;
+				}
+				break;
+			}
+		},
+		onEffectiveness(typeMod, type, move) {
+			   // @ts-ignore
+				let mod = typeMod;
+				if (move.solarsnowboosted) {
+			        mod = mod + this.getEffectiveness('Ice', type);
+				}
+				if (move.isInInvertedWeather){
+					mod = mod * -1;	
+				}
+				return mod; 
+		},
         secondary: {
             chance: 100,
             status: 'psn',
@@ -4739,7 +4799,7 @@ exports.BattleMovedex = {
         basePower: 130,
         category: "Special",
         desc: "This attack charges on the first turn and executes on the second. Power is halved if the weather is Hail, Rain Dance, or Sandstorm. If the user is holding a Power Herb or the weather is Sunny Day, the move completes in one turn. Has a 100% chance to burn unless the weather is Rain Dance.",
-        shortDesc: "Charges turn 1. Hits turn 2. No charge in sunlight. 100% chance to burn except in rain.",
+        shortDesc: "Charges turn 1. Hits turn 2. No charge in sunlight. Halved power in rain and fails in heavy rain.",
         id: "scorchedearth",
         isViable: true,
         name: "Scorched Earth",
@@ -4750,33 +4810,29 @@ exports.BattleMovedex = {
             protect: 1,
             mirror: 1
         },
-        onTry(attacker, defender, move) {
-            if (attacker.removeVolatile(move.id)) {
-                return;
-            }
-            this.add('-prepare', attacker, move.name, defender);
-            if (this.field.isWeather(['sunnyday', 'desolateland']) || !this.runEvent('ChargeMove', attacker, defender, move)) {
-                this.add('-anim', attacker, move.name, defender);
-                return;
-            }
-            attacker.addVolatile('twoturnmove', defender);
-            return null;
-        },
-        onBasePowerPriority: 4,
-        onBasePower(basePower, pokemon, target) {
-            if (this.field.isWeather(['raindance', 'primordialsea', 'sandstorm', 'hail'])) {
-                this.debug('weakened by weather');
-                return this.chainModify(0.5);
-            }
-        },
-        secondary: {
-            chance: 100,
-            onHit(target, source) {
-                if (!this.field.isWeather(['raindance', 'primordialsea'])) {
-                    target.trySetStatus('brn', source);
-                }
-            },
-        },
+		onTry(attacker, defender, move) {
+			if (attacker.removeVolatile(move.id)) {
+				return;
+			}
+			if (this.field.isWeather('primordialsea')) return false;
+			this.add('-prepare', attacker, move.name, defender);
+			if ((this.field.isWeather('raindance') && move.isInInvertedWeather) || (this.field.isWeather(['sunnyday', 'desolateland', 'solarsnow', 'cactuspower']) && !move.isInInvertedWeather) || !this.runEvent('ChargeMove', attacker, defender, move)) {
+				this.add('-anim', attacker, move.name, defender);
+				return;
+			}
+			attacker.addVolatile('twoturnmove', defender);
+			return null;
+		},
+		onBasePowerPriority: 4,
+		onBasePower(basePower, pokemon, target) {
+			if (this.field.isWeather('primordialsea') && (target.volatiles['weatherbreak'] === target.volatiles['atmosphericperversion'])){
+				return this.chainModify(1.5);
+			}	 
+			if ((this.field.isWeather('raindance') && (pokemon.volatiles['weatherbreak'] === pokemon.volatiles['atmosphericperversion'])) || (this.field.isWeather(['sunnyday', 'desolateland', 'solarsnow', 'cactuspower']) && (pokemon.volatiles['weatherbreak'] !== pokemon.volatiles['atmosphericperversion']))) {
+				this.debug('weakened by weather');
+				return this.chainModify(0.5);
+			}
+		},
         target: "allAdjacent",
         type: "Grass",
         zMovePower: 195,
@@ -5781,7 +5837,7 @@ exports.BattleMovedex = {
         effect: {
             duration: 2,
             onImmunity(type, pokemon) {
-                if (type === 'sandstorm' || type === 'hail') return false;
+                if (type === 'sandstorm' || type === 'hail' || type === 'solarsnow' || type === 'cactuspower') return false;
             },
             onAccuracy(accuracy, target, source, move) {
                 if (move.id === 'surf' || move.id === 'whirlpool' || move.id === 'helpinghand') {
@@ -7461,11 +7517,16 @@ exports.BattleMovedex = {
 		pp: 5,
 		priority: 0,
 		flags: {contact: 1, protect: 1, mirror: 1},
-		onModifyMove(move) {
-		    if (this.field.isWeather('hail')) {
-		        move.accuracy = true;
-				  delete move.recoil;
-		    }
+		onModifyMove(move, source, target) {
+			if (this.field.isWeather(['hail', 'solarsnow']) || source.hasAbility('slippery')){
+				 if (move.isInInvertedWeather) {
+					 move.recoil = [move.recoil[0]*3, move.recoil[1]*2];
+					 move.accuracy = 50;
+				  } else {
+					 delete move.recoil;
+					 move.accuracy = true;
+					}
+			}
 		},
 		recoil: [1, 2],
 		secondary: false,
@@ -8744,7 +8805,7 @@ exports.BattleMovedex = {
 				return;
 			}
 			this.add('-prepare', attacker, move.name, defender);
-			if ((this.field.isWeather() && !this.field.isWeather(['deltastream']) && (this.field.isWeather(['sandstorm']) !== move.isInInvertedWeather)) || !this.runEvent('ChargeMove', attacker, defender, move)) {
+			if ((this.field.isWeather() && !this.field.isWeather(['deltastream']) && (this.field.isWeather(['sandstorm', 'cactuspower']) !== move.isInInvertedWeather)) || !this.runEvent('ChargeMove', attacker, defender, move)) {
 				this.add('-anim', attacker, move.name, defender);
 				return;
 			}
@@ -8753,7 +8814,7 @@ exports.BattleMovedex = {
 		},
 		onBasePowerPriority: 4,
 		onBasePower(basePower, pokemon, target) {
-			if (this.field.isWeather() && !this.field.isWeather(['deltastream']) && this.field.isWeather(['sandstorm']) === (pokemon.volatiles['atmosphericperversion'] === pokemon.volatiles['weatherbreak'])) {
+			if (this.field.isWeather() && !this.field.isWeather(['deltastream']) && this.field.isWeather(['sandstorm', 'cactuspower']) === (pokemon.volatiles['atmosphericperversion'] === pokemon.volatiles['weatherbreak'])) {
 				this.debug('weakened by weather');
 				return this.chainModify(0.5);
 			}
@@ -9496,10 +9557,10 @@ exports.BattleMovedex = {
 		priority: 0,
 		flags: {snatch: 1, heal: 1},
 		onHit(pokemon) {
-			if ((this.field.isWeather(['sunnyday', 'desolateland', 'solarsnow']) && (pokemon.volatiles['atmosphericperversion'] === pokemon.volatiles['weatherbreak'])) || (this.field.isWeather(['raindance', 'primordialsea', 'sandstorm', 'hail']) == (pokemon.volatiles['atmosphericperversion'] !== pokemon.volatiles['weatherbreak']))) {
+			if ((this.field.isWeather(['sunnyday', 'desolateland', 'solarsnow']) && (pokemon.volatiles['atmosphericperversion'] === pokemon.volatiles['weatherbreak'])) || (this.field.isWeather(['raindance', 'primordialsea', 'sandstorm', 'hail', 'cactuspower']) == (pokemon.volatiles['atmosphericperversion'] !== pokemon.volatiles['weatherbreak']))) {
 				this.heal(this.modify(pokemon.maxhp, 0.667));
 				this.boost({def: 2}, pokemon);
-			} else if ((this.field.isWeather(['sunnyday', 'desolateland', 'solarsnow']) && (pokemon.volatiles['atmosphericperversion'] !== pokemon.volatiles['weatherbreak'])) || (this.field.isWeather(['raindance', 'primordialsea', 'sandstorm', 'hail']) == (pokemon.volatiles['atmosphericperversion'] === pokemon.volatiles['weatherbreak']))) {
+			} else if ((this.field.isWeather(['sunnyday', 'desolateland', 'solarsnow']) && (pokemon.volatiles['atmosphericperversion'] !== pokemon.volatiles['weatherbreak'])) || (this.field.isWeather(['raindance', 'primordialsea', 'sandstorm', 'hail', 'cactuspower']) == (pokemon.volatiles['atmosphericperversion'] === pokemon.volatiles['weatherbreak']))) {
 				return this.heal(this.modify(pokemon.maxhp, 0.25));
 			} else {
 				this.heal(this.modify(pokemon.maxhp, 0.5));
@@ -9607,8 +9668,8 @@ exports.BattleMovedex = {
 		pp: 5,
 		priority: 0,
 		flags: {protect: 1, mirror: 1, defrost: 1},
-		onModifyMove(move) {
-			if (this.field.isWeather(['hail', 'solarsnow'])){
+		onModifyMove(move, source, target) {
+			if (this.field.isWeather(['hail', 'solarsnow']) || source.hasAbility('slippery')){
 				 if (move.isInInvertedWeather) move.accuracy = 50;
 				 else move.accuracy = true;
 			}

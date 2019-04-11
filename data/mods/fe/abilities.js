@@ -259,7 +259,7 @@ exports.BattleAbilities = {
 		inherit: true,
 		shortDesc: "This Pokemon is immune to powder moves and damage from Sandstorm or Hail.",
 		onImmunity(type, pokemon) {
-			if (type === 'sandstorm' || type === 'hail' || type === 'solarsnow' || type === 'powder') return false;
+			if (['sandstorm', 'cactuspower', 'hail', 'solarsnow', 'powder'].includes(type)) return false;
 		},
 		onTryHitPriority: 1,
 		onTryHit(target, source, move) {
@@ -333,11 +333,11 @@ exports.BattleAbilities = {
 		desc: "If Sandstorm is active, this Pokemon's evasiveness is multiplied by 1.25. This Pokemon takes no damage from Sandstorm.",
 		shortDesc: "If Sandstorm is active, this Pokemon's evasiveness is 1.25x; immunity to Sandstorm.",
 		onImmunity(type, pokemon) {
-			if (type === 'sandstorm') return false;
+			if (type === 'sandstorm' || type === 'cactuspower') return false;
 		},
 		onModifyAccuracy(accuracy, target) {
 			if (typeof accuracy !== 'number') return;
-			if (this.field.isWeather('sandstorm')) {
+			if (this.field.isWeather(['sandstorm', 'cactuspower'])) {
 				if (target && (target.volatiles['atmosphericperversion'] == target.volatiles['weatherbreak'])){
 					this.debug('Sand Veil - decreasing accuracy');
 					return accuracy * 0.8;
@@ -357,7 +357,7 @@ exports.BattleAbilities = {
 		desc: "If Sandstorm is active, this Pokemon's Speed is doubled. This Pokemon takes no damage from Sandstorm.",
 		shortDesc: "If Sandstorm is active, this Pokemon's Speed is doubled; immunity to Sandstorm.",
 		onModifySpe(spe, pokemon) {
-			if (this.field.isWeather('sandstorm')) {
+			if (this.field.isWeather(['sandstorm', 'cactuspower'])) {
 				if (pokemon.volatiles['atmosphericperversion'] == pokemon.volatiles['weatherbreak']){
 					return this.chainModify(2);
 				} 	else {
@@ -366,7 +366,7 @@ exports.BattleAbilities = {
 			}
 		},
 		onImmunity(type, pokemon) {
-			if (type === 'sandstorm') return false;
+			if (type === 'sandstorm' || type === 'cactuspower') return false;
 		},
 		id: "sandrush",
 		name: "Sand Rush",
@@ -379,7 +379,7 @@ exports.BattleAbilities = {
 		shortDesc: "This Pokemon's Ground/Rock/Steel attacks do 1.3x in Sandstorm; immunity to it.",
 		onBasePowerPriority: 8,
 		onBasePower(basePower, attacker, defender, move) {
-			if (this.field.isWeather('sandstorm')) {
+			if (this.field.isWeather(['sandstorm', 'cactuspower'])) {
 				if (move.type === 'Rock' || move.type === 'Ground' || move.type === 'Steel') {
 					if (move.isInInvertedWeather){
 						this.debug('Inverted Sand Force suppress');
@@ -392,7 +392,7 @@ exports.BattleAbilities = {
 			}
 		},
 		onImmunity(type, pokemon) {
-			if (type === 'sandstorm') return false;
+			if (type === 'sandstorm' || type === 'cactuspower') return false;
 		},
 		id: "sandforce",
 		name: "Sand Force",
@@ -457,7 +457,49 @@ exports.BattleAbilities = {
 		rating: 4,
 		num: 149,
 	},
-	
+		"flashfire": {
+		desc: "This Pokemon is immune to Fire-type moves. The first time it is hit by a Fire-type move, its attacking stat is multiplied by 1.5 while using a Fire-type attack as long as it remains active and has this Ability. If this Pokemon is frozen, it cannot be defrosted by Fire-type attacks.",
+		shortDesc: "This Pokemon's Fire attacks do 1.5x damage if hit by one Fire move; Fire immunity.",
+		onTryHit(target, source, move) {
+			if (target !== source && move.type === 'Fire') {
+				move.accuracy = true;
+				if (!target.addVolatile('flashfire')) {
+					this.add('-immune', target, '[from] ability: Flash Fire');
+				}
+				return null;
+			}
+		},
+		onEnd(pokemon) {
+			pokemon.removeVolatile('flashfire');
+		},
+		effect: {
+			noCopy: true, // doesn't get copied by Baton Pass
+			onStart(target) {
+				this.add('-start', target, 'ability: Flash Fire');
+			},
+			onModifyAtkPriority: 5,
+			onModifyAtk(atk, attacker, defender, move) {
+				if (move.type === 'Fire') {
+					this.debug('Flash Fire boost');
+					return this.chainModify(1.5);
+				}
+			},
+			onModifySpAPriority: 5,
+			onModifySpA(atk, attacker, defender, move) {
+				if (move.type === 'Fire') {
+					this.debug('Flash Fire boost');
+					return this.chainModify(1.5);
+				}
+			},
+			onEnd(target) {
+				this.add('-end', target, 'ability: Flash Fire', '[silent]');
+			},
+		},
+		id: "flashfire",
+		name: "Flash Fire",
+		rating: 3,
+		num: 18,
+	},
 	"turnabouttorrent": {
 		shortDesc: "Water-type moves of the user is boosted by 50% as long as user is above 1/3 HP; the user's stat changes are reversed.",
 		onBoost(boost) {
@@ -521,31 +563,70 @@ exports.BattleAbilities = {
 		name: "Huge Torrent",
 	},
 	"flashweather": {
-		shortDesc: "In Sun, absorbs Fire moves, in Rain Water, in Hail Ice, and in Sand, Rock.",
+		shortDesc: "In Sun, absorbs Fire moves, in Rain Water, in Hail Ice, and in Sand, Rock. If Chandeform, changes secondary type to match the weather.",
+		onUpdate(pokemon) {
+			if (pokemon.baseTemplate.baseSpecies !== 'Chandeform' || pokemon.transformed) return;
+			let forme = null;
+			switch (this.field.effectiveWeather()) {
+			case 'sunnyday':
+			case 'desolateland':
+         case 'solarsnow':
+				if (pokemon.template.speciesid !== 'chandeformsunny') forme = 'Chandeform-Sunny';
+				break;
+			case 'raindance':
+			case 'primordialsea':
+				if (pokemon.template.speciesid !== 'chandeformrainy') forme = 'Chandeform-Rainy';
+				break;
+			case 'hail':
+				if (pokemon.template.speciesid !== 'chandeformsnowy') forme = 'Chandeform-Snowy';
+				break;
+			case 'sandstorm':
+				if (pokemon.template.speciesid !== 'chandeformsandy') forme = 'Chandeform-Sandy';
+				break;
+			case 'shadowdance':
+				if (pokemon.template.speciesid !== 'chandeformspooky') forme = 'Chandeform-Spooky';
+				break;
+			case 'cactuspower':
+				if (pokemon.template.speciesid !== 'chandeformprickly') forme = 'Chandeform-Prickly';
+				break;
+			default:
+				if (pokemon.template.speciesid !== 'chandeform') forme = 'Chandeform';
+				break;
+			}
+			if (pokemon.isActive && forme) {
+				pokemon.formeChange(forme);
+				this.add('-formechange', pokemon, forme, '[msg]', '[from] ability: Flash Weather');
+			}
+		},
 		onTryHit(target, source, move) {
 			if (target !== source && target.volatiles['atmosphericperversion'] === target.volatiles['weatherbreak']){
 				if (move.type === 'Fire' && this.field.isWeather(['sunnyday', 'desolateland', 'solarsnow'])) {
-					if (!this.heal(target.maxhp / 4)) {
+					if (!target.addVolatile('flashfire')) {
 						this.add('-immune', target, '[msg]', '[from] ability: Flash Weather');
 					}
 					return null;
 				} else if (move.type === 'Water' && this.field.isWeather(['raindance', 'primordialsea'])) {
-					if (!this.heal(target.maxhp / 4)) {
+					if (!target.addVolatile('torrentialrage')) {
 						this.add('-immune', target, '[msg]', '[from] ability: Flash Weather');
 					}
 					return null;
 				} else if (move.type === 'Rock' && this.field.isWeather(['sandstorm'])) {
-					if (!this.heal(target.maxhp / 4)) {
+					if (!target.addVolatile('flashweatherrock')) {
 						this.add('-immune', target, '[msg]', '[from] ability: Flash Weather');
 					}
 					return null;
 				} else if (move.type === 'Ice' && this.field.isWeather(['hail', 'solarsnow'])) {
-					if (!this.heal(target.maxhp / 4)) {
+					if (!target.addVolatile('flashweatherice')) {
 						this.add('-immune', target, '[msg]', '[from] ability: Flash Weather');
 					}
 					return null;
 				} else if (move.type === 'Ghost' && this.field.isWeather(['shadowdance'])) {
-					if (!this.heal(target.maxhp / 4)) {
+					if (!target.addVolatile('flashweatherghost')) {
+						this.add('-immune', target, '[msg]', '[from] ability: Flash Weather');
+					}
+					return null;
+				} else if (move.type === 'Grass' && this.field.isWeather(['cactuspower'])) {
+					if (!target.addVolatile('flashweathergrass')) {
 						this.add('-immune', target, '[msg]', '[from] ability: Flash Weather');
 					}
 					return null;
@@ -566,6 +647,8 @@ exports.BattleAbilities = {
 						if (this.field.isWeather(['hail', 'solarsnow'])) return this.chainModify(1.5);
 					case 'Ghost':
 						if (this.field.isWeather(['shadowdance'])) return this.chainModify(1.5);
+					case 'Grass':
+						if (this.field.isWeather(['cactuspowre'])) return this.chainModify(1.5);
 				}
 			}
 		},
@@ -716,12 +799,7 @@ exports.BattleAbilities = {
 	"cactuspower": {
 		shortDesc: "Summons Sandstorm upon switching in. Grass-type moves have their power increased 20%.",
 		onStart(source) {
-			this.field.setWeather('sandstorm');
-		},
-		onModifyAtk(atk, attacker, defender, move) {
-			if (move.type === 'Grass') {
-				return this.chainModify([0x1333, 0x1000]);
-			}
+			this.field.setWeather('cactuspower');
 		},
 		id: "cactuspower",
 		name: "Cactus Power",
@@ -749,13 +827,13 @@ exports.BattleAbilities = {
 		onResidualOrder: 5,
 		onResidualSubOrder: 1,
 		onResidual(pokemon) {
-			if (pokemon.volatiles['weatherbreak'] === pokemon.volatiles['atmosphericperversion'] && pokemon.status && this.field.isWeather(['sandstorm'])) {
+			if (pokemon.volatiles['weatherbreak'] === pokemon.volatiles['atmosphericperversion'] && pokemon.status && this.field.isWeather(['sandstorm', 'cactuspower'])) {
 				this.add('-activate', pokemon, 'ability: Sandy Skin');
 				pokemon.cureStatus();
 			}
 		},
 		onImmunity(type, pokemon) {
-			if (type === 'sandstorm') return false;
+			if (type === 'sandstorm' || type === 'cactuspower') return false;
 		},
 		id: "sandyskin",
 		name: "Sandy Skin",
@@ -766,13 +844,13 @@ exports.BattleAbilities = {
 		onResidualOrder: 5,
 		onResidualSubOrder: 1,
 		onResidual(pokemon) {
-			if (pokemon.volatiles['weatherbreak'] === pokemon.volatiles['atmosphericperversion'] && pokemon.status && this.field.isWeather(['sandstorm'])) {
+			if (pokemon.volatiles['weatherbreak'] === pokemon.volatiles['atmosphericperversion'] && pokemon.status && this.field.isWeather(['sandstorm', 'cactuspower'])) {
 				this.add('-activate', pokemon, 'ability: Sand Shed');
 				pokemon.cureStatus();
 			}
 		},
 		onImmunity(type, pokemon) {
-			if (type === 'sandstorm') return false;
+			if (type === 'sandstorm' || type === 'cactuspower') return false;
 		},
 		id: "sandshed",
 		name: "Sand Shed",
@@ -834,37 +912,49 @@ exports.BattleAbilities = {
 		id: "normalveil",
 		name: "Normal Veil",
 	},
-	"landshark": {
-		shortDesc: "Lowers Opponent's defense on switch in and gets evasion boosted in sand.",
+	"veilofintimidation": {
+		shortDesc: "On switch-in, this Pokemon lowers the Attack of adjacent opponents by 1 stage (2 in Sandstorm).",
 		onStart(pokemon) {
 			let activated = false;
 			for (const target of pokemon.side.foe.active) {
 				if (!target || !this.isAdjacent(target, pokemon)) continue;
 				if (!activated) {
-					this.add('-ability', pokemon, 'Land Shark', 'boost');
+					this.add('-ability', pokemon, 'Veil of Intimidation', 'boost');
 					activated = true;
 				}
 				if (target.volatiles['substitute']) {
 					this.add('-immune', target, '[msg]');
 				} else {
-					this.boost({
-						def: -1
-					}, target, pokemon);
+					if (this.field.isWeather(['sandstorm', 'cactuspower'])) {
+						if (target.volatiles['atmosphericperversion'] === target.volatiles['weatherbreak']){
+							this.boost({
+								atk: -2
+							}, target, pokemon);
+						} else {
+							this.boost({
+								atk: 1
+							}, target, pokemon);
+						}
+					} else {
+						this.boost({
+							atk: -1
+						}, target, pokemon);
+					}
 				}
 			}
 		},
 		onModifyAccuracy(accuracy, target) {
 			if (typeof accuracy !== 'number') return;
-			if (this.field.isWeather('sandstorm')) {
-				if (target.volatiles['atmosphericperversion'] == target.volatiles['weatherbreak']){
+			if (this.field.isWeather(['sandstorm', 'cactuspower'])) {
+				if (target.volatiles['atmosphericperversion'] === target.volatiles['weatherbreak']){
 					return accuracy * 0.8;
 				} else {
 					return accuracy * 1.25;
 				}
 			}
 		},
-		id: "landshark",
-		name: "Land Shark",
+		id: "veilofintimidation",
+		name: "Veil of Intimidation",
 	},
 	"serenefocus": {
 		shortDesc: "This Pokemon is not affected by the secondary effect of another Pokemon's attack.",
@@ -875,23 +965,21 @@ exports.BattleAbilities = {
 		name: "Serene Focus",
 	},
 	"torrentveil": {
-		shortDesc: "At 1/3 or less of its max HP, this Pokemon's attacking stat is 1.5x with Water attacks and the Pokemon has 1.25x evasion.",
+		shortDesc: "At 1/3 or less of its max HP or under Sandstorm, this Pokemon's attacking stat is 1.5x with Water attacks. These boosts do not stack.",
 		onModifyAtkPriority: 5,
 		onModifyAtk(atk, attacker, defender, move) {
-			if (move.type === 'Water' && attacker.hp <= attacker.maxhp / 3) {
+			if (move.isInInvertedWeather && this.field.isWeather(['sandstorm', 'cactuspower'])) return;
+			if (move.type === 'Water' && (attacker.hp <= attacker.maxhp / 3 || this.field.isWeather(['sandstorm', 'cactuspower']))) {
+				this.debug('Torrent boost');
 				return this.chainModify(1.5);
 			}
 		},
 		onModifySpAPriority: 5,
 		onModifySpA(atk, attacker, defender, move) {
-			if (move.type === 'Water' && attacker.hp <= attacker.maxhp / 3) {
+			if (move.isInInvertedWeather && this.field.isWeather(['sandstorm', 'cactuspower'])) return;
+			if (move.type === 'Water' && (attacker.hp <= attacker.maxhp / 3 || this.field.isWeather(['sandstorm', 'cactuspower']))) {
+				this.debug('Torrent boost');
 				return this.chainModify(1.5);
-			}
-		},
-		onModifyAccuracy(accuracy, target) {
-			if (typeof accuracy !== 'number') return;
-			if (target.hp <= target.maxhp / 3) {
-				return accuracy * 0.8;
 			}
 		},
 		id: "torrentveil",
@@ -975,11 +1063,11 @@ exports.BattleAbilities = {
 			this.field.setWeather('sandstorm');
 		},
 		onImmunity(type, pokemon) {
-			if (type === 'sandstorm') return false;
+			if (type === 'sandstorm' || type === 'cactuspower') return false;
 		},
 		onModifyAccuracy(accuracy, target) {
 			if (typeof accuracy !== 'number') return;
-			if (this.field.isWeather('sandstorm')) {
+			if (this.field.isWeather(['sandstorm', 'cactuspower'])) {
 				if (target && (target.volatiles['atmosphericperversion'] == target.volatiles['weatherbreak'])){
 					this.debug('Sand Veil - decreasing accuracy');
 					return accuracy * 0.8;
@@ -1939,7 +2027,7 @@ exports.BattleAbilities = {
 		desc: "In Sand, Accuracy is upped by one third, immunity to sand damage.",
 		shortDesc: "x1.33 Accuracy in Sand.",
 		onSourceModifyAccuracy(accuracy) {
-			if (this.field.isWeather('sandstorm')) {
+			if (this.field.isWeather(['sandstorm', 'cactuspower'])) {
 				if (typeof accuracy !== 'number') return;
 				if (this.effectData.target.volatiles['atmosphericperversion'] == this.effectData.target.volatiles['weatherbreak']){
 					this.debug('Sandy Eyes - enhancing accuracy');
@@ -1951,7 +2039,7 @@ exports.BattleAbilities = {
 			}
 		},
 		onImmunity(type, pokemon) {
-			if (type === 'sandstorm') return false;
+			if (type === 'sandstorm' || type === 'cactuspower') return false;
 		},
 		id: "sandyeyes",
 		name: "Sandy Eyes",
@@ -1991,7 +2079,7 @@ exports.BattleAbilities = {
 		shortDesc: "This pokemon's Ground/Rock/Steel/Ice attacks do 1.3x in Sandstorm and Hail, opposing attacks of those types heal by 1/16 under the same weather conditions.",
 		onBasePowerPriority: 8,
 		onBasePower(basePower, attacker, defender, move) {
-			if (this.field.isWeather(['hail', 'solarsnow', 'sandstorm'])) {
+			if (this.field.isWeather(['hail', 'solarsnow', 'sandstorm', 'cactuspower'])) {
 				if (['Rock', 'Ground', 'Steel', 'Ice'].includes(move.type)) {
 					if (move.isInInvertedWeather){
 						this.debug('Inverted Desert Snow suppress');
@@ -2004,7 +2092,7 @@ exports.BattleAbilities = {
 			}
 		},
 		onSourceModifyDamage(damage, source, target, move) {
-			if (!this.field.isWeather(['hail', 'solarsnow', 'sandstorm'])) return;
+			if (!this.field.isWeather(['hail', 'solarsnow', 'sandstorm', 'cactuspower'])) return;
 			if (!move.isInInvertedWeather) return; 
 			if (!(['Rock', 'Ground', 'Steel', 'Ice'].includes(move.type))) return;
 			//x1.5 damage plus 6.25% of target's max health when inverted
@@ -2017,7 +2105,7 @@ exports.BattleAbilities = {
 			return this.chainModify([morechipdamage, 0x1000]);
 		},
 		onTryHit(target, source, move) {
-			if (this.field.isWeather(['hail', 'solarsnow', 'sandstorm']) && ['Rock', 'Ground', 'Steel', 'Ice'].includes(move.type) && !move.isInInvertedWeather) {
+			if (this.field.isWeather(['hail', 'solarsnow', 'sandstorm', 'cactuspower']) && ['Rock', 'Ground', 'Steel', 'Ice'].includes(move.type) && !move.isInInvertedWeather) {
 				if (!this.heal(target.maxhp / 16)) {
 					this.add('-immune', target, '[msg]', '[from] ability: Desert Snow');
 				}
@@ -2025,7 +2113,7 @@ exports.BattleAbilities = {
 			}
 		},
 		onImmunity(type, pokemon) {
-			if (type === 'solarsnow' || type === 'sandstorm' || type === 'hail') return false;
+			if (type === 'solarsnow' || type === 'sandstorm' || type === 'hail' || type === 'cactuspower') return false;
 		},
 		id: "desertsnow",
 		name: "Desert Snow",
@@ -2328,7 +2416,7 @@ exports.BattleAbilities = {
 		shortDesc: "During hail or sun, this Pokemon's Special Attack is 1.5x and recovers 1/16 HP every turn. Stacks when both are active.",
 		onModifySpAPriority: 5,
 		onModifySpA(atk, attacker, defender, move) {
-			if (this.field.isWeather(['sunnday', 'desolateland', 'hail'])) {
+			if (this.field.isWeather(['sunnyday', 'desolateland', 'hail'])) {
 				this.debug('Kindle boost');
 				if (move.isInInvertedWeather){
 					return this.chainModify([0x0AAB, 0x1000]);
@@ -3874,7 +3962,7 @@ exports.BattleAbilities = {
 	"mountainclimber": {
 		shortDesc: "Speed under Hail or Sand is 4x, immunity to both.",
 		onModifySpe(spe, pokemon) {
-			if (this.field.isWeather(['hail', 'sandstorm', 'solarsnow'])) {
+			if (this.field.isWeather(['hail', 'sandstorm', 'cactuspower', 'solarsnow'])) {
 				if (pokemon.volatiles['atmosphericperversion'] == pokemon.volatiles['weatherbreak']){
 					return this.chainModify(4);
 				} 	else {
@@ -3883,7 +3971,7 @@ exports.BattleAbilities = {
 			}
 		},
 		onImmunity(type, pokemon) {
-			if (type === 'hail' || type === 'sandstorm' || type === 'solarsnow') return false;
+			if (type === 'hail' || type === 'sandstorm' || type === 'solarsnow' || type === 'cactuspower') return false;
 		},
 		id: "mountainclimber",
 		name: "Mountain Climber",
@@ -5298,7 +5386,7 @@ exports.BattleAbilities = {
 			this.field.setWeather('sandstorm');
 		},
 		onAnyDeductPP(target, source) {
-			if (!this.field.isWeather('sandstorm')) return;
+			if (!this.field.isWeather(['sandstorm', 'cactuspower'])) return;
 			return 1;
 		},
 		id: "sandystorm",
@@ -6903,6 +6991,9 @@ exports.BattleAbilities = {
 			case 'shadowdance':
 				if (pokemon.template.speciesid !== 'polyform2spooky') forme = 'Polyform2-Spooky';
 				break;
+			case 'cactuspower':
+				if (pokemon.template.speciesid !== 'polyform2prickly') forme = 'Polyform2-Prickly';
+				break;
 			default:
 				if (pokemon.template.speciesid !== 'polyform2') forme = 'Polyform2';
 				break;
@@ -6925,24 +7016,22 @@ exports.BattleAbilities = {
 				return false;
 			}
 		},
-		onModifyAtkPriority: 5,
-		onModifyAtk(atk, pokemon) {
-			if (pokemon.status === 'brn') {
+		onModifyAtk(atk, attacker, defender, move) {
+			if (attacker.status === 'brn' && move.id !== 'facade') {
 				return this.chainModify(2);
 			}
-			},
+		},
 		onModifySpe(spe, pokemon) {
 			if (pokemon.status === 'par') {
 				return this.chainModify(2);
 			}
-			},
+		},
 		onResidual(pokemon) {
 			if (!pokemon.hp) return;
-				if (pokemon.status === 'par' || pokemon.status === 'slp') {
-					this.heal(target.maxhp / 8);
+				if (pokemon.status === 'par' || pokemon.status === 'slp' || pokemon.status === 'frz') {
+					this.heal(pokemon.maxhp / 8);
 				}
 		},
-                //TODO: Allow holder to move if Frozen; Prevent Full Paralysis
 		id: "therapeutic",
 		name: "Therapeutic",
 	},
@@ -6973,7 +7062,7 @@ exports.BattleAbilities = {
 			switch (this.field.effectiveWeather()) {
 			case 'sunnyday':
 			case 'desolateland':
-                        case 'solarsnow':
+         case 'solarsnow':
 				if (pokemon.template.speciesid !== 'cherformsunny') forme = 'Cherform-Sunny';
 				break;
 			case 'raindance':
@@ -6985,6 +7074,12 @@ exports.BattleAbilities = {
 				break;
 			case 'sandstorm':
 				if (pokemon.template.speciesid !== 'cherformsandy') forme = 'Cherform-Sandy';
+				break;
+			case 'shadowdance':
+				if (pokemon.template.speciesid !== 'cherformspooky') forme = 'Cherform-Spooky';
+				break;
+			case 'cactuspower':
+				if (pokemon.template.speciesid !== 'cherformprickly') forme = 'Cherform-Prickly';
 				break;
 			default:
 				if (pokemon.template.speciesid !== 'cherform') forme = 'Cherform';
@@ -9539,9 +9634,9 @@ exports.BattleAbilities = {
 			for (const target of pokemon.side.foe.active) {
 				if (target.fainted) continue;
 				for (const moveSlot of target.moveSlots) {
-					if (this.field.isWeather('sandstorm')) {
+					if (this.field.isWeather(['sandstorm', 'cactuspower'])) {
 						if (target.volatiles['atmosphericperversion'] == target.volatiles['weatherbreak']){
-							moveSlot.pp = Math.floor((moveSlot.pp+1)/2);
+							target.deductPP(moveSlot.id, Math.floor(moveSlot.pp / 2));
 						} else {
 							moveSlot.pp = moveSlot.pp*2;
 							if (moveSlot.pp > moveSlot.maxpp){
@@ -11021,15 +11116,9 @@ exports.BattleAbilities = {
 			noCopy: true,
 			duration: 0,
 			onDamage(damage, target, source, effect) {
-				if (effect && (effect.id === 'sandstorm' || effect.id === 'hail' || effect.id === 'solarsnow') && !target.volatiles['atmosphericperversion']) {
+				if (effect && (effect.id === 'sandstorm' || effect.id === 'hail' || effect.id === 'solarsnow' || effect.id === 'cactuspower') && !target.volatiles['atmosphericperversion']) {
    	         this.heal(target.maxhp / 16);
 					return false;
-				}
-			},
-			onModifySpDPriority: 10,
-			onModifySpD(spd, pokemon) {
-				if (pokemon.hasType('Rock') && this.field.isWeather('sandstorm')) {
-					return this.modify(spd, [0x071C,0x1000]);
 				}
 			},
 		onTryPrimaryHit(target, source, move) {
@@ -11089,15 +11178,9 @@ exports.BattleAbilities = {
 			noCopy: true,
 			duration: 0,
 			onDamage(damage, target, source, effect) {
-				if (effect && (effect.id === 'sandstorm' || effect.id === 'hail' || effect.id === 'solarsnow') && !target.volatiles['weatherbreak']) {
+				if (effect && (effect.id === 'sandstorm' || effect.id === 'hail' || effect.id === 'solarsnow' || effect.id === 'cactuspower') && !target.volatiles['weatherbreak']) {
    	         this.heal(target.maxhp / 16);
 					return false;
-				}
-			},
-			onModifySpDPriority: 10,
-			onModifySpD(spd, pokemon) {
-				if (pokemon.hasType('Rock') && this.field.isWeather('sandstorm')) {
-					return this.modify(spd, [0x071C,0x1000]);
 				}
 			},
 			onTryPrimaryHit(target, source, move) {
@@ -13011,8 +13094,8 @@ exports.BattleAbilities = {
 		onResidualOrder: 27,
 		onResidual(pokemon) {
 			if (pokemon.baseTemplate.baseSpecies !== 'Sandgarde' || pokemon.transformed || !pokemon.hp) return;
-			if (this.field.isWeather('sandstorm') && pokemon.volatiles['atmosphericperversion'] !== pokemon.volatiles['weatherbreak']) return;
-			if (pokemon.template.speciesid === 'sandgardecastle' || (pokemon.hp > pokemon.maxhp / 2 && !(this.field.isWeather('sandstorm') && this.randomChance(2, 10)))) return;
+			if (this.field.isWeather(['sandstorm', 'cactuspower']) && pokemon.volatiles['atmosphericperversion'] !== pokemon.volatiles['weatherbreak']) return;
+			if (pokemon.template.speciesid === 'sandgardecastle' || (pokemon.hp > pokemon.maxhp / 2 && !(this.field.isWeather(['sandstorm', 'cactuspower']) && this.randomChance(2, 10)))) return;
 			this.add('-activate', pokemon, 'ability: Sandy Construct');
 			pokemon.formeChange('Sandgarde-Castle', this.effect, true);
 			let newHP = Math.floor(Math.floor(2 * pokemon.template.baseStats['hp'] + pokemon.set.ivs['hp'] + Math.floor(pokemon.set.evs['hp'] / 4) + 100) * pokemon.level / 100 + 10);
@@ -13223,13 +13306,13 @@ exports.BattleAbilities = {
 			}
 		},
 		onSetStatus(status, target, source, effect) {
-			if (this.field.isWeather('sandstorm')) {
+			if (this.field.isWeather(['sandstorm', 'cactuspower'])) {
 				if (effect && effect.status) this.add('-immune', target, '[from] ability: Sand Spa');
 				return false;
 			}
 		},
 		onTryAddVolatile(status, target) {
-			if (status.id === 'yawn' && this.field.isWeather('sandstorm')) {
+			if (status.id === 'yawn' && this.field.isWeather(['sandstorm', 'cactuspower'])) {
 				this.add('-immune', target, '[from] ability: Sand Spa');
 				return null;
 			}
@@ -13537,5 +13620,24 @@ exports.BattleAbilities = {
 		},
 		id: "adblock",
 		name: "Adblock",
+	},
+	"slippery": {
+		desc: "This Pokemon's Status and Ice moves have priority raised by 1 and act as if Hail is active, but Dark types are immune. Using a boosted move restores 6.25% of this Pokemon's HP after use. If Sunny Day is active, this ability treats affected moves as if Solar Snow were active instead.",
+		shortDesc: "This Pokemon's Status and Ice moves have priority raised by 1 and act as if Hail is active, but Dark types are immune. Using a boosted move restores 6.25% of this Pokemon's HP after use.",
+		onModifyPriority(priority, pokemon, target, move) {
+			if (move && (move.category === 'Status' || move.type === 'Ice')) {
+				move.pranksterBoosted = true;
+				return priority + 1;
+			}
+		},
+		onSourceHit(target, source, move) {
+			if (!move || !target) return;
+			if (move.pranksterBoosted) {
+				this.heal(source.maxhp / 16, source, source);
+			}
+		},
+		//Relevant edits are made wherever applicable.
+		id: "slippery",
+		name: "Slippery",
 	},
 };
