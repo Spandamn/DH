@@ -3511,6 +3511,7 @@ exports.BattleLearnsets = {kirby: {learnset: {
     woodhammer: ["7L1"],
 }},
 inkling: {learnset: {
+	//TODO: This moveset seems incomplete. Fix later?
     flamethrower: ["7L1"],
     hydropump: ["7L1"],
     partingshot: ["7L1"],
@@ -3590,6 +3591,7 @@ chihirofujisaki: {learnset: {
     taunt: ["7L1"],
 }},
 metaknight: {learnset: {
+	//TODO: Add other slash based moves
     airslash: ["7L1"],
     bravebird: ["7L1"],
     extremespeed: ["7L1"],
@@ -3746,6 +3748,7 @@ bandannadee: {learnset: {
     wish: ["7L1"],
 }},
 specterknight: {learnset: {
+	//TODO: This moveset seems incomplete. Fix later?
     scytheslash: ["7L1"],
 }},
 gale: {learnset: {
