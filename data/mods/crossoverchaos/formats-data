@@ -363,7 +363,7 @@ exports.BattleFormatsData = { //
         tier: "OU",
         doublesTier: "DOU",
     },
-    0iris: {
+    iris0: {
         tier: "OU",
         doublesTier: "DOU",
     },
