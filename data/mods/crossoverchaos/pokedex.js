@@ -1292,7 +1292,7 @@ galeem: {
 	 gender: "N",
     baseStats: {hp: 100, atk: 40, def: 40, spa: 160, spd: 160, spe: 100},
     abilities: {0: "Bane of Darkness"},
-	 heightm: 4,
+	 heightm: 5,
     weightkg: 20,
 },
 isabelle: {
