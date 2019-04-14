@@ -1549,6 +1549,98 @@ exports.BattleAbilities = {
 		id: "cursedtrace",
 		name: "Cursed Trace",
 	},
+	"sinistermagic": {
+		shortDesc: "On switch-in, or when it can, this Pokemon copies a random adjacent foe's Ability and suppresses it.",
+		onUpdate(pokemon) {
+			if (!pokemon.isStarted) return;
+			let possibleTargets = [];
+			for (let i = 0; i < pokemon.side.foe.active.length; i++) {
+				if (pokemon.side.foe.active[i] && !pokemon.side.foe.active[i].fainted) possibleTargets.push(pokemon.side.foe.active[i]);
+			}
+			while (possibleTargets.length) {
+				let rand = 0;
+				if (possibleTargets.length > 1) rand = this.random(possibleTargets.length);
+				let target = possibleTargets[rand];
+				let ability = this.getAbility(target.ability);
+				let bannedAbilities = {
+					adaptableillusion: 1,
+					aeroform: 1,
+					appropriation: 1,
+					battlebond: 1,
+					barbstance: 1,
+					beastcostume: 1,
+					comatose: 1,
+					combinationdrive: 1,
+					compression: 1,
+					coolasice: 1,
+					cosmology: 1,
+					crystallizedshield: 1,
+					cursedcloak: 1,
+					desertmirage: 1,
+					disguise: 1,
+					disguiseburden: 1,
+					effectsetter: 1,
+					errormacro: 1,
+					flowergift: 1,
+					forecast: 1,
+					foundation: 1,
+					geneticalgorithm: 1,
+					geologist: 1,
+					godoffertility: 1,
+					hideandseek: 1,
+					illusion: 1,
+					imposter: 1,
+					justiceillusion: 1,
+					magicalwand: 1,
+					miraclemorph: 1,
+					mirrormirror: 1,
+					mitosis: 1,
+					monsoon: 1,
+					multitype: 1,
+					optimize: 1,
+					pawprayer: 1,
+					powerofalchemy: 1,
+					prototype: 1,
+					receiver: 1,
+					resurrection: 1,
+					rhythm: 1,
+					rkssystem: 1,
+					sandyconstruct: 1,
+					schooling: 1,
+					shieldsdown: 1,
+					sinistermagic: 1,
+					sleepingsystem: 1,
+					sociallife: 1,
+					spiralpower: 1,
+					stancechange: 1,
+					stanceshield: 1,
+					tacticalcomputer: 1,
+					techequip: 1,
+					technicalsystem: 1,
+					troll: 1,
+					triagesystem: 1,
+					typeillusionist: 1,
+					unfriend: 1,
+					victorysystem: 1,
+					weathercaster: 1,
+					weatherfront: 1,
+					whatdoesthisdo: 1,
+					zenmode: 1
+				};
+				if (bannedAbilities[target.ability]) {
+					possibleTargets.splice(rand, 1);
+					continue;
+				}
+				if (pokemon.setAbility(ability)){
+					this.add('-ability', pokemon, ability, '[from] ability: Sinister Magic', '[of] ' + target);
+					target.addVolatile('gastroacid');
+				}
+				return;
+			}
+		},
+		id: "sinistermagic",
+		name: "Sinister Magic",
+	},
 	"evaporation": {
 		shortDesc: "If this Pokemon is hit by a Water-type move, its Fire-type moves have their power increased by 50%; immune to Water-type moves.",
 		onTryHit(target, source, move) {
