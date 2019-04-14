@@ -563,7 +563,7 @@ exports.BattleItems = {
 	"weatherwarriorscrystal": {
 		shortDesc: "When a weather is active, increases the holder's Atk and Sp Atk stats by 1 stage each.",
 		onUpdate: function(pokemon) {
-			if (this.field.isWeather(['sunnyday', 'desolateland', 'hail', 'rainyday', 'primordialsea', 'sandstream', 'shadowsky', 'aircurrent']) && pokemon.useItem()) {
+			if (this.field.isWeather(['sunnyday', 'desolateland', 'hail', 'rainyday', 'primordialsea', 'sandstorm', 'shadowsky', 'aircurrent']) && pokemon.useItem()) {
 				this.boost({
 					atk: 1,
 					spa: 1
