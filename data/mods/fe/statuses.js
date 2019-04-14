@@ -325,9 +325,9 @@ afterstorm: {
         this.add('-weather', 'none');
     },
 },
-	cactusforce: {
-		name: 'CactusForce',
-		id: 'cactusforce',
+	cactuspower: {
+		name: 'CactusPower',
+		id: 'cactuspower',
 		num: 0,
 		effectType: 'Weather',
 		duration: 5,
@@ -351,18 +351,64 @@ afterstorm: {
 		onStart(battle, source, effect) {
 			if (effect && effect.effectType === 'Ability') {
 				if (this.gen <= 5) this.effectData.duration = 0;
-				this.add('-weather', 'CactusForce', '[from] ability: ' + effect, '[of] ' + source);
+				this.add('-weather', 'CactusPower', '[from] ability: ' + effect, '[of] ' + source);
 			} else {
-				this.add('-weather', 'CactusForce');
+				this.add('-weather', 'CactusPower');
 			}
 		},
 		onResidualOrder: 1,
 		onResidual() {
-			this.add('-weather', 'CactusForce', '[upkeep]');
-			if (this.field.isWeather('cactusforce')) this.eachEvent('Weather');
+			this.add('-weather', 'CactusPower', '[upkeep]');
+			if (this.field.isWeather('cactuspower')) this.eachEvent('Weather');
 		},
 		onWeather(target) {
 			this.damage(target.maxhp / 16);
+		},
+		onEnd() {
+			this.add('-weather', 'none');
+		},
+	},
+	yeti: {
+		name: 'Yeti',
+		id: 'yeti',
+		num: 0,
+		effectType: 'Weather',
+		duration: 5,
+		durationCallback(source, effect) {
+			if (source && (source.hasItem('icyrock') || source.hasItem('smoothrock'))) {
+				return 8;
+			}
+			return 5;
+		},
+		// This should be applied directly to the stat before any of the other modifiers are chained
+		// So we give it increased priority.
+		onModifyDefPriority: 10,
+		onModifyDef(def, pokemon) {
+			if (pokemon.hasType('Ice') && this.field.isWeather('yeti')) {
+				return this.modify(def, 1.5);
+			}
+		},
+		onModifySpDPriority: 10,
+		onModifySpD(spd, pokemon) {
+			if (pokemon.hasType('Rock') && this.field.isWeather('yeti')) {
+				return this.modify(spd, 1.5);
+			}
+		},
+		onStart(battle, source, effect) {
+			if (effect && effect.effectType === 'Ability') {
+				if (this.gen <= 5) this.effectData.duration = 0;
+				this.add('-weather', 'Yeti', '[from] ability: ' + effect, '[of] ' + source);
+			} else {
+				this.add('-weather', 'Yeti');
+			}
+		},
+		onResidualOrder: 1,
+		onResidual() {
+			this.add('-weather', 'Yeti', '[upkeep]');
+			if (this.field.isWeather('yeti')) this.eachEvent('Weather');
+		},
+		onWeather(target) {
+			if (!target.hasType(['Rock', 'Ground', 'Steel', 'Ice']))	this.damage(target.maxhp / 8);
 		},
 		onEnd() {
 			this.add('-weather', 'none');
