@@ -140,32 +140,32 @@ exports.BattleFormatsData = { //
         doublesTier: "DOU",
     },
     stardream: {
-        tier: "OU",
-        doublesTier: "DOU",
+        tier: "Uber",
+        doublesTier: "DUber",
     },
     stardreamaccessark: {
-        tier: "OU",
-        doublesTier: "DOU",
+        tier: "Uber",
+        doublesTier: "DUber",
     },
     stardreamclockworkstar: {
-        tier: "OU",
-        doublesTier: "DOU",
+        tier: "Uber",
+        doublesTier: "DUber",
     },
     stardreamsoulos: {
-        tier: "OU",
-        doublesTier: "DOU",
+        tier: "Uber",
+        doublesTier: "DUber",
     },
     stardreamsoulosaccessark: {
-        tier: "OU",
-        doublesTier: "DOU",
+        tier: "Uber",
+        doublesTier: "DUber",
     },
     stardreamsoulosclockworkstar: {
-        tier: "OU",
-        doublesTier: "DOU",
+        tier: "AG",
+        doublesTier: "DUber",
     },
     stardreamsoulosheart: {
-        tier: "OU",
-        doublesTier: "DOU",
+        tier: "AG",
+        doublesTier: "DUber",
     },
     daroach: {
         tier: "OU",
