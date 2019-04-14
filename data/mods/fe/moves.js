@@ -8823,7 +8823,7 @@ exports.BattleMovedex = {
 				return;
 			}
 			this.add('-prepare', attacker, move.name, defender);
-			if ((this.field.isWeather() && !this.field.isWeather(['deltastream']) && (this.field.isWeather(['sandstorm', 'cactuspower']) !== move.isInInvertedWeather)) || !this.runEvent('ChargeMove', attacker, defender, move)) {
+			if ((this.field.isWeather() && !this.field.isWeather(['deltastream']) && (this.field.isWeather(['yeti', 'sandstorm', 'cactuspower']) !== move.isInInvertedWeather)) || !this.runEvent('ChargeMove', attacker, defender, move)) {
 				this.add('-anim', attacker, move.name, defender);
 				return;
 			}
@@ -8832,7 +8832,7 @@ exports.BattleMovedex = {
 		},
 		onBasePowerPriority: 4,
 		onBasePower(basePower, pokemon, target) {
-			if (this.field.isWeather() && !this.field.isWeather(['deltastream']) && this.field.isWeather(['sandstorm', 'cactuspower']) === (pokemon.volatiles['atmosphericperversion'] === pokemon.volatiles['weatherbreak'])) {
+			if (this.field.isWeather() && !this.field.isWeather(['deltastream']) && this.field.isWeather(['yeti', 'sandstorm', 'cactuspower']) === (pokemon.volatiles['atmosphericperversion'] === pokemon.volatiles['weatherbreak'])) {
 				this.debug('weakened by weather');
 				return this.chainModify(0.5);
 			}
