@@ -3516,6 +3516,7 @@ inkling: {learnset: {
     hydropump: ["7L1"],
     partingshot: ["7L1"],
     rapidsplat: ["7L1"],
+	 boomburst: ["7L1"],
 }},
 corrin: {learnset: {
     aerialace: ["7L1"],
