@@ -359,15 +359,15 @@ exports.BattleFormatsData = { //
         tier: "OU",
         doublesTier: "DOU",
     },
-    0: {
+    zerokirby: {
         tier: "OU",
         doublesTier: "DOU",
     },
-    iris0: {
+    zeroiris: {
         tier: "OU",
         doublesTier: "DOU",
     },
-    02: {
+    zero2: {
         tier: "OU",
         doublesTier: "DOU",
     },

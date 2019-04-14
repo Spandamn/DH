@@ -4663,7 +4663,7 @@ majora: {learnset: {
     tropkick: ["7L1"],
     zenheadbutt: ["7L1"],
 }},
-0: {learnset: {
+zerokirby: {learnset: {
     aurasphere: ["7L1"],
     darkpulse: ["7L1"],
     defog: ["7L1"],
@@ -4679,7 +4679,7 @@ majora: {learnset: {
     thunderbolt: ["7L1"],
     thunderwave: ["7L1"],
 }},
-02: {learnset: {
+zero2: {learnset: {
     aurasphere: ["7L1"],
     darkpulse: ["7L1"],
     defog: ["7L1"],

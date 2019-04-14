@@ -1066,9 +1066,9 @@ majoraswrath: {
 	 heightm: 3,
     weightkg: 120,
 },
-0: {
+zerokirby: {
     num: 6000048,
-    species: "0", /* Kirby */
+    species: "Zero (Kirby)",
     types: ["Dark", "Poison"],
 	 gender: "N",
     baseStats: {hp: 100, atk: 90, def: 130, spa: 120, spd: 80, spe: 80},
@@ -1077,10 +1077,10 @@ majoraswrath: {
     weightkg: 400,
 	 otherFormes: ["iris0"],
 },
-iris0: { //Writing it as "0iris" would've done problems.
+zeroiris: { //Writing it as "0iris" would've done problems.
     num: 6000048,
-    species: "Iris 0",
-    baseSpecies: "0",
+    species: "Zero-Iris",
+    baseSpecies: "Zero (Kirby)",
     forme: "Iris",
     formeLetter: "I",
     types: ["Dark", "Poison"],
@@ -1090,9 +1090,9 @@ iris0: { //Writing it as "0iris" would've done problems.
 	 heightm: 0.2,
     weightkg: 4,
 },
-02: {
+zero2: {
     num: 6000048,
-    species: "02",
+    species: "Zero 2",
     types: ["Dark", "Poison"],
 	 gender: "N",
     baseStats: {hp: 120, atk: 90, def: 150, spa: 140, spd: 110, spe: 70},
@@ -1292,7 +1292,7 @@ galeem: {
 	 gender: "N",
     baseStats: {hp: 100, atk: 40, def: 40, spa: 160, spd: 160, spe: 100},
     abilities: {0: "Bane of Darkness"},
-	 heightm: 4,
+	 heightm: 5,
     weightkg: 20,
 },
 isabelle: {

@@ -7465,7 +7465,7 @@ darkchomp: {
         weightkg: 16.65,
         color: "Gray",
         eggGroups: ["Undiscovered"],
-        otherFormes: ["polyform2sunny", "polyform2sunsnow", "polyform2rainy", "polyform2snowy", "polyform2sandy", "polyform2spooky", "polyform2prickly"],
+        otherFormes: ["polyform2sunny", "polyform2sunsnow", "polyform2rainy", "polyform2snowy", "polyform2sandy", "polyform2tundra", "polyform2spooky", "polyform2prickly"],
     },
     polyform2sunny: {
         num: 7500137,
@@ -7585,6 +7585,31 @@ darkchomp: {
         },
         abilities: {
             0: "Sand Stream"
+        },
+        heightm: 0.455,
+        weightkg: 16.65,
+        color: "Brown",
+        eggGroups: ["Undiscovered"],
+    },
+    polyform2tundra: {
+        num: 7500137,
+        species: "Polyform2",
+        species: "Polyform2-Tundra",
+        baseSpecies: "Polyform2",
+        forme: "Tundra",
+        formeLetter: "T",
+        types: ["Rock", "Ice"],
+        gender: "N",
+        baseStats: {
+            hp: 98,
+            atk: 75,
+            def: 90,
+            spa: 91,
+            spd: 90,
+            spe: 65
+        },
+        abilities: {
+            0: "Yeti"
         },
         heightm: 0.455,
         weightkg: 16.65,
