@@ -797,7 +797,7 @@ exports.BattleAbilities = {
 // 		name: "FEAR",
 // 	},
 	"cactuspower": {
-		shortDesc: "Summons Sandstorm upon switching in. Grass-type moves have their power increased 20%.",
+		shortDesc: "Summons a variant of Sandstorm upon switching in. Grass-types have increased SpD and do not take damage from this weather. Additionally, Solar Beam charges instantly in it.",
 		onStart(source) {
 			this.field.setWeather('cactuspower');
 		},
@@ -13639,5 +13639,14 @@ exports.BattleAbilities = {
 		//Relevant edits are made wherever applicable.
 		id: "slippery",
 		name: "Slippery",
+	},
+	"yeti": {
+		desc: "For 5 turns, the weather becomes a Tundra. At the end of each turn except the last, all active Pokemon lose 1/8 of their maximum HP, rounded down, unless they are a Ground, Ice, Rock, or Steel type, or have the Abilities Magic Guard, Overcoat, Sand Force, Sand Rush, or Sand Veil. The Special Defense of Rock-type Pokemon is multiplied by 1.5 when taking damage from a special attack during the effect, and the Defense of Ice-type Pokemon is multiplied by 1.5 when taking damage from a physical attack. Lasts for 8 turns if the user is holding Smooth Rock or Icy Rock.",
+		shortDesc: "For five turns, a tundra covers the battlefield, which has the properties of both Sandstorm and Hail.",
+		onStart(source) {
+			this.field.setWeather('yeti');
+		},
+		id: "yeti",
+		name: "Yeti",
 	},
 };
