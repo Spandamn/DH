@@ -96,6 +96,7 @@ exports.BattleFormatsData = { //
         doublesTier: "DOU",
     },
     dededemasked: {
+		  requiredItem: "Dedede Mask",
         tier: "OU",
         doublesTier: "DOU",
     },
@@ -152,18 +153,22 @@ exports.BattleFormatsData = { //
         doublesTier: "DUber",
     },
     stardreamsoulos: {
+		  requiredItem: "Soul Orb",
         tier: "Uber",
         doublesTier: "DUber",
     },
     stardreamsoulosaccessark: {
+		  requiredItem: "Soul Orb",
         tier: "Uber",
         doublesTier: "DUber",
     },
     stardreamsoulosclockworkstar: {
+		  requiredItem: "Soul Orb",
         tier: "AG",
         doublesTier: "DUber",
     },
     stardreamsoulosheart: {
+		  requiredItem: "Soul Orb",
         tier: "AG",
         doublesTier: "DUber",
     },
@@ -172,6 +177,7 @@ exports.BattleFormatsData = { //
         doublesTier: "DOU",
     },
     daroachdark: {
+		  requiredItem: "Dark Treasure Chest",
         tier: "OU",
         doublesTier: "DOU",
     },
@@ -205,6 +211,7 @@ exports.BattleFormatsData = { //
     },
     marxsoul: {
         tier: "Uber",
+		  requiredItem: "Soul Orb",
         doublesTier: "DUber",
     },
     primrose: {
@@ -244,6 +251,7 @@ exports.BattleFormatsData = { //
         doublesTier: "DOU",
     },
     sonicsuper: {
+		  requiredItem: "Chaos Emeralds",
         tier: "OU",
         doublesTier: "DOU",
     },
@@ -484,12 +492,13 @@ exports.BattleFormatsData = { //
         doublesTier: "DOU",
     },
     magolorcrowned: {
-        tier: "OU",
-        doublesTier: "DOU",
+        tier: "Uber",
+        doublesTier: "DUber",
     },
     magolorsoul: {
-        tier: "OU",
-        doublesTier: "DOU",
+		  requiredItem: "Soul Orb",
+        tier: "Uber",
+        doublesTier: "DUber",
     },
     galleom: {
         tier: "OU",
