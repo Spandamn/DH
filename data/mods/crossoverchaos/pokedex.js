@@ -1357,7 +1357,7 @@ yoshi: {
     baseStats: {hp: 100, atk: 120, def: 85, spa: 100, spd: 80, spe: 110},
     abilities: {0: "Stamina", 1: "Hustle", H: "Scrappy"},
 	 heightm: 1.75,
-    weightkg: 75,
+    weightkg: 75.4,
 },
 masterchief: {
     num: 6000070,
