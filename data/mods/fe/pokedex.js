@@ -24545,9 +24545,10 @@ auroritarmega: {
         eggGroups: ["Undiscovered"],
     },
     porysey2: {
-        num: 7500604,
+        num: 7500605,
         species: "Porysey2",
         types: ["Normal"],
+        gender: "N",
         baseStats: {
             hp: 182,
             atk: 42,
@@ -24569,7 +24570,7 @@ auroritarmega: {
     },
     evioliteenabler: {
         num: 75000,
-        species: "Eviolite Enabler",
+        species: "GET OUT.",
         types: ["Normal"],
         baseStats: {
             hp: 170,
@@ -24587,6 +24588,193 @@ auroritarmega: {
 		  prevo: "porysey2",
 		  evoType: "levelFriendship",
         color: "Red",
+        eggGroups: ["Undiscovered"],
+    },
+	    slowkumuku: {
+        num: 7500606,
+        species: "Slowkumuku",
+        types: ["Water", "Psychic"],
+        baseStats: {
+            hp: 85,
+            atk: 77,
+            def: 130,
+            spa: 75,
+            spd: 115,
+            spe: 27
+        },
+        abilities: {
+            0: "Distracting Innards"
+        },
+		  color: "Gray",
+        heightm: 0.95,
+        weightkg: 39.85,
+     	  eggGroups: ["Water 1"],
+    },
+    slowkumukumega: {
+        num: 7500606,
+        species: "Slowkumuku-Mega",
+        baseSpecies: "Slowkumuku",
+        forme: "Mega",
+        formeLetter: "M",
+        types: ["Water", "Psychic"],
+        baseStats: {
+            hp: 85,
+            atk: 77,
+            def: 200,
+            spa: 105,
+            spd: 115,
+            spe: 27
+        },
+        abilities: {
+            0: "Shell Armor"
+        },
+        heightm: 1.35,
+        weightkg: 81.35,
+        color: "Pink",
+        eggGroups: ["Water 1"],
+    },
+	    azumatic: {
+        num: 7500607,
+        species: "Azumatic",
+        types: ["Water", "Fairy"],
+        baseStats: {
+            hp: 107,
+            atk: 65,
+            def: 89,
+            spa: 90,
+            spd: 112,
+            spe: 75
+        },
+        abilities: {
+            0: "Wondrous Scales"
+        },
+		  color: "Blue",
+        heightm: 3.5,
+        weightkg: 95.25,
+     	  eggGroups: ["Water 1"],
+    },
+	    eelrock: {
+        num: 7500608,
+        species: "Eelrock",
+        types: ["Rock", "Electric"],
+        baseStats: {
+            hp: 102,
+            atk: 107,
+            def: 140,
+            spa: 87,
+            spd: 100,
+            spe: 50
+        },
+        abilities: {
+            0: "Stasis"
+        },
+		  color: "Brown",
+        heightm: 1.9,
+        weightkg: 155.25,
+     	  eggGroups: ["Undiscovered"],
+    },
+	    masquero: {
+        num: 7500609,
+        species: "Masquero",
+        types: ["Electric", "Flying"],
+        baseStats: {
+            hp: 85,
+            atk: 105,
+            def: 111,
+            spa: 110,
+            spd: 111,
+            spe: 85
+        },
+        abilities: {
+            0: "Disruption"
+        },
+		  color: "Black",
+        heightm: 1.85,
+        weightkg: 174.3,
+     	  eggGroups: ["Undiscovered"],
+    },
+	    forastero: {
+        num: 7500610,
+        species: "Forastero",
+        gender: "F",
+        types: ["Grass", "Ice"],
+        baseStats: {
+            hp: 82,
+            atk: 97,
+            def: 110,
+            spa: 77,
+            spd: 103,
+            spe: 75
+        },
+        abilities: {
+            0: "Strangeways"
+        },
+		  color: "Gray",
+        heightm: 1.15,
+        weightkg: 68.3,
+     	  eggGroups: ["Mineral"],
+    },
+	    pachkia: {
+        num: 7500611,
+        species: "Pachkia",
+        types: ["Electric", "Dragon"],
+        baseStats: {
+            hp: 79,
+            atk: 82,
+            def: 105,
+            spa: 105,
+            spd: 105,
+            spe: 105
+        },
+        abilities: {
+            0: "Beast's Pride"
+        },
+		  color: "White",
+        heightm: 2.3,
+        weightkg: 169.95,
+     	  eggGroups: ["Undiscovered"],
+    },
+	    sableice: {
+        num: 7500612,
+        species: "Sableice",
+        types: ["Ice", "Ghost"],
+        baseStats: {
+            hp: 85,
+            atk: 62,
+            def: 87,
+            spa: 82,
+            spd: 152,
+            spe: 50
+        },
+        abilities: {
+            0: "Slippery"
+        },
+		  color: "Blue",
+        heightm: 1.15,
+        weightkg: 93,
+     	  eggGroups: ["Undiscovered"],
+    },
+    sableicemega: {
+        num: 7500612,
+        species: "Sableice-Mega",
+        baseSpecies: "Sableice",
+        forme: "Mega",
+        formeLetter: "M",
+        types: ["Ice", "Ghost"],
+        baseStats: {
+            hp: 85,
+            atk: 72,
+            def: 137,
+            spa: 102,
+            spd: 202,
+            spe: 20
+        },
+        abilities: {
+            0: "Magic Bounce"
+        },
+        heightm: 1.15,
+        weightkg: 243,
+        color: "Blue",
         eggGroups: ["Undiscovered"],
     },
 };
