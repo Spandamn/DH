@@ -24570,7 +24570,7 @@ auroritarmega: {
     },
     evioliteenabler: {
         num: 75000,
-        species: "GET OUT.",
+        species: "Eviolite Enabler",
         types: ["Normal"],
         baseStats: {
             hp: 170,
