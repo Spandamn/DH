@@ -24386,4 +24386,207 @@ auroritarmega: {
         color: "Blue",
         eggGroups: ["Monster"],
     },
+	    audigardez: {
+        num: 7500602,
+        species: "Audigardez",
+		  gender: "N",
+        types: ["Dragon", "Normal"],
+        baseStats: {
+            hp: 125,
+            atk: 80,
+            def: 105,
+            spa: 70,
+            spd: 105,
+            spe: 80
+        },
+        abilities: {
+            0: "Big Nurse"
+        },
+		  color: "Green",
+        heightm: 3.05,
+        weightkg: 168,
+     	  eggGroups: ["Undiscovered"],
+    },
+    audigardezmega: {
+        num: 7500602,
+        species: "Audigardez-Mega",
+        baseSpecies: "Audigardez",
+		  gender: "N",
+        forme: "Mega",
+        formeLetter: "M",
+        types: ["Dragon", "Fairy"],
+        baseStats: {
+            hp: 125,
+            atk: 80,
+            def: 145,
+            spa: 90,
+            spd: 145,
+            spe: 80
+        },
+        abilities: {
+            0: "Healer"
+        },
+        heightm: 3.45,
+        weightkg: 169,
+        color: "Green",
+        eggGroups: ["Undiscovered"],
+    },
+	    audigardezdoctor: {
+        num: 7500602,
+        species: "Audigardez-Doctor",
+        baseSpecies: "Audigardez",
+		  gender: "N",
+        forme: "Doctor",
+        formeLetter: "D",
+        types: ["Dragon", "Normal"],
+        baseStats: {
+            hp: 233,
+            atk: 80,
+            def: 105,
+            spa: 80,
+            spd: 105,
+            spe: 70
+        },
+        abilities: {
+            0: "Big Nurse"
+        },
+		  color: "Green",
+        heightm: 2.55,
+        weightkg: 473,
+     	  eggGroups: ["Undiscovered"],
+    },
+    audigardezmegadoctor: {
+        num: 7500602,
+        species: "Audigardez-Mega-Doctor",
+        baseSpecies: "Audigardez",
+		  gender: "N",
+        forme: "Mega",
+        formeLetter: "M",
+        types: ["Dragon", "Fairy"],
+        baseStats: {
+            hp: 233,
+            atk: 80,
+            def: 145,
+            spa: 100,
+            spd: 145,
+            spe: 70
+        },
+        abilities: {
+            0: "Healer"
+        },
+        heightm: 2.95,
+        weightkg: 474,
+        color: "Green",
+        eggGroups: ["Undiscovered"],
+    },
+	    reggaeton: {
+        num: 7500603,
+        species: "Reggaeton",
+        types: ["Steel"],
+        baseStats: {
+            hp: 70,
+            atk: 115,
+            def: 137,
+            spa: 110,
+            spd: 97,
+            spe: 74
+        },
+        abilities: {
+            0: "Is This The Right Festival?"
+        },
+		  color: "Gray",
+        heightm: 1.8,
+        weightkg: 221.25,
+     	  eggGroups: ["Undiscovered"],
+    },
+    reggaetonmega: {
+        num: 7500603,
+        species: "Reggaeton-Mega",
+        baseSpecies: "Reggaeton",
+        forme: "Mega",
+        formeLetter: "M",
+        types: ["Steel"],
+        baseStats: {
+            hp: 70,
+            atk: 145,
+            def: 187,
+            spa: 110,
+            spd: 117,
+            spe: 74
+        },
+        abilities: {
+            0: "Filter"
+        },
+        heightm: 1.9,
+        weightkg: 256.25,
+        color: "Gray",
+        eggGroups: ["Undiscovered"],
+    },
+    happory: {
+        num: 7500604,
+        species: "Happory",
+        types: ["Normal"],
+        gender: "N",
+        baseStats: {
+            hp: 102,
+            atk: 32,
+            def: 57,
+            spa: 50,
+            spd: 70,
+            spe: 35
+        },
+        abilities: {
+            0: "Hardware"
+        },
+        heightm: 0.7,
+        weightkg: 30.45,
+        color: "Red",
+		  evos: ["porysey2"],
+        eggGroups: ["Undiscovered"],
+    },
+    porysey2: {
+        num: 7500604,
+        species: "Porysey2",
+        types: ["Normal"],
+        baseStats: {
+            hp: 182,
+            atk: 42,
+            def: 67,
+            spa: 70,
+            spd: 100,
+            spe: 55
+        },
+        abilities: {
+            0: "Adblock"
+        },
+        heightm: 0.85,
+        weightkg: 33.55,
+		  prevo: "happory",
+		  evoType: "trade",
+		  evos: ["evioliteenabler"],
+        color: "Red",
+        eggGroups: ["Undiscovered"],
+    },
+    evioliteenabler: {
+        num: 75000,
+        species: "Eviolite Enabler",
+        types: ["Normal"],
+        baseStats: {
+            hp: 170,
+            atk: 45,
+            def: 40,
+            spa: 105,
+            spd: 105,
+            spe: 72
+        },
+        abilities: {
+            0: "Beast Bootleg"
+        },
+        heightm: 1.2,
+        weightkg: 40.4,
+		  prevo: "porysey2",
+		  evoType: "levelFriendship",
+        color: "Red",
+        eggGroups: ["Undiscovered"],
+    },
 };
