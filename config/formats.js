@@ -4734,31 +4734,6 @@ exports.Formats = [
 		// banlist: ['Unreleased', 'Illegal'],
   	},
 	{
-		name: "[Gen 7] Tennysonmons",
-		desc: ["&bullet; Benmons",],
-		ruleset: ['Pokemon', 'Sleep Clause Mod', 'Species Clause', 'Moody Clause', 'Evasion Moves Clause', 'Endless Battle Clause', 'HP Percentage Mod', 'Cancel Mod', 'Team Preview', 'Swagger Clause', 'Baton Pass Clause'],
-		//banlist: ['Illegal'],
-		mod: 'tennysonmons',
-		searchShow: false,
-		//challengeShow: false,
-	},
-	{
-		name: "[Gen 7] The Pokedex According to Spook",
-		desc: ["&bullet; <a href=https://www.smogon.com/forums/threads/the-pokedex-according-to-spook.3645318/>The Pokedex According to Spook</a>",],
-		ruleset: ['Pokemon', 'Standard', 'Team Preview'],
-		unbanlist: ['Aegislash', 'Aegislash-Blade', 'Shadow Tag', 'Arena Trap'],
-		banlist: ['Stance Change', 'Uber'],
-		//banlist: ['Illegal'],
-		mod: 'Spookdex',
-	},
-	{
-		name: "[Gen 7] Typing: The Mod",
-		desc: ["&bullet; <a href=https://www.smogon.com/forums/threads/.3634253/>Typing: The Mod</a>",],
-		ruleset: ['Pokemon', 'Sleep Clause Mod', 'Species Clause', 'Moody Clause', 'Evasion Moves Clause', 'Endless Battle Clause', 'HP Percentage Mod', 'Cancel Mod', 'Team Preview', 'Swagger Clause', 'Baton Pass Clause'],
-		//banlist: ['Illegal'],
-		mod: 'ttm',
-	},
-	{
 		name: "[Gen 7] Monotype Gen 8",
 		desc: [
 			"A Monotype-based pet mod with lots of new pokemon.",
@@ -4992,6 +4967,34 @@ exports.Formats = [
 		banlist: ['Illegal', 'Uber', 'Arena Trap', 'Time Warp', 'Power Construct', 'Shadow Tag', 'Baton Pass', 'Stalwart + Calm Mind', 'Stakataka', 'Raichu-Alola', 'Regice', 'Buzzwole + Perseverance', 'Reverse Core'],
 		unbanlist: ['Blaziken'],
 		mod: 'sylvemonstest',
+	},
+	{
+		name: "[Gen 7] Tennysonmons",
+		desc: ["&bullet; Benmons",],
+		ruleset: ['Pokemon', 'Sleep Clause Mod', 'Species Clause', 'Moody Clause', 'Evasion Moves Clause', 'Endless Battle Clause', 'HP Percentage Mod', 'Cancel Mod', 'Team Preview', 'Swagger Clause', 'Baton Pass Clause'],
+		//banlist: ['Illegal'],
+		mod: 'tennysonmons',
+		searchShow: false,
+		challengeShow: false,
+	},
+	{
+		name: "[Gen 7] The Pokedex According to Spook",
+		desc: ["&bullet; <a href=https://www.smogon.com/forums/threads/the-pokedex-according-to-spook.3645318/>The Pokedex According to Spook</a>",],
+		ruleset: ['Pokemon', 'Standard', 'Team Preview'],
+		unbanlist: ['Aegislash', 'Aegislash-Blade', 'Shadow Tag', 'Arena Trap'],
+		banlist: ['Stance Change', 'Uber'],
+		//banlist: ['Illegal'],
+		mod: 'Spookdex',
+	},
+	{
+		name: "[Gen 7] Typing: The Mod",
+		desc: ["&bullet; <a href=https://www.smogon.com/forums/threads/.3634253/>Typing: The Mod</a>",],
+		ruleset: ['Pokemon', 'Sleep Clause Mod', 'Species Clause', 'Moody Clause', 'Evasion Moves Clause', 'Endless Battle Clause', 'HP Percentage Mod', 'Cancel Mod', 'Team Preview', 'Swagger Clause', 'Baton Pass Clause'],
+		//banlist: ['Illegal'],
+		onSwitchIn: function (pokemon) {
+            this.add('-start', pokemon, 'typechange', pokemon.template.types.join('/'), '[silent]');
+        },
+		mod: 'ttm',
 	},
 	{
   		name: "[Gen 7] Type Optimisation",
