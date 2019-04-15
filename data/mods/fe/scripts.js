@@ -623,10 +623,10 @@ exports.BattleScripts = {
         getActionSpeed() {
             let speed = this.getStat('spe', false, false);
             if (speed > 10000) speed = 10000;
-            if (this.battle.getPseudoWeather('trickroom')) {
+            if (this.battle.field.getPseudoWeather('trickroom')) {
                 speed = 0x2710 - speed;
             }
-            if (this.battle.getPseudoWeather('sluggishaura')) {
+            if (this.battle.field.getPseudoWeather('sluggishaura')) {
                 speed = 0x2710 - speed;
             }
             return speed & 0x1FFF;
