@@ -24737,7 +24737,7 @@ auroritarmega: {
 	    sableice: {
         num: 7500612,
         species: "Sableice",
-        types: ["Ice", "Ghost"],
+        types: ["Ghost", "Ice"],
         baseStats: {
             hp: 85,
             atk: 62,
@@ -24760,7 +24760,7 @@ auroritarmega: {
         baseSpecies: "Sableice",
         forme: "Mega",
         formeLetter: "M",
-        types: ["Ice", "Ghost"],
+        types: ["Ghost", "Ice"],
         baseStats: {
             hp: 85,
             atk: 72,
