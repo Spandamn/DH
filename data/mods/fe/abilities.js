@@ -13742,4 +13742,74 @@ exports.BattleAbilities = {
 		id: "yeti",
 		name: "Yeti",
 	},
+	"firstaid": {
+		desc: "This Pokemon's moves of 60 power or less have their power multiplied by 1.5 and restore 12.5% of its Maximum HP after use. Does affect Struggle.",
+		shortDesc: "This Pokemon's moves of 60 power or less have 1.5x power and heal it by 12.5% of its Max HP after use. Includes Struggle.",
+		onBasePowerPriority: 8,
+		onBasePower(basePower, attacker, defender, move) {
+			if (basePower <= 60) {
+				this.debug('Technician boost');
+				move.technicianBoosted = true;
+				return this.chainModify(1.5);
+			}
+		},
+		onSourceHit(target, source, move) {
+			if (!move || !target) return;
+			if (move.technicianBoosted) {
+				this.heal(source.maxhp / 8, source, source);
+			}
+		},
+		id: "firstaid",
+		name: "First Aid",
+	},
+	"knottedhair": {
+		shortDesc: "This Pokemon's Defense and Speed are raised by 1 stage after it is damaged by a move.",
+		onAfterDamage(damage, target, source, effect) {
+			if (effect && effect.effectType === 'Move' && effect.id !== 'confused') {
+				this.boost({def: 1, spe: 1});
+			}
+		},
+		id: "knottedhair",
+		name: "Knotted Hair",
+	},
+	"recalcitrant": {
+		shortDesc: "Prevents other Pokemon from lowering this Pokemon's stat stages. Situations that would otherwise cause this raise this Pokemon's Attack by 1.",
+		onBoost(boost, target, source, effect) {
+			if (source && target === source) return;
+			let showMsg = false;
+			for (let i in boost) {
+				// @ts-ignore
+				if (boost[i] < 0) {
+					// @ts-ignore
+					delete boost[i];
+					if (!effect.secondaries) {
+						boost.atk = 1;
+						showMsg = true;
+					}
+				}
+			}
+			if (showMsg) this.add("-fail", target, "unboost", "[from] ability: Recalcitrant", "[of] " + target);
+		},
+		id: "recalcitrant",
+		name: "Recalcitrant",
+	},
+	"decontaminator": {
+		desc: "Prevents adjacent opposing Pokemon from choosing to switch out unless they are immune to trapping or are healthy.",
+		shortDesc: "Prevents adjacent foes from choosing to switch if they have a volatile status condition.",
+		onFoeTrapPokemon(pokemon) {
+			if (!this.isAdjacent(pokemon, this.effectData.target)) return;
+			if (pokemon.status) {
+				pokemon.tryTrap(true);
+			}
+		},
+		onFoeMaybeTrapPokemon(pokemon, source) {
+			if (!source) source = this.effectData.target;
+			if (!source || !this.isAdjacent(pokemon, source)) return;
+			if (pokemon.status) {
+				pokemon.maybeTrapped = true;
+			}
+		},
+		id: "decontaminator",
+		name: "Decontaminator",
+	},
 };
