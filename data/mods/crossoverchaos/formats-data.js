@@ -200,12 +200,12 @@ exports.BattleFormatsData = { //
         doublesTier: "DOU",
     },
     marx: {
-        tier: "OU",
-        doublesTier: "DOU",
+        tier: "Uber",
+        doublesTier: "DUber",
     },
     marxsoul: {
-        tier: "OU",
-        doublesTier: "DOU",
+        tier: "Uber",
+        doublesTier: "DUber",
     },
     primrose: {
         tier: "OU",
