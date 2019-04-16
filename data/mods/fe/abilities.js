@@ -13900,4 +13900,31 @@ exports.BattleAbilities = {
 		id: "feedbackbarrier",
 		name: "Feedback Barrier",
 	},
+	"quicksilver": {
+		desc: "This Pokemon's Speed is raised by 1 stage at the end of each full turn it has been on the field. Prevents other Pokemon from lowering this Pokemon's stat stages, inverting these changes instead. Moongeist Beam, Sunsteel Strike, and the Mold Breaker, Teravolt, and Turboblaze Abilities cannot ignore this Ability.",
+		shortDesc: "This Pokemon's Speed is raised 1 stage at the end of each full turn on the field. Prevents other Pokemon from lowering this Pokemon's stat stages, inverting these changes instead.",
+		onBoost(boost, target, source, effect) {
+			if (source && target === source) return;
+			let showMsg = false;
+			for (let i in boost) {
+				// @ts-ignore
+				if (boost[i] < 0) {
+					// @ts-ignore
+					boost[i] *= -1;
+					showMsg = true;
+				}
+			}
+			if (showMsg && !effect.secondaries) this.add("-fail", target, "unboost", "[from] ability: Quicksilver", "[of] " + target);
+		},
+		onResidualOrder: 26,
+		onResidualSubOrder: 1,
+		onResidual(pokemon) {
+			if (pokemon.activeTurns) {
+				this.boost({spe: 1});
+			}
+		},
+		isUnbreakable: true,
+		id: "quicksilver",
+		name: "Quicksilver",
+	},
 };
