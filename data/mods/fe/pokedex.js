@@ -25040,10 +25040,118 @@ auroritarmega: {
             0: "Regenerator"
         },
 		  color: "Pink",
-		prevo: "slowpoke",
-		evoLevel: 37,
         heightm: 2.2,
         weightkg: 120.5,
-		eggGroups: ["Monster", "Water 1"],
+		  eggGroups: ["Monster", "Water 1"],
+    },
+	    thor: {
+        num: 7500621,
+        species: "Thor",
+        types: ["Electric", "Flying"],
+		  gender: "M",
+        baseStats: {
+            hp: 84,
+            atk: 120,
+            def: 75,
+            spa: 150,
+            spd: 110,
+            spe: 136
+        },
+        abilities: {
+            0: "Prankster"
+        },
+		  color: "Green",
+        heightm: 1.5,
+        weightkg: 62,
+		  eggGroups: ["Undiscovered"],
+    },
+	    thornordic: {
+        num: 7500621,
+        species: "Thor-Nordic",
+        baseSpecies: "Thor",
+        forme: "Nordic",
+        formeLetter: "N",
+        types: ["Electric", "Flying"],
+		  gender: "M",
+        baseStats: {
+            hp: 79,
+            atk: 102,
+            def: 75,
+            spa: 147,
+            spd: 85,
+            spe: 131
+        },
+        abilities: {
+            0: "Stormy Ascent"
+        },
+		  color: "Green",
+        heightm: 2.2,
+        weightkg: 62,
+		  eggGroups: ["Undiscovered"],
+    },
+	    finiscor: {
+        num: 7500622,
+        species: "Finiscor",
+        types: ["Ground", "Water"],
+        baseStats: {
+            hp: 92,
+            atk: 85,
+            def: 120,
+            spa: 70,
+            spd: 125,
+            spe: 90
+        },
+        abilities: {
+            0: "Mist Rejuvenation"
+        },
+		  color: "Purple",
+        heightm: 1.65,
+        weightkg: 31.85,
+		  eggGroups: ["Undiscovered"],
+    },
+	    salad: {
+        num: 7500623,
+        species: "Broking",
+        types: ["Ground", "Flying"],
+		  gender: "M",
+        baseStats: {
+            hp: 100,
+            atk: 150,
+            def: 100,
+            spa: 115,
+            spd: 95,
+            spe: 110
+        },
+        abilities: {
+            0: "Intimidate"
+        },
+		  color: "Brown",
+        heightm: 1.5,
+        weightkg: 85.3,
+		eggGroups: ["Undiscovered"],
+    },
+    saladmega: {
+        num: 7500623,
+        species: "Salad-Mega",
+        baseSpecies: "Salad",
+        forme: "Mega",
+        formeLetter: "M",
+        types: ["Ground", "Flying"],
+		  gender: "M",
+        baseStats: {
+            hp: 100,
+            atk: 160,
+            def: 150,
+            spa: 125,
+            spd: 105,
+            spe: 130
+        },
+        abilities: {
+            0: "Aerilate"
+        },
+		  color: "Brown",
+        heightm: 1.8,
+        weightkg: 95.3,
+		  eggGroups: ["Undiscovered"],
     },
 };
