@@ -37,7 +37,7 @@ let BattleMovedex = {
         basePower: 85,
         category: "Physical",
         desc: "Has a 10% chance to burn the target. The target thaws out if it is frozen.",
-        shortDesc: "10% chance to burn the target. Thaws target.",
+        shortDesc: "10% chance to dburn the target. Thaws target.",
         id: "fireball",
         isViable: true,
         name: "Fireball",
@@ -117,7 +117,7 @@ let BattleMovedex = {
 			basePower: 200,
 			category: "Physical",
 			desc: "This move becomes a special attack if the target's Defense is greater than its Special Defense, including stat stage changes.",
-			shortDesc: "Special if target's Def > Sp. Def. Ignores Abilities.",
+			shortDesc: "Special if target's Def > Sp. Def.",
 			id: "monadobuster",
 			name: "Monado Buster",
 			pp: 1,
@@ -182,6 +182,7 @@ let BattleMovedex = {
 			contestType: "Cute",
 		},
 	"jambaspear": {
+		num: 40008,
 		accuracy: 100,
 		basePower: 90,
 		category: "Physical",
@@ -203,6 +204,7 @@ let BattleMovedex = {
 		contestType: "Cool",
 	},
 	"devilsknife": {
+		num: 40009,
 		accuracy: 100,
 		basePower: 120,
 		category: "Physical",
@@ -229,6 +231,7 @@ let BattleMovedex = {
 		contestType: "Cool",
 	},
 	"dashslash": {
+		num: 40010,
 		accuracy: 100,
 		basePower: 70,
 		category: "Physical",
@@ -248,6 +251,7 @@ let BattleMovedex = {
 		contestType: "Cool",
 	},
 	"assassinate": {
+		num: 40011,
 		accuracy: 100,
 		basePower: 90,
 		category: "Physical",
@@ -268,6 +272,7 @@ let BattleMovedex = {
 		contestType: "Tough",
 	},
 	"etherealroller": {
+		num: 40012,
 		accuracy: 90,
 		basePower: 85,
 		category: "Physical",
@@ -325,7 +330,7 @@ let BattleMovedex = {
 		contestType: "Cute",
 	},
 	"purry": {
-		num: 368,
+		num: 40013,
 		accuracy: 100,
 		basePower: 0,
 		damageCallback(pokemon) {
@@ -374,6 +379,7 @@ let BattleMovedex = {
 		contestType: "Cute",
 	},
 	"crystalspin": {
+		num: 40014,
 		accuracy: true,
 		basePower: 20,
 		basePowerCallback(pokemon, target, move) {
@@ -395,6 +401,7 @@ let BattleMovedex = {
 		contestType: "Cool",
 	},
 	"angelicflare": {
+		num: 40015,
 		accuracy: 100,
 		basePower: 100,
 		category: "Special",
@@ -414,6 +421,7 @@ let BattleMovedex = {
 		contestType: "Beautiful",
 	},
 	"reanimate": {
+		num: 40016,
 		accuracy: true,
 		basePower: 0,
 		category: "Status",
@@ -437,6 +445,7 @@ let BattleMovedex = {
 		contestType: "Clever",
 	},
 	"greatslash": {
+		num: 40017,
 		accuracy: 100,
 		basePower: 120,
 		category: "Physical",
@@ -461,6 +470,7 @@ let BattleMovedex = {
 		contestType: "Tough",
 	},
 	"fujiwaravolcano": {
+		num: 40018,
 		accuracy: 80,
 		basePower: 150,
 		category: "Physical",
@@ -483,6 +493,7 @@ let BattleMovedex = {
 		contestType: "Tough",
 	},
 	"iceklone": {
+		num: 40019,
 		accuracy: true,
 		basePower: 0,
 		category: "Status",

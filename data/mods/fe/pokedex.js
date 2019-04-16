@@ -24777,4 +24777,424 @@ auroritarmega: {
         color: "Blue",
         eggGroups: ["Undiscovered"],
     },
+	    sabulu: {
+        num: 7500613,
+        species: "Sabulu",
+        types: ["Dark", "Fairy"],
+        baseStats: {
+            hp: 80,
+            atk: 102,
+            def: 95,
+            spa: 75,
+            spd: 100,
+            spe: 62
+        },
+        abilities: {
+            0: "Sinful Surge"
+        },
+		  color: "Purple",
+        heightm: 1.2,
+        weightkg: 28.25,
+     	  eggGroups: ["Undiscovered"],
+    },
+    sabulumega: {
+        num: 7500613,
+        species: "Sabulu-Mega",
+        baseSpecies: "Sabulu",
+        forme: "Mega",
+        formeLetter: "M",
+        types: ["Dark", "Fairy"],
+        baseStats: {
+            hp: 80,
+            atk: 112,
+            def: 145,
+            spa: 95,
+            spd: 150,
+            spe: 32
+        },
+        abilities: {
+            0: "Magic Bounce"
+        },
+		  color: "Purple",
+        heightm: 1.2,
+        weightkg: 178.25,
+     	  eggGroups: ["Undiscovered"],
+    },
+	    dugdalealola: {
+        num: 7500614,
+        species: "Dugdale-Alola",
+        types: ["Steel", "Ground"],
+        baseStats: {
+            hp: 77,
+            atk: 122,
+            def: 90,
+            spa: 62,
+            spd: 87,
+            spe: 82
+        },
+        abilities: {
+            0: "Knotted Hair"
+        },
+		  color: "Brown",
+        heightm: 1.6,
+        weightkg: 493.3,
+     	  eggGroups: ["Field"],
+    },
+    golemprime: {
+		  num: 76,
+		  species: "Golem-Prime",
+		  baseSpecies: "Golem",
+		  forme: "Prime",
+		  formeLetter: "P",
+        types: ["Ground", "Electric"],
+		  baseStats: {hp: 95, atk: 135, def: 145, spa: 70, spd: 80, spe: 60},
+        abilities: {
+            0: "Sturdy"
+        },
+        color: "Brown",
+        heightm: 1.55,
+        weightkg: 308,
+		  eggGroups: ["Mineral"],
+    },
+	    metabrave: {
+        num: 7500616,
+        species: "Metabrave",
+        gender: "N",
+        types: ["Flying", "Steel"],
+        baseStats: {
+            hp: 100,
+            atk: 139,
+            def: 102,
+            spa: 76,
+            spd: 102,
+            spe: 75
+        },
+        abilities: {
+            0: "Recalcitrant"
+        },
+		  color: "Blue",
+        heightm: 1.55,
+        weightkg: 295.5,
+     	  eggGroups: ["Undiscovered"],
+    },
+    metabravemega: {
+        num: 7500616,
+        species: "Metabrave-Mega",
+        baseSpecies: "Metabrave",
+        forme: "Mega",
+        formeLetter: "M",
+        gender: "N",
+        types: ["Flying", "Steel"],
+        baseStats: {
+            hp: 100,
+            atk: 149,
+            def: 122,
+            spa: 86,
+            spd: 122,
+            spe: 115
+        },
+        abilities: {
+            0: "Tough Claws"
+        },
+        heightm: 2.45,
+        weightkg: 688.4,
+        color: "Blue",
+        eggGroups: ["Undiscovered"],
+    },
+	    reversemartian: {
+        num: 7500617,
+        species: "Reverse Martian",
+        gender: "N",
+        types: ["Grass", "Fire"],
+        baseStats: {
+            hp: 102,
+            atk: 115,
+            def: 98,
+            spa: 127,
+            spd: 101,
+            spe: 73
+        },
+        abilities: {
+            0: "Antimatter"
+        },
+		  color: "Brown",
+        heightm: 2.35,
+        weightkg: 200.5,
+     	  eggGroups: ["Undiscovered"],
+    },
+	    pinthim: {
+        num: 7500618,
+        species: "Pinthim",
+        gender: "M",
+        types: ["Bug"],
+        baseStats: {
+            hp: 77,
+            atk: 119,
+            def: 85,
+            spa: 84,
+            spd: 70,
+            spe: 85
+        },
+        abilities: {
+            0: "Pristine Lens"
+        },
+		  color: "Brown",
+        heightm: 1.2,
+        weightkg: 39.15,
+     	  eggGroups: ["Bug"],
+    },
+    pinthimmega: {
+        num: 7500618,
+        species: "Pinthim-Mega",
+        baseSpecies: "Pinthim",
+        forme: "Mega",
+        formeLetter: "M",
+        gender: "M",
+        types: ["Bug", "Flying"],
+        baseStats: {
+            hp: 77,
+            atk: 139,
+            def: 105,
+            spa: 94,
+            spd: 90,
+            spe: 105
+        },
+        abilities: {
+            0: "Aerilate"
+        },
+		  color: "Brown",
+        heightm: 1.4,
+        weightkg: 43.15,
+        eggGroups: ["Bug"],
+    },
+	    hug: {
+        num: 7500619,
+        species: "Hug",
+        types: ["Steel", "Ice"],
+        baseStats: {
+            hp: 110,
+            atk: 103,
+            def: 145,
+            spa: 90,
+            spd: 96,
+            spe: 52
+        },
+        abilities: {
+            0: "Ice Wall"
+        },
+		  color: "Blue",
+        heightm: 1.85,
+        weightkg: 467.5,
+     	  eggGroups: ["Undiscovered"],
+    },
+	slowpoke: {
+		num: 79,
+		species: "Slowpoke",
+		types: ["Water", "Psychic"],
+		baseStats: {hp: 90, atk: 65, def: 65, spa: 40, spd: 40, spe: 15},
+		abilities: {0: "Oblivious", 1: "Own Tempo", H: "Regenerator"},
+		heightm: 1.2,
+		weightkg: 36,
+		color: "Pink",
+		evos: ["slowbro", "slowking", "broking"],
+		eggGroups: ["Monster", "Water 1"],
+	},
+	    broking: {
+        num: 7500620,
+        species: "Broking",
+        types: ["Water", "Psychic"],
+        baseStats: {
+            hp: 110,
+            atk: 90,
+            def: 110,
+            spa: 115,
+            spd: 110,
+            spe: 45
+        },
+        abilities: {
+            0: "Regenerator"
+        },
+		  color: "Pink",
+		prevo: "slowpoke",
+		evoLevel: 37,
+        heightm: 1.8,
+        weightkg: 79,
+		eggGroups: ["Monster", "Water 1"],
+    },
+    brokingmega: {
+        num: 7500620,
+        species: "Broking-Mega",
+        baseSpecies: "Broking",
+        forme: "Mega",
+        formeLetter: "M",
+        types: ["Water", "Psychic"],
+        baseStats: {
+            hp: 110,
+            atk: 90,
+            def: 180,
+            spa: 145,
+            spd: 110,
+            spe: 45
+        },
+        abilities: {
+            0: "Regenerator"
+        },
+		  color: "Pink",
+        heightm: 2.2,
+        weightkg: 120.5,
+		  eggGroups: ["Monster", "Water 1"],
+    },
+	    thor: {
+        num: 7500621,
+        species: "Thor",
+        types: ["Electric", "Flying"],
+		  gender: "M",
+        baseStats: {
+            hp: 84,
+            atk: 120,
+            def: 75,
+            spa: 150,
+            spd: 110,
+            spe: 136
+        },
+        abilities: {
+            0: "Prankster"
+        },
+		  color: "Green",
+        heightm: 1.5,
+        weightkg: 62,
+		  eggGroups: ["Undiscovered"],
+    },
+	    thornordic: {
+        num: 7500621,
+        species: "Thor-Nordic",
+        baseSpecies: "Thor",
+        forme: "Nordic",
+        formeLetter: "N",
+        types: ["Electric", "Flying"],
+		  gender: "M",
+        baseStats: {
+            hp: 79,
+            atk: 102,
+            def: 75,
+            spa: 147,
+            spd: 85,
+            spe: 131
+        },
+        abilities: {
+            0: "Stormy Ascent"
+        },
+		  color: "Green",
+        heightm: 2.2,
+        weightkg: 62,
+		  eggGroups: ["Undiscovered"],
+    },
+	    finiscor: {
+        num: 7500622,
+        species: "Finiscor",
+        types: ["Ground", "Water"],
+        baseStats: {
+            hp: 92,
+            atk: 85,
+            def: 120,
+            spa: 70,
+            spd: 125,
+            spe: 90
+        },
+        abilities: {
+            0: "Mist Rejuvenation"
+        },
+		  color: "Purple",
+        heightm: 1.65,
+        weightkg: 31.85,
+		  eggGroups: ["Undiscovered"],
+    },
+	    salad: {
+        num: 7500623,
+        species: "Salad",
+        types: ["Ground", "Flying"],
+		  gender: "M",
+        baseStats: {
+            hp: 100,
+            atk: 150,
+            def: 100,
+            spa: 115,
+            spd: 95,
+            spe: 110
+        },
+        abilities: {
+            0: "Intimidate"
+        },
+		  color: "Brown",
+        heightm: 1.5,
+        weightkg: 85.3,
+		eggGroups: ["Undiscovered"],
+    },
+    saladmega: {
+        num: 7500623,
+        species: "Salad-Mega",
+        baseSpecies: "Salad",
+        forme: "Mega",
+        formeLetter: "M",
+        types: ["Ground", "Flying"],
+		  gender: "M",
+        baseStats: {
+            hp: 100,
+            atk: 160,
+            def: 150,
+            spa: 125,
+            spd: 105,
+            spe: 130
+        },
+        abilities: {
+            0: "Aerilate"
+        },
+		  color: "Brown",
+        heightm: 1.8,
+        weightkg: 95.3,
+		  eggGroups: ["Undiscovered"],
+    },
+	    chulu: {
+        num: 7500624,
+        species: "Chulu",
+        types: ["Dragon", "Grass"],
+        baseStats: {
+            hp: 89,
+            atk: 130,
+            def: 115,
+            spa: 82,
+            spd: 110,
+            spe: 98
+        },
+        abilities: {
+            0: "Rough Grass"
+        },
+		  color: "Blue",
+        heightm: 1.9,
+        weightkg: 70.25,
+		eggGroups: ["Undiscovered"],
+    },
+    chulumega: {
+        num: 7500624,
+        species: "Chulu-Mega",
+        baseSpecies: "Chulu",
+        forme: "Mega",
+        formeLetter: "M",
+        types: ["Dragon", "Grass"],
+        baseStats: {
+            hp: 89,
+            atk: 170,
+            def: 135,
+            spa: 122,
+            spd: 120,
+            spe: 88
+        },
+        abilities: {
+            0: "Sand Force"
+        },
+		  color: "Blue",
+        heightm: 1.9,
+        weightkg: 70.25,
+		  eggGroups: ["Undiscovered"],
+    },
 };

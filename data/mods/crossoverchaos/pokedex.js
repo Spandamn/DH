@@ -841,8 +841,7 @@ theknight: {
 	 gender: "N",
     baseStats: {hp: 60, atk: 115, def: 95, spa: 115, spd: 95, spe: 120},
     abilities: {0: "Shade Soul"},
-	 heightm: 0.1,
-    weightkg: 0.2,
+    weightkg: 0.4,
 	 otherFormes: ["theknightshade"],
 },
 theknightshade: {
@@ -855,7 +854,6 @@ theknightshade: {
 	 gender: "N",
     baseStats: {hp: 1, atk: 115, def: 95, spa: 115, spd: 95, spe: 69},
     abilities: {0: "Magic Guard"},
-	 heightm: 0.1,
     weightkg: 0.1,
 },
 falseknight: {
@@ -865,8 +863,7 @@ falseknight: {
 	 gender: "M",
     baseStats: {hp: 50, atk: 150, def: 140, spa: 50, spd: 90, spe: 80},
     abilities: {0: "Stolen Armour"},
-	 heightm: 0.3,
-    weightkg: 10,
+    weightkg: 20,
 	 otherFormes: ["falseknightunarmored"],
 },
 falseknightunarmored: {
@@ -1092,7 +1089,7 @@ zeroiris: { //Writing it as "0iris" would've done problems.
 },
 zero2: {
     num: 6000048,
-    species: "Zero 2",
+    species: "Zero^2",
     types: ["Dark", "Poison"],
 	 gender: "N",
     baseStats: {hp: 120, atk: 90, def: 150, spa: 140, spd: 110, spe: 70},
@@ -1151,7 +1148,6 @@ nailsagesly: {
 	 gender: "M",
     baseStats: {hp: 80, atk: 120, def: 85, spa: 60, spd: 70, spe: 130},
     abilities: {0: "Steelworker"},
-	 heightm: 0.1,
     weightkg: 0.2,
 },
 presidenthaltmann: {
@@ -1253,17 +1249,17 @@ waterwraith: {
     baseStats: {hp: 90, atk: 130, def: 80, spa: 70, spd: 150, spe: 80},
     abilities: {0: "Ethereal Body"},
 	 heightm: 0.1,
-    weightkg: 1,
+    weightkg: 0.3,
 },
 samus: {
     num: 6000059,
-    species: "Samus",
+    species: "Samus", /* Metroid */
     types: ["Electric", "Fighting"],
 	 gender: "F",
     baseStats: {hp: 105, atk: 80, def: 95, spa: 145, spd: 95, spe: 85},
     abilities: {0: "Mega Launcher", H: "Tinted Lens"},
 	 heightm: 1.9,
-    weightkg: 80,
+    weightkg: 85,
 },
 taranza: {
     num: 6000060,
@@ -1277,7 +1273,7 @@ taranza: {
 },
 donkeykong: {
     num: 6000061,
-    species: "Donkey Kong", /* Donkey Kong Country games */
+    species: "Donkey Kong",
     types: ["Ground", "Fighting"],
 	 gender: "M",
     baseStats: {hp: 130, atk: 140, def: 80, spa: 50, spd: 70, spe: 70},
@@ -1326,7 +1322,7 @@ riki: {
 },
 jevil: {
     num: 6000066,
-    species: "Jevil", /* Deltrarune */
+    species: "Jevil", /* Deltarune */
     types: ["Dark", "Psychic"],
 	 gender: "M",
     baseStats: {hp: 80, atk: 110, def: 95, spa: 110, spd: 105, spe: 105},
@@ -1361,7 +1357,7 @@ yoshi: {
     baseStats: {hp: 100, atk: 120, def: 85, spa: 100, spd: 80, spe: 110},
     abilities: {0: "Stamina", 1: "Hustle", H: "Scrappy"},
 	 heightm: 1.75,
-    weightkg: 75,
+    weightkg: 75.4,
 },
 masterchief: {
     num: 6000070,
@@ -1555,6 +1551,7 @@ link: {
     num: 6000086,
     species: "Link", /* The Legend of Zelda (This one's from Ocarina of Time) */
     types: ["Fighting", "Steel"],
+	 gender: "M",
     baseStats: {hp: 80, atk: 125, def: 110, spa: 80, spd: 85, spe: 105},
     abilities: {0: "Justified", 1: "Defiant", H: "Divine Courage"},
     weightkg: 80,
@@ -1563,6 +1560,7 @@ saber: {
     num: 6000087,
     species: "Saber", /* Fate Series */
     types: ["Steel"],
+	 gender: "F",
     baseStats: {hp: 110, atk: 130, def: 100, spa: 40, spd: 110, spe: 120},
     abilities: {0: "Justified", 1: "Saber Class", H: "Avalon"},
     weightkg: 45,
@@ -1571,12 +1569,13 @@ shieldknight: {
     num: 6000088,
     species: "Shield Knight", /* Shovel Knight Treasure Trove */
     types: ["Steel"],
+	 gender: "F",
     baseStats: {hp: 95, atk: 100, def: 130, spa: 65, spd: 100, spe: 100},
     abilities: {0: "Power Shield", 1: "Justified", H: "Perfect Shield"},
+	 heightm: 1.8,
     weightkg: 80,
 },
 	
-// 	Above is stuff to uncomment and go through. Below is V1 stuff.
      
 //    /* mario: {
 // 		num: 6000001,
