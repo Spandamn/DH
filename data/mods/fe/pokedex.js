@@ -25111,7 +25111,7 @@ auroritarmega: {
     },
 	    salad: {
         num: 7500623,
-        species: "Broking",
+        species: "Salad",
         types: ["Ground", "Flying"],
 		  gender: "M",
         baseStats: {
@@ -25152,6 +25152,49 @@ auroritarmega: {
 		  color: "Brown",
         heightm: 1.8,
         weightkg: 95.3,
+		  eggGroups: ["Undiscovered"],
+    },
+	    chulu: {
+        num: 7500624,
+        species: "Chulu",
+        types: ["Dragon", "Grass"],
+        baseStats: {
+            hp: 89,
+            atk: 130,
+            def: 115,
+            spa: 82,
+            spd: 110,
+            spe: 98
+        },
+        abilities: {
+            0: "Rough Grass"
+        },
+		  color: "Blue",
+        heightm: 1.9,
+        weightkg: 70.25,
+		eggGroups: ["Undiscovered"],
+    },
+    chulumega: {
+        num: 7500624,
+        species: "Chulu-Mega",
+        baseSpecies: "Chulu",
+        forme: "Mega",
+        formeLetter: "M",
+        types: ["Dragon", "Grass"],
+        baseStats: {
+            hp: 89,
+            atk: 170,
+            def: 135,
+            spa: 122,
+            spd: 120,
+            spe: 88
+        },
+        abilities: {
+            0: "Sand Force"
+        },
+		  color: "Blue",
+        heightm: 1.9,
+        weightkg: 70.25,
 		  eggGroups: ["Undiscovered"],
     },
 };
