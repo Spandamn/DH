@@ -24,6 +24,7 @@ exports.BattlePokedex = {
         weightkg: 5.55,
         color: "Blue",
 		  evos: ["swampamar"],
+		  fusion: ["Inkay", "Mudkip"],
         eggGroups: ["Water 1"],
     },
     swampamar: {
@@ -99,6 +100,7 @@ exports.BattlePokedex = {
         heightm: 0.75,
         weightkg: 8.4,
         color: "Red",
+		  fusion: ["Feebas", "Magikarp"],
 		  evos: ["gyarotic"],
         eggGroups: ["Dragon"],
     },
@@ -25309,6 +25311,7 @@ auroritarmega: {
 		  color: "Purple",
         heightm: 1.65,
         weightkg: 31.85,
+		  fusion: ["Gliscor", "Tapu Fini"],
 		  eggGroups: ["Undiscovered"],
     },
 	    salad: {
@@ -25330,6 +25333,7 @@ auroritarmega: {
 		  color: "Brown",
         heightm: 1.5,
         weightkg: 85.3,
+		  fusion: ["Salamence", "Landorus-Therian"],
 		  otherFormes: ["saladmega"],
 		eggGroups: ["Undiscovered"],
     },
@@ -25376,6 +25380,7 @@ auroritarmega: {
         heightm: 1.9,
         weightkg: 70.25,
 		  otherFormes: ["chulumega"],
+		  fusion: ["Garchomp", "Tapu Bulu"],
 		eggGroups: ["Undiscovered"],
     },
     chulumega: {
@@ -25399,6 +25404,182 @@ auroritarmega: {
 		  color: "Blue",
         heightm: 1.9,
         weightkg: 70.25,
+		  eggGroups: ["Undiscovered"],
+    },
+	    sabletina: {
+        num: 7500625,
+        species: "Sabletina",
+        types: ["Dark", "Ghost"],
+        baseStats: {
+            hp: 100,
+            atk: 90,
+            def: 110,
+            spa: 85,
+            spd: 110,
+            spe: 70
+        },
+        abilities: {
+            0: "Prankster Aura"
+        },
+		  color: "Gray",
+        heightm: 2.5,
+        weightkg: 380.5,
+		  otherFormes: ["sabletinamega"],
+		  fusion: ["Sableye", "Giratina"],
+		eggGroups: ["Undiscovered"],
+    },
+    sabletinamega: {
+        num: 7500625,
+        species: "Sabletina-Mega",
+        baseSpecies: "Sabletina",
+        forme: "Mega",
+        formeLetter: "M",
+        types: ["Dark", "Ghost"],
+        baseStats: {
+            hp: 100,
+            atk: 100,
+            def: 160,
+            spa: 105,
+            spd: 160,
+            spe: 40
+        },
+        abilities: {
+            0: "Magic Bounce"
+        },
+		  color: "Gray",
+        heightm: 2.5,
+        weightkg: 530.5,
+		  eggGroups: ["Undiscovered"],
+    },
+	    swolesteela: {
+        num: 7500626,
+        species: "Swolesteela",
+        types: ["Steel", "Bug"],
+		  gender: "N",
+        baseStats: {
+            hp: 127,
+            atk: 125,
+            def: 126,
+            spa: 85,
+            spd: 102,
+            spe: 75
+        },
+        abilities: {
+            0: "Beast Boost"
+        },
+		  color: "Green",
+        heightm: 5.8,
+        weightkg: 666.75,
+		  fusion: ["Buzzwole", "Celesteela"],
+		  eggGroups: ["Undiscovered"],
+    },
+	    fifa: {
+        num: 7500627,
+        species: "FIFA",
+        types: ["Normal", "Flying"],
+        baseStats: {
+            hp: 102,
+            atk: 85,
+            def: 115,
+            spa: 77,
+            spd: 130,
+            spe: 106
+        },
+        abilities: {
+            0: "Feedback Barrier"
+        },
+		  color: "White",
+        heightm: 3.2,
+        weightkg: 122,
+		  fusion: ["Furfrou", "Lugia"],
+		  eggGroups: ["Undiscovered"],
+    },
+	    drapominable: {
+        num: 7500628,
+        species: "Drapominable",
+        types: ["Poison", "Fighting"],
+        baseStats: {
+            hp: 93,
+            atk: 121,
+            def: 103,
+            spa: 71,
+            spd: 81,
+            spe: 79
+        },
+        abilities: {
+            0: "Star Punch"
+        },
+		  color: "White",
+        heightm: 3.2,
+        weightkg: 122,
+		  fusion: ["Drapion", "Crabominable"],
+		  eggGroups: ["Water 3"],
+    },
+	    diabeetus: {
+        num: 7500629,
+        species: "Diabeetus",
+        types: ["Flying", "Fairy"],
+		  gender: "M",
+        baseStats: {
+            hp: 69,
+            atk: 85,
+            def: 65,
+            spa: 130,
+            spd: 70,
+            spe: 137
+        },
+        abilities: {
+            0: "Mischievous Dust"
+        },
+		  color: "Yellow",
+        heightm: 0.85,
+        weightkg: 31.75,
+		  fusion: ["Tornadus", "Ribombee"],
+		  eggGroups: ["Undiscovered"],
+    },
+	    cashquaza: {
+        num: 7500630,
+        species: "Cashquaza",
+        types: ["Ground", "Flying"],
+        baseStats: {
+            hp: 110,
+            atk: 120,
+            def: 85,
+            spa: 120,
+            spd: 80,
+            spe: 95
+        },
+        abilities: {
+            0: "Irresistible Body"
+        },
+		  color: "Green",
+        heightm: 3.95,
+        weightkg: 115.05,
+		  otherFormes: ["cashquazamega"],
+		  fusion: ["Whiscash", "Rayquaza"],
+		eggGroups: ["Undiscovered"],
+    },
+    cashquazamega: {
+        num: 7500630,
+        species: "Cashquaza-Mega",
+        baseSpecies: "Cashquaza",
+        forme: "Mega",
+        formeLetter: "M",
+        types: ["Ground", "Flying"],
+        baseStats: {
+            hp: 110,
+            atk: 150,
+            def: 95,
+            spa: 150,
+            spd: 90,
+            spe: 115
+        },
+        abilities: {
+            0: "Delta Stream"
+        },
+		  color: "Green",
+        heightm: 7.75,
+        weightkg: 300.55,
 		  eggGroups: ["Undiscovered"],
     },
 };
