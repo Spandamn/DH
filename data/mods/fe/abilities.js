@@ -13812,4 +13812,92 @@ exports.BattleAbilities = {
 		id: "decontaminator",
 		name: "Decontaminator",
 	},
+	"decontaminator": {
+		desc: "Prevents adjacent opposing Pokemon from choosing to switch out unless they are immune to trapping or are healthy.",
+		shortDesc: "Prevents adjacent foes from choosing to switch if they have a volatile status condition.",
+		onFoeTrapPokemon(pokemon) {
+			if (!this.isAdjacent(pokemon, this.effectData.target)) return;
+			if (pokemon.status) {
+				pokemon.tryTrap(true);
+			}
+		},
+		onFoeMaybeTrapPokemon(pokemon, source) {
+			if (!source) source = this.effectData.target;
+			if (!source || !this.isAdjacent(pokemon, source)) return;
+			if (pokemon.status) {
+				pokemon.maybeTrapped = true;
+			}
+		},
+		id: "decontaminator",
+		name: "Decontaminator",
+	},
+	"mistrejuvenation": {
+		shortDesc: "On switch-in, this Pokemon summons Misty Terrain. This Pokemon is healed by 1/8 of its max HP after each turn in Misty Terrain.",
+		onStart(source) {
+			this.field.setTerrain('mistyterrain');
+		},
+		onTerrain(pokemon) {
+			if (this.field.isTerrain('mistyterrain')) this.heal(pokemon.maxhp / 8);
+		},
+		id: "mistrejuvenation",
+		name: "Mist Rejuvenation",
+	},
+	"xatulovania": {
+		desc: "If this Pokemon is at full HP, damage taken from attacks is split between this Pokemon and the attacker. This Pokemon also blocks certain status moves and instead uses the move against the original user. Moongeist Beam, Sunsteel Strike, and the Mold Breaker, Teravolt, and Turboblaze Abilities cannot ignore this Ability.",
+		shortDesc: "If this Pokemon is at full HP, damage taken from attacks is split evenly between this Pokemon and the attacker. This Pokemon also blocks certain status moves and bounces them back to the user.",
+		onSourceModifyDamage(damage, source, target, move) {
+			if (target.hp >= target.maxhp) {
+				this.debug('Shadow Shield weaken');
+				target.addVolatile('xatulovania')
+				return this.chainModify(0.5);
+			}
+		},
+		onAfterDamageOrder: 1,
+		onAfterDamage(damage, target, source, move) {
+			if (target.removeVolatile('xatulovania') && source && source !== target && move) {
+				this.damage(damage, source, target);
+			}
+		},
+		onTryHitPriority: 1,
+		onTryHit(target, source, move) {
+			target.removeVolatile('xatulovania'); // Failsafe.
+			if (target === source || move.hasBounced || !move.flags['reflectable']) {
+				return;
+			}
+			let newMove = this.getActiveMove(move.id);
+			newMove.hasBounced = true;
+			newMove.pranksterBoosted = false;
+			this.useMove(newMove, target, source);
+			return null;
+		},
+		onAllyTryHitSide(target, source, move) {
+			if (target.side === source.side || move.hasBounced || !move.flags['reflectable']) {
+				return;
+			}
+			let newMove = this.getActiveMove(move.id);
+			newMove.hasBounced = true;
+			newMove.pranksterBoosted = false;
+			this.useMove(newMove, this.effectData.target, source);
+			return null;
+		},
+		effect: {
+			duration: 1,
+		},
+		isUnbreakable: true,
+		id: "xatulovania",
+		name: "Xatulovania",
+	},
+	"feedbackbarrier": {
+		shortDesc: "This Pokemon's Defense and Special Defense are doubled.",
+		onModifyDefPriority: 6,
+		onModifyDef(def) {
+			return this.chainModify(2);
+		},
+		onModifySpDPriority: 6,
+		onModifySpD(spd) {
+			return this.chainModify(2);
+		},
+		id: "feedbackbarrier",
+		name: "Feedback Barrier",
+	},
 };
