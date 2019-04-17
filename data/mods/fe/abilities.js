@@ -7931,8 +7931,8 @@ exports.BattleAbilities = {
 		name: "Blazing Contrary",
 	},
 	"optimize": {
-		desc: "This Pokemon's secondary typing changes depending on what plate or Z-Crystal it is holding. This Pokemon's Normal-type moves also become that type and have 1.2x power.",
-		shortDesc: "Secondary typing and Normal-type moves change to match its plate or Z-Crystal. Moves that would otherwise be Normal-type have 1.2x power.",
+		desc: "If A Rave-Alola, this Pokemon's secondary typing changes depending on what plate or Z-Crystal it is holding. This Pokemon's Normal-type moves also become that type and have 1.2x power.",
+		shortDesc: "Normal-type moves and, if A Rave-Alola, secondary typing change to match its plate or Z-Crystal. Moves that would otherwise be Normal-type have 1.2x power.",
 		onSwitchInPriority: 101,
 		onSwitchIn(pokemon) {
 				if (pokemon.template.baseSpecies !== 'A Rave-Alola') return;
@@ -14009,5 +14009,32 @@ exports.BattleAbilities = {
 		isUnbreakable: true,
 		id: "impossibletask",
 		name: "Impossible Task",
+	},
+	"monotype": {
+		shortDesc: "Multitype + Adaptability.",
+		onSwitchInPriority: 101,
+		onSwitchIn(pokemon) {
+				if (pokemon.template.baseSpecies !== 'Eeveus') return;
+				// @ts-ignore
+				let type = pokemon.getItem().onPlate;
+				// @ts-ignore
+				if (!type || type === true) {
+					type = 'Normal';
+			}
+			if (type !== 'Normal'){
+				let forme = 'Eeveus-' + type;
+				pokemon.formeChange(forme)
+			} else {
+				pokemon.formeChange('Eeveus');
+			}
+		},
+		onTakeItem(item, pokemon, source) {
+			if (pokemon.item.onPlate) return false;
+		},
+		onModifyMove(move) {
+			move.stab = 2;
+		},
+		id: "monotype",
+		name: "Monotype",
 	},
 };
