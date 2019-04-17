@@ -231,7 +231,7 @@ exports.BattleScripts = {
             this.add('-immune', target, '[msg]');
             return false;
         }
-        if (this.gen >= 7 && move.pranksterBoosted && pokemon.hasAbility(['prankster', 'authority', 'rapidgrowth', 'creepy', 'panicmode', 'prankstar', 'stunningbug', 'indulgence', 'tinkering', 'bamboozled', 'lightningfist', 'trickyglare', 'familiarmaneuvering']) && target.side !== pokemon.side && !this.getImmunity('prankster', target)) {
+        if (this.gen >= 7 && move.pranksterBoosted && pokemon.hasAbility(['prankster', 'authority', 'rapidgrowth', 'creepy', 'panicmode', 'prankstar', 'stunningbug', 'indulgence', 'tinkering', 'bamboozled', 'lightningfist', 'trickyglare', 'familiarmaneuvering', 'slippery', 'dancingmad', 'mischievousdust']) && target.side !== pokemon.side && !this.getImmunity('prankster', target)) {
             this.debug('natural prankster immunity');
             if (!target.illusion) this.add('-hint', "In gen 7, Dark is immune to moves boosted by Prankster or derivatives.");
             this.add('-immune', target, '[msg]');
