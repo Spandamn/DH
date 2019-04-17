@@ -25767,4 +25767,415 @@ auroritarmega: {
         weightkg: 3.9,
 		  eggGroups: ["Undiscovered"],
     },
+	eeveus: {
+	    num: 7500635,
+	    species: "Eeveus",
+	    types: ["Normal"],
+	    baseStats: {
+	        hp: 102,
+	        atk: 103,
+	        def: 102, 
+	        spa: 103,
+	        spd: 102, 
+	        spe: 103
+	    },
+	    abilities: {
+	        0: "Monotype"
+	    },
+        color: "White",
+	    heightm: 1.75,
+	    weightkg: 163.25,
+	    eggGroups: ["Undiscovered"],
+	},
+	eeveusfire: {
+	    num: 7500635,
+       species: "Eeveus-Fire",
+       baseSpecies: "Eeveus",
+       forme: "Fire",
+       formeLetter: "F",
+	    types: ["Fire"],
+	    baseStats: {
+	        hp: 102,
+	        atk: 103,
+	        def: 102, 
+	        spa: 103,
+	        spd: 102, 
+	        spe: 103
+	    },
+	    abilities: {
+	        0: "Monotype"
+	    },
+        color: "White",
+	    heightm: 1.75,
+	    weightkg: 163.25,
+	    eggGroups: ["Undiscovered"],
+	},
+	eeveuswater: {
+	    num: 7500635,
+       species: "Eeveus-Water",
+       baseSpecies: "Eeveus",
+       forme: "Water",
+       formeLetter: "W",
+	    types: ["Water"],
+	    baseStats: {
+	        hp: 102,
+	        atk: 103,
+	        def: 102, 
+	        spa: 103,
+	        spd: 102, 
+	        spe: 103
+	    },
+	    abilities: {
+	        0: "Monotype"
+	    },
+        color: "White",
+	    heightm: 1.75,
+	    weightkg: 163.25,
+	    eggGroups: ["Undiscovered"],
+	},
+	eeveuselectric: {
+	    num: 7500635,
+       species: "Eeveus-Electric",
+       baseSpecies: "Eeveus",
+       forme: "Electric",
+       formeLetter: "E",
+	    types: ["Electric"],
+	    baseStats: {
+	        hp: 102,
+	        atk: 103,
+	        def: 102, 
+	        spa: 103,
+	        spd: 102, 
+	        spe: 103
+	    },
+	    abilities: {
+	        0: "Monotype"
+	    },
+        color: "White",
+	    heightm: 1.75,
+	    weightkg: 163.25,
+	    eggGroups: ["Undiscovered"],
+	},
+	eeveusgrass: {
+	    num: 7500635,
+       species: "Eeveus-Grass",
+       baseSpecies: "Eeveus",
+       forme: "Grass",
+       formeLetter: "G",
+	    types: ["Grass"],
+	    baseStats: {
+	        hp: 102,
+	        atk: 103,
+	        def: 102, 
+	        spa: 103,
+	        spd: 102, 
+	        spe: 103
+	    },
+	    abilities: {
+	        0: "Monotype"
+	    },
+        color: "White",
+	    heightm: 1.75,
+	    weightkg: 163.25,
+	    eggGroups: ["Undiscovered"],
+	},
+	eeveusice: {
+	    num: 7500635,
+       species: "Eeveus-Ice",
+       baseSpecies: "Eeveus",
+       forme: "Ice",
+       formeLetter: "I",
+	    types: ["Ice"],
+	    baseStats: {
+	        hp: 102,
+	        atk: 103,
+	        def: 102, 
+	        spa: 103,
+	        spd: 102, 
+	        spe: 103
+	    },
+	    abilities: {
+	        0: "Monotype"
+	    },
+        color: "White",
+	    heightm: 1.75,
+	    weightkg: 163.25,
+	    eggGroups: ["Undiscovered"],
+	},
+	eeveusfighting: {
+	    num: 7500635,
+       species: "Eeveus-Fighting",
+       baseSpecies: "Eeveus",
+       forme: "Fighting",
+       formeLetter: "F",
+	    types: ["Fighting"],
+	    baseStats: {
+	        hp: 102,
+	        atk: 103,
+	        def: 102, 
+	        spa: 103,
+	        spd: 102, 
+	        spe: 103
+	    },
+	    abilities: {
+	        0: "Monotype"
+	    },
+        color: "White",
+	    heightm: 1.75,
+	    weightkg: 163.25,
+	    eggGroups: ["Undiscovered"],
+	},
+	eeveuspoison: {
+	    num: 7500635,
+       species: "Eeveus-Poison",
+       baseSpecies: "Eeveus",
+       forme: "Poison",
+       formeLetter: "P",
+	    types: ["Poison"],
+	    baseStats: {
+	        hp: 102,
+	        atk: 103,
+	        def: 102, 
+	        spa: 103,
+	        spd: 102, 
+	        spe: 103
+	    },
+	    abilities: {
+	        0: "Monotype"
+	    },
+        color: "White",
+	    heightm: 1.75,
+	    weightkg: 163.25,
+	    eggGroups: ["Undiscovered"],
+	},
+	eeveusground: {
+	    num: 7500635,
+       species: "Eeveus-Ground",
+       baseSpecies: "Eeveus",
+       forme: "Ground",
+       formeLetter: "G",
+	    types: ["Ground"],
+	    baseStats: {
+	        hp: 102,
+	        atk: 103,
+	        def: 102, 
+	        spa: 103,
+	        spd: 102, 
+	        spe: 103
+	    },
+	    abilities: {
+	        0: "Monotype"
+	    },
+        color: "White",
+	    heightm: 1.75,
+	    weightkg: 163.25,
+	    eggGroups: ["Undiscovered"],
+	},
+	eeveusflying: {
+	    num: 7500635,
+       species: "Eeveus-Flying",
+       baseSpecies: "Eeveus",
+       forme: "Flying",
+       formeLetter: "F",
+	    types: ["Flying"],
+	    baseStats: {
+	        hp: 102,
+	        atk: 103,
+	        def: 102, 
+	        spa: 103,
+	        spd: 102, 
+	        spe: 103
+	    },
+	    abilities: {
+	        0: "Monotype"
+	    },
+        color: "White",
+	    heightm: 1.75,
+	    weightkg: 163.25,
+	    eggGroups: ["Undiscovered"],
+	},
+	eeveuspsychic: {
+	    num: 7500635,
+       species: "Eeveus-Psychic",
+       baseSpecies: "Eeveus",
+       forme: "Psychic",
+       formeLetter: "P",
+	    types: ["Psychic"],
+	    baseStats: {
+	        hp: 102,
+	        atk: 103,
+	        def: 102, 
+	        spa: 103,
+	        spd: 102, 
+	        spe: 103
+	    },
+	    abilities: {
+	        0: "Monotype"
+	    },
+        color: "White",
+	    heightm: 1.75,
+	    weightkg: 163.25,
+	    eggGroups: ["Undiscovered"],
+	},
+	eeveusbug: {
+	    num: 7500635,
+       species: "Eeveus-Bug",
+       baseSpecies: "Eeveus",
+       forme: "Bug",
+       formeLetter: "B",
+	    types: ["Bug"],
+	    baseStats: {
+	        hp: 102,
+	        atk: 103,
+	        def: 102, 
+	        spa: 103,
+	        spd: 102, 
+	        spe: 103
+	    },
+	    abilities: {
+	        0: "Monotype"
+	    },
+        color: "White",
+	    heightm: 1.75,
+	    weightkg: 163.25,
+	    eggGroups: ["Undiscovered"],
+	},
+	eeveusrock: {
+	    num: 7500635,
+       species: "Eeveus-Rock",
+       baseSpecies: "Eeveus",
+       forme: "Rock",
+       formeLetter: "R",
+	    types: ["Rock"],
+	    baseStats: {
+	        hp: 102,
+	        atk: 103,
+	        def: 102, 
+	        spa: 103,
+	        spd: 102, 
+	        spe: 103
+	    },
+	    abilities: {
+	        0: "Monotype"
+	    },
+        color: "White",
+	    heightm: 1.75,
+	    weightkg: 163.25,
+	    eggGroups: ["Undiscovered"],
+	},
+	eeveusghost: {
+	    num: 7500635,
+       species: "Eeveus-Ghost",
+       baseSpecies: "Eeveus",
+       forme: "Ghost",
+       formeLetter: "G",
+	    types: ["Ghost"],
+	    baseStats: {
+	        hp: 102,
+	        atk: 103,
+	        def: 102, 
+	        spa: 103,
+	        spd: 102, 
+	        spe: 103
+	    },
+	    abilities: {
+	        0: "Monotype"
+	    },
+        color: "White",
+	    heightm: 1.75,
+	    weightkg: 163.25,
+	    eggGroups: ["Undiscovered"],
+	},
+	eeveusdragon: {
+	    num: 7500635,
+       species: "Eeveus-Dragon",
+       baseSpecies: "Eeveus",
+       forme: "Dragon",
+       formeLetter: "D",
+	    types: ["Dragon"],
+	    baseStats: {
+	        hp: 102,
+	        atk: 103,
+	        def: 102, 
+	        spa: 103,
+	        spd: 102, 
+	        spe: 103
+	    },
+	    abilities: {
+	        0: "Monotype"
+	    },
+        color: "White",
+	    heightm: 1.75,
+	    weightkg: 163.25,
+	    eggGroups: ["Undiscovered"],
+	},
+	eeveusdark: {
+	    num: 7500635,
+       species: "Eeveus-Dark",
+       baseSpecies: "Eeveus",
+       forme: "Dark",
+       formeLetter: "D",
+	    types: ["Dark"],
+	    baseStats: {
+	        hp: 102,
+	        atk: 103,
+	        def: 102, 
+	        spa: 103,
+	        spd: 102, 
+	        spe: 103
+	    },
+	    abilities: {
+	        0: "Monotype"
+	    },
+        color: "White",
+	    heightm: 1.75,
+	    weightkg: 163.25,
+	    eggGroups: ["Undiscovered"],
+	},
+	eeveussteel: {
+	    num: 7500635,
+       species: "Eeveus-Steel",
+       baseSpecies: "Eeveus",
+       forme: "Steel",
+       formeLetter: "S",
+	    types: ["Steel"],
+	    baseStats: {
+	        hp: 102,
+	        atk: 103,
+	        def: 102, 
+	        spa: 103,
+	        spd: 102, 
+	        spe: 103
+	    },
+	    abilities: {
+	        0: "Monotype"
+	    },
+        color: "White",
+	    heightm: 1.75,
+	    weightkg: 163.25,
+	    eggGroups: ["Undiscovered"],
+	},
+	eeveusfairy: {
+	    num: 7500635,
+       species: "Eeveus-Fairy",
+       baseSpecies: "Eeveus",
+       forme: "Fairy",
+       formeLetter: "F",
+	    types: ["Fairy"],
+	    baseStats: {
+	        hp: 102,
+	        atk: 103,
+	        def: 102, 
+	        spa: 103,
+	        spd: 102, 
+	        spe: 103
+	    },
+	    abilities: {
+	        0: "Monotype"
+	    },
+        color: "White",
+	    heightm: 1.75,
+	    weightkg: 163.25,
+	    eggGroups: ["Undiscovered"],
+	},
 };
