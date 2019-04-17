@@ -25628,6 +25628,7 @@ auroritarmega: {
         num: 7500634,
         species: "Ceremoni",
         types: ["Flying", "Steel"],
+		  baseForme: "Hidden",
 		  gender: "N",
         baseStats: {
             hp: 82,
