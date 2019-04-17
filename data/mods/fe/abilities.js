@@ -13994,6 +13994,19 @@ exports.BattleAbilities = {
 				}
 			}
 		},
+		onSetStatus(status, target, source, effect) {
+			if (target.template.speciesid !== 'ceremoni' || target.transformed) return;
+			if (!effect || !effect.status) return false;
+			this.add('-immune', target, '[from] ability: Impossible Task');
+			return false;
+		},
+		onTryAddVolatile(status, target) {
+			if (target.template.speciesid !== 'ceremoni' || target.transformed) return;
+			if (status.id !== 'yawn') return;
+			this.add('-immune', target, '[from] ability: Impossible Task');
+			return null;
+		},
+		isUnbreakable: true,
 		id: "impossibletask",
 		name: "Impossible Task",
 	},
