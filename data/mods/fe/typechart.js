@@ -222,7 +222,7 @@ let BattleTypeChart = {
 	"Grass": {
 		damageTaken: {
 			powder: 3,
-      cactusforce: 3,
+	      cactuspower: 3,
 			"Bug": 1,
 			"Dark": 0,
 			"Dragon": 0,
@@ -248,7 +248,7 @@ let BattleTypeChart = {
 	"Ground": {
 		damageTaken: {
 			sandstorm: 3,
-      cactusforce: 3,
+	      cactuspower: 3,
 			"Bug": 0,
 			"Dark": 0,
 			"Dragon": 0,
@@ -372,7 +372,7 @@ let BattleTypeChart = {
 	"Rock": {
 		damageTaken: {
 			sandstorm: 3,
-      cactusforce: 3,
+	      cactuspower: 3,
 			"Bug": 0,
 			"Dark": 0,
 			"Dragon": 0,
@@ -400,7 +400,7 @@ let BattleTypeChart = {
 			psn: 3,
 			tox: 3,
 			sandstorm: 3,
-      cactusforce: 3,
+	      cactuspower: 3,
 			"Bug": 2,
 			"Dark": 0,
 			"Dragon": 2,
