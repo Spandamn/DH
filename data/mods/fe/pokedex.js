@@ -25771,6 +25771,7 @@ auroritarmega: {
 	    num: 7500635,
 	    species: "Eeveus",
 	    types: ["Normal"],
+		 genderRatio: {M: 0.875, F: 0.125},
 	    baseStats: {
 	        hp: 102,
 	        atk: 103,
@@ -25785,6 +25786,7 @@ auroritarmega: {
         color: "White",
 	    heightm: 1.75,
 	    weightkg: 163.25,
+		  fusion: ["Eevee-Starter", "Arceus"],
 	    eggGroups: ["Undiscovered"],
 	},
 	eeveusfire: {
@@ -26177,5 +26179,49 @@ auroritarmega: {
 	    heightm: 1.75,
 	    weightkg: 163.25,
 	    eggGroups: ["Undiscovered"],
+	},
+	kefka: {
+	    num: 7500636,
+	    species: "Kefka",
+	    types: ["Steel", "Fire"],
+		 gender: "N",
+	    baseStats: {
+	        hp: 55,
+	        atk: 103,
+	        def: 72, 
+	        spa: 135,
+	        spd: 83, 
+	        spe: 111
+	    },
+	    abilities: {
+	        0: "Dancing Mad"
+	    },
+        color: "White",
+	     heightm: 1,
+	     weightkg: 8,
+		  fusion: ["Klefki", "Blacephalon"],
+	     eggGroups: ["Undiscovered"],
+	},
+	pyukuton: {
+	    num: 7500637,
+	    species: "Pyukuton",
+	    types: ["Water", "Steel"],
+		 gender: "N",
+	    baseStats: {
+	        hp: 82,
+	        atk: 65,
+	        def: 126, 
+	        spa: 80,
+	        spd: 126, 
+	        spe: 32
+	    },
+	    abilities: {
+	        0: "Dancing Mad"
+	    },
+        color: "Black",
+	     heightm: 0.95,
+	     weightkg: 90.6,
+		  fusion: ["Pyukumuku", "Magnezone"],
+	     eggGroups: ["Undiscovered"],
 	},
 };
