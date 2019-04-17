@@ -26225,4 +26225,111 @@ auroritarmega: {
 		  fusion: ["Pyukumuku", "Magnezone"],
 	     eggGroups: ["Undiscovered"],
 	},
+	volturne: {
+	    num: 7500638,
+	    species: "Volturne",
+	    types: ["Grass", "Fire"],
+	    baseStats: {
+	        hp: 100,
+	        atk: 117,
+	        def: 95, 
+	        spa: 132,
+	        spd: 95, 
+	        spe: 67
+	    },
+	    abilities: {
+	        0: "Water Absorb"
+	    },
+        color: "Green",
+	     heightm: 1.5,
+	     weightkg: 136.2,
+		  fusion: ["Volcanion", "Cacturne"],
+	     eggGroups: ["Undiscovered"],
+	},
+	thundpard: {
+	    num: 7500639,
+	    species: "Thundpard",
+	    types: ["Electric", "Dark"],
+		 gender: "M",
+	    baseStats: {
+	        hp: 76,
+	        atk: 116,
+	        def: 65, 
+	        spa: 126,
+	        spd: 70, 
+	        spe: 133
+	    },
+	    abilities: {
+	        0: "Prankster"
+	    },
+        color: "Purple",
+	     heightm: 1.3,
+	     weightkg: 49.25,
+		  fusion: ["Thundurus", "Liepard"],
+	     eggGroups: ["Undiscovered"],
+	},
+	madeleine: {
+	    num: 7500640,
+	    species: "Madeleine",
+	    types: ["Poison", "Flying"],
+	    baseStats: {
+	        hp: 76,
+	        atk: 116,
+	        def: 65, 
+	        spa: 126,
+	        spd: 70, 
+	        spe: 133
+	    },
+	    abilities: {
+	        0: "Prankster"
+	    },
+        color: "Purple",
+	     heightm: 2.2,
+	     weightkg: 126,
+		  fusion: ["Yanmega", "Scolipede"],
+	     eggGroups: ["Bug"],
+	},
+	amoongrowth: {
+	    num: 7500641,
+	    species: "Amoongrowth",
+	    types: ["Grass", "Poison"],
+	    baseStats: {
+	        hp: 122,
+	        atk: 107,
+	        def: 112,
+	        spa: 112,
+	        spd: 80, 
+	        spe: 55
+	    },
+	    abilities: {
+	        0: "Regenerator"
+	    },
+        color: "Blue",
+	     heightm: 1.3,
+	     weightkg: 69.55,
+		  fusion: ["Amoonguss", "Tangrowth"],
+	     eggGroups: ["Grass"],
+	},
+	bronzecho: {
+	    num: 7500642,
+	    species: "Bronzecho",
+	    types: ["Psychic", "Steel"],
+		 gender: "N",
+	    baseStats: {
+	        hp: 96,
+	        atk: 74,
+	        def: 113,
+	        spa: 92,
+	        spd: 118, 
+	        spe: 54
+	    },
+	    abilities: {
+	        0: "Levitate"
+	    },
+        color: "Green",
+	     heightm: 0.95,
+	     weightkg: 94,
+		  fusion: ["Bronzong", "Chimecho"],
+	     eggGroups: ["Undiscovered"],
+	},
 };
