@@ -25582,4 +25582,189 @@ auroritarmega: {
         weightkg: 300.55,
 		  eggGroups: ["Undiscovered"],
     },
+	    xanatu: {
+        num: 7500631,
+        species: "Xanatu",
+        types: ["Ghost", "Flying"],
+        baseStats: {
+            hp: 106,
+            atk: 104,
+            def: 99,
+            spa: 121,
+            spd: 88,
+            spe: 96
+        },
+        abilities: {
+            0: "Xatulovania"
+        },
+		  color: "Purple",
+        heightm: 2.75,
+        weightkg: 67.5,
+		  fusion: ["Xatu", "Lunala"],
+		  eggGroups: ["Undiscovered"],
+    },
+	    volcarde: {
+        num: 7500632,
+        species: "Volcarde",
+        types: ["Fire", "Dragon"],
+        baseStats: {
+            hp: 96,
+            atk: 80,
+            def: 93,
+            spa: 128,
+            spd: 100,
+            spe: 117
+        },
+        abilities: {
+            0: "Flaming Aura"
+        },
+		  color: "Green",
+        heightm: 3.3,
+        weightkg: 175.5,
+		  fusion: ["Volcarona", "Zygarde"],
+		  eggGroups: ["Undiscovered"],
+    },
+	    ceremoni: {
+        num: 7500634,
+        species: "Ceremoni",
+        types: ["Flying", "Steel"],
+		  gender: "N",
+        baseStats: {
+            hp: 82,
+            atk: 85,
+            def: 105,
+            spa: 85,
+            spd: 105,
+            spe: 80
+        },
+        abilities: {
+            0: "Impossible Task"
+        },
+		  color: "Brown",
+        heightm: 4.75,
+        weightkg: 519.95,
+		  fusion: ["Minior", "Celesteela"],
+		  otherFormes: ["ceremonishell", "ceremonirobe", "ceremonibowl", "ceremonibranch", "ceremonijewel"],
+		  eggGroups: ["Undiscovered"],
+    },
+    ceremonirobe: {
+        num: 7500634,
+        species: "Ceremoni-Robe",
+        baseSpecies: "Ceremoni",
+        forme: "Robe",
+        formeLetter: "R",
+		  gender: "N",
+        types: ["Flying", "Steel"],
+        baseStats: {
+            hp: 82,
+            atk: 145,
+            def: 65,
+            spa: 125,
+            spd: 65,
+            spe: 120
+        },
+        abilities: {
+            0: "Impossible Task"
+        },
+		  color: "Red",
+        heightm: 1,
+        weightkg: 3.9,
+		  eggGroups: ["Undiscovered"],
+    },
+    ceremonibowl: {
+        num: 7500634,
+        species: "Ceremoni-Bowl",
+        baseSpecies: "Ceremoni",
+        forme: "Bowl",
+        formeLetter: "B",
+		  gender: "N",
+        types: ["Flying", "Steel"],
+        baseStats: {
+            hp: 82,
+            atk: 125,
+            def: 165,
+            spa: 45,
+            spd: 145,
+            spe: 40
+        },
+        abilities: {
+            0: "Impossible Task"
+        },
+		  color: "Purple",
+        heightm: 1,
+        weightkg: 3.9,
+		  eggGroups: ["Undiscovered"],
+    },
+    ceremonibranch: {
+        num: 7500634,
+        species: "Ceremoni-Branch",
+        baseSpecies: "Ceremoni",
+        forme: "Branch",
+        formeLetter: "B",
+		  gender: "N",
+        types: ["Flying", "Steel"],
+        baseStats: {
+            hp: 82,
+            atk: 125,
+            def: 65,
+            spa: 145,
+            spd: 65,
+            spe: 120
+        },
+        abilities: {
+            0: "Impossible Task"
+        },
+		  color: "Yellow",
+        heightm: 1,
+        weightkg: 3.9,
+		  eggGroups: ["Undiscovered"],
+    },
+    ceremonijewel: {
+        num: 7500634,
+        species: "Ceremoni-Jewel",
+        baseSpecies: "Ceremoni",
+        forme: "Jewel",
+        formeLetter: "J",
+		  gender: "N",
+        types: ["Flying", "Steel"],
+        baseStats: {
+            hp: 82,
+            atk: 65,
+            def: 145,
+            spa: 125,
+            spd: 165,
+            spe: 40
+        },
+        abilities: {
+            0: "Impossible Task"
+        },
+		  color: "Green",
+        heightm: 1,
+        weightkg: 3.9,
+		  eggGroups: ["Undiscovered"],
+    },
+    ceremonishell: {
+        num: 7500634,
+        species: "Ceremoni-Shell",
+        baseSpecies: "Ceremoni",
+        forme: "Shell",
+        formeLetter: "S",
+		  gender: "N",
+        types: ["Flying", "Steel"],
+        baseStats: {
+            hp: 82,
+            atk: 125,
+            def: 65,
+            spa: 125,
+            spd: 65,
+            spe: 140
+        },
+        abilities: {
+            0: "Impossible Task"
+        },
+		  color: "Blue",
+        heightm: 1,
+        weightkg: 3.9,
+		  eggGroups: ["Undiscovered"],
+    },
 };
