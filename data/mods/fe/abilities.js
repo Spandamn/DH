@@ -13927,4 +13927,74 @@ exports.BattleAbilities = {
 		id: "quicksilver",
 		name: "Quicksilver",
 	},
+	"impossibletask": {
+		desc: "If this Pokemon is a Ceremoni, it changes to its Core forme if it has 1/2 or less of its maximum HP or if it attacks and knocks out another Pokemon, depending on its highest stat (Atk -> Robe, Def -> Bowl, SpA -> Branch, SpD -> Jewel, Spe -> Shell).",
+		shortDesc: "If Ceremoni, switch-in/end of turn it changes to one of five Core formes at 1/2 max HP or less or if it attacks and KOes another Pokemon, the Core forme depending on its highest stat.",
+		onSourceFaint(target, source, effect) {
+			if (effect && effect.effectType === 'Move' && source.template.speciesid === 'ceremoni') {
+				let statName = 'atk';
+				let bestStat = 0;
+				/** @type {StatNameExceptHP} */
+				let s;
+				for (s in source.storedStats) {
+					if (source.storedStats[s] > bestStat) {
+						statName = s;
+						bestStat = source.storedStats[s];
+					}
+				}
+				switch (statName) {
+					case 'atk': 
+						source.formeChange('Ceremoni-Robe');
+						break;
+					case 'def': 
+						source.formeChange('Ceremoni-Bowl');
+						break;
+					case 'spa': 
+						source.formeChange('Ceremoni-Branch');
+						break;
+					case 'spd': 
+						source.formeChange('Ceremoni-Jewel');
+						break;
+					default: //Speed, since it can't be anything else.
+						source.formeChange('Ceremoni-Shell');
+						break;
+				}
+			}
+		},
+		onResidualOrder: 27,
+		onResidual(pokemon) {
+			if (pokemon.template.speciesid !== 'Ceremoni' || pokemon.transformed || !pokemon.hp) return;
+			if (pokemon.hp <= pokemon.maxhp / 2) {
+				let statName = 'atk';
+				let bestStat = 0;
+				/** @type {StatNameExceptHP} */
+				let s;
+				for (s in pokemon.storedStats) {
+					if (pokemon.storedStats[s] > bestStat) {
+						statName = s;
+						bestStat = pokemon.storedStats[s];
+					}
+				}
+				switch (statName) {
+					case 'atk': 
+						pokemon.formeChange('Ceremoni-Robe');
+						break;
+					case 'def': 
+						pokemon.formeChange('Ceremoni-Bowl');
+						break;
+					case 'spa': 
+						pokemon.formeChange('Ceremoni-Branch');
+						break;
+					case 'spd': 
+						pokemon.formeChange('Ceremoni-Jewel');
+						break;
+					default: //Speed, since it can't be anything else.
+						pokemon.formeChange('Ceremoni-Shell');
+						break;
+				}
+			}
+		},
+		id: "impossibletask",
+		name: "Impossible Task",
+	},
 };
