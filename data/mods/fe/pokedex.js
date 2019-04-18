@@ -25669,7 +25669,7 @@ auroritarmega: {
         },
 		  color: "Red",
         heightm: 1,
-        weightkg: 3.9,
+        weightkg: 480.25,
 		  eggGroups: ["Undiscovered"],
     },
     ceremonibowl: {
@@ -25693,7 +25693,7 @@ auroritarmega: {
         },
 		  color: "Purple",
         heightm: 1,
-        weightkg: 3.9,
+        weightkg: 480.25,
 		  eggGroups: ["Undiscovered"],
     },
     ceremonibranch: {
@@ -25717,7 +25717,7 @@ auroritarmega: {
         },
 		  color: "Yellow",
         heightm: 1,
-        weightkg: 3.9,
+        weightkg: 480.25,
 		  eggGroups: ["Undiscovered"],
     },
     ceremonijewel: {
@@ -25741,7 +25741,7 @@ auroritarmega: {
         },
 		  color: "Green",
         heightm: 1,
-        weightkg: 3.9,
+        weightkg: 480.25,
 		  eggGroups: ["Undiscovered"],
     },
     ceremonishell: {
@@ -25765,7 +25765,7 @@ auroritarmega: {
         },
 		  color: "Blue",
         heightm: 1,
-        weightkg: 3.9,
+        weightkg: 480.25,
 		  eggGroups: ["Undiscovered"],
     },
 	eeveus: {
