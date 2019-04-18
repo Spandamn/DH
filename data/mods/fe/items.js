@@ -1,20 +1,20 @@
 'use strict';
 
 exports.BattleItems = {
-	"abomasite": {
-		id: "abomasite",
-		name: "Abomasite",
-		spritenum: 575,
-		megaStone: ["Abomasnow-Mega", "Abomasorus-Mega", "Dramasnow-Mega", "Laprasnow-Mega", "Snow Tyrant-Mega-Y"],
-		megaEvolves: ["Abomasnow", "Abomasorus", "Dramasnow", "Laprasnow", "Snow Tyrant"],
-		onTakeItem(item, source) {
-			if (item.megaEvolves.includes(source.baseTemplate.baseSpecies)) return false;
-			return true;
-		},
-		num: 674,
-		gen: 6,
-		desc: "If held by an Abomasnow or a derived fusion thereof, this item allows it to Mega Evolve in battle.",
-	},
+// 	"abomasite": {
+// 		id: "abomasite",
+// 		name: "Abomasite",
+// 		spritenum: 575,
+// 		megaStone: ["Abomasnow-Mega", "Abomasorus-Mega", "Dramasnow-Mega", "Laprasnow-Mega", "Snow Tyrant-Mega-Y"],
+// 		megaEvolves: ["Abomasnow", "Abomasorus", "Dramasnow", "Laprasnow", "Snow Tyrant"],
+// 		onTakeItem(item, source) {
+// 			if (item.megaEvolves.includes(source.baseTemplate.baseSpecies)) return false;
+// 			return true;
+// 		},
+// 		num: 674,
+// 		gen: 6,
+// 		desc: "If held by an Abomasnow or a derived fusion thereof, this item allows it to Mega Evolve in battle.",
+// 	},
 	"lifeorb": {
 		inherit: true,
 		id: "lifeorb",
