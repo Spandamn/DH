@@ -12579,6 +12579,21 @@ exports.BattleAbilities = {
 	"tacticalcomputer": {
 		desc: "If this Pokemon is an Aegivally, it changes to Guerilla Forme before attempting to use an attacking move, and changes to Bulwark Forme before attempting to use King's Shield. In Bulwark Forme, its type is Steel plus the type of its held memory, Normal if there is none. In Guerilla Forme, its type is Steel plus the type of its first move.",
 		shortDesc: "If Aegivally, changes Forme to Guerilla before attacks and Bulwark before King's Shield. Primary type changes to match its Held Memory in Bulwark Forme and its first move in Guerilla Forme.",
+		onSwitchInPriority: 101,
+		onSwitchIn(pokemon) {
+				if (pokemon.template.speciesid !== 'aegivally') return;
+				// @ts-ignore
+				let type = pokemon.getItem().onMemory;
+				// @ts-ignore
+				if (!type || type === true) {
+					type = 'Normal';
+			}
+			if (type !== 'Steel'){
+				pokemon.setType([type, 'Steel']);
+			} else {
+				pokemon.setType('Steel');
+			}
+		},
 		onBeforeMovePriority: 0.5,
 		onBeforeMove(attacker, defender, move) {
 			if (attacker.template.baseSpecies !== 'Aegivally' || attacker.transformed) return;
