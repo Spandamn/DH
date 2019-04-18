@@ -12581,11 +12581,14 @@ exports.BattleAbilities = {
 		shortDesc: "If Aegivally, changes Forme to Guerilla before attacks and Bulwark before King's Shield. Primary type changes to match its Held Memory in Bulwark Forme and its first move in Guerilla Forme.",
 		onSwitchInPriority: 101,
 		onSwitchIn(pokemon) {
-				if (pokemon.template.speciesid !== 'aegivally') return;
-				// @ts-ignore
-				let type = pokemon.getItem().onMemory;
-				// @ts-ignore
-				if (!type || type === true) {
+			if (pokemon.template.baseSpecies !== 'Aegivally') return;
+			// @ts-ignore
+			let type = pokemon.getItem().onMemory;
+			// @ts-ignore
+			if (pokemon.template.speciesid === 'Aegivally-Guerilla'){
+				type = this.getMove(pokemon.moveSlots[0].id).type;
+			}
+			if (!type || type === true) {
 					type = 'Normal';
 			}
 			if (type !== 'Steel'){
