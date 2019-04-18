@@ -7931,8 +7931,8 @@ exports.BattleAbilities = {
 		name: "Blazing Contrary",
 	},
 	"optimize": {
-		desc: "This Pokemon's secondary typing changes depending on what plate or Z-Crystal it is holding. This Pokemon's Normal-type moves also become that type and have 1.2x power.",
-		shortDesc: "Secondary typing and Normal-type moves change to match its plate or Z-Crystal. Moves that would otherwise be Normal-type have 1.2x power.",
+		desc: "If A Rave-Alola, this Pokemon's secondary typing changes depending on what plate or Z-Crystal it is holding. This Pokemon's Normal-type moves also become that type and have 1.2x power.",
+		shortDesc: "Normal-type moves and, if A Rave-Alola, secondary typing change to match its plate or Z-Crystal. Moves that would otherwise be Normal-type have 1.2x power.",
 		onSwitchInPriority: 101,
 		onSwitchIn(pokemon) {
 				if (pokemon.template.baseSpecies !== 'A Rave-Alola') return;
@@ -13811,5 +13811,230 @@ exports.BattleAbilities = {
 		},
 		id: "decontaminator",
 		name: "Decontaminator",
+	},
+	"decontaminator": {
+		desc: "Prevents adjacent opposing Pokemon from choosing to switch out unless they are immune to trapping or are healthy.",
+		shortDesc: "Prevents adjacent foes from choosing to switch if they have a volatile status condition.",
+		onFoeTrapPokemon(pokemon) {
+			if (!this.isAdjacent(pokemon, this.effectData.target)) return;
+			if (pokemon.status) {
+				pokemon.tryTrap(true);
+			}
+		},
+		onFoeMaybeTrapPokemon(pokemon, source) {
+			if (!source) source = this.effectData.target;
+			if (!source || !this.isAdjacent(pokemon, source)) return;
+			if (pokemon.status) {
+				pokemon.maybeTrapped = true;
+			}
+		},
+		id: "decontaminator",
+		name: "Decontaminator",
+	},
+	"mistrejuvenation": {
+		shortDesc: "On switch-in, this Pokemon summons Misty Terrain. This Pokemon is healed by 1/8 of its max HP after each turn in Misty Terrain.",
+		onStart(source) {
+			this.field.setTerrain('mistyterrain');
+		},
+		onTerrain(pokemon) {
+			if (this.field.isTerrain('mistyterrain')) this.heal(pokemon.maxhp / 8);
+		},
+		id: "mistrejuvenation",
+		name: "Mist Rejuvenation",
+	},
+	"xatulovania": {
+		desc: "If this Pokemon is at full HP, damage taken from attacks is split between this Pokemon and the attacker. This Pokemon also blocks certain status moves and instead uses the move against the original user. Moongeist Beam, Sunsteel Strike, and the Mold Breaker, Teravolt, and Turboblaze Abilities cannot ignore this Ability.",
+		shortDesc: "If this Pokemon is at full HP, damage taken from attacks is split evenly between this Pokemon and the attacker. This Pokemon also blocks certain status moves and bounces them back to the user.",
+		onSourceModifyDamage(damage, source, target, move) {
+			if (target.hp >= target.maxhp) {
+				this.debug('Shadow Shield weaken');
+				target.addVolatile('xatulovania')
+				return this.chainModify(0.5);
+			}
+		},
+		onAfterDamageOrder: 1,
+		onAfterDamage(damage, target, source, move) {
+			if (target.removeVolatile('xatulovania') && source && source !== target && move) {
+				this.damage(damage, source, target);
+			}
+		},
+		onTryHitPriority: 1,
+		onTryHit(target, source, move) {
+			target.removeVolatile('xatulovania'); // Failsafe.
+			if (target === source || move.hasBounced || !move.flags['reflectable']) {
+				return;
+			}
+			let newMove = this.getActiveMove(move.id);
+			newMove.hasBounced = true;
+			newMove.pranksterBoosted = false;
+			this.useMove(newMove, target, source);
+			return null;
+		},
+		onAllyTryHitSide(target, source, move) {
+			if (target.side === source.side || move.hasBounced || !move.flags['reflectable']) {
+				return;
+			}
+			let newMove = this.getActiveMove(move.id);
+			newMove.hasBounced = true;
+			newMove.pranksterBoosted = false;
+			this.useMove(newMove, this.effectData.target, source);
+			return null;
+		},
+		effect: {
+			duration: 1,
+		},
+		isUnbreakable: true,
+		id: "xatulovania",
+		name: "Xatulovania",
+	},
+	"feedbackbarrier": {
+		shortDesc: "This Pokemon's Defense and Special Defense are doubled.",
+		onModifyDefPriority: 6,
+		onModifyDef(def) {
+			return this.chainModify(2);
+		},
+		onModifySpDPriority: 6,
+		onModifySpD(spd) {
+			return this.chainModify(2);
+		},
+		id: "feedbackbarrier",
+		name: "Feedback Barrier",
+	},
+	"quicksilver": {
+		desc: "This Pokemon's Speed is raised by 1 stage at the end of each full turn it has been on the field. Prevents other Pokemon from lowering this Pokemon's stat stages, inverting these changes instead. Moongeist Beam, Sunsteel Strike, and the Mold Breaker, Teravolt, and Turboblaze Abilities cannot ignore this Ability.",
+		shortDesc: "This Pokemon's Speed is raised 1 stage at the end of each full turn on the field. Prevents other Pokemon from lowering this Pokemon's stat stages, inverting these changes instead.",
+		onBoost(boost, target, source, effect) {
+			if (source && target === source) return;
+			let showMsg = false;
+			for (let i in boost) {
+				// @ts-ignore
+				if (boost[i] < 0) {
+					// @ts-ignore
+					boost[i] *= -1;
+					showMsg = true;
+				}
+			}
+			if (showMsg && !effect.secondaries) this.add("-fail", target, "unboost", "[from] ability: Quicksilver", "[of] " + target);
+		},
+		onResidualOrder: 26,
+		onResidualSubOrder: 1,
+		onResidual(pokemon) {
+			if (pokemon.activeTurns) {
+				this.boost({spe: 1});
+			}
+		},
+		isUnbreakable: true,
+		id: "quicksilver",
+		name: "Quicksilver",
+	},
+	"impossibletask": {
+		desc: "If this Pokemon is a Ceremoni, it changes to its Core forme if it has 1/2 or less of its maximum HP or if it attacks and knocks out another Pokemon, depending on its highest stat (Atk -> Robe, Def -> Bowl, SpA -> Branch, SpD -> Jewel, Spe -> Shell).",
+		shortDesc: "If Ceremoni, switch-in/end of turn it changes to one of five Core formes at 1/2 max HP or less or if it attacks and KOes another Pokemon, the Core forme depending on its highest stat.",
+		onSourceFaint(target, source, effect) {
+			if (effect && effect.effectType === 'Move' && source.template.speciesid === 'ceremoni') {
+				let statName = 'atk';
+				let bestStat = 0;
+				/** @type {StatNameExceptHP} */
+				let s;
+				for (s in source.storedStats) {
+					if (source.storedStats[s] > bestStat) {
+						statName = s;
+						bestStat = source.storedStats[s];
+					}
+				}
+				switch (statName) {
+					case 'atk': 
+						source.formeChange('Ceremoni-Robe');
+						break;
+					case 'def': 
+						source.formeChange('Ceremoni-Bowl');
+						break;
+					case 'spa': 
+						source.formeChange('Ceremoni-Branch');
+						break;
+					case 'spd': 
+						source.formeChange('Ceremoni-Jewel');
+						break;
+					default: //Speed, since it can't be anything else.
+						source.formeChange('Ceremoni-Shell');
+						break;
+				}
+			}
+		},
+		onResidualOrder: 27,
+		onResidual(pokemon) {
+			if (pokemon.template.speciesid !== 'Ceremoni' || pokemon.transformed || !pokemon.hp) return;
+			if (pokemon.hp <= pokemon.maxhp / 2) {
+				let statName = 'atk';
+				let bestStat = 0;
+				/** @type {StatNameExceptHP} */
+				let s;
+				for (s in pokemon.storedStats) {
+					if (pokemon.storedStats[s] > bestStat) {
+						statName = s;
+						bestStat = pokemon.storedStats[s];
+					}
+				}
+				switch (statName) {
+					case 'atk': 
+						pokemon.formeChange('Ceremoni-Robe');
+						break;
+					case 'def': 
+						pokemon.formeChange('Ceremoni-Bowl');
+						break;
+					case 'spa': 
+						pokemon.formeChange('Ceremoni-Branch');
+						break;
+					case 'spd': 
+						pokemon.formeChange('Ceremoni-Jewel');
+						break;
+					default: //Speed, since it can't be anything else.
+						pokemon.formeChange('Ceremoni-Shell');
+						break;
+				}
+			}
+		},
+		onSetStatus(status, target, source, effect) {
+			if (target.template.speciesid !== 'ceremoni' || target.transformed) return;
+			if (!effect || !effect.status) return false;
+			this.add('-immune', target, '[from] ability: Impossible Task');
+			return false;
+		},
+		onTryAddVolatile(status, target) {
+			if (target.template.speciesid !== 'ceremoni' || target.transformed) return;
+			if (status.id !== 'yawn') return;
+			this.add('-immune', target, '[from] ability: Impossible Task');
+			return null;
+		},
+		isUnbreakable: true,
+		id: "impossibletask",
+		name: "Impossible Task",
+	},
+	"monotype": {
+		shortDesc: "Multitype + Adaptability.",
+		onSwitchInPriority: 101,
+		onSwitchIn(pokemon) {
+				if (pokemon.template.baseSpecies !== 'Eeveus') return;
+				// @ts-ignore
+				let type = pokemon.getItem().onPlate;
+				// @ts-ignore
+				if (!type || type === true) {
+					type = 'Normal';
+			}
+			if (type !== 'Normal'){
+				let forme = 'Eeveus-' + type;
+				pokemon.formeChange(forme)
+			} else {
+				pokemon.formeChange('Eeveus');
+			}
+		},
+		onTakeItem(item, pokemon, source) {
+			if (pokemon.item.onPlate) return false;
+		},
+		onModifyMove(move) {
+			move.stab = 2;
+		},
+		id: "monotype",
+		name: "Monotype",
 	},
 };

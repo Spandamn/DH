@@ -70,11 +70,11 @@ exports.BattleScripts = {
             return false;
         }
 
-        let targets = pokemon.getMoveTargets(move, target);
+		  const {targets, pressureTargets} = pokemon.getMoveTargets(move, target);
 
         if (!sourceEffect || (['pursuit', 'shocksuck', 'pursuingbeam'].includes(sourceEffect.id))) {
             let extraPP = 0;
-            for (const source of targets) {
+            for (const source of pressureTargets) {
                 let ppDrop = this.runEvent('DeductPP', source, pokemon, move);
                 if (ppDrop !== true) {
                     extraPP += ppDrop || 0;
@@ -231,7 +231,7 @@ exports.BattleScripts = {
             this.add('-immune', target, '[msg]');
             return false;
         }
-        if (this.gen >= 7 && move.pranksterBoosted && pokemon.hasAbility(['prankster', 'authority', 'rapidgrowth', 'creepy', 'panicmode', 'prankstar', 'stunningbug', 'indulgence', 'tinkering', 'bamboozled', 'lightningfist', 'trickyglare', 'familiarmaneuvering']) && target.side !== pokemon.side && !this.getImmunity('prankster', target)) {
+        if (this.gen >= 7 && move.pranksterBoosted && pokemon.hasAbility(['prankster', 'authority', 'rapidgrowth', 'creepy', 'panicmode', 'prankstar', 'stunningbug', 'indulgence', 'tinkering', 'bamboozled', 'lightningfist', 'trickyglare', 'familiarmaneuvering', 'slippery', 'dancingmad', 'mischievousdust']) && target.side !== pokemon.side && !this.getImmunity('prankster', target)) {
             this.debug('natural prankster immunity');
             if (!target.illusion) this.add('-hint', "In gen 7, Dark is immune to moves boosted by Prankster or derivatives.");
             this.add('-immune', target, '[msg]');
@@ -439,6 +439,24 @@ exports.BattleScripts = {
 
         return damage;
     },
+// 	canMegaEvo(pokemon) {
+// 		let item = pokemon.getItem();
+// 		if ((item.megaEvolves !== pokemon.baseTemplate.baseSpecies || (Array.isArray(item.megaEvolves) && !item.megaEvolves.includes(pokemon.baseTemplate.baseSpecies))) || item.megaStone === pokemon.species || (Array.isArray(item.megaStone) && item.megaStone.includes(pokemon.species))) {
+// 			if (item.zMove) return null;
+// 			for (let i = 0; i < pokemon.baseTemplate.otherFormes.length; i++) {
+// 				let altForme = pokemon.baseTemplate.otherFormes[i];
+// 				if (altForme && altForme.isMega && altForme.requiredMove && pokemon.baseMoves.includes(toId(altForme.requiredMove))) return altForme.species;
+// 			}
+// 			return null;
+// 		}
+// 		if (Array.isArray(item.megaStone) && pokemon.baseTemplate.otherFormes) {
+// 			for (let i = 0; i < pokemon.baseTemplate.otherFormes.length; i++) {
+// 				let forme = pokemon.baseTemplate.otherFormes[i];
+// 				if (forme && forme.isMega && item.megaStone.includes(forme.species)) return forme.species;
+// 			}
+// 		}
+// 		else return item.megaStone;
+// 	},
     canUltraBurst(pokemon) {
         if (pokemon.getItem().id === 'ultranecroziumz') {
             switch (pokemon.baseTemplate.species) {
