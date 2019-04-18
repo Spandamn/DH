@@ -26399,4 +26399,95 @@ auroritarmega: {
         weightkg: 82.5,
 		eggGroups: ["Bug"],
     },
+	metalchan: {
+	    num: 7500645,
+	    species: "Metalchan",
+	    types: ["Fighting", "Steel"],
+		 gender: "N",
+	    baseStats: {
+	        hp: 102,
+	        atk: 144,
+	        def: 116,
+	        spa: 62,
+	        spd: 102, 
+	        spe: 70
+	    },
+	    abilities: {
+	        0: "Iron Fist"
+	    },
+        color: "Gray",
+	     heightm: 1.95,
+	     weightkg: 425.1,
+		  fusion: ["Hitmonchan", "Melmetal"],
+	     eggGroups: ["Undiscovered"],
+	},
+	sirirachistar: {
+	    num: 7500646,
+	    species: "Sirirachi-Star",
+	    types: ["Grass", "Steel"],
+		 gender: "N",
+	    baseStats: {
+	        hp: 105,
+	        atk: 106,
+	        def: 102,
+	        spa: 125,
+	        spd: 102, 
+	        spe: 128
+	    },
+	    abilities: {
+	        0: "Serene Grace"
+	    },
+        color: "Gray",
+	     heightm: 0.35,
+	     weightkg: 3.15,
+		  fusion: ["Jirachi", "Shaymin-Sky"],
+	     eggGroups: ["Undiscovered"],
+	},
+	    sensational: {
+        num: 7500647,
+        species: "Sensational",
+        types: ["Steel"],
+		  gender: "N",
+        baseStats: {
+            hp: 75,
+            atk: 142,
+            def: 127,
+            spa: 87,
+            spd: 92,
+            spe: 105
+        },
+        abilities: {
+            0: "Clear Body"
+        },
+		  color: "Gray",
+        heightm: 1.1,
+        weightkg: 315.5,
+		  otherFormes: ["sensationalmega"],
+		  fusion: ["Klinklang", "Metagross"],
+		eggGroups: ["Mineral"],
+    },
+    sensationalmega: {
+        num: 7500647,
+        species: "Sensational-Mega",
+        baseSpecies: "Sensational",
+        forme: "Mega",
+        formeLetter: "M",
+		  gender: "N",
+        types: ["Steel"],
+        baseStats: {
+            hp: 75,
+            atk: 152,
+            def: 147,
+            spa: 97,
+            spd: 112,
+            spe: 145
+        },
+        abilities: {
+            0: "Tough Claws"
+        },
+		  color: "Gray",
+        heightm: 2,
+        weightkg: 708.4,
+		eggGroups: ["Mineral"],
+    },
 };
