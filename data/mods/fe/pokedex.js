@@ -26354,4 +26354,49 @@ auroritarmega: {
 		  fusion: ["Celesteela", "Stakataka"],
 	     eggGroups: ["Undiscovered"],
 	},
+	    escavazor: {
+        num: 7500644,
+        species: "Escavazor",
+        types: ["Bug", "Steel"],
+        baseStats: {
+            hp: 85,
+            atk: 147,
+            def: 117,
+            spa: 72,
+            spd: 107,
+            spe: 57
+        },
+        abilities: {
+            0: "Swarm"
+        },
+		  color: "Gray",
+        heightm: 1.4,
+        weightkg: 75.5,
+		  otherFormes: ["escavazormega"],
+		  fusion: ["Escavalier", "Scizor"],
+		eggGroups: ["Bug"],
+    },
+    escavazormega: {
+        num: 7500644,
+        species: "Escavazor-Mega",
+        baseSpecies: "Escavazor",
+        forme: "Mega",
+        formeLetter: "M",
+        types: ["Bug", "Steel"],
+        baseStats: {
+            hp: 85,
+            atk: 167,
+            def: 157,
+            spa: 82,
+            spd: 127,
+            spe: 67
+        },
+        abilities: {
+            0: "Technician"
+        },
+		  color: "Gray",
+        heightm: 1.6,
+        weightkg: 82.5,
+		eggGroups: ["Bug"],
+    },
 };
