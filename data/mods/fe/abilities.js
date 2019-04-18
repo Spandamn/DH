@@ -12585,7 +12585,7 @@ exports.BattleAbilities = {
 			// @ts-ignore
 			let type = pokemon.getItem().onMemory;
 			// @ts-ignore
-			if (pokemon.template.speciesid === 'Aegivally-Guerilla'){
+			if (pokemon.template.speciesid === 'aegivallyguerilla'){
 				type = this.getMove(pokemon.moveSlots[0].id).type;
 			}
 			if (!type || type === true) {
