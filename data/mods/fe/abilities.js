@@ -13963,7 +13963,7 @@ exports.BattleAbilities = {
 		},
 		onResidualOrder: 27,
 		onResidual(pokemon) {
-			if (pokemon.template.speciesid !== 'Ceremoni' || pokemon.transformed || !pokemon.hp) return;
+			if (pokemon.template.speciesid !== 'ceremoni' || pokemon.transformed || !pokemon.hp) return;
 			if (pokemon.hp <= pokemon.maxhp / 2) {
 				let statName = 'atk';
 				let bestStat = 0;
