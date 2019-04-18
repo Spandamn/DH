@@ -26332,4 +26332,26 @@ auroritarmega: {
 		  fusion: ["Bronzong", "Chimecho"],
 	     eggGroups: ["Undiscovered"],
 	},
+	steelateela: {
+	    num: 7500643,
+	    species: "Steelateela",
+	    types: ["Steel", "Flying"],
+		 gender: "N",
+	    baseStats: {
+	        hp: 104,
+	        atk: 131,
+	        def: 162,
+	        spa: 85,
+	        spd: 116, 
+	        spe: 42
+	    },
+	    abilities: {
+	        0: "Beast Boost"
+	    },
+        color: "Green",
+	     heightm: 7.35,
+	     weightkg: 909.95,
+		  fusion: ["Celesteela", "Stakataka"],
+	     eggGroups: ["Undiscovered"],
+	},
 };
