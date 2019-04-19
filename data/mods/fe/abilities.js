@@ -14074,4 +14074,38 @@ exports.BattleAbilities = {
 		id: "antimatter",
 		name: "Antimatter",
 	},
+	"coolasice": {
+		shortDesc: "This Pokemon's moves have their secondary effect chance doubled. If user is Regetta and Hail is active, it changes to Compressed Form. Compressed Regetta restores 25% of its HP every turn.",
+		onModifyMovePriority: -2,
+		onModifyMove(move) {
+			if (move.secondaries) {
+				this.debug('doubling secondary chance');
+				for (const secondary of move.secondaries) {
+					if (secondary.chance) secondary.chance *= 2;
+				}
+			}
+		},
+		onUpdate(pokemon) {
+			if (!pokemon.isActive || pokemon.baseTemplate.baseSpecies !== 'Regetta' || pokemon.transformed) return;
+			if (this.field.isWeather(['hail', 'yeti', 'solarsnow'])) {
+				if (pokemon.template.speciesid === 'regetta' && (!!pokemon.volatiles['atmosphericperversion'] === !!pokemon.volatiles['weatherbreak'])) {
+					pokemon.formeChange('Regetta-Compressed');
+					this.add('-formechange', pokemon, 'Regetta-Compressed', '[msg]', '[from] ability: Cool as Ice');
+				}
+				else if (pokemon.template.speciesid === 'regettacompressed' && (!!pokemon.volatiles['atmosphericperversion'] !== !!pokemon.volatiles['weatherbreak'])) {
+					pokemon.formeChange('Regetta');
+					this.add('-formechange', pokemon, 'Regetta-Compressed');
+				}
+			}
+		},
+		onResidualOrder: 26,
+		onResidualSubOrder: 1,
+		onResidual(pokemon) {
+			if (pokemon.template.speciesid === 'regettacompressed') {
+				this.heal(pokemon.maxhp / 4, pokemon, pokemon);
+			}
+		},
+		id: "coolasice",
+		name: "Cool As Ice",
+	},
 };
