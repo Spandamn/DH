@@ -10302,7 +10302,7 @@ exports.BattleAbilities = {
 	            	let ability = this.getAbility(target.ability);
 	            	let bannedAbilities = ['appropriation', 'battlebond', 'comatose', 'disguise', 'flowergift', 'forecast', 'illusion', 'imposter', 'multitype', 'powerconstruct', 'powerofalchemy', 'receiver', 'rkssystem', 'schooling', 'shieldsdown', 'stancechange', 'trace', 'zenmode', 'resurrection', 'magicalwand', 'sleepingsystem', 'cursedcloak', 'appropriation', 'disguiseburden', 'hideandseek', 'beastcostume', 'spiralpower', 'optimize', 'prototype', 'typeillusionist', 'godoffertility', 'foundation', 'sandyconstruct', 'victorysystem', 'techequip', 'technicalsystem', 'triagesystem', 'geneticalgorithm', 'effectsetter', 'tacticalcomputer', 'mitosis', 'barbstance', 'errormacro', 'combinationdrive', 'stanceshield', 'unfriend', 'desertmirage', 'sociallife', 'cosmology', 'crystallizedshield', 'compression', 'whatdoesthisdo'];
 	            	if (bannedAbilities.includes(ability)) break;
-						this.add('-ability', target, ability, '[from] ability: Appropriation', '[of] ' + pokemon);
+						this.add('-ability', pokemon, ability, '[from] ability: Appropriation', '[of] ' + pokemon);
 						pokemon.setAbility(ability);
 					}
 			  }
