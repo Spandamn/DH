@@ -14055,4 +14055,23 @@ exports.BattleAbilities = {
 		id: "monotype",
 		name: "Monotype",
 	},
+	"antimatter": {
+		shortDesc: "This Pokemon's moves ignore its own status and the target's ability for damage calculations.",
+		onBeforeMove(move, pokemon){
+	         if (pokemon.status === 'slp') {
+						move.sleepUsable = true;
+				}
+		},
+		onModifyAtkPriority: 5,
+		onModifyAtk(atk, attacker, defender, move) {
+	        if (attacker.status === 'brn' && move.id !== 'facade') {
+	        		return this.chainModify(2);
+	        }
+		},
+		onModifyMove(move) {
+			move.ignoreAbility = true;
+		},
+		id: "antimatter",
+		name: "Antimatter",
+	},
 };
