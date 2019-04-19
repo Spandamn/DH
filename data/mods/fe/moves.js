@@ -508,7 +508,7 @@ exports.BattleMovedex = {
 		sideCondition: 'Wish',
 		effect: {
 			duration: 2,
-			onStart(side, source) {
+			onStart(pokemon, source) {
 				this.effectData.hp = source.maxhp / 2;
 				//Wish boost for Monarch of the Rain
 				if (source.hasAbility('monarchoftherain')){
@@ -516,13 +516,10 @@ exports.BattleMovedex = {
 				}
 			},
 			onResidualOrder: 4,
-			onEnd(side) {
-				// @ts-ignore
-				let target = side.active[this.effectData.sourcePosition];
+			onEnd(target) {
 				if (target && !target.fainted) {
-					let source = this.effectData.source;
 					let damage = this.heal(this.effectData.hp, target, target);
-					if (damage) this.add('-heal', target, target.getHealth, '[from] move: Wish', '[wisher] ' + source.name);
+					if (damage) this.add('-heal', target, target.getHealth, '[from] move: Wish', '[wisher] ' + this.effectData.source.name);
 				}
 			},
 		},
@@ -796,6 +793,7 @@ exports.BattleMovedex = {
 			},
 			onAnyModifyDamage(damage, source, target, move) {
 				if (target !== source && target.side === this.effectData.target) {
+					if (target.side.sideConditions['solarshields']) return;
 					if ((target.side.sideConditions['reflect'] && this.getCategory(move) === 'Physical') ||
 							(target.side.sideConditions['lightscreen'] && this.getCategory(move) === 'Special')) {
 						return;
