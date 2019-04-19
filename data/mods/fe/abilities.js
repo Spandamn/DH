@@ -14108,4 +14108,37 @@ exports.BattleAbilities = {
 		id: "coolasice",
 		name: "Cool As Ice",
 	},
+	"berrycola": {
+		shortDesc: "This Pokemon's healing moves have their priority increased by 3. If last item used is a Berry, 50% chance to restore it each end of turn; 100% in Sun. (UNIMPLEMENTED: If this Pokemon either holds a berry or has eaten one, any Pokemon it uses a move to heal (including itself) experiences its effects.)",
+		onModifyPriority(priority, pokemon, target, move) {
+			if (move && move.flags['heal']) return priority + 3;
+		},
+		onResidualOrder: 26,
+		onResidualSubOrder: 1,
+		onResidual(pokemon) {
+			if ((this.field.isWeather(['sunnyday', 'desolateland', 'solarsnow']) || this.randomChance(1, 2)) === (!!pokemon.volatiles['atmosphericperversion'] === !!pokemon.volatiles['weatherbreak'])) {
+				if (pokemon.hp && !pokemon.item && this.getItem(pokemon.lastItem).isBerry) {
+					pokemon.setItem(pokemon.lastItem);
+					pokemon.lastItem = '';
+					this.add('-item', pokemon, pokemon.getItem(), '[from] ability: Berry Cola');
+				}
+			}
+		},
+		//TODO: 
+// 		onAnyTryHeal(damage, target, source, effect) {
+// 			if (source !== this.effectData.target) return; //Only works if the source is the mon with the ability.
+// 			if (!this.getItem(source.lastItem).isBerry && (!source.item || source.getItem().isBerry)) return; //We know the mon with Berry Cola has a berry!
+// 			this.debug("Heal is occurring: " + target + " <- " + source + " :: " + effect.id);
+// 			if (effect && effect.effectType === 'Move') {
+// 				if (source.item && source.getItem().isBerry){
+// 					let previousItem = target.lastItem;
+// 					let yourItem = target.item;
+					
+					
+// 				}
+// 			}
+// 		},
+		id: "berrycola",
+		name: "Berry Cola",
+	},
 };
