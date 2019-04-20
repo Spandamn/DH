@@ -12,7 +12,7 @@ exports.BattleFormatsData = { //
     },
     swampamarmega: {
         randomBattleMoves: ["earthquake", "raindance", "psychocut", "waterfall", "knockoff", "foulplay"],
-        requiredItem: "Swampamarite",
+        requiredItem: "swampamarite",
         tier: "OU",
     },
     feekarp: {
@@ -3765,4 +3765,100 @@ tier: "OU",
 ceremonishell: {
 tier: "OU",
 },
+    eeveus: {
+        tier: "OU",
+    },
+    eeveusfire: {
+        tier: "OU",
+    },
+    eeveuswater: {
+        tier: "OU",
+    },
+    eeveusgrass: {
+        tier: "OU",
+    },
+    eeveuselectric: {
+        tier: "OU",
+    },
+    eeveusice: {
+        tier: "OU",
+    },
+    eeveuspsychic: {
+        tier: "OU",
+    },
+    eeveusdragon: {
+        tier: "OU",
+    },
+    eeveusfighting: {
+        tier: "OU",
+    },
+    eeveusflying: {
+        tier: "OU",
+    },
+    eeveuspoison: {
+        tier: "OU",
+    },
+    eeveusbug: {
+        tier: "OU",
+    },
+    eeveusground: {
+        tier: "OU",
+    },
+    eeveusrock: {
+        tier: "OU",
+    },
+    eeveusghost: {
+        tier: "OU",
+    },
+    eeveusdark: {
+        tier: "OU",
+    },
+    eeveussteel: {
+        tier: "OU",
+    },
+    eeveusfairy: {
+        tier: "OU",
+    },
+    kefka: {
+        tier: "OU",
+    },
+    pyukuton: {
+        tier: "OU",
+    },
+    volturne: {
+        tier: "OU",
+    },
+    thundpard: {
+        tier: "OU",
+    },
+    madeleine: {
+        tier: "OU",
+    },
+    amoongrowth: {
+        tier: "OU",
+    },
+    bronzecho: {
+        tier: "OU",
+    },
+    steelateela: {
+        tier: "OU",
+    },
+    escavazor: {
+        tier: "OU",
+    },
+    escavazormega: {
+        tier: "OU",
+    },
+    metalchan: {
+        tier: "OU",
+    },
+    sirirachistar: {
+        tier: "OU",
+    },
+    sensational: {
+        tier: "OU",
+    },
+    sensationalmega: {
+        tier: "OU",
+    },
 };
