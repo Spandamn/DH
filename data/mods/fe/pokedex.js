@@ -16360,7 +16360,7 @@ celebi: {
     mimiblim: {
         num: 7500359,
         species: "Mimiblim",
-        types: ["Ghost"],
+        types: ["Ghost", "Fairy"],
         baseStats: {
             hp: 112,
             atk: 95,
@@ -16384,7 +16384,7 @@ mimiblimbusted: {
 			baseSpecies: "Mimiblim",
 			forme: "Busted",
 			formeLetter: "B",
-        types: ["Ghost"],
+        types: ["Ghost", "Fairy"],
         baseStats: {
             hp: 112,
             atk: 95,
