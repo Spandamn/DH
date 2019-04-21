@@ -26490,4 +26490,102 @@ auroritarmega: {
         weightkg: 708.4,
 		eggGroups: ["Mineral"],
     },
+	    lukeldeo: {
+        num: 7500648,
+        species: "Lukeldeo",
+        types: ["Fighting", "Water"],
+		  genderRatio: {
+			  M: 0.875,
+			  F: 0.125
+		  },
+        baseStats: {
+            hp: 85,
+            atk: 116,
+            def: 85,
+            spa: 127,
+            spd: 85,
+            spe: 124
+        },
+        abilities: {
+            0: "Justified"
+        },
+		  color: "Blue",
+        heightm: 1.3,
+        weightkg: 51.25,
+		  otherFormes: ["lukeldeomega"],
+		  fusion: ["Lucario", "Keldeo"],
+		eggGroups: ["Undiscovered"],
+    },
+    lukeldeomega: {
+        num: 7500648,
+        species: "Lukeldeo-Mega",
+        baseSpecies: "Lukeldeo",
+        forme: "Mega",
+        formeLetter: "M",
+        types: ["Fighting", "Water"],
+		  genderRatio: {
+			  M: 0.875,
+			  F: 0.125
+		  },
+        baseStats: {
+            hp: 85,
+            atk: 151,
+            def: 103,
+            spa: 152,
+            spd: 85,
+            spe: 146
+        },
+        abilities: {
+            0: "Adaptability"
+        },
+		  color: "Blue",
+        heightm: 1.4,
+        weightkg: 54.75,
+		  eggGroups: ["Undiscovered"],
+    },
+	    moron: {
+        num: 7500649,
+        species: "Moron",
+        types: ["Steel", "Fire"],
+        baseStats: {
+            hp: 80,
+            atk: 110,
+            def: 160,
+            spa: 70,
+            spd: 85,
+            spe: 62
+        },
+        abilities: {
+            0: "Rock Head"
+        },
+		  color: "Purple",
+        heightm: 1.55,
+        weightkg: 197,
+		  otherFormes: ["moronmega"],
+		  fusion: ["Marowak-Alola", "Aggron"],
+		  eggGroups: ["Monster"],
+    },
+    moronmega: {
+        num: 7500649,
+        species: "Moron-Mega",
+        baseSpecies: "Moron",
+        forme: "Mega",
+        formeLetter: "M",
+        types: ["Steel"],
+        baseStats: {
+            hp: 80,
+            atk: 140,
+            def: 210,
+            spa: 70,
+            spd: 105,
+            spe: 62
+        },
+        abilities: {
+            0: "Filter"
+        },
+		  color: "Purple",
+        heightm: 1.65,
+        weightkg: 233,
+		  eggGroups: ["Monster"],
+    },
 };
