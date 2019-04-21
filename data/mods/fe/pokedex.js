@@ -26588,4 +26588,26 @@ auroritarmega: {
         weightkg: 233,
 		  eggGroups: ["Monster"],
     },
+	    lordkaiyur: {
+        num: 7500650,
+        species: "Lord Kaiyur",
+        types: ["Water", "Dragon"],
+		  gender: "N",
+        baseStats: {
+            hp: 152,
+            atk: 115,
+            def: 92,
+            spa: 115,
+            spd: 92,
+            spe: 82
+        },
+        abilities: {
+            0: "Pressure"
+        },
+		  color: "Blue",
+        heightm: 8.75,
+        weightkg: 361.5,
+		  fusion: ["Wailord", "Kyurem"],
+		  eggGroups: ["Undiscovered"],
+    },
 };
