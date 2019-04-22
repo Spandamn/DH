@@ -26673,7 +26673,7 @@ auroritarmega: {
         abilities: {
             0: "Levitate"
         },
-		  color: "Purple",
+		  color: "Red",
         heightm: 0.85,
         weightkg: 20.1,
 		  otherFormes: ["rotiasmega"],
@@ -26702,6 +26702,51 @@ auroritarmega: {
 		  color: "Purple",
         heightm: 1.25,
         weightkg: 32.1,
+		  eggGroups: ["Undiscovered"],
+    },
+	    licquaza: {
+        num: 7500653,
+        species: "Licquaza",
+        types: ["Normal", "Flying"],
+        baseStats: {
+            hp: 122,
+            atk: 127,
+            def: 87,
+            spa: 110,
+            spd: 87,
+            spe: 67
+        },
+        abilities: {
+            0: "Air Lock"
+        },
+		  color: "Green",
+        heightm: 4.1,
+        weightkg: 136,
+		  otherFormes: ["licquazamega"],
+		  fusion: ["Lickitung", "Rayquaza"],
+		  eggGroups: ["Undiscovered"],
+    },
+    licquazamega: {
+        num: 7500653,
+        species: "Licquaza-Mega",
+        baseSpecies: "Licquaza",
+        forme: "Mega",
+        formeLetter: "M",
+        types: ["Normal", "Flying"],
+        baseStats: {
+            hp: 122,
+            atk: 157,
+            def: 97,
+            spa: 140,
+            spd: 97,
+            spe: 87
+        },
+        abilities: {
+            0: "Delta Stream"
+        },
+		  color: "Green",
+        heightm: 7.9,
+        weightkg: 321.5,
 		  eggGroups: ["Undiscovered"],
     },
 };
