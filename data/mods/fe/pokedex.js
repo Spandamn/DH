@@ -8980,7 +8980,7 @@ darkchomp: {
         color: "Gray",
         eggGroups: ["Undiscovered"],
     },
-    thunderbee: {
+    thundurbee: {
         num: 7500167,
         species: "Thundurbee",
         types: ["Bug", "Electric"],
@@ -9116,6 +9116,32 @@ darkchomp: {
         weightkg: 7.7,
         color: "Green",
         eggGroups: ["Undiscovered"],
+    },
+    burrabuzz: {
+        num: 750101,
+        species: "Burrabuzz",
+        types: ["Fighting", "Electric"],
+        genderRatio: {
+            M: 0.75,
+            F: 0.25
+        },
+        baseStats: {
+            hp: 85,
+            atk: 104,
+            def: 81,
+            spa: 77,
+            spd: 77,
+            spe: 72
+        },
+        abilities: {
+            0: "Top Gear"
+        },
+        heightm: 1.15,
+        weightkg: 35,
+        color: "Brown",
+		  evos: ["conkelvire"],
+		  fusion: ["Gurdurr", "Electabuzz"],
+        eggGroups: ["Human-Like"],
     },
     conkelvire: {
         num: 7500171,
