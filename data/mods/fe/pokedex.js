@@ -26795,7 +26795,7 @@ auroritarmega: {
 	    ventel: {
         num: 7500656,
         species: "Ventel",
-        types: ["Water", "Grass"],
+        types: ["Dark", "Fire"],
         baseStats: {
             hp: 97,
             atk: 142,
