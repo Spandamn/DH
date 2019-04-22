@@ -26749,4 +26749,68 @@ auroritarmega: {
         weightkg: 321.5,
 		  eggGroups: ["Undiscovered"],
     },
+	    furpurr: {
+        num: 7500654,
+        species: "Furpurr",
+        types: ["Normal", "Dark"],
+        baseStats: {
+            hp: 85,
+            atk: 85,
+            def: 75,
+            spa: 85,
+            spd: 92,
+            spe: 123
+        },
+        abilities: {
+            0: "Fur Coat"
+        },
+		  color: "White",
+        heightm: 1.15,
+        weightkg: 50.5,
+		  fusion: ["Furfrou", "Persian-Alola"],
+		  eggGroups: ["Field"],
+    },
+	    shaymie: {
+        num: 7500655,
+        species: "Shaymie",
+        types: ["Water", "Grass"],
+		  gender: "N",
+        baseStats: {
+            hp: 85,
+            atk: 95,
+            def: 100,
+            spa: 125,
+            spd: 100,
+            spe: 120
+        },
+        abilities: {
+            0: "Natural Cure"
+        },
+		  color: "Purple",
+        heightm: 0.7,
+        weightkg: 40.1,
+		  fusion: ["Furfrou", "Persian-Alola"],
+		  eggGroups: ["Undiscovered"],
+    },
+	    ventel: {
+        num: 7500656,
+        species: "Ventel",
+        types: ["Water", "Grass"],
+        baseStats: {
+            hp: 97,
+            atk: 142,
+            def: 80,
+            spa: 72,
+            spd: 85,
+            spe: 137
+        },
+        abilities: {
+            0: "Pressure"
+        },
+		  color: "Black",
+        heightm: 1.6,
+        weightkg: 116,
+		  fusion: ["Weavile", "Entei"],
+		  eggGroups: ["Undiscovered"],
+    },
 };
