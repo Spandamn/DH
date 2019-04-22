@@ -26290,7 +26290,7 @@ auroritarmega: {
 	    },
         color: "Purple",
 	     heightm: 1.3,
-	     weightkg: 49.25,
+	     weightkg: 49.2,
 		  fusion: ["Thundurus", "Liepard"],
 	     eggGroups: ["Undiscovered"],
 	},
@@ -26332,7 +26332,7 @@ auroritarmega: {
 	    },
         color: "Blue",
 	     heightm: 1.3,
-	     weightkg: 69.55,
+	     weightkg: 69.5,
 		  fusion: ["Amoonguss", "Tangrowth"],
 	     eggGroups: ["Grass"],
 	},
@@ -26376,7 +26376,7 @@ auroritarmega: {
 	    },
         color: "Green",
 	     heightm: 7.35,
-	     weightkg: 909.95,
+	     weightkg: 909.9,
 		  fusion: ["Celesteela", "Stakataka"],
 	     eggGroups: ["Undiscovered"],
 	},
@@ -26465,7 +26465,7 @@ auroritarmega: {
 	    },
         color: "Gray",
 	     heightm: 0.35,
-	     weightkg: 3.15,
+	     weightkg: 3.1,
 		  fusion: ["Jirachi", "Shaymin-Sky"],
 	     eggGroups: ["Undiscovered"],
 	},
@@ -26537,7 +26537,7 @@ auroritarmega: {
         },
 		  color: "Blue",
         heightm: 1.3,
-        weightkg: 51.25,
+        weightkg: 51.2,
 		  otherFormes: ["lukeldeomega"],
 		  fusion: ["Lucario", "Keldeo"],
 		eggGroups: ["Undiscovered"],
@@ -26566,7 +26566,7 @@ auroritarmega: {
         },
 		  color: "Blue",
         heightm: 1.4,
-        weightkg: 54.75,
+        weightkg: 54.7,
 		  eggGroups: ["Undiscovered"],
     },
 	    moron: {
@@ -26630,10 +26630,78 @@ auroritarmega: {
         abilities: {
             0: "Pressure"
         },
-		  color: "Blue",
+		  color: "Gray",
         heightm: 8.75,
         weightkg: 361.5,
 		  fusion: ["Wailord", "Kyurem"],
+		  eggGroups: ["Undiscovered"],
+    },
+	    aloola: {
+        num: 7500651,
+        species: "Alo-Ola",
+        types: ["Water", "Flying"],
+        baseStats: {
+            hp: 140,
+            atk: 110,
+            def: 120,
+            spa: 87,
+            spd: 104,
+            spe: 82
+        },
+        abilities: {
+            0: "Regenerator"
+        },
+		  color: "Pink",
+        heightm: 2.5,
+        weightkg: 115.3,
+		  fusion: ["Alomomola", "Ho-Oh"],
+		  eggGroups: ["Undiscovered"],
+    },
+	    rotias: {
+        num: 7500652,
+        species: "Rotias",
+        types: ["Dragon", "Electric"],
+		  gender: "F",
+        baseStats: {
+            hp: 90,
+            atk: 77,
+            def: 103,
+            spa: 112,
+            spd: 123,
+            spe: 123
+        },
+        abilities: {
+            0: "Levitate"
+        },
+		  color: "Purple",
+        heightm: 0.85,
+        weightkg: 20.1,
+		  otherFormes: ["rotiasmega"],
+		  fusion: ["Rotom-Heat", "Latias"],
+		  eggGroups: ["Undiscovered"],
+    },
+    rotiasmega: {
+        num: 7500652,
+        species: "Rotias-Mega",
+        baseSpecies: "Rotias",
+        forme: "Mega",
+        formeLetter: "M",
+        types: ["Dragon", "Electric"],
+		  gender: "F",
+        baseStats: {
+            hp: 90,
+            atk: 97,
+            def: 133,
+            spa: 142,
+            spd: 143,
+            spe: 123
+        },
+        abilities: {
+            0: "Levitate"
+        },
+		  color: "Purple",
+        heightm: 1.25,
+        weightkg: 32.1,
 		  eggGroups: ["Undiscovered"],
     },
 };
