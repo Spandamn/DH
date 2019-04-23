@@ -1527,7 +1527,7 @@ somacruz: {
 	 otherFormes: ["somacruzawakened"],
 },
 somacruzawakened: {
-    num: 6000084,
+    num: 6000083,
     species: "Soma Cruz-Awakened",
     baseSpecies: "Soma Cruz",
     forme: "Awakened",
@@ -1539,7 +1539,7 @@ somacruzawakened: {
     weightkg: 65,
 },
 mokou: {
-    num: 6000085,
+    num: 6000084,
     species: "Mokou", /* Touhou */
     types: ["Fire", "Fighting"],
 	 gender: "F",
@@ -1548,7 +1548,7 @@ mokou: {
     weightkg: 65,
 },
 link: {
-    num: 6000086,
+    num: 6000085,
     species: "Link", /* The Legend of Zelda (This one's from Ocarina of Time) */
     types: ["Fighting", "Steel"],
 	 gender: "M",
@@ -1557,7 +1557,7 @@ link: {
     weightkg: 80,
 },
 saber: {
-    num: 6000087,
+    num: 6000086,
     species: "Saber", /* Fate Series */
     types: ["Steel"],
 	 gender: "F",
@@ -1566,7 +1566,7 @@ saber: {
     weightkg: 45,
 },
 shieldknight: {
-    num: 6000088,
+    num: 6000087,
     species: "Shield Knight", /* Shovel Knight Treasure Trove */
     types: ["Steel"],
 	 gender: "F",
@@ -1574,6 +1574,49 @@ shieldknight: {
     abilities: {0: "Power Shield", 1: "Justified", H: "Perfect Shield"},
 	 heightm: 1.8,
     weightkg: 80,
+},
+neroclaudius: {
+    num: 6000088,
+    species: "Nero Claudius", /* Fate Series */
+    types: ["Fire", "Grass"],
+	 gender: "F",
+    baseStats: {hp: 70, atk: 120, def: 80, spa: 40, spd: 80, spe: 160},
+    abilities: {0: "Saber Class", H: "Imperial Privelege"},
+    weightkg: 45,
+},
+zelda: {
+    num: 6000089,
+    species: "Zelda", /* The Legend of Zelda */
+    types: ["Psychic"],
+	 gender: "F",
+    baseStats: {hp: 75, atk: 85, def: 85, spa: 110, spd: 115, spe: 110},
+    abilities: {0: "Serene Grace", 1: "Magic Guard", H: "Divine Wisdom"},
+    weightkg: 55,
+},
+morphoknight: {
+    num: 6000090,
+    species: "Morpho Knight", /* Kirby: Star Allies */
+    types: ["Bug", "Ghost"],
+	 gender: "N",
+    baseStats: {hp: 90, atk: 130, def: 90, spa: 120, spd: 90, spe: 80},
+    abilities: {0: "Pressure", H: "Underworld Knight"},
+	 heightm: 0.2,
+    weightkg: 2,
+	 otherFormes: ["morphoknightex"],
+},
+morphoknightex: {
+    num: 6000090,
+    species: "Morpho Knight-EX",
+    baseSpecies: "Morpho Knight",
+    forme: "EX",
+    formeLetter: "X",
+    types: ["Bug", "Ghost"],
+	 gender: "N",
+    baseStats: {hp: 100, atk: 150, def: 100, spa: 130, spd: 100, spe: 100},
+    abilities: {0: "Pressure", H: "Underworld Knight"},
+	 heightm: 0.2,
+    weightkg: 2,
+},
 },
 	
      
