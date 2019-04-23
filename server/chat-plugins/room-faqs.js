@@ -1,6 +1,7 @@
 'use strict';
 
-const FS = require('../../lib/fs');
+/** @type {typeof import('../../lib/fs').FS} */
+const FS = require(/** @type {any} */('../../.lib-dist/fs')).FS;
 
 const ROOMFAQ_FILE = 'config/chat-plugins/faqs.json';
 
@@ -33,7 +34,7 @@ function getAlias(roomid, key) {
 
 /** @type {ChatCommands} */
 const commands = {
-	addfaq: function (target, room, user, connection) {
+	addfaq(target, room, user, connection) {
 		if (!this.can('declare', null, room)) return false;
 		if (!room.chatRoomData) return this.errorReply("This command is unavailable in temporary rooms.");
 		if (!target) return this.parse('/help roomfaq');
@@ -46,8 +47,9 @@ const commands = {
 		topic = toId(topic);
 		if (!(topic && rest.length)) return this.parse('/help roomfaq');
 		let text = rest.join(',').trim();
+		let filteredText = text.replace(/\[\[(?:([^<]+)\s<[^>]+>|([^\]]+))\]\]/g, (match, $1, $2) => $1 || $2);
 		if (topic.length > 25) return this.errorReply("FAQ topics should not exceed 25 characters.");
-		if (text.length > 500) return this.errorReply("FAQ entries should not exceed 500 characters.");
+		if (filteredText.length > 500) return this.errorReply("FAQ entries should not exceed 500 characters.");
 
 		text = text.replace(/^>/, '&gt;');
 
@@ -58,7 +60,7 @@ const commands = {
 		this.privateModAction(`(${user.name} added a FAQ for '${topic}')`);
 		this.modlog('RFAQ', null, `added '${topic}'`);
 	},
-	removefaq: function (target, room, user) {
+	removefaq(target, room, user) {
 		if (!this.canTalk()) return this.errorReply("You cannot do this while unable to talk.");
 		if (!this.can('declare', null, room)) return false;
 		if (!room.chatRoomData) return this.errorReply("This command is unavailable in temporary rooms.");
@@ -73,7 +75,7 @@ const commands = {
 		this.privateModAction(`(${user.name} removed the FAQ for '${topic}')`);
 		this.modlog('ROOMFAQ', null, `removed ${topic}`);
 	},
-	addalias: function (target, room, user) {
+	addalias(target, room, user) {
 		if (!this.canTalk()) return this.errorReply("You cannot do this while unable to talk.");
 		if (!this.can('declare', null, room)) return false;
 		if (!room.chatRoomData) return this.errorReply("This command is unavailable in temporary rooms.");
@@ -90,7 +92,7 @@ const commands = {
 		this.modlog('ROOMFAQ', null, `alias for '${topic}' - ${alias}`);
 	},
 	rfaq: 'roomfaq',
-	roomfaq: function (target, room, user) {
+	roomfaq(target, room, user) {
 		if (!roomFaqs[room.id]) return this.errorReply("This room has no FAQ topics.");
 		let topic = toId(target);
 		if (topic === 'constructor') return false;

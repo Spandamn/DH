@@ -38,7 +38,8 @@ const PERMALOCK_CACHE_TIME = 30 * 24 * 60 * 60 * 1000;
 
 const DEFAULT_TRAINER_SPRITES = [1, 2, 101, 102, 169, 170, 265, 266];
 
-const FS = require('../lib/fs');
+/** @type {typeof import('../lib/fs').FS} */
+const FS = require(/** @type {any} */('../.lib-dist/fs')).FS;
 
 /*********************************************************
  * Utility functions
@@ -434,11 +435,13 @@ class Connection {
 /** @typedef {[string, string, Connection]} ChatQueueEntry */
 
 // User
-class User {
+class User extends Chat.MessageContext {
 	/**
 	 * @param {Connection} connection
 	 */
 	constructor(connection) {
+		super(connection.user);
+		this.user = this;
 		this.mmrCache = Object.create(null);
 		this.guestNum = -1;
 		this.name = "";
@@ -940,6 +943,7 @@ class User {
 			return false;
 		}
 
+		let oldname = this.name;
 		let oldid = this.userid;
 		if (userid !== this.userid) {
 			this.cancelReady();
@@ -980,6 +984,7 @@ class User {
 		for (const roomid of this.inRooms) {
 			Rooms(roomid).onRename(this, oldid, joining);
 		}
+		if (isForceRenamed) this.trackRename = oldname;
 		return true;
 	}
 	/**
@@ -1207,12 +1212,12 @@ class User {
 			}
 		}
 		if (!this.connections.length) {
-			// cleanup
 			for (const roomid of this.inRooms) {
 				// should never happen.
 				Monitor.debug(`!! room miscount: ${roomid} not left`);
 				Rooms(roomid).onLeave(this);
 			}
+			// cleanup
 			this.inRooms.clear();
 			if (!this.named && !Object.keys(this.prevNames).length) {
 				// user never chose a name (and therefore never talked/battled)
@@ -1272,28 +1277,12 @@ class User {
 	 * @param {string | GlobalRoom | GameRoom | ChatRoom} roomid
 	 * @param {Connection} connection
 	 */
-	tryJoinRoom(roomid, connection) {
+	async tryJoinRoom(roomid, connection) {
 		// @ts-ignore
 		roomid = /** @type {string} */ (roomid && roomid.id ? roomid.id : roomid);
 		let room = Rooms.search(roomid);
 		if (!room && roomid.startsWith('view-')) {
-			// it's a page!
-			let parts = roomid.split('-');
-			/** @type {any} */
-			let handler = Chat.pages;
-			parts.shift();
-			while (handler) {
-				if (typeof handler === 'function') {
-					let res = handler(parts, this, connection);
-					if (typeof res === 'string') {
-						if (res !== '|deinit') res = `|init|html\n${res}`;
-						connection.send(`>${roomid}\n${res}`);
-						res = undefined;
-					}
-					return res;
-				}
-				handler = handler[parts.shift() || 'default'];
-			}
+			return Chat.resolvePage(roomid, this, connection);
 		}
 		if (!room || !room.checkModjoin(this)) {
 			if (!this.named) {
@@ -1398,6 +1387,13 @@ class User {
 		const challengesCancelled = Ladders.clearChallenges(this.userid);
 		if (searchesCancelled || challengesCancelled) {
 			this.popup(`Your searches and challenges have been cancelled because you changed your username.`);
+		}
+		// cancel tour challenges
+		// no need for a popup because users can't change their name while in a tournament anyway
+		for (const roomid of this.games) {
+			const room = Rooms.get(roomid);
+			// @ts-ignore Tournaments aren't TS'd yet
+			if (room.game && room.game.cancelChallenge) room.game.cancelChallenge(this);
 		}
 	}
 	/**

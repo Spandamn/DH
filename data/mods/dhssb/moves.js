@@ -1,5 +1,4 @@
 "use strict";
-
 exports.BattleMovedex = {
 	"booop": {
 		accuracy: 95,
@@ -12,7 +11,11 @@ exports.BattleMovedex = {
 		name: "BOOOP",
 		pp: 5,
 		priority: 0,
-		flags: {contact: 1, protect: 1, mirror: 1},
+		flags: {
+			contact: 1,
+			protect: 1,
+			mirror: 1
+		},
 		selfBoost: {
 			boosts: {
 				spe: 1,
@@ -33,9 +36,12 @@ exports.BattleMovedex = {
 		name: "Wh0s Pills are These",
 		pp: 20,
 		priority: 0,
-		flags: {snatch: 1, heal: 1},
+		flags: {
+			snatch: 1,
+			heal: 1
+		},
 		heal: [1, 2],
-		onTryHit: function (target, pokemon) {
+		onTryHit: function(target, pokemon) {
 			this.add('-anim', pokemon, "Refresh", target);
 			this.useMove("Stockpile", pokemon);
 			this.useMove("Slack Off", pokemon);
@@ -50,7 +56,7 @@ exports.BattleMovedex = {
 		num: 681,
 		accuracy: 100,
 		basePower: 50,
-		basePowerCallback: function (pokemon, target, move) {
+		basePowerCallback: function(pokemon, target, move) {
 			return move.basePower + 20 * pokemon.positiveBoosts();
 		},
 		category: "Physical",
@@ -60,7 +66,11 @@ exports.BattleMovedex = {
 		name: "Cosmic Trap",
 		pp: 10,
 		priority: 0,
-		flags: {contact: 1, protect: 1, mirror: 1},
+		flags: {
+			contact: 1,
+			protect: 1,
+			mirror: 1
+		},
 		secondary: {
 			chance: 100,
 			self: {
@@ -87,7 +97,10 @@ exports.BattleMovedex = {
 		ignoreEvasion: true,
 		ignoreDefensive: true,
 		useTargetOffensive: true,
-		flags: {heal: 1, authentic:1},
+		flags: {
+			heal: 1,
+			authentic: 1
+		},
 		secondary: {
 			chance: 100,
 			self: {
@@ -98,7 +111,7 @@ exports.BattleMovedex = {
 			},
 		},
 		drain: [4, 4],
-		onPrepareHit: function (target, source, move) {
+		onPrepareHit: function(target, source, move) {
 			this.attrLastMove('[still]');
 			this.add("c|+Mareanie|What, you think i'm cute?");
 			this.add('-anim', source, "Acid Downpour", target);
@@ -124,7 +137,7 @@ exports.BattleMovedex = {
 		name: "Here's my phone <3",
 		pp: 5,
 		priority: 1,
-		onHit: function (target, source, move) {
+		onHit: function(target, source, move) {
 			let yourItem = source.takeItem();
 			if (!yourItem) return false;
 			if (!this.singleEvent('TakeItem', yourItem, source.itemData, source, target, move, yourItem)) return;
@@ -150,16 +163,20 @@ exports.BattleMovedex = {
 		name: "Get Boost Code",
 		pp: 25,
 		priority: 1,
-		onPrepareHit: function (target, source) {
+		onPrepareHit: function(target, source) {
 			this.attrLastMove('[still]');
 			this.add('-anim', source, "Charge", source);
 		},
-		onModifyMove: function (move, pokemon) {
+		onModifyMove: function(move, pokemon) {
 			if (pokemon.getItem().id === 'spandansphone') {
-				move.boosts = {def: 1, spd: 1, spe:1};
+				move.boosts = {
+					def: 1,
+					spd: 1,
+					spe: 1
+				};
 			}
 		},
-		onHit: function (pokemon) {
+		onHit: function(pokemon) {
 			if (pokemon.getItem().id === 'spandansphone') {
 				this.add('message', "Mareanie is using his phone to code some boosts into himself!");
 			} else {
@@ -181,12 +198,14 @@ exports.BattleMovedex = {
 		name: "Get HP Code",
 		pp: 25,
 		priority: 1,
-		flags: {heal: 1},
-		onPrepareHit: function (target, source) {
+		flags: {
+			heal: 1
+		},
+		onPrepareHit: function(target, source) {
 			this.attrLastMove('[still]');
 			this.add('-anim', source, "Tail Glow", source);
 		},
-		onHit: function (pokemon) {
+		onHit: function(pokemon) {
 			if (pokemon.getItem().id === 'spandansphone') {
 				this.add('message', "Mareanie is using his phone to code some HP into himself!");
 				return this.heal(this.modify(pokemon.maxhp, 0.667));
@@ -207,7 +226,12 @@ exports.BattleMovedex = {
 		isViable: true,
 		name: "Build Up",
 		pp: 15,
-		flags: {protect: 1, contact: 1, mirror: 1, authentic: 1},
+		flags: {
+			protect: 1,
+			contact: 1,
+			mirror: 1,
+			authentic: 1
+		},
 		shortDesc: "Does many things!",
 		drain: [4, 5],
 		ignoreAbility: true,
@@ -220,7 +244,7 @@ exports.BattleMovedex = {
 				},
 			},
 		},
-		onTryHit: function (target, pokemon, source) {
+		onTryHit: function(target, pokemon, source) {
 			this.add('-anim', pokemon, "Imprison", source);
 			this.add('-anim', pokemon, "Dark Void", target);
 			this.add('-anim', pokemon, "Dragon Ascent", target);
@@ -236,7 +260,7 @@ exports.BattleMovedex = {
 		name: "Smack Around",
 		pp: 15,
 		shortDesc: "Smack Down + Earthquake + Smack Down. Raises Atk and Def by 1 stage.",
-		onTryHit: function (target, pokemon) {
+		onTryHit: function(target, pokemon) {
 			this.add('-anim', pokemon, "Catastropika", target);
 			this.useMove("Smack Down", pokemon);
 			this.useMove("Bulk Up", pokemon);
@@ -248,7 +272,6 @@ exports.BattleMovedex = {
 		target: "normal",
 		type: "Steel",
 	},
-		
 	"healingarea": {
 		accuracy: true,
 		category: "Status",
@@ -259,7 +282,7 @@ exports.BattleMovedex = {
 		pp: 5,
 		priority: 0,
 		flags: {},
-		onTryHit: function (target, pokemon) {
+		onTryHit: function(target, pokemon) {
 			this.add('-anim', pokemon, "Catastropika", target);
 			this.useMove("Recover", pokemon);
 			this.useMove("Wish", pokemon);
@@ -269,7 +292,7 @@ exports.BattleMovedex = {
 		target: "normal",
 		type: "Dragon",
 	},
-	"fullhazards" :{
+	"fullhazards": {
 		accuracy: true,
 		basePower: 0,
 		Category: "Status",
@@ -280,15 +303,17 @@ exports.BattleMovedex = {
 		name: "Full Hazards",
 		pp: 15,
 		priority: 0,
-		flags: {reflectable: 1},
-		onPrepareHit: function (target, source) {
+		flags: {
+			reflectable: 1
+		},
+		onPrepareHit: function(target, source) {
 			this.attrLastMove('[still]');
 			this.add('-anim', source, "Stealth Rock", target);
 			this.add('-anim', source, "Spikes", target);
 			this.add('-anim', source, "Toxic Spikes", target);
 			this.add('-anim', source, "Sticky Web", target);
 		},
-		onHit: function (target, source) {
+		onHit: function(target, source) {
 			target.side.addSideCondition('toxicspikes', source);
 			target.side.addSideCondition('toxicspikes', source);
 			target.side.addSideCondition('toxicspikes', source);
@@ -297,13 +322,14 @@ exports.BattleMovedex = {
 			target.side.addSideCondition('spikes', source);
 			target.side.addSideCondition('stealthrock', source);
 			target.side.addSideCondition('stickyweb', source);
-
 			if (source.name === 'EchoGaia') this.add("c|$EchoGaia|You're screwed now)");
 		},
 		secondary: false,
 		target: "foeSide",
 		type: "Ground",
-		zMoveBoost: {evasion: 1},
+		zMoveBoost: {
+			evasion: 1
+		},
 		contestType: "Clever",
 	},
 	"infernalrain": {
@@ -316,7 +342,11 @@ exports.BattleMovedex = {
 		name: "Infernal Rain",
 		pp: 10,
 		priority: 0,
-		flags: {authentic: 1, defrost: 1, protect: 1},
+		flags: {
+			authentic: 1,
+			defrost: 1,
+			protect: 1
+		},
 		multihit: 10,
 		secondary: {
 			chance: 20,
@@ -345,7 +375,7 @@ exports.BattleMovedex = {
 			},
 		},
 		weather: 'sunnyday',
-		onEffectiveness: function (typeMod, type) {
+		onEffectiveness: function(typeMod, type) {
 			if (type === 'Dragon') return 1;
 		},
 		isZ: "ludicrousiumz",
@@ -367,13 +397,22 @@ exports.BattleMovedex = {
 		name: "Wait A Minute",
 		pp: 10,
 		priority: 0,
-		flags: {charge: 1, protect: 1, mirror: 1},
-		onTry: function (attacker, defender, move) {
+		flags: {
+			charge: 1,
+			protect: 1,
+			mirror: 1
+		},
+		onTry: function(attacker, defender, move) {
 			if (attacker.removeVolatile(move.id)) {
 				return;
 			}
 			this.add('-prepare', attacker, move.name, defender);
-			this.boost({atk: 1, def: 1, spd: 1, spe: 1}, attacker, attacker, this.getMove('waitaminute'));
+			this.boost({
+				atk: 1,
+				def: 1,
+				spd: 1,
+				spe: 1
+			}, attacker, attacker, this.getMove('waitaminute'));
 			if (!this.runEvent('ChargeMove', attacker, defender, move)) {
 				this.add('-anim', attacker, move.name, defender);
 				attacker.removeVolatile(move.id);
@@ -388,7 +427,7 @@ exports.BattleMovedex = {
 		zMovePower: 220,
 		contestType: "Cool",
 	},
-		"shitpost": {
+	"shitpost": {
 		accuracy: true,
 		basePower: 170,
 		category: "Physical",
@@ -399,11 +438,14 @@ exports.BattleMovedex = {
 		name: "Shitpost",
 		pp: 24,
 		priority: 0,
-		flags: {protect: 1, mirror: 1},
-		onEffectiveness: function (typeMod, type) {
+		flags: {
+			protect: 1,
+			mirror: 1
+		},
+		onEffectiveness: function(typeMod, type) {
 			if (type === 'Ghost') return 1;
 		},
-		onPrepareHit: function (target, source) {
+		onPrepareHit: function(target, source) {
 			this.attrLastMove('[still]');
 			this.add('-anim', source, "High Jump Kick", target);
 		},
@@ -423,8 +465,12 @@ exports.BattleMovedex = {
 		name: "Knee of Justice",
 		pp: 1,
 		priority: 0,
-		flags: {contact: 1, protect: 1, mirror: 1},
-		onPrepareHit: function (target, source) {
+		flags: {
+			contact: 1,
+			protect: 1,
+			mirror: 1
+		},
+		onPrepareHit: function(target, source) {
 			this.attrLastMove('[still]');
 			this.add('-anim', source, "Dragon Ascent", target);
 		},
@@ -435,7 +481,7 @@ exports.BattleMovedex = {
 				atk: -3,
 			},
 		},
-		onEffectiveness: function (typeMod, type) {
+		onEffectiveness: function(typeMod, type) {
 			if (type === 'Ghost') return 1;
 		},
 		secondary: false,
@@ -456,8 +502,12 @@ exports.BattleMovedex = {
 		name: "The Netherlands First",
 		pp: 10,
 		priority: 2,
-		flags: {contact: 1, protect: 1, mirror: 1},
-		onPrepareHit: function (target, source) {
+		flags: {
+			contact: 1,
+			protect: 1,
+			mirror: 1
+		},
+		onPrepareHit: function(target, source) {
 			this.attrLastMove('[still]');
 			this.add('-anim', source, "Extreme Speed", target);
 		},
@@ -482,7 +532,7 @@ exports.BattleMovedex = {
 		pp: 5,
 		priority: 0,
 		flags: {},
-		onTryHit: function (target, pokemon) {
+		onTryHit: function(target, pokemon) {
 			this.add('-anim', pokemon, "Revelation Dance", target);
 			this.useMove("Nature Power", pokemon);
 			this.useMove("Weather Ball", pokemon);
@@ -503,14 +553,16 @@ exports.BattleMovedex = {
 		name: "Z-Ransei",
 		pp: 10,
 		priority: 1,
-		flags: {authentic: 1},
-		onTryHit: function (target, pokemon) {
+		flags: {
+			authentic: 1
+		},
+		onTryHit: function(target, pokemon) {
 			this.attrLastMove('[still]');
 			pokemon.formeChange('Rayquaza-Mega');
 			this.add('-formechange', pokemon, 'Rayquaza-Mega', '[msg]');
 			this.add('-anim', pokemon, "Dragon Pulse", target);
 		},
-		onAfterHit: function (target, pokemon) {
+		onAfterHit: function(target, pokemon) {
 			pokemon.formeChange('Rayquaza');
 			this.add('-formechange', pokemon, 'Rayquaza', '[msg]');
 		},
@@ -528,7 +580,11 @@ exports.BattleMovedex = {
 		name: "Heroic Beatdown",
 		pp: 10,
 		priority: 0,
-		flags: {contact: 1, protect: 1, mirror: 1},
+		flags: {
+			contact: 1,
+			protect: 1,
+			mirror: 1
+		},
 		self: {
 			boosts: {
 				def: 1,
@@ -537,7 +593,7 @@ exports.BattleMovedex = {
 				spe: 2,
 			},
 		},
-		onPrepareHit: function (target, source) {
+		onPrepareHit: function(target, source) {
 			this.attrLastMove('[still]');
 			this.add('-anim', source, "Close Combat", target);
 		},
@@ -555,9 +611,16 @@ exports.BattleMovedex = {
 		id: "eradicate",
 		name: "Eradicate",
 		pp: 5,
-		flags: {contact: 1, protect: 1, mirror: 1, gravity: 1, distance: 1, nonsky: 1},
-	        recoil: [1, 3],
-		onEffectiveness: function (typeMod, type, move) {
+		flags: {
+			contact: 1,
+			protect: 1,
+			mirror: 1,
+			gravity: 1,
+			distance: 1,
+			nonsky: 1
+		},
+		recoil: [1, 3],
+		onEffectiveness: function(typeMod, type, move) {
 			return typeMod + this.getEffectiveness('Ground', type);
 		},
 		priority: 0,
@@ -580,7 +643,10 @@ exports.BattleMovedex = {
 		priority: 3,
 		ignoreEvasion: true,
 		ignoreDefensive: true,
-		flags: {heal: 1, authentic:1},
+		flags: {
+			heal: 1,
+			authentic: 1
+		},
 		secondary: {
 			chance: 100,
 			self: {
@@ -593,7 +659,7 @@ exports.BattleMovedex = {
 			},
 		},
 		drain: [4, 4],
-		onPrepareHit: function (target, source, move) {
+		onPrepareHit: function(target, source, move) {
 			this.attrLastMove('[still]');
 			this.add('-anim', source, "V-Create", target);
 			this.add('-anim', source, "Extreme Speed", target);
@@ -616,24 +682,32 @@ exports.BattleMovedex = {
 		name: "Power Lick",
 		pp: 15,
 		priority: 0,
-		flags: {protect: 1, mirror: 1},
-		onHit: function (target, source) {
+		flags: {
+			protect: 1,
+			mirror: 1
+		},
+		onHit: function(target, source) {
 			if (this.random(10) < 1) {
-				stat = ['par','slp']
+				stat = ['par', 'slp']
 				source.trySetStatus(stat[this.random(2)], target);
 			}
 			if (this.random(10) < 3) {
-				stat = ['atk','def','spa','spd','spe','evasion','accuracy']
+				stat = ['atk', 'def', 'spa', 'spd', 'spe', 'evasion', 'accuracy']
 				boostobj = {};
 				boostobj[stat[this.random(6)]] = 1;
 				this.boost(boostobj, source);
 			}
 		},
-		onPrepareHit: function (target, source) {
+		onPrepareHit: function(target, source) {
 			this.attrLastMove('[still]');
 			this.add('-anim', source, "Lick", target);
 		},
-		flags: {contact: 1, protect: 1, mirror: 1, heal: 1},
+		flags: {
+			contact: 1,
+			protect: 1,
+			mirror: 1,
+			heal: 1
+		},
 		drain: [25, 200],
 		target: "normal",
 		type: "Ice",
@@ -651,8 +725,11 @@ exports.BattleMovedex = {
 		name: "Blizzard",
 		pp: 5,
 		priority: 0,
-		flags: {protect: 1, mirror: 1},
-		onModifyMove: function (move) {
+		flags: {
+			protect: 1,
+			mirror: 1
+		},
+		onModifyMove: function(move) {
 			if (this.isWeather('hail') || this.isWeather('russianwinter')) move.accuracy = true;
 		},
 		secondary: {
@@ -675,14 +752,18 @@ exports.BattleMovedex = {
 		name: "Horn Leech",
 		pp: 10,
 		priority: 0,
-		flags: {contact: 1, protect: 1, mirror: 1, heal: 1},
+		flags: {
+			contact: 1,
+			protect: 1,
+			mirror: 1,
+			heal: 1
+		},
 		drain: [1, 1],
 		secondary: false,
 		target: "normal",
 		type: "Grass",
 		contestType: "Tough",
 	},
-
 	"partingshotspam": {
 		num: 575,
 		accuracy: 100,
@@ -695,7 +776,13 @@ exports.BattleMovedex = {
 		name: "Parting Shot Spam",
 		pp: 20,
 		priority: 0,
-		flags: {protect: 1, reflectable: 1, mirror: 1, sound: 1, authentic: 1},
+		flags: {
+			protect: 1,
+			reflectable: 1,
+			mirror: 1,
+			sound: 1,
+			authentic: 1
+		},
 		selfSwitch: true,
 		boosts: {
 			atk: -2,
@@ -706,7 +793,7 @@ exports.BattleMovedex = {
 		type: "Dark",
 		contestType: "Cool",
 	},
-"theloomeffect": {
+	"theloomeffect": {
 		shortDesc: "Boosts Defense and Special Defense by 2 stages",
 		num: 407,
 		accuracy: 100,
@@ -716,7 +803,11 @@ exports.BattleMovedex = {
 		name: "The Loom Effect",
 		pp: 10,
 		priority: 0,
-		flags: {contact: 1, protect: 1, mirror: 1},
+		flags: {
+			contact: 1,
+			protect: 1,
+			mirror: 1
+		},
 		secondary: {
 			chance: 100,
 			self: {
@@ -726,7 +817,7 @@ exports.BattleMovedex = {
 				},
 			},
 		},
-		onPrepareHit: function (target, source) {
+		onPrepareHit: function(target, source) {
 			this.attrLastMove('[still]');
 			this.add('-anim', source, "Core Enforcer", target);
 		},
@@ -742,27 +833,30 @@ exports.BattleMovedex = {
 		name: "Cha Cha Dance",
 		pp: 5,
 		priority: 0,
-		flags: {protect: 1, mirror: 1},
+		flags: {
+			protect: 1,
+			mirror: 1
+		},
 		secondary: {
 			chance: 100,
 			status: 'brn',
 			volatileStatus: 'confusion',
 		},
 		self: {
-	        chance: 50,
+			chance: 50,
 			boosts: {
 				spe: 1,
 			},
 		},
-		onPrepareHit: function (target, source) {
+		onPrepareHit: function(target, source) {
 			this.attrLastMove('[still]');
-                        if (source.name == 'Quiet Chimchar') this.add("c|@Quiet Chimchar|I like to Cha Cha");
+			if (source.name == 'Quiet Chimchar') this.add("c|@Quiet Chimchar|I like to Cha Cha");
 			this.add('-anim', source, "Teeter Dance", target);
 		},
 		type: "Fire",
 		contestType: "Cool",
 	},
-    "rushb": {
+	"rushb": {
 		accuracy: 100,
 		basePower: 250,
 		category: "Special",
@@ -773,13 +867,13 @@ exports.BattleMovedex = {
 		flags: {},
 		ignoreImmunity: true,
 		isFutureMove: true,
-                onPrepareHit: function (target, source) {
+		onPrepareHit: function(target, source) {
 			this.attrLastMove('[still]');
 			this.add('-anim', source, "Doom Desire", source);
-                        if (source.name == 'Zmeeed') this.add("c|@Zmeeed|LET'S GO RUSH B! ON BOMBSITE B! CYKA YEBANY IDI NAKHUI LET'S GO RUSH B!~");
+			if (source.name == 'Zmeeed') this.add("c|@Zmeeed|LET'S GO RUSH B! ON BOMBSITE B! CYKA YEBANY IDI NAKHUI LET'S GO RUSH B!~");
 			this.add('-anim', source, "Double Edge", target);
 		},
-		onTry: function (source, target) {
+		onTry: function(source, target) {
 			target.side.addSideCondition('futuremove');
 			if (target.side.sideConditions['futuremove'].positions[target.position]) {
 				return false;
@@ -819,12 +913,16 @@ exports.BattleMovedex = {
 		isViable: true,
 		name: "Turbulence",
 		pp: 10,
-		onPrepareHit: function (target, source, move) {
+		onPrepareHit: function(target, source, move) {
 			this.attrLastMove('[still]');
 			this.add('-anim', source, "Dragon Ascent", target);
 		},
 		priority: 2,
-		flags: {contact: 1, protect: 1, mirror: 1},
+		flags: {
+			contact: 1,
+			protect: 1,
+			mirror: 1
+		},
 		secondary: false,
 		target: "normal",
 		type: "Flying"
@@ -838,18 +936,23 @@ exports.BattleMovedex = {
 		isNonstandard: true,
 		pp: 15,
 		priority: 0,
-		flags: {protect: 1, reflectable: 1, mirror: 1, authentic: 1},
-		onPrepareHit: function (target, source) {
+		flags: {
+			protect: 1,
+			reflectable: 1,
+			mirror: 1,
+			authentic: 1
+		},
+		onPrepareHit: function(target, source) {
 			this.attrLastMove('[still]');
 			this.add('-anim', source, "Wish", target);
 			this.add('-anim', target, "Dark Void", target);
 		},
 		self: {
-				boosts: {
-					spa: 1,
-					spd: 2,
-				},
+			boosts: {
+				spa: 1,
+				spd: 2,
 			},
+		},
 		boosts: {
 			atk: -1,
 			spe: -1,
@@ -861,29 +964,29 @@ exports.BattleMovedex = {
 	},
 	ggm8: {
 		shortDesc: "80% Chance to increase the user's speed by one stage, 50% chance to burn the target, has 40% Recoil.",
-		accuracy:100,
-		pp:15,
+		accuracy: 100,
+		pp: 15,
 		id: "ggm8",
 		name: "gg m8",
 		isNonstandard: true,
 		isViable: true,
-		basePower:200,
-		category:"Physical",
-		type:"Dragon",
-		target:"normal",
-		secondary:{
-			chance:80,
+		basePower: 200,
+		category: "Physical",
+		type: "Dragon",
+		target: "normal",
+		secondary: {
+			chance: 80,
 			self: {
 				boosts: {
 					spe: 1,
 				},
 			},
 		},
-                drain : [3, 4],
-		onHit: function (target, source) {
+		drain: [3, 4],
+		onHit: function(target, source) {
 			if (this.random(2) === 1) target.trySetStatus('brn', source);
 		},
-		onPrepareHit: function (target, source) {
+		onPrepareHit: function(target, source) {
 			this.attrLastMove('[still]');
 			this.add('-anim', source, "Tail Glow", source);
 			this.add('-anim', source, "Beak Blast", source);
@@ -893,23 +996,23 @@ exports.BattleMovedex = {
 	},
 	sacredhax: {
 		shortDesc: "40% Chance to burn the target",
-		accuracy:100,
-		pp:15,
+		accuracy: 100,
+		pp: 15,
 		id: "sacredhax",
 		name: "Sacred Hax",
 		isNonstandard: true,
 		isViable: true,
-		basePower:150,
-		category:"Physical",
-		type:"Psychic",
-		target:"normal",
-		secondary:{
+		basePower: 150,
+		category: "Physical",
+		type: "Psychic",
+		target: "normal",
+		secondary: {
 			secondary: {
-			chance: 40,
-			status: 'brn',
+				chance: 40,
+				status: 'brn',
 			},
 		},
-		onPrepareHit: function (target, source) {
+		onPrepareHit: function(target, source) {
 			this.attrLastMove('[still]');
 			this.add('-anim', source, "Bolt Strike", target);
 		},
@@ -925,8 +1028,11 @@ exports.BattleMovedex = {
 		name: "Hyperspeed Punch",
 		pp: 10,
 		priority: 2,
-		flags: {protect: 1, mirror: 1},
-		onPrepareHit: function (target, source) {
+		flags: {
+			protect: 1,
+			mirror: 1
+		},
+		onPrepareHit: function(target, source) {
 			this.attrLastMove('[still]');
 			this.add('-anim', source, "Mach Punch", target);
 		},
@@ -937,8 +1043,8 @@ exports.BattleMovedex = {
 		target: "normal",
 		type: "Bug",
 	},
-    garchompepicness: {
-	    	shortDesc: "Raises Def, Speed, and SpD by 3 stages and Attack by 4 stages. Sets up 3 layers of Toxic Spikes and Lucky Chant.",
+	garchompepicness: {
+		shortDesc: "Raises Def, Speed, and SpD by 3 stages and Attack by 4 stages. Sets up 3 layers of Toxic Spikes and Lucky Chant.",
 		accuracy: 100,
 		category: "Status",
 		id: "garchompepicness",
@@ -946,8 +1052,18 @@ exports.BattleMovedex = {
 		name: "GARCHOMP EPICNESS",
 		pp: 5,
 		priority: 2,
-		flags: {mirror: 1, authentic: 1},
-		self: {boosts: {spe:4, atk:4, def:4, spd: 4}},
+		flags: {
+			mirror: 1,
+			authentic: 1
+		},
+		self: {
+			boosts: {
+				spe: 4,
+				atk: 4,
+				def: 4,
+				spd: 4
+			}
+		},
 		secondary: {
 			self: {
 				boosts: {
@@ -958,14 +1074,14 @@ exports.BattleMovedex = {
 				},
 			},
 		},
-		onHit: function (target, source) {
+		onHit: function(target, source) {
 			target.side.addSideCondition('toxicspikes', source);
 			target.side.addSideCondition('toxicspikes', source);
 			target.side.addSideCondition('toxicspikes', source);
 			source.side.addSideCondition('luckychant', source);
 			if (source.name === 'PI EddyChomp') this.add("c|&PI EddyChomp|Wait guys, powering up! Listen to this: https://www.youtube.com/watch?v=A0fAuX8jiPk while you're waiting! :)");
 		},
-		onModifyMove: function (move, pokemon, target) {
+		onModifyMove: function(move, pokemon, target) {
 			move.type = '???';
 		},
 		target: "normal",
@@ -982,11 +1098,14 @@ exports.BattleMovedex = {
 		name: "Bleh fLame",
 		pp: 10,
 		priority: 0,
-		onPrepareHit: function (target, source) {
+		onPrepareHit: function(target, source) {
 			this.attrLastMove('[still]');
 			this.add('-anim', source, "Inferno Overdrive", target);
 		},
-		flags: {protect: 1, mirror: 1},
+		flags: {
+			protect: 1,
+			mirror: 1
+		},
 		secondary: {
 			chance: 50,
 			self: {
@@ -1004,16 +1123,16 @@ exports.BattleMovedex = {
 		contestType: "Tough",
 	},
 	haxingrage: {
-		accuracy:100,
-		pp:10,
+		accuracy: 100,
+		pp: 10,
 		id: "haxingrage",
 		name: "Haxing Rage",
 		isNonstandard: true,
 		isViable: true,
-		basePower:120,
-		category:"Physical",
-		type:"Dragon",
-		target:"normal",
+		basePower: 120,
+		category: "Physical",
+		type: "Dragon",
+		target: "normal",
 		secondary: {
 			chance: 10,
 			self: {
@@ -1024,8 +1143,12 @@ exports.BattleMovedex = {
 			volatileStatus: 'confusion',
 		},
 		drain: [1, 2],
-		flags: {protect: 1, mirror: 1, heal: 1},
-		onPrepareHit: function (target, source) {
+		flags: {
+			protect: 1,
+			mirror: 1,
+			heal: 1
+		},
+		onPrepareHit: function(target, source) {
 			this.attrLastMove('[still]');
 			this.add('-anim', source, "Outrage", target);
 		},
@@ -1038,8 +1161,15 @@ exports.BattleMovedex = {
 		name: "Wait and hope",
 		pp: 20,
 		priority: 0,
-		flags: {contact: 1, charge: 1, protect: 1, mirror: 1, gravity: 1, distance: 1},
-		onTry: function (source, target, move) {
+		flags: {
+			contact: 1,
+			charge: 1,
+			protect: 1,
+			mirror: 1,
+			gravity: 1,
+			distance: 1
+		},
+		onTry: function(source, target, move) {
 			if (source.removeVolatile(move.id)) {
 				return;
 			}
@@ -1053,7 +1183,7 @@ exports.BattleMovedex = {
 		},
 		effect: {
 			duration: 2,
-			onAccuracy: function (accuracy, target, source, move) {
+			onAccuracy: function(accuracy, target, source, move) {
 				if (move.id === 'gust' || move.id === 'twister') {
 					return;
 				}
@@ -1066,7 +1196,7 @@ exports.BattleMovedex = {
 				if (source.volatiles['lockon'] && target === source.volatiles['lockon'].source) return;
 				return 0;
 			},
-			onSourceModifyDamage: function (damage, source, target, move) {
+			onSourceModifyDamage: function(damage, source, target, move) {
 				if (move.id === 'gust' || move.id === 'twister') {
 					return this.chainModify(2);
 				}
@@ -1090,16 +1220,22 @@ exports.BattleMovedex = {
 		name: "Yo Mamma Joke",
 		pp: 10,
 		priority: 1,
-		flags: {protect: 1, mirror: 1, distance: 1, heal: 1, sound:1},
+		flags: {
+			protect: 1,
+			mirror: 1,
+			distance: 1,
+			heal: 1,
+			sound: 1
+		},
 		drain: [3, 4],
 		secondary: false,
 		target: "any",
-		onPrepareHit: function (target, source, move) {
+		onPrepareHit: function(target, source, move) {
 			this.attrLastMove('[still]');
 			this.add('-anim', source, "Taunt", target);
 			this.add('-anim', source, "Boomburst", target);
 			this.add('-anim', source, "Extreme Speed", target);
-			this.add("c|~Spandan|"+["Yo mama so stupid she got locked in a grocery store and starved!", "Yo mama so fat that the Richie Rich had to pay for her lipo-suction operation.","Yo mama so fat it took her four weeks to die from lethal injection.","Yo mama so fat she sat on an iPhone and turned it into an iPad","Yo mama so fat when she stepped on the scale, the doctor said \"Holy Crap, That's My Phone Number\"","Yo mama so fat she uses Google Earth to take a selfie.","Yo mama so stupid when the computer said \"Press any key to continue\", she couldn't find the \"Any\" key.","Yo mama so bald, I could polish her head and take her bowling.","Yo mama is so ugly, Bob the builder said: 'i can't fix that.'","Yo mama so ugleh, the Illuminati closed its eye.","Yo mama so ugleh, Hello Kitty said goodbye.","Yo mama so ugly, One direction went the other direction."][this.random(12)]);
+			this.add("c|~Spandan|" + ["Yo mama so stupid she got locked in a grocery store and starved!", "Yo mama so fat that the Richie Rich had to pay for her lipo-suction operation.", "Yo mama so fat it took her four weeks to die from lethal injection.", "Yo mama so fat she sat on an iPhone and turned it into an iPad", "Yo mama so fat when she stepped on the scale, the doctor said \"Holy Crap, That's My Phone Number\"", "Yo mama so fat she uses Google Earth to take a selfie.", "Yo mama so stupid when the computer said \"Press any key to continue\", she couldn't find the \"Any\" key.", "Yo mama so bald, I could polish her head and take her bowling.", "Yo mama is so ugly, Bob the builder said: 'i can't fix that.'", "Yo mama so ugleh, the Illuminati closed its eye.", "Yo mama so ugleh, Hello Kitty said goodbye.", "Yo mama so ugly, One direction went the other direction."][this.random(12)]);
 		},
 		type: "Flying",
 		contestType: "Cool",
@@ -1112,17 +1248,22 @@ exports.BattleMovedex = {
 		name: "Dragon Shift",
 		pp: 5,
 		priority: 0,
-		flags: {protect: 1, reflectable: 1, mirror: 1, authentic: 1},
+		flags: {
+			protect: 1,
+			reflectable: 1,
+			mirror: 1,
+			authentic: 1
+		},
 		self: {
-				boosts: {
-					atk: 3,
-					def: 1,
-					spe: 2,
-					spd: 1,
-				},
+			boosts: {
+				atk: 3,
+				def: 1,
+				spe: 2,
+				spd: 1,
 			},
+		},
 		secondary: false,
-		onPrepareHit: function (target, source) {
+		onPrepareHit: function(target, source) {
 			this.attrLastMove('[still]');
 			this.add('-anim', source, "Dragon Dance", source);
 			if (source.name === 'Kyuramber') this.add("c|&Kyuramber|Get re(kt)ddy");
@@ -1140,18 +1281,21 @@ exports.BattleMovedex = {
 		name: "Legend\'s Ambition",
 		pp: 5,
 		priority: 1,
-		flags: {protect: 1, mirror: 1},
-		onPrepareHit: function (target, source) {
+		flags: {
+			protect: 1,
+			mirror: 1
+		},
+		onPrepareHit: function(target, source) {
 			this.attrLastMove('[still]');
 			this.add('-anim', source, "Judgment", target);
 		},
 		self: {
 			boosts: {
 				def: -1,
-                                spd:-1,
+				spd: -1,
 			},
 		},
-		contestType:"Cool",
+		contestType: "Cool",
 		target: "normal",
 		type: "Dragon",
 	},
@@ -1173,17 +1317,20 @@ exports.BattleMovedex = {
 				spd: 1,
 			},
 		},
-		onPrepareHit: function (target, source) {
+		onPrepareHit: function(target, source) {
 			this.attrLastMove('[still]');
 			this.add('-anim', source, "Black Hole Eclipse", target);
 		},
-		flags: {protect: 1, mirror: 1},
+		flags: {
+			protect: 1,
+			mirror: 1
+		},
 		secondary: false,
 		target: "normal",
 		type: "Dark",
 		contestType: "Beautiful",
 	},
-		"superswitch": {
+	"superswitch": {
 		num: 226,
 		accuracy: true,
 		basePower: 0,
@@ -1196,15 +1343,15 @@ exports.BattleMovedex = {
 		pp: 40,
 		priority: 5,
 		self: {
-		boosts: {
+			boosts: {
 				def: 1,
 				spd: 1,
 			},
 		},
-		onPrepareHit: function (target, source) {
-				this.useMove('Substitute', source);
-				this.useMove('Baton Pass', source);
-			},
+		onPrepareHit: function(target, source) {
+			this.useMove('Substitute', source);
+			this.useMove('Baton Pass', source);
+		},
 		flags: {},
 		selfSwitch: 'copyvolatile',
 		secondary: false,
@@ -1224,7 +1371,11 @@ exports.BattleMovedex = {
 		name: "BANHAMMAH!!!!",
 		pp: 5,
 		priority: 7,
-		flags: {reflectable: 1, mirror: 1, authentic: 1},
+		flags: {
+			reflectable: 1,
+			mirror: 1,
+			authentic: 1
+		},
 		forceSwitch: true,
 		secondary: false,
 		target: "normal",
@@ -1243,7 +1394,10 @@ exports.BattleMovedex = {
 		name: "Massacre",
 		pp: 5,
 		priority: 3,
-		flags: {protect: 1, mirror: 1},
+		flags: {
+			protect: 1,
+			mirror: 1
+		},
 		selfdestruct: "ifHit",
 		secondary: false,
 		target: "allAdjacent",
@@ -1260,8 +1414,15 @@ exports.BattleMovedex = {
 		id: "raginglake",
 		name: "Raging Lake",
 		pp: 10,
-		flags: {contact: 1, protect: 1, mirror: 1, gravity: 1, distance: 1, nonsky: 1},
-		onEffectiveness: function (typeMod, type, move) {
+		flags: {
+			contact: 1,
+			protect: 1,
+			mirror: 1,
+			gravity: 1,
+			distance: 1,
+			nonsky: 1
+		},
+		onEffectiveness: function(typeMod, type, move) {
 			return typeMod + this.getEffectiveness('Dragon', type);
 		},
 		priority: 0,
@@ -1279,14 +1440,17 @@ exports.BattleMovedex = {
 		isViable: true,
 		name: "Dragon Symphony",
 		pp: 20,
-                noPPBoosts: true,
+		noPPBoosts: true,
 		priority: 0,
-		flags: {mirror: 1, protect: 1},
-		onPrepareHit: function (target, source) {
+		flags: {
+			mirror: 1,
+			protect: 1
+		},
+		onPrepareHit: function(target, source) {
 			this.attrLastMove('[still]');
 			this.add('-anim', source, "Sunsteel Strike", target);
 		},
-		onHit: function (target, source) {
+		onHit: function(target, source) {
 			if (toId(source.name) === 'eternalmayhem') {
 				this.add('c|@Eternal Mayhem|How \'bout we turn on some trap, eh? Or the classics, they\'ll lull you to sleep, they will!');
 			}
@@ -1296,12 +1460,12 @@ exports.BattleMovedex = {
 			status: 'sleep',
 		},
 		self: {
-	        chance: 60,
-		boosts: {
-                        atk: 2,
-			spe: 2,
+			chance: 60,
+			boosts: {
+				atk: 2,
+				spe: 2,
+			},
 		},
-	},
 		recoil: [1, 5],
 		target: "normal",
 		type: "Dragon",
@@ -1310,7 +1474,7 @@ exports.BattleMovedex = {
 		num: 20000,
 		accuracy: 100,
 		basePower: 0,
-		damageCallback: function (pokemon, target) {
+		damageCallback: function(pokemon, target) {
 			this.damage(target.maxhp / 16, target, pokemon);
 		},
 		category: "Special",
@@ -1331,8 +1495,11 @@ exports.BattleMovedex = {
 		status: 'slp',
 		pp: 15,
 		priority: 1,
-		flags: {protect: 1, mirror: 1},
-		onPrepareHit: function (target, source) {
+		flags: {
+			protect: 1,
+			mirror: 1
+		},
+		onPrepareHit: function(target, source) {
 			this.attrLastMove('[still]');
 			this.add('-anim', source, "Dark Void", target);
 		},
@@ -1349,20 +1516,20 @@ exports.BattleMovedex = {
 		name: "Girly Girl",
 		isNonstandard: true,
 		isViable: true,
-		basePower:120,
-		category:"Special",
-		type:"Normal",
-		target:"normal",
-		secondary:{
-			chance:100,
+		basePower: 120,
+		category: "Special",
+		type: "Normal",
+		target: "normal",
+		secondary: {
+			chance: 100,
 			self: {
 				boosts: {
-					spe: 2, 
+					spe: 2,
 					def: 1,
 				},
 			},
 		},
-		onPrepareHit: function (target, source) {
+		onPrepareHit: function(target, source) {
 			this.attrLastMove('[still]');
 			this.add('-anim', source, "Boomburst", target);
 		},
@@ -1378,7 +1545,11 @@ exports.BattleMovedex = {
 		name: "Stone Wrap",
 		pp: 20,
 		priority: 0,
-		flags: {contact: 1, protect: 1, mirror: 1},
+		flags: {
+			contact: 1,
+			protect: 1,
+			mirror: 1
+		},
 		volatileStatus: 'partiallytrapped',
 		secondary: false,
 		target: "normal",
@@ -1389,10 +1560,28 @@ exports.BattleMovedex = {
 	// Modified moves
 	"defog": {
 		inherit: true,
-		onHit: function (target, source, move) {
-			if (!target.volatiles['substitute'] || move.infiltrates) this.boost({evasion:-1});
-			let removeTarget = {reflect:1, lightscreen:1, safeguard:1, mist:1, spikes:1, toxicspikes:1, burnspikes:1, stealthrock:1, stickyweb:1};
-			let removeAll = {spikes:1, toxicspikes:1, burnspikes:1, stealthrock:1, stickyweb:1};
+		onHit: function(target, source, move) {
+			if (!target.volatiles['substitute'] || move.infiltrates) this.boost({
+				evasion: -1
+			});
+			let removeTarget = {
+				reflect: 1,
+				lightscreen: 1,
+				safeguard: 1,
+				mist: 1,
+				spikes: 1,
+				toxicspikes: 1,
+				burnspikes: 1,
+				stealthrock: 1,
+				stickyweb: 1
+			};
+			let removeAll = {
+				spikes: 1,
+				toxicspikes: 1,
+				burnspikes: 1,
+				stealthrock: 1,
+				stickyweb: 1
+			};
 			for (let targetCondition in removeTarget) {
 				if (target.side.removeSideCondition(targetCondition)) {
 					if (!removeAll[targetCondition]) continue;
@@ -1409,11 +1598,17 @@ exports.BattleMovedex = {
 	"rapidspin": {
 		inherit: true,
 		self: {
-			onHit: function (pokemon) {
+			onHit: function(pokemon) {
 				if (pokemon.hp && pokemon.removeVolatile('leechseed')) {
 					this.add('-end', pokemon, 'Leech Seed', '[from] move: Rapid Spin', '[of] ' + pokemon);
 				}
-				let sideConditions = {spikes:1, toxicspikes:1, burnspikes:1, stealthrock:1, stickyweb:1};
+				let sideConditions = {
+					spikes: 1,
+					toxicspikes: 1,
+					burnspikes: 1,
+					stealthrock: 1,
+					stickyweb: 1
+				};
 				for (let i in sideConditions) {
 					if (pokemon.hp && pokemon.side.removeSideCondition(i)) {
 						this.add('-sideend', pokemon.side, this.getEffect(i).name, '[from] move: Rapid Spin', '[of] ' + pokemon);

@@ -384,20 +384,29 @@ exports.BattleStatuses = {
 		},
 	},
 	choicelock: {
-		onStart: function (pokemon) {
-			if (!this.activeMove.id || this.activeMove.sourceEffect && this.activeMove.sourceEffect !== this.activeMove.id) return false;
+		name: 'choicelock',
+		id: 'choicelock',
+		num: 0,
+		noCopy: true,
+		onStart(pokemon) {
+			if (!this.activeMove) throw new Error("Battle.activeMove is null");
+			if (!this.activeMove.id || this.activeMove.hasBounced) return false;
 			this.effectData.move = this.activeMove.id;
 		},
-		onBeforeMove: function (pokemon, target, move) {
-			if (move.id !== this.effectData.move && move.id !== 'struggle') {
-				// Fails even if the Choice item is being ignored, and no PP is lost
+		onBeforeMove(pokemon, target, move) {
+			if (!pokemon.getItem().isChoice) {
+				pokemon.removeVolatile('choicelock');
+				return;
+			}
+			if (!pokemon.ignoringItem() && move.id !== this.effectData.move && move.id !== 'struggle') {
+				// Fails unless the Choice item is being ignored, and no PP is lost
 				this.addMove('move', pokemon, move.name);
 				this.attrLastMove('[still]');
 				this.add('-fail', pokemon);
 				return false;
 			}
 		},
-		onDisableMove: function (pokemon) {
+		onDisableMove(pokemon) {
 			if (!pokemon.getItem().isChoice || !pokemon.hasMove(this.effectData.move)) {
 				pokemon.removeVolatile('choicelock');
 				return;
@@ -405,10 +414,9 @@ exports.BattleStatuses = {
 			if (pokemon.ignoringItem()) {
 				return;
 			}
-			let moves = pokemon.moveset;
-			for (let i = 0; i < moves.length; i++) {
-				if (moves[i].id !== this.effectData.move) {
-					pokemon.disableMove(moves[i].id, false, this.effectData.sourceEffect);
+			for (const moveSlot of pokemon.moveSlots) {
+				if (moveSlot.id !== this.effectData.move) {
+					pokemon.disableMove(moveSlot.id, false, this.effectData.sourceEffect);
 				}
 			}
 		},
@@ -700,7 +708,7 @@ exports.BattleStatuses = {
 		// So we give it increased priority.
 		onModifySpDPriority: 10,
 		onModifySpD: function (spd, pokemon) {
-			if (pokemon.hasType('Rock') && this.isWeather('sandstorm')) {
+			if (pokemon.hasType('Rock') && this.field.isWeather('sandstorm')) {
 				return this.modify(spd, 1.5);
 			}
 		},
@@ -715,7 +723,7 @@ exports.BattleStatuses = {
 		onResidualOrder: 1,
 		onResidual: function () {
 			this.add('-weather', 'Sandstorm', '[upkeep]');
-			if (this.isWeather('sandstorm')) this.eachEvent('Weather');
+			if (this.field.isWeather('sandstorm')) this.eachEvent('Weather');
 		},
 		onWeather: function (target) {
 			this.damage(target.maxhp / 16);
@@ -737,7 +745,7 @@ exports.BattleStatuses = {
 		// So we give it increased priority.
 		onModifySpDPriority: 10,
 		onModifySpD: function (spd, pokemon) {
-			if (pokemon.hasType('Rock') && this.isWeather('meteorshower')) {
+			if (pokemon.hasType('Rock') && this.field.isWeather('meteorshower')) {
 				return this.modify(spd, 1.5);
 				return this.modify(atk, 1.5);
 				return this.modify(spa, 1.5);
@@ -754,7 +762,7 @@ exports.BattleStatuses = {
 		onResidualOrder: 1,
 		onResidual: function () {
 			this.add('-weather', 'Meteor Shower', '[upkeep]');
-			if (this.isWeather('meteorshower')) this.eachEvent('Weather');
+			if (this.field.isWeather('meteorshower')) this.eachEvent('Weather');
 		},
 		onWeather: function (target) {
 			this.damage(target.maxhp / 8);
@@ -789,7 +797,7 @@ exports.BattleStatuses = {
 		onResidualOrder: 1,
 		onResidual: function () {
 			this.add('-weather', 'Hail', '[upkeep]');
-			if (this.isWeather('hail')) this.eachEvent('Weather');
+			if (this.field.isWeather('hail')) this.eachEvent('Weather');
 		},
 		onWeather: function (target) {
 			this.damage(target.maxhp / 16);

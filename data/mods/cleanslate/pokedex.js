@@ -84,6 +84,17 @@ let BattlePokedex = {
         color: "Blue",
         eggGroups: ["Mineral"],
     },
+	metagrossmega: {
+		num: 531,
+		species: "Metagross-Mega",
+		baseSpecies: "Metagross",
+		forme: "Mega",
+		formeLetter: "M",
+		types:["Psychic", "Ice"],
+		baseStats: {hp: 80, atk: 140, def: 110, spa: 115, spd: 75, spe: 95},
+		abilities: {0: "Snow Warning"},
+		weightkg: 942.9,
+	},
     cloyster: {
         num: 91,
         species: "Cloyster",

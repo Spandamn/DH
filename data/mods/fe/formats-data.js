@@ -12,7 +12,7 @@ exports.BattleFormatsData = { //
     },
     swampamarmega: {
         randomBattleMoves: ["earthquake", "raindance", "psychocut", "waterfall", "knockoff", "foulplay"],
-        requiredItem: "Swampamarite",
+        requiredItem: "swampamarite",
         tier: "OU",
     },
     feekarp: {
@@ -3567,4 +3567,298 @@ tier: "OU",
 swalokumlol: {
 tier: "OU",
 },
+zalula: {
+tier: "OU",
+},
+lazugari: {
+tier: "OU",
+},
+amooh: {
+tier: "OU",
+},
+celenitar: {
+tier: "OU",
+},
+celenitarmega: {
+tier: "OU",
+},
+perperioralola: {
+tier: "OU",
+},
+helltank: {
+tier: "OU",
+},
+bastiosaur: {
+tier: "OU",
+},
+bastiosaurmega: {
+tier: "OU",
+},
+aggralugg: {
+tier: "OU",
+},
+aggraluggmega: {
+tier: "OU",
+},
+audigardez: {
+tier: "OU",
+},
+audigardezdoctor: {
+tier: "OU",
+},
+audigardezmega: {
+tier: "OU",
+},
+audigardezdoctormega: {
+tier: "OU",
+},
+reggaeton: {
+tier: "OU",
+},
+reggaetonmega: {
+tier: "OU",
+},
+happory: {
+tier: "OU",
+},
+porysey2: {
+tier: "OU",
+},
+slowkumuku: {
+tier: "OU",
+},
+slowkumukumega: {
+tier: "OU",
+},
+azumatic: {
+tier: "OU",
+},
+eelrock: {
+tier: "OU",
+},
+masquero: {
+tier: "OU",
+},
+forastero: {
+tier: "OU",
+},
+pachkia: {
+tier: "OU",
+},
+sableice: {
+tier: "OU",
+},
+sableicemega: {
+tier: "OU",
+},
+sabulu: {
+tier: "OU",
+},
+sabulumega: {
+tier: "OU",
+},
+dugdalealola: {
+tier: "OU",
+},
+golemprime: {
+tier: "OU",
+},
+metabrave: {
+tier: "OU",
+},
+metabraveumega: {
+tier: "OU",
+},
+reversemartian: {
+tier: "OU",
+},
+pinthim: {
+tier: "OU",
+},
+pinthimmega: {
+tier: "OU",
+},
+hug: {
+tier: "OU",
+},
+broking: {
+tier: "OU",
+},
+brokingmega: {
+tier: "OU",
+},
+thor: {
+tier: "OU",
+},
+thornordic: {
+tier: "OU",
+},
+finiscor: {
+tier: "OU",
+},
+salad: {
+tier: "OU",
+},
+saladmega: {
+tier: "OU",
+},
+chulu: {
+tier: "OU",
+},
+chulumega: {
+tier: "OU",
+},
+sabletina: {
+tier: "OU",
+},
+sabletinamega: {
+tier: "OU",
+},
+swolesteela: {
+tier: "OU",
+},
+fifa: {
+tier: "OU",
+},
+drapominable: {
+tier: "OU",
+},
+diabeetus: {
+tier: "OU",
+},
+cashquaza: {
+tier: "OU",
+},
+cashquazamega: {
+tier: "OU",
+},
+xanatu: {
+tier: "OU",
+},
+volcarde: {
+tier: "OU",
+},
+fifa: {
+tier: "OU",
+},
+drapominable: {
+tier: "OU",
+},
+diabeetus: {
+tier: "OU",
+},
+ceremoni: {
+tier: "OU",
+},
+ceremonirobe: {
+tier: "OU",
+},
+ceremonibowl: {
+tier: "OU",
+},
+ceremonibranch: {
+tier: "OU",
+},
+ceremonijewel: {
+tier: "OU",
+},
+ceremonishell: {
+tier: "OU",
+},
+    eeveus: {
+        tier: "OU",
+    },
+    eeveusfire: {
+        tier: "OU",
+    },
+    eeveuswater: {
+        tier: "OU",
+    },
+    eeveusgrass: {
+        tier: "OU",
+    },
+    eeveuselectric: {
+        tier: "OU",
+    },
+    eeveusice: {
+        tier: "OU",
+    },
+    eeveuspsychic: {
+        tier: "OU",
+    },
+    eeveusdragon: {
+        tier: "OU",
+    },
+    eeveusfighting: {
+        tier: "OU",
+    },
+    eeveusflying: {
+        tier: "OU",
+    },
+    eeveuspoison: {
+        tier: "OU",
+    },
+    eeveusbug: {
+        tier: "OU",
+    },
+    eeveusground: {
+        tier: "OU",
+    },
+    eeveusrock: {
+        tier: "OU",
+    },
+    eeveusghost: {
+        tier: "OU",
+    },
+    eeveusdark: {
+        tier: "OU",
+    },
+    eeveussteel: {
+        tier: "OU",
+    },
+    eeveusfairy: {
+        tier: "OU",
+    },
+    kefka: {
+        tier: "OU",
+    },
+    pyukuton: {
+        tier: "OU",
+    },
+    volturne: {
+        tier: "OU",
+    },
+    thundpard: {
+        tier: "OU",
+    },
+    madeleine: {
+        tier: "OU",
+    },
+    amoongrowth: {
+        tier: "OU",
+    },
+    bronzecho: {
+        tier: "OU",
+    },
+    steelateela: {
+        tier: "OU",
+    },
+    escavazor: {
+        tier: "OU",
+    },
+    escavazormega: {
+        tier: "OU",
+    },
+    metalchan: {
+        tier: "OU",
+    },
+    sirirachistar: {
+        tier: "OU",
+    },
+    sensational: {
+        tier: "OU",
+    },
+    sensationalmega: {
+        tier: "OU",
+    },
 };

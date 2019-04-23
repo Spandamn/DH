@@ -16164,6 +16164,7 @@ let BattleMovedex = {
 			},
 			onSwitchIn: function (pokemon) {
 				if (!pokemon.isGrounded()) return;
+				if (pokemon.hasItem('lightmoss')) return;
 				this.add('-activate', pokemon, 'move: Sticky Web');
 				this.boost({spe: -1}, pokemon, pokemon.side.foe.active[0], this.getMove('stickyweb'));
 			},
@@ -17773,6 +17774,7 @@ let BattleMovedex = {
 			},
 			onSwitchIn: function (pokemon) {
 				if (!pokemon.isGrounded()) return;
+				if (pokemon.hasItem('lightmoss')) return;
 				if (!pokemon.runImmunity('Poison')) return;
 				if (pokemon.hasType('Poison')) {
 					this.add('-sideend', pokemon.side, 'move: Toxic Spikes', '[of] ' + pokemon);

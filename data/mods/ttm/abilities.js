@@ -377,7 +377,7 @@ exports.BattleAbilities = {
 	"chlorophyll": {
 		shortDesc: "If Sunny Day is active, this Pokemon's Speed is doubled.",
 		onModifySpe: function (spe) {
-			if (this.isWeather(['sunnyday', 'desolateland'])) {
+			if (this.field.isWeather(['sunnyday', 'desolateland'])) {
 				return this.chainModify(2);
 			}
 		},
@@ -657,24 +657,24 @@ exports.BattleAbilities = {
 		desc: "On switch-in, the weather becomes strong winds that remove the weaknesses of the Flying type from Flying-type Pokemon. This weather remains in effect until this Ability is no longer active for any Pokemon, or the weather is changed by Desolate Land or Primordial Sea.",
 		shortDesc: "On switch-in, strong winds begin until this Ability is not active in battle.",
 		onStart: function (source) {
-			this.setWeather('deltastream');
+			this.field.setWeather('deltastream');
 		},
 		onAnySetWeather: function (target, source, weather) {
-			if (this.getWeather().id === 'deltastream' && !(weather.id in {desolateland:1, primordialsea:1, deltastream:1})) return false;
+			if (this.field.getWeather().id === 'deltastream' && !(weather.id in {desolateland:1, primordialsea:1, deltastream:1})) return false;
 		},
 		onEnd: function (pokemon) {
-			if (this.weatherData.source !== pokemon) return;
+			if (this.field.weatherData.source !== pokemon) return;
 			for (let i = 0; i < this.sides.length; i++) {
 				for (let j = 0; j < this.sides[i].active.length; j++) {
 					let target = this.sides[i].active[j];
 					if (target === pokemon) continue;
 					if (target && target.hp && target.hasAbility('deltastream')) {
-						this.weatherData.source = target;
+						this.field.weatherData.source = target;
 						return;
 					}
 				}
 			}
-			this.clearWeather();
+			this.field.clearWeather();
 		},
 		id: "deltastream",
 		name: "Delta Stream",
@@ -685,24 +685,24 @@ exports.BattleAbilities = {
 		desc: "On switch-in, the weather becomes extremely harsh sunlight that prevents damaging Water-type moves from executing, in addition to all the effects of Sunny Day. This weather remains in effect until this Ability is no longer active for any Pokemon, or the weather is changed by Delta Stream or Primordial Sea.",
 		shortDesc: "On switch-in, extremely harsh sunlight begins until this Ability is not active in battle.",
 		onStart: function (source) {
-			this.setWeather('desolateland');
+			this.field.setWeather('desolateland');
 		},
 		onAnySetWeather: function (target, source, weather) {
-			if (this.getWeather().id === 'desolateland' && !(weather.id in {desolateland:1, primordialsea:1, deltastream:1})) return false;
+			if (this.field.getWeather().id === 'desolateland' && !(weather.id in {desolateland:1, primordialsea:1, deltastream:1})) return false;
 		},
 		onEnd: function (pokemon) {
-			if (this.weatherData.source !== pokemon) return;
+			if (this.field.weatherData.source !== pokemon) return;
 			for (let i = 0; i < this.sides.length; i++) {
 				for (let j = 0; j < this.sides[i].active.length; j++) {
 					let target = this.sides[i].active[j];
 					if (target === pokemon) continue;
 					if (target && target.hp && target.hasAbility('desolateland')) {
-						this.weatherData.source = target;
+						this.field.weatherData.source = target;
 						return;
 					}
 				}
 			}
-			this.clearWeather();
+			this.field.clearWeather();
 		},
 		id: "desolateland",
 		name: "Desolate Land",
@@ -771,7 +771,7 @@ exports.BattleAbilities = {
 				if (this.queue[i].choice === 'runPrimal' && this.queue[i].pokemon === source && source.template.speciesid === 'kyogre') return;
 				if (this.queue[i].choice !== 'runSwitch' && this.queue[i].choice !== 'runPrimal') break;
 			}
-			this.setWeather('raindance');
+			this.field.setWeather('raindance');
 		},
 		id: "drizzle",
 		name: "Drizzle",
@@ -785,7 +785,7 @@ exports.BattleAbilities = {
 				if (this.queue[i].choice === 'runPrimal' && this.queue[i].pokemon === source && source.template.speciesid === 'groudon') return;
 				if (this.queue[i].choice !== 'runSwitch' && this.queue[i].choice !== 'runPrimal') break;
 			}
-			this.setWeather('sunnyday');
+			this.field.setWeather('sunnyday');
 		},
 		id: "drought",
 		name: "Drought",
@@ -853,7 +853,7 @@ exports.BattleAbilities = {
 	"electricsurge": {
 		shortDesc: "On switch-in, this Pokemon summons Electric Terrain.",
 		onStart: function (source) {
-			this.setTerrain('electricterrain');
+			this.field.setTerrain('electricterrain')
 		},
 		id: "electricsurge",
 		name: "Electric Surge",
@@ -994,7 +994,7 @@ exports.BattleAbilities = {
 		},
 		onUpdate: function (pokemon) {
 			if (!pokemon.isActive || pokemon.baseTemplate.baseSpecies !== 'Cherrim' || pokemon.transformed) return;
-			if (this.isWeather(['sunnyday', 'desolateland'])) {
+			if (this.field.isWeather(['sunnyday', 'desolateland'])) {
 				if (pokemon.template.speciesid !== 'cherrimsunshine') {
 					pokemon.formeChange('Cherrim-Sunshine');
 					this.add('-formechange', pokemon, 'Cherrim-Sunshine', '[msg]', '[from] ability: Flower Gift');
@@ -1009,14 +1009,14 @@ exports.BattleAbilities = {
 		onModifyAtkPriority: 3,
 		onAllyModifyAtk: function (atk) {
 			if (this.effectData.target.baseTemplate.baseSpecies !== 'Cherrim') return;
-			if (this.isWeather(['sunnyday', 'desolateland'])) {
+			if (this.field.isWeather(['sunnyday', 'desolateland'])) {
 				return this.chainModify(1.5);
 			}
 		},
 		onModifySpDPriority: 4,
 		onAllyModifySpD: function (spd) {
 			if (this.effectData.target.baseTemplate.baseSpecies !== 'Cherrim') return;
-			if (this.isWeather(['sunnyday', 'desolateland'])) {
+			if (this.field.isWeather(['sunnyday', 'desolateland'])) {
 				return this.chainModify(1.5);
 			}
 		},
@@ -1072,7 +1072,7 @@ exports.BattleAbilities = {
 		onUpdate: function (pokemon) {
 			if (pokemon.baseTemplate.baseSpecies !== 'Castform' || pokemon.transformed) return;
 			let forme = null;
-			switch (this.effectiveWeather()) {
+			switch (this.field.effectiveWeather()) {
 			case 'sunnyday':
 			case 'desolateland':
 				if (pokemon.template.speciesid !== 'castformsunny') forme = 'Castform-Sunny';
@@ -1256,7 +1256,7 @@ exports.BattleAbilities = {
 	"grassysurge": {
 		shortDesc: "On switch-in, this Pokemon summons Grassy Terrain.",
 		onStart: function (source) {
-			this.setTerrain('grassyterrain');
+			this.field.setTerrain('grassyterrain');
 		},
 		id: "grassysurge",
 		name: "Grassy Surge",
@@ -1285,7 +1285,7 @@ exports.BattleAbilities = {
 		onResidualOrder: 26,
 		onResidualSubOrder: 1,
 		onResidual: function (pokemon) {
-			if (this.isWeather(['sunnyday', 'desolateland']) || this.random(2) === 0) {
+			if (this.field.isWeather(['sunnyday', 'desolateland']) || this.random(2) === 0) {
 				if (pokemon.hp && !pokemon.item && this.getItem(pokemon.lastItem).isBerry) {
 					pokemon.setItem(pokemon.lastItem);
 					this.add('-item', pokemon, pokemon.getItem(), '[from] ability: Harvest');
@@ -1395,7 +1395,7 @@ exports.BattleAbilities = {
 		onResidualOrder: 5,
 		onResidualSubOrder: 1,
 		onResidual: function (pokemon) {
-			if (pokemon.status && this.isWeather(['raindance', 'primordialsea'])) {
+			if (pokemon.status && this.field.isWeather(['raindance', 'primordialsea'])) {
 				this.debug('hydration');
 				this.add('-activate', pokemon, 'ability: Hydration');
 				pokemon.cureStatus();
@@ -1676,13 +1676,13 @@ exports.BattleAbilities = {
 		desc: "If Sunny Day is active, this Pokemon cannot gain a major status condition and Rest will fail for it.",
 		shortDesc: "If Sunny Day is active, this Pokemon cannot be statused and Rest will fail for it.",
 		onSetStatus: function (status, target, source, effect) {
-			if (this.isWeather(['sunnyday', 'desolateland'])) {
+			if (this.field.isWeather(['sunnyday', 'desolateland'])) {
 				if (effect && effect.status) this.add('-immune', target, '[msg]', '[from] ability: Leaf Guard');
 				return false;
 			}
 		},
 		onTryAddVolatile: function (status, target) {
-			if (status.id === 'yawn' && this.isWeather(['sunnyday', 'desolateland'])) {
+			if (status.id === 'yawn' && this.field.isWeather(['sunnyday', 'desolateland'])) {
 				this.add('-immune', target, '[msg]', '[from] ability: Leaf Guard');
 				return null;
 			}
@@ -1956,7 +1956,7 @@ exports.BattleAbilities = {
 	"mistysurge": {
 		shortDesc: "On switch-in, this Pokemon summons Misty Terrain.",
 		onStart: function (source) {
-			this.setTerrain('mistyterrain');
+			this.field.setTerrain('mistyterrain');
 		},
 		id: "mistysurge",
 		name: "Misty Surge",
@@ -2533,24 +2533,24 @@ exports.BattleAbilities = {
 		desc: "On switch-in, the weather becomes heavy rain that prevents damaging Fire-type moves from executing, in addition to all the effects of Rain Dance. This weather remains in effect until this Ability is no longer active for any Pokemon, or the weather is changed by Delta Stream or Desolate Land.",
 		shortDesc: "On switch-in, heavy rain begins until this Ability is not active in battle.",
 		onStart: function (source) {
-			this.setWeather('primordialsea');
+			this.field.setWeather('primordialsea');
 		},
 		onAnySetWeather: function (target, source, weather) {
-			if (this.getWeather().id === 'primordialsea' && !(weather.id in {desolateland:1, primordialsea:1, deltastream:1})) return false;
+			if (this.field.getWeather().id === 'primordialsea' && !(weather.id in {desolateland:1, primordialsea:1, deltastream:1})) return false;
 		},
 		onEnd: function (pokemon) {
-			if (this.weatherData.source !== pokemon) return;
+			if (this.field.weatherData.source !== pokemon) return;
 			for (let i = 0; i < this.sides.length; i++) {
 				for (let j = 0; j < this.sides[i].active.length; j++) {
 					let target = this.sides[i].active[j];
 					if (target === pokemon) continue;
 					if (target && target.hp && target.hasAbility('primordialsea')) {
-						this.weatherData.source = target;
+						this.field.weatherData.source = target;
 						return;
 					}
 				}
 			}
-			this.clearWeather();
+			this.field.clearWeather();
 		},
 		id: "primordialsea",
 		name: "Primordial Sea",
@@ -2591,7 +2591,8 @@ exports.BattleAbilities = {
 	"psychicsurge": {
 		shortDesc: "On switch-in, this Pokemon summons Psychic Terrain.",
 		onStart: function (source) {
-			this.setTerrain('psychicterrain');
+			this.useMove("Psychic Terrain", source);
+			this.field.setTerrain('psychicterrain');
 		},
 		id: "psychicsurge",
 		name: "Psychic Surge",
@@ -2791,7 +2792,7 @@ exports.BattleAbilities = {
 		shortDesc: "This Pokemon's Ground/Rock/Steel attacks do 1.3x in Sandstorm; immunity to it.",
 		onBasePowerPriority: 8,
 		onBasePower: function (basePower, attacker, defender, move) {
-			if (this.isWeather('sandstorm')) {
+			if (this.field.isWeather('sandstorm')) {
 				if (move.type === 'Rock' || move.type === 'Ground' || move.type === 'Steel') {
 					this.debug('Sand Force boost');
 					return this.chainModify([0x14CD, 0x1000]);
@@ -2810,7 +2811,7 @@ exports.BattleAbilities = {
 		desc: "If Sandstorm is active, this Pokemon's Speed is doubled. This Pokemon takes no damage from Sandstorm.",
 		shortDesc: "If Sandstorm is active, this Pokemon's Speed is doubled; immunity to Sandstorm.",
 		onModifySpe: function (spe, pokemon) {
-			if (this.isWeather('sandstorm')) {
+			if (this.field.isWeather('sandstorm')) {
 				return this.chainModify(2);
 			}
 		},
@@ -2825,7 +2826,7 @@ exports.BattleAbilities = {
 	"sandstream": {
 		shortDesc: "On switch-in, this Pokemon summons Sandstorm.",
 		onStart: function (source) {
-			this.setWeather('sandstorm');
+			this.field.setWeather('sandstorm');
 		},
 		id: "sandstream",
 		name: "Sand Stream",
@@ -2840,7 +2841,7 @@ exports.BattleAbilities = {
 		},
 		onModifyAccuracy: function (accuracy) {
 			if (typeof accuracy !== 'number') return;
-			if (this.isWeather('sandstorm')) {
+			if (this.field.isWeather('sandstorm')) {
 				this.debug('Sand Veil - decreasing accuracy');
 				return accuracy * 0.8;
 			}
@@ -3137,7 +3138,7 @@ exports.BattleAbilities = {
 	"slushrush": {
 		shortDesc: "If Hail is active, this Pokemon's Speed is doubled.",
 		onModifySpe: function (spe, pokemon) {
-			if (this.isWeather('hail')) {
+			if (this.field.isWeather('hail')) {
 				return this.chainModify(2);
 			}
 		},
@@ -3167,7 +3168,7 @@ exports.BattleAbilities = {
 		},
 		onModifyAccuracy: function (accuracy) {
 			if (typeof accuracy !== 'number') return;
-			if (this.isWeather('hail')) {
+			if (this.field.isWeather('hail')) {
 				this.debug('Snow Cloak - decreasing accuracy');
 				return accuracy * 0.8;
 			}
@@ -3180,7 +3181,7 @@ exports.BattleAbilities = {
 	"snowwarning": {
 		shortDesc: "On switch-in, this Pokemon summons Hail.",
 		onStart: function (source) {
-			this.setWeather('hail');
+			this.field.setWeather('hail');
 		},
 		id: "snowwarning",
 		name: "Snow Warning",
@@ -3192,7 +3193,7 @@ exports.BattleAbilities = {
 		shortDesc: "If Sunny Day is active, this Pokemon's Sp. Atk is 1.5x; loses 1/8 max HP per turn.",
 		onModifySpAPriority: 5,
 		onModifySpA: function (spa, pokemon) {
-			if (this.isWeather(['sunnyday', 'desolateland'])) {
+			if (this.field.isWeather(['sunnyday', 'desolateland'])) {
 				return this.chainModify(1.5);
 			}
 		},
@@ -3527,7 +3528,7 @@ exports.BattleAbilities = {
 	"swiftswim": {
 		shortDesc: "If Rain Dance is active, this Pokemon's Speed is doubled.",
 		onModifySpe: function (spe, pokemon) {
-			if (this.isWeather(['raindance', 'primordialsea'])) {
+			if (this.field.isWeather(['raindance', 'primordialsea'])) {
 				return this.chainModify(2);
 			}
 		},
@@ -4251,7 +4252,7 @@ exports.BattleAbilities = {
 	"healingsurge": {
 		shortDesc: "On switch-in, this Pokemon summons Healing Terrain.",
 		onStart: function (source) {
-			this.setTerrain('healingterrain');
+			this.field.setTerrain('healingterrain');
 		},
 		id: "healingsurge",
 		name: "Healing Surge",
@@ -4289,7 +4290,7 @@ exports.BattleAbilities = {
 	"temporalshift": {
 		shortDesc: "On switch-in, this Pokemon summons Trick Room.",
 		onStart: function (source) {
-			this.addPseudoWeather('trickroom');
+			this.field.addPseudoWeather('trickroom');
 		},
 		id: "temporalshift",
 		name: "Temporal Shift",
@@ -4337,7 +4338,7 @@ exports.BattleAbilities = {
 	"gravitypull": {
 		shortDesc: "On switch-in, this Pokemon summons Gravity.",
 		onStart: function (source) {
-			this.addPseudoWeather('gravity');
+			this.field.addPseudoWeather('gravity');
 		},
 		id: "gravitypull",
 		name: "gravitypull",

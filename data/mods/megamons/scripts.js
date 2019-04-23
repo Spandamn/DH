@@ -5,14 +5,23 @@ let BattleScripts = {
 	init() {
 		for (let i in this.data.Pokedex) {
 			let pokemon = this.data.Pokedex[i];
-			let bannedPokemon =  ['Blaziken-Mega', 'Gengar-Mega', 'Mewtwo-Mega-Y', 'Rayquaza-Mega'];
-			let forme = pokemon.forme;
-			if (bannedPokemon.includes(pokemon.species)) continue;
-			if (pokemon.forme && pokemon.forme.includes('Mega')) {
-				this.modData('Pokedex', i).gen = 7;
-				//this.modData('Pokedex', i).isMega = true;
-				this.modData('Pokedex', i).battleOnly = false;
-				delete this.modData('FormatsData', i).requiredItem;
+			switch (pokemon.species) {
+			case 'Blaziken-Mega':
+			case 'Crucibelle Mega':
+			case 'Gengar-Mega':
+			case 'Mewtwo-Mega-X':
+			case 'Mewtwo-Mega-Y':
+			case 'Rayquaza-Mega':
+				break;
+			default:
+				switch (pokemon.forme) {
+				case 'Mega':
+				case 'Mega-X':
+				case 'Mega-Y':
+					this.modData('FormatsData', i).isMega = true;
+					this.modData('FormatsData', i).battleOnly = false;
+					this.modData('FormatsData', i).requiredItem = undefined;
+				}
 			}
 		}
 	},

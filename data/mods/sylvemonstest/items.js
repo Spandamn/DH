@@ -472,7 +472,7 @@ exports.BattleItems = {
 			basePower: 10,
 		},
 		onUpdate: function(pokemon) {
-			if (this.pseudoWeather.trickroom && pokemon.useItem()) {
+			if (this.field.pseudoWeather.trickroom && pokemon.useItem()) {
 				this.boost({
 					spe: -1
 				});
@@ -522,7 +522,7 @@ exports.BattleItems = {
 			if (type === 'hail') return false;
 		},
 		onModifySpe: function(spe) {
-			if (this.isWeather('hail')) {
+			if (this.field.isWeather('hail')) {
 				return this.chainModify(2);
 			}
 		},
@@ -563,7 +563,7 @@ exports.BattleItems = {
 	"weatherwarriorscrystal": {
 		shortDesc: "When a weather is active, increases the holder's Atk and Sp Atk stats by 1 stage each.",
 		onUpdate: function(pokemon) {
-			if (this.isWeather(['sunnyday', 'desolateland', 'hail', 'rainyday', 'primordialsea', 'sandstream', 'shadowsky', 'aircurrent']) && pokemon.useItem()) {
+			if (this.field.isWeather(['sunnyday', 'desolateland', 'hail', 'rainyday', 'primordialsea', 'sandstorm', 'shadowsky', 'aircurrent']) && pokemon.useItem()) {
 				this.boost({
 					atk: 1,
 					spa: 1
@@ -950,5 +950,88 @@ exports.BattleItems = {
 		num: 913,
 		gen: 7,
 		desc: "Holder's Multi-Attack is Water type. Holder's attacks of this plate's type have 1.2x power.",
+	},
+	"pikaniumz": {
+		id: "pikaniumz",
+		name: "Pikanium Z",
+		spritenum: 649,
+		onTakeItem: false,
+		onModifyAtkPriority: 1,
+		onModifyAtk(atk, pokemon) {
+			if (pokemon.baseTemplate.baseSpecies === 'Pikachu') {
+				return this.chainModify(2);
+			}
+		},
+		onModifySpAPriority: 1,
+		onModifySpA(spa, pokemon) {
+			if (pokemon.baseTemplate.baseSpecies === 'Pikachu') {
+				return this.chainModify(2);
+			}
+		},
+		zMove: "Catastropika",
+		zMoveFrom: "Volt Tackle",
+		zMoveUser: ["Pikachu"],
+		num: 794,
+		gen: 7,
+		desc: "If held by a Pikachu with Volt Tackle, it can use Catastropika. Doubles Atk and SpA as Pikachu.",
+	},
+	"pikashuniumz": {
+		id: "pikashuniumz",
+		name: "Pikashunium Z",
+		spritenum: 659,
+		onTakeItem: false,
+		onModifyAtkPriority: 1,
+		onModifyAtk(atk, pokemon) {
+			if (pokemon.baseTemplate.baseSpecies === 'Pikachu') {
+				return this.chainModify(2);
+			}
+		},
+		onModifySpAPriority: 1,
+		onModifySpA(spa, pokemon) {
+			if (pokemon.baseTemplate.baseSpecies === 'Pikachu') {
+				return this.chainModify(2);
+			}
+		},
+		zMove: "10,000,000 Volt Thunderbolt",
+		zMoveFrom: "Thunderbolt",
+		zMoveUser: ["Pikachu-Original", "Pikachu-Hoenn", "Pikachu-Sinnoh", "Pikachu-Unova", "Pikachu-Kalos", "Pikachu-Alola", "Pikachu-Partner"],
+		num: 836,
+		gen: 7,
+		desc: "If held by cap Pikachu with Thunderbolt, it can use 10,000,000 Volt Thunderbolt. Doubles Atk and SpA as Pikachu.",
+	},
+	"machobrace": {
+		id: "machobrace",
+		name: "Macho Brace",
+		spritenum: 269,
+		ignoreKlutz: true,
+		fling: {
+			basePower: 60,
+		},
+		onModifyDamage(damage, source, target, move) {
+			return this.chainModify([0x14CC, 0x1000]);
+		},
+		onModifySpe(spe) {
+			return this.chainModify(0.5);
+		},
+		num: 215,
+		gen: 3,
+		desc: "Holder's Speed is halved. Holder's attacks do 1.3x damage. The Klutz Ability does not ignore this effect.",
+	},
+	"sactusberry": {
+		id: "sactusberry",
+		name: "Sactus Berry",
+		spritenum: 69,
+		fling: {
+			basePower: 10,
+		},
+		onUpdate: function(pokemon) {
+			if (pokemon.hp <= pokemon.maxhp / 4 || (pokemon.hp <= pokemon.maxhp / 2 && pokemon.hasAbility('gluttony'))) {
+				pokemon.eatItem();
+			}
+		},
+		onEat: function(source) {
+			this.useMove('Spikes', source);
+		},
+		desc: "When at 1/4 HP or less, consumes Berry and sets Spikes on the foe's side",
 	},
 };

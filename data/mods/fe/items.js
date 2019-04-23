@@ -1,6 +1,20 @@
 'use strict';
 
 exports.BattleItems = {
+// 	"abomasite": {
+// 		id: "abomasite",
+// 		name: "Abomasite",
+// 		spritenum: 575,
+// 		megaStone: ["Abomasnow-Mega", "Abomasorus-Mega", "Dramasnow-Mega", "Laprasnow-Mega", "Snow Tyrant-Mega-Y"],
+// 		megaEvolves: ["Abomasnow", "Abomasorus", "Dramasnow", "Laprasnow", "Snow Tyrant"],
+// 		onTakeItem(item, source) {
+// 			if (item.megaEvolves.includes(source.baseTemplate.baseSpecies)) return false;
+// 			return true;
+// 		},
+// 		num: 674,
+// 		gen: 6,
+// 		desc: "If held by an Abomasnow or a derived fusion thereof, this item allows it to Mega Evolve in battle.",
+// 	},
 	"lifeorb": {
 		inherit: true,
 		id: "lifeorb",
@@ -1600,11 +1614,11 @@ exports.BattleItems = {
             return true;
         },
         gen: 6,
-        desc: "If holder is a slampa, this item allows it to Mega Evolve in battle.",
+        desc: "If holder is a Slampa, this item allows it to Mega Evolve in battle.",
     },
-    "decedactylite": {
-        id: "decedactylite",
-        name: "decedactylite",
+    "decidactylite": {
+        id: "decidactylite",
+        name: "decidactylite",
         spritenum: 577,
 		 
         megaStone: "Decidactyl-Mega",
@@ -1614,7 +1628,7 @@ exports.BattleItems = {
             return true;
         },
         gen: 6,
-        desc: "If holder is a decedactyl, this item allows it to Mega Evolve in battle.",
+        desc: "If holder is a Decidactyl, this item allows it to Mega Evolve in battle.",
     },
     "aerodakoite": {
         id: "aerodakoite",
@@ -1628,7 +1642,7 @@ exports.BattleItems = {
             return true;
         },
         gen: 6,
-        desc: "If holder is a aero dako, this item allows it to Mega Evolve in battle.",
+        desc: "If holder is an Aero Dako, this item allows it to Mega Evolve in battle.",
     },
     "venustoisegreenite": {
         id: "venustoisegreenite",
@@ -1642,7 +1656,7 @@ exports.BattleItems = {
             return true;
         },
         gen: 6,
-        desc: "If holder is a venustoisegreen, this item allows it to Mega Evolve in battle.",
+        desc: "If holder is a Venustoise, this item allows it to Mega Evolve in battle.",
     },
     "venustoiseblueite": {
         id: "venustoiseblueite",
@@ -1656,7 +1670,7 @@ exports.BattleItems = {
             return true;
         },
         gen: 6,
-        desc: "If holder is a venustoiseblue, this item allows it to Mega Evolve in battle.",
+        desc: "If holder is a Venustoise, this item allows it to Mega Evolve in battle.",
     },
     "pheralieite": {
         id: "pheralieite",
@@ -2733,6 +2747,34 @@ exports.BattleItems = {
         gen: 6,
         desc: "If holder is a Mewdeuca, this item allows it to Mega Evolve in battle.",
     },
+    "bastiosaurite": {
+        id: "bastiosaurite",
+        name: "bastiosaurite",
+        spritenum: 608,
+
+        megaStone: "Bastiosaur-Mega",
+        megaEvolves: "Bastiosaur",
+        onTakeItem: function(item, source) {
+            if (item.megaEvolves === source.baseTemplate.baseSpecies) return false;
+            return true;
+        },
+        gen: 6,
+        desc: "If holder is a Bastiosaur, this item allows it to Mega Evolve in battle.",
+    },
+    "aggraluggite": {
+        id: "aggraluggite",
+        name: "aggraluggite",
+        spritenum: 578,
+		 
+        megaStone: "Aggralugg-Mega",
+        megaEvolves: "Aggralugg",
+        onTakeItem: function(item, source) {
+            if (item.megaEvolves === source.baseTemplate.baseSpecies) return false;
+            return true;
+        },
+        gen: 6,
+        desc: "If holder is an Aggralugg, this item allows it to Mega Evolve in battle.",
+    },
 	//Fusions are given access to Z-Moves. 
 	
 	"pikaniumz": {
@@ -2769,7 +2811,7 @@ exports.BattleItems = {
 		onTakeItem: false,
 		zMove: "Guardian of Alola",
 		zMoveFrom: "Nature's Madness",
-		zMoveUser: ["Tapu Koko", "Tapu Lele", "Tapu Bulu", "Tapu Fini", "Aero Dako", "Tapu Jojo", "Sylvoko", "Mapu Iasu", "Mapu Auhe", "Mapu Moli", "Mapu Bupa", "Peli Koko", "Absoko", "Maui", "Apou Probo", "Tapu Meme", "Tapu Meme-Dank", "Vani Lele", "Apou Terro", "Castapus", "Castapus-Smarty", "Castapus-Sparky", "Castapus-Grassy", "Castapus-Misty", "Castapus-Rocky", "Castapus-Murky", "Castapus-Kelpy", "Castapus-Sludgy", "Castapus-Beauty", "Castapus-Sturdy", "Tapu Loom", "Tapu Dede", "Torko Bulu", "Tamatoa", "Lupu Chandel", "Giga Fini", "Fablefin", "Bunny"],
+		zMoveUser: ["Tapu Koko", "Tapu Lele", "Tapu Bulu", "Tapu Fini", "Aero Dako", "Tapu Jojo", "Sylvoko", "Mapu Iasu", "Mapu Auhe", "Mapu Moli", "Mapu Bupa", "Peli Koko", "Absoko", "Maui", "Apou Probo", "Tapu Meme", "Tapu Meme-Dank", "Vani Lele", "Apou Terro", "Castapus", "Castapus-Smarty", "Castapus-Sparky", "Castapus-Grassy", "Castapus-Misty", "Castapus-Rocky", "Castapus-Murky", "Castapus-Kelpy", "Castapus-Sludgy", "Castapus-Beauty", "Castapus-Sturdy", "Tapu Loom", "Tapu Dede", "Torko Bulu", "Tamatoa", "Lupu Chandel", "Giga Fini", "Fablefin", "Sabulu", "Chulu", "Bunny", "Finiscor", "Choko", "Tapuno"],
 		num: 801,
 		gen: 7,
 		desc: "If held by a Tapu with Nature's Madness, it can use Guardian of Alola.",
@@ -2873,7 +2915,7 @@ exports.BattleItems = {
 		onTakeItem: false,
 		zMove: "Searing Sunraze Smash",
 		zMoveFrom: "Sunsteel Strike",
-		zMoveUser: ["Solgaleo", "Necrozma-Dusk-Mane", "Murkaleo", "Aloha", "Parasol", "Necroqua", "Necropur", "Smotilizer", "Necrotune", "Nut", "Bunny"],
+		zMoveUser: ["Solgaleo", "Necrozma-Dusk-Mane", "Murkaleo", "Aloha", "Parasol", "Necroqua", "Necropur", "Smotilizer", "Necrotune", "Nut", "Bunny", "Ninjaleo"],
 		num: 921,
 		gen: 7,
 		desc: "Solgaleo or Dusk Mane Necrozma with Sunsteel Strike can use a special Z-Move.",
@@ -2886,7 +2928,7 @@ exports.BattleItems = {
 		onTakeItem: false,
 		zMove: "Menacing Moonraze Maelstrom",
 		zMoveFrom: "Moongeist Beam",
-		zMoveUser: ["Lunala", "Necrozma-Dawn-Wings", "Lunatic", "Luau", "Shenala", "Audala", "Qwilala", "Necrynx", "Necrozerian", "Lampara", "Chazma", "Bunny"],
+		zMoveUser: ["Lunala", "Necrozma-Dawn-Wings", "Lunatic", "Luau", "Shenala", "Audala", "Qwilala", "Necrynx", "Necrozerian", "Lampara", "Chazma", "Bunny", "Zalula", "Xanatu"],
 		num: 922,
 		gen: 7,
 		desc: "Lunala or Dawn Wings Necrozma with Moongeist Beam can use a special Z-Move.",

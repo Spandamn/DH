@@ -15,7 +15,8 @@
 
 let Punishments = module.exports;
 
-const FS = require('../lib/fs');
+/** @type {typeof import('../lib/fs').FS} */
+const FS = require(/** @type {any} */('../.lib-dist/fs')).FS;
 
 const PUNISHMENT_FILE = 'config/punishments.tsv';
 const ROOM_PUNISHMENT_FILE = 'config/room-punishments.tsv';
@@ -66,10 +67,14 @@ class PunishmentMap extends Map {
 	 * @param {(punishment: Punishment, id: string, map: PunishmentMap) => void} callback
 	 */
 	forEach(callback) {
-		super.forEach((punishment, k) => {
-			if (Date.now() < punishment[2]) return callback(punishment, k, this);
+		for (const [k, punishment] of super.entries()) {
+			if (Date.now() < punishment[2]) {
+				// eslint-disable-next-line callback-return
+				callback(punishment, k, this);
+				continue;
+			}
 			this.delete(k);
-		});
+		}
 	}
 }
 
@@ -135,12 +140,16 @@ class NestedPunishmentMap extends Map {
 	 * @param {(punishment: Punishment, roomid: string, userid: string) => void} callback
 	 */
 	nestedForEach(callback) {
-		this.forEach((subMap, k1) => {
-			subMap.forEach((punishment, k2) => {
-				if (Date.now() < punishment[2]) return callback(punishment, k1, k2);
+		for (const [k1, subMap] of this.entries()) {
+			for (const [k2, punishment] of subMap.entries()) {
+				if (Date.now() < punishment[2]) {
+					// eslint-disable-next-line callback-return
+					callback(punishment, k1, k2);
+					continue;
+				}
 				this.nestedDelete(k1, k2);
-			});
-		});
+			}
+		}
 	}
 }
 
@@ -286,9 +295,9 @@ Punishments.savePunishments = function () {
 		});
 
 		let buf = 'Punishment\tUser ID\tIPs and alts\tExpires\r\n';
-		saveTable.forEach((entry, id) => {
+		for (const [id, entry] of saveTable) {
 			buf += Punishments.renderEntry(entry, id);
-		});
+		}
 		return buf;
 	});
 };
@@ -332,9 +341,9 @@ Punishments.saveRoomPunishments = function () {
 		});
 
 		let buf = 'Punishment\tRoom ID:User ID\tIPs and alts\tExpires\r\n';
-		saveTable.forEach((entry, id) => {
+		for (const [id, entry] of saveTable) {
 			buf += Punishments.renderEntry(entry, id);
-		});
+		}
 		return buf;
 	});
 };
@@ -473,7 +482,7 @@ Punishments.punish = function (user, punishment, recursionKeys) {
 		const [punishType, id, ...rest] = punishment;
 		keys.delete(id);
 		Punishments.appendPunishment({
-			keys: Array.from(keys),
+			keys: [...keys],
 			punishType: punishType,
 			rest: rest,
 		}, id, PUNISHMENT_FILE);
@@ -496,17 +505,17 @@ Punishments.punishName = function (userid, punishment) {
 			userids.add(key);
 		}
 	}
-	userids.forEach(id => {
+	for (const id of userids) {
 		Punishments.userids.set(id, punishment);
-	});
-	ips.forEach(ip => {
+	}
+	for (const ip of ips) {
 		Punishments.ips.set(ip, punishment);
-	});
+	}
 	const [punishType, id, ...rest] = punishment;
-	let affected = Users.findUsers(Array.from(userids), Array.from(ips), {includeTrusted: PUNISH_TRUSTED, forPunishment: true});
+	let affected = Users.findUsers([...userids], [...ips], {includeTrusted: PUNISH_TRUSTED, forPunishment: true});
 	userids.delete(id);
 	Punishments.appendPunishment({
-		keys: Array.from(userids).concat(Array.from(ips)),
+		keys: [...userids, ...ips],
 		punishType: punishType,
 		rest: rest,
 	}, id, PUNISHMENT_FILE);
@@ -590,7 +599,7 @@ Punishments.roomPunish = function (room, user, punishment, recursionKeys) {
 		const [punishType, id, ...rest] = punishment;
 		keys.delete(id);
 		Punishments.appendPunishment({
-			keys: Array.from(keys),
+			keys: [...keys],
 			punishType: punishType,
 			rest: rest,
 		}, roomid + ':' + id, ROOM_PUNISHMENT_FILE);
@@ -617,17 +626,17 @@ Punishments.roomPunishName = function (room, userid, punishment) {
 			userids.add(key);
 		}
 	}
-	userids.forEach(id => {
+	for (const id of userids) {
 		Punishments.roomUserids.nestedSet(room.id, id, punishment);
-	});
-	ips.forEach(ip => {
+	}
+	for (const ip of ips) {
 		Punishments.roomIps.nestedSet(room.id, ip, punishment);
-	});
+	}
 	const [punishType, id, ...rest] = punishment;
-	let affected = Users.findUsers(Array.from(userids), Array.from(ips), {includeTrusted: PUNISH_TRUSTED, forPunishment: true});
+	let affected = Users.findUsers([...userids], [...ips], {includeTrusted: PUNISH_TRUSTED, forPunishment: true});
 	userids.delete(id);
 	Punishments.appendPunishment({
-		keys: Array.from(userids).concat(Array.from(ips)),
+		keys: [...userids, ...ips],
 		punishType: punishType,
 		rest: rest,
 	}, room.id + ':' + id, ROOM_PUNISHMENT_FILE);
@@ -655,21 +664,21 @@ Punishments.roomUnpunish = function (room, id, punishType, ignoreWrite) {
 	let success;
 	const ipSubMap = Punishments.roomIps.get(roomid);
 	if (ipSubMap) {
-		ipSubMap.forEach((/** @type {Punishment} */punishment, /** @type {string} */key) => {
+		for (const [/** @type {string} */key, /** @type {Punishment} */punishment] of ipSubMap) {
 			if (punishment[1] === id && punishment[0] === punishType) {
 				ipSubMap.delete(key);
 				success = id;
 			}
-		});
+		}
 	}
 	const useridSubMap = Punishments.roomUserids.get(roomid);
 	if (useridSubMap) {
-		useridSubMap.forEach((/** @type {Punishment} */punishment, /** @type {string} */key) => {
+		for (const [/** @type {string} */key, /** @type {Punishment} */punishment] of useridSubMap) {
 			if (punishment[1] === id && punishment[0] === punishType) {
 				useridSubMap.delete(key);
 				success = id;
 			}
-		});
+		}
 	}
 	if (success && !ignoreWrite) {
 		Punishments.saveRoomPunishments();
@@ -782,14 +791,14 @@ Punishments.unlock = function (name) {
 		user.updateIdentity();
 		success.push(user.getLastName());
 		if (id.charAt(0) !== '#') {
-			Users.users.forEach(curUser => {
+			for (const curUser of Users.users.values()) {
 				if (curUser.locked === id) {
 					curUser.locked = false;
 					curUser.namelocked = false;
 					curUser.updateIdentity();
 					success.push(curUser.getLastName());
 				}
-			});
+			}
 		}
 	}
 	if (Punishments.unpunish(name, 'LOCK')) {
@@ -844,14 +853,14 @@ Punishments.unnamelock = function (name) {
 		success.push(user.getLastName());
 	}
 	if (id.charAt(0) !== '#') {
-		Users.users.forEach(curUser => {
+		for (const curUser of Users.users.values()) {
 			if (curUser.locked === id) {
 				curUser.locked = false;
 				curUser.namelocked = false;
 				curUser.resetName();
 				success.push(curUser.getLastName());
 			}
-		});
+		}
 	}
 	if (unpunished && !success.length) success.push(name);
 	if (!success.length) return false;
@@ -1083,7 +1092,7 @@ Punishments.addSharedIp = function (ip, note) {
 	Punishments.sharedIps.set(ip, note);
 	Punishments.appendSharedIp(ip, note);
 
-	Users.users.forEach(user => {
+	for (const user of Users.users.values()) {
 		if (user.locked && user.locked !== user.userid && ip in user.ips) {
 			if (!user.autoconfirmed) {
 				user.semilocked = `#sharedip ${user.locked}`;
@@ -1093,7 +1102,7 @@ Punishments.addSharedIp = function (ip, note) {
 
 			user.updateIdentity();
 		}
-	});
+	}
 };
 
 /**

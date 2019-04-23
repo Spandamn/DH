@@ -37,7 +37,7 @@ tapukoko: {
 		species: "Tapu Koko",
 		types: ["Electric", "Fairy"],
 		gender: "N",
-		baseStats: {hp: 80, atk: 125, def: 80, spa: 125, spd: 80, spe: 135},
+		baseStats: {hp: 85, atk: 125, def: 80, spa: 125, spd: 80, spe: 135},
 		abilities: {0: "Electric Surge", H: "Telepathy"},
 		heightm: 1.8,
 		weightkg: 20.5,
@@ -73,7 +73,7 @@ tapukoko: {
 		species: "Tapu Fini",
 		types: ["Water", "Fairy"],
 		gender: "N",
-		baseStats: {hp: 100, atk: 70, def: 110, spa: 140, spd: 130, spe: 80},
+		baseStats: {hp: 100, atk: 70, def: 130, spa: 110, spd: 140, spe: 80},
 		abilities: {0: "Misty Surge", H: "Telepathy"},
 		heightm: 1.3,
 		weightkg: 21.2,
@@ -186,6 +186,7 @@ tapukoko: {
 		eggGroups: ["Undiscovered"],
 	},
 	mamoswine: {
+	inherit: true,
 	num: 1.5,
 	species: "Mamoswine",
 	types: ["Ice", "Ground"],
@@ -193,6 +194,7 @@ tapukoko: {
 	abilities: {0: ""},
 },
 absol: {
+	inherit: true,
 	num: 2.5,
 	species: "Absol",
 	types: ["Dark"],
@@ -201,6 +203,7 @@ absol: {
 	otherFormes: ["absolmega"],
 },
 absolmega: {
+	inherit: true,
 	num: 3.5,
 	species: "Absol-Mega",
 	baseSpecies: "Absol",
@@ -211,6 +214,7 @@ absolmega: {
 	abilities: {0: ""},
 },
 golbat: {
+	inherit: true,
 	num: 4.5,
 	species: "Golbat",
 	types: ["Poison", "Flying"],
@@ -218,6 +222,7 @@ golbat: {
 	abilities: {0: ""},
 },
 crobat: {
+	inherit: true,
 	num: 5.5,
 	species: "Crobat",
 	types: ["Poison", "Flying"],
@@ -225,6 +230,7 @@ crobat: {
 	abilities: {0: ""},
 },
 lapras: {
+	inherit: true,
 	num: 6.5,
 	species: "Lapras",
 	types: ["Water", "Ice"],
@@ -232,13 +238,15 @@ lapras: {
 	abilities: {0: ""},
 },
 golisopod: {
+	inherit: true,
 	num: 7.5,
 	species: "Golisopod",
 	types: ["Bug", "Water"],
-	baseStats: {hp: 120, atk: 120, def: 180, spa: 60, spd: 80, spe: 60},
+	baseStats: {hp: 120, atk: 135, def: 145, spa: 80, spd: 80, spe: 65},
 	abilities: {0: ""},
 },
 landorustherian: {
+	inherit: true,
 	num: 8.5,
 	species: "Landorus-Therian",
 	types: ["Ground", "Flying"],
@@ -246,6 +254,7 @@ landorustherian: {
 	abilities: {0: ""},
 },
 blacephalon: {
+	inherit: true,
 	num: 9.5,
 	species: "Blacephalon",
 	types: ["Fire", "Fairy"],
@@ -253,6 +262,7 @@ blacephalon: {
 	abilities: {0: ""},
 },
 chandelure: {
+	inherit: true,
 	num: 10.5,
 	species: "Chandelure",
 	types: ["Ghost", "Fire"],
@@ -260,6 +270,7 @@ chandelure: {
 	abilities: {0: ""},
 },
 persianalola: {
+	inherit: true,
 	num: 11.5,
 	species: "Persian-Alola",
 	types: ["Normal", "Ghost"],
@@ -267,6 +278,7 @@ persianalola: {
 	abilities: {0: ""},
 },
 darmanitan: {
+	inherit: true,
 	num: 555,
 	species: "Darmanitan",
 	baseForme: "Standard",
@@ -276,6 +288,7 @@ darmanitan: {
 	otherFormes: ["darmanitanzen"],
 },
 darmanitanzen: {
+	inherit: true,
 	num: 13.5,
 	species: "Darmanitan-Zen",
 	baseSpecies: "Darmanitan",
@@ -286,6 +299,7 @@ darmanitanzen: {
 	abilities: {0: ""},
 },
 venusaur: {
+	inherit: true,
 	num: 14.5,
 	species: "Venusaur",
 	types: ["Grass", "Poison"],
@@ -294,6 +308,7 @@ venusaur: {
 	otherFormes: ["venusaurmega"],
 },
 venusaurmega: {
+	inherit: true,
 	num: 15.5,
 	species: "Venusaur-Mega",
 	baseSpecies: "Venusaur",
@@ -304,6 +319,7 @@ venusaurmega: {
 	abilities: {0: ""},
 },
 charizard: {
+	inherit: true,
 	num: 16.5,
 	species: "Charizard",
 	types: ["Fire", "Flying"],
@@ -311,6 +327,7 @@ charizard: {
 	abilities: {0: ""},
 },
 charizardmegax: {
+	inherit: true,
 	num: 17.5,
 	species: "Charizard-Mega-X",
 	baseSpecies: "Charizard-X",
@@ -321,6 +338,7 @@ charizardmegax: {
 	abilities: {0: ""},
 },
 charizardmegay: {
+	inherit: true,
 	num: 18.5,
 	species: "Charizard-Mega-Y",
 	baseSpecies: "Charizard-Y",
@@ -331,6 +349,7 @@ charizardmegay: {
 	abilities: {0: ""},
 },
 blastoise: {
+	inherit: true,
 	num: 19.5,
 	species: "Blastoise",
 	types: ["Water"],
@@ -339,6 +358,7 @@ blastoise: {
 	otherFormes: ["blastoisemega"],
 },
 blastoisemega: {
+	inherit: true,
 	num: 20.5,
 	species: "Blastoise-Mega",
 	baseSpecies: "Blastoise",
@@ -349,6 +369,7 @@ blastoisemega: {
 	abilities: {0: ""},
 },
 crabominable: {
+	inherit: true,
 	num: 21.5,
 	species: "Crabominable",
 	types: ["Ice", "Fighting"],
@@ -356,6 +377,7 @@ crabominable: {
 	abilities: {0: ""},
 },
 heatran: {
+	inherit: true,
 	num: 22.5,
 	species: "Heatran",
 	types: ["Fire", "Steel"],
@@ -363,6 +385,7 @@ heatran: {
 	abilities: {0: ""},
 },
 articuno: {
+	inherit: true,
 	num: 23.5,
 	species: "Articuno",
 	types: ["Ice", "Flying"],
@@ -370,6 +393,7 @@ articuno: {
 	abilities: {0: ""},
 },
 shayminsky: {
+	inherit: true,
 	num: 24.5,
 	species: "Shaymin-Sky",
 	types: ["Grass", "Flying"],
@@ -377,6 +401,7 @@ shayminsky: {
 	abilities: {0: ""},
 },
 abomasnow: {
+	inherit: true,
 	num: 25.5,
 	species: "Abomasnow",
 	types: ["Ice", "Grass"],
@@ -385,6 +410,7 @@ abomasnow: {
 	otherFormes: ["abomasnowmega"],
 },
 abomasnowmega: {
+	inherit: true,
 	num: 26.5,
 	species: "Abomasnow-Mega",
 	baseSpecies: "Abomasnow",
@@ -395,14 +421,16 @@ abomasnowmega: {
 	abilities: {0: ""},
 },
 camerupt: {
+	inherit: true,
 	num: 27.5,
 	species: "Camerupt",
 	types: ["Fire", "Ground"],
-	baseStats: {hp: 105, atk: 130, def: 70, spa: 140, spd: 75, spe: 40},
+	baseStats: {hp: 105, atk: 115, def: 120, spa: 145, spd: 135, spe: 20},
 	abilities: {0: ""},
 	otherFormes: ["cameruptmega"],
 },
 cameruptmega: {
+	inherit: true,
 	num: 28.5,
 	species: "Camerupt-Mega",
 	baseSpecies: "Camerupt",
@@ -413,10 +441,81 @@ cameruptmega: {
 	abilities: {0: ""},
 },
 marshadow: {
+	inherit: true,
 	num: 29.5,
 	species: "Marshadow",
 	types: ["Fighting", "Ghost"],
 	baseStats: {hp: 115, atk: 160, def: 80, spa: 90, spd: 90, spe: 125},
+	abilities: {0: ""},
+},
+rotom: {
+	num: 1.5,
+	species: "Rotom",
+	types: ["Electric", "Ghost"],
+	baseStats: {hp: 80, atk: 69, def: 120, spa: 110, spd: 150, spe: 91},
+	abilities: {0: ""},
+},
+rotomwash: {
+	num: 2.5,
+	species: "Rotom-Wash",
+	types: ["Electric", "Water"],
+	baseStats: {hp: 80, atk: 65, def: 117, spa: 140, spd: 132, spe: 86},
+	abilities: {0: ""},
+},
+rotomheat: {
+	num: 3.5,
+	species: "Rotom-Heat",
+	types: ["Electric", "Fire"],
+	baseStats: {hp: 80, atk: 65, def: 147, spa: 105, spd: 137, spe: 86},
+	abilities: {0: ""},
+},
+rotommow: {
+	num: 4.5,
+	species: "Rotom-Mow",
+	types: ["Electric", "Grass"],
+	baseStats: {hp: 80, atk: 65, def: 107, spa: 140, spd: 112, spe: 116},
+	abilities: {0: ""},
+},
+rotomfrost: {
+	num: 5.5,
+	species: "Rotom-Frost",
+	types: ["Electric", "Ice"],
+	baseStats: {hp: 80, atk: 50, def: 107, spa: 115, spd: 152, spe: 116},
+	abilities: {0: ""},
+},
+rotomfan: {
+	num: 6.5,
+	species: "Rotom-Fan",
+	types: ["Electric", "Flying"],
+	baseStats: {hp: 80, atk: 50, def: 147, spa: 105, spd: 152, spe: 86},
+	abilities: {0: ""},
+},
+cobalion: {
+	num: 7.5,
+	species: "Cobalion",
+	types: ["Steel", "Fighting"],
+	baseStats: {hp: 91, atk: 90, def: 129, spa: 150, spd: 107, spe: 113},
+	abilities: {0: ""},
+},
+terrakion: {
+	num: 8.5,
+	species: "Terrakion",
+	types: ["Rock", "Fighting"],
+	baseStats: {hp: 91, atk: 159, def: 70, spa: 72, spd: 150, spe: 138},
+	abilities: {0: ""},
+},
+virizion: {
+	num: 9.5,
+	species: "Virizion",
+	types: ["Grass", "Fighting"],
+	baseStats: {hp: 91, atk: 115, def: 102, spa: 90, spd: 129, spe: 153},
+	abilities: {0: ""},
+},
+keldeo: {
+	num: 10.5,
+	species: "Keldeo",
+	types: ["Water", "Fighting"],
+	baseStats: {hp: 91, atk: 72, def: 150, spa: 159, spd: 90, spe: 118},
 	abilities: {0: ""},
 },
 };

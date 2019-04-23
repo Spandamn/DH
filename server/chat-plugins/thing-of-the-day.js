@@ -1,6 +1,7 @@
 'use strict';
 
-const FS = require('../../lib/fs');
+/** @type {typeof import('../../lib/fs').FS} */
+const FS = require(/** @type {any} */('../../.lib-dist/fs')).FS;
 
 const MINUTE = 60 * 1000;
 const ROOMIDS = ['thestudio', 'jubilifetvfilms', 'youtube', 'thelibrary', 'prowrestling'];
@@ -41,9 +42,6 @@ function savePrenoms() {
 function toNominationId(nomination) {
 	return nomination.toLowerCase().replace(/\s/g, '').replace(/\b&\b/g, '');
 }
-
-/** @typedef {(query: string[], user: User, connection: Connection) => (string | null | void)} PageHandler */
-/** @typedef {{[k: string]: PageHandler | PageTable}} PageTable */
 
 class OtdHandler {
 	/**
@@ -174,9 +172,9 @@ class OtdHandler {
 		/** @type {string[]} */
 		const entries = [];
 
-		this.nominations.forEach(value => {
+		for (const value of this.nominations.values()) {
 			entries.push(`<li><b>${value.nomination}</b> <i>(Submitted by ${value.name})</i></li>`);
-		});
+		}
 
 		if (entries.length > 20) {
 			buffer += `<table><tr><td><ul>${entries.slice(0, Math.ceil(entries.length / 2)).join('')}</ul></td><td><ul>${entries.slice(Math.ceil(entries.length / 2)).join('')}</ul></td></tr></table>`;
@@ -201,14 +199,14 @@ class OtdHandler {
 	}
 
 	rollWinner() {
-		let keys = Array.from(this.nominations.keys());
+		let keys = [...this.nominations.keys()];
 		if (!keys.length) return false;
 
 		let winner = this.nominations.get(keys[Math.floor(Math.random() * keys.length)]);
 		if (!winner) return false; // Should never happen but shuts typescript up.
 		this.appendWinner(winner.nomination, winner.name);
 
-		const names = Array.from(this.nominations.values()).map(obj => obj.name);
+		const names = [...this.nominations.values()].map(obj => obj.name);
 
 		let columns = names.length > 27 ? 4 : names.length > 18 ? 3 : names.length > 9 ? 2 : 1;
 		let content = '';
@@ -329,10 +327,11 @@ class OtdHandler {
 	}
 
 	/**
-	 * @type {PageHandler}
+	 * @param {PageContext} context
 	 */
-	generateWinnerList() {
-		let buf = `|title|${this.id.toUpperCase()} Winners\n|pagehtml|<div class="pad ladder"><h2>${this.name} of the ${this.timeLabel} Winners</h2>`;
+	generateWinnerList(context) {
+		context.title = `${this.id.toUpperCase()} Winners`;
+		let buf = `<div class="pad ladder"><h2>${this.name} of the ${this.timeLabel} Winners</h2>`;
 
 		// Only use specific fields for displaying in winners list.
 		/** @type {string[]} */
@@ -419,7 +418,7 @@ function selectHandler(message) {
 
 /** @type {ChatCommands} */
 let commands = {
-	start: function (target, room, user, connection, cmd) {
+	start(target, room, user, connection, cmd) {
 		if (!this.canTalk()) return;
 
 		const handler = selectHandler(this.message);
@@ -436,7 +435,7 @@ let commands = {
 	},
 	starthelp: [`/-otd start - Starts nominations for the Thing of the Day. Requires: % @ # & ~`],
 
-	end: function (target, room, user) {
+	end(target, room, user) {
 		if (!this.canTalk()) return;
 
 		const handler = selectHandler(this.message);
@@ -456,7 +455,7 @@ let commands = {
 	},
 	endhelp: [`/-otd end - End nominations for the Thing of the Day and set it to a randomly selected nomination. Requires: % @ # & ~`],
 
-	nom: function (target, room, user) {
+	nom(target, room, user) {
 		if (!this.canTalk()) return;
 		if (!target) return this.parse('/help otd');
 
@@ -471,7 +470,7 @@ let commands = {
 	},
 	nomhelp: [`/-otd nom [nomination] - Nominate something for Thing of the Day.`],
 
-	view: function (target, room, user, connection) {
+	view(target, room, user, connection) {
 		if (!this.canTalk()) return;
 		if (!this.runBroadcast()) return false;
 
@@ -488,7 +487,7 @@ let commands = {
 	},
 	viewhelp: [`/-otd view - View the current nominations for the Thing of the Day.`],
 
-	remove: function (target, room, user) {
+	remove(target, room, user) {
 		if (!this.canTalk()) return;
 
 		const handler = selectHandler(this.message);
@@ -507,9 +506,9 @@ let commands = {
 			this.sendReply(`User '${target}' has no nomination for the ${handler.name} of the ${handler.timeLabel}.`);
 		}
 	},
-	removehelp: [`/-otd remove [username] - Remove a user's nomination for the Thing of the Day and prevent them from voting again until the next round. Requires: % @ * # & ~`],
+	removehelp: [`/-otd remove [username] - Remove a user's nomination for the Thing of the Day and prevent them from voting again until the next round. Requires: % @ # & ~`],
 
-	force: function (target, room, user) {
+	force(target, room, user) {
 		if (!this.canTalk()) return;
 		if (!target) return this.parse('/help aotd force');
 
@@ -528,7 +527,7 @@ let commands = {
 	},
 	forcehelp: [`/-otd force [nomination] - Forcibly sets the Thing of the Day without a nomination round. Requires: # & ~`],
 
-	delay: function (target, room, user) {
+	delay(target, room, user) {
 		if (!this.canTalk()) return;
 
 		const handler = selectHandler(this.message);
@@ -545,7 +544,7 @@ let commands = {
 	},
 	delayhelp: [`/-otd delay - Turns off the automatic 20 minute timer for Thing of the Day voting rounds. Requires: % @ # & ~`],
 
-	set: function (target, room, user) {
+	set(target, room, user) {
 		if (!this.canTalk()) return;
 
 		const handler = selectHandler(this.message);
@@ -606,9 +605,9 @@ let commands = {
 			return this.privateModAction(`(${user.name} changed the following propert${Chat.plural(keys, 'ies', 'y')} of the ${handler.name} of the ${handler.timeLabel}: ${keys.join(', ')})`);
 		}
 	},
-	sethelp: [`/-otd set property: value[, property: value] - Set the winner, quote, song, link or image for the current Thing of the Day. Requires: % @ * # & ~`],
+	sethelp: [`/-otd set property: value[, property: value] - Set the winner, quote, song, link or image for the current Thing of the Day. Requires: % @ # & ~`],
 
-	winners: function (target, room, user, connection) {
+	winners(target, room, user, connection) {
 		if (!this.canTalk()) return;
 
 		const handler = selectHandler(this.message);
@@ -620,7 +619,7 @@ let commands = {
 	},
 	winnershelp: [`/-otd winners - Displays a list of previous things of the day.`],
 
-	'': function (target, room) {
+	''(target, room) {
 		if (!this.canTalk()) return;
 		if (!this.runBroadcast()) return false;
 
@@ -639,12 +638,24 @@ let commands = {
 
 /** @type {PageTable} */
 const pages = {
-	aotd: aotd.generateWinnerList.bind(aotd),
-	fotd: fotd.generateWinnerList.bind(fotd),
-	sotd: sotd.generateWinnerList.bind(sotd),
-	cotd: cotd.generateWinnerList.bind(cotd),
-	botw: botw.generateWinnerList.bind(botw),
-	motw: motw.generateWinnerList.bind(motw),
+	aotd() {
+		return aotd.generateWinnerList(this);
+	},
+	fotd() {
+		return fotd.generateWinnerList(this);
+	},
+	sotd() {
+		return sotd.generateWinnerList(this);
+	},
+	cotd() {
+		return cotd.generateWinnerList(this);
+	},
+	botw() {
+		return botw.generateWinnerList(this);
+	},
+	motw() {
+		return motw.generateWinnerList(this);
+	},
 };
 exports.pages = pages;
 
@@ -653,11 +664,11 @@ const help = [
 	`- /-otd - View the current Thing of the Day.`,
 	`- /-otd start - Starts nominations for the Thing of the Day. Requires: % @ # & ~`,
 	`- /-otd nom [nomination] - Nominate something for Thing of the Day.`,
-	`- /-otd remove [username] - Remove a user's nomination for the Thing of the Day and prevent them from voting again until the next round. Requires: % @ * # & ~`,
+	`- /-otd remove [username] - Remove a user's nomination for the Thing of the Day and prevent them from voting again until the next round. Requires: % @ # & ~`,
 	`- /-otd end - End nominations for the Thing of the Day and set it to a randomly selected nomination. Requires: % @ # & ~`,
 	`- /-otd force [nomination] - Forcibly sets the Thing of the Day without a nomination round. Requires: # & ~`,
 	`- /-otd delay - Turns off the automatic 20 minute timer for Thing of the Day voting rounds. Requires: % @ # & ~`,
-	`- /-otd set property: value[, property: value] - Set the winner, quote, song, link or image for the current Thing of the Day. Requires: % @ * # & ~`,
+	`- /-otd set property: value[, property: value] - Set the winner, quote, song, link or image for the current Thing of the Day. Requires: % @ # & ~`,
 	`- /-otd winners - Displays a list of previous things of the day.`,
 ];
 

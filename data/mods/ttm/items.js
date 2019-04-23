@@ -142,7 +142,7 @@ exports.BattleItems = {
 			basePower: 10,
 		},
 		onStart: function (target) {
-			if (!target.ignoringItem() && !this.getPseudoWeather('gravity')) {
+			if (!target.ignoringItem() && !this.field.getPseudoWeather('gravity')) {
 				this.add('-item', target, 'Air Balloon');
 			}
 		},
@@ -843,17 +843,17 @@ exports.BattleItems = {
 		fling: {
 			basePower: 10,
 		},
-		onStart: function (pokemon) {
+		onStart(pokemon) {
 			if (pokemon.volatiles['choicelock']) {
 				this.debug('removing choicelock: ' + pokemon.volatiles.choicelock);
 			}
 			pokemon.removeVolatile('choicelock');
 		},
-		onModifyMove: function (move, pokemon) {
+		onModifyMove(move, pokemon) {
 			pokemon.addVolatile('choicelock');
 		},
 		onModifyAtkPriority: 1,
-		onModifyAtk: function (atk) {
+		onModifyAtk(atk) {
 			return this.chainModify(1.5);
 		},
 		isChoice: true,
@@ -2512,7 +2512,7 @@ exports.BattleItems = {
 			basePower: 130,
 		},
 		onEffectiveness: function (typeMod, target, type, move) {
-			if (target.volatiles['ingrain'] || target.volatiles['smackdown'] || this.getPseudoWeather('gravity')) return;
+			if (target.volatiles['ingrain'] || target.volatiles['smackdown'] || this.field.getPseudoWeather('gravity')) return;
 			if (move.type === 'Ground' && target.hasType('Flying')) return 0;
 		},
 		// airborneness negation implemented in sim/pokemon.js:Pokemon#isGrounded

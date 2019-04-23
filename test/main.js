@@ -6,6 +6,7 @@ const fs = require('fs');
 const noop = () => {};
 
 before('initialization', function () {
+	this.timeout(0); // Remove timeout limitation
 	process.on('unhandledRejection', err => {
 		// I'd throw the err, but we have a heisenbug on our hands and I'd
 		// rather not have it screw with Travis in the interim
@@ -26,7 +27,7 @@ before('initialization', function () {
 	} finally {
 		config = require('../config/config');
 	}
-	require('./../lib/process-manager').disabled = true;
+	require('./../.lib-dist/process-manager').disabled = true;
 
 	Object.assign(config, require('../config/config-example'));
 	// Actually crash if we crash
@@ -39,7 +40,7 @@ before('initialization', function () {
 	config.fakeladder = false;
 
 	// Don't create a REPL
-	require('../lib/repl').start = noop;
+	require('../.lib-dist/repl').Repl.start = noop;
 
 	// Start the server.
 	require('../server');

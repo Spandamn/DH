@@ -157,6 +157,16 @@ learnistor: function(target, room, user) {
 		});
 		this.sendReplyBox(`${buf}</div>`);
 	},
+		zmoves: function (target, room, user) {
+		if (!this.runBroadcast()) return;
+		let buf = `<div class=infobox-limited><center><h2>List Of Z-Moves</h2></center>`;
+		let eternalDex = require('../../data/mods/zmoveseverywhere/moves.js').BattleMovedex;
+		if (!eternalDex) return this.errorReply("Error Fetching Eternal Data.");
+		Object.values(eternalDex).forEach(move => {
+			buf += `<button name="send" value="/dt ${move.id}, zmoveseverywhere" style="background:none;border:none;">${move.name}</button><br>`;
+		});
+		this.sendReplyBox(`${buf}</div>`);
+	},
 	fusionmoves: function (target, room, user) {
 		if (!this.runBroadcast()) return;
 		let buf = `<div class=infobox-limited><center><h2>List Of Fusion Pokemon Moves</h2></center>`;
@@ -379,6 +389,36 @@ gutter: function (target, room, user) {
 });
 		this.sendReplyBox(`${buf}</div>`);
 	},
+		csgutter: function (target, room, user) {
+		if (!this.runBroadcast()) return;
+		let buf = `<div class=infobox-limited><center><h2>List Of Alola Formes Pokemon</h2></center>`;
+		let jillianDex = require('../../data/mods/cleanslate/pokedex.js').BattlePokedex;
+		if (!jillianDex) return this.errorReply("Error Fetching Istor Data.");
+		Object.values(jillianDex).forEach(mon => {
+			buf += `&quot;${mon.species}&quot;: {<br> &quot;t1&quot;: &quot;${mon.types[0]}&quot;, <br>&quot;t2&quot;: &quot;${mon.types[1]}&quot;,<br> &quot;bs&quot;: { <br>&quot;hp&quot;: ${mon.baseStats.hp}, <br>&quot;at&quot;: ${mon.baseStats.atk}, <br> &quot;df&quot;: ${mon.baseStats.def}, <br> &quot;sa&quot;: ${mon.baseStats.spa},<br>&quot;sd&quot;: ${mon.baseStats.spd}, <br>&quot;sp&quot;: ${mon.baseStats.spe} <br> }, <br> &quot;w&quot;: ${mon.weightkg}<br> },<br>`;
+});
+		this.sendReplyBox(`${buf}</div>`);
+	},
+	mbhgutter: function (target, room, user) {
+		if (!this.runBroadcast()) return;
+		let buf = `<div class=infobox-limited><center><h2>List Of Alola Formes Pokemon</h2></center>`;
+		let jillianDex = require('../../data/mods/morebalancedhackmons/pokedex.js').BattlePokedex;
+		if (!jillianDex) return this.errorReply("Error Fetching Istor Data.");
+		Object.values(jillianDex).forEach(mon => {
+			buf += `&quot;${mon.species}&quot;: {<br> &quot;t1&quot;: &quot;${mon.types[0]}&quot;, <br>&quot;t2&quot;: &quot;${mon.types[1]}&quot;,<br> &quot;bs&quot;: { <br>&quot;hp&quot;: ${mon.baseStats.hp}, <br>&quot;at&quot;: ${mon.baseStats.atk}, <br> &quot;df&quot;: ${mon.baseStats.def}, <br> &quot;sa&quot;: ${mon.baseStats.spa},<br>&quot;sd&quot;: ${mon.baseStats.spd}, <br>&quot;sp&quot;: ${mon.baseStats.spe} <br> }, <br> &quot;w&quot;: ${mon.weightkg}<br> },<br>`;
+});
+		this.sendReplyBox(`${buf}</div>`);
+	},
+	e4egutter: function (target, room, user) {
+		if (!this.runBroadcast()) return;
+		let buf = `<div class=infobox-limited><center><h2>List Of Alola Formes Pokemon</h2></center>`;
+		let jillianDex = require('../../data/mods/evosforeveryone/pokedex.js').BattlePokedex;
+		if (!jillianDex) return this.errorReply("Error Fetching Istor Data.");
+		Object.values(jillianDex).forEach(mon => {
+			buf += `&quot;${mon.species}&quot;: {<br> &quot;t1&quot;: &quot;${mon.types[0]}&quot;, <br>&quot;t2&quot;: &quot;${mon.types[1]}&quot;,<br> &quot;bs&quot;: { <br>&quot;hp&quot;: ${mon.baseStats.hp}, <br>&quot;at&quot;: ${mon.baseStats.atk}, <br> &quot;df&quot;: ${mon.baseStats.def}, <br> &quot;sa&quot;: ${mon.baseStats.spa},<br>&quot;sd&quot;: ${mon.baseStats.spd}, <br>&quot;sp&quot;: ${mon.baseStats.spe} <br> }, <br> &quot;w&quot;: ${mon.weightkg}<br> },<br>`;
+});
+		this.sendReplyBox(`${buf}</div>`);
+	},
 		mgutter: function (target, room, user) {
 		if (!this.runBroadcast()) return;
 		let buf = `<div class=infobox-limited><center><h2>List Of Alola Formes Pokemon</h2></center>`;
@@ -557,6 +597,18 @@ evgutter: function (target, room, user) {
 		if (!this.runBroadcast()) return;
 		let buf = `<div class=infobox-limited><center><h2>List Of Eternal Pokemon Moves</h2></center>`;
 		let eternalDex = require('../../data/mods/eternal/moves.js').BattleMovedex;
+		if (!eternalDex) return this.errorReply("Error Fetching Eternal Data.");
+		Object.values(eternalDex).forEach(move => {
+			if (!move.onPrepareHit) {
+			buf += `'${move.name}': { <br>bp: ${move.basePower}, <br>type: '${move.type}', <br>category: '${move.category}',<br> zp: ${move.zMovePower}<br> },<br>`;
+			}
+		});
+		this.sendReplyBox(`${buf}</div>`);
+	},
+		csmoves: function (target, room, user) {
+		if (!this.runBroadcast()) return;
+		let buf = `<div class=infobox-limited><center><h2>List Of Eternal Pokemon Moves</h2></center>`;
+		let eternalDex = require('../../data/mods/cleanslate/moves.js').BattleMovedex;
 		if (!eternalDex) return this.errorReply("Error Fetching Eternal Data.");
 		Object.values(eternalDex).forEach(move => {
 			if (!move.onPrepareHit) {
