@@ -1617,7 +1617,6 @@ morphoknightex: {
 	 heightm: 0.2,
     weightkg: 2,
 },
-},
 	
      
 //    /* mario: {
