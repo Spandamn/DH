@@ -57,7 +57,7 @@ exports.BattleAbilities = {
 		},
 		onWeather(target, source, effect) {
 			if (['raindance', 'primordialsea', 'desolateland', 'solarsnow', 'sunnyday'].includes(effect.id)){
-				if (['desolateland', 'solarsnow', 'sunnyday'].includes(effect.id) == (target.volatiles['atmosphericperversion'] == target.volatiles['weatherbreak'])) {
+				if (['desolateland', 'solarsnow', 'sunnyday'].includes(effect.id) === (!!target.volatiles['atmosphericperversion'] === !!target.volatiles['weatherbreak'])) {
 					this.damage(target.maxhp / 8, target, target);
 				} else {
 				this.heal(target.maxhp / 8);
@@ -74,7 +74,7 @@ exports.BattleAbilities = {
 		shortDesc: "If Sunny Day is active, this Pokemon's Speed is doubled.",
 		onModifySpe(spe, pokemon) {
 			if (this.field.isWeather(['sunnyday', 'desolateland', 'solarsnow'])) {
-				if (pokemon.volatiles['atmosphericperversion'] == pokemon.volatiles['weatherbreak']){
+				if (!!pokemon.volatiles['atmosphericperversion'] === !!pokemon.volatiles['weatherbreak']){
 					return this.chainModify(2);
 				} 	else {
 					return this.chainModify(0.5);
@@ -92,7 +92,7 @@ exports.BattleAbilities = {
 		shortDesc: "If Hail is active, this Pokemon's Speed is doubled.",
 		onModifySpe(spe, pokemon) {
 			if (this.field.isWeather(['hail', 'solarsnow'])) {
-				if (pokemon.volatiles['atmosphericperversion'] == pokemon.volatiles['weatherbreak']){
+				if (!!pokemon.volatiles['atmosphericperversion'] === !!pokemon.volatiles['weatherbreak']){
 					return this.chainModify(2);
 				} 	else {
 					return this.chainModify(0.5);
@@ -129,7 +129,7 @@ exports.BattleAbilities = {
 		onAllyModifyAtk(atk, pokemon) {
 			if (this.effectData.target.baseTemplate.baseSpecies !== 'Cherrim') return;
 			if (this.field.isWeather(['sunnyday', 'desolateland', 'solarsnow'])) {
-				if (pokemon.volatiles['atmosphericperversion'] == pokemon.volatiles['weatherbreak']){
+				if (!!pokemon.volatiles['atmosphericperversion'] === !!pokemon.volatiles['weatherbreak']){
 					return this.chainModify(1.5);
 				} 	else {
 					return this.chainModify([0x0AAB, 0x1000]);
@@ -140,7 +140,7 @@ exports.BattleAbilities = {
 		onAllyModifySpD(spd, pokemon) {
 			if (this.effectData.target.baseTemplate.baseSpecies !== 'Cherrim') return;
 			if (this.field.isWeather(['sunnyday', 'desolateland', 'solarsnow'])) {
-				if (pokemon.volatiles['atmosphericperversion'] == pokemon.volatiles['weatherbreak']){
+				if (!!pokemon.volatiles['atmosphericperversion'] === !!pokemon.volatiles['weatherbreak']){
 					return this.chainModify(1.5);
 				} 	else {
 					return this.chainModify([0x0AAB, 0x1000]);
@@ -159,7 +159,7 @@ exports.BattleAbilities = {
 		shortDesc: "If Hail is active, this Pokemon heals 1/16 of its max HP each turn; immunity to Hail.",
 		onWeather(target, source, effect) {
 			if (effect.id === 'hail' || effect.id === 'solarsnow') {
-				if (target.volatiles['atmosphericperversion'] == target.volatiles['weatherbreak']){
+				if (!!target.volatiles['atmosphericperversion'] === !!target.volatiles['weatherbreak']){
 					this.heal(target.maxhp / 16);
 				} else {
 					this.damage(target.maxhp / 16, target, target);
@@ -179,13 +179,13 @@ exports.BattleAbilities = {
 		desc: "If Sunny Day is active, this Pokemon cannot gain a major status condition and Rest will fail for it.",
 		shortDesc: "If Sunny Day is active, this Pokemon cannot be statused and Rest will fail for it.",
 		onSetStatus(status, target, source, effect) {
-			if (target.volatiles['weatherbreak'] === target.volatiles['atmosphericperversion'] && this.field.isWeather(['sunnyday', 'desolateland', 'solarsnow'])) {
+			if (!!target.volatiles['weatherbreak'] === !!target.volatiles['atmosphericperversion'] && this.field.isWeather(['sunnyday', 'desolateland', 'solarsnow'])) {
 				if (effect && effect.status) this.add('-immune', target, '[msg]', '[from] ability: Leaf Guard');
 				return false;
 			}
 		},
 		onTryAddVolatile(status, target) {
-			if (target.volatiles['weatherbreak'] === target.volatiles['atmosphericperversion'] && status.id === 'yawn' && this.field.isWeather(['sunnyday', 'desolateland', 'solarsnow'])) {
+			if (!!target.volatiles['weatherbreak'] === !!target.volatiles['atmosphericperversion'] && status.id === 'yawn' && this.field.isWeather(['sunnyday', 'desolateland', 'solarsnow'])) {
 				this.add('-immune', target, '[msg]', '[from] ability: Leaf Guard');
 				return null;
 			}
@@ -206,7 +206,7 @@ exports.BattleAbilities = {
 		onModifySpAPriority: 5,
 		onModifySpA(spa, pokemon) {
 			if (this.field.isWeather(['sunnyday', 'desolateland', 'solarsnow'])) {
-				if (pokemon.volatiles['atmosphericperversion'] == pokemon.volatiles['weatherbreak']){
+				if (!!pokemon.volatiles['atmosphericperversion'] === !!pokemon.volatiles['weatherbreak']){
 					return this.chainModify(1.5);
 				} 	else {
 					return this.chainModify([0x0AAB, 0x1000]);
@@ -215,7 +215,7 @@ exports.BattleAbilities = {
 		},
 		onWeather(target, source, effect) {
 			if (effect.id === 'sunnyday' || effect.id === 'desolateland' || effect.id === 'solarsnow') {
-				if (target.volatiles['atmosphericperversion'] == target.volatiles['weatherbreak']){
+				if (!!target.volatiles['atmosphericperversion'] === !!target.volatiles['weatherbreak']){
 					this.damage(target.maxhp / 8, target, target);
 				} else {
 					this.heal(target.maxhp / 8);
@@ -241,7 +241,7 @@ exports.BattleAbilities = {
 		onModifyAccuracy(accuracy, target) {
 			if (typeof accuracy !== 'number') return;
 			if (target && this.field.isWeather(['hail', 'solarsnow'])) {
-				if (target.volatiles['atmosphericperversion'] == target.volatiles['weatherbreak']){
+				if (!!target.volatiles['atmosphericperversion'] === !!target.volatiles['weatherbreak']){
 					this.debug('Snow Cloak - decreasing accuracy');
 					return accuracy * 0.8;
 				} else {
@@ -283,7 +283,7 @@ exports.BattleAbilities = {
 		onResidualOrder: 26,
 		onResidualSubOrder: 1,
 		onResidual(pokemon) {
-			if ((this.field.isWeather(['sunnyday', 'desolateland', 'solarsnow']) || this.randomChance(1, 2)) == (pokemon.volatiles['atmosphericperversion'] == pokemon.volatiles['weatherbreak'])) {
+			if ((this.field.isWeather(['sunnyday', 'desolateland', 'solarsnow']) || this.randomChance(1, 2)) === (!!pokemon.volatiles['atmosphericperversion'] === !!pokemon.volatiles['weatherbreak'])) {
 				if (pokemon.hp && !pokemon.item && this.getItem(pokemon.lastItem).isBerry) {
 					pokemon.setItem(pokemon.lastItem);
 					pokemon.lastItem = '';
@@ -300,7 +300,7 @@ exports.BattleAbilities = {
 		shortDesc: "If Rain Dance is active, this Pokemon heals 1/16 of its max HP each turn.",
 		onWeather(target, source, effect) {
 			if (effect.id === 'rain') {
-				if (target.volatiles['atmosphericperversion'] == target.volatiles['weatherbreak']){
+				if (!!target.volatiles['atmosphericperversion'] === !!target.volatiles['weatherbreak']){
 					this.heal(target.maxhp / 16);
 				} else {
 					this.damage(target.maxhp / 16, target, target);
@@ -317,7 +317,7 @@ exports.BattleAbilities = {
 		shortDesc: "If Rain Dance is active, this Pokemon's Speed is doubled.",
 		onModifySpe(spe, pokemon) {
 			if (this.field.isWeather(['raindance', 'primordialsea'])) {
-				if (pokemon.volatiles['atmosphericperversion'] == pokemon.volatiles['weatherbreak']){
+				if (!!pokemon.volatiles['atmosphericperversion'] === !!pokemon.volatiles['weatherbreak']){
 					return this.chainModify(2);
 				} 	else {
 					return this.chainModify(0.5);
@@ -339,7 +339,7 @@ exports.BattleAbilities = {
 		onModifyAccuracy(accuracy, target) {
 			if (typeof accuracy !== 'number') return;
 			if (this.field.isWeather(['sandstorm', 'cactuspower', 'yeti'])) {
-				if (target && (target.volatiles['atmosphericperversion'] == target.volatiles['weatherbreak'])){
+				if (target && (!!target.volatiles['atmosphericperversion'] === !!target.volatiles['weatherbreak'])){
 					this.debug('Sand Veil - decreasing accuracy');
 					return accuracy * 0.8;
 				} else {
@@ -359,7 +359,7 @@ exports.BattleAbilities = {
 		shortDesc: "If Sandstorm is active, this Pokemon's Speed is doubled; immunity to Sandstorm.",
 		onModifySpe(spe, pokemon) {
 			if (this.field.isWeather(['sandstorm', 'cactuspower', 'yeti'])) {
-				if (pokemon.volatiles['atmosphericperversion'] == pokemon.volatiles['weatherbreak']){
+				if (!!pokemon.volatiles['atmosphericperversion'] === !!pokemon.volatiles['weatherbreak']){
 					return this.chainModify(2);
 				} 	else {
 					return this.chainModify(0.5);
@@ -405,7 +405,7 @@ exports.BattleAbilities = {
 		shortDesc: "This Pokemon's allies have the power of their special attacks multiplied by 1.3.",
 		onBasePowerPriority: 8,
 		onAllyBasePower(basePower, attacker, defender, move) {
-			if ((defender.hasAbility('moldedstall') && defender.willMove()) || ['unstablevoltage', 'teraarmor', 'turbocurse', 'unamazed', 'sturdymold'].includes(defender.getAbility())) return;
+			if ((defender.hasAbility('moldedstall') && defender.willMove()) || (!move.ignoreAbility && defender.hasAbility(['unstablevoltage', 'teraarmor', 'turbocurse', 'unamazed', 'sturdymold']))) return;
 			if (attacker !== this.effectData.target && move.category === 'Special') {
 				this.debug('Battery boost');
 				return this.chainModify([0x14CD, 0x1000]);
@@ -601,7 +601,7 @@ exports.BattleAbilities = {
 			}
 		},
 		onTryHit(target, source, move) {
-			if (target !== source && target.volatiles['atmosphericperversion'] === target.volatiles['weatherbreak']){
+			if (target !== source && !!target.volatiles['atmosphericperversion'] === !!target.volatiles['weatherbreak']){
 				if (move.type === 'Fire' && this.field.isWeather(['sunnyday', 'desolateland', 'solarsnow'])) {
 					if (!target.addVolatile('flashfire')) {
 						this.add('-immune', target, '[msg]', '[from] ability: Flash Weather');
@@ -673,9 +673,9 @@ exports.BattleAbilities = {
 	"moldedstall": {
         shortDesc: "No abilities have an effect, other than this one, until after this Pokemon acts.",
 			onAnyBeforeMove(attacker, defender, move) {
-			if (attacker !== defender && this.effectData.target.willMove() && attacker !== this.effectData.target) {
+			if (this.effectData.target.willMove() && attacker !== this.effectData.target) {
 					let bannedAbilities = ['battlebond', 'comatose', 'disguise', 'multitype', 'powerconstruct', 'rkssystem', 'schooling', 'shieldsdown', 'stancechange', 'truant', 'resurrection', 'magicalwand', 'sleepingsystem', 'cursedcloak', 'appropriation', 'disguiseburden', 'hideandseek', 'beastcostume', 'spiralpower', 'optimize', 'prototype', 'typeillusionist', 'godoffertility', 'foundation', 'sandyconstruct', 'victorysystem', 'techequip', 'technicalsystem', 'triagesystem', 'geneticalgorithm', 'effectsetter', 'tacticalcomputer', 'mitosis', 'barbstance', 'errormacro', 'combinationdrive', 'stanceshield', 'unfriend', 'desertmirage', 'sociallife', 'cosmology', 'crystallizedshield', 'compression', 'whatdoesthisdo', 'underpressure', 'poisontouch', 'magician'];
-					if (!bannedAbilities.includes(attacker.getAbility()) && !attacker.getAbility().isUnbreakable){
+					if (!bannedAbilities.includes(attacker.getAbility()) && !attacker.getAbility().isUnbreakable && (!move.ignoreAbility || defender !== this.effectData.target)){
 	         		attacker.addVolatile('teraarmor');
 					}
 			}
@@ -829,7 +829,7 @@ exports.BattleAbilities = {
 		onResidualOrder: 5,
 		onResidualSubOrder: 1,
 		onResidual(pokemon) {
-			if (pokemon.volatiles['weatherbreak'] === pokemon.volatiles['atmosphericperversion'] && pokemon.status && this.field.isWeather(['sandstorm', 'cactuspower', 'yeti'])) {
+			if (!!pokemon.volatiles['weatherbreak'] === !!pokemon.volatiles['atmosphericperversion'] && pokemon.status && this.field.isWeather(['sandstorm', 'cactuspower', 'yeti'])) {
 				this.add('-activate', pokemon, 'ability: Sandy Skin');
 				pokemon.cureStatus();
 			}
@@ -846,7 +846,7 @@ exports.BattleAbilities = {
 		onResidualOrder: 5,
 		onResidualSubOrder: 1,
 		onResidual(pokemon) {
-			if (pokemon.volatiles['weatherbreak'] === pokemon.volatiles['atmosphericperversion'] && pokemon.status && this.field.isWeather(['yeti', 'sandstorm', 'cactuspower'])) {
+			if (!!pokemon.volatiles['weatherbreak'] === !!pokemon.volatiles['atmosphericperversion'] && pokemon.status && this.field.isWeather(['yeti', 'sandstorm', 'cactuspower'])) {
 				this.add('-activate', pokemon, 'ability: Sand Shed');
 				pokemon.cureStatus();
 			}
@@ -928,7 +928,7 @@ exports.BattleAbilities = {
 					this.add('-immune', target, '[msg]');
 				} else {
 					if (this.field.isWeather(['sandstorm', 'cactuspower', 'yeti'])) {
-						if (target.volatiles['atmosphericperversion'] === target.volatiles['weatherbreak']){
+						if (!!target.volatiles['atmosphericperversion'] === !!target.volatiles['weatherbreak']){
 							this.boost({
 								atk: -2
 							}, target, pokemon);
@@ -1060,7 +1060,7 @@ exports.BattleAbilities = {
 		onModifyAccuracy(accuracy, target) {
 			if (typeof accuracy !== 'number') return;
 			if (this.field.isWeather(['yeti', 'sandstorm', 'cactuspower'])) {
-				if (target && (target.volatiles['atmosphericperversion'] == target.volatiles['weatherbreak'])){
+				if (target && (!!target.volatiles['atmosphericperversion'] === !!target.volatiles['weatherbreak'])){
 					this.debug('Sand Veil - decreasing accuracy');
 					return accuracy * 0.8;
 				} else {
@@ -1080,7 +1080,7 @@ exports.BattleAbilities = {
 			for (const target of pokemon.side.foe.active) {
 				if (!target || target.fainted) continue;
 				if (this.field.isWeather(['hail', 'solarsnow', 'yeti']) && this.random(10) < 3) {
-					if (pokemon.volatiles['atmosphericperversion'] == pokemon.volatiles['weatherbreak']){
+					if (!!pokemon.volatiles['atmosphericperversion'] === !!pokemon.volatiles['weatherbreak']){
 						target.trySetStatus('par', pokemon, effect);
 					} else {
 						target.cureStatus();
@@ -2114,7 +2114,7 @@ exports.BattleAbilities = {
 		onSourceModifyAccuracy(accuracy) {
 			if (this.field.isWeather(['sandstorm', 'cactuspower', 'yeti'])) {
 				if (typeof accuracy !== 'number') return;
-				if (this.effectData.target.volatiles['atmosphericperversion'] == this.effectData.target.volatiles['weatherbreak']){
+				if (!!this.effectData.target.volatiles['atmosphericperversion'] === !!this.effectData.target.volatiles['weatherbreak']){
 					this.debug('Sandy Eyes - enhancing accuracy');
 					return accuracy * 1.333;
 				} else {
@@ -2519,13 +2519,13 @@ exports.BattleAbilities = {
 		},
 		onWeather(target, source, effect) {
 			if (effect.id === 'hail' || effect.id === 'sunnyday' || effect.id === 'desolateland' || effect.id === 'yeti') {
-				if (target.volatiles['atmosphericperversion'] == target.volatiles['weatherbreak']){
+				if (!!target.volatiles['atmosphericperversion'] === !!target.volatiles['weatherbreak']){
 					this.heal(target.maxhp / 16, target, target);
 				} else {
 					this.damage(target.maxhp / 16, target, target);
 				}
 			} else if (effect.id === 'solarsnow') {
-				if (target.volatiles['atmosphericperversion'] == target.volatiles['weatherbreak']){
+				if (!!target.volatiles['atmosphericperversion'] === !!target.volatiles['weatherbreak']){
 					this.heal(target.maxhp / 8, target, target);
 				} else {
 					this.damage(target.maxhp / 8, target, target);
@@ -3097,7 +3097,7 @@ exports.BattleAbilities = {
 		onModifyAtkPriority: 5,
 		onModifyAtk(pokemon, atk) {
 			if (this.weather) {
-				if (pokemon.volatiles['atmosphericperversion'] == pokemon.volatiles['weatherbreak']){
+				if (!!pokemon.volatiles['atmosphericperversion'] === !!pokemon.volatiles['weatherbreak']){
 					return this.chainModify(1.5);
 				} else {
 					return this.chainModify([0x0AAB, 0x1000]);
@@ -3151,7 +3151,7 @@ exports.BattleAbilities = {
 		onModifySpAPriority: 5,
 		onModifySpA(spa, pokemon) {
 			if (this.field.isWeather(['raindance', 'primordialsea'])) {
-				if (pokemon.volatiles['atmosphericperversion'] == pokemon.volatiles['weatherbreak']){
+				if (!!pokemon.volatiles['atmosphericperversion'] === !!pokemon.volatiles['weatherbreak']){
 					return this.chainModify(1.5);
 				} 	else {
 					return this.chainModify([0x0AAB, 0x1000]);
@@ -3470,25 +3470,25 @@ exports.BattleAbilities = {
 	},
 	"unstablevoltage": {
 		shortDesc: "Attacks that either target this Pokémon or are used by it have perfect accuracy. Ignores abilities when attacking and attacked.",
-		onAnyAccuracy(accuracy, target, source, move) {
+		onAnyAccuracy(accuracy, target, source, move) { // No Guard effects
 			if (move && (source === this.effectData.target || target === this.effectData.target)) {
 				return true;
 			}
 			return accuracy;
 		},
-		onAnyBeforeMove(attacker, defender, move) {
-			if (attacker !== this.effectData.target && attacker !== defender && defender === this.effectData.target) {
+		onModifyMove(move) { // Mold Breaker effects
+			move.ignoreAbility = true;
+		},
+		onAnyBeforeMove(attacker, defender, move) { // Defensive Mold Breaker
+			if (attacker !== defender && defender === this.effectData.target) {
 					let bannedAbilities = ['battlebond', 'comatose', 'disguise', 'multitype', 'powerconstruct', 'rkssystem', 'schooling', 'shieldsdown', 'stancechange', 'truant', 'resurrection', 'magicalwand', 'sleepingsystem', 'cursedcloak', 'appropriation', 'disguiseburden', 'hideandseek', 'beastcostume', 'spiralpower', 'optimize', 'prototype', 'typeillusionist', 'godoffertility', 'foundation', 'sandyconstruct', 'victorysystem', 'techequip', 'technicalsystem', 'triagesystem', 'geneticalgorithm', 'effectsetter', 'tacticalcomputer', 'mitosis', 'barbstance', 'errormacro', 'combinationdrive', 'stanceshield', 'unfriend', 'desertmirage', 'sociallife', 'cosmology', 'crystallizedshield', 'compression', 'whatdoesthisdo', 'underpressure', 'poisontouch', 'magician'];
-					if (!bannedAbilities.includes(attacker.getAbility()) && !attacker.getAbility().isUnbreakable){
+					if (!bannedAbilities.includes(attacker.getAbility()) && !attacker.getAbility().isUnbreakable && !move.ignoreAbility){
 	         		attacker.addVolatile('teraarmor');
 					}
 			}
      	},
 		onStart(pokemon) {
 			this.add('-ability', pokemon, 'Unstable Voltage');
-		},
-		onModifyMove(move) {
-			move.ignoreAbility = true;
 		},
 		id: "unstablevoltage",
 		name: "Unstable Voltage",
@@ -3559,7 +3559,7 @@ exports.BattleAbilities = {
 		onModifyAtkPriority: 5,
 		onModifyAtk(atk, pokemon) {
 			if (this.field.isWeather(['raindance', 'primordialsea'])) {
-				if (pokemon.volatiles['atmosphericperversion'] == pokemon.volatiles['weatherbreak']){
+				if (!!pokemon.volatiles['atmosphericperversion'] === !!pokemon.volatiles['weatherbreak']){
 					return this.chainModify(2);
 				} 	else {
 					return this.chainModify(0.5);
@@ -3568,7 +3568,7 @@ exports.BattleAbilities = {
 		},
 		onModifySpe(spe, pokemon) {
 			if (this.field.isWeather(['raindance', 'primordialsea'])) {
-				if (pokemon.volatiles['atmosphericperversion'] == pokemon.volatiles['weatherbreak']){
+				if (!!pokemon.volatiles['atmosphericperversion'] === !!pokemon.volatiles['weatherbreak']){
 					return this.chainModify(2);
 				} 	else {
 					return this.chainModify(0.5);
@@ -3734,7 +3734,7 @@ exports.BattleAbilities = {
 		},
 		onWeather(target, source, effect) {
 			if (effect.id === 'sunnyday' || effect.id === 'desolateland' || effect.id === 'solarsnow') {
-				if (target.volatiles['atmosphericperversion'] == target.volatiles['weatherbreak']){
+				if (!!target.volatiles['atmosphericperversion'] === !!target.volatiles['weatherbreak']){
 					this.heal(target.maxhp / 8);
 				} else {
 					this.damage(target.maxhp / 8, target, target);
@@ -4048,7 +4048,7 @@ exports.BattleAbilities = {
 		shortDesc: "Speed under Hail or Sand is 4x, immunity to both.",
 		onModifySpe(spe, pokemon) {
 			if (this.field.isWeather(['hail', 'sandstorm', 'cactuspower', 'solarsnow', 'yeti'])) {
-				if (pokemon.volatiles['atmosphericperversion'] == pokemon.volatiles['weatherbreak']){
+				if (!!pokemon.volatiles['atmosphericperversion'] === !!pokemon.volatiles['weatherbreak']){
 					return this.chainModify(4);
 				} 	else {
 					return this.chainModify(0.25);
@@ -4409,7 +4409,7 @@ exports.BattleAbilities = {
 					mod *= 1.5;
 			}
 			if (this.field.isWeather(['raindance', 'primordialsea'])) {
-				if (attacker.volatiles['atmosphericperversion'] == attacker.volatiles['weatherbreak']){
+				if (!!attacker.volatiles['atmosphericperversion'] === !!attacker.volatiles['weatherbreak']){
 					mod *= 2;
 				} else {
 					mod *= 0.5;
@@ -4423,7 +4423,7 @@ exports.BattleAbilities = {
 					mod *= 1.5;
 			}
 			if (this.field.isWeather(['raindance', 'primordialsea'])) {
-				if (pokemon.volatiles['atmosphericperversion'] == pokemon.volatiles['weatherbreak']){
+				if (!!pokemon.volatiles['atmosphericperversion'] === !!pokemon.volatiles['weatherbreak']){
 					mod *= 2;
 				} else {
 					mod *= 0.5;
@@ -4597,7 +4597,7 @@ exports.BattleAbilities = {
 		},
 		onWeather(target, source, effect) {
 			if (['hail', 'solarsnow', 'yeti'].includes(effect.id)) {
-				if (target.volatiles['atmosphericperversion'] == target.volatiles['weatherbreak']){
+				if (!!target.volatiles['atmosphericperversion'] === !!target.volatiles['weatherbreak']){
 					this.heal(target.maxhp / 8);
 				} else {
 					this.damage(target.maxhp / 8, target, target);
@@ -4630,7 +4630,7 @@ exports.BattleAbilities = {
 		},
 		onModifySpe(spe, pokemon) {
 			if (this.field.isWeather(['hail', 'solarsnow', 'yeti'])) {
-				if (pokemon.volatiles['atmosphericperversion'] == pokemon.volatiles['weatherbreak']){
+				if (!!pokemon.volatiles['atmosphericperversion'] === !!pokemon.volatiles['weatherbreak']){
 					return this.chainModify(2);
 				} 	else {
 					return this.chainModify(0.5);
@@ -4692,7 +4692,7 @@ exports.BattleAbilities = {
 		onModifyDefPriority: 6,
 		onModifyDef(def, pokemon) {
 			if (this.field.isWeather(['hail', 'solarsnow', 'yeti'])) {
-				if (pokemon.volatiles['atmosphericperversion'] == pokemon.volatiles['weatherbreak']){
+				if (!!pokemon.volatiles['atmosphericperversion'] === !!pokemon.volatiles['weatherbreak']){
 					return this.chainModify(2);
 				} 	else {
 					return this.chainModify(0.5);
@@ -4702,7 +4702,7 @@ exports.BattleAbilities = {
 		onModifySpDPriority: 6,
 		onModifySpD(spd, pokemon) {
 			if (this.field.isWeather(['hail', 'solarsnow', 'yeti'])) {
-				if (pokemon.volatiles['atmosphericperversion'] == pokemon.volatiles['weatherbreak']){
+				if (!!pokemon.volatiles['atmosphericperversion'] === !!pokemon.volatiles['weatherbreak']){
 					return this.chainModify(2);
 				} 	else {
 					return this.chainModify(0.5);
@@ -4785,7 +4785,7 @@ exports.BattleAbilities = {
 		},
 		onWeather(target, source, effect) {
 			if (effect.id === 'raindance' || effect.id === 'primordialsea') {
-				if (target.volatiles['atmosphericperversion'] == target.volatiles['weatherbreak']){
+				if (!!target.volatiles['atmosphericperversion'] === !!target.volatiles['weatherbreak']){
 					this.heal(target.maxhp / 4);
 				} else {
 					this.damage(target.maxhp / 4, target, target);
@@ -4971,13 +4971,13 @@ exports.BattleAbilities = {
 		},
 		onModifySpe(spe, pokemon) {
 			if (this.field.isWeather(['raindance', 'primordialsea'])) {
-				if (pokemon.volatiles['atmosphericperversion'] == pokemon.volatiles['weatherbreak']){
+				if (!!pokemon.volatiles['atmosphericperversion'] === !!pokemon.volatiles['weatherbreak']){
 					return this.chainModify(2);
 				} 	else {
 					return this.chainModify(0.5);
 				}
 			} else if (this.field.isWeather(['sunnyday', 'desolateland', 'solarsnow'])) {
-				if (pokemon.volatiles['atmosphericperversion'] == pokemon.volatiles['weatherbreak']){
+				if (!!pokemon.volatiles['atmosphericperversion'] === !!pokemon.volatiles['weatherbreak']){
 					return this.chainModify(0.5);
 				} 	else {
 					return this.chainModify(2);
@@ -5635,7 +5635,7 @@ exports.BattleAbilities = {
 		shortDesc: "Under Sun or Rain, Speed is doubled and regains 1/8 of max health at the end of the turn. Ignores Sun's Water Debuff.",
 		onModifySpe(spe, pokemon) {
 			if (this.field.isWeather(['raindance', 'primordialsea', 'sunnyday', 'desolateland', 'solarsnow'])) {
-				if (pokemon.volatiles['atmosphericperversion'] == pokemon.volatiles['weatherbreak']){
+				if (!!pokemon.volatiles['atmosphericperversion'] === !!pokemon.volatiles['weatherbreak']){
 					return this.chainModify(2);
 				} 	else {
 					return this.chainModify(0.5);
@@ -5644,7 +5644,7 @@ exports.BattleAbilities = {
 		},
 		onWeather(target, source, effect) {
 			if (effect.id === 'sunnyday' || effect.id === 'desolateland' || effect.id === 'solarsnow' || effect.id === 'raindance' || effect.id === 'primordialsea') {
-				if (target.volatiles['atmosphericperversion'] == target.volatiles['weatherbreak']){
+				if (!!target.volatiles['atmosphericperversion'] === !!target.volatiles['weatherbreak']){
 					this.heal(target.maxhp / 8, target, target);
 				} 	else {
 					this.damage(target.maxhp / 8, target, target);
@@ -5654,7 +5654,7 @@ exports.BattleAbilities = {
 		onModifyAtkPriority: 5,
 		onModifyAtk(atk, attacker, defender, move) {
 			if (move.type === 'Water' && this.fieldisWeather(['sunnyday', 'desolateland', 'solarsnow'])) {
-				if (attacker.volatiles['atmosphericperversion'] == attacker.volatiles['weatherbreak']){
+				if (!!attacker.volatiles['atmosphericperversion'] === !!attacker.volatiles['weatherbreak']){
 					return this.chainModify(2);
 				} 	else {
 					return this.chainModify([0x0AAB, 0x1000]);
@@ -5664,7 +5664,7 @@ exports.BattleAbilities = {
 		onModifySpAPriority: 5,
 		onModifySpA(atk, attacker, defender, move) {
 			if (move.type === 'Water' && this.field.isWeather(['sunnyday', 'desolateland', 'solarsnow'])) {
-				if (attacker.volatiles['atmosphericperversion'] == attacker.volatiles['weatherbreak']){
+				if (!!attacker.volatiles['atmosphericperversion'] === !!attacker.volatiles['weatherbreak']){
 					return this.chainModify(2);
 				} 	else {
 					return this.chainModify([0x0AAB, 0x1000]);
@@ -6130,7 +6130,7 @@ exports.BattleAbilities = {
 	"foundation": {
 		shortDesc: "This Pokemon's STAB bonus is 2x rather than 1.5x. When this Pokemon is at or below half of its maximum HP, this Pokemon transforms into Zeeeee-Complete. Zeeeee-Complete's STAB bonus becomes 2.33x rather than 2x.",
 		onModifyMove(move, attacker, defender) {
-			if ((defender.hasAbility('moldedstall') && defender.willMove()) || ['unstablevoltage', 'teraarmor', 'turbocurse', 'unamazed', 'sturdymold'].includes(defender.getAbility())) return;
+			if ((defender.hasAbility('moldedstall') && defender.willMove()) || (!move.ignoreAbility && defender.hasAbility(['unstablevoltage', 'teraarmor', 'turbocurse', 'unamazed', 'sturdymold']))) return;
 			if (attacker.template.speciesid === 'zeeeeecomplete') {
 				move.stab = 2.333;
 			}
@@ -6699,7 +6699,7 @@ exports.BattleAbilities = {
 		},
 		onWeather(target, source, effect) {
 			if (effect.id === 'sunnyday' || effect.id === 'desolateland' || effect.id === 'solarsnow') {
-				if (target.volatiles['atmosphericperversion'] == target.volatiles['weatherbreak']){
+				if (!!target.volatiles['atmosphericperversion'] === !!target.volatiles['weatherbreak']){
 					this.heal(target.maxhp / 8);
 				} else {
 					this.damage(target.maxhp / 8, target, target);
@@ -7183,7 +7183,7 @@ exports.BattleAbilities = {
 		onAllyModifySpA(atk, pokemon) {
 			if (this.effectData.target.baseTemplate.baseSpecies !== 'Cherform') return;
 			if (this.field.isWeather() && !this.field.isWeather(['deltastream'])) {
-				if (pokemon.volatiles['atmosphericperversion'] == pokemon.volatiles['weatherbreak']){
+				if (!!pokemon.volatiles['atmosphericperversion'] === !!pokemon.volatiles['weatherbreak']){
 					return this.chainModify(1.5);
 				} 	else {
 					return this.chainModify([0x0AAB, 0x1000]);
@@ -7191,10 +7191,10 @@ exports.BattleAbilities = {
 			}
 		},
 		onModifySpDPriority: 4,
-		onAllyModifySpD(spd) {
+		onAllyModifySpD(spd, pokemon) {
 			if (this.effectData.target.baseTemplate.baseSpecies !== 'Cherform') return;
 			if (this.field.isWeather()) {
-				if (pokemon.volatiles['atmosphericperversion'] == pokemon.volatiles['weatherbreak']){
+				if (!!pokemon.volatiles['atmosphericperversion'] === !!pokemon.volatiles['weatherbreak']){
 					return this.chainModify(1.5);
 				} 	else {
 					return this.chainModify([0x0AAB, 0x1000]);
@@ -7396,7 +7396,7 @@ exports.BattleAbilities = {
 	    onModifyAtkPriority: 5,
 	    onModifyAtk(atk, pokemon) {
 	        if (this.field.isWeather()) {
-				  if (this.field.isWeather(['sunnyday', 'desolateland', 'solarsnow']) == (pokemon.volatiles['atmosphericperversion'] == pokemon.volatiles['weatherbreak'])) {
+				  if (this.field.isWeather(['sunnyday', 'desolateland', 'solarsnow']) === (!!pokemon.volatiles['atmosphericperversion'] === !!pokemon.volatiles['weatherbreak'])) {
 						return this.chainModify(2);
 					} 	else {
 						return this.chainModify(0.25);
@@ -7406,7 +7406,7 @@ exports.BattleAbilities = {
 	    onModifySpAPriority: 5,
 	    onModifySpA(spa, pokemon) {
 	        if (this.field.isWeather()) {
-				  if (this.field.isWeather(['sunnyday', 'desolateland', 'solarsnow']) == (pokemon.volatiles['atmosphericperversion'] == pokemon.volatiles['weatherbreak'])) {
+				  if (this.field.isWeather(['sunnyday', 'desolateland', 'solarsnow']) === (!!pokemon.volatiles['atmosphericperversion'] === !!pokemon.volatiles['weatherbreak'])) {
 						return this.chainModify(2);
 					} 	else {
 						return this.chainModify(0.25);
@@ -7416,7 +7416,7 @@ exports.BattleAbilities = {
 	    onModifyDefPriority: 5,
 	    onModifyDef(def, pokemon) {
 	        if (this.field.isWeather()) {
-				  if (this.field.isWeather(['sunnyday', 'desolateland', 'solarsnow']) == (pokemon.volatiles['atmosphericperversion'] == pokemon.volatiles['weatherbreak'])) {
+				  if (this.field.isWeather(['sunnyday', 'desolateland', 'solarsnow']) === (!!pokemon.volatiles['atmosphericperversion'] === !!pokemon.volatiles['weatherbreak'])) {
 						return this.chainModify(2);
 					} 	else {
 						return this.chainModify(0.25);
@@ -7426,7 +7426,7 @@ exports.BattleAbilities = {
 	    onModifySpDPriority: 5,
 	    onModifySpD(spd, pokemon) {
 	        if (this.field.isWeather()) {
-				  if (this.field.isWeather(['sunnyday', 'desolateland', 'solarsnow']) == (pokemon.volatiles['atmosphericperversion'] == pokemon.volatiles['weatherbreak'])) {
+				  if (this.field.isWeather(['sunnyday', 'desolateland', 'solarsnow']) === (!!pokemon.volatiles['atmosphericperversion'] === !!pokemon.volatiles['weatherbreak'])) {
 						return this.chainModify(2);
 					} 	else {
 						return this.chainModify(0.25);
@@ -7435,7 +7435,7 @@ exports.BattleAbilities = {
 	    },
 	    onModifySpe(spe, pokemon) {
 	        if (this.field.isWeather()) {
-				  if (this.field.isWeather(['sunnyday', 'desolateland', 'solarsnow']) == (pokemon.volatiles['atmosphericperversion'] == pokemon.volatiles['weatherbreak'])) {
+				  if (this.field.isWeather(['sunnyday', 'desolateland', 'solarsnow']) === (!!pokemon.volatiles['atmosphericperversion'] === !!pokemon.volatiles['weatherbreak'])) {
 						return this.chainModify(2);
 					} 	else {
 						return this.chainModify(0.25);
@@ -7952,7 +7952,7 @@ exports.BattleAbilities = {
 		onModifyMovePriority: -1,
 		onModifyMove(move, attacker, defender) {
 			if (attacker.template.baseSpecies !== 'A Rave-Alola') return;
-			if ((defender.hasAbility('moldedstall') && defender.willMove()) || ['unstablevoltage', 'teraarmor', 'turbocurse', 'unamazed', 'sturdymold'].includes(defender.getAbility())) return;
+			if ((defender.hasAbility('moldedstall') && defender.willMove()) || (!move.ignoreAbility && defender.hasAbility(['unstablevoltage', 'teraarmor', 'turbocurse', 'unamazed', 'sturdymold']))) return;
 			if (attacker.getItem() && move.type === 'Normal' && !['judgment', 'multiattack', 'naturalgift', 'revelationdance', 'technoblast', 'weatherball'].includes(move.id) && !(move.isZ && move.category !== 'Status')) {
 				move.type = attacker.getItem().onPlate;
 				move.optimizeBoosted = true;
@@ -8760,7 +8760,7 @@ exports.BattleAbilities = {
 		onAnyBeforeMove(attacker, defender, move) {
 			if (attacker !== defender && defender === this.effectData.target) {
 					let bannedAbilities = ['battlebond', 'comatose', 'disguise', 'multitype', 'powerconstruct', 'rkssystem', 'schooling', 'shieldsdown', 'stancechange', 'truant', 'resurrection', 'magicalwand', 'sleepingsystem', 'cursedcloak', 'appropriation', 'disguiseburden', 'hideandseek', 'beastcostume', 'spiralpower', 'optimize', 'prototype', 'typeillusionist', 'godoffertility', 'foundation', 'sandyconstruct', 'victorysystem', 'techequip', 'technicalsystem', 'triagesystem', 'geneticalgorithm', 'effectsetter', 'tacticalcomputer', 'mitosis', 'barbstance', 'errormacro', 'combinationdrive', 'stanceshield', 'unfriend', 'desertmirage', 'sociallife', 'cosmology', 'crystallizedshield', 'compression', 'whatdoesthisdo', 'underpressure', 'poisontouch', 'magician'];
-					if (!bannedAbilities.includes(attacker.getAbility()) && !attacker.getAbility().isUnbreakable){
+					if (!bannedAbilities.includes(attacker.getAbility()) && !attacker.getAbility().isUnbreakable && !move.ignoreAbility){
 	         		attacker.addVolatile('teraarmor');
 					}
 			}
@@ -8785,7 +8785,7 @@ exports.BattleAbilities = {
 		onAnyBeforeMove(attacker, defender, move) {
 			if (attacker !== defender && defender === this.effectData.target) {
 					let bannedAbilities = ['battlebond', 'comatose', 'disguise', 'multitype', 'powerconstruct', 'rkssystem', 'schooling', 'shieldsdown', 'stancechange', 'truant', 'resurrection', 'magicalwand', 'sleepingsystem', 'cursedcloak', 'appropriation', 'disguiseburden', 'hideandseek', 'beastcostume', 'spiralpower', 'optimize', 'prototype', 'typeillusionist', 'godoffertility', 'foundation', 'sandyconstruct', 'victorysystem', 'techequip', 'technicalsystem', 'triagesystem', 'geneticalgorithm', 'effectsetter', 'tacticalcomputer', 'mitosis', 'barbstance', 'errormacro', 'combinationdrive', 'stanceshield', 'unfriend', 'desertmirage', 'sociallife', 'cosmology', 'crystallizedshield', 'compression', 'whatdoesthisdo', 'underpressure', 'poisontouch', 'magician'];
-					if (!bannedAbilities.includes(attacker.getAbility()) && !attacker.getAbility().isUnbreakable){
+					if (!bannedAbilities.includes(attacker.getAbility()) && !attacker.getAbility().isUnbreakable && !move.ignoreAbility){
 	         		attacker.addVolatile('teraarmor');
 					}
 			}
@@ -8797,7 +8797,7 @@ exports.BattleAbilities = {
 		shortDesc: "Recovers 33% of max HP upon switching out, or at the end of every turn in Hail. Takes no Hail damage.",
 		onWeather(target, source, effect) {
 			if (effect.id === 'hail' || effect.id === 'solarsnow' || effect.id === 'yeti') {
-				if (target.volatiles['atmosphericperversion'] == target.volatiles['weatherbreak']){
+				if (!!target.volatiles['atmosphericperversion'] === !!target.volatiles['weatherbreak']){
 					this.heal(target.maxhp / 3);
 				} else {
 					this.damage(target.maxhp / 3, target, target);
@@ -8884,11 +8884,11 @@ exports.BattleAbilities = {
         name: "Beast Roar",
     },
 	"sturdymold": {
-        shortDesc: "This Pokemon cannot be KO'd in one hit, and the abilities of attacking Pokemon are nullified.",
+        shortDesc: "This Pokemon cannot be KO'd in one hit, and the abilities of attacking Pokemon are ignored in damage calculation.",
 		onAnyBeforeMove(attacker, defender, move) {
 			if (attacker !== defender && defender === this.effectData.target) {
 					let bannedAbilities = ['battlebond', 'comatose', 'disguise', 'multitype', 'powerconstruct', 'rkssystem', 'schooling', 'shieldsdown', 'stancechange', 'truant', 'resurrection', 'magicalwand', 'sleepingsystem', 'cursedcloak', 'appropriation', 'disguiseburden', 'hideandseek', 'beastcostume', 'spiralpower', 'optimize', 'prototype', 'typeillusionist', 'godoffertility', 'foundation', 'sandyconstruct', 'victorysystem', 'techequip', 'technicalsystem', 'triagesystem', 'geneticalgorithm', 'effectsetter', 'tacticalcomputer', 'mitosis', 'barbstance', 'errormacro', 'combinationdrive', 'stanceshield', 'unfriend', 'desertmirage', 'sociallife', 'cosmology', 'crystallizedshield', 'compression', 'whatdoesthisdo', 'underpressure', 'poisontouch', 'magician'];
-					if (!bannedAbilities.includes(attacker.getAbility()) && !attacker.getAbility().isUnbreakable){
+					if (!bannedAbilities.includes(attacker.getAbility()) && !attacker.getAbility().isUnbreakable && !move.ignoreAbility){
 	         		attacker.addVolatile('teraarmor');
 					}
 			}
@@ -8914,7 +8914,7 @@ exports.BattleAbilities = {
 		onAnyBeforeMove(attacker, defender, move) {
 			if (attacker !== defender && defender === this.effectData.target) {
 					let bannedAbilities = ['battlebond', 'comatose', 'disguise', 'multitype', 'powerconstruct', 'rkssystem', 'schooling', 'shieldsdown', 'stancechange', 'truant', 'resurrection', 'magicalwand', 'sleepingsystem', 'cursedcloak', 'appropriation', 'disguiseburden', 'hideandseek', 'beastcostume', 'spiralpower', 'optimize', 'prototype', 'typeillusionist', 'godoffertility', 'foundation', 'sandyconstruct', 'victorysystem', 'techequip', 'technicalsystem', 'triagesystem', 'geneticalgorithm', 'effectsetter', 'tacticalcomputer', 'mitosis', 'barbstance', 'errormacro', 'combinationdrive', 'stanceshield', 'unfriend', 'desertmirage', 'sociallife', 'cosmology', 'crystallizedshield', 'compression', 'whatdoesthisdo', 'underpressure', 'poisontouch', 'magician'];
-					if (!bannedAbilities.includes(attacker.getAbility()) && !attacker.getAbility().isUnbreakable){
+					if (!bannedAbilities.includes(attacker.getAbility()) && !attacker.getAbility().isUnbreakable && !move.ignoreAbility){
 	         		attacker.addVolatile('teraarmor');
 					}
 			}
@@ -8978,7 +8978,7 @@ exports.BattleAbilities = {
 		},
 		onWeather(target, source, effect) {
 			if (effect.id === 'hail' || effect.id === 'solarsnow' || effect.id === 'yeti') {
-				if (target.volatiles['atmosphericperversion'] == target.volatiles['weatherbreak']){
+				if (!!target.volatiles['atmosphericperversion'] === !!target.volatiles['weatherbreak']){
 					this.heal(target.maxhp / 4);
 				} else {
 					this.damage(target.maxhp / 4, target, target);
@@ -9011,7 +9011,7 @@ exports.BattleAbilities = {
 		},
 		onWeather(target, source, effect) {
 			if (effect.id === 'hail' || effect.id === 'solarsnow' || effect.id === 'yeti') {
-				if (target.volatiles['atmosphericperversion'] == target.volatiles['weatherbreak']){
+				if (!!target.volatiles['atmosphericperversion'] === !!target.volatiles['weatherbreak']){
 					this.heal(target.maxhp / 16);
 				} else {
 					this.damage(target.maxhp / 16, target, target);
@@ -9650,7 +9650,7 @@ exports.BattleAbilities = {
 					 return null;
 					 }
 				else {
-					if (pokemon.volatiles['atmosphericperversion'] == pokemon.volatiles['weatherbreak']){
+					if (!!pokemon.volatiles['atmosphericperversion'] === !!pokemon.volatiles['weatherbreak']){
 						this.damage(target.maxhp / 16, target, target);
 					} else {
 						this.heal(target.maxhp / 16);
@@ -9724,7 +9724,7 @@ exports.BattleAbilities = {
 				if (target.fainted) continue;
 				for (const moveSlot of target.moveSlots) {
 					if (this.field.isWeather(['sandstorm', 'cactuspower', 'yeti'])) {
-						if (target.volatiles['atmosphericperversion'] == target.volatiles['weatherbreak']){
+						if (!!target.volatiles['atmosphericperversion'] === !!target.volatiles['weatherbreak']){
 							target.deductPP(moveSlot.id, Math.floor(moveSlot.pp / 2));
 						} else {
 							moveSlot.pp = moveSlot.pp*2;
@@ -10202,7 +10202,7 @@ exports.BattleAbilities = {
 						bestStat = pokemon.storedStats[s];
 					}
 				}
-				if (pokemon.volatiles['atmosphericperversion'] == pokemon.volatiles['weatherbreak']){
+				if (!!pokemon.volatiles['atmosphericperversion'] === !!pokemon.volatiles['weatherbreak']){
 					this.boost({[statName]: 1}, pokemon);
 				} else {
 					this.boost({[statName]: -1}, pokemon);
@@ -10302,7 +10302,7 @@ exports.BattleAbilities = {
 	            	let ability = this.getAbility(target.ability);
 	            	let bannedAbilities = ['appropriation', 'battlebond', 'comatose', 'disguise', 'flowergift', 'forecast', 'illusion', 'imposter', 'multitype', 'powerconstruct', 'powerofalchemy', 'receiver', 'rkssystem', 'schooling', 'shieldsdown', 'stancechange', 'trace', 'zenmode', 'resurrection', 'magicalwand', 'sleepingsystem', 'cursedcloak', 'appropriation', 'disguiseburden', 'hideandseek', 'beastcostume', 'spiralpower', 'optimize', 'prototype', 'typeillusionist', 'godoffertility', 'foundation', 'sandyconstruct', 'victorysystem', 'techequip', 'technicalsystem', 'triagesystem', 'geneticalgorithm', 'effectsetter', 'tacticalcomputer', 'mitosis', 'barbstance', 'errormacro', 'combinationdrive', 'stanceshield', 'unfriend', 'desertmirage', 'sociallife', 'cosmology', 'crystallizedshield', 'compression', 'whatdoesthisdo'];
 	            	if (bannedAbilities.includes(ability)) break;
-						this.add('-ability', target, ability, '[from] ability: Appropriation', '[of] ' + pokemon);
+						this.add('-ability', pokemon, ability, '[from] ability: Appropriation', '[of] ' + pokemon);
 						pokemon.setAbility(ability);
 					}
 			  }
@@ -10804,7 +10804,7 @@ exports.BattleAbilities = {
 		onResidualOrder: 26,
 		onResidualSubOrder: 1,
 		onResidual(pokemon) {
-			if ((this.field.isWeather(['sunnyday', 'desolateland', 'solarsnow']) || this.randomChance(1, 2)) == (pokemon.volatiles['atmosphericperversion'] == pokemon.volatiles['weatherbreak'])) {
+			if ((this.field.isWeather(['sunnyday', 'desolateland', 'solarsnow']) || this.randomChance(1, 2)) === !!(pokemon.volatiles['atmosphericperversion'] === !!pokemon.volatiles['weatherbreak'])) {
 				if (pokemon.hp && !pokemon.item && this.getItem(pokemon.lastItem).isBerry) {
 					pokemon.setItem(pokemon.lastItem);
 					pokemon.lastItem = '';
@@ -11041,7 +11041,7 @@ exports.BattleAbilities = {
 		},
 		onWeather(target, source, effect) {
 			if (target.activeTurns > 1) {
-				if (target.volatiles['atmosphericperversion'] == target.volatiles['weatherbreak']){
+				if (!!target.volatiles['atmosphericperversion'] === !!target.volatiles['weatherbreak']){
 					this.heal(target.maxhp / 8, target, target);
 				} else {
 					this.damage(target.maxhp / 8, target, target);
@@ -11457,7 +11457,7 @@ exports.BattleAbilities = {
 			}
 		},
 		onBasePower(basePower, attacker, defender, move) {
-			if (move.combinationdriveboosted && !(defender.hasAbility('moldedstall') && defender.willMove()) && !['unstablevoltage', 'teraarmor', 'turbocurse', 'unamazed', 'sturdymold'].includes(defender.getAbility())) {
+			if (move.combinationdriveboosted && !(defender.hasAbility('moldedstall') && defender.willMove()) && (move.ignoreAbility || !defender.hasAbility(['unstablevoltage', 'teraarmor', 'turbocurse', 'unamazed', 'sturdymold']))) {
 				this.debug('Combination Drive boost');
 				return this.chainModify(1.5);
 			}
@@ -11511,7 +11511,7 @@ exports.BattleAbilities = {
 		onBasePowerPriority: 8,
 		onBasePower(basePower, attacker, defender, move) {
 			if (!attacker.item.onMemory) return;
-			if ((defender.hasAbility('moldedstall') && defender.willMove()) || ['unstablevoltage', 'teraarmor', 'turbocurse', 'unamazed', 'sturdymold'].includes(defender.getAbility())) return;
+			if ((defender.hasAbility('moldedstall') && defender.willMove()) || (!move.ignoreAbility && defender.hasAbility(['unstablevoltage', 'teraarmor', 'turbocurse', 'unamazed', 'sturdymold']))) return;
 			return this.chainModify(1.5);
 		},
 		onTakeItem(item, pokemon, source) {
@@ -11578,7 +11578,7 @@ exports.BattleAbilities = {
 		onAfterDamage(damage, target, source, move) {
 			if (source && source !== target && move && move.flags['contact']) {
 				if (this.field.isWeather(['raindance', 'primordialsea'])) {
-					if (target.volatiles['atmosphericperversion'] == target.volatiles['weatherbreak']){
+					if (!!target.volatiles['atmosphericperversion'] === !!target.volatiles['weatherbreak']){
 						this.damage(source.maxhp / 4, source, target);
 					} else {
 						this.damage(source.maxhp / 16, source, target);
@@ -11590,7 +11590,7 @@ exports.BattleAbilities = {
 		},
 		onModifySpe(spe, pokemon) {
 			if (this.field.isWeather(['raindance', 'primordialsea'])) {
-				if (pokemon.volatiles['atmosphericperversion'] == pokemon.volatiles['weatherbreak']){
+				if (!!pokemon.volatiles['atmosphericperversion'] === !!pokemon.volatiles['weatherbreak']){
 					return this.chainModify(2);
 				} 	else {
 					return this.chainModify(0.5);
@@ -11640,7 +11640,7 @@ exports.BattleAbilities = {
 		},
 		onWeather(target, source, effect) {
 			if (['raindance', 'primordialsea', 'desolateland', 'solarsnow', 'sunnyday'].includes(effect.id)){
-				if (['desolateland', 'solarsnow', 'sunnyday'].includes(effect.id) == (target.volatiles['atmosphericperversion'] == target.volatiles['weatherbreak'])) {
+				if (['desolateland', 'solarsnow', 'sunnyday'].includes(effect.id) == (!!target.volatiles['atmosphericperversion'] === !!target.volatiles['weatherbreak'])) {
 					this.damage(target.maxhp / 8, target, target);
 				} else {
 					this.heal(target.maxhp / 8);
@@ -12195,7 +12195,7 @@ exports.BattleAbilities = {
 		onResidualSubOrder: 1,
 		onResidual(pokemon) {
 			if (pokemon.activeTurns && this.field.weather) {
-				if (pokemon.volatiles['atmosphericperversion'] == pokemon.volatiles['weatherbreak']){
+				if (!!pokemon.volatiles['atmosphericperversion'] === !!pokemon.volatiles['weatherbreak']){
 					this.boost({atk: 1});
 				} else {
 					this.boost({atk: -1});
@@ -12241,7 +12241,7 @@ exports.BattleAbilities = {
 		},
 		onBasePowerPriority: 8,
 		onBasePower(basePower, attacker, defender, move) {
-			if (attacker.template.species === 'Aegipass-Directional' && !(defender.hasAbility('moldedstall') && defender.willMove()) && !['unstablevoltage', 'teraarmor', 'turbocurse', 'unamazed', 'sturdymold'].includes(defender.getAbility())) {
+			if (attacker.template.species === 'Aegipass-Directional' && !(defender.hasAbility('moldedstall') && defender.willMove()) && (move.ignoreAbility || !defender.hasAbility(['unstablevoltage', 'teraarmor', 'turbocurse', 'unamazed', 'sturdymold']))) {
 				if (move.type === 'Rock' || move.type === 'Ground' || move.type === 'Steel') {
 					this.debug('Desert Mirage boost');
 					return this.chainModify([0x14CD, 0x1000]);
@@ -12579,6 +12579,24 @@ exports.BattleAbilities = {
 	"tacticalcomputer": {
 		desc: "If this Pokemon is an Aegivally, it changes to Guerilla Forme before attempting to use an attacking move, and changes to Bulwark Forme before attempting to use King's Shield. In Bulwark Forme, its type is Steel plus the type of its held memory, Normal if there is none. In Guerilla Forme, its type is Steel plus the type of its first move.",
 		shortDesc: "If Aegivally, changes Forme to Guerilla before attacks and Bulwark before King's Shield. Primary type changes to match its Held Memory in Bulwark Forme and its first move in Guerilla Forme.",
+		onSwitchInPriority: 101,
+		onSwitchIn(pokemon) {
+			if (pokemon.template.baseSpecies !== 'Aegivally') return;
+			// @ts-ignore
+			let type = pokemon.getItem().onMemory;
+			// @ts-ignore
+			if (pokemon.template.speciesid === 'aegivallyguerilla'){
+				type = this.getMove(pokemon.moveSlots[0].id).type;
+			}
+			if (!type || type === true) {
+					type = 'Normal';
+			}
+			if (type !== 'Steel'){
+				pokemon.setType([type, 'Steel']);
+			} else {
+				pokemon.setType('Steel');
+			}
+		},
 		onBeforeMovePriority: 0.5,
 		onBeforeMove(attacker, defender, move) {
 			if (attacker.template.baseSpecies !== 'Aegivally' || attacker.transformed) return;
@@ -13190,7 +13208,7 @@ exports.BattleAbilities = {
 		onResidualOrder: 27,
 		onResidual(pokemon) {
 			if (pokemon.baseTemplate.baseSpecies !== 'Sandgarde' || pokemon.transformed || !pokemon.hp) return;
-			if (this.field.isWeather(['sandstorm', 'cactuspower', 'yeti']) && pokemon.volatiles['atmosphericperversion'] !== pokemon.volatiles['weatherbreak']) return;
+			if (this.field.isWeather(['sandstorm', 'cactuspower', 'yeti']) && !!pokemon.volatiles['atmosphericperversion'] !== !!pokemon.volatiles['weatherbreak']) return;
 			if (pokemon.template.speciesid === 'sandgardecastle' || (pokemon.hp > pokemon.maxhp / 2 && !(this.field.isWeather(['yeti', 'sandstorm', 'cactuspower']) && this.randomChance(2, 10)))) return;
 			this.add('-activate', pokemon, 'ability: Sandy Construct');
 			pokemon.formeChange('Sandgarde-Castle', this.effect, true);
@@ -13487,7 +13505,7 @@ exports.BattleAbilities = {
 			if (pokemon.status) {
 				if (!this.field.isWeather(['raindance', 'primordialsea'])) {
 					return this.chainModify(1.5);
-				} else if (pokemon.volatiles['atmosphericperversion'] == pokemon.volatiles['weatherbreak']){
+				} else if (!!pokemon.volatiles['atmosphericperversion'] === !!pokemon.volatiles['weatherbreak']){
 					return this.chainModify(2);
 				}
 			}
@@ -13499,7 +13517,7 @@ exports.BattleAbilities = {
 						return this.chainModify(3);
 					}
 					return this.chainModify(1.5);
-				} else if (pokemon.volatiles['atmosphericperversion'] == pokemon.volatiles['weatherbreak']){
+				} else if (!!pokemon.volatiles['atmosphericperversion'] === !!pokemon.volatiles['weatherbreak']){
 					if (pokemon.status === 'par'){
 						return this.chainModify(4);
 					}
@@ -13963,7 +13981,7 @@ exports.BattleAbilities = {
 		},
 		onResidualOrder: 27,
 		onResidual(pokemon) {
-			if (pokemon.template.speciesid !== 'Ceremoni' || pokemon.transformed || !pokemon.hp) return;
+			if (pokemon.template.speciesid !== 'ceremoni' || pokemon.transformed || !pokemon.hp) return;
 			if (pokemon.hp <= pokemon.maxhp / 2) {
 				let statName = 'atk';
 				let bestStat = 0;
@@ -14036,5 +14054,91 @@ exports.BattleAbilities = {
 		},
 		id: "monotype",
 		name: "Monotype",
+	},
+	"antimatter": {
+		shortDesc: "This Pokemon's moves ignore its own status and the target's ability for damage calculations.",
+		onBeforeMove(move, pokemon){
+	         if (pokemon.status === 'slp') {
+						move.sleepUsable = true;
+				}
+		},
+		onModifyAtkPriority: 5,
+		onModifyAtk(atk, attacker, defender, move) {
+	        if (attacker.status === 'brn' && move.id !== 'facade') {
+	        		return this.chainModify(2);
+	        }
+		},
+		onModifyMove(move) {
+			move.ignoreAbility = true;
+		},
+		id: "antimatter",
+		name: "Antimatter",
+	},
+	"coolasice": {
+		shortDesc: "This Pokemon's moves have their secondary effect chance doubled. If user is Regetta and Hail is active, it changes to Compressed Form. Compressed Regetta restores 25% of its HP every turn.",
+		onModifyMovePriority: -2,
+		onModifyMove(move) {
+			if (move.secondaries) {
+				this.debug('doubling secondary chance');
+				for (const secondary of move.secondaries) {
+					if (secondary.chance) secondary.chance *= 2;
+				}
+			}
+		},
+		onUpdate(pokemon) {
+			if (!pokemon.isActive || pokemon.baseTemplate.baseSpecies !== 'Regetta' || pokemon.transformed) return;
+			if (this.field.isWeather(['hail', 'yeti', 'solarsnow'])) {
+				if (pokemon.template.speciesid === 'regetta' && (!!pokemon.volatiles['atmosphericperversion'] === !!pokemon.volatiles['weatherbreak'])) {
+					pokemon.formeChange('Regetta-Compressed');
+					this.add('-formechange', pokemon, 'Regetta-Compressed', '[msg]', '[from] ability: Cool as Ice');
+				}
+				else if (pokemon.template.speciesid === 'regettacompressed' && (!!pokemon.volatiles['atmosphericperversion'] !== !!pokemon.volatiles['weatherbreak'])) {
+					pokemon.formeChange('Regetta');
+					this.add('-formechange', pokemon, 'Regetta-Compressed');
+				}
+			}
+		},
+		onResidualOrder: 26,
+		onResidualSubOrder: 1,
+		onResidual(pokemon) {
+			if (pokemon.template.speciesid === 'regettacompressed') {
+				this.heal(pokemon.maxhp / 4, pokemon, pokemon);
+			}
+		},
+		id: "coolasice",
+		name: "Cool As Ice",
+	},
+	"berrycola": {
+		shortDesc: "This Pokemon's healing moves have their priority increased by 3. If last item used is a Berry, 50% chance to restore it each end of turn; 100% in Sun. (UNIMPLEMENTED: If this Pokemon either holds a berry or has eaten one, any Pokemon it uses a move to heal (including itself) experiences its effects.)",
+		onModifyPriority(priority, pokemon, target, move) {
+			if (move && move.flags['heal']) return priority + 3;
+		},
+		onResidualOrder: 26,
+		onResidualSubOrder: 1,
+		onResidual(pokemon) {
+			if ((this.field.isWeather(['sunnyday', 'desolateland', 'solarsnow']) || this.randomChance(1, 2)) === (!!pokemon.volatiles['atmosphericperversion'] === !!pokemon.volatiles['weatherbreak'])) {
+				if (pokemon.hp && !pokemon.item && this.getItem(pokemon.lastItem).isBerry) {
+					pokemon.setItem(pokemon.lastItem);
+					pokemon.lastItem = '';
+					this.add('-item', pokemon, pokemon.getItem(), '[from] ability: Berry Cola');
+				}
+			}
+		},
+		//TODO: 
+// 		onAnyTryHeal(damage, target, source, effect) {
+// 			if (source !== this.effectData.target) return; //Only works if the source is the mon with the ability.
+// 			if (!this.getItem(source.lastItem).isBerry && (!source.item || source.getItem().isBerry)) return; //We know the mon with Berry Cola has a berry!
+// 			this.debug("Heal is occurring: " + target + " <- " + source + " :: " + effect.id);
+// 			if (effect && effect.effectType === 'Move') {
+// 				if (source.item && source.getItem().isBerry){
+// 					let previousItem = target.lastItem;
+// 					let yourItem = target.item;
+					
+					
+// 				}
+// 			}
+// 		},
+		id: "berrycola",
+		name: "Berry Cola",
 	},
 };

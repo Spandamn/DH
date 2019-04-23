@@ -4,18 +4,18 @@ exports.BattleAbilities = {
 	"iboopu": {
 		shortDesc: "Sets up desolate land and rocks upon entering field.",
 		onStart: function (source) {
-			this.setWeather('desolateland');
+			this.field.setWeather('desolateland');
 			this.useMove('Stealth Rock', source);
 		},
 		onAnySetWeather: function (target, source, weather) {
-			if (this.getWeather().id === 'desolateland' && !['desolateland', 'primordialsea', 'deltastream'].includes(weather.id)) return false;
+			if (this.field.getWeather().id === 'desolateland' && !['desolateland', 'primordialsea', 'deltastream'].includes(weather.id)) return false;
 		},
 		onEnd: function (pokemon) {
 			if (this.weatherData.source !== pokemon) return;
 			for (const side of this.sides) {
 				for (const target of side.active) {
 					if (target === pokemon) continue;
-					if (target && target.hp && target.hasAbility('desolateland')) {
+					if (target && target.hp && target.hasAbility(['desolateland', 'iboopu'])) {
 						this.weatherData.source = target;
 						return;
 					}
@@ -384,9 +384,9 @@ exports.BattleAbilities = {
 		shortDesc: "Truggets Grassy Terrain, Sunny Day and Trick Room on switch in",
 		onStart: function(pokemon) {
 			this.add('-ability', pokemon, 'Dank Zone');
-			this.addPseudoWeather('trickroom', pokemon);
-			this.setWeather('sunnyday');
-			this.setTerrain('grassyterrain');
+			this.field.addPseudoWeather('trickroom', pokemon);
+			this.field.setWeather('sunnyday');
+			this.field.setTerrain('grassyterrain');
 		},
 		name: 'Dank Zone',
 		id: 'dankzone',
@@ -423,7 +423,7 @@ exports.BattleAbilities = {
 		},
 		onUpdate: function (pokemon) {
 			if (!pokemon.isActive || pokemon.baseTemplate.speciesid !== 'dratini') return;
-			if (this.isWeather(['raindance', 'primordialsea'])) {
+			if (this.field.isWeather(['raindance', 'primordialsea'])) {
 				if (pokemon.template.speciesid !== 'gyarados') {
 					pokemon.formeChange('Gyarados');
 					this.add('-formechange', pokemon, 'Gyarados', '[msg]');
@@ -438,26 +438,26 @@ exports.BattleAbilities = {
 		onModifyAtkPriority: 3,
 		onAllyModifyAtk: function (atk) {
 			if (this.effectData.target.baseTemplate.speciesid !== 'dratini') return;
-			if (this.isWeather(['raindance', 'primordialsea'])) {
+			if (this.field.isWeather(['raindance', 'primordialsea'])) {
 				return this.chainModify(1.5);
 			}
 		},
 		onModifySpDPriority: 4,
 		onAllyModifySpD: function (spe) {
 			if (this.effectData.target.baseTemplate.speciesid !== 'dratini') return;
-			if (this.isWeather(['raindance', 'primordialsea'])) {
+			if (this.field.isWeather(['raindance', 'primordialsea'])) {
 				return this.chainModify(1.5);
 			}
 		},
 		id: "waterchange",
 		name: "Water Change",
                 },
-                "russianwinter": {
+   "russianwinter": {
 		onStart: function (source) {
-			this.setWeather('russianwinter');
+			this.field.setWeather('russianwinter');
 		},
 		onAnySetWeather: function (target, source, weather) {
-			if (this.getWeather().id === 'russianwinter' && !(weather.id in {desolateland:1, primordialsea:1, deltastream:1})) return false;
+			if (this.field.getWeather().id === 'russianwinter' && !(weather.id in {desolateland:1, primordialsea:1, deltastream:1})) return false;
 		},
 		onEnd: function (pokemon) {
 			if (this.weatherData.source !== pokemon) return;
