@@ -6461,6 +6461,22 @@ let BattleItems = {
 		isNonstandard: true,
 		desc: "If held by a Crucibelle, this item allows it to Mega Evolve in battle.",
 	},
+	
+	"audimortite": {
+		id: "audimortite",
+		name: "Audimortite",
+		spritenum: 577,
+		megaStone: "Audimorte-Mega",
+		megaEvolves: "Audimorte",
+		onTakeItem: function (item, source) {
+			if (item.megaEvolves === source.baseTemplate.baseSpecies) return false;
+			return true;
+		},
+		num: -1,
+		gen: 6,
+		isNonstandard: true,
+		desc: "If held by an Audimorte, this item allows it to Mega Evolve in battle.",
+	},
 };
 
 exports.BattleItems = BattleItems;
