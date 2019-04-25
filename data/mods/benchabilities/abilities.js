@@ -37,11 +37,11 @@ let BattleAbilities = {
 
 "protectivepowder": { // Vivillon, Cutiefly line
 		shortDesc: "Allied Bug types use Powder on switch in.",
-		onAllyStart: function(pokemon) { // onAllyStart: 
+		onStartt: function(pokemon) { 
 			for (const allyActive of pokemon.side.active) {
           if (allyActive.hasType('Bug') && !pokemon.active) {
 			 this.useMove("Powder", pokemon);
-            }
+			 }
 			}
 		},
 		id: "protectivepowder",
@@ -50,9 +50,9 @@ let BattleAbilities = {
 
 "arcticarmor": { // Walrein line, Lapras, Rotom-Frost, Kyurem
 		shortDesc: "Allied Ice types summon Mist upon switching in. Aurora Veil now lasts 8 turns.", // Edit in Aurora Veil's moves.js code
-		onStart: function(source) { // onAllyStart: 
+		onStart: function(source) { 
                     if (source.hasType('Ice')) {
-			this.useMove("Mist", source);
+								this.useMove("Mist", source);
                         }
 		},
 		id: "arcticarmor",
