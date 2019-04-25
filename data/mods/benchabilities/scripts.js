@@ -29,5 +29,6 @@ exports.BattleScripts = {
 	},
 	init() {
 		this.modData('Pokedex', 'victini').abilities['S'] = 'Confidence Boost';
+		this.modData('Pokedex', 'plusle').abilities['S'] = 'Confidence Boost';
 	}
 };
