@@ -53,7 +53,7 @@ exports.BattleScripts = {
 		// Heavy Expert: Onix, Steelix, Rhyhorn, Rhydon, Rhyperior, Aron, Lairon, Aggron			
 		this.modData('Pokedex', 'onix').abilities['S'] = 'Heavy Expert';
 		this.modData('Pokedex', 'steelix').abilities['S'] = 'Heavy Expert';
-		this.modData('Pokedex', 'shyhorn').abilities['S'] = 'Heavy Expert';
+		this.modData('Pokedex', 'rhyhorn').abilities['S'] = 'Heavy Expert';
 		this.modData('Pokedex', 'rhydon').abilities['S'] = 'Heavy Expert';
 		this.modData('Pokedex', 'rhyperior').abilities['S'] = 'Heavy Expert';
 		this.modData('Pokedex', 'aron').abilities['S'] = 'Heavy Expert';
