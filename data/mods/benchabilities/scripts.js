@@ -28,7 +28,27 @@ exports.BattleScripts = {
 		},
 	},
 	init() {
+		// Confidence Boost
 		this.modData('Pokedex', 'victini').abilities['S'] = 'Confidence Boost';
 		this.modData('Pokedex', 'plusle').abilities['S'] = 'Confidence Boost';
+		this.modData('Pokedex', 'machop').abilities['S'] = 'Confidence Boost';
+		this.modData('Pokedex', 'machoke').abilities['S'] = 'Confidence Boost';
+		this.modData('Pokedex', 'machamp').abilities['S'] = 'Confidence Boost';
+		this.modData('Pokedex', 'florges').abilities['S'] = 'Confidence Boost';
+		
+		// Protective Powder
+		this.modData('Pokedex', 'vivillon').abilities['S'] = 'Protective Powder';
+		this.modData('Pokedex', 'wurmple').abilities['S'] = 'Protective Powder';
+		this.modData('Pokedex', 'cascoon').abilities['S'] = 'Protective Powder';
+		this.modData('Pokedex', 'beautifly').abilities['S'] = 'Protective Powder';
+		
+		// Arctic Armor
+		this.modData('Pokedex', 'spheal').abilities['S'] = 'Arctic Armor';
+		this.modData('Pokedex', 'sealeo').abilities['S'] = 'Arctic Armor';
+		this.modData('Pokedex', 'walrein').abilities['S'] = 'Arctic Armor';
+		this.modData('Pokedex', 'lapras').abilities['S'] = 'Arctic Armor';
+		this.modData('Pokedex', 'rotomfrost').abilities['S'] = 'Arctic Armor';
+		this.modData('Pokedex', 'kyurem').abilities['S'] = 'Arctic Armor';
+		
 	}
 };
