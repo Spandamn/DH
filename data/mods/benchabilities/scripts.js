@@ -27,4 +27,7 @@ exports.BattleScripts = {
 			return this.ability === ability || !!this.volatiles['ability' + ability];
 		},
 	},
+	init() {
+		this.modData('Pokedex', 'victini').abilities['S'] = 'Confidence Boost';
+	}
 };
