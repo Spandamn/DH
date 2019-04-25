@@ -57,7 +57,16 @@ let BattleAbilities = {
 		name: "Arctic Armor",
 	},
 
-
+"heavyexpert": {
+		shortDesc: "Allies' Rock and Steel-type moves have 100% base accuracy.",
+		onAllyModifyMove(move) {
+			if (move.type ==='Rock' || move.type === 'Steel') {
+				move.accuracy = 100;
+			}
+		},
+		id: "heavyexpert",
+		name: "Heavy Expert",
+	},
 
 };
 
