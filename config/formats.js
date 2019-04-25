@@ -4448,12 +4448,14 @@ exports.Formats = [
 			}
 		},
 		onAfterMega: function (pokemon) {
+			let battle = pokemon.battle;
+			let thisSide = pokemon.side.id;
+			let benchPokemon = battle.benchPokemon;
 				pokemon.removeVolatile('ability' + pokemon.baseAbility);
-				for ( var benchAbility in benchPokemon[ thisSide ]) {  
+				for (var benchAbility in benchPokemon[ thisSide ]) {  
 					let effect = 'ability' + benchAbility;
 					pokemon.addVolatile(effect);
 				}
-			}
 		},
 	},
 	{
