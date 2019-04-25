@@ -99,75 +99,39 @@ exports.BattleScripts = {
             this.singleEvent('UseMoveMessage', move, null, pokemon, target, move);
         }
 
-        if (move.ignoreImmunity === undefined) {
-            move.ignoreImmunity = (move.category === 'Status');
-        }
+		if (move.ignoreImmunity === undefined) {
+			move.ignoreImmunity = (move.category === 'Status');
+		}
 
-        if (move.selfdestruct === 'always') {
-            this.faint(pokemon, pokemon, move);
-        }
+		if (move.selfdestruct === 'always') {
+			this.faint(pokemon, pokemon, move);
+		}
 
-        /** @type {number | false | undefined | ''} */
-        let damage = false;
-        if (move.target === 'all' || move.target === 'foeSide' || move.target === 'allySide' || move.target === 'allyTeam') {
-            damage = this.tryMoveHit(target, pokemon, move);
-            if (damage === this.NOT_FAILURE) pokemon.moveThisTurnResult = null;
-            if (damage || damage === 0 || damage === undefined) moveResult = true;
-        } else if (move.target === 'allAdjacent' || move.target === 'allAdjacentFoes') {
-            if (!targets.length) {
-                this.attrLastMove('[notarget]');
-                this.add(this.gen >= 5 ? '-fail' : '-notarget', pokemon);
-                return false;
-            }
-            if (targets.length > 1) move.spreadHit = true;
-            let hitTargets = [];
-            for (const source of targets) {
-                let hitResult = this.tryMoveHit(source, pokemon, move);
-                if (hitResult || hitResult === 0 || hitResult === undefined) {
-                    moveResult = true;
-                    hitTargets.push(source.toString().substr(0, 3));
-                }
-                if (damage) {
-                    damage += hitResult || 0;
-                } else {
-                    if (damage !== false || hitResult !== this.NOT_FAILURE) damage = hitResult;
-                }
-                if (damage === this.NOT_FAILURE) pokemon.moveThisTurnResult = null;
-            }
-            if (move.spreadHit) this.attrLastMove('[spread] ' + hitTargets.join(','));
-        } else {
-            target = targets[0];
-            let lacksTarget = target.fainted;
-            if (!lacksTarget) {
-                if (move.target === 'adjacentFoe' || move.target === 'adjacentAlly' || move.target === 'normal' || move.target === 'randomNormal') {
-                    lacksTarget = !this.isAdjacent(target, pokemon);
-                }
-            }
-            if (lacksTarget && !move.isFutureMove) {
-                this.attrLastMove('[notarget]');
-                this.add(this.gen >= 5 ? '-fail' : '-notarget', pokemon);
-                if (move.target === 'normal') pokemon.isStaleCon = 0;
-                return false;
-            }
-            damage = this.tryMoveHit(target, pokemon, move);
-            if (damage === this.NOT_FAILURE) pokemon.moveThisTurnResult = null;
-            if (damage || damage === 0 || damage === undefined) moveResult = true;
-        }
-        if (move.selfBoost && moveResult) this.moveHit(pokemon, pokemon, move, move.selfBoost, false, true);
-        if (!pokemon.hp) {
-            this.faint(pokemon, pokemon, move);
-        }
+		/** @type {number | false | undefined | ''} */
+		let damage = false;
+		if (move.target === 'all' || move.target === 'foeSide' || move.target === 'allySide' || move.target === 'allyTeam') {
+			damage = this.tryMoveHit(target, pokemon, move);
+			if (damage === this.NOT_FAIL) pokemon.moveThisTurnResult = null;
+			if (damage || damage === 0 || damage === undefined) moveResult = true;
+		} else {
+			moveResult = this.trySpreadMoveHit(targets, pokemon, move);
+		}
+		if (move.selfBoost && moveResult) this.moveHit(pokemon, pokemon, move, move.selfBoost, false, true);
+		if (!pokemon.hp) {
+			this.faint(pokemon, pokemon, move);
+		}
 
-        if (!moveResult) {
-            this.singleEvent('MoveFail', move, null, target, pokemon, move);
-            return false;
-        }
+		if (!moveResult) {
+			this.singleEvent('MoveFail', move, null, target, pokemon, move);
+			return false;
+		}
 
-        if (!move.negateSecondary && !(move.hasSheerForce && (pokemon.hasAbility(['sheerforce', 'topgear', 'sheerfat', 'tetraforce', 'zeroawareness']) || (pokemon.hasAbility('dramaticrage') && move.category === 'Special')))) {
-            this.singleEvent('AfterMoveSecondarySelf', move, null, pokemon, target, move);
-            this.runEvent('AfterMoveSecondarySelf', pokemon, target, move);
-        }
-        return true;
+		if (!move.negateSecondary && !(move.hasSheerForce && pokemon.hasAbility('sheerforce'))) {
+			this.singleEvent('AfterMoveSecondarySelf', move, null, pokemon, target, move);
+			this.runEvent('AfterMoveSecondarySelf', pokemon, target, move);
+		}
+
+		return true;
     },
 
 
