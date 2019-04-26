@@ -49,9 +49,9 @@ let BattleAbilities = {
 	"arcticarmor": { // Walrein line, Lapras, Rotom-Frost, Kyurem
 		shortDesc: "Allied Ice types summon Mist upon switching in. Aurora Veil now lasts 8 turns.", // Edit in Aurora Veil's moves.js code
 		onSwitchIn(source) { 
-                    if (source.hasType('Ice')) {
-								this.useMove("Mist", source);
-                        }
+			if (source.hasType('Ice')) {
+				this.useMove("Mist", source);
+			}
 		},
 		id: "arcticarmor",
 		name: "Arctic Armor",
@@ -70,7 +70,7 @@ let BattleAbilities = {
 	"oceansblessing": { // Lumineon, Alomomola, Mantine, Manaphy, Phione
 		shortDesc: "This Pokemon’s allies have the Aqua Ring effect added to them.",
 		onStart(pokemon) { 
-				pokemon.addVolatile("aquaring");
+			pokemon.addVolatile("aquaring");
 		},
 		id: "oceansblessing",
 		name: "Ocean's Blessing",
@@ -80,9 +80,9 @@ let BattleAbilities = {
 		shortDesc: "Allied Dark-types force the opponent to always be tormented.",
 		onSwitchIn(pokemon) { 
 			if (pokemon.hasType('Dark')) {
-			for (const target of pokemon.side.foe.active) {
-				target.addVolatile("torment");
-			}
+				for (const target of pokemon.side.foe.active) {
+					target.addVolatile("torment");
+				}
 			}
 		},
 		onResidualOrder: 26,
@@ -90,10 +90,32 @@ let BattleAbilities = {
 		onResidual(pokemon) {
 			if (pokemon.hasType('Dark')) {
 				for (const target of pokemon.side.foe.active) {
-				target.addVolatile('torment');
+					target.addVolatile('torment');
 				}
 			}
 		},
+	},
+	"handoff": { // Aipom, Ambipom
+		shortDesc: "When an ally consumes their held item, this pokemon gives its item to them.",
+		onAfterUseItem(item, pokemon) {
+			// if (pokemon !== this.effectData.target) return;
+			let battle = pokemon.battle;
+			let sideID = pokemon.side.id;
+			let allyBench = battle.benchPokemon[ sideID ];
+			console.log( allyBench )
+			for (let i = 0; i < 6; i++ ) {
+				let pkmnInfo = allyBench[ i ]
+				if ( pkmnInfo && pkmnInfo.ability === 'handoff' && pkmnInfo.item !== '' ) {
+					pokemon.setItem( pkmnInfo.item )
+					pkmnInfo.item = ''
+					this.add('-ability', pokemon, 'Hand Off');
+					this.add( '-message', pkmnInfo.name + ' gave its item to ' + pokemon.name + '!' )
+					break
+				}
+			}
+		},
+		id: "handoff",
+		name: "Hand Off",
 	},
 };
 

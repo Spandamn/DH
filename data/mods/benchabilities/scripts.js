@@ -74,5 +74,9 @@ exports.BattleScripts = {
 		this.modData('Pokedex', 'scrafty').abilities['S'] = 'Spooky Encounter';
 		this.modData('Pokedex', 'pinsir').abilities['S'] = 'Spooky Encounter';
 		this.modData('Pokedex', 'spiritomb').abilities['S'] = 'Spooky Encounter';
+		
+		// Hand Off: Aipom, Ambipom,
+		this.modData('Pokedex', 'aipom').abilities['S'] = 'Hand Off';
+		this.modData('Pokedex', 'ambipom').abilities['S'] = 'Hand Off';
 	}
 };

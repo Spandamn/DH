@@ -4413,26 +4413,30 @@ exports.Formats = [
 			}
 			let battle = pokemon.battle;
 			if ( !battle.benchPokemon ) {
-				battle.benchPokemon = {};
+				battle.benchPokemon = [];
 			}
 			let sideID = pokemon.side.id;
 			if ( !battle.benchPokemon[ sideID ] ) {
 				battle.benchPokemon[ sideID ] = [];
 			}
-			let benchTable = battle.benchPokemon[ sideID ]
-			benchTable[ pokemon.id ] = {};
-			let pkmnInfo = benchTable[ pokemon.id ]
-			// add code here if you need more info about bench pokemon during the battle
-			pkmnInfo[ 'ability' ] = benchAbility 
-			pkmnInfo[ 'item' ] = pokemon.item
+			let allyBench = battle.benchPokemon[ sideID ]
+			let pkmnInfo = {}
+			// add code here if you need more info about bench pokemon for an ability
+			pkmnInfo[ 'ability' ] = benchAbility;
+			pkmnInfo[ 'item' ] = pokemon.item;
+			pkmnInfo[ 'name' ] = pokemon.name;
+			//-----------------------------------------------------------------------
+			allyBench.push( pkmnInfo ) // onModifyTemplate goes over the team in order, so this stores them in order
 		},
 		onBeforeSwitchIn: function (pokemon) {
 			let battle = pokemon.battle;
 			let sideID = pokemon.side.id;
 			let allyBench = battle.benchPokemon[ sideID ];
-			for (const ally of pokemon.side.pokemon) {
-				 if ( allyBench[ ally.id ] ){
-					 delete allyBench[ ally.id ];
+			if ( battle.turn === 1 ) {
+				for (const ally of pokemon.side.pokemon) {
+					 if ( allyBench[ ally.id ] ){
+						 delete allyBench[ allyBench[ ally.id ] ];
+					}
 				}
 			}
 			for ( var pkmnID in allyBench ) {  
