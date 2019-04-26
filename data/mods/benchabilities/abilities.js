@@ -78,6 +78,11 @@ let BattleAbilities = {
 	
 	"spookyencounter": {
 		shortDesc: "Allied Dark-types force the opponent to always be tormented.",
+		onStart(pokemon) { 
+			for (const target of pokemon.side.foe.active) {
+				target.addVolatile("torment");
+			}
+		},
 		onResidualOrder: 26,
 		onResidualSubOrder: 1,
 		onResidual(pokemon) {
