@@ -70,13 +70,24 @@ let BattleAbilities = {
 "oceansblessing": { // Lumineon, Alomomola, Mantine, Manaphy, Phione
 		shortDesc: "This Pokemon’s allies have the Aqua Ring effect added to them.",
 		onStart(pokemon) { 
-				pokemon.addVolatile("aquaring")
+				pokemon.addVolatile("aquaring");
 		},
 		id: "oceansblessing",
 		name: "Ocean's Blessing",
 	},
 	
-
+	"spookyencounter": {
+		shortDesc: "Allied Dark-types force the opponent to always be tormented.",
+		onResidualOrder: 26,
+		onResidualSubOrder: 1,
+		onResidual(pokemon) {
+			if (pokemon.hasType('Dark')) {
+				for (const target of pokemon.side.foe.active) {
+				target.addVolatile('torment');
+				}
+			}
+		},
+	},
 };
 
 exports.BattleAbilities = BattleAbilities;
