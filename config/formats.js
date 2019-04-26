@@ -4408,8 +4408,8 @@ exports.Formats = [
 		
 		onModifyTemplate: function (template, pokemon) {
 			let benchAbility = 'none'
-			if ( template.abilities.S ){
-				benchAbility = toId( template.abilities.S );
+			if (template.abilities.S){
+				benchAbility = toId(template.abilities.S);
 			}
 			let thisSide = pokemon.side.id;
 			let battle = pokemon.battle;
