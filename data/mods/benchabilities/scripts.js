@@ -66,5 +66,13 @@ exports.BattleScripts = {
 		this.modData('Pokedex', 'mantine').abilities['S'] = 'Ocean\'s Blessing';
 		this.modData('Pokedex', 'manaphy').abilities['S'] = 'Ocean\'s Blessing';
 		this.modData('Pokedex', 'phione').abilities['S'] = 'Ocean\'s Blessing';
+		
+		// Spooky Encounter: Cacnea, Cacturne, Scraggy, Scrafty, Pinsir, Spiritomb
+		this.modData('Pokedex', 'cacnea').abilities['S'] = 'Spooky Encounter';
+		this.modData('Pokedex', 'cacturne').abilities['S'] = 'Spooky Encounter';
+		this.modData('Pokedex', 'scraggy').abilities['S'] = 'Spooky Encounter';
+		this.modData('Pokedex', 'scrafty').abilities['S'] = 'Spooky Encounter';
+		this.modData('Pokedex', 'pinsir').abilities['S'] = 'Spooky Encounter';
+		this.modData('Pokedex', 'spiritomb').abilities['S'] = 'Spooky Encounter';
 	}
 };
