@@ -59,5 +59,12 @@ exports.BattleScripts = {
 		this.modData('Pokedex', 'aron').abilities['S'] = 'Heavy Expert';
 		this.modData('Pokedex', 'lairon').abilities['S'] = 'Heavy Expert';
 		this.modData('Pokedex', 'aggron').abilities['S'] = 'Heavy Expert';
+		
+		// Ocean's Blessing: Lumineon, Alomomola, Mantine, Manaphy, Phione
+		this.modData('Pokedex', 'lumineon').abilities['S'] = 'Ocean\'s Blessing';
+		this.modData('Pokedex', 'alomomola').abilities['S'] = 'Ocean\'s Blessing';
+		this.modData('Pokedex', 'mantine').abilities['S'] = 'Ocean\'s Blessing';
+		this.modData('Pokedex', 'manaphy').abilities['S'] = 'Ocean\'s Blessing';
+		this.modData('Pokedex', 'phione').abilities['S'] = 'Ocean\'s Blessing';
 	}
 };
