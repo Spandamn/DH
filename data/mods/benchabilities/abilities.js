@@ -67,6 +67,14 @@ let BattleAbilities = {
 		id: "heavyexpert",
 		name: "Heavy Expert",
 	},
+"oceansblessing": { // Lumineon, Alomomola, Mantine, Manaphy, Phione
+		shortDesc: "This Pokemon’s allies have the Aqua Ring effect added to them.",
+		onStart(pokemon) { 
+				this.useMove("Aqua Ring", pokemon);
+		},
+		id: "oceansblessing",
+		name: "Ocean's Blessing",
+	},
 
 };
 
