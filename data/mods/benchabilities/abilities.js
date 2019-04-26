@@ -3,7 +3,7 @@
 /**@type {{[k: string]: AbilityData}} */
 let BattleAbilities = {
 
-"confidenceboost": { // Machamp line, Victini, Plusle, Florges
+	"confidenceboost": { // Machamp line, Victini, Plusle, Florges
 		desc: "If an active teammate has a stat lowered, raise it's highest stat by one stage.",
 		shortDesc: "If an active teammate has a stat lowered, raise it's highest stat by one stage.",
 		onAfterEachBoost(boost, target, source) {
@@ -35,7 +35,7 @@ let BattleAbilities = {
 		name: "Confidence Boost",
 	},
 
-"protectivepowder": { // Vivillon, Cutiefly line
+	"protectivepowder": { // Vivillon, Cutiefly line
 		shortDesc: "Allied Bug types use Powder on switch in.",
 		onSwitchIn(source) { 
             if (source.hasType('Bug')) {
@@ -46,7 +46,7 @@ let BattleAbilities = {
 		name: "Protective Powder",
 	},
 
-"arcticarmor": { // Walrein line, Lapras, Rotom-Frost, Kyurem
+	"arcticarmor": { // Walrein line, Lapras, Rotom-Frost, Kyurem
 		shortDesc: "Allied Ice types summon Mist upon switching in. Aurora Veil now lasts 8 turns.", // Edit in Aurora Veil's moves.js code
 		onSwitchIn(source) { 
                     if (source.hasType('Ice')) {
@@ -57,7 +57,7 @@ let BattleAbilities = {
 		name: "Arctic Armor",
 	},
 
-"heavyexpert": {
+	"heavyexpert": {
 		shortDesc: "Allies' Rock and Steel-type moves have 100% base accuracy.",
 		onAllyModifyMove(move) {
 			if (move.type ==='Rock' || move.type === 'Steel') {
@@ -67,7 +67,7 @@ let BattleAbilities = {
 		id: "heavyexpert",
 		name: "Heavy Expert",
 	},
-"oceansblessing": { // Lumineon, Alomomola, Mantine, Manaphy, Phione
+	"oceansblessing": { // Lumineon, Alomomola, Mantine, Manaphy, Phione
 		shortDesc: "This Pokemon’s allies have the Aqua Ring effect added to them.",
 		onStart(pokemon) { 
 				pokemon.addVolatile("aquaring");
