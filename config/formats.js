@@ -4425,6 +4425,7 @@ exports.Formats = [
 			pkmnInfo[ 'ability' ] = benchAbility;
 			pkmnInfo[ 'item' ] = pokemon.item;
 			pkmnInfo[ 'name' ] = pokemon.name;
+			pkmnInfo[ 'id' ] = pokemon.id;
 			//-----------------------------------------------------------------------
 			allyBench.push( pkmnInfo ) // onModifyTemplate goes over the team in order, so this stores them in order
 		},
@@ -4432,15 +4433,18 @@ exports.Formats = [
 			let battle = pokemon.battle;
 			let sideID = pokemon.side.id;
 			let allyBench = battle.benchPokemon[ sideID ];
-			if ( battle.turn === 1 ) {
+			if ( battle.turn === 0 ) {
 				for (const ally of pokemon.side.pokemon) {
-					 if ( allyBench[ ally.id ] ){
-						 delete allyBench[ allyBench[ ally.id ] ];
+					for ( var pos in allyBench ) {
+						 if ( allyBench[ pos ].id === ally.id ){
+							 delete allyBench[ pos ];
+						}
 					}
 				}
+				console.log( allyBench )
 			}
-			for ( var pkmnID in allyBench ) {  
-				let benchAbility = allyBench[ pkmnID ].ability
+			for ( var pos in allyBench ) {  
+				let benchAbility = allyBench[ pos ].ability
 				if ( benchAbility !== '' ) {
 					let effect = 'ability' + benchAbility;
 					pokemon.volatiles[effect] = {id: effect, target: pokemon};
@@ -4452,8 +4456,8 @@ exports.Formats = [
 			let battle = pokemon.battle;
 			let sideID = pokemon.side.id;
 			let allyBench = battle.benchPokemon[ sideID ];
-			for ( var pkmnID in allyBench) {
-				let benchAbility = allyBench[ pkmnID ].ability
+			for ( var pos in allyBench) {
+				let benchAbility = allyBench[ pos ].ability
 				if ( benchAbility !== '' ) {
 					let effect = 'ability' + benchAbility;
 					delete pokemon.volatiles[effect];
@@ -4466,8 +4470,8 @@ exports.Formats = [
 			let sideID = pokemon.side.id;
 			let allyBench = battle.benchPokemon[ sideID ];
 			pokemon.removeVolatile('ability' + pokemon.baseAbility);
-			for (var pkmnID in allyBench) {  
-				let benchAbility = allyBench[ pkmnID ].ability
+			for (var pos in allyBench) {  
+				let benchAbility = allyBench[ pos ].ability
 				if ( benchAbility !== '' ) {
 					let effect = 'ability' + benchAbility;
 					pokemon.addVolatile(effect);
