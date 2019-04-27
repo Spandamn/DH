@@ -843,7 +843,7 @@ let BattleAbilities = {
 	"electricsurge": {
 		shortDesc: "On switch-in, this Pokemon summons Electric Terrain.",
 		onStart(source) {
-			this.setTerrain('electricterrain');
+			this.field.setTerrain('electricterrain');
 		},
 		id: "electricsurge",
 		name: "Electric Surge",
@@ -1243,7 +1243,7 @@ let BattleAbilities = {
 	"grassysurge": {
 		shortDesc: "On switch-in, this Pokemon summons Grassy Terrain.",
 		onStart(source) {
-			this.setTerrain('grassyterrain');
+			this.field.setTerrain('grassyterrain');
 		},
 		id: "grassysurge",
 		name: "Grassy Surge",
@@ -1921,7 +1921,7 @@ let BattleAbilities = {
 	"mistysurge": {
 		shortDesc: "On switch-in, this Pokemon summons Misty Terrain.",
 		onStart(source) {
-			this.setTerrain('mistyterrain');
+			this.field.setTerrain('mistyterrain');
 		},
 		id: "mistysurge",
 		name: "Misty Surge",
@@ -2543,7 +2543,7 @@ let BattleAbilities = {
 	"psychicsurge": {
 		shortDesc: "On switch-in, this Pokemon summons Psychic Terrain.",
 		onStart(source) {
-			this.setTerrain('psychicterrain');
+			this.field.setTerrain('psychicterrain');
 		},
 		id: "psychicsurge",
 		name: "Psychic Surge",
@@ -4539,7 +4539,7 @@ let BattleAbilities = {
 	"cloudysurge": {
 		shortDesc: "On switch-in, this Pokemon summons Cloudy Terrain.",
 		onStart(source) {
-			this.setTerrain('cloudyterrain');
+			this.field.setTerrain('cloudyterrain');
 		},
 		id: "cloudysurge",
 		name: "Cloudy Surge",
