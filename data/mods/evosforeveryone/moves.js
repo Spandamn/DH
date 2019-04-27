@@ -6255,7 +6255,7 @@ let BattleMovedex = {
 			chance: 100,
 			self: {
 				onHit: function () {
-					this.setTerrain('psychicterrain');
+					this.field.setTerrain('psychicterrain');
 				},
 			},
 		},
