@@ -243,11 +243,11 @@ exports.BattleAbilities = {
 		onResidualOrder: 5,
 		onResidualSubOrder: 2,
 		onResidual: function(pokemon) {
-			if (this.isTerrain('grassyterrain')) return;
+			if (this.field.isTerrain('grassyterrain')) return;
 			this.heal(pokemon.maxhp / 16);
 		},
 		onTerrain: function(pokemon) {
-			if (!this.isTerrain('grassyterrain')) return;
+			if (!this.field.isTerrain('grassyterrain')) return;
 			this.heal(pokemon.maxhp / 16);
 		},
 		desc: "At the end of every turn, the Pokemon restores 1/16 of its max HP.",
@@ -534,7 +534,7 @@ exports.BattleAbilities = {
 	"surgesurfer": {
 		shortDesc: "If a Terrain is active, this Pokemon's Speed is doubled.",
 		onModifySpe: function (spe) {
-			if (this.isTerrain('electricterrain') || this.isTerrain('psychicterrain') || this.isTerrain('mistyterrain') || this.isTerrain('grassyterrain')) {
+			if (this.field.isTerrain('electricterrain') || this.field.isTerrain('psychicterrain') || this.field.isTerrain('mistyterrain') || this.field.isTerrain('grassyterrain')) {
 				return this.chainModify(2);
 			}
 		},
