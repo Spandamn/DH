@@ -3,7 +3,7 @@
 /**@type {{[k: string]: AbilityData}} */
 let BattleAbilities = {
 
-"confidenceboost": { // Machamp line, Victini, Plusle, Florges
+	"confidenceboost": { // Machamp line, Victini, Plusle, Florges
 		desc: "If an active teammate has a stat lowered, raise it's highest stat by one stage.",
 		shortDesc: "If an active teammate has a stat lowered, raise it's highest stat by one stage.",
 		onAfterEachBoost(boost, target, source) {
@@ -35,7 +35,7 @@ let BattleAbilities = {
 		name: "Confidence Boost",
 	},
 
-"protectivepowder": { // Vivillon, Cutiefly line
+	"protectivepowder": { // Vivillon, Cutiefly line
 		shortDesc: "Allied Bug types use Powder on switch in.",
 		onSwitchIn(source) { 
             if (source.hasType('Bug')) {
@@ -46,18 +46,18 @@ let BattleAbilities = {
 		name: "Protective Powder",
 	},
 
-"arcticarmor": { // Walrein line, Lapras, Rotom-Frost, Kyurem
+	"arcticarmor": { // Walrein line, Lapras, Rotom-Frost, Kyurem
 		shortDesc: "Allied Ice types summon Mist upon switching in. Aurora Veil now lasts 8 turns.", // Edit in Aurora Veil's moves.js code
 		onSwitchIn(source) { 
-                    if (source.hasType('Ice')) {
-								this.useMove("Mist", source);
-                        }
+			if (source.hasType('Ice')) {
+				this.useMove("Mist", source);
+			}
 		},
 		id: "arcticarmor",
 		name: "Arctic Armor",
 	},
 
-"heavyexpert": {
+	"heavyexpert": {
 		shortDesc: "Allies' Rock and Steel-type moves have 100% base accuracy.",
 		onAllyModifyMove(move) {
 			if (move.type ==='Rock' || move.type === 'Steel') {
@@ -67,10 +67,10 @@ let BattleAbilities = {
 		id: "heavyexpert",
 		name: "Heavy Expert",
 	},
-"oceansblessing": { // Lumineon, Alomomola, Mantine, Manaphy, Phione
+	"oceansblessing": { // Lumineon, Alomomola, Mantine, Manaphy, Phione
 		shortDesc: "This Pokemon’s allies have the Aqua Ring effect added to them.",
 		onStart(pokemon) { 
-				pokemon.addVolatile("aquaring");
+			pokemon.addVolatile("aquaring");
 		},
 		id: "oceansblessing",
 		name: "Ocean's Blessing",
@@ -80,9 +80,9 @@ let BattleAbilities = {
 		shortDesc: "Allied Dark-types force the opponent to always be tormented.",
 		onSwitchIn(pokemon) { 
 			if (pokemon.hasType('Dark')) {
-			for (const target of pokemon.side.foe.active) {
-				target.addVolatile("torment");
-			}
+				for (const target of pokemon.side.foe.active) {
+					target.addVolatile("torment");
+				}
 			}
 		},
 		onResidualOrder: 26,
@@ -90,10 +90,32 @@ let BattleAbilities = {
 		onResidual(pokemon) {
 			if (pokemon.hasType('Dark')) {
 				for (const target of pokemon.side.foe.active) {
-				target.addVolatile('torment');
+					target.addVolatile('torment');
 				}
 			}
 		},
+	},
+	"handoff": { // Aipom, Ambipom
+		shortDesc: "When an ally consumes their held item, this pokemon gives its item to them.",
+		onAfterUseItem(item, pokemon) {
+			// if (pokemon !== this.effectData.target) return;
+			let battle = pokemon.battle;
+			let sideID = pokemon.side.id;
+			let allyBench = battle.benchPokemon[ sideID ];
+			console.log( allyBench )
+			for (let i = 0; i < 6; i++ ) {
+				let pkmnInfo = allyBench[ i ]
+				if ( pkmnInfo && pkmnInfo.ability === 'handoff' && pkmnInfo.item !== '' ) {
+					pokemon.setItem( pkmnInfo.item )
+					pkmnInfo.item = ''
+					this.add('-ability', pokemon, 'Hand Off');
+					this.add( '-message', pkmnInfo.name + ' gave its item to ' + pokemon.name + '!' )
+					break
+				}
+			}
+		},
+		id: "handoff",
+		name: "Hand Off",
 	},
 };
 

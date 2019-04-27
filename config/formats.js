@@ -4407,55 +4407,76 @@ exports.Formats = [
 		// }
 		
 		onModifyTemplate: function (template, pokemon) {
-			let benchAbility = 'none'
+			let benchAbility = ''
 			if (template.abilities.S){
 				benchAbility = toId(template.abilities.S);
 			}
-			let thisSide = pokemon.side.id;
 			let battle = pokemon.battle;
 			if ( !battle.benchPokemon ) {
-				battle.benchPokemon = {};
+				battle.benchPokemon = [];
 			}
-			if ( !battle.benchPokemon[ thisSide ] ) {
-				battle.benchPokemon[ thisSide ] = [];
+			let sideID = pokemon.side.id;
+			if ( !battle.benchPokemon[ sideID ] ) {
+				battle.benchPokemon[ sideID ] = [];
 			}
-			battle.benchPokemon[ thisSide ][ pokemon.id ] = benchAbility;
+			let allyBench = battle.benchPokemon[ sideID ]
+			let pkmnInfo = {}
+			// add code here if you need more info about bench pokemon for an ability
+			pkmnInfo[ 'ability' ] = benchAbility;
+			pkmnInfo[ 'item' ] = pokemon.item;
+			pkmnInfo[ 'name' ] = pokemon.name;
+			pkmnInfo[ 'id' ] = pokemon.id;
+			//-----------------------------------------------------------------------
+			allyBench.push( pkmnInfo ) // onModifyTemplate goes over the team in order, so this stores them in order
 		},
 		onBeforeSwitchIn: function (pokemon) {
 			let battle = pokemon.battle;
-			let thisSide = pokemon.side.id;
-			let benchPokemon = battle.benchPokemon;
-			for (const ally of pokemon.side.pokemon) {
-				 if ( benchPokemon[ thisSide ][ ally.id ] ){
-					 delete benchPokemon[ thisSide ][ ally.id ];
+			let sideID = pokemon.side.id;
+			let allyBench = battle.benchPokemon[ sideID ];
+			if ( battle.turn === 0 ) {
+				for (const ally of pokemon.side.pokemon) {
+					for ( var pos in allyBench ) {
+						 if ( allyBench[ pos ].id === ally.id ){
+							 delete allyBench[ pos ];
+						}
+					}
 				}
+				console.log( allyBench )
 			}
-			for ( var benchPoke in benchPokemon[ thisSide ]) {  
-				let benchAbility = benchPokemon[ thisSide ][ benchPoke ]
-				let effect = 'ability' + benchAbility;
-				pokemon.volatiles[effect] = {id: effect, target: pokemon};
+			for ( var pos in allyBench ) {  
+				let benchAbility = allyBench[ pos ].ability
+				if ( benchAbility !== '' ) {
+					let effect = 'ability' + benchAbility;
+					pokemon.volatiles[effect] = {id: effect, target: pokemon};
+				}
 			}
 		},
 		onSwitchInPriority: 2,
 		onSwitchIn: function (pokemon) {
 			let battle = pokemon.battle;
-			let thisSide = pokemon.side.id;
-			let benchPokemon = battle.benchPokemon;
-			for ( var benchAbility in benchPokemon[ thisSide ]) {  
-				let effect = 'ability' + benchAbility;
-				delete pokemon.volatiles[effect];
-				pokemon.addVolatile(effect);
+			let sideID = pokemon.side.id;
+			let allyBench = battle.benchPokemon[ sideID ];
+			for ( var pos in allyBench) {
+				let benchAbility = allyBench[ pos ].ability
+				if ( benchAbility !== '' ) {
+					let effect = 'ability' + benchAbility;
+					delete pokemon.volatiles[effect];
+					pokemon.addVolatile(effect);
+				}
 			}
 		},
 		onAfterMega: function (pokemon) {
 			let battle = pokemon.battle;
-			let thisSide = pokemon.side.id;
-			let benchPokemon = battle.benchPokemon;
-				pokemon.removeVolatile('ability' + pokemon.baseAbility);
-				for (var benchAbility in benchPokemon[ thisSide ]) {  
+			let sideID = pokemon.side.id;
+			let allyBench = battle.benchPokemon[ sideID ];
+			pokemon.removeVolatile('ability' + pokemon.baseAbility);
+			for (var pos in allyBench) {  
+				let benchAbility = allyBench[ pos ].ability
+				if ( benchAbility !== '' ) {
 					let effect = 'ability' + benchAbility;
 					pokemon.addVolatile(effect);
 				}
+			}
 		},
 	},
 	{
