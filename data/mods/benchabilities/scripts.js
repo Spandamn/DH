@@ -78,5 +78,36 @@ exports.BattleScripts = {
 		// Hand Off: Aipom, Ambipom,
 		this.modData('Pokedex', 'aipom').abilities['S'] = 'Hand Off';
 		this.modData('Pokedex', 'ambipom').abilities['S'] = 'Hand Off';
+		
+		// Torrential Will: Blastoise, Feraligatr, Swampert, Empoleon, Samurott, Simipour, Greninja, Primarina
+		this.modData('Pokedex', 'blastoise').abilities['S'] = 'Torrential Will';
+		this.modData('Pokedex', 'feraligatr').abilities['S'] = 'Torrential Will';
+		this.modData('Pokedex', 'swampert').abilities['S'] = 'Torrential Will';
+		this.modData('Pokedex', 'empoleon').abilities['S'] = 'Torrential Will';
+		this.modData('Pokedex', 'samurott').abilities['S'] = 'Torrential Will';
+		this.modData('Pokedex', 'simipour').abilities['S'] = 'Torrential Will';
+		this.modData('Pokedex', 'greninja').abilities['S'] = 'Torrential Will';
+		this.modData('Pokedex', 'primarina').abilities['S'] = 'Torrential Will';
+		
+		// Overgrowing Will: Venusaur, Meganium, Sceptile, Torterra, Serperior, Simisage, Chesnaught, Decidueye
+		this.modData('Pokedex', 'venusaur').abilities['S'] = 'Overgrowing Will';
+		this.modData('Pokedex', 'meganium').abilities['S'] = 'Overgrowing Will';
+		this.modData('Pokedex', 'sceptile').abilities['S'] = 'Overgrowing Will';
+		this.modData('Pokedex', 'torterra').abilities['S'] = 'Overgrowing Will';
+		this.modData('Pokedex', 'serperior').abilities['S'] = 'Overgrowing Will';
+		this.modData('Pokedex', 'simisage').abilities['S'] = 'Overgrowing Will';
+		this.modData('Pokedex', 'chesnaught').abilities['S'] = 'Overgrowing Will';
+		this.modData('Pokedex', 'decidueye').abilities['S'] = 'Overgrowing Will';
+		
+		// Blazing Will: Charizard, Typhlosion, Blaziken, Infernape, Emboar, Simisear, Delphox, Incineroar
+		this.modData('Pokedex', 'charizard').abilities['S'] = 'Blazing Will';
+		this.modData('Pokedex', 'typhlosion').abilities['S'] = 'Blazing Will';
+		this.modData('Pokedex', 'blaziken').abilities['S'] = 'Blazing Will';
+		this.modData('Pokedex', 'infernape').abilities['S'] = 'Blazing Will';
+		this.modData('Pokedex', 'simisear').abilities['S'] = 'Blazing Will';
+		this.modData('Pokedex', 'emboar').abilities['S'] = 'Blazing Will';
+		this.modData('Pokedex', 'delphox').abilities['S'] = 'Blazing Will';
+		this.modData('Pokedex', 'incineroar').abilities['S'] = 'Blazing Will';
+		
 	}
 };

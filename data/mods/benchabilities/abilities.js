@@ -117,6 +117,60 @@ let BattleAbilities = {
 		id: "handoff",
 		name: "Hand Off",
 	},
+	"torrentialwill": { // Blastoise, Feraligatr, Swampert, Empoleon, Samurott, Simipour, Greninja, Primarina
+		shortDesc: "Grass Pledge and Fire Pledge deal 30% more damage and summon the swamp or rainbow combo effects, respectively.",
+		onBasePower(move) {
+			if ( move.id === 'firepledge' || move.id === 'grasspledge' ){
+				return this.chainModify( 1.3 )
+			}
+		},
+		onSourceHit(target, source, move) {
+			if ( move.id === 'firepledge' ){
+				source.side.addSideCondition('waterpledge');
+			}
+			if ( move.id === 'grasspledge' ){
+				target.side.addSideCondition('grasspledge');
+			}
+		},
+		id: "torrentialwill",
+		name: "Torrential Will",
+	},
+	"overgrowingwill": { // All Grass starters
+		shortDesc: "Water Pledge and Fire Pledge deal 30% more damage and summon the swamp or inferno combo effects, respectively.",
+		onBasePower(move) {
+			if ( move.id === 'firepledge' || move.id === 'grasspledge' ){
+				return this.chainModify( 1.3 )
+			}
+		},
+		onSourceHit(target, source, move) {
+			if ( move.id === 'firepledge' ){
+				target.side.addSideCondition('firepledge');
+			}
+			if ( move.id === 'waterpledge' ){
+				target.side.addSideCondition('grasspledge');
+			}
+		},
+		id: "overgrowingwill",
+		name: "Overgrowing Will",
+	},
+	"blazingwill": { // All Fire starters
+		shortDesc: "Grass Pledge and Water Pledge deal 30% more damage and summon the inferno or rainbow combo effects, respectively.",
+		onBasePower(move) {
+			if ( move.id === 'firepledge' || move.id === 'grasspledge' ){
+				return this.chainModify( 1.3 )
+			}
+		},
+		onSourceHit(target, source, move) {
+			if ( move.id === 'waterpledge' ){
+				source.side.addSideCondition('waterpledge');
+			}
+			if ( move.id === 'grasspledge' ){
+				target.side.addSideCondition('firepledge');
+			}
+		},
+		id: "blazingwill",
+		name: "Blazing Will",
+	},
 };
 
 exports.BattleAbilities = BattleAbilities;
