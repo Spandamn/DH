@@ -102,7 +102,6 @@ let BattleAbilities = {
 			let battle = pokemon.battle;
 			let sideID = pokemon.side.id;
 			let allyBench = battle.benchPokemon[ sideID ];
-			console.log( allyBench )
 			for (let i = 0; i < 6; i++ ) {
 				let pkmnInfo = allyBench[ i ]
 				if ( pkmnInfo && pkmnInfo.ability === 'handoff' && pkmnInfo.item !== '' ) {
@@ -170,6 +169,68 @@ let BattleAbilities = {
 		},
 		id: "blazingwill",
 		name: "Blazing Will",
+	},
+	"bombshelter": { // Natu, Xatu, Sigilyph, Chespin, Quilladin, Jangmo-o, Hakamo-o, Kommo-o, Octillery
+		shortDesc: "This Pokemon’s allies are at worst neutral to Stealth Rock.",
+		onDamage(damage, target, source, move) { 
+			let maxDamage = ( target.maxhp / 8 )
+			if (move.id === 'stealthrock' && damage > maxDamage ) {
+				return maxDamage;
+			}
+		},
+		id: "bombshelter",
+		name: "Bomb Shelter",
+	},
+	"guardianangel": { // Ralts, Kirlia, Gardevoir, Togepi, Togetic, Togekiss
+		shortDesc: "This pokemon's allies take 50% damage from direct attacks when switching in.",
+		onDamage(damage, target, source, move) { 
+			if (move.effectType === 'Move' && !target.activeTurns ) {
+				return damage / 2;
+			}
+		},
+		id: "guardianangel",
+		name: "Guardian Angel",
+	},
+	"retroracer": {
+		shortDesc: "This Pokemon's critical hit ratio is raised by 1 stage.",
+		onModifyCritRatio( critRatio, pokemon, target ) {
+			if ( pokemon.template.baseStats.spe >= 110 && pokemon.storedStats.spe > target.storedStats.spe ){
+				return critRatio + 1;
+			}
+		},
+		id: "superluck",
+		name: "Super Luck",
+		rating: 1.5,
+		num: 105,
+	},
+	"omnimorph": {
+		desc: "This Pokemon's Normal-type moves become Flying-type moves and have their power multiplied by 1.2. This effect comes after other effects that change a move's type, but before Ion Deluge and Electrify's effects.",
+		shortDesc: "This Pokemon's Normal-type moves become Flying type and have 1.2x power.",
+		onModifyMovePriority: -1,
+		onModifyMove(move, pokemon) {
+			let battle = pokemon.battle;
+			let pkmnInfo = battle.benchPokemon.getPKMNInfo( 'omnimorph', pokemon.side );
+			let newType = ''
+			for ( let i = 0; i < 2; i++ ) {
+				if ( pkmnInfo.types[i] && pokemon.types.includes( pkmnInfo.types[i] ) ){
+					newType = pkmnInfo.types[i]
+				}
+			}
+			
+			if ( pkmnInfo 
+				&& newType !== ''
+				&& move.type === 'Normal' 
+				&& !['judgment', 'multiattack', 'naturalgift', 'revelationdance', 'technoblast', 'weatherball'].includes(move.id) 
+				&& !(move.isZ && move.category !== 'Status'))
+			{
+				move.type = newType;
+			}
+			console.log( battle.benchPokemon )
+		},
+		id: "omnimorph",
+		name: "Omnimorph",
+		rating: 4,
+		num: 185,
 	},
 };
 
