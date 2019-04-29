@@ -69,7 +69,7 @@ let BattleAbilities = {
 	},
 	"oceansblessing": { // Lumineon, Alomomola, Mantine, Manaphy, Phione
 		shortDesc: "This Pokemon’s allies have the Aqua Ring effect added to them.",
-		onStart(pokemon) { 
+		onSwitchIn(pokemon) { 
 			pokemon.addVolatile("aquaring");
 		},
 		id: "oceansblessing",
