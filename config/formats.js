@@ -4399,13 +4399,6 @@ exports.Formats = [
 		},
 		requirePentagon: true,
 		
-		// onBegin: function (pokemon) {
-			// for (const target of pokemon.side.foe) {
-			// this.add("raw|<b>Bench</b>");
-			// this.add('c|+Yung Dramps|', target);
-			// }
-		// }
-		
 		onBegin: function () {
 			let allPokemon = this.p1.pokemon.concat(this.p2.pokemon);
 			for (let pokemon of allPokemon) {
@@ -4417,7 +4410,7 @@ exports.Formats = [
 				let battle = pokemon.battle;
 				if ( !battle.benchPokemon ) {
 					battle.benchPokemon = [];
-					// use this function to retrieve a pokemon's info table using their bench ability
+					// use this function to retrieve a pokemon's info table using their bench ability ( retrieves FIRST pokemon with that ability )
 					battle.benchPokemon.getPKMNInfo = function( ability, side ) 
 					{ 
 						let battle = side.battle
