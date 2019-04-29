@@ -4389,8 +4389,8 @@ exports.Formats = [
 		desc: [
 			"&bullet; <a href=https://www.smogon.com/forums/threads/.3648706/>Bench Abilities</a>",
 		],
-		ruleset: ['Pokemon', 'Species Clause', 'Moody Clause', 'Baton Pass Clause', 'Evasion Moves Clause', 'OHKO Clause', 'Swagger Clause', 'Endless Battle Clause', 'Team Preview', 'HP Percentage Mod', 'Sleep Clause Mod', 'Cancel Mod'],
-		//banlist: ['Unreleased', 'Illegal'],
+		ruleset: ['Pokemon', 'Species Clause', 'Moody Clause', 'Baton Pass Clause', 'Evasion Moves Clause', 'OHKO Clause', 'Swagger Clause', 'Endless Battle Clause', 'Team Preview', 'HP Percentage Mod', 'Sleep Clause Mod', 'Cancel Mod', 'Standard GBU'],
+		banlist: ['Unreleased', 'Illegal'],
 		mod: "benchabilities",
 		maxForcedLevel: 50,
 		teamLength: {
@@ -4399,35 +4399,46 @@ exports.Formats = [
 		},
 		requirePentagon: true,
 		
-		// onBegin: function (pokemon) {
-			// for (const target of pokemon.side.foe) {
-			// this.add("raw|<b>Bench</b>");
-			// this.add('c|+Yung Dramps|', target);
-			// }
-		// }
-		
-		onModifyTemplate: function (template, pokemon) {
-			let benchAbility = ''
-			if (template.abilities.S){
-				benchAbility = toId(template.abilities.S);
+		onBegin: function () {
+			let allPokemon = this.p1.pokemon.concat(this.p2.pokemon);
+			for (let pokemon of allPokemon) {
+				let benchAbility = ''
+				let template = pokemon.template
+				if (template.abilities.S){
+					benchAbility = toId(template.abilities.S);
+				}
+				let battle = pokemon.battle;
+				if ( !battle.benchPokemon ) {
+					battle.benchPokemon = [];
+					// use this function to retrieve a pokemon's info table using their bench ability ( retrieves FIRST pokemon with that ability )
+					battle.benchPokemon.getPKMNInfo = function( ability, side ) 
+					{ 
+						let battle = side.battle
+						let allyBench = battle.benchPokemon[ side.id ]
+						ability = toId( ability )
+						for (let i = 0; i < 6; i++ ) {
+							let pkmnInfo = allyBench[ i ];
+							if ( pkmnInfo && pkmnInfo.ability === ability ) {
+								return pkmnInfo;
+							}
+						}
+					};
+				}
+				let sideID = pokemon.side.id;
+				if ( !battle.benchPokemon[ sideID ] ) {
+					battle.benchPokemon[ sideID ] = [];
+				}
+				let allyBench = battle.benchPokemon[ sideID ]
+				let pkmnInfo = {}
+				// add code here if you need more info about bench pokemon for an ability
+				pkmnInfo[ 'id' ] = pokemon.id;
+				pkmnInfo[ 'name' ] = pokemon.name;
+				pkmnInfo[ 'types' ] = pokemon.types;
+				pkmnInfo[ 'ability' ] = benchAbility;
+				pkmnInfo[ 'item' ] = pokemon.item;
+				//-----------------------------------------------------------------------
+				allyBench.push( pkmnInfo ) // onModifyTemplate goes over the team in order, so this stores them in order
 			}
-			let battle = pokemon.battle;
-			if ( !battle.benchPokemon ) {
-				battle.benchPokemon = [];
-			}
-			let sideID = pokemon.side.id;
-			if ( !battle.benchPokemon[ sideID ] ) {
-				battle.benchPokemon[ sideID ] = [];
-			}
-			let allyBench = battle.benchPokemon[ sideID ]
-			let pkmnInfo = {}
-			// add code here if you need more info about bench pokemon for an ability
-			pkmnInfo[ 'ability' ] = benchAbility;
-			pkmnInfo[ 'item' ] = pokemon.item;
-			pkmnInfo[ 'name' ] = pokemon.name;
-			pkmnInfo[ 'id' ] = pokemon.id;
-			//-----------------------------------------------------------------------
-			allyBench.push( pkmnInfo ) // onModifyTemplate goes over the team in order, so this stores them in order
 		},
 		onBeforeSwitchIn: function (pokemon) {
 			let battle = pokemon.battle;
@@ -4436,12 +4447,14 @@ exports.Formats = [
 			if ( battle.turn === 0 ) {
 				for (const ally of pokemon.side.pokemon) {
 					for ( var pos in allyBench ) {
-						 if ( allyBench[ pos ].id === ally.id ){
+						 if ( allyBench[ pos ].id === ally.id 
+							|| allyBench[ pos ].id === pokemon.id )
+						{
+							console.log( "deleting - position: " + pos + " name: " +	allyBench[ pos ].id )							
 							 delete allyBench[ pos ];
 						}
 					}
 				}
-				console.log( allyBench )
 			}
 			for ( var pos in allyBench ) {  
 				let benchAbility = allyBench[ pos ].ability

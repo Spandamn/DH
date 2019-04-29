@@ -41,6 +41,7 @@ exports.BattleScripts = {
 		this.modData('Pokedex', 'wurmple').abilities['S'] = 'Protective Powder';
 		this.modData('Pokedex', 'cascoon').abilities['S'] = 'Protective Powder';
 		this.modData('Pokedex', 'beautifly').abilities['S'] = 'Protective Powder';
+		this.modData('Pokedex', 'ribombee').abilities['S'] = 'Protective Powder';
 		
 		// Arctic Armor
 		this.modData('Pokedex', 'spheal').abilities['S'] = 'Arctic Armor';
@@ -78,5 +79,79 @@ exports.BattleScripts = {
 		// Hand Off: Aipom, Ambipom,
 		this.modData('Pokedex', 'aipom').abilities['S'] = 'Hand Off';
 		this.modData('Pokedex', 'ambipom').abilities['S'] = 'Hand Off';
+		
+		// Torrential Will: Blastoise, Feraligatr, Swampert, Empoleon, Samurott, Simipour, Greninja, Primarina
+		this.modData('Pokedex', 'blastoise').abilities['S'] = 'Torrential Will';
+		this.modData('Pokedex', 'feraligatr').abilities['S'] = 'Torrential Will';
+		this.modData('Pokedex', 'swampert').abilities['S'] = 'Torrential Will';
+		this.modData('Pokedex', 'empoleon').abilities['S'] = 'Torrential Will';
+		this.modData('Pokedex', 'samurott').abilities['S'] = 'Torrential Will';
+		this.modData('Pokedex', 'simipour').abilities['S'] = 'Torrential Will';
+		this.modData('Pokedex', 'greninja').abilities['S'] = 'Torrential Will';
+		this.modData('Pokedex', 'primarina').abilities['S'] = 'Torrential Will';
+		
+		// Overgrowing Will: Venusaur, Meganium, Sceptile, Torterra, Serperior, Simisage, Chesnaught, Decidueye
+		this.modData('Pokedex', 'venusaur').abilities['S'] = 'Overgrowing Will';
+		this.modData('Pokedex', 'meganium').abilities['S'] = 'Overgrowing Will';
+		this.modData('Pokedex', 'sceptile').abilities['S'] = 'Overgrowing Will';
+		this.modData('Pokedex', 'torterra').abilities['S'] = 'Overgrowing Will';
+		this.modData('Pokedex', 'serperior').abilities['S'] = 'Overgrowing Will';
+		this.modData('Pokedex', 'simisage').abilities['S'] = 'Overgrowing Will';
+		this.modData('Pokedex', 'chesnaught').abilities['S'] = 'Overgrowing Will';
+		this.modData('Pokedex', 'decidueye').abilities['S'] = 'Overgrowing Will';
+		
+		// Blazing Will: Charizard, Typhlosion, Blaziken, Infernape, Emboar, Simisear, Delphox, Incineroar
+		this.modData('Pokedex', 'charizard').abilities['S'] = 'Blazing Will';
+		this.modData('Pokedex', 'typhlosion').abilities['S'] = 'Blazing Will';
+		this.modData('Pokedex', 'blaziken').abilities['S'] = 'Blazing Will';
+		this.modData('Pokedex', 'infernape').abilities['S'] = 'Blazing Will';
+		this.modData('Pokedex', 'simisear').abilities['S'] = 'Blazing Will';
+		this.modData('Pokedex', 'emboar').abilities['S'] = 'Blazing Will';
+		this.modData('Pokedex', 'delphox').abilities['S'] = 'Blazing Will';
+		this.modData('Pokedex', 'incineroar').abilities['S'] = 'Blazing Will';
+	
+		// Bomb Shelter: Natu, Xatu, Sigilyph, Chespin, Quilladin, Jangmo-o, Hakamo-o, Kommo-o, Octillery
+		this.modData('Pokedex', 'natu').abilities['S'] = 'Bomb Shelter';
+		this.modData('Pokedex', 'xatu').abilities['S'] = 'Bomb Shelter';
+		this.modData('Pokedex', 'sigilyph').abilities['S'] = 'Bomb Shelter';
+		this.modData('Pokedex', 'chespin').abilities['S'] = 'Bomb Shelter';
+		this.modData('Pokedex', 'quilladin').abilities['S'] = 'Bomb Shelter';
+		this.modData('Pokedex', 'jangmoo').abilities['S'] = 'Bomb Shelter';
+		this.modData('Pokedex', 'hakamoo').abilities['S'] = 'Bomb Shelter';
+		this.modData('Pokedex', 'kommoo').abilities['S'] = 'Bomb Shelter';
+		this.modData('Pokedex', 'octillery').abilities['S'] = 'Bomb Shelter';
+		
+		// Guardian Angel: Ralts, Kirlia, Gardevoir, Togepi, Togetic, Togekiss
+		this.modData('Pokedex', 'ralts').abilities['S'] = 'Guardian Angel';
+		this.modData('Pokedex', 'kirlia').abilities['S'] = 'Guardian Angel';
+		this.modData('Pokedex', 'gardevoir').abilities['S'] = 'Guardian Angel';
+		this.modData('Pokedex', 'togepi').abilities['S'] = 'Guardian Angel';
+		this.modData('Pokedex', 'togetic').abilities['S'] = 'Guardian Angel';
+		this.modData('Pokedex', 'togekiss').abilities['S'] = 'Guardian Angel';
+		
+		// Retro Racer: Tauros, Dodrio, Aerodactyl
+		this.modData('Pokedex', 'tauros').abilities['S'] = 'Retro Racer';
+		this.modData('Pokedex', 'dodrio').abilities['S'] = 'Retro Racer';
+		this.modData('Pokedex', 'aerodactyl').abilities['S'] = 'Retro Racer';
+		
+		// Omnimorph: Silvally
+		this.modData('Pokedex', 'silvally').abilities['S'] = 'Omnimorph';
+		this.modData('Pokedex', 'silvallybug').abilities['S'] = 'Omnimorph';
+		this.modData('Pokedex', 'silvallydark').abilities['S'] = 'Omnimorph';
+		this.modData('Pokedex', 'silvallydragon').abilities['S'] = 'Omnimorph';
+		this.modData('Pokedex', 'silvallyelectric').abilities['S'] = 'Omnimorph';
+		this.modData('Pokedex', 'silvallyfairy').abilities['S'] = 'Omnimorph';
+		this.modData('Pokedex', 'silvallyfighting').abilities['S'] = 'Omnimorph';
+		this.modData('Pokedex', 'silvallyfire').abilities['S'] = 'Omnimorph';
+		this.modData('Pokedex', 'silvallyflying').abilities['S'] = 'Omnimorph';
+		this.modData('Pokedex', 'silvallyghost').abilities['S'] = 'Omnimorph';
+		this.modData('Pokedex', 'silvallygrass').abilities['S'] = 'Omnimorph';
+		this.modData('Pokedex', 'silvallyground').abilities['S'] = 'Omnimorph';
+		this.modData('Pokedex', 'silvallyice').abilities['S'] = 'Omnimorph';
+		this.modData('Pokedex', 'silvallypoison').abilities['S'] = 'Omnimorph';
+		this.modData('Pokedex', 'silvallypsychic').abilities['S'] = 'Omnimorph';
+		this.modData('Pokedex', 'silvallyrock').abilities['S'] = 'Omnimorph';
+		this.modData('Pokedex', 'silvallysteel').abilities['S'] = 'Omnimorph';
+		this.modData('Pokedex', 'silvallypsychic').abilities['S'] = 'Omnimorph';
 	}
 };
