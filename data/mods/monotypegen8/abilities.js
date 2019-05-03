@@ -121,7 +121,7 @@ exports.BattleAbilities = {
 		onDamagePriority: 1,
 		onDamage: function (damage, target, source, effect) {
 			if (effect && effect.effectType === 'Move' 
-				&& ['spiritsheet', 'mimikyu', 'mimikyutotem'].includes(target.template.speciesid)
+				&& ['spirisheet', 'mimikyu', 'mimikyutotem'].includes(target.template.speciesid)
 				&& !target.transformed) 
 			{
 				this.add('-activate', target, 'ability: Disguise');
@@ -132,7 +132,7 @@ exports.BattleAbilities = {
 		onEffectiveness: function (typeMod, target, type, move) {
 			if (!this.activeTarget) return;
 			let pokemon = this.activeTarget;
-			if (!['spiritsheet', 'mimikyu', 'mimikyutotem'].includes(pokemon.template.speciesid) 
+			if (!['spirisheet', 'mimikyu', 'mimikyutotem'].includes(pokemon.template.speciesid) 
 				|| pokemon.transformed 
 				|| (pokemon.volatiles['substitute'] 
 					&& !(move.flags['authentic'] 

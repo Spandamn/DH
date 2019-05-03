@@ -170,17 +170,6 @@ let BattleAbilities = {
 		id: "blazingwill",
 		name: "Blazing Will",
 	},
-	"bombshelter": { // Natu, Xatu, Sigilyph, Chespin, Quilladin, Jangmo-o, Hakamo-o, Kommo-o, Octillery
-		shortDesc: "This Pokemon’s allies are at worst neutral to Stealth Rock.",
-		onDamage(damage, target, source, move) { 
-			let maxDamage = ( target.maxhp / 8 )
-			if (move.id === 'stealthrock' && damage > maxDamage ) {
-				return maxDamage;
-			}
-		},
-		id: "bombshelter",
-		name: "Bomb Shelter",
-	},
 	"guardianangel": { // Ralts, Kirlia, Gardevoir, Togepi, Togetic, Togekiss
 		shortDesc: "This pokemon's allies take 50% damage from direct attacks when switching in.",
 		onDamage(damage, target, source, move) { 
@@ -192,7 +181,7 @@ let BattleAbilities = {
 		name: "Guardian Angel",
 	},
 	"retroracer": {
-		shortDesc: "This Pokemon's critical hit ratio is raised by 1 stage.",
+		shortDesc: "This Pokemon's allies with 110 base speed or higher get +1 crit ratio if they are faster than their opponent.",
 		onModifyCritRatio( critRatio, pokemon, target ) {
 			if ( pokemon.template.baseStats.spe >= 110 && pokemon.storedStats.spe > target.storedStats.spe ){
 				return critRatio + 1;
@@ -204,8 +193,8 @@ let BattleAbilities = {
 		num: 105,
 	},
 	"omnimorph": {
-		desc: "This Pokemon's Normal-type moves become Flying-type moves and have their power multiplied by 1.2. This effect comes after other effects that change a move's type, but before Ion Deluge and Electrify's effects.",
-		shortDesc: "This Pokemon's Normal-type moves become Flying type and have 1.2x power.",
+		desc: "Allies who share a type with this ability's user have their Normal moves changed to this Pokemon’s type.",
+		shortDesc: "Allies who share a type with this ability's user have their Normal moves changed to this Pokemon’s type.",
 		onModifyMovePriority: -1,
 		onModifyMove(move, pokemon) {
 			let battle = pokemon.battle;
@@ -231,6 +220,33 @@ let BattleAbilities = {
 		name: "Omnimorph",
 		rating: 4,
 		num: 185,
+	},
+	"bombshelter": { // Natu, Xatu, Sigilyph, Chespin, Quilladin, Jangmo-o, Hakamo-o, Kommo-o, Octillery
+		shortDesc: "This Pokemon’s allies are at worst neutral to Stealth Rock.",
+		onDamage(damage, target, source, move) { 
+			let maxDamage = ( target.maxhp / 8 )
+			if ( move.id === 'stealthrock' && damage > maxDamage ) {
+				return maxDamage;
+			}
+		},
+		id: "bombshelter",
+		name: "Bomb Shelter",
+	},
+	"crystalize": {
+		desc: "This pokemon's Rock-type allies take 40% less damage from Water-, Grass-, and Fighting-type moves.",
+		shortDesc: "This pokemon's Rock-type allies take 40% less damage from Water-, Grass-, and Fighting-type moves.",
+		onDamage(damage, target, source, move) { 
+			if ( move.effectType === 'Move'
+				&& target.types.includes( "Rock" )
+				&& ( move.type === 'Grass' || move.type === 'Water' || move.type === 'Fighting' ))
+			{
+				return damage * .6;
+			}
+		},
+		id: "crystalize",
+		name: "Crystalize",
+		rating: 3.5,
+		num: 47,
 	},
 };
 
