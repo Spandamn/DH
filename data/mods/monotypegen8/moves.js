@@ -439,8 +439,8 @@ exports.BattleMovedex = {
 		accuracy: true,
 		basePower: 0,
 		category: "Status",
-		desc: "The user's type changes to match the original type of the move in its first move slot. Fails if the user cannot change its type, or if the type is one of the user's current types.",
-		shortDesc: "Changes user's type to match its first move.",
+		desc: "Boosts the user's two highest stats by 1 stage.",
+		shortDesc: "Boosts the user's two highest stats by 1 stage.",
 		id: "sacredcurrent",
 		name: "Sacred Current",
 		pp: 10,
@@ -451,20 +451,20 @@ exports.BattleMovedex = {
 			let highestStats = [];
 			highestStats[0] = '';
 			let bestStat = 0;
-			for (i = 0, i < 1, i++) {
-				for (j = 0, j < 5, j++) {
+			for (i = 0; i < 2; i++) {
+				for (j = 0; j < 5; j++) {
 					let statName = statnames[j];
-					if ( statName && target.storedStats[ statName ] > bestStat) {
+					if ( target.storedStats[ statName ] > bestStat && highestStats[0] !== statName) {
 						bestStat = target.storedStats[s];
-						if ( highestStats[0] !== statName ) {
-							highestStats[i] = statName;
-						}
+						highestStats[i] = statName;
 					}
 				}
 				bestStat = 0;
 			}
-			target.boost({ highestStats[1] : 1}, target);
-			target.boost({ highestStats[2] : 1}, target);
+			let boost1 = highestStats[0]
+			let boost2 = highestStats[1]
+			target.boost({ boost1 : 1}, target);
+			target.boost({ boost2 : 1}, target);
 		},
 		secondary: null,
 		target: "self",
