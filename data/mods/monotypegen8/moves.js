@@ -434,4 +434,61 @@ exports.BattleMovedex = {
 		zMoveBoost: {accuracy: 1},
 		contestType: "Clever",
 	},
+	"sacredcurrent": {
+		num: 160,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		desc: "The user's type changes to match the original type of the move in its first move slot. Fails if the user cannot change its type, or if the type is one of the user's current types.",
+		shortDesc: "Changes user's type to match its first move.",
+		id: "sacredcurrent",
+		name: "Sacred Current",
+		pp: 10,
+		priority: 0,
+		flags: {snatch: 1},
+		onHit(target) {
+			let statnames = [ 'atk', 'def', 'spa', 'spd', 'spe' ];
+			let highestStats = [];
+			highestStats[0] = '';
+			let bestStat = 0;
+			for (i = 0, i < 1, i++) {
+				for (j = 0, j < 5, j++) {
+					let statName = statnames[j];
+					if ( statName && target.storedStats[ statName ] > bestStat) {
+						bestStat = target.storedStats[s];
+						if ( highestStats[0] !== statName ) {
+							highestStats[i] = statName;
+						}
+					}
+				}
+				bestStat = 0;
+			}
+			target.boost({ highestStats[1] : 1}, target);
+			target.boost({ highestStats[2] : 1}, target);
+		},
+		secondary: null,
+		target: "self",
+		type: "Water",
+		zMoveBoost: {atk: 1, def: 1, spa: 1, spd: 1, spe: 1},
+		contestType: "Beautiful",
+	},
+	"machwing": {
+		num: 98,
+		accuracy: 100,
+		basePower: 40,
+		category: "Physical",
+		desc: "No additional effect.",
+		shortDesc: "Usually goes first.",
+		id: "machwing",
+		isViable: true,
+		name: "Mach Wing",
+		pp: 30,
+		priority: 1,
+		flags: {contact: 1, protect: 1, mirror: 1},
+		secondary: null,
+		target: "normal",
+		type: "Flying",
+		zMovePower: 100,
+		contestType: "Cool",
+	},
 };

@@ -187,8 +187,8 @@ let BattleAbilities = {
 				return critRatio + 1;
 			}
 		},
-		id: "superluck",
-		name: "Super Luck",
+		id: "retroracer",
+		name: "Retro Racer",
 		rating: 1.5,
 		num: 105,
 	},

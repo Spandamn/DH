@@ -153,5 +153,15 @@ exports.BattleScripts = {
 		this.modData('Pokedex', 'silvallyrock').abilities['S'] = 'Omnimorph';
 		this.modData('Pokedex', 'silvallysteel').abilities['S'] = 'Omnimorph';
 		this.modData('Pokedex', 'silvallypsychic').abilities['S'] = 'Omnimorph';
+		
+		// Crystalize: Carbink, Roggenrola, Boldore, Gigalith, Sableye, Spoink, Grumpig, Nihilego
+		this.modData('Pokedex', 'carbink').abilities['S'] = 'Crystalize';
+		this.modData('Pokedex', 'roggenrola').abilities['S'] = 'Crystalize';
+		this.modData('Pokedex', 'boldore').abilities['S'] = 'Crystalize';
+		this.modData('Pokedex', 'gigalith').abilities['S'] = 'Crystalize';
+		this.modData('Pokedex', 'sableye').abilities['S'] = 'Crystalize';
+		this.modData('Pokedex', 'spoink').abilities['S'] = 'Crystalize';
+		this.modData('Pokedex', 'grumpig').abilities['S'] = 'Crystalize';
+		this.modData('Pokedex', 'nihilego').abilities['S'] = 'Crystalize';
 	}
 };
