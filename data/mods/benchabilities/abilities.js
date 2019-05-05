@@ -268,7 +268,7 @@ let BattleAbilities = {
 					}
 					bestStat = 0;
 				}
-				pokemon.modifyStats = function( statName, stat, pkmn ) {
+				pokemon.AABoost = function( statName, stat, pkmn ) {
 					if ( pkmn.highestStats[0] === statName || pkmn.highestStats[1] === statName ) {
 						return stat * 1.3
 					}
@@ -277,27 +277,27 @@ let BattleAbilities = {
 		},
 		onModifyAtk(stat, pokemon) {
 			if ( pokemon.highestStats ) { 
-				return pokemon.modifyStats( 'atk', stat, pokemon );
+				return pokemon.AABoost( 'atk', stat, pokemon );
 			}
 		},
 		onModifyDef(stat, pokemon) {
 			if ( pokemon.highestStats ) { 
-				return pokemon.modifyStats( 'def', stat, pokemon );
+				return pokemon.AABoost( 'def', stat, pokemon );
 			}
 		},
 		onModifySpA(stat, pokemon) {
 			if ( pokemon.highestStats ) { 
-				return pokemon.modifyStats( 'spa', stat, pokemon );
+				return pokemon.AABoost( 'spa', stat, pokemon );
 			}
 		},
 		onModifySpD(stat, pokemon) {
 			if ( pokemon.highestStats ) { 
-				return pokemon.modifyStats( 'spd', stat, pokemon );
+				return pokemon.AABoost( 'spd', stat, pokemon );
 			}
 		},
 		onModifySpe(stat, pokemon) {
 			if ( pokemon.highestStats ) { 
-				return pokemon.modifyStats( 'spe', stat, pokemon );
+				return pokemon.AABoost( 'spe', stat, pokemon );
 			}
 		},
 		id: "ancientawakening",
