@@ -451,8 +451,8 @@ exports.BattleMovedex = {
 			let highestStats = [];
 			highestStats[0] = '';
 			let bestStat = 0;
-			for (i = 0; i < 2; i++) {
-				for (j = 0; j < 5; j++) {
+			for ( let i = 0; i < 2; i++) {
+				for ( let j = 0; j < 5; j++) {
 					let statName = statnames[j];
 					if ( target.storedStats[ statName ] > bestStat && highestStats[0] !== statName) {
 						bestStat = target.storedStats[s];

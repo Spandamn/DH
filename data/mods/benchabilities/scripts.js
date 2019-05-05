@@ -163,5 +163,14 @@ exports.BattleScripts = {
 		this.modData('Pokedex', 'spoink').abilities['S'] = 'Crystalize';
 		this.modData('Pokedex', 'grumpig').abilities['S'] = 'Crystalize';
 		this.modData('Pokedex', 'nihilego').abilities['S'] = 'Crystalize';
+		
+		// Ancient Awakening: Lunatone, Solrock, Regirock, Yamask, Cofagrigus, Golett, Golurk
+		this.modData('Pokedex', 'lunatone').abilities['S'] = 'Ancient Awakening';
+		this.modData('Pokedex', 'solrock').abilities['S'] = 'Ancient Awakening';
+		this.modData('Pokedex', 'regirock').abilities['S'] = 'Ancient Awakening';
+		this.modData('Pokedex', 'yamask').abilities['S'] = 'Ancient Awakening';
+		this.modData('Pokedex', 'cofagrigus').abilities['S'] = 'Ancient Awakening';
+		this.modData('Pokedex', 'golett').abilities['S'] = 'Ancient Awakening';
+		this.modData('Pokedex', 'golurk').abilities['S'] = 'Ancient Awakening';
 	}
 };

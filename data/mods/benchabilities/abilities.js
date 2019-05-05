@@ -248,6 +248,63 @@ let BattleAbilities = {
 		rating: 3.5,
 		num: 47,
 	},
+	"ancientawakening": {
+		desc: "This pokemon's Rock-type allies take 40% less damage from Water-, Grass-, and Fighting-type moves.",
+		shortDesc: "This pokemon's Rock-type allies take 40% less damage from Water-, Grass-, and Fighting-type moves.",
+		onUpdate( pokemon ){
+			let fossilPokemon = [ 'kabuto', 'kabutops', 'omanyte', 'omastar', 'aerodactyl', 'anorith', 'armaldo', 'lileep', 'cradily', 'cranidos', 'rampardos', 'shieldon', 'bastiodon', 'tirtouga', 'carracosta', 'archen', 'archeops', 'tyrunt', 'tyrantrum', 'amaura', 'aurorus', 'aerodactylmega' ];
+			if ( !pokemon.highestStats && fossilPokemon.includes( pokemon.speciesid )) {
+				let statnames = [ 'atk', 'def', 'spa', 'spd', 'spe' ];
+				pokemon.highestStats = [];
+				pokemon.highestStats[0] = '';
+				let bestStat = 0;
+				for ( let i = 0; i < 2; i++) {
+					for ( let j = 0; j < 5; j++) {
+						let statName = statnames[j];
+						if ( pokemon.storedStats[ statName ] > bestStat && pokemon.highestStats[0] !== statName) {
+							bestStat = pokemon.storedStats[ statName ];
+							pokemon.highestStats[i] = statName;
+						}
+					}
+					bestStat = 0;
+				}
+				pokemon.modifyStats = function( statName, stat, pkmn ) {
+					if ( pkmn.highestStats[0] === statName || pkmn.highestStats[1] === statName ) {
+						return stat * 1.3
+					}
+				}	
+			}
+		},
+		onModifyAtk(stat, pokemon) {
+			if ( pokemon.highestStats ) { 
+				return pokemon.modifyStats( 'atk', stat, pokemon );
+			}
+		},
+		onModifyDef(stat, pokemon) {
+			if ( pokemon.highestStats ) { 
+				return pokemon.modifyStats( 'def', stat, pokemon );
+			}
+		},
+		onModifySpA(stat, pokemon) {
+			if ( pokemon.highestStats ) { 
+				return pokemon.modifyStats( 'spa', stat, pokemon );
+			}
+		},
+		onModifySpD(stat, pokemon) {
+			if ( pokemon.highestStats ) { 
+				return pokemon.modifyStats( 'spd', stat, pokemon );
+			}
+		},
+		onModifySpe(stat, pokemon) {
+			if ( pokemon.highestStats ) { 
+				return pokemon.modifyStats( 'spe', stat, pokemon );
+			}
+		},
+		id: "ancientawakening",
+		name: "Ancient Awakening",
+		rating: 3.5,
+		num: 47,
+	},
 };
 
 exports.BattleAbilities = BattleAbilities;
