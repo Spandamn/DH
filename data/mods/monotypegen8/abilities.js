@@ -168,4 +168,48 @@ exports.BattleAbilities = {
 		rating: 3.5,
 		num: 153,
 	},
+	"antifreeze": {
+		desc: "This pokemon is immune to Ice-type moves.",
+		shortDesc: "This pokemon is immune to Ice-type moves.",
+		onTryHit: function (target, source, move) {
+			if (target !== source && move.type === 'Ice') {
+				return null;
+			}
+		},
+		id: "antifreeze",
+		name: "Antifreeze",
+		rating: 3.5,
+		num: 153,
+	},
+	"oceanic": {
+		desc: "This pokemon is immune to Water-type moves and does 30% more damage with them.",
+		shortDesc: "This pokemon is immune to Water-type moves and does 30% more damage with them.",
+		onTryHit: function (target, source, move) {
+			if (target !== source && move.type === 'Water') {
+				return null;
+			}
+		},
+		onBasePower(basePower, pokemon, target, move) {
+			if ( move.type === 'Water' ) {
+				return this.chainModify([0x14CD, 0x1000]);
+			}
+		},
+		id: "oceanic",
+		name: "Oceanic",
+		rating: 3.5,
+		num: 153,
+	},
+	"doublebarrel": {
+		desc: "This pokemon's ballistic moves deal 50% more damage.",
+		shortDesc: "This pokemon's ballistic moves deal 50% more damage.",
+		onBasePower(basePower, pokemon, target, move) {
+			if (move.flags['bullet']) {
+				return this.chainModify(1.5);
+			}
+		},
+		id: "doublebarrel",
+		name: "Double Barrel",
+		rating: 3.5,
+		num: 153,
+	},
 };

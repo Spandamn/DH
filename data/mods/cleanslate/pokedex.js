@@ -110,7 +110,7 @@ let BattlePokedex = {
         num: 180,
         species: "Flaaffy",
         types: ["Electric", "Flying"],
-        baseStats: {hp: 100, atk: 55, def: 40, spa: 90, spd: 70, spe: 60},
+        baseStats: {hp: 100, atk: 55, def: 35, spa: 90, spd: 50, spe: 60},
         abilities: {0: "Natural Cure", 1: "Static", H: "Fur Coat"},
         heightm: 0.8,
         weightkg: 13.3,

@@ -434,4 +434,61 @@ exports.BattleMovedex = {
 		zMoveBoost: {accuracy: 1},
 		contestType: "Clever",
 	},
+	"sacredcurrent": {
+		num: 160,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		desc: "Boosts the user's two highest stats by 1 stage.",
+		shortDesc: "Boosts the user's two highest stats by 1 stage.",
+		id: "sacredcurrent",
+		name: "Sacred Current",
+		pp: 10,
+		priority: 0,
+		flags: {snatch: 1},
+		onHit(target) {
+			let statnames = [ 'atk', 'def', 'spa', 'spd', 'spe' ];
+			let highestStats = [];
+			highestStats[0] = '';
+			let bestStat = 0;
+			for ( let i = 0; i < 2; i++) {
+				for ( let j = 0; j < 5; j++) {
+					let statName = statnames[j];
+					if ( target.storedStats[ statName ] > bestStat && highestStats[0] !== statName) {
+						bestStat = target.storedStats[s];
+						highestStats[i] = statName;
+					}
+				}
+				bestStat = 0;
+			}
+			let boost1 = highestStats[0]
+			let boost2 = highestStats[1]
+			target.boost({ boost1 : 1}, target);
+			target.boost({ boost2 : 1}, target);
+		},
+		secondary: null,
+		target: "self",
+		type: "Water",
+		zMoveBoost: {atk: 1, def: 1, spa: 1, spd: 1, spe: 1},
+		contestType: "Beautiful",
+	},
+	"machwing": {
+		num: 98,
+		accuracy: 100,
+		basePower: 40,
+		category: "Physical",
+		desc: "No additional effect.",
+		shortDesc: "Usually goes first.",
+		id: "machwing",
+		isViable: true,
+		name: "Mach Wing",
+		pp: 30,
+		priority: 1,
+		flags: {contact: 1, protect: 1, mirror: 1},
+		secondary: null,
+		target: "normal",
+		type: "Flying",
+		zMovePower: 100,
+		contestType: "Cool",
+	},
 };

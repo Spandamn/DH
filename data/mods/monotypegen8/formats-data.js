@@ -121,4 +121,104 @@ exports.BattleFormatsData = {
         tier: "OU",
         doublesTier: "DOU",
     },
+	lapaqua: {
+		tier: "OU",
+		doublesTier: "DOU",
+	},
+	torloam: {
+		tier: "OU",
+		doublesTier: "DOU",
+	},
+	saphaero: {
+		tier: "OU",
+		doublesTier: "DOU",
+	},
+	atlampra: {
+		tier: "OU",
+		doublesTier: "DOU",
+	},
+	volpacifa: {
+		tier: "OU",
+		doublesTier: "DOU",
+	},
+	coralindia: {
+		tier: "OU",
+		doublesTier: "DOU",
+	},
+	arcturna: {
+		tier: "OU",
+		doublesTier: "DOU",
+	},
+	corwhal: {
+		tier: "OU",
+		doublesTier: "DOU",
+	},
+	amazonda: {
+		tier: "OU",
+		doublesTier: "DOU",
+	},
+	faenister: {
+		tier: "OU",
+		doublesTier: "DOU",
+	},
+	canadensail: {
+		tier: "OU",
+		doublesTier: "DOU",
+	},
+	comparsnip: {
+		tier: "OU",
+		doublesTier: "DOU",
+	},
+	tigresh: {
+		tier: "OU",
+		doublesTier: "DOU",
+	},
+	flooduel: {
+		tier: "OU",
+		doublesTier: "DOU",
+	},
+	zephyreon: {
+		tier: "OU",
+		doublesTier: "DOU",
+	},
+	poiseon: {
+		tier: "OU",
+		doublesTier: "DOU",
+	},
+	turfeon: {
+		tier: "OU",
+		doublesTier: "DOU",
+	},
+	blunderbusc: {
+		tier: "OU",
+		doublesTier: "DOU",
+	},
+	missorceress: {
+		tier: "OU",
+		doublesTier: "DOU",
+	},
+	adnocana: {
+		tier: "OU",
+		doublesTier: "DOU",
+	},
+	meganiumalola: {
+		tier: "OU",
+		doublesTier: "DOU",
+	},
+	arcaninealola: {
+		tier: "OU",
+		doublesTier: "DOU",
+	},
+	braviaryalola: {
+		tier: "OU",
+		doublesTier: "DOU",
+	},
+	clefablealola: {
+		tier: "OU",
+		doublesTier: "DOU",
+	},
+	laprasalola: {
+		tier: "OU",
+		doublesTier: "DOU",
+	},
 };
