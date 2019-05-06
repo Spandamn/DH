@@ -1133,6 +1133,7 @@ exports.BattleLearnsets = {
 	}},
 	turfeon: {learnset: {
 		earthquake: ["7L1"],
+		celebrate: ["7L1"],
 		healbell: ["7L1"],
 		ironhead: ["7L1"],
 		knockoff: ["7L1"],
@@ -1161,6 +1162,7 @@ exports.BattleLearnsets = {
 	}},
 	poiseon: {learnset: {
 		firefang: ["7L1"],
+		celebrate: ["7L1"],
 		gigadrain: ["7L1"],
 		gunkshot: ["7L1"],
 		healbell: ["7L1"],
@@ -1216,6 +1218,7 @@ exports.BattleLearnsets = {
 	zephyreon: {learnset: {	
 		airslash: ['7L1'],
 		defog: ['7L1'],
+		celebrate: ["7L1"],
 		heatwave: ['7L1'],
 		hurricane: ['7L1'],
 		hypervoice: ['7L1'],
