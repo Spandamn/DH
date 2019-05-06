@@ -201,4 +201,24 @@ exports.BattleFormatsData = {
 		tier: "OU",
 		doublesTier: "DOU",
 	},
+	meganiumalola: {
+		tier: "OU",
+		doublesTier: "DOU",
+	},
+	arcaninealola: {
+		tier: "OU",
+		doublesTier: "DOU",
+	},
+	braviaryalola: {
+		tier: "OU",
+		doublesTier: "DOU",
+	},
+	clefablealola: {
+		tier: "OU",
+		doublesTier: "DOU",
+	},
+	laprasalola: {
+		tier: "OU",
+		doublesTier: "DOU",
+	},
 };
