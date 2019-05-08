@@ -5297,11 +5297,11 @@ exports.BattlePokedex = {
         gender: "N",
         baseStats: {
             hp: 74,
-            atk: 87,
-            def: 115,
+            atk: 97,
+            def: 135,
             spa: 52,
-            spd: 115,
-            spe: 52
+            spd: 125,
+            spe: 57
         },
         abilities: {
             0: "Combination Drive"
@@ -5323,11 +5323,11 @@ exports.BattlePokedex = {
         gender: "N",
         baseStats: {
             hp: 74,
-            atk: 115,
-            def: 87,
-            spa: 115,
+            atk: 135,
+            def: 97,
+            spa: 125,
             spd: 52,
-            spe: 52
+            spe: 57
         },
         abilities: {
             0: "Combination Drive"
