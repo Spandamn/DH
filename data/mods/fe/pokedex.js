@@ -24280,6 +24280,7 @@ auroritarmega: {
      			     num: 7500591,
      			     species: "Type: Blade",
      			     types: ["Normal", "Steel"],
+   				  gender: "N",
      			     baseStats: {hp: 91, atk: 104, def: 135, spa: 70, spd: 83, spe: 47},
     			     abilities: {0: "Ravage"},
      			     heightm: 1.9,
