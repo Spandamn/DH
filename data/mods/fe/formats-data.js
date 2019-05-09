@@ -295,16 +295,16 @@ exports.BattleFormatsData = { //
     magiranha: {
         tier: "LC",
     },
-    sharpedos: {
+    gyarapedo: {
         tier: "OU",
     },
-    sharpedosmegas: {
+    gyarapedomegas: {
         tier: "OU",
-        requiredItem: "sharpedossite",
+        requiredItem: "gyarapedosite",
     },
-    sharpedosmegag: {
+    gyarapedomegag: {
         tier: "OU",
-        requiredItem: "sharpedosgite",
+        requiredItem: "gyarapedogite",
     },
     growlee: {
         tier: "LC",
