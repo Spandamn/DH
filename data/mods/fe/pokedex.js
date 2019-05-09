@@ -26984,4 +26984,15 @@ auroritarmega: {
 		fusion: ["Staravia", "Regigigas"],
 		eggGroups: ["Undiscovered"],
 	},
+	talesmear: {
+		num: 75000666,
+		types: ["Normal", "Fire"],
+		species: "Talesmear",
+		baseStats: {hp: 74, atk: 58, def, 65, spa: 60, spd: 82, spe: 97},
+		abilities: {0: "Double Rainbow All the Way"},
+		heightm: 1.15,
+		weightkg: 38.9,
+		fusion: ["Ninetales", "Smeargle"],
+		eggGroups: ["Undiscovered"],
+	},
 };
