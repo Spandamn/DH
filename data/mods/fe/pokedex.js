@@ -2395,9 +2395,9 @@ exports.BattlePokedex = {
         color: "Red",
         eggGroups: ["Undiscovered"],
     },
-    klazor: {
+    klinklazor: {
         num: 750038,
-        species: "Klazor",
+        species: "Klinklazor",
         types: ["Bug", "Steel"],
         genderRatio: {
             M: 0.5,
@@ -2415,15 +2415,15 @@ exports.BattlePokedex = {
             0: "Math Surge"
         },
         heightm: 1.205,
-        weightkg: 84.5,
+        weightkg: 99.5,
         color: "Gray",
 		  otherFormes: ["klazormega"],
         eggGroups: ["Undiscovered"],
     },
-    klazormega: {
+    klinklazormega: {
         num: 750038,
-        species: "Klazor-Mega",
-        baseSpecies: "Klazor",
+        species: "Klinklazor-Mega",
+        baseSpecies: "Klinklazor",
         forme: "Mega",
         formeLetter: "M",
         types: ["Bug", "Steel"],
@@ -2442,8 +2442,8 @@ exports.BattlePokedex = {
         abilities: {
             0: "Technician"
         },
-        heightm: 1.8,
-        weightkg: 117.5,
+        heightm: 1.4,
+        weightkg: 106.5,
         color: "Gray",
         eggGroups: ["Undiscovered"],
     },
