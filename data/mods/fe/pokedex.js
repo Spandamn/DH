@@ -26973,4 +26973,15 @@ auroritarmega: {
 		weightkg: 57.7,
 		eggGroups: ["Undiscovered"],
 	},
+	gog: {
+		num: 75000665,
+		types: ["Normal", "Flying"],
+		species: "Gog",
+		baseStats: {hp: 82, atk: 117, def, 80, spa: 60, spd: 75, spe: 90},
+		abilities: {0: "1v1 Master"},
+		heightm: 2.15,
+		weightkg: 217.7,
+		fusion: ["Staravia", "Regigigas"],
+		eggGroups: ["Undiscovered"],
+	},
 };
