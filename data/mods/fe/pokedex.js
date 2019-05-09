@@ -2203,12 +2203,12 @@ exports.BattlePokedex = {
         heightm: 0.85,
         weightkg: 15.4,
         color: "Red",
-		  evos: ["sharpedos"],
+		  evos: ["gyarapedo"],
         eggGroups: ["Water 2"],
     },
-    sharpedos: {
+    gyarapedo: {
         num: 750034,
-        species: "Sharpedos",
+        species: "Gyarapedo",
         types: ["Water"],
         baseStats: {
             hp: 92,
@@ -2226,13 +2226,13 @@ exports.BattlePokedex = {
 		  prevo: "magiranha",
 		  evoLevel: 25,
         color: "Blue",
-		  otherFormes: ["sharpedosmegas", "sharpedosmegag"],
+		  otherFormes: ["gyarapedomegas", "gyarapedomegag"],
         eggGroups: ["Water 2"],
     },
-    sharpedosmegas: {
+    gyarapedomegas: {
         num: 750034,
-        species: "Sharpedos-Mega-S",
-        baseSpecies: "Sharpedos",
+        species: "Gyarapedo-Mega-S",
+        baseSpecies: "Gyarapedo",
         forme: "Mega",
         formeLetter: "M",
         types: ["Water"],
@@ -2253,10 +2253,10 @@ exports.BattlePokedex = {
         eggGroups: ["Water 2"],
     },
 
-    sharpedosmegag: {
+    gyarapedosmegag: {
         num: 750034,
-        species: "Sharpedos-Mega-G",
-        baseSpecies: "Sharpedos",
+        species: "Gyarapedo-Mega-G",
+        baseSpecies: "Gyarapedo",
         forme: "Mega",
         formeLetter: "M",
         types: ["Water", "Dark"],
