@@ -329,33 +329,33 @@ exports.BattleItems = {
         gen: 6,
         desc: "If holder is a glakiss, this item allows it to Mega Evolve in battle.",
     },
-    "sharpedossite": {
-        id: "sharpedossite",
-        name: "sharpedossite",
+    "gyarapedosite": {
+        id: "gyarapedosite",
+        name: "gyarapedosite",
         spritenum: 619,
 
-        megaStone: "Sharpedos-Mega-S",
-        megaEvolves: "Sharpedos",
+        megaStone: "Gyarapedo-Mega-S",
+        megaEvolves: "Gyarapedo",
         onTakeItem: function(item, source) {
             if (item.megaEvolves === source.baseTemplate.baseSpecies) return false;
             return true;
         },
         gen: 6,
-        desc: "If holder is a sharpedoss, this item allows it to Mega Evolve in battle.",
+        desc: "If holder is a Gyarapedo, this item allows it to Mega Evolve in battle.",
     },
-    "sharpedosgite": {
-        id: "sharpedosgite",
-        name: "sharpedosgite",
+    "gyarapedoite": {
+        id: "gyarapedogite",
+        name: "gyarapedogite",
         spritenum: 589,
 
-        megaStone: "Sharpedos-Mega-G",
-        megaEvolves: "Sharpedos",
+        megaStone: "Gyarapedo-Mega-G",
+        megaEvolves: "Gyarapedo",
         onTakeItem: function(item, source) {
             if (item.megaEvolves === source.baseTemplate.baseSpecies) return false;
             return true;
         },
         gen: 6,
-        desc: "If holder is a sharpedosg, this item allows it to Mega Evolve in battle.",
+        desc: "If holder is a Gyarapedo, this item allows it to Mega Evolve in battle.",
     },
     "pidgetotite": {
         id: "pidgetotite",
