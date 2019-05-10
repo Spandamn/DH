@@ -2404,12 +2404,12 @@ exports.BattlePokedex = {
             F: 0.5
         },
         baseStats: {
-            hp: 75,
-            atk: 105,
-            def: 100,
-            spa: 82,
-            spd: 85,
-            spe: 61
+            hp: 85,
+            atk: 125,
+            def: 107,
+            spa: 62,
+            spd: 87,
+            spe: 82
         },
         abilities: {
             0: "Math Surge"
@@ -2432,12 +2432,12 @@ exports.BattlePokedex = {
             F: 0.5
         },
         baseStats: {
-            hp: 75,
-            atk: 125,
-            def: 140,
-            spa: 92,
-            spd: 105,
-            spe: 71
+            hp: 85,
+            atk: 145,
+            def: 147,
+            spa: 72,
+            spd: 107,
+            spe: 92
         },
         abilities: {
             0: "Technician"
