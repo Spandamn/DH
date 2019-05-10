@@ -1091,18 +1091,15 @@ exports.BattleAbilities = {
 		name: "Sand Aura",
 	},
 	"staticstorm": {
-		shortDesc: "30% chance to paralyze the opponent each turn if Hail is active.",
-		onResidualOrder: 26,
-		onResidualSubOrder: 1,
-		onResidual(pokemon, effect) {
-			for (const target of pokemon.side.foe.active) {
-				if (!target || target.fainted) continue;
-				if (this.field.isWeather(['hail', 'solarsnow', 'yeti']) && this.random(10) < 3) {
-					if (!!pokemon.volatiles['atmosphericperversion'] === !!pokemon.volatiles['weatherbreak']){
-						target.trySetStatus('par', pokemon, effect);
-					} else {
-						target.cureStatus();
-					}
+		desc: "If Hail is active, this Pokemon's Special Attack is multiplied by 1.5.",
+		shortDesc: "If Hail is active, this Pokemon's Sp. Atk is 1.5x.",
+		onModifySpAPriority: 5,
+		onModifySpA(spa, pokemon) {
+			if (this.field.isWeather(['hail', 'yeti', 'solarsnow'])) {
+				if (!!pokemon.volatiles['atmosphericperversion'] === !!pokemon.volatiles['weatherbreak']){
+					return this.chainModify(1.5);
+				} 	else {
+					return this.chainModify([0x0AAB, 0x1000]);
 				}
 			}
 		},
@@ -1208,7 +1205,7 @@ exports.BattleAbilities = {
 		name: "Intimidating Fangs",
 	},
 	"intimidatingabsorption": {
-		shortDesc: "Intimidate + Water Absorb.",
+		shortDesc: "When hit by a water move, heals 1/4 HP, immune to water. On switch-in, this Pokemon lowers the Attack of adjacent opponents by 1 stage. This Pokemon's Water moves lower the Attack of targets by 1 stage each.",
 		onStart(pokemon) {
 			let activated = false;
 			for (const target of pokemon.side.foe.active) {
@@ -1231,6 +1228,19 @@ exports.BattleAbilities = {
 				}
 				return null;
 			}
+		},
+		onModifyMove(move, pokemon) {
+			if (!move || move.type !== 'Water' || move.target.side === pokemon.side) return;
+			if (!move.secondaries) {
+				move.secondaries = [];
+			}
+			move.secondaries.push({
+				chance: 100,
+				boosts: {
+					atk: -1,
+				},
+				ability: this.getAbility('intimidatingabsorption'),
+			});
 		},
 		id: "intimidatingabsorption",
 		name: "Intimidating Absorption",
@@ -11460,22 +11470,24 @@ exports.BattleAbilities = {
 	
 	"combinationdrive": {
 		desc: "The Pokémon changes form depending on how it battles. Entering Power Forme empowers Punch and Slash based moves by x1.5 for one attack.",
-		shortDesc: "If Golislash, changes Forme to Power before attacks and Defense before King's Shield. Certain moves are boosted whilst transitioning.",
+		shortDesc: "If Golislash, changes Forme to Power before attacks and Defense before King's Shield. Power Forme deals x1.5 damage with Punching Moves, and Defense Forme takes x0.5 damage from such moves..",
 		onBeforeMovePriority: 0.5,
 		onBeforeMove(attacker, defender, move) {
 			if (attacker.template.baseSpecies !== 'Golislash' || attacker.transformed) return;
 			if (move.category === 'Status' && move.id !== 'kingsshield') return;
-			let slashmoves = ['psychocut', 'cut', 'slash', 'nightslash', 'solarblade', 'leafblade', 'xscissor', 'crosspoison', 'airslash', 'aircutter', 'furycutter', 'sacredsword', 'secretsword', 'razorshell']; 
 			let targetSpecies = (move.id === 'kingsshield' ? 'Golislash' : 'Golislash-Power');
 			if (attacker.template.species !== targetSpecies && attacker.formeChange(targetSpecies)) {
 				this.add('-formechange', attacker, targetSpecies, '[from] ability: Combination Drive');
-				if (move.flags['punch'] || slashmoves.includes(move.id)){
-					move.combinationdriveboosted = true;	
-				}
+			}
+		},
+		onSourceModifyDamage(damage, source, target, move) {
+			if (move.flags['punch'] && target.template.species === 'Golislash') {
+				this.debug('Combination Drive weaken');
+				return this.chainModify(0.5);
 			}
 		},
 		onBasePower(basePower, attacker, defender, move) {
-			if (move.combinationdriveboosted && !(defender.hasAbility('moldedstall') && defender.willMove()) && (move.ignoreAbility || !defender.hasAbility(['unstablevoltage', 'teraarmor', 'turbocurse', 'unamazed', 'sturdymold']))) {
+			if (move.flags['punch'] && !(defender.hasAbility('moldedstall') && defender.willMove()) && (move.ignoreAbility || !defender.hasAbility(['unstablevoltage', 'teraarmor', 'turbocurse', 'unamazed', 'sturdymold']))) {
 				this.debug('Combination Drive boost');
 				return this.chainModify(1.5);
 			}
