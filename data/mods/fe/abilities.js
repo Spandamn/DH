@@ -1050,23 +1050,14 @@ exports.BattleAbilities = {
 		name: "No Skill",
 	},
 	"sandaura": {
-		shortDesc: "Sand Stream + Sand Veil.",
+		shortDesc: "Sand Stream + Rough Skin.",
 		onStart(source) {
 			this.field.setWeather('sandstorm');
 		},
-		onImmunity(type, pokemon) {
-			if (type === 'sandstorm' || type === 'cactuspower' || type === 'yeti') return false;
-		},
-		onModifyAccuracy(accuracy, target) {
-			if (typeof accuracy !== 'number') return;
-			if (this.field.isWeather(['yeti', 'sandstorm', 'cactuspower'])) {
-				if (target && (!!target.volatiles['atmosphericperversion'] === !!target.volatiles['weatherbreak'])){
-					this.debug('Sand Veil - decreasing accuracy');
-					return accuracy * 0.8;
-				} else {
-					this.debug('Inverted Sand Veil - boosting accuracy');
-					return accuracy * 1.25;
-				}
+		onAfterDamageOrder: 1,
+		onAfterDamage(damage, target, source, move) {
+			if (source && source !== target && move && move.flags['contact']) {
+				this.damage(source.maxhp / 8, source, target);
 			}
 		},
 		id: "sandaura",
