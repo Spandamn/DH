@@ -877,8 +877,21 @@ exports.BattleAbilities = {
 		name: "Technicutter",
 	},
 	"chlorovolt": {
-		shortDesc: "If Electric Terrain is active, this Pokemon's Speed is doubled.",
-		onModifySpe(spe) {
+		shortDesc: "This Pokemon's Speed doubles in Electric Terrain or Sunny Day, quadruples when both are active.",
+		onModifySpe(spe, pokemon) {
+			if (this.field.isTerrain('electricterrain') && this.field.isWeather(['sunnyday', 'desolateland', 'solarsnow'])) {
+				if (!!pokemon.volatiles['atmosphericperversion'] === !!pokemon.volatiles['weatherbreak']){
+					return this.chainModify(4);
+				}
+				return;
+			}
+			if (this.field.isWeather(['sunnyday', 'desolateland', 'solarsnow'])) {
+				if (!!pokemon.volatiles['atmosphericperversion'] === !!pokemon.volatiles['weatherbreak']){
+					return this.chainModify(2);
+				} 	else {
+					return this.chainModify(0.5);
+				}
+			}
 			if (this.field.isTerrain('electricterrain')) {
 				return this.chainModify(2);
 			}
