@@ -7386,50 +7386,50 @@ exports.BattleAbilities = {
 	    shortDesc: "If Sunny Day is active, this Pokemon's stats are doubled. In any other weather, this Pokemon's stats are quartered.",
 	    onModifyAtkPriority: 5,
 	    onModifyAtk(atk, pokemon) {
-	        if (this.field.isWeather()) {
+	        if (this.field.isWeather() && !this.field.isWeather('deltastream')) {
 				  if (this.field.isWeather(['sunnyday', 'desolateland', 'solarsnow']) === (!!pokemon.volatiles['atmosphericperversion'] === !!pokemon.volatiles['weatherbreak'])) {
 						return this.chainModify(2);
 					} 	else {
-						return this.chainModify(0.25);
+						return this.chainModify(0.5);
 					}
 			  }
 	    },
 	    onModifySpAPriority: 5,
 	    onModifySpA(spa, pokemon) {
-	        if (this.field.isWeather()) {
+	        if (this.field.isWeather() && !this.field.isWeather('deltastream')) {
 				  if (this.field.isWeather(['sunnyday', 'desolateland', 'solarsnow']) === (!!pokemon.volatiles['atmosphericperversion'] === !!pokemon.volatiles['weatherbreak'])) {
 						return this.chainModify(2);
 					} 	else {
-						return this.chainModify(0.25);
+						return this.chainModify(0.5);
 					}
 			  }
 	    },
 	    onModifyDefPriority: 5,
 	    onModifyDef(def, pokemon) {
-	        if (this.field.isWeather()) {
+	        if (this.field.isWeather() && !this.field.isWeather('deltastream')) {
 				  if (this.field.isWeather(['sunnyday', 'desolateland', 'solarsnow']) === (!!pokemon.volatiles['atmosphericperversion'] === !!pokemon.volatiles['weatherbreak'])) {
 						return this.chainModify(2);
 					} 	else {
-						return this.chainModify(0.25);
+						return this.chainModify(0.5);
 					}
 			  }
 	    },
 	    onModifySpDPriority: 5,
 	    onModifySpD(spd, pokemon) {
-	        if (this.field.isWeather()) {
+	        if (this.field.isWeather() && !this.field.isWeather('deltastream')) {
 				  if (this.field.isWeather(['sunnyday', 'desolateland', 'solarsnow']) === (!!pokemon.volatiles['atmosphericperversion'] === !!pokemon.volatiles['weatherbreak'])) {
 						return this.chainModify(2);
 					} 	else {
-						return this.chainModify(0.25);
+						return this.chainModify(0.5);
 					}
 			  }
 	    },
 	    onModifySpe(spe, pokemon) {
-	        if (this.field.isWeather()) {
+	        if (this.field.isWeather() && !this.field.isWeather('deltastream')) {
 				  if (this.field.isWeather(['sunnyday', 'desolateland', 'solarsnow']) === (!!pokemon.volatiles['atmosphericperversion'] === !!pokemon.volatiles['weatherbreak'])) {
 						return this.chainModify(2);
 					} 	else {
-						return this.chainModify(0.25);
+						return this.chainModify(0.5);
 					}
 			  }
 	    },
