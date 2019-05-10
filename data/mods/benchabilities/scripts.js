@@ -172,5 +172,35 @@ exports.BattleScripts = {
 		this.modData('Pokedex', 'cofagrigus').abilities['S'] = 'Ancient Awakening';
 		this.modData('Pokedex', 'golett').abilities['S'] = 'Ancient Awakening';
 		this.modData('Pokedex', 'golurk').abilities['S'] = 'Ancient Awakening';
+		
+		// Miracle Fluff: Furfrou, Cottonee, Whimsicott, Swablu, Altaria, Mareep, Flaaffy, Ampharos
+		this.modData('Pokedex', 'furfrou').abilities['S'] = 'Miracle Fluff';
+		this.modData('Pokedex', 'cottonee').abilities['S'] = 'Miracle Fluff';
+		this.modData('Pokedex', 'whimsicott').abilities['S'] = 'Miracle Fluff';
+		this.modData('Pokedex', 'swablu').abilities['S'] = 'Miracle Fluff';
+		this.modData('Pokedex', 'swablu').abilities['S'] = 'Miracle Fluff';
+		this.modData('Pokedex', 'altaria').abilities['S'] = 'Miracle Fluff';
+		this.modData('Pokedex', 'mareep').abilities['S'] = 'Miracle Fluff';
+		this.modData('Pokedex', 'flaaffy').abilities['S'] = 'Miracle Fluff';
+		this.modData('Pokedex', 'ampharos').abilities['S'] = 'Miracle Fluff';
+		
+		// Knighthood: Hitmonchan, Hitmontop, Hitmonlee, Tyrogue, Throh, Sawk, Riolu
+		this.modData('Pokedex', 'hitmonchan').abilities['S'] = 'Knighthood';
+		this.modData('Pokedex', 'hitmontop').abilities['S'] = 'Knighthood';
+		this.modData('Pokedex', 'hitmonlee').abilities['S'] = 'Knighthood';
+		this.modData('Pokedex', 'riolu').abilities['S'] = 'Knighthood';
+		this.modData('Pokedex', 'tyrogue').abilities['S'] = 'Knighthood';
+		this.modData('Pokedex', 'throh').abilities['S'] = 'Knighthood';
+		this.modData('Pokedex', 'sawk').abilities['S'] = 'Knighthood';
+		
+		// Hibernation: Teddiursa, Ursaring, Sentret, Furret, Sandshrew-Alola, Sandslash-Alola, Swinub, Piloswine
+		this.modData('Pokedex', 'teddiursa').abilities['S'] = 'Hibernation';
+		this.modData('Pokedex', 'ursaring').abilities['S'] = 'Hibernation';
+		this.modData('Pokedex', 'sentret').abilities['S'] = 'Hibernation';
+		this.modData('Pokedex', 'furret').abilities['S'] = 'Hibernation';
+		this.modData('Pokedex', 'sandshrewalola').abilities['S'] = 'Hibernation';
+		this.modData('Pokedex', 'sandslashalola').abilities['S'] = 'Hibernation';
+		this.modData('Pokedex', 'swinub').abilities['S'] = 'Hibernation';
+		this.modData('Pokedex', 'piloswine').abilities['S'] = 'Hibernation';
 	}
 };

@@ -305,6 +305,65 @@ let BattleAbilities = {
 		rating: 3.5,
 		num: 47,
 	},
+	"miraclefluff": {
+		desc: "This Pokemon receives 80% damage from attacks with secondary effects.",
+		shortDesc: "This Pokemon takes 1/2 damage from contact moves, 2x damage from Fire moves.",
+		onDamage(damage, target, source, move) { 
+			let mod = 1;
+			if (move.secondaries && ( target.template.baseStats.def >= 100 || target.template.baseStats.spd >= 100 )) mod = 0.8;
+			return this.chainModify(mod);
+		},
+		id: "miraclefluff",
+		name: "Miracle Fluff",
+		rating: 2.5,
+		num: 218,
+	},
+	"knighthood": {
+		desc: "This Pokemon receives 80% damage from attacks with secondary effects.",
+		shortDesc: "This Pokemon takes 1/2 damage from contact moves, 2x damage from Fire moves.",
+		onDamage(damage, target, source, move) { 
+			if ( target.knighthood && target.types.includes( "Fighting" )) { 
+				this.boost({["def"]: 1}, target);
+				target.knighthood = false
+			}
+		},
+		onSwitchIn( pokemon ) {
+			pokemon.knighthood = true;
+		},
+		id: "knighthood",
+		name: "Knighthood",
+		rating: 2.5,
+		num: 218,
+	},
+	"hibernation": {
+		desc: "This Pokemon cannot be statused, and is considered to be asleep. Moongeist Beam, Sunsteel Strike, and the Mold Breaker, Teravolt, and Turboblaze Abilities cannot ignore this Ability.",
+		shortDesc: "This Pokemon cannot be statused, and is considered to be asleep.",
+		onStart(pokemon) {
+			if ( pokemon.types.includes( "Normal" )) {
+				this.add('-ability', pokemon, 'Hibernation');
+			}
+		},
+		onSetStatus(status, target, source, effect) {
+			if ( target.types.includes( "Normal" )) {
+				if (!effect || !effect.status) return false;
+				this.add('-immune', target, '[from] ability: Hibernation');
+				return false;
+			}
+		},
+		onBasePowerPriority: 7,
+		onFoeBasePower(basePower, attacker, defender, move) {
+			if (this.effectData.target !== defender) return;
+			if (move.type === 'Ice') {
+				return this.chainModify(2);
+			}
+		},
+		// Permanent sleep "status" implemented in the relevant sleep-checking effects
+		isUnbreakable: true,
+		id: "hibernation",
+		name: "Hibernation",
+		rating: 3,
+		num: 213,
+	},
 };
 
 exports.BattleAbilities = BattleAbilities;
