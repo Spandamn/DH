@@ -26819,7 +26819,7 @@ auroritarmega: {
 		types:["Normal", "Flying"],
 		species: "Miniking",
 		baseForme: "Guarded",
-		baseStats: {hp: 125, atk: 110, def, 120, spa: 77, spd: 82, spe: 80},
+		baseStats: {hp: 125, atk: 110, def: 120, spa: 77, spd: 82, spe: 80},
 		abilities: {0: "Lazy Guard"},
 		heightm: 1.15,
 		weightkg: 85.2,
