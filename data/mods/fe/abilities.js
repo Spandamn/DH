@@ -1304,9 +1304,9 @@ exports.BattleAbilities = {
 		name: "Flame Essence",
 	},
 	"naturalguard": {
-		shortDesc: "Starchamp's moves cannot miss unless it's suffering from a major status. Cures itself of status when it switches.",
+		shortDesc: "Natural Cure + No Guard.",
 		onAnyAccuracy(accuracy, target, source, move) {
-			if (move && (source === this.effectData.target && !source.status)) {
+			if (move && (source === this.effectData.target || target === this.effectData.target)) {
 				return true;
 			}
 			return accuracy;
