@@ -877,8 +877,21 @@ exports.BattleAbilities = {
 		name: "Technicutter",
 	},
 	"chlorovolt": {
-		shortDesc: "If Electric Terrain is active, this Pokemon's Speed is doubled.",
-		onModifySpe(spe) {
+		shortDesc: "This Pokemon's Speed doubles in Electric Terrain or Sunny Day, quadruples when both are active.",
+		onModifySpe(spe, pokemon) {
+			if (this.field.isTerrain('electricterrain') && this.field.isWeather(['sunnyday', 'desolateland', 'solarsnow'])) {
+				if (!!pokemon.volatiles['atmosphericperversion'] === !!pokemon.volatiles['weatherbreak']){
+					return this.chainModify(4);
+				}
+				return;
+			}
+			if (this.field.isWeather(['sunnyday', 'desolateland', 'solarsnow'])) {
+				if (!!pokemon.volatiles['atmosphericperversion'] === !!pokemon.volatiles['weatherbreak']){
+					return this.chainModify(2);
+				} 	else {
+					return this.chainModify(0.5);
+				}
+			}
 			if (this.field.isTerrain('electricterrain')) {
 				return this.chainModify(2);
 			}
@@ -887,17 +900,31 @@ exports.BattleAbilities = {
 		name: "ChloroVolt",
 	},
 	"healingfat": {
-		shortDesc: "HP is restored by 1/8th every turn when burned or frozen. Prevents the attack drop from Burn status and the immobilization by Frozen status.",
+		shortDesc: "HP is restored by 1/8th every turn when burned, poisoned, or frozen. Prevents the attack drop from Burn status and the immobilization by Frozen status. Fire/Ice/Poison-type moves against this Pokemon deal damage with a halved attacking stat.",
 		onDamage(damage, target, source, effect) {
-			if (effect.id === 'brn' || effect.id === 'frz') {
+			if (['brn', 'psn', 'tox'].includes(effect.id)) {
 				this.heal(target.maxhp / 8);
 				return false;
 			}
 		},
 		onModifyAtkPriority: 5,
-		onModifyAtk(atk, pokemon) {
-			if (pokemon.status === 'brn') {
-				return this.chainModify(1.5);
+		onModifyAtk(atk, attacker, defender, move) {
+			if (attacker.status === 'brn' && move.id !== 'facade') {
+				return this.chainModify(2);
+			}
+		},
+		onModifyAtkPriority: 6,
+		onSourceModifyAtk(atk, attacker, defender, move) {
+			if (move.type === 'Ice' || move.type === 'Fire' || move.type === 'Poison') {
+				this.debug('Healing Fat weaken');
+				return this.chainModify(0.5);
+			}
+		},
+		onModifySpAPriority: 5,
+		onSourceModifySpA(atk, attacker, defender, move) {
+			if (move.type === 'Ice' || move.type === 'Fire' || move.type === 'Poison') {
+				this.debug('Healing Fat weaken');
+				return this.chainModify(0.5);
 			}
 		},
 		id: "healingfat",
@@ -1050,23 +1077,14 @@ exports.BattleAbilities = {
 		name: "No Skill",
 	},
 	"sandaura": {
-		shortDesc: "Sand Stream + Sand Veil.",
+		shortDesc: "Sand Stream + Rough Skin.",
 		onStart(source) {
 			this.field.setWeather('sandstorm');
 		},
-		onImmunity(type, pokemon) {
-			if (type === 'sandstorm' || type === 'cactuspower' || type === 'yeti') return false;
-		},
-		onModifyAccuracy(accuracy, target) {
-			if (typeof accuracy !== 'number') return;
-			if (this.field.isWeather(['yeti', 'sandstorm', 'cactuspower'])) {
-				if (target && (!!target.volatiles['atmosphericperversion'] === !!target.volatiles['weatherbreak'])){
-					this.debug('Sand Veil - decreasing accuracy');
-					return accuracy * 0.8;
-				} else {
-					this.debug('Inverted Sand Veil - boosting accuracy');
-					return accuracy * 1.25;
-				}
+		onAfterDamageOrder: 1,
+		onAfterDamage(damage, target, source, move) {
+			if (source && source !== target && move && move.flags['contact']) {
+				this.damage(source.maxhp / 8, source, target);
 			}
 		},
 		id: "sandaura",
@@ -1304,9 +1322,9 @@ exports.BattleAbilities = {
 		name: "Flame Essence",
 	},
 	"naturalguard": {
-		shortDesc: "Starchamp's moves cannot miss unless it's suffering from a major status. Cures itself of status when it switches.",
+		shortDesc: "Natural Cure + No Guard.",
 		onAnyAccuracy(accuracy, target, source, move) {
-			if (move && (source === this.effectData.target && !source.status)) {
+			if (move && (source === this.effectData.target || target === this.effectData.target)) {
 				return true;
 			}
 			return accuracy;
@@ -7395,50 +7413,50 @@ exports.BattleAbilities = {
 	    shortDesc: "If Sunny Day is active, this Pokemon's stats are doubled. In any other weather, this Pokemon's stats are quartered.",
 	    onModifyAtkPriority: 5,
 	    onModifyAtk(atk, pokemon) {
-	        if (this.field.isWeather()) {
+	        if (this.field.isWeather() && !this.field.isWeather('deltastream')) {
 				  if (this.field.isWeather(['sunnyday', 'desolateland', 'solarsnow']) === (!!pokemon.volatiles['atmosphericperversion'] === !!pokemon.volatiles['weatherbreak'])) {
 						return this.chainModify(2);
 					} 	else {
-						return this.chainModify(0.25);
+						return this.chainModify(0.5);
 					}
 			  }
 	    },
 	    onModifySpAPriority: 5,
 	    onModifySpA(spa, pokemon) {
-	        if (this.field.isWeather()) {
+	        if (this.field.isWeather() && !this.field.isWeather('deltastream')) {
 				  if (this.field.isWeather(['sunnyday', 'desolateland', 'solarsnow']) === (!!pokemon.volatiles['atmosphericperversion'] === !!pokemon.volatiles['weatherbreak'])) {
 						return this.chainModify(2);
 					} 	else {
-						return this.chainModify(0.25);
+						return this.chainModify(0.5);
 					}
 			  }
 	    },
 	    onModifyDefPriority: 5,
 	    onModifyDef(def, pokemon) {
-	        if (this.field.isWeather()) {
+	        if (this.field.isWeather() && !this.field.isWeather('deltastream')) {
 				  if (this.field.isWeather(['sunnyday', 'desolateland', 'solarsnow']) === (!!pokemon.volatiles['atmosphericperversion'] === !!pokemon.volatiles['weatherbreak'])) {
 						return this.chainModify(2);
 					} 	else {
-						return this.chainModify(0.25);
+						return this.chainModify(0.5);
 					}
 			  }
 	    },
 	    onModifySpDPriority: 5,
 	    onModifySpD(spd, pokemon) {
-	        if (this.field.isWeather()) {
+	        if (this.field.isWeather() && !this.field.isWeather('deltastream')) {
 				  if (this.field.isWeather(['sunnyday', 'desolateland', 'solarsnow']) === (!!pokemon.volatiles['atmosphericperversion'] === !!pokemon.volatiles['weatherbreak'])) {
 						return this.chainModify(2);
 					} 	else {
-						return this.chainModify(0.25);
+						return this.chainModify(0.5);
 					}
 			  }
 	    },
 	    onModifySpe(spe, pokemon) {
-	        if (this.field.isWeather()) {
+	        if (this.field.isWeather() && !this.field.isWeather('deltastream')) {
 				  if (this.field.isWeather(['sunnyday', 'desolateland', 'solarsnow']) === (!!pokemon.volatiles['atmosphericperversion'] === !!pokemon.volatiles['weatherbreak'])) {
 						return this.chainModify(2);
 					} 	else {
-						return this.chainModify(0.25);
+						return this.chainModify(0.5);
 					}
 			  }
 	    },
