@@ -900,17 +900,31 @@ exports.BattleAbilities = {
 		name: "ChloroVolt",
 	},
 	"healingfat": {
-		shortDesc: "HP is restored by 1/8th every turn when burned or frozen. Prevents the attack drop from Burn status and the immobilization by Frozen status.",
+		shortDesc: "HP is restored by 1/8th every turn when burned, poisoned, or frozen. Prevents the attack drop from Burn status and the immobilization by Frozen status. Fire/Ice/Poison-type moves against this Pokemon deal damage with a halved attacking stat.",
 		onDamage(damage, target, source, effect) {
-			if (effect.id === 'brn' || effect.id === 'frz') {
+			if (['brn', 'psn', 'tox'].includes(effect.id)) {
 				this.heal(target.maxhp / 8);
 				return false;
 			}
 		},
 		onModifyAtkPriority: 5,
-		onModifyAtk(atk, pokemon) {
-			if (pokemon.status === 'brn') {
-				return this.chainModify(1.5);
+		onModifyAtk(atk, attacker, defender, move) {
+			if (attacker.status === 'brn' && move.id !== 'facade') {
+				return this.chainModify(2);
+			}
+		},
+		onModifyAtkPriority: 6,
+		onSourceModifyAtk(atk, attacker, defender, move) {
+			if (move.type === 'Ice' || move.type === 'Fire' || move.type === 'Poison') {
+				this.debug('Healing Fat weaken');
+				return this.chainModify(0.5);
+			}
+		},
+		onModifySpAPriority: 5,
+		onSourceModifySpA(atk, attacker, defender, move) {
+			if (move.type === 'Ice' || move.type === 'Fire' || move.type === 'Poison') {
+				this.debug('Healing Fat weaken');
+				return this.chainModify(0.5);
 			}
 		},
 		id: "healingfat",
