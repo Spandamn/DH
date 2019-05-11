@@ -351,6 +351,33 @@ let BattleAbilities = {
 		rating: 3,
 		num: 213,
 	},
+	"sinisterescort": {
+		desc: "This Pokemon blocks certain status moves and instead uses the move against the original user.",
+		shortDesc: "This Pokemon blocks certain status moves and bounces them back to the user.",
+		id: "sinisterescort",
+		name: "Sinister Escort",
+		onTryHitPriority: 1,
+		onTryHit(target, source, move) {
+			let battle = source.battle
+			if ( target === source || move.hasBounced || !move.type === 'Dark' || battle.benchPokemon.sEscortUsed ) {
+				return;
+			}
+			battle.benchPokemon.sEscortUsed = true;
+			this.add('-ability', target, 'Sinister Escort');
+			let pkmnInfo = battle.benchPokemon.getPKMNInfo( 'sinisterescort', target.side );
+			this.add( '-message', pkmnInfo.name + ' reflected the attack!' )
+			let newMove = this.getActiveMove(move.id);
+			newMove.hasBounced = true;
+			newMove.pranksterBoosted = false;
+			this.useMove(newMove, source, source);
+			return null;
+		},
+		effect: {
+			duration: 1,
+		},
+		rating: 4.5,
+		num: 156,
+	},
 };
 
 exports.BattleAbilities = BattleAbilities;

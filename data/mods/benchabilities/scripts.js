@@ -202,5 +202,10 @@ exports.BattleScripts = {
 		this.modData('Pokedex', 'sandslashalola').abilities['S'] = 'Hibernation';
 		this.modData('Pokedex', 'swinub').abilities['S'] = 'Hibernation';
 		this.modData('Pokedex', 'piloswine').abilities['S'] = 'Hibernation';
+		
+		// Sinister Escort: Hydreigon, Misdreavus, Mismagius
+		this.modData('Pokedex', 'hydreigon').abilities['S'] = 'Sinister Escort';
+		this.modData('Pokedex', 'misdreavus').abilities['S'] = 'Sinister Escort';
+		this.modData('Pokedex', 'mismagius').abilities['S'] = 'Sinister Escort';
 	}
 };
