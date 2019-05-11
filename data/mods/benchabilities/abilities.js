@@ -338,18 +338,6 @@ let BattleAbilities = {
 	"hibernation": {
 		desc: "This Pokemon cannot be statused, and is considered to be asleep. Moongeist Beam, Sunsteel Strike, and the Mold Breaker, Teravolt, and Turboblaze Abilities cannot ignore this Ability.",
 		shortDesc: "This Pokemon cannot be statused, and is considered to be asleep.",
-		onStart(pokemon) {
-			if ( pokemon.types.includes( "Normal" )) {
-				this.add('-ability', pokemon, 'Hibernation');
-			}
-		},
-		onSetStatus(status, target, source, effect) {
-			if ( target.types.includes( "Normal" )) {
-				if (!effect || !effect.status) return false;
-				this.add('-immune', target, '[from] ability: Hibernation');
-				return false;
-			}
-		},
 		onBasePowerPriority: 7,
 		onFoeBasePower(basePower, attacker, defender, move) {
 			if (this.effectData.target !== defender) return;
@@ -357,7 +345,6 @@ let BattleAbilities = {
 				return this.chainModify(2);
 			}
 		},
-		// Permanent sleep "status" implemented in the relevant sleep-checking effects
 		isUnbreakable: true,
 		id: "hibernation",
 		name: "Hibernation",
