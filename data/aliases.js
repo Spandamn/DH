@@ -760,7 +760,6 @@ let BattleAliases = {
 	"menacing": "Menacing Moonraze Maelstrom",
 	"mmm": "Menacing Moonraze Maelstrom",
 	"moonsault": "Malicious Moonsault",
-	"oceanic": "Oceanic Operetta",
 	"oo": "Oceanic Operetta",
 	"pp": "Pulverizing Pancake",
 	"pulverizing": "Pulverizing Pancake",
