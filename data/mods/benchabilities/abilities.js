@@ -338,18 +338,6 @@ let BattleAbilities = {
 	"hibernation": {
 		desc: "This Pokemon cannot be statused, and is considered to be asleep. Moongeist Beam, Sunsteel Strike, and the Mold Breaker, Teravolt, and Turboblaze Abilities cannot ignore this Ability.",
 		shortDesc: "This Pokemon cannot be statused, and is considered to be asleep.",
-		onStart(pokemon) {
-			if ( pokemon.types.includes( "Normal" )) {
-				this.add('-ability', pokemon, 'Hibernation');
-			}
-		},
-		onSetStatus(status, target, source, effect) {
-			if ( target.types.includes( "Normal" )) {
-				if (!effect || !effect.status) return false;
-				this.add('-immune', target, '[from] ability: Hibernation');
-				return false;
-			}
-		},
 		onBasePowerPriority: 7,
 		onFoeBasePower(basePower, attacker, defender, move) {
 			if (this.effectData.target !== defender) return;
@@ -357,12 +345,38 @@ let BattleAbilities = {
 				return this.chainModify(2);
 			}
 		},
-		// Permanent sleep "status" implemented in the relevant sleep-checking effects
 		isUnbreakable: true,
 		id: "hibernation",
 		name: "Hibernation",
 		rating: 3,
 		num: 213,
+	},
+	"sinisterescort": {
+		desc: "This Pokemon blocks certain status moves and instead uses the move against the original user.",
+		shortDesc: "This Pokemon blocks certain status moves and bounces them back to the user.",
+		id: "sinisterescort",
+		name: "Sinister Escort",
+		onTryHitPriority: 1,
+		onTryHit(target, source, move) {
+			let battle = source.battle
+			if ( target === source || move.hasBounced || !move.type === 'Dark' || battle.benchPokemon.sEscortUsed ) {
+				return;
+			}
+			battle.benchPokemon.sEscortUsed = true;
+			this.add('-ability', target, 'Sinister Escort');
+			let pkmnInfo = battle.benchPokemon.getPKMNInfo( 'sinisterescort', target.side );
+			this.add( '-message', pkmnInfo.name + ' reflected the attack!' )
+			let newMove = this.getActiveMove(move.id);
+			newMove.hasBounced = true;
+			newMove.pranksterBoosted = false;
+			this.useMove(newMove, source, source);
+			return null;
+		},
+		effect: {
+			duration: 1,
+		},
+		rating: 4.5,
+		num: 156,
 	},
 };
 
