@@ -359,7 +359,7 @@ let BattleAbilities = {
 		onTryHitPriority: 1,
 		onTryHit(target, source, move) {
 			let battle = source.battle
-			if ( target === source || move.hasBounced || !move.type === 'Dark' || battle.benchPokemon.sEscortUsed ) {
+			if ( target === source || move.hasBounced || move.type !== 'Dark' || battle.benchPokemon.sEscortUsed ) {
 				return;
 			}
 			battle.benchPokemon.sEscortUsed = true;
