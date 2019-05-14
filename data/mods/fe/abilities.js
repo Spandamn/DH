@@ -976,9 +976,13 @@ exports.BattleAbilities = {
 		name: "Veil of Intimidation",
 	},
 	"serenefocus": {
-		shortDesc: "This Pokemon is not affected by the secondary effect of another Pokemon's attack.",
-		onModifySecondaries(secondaries) {
-			return secondaries.filter(effect => !!(effect.self || effect.dustproof));
+		shortDesc: "At the end of each full turn on the field, this Pokemon's critical hit ratio is boosted by 2.",
+		onResidualOrder: 26,
+		onResidualSubOrder: 1,
+		onResidual(pokemon) {
+			if (pokemon.activeTurns) {
+				pokemon.addVolatile('focusenergy');
+			}
 		},
 		id: "serenefocus",
 		name: "Serene Focus",
@@ -1032,7 +1036,7 @@ exports.BattleAbilities = {
 		name: "Mummy Fortitude",
 	},
 	"blazingbody": {
-		shortDesc: "Sturdy + Blaze.",
+		shortDesc: "If this Pokemon is at full HP, it survives one hit with 1/3 of its Max HP, and if between that and full, it survives one hit with 1HP. Immune to OHKO. At 1/3 or less of its max HP, this Pokemon's attacking stat is 1.5x with Fire attacks.",
 		onTryHit(pokemon, target, move) {
 			if (move.ohko) {
 				this.add('-immune', pokemon, '[msg]', '[from] ability: Blazing Body');
@@ -1041,9 +1045,14 @@ exports.BattleAbilities = {
 		},
 		onDamagePriority: -100,
 		onDamage(damage, target, source, effect) {
-			if (target.hp === target.maxhp && damage >= target.hp && effect && effect.effectType === 'Move') {
-				this.add('-ability', target, 'Blazing Body');
-				return target.hp - 1;
+			if (effect && effect.effectType === 'Move') {
+				if (target.hp === target.maxhp && damage >= target.hp / 1.5){
+					this.add('-ability', target, 'Blazing Body');
+					return Math.ceil(target.hp / 1.5);
+				} else if (target.hp > target.maxhp / 3 && damage >= target.hp){
+					this.add('-ability', target, 'Blazing Body');
+					return target.hp - 1;
+				}
 			}
 		},
 		onModifyAtkPriority: 5,
@@ -1064,7 +1073,7 @@ exports.BattleAbilities = {
 	"noskill": {
 		shortDesc: "Pressure + Super Luck.",
 		onStart(pokemon) {
-			this.add('-ability', pokemon, 'Pressure');
+			this.add('-ability', pokemon, 'No Skill');
 		},
 		onDeductPP(target, source) {
 			if (target.side === source.side) return;
@@ -1192,13 +1201,18 @@ exports.BattleAbilities = {
 		name: "Inner Body",
 	},
 	"intimidatingfangs": {
-		shortDesc: "Pokemon making contact with this Pokemon have their Attack lowered by 1 stage.",
-		onAfterDamage(damage, target, source, effect) {
-			if (effect && effect.flags['contact']) {
-				this.add('-ability', target, 'Intimidating Fangs');
-				this.boost({
-					atk: -1
-				}, source, target, null, true);
+		shortDesc: "At the end of each full turn on the field, this Pokemon's Speed is raised 1 stage and each adjacent opponent's Attack is lowered 1 stage.",
+		onResidualOrder: 26,
+		onResidualSubOrder: 1,
+		onResidual(pokemon) {
+			if (pokemon.activeTurns) {
+				for (const target of pokemon.side.foe.active) {
+					if (!target || !this.isAdjacent(target, pokemon)) continue;
+					if (!target.volatiles['substitute']) {
+						this.boost({atk: -1}, target, pokemon);
+					}
+				}
+				this.boost({spe: 1});
 			}
 		},
 		id: "intimidatingfangs",
@@ -1840,12 +1854,17 @@ exports.BattleAbilities = {
 	},
 	"latebloomer": {
 		shortDesc: "Has a 30% chance of infatuating the opponent at the end of its turn if it moves last.",
-		OnAfterDamagePriority: 8,
-		onAfterDamage(damage, attacker, defender, move) {
-			if (!this.willMove(defender)) {
-				if (this.random(10) < 3) {
-					defender.addVolatile('attract', attacker);
-				}
+		shortDesc: "Immune to status moves. Status moves used by this fusion have +1 priority, but cannot affect Dark-types.",
+		onTryHit(pokemon, target, move) {
+			if (move.category === 'Status') {
+				this.add('-immune', pokemon, '[from] ability: Late Bloomer');
+				return null;
+			}
+		},
+		onModifyPriority(priority, pokemon, target, move) {
+			if (move && move.category === 'Status') {
+				move.pranksterBoosted = true;
+				return priority + 1;
 			}
 		},
 		id: "latebloomer",
@@ -3152,17 +3171,17 @@ exports.BattleAbilities = {
 	},
 	"bamboozled": {
 		shortDesc: "Immune to status moves. Status moves used by this fusion have +1 priority, but cannot affect Dark-types.",
-		onImmunity(pokemon, move) {
-			if (move.category === 'Status') return false;
+		onTryHit(pokemon, target, move) {
+			if (move.category === 'Status') {
+				this.add('-immune', pokemon, '[from] ability: Bamboozled');
+				return null;
+			}
 		},
 		onModifyPriority(priority, pokemon, target, move) {
 			if (move && move.category === 'Status') {
 				move.pranksterBoosted = true;
 				return priority + 1;
 			}
-		},
-		onModifyMove(move) {
-			if (move && move.category === 'Status') {}
 		},
 		id: "bamboozled",
 		name: "Bamboozled",
@@ -3522,7 +3541,7 @@ exports.BattleAbilities = {
 		name: "Unstable Voltage",
 	},
 	"hugebubble": {
-		shortDesc: "This Pokemon's Water power is 2x; it can't be burned; Fire power against it is halved. When it has 1/3 or less of its max HP, its Water power is 3x instead of 2x.",
+		shortDesc: "Water Bubble + Torrent. (Multipliers stack)",
 		onModifyAtkPriority: 5,
 		onSourceModifyAtk(atk, attacker, defender, move) {
 			if (move.type === 'Fire') {
@@ -3560,7 +3579,7 @@ exports.BattleAbilities = {
 		onSetStatus(status, target, source, effect) {
 			if (status.id !== 'brn') return;
 			if (!effect || !effect.status) return false;
-			this.add('-immune', target, '[msg]', '[from] ability: Water Bubble');
+			this.add('-immune', target, '[msg]', '[from] ability: Huge Bubble');
 			return false;
 		},
 		id: "hugebubble",
@@ -6475,7 +6494,7 @@ exports.BattleAbilities = {
 		name: "Ground Leecher",
 	},
 	"bloodthirst": {
-		shortDesc: "This Pokemon's Attack and the highest stat are raised by 1 if it attacks and KOes another Pokemon. The stat boosts from this will always total to 2.",
+		shortDesc: "Beast Boost + Moxie. (Boosts stack if applicable)",
 		onSourceFaint(target, source, effect) {
 			if (effect && effect.effectType === 'Move') {
 				let statName = 'atk';
@@ -6488,7 +6507,6 @@ exports.BattleAbilities = {
 						bestStat = source.storedStats[s];
 					}
 				}
-				this.boost({[statName]: 1}, source);
 				if (statName === 'atk'){
 					this.boost({atk: 2}, source);
 				}
@@ -6509,7 +6527,7 @@ exports.BattleAbilities = {
 			}
 			this.field.setWeather('raindance');
 			for (const target of pokemon.side.foe.active) {
-			source.setStatus('par', target);
+				target.trySetStatus('par', source);
 			}
 		},
 		id: "electrotorrent",
@@ -8694,7 +8712,7 @@ exports.BattleAbilities = {
 	},
 	"deceiver": {
 		desc: "Inverts stat changes on user's SpA. Additionally boosts SpA whenever it claims a kill (doesn't take invertion in account here, just like Z-moves).",
-      shortDesc: "Inverts SpA changes. Boosts this stat if it lands a KO.",
+      shortDesc: "Inverts SpA changes. Boosts this stat if it lands a KO, ignoring the inversion.",
 		onBoost(boost, target, source, effect) {
 			if (effect && effect.id === 'zpower') return;
 			if (boost.spa) {
@@ -8716,8 +8734,8 @@ exports.BattleAbilities = {
 		onBeforeMove(attacker, defender, move) {
 			if (attacker.template.baseSpecies !== 'Minislash' || attacker.transformed) return;
                         //TODO: Have Minislash change forms if it uses a status move that can inflict status.
-			if (move.category === 'Status' && move.id !== 'kingsshield') return;
-			let targetSpecies = (move.id === 'kingsshield' ? 'Minislash' : 'Minislash-Blade');
+			if (move.category === 'Status' && !move.status && move.id !== 'kingsshield') return;
+			let targetSpecies = ((move.id === 'kingsshield' || (move.category === 'Status' && move.status)) ? 'Minislash' : 'Minislash-Blade');
 			if (attacker.template.species !== targetSpecies && attacker.formeChange(targetSpecies)) {
 				this.add('-formechange', attacker, targetSpecies, '[from] ability: Stance Shield');
 			}
@@ -8727,7 +8745,7 @@ exports.BattleAbilities = {
 	},
 	"staredown": {
 		desc: "The user cannot use a move every other turn. However, if the user stays in, the opponent's Attack stat is lowered by one stage at the beginning of the turn.",
-		shortDesc: "This Pokemon skips every other turn instead of using a move, but lowers opponents' Attack in doing so.",
+		shortDesc: "This Pokemon skips every other turn instead of using a move, but lowers opponents' Attack once this happens.",
 		onBeforeMovePriority: 9,
 		onBeforeMove(pokemon, target, move) {
 			if (pokemon.removeVolatile('staredown')) {
@@ -8756,7 +8774,7 @@ exports.BattleAbilities = {
 		name: "Stare Down",
 	},
 	"dirtnap": {
-		shortDesc: "The Evasion stats of the opponents are ignored.",
+		shortDesc: "This Pokemon's attacks ignore accuracy checks to always hit.",
 		onModifyMovePriority: -1,
 		onModifyMove(move) {
 			move.accuracy = true;
@@ -8882,7 +8900,7 @@ exports.BattleAbilities = {
 		name: "Mix Tape",
 		},
 	"beastroar": {
-      shortDesc: "Lowers the foe’s highest stat by 1 stage upon Switch-in.",
+      shortDesc: "Lowers each active opponent’s highest stat by 1 stage upon switch-in.",
 		onStart(pokemon) {
 			let activated = false;
 			for (const target of pokemon.side.foe.active) {
