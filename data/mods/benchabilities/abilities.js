@@ -174,7 +174,7 @@ let BattleAbilities = {
 		shortDesc: "This pokemon's allies take 50% damage from direct attacks when switching in.",
 		onDamage(damage, target, source, move) { 
 			if (move.effectType === 'Move' && !target.activeTurns ) {
-				return damage / 2;
+				return damage * 0.75;
 			}
 		},
 		id: "guardianangel",
