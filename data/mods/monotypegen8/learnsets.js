@@ -305,6 +305,7 @@ exports.BattleLearnsets = {
 		magiccoat: ["7T", "6T", "5T", "4T"],
 		megakick: ["7V", "3T"],
 		megapunch: ["7V", "3T"],
+		meteormash: ["7L1", "3T"],
 		metronome: ["7L1", "7V", "6L1", "5L1", "4L1", "3T", "3L1"],
 		mimic: ["7V", "3T"],
 		minimize: ["7L1", "7V", "6L1", "5L1", "4L1", "3L1"],
