@@ -454,22 +454,22 @@ exports.BattleMovedex = {
 			for ( let i = 0; i < 2; i++) {
 				for ( let j = 0; j < 5; j++) {
 					let statName = statnames[j];
-					if ( target.storedStats[ statName ] > bestStat && highestStats[0] !== statName) {
+					if ( target.storedStats[ statName ] > bestStat && highestStats[0] !== statName ) {
 						bestStat = target.storedStats[s];
 						highestStats[i] = statName;
 					}
 				}
 				bestStat = 0;
 			}
-			let boost1 = highestStats[0]
-			let boost2 = highestStats[1]
+			let boost1 = highestStats[0];
+			let boost2 = highestStats[1];
 			target.boost({ boost1 : 1}, target);
 			target.boost({ boost2 : 1}, target);
 		},
 		secondary: null,
 		target: "self",
 		type: "Water",
-		zMoveBoost: {atk: 1, def: 1, spa: 1, spd: 1, spe: 1},
+		zMoveEffect: 'clearnegativeboost',
 		contestType: "Beautiful",
 	},
 	"machwing": {
