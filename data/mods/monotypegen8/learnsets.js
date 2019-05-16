@@ -1007,7 +1007,7 @@ exports.BattleLearnsets = {
 		return: ["7L1"],
 		frustration: ["7L1"],
 	}},
-	thunderusa: {learnset: {
+	shoburu: {learnset: {
 		bulkup: ["7L1"],
 		crunch: ["7L1"],
 		doubleedge: ["7L1"],
