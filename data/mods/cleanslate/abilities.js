@@ -4268,8 +4268,9 @@ let BattleAbilities = {
             if (this.field.isTerrain('electricterrain')) return this.chainModify(1.5);
         },
 		onResidual: function(pokemon) {
-			if (this.field.isTerrain('grassyterrain')) return;
-			this.damage(pokemon.maxhp  / 8, pokemon, pokemon);
+			if (this.field.isTerrain('electricterrain')) {
+				this.damage(pokemon.maxhp  / 8, pokemon, pokemon);
+			}
 		},
         id: "overdrive",
         name: "Overdrive",

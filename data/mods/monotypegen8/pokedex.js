@@ -268,7 +268,7 @@ exports.BattlePokedex = {
 	},
 	shoburu: {
 		num: 926,
-		species: "Thunderusa",
+		species: "Shoburu",
 		types: ["Dark", "Electric"],
 		baseStats: {hp: 90, atk: 120, def: 90, spa: 70, spd: 80, spe: 75},
 		abilities: {0: "Gluttony", H: "Galvanize"},

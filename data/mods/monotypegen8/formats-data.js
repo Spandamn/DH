@@ -105,7 +105,7 @@ exports.BattleFormatsData = {
         tier: "OU",
         doublesTier: "DOU",
     },
-    thunderusa: {
+    shoburu: {
         tier: "OU",
         doublesTier: "DOU",
     },
