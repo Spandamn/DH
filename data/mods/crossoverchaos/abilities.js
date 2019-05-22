@@ -1,10 +1,10 @@
 'use strict';
 exports.BattleAbilities = {
     "karmicretribution": {
-        desc: "This Pokemon's damaging moves become multi-hit moves that hit four times. The second hit has its damage quartered. Does not affect moves that have multiple targets.",
-        shortDesc: "This Pokemon's damaging moves hit four times.",
+        desc: "This Pokemon's damaging moves become multi-hit moves that hit four times. The second hit has its damage quartered. Does not affect moves that have multiple targets or moves that use the target's attacking stats instead of the user's.",
+        shortDesc: "This Pokemon's damaging moves hit four times (not Foul Play).",
         onPrepareHit(source, target, move) {
-            if (['iceball', 'rollout'].includes(move.id)) return;
+            if (['iceball', 'rollout'].includes(move.id) || move.useTargetOffensive || move.useSourceDefensive) return;
             if (move.category !== 'Status' && !move.selfdestruct && !move.multihit && !move.flags['charge'] && !move.spreadHit && !move.isZ) {
                 move.multihit = 4;
                 move.multihitType = 'karmicretribution';
