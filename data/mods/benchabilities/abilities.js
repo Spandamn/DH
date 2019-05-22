@@ -323,7 +323,7 @@ let BattleAbilities = {
 		shortDesc: "This Pokemon takes 1/2 damage from contact moves, 2x damage from Fire moves.",
 		onDamage(damage, target, source, move) { 
 			if ( target.knighthood && target.types.includes( "Fighting" )) { 
-				this.boost({["def"]: 1}, target);
+				this.boost({["def"]: 1, ["spd"]: 1}, target);
 				target.knighthood = false
 			}
 		},
