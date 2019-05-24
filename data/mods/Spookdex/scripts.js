@@ -262,6 +262,15 @@ this.modData('Learnsets', 'dusknoir').learnset.closecombat = ['7L1'];
 	this.modData('Learnsets', 'metagross').learnset.psycheout = ['7L1'];
 	this.modData('Learnsets', 'slowking').learnset.psycheout = ['7L1'];
 	this.modData('Learnsets', 'gothitelle').learnset.psycheout = ['7L1'];
+	this.modData('Learnsets', 'ditto').learnset.recover = ['7L1'];
+	this.modData('Learnsets', 'ditto').learnset.stickyweb = ['7L1'];
+	this.modData('Learnsets', 'ditto').learnset.sketch = ['5E'];
+	this.modData('Learnsets', 'ditto').learnset.mimic = ['7L1'];
+	this.modData('Learnsets', 'ditto').learnset.mirrormove = ['7L1'];
+	this.modData('Learnsets', 'ditto').learnset.copycat = ['7L1'];
+	this.modData('Learnsets', 'ditto').learnset.onbeat = ['7L1'];
+	this.modData('Learnsets', 'ditto').learnset.return = ['7L1'];
+	this.modData('Learnsets', 'ditto').learnset.frustration = ['7L1'];
 },
 };
 

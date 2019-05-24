@@ -463,7 +463,7 @@ let BattleItems = {
 		onResidualOrder: 5,
 		onResidualSubOrder: 2,
 		onResidual: function (pokemon) {
-			if (this.isTerrain('grassyterrain')) return;
+			if (this.is.fieldTerrain('grassyterrain')) return;
 			if (pokemon.hasType('Poison')) {
 				this.heal(pokemon.maxhp / 16);
 			} else {
@@ -471,7 +471,7 @@ let BattleItems = {
 			}
 		},
 		onTerrain: function (pokemon) {
-			if (!this.isTerrain('grassyterrain')) return;
+			if (!this.is.fieldTerrain('grassyterrain')) return;
 			if (pokemon.hasType('Poison')) {
 				this.heal(pokemon.maxhp / 16);
 			} else {
@@ -1508,7 +1508,7 @@ let BattleItems = {
 			basePower: 10,
 		},
 		onUpdate: function (pokemon) {
-			if (this.isTerrain('electricterrain') && pokemon.useItem()) {
+			if (this.is.fieldTerrain('electricterrain') && pokemon.useItem()) {
 				this.boost({def: 1});
 			}
 		},
@@ -2177,7 +2177,7 @@ let BattleItems = {
 			basePower: 10,
 		},
 		onUpdate: function (pokemon) {
-			if (this.isTerrain('grassyterrain') && pokemon.useItem()) {
+			if (this.is.fieldTerrain('grassyterrain') && pokemon.useItem()) {
 				this.boost({def: 1});
 			}
 		},
@@ -2891,11 +2891,11 @@ let BattleItems = {
 		onResidualOrder: 5,
 		onResidualSubOrder: 2,
 		onResidual: function (pokemon) {
-			if (this.isTerrain('grassyterrain')) return;
+			if (this.is.fieldTerrain('grassyterrain')) return;
 			this.heal(pokemon.maxhp / 16);
 		},
 		onTerrain: function (pokemon) {
-			if (!this.isTerrain('grassyterrain')) return;
+			if (!this.is.fieldTerrain('grassyterrain')) return;
 			this.heal(pokemon.maxhp / 16);
 		},
 		num: 234,
@@ -3647,7 +3647,7 @@ let BattleItems = {
 			basePower: 10,
 		},
 		onUpdate: function (pokemon) {
-			if (this.isTerrain('mistyterrain') && pokemon.useItem()) {
+			if (this.is.fieldTerrain('mistyterrain') && pokemon.useItem()) {
 				this.boost({spd: 1});
 			}
 		},
@@ -4448,7 +4448,7 @@ let BattleItems = {
 			basePower: 10,
 		},
 		onUpdate: function (pokemon) {
-			if (this.isTerrain('psychicterrain') && pokemon.useItem()) {
+			if (this.is.fieldTerrain('psychicterrain') && pokemon.useItem()) {
 				this.boost({spd: 1});
 			}
 		},
@@ -6626,7 +6626,7 @@ let BattleItems = {
 		id: "klefkinite",
 		name: "Klefkinite",
 		spritenum: 585,
-		megaStone: "Klefkinite-Mega",
+		megaStone: "Klefki-Mega",
 		megaEvolves: "Klefki",
 		onTakeItem: function (item, source) {
 			if (item.megaEvolves === source.baseTemplate.baseSpecies) return false;
@@ -6705,7 +6705,7 @@ let BattleItems = {
 		onResidualOrder: 5,
 		onResidualSubOrder: 2,
 		onResidual: function (pokemon) {
-			if (this.isTerrain('grassyterrain')) return;
+			if (this.is.fieldTerrain('grassyterrain')) return;
 			if (pokemon.hasType('Grass')) {
 				this.heal(pokemon.maxhp / 16);
 			} else {
@@ -6713,7 +6713,7 @@ let BattleItems = {
 			}
 		},
 		onTerrain: function (pokemon) {
-			if (!this.isTerrain('grassyterrain')) return;
+			if (!this.is.fieldTerrain('grassyterrain')) return;
 			if (pokemon.hasType('Grass')) {
 				this.heal(pokemon.maxhp / 16);
 			} else {
@@ -6812,6 +6812,75 @@ let BattleItems = {
 		num: 677,
 		gen: 6,
 		desc: "If held by an Electrode, this item allows it to Mega Evolve in battle.",
+	},
+	"microphone": {
+		id: "microphone",
+		name: "Microphone",
+		spritenum: 61,
+		fling: {
+			basePower: 30,
+		},
+		onBasePowerPriority: 6,
+		onBasePower: function (basePower, user, target, move) {
+			if (move && move.type === 'Sound') {
+				return this.chainModify([0x1333, 0x1000]);
+			}
+		},
+		num: 249,
+		gen: 2,
+		desc: "Holder's Sound-type attacks have 1.2x power.",
+	},
+	"soundmemory": {
+		id: "soundmemory",
+		name: "Sound Memory",
+		spritenum: 676,
+		onMemory: 'Sound',
+		onTakeItem: function (item, pokemon, source) {
+			if ((source && source.baseTemplate.num === 773) || pokemon.baseTemplate.num === 773) {
+				return false;
+			}
+			return true;
+		},
+		forcedForme: "Silvally-Sound",
+		num: 912,
+		gen: 7,
+		desc: "Holder's Multi-Attack is Sound type.",
+	},
+	"waveplate": {
+		id: "waveplate",
+		name: "Wave Plate",
+		spritenum: 105,
+		onPlate: 'Sound',
+		onBasePowerPriority: 6,
+		onBasePower: function (basePower, user, target, move) {
+			if (move && move.type === 'Sound') {
+				return this.chainModify([0x1333, 0x1000]);
+			}
+		},
+		onTakeItem: function (item, pokemon, source) {
+			if ((source && source.baseTemplate.num === 493) || pokemon.baseTemplate.num === 493) {
+				return false;
+			}
+			return true;
+		},
+		forcedForme: "Arceus-Sound",
+		num: 311,
+		gen: 4,
+		desc: "Holder's Sound-type attacks have 1.2x power. Judgment is Sound type.",
+	},
+	"soundiumz": {
+		id: "soundiumz",
+		name: "Soundium Z",
+		spritenum: 648,
+		onPlate: 'Sound',
+		onTakeItem: false,
+		zMove: true,
+		zMoveType: "Sound",
+		forcedForme: "Arceus-Sound",
+		forcedForme: "Silvally-Sound",
+		num: 793,
+		gen: 7,
+		desc: "If holder has a Sound move, this item allows it to use a Sound Z-Move.",
 	},
 };
 

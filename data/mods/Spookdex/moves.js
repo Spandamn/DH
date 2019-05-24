@@ -856,7 +856,7 @@ let BattleMovedex = {
 		flags: {snatch: 1},
 		sideCondition: 'auroraveil',
 		onTryHitSide: function () {
-			if (!this.isWeather('hail')) return false;
+			if (!this.is.fieldWeather('hail')) return false;
 		},
 		effect: {
 			duration: 5,
@@ -1440,7 +1440,7 @@ let BattleMovedex = {
 		priority: 0,
 		flags: {protect: 1, mirror: 1},
 		onModifyMove: function (move) {
-			if (this.isWeather('hail')) move.accuracy = true;
+			if (this.is.fieldWeather('hail')) move.accuracy = true;
 		},
 		secondary: {
 			chance: 10,
@@ -1631,7 +1631,7 @@ let BattleMovedex = {
 		flags: {protect: 1, mirror: 1, sound: 1, authentic: 1},
 		secondary: false,
 		target: "allAdjacent",
-		type: "Normal",
+		type: "Sound",
 		zMovePower: 200,
 		contestType: "Tough",
 	},
@@ -2233,7 +2233,7 @@ let BattleMovedex = {
 			volatileStatus: 'confusion',
 		},
 		target: "any",
-		type: "Flying",
+		type: "Sound",
 		zMovePower: 120,
 		contestType: "Cute",
 	},
@@ -4147,7 +4147,7 @@ let BattleMovedex = {
 		},
 		secondary: false,
 		target: "normal",
-		type: "Normal",
+		type: "Sound",
 		zMovePower: 100,
 		contestType: "Beautiful",
 	},
@@ -6263,7 +6263,7 @@ let BattleMovedex = {
 			chance: 100,
 			self: {
 				onHit: function () {
-					this.setTerrain('psychicterrain');
+					this.field.setTerrain('psychicterrain');
 				},
 			},
 		},
@@ -6701,7 +6701,7 @@ let BattleMovedex = {
 		},
 		secondary: false,
 		target: "allAdjacentFoes",
-		type: "Normal",
+		type: "Sound",
 		zMoveBoost: {def: 1},
 		contestType: "Cute",
 	},
@@ -6718,7 +6718,7 @@ let BattleMovedex = {
 		priority: 0,
 		flags: {snatch: 1},
 		onModifyMove: function (move) {
-			if (this.isWeather(['sunnyday', 'desolateland'])) move.boosts = {atk: 2, spa: 2};
+			if (this.is.fieldWeather(['sunnyday', 'desolateland'])) move.boosts = {atk: 2, spa: 2};
 		},
 		boosts: {
 			atk: 1,
@@ -7135,7 +7135,7 @@ let BattleMovedex = {
 			return success;
 		},
 		target: "allyTeam",
-		type: "Normal",
+		type: "Sound",
 		zMoveEffect: 'heal',
 		contestType: "Beautiful",
 	},
@@ -7993,9 +7993,9 @@ let BattleMovedex = {
 		priority: 0,
 		flags: {protect: 1, mirror: 1, distance: 1},
 		onModifyMove: function (move) {
-			if (this.isWeather(['raindance', 'primordialsea'])) {
+			if (this.is.fieldWeather(['raindance', 'primordialsea'])) {
 				move.accuracy = true;
-			} else if (this.isWeather(['sunnyday', 'desolateland'])) {
+			} else if (this.is.fieldWeather(['sunnyday', 'desolateland'])) {
 				move.accuracy = 50;
 			}
 		},
@@ -8179,7 +8179,7 @@ let BattleMovedex = {
 		flags: {protect: 1, mirror: 1, sound: 1, authentic: 1},
 		secondary: false,
 		target: "allAdjacentFoes",
-		type: "Normal",
+		type: "Sound",
 		zMovePower: 175,
 		contestType: "Cool",
 	},
@@ -10765,9 +10765,9 @@ let BattleMovedex = {
 		priority: 0,
 		flags: {snatch: 1, heal: 1},
 		onHit: function (pokemon) {
-			if (this.isWeather(['sunnyday', 'desolateland'])) {
+			if (this.is.fieldWeather(['sunnyday', 'desolateland'])) {
 				return this.heal(this.modify(pokemon.maxhp, 0.667));
-			} else if (this.isWeather(['raindance', 'primordialsea', 'sandstorm', 'hail'])) {
+			} else if (this.is.fieldWeather(['raindance', 'primordialsea', 'sandstorm', 'hail'])) {
 				return this.heal(this.modify(pokemon.maxhp, 0.25));
 			} else {
 				return this.heal(this.modify(pokemon.maxhp, 0.5));
@@ -10793,9 +10793,9 @@ let BattleMovedex = {
 		priority: 0,
 		flags: {snatch: 1, heal: 1},
 		onHit: function (pokemon) {
-			if (this.isWeather(['sunnyday', 'desolateland'])) {
+			if (this.is.fieldWeather(['sunnyday', 'desolateland'])) {
 				return this.heal(this.modify(pokemon.maxhp, 0.667));
-			} else if (this.isWeather(['raindance', 'primordialsea', 'sandstorm', 'hail'])) {
+			} else if (this.is.fieldWeather(['raindance', 'primordialsea', 'sandstorm', 'hail'])) {
 				return this.heal(this.modify(pokemon.maxhp, 0.25));
 			} else {
 				return this.heal(this.modify(pokemon.maxhp, 0.5));
@@ -11237,7 +11237,7 @@ let BattleMovedex = {
 		},
 		secondary: false,
 		target: "normal",
-		type: "Normal",
+		type: "Sound",
 		zMoveBoost: {def: 1},
 		contestType: "Tough",
 	},
@@ -11627,7 +11627,7 @@ let BattleMovedex = {
 		},
 		secondary: false,
 		target: "all",
-		type: "Normal",
+		type: "Sound",
 		zMoveEffect: 'clearnegativeboost',
 		contestType: "Beautiful",
 	},
@@ -13304,7 +13304,7 @@ let BattleMovedex = {
 			}
 		},
 		target: "allAdjacentFoes",
-		type: "Normal",
+		type: "Sound",
 		zMovePower: 140,
 		contestType: "Beautiful",
 	},
@@ -13488,7 +13488,7 @@ let BattleMovedex = {
 		forceSwitch: true,
 		secondary: false,
 		target: "normal",
-		type: "Normal",
+		type: "Sound",
 		zMoveBoost: {def: 1},
 		contestType: "Cool",
 	},
@@ -13890,7 +13890,7 @@ let BattleMovedex = {
 		},
 		secondary: false,
 		target: "normal",
-		type: "Normal",
+		type: "Sound",
 		zMovePower: 120,
 		contestType: "Beautiful",
 	},
@@ -14144,7 +14144,7 @@ let BattleMovedex = {
 		},
 		secondary: false,
 		target: "normal",
-		type: "Normal",
+		type: "Sound",
 		zMoveBoost: {atk: 1},
 		contestType: "Clever",
 	},
@@ -14672,7 +14672,7 @@ let BattleMovedex = {
 		priority: 0,
 		flags: {snatch: 1, heal: 1},
 		onHit: function (pokemon) {
-			if (this.isWeather('sandstorm')) {
+			if (this.is.fieldWeather('sandstorm')) {
 				return this.heal(this.modify(pokemon.maxhp, 0.667));
 			} else {
 				return this.heal(this.modify(pokemon.maxhp, 0.5));
@@ -14782,7 +14782,7 @@ let BattleMovedex = {
 		status: 'slp',
 		secondary: false,
 		target: "normal",
-		type: "Normal",
+		type: "Sound",
 		zMoveBoost: {spe: 1},
 		contestType: "Cute",
 	},
@@ -15675,7 +15675,7 @@ let BattleMovedex = {
 				return;
 			}
 			this.add('-prepare', attacker, move.name, defender);
-			if (this.isWeather(['sunnyday', 'desolateland']) || !this.runEvent('ChargeMove', attacker, defender, move)) {
+			if (this.is.fieldWeather(['sunnyday', 'desolateland']) || !this.runEvent('ChargeMove', attacker, defender, move)) {
 				this.add('-anim', attacker, move.name, defender);
 				return;
 			}
@@ -15684,7 +15684,7 @@ let BattleMovedex = {
 		},
 		onBasePowerPriority: 4,
 		onBasePower: function (basePower, pokemon, target) {
-			if (this.isWeather(['raindance', 'primordialsea', 'sandstorm', 'hail'])) {
+			if (this.is.fieldWeather(['raindance', 'primordialsea', 'sandstorm', 'hail'])) {
 				this.debug('weakened by weather');
 				return this.chainModify(0.5);
 			}
@@ -15712,7 +15712,7 @@ let BattleMovedex = {
 				return;
 			}
 			this.add('-prepare', attacker, move.name, defender);
-			if (this.isWeather(['sunnyday', 'desolateland']) || !this.runEvent('ChargeMove', attacker, defender, move)) {
+			if (this.is.fieldWeather(['sunnyday', 'desolateland']) || !this.runEvent('ChargeMove', attacker, defender, move)) {
 				this.add('-anim', attacker, move.name, defender);
 				return;
 			}
@@ -15721,7 +15721,7 @@ let BattleMovedex = {
 		},
 		onBasePowerPriority: 4,
 		onBasePower: function (basePower, pokemon, target) {
-			if (this.isWeather(['raindance', 'primordialsea', 'sandstorm', 'hail'])) {
+			if (this.is.fieldWeather(['raindance', 'primordialsea', 'sandstorm', 'hail'])) {
 				this.debug('weakened by weather');
 				return this.chainModify(0.5);
 			}
@@ -16737,7 +16737,7 @@ let BattleMovedex = {
 		volatileStatus: 'confusion',
 		secondary: false,
 		target: "normal",
-		type: "Normal",
+		type: "Sound",
 		zMoveBoost: {spe: 1},
 		contestType: "Clever",
 	},
@@ -16997,9 +16997,9 @@ let BattleMovedex = {
 		priority: 0,
 		flags: {snatch: 1, heal: 1},
 		onHit: function (pokemon) {
-			if (this.isWeather(['sunnyday', 'desolateland'])) {
+			if (this.is.fieldWeather(['sunnyday', 'desolateland'])) {
 				return this.heal(this.modify(pokemon.maxhp, 0.667));
-			} else if (this.isWeather(['raindance', 'primordialsea', 'sandstorm', 'hail'])) {
+			} else if (this.is.fieldWeather(['raindance', 'primordialsea', 'sandstorm', 'hail'])) {
 				return this.heal(this.modify(pokemon.maxhp, 0.25));
 			} else {
 				return this.heal(this.modify(pokemon.maxhp, 0.5));
@@ -17518,9 +17518,9 @@ let BattleMovedex = {
 		priority: 0,
 		flags: {protect: 1, mirror: 1},
 		onModifyMove: function (move) {
-			if (this.isWeather(['raindance', 'primordialsea'])) {
+			if (this.is.fieldWeather(['raindance', 'primordialsea'])) {
 				move.accuracy = true;
-			} else if (this.isWeather(['sunnyday', 'desolateland'])) {
+			} else if (this.is.fieldWeather(['sunnyday', 'desolateland'])) {
 				move.accuracy = 50;
 			}
 		},
@@ -19603,7 +19603,7 @@ let BattleMovedex = {
 		name: "Psyche-Out",
 		pp: 10,
 		priority: 3,
-		flags: {contact: 1, protect: 1, mirror: 1},
+		flags: {protect: 1, mirror: 1},
 		onTry: function (pokemon, target) {
 			if (pokemon.activeTurns > 1) {
 				this.attrLastMove('[still]');
@@ -19624,6 +19624,27 @@ let BattleMovedex = {
 		type: "Psychic",
 		zMovePower: 100,
 		contestType: "Cute",
+	},
+	"soundbarrierbreak": {
+		num: 640,
+		accuracy: true,
+		basePower: 1,
+		category: "Physical",
+		shortDesc: "Power is equal to the base move's Z-Power.",
+		id: "soundbarrierbreak",
+		isViable: true,
+		name: "Soundbarrier Break",
+		pp: 1,
+		priority: 0,
+		flags: {},
+		isZ: "soundiumz",
+		onPrepareHit: function(target, source) {	
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Boomburst", target);
+		},
+		target: "normal",
+		type: "Sound",
+		contestType: "Cool",
 	},
 };
 
