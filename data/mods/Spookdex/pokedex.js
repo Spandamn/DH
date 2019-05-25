@@ -11919,7 +11919,7 @@ let BattlePokedex = {
 		types: ["Psychic", "Dark"],
 		gender: "N",
 		baseStats: {hp: 80, atk: 160, def: 60, spa: 170, spd: 130, spe: 80},
-		abilities: {0: "Magician", S: "Sheer Force"},
+		abilities: {0: "Magician", S: "Anger Point"},
 		heightm: 6.5,
 		weightkg: 490,
 		color: "Purple",

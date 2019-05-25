@@ -142,7 +142,7 @@ let BattleItems = {
 			basePower: 10,
 		},
 		onStart: function (target) {
-			if (!target.ignoringItem() && !this.getPseudoWeather('gravity')) {
+			if (!target.ignoringItem() && !this.field.getPseudoWeather('gravity')) {
 				this.add('-item', target, 'Air Balloon');
 			}
 		},
@@ -2590,7 +2590,7 @@ let BattleItems = {
 		},
 		onEffectiveness: function (typeMod, target, type, move) {
 			// @ts-ignore
-			if (target.volatiles['ingrain'] || target.volatiles['smackdown'] || this.getPseudoWeather('gravity')) return;
+			if (target.volatiles['ingrain'] || target.volatiles['smackdown'] || this.field.getPseudoWeather('gravity')) return;
 			// @ts-ignore
 			if (move.type === 'Ground' && target.hasType('Flying')) return 0;
 		},
