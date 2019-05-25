@@ -6477,6 +6477,23 @@ let BattleItems = {
 		isNonstandard: true,
 		desc: "If held by an Audimorte, this item allows it to Mega Evolve in battle.",
 	},
+	
+	"cloudyseed": {
+		id: "cloudyseed",
+		name: "Cloudy Seed",
+		spritenum: 665,
+		fling: {
+			basePower: 10,
+		},
+		onUpdate: function (pokemon) {
+			if (this.field.isTerrain('cloudyterrain') && pokemon.useItem()) {
+				this.boost({spd: 1});
+			}
+		},
+		num: 882,
+		gen: 7,
+		desc: "If the terrain is Psychic Terrain, raises holder's Sp. Def by 1 stage. Single use.",
+	},
 };
 
 exports.BattleItems = BattleItems;
