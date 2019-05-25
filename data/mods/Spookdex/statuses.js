@@ -666,7 +666,7 @@ let BattleStatuses = {
 		// So we give it increased priority.
 		onModifySpDPriority: 10,
 		onModifySpD: function (spd, pokemon) {
-			if (pokemon.hasType('Rock') && this.isWeather('sandstorm')) {
+			if (pokemon.hasType('Rock') && this.field.isWeather('sandstorm')) {
 				return this.modify(spd, 1.5);
 			}
 		},
@@ -681,7 +681,7 @@ let BattleStatuses = {
 		onResidualOrder: 1,
 		onResidual: function () {
 			this.add('-weather', 'Sandstorm', '[upkeep]');
-			if (this.isWeather('sandstorm')) this.eachEvent('Weather');
+			if (this.field.isWeather('sandstorm')) this.eachEvent('Weather');
 		},
 		onWeather: function (target) {
 			this.damage(target.maxhp / 16);
@@ -704,7 +704,7 @@ let BattleStatuses = {
 		},
 		onModifyDefPriority: 10,
 		onModifyDef: function (def, pokemon) {
-			if (pokemon.hasType('Ice') && this.isWeather('hail')) {
+			if (pokemon.hasType('Ice') && this.field.isWeather('hail')) {
 				return this.modify(def, 1.5);
 			}
 		},
@@ -719,7 +719,7 @@ let BattleStatuses = {
 		onResidualOrder: 1,
 		onResidual: function () {
 			this.add('-weather', 'Hail', '[upkeep]');
-			if (this.isWeather('hail')) this.eachEvent('Weather');
+			if (this.field.isWeather('hail')) this.eachEvent('Weather');
 		},
 		onWeather: function (target) {
 			this.damage(target.maxhp / 16);
@@ -740,14 +740,16 @@ let BattleStatuses = {
 			}
 			return 5;
 		},
-		onWeatherModifyDamage: function (damage, attacker, defender, move) {
-			if (move.type === 'Dark') {
-				this.debug('Overcast dark boost');
-				return this.chainModify(1.5);
+		onModifySpDPriority: 10,
+		onModifySpD: function (spd, pokemon) {
+			if (pokemon.hasType('Dark') && this.field.isWeather('overcast')) {
+				return this.modify(spd, 1.25);
 			}
-			if (move.type === 'Fairy') {
-				this.debug('Overcast fairy suppress');
-				return this.chainModify(0.5);
+		},
+		onModifyDefPriority: 10,
+		onModifySpD: function (spd, pokemon) {
+			if (pokemon.hasType('Dark') && this.field.isWeather('overcast')) {
+				return this.modify(spd, 1.25);
 			}
 		},
 		onStart: function (battle, source, effect) {
