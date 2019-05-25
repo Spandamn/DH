@@ -69928,7 +69928,6 @@ let BattleLearnsets = {
 		earthquake: ["7M"],
 		embargo: ["7M"],
 		energyball: ["7M"],
-		energyblock: ["7L1"],
 		extrasensory: ["7E"],
 		facade: ["7M"],
 		feintattack: ["7L22"],
