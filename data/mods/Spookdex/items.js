@@ -463,7 +463,7 @@ let BattleItems = {
 		onResidualOrder: 5,
 		onResidualSubOrder: 2,
 		onResidual: function (pokemon) {
-			if (this.is.fieldTerrain('grassyterrain')) return;
+			if (this.field.isTerrain('grassyterrain')) return;
 			if (pokemon.hasType('Poison')) {
 				this.heal(pokemon.maxhp / 16);
 			} else {
@@ -471,7 +471,7 @@ let BattleItems = {
 			}
 		},
 		onTerrain: function (pokemon) {
-			if (!this.is.fieldTerrain('grassyterrain')) return;
+			if (!this.field.isTerrain('grassyterrain')) return;
 			if (pokemon.hasType('Poison')) {
 				this.heal(pokemon.maxhp / 16);
 			} else {
@@ -1508,7 +1508,7 @@ let BattleItems = {
 			basePower: 10,
 		},
 		onUpdate: function (pokemon) {
-			if (this.is.fieldTerrain('electricterrain') && pokemon.useItem()) {
+			if (this.field.isTerrain('electricterrain') && pokemon.useItem()) {
 				this.boost({def: 1});
 			}
 		},
@@ -2177,7 +2177,7 @@ let BattleItems = {
 			basePower: 10,
 		},
 		onUpdate: function (pokemon) {
-			if (this.is.fieldTerrain('grassyterrain') && pokemon.useItem()) {
+			if (this.field.isTerrain('grassyterrain') && pokemon.useItem()) {
 				this.boost({def: 1});
 			}
 		},
@@ -2891,11 +2891,11 @@ let BattleItems = {
 		onResidualOrder: 5,
 		onResidualSubOrder: 2,
 		onResidual: function (pokemon) {
-			if (this.is.fieldTerrain('grassyterrain')) return;
+			if (this.field.isTerrain('grassyterrain')) return;
 			this.heal(pokemon.maxhp / 16);
 		},
 		onTerrain: function (pokemon) {
-			if (!this.is.fieldTerrain('grassyterrain')) return;
+			if (!this.field.isTerrain('grassyterrain')) return;
 			this.heal(pokemon.maxhp / 16);
 		},
 		num: 234,
@@ -3647,7 +3647,7 @@ let BattleItems = {
 			basePower: 10,
 		},
 		onUpdate: function (pokemon) {
-			if (this.is.fieldTerrain('mistyterrain') && pokemon.useItem()) {
+			if (this.field.isTerrain('mistyterrain') && pokemon.useItem()) {
 				this.boost({spd: 1});
 			}
 		},
@@ -4448,7 +4448,7 @@ let BattleItems = {
 			basePower: 10,
 		},
 		onUpdate: function (pokemon) {
-			if (this.is.fieldTerrain('psychicterrain') && pokemon.useItem()) {
+			if (this.field.isTerrain('psychicterrain') && pokemon.useItem()) {
 				this.boost({spd: 1});
 			}
 		},
@@ -6705,7 +6705,7 @@ let BattleItems = {
 		onResidualOrder: 5,
 		onResidualSubOrder: 2,
 		onResidual: function (pokemon) {
-			if (this.is.fieldTerrain('grassyterrain')) return;
+			if (this.field.isTerrain('grassyterrain')) return;
 			if (pokemon.hasType('Grass')) {
 				this.heal(pokemon.maxhp / 16);
 			} else {
@@ -6713,7 +6713,7 @@ let BattleItems = {
 			}
 		},
 		onTerrain: function (pokemon) {
-			if (!this.is.fieldTerrain('grassyterrain')) return;
+			if (!this.field.isTerrain('grassyterrain')) return;
 			if (pokemon.hasType('Grass')) {
 				this.heal(pokemon.maxhp / 16);
 			} else {
