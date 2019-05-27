@@ -27,7 +27,7 @@ exports.BattleScripts = {
 	// BattlePokemon scripts.
 	pokemon: {
 		getStat: function (statName, unmodified) {
-			statName = toId(statName);
+			statName = toID(statName);
 			if (statName === 'hp') return this.maxhp;
 			if (unmodified) return this.stats[statName];
 			return this.modifiedStats[statName];

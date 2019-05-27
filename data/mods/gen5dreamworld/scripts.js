@@ -389,7 +389,7 @@ exports.BattleScripts = {
 			let rejectAbility = false;
 			if (ability in counterAbilities) {
 				// Adaptability, Contrary, Hustle, Iron Fist, Sheer Force, Skill Link
-				rejectAbility = !counter[toId(ability)];
+				rejectAbility = !counter[toID(ability)];
 			} else if (ability === 'Blaze') {
 				rejectAbility = !counter['Fire'];
 			} else if (ability === 'Chlorophyll') {

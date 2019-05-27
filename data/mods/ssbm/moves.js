@@ -639,7 +639,7 @@ exports.BattleMovedex = {
 		onPrepareHit: function (target, source) {
 			this.attrLastMove('[still]');
 			this.add('-anim', source, "Oblivion Wing", target);
-			if (toId(source.name) === 'raven') {
+			if (toID(source.name) === 'raven') {
 				this.add('c|&Raven|*hic* Ah\'ve had mah tonic wine and ah\'m ready tae batter yeh like a Mars bar ye wee Sassenach.');
 			}
 		},
@@ -1352,7 +1352,7 @@ exports.BattleMovedex = {
 			this.add('-anim', source, "Relic Song", target);
 		},
 		onHit: function (target, source) {
-			if (toId(source.name) === 'dirpz') {
+			if (toID(source.name) === 'dirpz') {
 				this.add('c|+Dirpz|https://www.youtube.com/watch?v=9fGCVb6eS6A');
 			}
 		},
@@ -1376,14 +1376,14 @@ exports.BattleMovedex = {
 		priority: 0,
 		flags: {contact: 1, protect: 1, mirror: 1, punch: 1},
 		onPrepareHit: function (target, source) {
-			if (toId(source.name) === 'feliburn') {
+			if (toID(source.name) === 'feliburn') {
 				this.add('c|@Feliburn|FAALCOOOOOOON');
 			}
 			this.attrLastMove('[still]');
 			this.add('-anim', source, "Dynamic Punch", target);
 		},
 		onHit: function (target, source) {
-			if (toId(source.name) === 'feliburn') {
+			if (toID(source.name) === 'feliburn') {
 				this.add('c|@Feliburn|PUUUUUNCH!!');
 			}
 		},
@@ -1670,7 +1670,7 @@ exports.BattleMovedex = {
 		flags: {protect: 1, mirror: 1},
 		ignoreImmunity: {'Psychic': true},
 		onPrepareHit: function (target, source) {
-			if (toId(source.name) === 'sigilyph') {
+			if (toID(source.name) === 'sigilyph') {
 				this.add('c|@Sigilyph|**SOOOOGOOOOLOOOOPH**');
 			}
 			this.attrLastMove('[still]');
@@ -3454,7 +3454,7 @@ exports.BattleMovedex = {
 					this.attrLastMove('[still]');
 					this.add('-anim', source, "Explosion", target);
 					this.damage(source.maxhp, source, source);
-					if (toId(source.name) === 'pikachuun') {
+					if (toID(source.name) === 'pikachuun') {
 						this.add('c|+Pikachuun|i\'ve been outskilled');
 					}
 					return true;
@@ -4045,7 +4045,7 @@ exports.BattleMovedex = {
 			move.hits++;
 		},
 		onAfterMoveSecondarySelf: function (source, target, move) {
-			if (move.hits && move.hits === 3 && toId(source.name) === 'scythernoswiping') {
+			if (move.hits && move.hits === 3 && toID(source.name) === 'scythernoswiping') {
 				this.add('c|%Scyther NO Swiping|Oh baby a triple!!!');
 			}
 		},
@@ -4792,7 +4792,7 @@ exports.BattleMovedex = {
 				};
 				pokemon.moveset[i] = moveBuffer;
 				pokemon.baseMoveset[i] = moveBuffer;
-				pokemon.moves[i] = toId(moveData.name);
+				pokemon.moves[i] = toID(moveData.name);
 			}
 		},
 		secondary: false,
@@ -4835,10 +4835,10 @@ exports.BattleMovedex = {
 						const pokemon = target.side.pokemon[i];
 						if (pokemon.status === 'frz') freeze = false;
 					}
-					if (freeze && target.trySetStatus('frz') && toId(source.name) === 'xjoelituh') {
+					if (freeze && target.trySetStatus('frz') && toID(source.name) === 'xjoelituh') {
 						prompt = true;
 					}
-				} else if (target.trySetStatus(status) && toId(source.name) === 'xjoelituh') {
+				} else if (target.trySetStatus(status) && toID(source.name) === 'xjoelituh') {
 					prompt = true;
 				}
 				if (prompt) {

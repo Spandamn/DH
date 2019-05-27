@@ -53,7 +53,7 @@ class Pokemon {
 			set.name = this.baseTemplate.baseSpecies;
 		}
 		this.name = set.name.substr(0, 20);
-		this.speciesid = toId(this.species);
+		this.speciesid = toID(this.species);
 		this.template = this.baseTemplate;
 		this.movepp = {};
 		/**@type {MoveSlot[]} */
@@ -133,9 +133,9 @@ class Pokemon {
 		this.heightm = this.template.heightm;
 		this.weightkg = this.template.weightkg;
 
-		this.baseAbility = toId(set.ability);
+		this.baseAbility = toID(set.ability);
 		this.ability = this.baseAbility;
-		this.item = toId(set.item);
+		this.item = toID(set.item);
 		this.abilityData = {id: this.ability};
 		this.itemData = {id: this.item};
 		this.speciesData = {id: this.speciesid};
@@ -266,7 +266,7 @@ class Pokemon {
 	 * @param {number} [modifier]
 	 */
 	calculateStat(statName, boost, modifier) {
-		statName = toId(statName);
+		statName = toID(statName);
 
 		if (statName === 'hp') return this.maxhp; // please just read .maxhp directly
 
@@ -315,7 +315,7 @@ class Pokemon {
 	 * @param {boolean} [unmodified]
 	 */
 	getStat(statName, unboosted, unmodified) {
-		statName = toId(statName);
+		statName = toID(statName);
 
 		if (statName === 'hp') return this.maxhp; // please just read .maxhp directly
 
@@ -542,7 +542,7 @@ class Pokemon {
 	 */
 	getMoves(lockedMove, restrictData) {
 		if (lockedMove) {
-			lockedMove = toId(lockedMove);
+			lockedMove = toID(lockedMove);
 			this.trapped = true;
 			if (lockedMove === 'recharge') {
 				return [{
@@ -766,7 +766,7 @@ class Pokemon {
 				used: false,
 				virtual: true,
 			});
-			this.moves.push(toId(moveName));
+			this.moves.push(toID(moveName));
 		}
 		for (let j in pokemon.boosts) {
 			this.boosts[j] = pokemon.boosts[j];
@@ -966,7 +966,7 @@ class Pokemon {
 	 * @param {string} moveid
 	 */
 	hasMove(moveid) {
-		moveid = toId(moveid);
+		moveid = toID(moveid);
 		if (moveid.substr(0, 11) === 'hiddenpower') moveid = 'hiddenpower';
 		for (const moveSlot of this.moveSlots) {
 			if (moveid === moveSlot.id) {
@@ -985,7 +985,7 @@ class Pokemon {
 		if (!sourceEffect && this.battle.event) {
 			sourceEffect = this.battle.effect;
 		}
-		moveid = toId(moveid);
+		moveid = toID(moveid);
 
 		for (let moveSlot of this.moveSlots) {
 			if (moveSlot.id === moveid && moveSlot.disabled !== true) {
@@ -1200,8 +1200,8 @@ class Pokemon {
 		if (!this.item) return false;
 		if (!source) source = this;
 		if (this.battle.gen === 4) {
-			if (toId(this.ability) === 'multitype') return false;
-			if (source && toId(source.ability) === 'multitype') return false;
+			if (toID(this.ability) === 'multitype') return false;
+			if (source && toID(source.ability) === 'multitype') return false;
 		}
 		let item = this.getItem();
 		if (this.battle.runEvent('TakeItem', this, source, null, item)) {
@@ -1246,9 +1246,9 @@ class Pokemon {
 		if (this.ignoringItem()) return false;
 		let ownItem = this.item;
 		if (!Array.isArray(item)) {
-			return ownItem === toId(item);
+			return ownItem === toID(item);
 		}
-		return item.map(toId).includes(ownItem);
+		return item.map(toID).includes(ownItem);
 	}
 
 	clearItem() {
@@ -1293,9 +1293,9 @@ class Pokemon {
 		if (this.ignoringAbility()) return false;
 		let ownAbility = this.ability;
 		if (!Array.isArray(ability)) {
-			return ownAbility === toId(ability);
+			return ownAbility === toID(ability);
 		}
-		return ability.map(toId).includes(ownAbility);
+		return ability.map(toID).includes(ownAbility);
 	}
 
 	clearAbility() {

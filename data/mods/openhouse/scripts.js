@@ -160,7 +160,7 @@ exports.BattleScripts = {
 				for (let i = 0; i < this.sides.length; i++) {
 					for (let j = 0; j < this.sides[i].pokemon.length; j++) {
 						let pokemon = this.sides[i].pokemon[j];
-						if (toId(pokemon.set.item) === 'leppaberry') {
+						if (toID(pokemon.set.item) === 'leppaberry') {
 							if (leppaPokemon) {
 								leppaPokemon = null; // both sides have Leppa
 								this.add('-message', "Both sides started with a Leppa Berry.");
@@ -207,10 +207,10 @@ exports.BattleScripts = {
 		this.add('turn', this.turn);
 		if(this.turn%5==0 || this.turn==1)
 		{
-			if(this.curhouse) this.removePseudoWeather(toId(this.curhouse));
+			if(this.curhouse) this.removePseudoWeather(toID(this.curhouse));
 			this.add("-message",this.nexthouse+" started!");
 			if(this.nexthouse!="Trick Room")
-				this.addPseudoWeather(toId(this.nexthouse), this.p1.pokemon[0], "[move]: "+this.nexthouse);
+				this.addPseudoWeather(toID(this.nexthouse), this.p1.pokemon[0], "[move]: "+this.nexthouse);
 			else
 			{
 				this.pseudoWeather["trickroom"] = {id:'trickroom', duration:5};

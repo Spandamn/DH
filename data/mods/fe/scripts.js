@@ -409,7 +409,7 @@ exports.BattleScripts = {
 // 			if (item.zMove) return null;
 // 			for (let i = 0; i < pokemon.baseTemplate.otherFormes.length; i++) {
 // 				let altForme = pokemon.baseTemplate.otherFormes[i];
-// 				if (altForme && altForme.isMega && altForme.requiredMove && pokemon.baseMoves.includes(toId(altForme.requiredMove))) return altForme.species;
+// 				if (altForme && altForme.isMega && altForme.requiredMove && pokemon.baseMoves.includes(toID(altForme.requiredMove))) return altForme.species;
 // 			}
 // 			return null;
 // 		}
@@ -491,20 +491,20 @@ exports.BattleScripts = {
             let bootleg = false;
             if (!Array.isArray(item)) {
                 if (this.volatiles['goldentouch']) {
-                    golden = (this.volatiles['goldentouch'].item === toId(item));
+                    golden = (this.volatiles['goldentouch'].item === toID(item));
                 }
                 if (this.volatiles['beastbootleg']) {
-                    bootleg = (this.volatiles['beastbootleg'].items.includes(toId(item)));
+                    bootleg = (this.volatiles['beastbootleg'].items.includes(toID(item)));
                 }
-                return (ownItem === toId(item) || golden || bootleg);
+                return (ownItem === toID(item) || golden || bootleg);
             }
-            if (this.volatiles['goldentouch'] && !item.map(toId).includes(ownItem)) {
-                golden = (item.map(toId).includes(this.volatiles['goldentouch'].item));
+            if (this.volatiles['goldentouch'] && !item.map(toID).includes(ownItem)) {
+                golden = (item.map(toID).includes(this.volatiles['goldentouch'].item));
             }
-            if (this.volatiles['beastbootleg'] && !item.map(toId).includes(ownItem)) {
-                bootleg = (item.map(toId).includes(ownItem) || (item.map(toId).includes(this.volatiles['beastbootleg'].items[0]) || item.map(toId).includes(this.volatiles['beastbootleg'].items[1])));
+            if (this.volatiles['beastbootleg'] && !item.map(toID).includes(ownItem)) {
+                bootleg = (item.map(toID).includes(ownItem) || (item.map(toID).includes(this.volatiles['beastbootleg'].items[0]) || item.map(toID).includes(this.volatiles['beastbootleg'].items[1])));
             }
-            return (item.map(toId).includes(ownItem) || golden || bootleg);
+            return (item.map(toID).includes(ownItem) || golden || bootleg);
         },
         eatItem() {
             if (!this.hp || !this.isActive) return false;

@@ -102,9 +102,9 @@ exports.BattleScripts = {
 			if (this.volatiles[ability] || this.volatiles["other"+ability]) return true;
 			let ownAbility = this.ability;
 			if (!Array.isArray(ability)) {
-				return ownAbility === toId(ability);
+				return ownAbility === toID(ability);
 			}
-			return ability.map(toId).includes(ownAbility);
+			return ability.map(toID).includes(ownAbility);
 		}
 	},
 };

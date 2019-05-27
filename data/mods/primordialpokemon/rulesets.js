@@ -194,7 +194,7 @@ exports.BattleFormats = {
 			if (template.requiredItem && item.name !== template.requiredItem) {
 				problems.push((set.name || set.species) + ' needs to hold ' + template.requiredItem + '.');
 			}
-			if (template.requiredMove && set.moves.indexOf(toId(template.requiredMove)) < 0) {
+			if (template.requiredMove && set.moves.indexOf(toID(template.requiredMove)) < 0) {
 				problems.push((set.name || set.species) + ' needs to have the move ' + template.requiredMove + '.');
 			}
 			if (template.num === 351) { // Castform
@@ -406,7 +406,7 @@ exports.BattleFormats = {
 		validateTeam: function (team, format) {
 			var itemTable = {};
 			for (var i = 0; i < team.length; i++) {
-				var item = toId(team[i].item);
+				var item = toID(team[i].item);
 				if (!item) continue;
 				if (itemTable[item]) {
 					return ["You are limited to one of each item by Item Clause.", "(You have more than one " + this.getItem(item).name + ")"];
@@ -423,7 +423,7 @@ exports.BattleFormats = {
 		validateTeam: function (team, format) {
 			var abilityTable = {};
 			for (var i = 0; i < team.length; i++) {
-				var ability = toId(team[i].ability);
+				var ability = toID(team[i].ability);
 				if (!ability) continue;
 				if (ability in abilityTable) {
 					if (abilityTable[ability] >= 2) {
@@ -444,7 +444,7 @@ exports.BattleFormats = {
 		validateTeam: function (team, format) {
 			var ateAbility = false;
 			for (var i = 0; i < team.length; i++) {
-				var ability = toId(team[i].ability);
+				var ability = toID(team[i].ability);
 				if (ability === 'refrigerate' || ability === 'pixilate' || ability === 'aerilate') {
 					if (ateAbility) return [team[i].name + " has more than one of Aerilate/Refrigerate/Pixilate, which is banned by -ate Clause."];
 					ateAbility = true;

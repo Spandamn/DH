@@ -189,7 +189,7 @@ exports.BattleScripts = {
 		if (template.species in forbid) {
 			//Case 1: Sprites don't exist
 			template = Object.assign({}, template); //Prevent metagame crosstalk.
-			template.spriteid = toId(template.baseSpecies);
+			template.spriteid = toID(template.baseSpecies);
 			template.actualSpecies = template.species;
 			template.species = template.species.split('-')[0];
 			template.requiredItem = forbid[template.species];

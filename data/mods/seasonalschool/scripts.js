@@ -160,7 +160,7 @@ exports.BattleScripts = {
 				for (let i = 0; i < this.sides.length; i++) {
 					for (let j = 0; j < this.sides[i].pokemon.length; j++) {
 						let pokemon = this.sides[i].pokemon[j];
-						if (toId(pokemon.set.item) === 'leppaberry') {
+						if (toID(pokemon.set.item) === 'leppaberry') {
 							if (leppaPokemon) {
 								leppaPokemon = null; // both sides have Leppa
 								this.add('-message', "Both sides started with a Leppa Berry.");

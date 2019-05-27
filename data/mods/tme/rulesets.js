@@ -9,7 +9,7 @@ trademarkclause: {
 		onValidateTeam: function (team, format) {
 			let count=0;
 			for (let i = 0; i < team.length; i++) {
-				let ability = toId(team[i].ability);
+				let ability = toID(team[i].ability);
 				if(ability=="partingshot"||ability=="batonpass")
 				{
 					count++;

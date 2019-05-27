@@ -20,7 +20,7 @@ let BattleScripts = {
 		let target = this.getTarget(pokemon, zMove || move, targetLoc);
 		let baseMove = this.getMoveCopy(move);
 		const pranksterBoosted = baseMove.pranksterBoosted;
-		if (!sourceEffect && toId(move) !== 'struggle' && !zMove) {
+		if (!sourceEffect && toID(move) !== 'struggle' && !zMove) {
 			let changedMove = this.runEvent('OverrideAction', pokemon, target, move);
 			if (changedMove && changedMove !== true) {
 				baseMove = this.getMoveCopy(changedMove);
@@ -918,7 +918,7 @@ let BattleScripts = {
 	canMegaEvo: function (pokemon) {
 		let altForme = pokemon.baseTemplate.otherFormes && this.getTemplate(pokemon.baseTemplate.otherFormes[0]);
 		let item = pokemon.getItem();
-		if (altForme && altForme.isMega && altForme.requiredMove && pokemon.baseMoves.includes(toId(altForme.requiredMove)) && !item.zMove) return altForme.species;
+		if (altForme && altForme.isMega && altForme.requiredMove && pokemon.baseMoves.includes(toID(altForme.requiredMove)) && !item.zMove) return altForme.species;
 		if (item.megaEvolves !== pokemon.baseTemplate.baseSpecies || item.megaStone === pokemon.species) {
 			return null;
 		}

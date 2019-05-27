@@ -9,7 +9,7 @@ exports.BattleScripts = {
 	// BattlePokemon scripts.
 	pokemon: {
 		getStat: function (statName, unboosted, unmodified) {
-			statName = toId(statName);
+			statName = toID(statName);
 			if (statName === 'hp') return this.maxhp;
 
 			// base stat
@@ -63,7 +63,7 @@ exports.BattleScripts = {
 	},
 	// Battle scripts.
 	runMove: function (move, pokemon, target, sourceEffect) {
-		if (!sourceEffect && toId(move) !== 'struggle') {
+		if (!sourceEffect && toID(move) !== 'struggle') {
 			let changedMove = this.runEvent('OverrideDecision', pokemon, target, move);
 			if (changedMove && changedMove !== true) {
 				move = changedMove;

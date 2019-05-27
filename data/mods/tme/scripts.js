@@ -226,16 +226,16 @@ exports.BattleScripts = {
         hasItem: function(item) {
             if (Tools.getItem(this.item).ability) return false;
             if (this.ignoringItem()) return false;
-            if (!Array.isArray(item)) return this.item === toId(item);
-            return item.map(toId).contains(this.item);
+            if (!Array.isArray(item)) return this.item === toID(item);
+            return item.map(toID).contains(this.item);
         },
         hasAbility: function(ability) {
             if (this.ignoringAbility()) return false;
             if (!Array.isArray(ability)) {
-                ability = toId(ability);
+                ability = toID(ability);
                 if (this.ability === ability) return true;
             } else {
-                ability = ability.map(toId);
+                ability = ability.map(toID);
                 if (ability.includes(this.ability)) return true;
             }
             if (ability === "klutz") return false;

@@ -1451,7 +1451,7 @@ exports.BattleMovedex = {
 			this.add('-anim', source, "Sunsteel Strike", target);
 		},
 		onHit: function(target, source) {
-			if (toId(source.name) === 'eternalmayhem') {
+			if (toID(source.name) === 'eternalmayhem') {
 				this.add('c|@Eternal Mayhem|How \'bout we turn on some trap, eh? Or the classics, they\'ll lull you to sleep, they will!');
 			}
 		},

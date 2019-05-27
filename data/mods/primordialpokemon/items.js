@@ -4878,7 +4878,7 @@ exports.BattleItems = {
 			if (pokemon.isActive && !pokemon.baseTemplate.isPrimal && pokemon.baseTemplate.species in legends) {
 				var template = this.getTemplate(pokemon.baseTemplate.species + '-Primal');
 				if (pokemon.baseTemplate.species !== "Groudon" && pokemon.baseTemplate.species !== "Kyogre") {
-					template.spriteid = toId(pokemon.baseTemplate.species);
+					template.spriteid = toID(pokemon.baseTemplate.species);
 					template.actualSpecies = template.species;
 					template.species = pokemon.baseTemplate.species;
 					template.requiredItem = "Rainbow Orb";

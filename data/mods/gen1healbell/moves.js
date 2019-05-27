@@ -529,7 +529,7 @@ exports.BattleMovedex = {
 				used: false,
 				virtual: true,
 			};
-			source.moves[moveslot] = toId(move.name);
+			source.moves[moveslot] = toID(move.name);
 			this.add('-start', source, 'Mimic', move.name);
 		},
 	},

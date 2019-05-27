@@ -78,10 +78,10 @@ exports.BattleScripts = {
 		hasItem(item) {
 			if (this.ignoringItem()) return false;
 			if (!Array.isArray(item)) {
-				item = toId(item);
+				item = toID(item);
 				return item === this.item || item === this.ability;
 			}
-			item = item.map(toId);
+			item = item.map(toID);
 			return item.includes(this.item) || item.includes(this.ability);
 		},
 		eatItem() {

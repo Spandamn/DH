@@ -9,7 +9,7 @@ exports.BattleScripts = {
 		if (name && typeof name !== 'string') {
 			return name;
 		}
-		let id = toId(name);
+		let id = toID(name);
 		if (id.startsWith('ability')) return Object.assign(Object.create(this.getAbility(id.slice(7))), {id});
 		return Object.getPrototypeOf(this).getEffect.call(this, name);
 	},
@@ -86,10 +86,10 @@ exports.BattleScripts = {
 		hasItem(item) {
 			if (this.ignoringItem()) return false;
 			if (!Array.isArray(item)) {
-				item = toId(item);
+				item = toID(item);
 				return item === this.item || item === this.ability;
 			}
-			item = item.map(toId);
+			item = item.map(toID);
 			return item.includes(this.item) || item.includes(this.ability);
 		},
 		eatItem() {
@@ -193,14 +193,14 @@ exports.BattleScripts = {
 		},
 		hasAbility: function (ability) {
 			if (!this.ignoringAbility()) {
-				if (Array.isArray(ability) ? ability.map(toId).includes(this.ability) : toId(ability) === this.ability) {
+				if (Array.isArray(ability) ? ability.map(toID).includes(this.ability) : toID(ability) === this.ability) {
 					return true;
 				}
 			}
 			let ally = this.side.active.find(ally => ally && ally !== this && !ally.fainted);
 			if (!ally || ally.ignoringAbility()) return false;
-			if (Array.isArray(ability)) return ability.map(toId).includes(ally.ability);
-			return toId(ability) === ally.ability;
+			if (Array.isArray(ability)) return ability.map(toID).includes(ally.ability);
+			return toID(ability) === ally.ability;
 		},
 		takeDual(source) {
 			if (!this.isActive) return false;

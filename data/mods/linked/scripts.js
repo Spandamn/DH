@@ -3,7 +3,7 @@
 exports.BattleScripts = {
 	runMove: function (move, pokemon, targetLoc, sourceEffect, zMove, externalMove) {
 		let target = this.getTarget(pokemon, zMove || move, targetLoc);
-		if (!sourceEffect && toId(move) !== 'struggle' && !zMove) {
+		if (!sourceEffect && toID(move) !== 'struggle' && !zMove) {
 			let changedMove = this.runEvent('OverrideAction', pokemon, target, move);
 			if (changedMove && changedMove !== true) {
 				move = changedMove;
@@ -145,7 +145,7 @@ exports.BattleScripts = {
 
 				let linkedMoves = action.pokemon.getLinkedMoves();
 				if (linkedMoves.length && !linkedMoves.disabled && !action.pokemon.getItem().isChoice && !action.zmove) {
-					let decisionMove = toId(action.move);
+					let decisionMove = toID(action.move);
 					if (linkedMoves.includes(decisionMove)) {
 						// flag the move as linked here
 						action.linked = linkedMoves.map(moveId => this.getMoveCopy(moveId));
@@ -189,7 +189,7 @@ exports.BattleScripts = {
 				let linkedMoves = action.pokemon.getLinkedMoves();
 				let linkIndex = -1;
 
-				if (linkedMoves.length && !linkedMoves.disabled && !move.isZ && (linkIndex = linkedMoves.indexOf(toId(action.move))) >= 0) {
+				if (linkedMoves.length && !linkedMoves.disabled && !move.isZ && (linkIndex = linkedMoves.indexOf(toID(action.move))) >= 0) {
 					let linkedActions = action.linked || linkedMoves.map(moveId => this.getMoveCopy(moveId));
 					let altMove = linkedActions[1 - linkIndex];
 					let thisPriority = this.runEvent('ModifyPriority', action.pokemon, target, linkedActions[linkIndex], priority);
@@ -494,7 +494,7 @@ exports.BattleScripts = {
 			return this.lastMove;
 		},
 		checkMoveThisTurn: function (move) {
-			const moveId = toId(move);
+			const moveId = toID(move);
 			if (Array.isArray(this.moveThisTurn)) return this.moveThisTurn.some(moveUsed => moveUsed.id === moveId);
 			return this.moveThisTurn && this.moveThisTurn.id === moveId;
 		},
@@ -512,7 +512,7 @@ exports.BattleScripts = {
 			return ret;
 		},
 		hasLinkedMove: function (move) {
-			move = toId(move);
+			move = toID(move);
 			let linkedMoves = this.getLinkedMoves();
 			if (!linkedMoves.length) return;
 			return linkedMoves[0] === move || linkedMoves[1] === move;

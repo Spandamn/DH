@@ -6,7 +6,7 @@ exports.BattleScripts = {
         var template;
         if (pokemon.baseTemplate.otherFormes) otherForme = this.getTemplate(pokemon.baseTemplate.otherFormes[0]);
         if (otherForme && otherForme.isMega && otherForme.requiredMove) {
-            if (pokemon.moves.indexOf(toId(otherForme.requiredMove)) < 0) return false;
+            if (pokemon.moves.indexOf(toID(otherForme.requiredMove)) < 0) return false;
             template = otherForme;
         } else {
             var item = this.getItem(pokemon.item);
@@ -110,7 +110,7 @@ exports.BattleScripts = {
                     },
                     moves: pokemon.moves.map(function(move) {
                         if (move === 'hiddenpower') {
-                            return move + toId(pokemon.hpType) + (pokemon.hpPower === 70 ? '' : pokemon.hpPower);
+                            return move + toID(pokemon.hpType) + (pokemon.hpPower === 70 ? '' : pokemon.hpPower);
                         }
                         return move;
                     }),
