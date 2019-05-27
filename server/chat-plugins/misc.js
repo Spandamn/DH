@@ -183,8 +183,8 @@ exports.commands = {
 
 	regdate: function (target, room, user) {
 		if (!this.runBroadcast()) return;
-		if (!target || !toId(target)) return this.parse('/help regdate');
-		let username = toId(target);
+		if (!target || !toID(target)) return this.parse('/help regdate');
+		let username = toID(target);
 		request('http://pokemonshowdown.com/users/' + username, function (error, response, body) {
 			if (error && response.statusCode !== 200) {
 				this.sendReplyBox(Chat.escapeHTML(target) + " is not registered.");
@@ -223,7 +223,7 @@ exports.commands = {
 		let targetUser = Users.get(target);
 		if (targetUser && targetUser.connected) return this.sendReplyBox(targetUser.name + " is <b>currently online</b>.");
 		target = Chat.escapeHTML(target);
-		let seen = Db.seen.get(toId(target));
+		let seen = Db.seen.get(toID(target));
 		if (!seen) return this.sendReplyBox(target + " has never been online on this server.");
 		this.sendReplyBox(target + " was last seen <b>" + moment(seen).fromNow() + "</b>.");
 	},

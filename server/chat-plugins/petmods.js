@@ -6,14 +6,14 @@ exports.commands = {
 learnistor: function(target, room, user) {
 		if (!this.runBroadcast()) return;
 		let learnstor = Dex.mod('istor').data.Learnsets, movestor = Dex.mod('istor').data.Movedex, dexstor = Dex.mod('istor').data.Pokedex;
-		if (!target || toId(target) === '') return this.sendReply("/learnistor: Shows the whether a Pokemon can learn a move, including Pokemon and Moves from istor.");
+		if (!target || toID(target) === '') return this.sendReply("/learnistor: Shows the whether a Pokemon can learn a move, including Pokemon and Moves from istor.");
 		let targets = target.split(','), mon = targets[0], move = targets[1];
-		if (!mon || !dexstor[toId(mon)]) return this.errorReply("Error: Pokemon not found");
-		if (!learnstor[toId(mon)]) return this.errorReply("Error: Learnset not found");
-		if (!move || !movestor[toId(move)]) return this.errorReply("Error: Move not found");
-		mon = dexstor[toId(mon)];
-		move = movestor[toId(move)];
-		if (learnstor[toId(mon.species)].learnset[toId(move.name)]) {
+		if (!mon || !dexstor[toID(mon)]) return this.errorReply("Error: Pokemon not found");
+		if (!learnstor[toID(mon)]) return this.errorReply("Error: Learnset not found");
+		if (!move || !movestor[toID(move)]) return this.errorReply("Error: Move not found");
+		mon = dexstor[toID(mon)];
+		move = movestor[toID(move)];
+		if (learnstor[toID(mon.species)].learnset[toID(move.name)]) {
 			return this.sendReplyBox("In Istor, " + mon.species + ' <font color="green"><u><b>can<b><u></font> learn ' + move.name);
 		}
 		return this.sendReplyBox("In Istor, " + mon.species + ' <font color="red"><u><b>can\'t<b><u></font> learn ' + move.name);

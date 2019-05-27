@@ -29,7 +29,7 @@ if (!Config.github) {
 
 let updates = {};
 let targetRooms = (Config.github.rooms && Config.github.rooms.length) ? Config.github.rooms : ['development'];
-targetRooms = targetRooms.map(toId);
+targetRooms = targetRooms.map(toID);
 for (let i = 0; i < targetRooms.length; i++) {
 	targetRooms[i] = Rooms(targetRooms[i]);
 }
@@ -72,7 +72,7 @@ git.on('push', (repo, ref, result) => {
 
 git.on('pull_request', function pullRequest(repo, ref, result) {
 	let COOLDOWN = 10 * 60 * 1000;
-	let requestUsername = toId(result.sender.login);
+	let requestUsername = toID(result.sender.login);
 	if (requestUsername in gitBans) return;
 	let requestNumber = result.pull_request.number;
 	let url = result.pull_request.html_url;

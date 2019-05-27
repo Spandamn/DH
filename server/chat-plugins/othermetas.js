@@ -72,7 +72,7 @@ const commands = {
 		if (!this.runBroadcast()) return;
 		if (!target || !target.includes(',')) return this.parse('/help crossevo')
 		let pokes = target.split(",");
-		if (!Dex.data.Pokedex[toId(pokes[0])] || !Dex.data.Pokedex[toId(pokes[1])]) {
+		if (!Dex.data.Pokedex[toID(pokes[0])] || !Dex.data.Pokedex[toID(pokes[1])]) {
 			return this.errorReply('Error: Pokemon not found.')
 		}
 		let template = Object.assign({}, Dex.getTemplate(pokes[0])), crossTemplate = Object.assign({}, Dex.getTemplate(pokes[1]));
@@ -422,14 +422,14 @@ const commands = {
                 } else {
                         let tar = arg.split(' ');
                         let poke = tar[1],
-                                nat = toId(tar[0]),
-                                p = toId(poke);
+                                nat = toID(tar[0]),
+                                p = toID(poke);
                         if (p == "mega")
                                 poke = tar[2] + "mega";
                         if (p.charAt(0) == "m" && pokemen[p.substring(1, p.length) + "mega"] != undefined)
                                 poke = poke.substring(1, poke.length) + "mega";
                         let temp = "";
-                        p = toId(poke);
+                        p = toID(poke);
                         if (pokemen[p] == undefined) {
                                 text += "Error: Pokemon not found";
                         } else if (natures[nat] == undefined) {
@@ -460,7 +460,7 @@ const commands = {
 		if(!target || target === ' ' || !target.includes(',')) return this.errorReply('Error: Invalid Argument(s).')
 		let text = "";
 		let separated = target.split(",");
-		let name = toId(separated[0]), name2 = toId(separated[1]);
+		let name = toID(separated[0]), name2 = toID(separated[1]);
 		if (!Dex.data.Pokedex[name] || !Dex.data.Pokedex[name2]) {
 			return this.errorReply("Error: Pokemon not found");;
 		}
@@ -470,7 +470,7 @@ const commands = {
 		});
 		fusedTemplate.baseStats = Object.assign({}, baseStats);
 		fusedTemplate.types = [fusedTemplate.types[0]];
-		let type = (separated[2] && toId(separated[2]) === 'shiny' && template.types[1]) ? 1 : 0;
+		let type = (separated[2] && toID(separated[2]) === 'shiny' && template.types[1]) ? 1 : 0;
 		if(template.types[type] && template.types[type] !== fusedTemplate.types[0]) fusedTemplate.types.push(template.types[type]);
 		let weight = (Dex.data.Pokedex[fusedTemplate.id].weightkg + template.weightkg) / 2;
 		fusedTemplate.weightkg = weight;
@@ -507,14 +507,14 @@ const commands = {
 	'bnb' : 'badnboosted',
 	badnboosted : function (target, room, user) {
 		if (!this.runBroadcast()) return;
-		if(!Dex.data.Pokedex[toId(target)]) {
+		if(!Dex.data.Pokedex[toID(target)]) {
 			return this.errorReply("Error: Pokemon not found.")
 		}
 		let template = Object.assign({}, Dex.getTemplate(target));
 		let newStats = Object.values(template.baseStats).map(function (stat) {
  			return (stat <= 70) ? (stat * 2) : stat;
  		});
-		this.sendReplyBox(`${Dex.data.Pokedex[toId(target)].species} in Bad 'n Boosted: <br /> ${newStats.join('/')}`);
+		this.sendReplyBox(`${Dex.data.Pokedex[toID(target)].species} in Bad 'n Boosted: <br /> ${newStats.join('/')}`);
 	},
 	badnboostedhelp: ["/bnb <pokemon> - Shows the base stats that a Pokemon would have in Bad 'n Boosted."],
 
