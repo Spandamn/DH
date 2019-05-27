@@ -109,7 +109,7 @@ exports.Formats = [
 			this.add(`raw|<div class='broadcast-green'><b>Wondering what all these custom moves, abilities, and items do?<br />Check out the <a href="https://www.smogon.com/articles/super-staff-bros-brawl" target="_blank">Super Staff Bros Brawl Guide</a> and find out!</b></div>`);
 		},
 		onSwitchIn: function (pokemon) {
-			let name = toId(pokemon.illusion ? pokemon.illusion.name : pokemon.name);
+			let name = toID(pokemon.illusion ? pokemon.illusion.name : pokemon.name);
 			if (this.getTemplate(name).exists) {
 				// Certain pokemon have volatiles named after their speciesid
 				// To prevent overwriting those, and to prevent accidentaly leaking
@@ -143,11 +143,11 @@ exports.Formats = [
 				let pokemon = allPokemon[i];		
 				let last = pokemon.moves.length - 1;
 				if (pokemon.moves[last]) {
-					pokemon.moves[last] = toId(pokemon.set.signatureMove);
+					pokemon.moves[last] = toID(pokemon.set.signatureMove);
 					pokemon.moveSlots[last].move = pokemon.set.signatureMove;
 					pokemon.baseMoveSlots[last].move = pokemon.set.signatureMove;
 				}
-				let name = toId(pokemon.illusion ? pokemon.illusion.name : pokemon.name);
+				let name = toID(pokemon.illusion ? pokemon.illusion.name : pokemon.name);
 				if (name == "thetruefalcon")
 				{
 					pokemon.types[1] = "Fighting";
@@ -159,14 +159,14 @@ exports.Formats = [
 				for (let j = 0; j < pokemon.moveSlots.length; j++) {
 					let moveData = pokemon.moveSlots[j];
 					if (globalRenamedMoves[moveData.id]) {
-						pokemon.moves[j] = toId(pokemon.set.signatureMove);
+						pokemon.moves[j] = toID(pokemon.set.signatureMove);
 						moveData.move = globalRenamedMoves[moveData.id];
 						pokemon.baseMoveSlots[j].move = globalRenamedMoves[moveData.id];
 					}
 
-					let customRenamedSet = customRenamedMoves[toId(pokemon.name)];
+					let customRenamedSet = customRenamedMoves[toID(pokemon.name)];
 					if (customRenamedSet && customRenamedSet[moveData.id]) {
-						pokemon.moves[j] = toId(pokemon.set.signatureMove);
+						pokemon.moves[j] = toID(pokemon.set.signatureMove);
 						moveData.move = customRenamedSet[moveData.id];
 						pokemon.baseMoveSlots[j].move = customRenamedSet[moveData.id];
 					}
@@ -175,7 +175,7 @@ exports.Formats = [
 		},
 		// Hacks for megas changed abilities. This allow for their changed abilities.
 		onUpdate: function(pokemon) {
-			let name = toId(pokemon.name);
+			let name = toID(pokemon.name);
 			if (!this.shownTip) {
 				this.add('raw|<div class=\"broadcast-green\">Huh? But what do all these weird moves do??<br><b>Protip: Refer to the <a href="https://github.com/XpRienzo/DragonHeaven/blob/master/mods/dhssb/README.md">PLAYER\'S MANUAL</a>!</b></div>');
 				this.shownTip = true;
@@ -184,7 +184,7 @@ exports.Formats = [
 		// Here we treat many things, read comments inside for information.
 		onSwitchInPriority: 1,
 		onSwitchIn: function(pokemon) {
-			let name = toId(pokemon.illusion ? pokemon.illusion.name : pokemon.name);
+			let name = toID(pokemon.illusion ? pokemon.illusion.name : pokemon.name);
 			// Wonder Guard is available, but it curses you.
 			if (pokemon.getAbility().id === 'wonderguard' && pokemon.baseTemplate.baseSpecies !== 'Shedinja' && pokemon.baseTemplate.baseSpecies !== 'Kakuna') {
 				pokemon.addVolatile('curse', pokemon);
@@ -198,7 +198,7 @@ exports.Formats = [
 			}
 		},
 		onModifyPokemon: function(pokemon) {
-			let name = toId(pokemon.name);
+			let name = toID(pokemon.name);
 		},
 	},
 		{
@@ -220,11 +220,11 @@ exports.Formats = [
 				let pokemon = allPokemon[i];		
 				let last = pokemon.moves.length - 1;
 				if (pokemon.moves[last]) {
-					pokemon.moves[last] = toId(pokemon.set.signatureMove);
+					pokemon.moves[last] = toID(pokemon.set.signatureMove);
 					pokemon.moveSlots[last].move = pokemon.set.signatureMove;
 					pokemon.baseMoveSlots[last].move = pokemon.set.signatureMove;
 				}
-				let name = toId(pokemon.illusion ? pokemon.illusion.name : pokemon.name);
+				let name = toID(pokemon.illusion ? pokemon.illusion.name : pokemon.name);
 				if (name == "thetruefalcon")
 				{
 					pokemon.types[1] = "Fighting";
@@ -236,14 +236,14 @@ exports.Formats = [
 				for (let j = 0; j < pokemon.moveSlots.length; j++) {
 					let moveData = pokemon.moveSlots[j];
 					if (globalRenamedMoves[moveData.id]) {
-						pokemon.moves[j] = toId(pokemon.set.signatureMove);
+						pokemon.moves[j] = toID(pokemon.set.signatureMove);
 						moveData.move = globalRenamedMoves[moveData.id];
 						pokemon.baseMoveSlots[j].move = globalRenamedMoves[moveData.id];
 					}
 
-					let customRenamedSet = customRenamedMoves[toId(pokemon.name)];
+					let customRenamedSet = customRenamedMoves[toID(pokemon.name)];
 					if (customRenamedSet && customRenamedSet[moveData.id]) {
-						pokemon.moves[j] = toId(pokemon.set.signatureMove);
+						pokemon.moves[j] = toID(pokemon.set.signatureMove);
 						moveData.move = customRenamedSet[moveData.id];
 						pokemon.baseMoveSlots[j].move = customRenamedSet[moveData.id];
 					}
@@ -252,7 +252,7 @@ exports.Formats = [
 		},
 		// Hacks for megas changed abilities. This allow for their changed abilities.
 		onUpdate: function(pokemon) {
-			let name = toId(pokemon.name);
+			let name = toID(pokemon.name);
 			if (!this.shownTip) {
 				this.add('raw|<div class=\"broadcast-green\">Huh? But what do all these weird moves do??<br><b>Protip: Refer to the <a href="https://github.com/XpRienzo/DragonHeaven/blob/master/mods/dhssb/README.md">PLAYER\'S MANUAL</a>!</b></div>');
 				this.shownTip = true;
@@ -261,7 +261,7 @@ exports.Formats = [
 		// Here we treat many things, read comments inside for information.
 		onSwitchInPriority: 1,
 		onSwitchIn: function(pokemon) {
-			let name = toId(pokemon.illusion ? pokemon.illusion.name : pokemon.name);
+			let name = toID(pokemon.illusion ? pokemon.illusion.name : pokemon.name);
 			// Wonder Guard is available, but it curses you.
 			if (pokemon.getAbility().id === 'wonderguard' && pokemon.baseTemplate.baseSpecies !== 'Shedinja' && pokemon.baseTemplate.baseSpecies !== 'Kakuna') {
 				pokemon.addVolatile('curse', pokemon);
@@ -275,7 +275,7 @@ exports.Formats = [
 			}
 		},
 		onModifyPokemon: function(pokemon) {
-			let name = toId(pokemon.name);
+			let name = toID(pokemon.name);
 		},
 	}, 
 	{
@@ -295,21 +295,21 @@ exports.Formats = [
 				let pokemon = allPokemon[i];
 				let last = pokemon.moves.length - 1;
 				if (pokemon.moves[last]) {
-					pokemon.moves[last] = toId(pokemon.set.signatureMove);
+					pokemon.moves[last] = toID(pokemon.set.signatureMove);
 					pokemon.moveSlots[last].move = pokemon.set.signatureMove;
 					pokemon.baseMoveSlots[last].move = pokemon.set.signatureMove;
 				}
 				for (let j = 0; j < pokemon.moveSlots.length; j++) {
 					let moveData = pokemon.moveSlots[j];
 					if (globalRenamedMoves[moveData.id]) {
-						pokemon.moves[j] = toId(pokemon.set.signatureMove);
+						pokemon.moves[j] = toID(pokemon.set.signatureMove);
 						moveData.move = globalRenamedMoves[moveData.id];
 						pokemon.baseMoveSlots[j].move = globalRenamedMoves[moveData.id];
 					}
 
-					let customRenamedSet = customRenamedMoves[toId(pokemon.name)];
+					let customRenamedSet = customRenamedMoves[toID(pokemon.name)];
 					if (customRenamedSet && customRenamedSet[moveData.id]) {
-						pokemon.moves[j] = toId(pokemon.set.signatureMove);
+						pokemon.moves[j] = toID(pokemon.set.signatureMove);
 						moveData.move = customRenamedSet[moveData.id];
 						pokemon.baseMoveSlots[j].move = customRenamedSet[moveData.id];
 					}
@@ -318,7 +318,7 @@ exports.Formats = [
 		},
 		// Here we add some flavour or design immunities.
 		onImmunity: function(type, pokemon) {
-			if (toId(pokemon.name) === 'juanma' && type === 'Fire') {
+			if (toID(pokemon.name) === 'juanma' && type === 'Fire') {
 				this.add('-message', "Did you think fire would stop __him__? You **fool**!");
 				return false;
 			}
@@ -337,7 +337,7 @@ exports.Formats = [
 		},
 		// Hacks for megas changed abilities. This allow for their changed abilities.
 		onUpdate: function(pokemon) {
-			let name = toId(pokemon.name);
+			let name = toID(pokemon.name);
 			if (pokemon.template.isMega) {
 				if (name === 'andy' && pokemon.getAbility().id === 'magicbounce') {
 					pokemon.setAbility('adaptability');
@@ -375,7 +375,7 @@ exports.Formats = [
 		// Here we treat many things, read comments inside for information.
 		onSwitchInPriority: 1,
 		onSwitchIn: function(pokemon) {
-			let name = toId(pokemon.illusion ? pokemon.illusion.name : pokemon.name);
+			let name = toID(pokemon.illusion ? pokemon.illusion.name : pokemon.name);
 			// Wonder Guard is available, but it curses you.
 			if (pokemon.getAbility().id === 'wonderguard' && pokemon.baseTemplate.baseSpecies !== 'Shedinja' && pokemon.baseTemplate.baseSpecies !== 'Kakuna') {
 				pokemon.addVolatile('curse', pokemon);
@@ -1144,7 +1144,7 @@ exports.Formats = [
 			}
 		},
 		onFaint: function(pokemon, source, effect) {
-			let name = toId(pokemon.name);
+			let name = toID(pokemon.name);
 
 			if (name === 'innovamania') {
 				pokemon.side.addSideCondition('healingwish', pokemon, this);
@@ -1671,7 +1671,7 @@ exports.Formats = [
 		},
 		// Special switch-out events for some mons.
 		onSwitchOut: function(pokemon) {
-			let name = toId(pokemon.name);
+			let name = toID(pokemon.name);
 
 			if (!pokemon.illusion) {
 				if (name === 'hippopotas') {
@@ -1683,7 +1683,7 @@ exports.Formats = [
 			if (pokemon.originalName) pokemon.name = pokemon.originalName;
 		},
 		onModifyPokemon: function(pokemon) {
-			let name = toId(pokemon.name);
+			let name = toID(pokemon.name);
 			// Enforce choice item locking on custom moves.
 			// qtrx only has one move anyway.
 			if (name !== 'qtrx') {
@@ -2874,7 +2874,7 @@ exports.Formats = [
 		onValidateTeam: function (team) {
 			let alphabetTable = {};
 			for (const set of team) {
-				let letter = toId(set.species).slice(0, 1);
+				let letter = toID(set.species).slice(0, 1);
 				if (alphabetTable[letter]) {
 					return ["You are limited to one Pokémon per letter.", "(You have more than one Pokémon beginning with " + letter.toUpperCase() + ")"];
 				}
@@ -3151,7 +3151,7 @@ exports.Formats = [
 			mixedTemplate.learnset = Object.assign({}, template.learnset);
 			let newMoves = 0;
 			for (let i in set.moves) {
-				let move = toId(set.moves[i]);
+				let move = toID(set.moves[i]);
 				if (!this.checkLearnset(move, template)) continue;
 				if (this.checkLearnset(move, crossTemplate)) continue;
 				if (++newMoves > 2) continue;
@@ -3218,7 +3218,7 @@ exports.Formats = [
 		banlist: ['Shedinja', 'Slaking', 'Regigigas', 'Imposter', 'Smeargle', 'Pure Power', 'Huge Power'],
 		mod: 'gen7',
 		validateSet: function (set, teamHas) {
-			let species = toId(set.species);
+			let species = toID(set.species);
 			let template = Dex.getTemplate(species);
 			if (!template.exists || template.isNonstandard) return ["" + set.species + " is not a real Pok\u00E9mon."];
 			if (template.battleOnly) template = Dex.getTemplate(template.baseSpecies);
@@ -3569,7 +3569,7 @@ exports.Formats = [
 					if (pokemon.num < 1 || pokemon.species === 'Smeargle') continue;
 					if (Dex.data.FormatsData[speciesid].requiredItem || Dex.data.FormatsData[speciesid].requiredMove) continue;
 					for (let key in pokemon.abilities) {
-						let abilityId = toId(pokemon.abilities[key]);
+						let abilityId = toID(pokemon.abilities[key]);
 						if (abilityMap[abilityId]) {
 							abilityMap[abilityId][pokemon.evos ? 'push' : 'unshift'](speciesid);
 						} else {
@@ -3586,7 +3586,7 @@ exports.Formats = [
 
 			if (problems.length) return problems;
 
-			let species = toId(set.species);
+			let species = toID(set.species);
 			let template = Dex.getTemplate(species);
 			if (!template.exists) return [`The Pokemon "${set.species}" does not exist.`];
 			if (template.isUnreleased) return [`${template.species} is unreleased.`];
@@ -3595,7 +3595,7 @@ exports.Formats = [
 
 			let name = set.name;
 
-			let abilityId = toId(set.ability);
+			let abilityId = toID(set.ability);
 
 			if (!abilityId || !(abilityId in Dex.data.Abilities)) return [`${name} needs to have a valid ability.`];
 			let pokemonWithAbility = this.format.abilityMap[abilityId];
@@ -3660,7 +3660,7 @@ exports.Formats = [
 			for (const pokemon of this.p1.pokemon.concat(this.p2.pokemon)) {
 				if (pokemon.baseAbility.includes('0')) {
 					let donor = pokemon.baseAbility.split('0')[1];
-					pokemon.donor = toId(donor);
+					pokemon.donor = toID(donor);
 					pokemon.baseAbility = pokemon.baseAbility.split('0')[0];
 					pokemon.ability = pokemon.baseAbility;
 				}
@@ -4038,11 +4038,11 @@ exports.Formats = [
 		onBegin: function () {
 			let allPokemon = this.p1.pokemon.concat(this.p2.pokemon);
 			for (let pokemon of allPokemon) {
-				if (pokemon.ability === toId(pokemon.template.abilities['S'])) {
+				if (pokemon.ability === toID(pokemon.template.abilities['S'])) {
 					continue;
 				}
 				// @ts-ignore
-				pokemon.innates = Object.keys(pokemon.template.abilities).filter(key => key !== 'S' && (key !== 'H' || !pokemon.template.unreleasedHidden)).map(key => toId(pokemon.template.abilities[key])).filter(ability => ability !== pokemon.ability);
+				pokemon.innates = Object.keys(pokemon.template.abilities).filter(key => key !== 'S' && (key !== 'H' || !pokemon.template.unreleasedHidden)).map(key => toID(pokemon.template.abilities[key])).filter(ability => ability !== pokemon.ability);
 			}
 		},
 		onSwitchInPriority: 2,
@@ -4188,7 +4188,7 @@ exports.Formats = [
 			'Surge Surfer', 'Swift Swim', 'Teravolt', 'Tinted Lens', 'Trace', 'Unburden', 'Water Bubble', 'Weak Armor',
 		],
 		onBeforeSwitchIn: function (pokemon) {
-			let restrictedAbilities = this.getFormat().restrictedAbilities.map(toId);
+			let restrictedAbilities = this.getFormat().restrictedAbilities.map(toID);
 			for (const ally of pokemon.side.pokemon) {
 				if (ally.baseAbility !== pokemon.baseAbility && !restrictedAbilities.includes(ally.baseAbility)) {
 					let effect = 'ability' + ally.baseAbility;
@@ -4198,7 +4198,7 @@ exports.Formats = [
 		},
 		onSwitchInPriority: 2,
 		onSwitchIn: function (pokemon) {
-			let restrictedAbilities = this.getFormat().restrictedAbilities.map(toId);
+			let restrictedAbilities = this.getFormat().restrictedAbilities.map(toID);
 			for (const ally of pokemon.side.pokemon) {
 				if (ally.baseAbility !== pokemon.baseAbility && !restrictedAbilities.includes(ally.baseAbility)) {
 					let effect = 'ability' + ally.baseAbility;
@@ -4208,7 +4208,7 @@ exports.Formats = [
 			}
 		},
 		onAfterMega: function (pokemon) {
-			let restrictedAbilities = this.getFormat().restrictedAbilities.map(toId);
+			let restrictedAbilities = this.getFormat().restrictedAbilities.map(toID);
 			pokemon.removeVolatile('ability' + pokemon.baseAbility);
 			for (const ally of pokemon.side.pokemon) {
 				if (ally.baseAbility !== pokemon.baseAbility && !restrictedAbilities.includes(ally.baseAbility)) {
@@ -4421,7 +4421,7 @@ exports.Formats = [
 				let benchAbility = ''
 				let template = pokemon.template
 				if (template.abilities.S){
-					benchAbility = toId(template.abilities.S);
+					benchAbility = toID(template.abilities.S);
 				}
 				let battle = pokemon.battle;
 				if ( !battle.benchPokemon ) {
@@ -4431,7 +4431,7 @@ exports.Formats = [
 					{ 
 						let battle = side.battle
 						let allyBench = battle.benchPokemon[ side.id ]
-						ability = toId( ability )
+						ability = toID( ability )
 						for (let i = 0; i < 6; i++ ) {
 							let pkmnInfo = allyBench[ i ];
 							if ( pkmnInfo && pkmnInfo.ability === ability ) {
@@ -4559,11 +4559,11 @@ exports.Formats = [
 				let pokemon = allPokemon[i];		
 				let last = pokemon.moves.length - 1;
 				if (pokemon.moves[last]) {
-					pokemon.moves[last] = toId(pokemon.set.signatureMove);
+					pokemon.moves[last] = toID(pokemon.set.signatureMove);
 					pokemon.moveSlots[last].move = pokemon.set.signatureMove;
 					pokemon.baseMoveSlots[last].move = pokemon.set.signatureMove;
 				}
-				let name = toId(pokemon.illusion ? pokemon.illusion.name : pokemon.name);
+				let name = toID(pokemon.illusion ? pokemon.illusion.name : pokemon.name);
 				if (name == "thetruefalcon")
 				{
 					pokemon.types[1] = "Fighting";
@@ -4575,14 +4575,14 @@ exports.Formats = [
 				for (let j = 0; j < pokemon.moveSlots.length; j++) {
 					let moveData = pokemon.moveSlots[j];
 					if (globalRenamedMoves[moveData.id]) {
-						pokemon.moves[j] = toId(pokemon.set.signatureMove);
+						pokemon.moves[j] = toID(pokemon.set.signatureMove);
 						moveData.move = globalRenamedMoves[moveData.id];
 						pokemon.baseMoveSlots[j].move = globalRenamedMoves[moveData.id];
 					}
 
-					let customRenamedSet = customRenamedMoves[toId(pokemon.name)];
+					let customRenamedSet = customRenamedMoves[toID(pokemon.name)];
 					if (customRenamedSet && customRenamedSet[moveData.id]) {
-						pokemon.moves[j] = toId(pokemon.set.signatureMove);
+						pokemon.moves[j] = toID(pokemon.set.signatureMove);
 						moveData.move = customRenamedSet[moveData.id];
 						pokemon.baseMoveSlots[j].move = customRenamedSet[moveData.id];
 					}
@@ -4591,7 +4591,7 @@ exports.Formats = [
 		},
 		// Hacks for megas changed abilities. This allow for their changed abilities.
 		onUpdate: function(pokemon) {
-			let name = toId(pokemon.name);
+			let name = toID(pokemon.name);
 			if (!this.shownTip) {
 				this.add('raw|<div class=\"broadcast-green\">Huh? But what do all these weird moves do??<br><b>Protip: Refer to the <a href="https://github.com/XpRienzo/DragonHeaven/blob/master/mods/dhssb/README.md">PLAYER\'S MANUAL</a>!</b></div>');
 				this.shownTip = true;
@@ -4600,7 +4600,7 @@ exports.Formats = [
 		// Here we treat many things, read comments inside for information.
 		onSwitchInPriority: 1,
 		onSwitchIn: function(pokemon) {
-			let name = toId(pokemon.illusion ? pokemon.illusion.name : pokemon.name);
+			let name = toID(pokemon.illusion ? pokemon.illusion.name : pokemon.name);
 			// Wonder Guard is available, but it curses you.
 			if (pokemon.getAbility().id === 'wonderguard' && pokemon.baseTemplate.baseSpecies !== 'Shedinja' && pokemon.baseTemplate.baseSpecies !== 'Kakuna') {
 				pokemon.addVolatile('curse', pokemon);
@@ -4614,7 +4614,7 @@ exports.Formats = [
 			}
 		},
 		onModifyPokemon: function(pokemon) {
-			let name = toId(pokemon.name);
+			let name = toID(pokemon.name);
 		},
 	},
 	
@@ -5017,8 +5017,8 @@ exports.Formats = [
 			if (movemasters[ability.id]) {
 				let moves = movemasters[ability.id];
 				for (let j = 0; j < moves.length; j++) {
-					if (template.learnset[toId(moves[j])]) continue;
-					template.learnset[toId(moves[j])] = ["7T"];
+					if (template.learnset[toID(moves[j])]) continue;
+					template.learnset[toID(moves[j])] = ["7T"];
 				}
 				return this.validateSet(set, teamHas, template);
 			}
@@ -5153,7 +5153,7 @@ exports.Formats = [
 			'Arena Trap', 'Gale Wings', 'Huge Power', 'Imposter', 'Pure Power', 'Shadow Tag', 'Chatter',
 		],
 		validateSet: function(set, teamHas) {
-			let species = toId(set.species);
+			let species = toID(set.species);
 			let template = Dex.getTemplate(species);
 			if (!template.exists || template.isNonstandard) return ["" + set.species + " is not a real Pok\u00E9mon."];
 			if (template.battleOnly) template = Dex.getTemplate(template.baseSpecies);
@@ -5309,7 +5309,7 @@ exports.Formats = [
 				if (template.requiredItem && item.name !== template.requiredItem) {
 					problems.push("" + template.species + " transforms in-battle with " + template.requiredItem + '.'); // Primal
 				}
-				if (template.requiredMove && set.moves.indexOf(toId(template.requiredMove)) < 0) {
+				if (template.requiredMove && set.moves.indexOf(toID(template.requiredMove)) < 0) {
 					problems.push("" + template.species + " transforms in-battle with " + template.requiredMove + "."); // Meloetta-Pirouette
 				}
 				if (!format.noChangeForme) set.species = template.baseSpecies; // Fix forme for Aegislash, Castform, etc.
@@ -5317,7 +5317,7 @@ exports.Formats = [
 				if (template.requiredItem && item.name !== template.requiredItem && !template.isMega) {
 					problems.push("" + (set.name || set.species) + " needs to hold " + template.requiredItem + '.'); // Plate/Drive/Griseous Orb
 				}
-				if (template.requiredMove && set.moves.indexOf(toId(template.requiredMove)) < 0 && !template.isMega) {
+				if (template.requiredMove && set.moves.indexOf(toID(template.requiredMove)) < 0 && !template.isMega) {
 					problems.push("" + (set.name || set.species) + " needs to have the move " + template.requiredMove + "."); // Keldeo-Resolute
 				}
 
@@ -5686,33 +5686,33 @@ exports.Formats = [
 					if (this.randNo2 === 1) {
 						this.condition = "Magic Room";
 						this.add("-message", "Starting next turn, the battle will begin in the " + this.condition + "!");
-						this.addPsuedoWeather(toId(this.condition));
+						this.addPsuedoWeather(toID(this.condition));
 					}
 				} else {
 					this.condition = "Trick Room";
 					this.add("-message", "Starting next turn, the battle will begin in the " + this.condition + "!");
-					this.addPsuedoWeather(toId(this.condition));
+					this.addPsuedoWeather(toID(this.condition));
 				}
 				if (this.condition === "Magic Room") {
 					if (this.randNo2 === 1) {
 						this.condition = "Trick Room";
 						this.add("-message", "Starting next turn, the battle will begin in the " + this.condition + "!");
-						this.addPsuedoWeather(toId(this.condition));
+						this.addPsuedoWeather(toID(this.condition));
 					} else {
 						this.condition = "Wonder Room";
 						this.add("-message", "Starting next turn, the battle will begin in the " + this.condition + "!");
-						this.addPsuedoWeather(toId(this.condition));
+						this.addPsuedoWeather(toID(this.condition));
 					}
 				}
 				if (this.condition === "Trick Room") {
 					if (this.randNo2 === 1) {
 						this.condition = "Wonder Room";
 						this.add("-message", "Starting next turn, the battle will begin in the " + this.condition + "!");
-						this.addPsuedoWeather(toId(this.condition));
+						this.addPsuedoWeather(toID(this.condition));
 					} else {
 						this.condition = "Magic Room";
 						this.add("-message", "Starting next turn, the battle will begin in the " + this.condition + "!");
-						this.addPsuedoWeather(toId(this.condition));
+						this.addPsuedoWeather(toID(this.condition));
 					}
 				}
 			}
@@ -6219,16 +6219,16 @@ exports.Formats = [
 						pokemon.baseMoveset[i].disabledSource = '';
 					}
 				}
-				if (Object.keys(this[side].pokemon[partner].volatiles).indexOf(toId(pokemon.ability)) < 0 && this[side].pokemon[partner].ability != pokemon.ability)
+				if (Object.keys(this[side].pokemon[partner].volatiles).indexOf(toID(pokemon.ability)) < 0 && this[side].pokemon[partner].ability != pokemon.ability)
 				{
 					if (this[side].pokemon[partner].innate) this[side].pokemon[partner].removeVolatile(this[side].pokemon[partner].innate);
-					this[side].pokemon[partner].innate = toId(pokemon.ability);
+					this[side].pokemon[partner].innate = toID(pokemon.ability);
 					this[side].pokemon[partner].addVolatile(this[side].pokemon[partner].innate);
 				}
-				if (Object.keys(pokemon.volatiles).indexOf(toId(this[side].pokemon[partner].ability)) < 0 && this[side].pokemon[partner].ability != pokemon.ability)
+				if (Object.keys(pokemon.volatiles).indexOf(toID(this[side].pokemon[partner].ability)) < 0 && this[side].pokemon[partner].ability != pokemon.ability)
 				{
 					if (pokemon.innate) pokemon.removeVolatile(pokemon.innate);
-					pokemon.innate = toId(this[side].pokemon[partner].ability);
+					pokemon.innate = toID(this[side].pokemon[partner].ability);
 					pokemon.addVolatile(pokemon.innate);
 				}
 			}
@@ -6237,10 +6237,10 @@ exports.Formats = [
 		{
 			let side = pokemon.side.id,
 				partner = (pokemon.position == 0) ? 1 : 0;
-			if (Object.keys(this[side].pokemon[partner].volatiles).indexOf(toId(pokemon.ability)) < 0 && this[side].pokemon[partner].ability != pokemon.ability)
+			if (Object.keys(this[side].pokemon[partner].volatiles).indexOf(toID(pokemon.ability)) < 0 && this[side].pokemon[partner].ability != pokemon.ability)
 			{
 				if (this[side].pokemon[partner].innate) this[side].pokemon[partner].removeVolatile(this[side].pokemon[partner].innate);
-				this[side].pokemon[partner].innate = toId(pokemon.ability);
+				this[side].pokemon[partner].innate = toID(pokemon.ability);
 				this[side].pokemon[partner].addVolatile(this[side].pokemon[partner].innate);
 			}
 		},
@@ -6560,8 +6560,8 @@ exports.Formats = [
 			let allPokemon = this.p1.pokemon.concat(this.p2.pokemon);
 			for (let i = 0, len = allPokemon.length; i < len; i++) {
 				let pokemon = allPokemon[i];
-				if (this.getAbility(toId(pokemon.item))) {
-					pokemon.abilitwo = toId(pokemon.item);
+				if (this.getAbility(toID(pokemon.item))) {
+					pokemon.abilitwo = toID(pokemon.item);
 					pokemon.item = "";
 				}
 			}
@@ -6588,11 +6588,11 @@ exports.Formats = [
 		},
 		validateSet: function(set, teamHas) {
 			let item = set.item;
-			if (Dex.getAbility(toId(item)))
+			if (Dex.getAbility(toID(item)))
 			{
 				set.item = '';
 				let problems = this.validateSet(set, teamHas) || [];
-				let abilitwo = Dex.getAbility(toId(item));
+				let abilitwo = Dex.getAbility(toID(item));
 				let bans = {
 					'arenatrap': true,
 					'contrary': true,
@@ -6607,8 +6607,8 @@ exports.Formats = [
 					'wonderguard': true,
 					'moody': true
 				};
-				if (bans[toId(abilitwo.id)]) problems.push(set.species + "'s ability " + abilitwo.name + " is banned by Multibility.");
-				if (abilitwo.id === toId(set.ability)) problems.push("You cannot have two of " + abilitwo.name + " on the same Pokemon.");
+				if (bans[toID(abilitwo.id)]) problems.push(set.species + "'s ability " + abilitwo.name + " is banned by Multibility.");
+				if (abilitwo.id === toID(set.ability)) problems.push("You cannot have two of " + abilitwo.name + " on the same Pokemon.");
 				set.item = item;
 				return problems;
 			}
@@ -6619,9 +6619,9 @@ exports.Formats = [
 				let ability = this.getAbility(team[i].ability);
 				if (!abilityTable[ability.id]) abilityTable[ability.id] = 0;
 				if (++abilityTable[ability.id] > 2) {
-					return ["You are limited to two of each ability by Ability Clause.", "(You have more than two of " + ability.name + " or " + this.getAbility(toId(team[i].item)).name + " [Item])"];
+					return ["You are limited to two of each ability by Ability Clause.", "(You have more than two of " + ability.name + " or " + this.getAbility(toID(team[i].item)).name + " [Item])"];
 				}
-				let item = toId(team[i].item);
+				let item = toID(team[i].item);
 				if (!item) continue;
 				ability = this.getAbility(item);
 				if (!ability) continue;
@@ -6702,8 +6702,8 @@ exports.Formats = [
 					'wonderguard': true,
 					'moody': true
 				};
-				if (bans[toId(abilitwo.id)]) problems.push(set.species + "'s ability " + abilitwo.name + " is banned by Multibility.");
-				if (abilitwo.id === toId(set.ability)) problems.push("You cannot have two of " + abilitwo.name + " on the same Pokemon.");
+				if (bans[toID(abilitwo.id)]) problems.push(set.species + "'s ability " + abilitwo.name + " is banned by Multibility.");
+				if (abilitwo.id === toID(set.ability)) problems.push("You cannot have two of " + abilitwo.name + " on the same Pokemon.");
 				set.ability = ability;
 				return problems;
 			}
@@ -6714,7 +6714,7 @@ exports.Formats = [
 				let abilities = format.getAbilities(team[i].ability), ability = this.getAbility(Array.isArray(abilities) ? abilities[0] : abilities);
 				if (!abilityTable[ability.id]) abilityTable[ability.id] = 0;
 				if (++abilityTable[ability.id] > 2) {
-					return ["You are limited to two of each ability by Ability Clause.", "(You have more than two of " + ability.name + " or " + this.getAbility(toId(team[i].item)).name + " [Item])"];
+					return ["You are limited to two of each ability by Ability Clause.", "(You have more than two of " + ability.name + " or " + this.getAbility(toID(team[i].item)).name + " [Item])"];
 				}
 				if (!Array.isArray(abilities)) continue;
 				ability = this.getAbility(abilities[1]);
@@ -6739,8 +6739,8 @@ exports.Formats = [
 			let allPokemon = this.p1.pokemon.concat(this.p2.pokemon);
 			for (let i = 0, len = allPokemon.length; i < len; i++) {
 				let pokemon = allPokemon[i];
-				if (this.getAbility(toId(pokemon.item))) {
-					pokemon.abilitwo = toId(pokemon.item);
+				if (this.getAbility(toID(pokemon.item))) {
+					pokemon.abilitwo = toID(pokemon.item);
 					pokemon.item = "";
 				}
 			}
@@ -6767,11 +6767,11 @@ exports.Formats = [
 		},
 		validateSet: function(set, teamHas) {
 			let item = set.item;
-			if (Dex.getAbility(toId(item)))
+			if (Dex.getAbility(toID(item)))
 			{
 				set.item = '';
 				let problems = this.validateSet(set, teamHas) || [];
-				let abilitwo = Dex.getAbility(toId(item));
+				let abilitwo = Dex.getAbility(toID(item));
 				let bans = {
 					'arenatrap': true,
 					'contrary': true,
@@ -6786,8 +6786,8 @@ exports.Formats = [
 					'wonderguard': true,
 					'moody': true
 				};
-				if (bans[toId(abilitwo.id)]) problems.push(set.species + "'s ability " + abilitwo.name + " is banned by Multibility.");
-				if (abilitwo.id === toId(set.ability)) problems.push("You cannot have two of " + abilitwo.name + " on the same Pokemon.");
+				if (bans[toID(abilitwo.id)]) problems.push(set.species + "'s ability " + abilitwo.name + " is banned by Multibility.");
+				if (abilitwo.id === toID(set.ability)) problems.push("You cannot have two of " + abilitwo.name + " on the same Pokemon.");
 				set.item = item;
 				return problems;
 			}
@@ -6798,9 +6798,9 @@ exports.Formats = [
 				let ability = this.getAbility(team[i].ability);
 				if (!abilityTable[ability.id]) abilityTable[ability.id] = 0;
 				if (++abilityTable[ability.id] > 2) {
-					return ["You are limited to two of each ability by Ability Clause.", "(You have more than two of " + ability.name + " or " + this.getAbility(toId(team[i].item)).name + " [Item])"];
+					return ["You are limited to two of each ability by Ability Clause.", "(You have more than two of " + ability.name + " or " + this.getAbility(toID(team[i].item)).name + " [Item])"];
 				}
-				let item = toId(team[i].item);
+				let item = toID(team[i].item);
 				if (!item) continue;
 				ability = this.getAbility(item);
 				if (!ability) continue;
@@ -7038,7 +7038,7 @@ exports.Formats = [
 			for (let i = 0, len = allPokemon.length; i < len; i++) {
 				let pokemon = allPokemon[i];
 				//item slot
-				let itemSlot =  toId(pokemon.item);
+				let itemSlot =  toID(pokemon.item);
 				if (this.getAbility(itemSlot).exists && this.getAbility(itemSlot).effectType === 'Ability') {
 					pokemon.innate = `ability${itemSlot}`;
 					pokemon.item = "";
@@ -7062,7 +7062,7 @@ exports.Formats = [
 				}
 
 				//ability slot
-				let abilitySlot = toId(pokemon.ability);
+				let abilitySlot = toID(pokemon.ability);
 				if (this.getType(abilitySlot).exists && this.getType(abilitySlot).effectType === 'Type') {
 					pokemon.types[1] = this.getType(abilitySlot).id;
 					pokemon.ability = pokemon.baseAbility = "";
@@ -7251,7 +7251,7 @@ exports.Formats = [
 				if (++abilityTable[ability.id] > 2) {
 					return ["You are limited to two of each ability by Ability Clause.", "(You have more than two of " + ability.name + " or " + this.getItem(ability.item).name + ")"];
 				}
-				let item = toId(team[i].item);
+				let item = toID(team[i].item);
 				if (!item) continue;
 				item = this.getItem(item);
 				ability = item.ability;
@@ -7980,11 +7980,11 @@ exports.Formats = [
 			this.magnetPull = ['magnemite', 'magneton'];
 		},
 		onSwitchIn: function(pokemon) {
-			if(this.arenaTrap.includes(toId(pokemon.species))) {
+			if(this.arenaTrap.includes(toID(pokemon.species))) {
 				pokemon.addVolatile('arenatrap');
 				return;
 			}
-			if(this.shadowTag.includes(toId(pokemon.species))) {
+			if(this.shadowTag.includes(toID(pokemon.species))) {
 				pokemon.addVolatile('arenatrap');
 				return;
 			}
@@ -8111,7 +8111,7 @@ exports.Formats = [
 		validateSet: function(set, teamHas) {
 			let problems = this.validateSet(set, teamHas) || [];
 			set.moves.forEach(move => {
-				if (Dex.data.Movedex[toId(move)].isZ) {
+				if (Dex.data.Movedex[toID(move)].isZ) {
 					problems.push((set.name || set.species) + " has a Crystal Free Z-Move, which is banned by Balanced Hackmons.");
 				}
 			});
@@ -8377,7 +8377,7 @@ exports.Formats = [
 				if (template.requiredItem && item.name !== template.requiredItem) {
 					problems.push("" + template.species + " transforms in-battle with " + template.requiredItem + '.'); // Primal
 				}
-				if (template.requiredMove && set.moves.indexOf(toId(template.requiredMove)) < 0) {
+				if (template.requiredMove && set.moves.indexOf(toID(template.requiredMove)) < 0) {
 					problems.push("" + template.species + " transforms in-battle with " + template.requiredMove + "."); // Meloetta-Pirouette
 				}
 				if (!format.noChangeForme) set.species = template.baseSpecies; // Fix forme for Aegislash, Castform, etc.
@@ -8385,7 +8385,7 @@ exports.Formats = [
 				if (template.requiredItem && item.name !== template.requiredItem && !template.isMega) {
 					problems.push("" + (set.name || set.species) + " needs to hold " + template.requiredItem + '.'); // Plate/Drive/Griseous Orb
 				}
-				if (template.requiredMove && set.moves.indexOf(toId(template.requiredMove)) < 0 && !template.isMega) {
+				if (template.requiredMove && set.moves.indexOf(toID(template.requiredMove)) < 0 && !template.isMega) {
 					problems.push("" + (set.name || set.species) + " needs to have the move " + template.requiredMove + "."); // Keldeo-Resolute
 				}
 
@@ -9183,7 +9183,7 @@ onValidateTeam: function (team) {
 				if (mixedTemplate.types[0] !== fusionTemplate.types[shiny]) mixedTemplate.types[1] = fusionTemplate.types[shiny];
 				else mixedTemplate.types.length = 1;
 				pokemon.fusion = fusionTemplate.baseSpecies;
-				pokemon.abilitwo = toId(fusionTemplate.abilities[0]);
+				pokemon.abilitwo = toID(fusionTemplate.abilities[0]);
 			} catch (e) {
 				this.add('-hint', 'Failed to fuse ' + template.species + ' and ' + fusionTemplate.species + '. Please report this error so that it can be fixed.');
 			}
@@ -9265,11 +9265,11 @@ onValidateTeam: function (team) {
 			let canHaveAbility = false;
 			if (fusionTemplate.isUnreleased) problems.push("You cannot fuse with a Unreleased Pokemon. (" + set.species + " has nickname " + set.name + ", which is unreleased)");
 			if (fusionTemplate.isMega) problems.push("You cannot fuse with a Mega Pokemon. (" + set.species + " has nickname " + set.name + ")");
-			if (toId(fusionTemplate.tier).includes("uber")) problems.push("You cannot fuse with an Uber. (" + template.species + " has nickname " + fusionTemplate.species + ")");
-			if (toId(fusionTemplate.tier) === "cap" || toId(template.tier) === "cap") problems.push("You cannot fuse with an fake Pokemon. (" + template.species + " has nickname " + fusionTemplate.species + ")");
-			if (banlist[toId(fusionTemplate.species)]) problems.push("Fusing with " + fusionTemplate.species + " is banned. (" + template.species + " has nickname " + fusionTemplate.species + ")");
+			if (toID(fusionTemplate.tier).includes("uber")) problems.push("You cannot fuse with an Uber. (" + template.species + " has nickname " + fusionTemplate.species + ")");
+			if (toID(fusionTemplate.tier) === "cap" || toID(template.tier) === "cap") problems.push("You cannot fuse with an fake Pokemon. (" + template.species + " has nickname " + fusionTemplate.species + ")");
+			if (banlist[toID(fusionTemplate.species)]) problems.push("Fusing with " + fusionTemplate.species + " is banned. (" + template.species + " has nickname " + fusionTemplate.species + ")");
 			for (let a in template.abilities) {
-				if ((template.abilities[a] === set.ability) && !banlist[toId(template.abilities[a])]) {
+				if ((template.abilities[a] === set.ability) && !banlist[toID(template.abilities[a])]) {
 					canHaveAbility = true;
 				}
 			}
@@ -9278,18 +9278,18 @@ onValidateTeam: function (team) {
 			let movepool = [];
 			let prevo = template.isMega ? this.getTemplate(template.species.substring(0, template.species.length - 5)).prevo : template.prevo;
 
-			if (!this.data.Learnsets[toId(fusionTemplate.species)])
+			if (!this.data.Learnsets[toID(fusionTemplate.species)])
 			{
-				fusionTemplate.learnset = this.data.Learnsets[toId(fusionTemplate.species.split("-")[0])].learnset;
+				fusionTemplate.learnset = this.data.Learnsets[toID(fusionTemplate.species.split("-")[0])].learnset;
 			}
 			else
-				fusionTemplate.learnset = this.data.Learnsets[toId(fusionTemplate.species)].learnset;
+				fusionTemplate.learnset = this.data.Learnsets[toID(fusionTemplate.species)].learnset;
 			if (!template.learnset)
 			{
-				template.learnset = this.data.Learnsets[toId(template.species.split("-")[0])].learnset;
+				template.learnset = this.data.Learnsets[toID(template.species.split("-")[0])].learnset;
 			}
 			else
-				template.learnset = this.data.Learnsets[toId(template.species)].learnset;
+				template.learnset = this.data.Learnsets[toID(template.species)].learnset;
 			do {
 				added[template.species] = true;
 				movepool = movepool.concat(Object.keys(template.learnset));
@@ -9309,7 +9309,7 @@ onValidateTeam: function (team) {
 			let moves = {};
 			for (let kek = 0; kek < movepool.length; kek++) moves[movepool[kek]] = true;
 			for (let i in set.moves) {
-				let move = toId(set.moves[i]);
+				let move = toID(set.moves[i]);
 				if (move.substr(0, 11) === 'hiddenpower') move = 'hiddenpower'; // Really big hack :(
 				if (!moves[move]) {
 					problems.push(set.species + " cannot learn " + set.moves[i] + ".");
@@ -9357,7 +9357,7 @@ onValidateTeam: function (team) {
 				if (mixedTemplate.types[0] !== fusionTemplate.types[shiny]) mixedTemplate.types[1] = fusionTemplate.types[shiny];
 				else mixedTemplate.types.length = 1;
 				pokemon.fusion = fusionTemplate.baseSpecies;
-				pokemon.abilitwo = toId(fusionTemplate.abilities[0]);
+				pokemon.abilitwo = toID(fusionTemplate.abilities[0]);
 			} catch (e) {
 				this.add('-hint', 'Failed to fuse ' + template.species + ' and ' + fusionTemplate.species + '. Please report this error so that it can be fixed.');
 			}
@@ -9435,11 +9435,11 @@ onValidateTeam: function (team) {
 			let canHaveAbility = false;
 			if (fusionTemplate.isUnreleased) problems.push("You cannot fuse with a Unreleased Pokemon. (" + set.species + " has nickname " + set.name + ", which is unreleased)");
 			if (fusionTemplate.isMega) problems.push("You cannot fuse with a Mega Pokemon. (" + set.species + " has nickname " + set.name + ")");
-			//if(toId(fusionTemplate.tier).includes("uber")) problems.push("You cannot fuse with an Uber. ("+template.species+" has nickname "+fusionTemplate.species+")");
-			if (toId(fusionTemplate.tier) === "cap") problems.push("You cannot fuse with an fake Pokemon. (" + template.species + " has nickname " + fusionTemplate.species + ")");
-			//if(banlist[toId(fusionTemplate.species)]) problems.push("Fusing with " + fusionTemplate.species + " is banned. ("+template.species+" has nickname "+ fusionTemplate.species + ")");
+			//if(toID(fusionTemplate.tier).includes("uber")) problems.push("You cannot fuse with an Uber. ("+template.species+" has nickname "+fusionTemplate.species+")");
+			if (toID(fusionTemplate.tier) === "cap") problems.push("You cannot fuse with an fake Pokemon. (" + template.species + " has nickname " + fusionTemplate.species + ")");
+			//if(banlist[toID(fusionTemplate.species)]) problems.push("Fusing with " + fusionTemplate.species + " is banned. ("+template.species+" has nickname "+ fusionTemplate.species + ")");
 			for (let a in template.abilities) {
-				if ((template.abilities[a] === set.ability) /*&& !banlist[toId(template.abilities[a])]*/ ) {
+				if ((template.abilities[a] === set.ability) /*&& !banlist[toID(template.abilities[a])]*/ ) {
 					canHaveAbility = true;
 				}
 			}
@@ -9448,18 +9448,18 @@ onValidateTeam: function (team) {
 			let movepool = [];
 			let prevo = template.isMega ? this.getTemplate(template.species.substring(0, template.species.length - 5)).prevo : template.prevo;
 
-			if (!this.data.Learnsets[toId(fusionTemplate.species)])
+			if (!this.data.Learnsets[toID(fusionTemplate.species)])
 			{
-				fusionTemplate.learnset = this.data.Learnsets[toId(fusionTemplate.species.split("-")[0])].learnset;
+				fusionTemplate.learnset = this.data.Learnsets[toID(fusionTemplate.species.split("-")[0])].learnset;
 			}
 			else
-				fusionTemplate.learnset = this.data.Learnsets[toId(fusionTemplate.species)].learnset;
+				fusionTemplate.learnset = this.data.Learnsets[toID(fusionTemplate.species)].learnset;
 			if (!template.learnset)
 			{
-				template.learnset = this.data.Learnsets[toId(template.species.split("-")[0])].learnset;
+				template.learnset = this.data.Learnsets[toID(template.species.split("-")[0])].learnset;
 			}
 			else
-				template.learnset = this.data.Learnsets[toId(template.species)].learnset;
+				template.learnset = this.data.Learnsets[toID(template.species)].learnset;
 			do {
 				added[template.species] = true;
 				movepool = movepool.concat(Object.keys(template.learnset));
@@ -9479,7 +9479,7 @@ onValidateTeam: function (team) {
 			let moves = {};
 			for (let kek = 0; kek < movepool.length; kek++) moves[movepool[kek]] = true;
 			for (let i in set.moves) {
-				let move = toId(set.moves[i]);
+				let move = toID(set.moves[i]);
 				if (move.substr(0, 11) === 'hiddenpower') move = 'hiddenpower'; // Really big hack :(
 				if (!moves[move]) {
 					problems.push(set.species + " cannot learn " + set.moves[i] + ".");
@@ -9528,7 +9528,7 @@ onValidateTeam: function (team) {
 				if (mixedTemplate.types[0] !== fusionTemplate.types[shiny]) mixedTemplate.types[1] = fusionTemplate.types[shiny];
 				else mixedTemplate.types.length = 1;
 				pokemon.fusion = fusionTemplate.baseSpecies;
-				pokemon.abilitwo = toId(fusionTemplate.abilities[0]);
+				pokemon.abilitwo = toID(fusionTemplate.abilities[0]);
 			} catch (e) {
 				this.add('-hint', 'Failed to fuse ' + template.species + ' and ' + fusionTemplate.species + '. Please report this error so that it can be fixed.');
 			}
@@ -9610,11 +9610,11 @@ onValidateTeam: function (team) {
 			let canHaveAbility = false;
 			if (fusionTemplate.isUnreleased) problems.push("You cannot fuse with a Unreleased Pokemon. (" + set.species + " has nickname " + set.name + ", which is unreleased)");
 			if (fusionTemplate.isMega) problems.push("You cannot fuse with a Mega Pokemon. (" + set.species + " has nickname " + set.name + ")");
-			if (toId(fusionTemplate.tier).includes("uber")) problems.push("You cannot fuse with an Uber. (" + template.species + " has nickname " + fusionTemplate.species + ")");
-			if (toId(fusionTemplate.tier) === "cap" || toId(template.tier) === "cap") problems.push("You cannot fuse with an fake Pokemon. (" + template.species + " has nickname " + fusionTemplate.species + ")");
-			if (banlist[toId(fusionTemplate.species)]) problems.push("Fusing with " + fusionTemplate.species + " is banned. (" + template.species + " has nickname " + fusionTemplate.species + ")");
+			if (toID(fusionTemplate.tier).includes("uber")) problems.push("You cannot fuse with an Uber. (" + template.species + " has nickname " + fusionTemplate.species + ")");
+			if (toID(fusionTemplate.tier) === "cap" || toID(template.tier) === "cap") problems.push("You cannot fuse with an fake Pokemon. (" + template.species + " has nickname " + fusionTemplate.species + ")");
+			if (banlist[toID(fusionTemplate.species)]) problems.push("Fusing with " + fusionTemplate.species + " is banned. (" + template.species + " has nickname " + fusionTemplate.species + ")");
 			for (let a in template.abilities) {
-				if ((template.abilities[a] === set.ability) && !banlist[toId(template.abilities[a])]) {
+				if ((template.abilities[a] === set.ability) && !banlist[toID(template.abilities[a])]) {
 					canHaveAbility = true;
 				}
 			}
@@ -9623,18 +9623,18 @@ onValidateTeam: function (team) {
 			let movepool = [];
 			let prevo = template.isMega ? this.getTemplate(template.species.substring(0, template.species.length - 5)).prevo : template.prevo;
 
-			if (!this.data.Learnsets[toId(fusionTemplate.species)])
+			if (!this.data.Learnsets[toID(fusionTemplate.species)])
 			{
-				fusionTemplate.learnset = this.data.Learnsets[toId(fusionTemplate.species.split("-")[0])].learnset;
+				fusionTemplate.learnset = this.data.Learnsets[toID(fusionTemplate.species.split("-")[0])].learnset;
 			}
 			else
-				fusionTemplate.learnset = this.data.Learnsets[toId(fusionTemplate.species)].learnset;
+				fusionTemplate.learnset = this.data.Learnsets[toID(fusionTemplate.species)].learnset;
 			if (!template.learnset)
 			{
-				template.learnset = this.data.Learnsets[toId(template.species.split("-")[0])].learnset;
+				template.learnset = this.data.Learnsets[toID(template.species.split("-")[0])].learnset;
 			}
 			else
-				template.learnset = this.data.Learnsets[toId(template.species)].learnset;
+				template.learnset = this.data.Learnsets[toID(template.species)].learnset;
 			do {
 				added[template.species] = true;
 				movepool = movepool.concat(Object.keys(template.learnset));
@@ -9654,7 +9654,7 @@ onValidateTeam: function (team) {
 			let moves = {};
 			for (let kek = 0; kek < movepool.length; kek++) moves[movepool[kek]] = true;
 			for (let i in set.moves) {
-				let move = toId(set.moves[i]);
+				let move = toID(set.moves[i]);
 				if (move.substr(0, 11) === 'hiddenpower') move = 'hiddenpower'; // Really big hack :(
 				if (!moves[move]) {
 					problems.push(set.species + " cannot learn " + set.moves[i] + ".");
@@ -9706,7 +9706,7 @@ onValidateTeam: function (team) {
 				if (mixedTemplate.types[0] !== fusionTemplate.types[shiny]) mixedTemplate.types[1] = fusionTemplate.types[shiny];
 				else mixedTemplate.types.length = 1;
 				pokemon.fusion = fusionTemplate.baseSpecies;
-				pokemon.abilitwo = toId(fusionTemplate.abilities[0]);
+				pokemon.abilitwo = toID(fusionTemplate.abilities[0]);
 			} catch (e) {
 				this.add('-hint', 'Failed to fuse ' + template.species + ' and ' + fusionTemplate.species + '. Please report this error so that it can be fixed.');
 			}
@@ -9788,11 +9788,11 @@ onValidateTeam: function (team) {
 			let canHaveAbility = false;
 			if (fusionTemplate.isUnreleased) problems.push("You cannot fuse with a Unreleased Pokemon. (" + set.species + " has nickname " + set.name + ", which is unreleased)");
 			if (fusionTemplate.isMega) problems.push("You cannot fuse with a Mega Pokemon. (" + set.species + " has nickname " + set.name + ")");
-			if (toId(fusionTemplate.tier).includes("uber")) problems.push("You cannot fuse with an Uber. (" + template.species + " has nickname " + fusionTemplate.species + ")");
-			if (toId(fusionTemplate.tier) === "cap" || toId(template.tier) === "cap") problems.push("You cannot fuse with an fake Pokemon. (" + template.species + " has nickname " + fusionTemplate.species + ")");
-			if (banlist[toId(fusionTemplate.species)]) problems.push("Fusing with " + fusionTemplate.species + " is banned. (" + template.species + " has nickname " + fusionTemplate.species + ")");
+			if (toID(fusionTemplate.tier).includes("uber")) problems.push("You cannot fuse with an Uber. (" + template.species + " has nickname " + fusionTemplate.species + ")");
+			if (toID(fusionTemplate.tier) === "cap" || toID(template.tier) === "cap") problems.push("You cannot fuse with an fake Pokemon. (" + template.species + " has nickname " + fusionTemplate.species + ")");
+			if (banlist[toID(fusionTemplate.species)]) problems.push("Fusing with " + fusionTemplate.species + " is banned. (" + template.species + " has nickname " + fusionTemplate.species + ")");
 			for (let a in template.abilities) {
-				if ((template.abilities[a] === set.ability) && !banlist[toId(template.abilities[a])]) {
+				if ((template.abilities[a] === set.ability) && !banlist[toID(template.abilities[a])]) {
 					canHaveAbility = true;
 				}
 			}
@@ -9801,18 +9801,18 @@ onValidateTeam: function (team) {
 			let movepool = [];
 			let prevo = template.isMega ? this.getTemplate(template.species.substring(0, template.species.length - 5)).prevo : template.prevo;
 
-			if (!this.data.Learnsets[toId(fusionTemplate.species)])
+			if (!this.data.Learnsets[toID(fusionTemplate.species)])
 			{
-				fusionTemplate.learnset = this.data.Learnsets[toId(fusionTemplate.species.split("-")[0])].learnset;
+				fusionTemplate.learnset = this.data.Learnsets[toID(fusionTemplate.species.split("-")[0])].learnset;
 			}
 			else
-				fusionTemplate.learnset = this.data.Learnsets[toId(fusionTemplate.species)].learnset;
+				fusionTemplate.learnset = this.data.Learnsets[toID(fusionTemplate.species)].learnset;
 			if (!template.learnset)
 			{
-				template.learnset = this.data.Learnsets[toId(template.species.split("-")[0])].learnset;
+				template.learnset = this.data.Learnsets[toID(template.species.split("-")[0])].learnset;
 			}
 			else
-				template.learnset = this.data.Learnsets[toId(template.species)].learnset;
+				template.learnset = this.data.Learnsets[toID(template.species)].learnset;
 			do {
 				added[template.species] = true;
 				movepool = movepool.concat(Object.keys(template.learnset));
@@ -9832,7 +9832,7 @@ onValidateTeam: function (team) {
 			let moves = {};
 			for (let kek = 0; kek < movepool.length; kek++) moves[movepool[kek]] = true;
 			for (let i in set.moves) {
-				let move = toId(set.moves[i]);
+				let move = toID(set.moves[i]);
 				if (move.substr(0, 11) === 'hiddenpower') move = 'hiddenpower'; // Really big hack :(
 				if (!moves[move]) {
 					problems.push(set.species + " cannot learn " + set.moves[i] + ".");
