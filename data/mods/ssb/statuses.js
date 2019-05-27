@@ -92,7 +92,7 @@ let BattleStatuses = {
 			this.add(`c|%Akir|too sleepy, c ya`);
 		},
 		onSourceModifyDamage(damage, source, target, move) {
-			if (move.typeMod > 0 && !target.illusion) {
+			if (target.getMoveHitData(move).typeMod > 0 && !target.illusion) {
 				this.debug('Solid Rock neutralize');
 				return this.chainModify(0.75);
 			}
@@ -226,18 +226,6 @@ let BattleStatuses = {
 		},
 		onFaint() {
 			this.add(`c|@biggie|It was all a dream`);
-		},
-	},
-	bimp: {
-		noCopy: true,
-		onStart() {
-			this.add(`c|+Bimp|Ew it's Bimp -_-`);
-		},
-		onSwitchOut() {
-			this.add(`c|+Bimp|Brb getting Chick-Fil-A.`);
-		},
-		onFaint() {
-			this.add(`c|+Bimp|Well that was uneventful -_-`);
 		},
 	},
 	bobochan: {
@@ -461,7 +449,6 @@ let BattleStatuses = {
 					used: false,
 					virtual: true,
 				});
-				target.moves.push(move.id);
 			}
 		},
 		onBeforeSwitchOut(pokemon) {
@@ -950,7 +937,7 @@ let BattleStatuses = {
 			this.add(`c|+Osiris|I'm getting too old for this x_x`);
 		},
 		onSourceModifyDamage(damage, source, target, move) {
-			if (move.typeMod > 0 && !target.illusion) {
+			if (target.getMoveHitData(move).typeMod > 0 && !target.illusion) {
 				this.debug('Solid Rock neutralize');
 				return this.chainModify(0.75);
 			}

@@ -283,9 +283,11 @@ exports.commands = {
 		if (!(groupConfig && groupConfig.editprivacy)) return this.errorReply(`/ionext - Access denied.`);
 		if (this.meansNo(target)) {
 			user.inviteOnlyNextBattle = false;
+			user.update('inviteOnlyNextBattle');
 			this.sendReply("Your next battle will be publicly visible.");
 		} else {
 			user.inviteOnlyNextBattle = true;
+			user.update('inviteOnlyNextBattle');
 			this.sendReply("Your next battle will be invite-only.");
 		}
 	},
@@ -375,7 +377,7 @@ exports.commands = {
 		if (!target) return this.sendReply(`This room's primary language is ${Chat.languages.get(room.language) || 'English'}`);
 		if (!this.can('editroom', null, room)) return false;
 
-		let targetLanguage = toId(target);
+		let targetLanguage = toID(target);
 		if (!Chat.languages.has(targetLanguage)) return this.errorReply(`"${target}" is not a supported language.`);
 
 		room.language = targetLanguage === 'english' ? false : targetLanguage;

@@ -1,7 +1,8 @@
 'use strict';
 
+/**@type {ModdedBattleScriptsData} */
 exports.BattleScripts = {
-	getZMove: function (move, pokemon, skipChecks) {
+	getZMove(move, pokemon, skipChecks) {
 		let item = pokemon.getItem();
 		if (!skipChecks) {
 			if (!item.zMove) return;
@@ -11,35 +12,54 @@ exports.BattleScripts = {
 		}
 
 		if (move.category === 'Status') return move.name;
-		if (item.zMoveFrom) return move.name === item.zMoveFrom && item.zMove;
-		return move.zMovePower && this.zMoveTable[item.zMoveType];
+		if (item.zMoveFrom) {
+			if (move.name === item.zMoveFrom) return /** @type {string} */ (item.zMove);
+		} else if (move.zMovePower) {
+			if (item.zMoveType) return this.zMoveTable[item.zMoveType];
+		}
 	},
-	getZMoveCopy: function (move, pokemon) {
+	getActiveZMove(move, pokemon) {
 		move = this.getMove(move);
 		if (move.category === 'Status') {
-			let zMove = this.getMoveCopy(move);
+			let zMove = this.getActiveMove(move);
 			zMove.isZ = true;
+			zMove.isZPowered = true;
 			return zMove;
 		}
 		let item = pokemon.getItem();
-		if (item.zMoveFrom) return this.getMoveCopy(item.zMove);
-		let zMove = this.getMoveCopy(this.zMoveTable[item.zMoveType]);
+		if (item.zMoveFrom) {
+			// @ts-ignore
+			let zMove = this.getActiveMove(item.zMove);
+			zMove.isZPowered = true;
+			return zMove;
+		}
+		// @ts-ignore
+		let zMove = this.getActiveMove(this.zMoveTable[item.zMoveType]);
+		// @ts-ignore
 		zMove.basePower = move.zMovePower;
 		zMove.category = move.category;
+		// copy the priority for Quick Guard
+		zMove.priority = move.priority;
+		zMove.isZPowered = true;
 		return zMove;
 	},
-	canZMove: function (pokemon) {
+	canZMove(pokemon) {
 		let item = pokemon.getItem();
 		if (!item.zMove) return;
 		if (item.zMoveUser && !item.zMoveUser.includes(pokemon.template.species)) return;
 		let atLeastOne = false;
+		let mustStruggle = true;
+		/**@type {AnyObject?[]} */
 		let zMoves = [];
-		for (let i = 0; i < pokemon.moves.length; i++) {
-			if (pokemon.moveset[i].pp <= 0) {
+		for (const moveSlot of pokemon.moveSlots) {
+			if (moveSlot.pp <= 0) {
 				zMoves.push(null);
 				continue;
 			}
-			let move = this.getMove(pokemon.moves[i]);
+			if (!moveSlot.disabled) {
+				mustStruggle = false;
+			}
+			let move = this.getMove(moveSlot.move);
 			let zMoveName = this.getZMove(move, pokemon, true) || '';
 			if (zMoveName) {
 				let zMove = this.getMove(zMoveName);
@@ -50,6 +70,6 @@ exports.BattleScripts = {
 			}
 			if (zMoveName) atLeastOne = true;
 		}
-		if (atLeastOne) return zMoves;
+		if (atLeastOne && !mustStruggle) return zMoves;
 	},
 };

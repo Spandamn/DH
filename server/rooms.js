@@ -113,6 +113,9 @@ class BasicRoom {
 		this.filterCaps = false;
 		this.mafiaEnabled = false;
 		this.unoDisabled = false;
+		/** @type {'%' | boolean} */
+		this.toursEnabled = false;
+		this.tourAnnouncements = false;
 		/** @type {Set<string>?} */
 		this.privacySetter = null;
 		/** @type {Map<string, ChatRoom>?} */
@@ -463,7 +466,7 @@ class GlobalRoom extends BasicRoom {
 				Monitor.warn(`ERROR: Room number ${i} has no data and could not be loaded.`);
 				continue;
 			}
-			let id = toId(chatRoomData.title);
+			let id = toID(chatRoomData.title);
 			Monitor.notice("NEW CHATROOM: " + id);
 			let room = Rooms.createChatRoom(id, chatRoomData.title, chatRoomData);
 			if (room.aliases) {
@@ -709,7 +712,7 @@ class GlobalRoom extends BasicRoom {
 	 * @param {string} title
 	 */
 	addChatRoom(title) {
-		let id = toId(title);
+		let id = toID(title);
 		if (id === 'battles' || id === 'rooms' || id === 'ladder' || id === 'teambuilder' || id === 'home' || id === 'all' || id === 'public') return false;
 		if (Rooms.rooms.has(id)) return false;
 
@@ -728,7 +731,7 @@ class GlobalRoom extends BasicRoom {
 	 */
 	prepBattleRoom(format) {
 		//console.log('BATTLE START BETWEEN: ' + p1.userid + ' ' + p2.userid);
-		let roomPrefix = `battle-${toId(Dex.getFormat(format).name)}-`;
+		let roomPrefix = `battle-${toID(Dex.getFormat(format).name)}-`;
 		let battleNum = this.lastBattle;
 		let roomid;
 		do {
@@ -765,7 +768,7 @@ class GlobalRoom extends BasicRoom {
 	 * @param {string} id
 	 */
 	deregisterChatRoom(id) {
-		id = toId(id);
+		id = toID(id);
 		let room = Rooms(id);
 		if (!room) return false; // room doesn't exist
 		if (!room.chatRoomData) return false; // room isn't registered
@@ -774,7 +777,7 @@ class GlobalRoom extends BasicRoom {
 		// assumption is that more recently added rooms are more likely to
 		// be deleted
 		for (let i = this.chatRoomDataList.length - 1; i >= 0; i--) {
-			if (id === toId(this.chatRoomDataList[i].title)) {
+			if (id === toID(this.chatRoomDataList[i].title)) {
 				this.chatRoomDataList.splice(i, 1);
 				this.writeChatRoomData();
 				break;
@@ -787,7 +790,7 @@ class GlobalRoom extends BasicRoom {
 	 * @param {string} id
 	 */
 	delistChatRoom(id) {
-		id = toId(id);
+		id = toID(id);
 		if (!Rooms.rooms.has(id)) return false; // room doesn't exist
 		for (let i = this.chatRooms.length - 1; i >= 0; i--) {
 			if (id === this.chatRooms[i].id) {
@@ -800,7 +803,7 @@ class GlobalRoom extends BasicRoom {
 	 * @param {string} id
 	 */
 	removeChatRoom(id) {
-		id = toId(id);
+		id = toID(id);
 		let room = Rooms(id);
 		if (!room) return false; // room doesn't exist
 		room.destroy();
@@ -857,8 +860,7 @@ class GlobalRoom extends BasicRoom {
 	 * @param {Connection} connection
 	 */
 	onConnect(user, connection) {
-		let initdata = '|updateuser|' + user.name + '|' + (user.named ? '1' : '0') + '|' + user.avatar + '\n';
-		connection.send(initdata + this.configRankList + this.formatListText);
+		connection.send(user.getUpdateuserText() + '\n' + this.configRankList + this.formatListText);
 	}
 	/**
 	 * @param {User} user
@@ -1474,10 +1476,10 @@ class GameRoom extends BasicChatRoom {
 		this.game = null;
 	}
 	/**
-	 * - logNum = 0    : spectator log (no exact HP)
-	 * - logNum = 1, 2 : player log (exact HP for that player)
-	 * - logNum = 3    : debug log (exact HP for all players)
-	 * @param {0 | 1 | 2 | 3} channel
+	 * - logNum = 0          : spectator log (no exact HP)
+	 * - logNum = 1, 2, 3, 4 : player log (exact HP for that player)
+	 * - logNum = -1         : debug log (exact HP for all players)
+	 * @param {-1 | 0 | 1 | 2 | 3 | 4} channel
 	 */
 	getLog(channel = 0) {
 		return this.log.getScrollback(channel);
@@ -1486,8 +1488,9 @@ class GameRoom extends BasicChatRoom {
 	 * @param {User} user
 	 */
 	getLogForUser(user) {
-		if (!(user.userid in this.game.players)) return this.getLog();
-		return this.getLog(this.game.players[user.userid].slotNum + 1);
+		if (!(user.userid in this.game.playerTable)) return this.getLog();
+		// @ts-ignore
+		return this.getLog(this.game.playerTable[user.userid].num);
 	}
 	/**
 	 * @param {User?} excludeUser
@@ -1582,7 +1585,7 @@ let Rooms = Object.assign(getRoom, {
 	 * @return {Room | undefined}
 	 */
 	search(name) {
-		return getRoom(name) || getRoom(toId(name)) || getRoom(Rooms.aliases.get(toId(name)));
+		return getRoom(name) || getRoom(toID(name)) || getRoom(Rooms.aliases.get(toID(name)));
 	},
 
 	/**
@@ -1613,47 +1616,41 @@ let Rooms = Object.assign(getRoom, {
 	 * @param {AnyObject} options
 	 */
 	createBattle(formatid, options) {
-		/** @type {User?[]} */
-		const players = [options.p1, options.p2, options.p3, options.p4];
+		/** @type {(User & {specialNextBattle: boolean})[]} */
+		const players = [options.p1, options.p2, options.p3, options.p4].filter(user => user);
 		const gameType = Dex.getFormat(formatid).gameType;
 		if (gameType !== 'multi' && gameType !== 'free-for-all') {
-			if (players[2] || players[3]) {
+			if (players.length > 2) {
 				throw new Error(`Four players were provided, but the format is a two-player format.`);
 			}
-			players.splice(2);
 		}
 		if (new Set(players).size < players.length) {
 			throw new Error(`Players can't battle themselves`);
 		}
 
-		for (const p of players) {
-			if (p) Ladders.cancelSearches(p);
+		for (const user of players) {
+			Ladders.cancelSearches(user);
 		}
 
 		if (Rooms.global.lockdown === true) {
-			for (const p of players) {
-				if (p) p.popup("The server is restarting. Battles will be available again in a few minutes.");
+			for (const user of players) {
+				user.popup("The server is restarting. Battles will be available again in a few minutes.");
 			}
 			return;
 		}
 
-		// @ts-ignore
-		if (players.every(p => p) && players.some(p => p.specialNextBattle)) {
-			// @ts-ignore
+		if (players.some(user => user.specialNextBattle)) {
 			const p1Special = players[0].specialNextBattle;
 			let mismatch = `"${p1Special}"`;
-			for (const p of players) {
-				// @ts-ignore
-				if (p.specialNextBattle !== p1Special) {
-					// @ts-ignore
-					mismatch += ` vs. "${p.specialNextBattle}"`;
+			for (const user of players) {
+				if (user.specialNextBattle !== p1Special) {
+					mismatch += ` vs. "${user.specialNextBattle}"`;
 					break;
 				}
 			}
 			if (mismatch !== `"${p1Special}"`) {
-				for (const p of players) {
-					// @ts-ignore p is not null
-					p.popup(`Your special battle settings don't match: ${mismatch}`);
+				for (const user of players) {
+					user.popup(`Your special battle settings don't match: ${mismatch}`);
 				}
 				return;
 			}
@@ -1684,10 +1681,10 @@ let Rooms = Object.assign(getRoom, {
 		room.game = new Rooms.RoomBattle(room, formatid, options);
 
 		let inviteOnly = (options.inviteOnly || []);
-		for (const p of players) {
-			if (p && p.inviteOnlyNextBattle) {
-				inviteOnly.push(p.userid);
-				p.inviteOnlyNextBattle = false;
+		for (const user of players) {
+			if (user.inviteOnlyNextBattle) {
+				inviteOnly.push(user.userid);
+				user.inviteOnlyNextBattle = false;
 			}
 		}
 		if (options.tour && !room.tour.modjoin) inviteOnly = [];

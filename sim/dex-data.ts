@@ -34,20 +34,20 @@ export class Tools {
 	 * If an object with an ID is passed, its ID will be returned.
 	 * Otherwise, an empty string will be returned.
 	 *
-	 * Dex.getId is generally assigned to the global toId, because of how
+	 * Dex.getId is generally assigned to the global toID, because of how
 	 * commonly it's used.
 	 */
-	static getId(text: any): string {
+	static getId(text: any): ID {
 		if (text && text.id) {
 			text = text.id;
 		} else if (text && text.userid) {
 			text = text.userid;
 		}
 		if (typeof text !== 'string' && typeof text !== 'number') return '';
-		return ('' + text).toLowerCase().replace(/[^a-z0-9]+/g, '');
+		return ('' + text).toLowerCase().replace(/[^a-z0-9]+/g, '') as ID;
 	}
 }
-const toId = Tools.getId;
+const toID = Tools.getId;
 
 export class BasicEffect implements EffectData {
 	/**
@@ -56,7 +56,7 @@ export class BasicEffect implements EffectData {
 	 * becomes "mrmime", and "Basculin-Blue-Striped" becomes
 	 * "basculinbluestriped".
 	 */
-	id: string;
+	id: ID;
 	/**
 	 * Name. Currently does not support Unicode letters, so "Flabébé"
 	 * is "Flabebe" and "Nidoran♀" is "Nidoran-F".
@@ -115,9 +115,9 @@ export class BasicEffect implements EffectData {
 	/** Whether or not the effect affects fainted Pokemon. */
 	affectsFainted: boolean;
 	/** The status that the effect may cause. */
-	status?: string;
+	status?: ID;
 	/** The weather that the effect may cause. */
-	weather?: string;
+	weather?: ID;
 	/** HP that the effect may drain. */
 	drain?: [number, number];
 	flags: AnyObject;
@@ -128,7 +128,7 @@ export class BasicEffect implements EffectData {
 		data = combine(this, data, ...moreData);
 
 		this.name = Tools.getString(data.name).trim();
-		this.id = data.id || toId(this.name); // Hidden Power hack
+		this.id = data.id as ID || toID(this.name); // Hidden Power hack
 		this.fullname = Tools.getString(data.fullname) || this.name;
 		this.effectType = Tools.getString(data.effectType) as EffectType || 'Effect';
 		this.exists = !!(this.exists && this.id);
@@ -141,8 +141,8 @@ export class BasicEffect implements EffectData {
 		this.duration = data.duration;
 		this.noCopy = !!data.noCopy;
 		this.affectsFainted = !!data.affectsFainted;
-		this.status = data.status || undefined;
-		this.weather = data.weather || undefined;
+		this.status = data.status as ID || undefined;
+		this.weather = data.weather as ID || undefined;
 		this.drain = data.drain || undefined;
 		this.flags = data.flags || {};
 		this.sourceEffect = data.sourceEffect || '';
@@ -189,10 +189,10 @@ export class RuleTable extends Map {
 	}
 
 	getComplexBanIndex(complexBans: ComplexBan[], rule: string): number {
-		const ruleId = toId(rule);
+		const ruleId = toID(rule);
 		let complexBanIndex = -1;
 		for (let i = 0; i < complexBans.length; i++) {
-			if (toId(complexBans[i][0]) === ruleId) {
+			if (toID(complexBans[i][0]) === ruleId) {
 				complexBanIndex = i;
 				break;
 			}
@@ -488,9 +488,9 @@ export class Template extends BasicEffect implements Readonly<BasicEffect & Temp
 	/**
 	 * Species ID. Identical to ID. Note that this is the full ID, e.g.
 	 * 'basculinbluestriped'. To get the base species ID, you need to
-	 * manually read toId(template.baseSpecies).
+	 * manually read toID(template.baseSpecies).
 	 */
-	readonly speciesid: string;
+	readonly speciesid: ID;
 	/**
 	 * Species. Identical to name. Note that this is the full name,
 	 * e.g. 'Basculin-Blue-Striped'. To get the base species name, see
@@ -609,7 +609,7 @@ export class Template extends BasicEffect implements Readonly<BasicEffect & Temp
 
 		this.fullname = `pokemon: ${data.name}`;
 		this.effectType = 'Pokemon';
-		this.speciesid = data.speciesid || this.id;
+		this.speciesid = data.speciesid as ID || this.id;
 		this.species = data.species || data.name;
 		this.name = data.species;
 		this.baseSpecies = data.baseSpecies || this.name;
@@ -618,7 +618,7 @@ export class Template extends BasicEffect implements Readonly<BasicEffect & Temp
 		this.otherFormes = data.otherFormes || undefined;
 		this.formeLetter = data.formeLetter || '';
 		this.spriteid = data.spriteid ||
-			(toId(this.baseSpecies) + (this.baseSpecies !== this.name ? `-${toId(this.forme)}` : ''));
+			(toID(this.baseSpecies) + (this.baseSpecies !== this.name ? `-${toID(this.forme)}` : ''));
 		this.abilities = data.abilities || {0: ""};
 		this.types = data.types!;
 		this.addedType = data.addedType || undefined;
@@ -714,8 +714,6 @@ export class Move extends BasicEffect implements Readonly<BasicEffect & MoveData
 	readonly critRatio: number;
 	/** Will this move always or never be a critical hit? */
 	readonly willCrit?: boolean;
-	/** Is this move a critical hit? */
-	readonly crit?: boolean;
 	/** Can this move OHKO foes? */
 	readonly ohko?: boolean | string;
 	/**
@@ -771,7 +769,7 @@ export class Move extends BasicEffect implements Readonly<BasicEffect & MoveData
 	readonly isZ: boolean | string;
 	readonly flags: MoveFlags;
 	/** Whether or not the user must switch after using this move. */
-	readonly selfSwitch?: string | true;
+	readonly selfSwitch?: ID | boolean;
 	/** Move target only used by Pressure. */
 	readonly pressureTarget: string;
 	/** Move target used if the user is not a Ghost type (for Curse). */
@@ -791,14 +789,14 @@ export class Move extends BasicEffect implements Readonly<BasicEffect & MoveData
 	readonly spreadModifier?: number;
 	/**  Modifier that affects damage when this move is a critical hit. */
 	readonly critModifier?: number;
-	/** Damage modifier based on the user's types. */
-	readonly typeMod: number;
 	/** Forces the move to get STAB even if the type doesn't match. */
 	readonly forceSTAB: boolean;
 	/** True if it can't be copied with Sketch. */
 	readonly noSketch: boolean;
 	/** STAB multiplier (can be modified by other effects) (default 1.5). */
 	readonly stab?: number;
+
+	readonly volatileStatus?: ID;
 
 	constructor(data: AnyObject, ...moreData: (AnyObject | null)[]) {
 		super(data, ...moreData);
@@ -828,16 +826,16 @@ export class Move extends BasicEffect implements Readonly<BasicEffect & MoveData
 		this.noPPBoosts = !!data.noPPBoosts;
 		this.isZ = data.isZ || false;
 		this.flags = data.flags || {};
-		this.selfSwitch = data.selfSwitch || undefined;
+		this.selfSwitch = (typeof data.selfSwitch === 'string' ? (data.selfSwitch as ID) : data.selfSwitch) || undefined;
 		this.pressureTarget = data.pressureTarget || '';
 		this.nonGhostTarget = data.nonGhostTarget || '';
 		this.ignoreAbility = data.ignoreAbility || false;
 		this.damage = data.damage!;
 		this.spreadHit = data.spreadHit || false;
-		this.typeMod = data.typeMod || 0;
 		this.forceSTAB = !!data.forceSTAB;
 		this.noSketch = !!data.noSketch;
 		this.stab = data.stab || undefined;
+		this.volatileStatus = typeof data.volatileStatus === 'string' ? (data.volatileStatus as ID) : undefined;
 
 		if (!this.gen) {
 			if (this.num >= 622) {
@@ -866,7 +864,7 @@ export class TypeInfo implements Readonly<TypeData> {
 	 * ID. This will be a lowercase version of the name with all the
 	 * non-alphanumeric characters removed. e.g. 'flying'
 	 */
-	readonly id: string;
+	readonly id: ID;
 	/** Name. e.g. 'Flying' */
 	readonly name: string;
 	/** Effect type. */

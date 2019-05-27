@@ -6,6 +6,7 @@
  */
 import {RequestState} from './battle';
 import {Pokemon} from './pokemon';
+import {State} from './state';
 
 /** A single action that can be chosen. */
 interface ChosenAction {
@@ -13,6 +14,7 @@ interface ChosenAction {
 	pokemon?: Pokemon; // the pokemon doing the action
 	targetLoc?: number; // relative location of the target to pokemon (move action only)
 	moveid: string; // a move to use (move action only)
+	move?: ActiveMove; // the active move corresponding to moveid (move action only)
 	target?: Pokemon; // the target of the action
 	index?: number; // the chosen index in Team Preview
 	side?: Side; // the action's side
@@ -22,7 +24,7 @@ interface ChosenAction {
 }
 
 /** What the player has chosen to happen. */
-interface Choice {
+export interface Choice {
 	cantUndo: boolean; // true if the choice can't be cancelled because of the maybeTrapped issue
 	error: string; // contains error text in the case of a choice error
 	actions: ChosenAction[]; // array of chosen actions
@@ -121,6 +123,10 @@ export class Side {
 		this.lastMove = null;
 	}
 
+	toJSON(): AnyObject {
+		return State.serializeSide(this);
+	}
+
 	get requestState(): RequestState {
 		if (!this.activeRequest || this.activeRequest.wait) return '';
 		if (this.activeRequest.teamPreview) return 'teampreview';
@@ -165,7 +171,7 @@ export class Side {
 			const entry: AnyObject = {
 				ident: pokemon.fullname,
 				details: pokemon.details,
-				condition: pokemon.getHealth(true),
+				condition: pokemon.getHealth().secret,
 				active: (pokemon.position < pokemon.side.active.length),
 				stats: {
 					atk: pokemon.baseStoredStats['atk'],
@@ -176,7 +182,7 @@ export class Side {
 				},
 				moves: pokemon.moves.map(move => {
 					if (move === 'hiddenpower') {
-						return move + toId(pokemon.hpType) + (pokemon.hpPower === 70 ? '' : pokemon.hpPower);
+						return move + toID(pokemon.hpType) + (pokemon.hpPower === 70 ? '' : pokemon.hpPower);
 					}
 					return move;
 				}),
@@ -314,19 +320,16 @@ export class Side {
 		this.battle.send('sideupdate', `${this.id}\n${sideUpdate}`);
 	}
 
-	emitCallback(...args: (string | number | AnyObject)[]) {
-		this.battle.send('sideupdate', `${this.id}\n|callback|${args.join('|')}`);
-	}
-
 	emitRequest(update: AnyObject) {
 		this.battle.send('sideupdate', `${this.id}\n|request|${JSON.stringify(update)}`);
 		this.activeRequest = update;
 	}
 
-	emitChoiceError(message: string) {
+	emitChoiceError(message: string, unavailable?: boolean) {
 		this.choice.error = message;
-		this.battle.send('sideupdate', `${this.id}\n|error|[Invalid choice] ${message}`);
-		if (this.battle.strictChoices) throw new Error(`[Invalid choice] ${message}`);
+		const type = `[${unavailable ? 'Unavailable' : 'Invalid'} choice]`;
+		this.battle.send('sideupdate', `${this.id}\n|error|${type} ${message}`);
+		if (this.battle.strictChoices) throw new Error(`${type} ${message}`);
 		return false;
 	}
 
@@ -375,7 +378,7 @@ export class Side {
 		} else {
 			// Parse a move ID.
 			// Move names are also allowed, but may cause ambiguity (see client issue #167).
-			moveid = toId(moveText);
+			moveid = toID(moveText);
 			if (moveid.startsWith('hiddenpower')) {
 				moveid = 'hiddenpower';
 			}
@@ -408,7 +411,6 @@ export class Side {
 			return this.emitChoiceError(`Can't move: ${pokemon.name} can't use ${move.name} as a Z-move`);
 		}
 		if (zMove && this.choice.zMove) {
-			this.emitCallback('cantz', pokemon);
 			return this.emitChoiceError(`Can't move: You can't Z-move more than once per battle`);
 		}
 
@@ -438,7 +440,7 @@ export class Side {
 				choice: 'move',
 				pokemon,
 				targetLoc: lockedMoveTarget || 0,
-				moveid: toId(lockedMove),
+				moveid: toID(lockedMove),
 			});
 			return true;
 		} else if (!moves.length && !zMove) {
@@ -462,8 +464,26 @@ export class Side {
 			if (!isEnabled) {
 				// Request a different choice
 				if (autoChoose) throw new Error(`autoChoose chose a disabled move`);
-				this.emitCallback('cant', pokemon, disabledSource, moveid);
-				return this.emitChoiceError(`Can't move: ${pokemon.name}'s ${move.name} is disabled`);
+				const includeRequest = this.updateRequestForPokemon(pokemon, req => {
+					let updated = false;
+					for (const m of req.moves) {
+						if (m.id === moveid) {
+							if (!m.disabled) {
+								m.disabled = true;
+								updated = true;
+							}
+							if (m.disabledSource !== disabledSource) {
+								m.disabledSource = disabledSource;
+								updated = true;
+							}
+							break;
+						}
+					}
+					return updated;
+				});
+				const status = this.emitChoiceError(`Can't move: ${pokemon.name}'s ${move.name} is disabled`, includeRequest);
+				if (includeRequest) this.emitRequest(this.activeRequest!);
+				return status;
 			}
 			// The chosen move is valid yay
 		}
@@ -475,7 +495,6 @@ export class Side {
 			return this.emitChoiceError(`Can't move: ${pokemon.name} can't mega evolve`);
 		}
 		if (mega && this.choice.mega) {
-			this.emitCallback('cantmega', pokemon);
 			return this.emitChoiceError(`Can't move: You can only mega-evolve once per battle`);
 		}
 		const ultra = (megaOrZ === 'ultra');
@@ -483,7 +502,6 @@ export class Side {
 			return this.emitChoiceError(`Can't move: ${pokemon.name} can't mega evolve`);
 		}
 		if (ultra && this.choice.ultra) {
-			this.emitCallback('cantmega', pokemon);
 			return this.emitChoiceError(`Can't move: You can only ultra burst once per battle`);
 		}
 
@@ -505,6 +523,15 @@ export class Side {
 		if (zMove) this.choice.zMove = true;
 
 		return true;
+	}
+
+	updateRequestForPokemon(pokemon: Pokemon, update: (req: AnyObject) => boolean) {
+		if (!this.activeRequest || !this.activeRequest.active) {
+			throw new Error(`Can't update a request without active Pokemon`);
+		}
+		const req = this.activeRequest.active[pokemon.position];
+		if (!req) throw new Error(`Pokemon not found in request's active field`);
+		return update(req);
 	}
 
 	chooseSwitch(slotText?: string) {
@@ -535,7 +562,7 @@ export class Side {
 			// maybe it's a name/species id!
 			slot = -1;
 			for (const [i, mon] of this.pokemon.entries()) {
-				if (slotText!.toLowerCase() === mon.name.toLowerCase() || toId(slotText) === mon.speciesid) {
+				if (slotText!.toLowerCase() === mon.name.toLowerCase() || toID(slotText) === mon.speciesid) {
 					slot = i;
 					break;
 				}
@@ -559,8 +586,21 @@ export class Side {
 
 		if (this.requestState === 'move') {
 			if (pokemon.trapped) {
-				this.emitCallback('trapped', pokemon.position);
-				return this.emitChoiceError(`Can't switch: The active Pokémon is trapped`);
+				const includeRequest = this.updateRequestForPokemon(pokemon, req => {
+					let updated = false;
+					if (req.maybeTrapped) {
+						delete req.maybeTrapped;
+						updated = true;
+					}
+					if (!req.trapped) {
+						req.trapped = true;
+						updated = true;
+					}
+					return updated;
+				});
+				const status = this.emitChoiceError(`Can't switch: The active Pokémon is trapped`, includeRequest);
+				if (includeRequest) this.emitRequest(this.activeRequest!);
+				return status;
 			} else if (pokemon.maybeTrapped) {
 				this.choice.cantUndo = this.choice.cantUndo || pokemon.isLastActive();
 			}
@@ -718,7 +758,7 @@ export class Side {
 					// We need to special case 'Conversion 2' so it doesn't get
 					// confused with 'Conversion' erroneously sent with the target
 					// '2' (since Conversion targets 'self', targetLoc can't be 2).
-					if (/\s(?:-|\+)?[1-3]$/.test(data) && toId(data) !== 'conversion2') {
+					if (/\s(?:-|\+)?[1-3]$/.test(data) && toID(data) !== 'conversion2') {
 						if (targetLoc !== undefined) return error();
 						targetLoc = parseInt(data.slice(-2), 10);
 						data = data.slice(0, -2).trim();

@@ -4303,9 +4303,25 @@ exports.Formats = [
 	},
 	{
 		name: "[Gen 7] Ultimate Z",
-		desc: ["&bullet; <a href=\"http://www.smogon.com/forums/threads/3609393/\">Ultimate Z</a> (or UZ for short) allows you to use any type of Z-Crystal on any move and as many times per battle as desired. The Z-Move becomes the type of the Z-Crystal used."],
-		ruleset: ['[Gen 7] OU'],
+		desc: `Use any type of Z-Crystal on any move and as many times per battle as desired.`,
+		threads: [
+			`&bullet; <a href="https://www.smogon.com/forums/threads/3609393/">Ultimate Z</a>`,
+		],
+
 		mod: 'ultimatez',
+		ruleset: ['[Gen 7] OU'],
+		banlist: ['Kyurem-Black', 'Celebrate', 'Conversion', 'Happy Hour', 'Hold Hands'],
+		onValidateSet(set) {
+			let problems = [];
+			if (this.getItem(set.item).zMove && set.moves) {
+				for (const moveId of set.moves) {
+					let move = this.getMove(moveId);
+					if (!move.zMoveBoost) continue;
+					if (move.zMoveBoost.evasion) problems.push(move.name + ' is banned in combination with a Z-Crystal.');
+				}
+			}
+			return problems;
+		},
 	},
 	{
 		name: "[Gen 7] VoltTurn Mayhem",

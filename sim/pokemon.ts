@@ -5,9 +5,11 @@
  * @license MIT license
  */
 
+import {State} from './state';
+
  /** A Pokemon's move slot. */
 interface MoveSlot {
-	id: string;
+	id: ID;
 	move: string;
 	pp: number;
 	maxpp: number;
@@ -27,7 +29,7 @@ export class Pokemon {
 	readonly fullname: string;
 	readonly id: string; // shouldn't really be used anywhere
 	readonly species: string;
-	readonly speciesid: string;
+	readonly speciesid: ID;
 	readonly level: number;
 	readonly gender: GenderName;
 	readonly happiness: number;
@@ -50,10 +52,10 @@ export class Pokemon {
 	template: Template;
 	speciesData: AnyObject;
 
-	status: string;
+	status: ID;
 	statusData: AnyObject;
 	volatiles: AnyObject;
-	showCure: boolean;
+	showCure?: boolean;
 
 	/**
 	 * These are the basic stats that appear on the in-game stats screen:
@@ -80,13 +82,13 @@ export class Pokemon {
 	storedStats: StatsExceptHPTable;
 	boosts: BoostsTable;
 
-	baseAbility: string;
-	ability: string;
+	baseAbility: ID;
+	ability: ID;
 	abilityData: {[k: string]: string | Pokemon};
 
-	item: string;
+	item: ID;
 	itemData: {[k: string]: string | Pokemon};
-	lastItem: string;
+	lastItem: ID;
 	usedItemThisTurn: boolean;
 	ateBerry: boolean;
 
@@ -111,10 +113,10 @@ export class Pokemon {
 
 	/**
 	 * If the switch is called by an effect with a special switch
-	 * message, like U-turn or Baton Pass, this will be the fullname of
+	 * message, like U-turn or Baton Pass, this will be the ID of
 	 * the calling effect.
 	 */
-	switchFlag: boolean | string;
+	switchFlag: ID | boolean;
 	forceSwitchFlag: boolean;
 	switchCopyFlag: boolean;
 	draggedIn: number | null;
@@ -181,10 +183,11 @@ export class Pokemon {
 	/** used for Assurance check */
 	hurtThisTurn: boolean;
 	lastDamage: number;
-	attackedBy: {source: Pokemon, damage: number, thisTurn: boolean, move?: string}[];
+	attackedBy: {source: Pokemon, damage: number, thisTurn: boolean, move?: ID}[];
 
 	isActive: boolean;
 	activeTurns: number;
+	truantTurn: boolean;
 	/** Have this pokemon's Start events run yet? */
 	isStarted: boolean;
 	duringMove: boolean;
@@ -195,12 +198,8 @@ export class Pokemon {
 	canMegaEvo: string | null | undefined;
 	canUltraBurst: string | null | undefined;
 
-	isStale: number;
-	isStaleCon: number;
-	isStaleHP: number;
-	isStalePPTurns: number;
-	isStaleSource?: string;
-	staleWarned: boolean;
+	staleness?: 'internal' | 'external';
+	pendingStaleness?: 'internal' | 'external';
 
 	// Gen 1 only
 	modifiedStats?: StatsExceptHPTable;
@@ -225,7 +224,7 @@ export class Pokemon {
 		}
 		this.template = this.baseTemplate;
 		this.species = this.battle.getSpecies(set.species);
-		this.speciesid = toId(this.species);
+		this.speciesid = toID(this.species);
 		if (set.name === set.species || !set.name) {
 			set.name = this.baseTemplate.baseSpecies;
 		}
@@ -312,11 +311,11 @@ export class Pokemon {
 		this.storedStats = {atk: 0, def: 0, spa: 0, spd: 0, spe: 0};
 		this.boosts = {atk: 0, def: 0, spa: 0, spd: 0, spe: 0, accuracy: 0, evasion: 0};
 
-		this.baseAbility = toId(set.ability);
+		this.baseAbility = toID(set.ability);
 		this.ability = this.baseAbility;
 		this.abilityData = {id: this.ability};
 
-		this.item = toId(set.item);
+		this.item = toID(set.item);
 		this.itemData = {id: this.item};
 		this.lastItem = '';
 		this.usedItemThisTurn = false;
@@ -353,6 +352,7 @@ export class Pokemon {
 
 		this.isActive = false;
 		this.activeTurns = 0;
+		this.truantTurn = false;
 		this.isStarted = false;
 		this.duringMove = false;
 
@@ -370,19 +370,17 @@ export class Pokemon {
 		this.maxhp = this.template.maxHP || this.baseStoredStats.hp;
 		this.hp = this.maxhp;
 
-		this.isStale = 0;
-		this.isStaleCon = 0;
-		this.isStaleHP = this.maxhp;
-		this.isStalePPTurns = 0;
-		this.staleWarned = false;
-
 		/**
 		 * An object for storing untyped data, for mods to use.
 		 */
 		this.m = {};
 	}
 
-	get moves() {
+	toJSON(): AnyObject {
+		return State.serializePokemon(this);
+	}
+
+	get moves(): readonly string[] {
 		return this.moveSlots.map(moveSlot => moveSlot.id);
 	}
 
@@ -390,19 +388,26 @@ export class Pokemon {
 		return this.baseMoveSlots.map(moveSlot => moveSlot.id);
 	}
 
-	toString() {
-		const fullname = (this.illusion) ? this.illusion.fullname : this.fullname;
-		const position = 'abcdef'[this.position + Math.floor(this.side.n / 2) * this.side.active.length];
-		return this.isActive ? fullname.substr(0, 2) + position + fullname.substr(2) : fullname;
+	getSlot() {
+		const positionOffset = Math.floor(this.side.n / 2) * this.side.active.length;
+		const positionLetter = 'abcdef'.charAt(this.position + positionOffset);
+		return this.side.id + positionLetter;
 	}
 
-	getDetails = (side: 0 | 1 | boolean) => {
+	toString() {
+		const fullname = (this.illusion) ? this.illusion.fullname : this.fullname;
+		return this.isActive ? this.getSlot() + fullname.slice(2) : fullname;
+	}
+
+	getDetails = () => {
+		const health = this.getHealth();
+		let details = this.details;
 		if (this.illusion) {
 			const illusionDetails = this.illusion.template.species + (this.level === 100 ? '' : ', L' + this.level) +
 				(this.illusion.gender === '' ? '' : ', ' + this.illusion.gender) + (this.illusion.set.shiny ? ', shiny' : '');
-			return illusionDetails + '|' + this.getHealth(side);
+			details = illusionDetails;
 		}
-		return this.details + '|' + this.getHealth(side);
+		return {side: health.side, secret: `${details}|${health.secret}`, shared: `${details}|${health.shared}`};
 	};
 
 	updateSpeed() {
@@ -410,7 +415,7 @@ export class Pokemon {
 	}
 
 	calculateStat(statName: StatNameExceptHP, boost: number, modifier?: number) {
-		statName = toId(statName) as StatNameExceptHP;
+		statName = toID(statName) as StatNameExceptHP;
 		// @ts-ignore - type checking prevents 'hp' from being passed, but we're paranoid
 		if (statName === 'hp') throw new Error("Please read `maxhp` directly");
 
@@ -446,7 +451,7 @@ export class Pokemon {
 	}
 
 	getStat(statName: StatNameExceptHP, unboosted?: boolean, unmodified?: boolean) {
-		statName = toId(statName) as StatNameExceptHP;
+		statName = toID(statName) as StatNameExceptHP;
 		// @ts-ignore - type checking prevents 'hp' from being passed, but we're paranoid
 		if (statName === 'hp') throw new Error("Please read `maxhp` directly");
 
@@ -523,6 +528,16 @@ export class Pokemon {
 			}
 		}
 		return null;
+	}
+
+	getMoveHitData(move: ActiveMove) {
+		if (!move.moveHitData) move.moveHitData = {};
+		const slot = this.getSlot();
+		return move.moveHitData[slot] || (move.moveHitData[slot] = {
+			crit: false,
+			typeMod: 0,
+			zBrokeProtect: false,
+		});
 	}
 
 	allies(): Pokemon[] {
@@ -648,15 +663,6 @@ export class Pokemon {
 			amount += ppData.pp;
 			ppData.pp = 0;
 		}
-		if (ppData.virtual) {
-			for (const foeActive of this.side.foe.active) {
-				if (foeActive.isStale >= 2) {
-					if (move.selfSwitch) this.isStalePPTurns++;
-					return amount;
-				}
-			}
-		}
-		this.isStalePPTurns = 0;
 		return amount;
 	}
 
@@ -691,7 +697,7 @@ export class Pokemon {
 	{move: string, id: string, disabled?: string | boolean,
 		disabledSource?: string, target?: string, pp?: number, maxpp?: number}[] {
 		if (lockedMove) {
-			lockedMove = toId(lockedMove);
+			lockedMove = toID(lockedMove);
 			this.trapped = true;
 			if (lockedMove === 'recharge') {
 				return [{
@@ -851,7 +857,7 @@ export class Pokemon {
 		this.clearVolatile();
 		this.boosts = pokemon.boosts;
 		for (const i in pokemon.volatiles) {
-			if (this.battle.getEffect(i).noCopy) continue;
+			if (this.battle.getEffectByID(i as ID).noCopy) continue;
 			// shallow clones
 			this.volatiles[i] = Object.assign({}, pokemon.volatiles[i]);
 			if (this.volatiles[i].linkedPokemon) {
@@ -908,7 +914,6 @@ export class Pokemon {
 				used: false,
 				virtual: true,
 			});
-			this.moves.push(toId(moveName));
 		}
 		let boostName: BoostName;
 		for (boostName in pokemon.boosts) {
@@ -1050,8 +1055,8 @@ export class Pokemon {
 			evasion: 0,
 		};
 
-		if (this.battle.gen === 1 && this.baseMoves.includes('mimic') && !this.transformed) {
-			const moveslot = this.baseMoves.indexOf('mimic');
+		if (this.battle.gen === 1 && this.baseMoves.includes('mimic' as ID) && !this.transformed) {
+			const moveslot = this.baseMoves.indexOf('mimic' as ID);
 			const mimicPP = this.moveSlots[moveslot] ? this.moveSlots[moveslot].pp : 16;
 			this.moveSlots = this.baseMoveSlots.slice();
 			this.moveSlots[moveslot].pp = mimicPP;
@@ -1141,7 +1146,7 @@ export class Pokemon {
 	}
 
 	hasMove(moveid: string) {
-		moveid = toId(moveid);
+		moveid = toID(moveid);
 		if (moveid.substr(0, 11) === 'hiddenpower') moveid = 'hiddenpower';
 		for (const moveSlot of this.moveSlots) {
 			if (moveid === moveSlot.id) {
@@ -1155,7 +1160,7 @@ export class Pokemon {
 		if (!sourceEffect && this.battle.event) {
 			sourceEffect = this.battle.effect;
 		}
-		moveid = toId(moveid);
+		moveid = toID(moveid);
 
 		for (const moveSlot of this.moveSlots) {
 			if (moveSlot.id === moveid && moveSlot.disabled !== true) {
@@ -1282,7 +1287,7 @@ export class Pokemon {
 	}
 
 	getStatus() {
-		return this.battle.getEffect(this.status);
+		return this.battle.getEffectByID(this.status);
 	}
 
 	eatItem(source?: Pokemon, sourceEffect?: Effect) {
@@ -1299,6 +1304,22 @@ export class Pokemon {
 
 			this.battle.singleEvent('Eat', item, this.itemData, this, source, sourceEffect);
 			this.battle.runEvent('EatItem', this, null, null, item);
+
+			if (item.id === 'leppaberry') {
+				if (sourceEffect && ['fling', 'pluck', 'bugbite'].includes(sourceEffect.id)) {
+					this.staleness = 'external';
+				} else {
+					switch (this.pendingStaleness) {
+					case 'internal':
+							if (this.staleness !== 'external') this.staleness = 'internal';
+							break;
+					case 'external':
+							this.staleness = 'external';
+							break;
+					}
+				}
+				this.pendingStaleness = undefined;
+			}
 
 			this.lastItem = this.item;
 			this.item = '';
@@ -1347,13 +1368,14 @@ export class Pokemon {
 		if (!this.item) return false;
 		if (!source) source = this;
 		if (this.battle.gen === 4) {
-			if (toId(this.ability) === 'multitype') return false;
-			if (source && toId(source.ability) === 'multitype') return false;
+			if (toID(this.ability) === 'multitype') return false;
+			if (source && toID(source.ability) === 'multitype') return false;
 		}
 		const item = this.getItem();
 		if (this.battle.runEvent('TakeItem', this, source, null, item)) {
 			this.item = '';
 			this.itemData = {id: '', target: this};
+			this.pendingStaleness = undefined;
 			return item;
 		}
 		return false;
@@ -1364,9 +1386,12 @@ export class Pokemon {
 		if (typeof item === 'string') item = this.battle.getItem(item) as Item;
 
 		const effectid = this.battle.effect ? this.battle.effect.id : '';
-		if (item.id === 'leppaberry' && effectid !== 'trick' && effectid !== 'switcheroo') {
-			this.isStale = 2;
-			this.isStaleSource = 'getleppa';
+		if (item.id === 'leppaberry') {
+			const inflicted = ['trick', 'switcheroo'].includes(effectid);
+			const external = inflicted && source && source.side.id !== this.side.id;
+			this.pendingStaleness = external ? 'external' : 'internal';
+		} else {
+			this.pendingStaleness = undefined;
 		}
 		this.item = item.id;
 		this.itemData = {id: item.id, target: this};
@@ -1383,8 +1408,8 @@ export class Pokemon {
 	hasItem(item: string | string[]) {
 		if (this.ignoringItem()) return false;
 		const ownItem = this.item;
-		if (!Array.isArray(item)) return ownItem === toId(item);
-		return item.map(toId).includes(ownItem);
+		if (!Array.isArray(item)) return ownItem === toID(item);
+		return item.map(toID).includes(ownItem);
 	}
 
 	clearItem() {
@@ -1424,8 +1449,8 @@ export class Pokemon {
 	hasAbility(ability: string | string[]) {
 		if (this.ignoringAbility()) return false;
 		const ownAbility = this.ability;
-		if (!Array.isArray(ability)) return ownAbility === toId(ability);
-		return ability.map(toId).includes(ownAbility);
+		if (!Array.isArray(ability)) return ownAbility === toID(ability);
+		return ability.map(toID).includes(ownAbility);
 	}
 
 	clearAbility() {
@@ -1526,34 +1551,35 @@ export class Pokemon {
 		}
 	}
 
-	getHealth = (side: 0 | 1 | boolean) => {
-		if (!this.hp) return '0 fnt';
-		let hpstring;
-		// side === true in replays
-		if (side === true || side === this.side.n % 2) {
-			hpstring = `${this.hp}/${this.maxhp}`;
+	getHealth = () => {
+		if (!this.hp) return {side: this.side.id, secret: '0 fnt', shared: '0 fnt'};
+		let secret = `${this.hp}/${this.maxhp}`;
+		let shared;
+		const ratio = this.hp / this.maxhp;
+		if (this.battle.reportExactHP) {
+			shared = secret;
+		} else if (this.battle.reportPercentages) {
+			// HP Percentage Mod mechanics
+			let percentage = Math.ceil(ratio * 100);
+			if ((percentage === 100) && (ratio < 1.0)) {
+				percentage = 99;
+			}
+			shared = `${percentage}/100`;
 		} else {
-			const ratio = this.hp / this.maxhp;
-			if (this.battle.reportPercentages) {
-				// HP Percentage Mod mechanics
-				let percentage = Math.ceil(ratio * 100);
-				if ((percentage === 100) && (ratio < 1.0)) {
-					percentage = 99;
-				}
-				hpstring = `${percentage}/100`;
-			} else {
-				// In-game accurate pixel health mechanics
-				const pixels = Math.floor(ratio * 48) || 1;
-				hpstring = `${pixels}/48`;
-				if ((pixels === 9) && (ratio > 0.2)) {
-					hpstring += 'y'; // force yellow HP bar
-				} else if ((pixels === 24) && (ratio > 0.5)) {
-					hpstring += 'g'; // force green HP bar
-				}
+			// In-game accurate pixel health mechanics
+			const pixels = Math.floor(ratio * 48) || 1;
+			shared = `${pixels}/48`;
+			if ((pixels === 9) && (ratio > 0.2)) {
+				shared += 'y'; // force yellow HP bar
+			} else if ((pixels === 24) && (ratio > 0.5)) {
+				shared += 'g'; // force green HP bar
 			}
 		}
-		if (this.status) hpstring += ' ' + this.status;
-		return hpstring;
+		if (this.status) {
+			secret += ` ${this.status}`;
+			shared += ` ${this.status}`;
+		}
+		return {side: this.side.id, secret, shared};
 	};
 
 	/**

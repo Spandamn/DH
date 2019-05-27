@@ -8,7 +8,7 @@ let BattleAbilities = {
 		shortDesc: "If this Pokemon or its substitute takes a critical hit, its Attack is raised 12 stages.",
 		onAfterSubDamage(damage, target, source, move) {
 			if (!target.hp) return;
-			if (move && move.effectType === 'Move' && move.crit) {
+			if (move && move.effectType === 'Move' && target.getMoveHitData(move).crit) {
 				target.setBoost({atk: 6});
 				this.add('-setboost', target, 'atk', 12, '[from] ability: Anger Point');
 			}
@@ -323,6 +323,10 @@ let BattleAbilities = {
 		rating: 4,
 		num: 86,
 	},
+	"soundproof": {
+		inherit: true,
+		shortDesc: "This Pokemon is immune to sound-based moves, including Heal Bell.",
+	},
 	"stench": {
 		desc: "No competitive use.",
 		shortDesc: "No competitive use.",
@@ -378,7 +382,7 @@ let BattleAbilities = {
 			if (effect && effect.id === 'toxicspikes') return;
 			let id = status.id;
 			if (id === 'slp' || id === 'frz') return;
-			if (id === 'tox') id = 'psn';
+			if (id === 'tox') id = /** @type {ID} */('psn');
 			source.trySetStatus(id, target);
 		},
 	},

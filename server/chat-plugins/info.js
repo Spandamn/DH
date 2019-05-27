@@ -188,7 +188,7 @@ const commands = {
 		let gameRooms = [];
 		for (const room of Rooms.rooms.values()) {
 			if (!room.game) continue;
-			if ((targetUser.userid in room.game.players && !targetUser.inRooms.has(room.id)) ||
+			if ((targetUser.userid in room.game.playerTable && !targetUser.inRooms.has(room.id)) ||
 				room.auth[targetUser.userid] === Users.PLAYER_SYMBOL) {
 				if (room.isPrivate && !canViewAlts) {
 					continue;
@@ -236,7 +236,7 @@ const commands = {
 		if (!user.trusted) {
 			return this.errorReply("/offlinewhois - Access denied.");
 		}
-		let userid = toId(target);
+		let userid = toID(target);
 		if (!userid) return this.errorReply("Please enter a valid username.");
 		let targetUser = Users(userid);
 		let buf = Chat.html`<strong class="username">${target}</strong>`;
@@ -301,7 +301,7 @@ const commands = {
 
 	sp: 'showpunishments',
 	showpunishments(target, room, user) {
-		if (!room.chatRoomData) return this.errorReply("This command is unavailable in temporary rooms.");
+		if (!room.chatRoomData || room.id.includes('-')) return this.errorReply("This command is unavailable in temporary rooms.");
 		return this.parse(`/join view-punishments-${room}`);
 	},
 	showpunishmentshelp: [`/showpunishments - Shows the current punishments in the room. Requires: % @ # & ~`],
@@ -312,7 +312,7 @@ const commands = {
 		if (!this.can('rangeban')) return;
 		target = target.trim();
 		if (!/^[0-9.]+$/.test(target)) return this.errorReply('You must pass a valid IPv4 IP to /host.');
-		Dnsbl.reverse(target).then(host => {
+		IPTools.getHost(target).then(host => {
 			this.sendReply('IP ' + target + ': ' + (host || "ERROR"));
 		});
 	},
@@ -439,7 +439,7 @@ const commands = {
 		let sep = target.split(',');
 		if (sep.length !== 2) sep = [target];
 		target = sep[0].trim();
-		let targetId = toId(target);
+		let targetId = toID(target);
 		if (!targetId) return this.parse('/help data');
 		let targetNum = parseInt(target);
 		if (!isNaN(targetNum) && '' + targetNum === target) {
@@ -454,8 +454,8 @@ const commands = {
 		let mod = Dex;
 		/** @type {Format?} */
 		let format = null;
-		if (sep[1] && toId(sep[1]) in Dex.dexes) {
-			mod = Dex.mod(toId(sep[1]));
+		if (sep[1] && toID(sep[1]) in Dex.dexes) {
+			mod = Dex.mod(toID(sep[1]));
 		} else if (sep[1]) {
 			format = Dex.getFormat(sep[1]);
 			if (!format.exists) {
@@ -714,8 +714,8 @@ const commands = {
 		let mod = Dex;
 		/** @type {Format?} */
 		let format = null;
-		if (modName[modName.length - 1] && toId(modName[modName.length - 1]) in Dex.dexes) {
-			mod = Dex.mod(toId(modName[modName.length - 1]));
+		if (modName[modName.length - 1] && toID(modName[modName.length - 1]) in Dex.dexes) {
+			mod = Dex.mod(toID(modName[modName.length - 1]));
 		} else if (room && room.battle) {
 			format = Dex.getFormat(room.battle.format);
 			mod = Dex.mod(format.mod);
@@ -732,12 +732,12 @@ const commands = {
 		} else {
 			let types = [];
 			if (type1.exists) {
-				types.push(type1.id);
+				types.push(type1.name);
 				if (type2.exists && type2 !== type1) {
-					types.push(type2.id);
+					types.push(type2.name);
 				}
 				if (type3.exists && type3 !== type1 && type3 !== type2) {
-					types.push(type3.id);
+					types.push(type3.name);
 				}
 			}
 
@@ -819,8 +819,8 @@ const commands = {
 					source = foundData;
 					atkName = foundData.name;
 				} else {
-					source = foundData.id;
-					atkName = foundData.id;
+					source = foundData.name;
+					atkName = foundData.name;
 				}
 				searchMethods = targetMethods;
 			} else if (!defender && targetMethods.includes(method)) {
@@ -828,8 +828,8 @@ const commands = {
 					defender = foundData;
 					defName = foundData.species + " (not counting abilities)";
 				} else {
-					defender = {types: [foundData.id]};
-					defName = foundData.id;
+					defender = {types: [foundData.name]};
+					defName = foundData.name;
 				}
 				searchMethods = sourceMethods;
 			}
@@ -873,8 +873,8 @@ const commands = {
 			let format = Dex.getFormat(room.battle.format);
 			mod = Dex.mod(format.mod);
 		}
-		if (targets[targets.length - 1] && toId(targets[targets.length - 1]) in Dex.dexes) {
-			mod = Dex.mod(toId(targets[targets.length - 1]));
+		if (targets[targets.length - 1] && toID(targets[targets.length - 1]) in Dex.dexes) {
+			mod = Dex.mod(toID(targets[targets.length - 1]));
 		}
 		let dispTable = false;
 		let bestCoverage = {};
@@ -886,7 +886,7 @@ const commands = {
 		}
 
 		for (let arg of targets) {
-			arg = toId(arg);
+			arg = toID(arg);
 
 			// arg is the gen?
 			if (arg === mod.currentMod) continue;
@@ -1528,6 +1528,7 @@ const commands = {
 	randbatscalc: 'calc',
 	rcalc: 'calc',
 	calc(target, room, user, connection, cmd) {
+		if (cmd === 'calc' && target) return this.parse(`/math ${target}`);
 		if (!this.runBroadcast()) return;
 		let isRandomBattle = (room && room.battle && room.battle.format === 'gen7randombattle');
 		if (['randomscalc', 'randbatscalc', 'rcalc'].includes(cmd) || isRandomBattle) {
@@ -1597,7 +1598,7 @@ const commands = {
 
 		const isOMSearch = (cmd === 'om' || cmd === 'othermetas');
 
-		let targetId = toId(target);
+		let targetId = toID(target);
 		if (targetId === 'ladder') targetId = 'search';
 		if (targetId === 'all') targetId = '';
 
@@ -1614,7 +1615,7 @@ const commands = {
 		let totalMatches = 0;
 		for (const mode of formatList) {
 			let format = Dex.getFormat(mode);
-			let sectionId = toId(format.section);
+			let sectionId = toID(format.section);
 			let formatId = format.id;
 			if (!/^gen\d+/.test(targetId)) formatId = formatId.replace(/^gen\d+/, ''); // skip generation prefix if it wasn't provided
 			if (targetId && !format[targetId + 'Show'] && sectionId !== targetId && format.id === mode && !formatId.startsWith(targetId)) continue;
@@ -1913,7 +1914,7 @@ const commands = {
 			let formatId = extraFormat.id;
 			if (formatName.startsWith('[Gen ')) {
 				formatName = formatName.replace('[Gen ' + formatName[formatName.indexOf('[') + 5] + '] ', '');
-				formatId = toId(formatName);
+				formatId = toID(formatName);
 			}
 			if (formatId === 'battlespotdoubles') {
 				formatId = 'battle_spot_doubles';
@@ -1975,7 +1976,7 @@ const commands = {
 		// Move
 		if (move.exists && move.gen <= genNumber) {
 			atLeastOne = true;
-			this.sendReplyBox(`<a href="https://www.smogon.com/dex/${generation}/moves/${toId(move.name)}">${generation.toUpperCase()} ${move.name} move analysis</a>, brought to you by <a href="https://www.smogon.com">Smogon University</a>`);
+			this.sendReplyBox(`<a href="https://www.smogon.com/dex/${generation}/moves/${toID(move.name)}">${generation.toUpperCase()} ${move.name} move analysis</a>, brought to you by <a href="https://www.smogon.com">Smogon University</a>`);
 		}
 
 		// Format
@@ -2115,7 +2116,7 @@ const commands = {
 
 		Config.potd = target;
 		// TODO: support eval in new PM
-		Rooms.PM.eval('Config.potd = \'' + toId(target) + '\'');
+		Rooms.PM.eval('Config.potd = \'' + toID(target) + '\'');
 		if (target) {
 			if (Rooms.lobby) Rooms.lobby.addRaw(`<div class="broadcast-blue"><b>The Pok&eacute;mon of the Day is now ${target}!</b><br />This Pokemon will be guaranteed to show up in random battles.</div>`);
 			this.modlog('POTD', null, target);
@@ -2286,6 +2287,53 @@ const commands = {
 	},
 	showimagehelp: [`/showimage [url], [width], [height] - Show an image. Any CSS units may be used for the width or height (default: px). If width and height aren't provided, automatically scale the image to fit in chat. Requires: # & ~`],
 
+	'!pi': true,
+	pi(target, room, user) {
+		return this.sendReplyBox(
+			'Did you mean: 1. 3.1415926535897932384626... (Decimal)<br />' +
+			'2. 3.184809493B91866... (Duodecimal)<br />' +
+			'3. 3.243F6A8885A308D... (Hexadecimal)<br /><br />' +
+			'How many digits of pi do YOU know? Test it out <a href="http://guangcongluo.com/mempi/">here</a>!');
+	},
+
+	'!code': true,
+	code(target, room, user) {
+		if (!target) return this.parse('/help code');
+		if (!this.canTalk()) return;
+		if (target.startsWith('\n')) target = target.slice(1);
+		if (target.length >= 8192) return this.errorReply("Your code must be under 8192 characters long!");
+		const separator = '\n';
+		if (target.includes(separator) || target.length > 150) {
+			const params = target.split(separator);
+			let output = [];
+			let cutoff = 3;
+			for (const param of params) {
+				if (output.length < 2 && param.length > 80) cutoff = 2;
+				output.push(Chat.escapeHTML(param));
+			}
+			let code;
+			if (output.length > cutoff) {
+				code = `<div class="chat"><details class="readmore code" style="white-space: pre-wrap; display: table; tab-size: 3"><summary>${output.slice(0, cutoff).join('<br />')}</summary>${output.slice(cutoff).join('<br />')}</details></div>`;
+			} else {
+				code = `<div class="chat"><code style="white-space: pre-wrap; display: table; tab-size: 3">${output.join('<br />')}</code></div>`;
+			}
+
+			if (!this.canBroadcast(true, '!code')) return;
+			if (this.broadcastMessage && !this.can('broadcast', null, room)) return false;
+
+			if (!this.runBroadcast(true, '!code')) return;
+
+			this.sendReplyBox(code);
+		} else {
+			return this.errorReply("You can simply use ``[code]`` for code messages that are only one line.");
+		}
+	},
+	codehelp: [
+		`!code [code] - Broadcasts code to a room. Accepts multi-line arguments. Requires: + % @ & # ~`,
+		`In order to use !code in private messages you must be a global voice or higher`,
+		`/code [code] - Shows you code. Accepts multi-line arguments.`,
+	],
+
 	htmlbox(target, room, user) {
 		if (!target) return this.parse('/help htmlbox');
 		target = this.canHTML(target);
@@ -2342,7 +2390,7 @@ const commands = {
 		if (!this.canTalk()) return;
 
 		let [name, html] = this.splitOne(target);
-		name = toId(name);
+		name = toID(name);
 		html = this.canHTML(html);
 		if (!html) return;
 		if (!this.can('addhtml', null, room)) return;
@@ -2368,7 +2416,7 @@ const commands = {
 		let [rank, uhtml] = this.splitOne(target);
 		if (!(rank in Config.groups)) return this.errorReply(`Group '${rank}' does not exist.`);
 		let [name, html] = this.splitOne(uhtml);
-		name = toId(name);
+		name = toID(name);
 		html = this.canHTML(html);
 		if (!html) return;
 		if (!this.can('addhtml', null, room)) return;
@@ -2395,55 +2443,39 @@ const pages = {
 		let buf = "";
 		this.extractRoom();
 		if (!user.named) return Rooms.RETRY_AFTER_LOGIN;
-		buf += `<div class="pad"><h2>List of active punishments:</h2>`;
+		if (!this.room.chatRoomData) return;
 		if (!this.can('mute', null, this.room)) return;
-		if (!this.room.chatRoomData) {
-			return buf + `<div class="notice message-error">This page is unavailable in temporary rooms / non-existent rooms.</div>`;
-		}
-		const store = new Map();
-		const possessive = (word) => {
-			const suffix = word.endsWith('s') ? `'` : `'s`;
-			return `${word}${suffix}`;
-		};
-
-		if (Punishments.roomUserids.get(this.room.id)) {
-			for (let [key, value] of Punishments.roomUserids.get(this.room.id)) {
-				if (!store.has(value)) store.set(value, [new Set([value.id]), new Set()]);
-				store.get(value)[0].add(key);
+		const sortedPunishments = Punishments.getPunishmentsOfRoom(this.room).sort((a, b) =>
+			// Ascending order
+			a.expiresIn - b.expiresIn
+		);
+		if (sortedPunishments.length) {
+			buf += `<div class="pad"><h2>List of active punishments:</h2>`;
+			buf += `<table style="border: 1px solid black; border-collapse:collapse; width:100%;">`;
+			buf += `<tr>`;
+			buf += `<th style="border: 1px solid black;">Username</th>`;
+			buf += `<th style="border: 1px solid black;">Punishment type</th>`;
+			buf += `<th style="border: 1px solid black;">Expire time</th>`;
+			buf += `<th style="border: 1px solid black;">Reason</th>`;
+			buf += `<th style="border: 1px solid black;">Alts</th>`;
+			if (user.can('ban')) buf += `<th style="border: 1px solid black;">IPs</th>`;
+			buf += `</tr>`;
+			for (const punishment of sortedPunishments) {
+				let expireString = Chat.toDurationString(punishment.expiresIn, {precision: 1});
+				buf += `<tr>`;
+				buf += `<td style="border: 1px solid black;">${punishment.id}</td>`;
+				buf += `<td style="border: 1px solid black;">${punishment.punishType.toLowerCase()}</td>`;
+				buf += `<td style="border: 1px solid black;">${expireString}</td>`;
+				buf += (punishment.reason) ? `<td style="border: 1px solid black;">${punishment.reason}</td>` : `<td style="border: 1px solid black;"> - </td>`;
+				buf += (punishment.alts.length) ? `<td style="border: 1px solid black;">${punishment.alts.join(", ")}</td>` : `<td style="border: 1px solid black;"> - </td>`;
+				buf += (user.can('ban') && punishment.ips.length) ? `<td style="border: 1px solid black;">${punishment.ips.join(", ")}</td>` : (user.can('ban') && !punishment.ips.length) ? `<td style="border: 1px solid black;"> - </td>` : ``;
+				buf += `</tr>`;
 			}
+			buf += `</table>`;
+			buf += `</div>`;
+		} else {
+			buf += `<h2>No user in ${this.room} is currently punished.</h2>`;
 		}
-
-		if (Punishments.roomIps.get(this.room.id)) {
-			for (let [key, value] of Punishments.roomIps.get(this.room.id)) {
-				if (!store.has(value)) store.set(value, [new Set([value.id]), new Set()]);
-				store.get(value)[1].add(key);
-			}
-		}
-
-		for (const [punishment, data] of store) {
-			let [punishType, id, expireTime, reason] = punishment;
-			let alts = [...data[0]].filter(user => user !== id);
-			let ip = [...data[1]];
-			let expiresIn = new Date(expireTime).getTime() - Date.now();
-			let expireString = Chat.toDurationString(expiresIn, {precision: 1});
-			let punishDesc = "";
-			if (reason) punishDesc += ` Reason: ${reason}.`;
-			if (alts.length) punishDesc += ` Alts: ${alts.join(", ")}.`;
-			if (user.can('ban') && ip.length) {
-				punishDesc += ` IPs: ${ip.join(", ")}.`;
-			}
-			buf += `<p>- ${possessive(id)} ${punishType.toLowerCase()} expires in ${expireString}.${punishDesc}</p>`;
-		}
-
-		if (this.room.muteQueue) {
-			for (const entry of this.room.muteQueue) {
-				let expiresIn = new Date(entry.time).getTime() - Date.now();
-				if (expiresIn < 0) continue;
-				let expireString = Chat.toDurationString(expiresIn, {precision: 1});
-				buf += `<p>- ${possessive(entry.userid)} mute expires in ${expireString}.</p>`;
-			}
-		}
-		buf += `</div>`;
 		return buf;
 	},
 };

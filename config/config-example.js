@@ -172,6 +172,11 @@ exports.crashguardemail = null;
 exports.disablebasicnamefilter = false;
 
 /**
+ * allowrequestingties - enables the use of `/offerdraw` and `/acceptdraw`
+ */
+exports.allowrequestingties = true;
+
+/**
  * report joins and leaves - shows messages like "<USERNAME> joined"
  *   Join and leave messages are small and consolidated, so there will never
  *   be more than one line of messages.
@@ -513,6 +518,7 @@ exports.grouplist = [
 		roomdriver: true,
 		editroom: true,
 		declare: true,
+		addhtml: true,
 		modchatall: true,
 		roomonly: true,
 		gamemanagement: true,
@@ -524,6 +530,7 @@ exports.grouplist = [
 		inherit: '@',
 		jurisdiction: 'u',
 		declare: true,
+		addhtml: true,
 		modchat: true,
 		roomonly: true,
 		gamemanagement: true,
@@ -540,6 +547,7 @@ exports.grouplist = [
 		joinbattle: true,
 		nooverride: true,
 		editprivacy: true,
+		exportinputlog: true,
 	},
 	{
 		symbol: '*',

@@ -55,6 +55,8 @@ let BattleStatuses = {
 		onStart(target, source, sourceEffect) {
 			if (sourceEffect && sourceEffect.effectType === 'Ability') {
 				this.add('-status', target, 'slp', '[from] ability: ' + sourceEffect.name, '[of] ' + source);
+			} else if (sourceEffect && sourceEffect.effectType === 'Move') {
+				this.add('-status', target, 'slp', '[from] move: ' + sourceEffect.name);
 			} else {
 				this.add('-status', target, 'slp');
 			}
@@ -362,10 +364,10 @@ let BattleStatuses = {
 			pokemon.removeVolatile('truant');
 			return null;
 		},
-		onLockMove(pokemon) {
+		onStart(pokemon) {
 			this.add('-mustrecharge', pokemon);
-			return 'recharge';
 		},
+		onLockMove: 'recharge',
 	},
 	futuremove: {
 		// this is a slot condition
@@ -398,7 +400,7 @@ let BattleStatuses = {
 			}
 			const hitMove = new this.Data.Move(data.moveData);
 
-			this.tryMoveHit(target, data.source, /** @type {ActiveMove} */(hitMove));
+			this.tryMoveHit(target, data.source, /** @type {ActiveMove} */(/** @type {unknown} */(hitMove)));
 		},
 	},
 	healreplacement: {
