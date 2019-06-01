@@ -8723,7 +8723,7 @@ exports.Formats = [
 	        restrictedMoves: ['Acupressure', 'Belly Drum', 'Chatter', 'Extreme Speed', 'Geomancy', 'Lovely Kiss', 'Shell Smash', 'Shift Gear', 'Spore', 'Thousand Arrows'],
 	    },*/
 	{
-	        name: "[Gen 7] Almost Any Ability STABmons",
+	        name: "[Gen 7] STAAABmons",
 	        desc: `Pok&eacute;mon can use any ability, barring the few that are restricted to their natural users.`,
 	        threads: [
 	            `&bullet; <a href="https://www.smogon.com/forums/threads/3587901/">Almost Any Ability</a>`,
