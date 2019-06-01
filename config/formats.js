@@ -8651,35 +8651,7 @@ exports.Formats = [
 	            }
 	        },
 	    },
-	        {
-	        name: "[Gen 7] Almost Any Ability STABmons",
-	        desc: `Pok&eacute;mon can use any ability, barring the few that are restricted to their natural users.`,
-	        threads: [
-	            `&bullet; <a href="https://www.smogon.com/forums/threads/3587901/">Almost Any Ability</a>`,
-	            `&bullet; <a href="https://www.smogon.com/forums/threads/3595753/">AAA Resources</a>`,
-	        ],
-	
-	        mod: 'gen7',
-	        ruleset: ['[Gen 7] OU', 'Ability Clause', 'Ignore Illegal Abilities', 'STABmons Move Legality'],
-	        banlist: ['Archeops', 'Dragonite', 'Hoopa-Unbound', 'Kartana', 'Keldeo', 'Kyurem-Black', 'Regigigas', 'Shedinja', 'Slaking', 'Terrakion', 'Zygarde-Base'],
-	        unbanlist: ['Aegislash', 'Genesect', 'Landorus', 'Metagross-Mega', 'Naganadel'],
-	        restrictedAbilities: [
-	            'Comatose', 'Contrary', 'Fluffy', 'Fur Coat', 'Huge Power', 'Illusion', 'Imposter', 'Innards Out',
-	            'Parental Bond', 'Protean', 'Pure Power', 'Simple', 'Speed Boost', 'Stakeout', 'Water Bubble', 'Wonder Guard',
-	        ],
-	        onValidateSet: function (set, format) {
-	            let restrictedAbilities = format.restrictedAbilities || [];
-	            if (restrictedAbilities.includes(set.ability)) {
-	                let template = this.getTemplate(set.species || set.name);
-	                let legalAbility = false;
-	                for (let i in template.abilities) {
-	                    // @ts-ignore
-	                    if (set.ability === template.abilities[i]) legalAbility = true;
-	                }
-	                if (!legalAbility) return ['The ability ' + set.ability + ' is banned on Pok\u00e9mon that do not naturally have it.'];
-	            }
-	        },
-	    },
+	        
 	  {
 	        name: "[Gen 7] Almost Any Ability Let's Go",
 	        desc: `Pok&eacute;mon can use any ability, barring the few that are restricted to their natural users.`,
@@ -8719,7 +8691,7 @@ exports.Formats = [
 	
 	        mod: 'gen7',
 	        ruleset: ['[Gen 7] Ubers', 'Ability Clause', 'Ignore Illegal Abilities'],
-	        banlist: ['Necrozma-Dusk-Mane'],
+	        banlist: ['Necrozma-Dusk-Mane', 'Shedinja'],
 	        restrictedAbilities: [
 	            'Comatose', 'Contrary', 'Fluffy', 'Fur Coat', 'Huge Power', 'Illusion', 'Imposter', 'Innards Out',
 	            'Parental Bond', 'Protean', 'Pure Power', 'Simple', 'Speed Boost', 'Stakeout', 'Water Bubble', 'Wonder Guard',
@@ -8737,7 +8709,7 @@ exports.Formats = [
 	            }
 	        },
 	    },
-	     {
+	     /*{
 	        name: "[Gen 7] STAAABmons",
 	        desc: `Pok&eacute;mon can use any move of their typing, in addition to the moves they can normally learn.`,
 	        threads: [
@@ -8749,6 +8721,36 @@ exports.Formats = [
 	        ruleset: ['[Gen 7] OU', 'STABmons Move Legality', 'Ability Clause', 'Ignore Illegal Abilities'],
 	        banlist: ['Aerodactyl-Mega', 'Blacephalon', 'Kartana', 'Komala', 'Kyurem-Black', 'Porygon-Z', 'Silvally', 'Tapu Koko', 'Tapu Lele', 'King\'s Rock', 'Razor Fang', 'Weavile', 'Zygarde'],
 	        restrictedMoves: ['Acupressure', 'Belly Drum', 'Chatter', 'Extreme Speed', 'Geomancy', 'Lovely Kiss', 'Shell Smash', 'Shift Gear', 'Spore', 'Thousand Arrows'],
+	    },*/
+	{
+	        name: "[Gen 7] Almost Any Ability STABmons",
+	        desc: `Pok&eacute;mon can use any ability, barring the few that are restricted to their natural users.`,
+	        threads: [
+	            `&bullet; <a href="https://www.smogon.com/forums/threads/3587901/">Almost Any Ability</a>`,
+	            `&bullet; <a href="https://www.smogon.com/forums/threads/3595753/">AAA Resources</a>`,
+	        ],
+	
+	        mod: 'gen7',
+	        ruleset: ['[Gen 7] OU', 'Ability Clause', 'Ignore Illegal Abilities', 'STABmons Move Legality'],
+	        banlist: ['Archeops', 'Blacephalon', 'Dragonite', 'Hoopa-Unbound', 'Kartana', 'Keldeo', 'Kyurem-Black', 'Regigigas', 'Shedinja', 'Slaking', 'Tapu Koko', 'Terrakion', 'Thundurus'],
+	        unbanlist: ['Aegislash', 'Genesect', 'Landorus', 'Metagross-Mega', 'Naganadel'],
+			  restrictedMoves: ['Acupressure', 'Belly Drum', 'Chatter', 'Extreme Speed', 'Geomancy', 'Lovely Kiss', 'Shell Smash', 'Shift Gear', 'Spore', 'Thousand Arrows'],
+	        restrictedAbilities: [
+	            'Comatose', 'Contrary', 'Fluffy', 'Fur Coat', 'Huge Power', 'Illusion', 'Imposter', 'Innards Out',
+	            'Parental Bond', 'Protean', 'Pure Power', 'Simple', 'Speed Boost', 'Stakeout', 'Water Bubble', 'Wonder Guard',
+	        ],
+	        onValidateSet: function (set, format) {
+	            let restrictedAbilities = format.restrictedAbilities || [];
+	            if (restrictedAbilities.includes(set.ability)) {
+	                let template = this.getTemplate(set.species || set.name);
+	                let legalAbility = false;
+	                for (let i in template.abilities) {
+	                    // @ts-ignore
+	                    if (set.ability === template.abilities[i]) legalAbility = true;
+	                }
+	                if (!legalAbility) return ['The ability ' + set.ability + ' is banned on Pok\u00e9mon that do not naturally have it.'];
+	            }
+	        },
 	    },
 	   {
 	        name: "[Gen 7] Camomons AG",
