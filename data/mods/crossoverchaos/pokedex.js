@@ -1755,7 +1755,7 @@ toriel: {
     species: "Toriel", /* Undertale */
     types: ["Fire", "Fairy"],
 	 gender: "F",
-    baseStats: {hp: 150, atk: 80, def: 130, spa: 135, spd: 165, spe: 90},
+    baseStats: {hp: 150, atk: 10, def: 50, spa: 135, spd: 165, spe: 90},
     abilities: {0: "Flame Body", 1: "Healer", H: "Serene Grace"},
 	 heightm: 2.5,
     weightkg: 150,
