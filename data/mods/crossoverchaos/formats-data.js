@@ -380,11 +380,11 @@ exports.BattleFormatsData = { //
 //         doublesTier: "DOU",
     },
     chaoskin: {
-        tier: "Uber",
+        tier: "OU",
 //         doublesTier: "DOU",
     },
     chaoskinash: {
-        tier: "Uber",
+        tier: "OU",
 //         doublesTier: "DOU",
     },
     captainfalcon: {
@@ -561,6 +561,58 @@ exports.BattleFormatsData = { //
 //         doublesTier: "DOU",
     },
     shieldknight: {
+        tier: "OU",
+//         doublesTier: "DOU",
+    },
+    katamariprince: {
+        tier: "OU",
+//         doublesTier: "DOU",
+    },
+    landia: {
+        tier: "OU",
+//         doublesTier: "DOU",
+    },
+    landiaone: {
+        tier: "OU",
+//         doublesTier: "DOU",
+    },
+    cirno: {
+        tier: "OU",
+//         doublesTier: "DOU",
+    },
+    cirnotanned: {
+        tier: "OU",
+//         doublesTier: "DOU",
+    },
+    princesspeach: {
+        tier: "OU",
+//         doublesTier: "DOU",
+    },
+    monokuma: {
+        tier: "OU",
+//         doublesTier: "DOU",
+    },
+    banjokazooie: {
+        tier: "OU",
+//         doublesTier: "DOU",
+    },
+    banjokazooiewashingmachine: {
+        tier: "OU",
+//         doublesTier: "DOU",
+    },
+    banjokazooiedragonkazooie: {
+        tier: "OU",
+//         doublesTier: "DOU",
+    },
+    kyoko: {
+        tier: "OU",
+//         doublesTier: "DOU",
+    },
+    glados: {
+        tier: "OU",
+//         doublesTier: "DOU",
+    },
+    toriel: {
         tier: "OU",
 //         doublesTier: "DOU",
     },
