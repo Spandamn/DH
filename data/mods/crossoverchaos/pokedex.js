@@ -1050,9 +1050,9 @@ majoraincarnation: {
 	 heightm: 2.5,
     weightkg: 95,
 },
-majoraswrath: {
+majorawrath: {
     num: 6000047,
-    species: "Majora's Wrath",
+    species: "Majora-Wrath",
     baseSpecies: "Majora",
     forme: "Wrath",
     formeLetter: "W",
