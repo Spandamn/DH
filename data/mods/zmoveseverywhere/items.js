@@ -864,4 +864,13 @@ zMoveFrom: "Thousand Waves",
 zMoveUser: ["Zygarde-10%", "Zygarde", "Zygarde-Complete"],
 desc: "If the holder is a Zygarde forme with the move Thousand Waves, it can use Bring Order to the World.",
 },
+	"hoopiumz":{
+id: "hoopiumz",
+name: "Hoopium-Z",
+onTakeItem: false,
+zMove: "Unleashed Power of the Djinn",
+zMoveFrom: "Hyperspace Hole",
+zMoveUser: ["Hoopa", "Hoopa-Unbound"],
+desc: "If the holder is a Hoopa forme with the move Hyperspace Hole, it can use Unleashed Power of the Djinn.",
+},
 };
