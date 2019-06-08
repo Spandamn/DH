@@ -228,6 +228,7 @@ class Ladder extends LadderStore {
 		}
 		if (targetUser.blockChallenges && !user.can('bypassblocks', targetUser)) {
 			connection.popup(`The user '${targetUser.name}' is not accepting challenges right now.`);
+			Chat.maybeNotifyBlocked('challenge', targetUser, user);
 			return false;
 		}
 		if (Date.now() < user.lastChallenge + 10 * SECONDS) {
@@ -413,13 +414,13 @@ class Ladder extends LadderStore {
 			if (!room) {
 				Monitor.warn(`while searching, room ${roomid} expired for user ${user.userid} in rooms ${[...user.inRooms]} and games ${[...user.games]}`);
 				user.games.delete(roomid);
-				return;
+				continue;
 			}
 			const game = room.game;
 			if (!game) {
 				Monitor.warn(`while searching, room ${roomid} has no game for user ${user.userid} in rooms ${[...user.inRooms]} and games ${[...user.games]}`);
 				user.games.delete(roomid);
-				return;
+				continue;
 			}
 			games[roomid] = game.title + (game.allowRenames ? '' : '*');
 			atLeastOne = true;
