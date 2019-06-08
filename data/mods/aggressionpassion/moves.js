@@ -477,7 +477,7 @@ let BattleMovedex = {
 			sideCondition: 'auroraveil',
 		},
 		onTryHitSide: function () {
-			if (!this.isWeather('hail')) return false;
+			if (!this.field.isWeather('hail')) return false;
 		},
 		effect: {
 			duration: 5,
@@ -741,13 +741,13 @@ let BattleMovedex = {
 		self: {
 			onHit: function (target) {
 			let newType = 'Normal';
-			if (this.isTerrain('electricterrain')) {
+			if (this.field.isTerrain('electricterrain')) {
 				newType = 'Electric';
-			} else if (this.isTerrain('grassyterrain')) {
+			} else if (this.field.isTerrain('grassyterrain')) {
 				newType = 'Grass';
-			} else if (this.isTerrain('mistyterrain')) {
+			} else if (this.field.isTerrain('mistyterrain')) {
 				newType = 'Fairy';
-			} else if (this.isTerrain('psychicterrain')) {
+			} else if (this.field.isTerrain('psychicterrain')) {
 				newType = 'Psychic';
 			}
 
@@ -1376,7 +1376,7 @@ let BattleMovedex = {
 		flags: {protect: 1, reflectable: 1, heal: 1, mystery: 1},
 		self: {
 			onHit: function (target) {
-			if (this.isTerrain('grassyterrain')) {
+			if (this.field.isTerrain('grassyterrain')) {
 				return this.heal(this.modify(target.maxhp, 0.667)); // TODO: find out the real value
 			} else {
 				return this.heal(Math.ceil(target.maxhp * 0.5));
@@ -1448,9 +1448,9 @@ let BattleMovedex = {
 		flags: {snatch: 1, heal: 1},
 		self:{
 			onHit: function (pokemon) {
-			if (this.isWeather(['sunnyday', 'desolateland'])) {
+			if (this.field.isWeather(['sunnyday', 'desolateland'])) {
 				return this.heal(this.modify(pokemon.maxhp, 0.667));
-			} else if (this.isWeather(['raindance', 'primordialsea', 'sandstorm', 'hail'])) {
+			} else if (this.field.isWeather(['raindance', 'primordialsea', 'sandstorm', 'hail'])) {
 				return this.heal(this.modify(pokemon.maxhp, 0.25));
 			} else {
 				return this.heal(this.modify(pokemon.maxhp, 0.5));
@@ -1478,9 +1478,9 @@ let BattleMovedex = {
 		flags: {snatch: 1, heal: 1},
 		self:{
 			onHit: function (pokemon) {
-			if (this.isWeather(['sunnyday', 'desolateland'])) {
+			if (this.field.isWeather(['sunnyday', 'desolateland'])) {
 				return this.heal(this.modify(pokemon.maxhp, 0.667));
-			} else if (this.isWeather(['raindance', 'primordialsea', 'sandstorm', 'hail'])) {
+			} else if (this.field.isWeather(['raindance', 'primordialsea', 'sandstorm', 'hail'])) {
 				return this.heal(this.modify(pokemon.maxhp, 0.25));
 			} else {
 				return this.heal(this.modify(pokemon.maxhp, 0.5));
@@ -1595,7 +1595,7 @@ let BattleMovedex = {
 		flags: {snatch: 1, heal: 1},
 		self:{
 			onHit: function (pokemon) {
-			if (this.isWeather('sandstorm')) {
+			if (this.field.isWeather('sandstorm')) {
 				return this.heal(this.modify(pokemon.maxhp, 0.667));
 			} else {
 				return this.heal(this.modify(pokemon.maxhp, 0.5));

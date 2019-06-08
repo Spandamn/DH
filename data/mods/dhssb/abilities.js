@@ -11,17 +11,17 @@ exports.BattleAbilities = {
 			if (this.field.getWeather().id === 'desolateland' && !['desolateland', 'primordialsea', 'deltastream'].includes(weather.id)) return false;
 		},
 		onEnd: function (pokemon) {
-			if (this.weatherData.source !== pokemon) return;
+			if (this.field.weatherData.source !== pokemon) return;
 			for (const side of this.sides) {
 				for (const target of side.active) {
 					if (target === pokemon) continue;
 					if (target && target.hp && target.hasAbility(['desolateland', 'iboopu'])) {
-						this.weatherData.source = target;
+						this.field.weatherData.source = target;
 						return;
 					}
 				}
 			}
-			this.clearWeather();
+			this.field.clearWeather();
 		},
 		id: "iboopu",
 		name: "IBoopU",
@@ -460,18 +460,18 @@ exports.BattleAbilities = {
 			if (this.field.getWeather().id === 'russianwinter' && !(weather.id in {desolateland:1, primordialsea:1, deltastream:1})) return false;
 		},
 		onEnd: function (pokemon) {
-			if (this.weatherData.source !== pokemon) return;
+			if (this.field.weatherData.source !== pokemon) return;
 			for (let i = 0; i < this.sides.length; i++) {
 				for (let j = 0; j < this.sides[i].active.length; j++) {
 					let target = this.sides[i].active[j];
 					if (target === pokemon) continue;
 					if (target && target.hp && target.hasAbility('russianwinter')) {
-						this.weatherData.source = target;
+						this.field.weatherData.source = target;
 						return;
 					}
 				}
 			}
-			this.clearWeather();
+			this.field.clearWeather();
 		},
 		id: "russianwinter",
 		name: "Russian Winter",

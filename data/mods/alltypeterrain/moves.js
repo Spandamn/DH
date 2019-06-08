@@ -257,7 +257,7 @@ exports.BattleMovedex = {
 				return 5;
 			},
 			onBasePower: function (basePower, attacker, defender, move) {
-				if (move.type === 'Fire' && attacker.isGrounded() && !this.isWeather(['sunnyday', 'desolateland']) && !attacker.isSemiInvulnerable()) {
+				if (move.type === 'Fire' && attacker.isGrounded() && !this.field.isWeather(['sunnyday', 'desolateland']) && !attacker.isSemiInvulnerable()) {
 					this.debug('terrain boost');
 					return this.chainModify(1.5);
 				}
@@ -937,39 +937,39 @@ exports.BattleMovedex = {
 		inherit: true,
 		onHit: function (target) {
 			let newType = 'Normal';
-			if (this.isTerrain('electricterrain')) {
+			if (this.field.isTerrain('electricterrain')) {
 				newType = 'Electric';
-			} else if (this.isTerrain('grassyterrain')) {
+			} else if (this.field.isTerrain('grassyterrain')) {
 				newType = 'Grass';
-			} else if (this.isTerrain('mistyterrain')) {
+			} else if (this.field.isTerrain('mistyterrain')) {
 				newType = 'Fairy';
-			} else if (this.isTerrain('psychicterrain')) {
+			} else if (this.field.isTerrain('psychicterrain')) {
 				newType = 'Psychic';
-			} else if (this.isTerrain('pollenterrain')) {
+			} else if (this.field.isTerrain('pollenterrain')) {
 				newType = 'Bug';
-			} else if (this.isTerrain('murkyterrain')) {
+			} else if (this.field.isTerrain('murkyterrain')) {
 				newType = 'Dark';
-			} else if (this.isTerrain('regalterrain')) {
+			} else if (this.field.isTerrain('regalterrain')) {
 				newType = 'Dragon';
-			} else if (this.isTerrain('fieryterrain')) {
+			} else if (this.field.isTerrain('fieryterrain')) {
 				newType = 'Fire';
-			} else if (this.isTerrain('chakraterrain')) {
+			} else if (this.field.isTerrain('chakraterrain')) {
 				newType = 'Fighting';
-			} else if (this.isTerrain('elevatedterrain')) {
+			} else if (this.field.isTerrain('elevatedterrain')) {
 				newType = 'Flying';
-			} else if (this.isTerrain('ominousterrain')) {
+			} else if (this.field.isTerrain('ominousterrain')) {
 				newType = 'Ghost';
-			} else if (this.isTerrain('sandyterrain')) {
+			} else if (this.field.isTerrain('sandyterrain')) {
 				newType = 'Ground';
-			} else if (this.isTerrain('frostyterrain')) {
+			} else if (this.field.isTerrain('frostyterrain')) {
 				newType = 'Ice';
-			} else if (this.isTerrain('rockyterrain')) {
+			} else if (this.field.isTerrain('rockyterrain')) {
 				newType = 'Rock';
-			} else if (this.isTerrain('corrosiveterrain')) {
+			} else if (this.field.isTerrain('corrosiveterrain')) {
 				newType = 'Poison';
-			} else if (this.isTerrain('metallicterrain')) {
+			} else if (this.field.isTerrain('metallicterrain')) {
 				newType = 'Steel';
-			} else if (this.isTerrain('seaterrain')) {
+			} else if (this.field.isTerrain('seaterrain')) {
 				newType = 'Water';
 			}
 			if (!target.setType(newType)) return false;
@@ -980,39 +980,39 @@ exports.BattleMovedex = {
 		inherit: true,
 		onTryHit: function (target, pokemon) {
 			let move = 'triattack';
-			if (this.isTerrain('electricterrain')) {
+			if (this.field.isTerrain('electricterrain')) {
 				move = 'thunderbolt';
-			} else if (this.isTerrain('grassyterrain')) {
+			} else if (this.field.isTerrain('grassyterrain')) {
 				move = 'energyball';
-			} else if (this.isTerrain('mistyterrain')) {
+			} else if (this.field.isTerrain('mistyterrain')) {
 				move = 'moonblast';
-			} else if (this.isTerrain('psychicterrain')) {
+			} else if (this.field.isTerrain('psychicterrain')) {
 				move = 'psychic';
-			} else if (this.isTerrain('pollenterrain')) {
+			} else if (this.field.isTerrain('pollenterrain')) {
 				move = 'pollenpuff';
-			} else if (this.isTerrain('murkyterrain')) {
+			} else if (this.field.isTerrain('murkyterrain')) {
 				move = 'darkpulse';
-			} else if (this.isTerrain('regalterrain')) {
+			} else if (this.field.isTerrain('regalterrain')) {
 				move = 'dragonpulse';
-			} else if (this.isTerrain('fieryterrain')) {
+			} else if (this.field.isTerrain('fieryterrain')) {
 				move = 'lavaplume';
-			} else if (this.isTerrain('chakraterrain')) {
+			} else if (this.field.isTerrain('chakraterrain')) {
 				move = 'aurasphere';
-			} else if (this.isTerrain('elevatedterrain')) {
+			} else if (this.field.isTerrain('elevatedterrain')) {
 				move = 'airslash';
-			} else if (this.isTerrain('ominousterrain')) {
+			} else if (this.field.isTerrain('ominousterrain')) {
 				move = 'shadowball';
-			} else if (this.isTerrain('sandyterrain')) {
+			} else if (this.field.isTerrain('sandyterrain')) {
 				move = 'earthpower';
-			} else if (this.isTerrain('frostyterrain')) {
+			} else if (this.field.isTerrain('frostyterrain')) {
 				move = 'icebeam';
-			} else if (this.isTerrain('rockyterrain')) {
+			} else if (this.field.isTerrain('rockyterrain')) {
 				move = 'powergem';
-			} else if (this.isTerrain('corrosiveterrain')) {
+			} else if (this.field.isTerrain('corrosiveterrain')) {
 				move = 'sludgebomb';
-			} else if (this.isTerrain('metallicterrain')) {
+			} else if (this.field.isTerrain('metallicterrain')) {
 				move = 'flashcannon';
-			} else if (this.isTerrain('seaterrain')) {
+			} else if (this.field.isTerrain('seaterrain')) {
 				move = 'hydropump';
 			}
 			this.useMove(move, pokemon, target);
@@ -1022,94 +1022,94 @@ exports.BattleMovedex = {
 	"secretpower": {
 		inherit: true,
 		onModifyMove: function (move, pokemon) {
-			if (this.isTerrain('') || this.isTerrain('chakraterrain') || this.isTerrain('cloudyterrain')) return;
+			if (this.field.isTerrain('') || this.field.isTerrain('chakraterrain') || this.field.isTerrain('cloudyterrain')) return;
 			move.secondaries = [];
-			if (this.isTerrain('electricterrain')) {
+			if (this.field.isTerrain('electricterrain')) {
 				move.secondaries.push({
 					chance: 30,
 					status: 'par',
 				});
-			} else if (this.isTerrain('grassyterrain')) {
+			} else if (this.field.isTerrain('grassyterrain')) {
 				move.secondaries.push({
 					chance: 30,
 					status: 'slp',
 				});
-			} else if (this.isTerrain('mistyterrain')) {
+			} else if (this.field.isTerrain('mistyterrain')) {
 				move.secondaries.push({
 					chance: 30,
 					boosts: {
 						spa: -1,
 					},
 				});
-			} else if (this.isTerrain('psychicterrain')) {
+			} else if (this.field.isTerrain('psychicterrain')) {
 				move.secondaries.push({
 					chance: 30,
 					boosts: {
 						spe: -1,
 					},
 				});
-			} else if (this.isTerrain('pollenterrain')) {
+			} else if (this.field.isTerrain('pollenterrain')) {
 				move.secondaries.push({
 					chance: 30,
 					boosts: {
 						spd: -1,
 					},
 				});
-			} else if (this.isTerrain('murkyterrain')) {
+			} else if (this.field.isTerrain('murkyterrain')) {
 				move.secondaries.push({
 					chance: 30,
 					volatileStatus: 'torment',
 				});
-			} else if (this.isTerrain('regalterrain')) {
+			} else if (this.field.isTerrain('regalterrain')) {
 				move.secondaries.push({
 					chance: 30,
 					volatileStatus: 'flinch',
 				});
-			} else if (this.isTerrain('fieryterrain')) {
+			} else if (this.field.isTerrain('fieryterrain')) {
 				move.secondaries.push({
 					chance: 30,
 					status: 'brn',
 				});
-			} else if (this.isTerrain('elevatedterrain')) {
+			} else if (this.field.isTerrain('elevatedterrain')) {
 				move.secondaries.push({
 					chance: 30,
 					volatileStatus: 'telekinesis',
 				});
-			} else if (this.isTerrain('ominousterrain')) {
+			} else if (this.field.isTerrain('ominousterrain')) {
 				move.secondaries.push({
 					chance: 30,
 					boosts: {
 						def: -1,
 					},
 				});
-			} else if (this.isTerrain('sandyterrain')) {
+			} else if (this.field.isTerrain('sandyterrain')) {
 				move.secondaries.push({
 					chance: 30,
 					boosts: {
 						def: -1,
 					},
 				});
-			} else if (this.isTerrain('frostyterrain')) {
+			} else if (this.field.isTerrain('frostyterrain')) {
 				move.secondaries.push({
 					chance: 30,
 					status: 'frz',
 				});
-			} else if (this.isTerrain('rockyterrain')) {
+			} else if (this.field.isTerrain('rockyterrain')) {
 				move.secondaries.push({
 					chance: 30,
 					volatileStatus: 'flinch',
 				});
-			} else if (this.isTerrain('corrosiveterrain')) {
+			} else if (this.field.isTerrain('corrosiveterrain')) {
 				move.secondaries.push({
 					chance: 30,
 					status: 'tox',
 				});
-			} else if (this.isTerrain('metallicterrain')) {
+			} else if (this.field.isTerrain('metallicterrain')) {
 				move.secondaries.push({
 					chance: 30,
 					volatileStatus: 'confusion',
 				});
-			} else if (this.isTerrain('seaterrain')) {
+			} else if (this.field.isTerrain('seaterrain')) {
 				move.secondaries.push({
 					chance: 30,
 					boosts: {
@@ -1138,7 +1138,7 @@ exports.BattleMovedex = {
 				for (let i = 0; i < foeactive.length; i++) {
 					if (foeactive[i].ability === 'toxicwaste') toxicWaste = true;
 				}
-				if (this.isTerrain('corrosiveterrain') && toxicWaste) this.effectData.layers++;
+				if (this.field.isTerrain('corrosiveterrain') && toxicWaste) this.effectData.layers++;
 			},
 			onRestart: function (side) {
 				if (this.effectData.layers >= 2) return false;
@@ -1168,7 +1168,7 @@ exports.BattleMovedex = {
 			durationCallback: function (target, source, effect) {
 				let duration = 5;
 				if (source && source.hasItem('lightclay')) duration += 3;
-				if (this.isTerrain('rockyterrain') && source && source.hasAbility('gemenergy')) duration += 2;
+				if (this.field.isTerrain('rockyterrain') && source && source.hasAbility('gemenergy')) duration += 2;
 				return duration;
 			},
 			onAnyModifyDamage: function (damage, source, target, move) {
@@ -1199,7 +1199,7 @@ exports.BattleMovedex = {
 		effect: {
 			duration: 5,
 			durationCallback: function (source, effect) {
-				if (this.isTerrain('rockyterrain') && source && source.hasAbility('gemenergy')) {
+				if (this.field.isTerrain('rockyterrain') && source && source.hasAbility('gemenergy')) {
 					return 7;
 				}
 				return 5;
@@ -1267,7 +1267,7 @@ exports.BattleMovedex = {
 			durationCallback: function (target, source, effect) {
 				let duration = 5;
 				if (source && source.hasItem('lightclay')) duration += 3;
-				if (this.isTerrain('rockyterrain') && source && source.hasAbility('gemenergy')) duration += 2;
+				if (this.field.isTerrain('rockyterrain') && source && source.hasAbility('gemenergy')) duration += 2;
 				return duration;
 			},
 			onAnyModifyDamage: function (damage, source, target, move) {
@@ -1294,7 +1294,7 @@ exports.BattleMovedex = {
 		effect: {
 			duration: 5,
 			durationCallback: function (source, effect) {
-				if (this.isTerrain('rockyterrain') && source && source.hasAbility('gemenergy')) {
+				if (this.field.isTerrain('rockyterrain') && source && source.hasAbility('gemenergy')) {
 					return 7;
 				}
 				return 5;
@@ -1303,7 +1303,7 @@ exports.BattleMovedex = {
 				this.add('-fieldstart', 'move: Magic Room', '[of] ' + source);
 			},
 			onRestart: function (target, source) {
-				this.removePseudoWeather('magicroom');
+				this.field.removePseudoWeather('magicroom');
 			},
 			// Item suppression implemented in Pokemon.ignoringItem() within sim/pokemon.js
 			onResidualOrder: 25,
@@ -1317,7 +1317,7 @@ exports.BattleMovedex = {
 		effect: {
 			duration: 5,
 			durationCallback: function (target, source, effect) {
-				if (this.isTerrain('rockyterrain') && source && source.hasAbility('gemenergy')) {
+				if (this.field.isTerrain('rockyterrain') && source && source.hasAbility('gemenergy')) {
 					return 7;
 				}
 				return 5;
@@ -1349,7 +1349,7 @@ exports.BattleMovedex = {
 		effect: {
 			duration: 5,
 			durationCallback: function (source, effect) {
-				if (this.isTerrain('rockyterrain') && source && source.hasAbility('gemenergy')) {
+				if (this.field.isTerrain('rockyterrain') && source && source.hasAbility('gemenergy')) {
 					return 7;
 				}
 				return 5;
@@ -1377,7 +1377,7 @@ exports.BattleMovedex = {
 			durationCallback: function (target, source, effect) {
 				let duration = 5;
 				if (source && source.hasItem('lightclay')) duration += 3;
-				if (this.isTerrain('rockyterrain') && source && source.hasAbility('gemenergy')) duration += 2;
+				if (this.field.isTerrain('rockyterrain') && source && source.hasAbility('gemenergy')) duration += 2;
 				return duration;
 			},
 			onAnyModifyDamage: function (damage, source, target, move) {
@@ -1403,7 +1403,7 @@ exports.BattleMovedex = {
 		effect: {
 			duration: 5,
 			durationCallback: function (target, source, effect) {
-				if (this.isTerrain('rockyterrain') && source && source.hasAbility('gemenergy')) {
+				if (this.field.isTerrain('rockyterrain') && source && source.hasAbility('gemenergy')) {
 					return 7;
 				}
 				return 5;
@@ -1438,7 +1438,7 @@ exports.BattleMovedex = {
 		effect: {
 			duration: 4,
 			durationCallback: function (target, source, effect) {
-				if (this.isTerrain('rockyterrain') && source && source.hasAbility('gemenergy')) {
+				if (this.field.isTerrain('rockyterrain') && source && source.hasAbility('gemenergy')) {
 					return 6;
 				}
 				return 4;
@@ -1461,7 +1461,7 @@ exports.BattleMovedex = {
 		effect: {
 			duration: 5,
 			durationCallback: function (source, effect) {
-				if (this.isTerrain('rockyterrain') && source && source.hasAbility('gemenergy')) {
+				if (this.field.isTerrain('rockyterrain') && source && source.hasAbility('gemenergy')) {
 					return 7;
 				}
 				return 5;
@@ -1470,7 +1470,7 @@ exports.BattleMovedex = {
 				this.add('-fieldstart', 'move: Trick Room', '[of] ' + source);
 			},
 			onRestart: function (target, source) {
-				this.removePseudoWeather('trickroom');
+				this.field.removePseudoWeather('trickroom');
 			},
 			// Speed modification is changed in Pokemon.getActionSpeed() in sim/pokemon.js
 			onResidualOrder: 23,
@@ -1484,7 +1484,7 @@ exports.BattleMovedex = {
 		effect: {
 			duration: 5,
 			durationCallback: function (source, effect) {
-				if (this.isTerrain('rockyterrain') && source && source.hasAbility('gemenergy')) {
+				if (this.field.isTerrain('rockyterrain') && source && source.hasAbility('gemenergy')) {
 					return 7;
 				}
 				return 5;
@@ -1510,7 +1510,7 @@ exports.BattleMovedex = {
 		effect: {
 			duration: 5,
 			durationCallback: function (source, effect) {
-				if (this.isTerrain('rockyterrain') && source && source.hasAbility('gemenergy')) {
+				if (this.field.isTerrain('rockyterrain') && source && source.hasAbility('gemenergy')) {
 					return 7;
 				}
 				return 5;
@@ -1519,7 +1519,7 @@ exports.BattleMovedex = {
 				this.add('-fieldstart', 'move: Wonder Room', '[of] ' + source);
 			},
 			onRestart: function (target, source) {
-				this.removePseudoWeather('wonderroom');
+				this.field.removePseudoWeather('wonderroom');
 			},
 			// Swapping defenses implemented in sim/pokemon.js:Pokemon#calculateStat and Pokemon#getStat
 			onResidualOrder: 24,

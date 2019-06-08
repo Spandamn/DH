@@ -203,7 +203,7 @@ exports.BattleAbilities = {
 		desc: "On switch-in, this Pokemon summons Magic Room.",
 		shortDesc: "On switch-in, this Pokemon summons Magic Room.",
 		onStart: function (source, effect) {
-			this.addPseudoWeather('magicroom', source, effect, '[of] ' + source);
+			this.field.addPseudoWeather('magicroom', source, effect, '[of] ' + source);
 		},
 		id: "magicalemanation",
 		name: "Magical Emanation",
@@ -214,7 +214,7 @@ exports.BattleAbilities = {
 		desc: "On switch-in, this Pokemon summons Trick Room.",
 		shortDesc: "On switch-in, this Pokemon summons Trick Room.",
 		onStart: function (source, effect) {
-			this.addPseudoWeather('trickroom', source, effect, '[of] ' + source);
+			this.field.addPseudoWeather('trickroom', source, effect, '[of] ' + source);
 		},
 		id: "trickyemanation",
 		name: "Tricky Emanation",
@@ -225,7 +225,7 @@ exports.BattleAbilities = {
 		desc: "On switch-in, this Pokemon summons Wonder Room.",
 		shortDesc: "On switch-in, this Pokemon summons Wonder Room.",
 		onStart: function (source, effect) {
-			this.addPseudoWeather('wonderroom', source, effect, '[of] ' + source);
+			this.field.addPseudoWeather('wonderroom', source, effect, '[of] ' + source);
 		},
 		id: "wondrousemanation",
 		name: "Wondrous Emanation",

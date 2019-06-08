@@ -170,33 +170,33 @@ exports.BattleStatuses = {
 			this.setWeather('deltastream', source, "Delta Stream");
 		},
 		onAnySetWeather: function (target, source, weather) {
-			if (this.getWeather().id === 'deltastream' && !(weather.id in {desolateland: 1, primordialsea: 1, deltastream: 1})) return false;
+			if (this.field.getWeather().id === 'deltastream' && !(weather.id in {desolateland: 1, primordialsea: 1, deltastream: 1})) return false;
 		},
 		onSwitchOut: function (pokemon) {
-			if (this.getWeather().id === 'deltastream') {
+			if (this.field.getWeather().id === 'deltastream') {
 				if (pokemon.side.foe.active.length) {
 					const opponent = pokemon.side.foe.active[0];
 					if (opponent.hasAbility('deltastream') || (opponent.volatiles['deltastreaminnate'])) {
-						this.weatherData.source = opponent;
+						this.field.weatherData.source = opponent;
 					} else {
-						this.clearWeather();
+						this.field.clearWeather();
 					}
 				} else {
-					this.clearWeather();
+					this.field.clearWeather();
 				}
 			}
 		},
 		onFaint: function (pokemon) {
-			if (this.getWeather().id === 'deltastream') {
+			if (this.field.getWeather().id === 'deltastream') {
 				if (pokemon.side.foe.active.length) {
 					const opponent = pokemon.side.foe.active[0];
 					if (opponent.hasAbility('deltastream') || (opponent.volatiles['deltastreaminnate'])) {
-						this.weatherData.source = opponent;
+						this.field.weatherData.source = opponent;
 					} else {
-						this.clearWeather();
+						this.field.clearWeather();
 					}
 				} else {
-					this.clearWeather();
+					this.field.clearWeather();
 				}
 			}
 		},
@@ -302,18 +302,18 @@ exports.BattleStatuses = {
 		effectType: 'Ability',
 		onStart: function (target, source) {
 			this.add('-ability', source, 'Prodigy');
-			this.addPseudoWeather('prodigyweather', source, "Prodigy");
+			this.field.addPseudoWeather('prodigyweather', source, "Prodigy");
 		},
 		onSwitchOut: function (pokemon) {
 			const foes = pokemon.side.foe.active;
-			if (this.pseudoWeather['prodigyweather'] && !(foes.length && foes[0].volatiles['prodigy'])) {
-				this.removePseudoWeather('prodigyweather', pokemon);
+			if (this.field.pseudoWeather['prodigyweather'] && !(foes.length && foes[0].volatiles['prodigy'])) {
+				this.field.removePseudoWeather('prodigyweather', pokemon);
 			}
 		},
 		onFaint: function (pokemon) {
 			const foes = pokemon.side.foe.active;
-			if (this.pseudoWeather['prodigyweather'] && !(foes.length && foes[0].volatiles['prodigy'])) {
-				this.removePseudoWeather('prodigyweather', pokemon);
+			if (this.field.pseudoWeather['prodigyweather'] && !(foes.length && foes[0].volatiles['prodigy'])) {
+				this.field.removePseudoWeather('prodigyweather', pokemon);
 			}
 		},
 	},
@@ -431,7 +431,7 @@ exports.BattleStatuses = {
 			}
 		},
 		onModifySpD: function (spd, pokemon) {
-			if (pokemon.getAbility() === 'Holy Hail' && pokemon.hasType('Ice') && this.isWeather('hail')) {
+			if (pokemon.getAbility() === 'Holy Hail' && pokemon.hasType('Ice') && this.field.isWeather('hail')) {
 				return this.modify(spd, 1.5);
 			}
 		},

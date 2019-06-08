@@ -721,11 +721,11 @@ let BattleScripts = {
 				didSomething = didSomething || hitResult;
 			}
 			if (moveData.terrain) {
-				hitResult = this.setTerrain(moveData.terrain, pokemon, move);
+				hitResult = this.field.setTerrain(moveData.terrain, pokemon, move);
 				didSomething = didSomething || hitResult;
 			}
 			if (moveData.pseudoWeather) {
-				hitResult = this.addPseudoWeather(moveData.pseudoWeather, pokemon, move);
+				hitResult = this.field.addPseudoWeather(moveData.pseudoWeather, pokemon, move);
 				didSomething = didSomething || hitResult;
 			}
 			if (moveData.forceSwitch) {
@@ -896,7 +896,7 @@ let BattleScripts = {
 	},
 
 	canZMove(pokemon) {
-		if (pokemon.side.zMoveUsed || this.pseudoWeather.magicroom || (pokemon.transformed && (pokemon.template.isMega || pokemon.template.isPrimal || pokemon.template.forme === "Ultra"))) return;
+		if (pokemon.side.zMoveUsed || this.field.pseudoWeather.magicroom || (pokemon.transformed && (pokemon.template.isMega || pokemon.template.isPrimal || pokemon.template.forme === "Ultra"))) return;
 		let item = pokemon.getItem();
 		if (!item.zMove) return;
 		if (item.zMoveUser && !item.zMoveUser.includes(pokemon.template.species)) return;
@@ -923,11 +923,11 @@ let BattleScripts = {
 	},
 
 	canMegaEvo(pokemon) {
-		if (this.pseudoWeather.magicroom) return;
+		if (this.field.pseudoWeather.magicroom) return;
 		let altForme = pokemon.baseTemplate.otherFormes && this.getTemplate(pokemon.baseTemplate.otherFormes[0]);
 		let item = pokemon.getItem();
 		if (altForme && altForme.isMega && altForme.requiredMove && pokemon.baseMoves.includes(toID(altForme.requiredMove)) && !item.zMove) return altForme.species;
-		if (this.pseudoWeather.magicroom || item.megaEvolves !== pokemon.baseTemplate.baseSpecies || item.megaStone === pokemon.species) {
+		if (this.field.pseudoWeather.magicroom || item.megaEvolves !== pokemon.baseTemplate.baseSpecies || item.megaStone === pokemon.species) {
 			return null;
 		}
 		return item.megaStone;

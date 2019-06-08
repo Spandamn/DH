@@ -141,7 +141,7 @@ exports.BattleItems = {
 			basePower: 10,
 		},
 		onStart: function (target) {
-			if (!target.ignoringItem() && !this.getPseudoWeather('gravity')) {
+			if (!target.ignoringItem() && !this.field.getPseudoWeather('gravity')) {
 				this.add('-item', target, 'Air Balloon');
 			}
 		},
@@ -481,7 +481,7 @@ exports.BattleItems = {
 		onResidualOrder: 5,
 		onResidualSubOrder: 2,
 		onResidual: function (pokemon) {
-			if (this.isTerrain('grassyterrain')) return;
+			if (this.field.isTerrain('grassyterrain')) return;
 			if (pokemon.hasType('Poison')) {
 				this.heal(pokemon.maxhp / 16);
 			} else {
@@ -489,7 +489,7 @@ exports.BattleItems = {
 			}
 		},
 		onTerrain: function (pokemon) {
-			if (!this.isTerrain('grassyterrain')) return;
+			if (!this.field.isTerrain('grassyterrain')) return;
 			if (pokemon.hasType('Poison')) {
 				this.heal(pokemon.maxhp / 16);
 			} else {
@@ -1511,7 +1511,7 @@ exports.BattleItems = {
 			basePower: 10,
 		},
 		onUpdate: function (pokemon) {
-			if (this.isTerrain('electricterrain') && pokemon.useItem()) {
+			if (this.field.isTerrain('electricterrain') && pokemon.useItem()) {
 				this.boost({def: 1});
 			}
 		},
@@ -2199,7 +2199,7 @@ exports.BattleItems = {
 			basePower: 10,
 		},
 		onUpdate: function (pokemon) {
-			if (this.isTerrain('grassyterrain') && pokemon.useItem()) {
+			if (this.field.isTerrain('grassyterrain') && pokemon.useItem()) {
 				this.boost({def: 1});
 			}
 		},
@@ -2609,7 +2609,7 @@ exports.BattleItems = {
 			basePower: 130,
 		},
 		onEffectiveness: function (typeMod, target, type, move) {
-			if (target.volatiles['ingrain'] || target.volatiles['smackdown'] || this.getPseudoWeather('gravity')) return;
+			if (target.volatiles['ingrain'] || target.volatiles['smackdown'] || this.field.getPseudoWeather('gravity')) return;
 			if (move.type === 'Ground' && target.hasType('Flying')) return 0;
 		},
 		// airborneness negation implemented in sim/pokemon.js:Pokemon#isGrounded
@@ -2885,11 +2885,11 @@ exports.BattleItems = {
 		onResidualOrder: 5,
 		onResidualSubOrder: 2,
 		onResidual: function (pokemon) {
-			if (this.isTerrain('grassyterrain')) return;
+			if (this.field.isTerrain('grassyterrain')) return;
 			this.heal(pokemon.maxhp / 16);
 		},
 		onTerrain: function (pokemon) {
-			if (!this.isTerrain('grassyterrain')) return;
+			if (!this.field.isTerrain('grassyterrain')) return;
 			this.heal(pokemon.maxhp / 16);
 		},
 		num: 234,
@@ -3628,7 +3628,7 @@ exports.BattleItems = {
 			basePower: 10,
 		},
 		onUpdate: function (pokemon) {
-			if (this.isTerrain('mistyterrain') && pokemon.useItem()) {
+			if (this.field.isTerrain('mistyterrain') && pokemon.useItem()) {
 				this.boost({spd: 1});
 			}
 		},
@@ -4362,7 +4362,7 @@ exports.BattleItems = {
 			basePower: 10,
 		},
 		onUpdate: function (pokemon) {
-			if (this.isTerrain('psychicterrain') && pokemon.useItem()) {
+			if (this.field.isTerrain('psychicterrain') && pokemon.useItem()) {
 				this.boost({spd: 1});
 			}
 		},
@@ -6358,7 +6358,7 @@ exports.BattleItems = {
 	"iceskates": {
 		shortDesc: "If Hail is active, holder's Speed is doubled.",
 		onModifySpe: function (spe, pokemon) {
-			if (this.isWeather('hail')) {
+			if (this.field.isWeather('hail')) {
 				return this.chainModify(2);
 			}
 		},

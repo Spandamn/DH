@@ -49,7 +49,7 @@ exports.BattleScripts = {
 
 		if (this.weather === status.id) {
 			if (sourceEffect && sourceEffect.effectType === 'Ability') {
-				if (this.gen > 5 || this.weatherData.duration === 0) {
+				if (this.gen > 5 || this.field.weatherData.duration === 0) {
 					return false;
 				}
 			} else if (this.gen > 2 || status.id === 'sandstorm') {
@@ -70,26 +70,26 @@ exports.BattleScripts = {
 			}
 		}
 		if (this.weather && !status.id) {
-			let oldstatus = this.getWeather();
-			this.singleEvent('End', oldstatus, this.weatherData, this);
+			let oldstatus = this.field.getWeather();
+			this.singleEvent('End', oldstatus, this.field.weatherData, this);
 		}
 		let prevWeather = this.weather;
-		let prevWeatherData = this.weatherData;
+		let prevWeatherData = this.field.weatherData;
 		this.weather = status.id;
-		this.weatherData = {id: status.id};
+		this.field.weatherData = {id: status.id};
 		if (source) {
-			this.weatherData.source = source;
-			this.weatherData.sourcePosition = source.position;
+			this.field.weatherData.source = source;
+			this.field.weatherData.sourcePosition = source.position;
 		}
 		if (status.duration) {
-			this.weatherData.duration = status.duration;
+			this.field.weatherData.duration = status.duration;
 		}
 		if (status.durationCallback) {
-			this.weatherData.duration = status.durationCallback.call(this, source, sourceEffect);
+			this.field.weatherData.duration = status.durationCallback.call(this, source, sourceEffect);
 		}
-		if (!this.singleEvent('Start', status, this.weatherData, this, source, sourceEffect)) {
+		if (!this.singleEvent('Start', status, this.field.weatherData, this, source, sourceEffect)) {
 			this.weather = prevWeather;
-			this.weatherData = prevWeatherData;
+			this.field.weatherData = prevWeatherData;
 			return false;
 		}
 		return true;

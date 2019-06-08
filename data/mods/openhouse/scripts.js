@@ -207,13 +207,13 @@ exports.BattleScripts = {
 		this.add('turn', this.turn);
 		if(this.turn%5==0 || this.turn==1)
 		{
-			if(this.curhouse) this.removePseudoWeather(toID(this.curhouse));
+			if(this.curhouse) this.field.removePseudoWeather(toID(this.curhouse));
 			this.add("-message",this.nexthouse+" started!");
 			if(this.nexthouse!="Trick Room")
-				this.addPseudoWeather(toID(this.nexthouse), this.p1.pokemon[0], "[move]: "+this.nexthouse);
+				this.field.addPseudoWeather(toID(this.nexthouse), this.p1.pokemon[0], "[move]: "+this.nexthouse);
 			else
 			{
-				this.pseudoWeather["trickroom"] = {id:'trickroom', duration:5};
+				this.field.pseudoWeather["trickroom"] = {id:'trickroom', duration:5};
 				this.add("-message","The dimensions were twisted!");
 				this.add("-hint","Although its not visible, Trick Room would been in effect.");
 			}

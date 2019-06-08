@@ -23,7 +23,7 @@ exports.BattleStatuses = {
 	onResidualOrder: 1,
 	onResidual: function() {
 		this.add('-weather', 'PoisonScent', '[upkeep]');
-		if (this.isWeather('PoisonScent')) this.eachEvent('Weather');
+		if (this.field.isWeather('PoisonScent')) this.eachEvent('Weather');
 	},
 	onWeather: function (target) {
 		let typeMod = this.clampIntRange(target.runEffectiveness('Poison'), -6, 6);
@@ -47,7 +47,7 @@ exports.BattleStatuses = {
         onResidualOrder: 1,
 	onResidual: function() {
 		this.add('-weather', 'PoopyTimeBomb', '[upkeep]');
-		if (this.isWeather('PoopyTimeBomb')) this.eachEvent('Weather');
+		if (this.field.isWeather('PoopyTimeBomb')) this.eachEvent('Weather');
 	},
         onEnd: function (target) {
 	target.faint();

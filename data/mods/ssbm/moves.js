@@ -1103,7 +1103,7 @@ exports.BattleMovedex = {
 		priority: 0,
 		flags: {contact: 1, protect: 1, mirror: 1},
 		onModifyMove: function (move) {
-			if (this.isWeather('sandstorm')) move.accuracy = true;
+			if (this.field.isWeather('sandstorm')) move.accuracy = true;
 		},
 		ignoreImmunity: true,
 		onPrepareHit: function (target, source) {
@@ -1191,9 +1191,9 @@ exports.BattleMovedex = {
 		priority: 0,
 		flags: {protect: 1, mirror: 1},
 		onModifyMove: function (move) {
-			if (this.isWeather(['raindance', 'primordialsea'])) {
+			if (this.field.isWeather(['raindance', 'primordialsea'])) {
 				move.accuracy = true;
-			} else if (this.isWeather(['sunnyday', 'desolateland'])) {
+			} else if (this.field.isWeather(['sunnyday', 'desolateland'])) {
 				move.accuracy = 50;
 			}
 		},
@@ -1776,7 +1776,7 @@ exports.BattleMovedex = {
 			// figuring them out to whoever reads the code. Don't want to spoil
 			// the fun in that.
 			if (this.random(722) === 66) {
-				this.addPseudoWeather('glitchdimension', source, effect, '[of] ' + source);
+				this.field.addPseudoWeather('glitchdimension', source, effect, '[of] ' + source);
 			}
 		},
 		effect: {
@@ -1930,7 +1930,7 @@ exports.BattleMovedex = {
 			this.add('-anim', source, "Magnet Rise", source);
 		},
 		onHit: function (target, source) {
-			if (!(source.volatiles['magnetrise'] || this.pseudoWeather['gravity'])) {
+			if (!(source.volatiles['magnetrise'] || this.field.pseudoWeather['gravity'])) {
 				source.addVolatile('magnetrise');
 				this.boost({accuracy: -1, evasion: -1}, source, source);
 			}
@@ -2540,10 +2540,10 @@ exports.BattleMovedex = {
 			this.add('-anim', source, "Agility", target);
 		},
 		onHit: function (target, source, effect) {
-			if (this.pseudoWeather['trickroom']) {
-				this.removePseudoWeather('trickroom', source, effect, '[of] ' + source);
+			if (this.field.pseudoWeather['trickroom']) {
+				this.field.removePseudoWeather('trickroom', source, effect, '[of] ' + source);
 			} else {
-				this.addPseudoWeather('trickroom', source, effect, '[of] ' + source);
+				this.field.addPseudoWeather('trickroom', source, effect, '[of] ' + source);
 			}
 		},
 		volatileStatus: 'lolroom',
@@ -2743,10 +2743,10 @@ exports.BattleMovedex = {
 		priority: 0,
 		flags: {mirror: 1, gravity: 1},
 		onHit: function (target, source) {
-			if (this.pseudoWeather['monoflying']) {
-				this.removePseudoWeather('monoflying', source);
+			if (this.field.pseudoWeather['monoflying']) {
+				this.field.removePseudoWeather('monoflying', source);
 			} else {
-				this.addPseudoWeather('monoflying', source);
+				this.field.addPseudoWeather('monoflying', source);
 			}
 			let removeTarget = {reflect:1, lightscreen:1, safeguard:1, mist:1, spikes:1, toxicspikes:1, burnspikes:1, stealthrock:1, stickyweb:1};
 			let removeAll = {spikes:1, toxicspikes:1, burnspikes:1, stealthrock:1, stickyweb:1};
@@ -3931,10 +3931,10 @@ exports.BattleMovedex = {
 		priority: 0,
 		flags: {mirror: 1},
 		onHitField: function (target, source, effect) {
-			if (this.pseudoWeather['shitpostparadise']) {
-				this.removePseudoWeather('shitpostparadise', source, effect, '[of] ' + source);
+			if (this.field.pseudoWeather['shitpostparadise']) {
+				this.field.removePseudoWeather('shitpostparadise', source, effect, '[of] ' + source);
 			} else {
-				this.addPseudoWeather('shitpostparadise', source, effect, '[of] ' + source);
+				this.field.addPseudoWeather('shitpostparadise', source, effect, '[of] ' + source);
 			}
 		},
 		effect: {
@@ -4738,8 +4738,8 @@ exports.BattleMovedex = {
 		},
 		onHit: function (target, source) {
 			let moved = false;
-			if (!this.pseudoWeather['trickroom']) {
-				this.addPseudoWeather('trickroom', source);
+			if (!this.field.pseudoWeather['trickroom']) {
+				this.field.addPseudoWeather('trickroom', source);
 				moved = true;
 			}
 			if (source.maxhp !== source.hp) {

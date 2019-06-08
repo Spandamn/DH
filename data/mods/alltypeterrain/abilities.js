@@ -9,7 +9,7 @@ exports.BattleAbilities = {
 			for (let i = 0; i < foeactive.length; i++) {
 				if (foeactive[i].ability === 'scorchedearth') scorchedEarth = true;
 			}
-			if (!this.isTerrain('fieryterrain') || !scorchedEarth) this.setTerrain('pollenterrain');
+			if (!this.field.isTerrain('fieryterrain') || !scorchedEarth) this.field.setTerrain('pollenterrain');
 		},
 		id: "pollensurge",
 		name: "Pollen Surge",
@@ -21,7 +21,7 @@ exports.BattleAbilities = {
 			for (let i = 0; i < foeactive.length; i++) {
 				if (foeactive[i].ability === 'scorchedearth') scorchedEarth = true;
 			}
-			if (!this.isTerrain('fieryterrain') || !scorchedEarth) this.setTerrain('murkyterrain');
+			if (!this.field.isTerrain('fieryterrain') || !scorchedEarth) this.field.setTerrain('murkyterrain');
 		},
 		id: "murkysurge",
 		name: "Murky Surge",
@@ -33,7 +33,7 @@ exports.BattleAbilities = {
 			for (let i = 0; i < foeactive.length; i++) {
 				if (foeactive[i].ability === 'scorchedearth') scorchedEarth = true;
 			}
-			if (!this.isTerrain('fieryterrain') || !scorchedEarth) this.setTerrain('regalterrain');
+			if (!this.field.isTerrain('fieryterrain') || !scorchedEarth) this.field.setTerrain('regalterrain');
 		},
 		id: "regalsurge",
 		name: "Regal Surge",
@@ -46,7 +46,7 @@ exports.BattleAbilities = {
 			for (let i = 0; i < foeactive.length; i++) {
 				if (foeactive[i].ability === 'scorchedearth') scorchedEarth = true;
 			}
-			if (!this.isTerrain('fieryterrain') || !scorchedEarth) this.setTerrain('electricterrain');
+			if (!this.field.isTerrain('fieryterrain') || !scorchedEarth) this.field.setTerrain('electricterrain');
 		},
 	},
 	"mistysurge": {
@@ -57,7 +57,7 @@ exports.BattleAbilities = {
 			for (let i = 0; i < foeactive.length; i++) {
 				if (foeactive[i].ability === 'scorchedearth') scorchedEarth = true;
 			}
-			if (!this.isTerrain('fieryterrain') || !scorchedEarth) this.setTerrain('mistyterrain');
+			if (!this.field.isTerrain('fieryterrain') || !scorchedEarth) this.field.setTerrain('mistyterrain');
 		},
 	},
 	"fierysurge": {
@@ -67,7 +67,7 @@ exports.BattleAbilities = {
 			for (let i = 0; i < foeactive.length; i++) {
 				if (foeactive[i].ability === 'scorchedearth') scorchedEarth = true;
 			}
-			if (!this.isTerrain('fieryterrain') || !scorchedEarth) this.setTerrain('fieryterrain');
+			if (!this.field.isTerrain('fieryterrain') || !scorchedEarth) this.field.setTerrain('fieryterrain');
 		},
 		id: "fierysurge",
 		name: "Fiery Surge",
@@ -79,7 +79,7 @@ exports.BattleAbilities = {
 			for (let i = 0; i < foeactive.length; i++) {
 				if (foeactive[i].ability === 'scorchedearth') scorchedEarth = true;
 			}
-			if (!this.isTerrain('fieryterrain') || !scorchedEarth) this.setTerrain('chakraterrain');
+			if (!this.field.isTerrain('fieryterrain') || !scorchedEarth) this.field.setTerrain('chakraterrain');
 		},
 		id: "chakrasurge",
 		name: "Chakra Surge",
@@ -91,7 +91,7 @@ exports.BattleAbilities = {
 			for (let i = 0; i < foeactive.length; i++) {
 				if (foeactive[i].ability === 'scorchedearth') scorchedEarth = true;
 			}
-			if (!this.isTerrain('fieryterrain') || !scorchedEarth) this.setTerrain('elevatedterrain');
+			if (!this.field.isTerrain('fieryterrain') || !scorchedEarth) this.field.setTerrain('elevatedterrain');
 		},
 		id: "elevatedsurge",
 		name: "Elevated Surge",
@@ -103,7 +103,7 @@ exports.BattleAbilities = {
 			for (let i = 0; i < foeactive.length; i++) {
 				if (foeactive[i].ability === 'scorchedearth') scorchedEarth = true;
 			}
-			if (!this.isTerrain('fieryterrain') || !scorchedEarth) this.setTerrain('ominousterrain');
+			if (!this.field.isTerrain('fieryterrain') || !scorchedEarth) this.field.setTerrain('ominousterrain');
 		},
 		id: "ominoussurge",
 		name: "Ominous Surge",
@@ -116,7 +116,7 @@ exports.BattleAbilities = {
 			for (let i = 0; i < foeactive.length; i++) {
 				if (foeactive[i].ability === 'scorchedearth') scorchedEarth = true;
 			}
-			if (!this.isTerrain('fieryterrain') || !scorchedEarth) this.setTerrain('grassyterrain');
+			if (!this.field.isTerrain('fieryterrain') || !scorchedEarth) this.field.setTerrain('grassyterrain');
 		},
 	},
 	"sandysurge": {
@@ -126,7 +126,7 @@ exports.BattleAbilities = {
 			for (let i = 0; i < foeactive.length; i++) {
 				if (foeactive[i].ability === 'scorchedearth') scorchedEarth = true;
 			}
-			if (!this.isTerrain('fieryterrain') || !scorchedEarth) this.setTerrain('sandyterrain');
+			if (!this.field.isTerrain('fieryterrain') || !scorchedEarth) this.field.setTerrain('sandyterrain');
 		},
 		id: "sandysurge",
 		name: "Sandy Surge",
@@ -138,7 +138,7 @@ exports.BattleAbilities = {
 			for (let i = 0; i < foeactive.length; i++) {
 				if (foeactive[i].ability === 'scorchedearth') scorchedEarth = true;
 			}
-			if (!this.isTerrain('fieryterrain') || !scorchedEarth) this.setTerrain('frostyterrain');
+			if (!this.field.isTerrain('fieryterrain') || !scorchedEarth) this.field.setTerrain('frostyterrain');
 		},
 		id: "frostysurge",
 		name: "Frosty Surge",
@@ -150,7 +150,7 @@ exports.BattleAbilities = {
 			for (let i = 0; i < foeactive.length; i++) {
 				if (foeactive[i].ability === 'scorchedearth') scorchedEarth = true;
 			}
-			if (!this.isTerrain('fieryterrain') || !scorchedEarth) this.setTerrain('cloudyterrain');
+			if (!this.field.isTerrain('fieryterrain') || !scorchedEarth) this.field.setTerrain('cloudyterrain');
 		},
 		id: "cloudysurge",
 		name: "Cloudy Surge",
@@ -162,7 +162,7 @@ exports.BattleAbilities = {
 			for (let i = 0; i < foeactive.length; i++) {
 				if (foeactive[i].ability === 'scorchedearth') scorchedEarth = true;
 			}
-			if (!this.isTerrain('fieryterrain') || !scorchedEarth) this.setTerrain('rockyterrain');
+			if (!this.field.isTerrain('fieryterrain') || !scorchedEarth) this.field.setTerrain('rockyterrain');
 		},
 		id: "rockysurge",
 		name: "Rocky Surge",
@@ -174,7 +174,7 @@ exports.BattleAbilities = {
 			for (let i = 0; i < foeactive.length; i++) {
 				if (foeactive[i].ability === 'scorchedearth') scorchedEarth = true;
 			}
-			if (!this.isTerrain('fieryterrain') || !scorchedEarth) this.setTerrain('corrosiveterrain');
+			if (!this.field.isTerrain('fieryterrain') || !scorchedEarth) this.field.setTerrain('corrosiveterrain');
 		},
 		id: "corrosivesurge",
 		name: "Corrosive Surge",
@@ -187,7 +187,7 @@ exports.BattleAbilities = {
 			for (let i = 0; i < foeactive.length; i++) {
 				if (foeactive[i].ability === 'scorchedearth') scorchedEarth = true;
 			}
-			if (!this.isTerrain('fieryterrain') || !scorchedEarth) this.setTerrain('psychicterrain');
+			if (!this.field.isTerrain('fieryterrain') || !scorchedEarth) this.field.setTerrain('psychicterrain');
 		},
 	},
 	"metallicsurge": {
@@ -197,7 +197,7 @@ exports.BattleAbilities = {
 			for (let i = 0; i < foeactive.length; i++) {
 				if (foeactive[i].ability === 'scorchedearth') scorchedEarth = true;
 			}
-			if (!this.isTerrain('fieryterrain') || !scorchedEarth) this.setTerrain('metallicterrain');
+			if (!this.field.isTerrain('fieryterrain') || !scorchedEarth) this.field.setTerrain('metallicterrain');
 		},
 		id: "metallicsurge",
 		name: "Metallic Surge",
@@ -209,7 +209,7 @@ exports.BattleAbilities = {
 			for (let i = 0; i < foeactive.length; i++) {
 				if (foeactive[i].ability === 'scorchedearth') scorchedEarth = true;
 			}
-			if (!this.isTerrain('fieryterrain') || !scorchedEarth) this.setTerrain('seaterrain');
+			if (!this.field.isTerrain('fieryterrain') || !scorchedEarth) this.field.setTerrain('seaterrain');
 		},
 		id: "seasurge",
 		name: "Sea Surge",
@@ -218,7 +218,7 @@ exports.BattleAbilities = {
 	// Pollen terrain
 	"beehivecall": {
 		onPrepareHit: function (source, target, move) {
-			if (this.isTerrain('pollenterrain') && move.type === 'Bug' && move.category !== 'Status' && !move.selfdestruct && !move.multihit && !move.flags['charge'] && !move.spreadHit && !move.isZ) {
+			if (this.field.isTerrain('pollenterrain') && move.type === 'Bug' && move.category !== 'Status' && !move.selfdestruct && !move.multihit && !move.flags['charge'] && !move.spreadHit && !move.isZ) {
 				move.multihit = 4;
 				move.hasParentalBond = true;
 				move.hit = 0;
@@ -234,21 +234,21 @@ exports.BattleAbilities = {
 	"pollenshield": {
 		onModifyDefPriority: 6,
 		onModifyDef: function (pokemon) {
-			if (this.isTerrain('pollenterrain')) return this.chainModify(1.5);
+			if (this.field.isTerrain('pollenterrain')) return this.chainModify(1.5);
 		},
 		id: "pollenshield",
 		name: "Pollen Shield",
 	},
 	"pollinatorzeal": {
 		onModifySpe: function (spe, pokemon) {
-			if (this.isTerrain('pollenterrain')) {
+			if (this.field.isTerrain('pollenterrain')) {
 				return this.chainModify(2);
 			}
 		},
 		onResidualOrder: 5,
 		onResidualSubOrder: 3,
 		onResidual: function (pokemon) {
-			if (this.isTerrain('pollenterrain')) {
+			if (this.field.isTerrain('pollenterrain')) {
 				this.heal(pokemon.maxhp / 16);
 			}
 		},
@@ -260,7 +260,7 @@ exports.BattleAbilities = {
 	"dirtyfighting": {
 		onBasePowerPriority: 8,
 		onBasePower: function (basePower, attacker, defender, move) {
-			if (this.isTerrain('murkyterrain')) {
+			if (this.field.isTerrain('murkyterrain')) {
 				if (move.type === 'Dark' || move.type === 'Fighting' || move.type === 'Poison') {
 					this.debug('Dirty Fighting boost');
 					return this.chainModify([0x14CD, 0x1000]);
@@ -272,7 +272,7 @@ exports.BattleAbilities = {
 	},
 	"disenchanted": {
 		onTryHit: function (target, source, move) {
-			if (this.isTerrain('murkyterrain') && move.type === 'Fairy') {
+			if (this.field.isTerrain('murkyterrain') && move.type === 'Fairy') {
 				this.add('-immune', target, '[msg]', '[from] ability: Disenchanted');
 				return null;
 			}
@@ -282,14 +282,14 @@ exports.BattleAbilities = {
 	},
 	"murkycover": {
 		onModifySpe: function (spe, pokemon) {
-			if (this.isTerrain('murkyterrain')) {
+			if (this.field.isTerrain('murkyterrain')) {
 				return this.chainModify(1.5);
 			}
 		},
 		onSourceModifyAccuracy: function (accuracy) {
 			if (typeof accuracy !== 'number') return;
 			this.debug('murkycover - enhancing accuracy');
-			if (this.isTerrain('murkyterrain')) return accuracy * (4.0/3.0);
+			if (this.field.isTerrain('murkyterrain')) return accuracy * (4.0/3.0);
 		},
 		id: "murkycover",
 		name: "Murky Cover",
@@ -299,7 +299,7 @@ exports.BattleAbilities = {
 	"auraofdestruction": {
 		// partially implemented in moves.js:regalterrain
 		onStart: function (pokemon) {
-			if (this.isTerrain('regalterrain')) {
+			if (this.field.isTerrain('regalterrain')) {
 				this.add('-ability', pokemon, 'Aura of Destruction');
 				let foeactive = pokemon.side.foe.active;
 				for (let i = 0; i < foeactive.length; i++) {
@@ -309,10 +309,10 @@ exports.BattleAbilities = {
 			}
 		},
 		onModifyMove: function (move) {
-			if (this.isTerrain('regalterrain')) move.ignoreAbility = true;
+			if (this.field.isTerrain('regalterrain')) move.ignoreAbility = true;
 		},
 		onEnd: function (pokemon) {
-			if (this.isTerrain('regalterrain')) {
+			if (this.field.isTerrain('regalterrain')) {
 				let foeactive = pokemon.side.foe.active;
 				for (let i = 0; i < foeactive.length; i++) {
 					if (!foeactive[i] || !this.isAdjacent(foeactive[i], pokemon)) continue;
@@ -325,7 +325,7 @@ exports.BattleAbilities = {
 	},
 	"teethbared": {
 		onModifyMove: function (move, pokemon) {
-			if (this.isTerrain('regalterrain') && move.flags['bite']) {
+			if (this.field.isTerrain('regalterrain') && move.flags['bite']) {
 				move.willCrit = true;
 			}
 		},
@@ -335,13 +335,13 @@ exports.BattleAbilities = {
 	"tyranny": {
 		onModifyAtkPriority: 5,
 		onModifyAtk: function (spa, pokemon) {
-			if (this.isTerrain('regalterrain')) {
+			if (this.field.isTerrain('regalterrain')) {
 				return this.chainModify(4.0/3.0);
 			}
 		},
 		onModifySpAPriority: 5,
 		onModifySpA: function (spa, pokemon) {
-			if (this.isTerrain('regalterrain')) {
+			if (this.field.isTerrain('regalterrain')) {
 				return this.chainModify(4.0/3.0);
 			}
 		},
@@ -352,7 +352,7 @@ exports.BattleAbilities = {
 	// Electric terrain abilities
 	"electriccharger": {
 		onStart: function (pokemon) {
-			if (this.isTerrain('electricterrain')) {
+			if (this.field.isTerrain('electricterrain')) {
 				pokemon.addVolatile('charge');
 			}
 		},
@@ -362,13 +362,13 @@ exports.BattleAbilities = {
 	"overcharge": {
 		onModifyAtkPriority: 5,
 		onModifyAtk: function (spa, pokemon) {
-			if (this.isTerrain('electricterrain')) {
+			if (this.field.isTerrain('electricterrain')) {
 				return this.chainModify(1.5);
 			}
 		},
 		onResidualOrder: 1,
 		onResidual: function (pokemon) {
-			if (this.isTerrain('electricterrain')) {
+			if (this.field.isTerrain('electricterrain')) {
 				this.damage(pokemon.maxhp / 16, pokemon, pokemon);
 			}
 		},
@@ -385,20 +385,20 @@ exports.BattleAbilities = {
 	"mistybliss": {
 		onModifySpDPriority: 6,
 		onModifySpD: function (spa, pokemon) {
-			if (this.isTerrain('mistyterrain')) {
+			if (this.field.isTerrain('mistyterrain')) {
 				return this.chainModify(1.5);
 			}
 		},
 		onModifyAtkPriority: 6,
 		onSourceModifyAtk: function (atk, attacker, defender, move) {
-			if (this.isTerrain('mistyterrain') && (move.type === 'Poison' || move.type === 'Steel')) {
+			if (this.field.isTerrain('mistyterrain') && (move.type === 'Poison' || move.type === 'Steel')) {
 				this.debug('Misty Bliss weaken');
 				return this.chainModify(2.0/3.0);
 			}
 		},
 		onModifySpAPriority: 5,
 		onSourceModifySpA: function (atk, attacker, defender, move) {
-			if (this.isTerrain('mistyterrain') && (move.type === 'Poison' || move.type === 'Steel')) {
+			if (this.field.isTerrain('mistyterrain') && (move.type === 'Poison' || move.type === 'Steel')) {
 				this.debug('Misty Bliss weaken');
 				return this.chainModify(2.0/3.0);
 			}
@@ -409,7 +409,7 @@ exports.BattleAbilities = {
 	"mistydamp": {
 		onBasePowerPriority: 8,
 		onBasePower: function (basePower, attacker, defender, move) {
-			if (this.isTerrain('mistyterrain')) {
+			if (this.field.isTerrain('mistyterrain')) {
 				if (move.type === 'Fairy' || move.type === 'Ice' || move.type === 'Water') {
 					this.debug('Misty Damp boost');
 					return this.chainModify([0x14CD, 0x1000]);
@@ -424,13 +424,13 @@ exports.BattleAbilities = {
 	"innerpeace": {
 		onModifyDefPriority: 6,
 		onModifyDef: function (spa, pokemon) {
-			if (this.isTerrain('chakraterrain')) {
+			if (this.field.isTerrain('chakraterrain')) {
 				return this.chainModify(1.5); // myfix: 4/3
 			}
 		},
 		onModifySpDPriority: 6,
 		onModifySpD: function (spa, pokemon) {
-			if (this.isTerrain('chakraterrain')) {
+			if (this.field.isTerrain('chakraterrain')) {
 				return this.chainModify(1.5); // myfix: 4/3
 			}
 		},
@@ -440,7 +440,7 @@ exports.BattleAbilities = {
 	"perfectzen": {
 		onBasePowerPriority: 8,
 		onBasePower: function (basePower, attacker, defender, move) {
-			if (this.isTerrain('chakraterrain') && move.isZ) {
+			if (this.field.isTerrain('chakraterrain') && move.isZ) {
 				this.debug('Perfect Zen boost');
 				return this.chainModify(1.5);
 			}
@@ -450,12 +450,12 @@ exports.BattleAbilities = {
 	},
 	"quickdraw": {
 		onModifyPriority: function (priority, pokemon, target, move) {
-			if (this.isTerrain('chakraterrain') && target.hp === target.maxhp && move.category !== 'Status') {
+			if (this.field.isTerrain('chakraterrain') && target.hp === target.maxhp && move.category !== 'Status') {
 				return priority + 0.1;
 			}
 		},
 		onModifyDamage: function (damage, source, target, move) {
-			if (this.isTerrain('chakraterrain') && target.hp === target.maxhp && move.category !== 'Status') {
+			if (this.field.isTerrain('chakraterrain') && target.hp === target.maxhp && move.category !== 'Status') {
 				return this.chainModify(2);
 			}
 		},
@@ -466,12 +466,12 @@ exports.BattleAbilities = {
 	// Fiery terrain abilities
 	"hotheaded": {
 		onModifySpe: function (spe, pokemon) {
-			if (this.isTerrain('fieryterrain')) {
+			if (this.field.isTerrain('fieryterrain')) {
 				return this.chainModify(1.5);
 			}
 		},
 		onModifyDamage: function (damage, source, target, move) {
-			if (this.isTerrain('fieryterrain') && move.typeMod < 0) {
+			if (this.field.isTerrain('fieryterrain') && move.typeMod < 0) {
 				this.debug('Hot-Headed boost');
 				return this.chainModify(1.5);
 			}
@@ -486,7 +486,7 @@ exports.BattleAbilities = {
 	},
 	"soulburn": {
 		onModifyMove: function (move, source, target) {
-			if (this.isTerrain('fieryterrain') && move.category === 'Special' && !move.drain && !move.recoil && move.id !== 'mindblown') {
+			if (this.field.isTerrain('fieryterrain') && move.category === 'Special' && !move.drain && !move.recoil && move.id !== 'mindblown') {
 				move.drain = [1, 2];
 			}
 		},
@@ -497,18 +497,18 @@ exports.BattleAbilities = {
 	// Elevated terrain abilities
 	"eagleeye": {
 		onModifyCritRatio: function (critRatio) {
-			if (this.isTerrain('elevatedterrain')) return critRatio + 1;
+			if (this.field.isTerrain('elevatedterrain')) return critRatio + 1;
 		},
 		onSourceModifyAccuracy: function (accuracy) {
 			this.debug('eagleeye - enhancing accuracy');
-			if (this.isTerrain('elevatedterrain')) return true;
+			if (this.field.isTerrain('elevatedterrain')) return true;
 		},
 		id: "eagleeye",
 		name: "Eagle Eye",
 	},
 	"galeforce": {
 		onStart: function (pokemon) {
-			if (this.isTerrain('elevatedterrain')) {
+			if (this.field.isTerrain('elevatedterrain')) {
 				pokemon.side.addSideCondition('tailwind');
 			}
 		},
@@ -522,12 +522,12 @@ exports.BattleAbilities = {
 	},
 	"weightless": {
 		onModifySpe: function (spe, pokemon) {
-			if (this.isTerrain('elevatedterrain')) {
+			if (this.field.isTerrain('elevatedterrain')) {
 				return this.chainModify(2);
 			}
 		},
 		onModifyWeight: function (weight) {
-			if (this.isTerrain('elevatedterrain')) {
+			if (this.field.isTerrain('elevatedterrain')) {
 				return weight / 2;
 			}
 		},
@@ -539,12 +539,12 @@ exports.BattleAbilities = {
 	"graveguardian": {
 		onModifyAtkPriority: 5,
 		onModifyAtk: function (spa, pokemon) {
-			if (this.isTerrain('ominousterrain')) {
+			if (this.field.isTerrain('ominousterrain')) {
 				return this.chainModify(1.5);
 			}
 		},
 		onModifyDamage: function (damage, source, target, move) {
-			if (this.isTerrain('ominousterrain') && target.types.indexOf('Dark') >= 0) {
+			if (this.field.isTerrain('ominousterrain') && target.types.indexOf('Dark') >= 0) {
 				return this.chainModify(2);
 			}
 		},
@@ -553,7 +553,7 @@ exports.BattleAbilities = {
 	},
 	"seance": {
 		onStart: function (pokemon) {
-			if (this.isTerrain('ominousterrain')) {
+			if (this.field.isTerrain('ominousterrain')) {
 				let foeactive = pokemon.side.foe.active;
 				for (let i = 0; i < foeactive.length; i++) {
 					if (!foeactive[i] || foeactive[i].fainted) continue;
@@ -567,7 +567,7 @@ exports.BattleAbilities = {
 		onSourceModifyAccuracy: function (accuracy) {
 			if (typeof accuracy !== 'number') return;
 			this.debug('seance - enhancing accuracy');
-			if (this.isTerrain('ominousterrain')) return accuracy * (4.0/3.0); // myfix: true
+			if (this.field.isTerrain('ominousterrain')) return accuracy * (4.0/3.0); // myfix: true
 		},
 		id: "seance",
 		name: "Se\u0301ance",
@@ -575,7 +575,7 @@ exports.BattleAbilities = {
 	"trickster": {
 		onModifyMovePriority: -2,
 		onModifyMove: function (move) {
-			if (this.isTerrain('ominousterrain') && move.secondaries) {
+			if (this.field.isTerrain('ominousterrain') && move.secondaries) {
 				for (let i = 0; i < move.secondaries.length; i++) {
 					if (move.secondaries[i].status || move.id === 'triattack') move.secondaries[i].chance = 100;
 				}
@@ -590,7 +590,7 @@ exports.BattleAbilities = {
 		onResidualOrder: 26,
 		onResidualSubOrder: 1,
 		onResidual: function (pokemon) {
-			if (this.isTerrain('grassyterrain')) {
+			if (this.field.isTerrain('grassyterrain')) {
 				if (pokemon.hp && !pokemon.item && this.getItem(pokemon.lastItem).name.substr(-4) === 'Herb') {
 					pokemon.setItem(pokemon.lastItem);
 					pokemon.lastItem = '';
@@ -604,14 +604,14 @@ exports.BattleAbilities = {
 	"leafyshield": {
 		onModifyAtkPriority: 6,
 		onSourceModifyAtk: function (atk, attacker, defender, move) {
-			if (this.isTerrain('grassyterrain') && (move.type in {'Bug':1, 'Fire':1, 'Flying':1, 'Ice':1, 'Poison':1,})) {
+			if (this.field.isTerrain('grassyterrain') && (move.type in {'Bug':1, 'Fire':1, 'Flying':1, 'Ice':1, 'Poison':1,})) {
 				this.debug('Leafy Shield weaken');
 				return this.chainModify(0.5);
 			}
 		},
 		onModifySpAPriority: 5,
 		onSourceModifySpA: function (atk, attacker, defender, move) {
-			if (this.isTerrain('grassyterrain') && (move.type in {'Bug':1, 'Fire':1, 'Flying':1, 'Ice':1, 'Poison':1,})) {
+			if (this.field.isTerrain('grassyterrain') && (move.type in {'Bug':1, 'Fire':1, 'Flying':1, 'Ice':1, 'Poison':1,})) {
 				this.debug('Leafy Shield weaken');
 				return this.chainModify(0.5);
 			}
@@ -624,14 +624,14 @@ exports.BattleAbilities = {
 	"fairydust": {
 		// partially implemented in moves.js:sandyterrain
 		onStart: function (pokemon) {
-			if (this.isTerrain('sandyterrain')) {
+			if (this.field.isTerrain('sandyterrain')) {
 				if (pokemon.hasType('Fairy')) return false;
 				if (!pokemon.addType('Fairy')) return false;
 				this.add('-start', pokemon, 'typeadd', 'Fairy', '[from] ability: Fairy Dust');
 			}
 		},
 		onTryHit: function (target, source, move) {
-			if (this.isTerrain('sandyterrain') && (move.type === 'Ground')) {
+			if (this.field.isTerrain('sandyterrain') && (move.type === 'Ground')) {
 				this.add('-immune', target, '[msg]', '[from] ability: Fairy Dust');
 				return null;
 			}
@@ -641,7 +641,7 @@ exports.BattleAbilities = {
 	},
 	"earthshattering": {
 		onModifyDamage: function (damage, source, target, move) {
-			if (this.isTerrain('sandyterrain') && move.typeMod > 0) {
+			if (this.field.isTerrain('sandyterrain') && move.typeMod > 0) {
 				return this.chainModify(2);
 			}
 		},
@@ -650,7 +650,7 @@ exports.BattleAbilities = {
 	},
 	"stickysand": {
 		onBoost: function (boost, target, source, effect) {
-			if (!this.isTerrain('sandyterrain')) return;
+			if (!this.field.isTerrain('sandyterrain')) return;
 			if (source && target === source) return;
 			let showMsg = false;
 			for (let i in boost) {
@@ -664,9 +664,9 @@ exports.BattleAbilities = {
 		onResidualOrder: 5,
 		onResidualSubOrder: 3,
 		onResidual: function (pokemon) {
-			if (this.isTerrain('sandyterrain')) {
+			if (this.field.isTerrain('sandyterrain')) {
 				this.heal(pokemon.maxhp / 8);
-			} else if (this.isTerrain('rockyterrain')) {
+			} else if (this.field.isTerrain('rockyterrain')) {
 				this.damage(pokemon.maxhp / 8);
 			}
 		},
@@ -677,14 +677,14 @@ exports.BattleAbilities = {
 	// Frosty terrain abilities
 	"coldhearted": {
 		onStart: function (pokemon) {
-			if (this.isTerrain('frostyterrain')) this.boost({atk: 1, def: -1, spa: 1, spd: -1, spe: 1,});
+			if (this.field.isTerrain('frostyterrain')) this.boost({atk: 1, def: -1, spa: 1, spd: -1, spe: 1,});
 		},
 		id: "coldhearted",
 		name: "Cold-Hearted",
 	},
 	"coldshoulder": {
 		onAnyModifyBoost: function (boosts, target) {
-			if (this.isTerrain('frostyterrain')) {
+			if (this.field.isTerrain('frostyterrain')) {
 				let source = this.effectData.target;
 				if (source === target) return;
 				if (source === this.activePokemon && target === this.activeTarget) {
@@ -700,14 +700,14 @@ exports.BattleAbilities = {
 			}
 		},
 		onModifyMove: function (move) {
-			if (this.isTerrain('frostyterrain')) move.infiltrates = true;
+			if (this.field.isTerrain('frostyterrain')) move.infiltrates = true;
 		},
 		id: "coldshoulder",
 		name: "Cold Shoulder",
 	},
 	"snapfreeze": {
 		onSourceHit: function (target, source, move) {
-			if (this.isTerrain('frostyterrain') && move.type === 'Ice' && move.category !== 'Status') this.damage(target.maxhp / 8, target, source, 'Snap Freeze');
+			if (this.field.isTerrain('frostyterrain') && move.type === 'Ice' && move.category !== 'Status') this.damage(target.maxhp / 8, target, source, 'Snap Freeze');
 		},
 		id: "snapfreeze",
 		name: "Snap Freeze",
@@ -717,30 +717,30 @@ exports.BattleAbilities = {
 	"clearskies": {
 		onModifyAtkPriority: 5,
 		onModifyAtk: function (spa, pokemon) {
-			if (this.isTerrain('cloudyterrain') && !this.weather) {
+			if (this.field.isTerrain('cloudyterrain') && !this.weather) {
 				return this.chainModify(1.2);
 			}
 		},
 		onModifyDefPriority: 5,
 		onModifyDef: function (spa, pokemon) {
-			if (this.isTerrain('cloudyterrain') && !this.weather) {
+			if (this.field.isTerrain('cloudyterrain') && !this.weather) {
 				return this.chainModify(1.2);
 			}
 		},
 		onModifySpAPriority: 5,
 		onModifySpA: function (spa, pokemon) {
-			if (this.isTerrain('cloudyterrain') && !this.weather) {
+			if (this.field.isTerrain('cloudyterrain') && !this.weather) {
 				return this.chainModify(1.2);
 			}
 		},
 		onModifySpDPriority: 5,
 		onModifySpD: function (spa, pokemon) {
-			if (this.isTerrain('cloudyterrain') && !this.weather) {
+			if (this.field.isTerrain('cloudyterrain') && !this.weather) {
 				return this.chainModify(1.2);
 			}
 		},
 		onModifySpe: function (spa, pokemon) {
-			if (this.isTerrain('cloudyterrain') && !this.weather) {
+			if (this.field.isTerrain('cloudyterrain') && !this.weather) {
 				return this.chainModify(1.2);
 			}
 		},
@@ -749,7 +749,7 @@ exports.BattleAbilities = {
 	},
 	"cloudcleanse": {
 		onStart: function (pokemon) {
-			if (this.isTerrain('cloudyterrain')) {
+			if (this.field.isTerrain('cloudyterrain')) {
 				this.add('-activate', pokemon, 'ability: Cloud Cleanse');
 				let side = pokemon.side;
 				let success = false;
@@ -767,12 +767,12 @@ exports.BattleAbilities = {
 		onModifyMovePriority: -5,
 		onModifyMove: function (move) {
 			if (!move.ignoreImmunity) move.ignoreImmunity = {};
-			if (this.isTerrain('cloudyterrain') && move.ignoreImmunity !== true) {
+			if (this.field.isTerrain('cloudyterrain') && move.ignoreImmunity !== true) {
 				move.ignoreImmunity['Normal'] = true;
 			}
 		},
 		onModifyDamage: function (damage, source, target, move) {
-			if (this.isTerrain('cloudyterrain') && move.type === 'Normal' && target.types.indexOf('Ghost') >= 0) {
+			if (this.field.isTerrain('cloudyterrain') && move.type === 'Normal' && target.types.indexOf('Ghost') >= 0) {
 				return this.chainModify(2);
 			}
 		},
@@ -783,10 +783,10 @@ exports.BattleAbilities = {
 	// Corrosive terrain abilities
 	"cauldronbubble": { // test if broken
 		onStart: function (pokemon) {
-			if (this.isTerrain('corrosiveterrain')) this.boost({spa: 1, spd: 1,});
+			if (this.field.isTerrain('corrosiveterrain')) this.boost({spa: 1, spd: 1,});
 		},
 		onAfterDamage: function (damage, target, source, move) {
-			if (this.isTerrain('corrosiveterrain') && move && move.flags['contact']) {
+			if (this.field.isTerrain('corrosiveterrain') && move && move.flags['contact']) {
 				source.addVolatile('curse', this.effectData.target);
 			}
 		},
@@ -795,7 +795,7 @@ exports.BattleAbilities = {
 	},
 	"neurotoxin": {
 		onModifyMove: function (move, source, target) {
-			if (this.isTerrain('corrosiveterrain') && move.category === 'Special' && !move.drain && !move.recoil && move.id !== 'mindblown') {
+			if (this.field.isTerrain('corrosiveterrain') && move.category === 'Special' && !move.drain && !move.recoil && move.id !== 'mindblown') {
 				move.drain = [1, 2];
 			}
 		},
@@ -805,7 +805,7 @@ exports.BattleAbilities = {
 	"toxicwaste": {
 		onModifyMovePriority: -2,
 		onModifyMove: function (move) {
-			if (this.isTerrain('corrosiveterrain')) {
+			if (this.field.isTerrain('corrosiveterrain')) {
 				if (move.status && move.status === 'psn') move.status = 'tox';
 				if (move.secondaries) {
 					for (let i = 0; i < move.secondaries.length; i++) {
@@ -823,7 +823,7 @@ exports.BattleAbilities = {
 	"enchantedregalia": {
 		// partially implemented in moves.js:psychicicterrain
 		onStart: function (pokemon) {
-			if (this.isTerrain('psychicterrain')) {
+			if (this.field.isTerrain('psychicterrain')) {
 				let foeactive = pokemon.side.foe.active;
 				let activated = false;
 				for (let i = 0; i < foeactive.length; i++) {
@@ -837,7 +837,7 @@ exports.BattleAbilities = {
 			}
 		},
 		onModifyDamage: function (damage, source, target, move) {
-			if (this.isTerrain('psychicterrain') && source.item) {
+			if (this.field.isTerrain('psychicterrain') && source.item) {
 				return this.chainModify(1.2);
 			}
 		},
@@ -845,7 +845,7 @@ exports.BattleAbilities = {
 		onResidualOrder: 26,
 		onResidualSubOrder: 1,
 		onResidual: function (pokemon) {
-			if (this.isTerrain('psychicterrain')) {
+			if (this.field.isTerrain('psychicterrain')) {
 				let foeactive = pokemon.side.foe.active;
 				for (let i = 0; i < foeactive.length; i++) {
 					if (!foeactive[i] || !this.isAdjacent(foeactive[i], pokemon)) continue;
@@ -854,7 +854,7 @@ exports.BattleAbilities = {
 			}
 		},
 		onEnd: function (pokemon) {
-			if (this.isTerrain('psychicterrain')) {
+			if (this.field.isTerrain('psychicterrain')) {
 				let foeactive = pokemon.side.foe.active;
 				for (let i = 0; i < foeactive.length; i++) {
 					if (!foeactive[i] || !this.isAdjacent(foeactive[i], pokemon)) continue;
@@ -867,28 +867,28 @@ exports.BattleAbilities = {
 	},
 	"mindovermatter": {
 		onModifyMove: function (move, pokemon) {
-			if (this.isTerrain('psychicterrain') && move.category === 'Physical') move.category = 'Special';
+			if (this.field.isTerrain('psychicterrain') && move.category === 'Physical') move.category = 'Special';
 		},
 		id: "mindovermatter",
 		name: "Mind over Matter",
 	},
 	"otherwordlyvoice": {
 		onBasePower: function (basePower, attacker, defender, move) {
-			if (this.isTerrain('psychicterrain') && move.flags['sound']) {
+			if (this.field.isTerrain('psychicterrain') && move.flags['sound']) {
 				this.debug('Otherwordly Voice boost');
 				return this.chainModify([0x14CD, 0x1000]);
 			}
 		},
 		onModifyAtkPriority: 6,
 		onSourceModifyAtk: function (atk, attacker, defender, move) {
-			if (this.isTerrain('psychicterrain') && (move.type === 'Dark' || move.type === 'Ghost')) {
+			if (this.field.isTerrain('psychicterrain') && (move.type === 'Dark' || move.type === 'Ghost')) {
 				this.debug('Otherwordly Voice');
 				return this.chainModify(0.5);
 			}
 		},
 		onModifySpAPriority: 5,
 		onSourceModifySpA: function (atk, attacker, defender, move) {
-			if (this.isTerrain('psychicterrain') && (move.type === 'Dark' || move.type === 'Ghost')) {
+			if (this.field.isTerrain('psychicterrain') && (move.type === 'Dark' || move.type === 'Ghost')) {
 				this.debug('Otherwordly Voice');
 				return this.chainModify(0.5);
 			}
@@ -906,7 +906,7 @@ exports.BattleAbilities = {
 	"metalcrush": {
 		// implemented in moves.js:rockyterrain
 		onModifyMove: function (move, pokemon) {
-			if (this.isTerrain('rockyterrain') && move && move.type === 'Rock') {
+			if (this.field.isTerrain('rockyterrain') && move && move.type === 'Rock') {
 				move.metalCrushBoosted = true;
 			}
 		},
@@ -915,18 +915,18 @@ exports.BattleAbilities = {
 	},
 	"meteorstrike": {
 		onModifyPriority: function (priority, pokemon, target, move) {
-			if (this.isTerrain('rockyterrain') && pokemon.activeTurns <= 1 && move.category !== 'Status') {
+			if (this.field.isTerrain('rockyterrain') && pokemon.activeTurns <= 1 && move.category !== 'Status') {
 				return priority += 3;
 			}
 		},
 		onModifyDamage: function (damage, source, target, move) {
-			if (this.isTerrain('rockyterrain') && source.activeTurns <= 1) {
+			if (this.field.isTerrain('rockyterrain') && source.activeTurns <= 1) {
 				return this.chainModify(2);
 			}
 		},
 		onBeforeMovePriority: 6,
 		onBeforeMove: function (pokemon, target, move) {
-			if (this.isTerrain('rockyterrain') && pokemon.activeTurns <= 1 && move.category !== 'Status' && this.getEffectiveness(move.type, target) < 0) {
+			if (this.field.isTerrain('rockyterrain') && pokemon.activeTurns <= 1 && move.category !== 'Status' && this.getEffectiveness(move.type, target) < 0) {
 				this.add('cant', pokemon, 'ability: Meteor Strike', move);
 				return false;
 			}
@@ -940,7 +940,7 @@ exports.BattleAbilities = {
 		onResidualOrder: 26,
 		onResidualSubOrder: 1,
 		onResidual: function (pokemon) {
-			if (this.isTerrain('metallicterrain')) {
+			if (this.field.isTerrain('metallicterrain')) {
 				if (pokemon.hp && !pokemon.item && !this.getItem(pokemon.lastItem).isBerry && this.getItem(pokemon.lastItem).name.substr(-4) !== 'Herb') {
 					pokemon.setItem(pokemon.lastItem);
 					pokemon.lastItem = '';
@@ -958,7 +958,7 @@ exports.BattleAbilities = {
 	},
 	"smartmetal": {
 		onSourceFaint: function (target, source, effect) {
-			if (this.isTerrain('metallicterrain') && effect && effect.effectType === 'Move') {
+			if (this.field.isTerrain('metallicterrain') && effect && effect.effectType === 'Move') {
 				let stat = 'atk';
 				let bestStat = 0;
 				for (let i in source.stats) {
@@ -977,18 +977,18 @@ exports.BattleAbilities = {
 	// Sea terrain
 	"seafoamsplash": {
 		onSourceModifyDamage: function (damage, source, target, move) {
-			if (this.isTerrain('seaterrain')) {
+			if (this.field.isTerrain('seaterrain')) {
 				return this.chainModify(0.75);
 			}
 		},
 		onSetStatus: function (status, target, source, effect) {
-			if (this.isTerrain('seaterrain')) {
+			if (this.field.isTerrain('seaterrain')) {
 				if (effect && effect.status) this.add('-immune', target, '[msg]', '[from] ability: Seafoam Splash');
 				return false;
 			}
 		},
 		onTryAddVolatile: function (status, target) {
-			if (status.id === 'yawn' && this.isTerrain('seaterrain')) {
+			if (status.id === 'yawn' && this.field.isTerrain('seaterrain')) {
 				this.add('-immune', target, '[msg]', '[from] ability: Seafoam Splash');
 				return null;
 			}
@@ -998,37 +998,37 @@ exports.BattleAbilities = {
 	},
 	"stormrage": {
 		onModifyDamage: function (damage, source, target, move) {
-			if (this.isTerrain('seaterrain') && target.types.indexOf('Grass') >= 0) {
+			if (this.field.isTerrain('seaterrain') && target.types.indexOf('Grass') >= 0) {
 				return this.chainModify(1.5);
 			}
 		},
 		onModifyMove: function (move) {
-			if (this.isTerrain('seaterrain') && move.type === 'Water') move.ignoreAbility = true;
+			if (this.field.isTerrain('seaterrain') && move.type === 'Water') move.ignoreAbility = true;
 		},
 		id: "stormrage",
 		name: "Storm Rage",
 	},
 	"waterwalker": {
 		onModifySpe: function (spe, pokemon) {
-			if (this.isTerrain('seaterrain')) {
+			if (this.field.isTerrain('seaterrain')) {
 				return this.chainModify(4.0/3.0); // myfix: 1.5
 			}
 		},
 		onTryHit: function (target, source, move) {
-			if (this.isTerrain('seaterrain') && move.type === 'Ground' && move.id !== 'thousandarrows') {
+			if (this.field.isTerrain('seaterrain') && move.type === 'Ground' && move.id !== 'thousandarrows') {
 				this.add('-immune', target, '[msg]', '[from] ability: Water Walker');
 				return null;
 			}
 		},
 		onDamage: function (damage, target, source, effect) {
 			if (!effect) return;
-			if (this.isTerrain('seaterrain') && effect.id === 'spikes') {
+			if (this.field.isTerrain('seaterrain') && effect.id === 'spikes') {
 				return false;
 			}
 		},
 		onBoost: function (boost, target, source, effect) {
 			if (!effect) return;
-			if (this.isTerrain('seaterrain')) {
+			if (this.field.isTerrain('seaterrain')) {
 				if (effect.id === 'rototiller') {
 					delete boost['atk'];
 					delete boost['spa'];
@@ -1038,7 +1038,7 @@ exports.BattleAbilities = {
 		},
 		onSetStatus: function (status, target, source, effect) {
 			if (!effect) return false;
-			if (this.isTerrain('seaterrain') && effect.id === 'toxicspikes') return false;
+			if (this.field.isTerrain('seaterrain') && effect.id === 'toxicspikes') return false;
 		},
 		// also implemented in Arena Trap below
 		id: "waterwalker",
@@ -1049,14 +1049,14 @@ exports.BattleAbilities = {
 		inherit: true,
 		onFoeTrapPokemon: function (pokemon) {
 			if (!this.isAdjacent(pokemon, this.effectData.target)) return;
-			if (pokemon.isGrounded() && (!this.isTerrain('seaterrain') || pokemon.ability !== 'waterwalker')) {
+			if (pokemon.isGrounded() && (!this.field.isTerrain('seaterrain') || pokemon.ability !== 'waterwalker')) {
 				pokemon.tryTrap(true);
 			}
 		},
 		onFoeMaybeTrapPokemon: function (pokemon, source) {
 			if (!source) source = this.effectData.target;
 			if (!this.isAdjacent(pokemon, source)) return;
-			if (pokemon.isGrounded(!pokemon.knownType) && (!this.isTerrain('seaterrain') || pokemon.ability !== 'waterwalker')) { // Negate immunity if the type is unknown
+			if (pokemon.isGrounded(!pokemon.knownType) && (!this.field.isTerrain('seaterrain') || pokemon.ability !== 'waterwalker')) { // Negate immunity if the type is unknown
 				pokemon.maybeTrapped = true;
 			}
 		},

@@ -171,7 +171,7 @@ exports.BattleAbilities = {
 	gravitationalfield: {
 		shortDesc: "On switch-in, this Pokemon causes the effects of Gravity to occur.",
 		onStart: function (source) {
-			this.addPseudoWeather('gravity', source);
+			this.field.addPseudoWeather('gravity', source);
 		},
 		id: "gravitationalfield",
 		name: "Gravitational Field",
@@ -208,7 +208,7 @@ exports.BattleAbilities = {
 			if (type === 'hail') return false;
 		},
 		onModifySpe: function () {
-			if (this.isWeather(['hail'])) {
+			if (this.field.isWeather(['hail'])) {
 				return this.chainModify(2);
 			}
 		},
@@ -225,12 +225,12 @@ exports.BattleAbilities = {
 	killjoy: {
 		onStart: function (pokemon) {
 			this.add('-ability', pokemon, 'Killjoy');
-			this.addPseudoWeather('killjoy', pokemon, "Killjoy");
+			this.field.addPseudoWeather('killjoy', pokemon, "Killjoy");
 		},
 		onEnd: function (pokemon) {
 			const foes = pokemon.side.foe.active;
-			if (this.pseudoWeather['killjoy'] && !(foes.length && foes[0].hasAbility('killjoy'))) {
-				this.removePseudoWeather('killjoy', pokemon);
+			if (this.field.pseudoWeather['killjoy'] && !(foes.length && foes[0].hasAbility('killjoy'))) {
+				this.field.removePseudoWeather('killjoy', pokemon);
 			}
 		},
 		effect: {

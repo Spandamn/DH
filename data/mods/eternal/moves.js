@@ -753,7 +753,7 @@ exports.BattleMovedex = {
 		},
 		onBasePowerPriority: 8,
 		onBasePower: function(basePower, pokemon) {
-			if (this.isWeather(['sunnyday', 'desolateland'])) {
+			if (this.field.isWeather(['sunnyday', 'desolateland'])) {
 				return this.chainModify(1.5);
 			}
 		},
@@ -1504,7 +1504,7 @@ exports.BattleMovedex = {
 		},
 		onBasePowerPriority: 8,
 		onBasePower: function(basePower, pokemon) {
-			if (this.isWeather(['rainyday', 'primodialsea'])) {
+			if (this.field.isWeather(['rainyday', 'primodialsea'])) {
 				return this.chainModify(1.5);
 			}
 		},
@@ -2600,7 +2600,7 @@ exports.BattleMovedex = {
 		},
 		sideCondition: 'searingscreen',
 		onTryHitSide: function() {
-			if (!this.isWeather(['sunnyday', 'desolateland'])) return false;
+			if (!this.field.isWeather(['sunnyday', 'desolateland'])) return false;
 		},
 		effect: {
 			duration: 5,
@@ -3154,9 +3154,9 @@ onPrepareHit: function(target, source, move) {
 			heal: 1
 		},
 		onHit: function(pokemon) {
-			if (this.isWeather(['sunnyday', 'desolateland', 'hail'])) {
+			if (this.field.isWeather(['sunnyday', 'desolateland', 'hail'])) {
 				return this.heal(this.modify(pokemon.maxhp, 0.25));
-			} else if (this.isWeather(['raindance', 'primordialsea'])) {
+			} else if (this.field.isWeather(['raindance', 'primordialsea'])) {
 				return this.heal(this.modify(pokemon.maxhp, 0.667));
 			} else {
 				return this.heal(this.modify(pokemon.maxhp, 0.5));
@@ -3284,7 +3284,7 @@ onPrepareHit: function(target, source, move) {
 			heal: 1
 		},
 		onHit: function(pokemon) {
-			if (this.isWeather('hail')) {
+			if (this.field.isWeather('hail')) {
 				return this.heal(this.modify(pokemon.maxhp, 0.667));
 			} else {
 				return this.heal(this.modify(pokemon.maxhp, 0.5));
@@ -3656,12 +3656,12 @@ onPrepareHit: function(target, source, move) {
 		},
 		onBasePowerPriority: 4,
 		onBasePower: function(basePower) {
-			if (this.isWeather(['sunnyday', 'desolateland'])) {
+			if (this.field.isWeather(['sunnyday', 'desolateland'])) {
 				return this.chainModify(1.5);
 			}
 		},
 		onModifyMove: function(move) {
-			if (this.isWeather(['sunnyday', 'desolateland'])) {
+			if (this.field.isWeather(['sunnyday', 'desolateland'])) {
 				move.ignoreImmunity = true;
 				move.secondaries.push({
 					chance: 50,

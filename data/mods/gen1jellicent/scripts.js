@@ -521,7 +521,7 @@ exports.BattleScripts = {
 				}
 			}
 			if (moveData.pseudoWeather) {
-				if (this.addPseudoWeather(moveData.pseudoWeather, pokemon, move)) {
+				if (this.field.addPseudoWeather(moveData.pseudoWeather, pokemon, move)) {
 					didSomething = true;
 				}
 			}

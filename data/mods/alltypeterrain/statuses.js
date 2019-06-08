@@ -7,7 +7,7 @@ exports.BattleStatuses = {
 		durationCallback: function (source, effect) {
 			let duration = 5;
 			if (source && source.hasItem('damprock')) duration += 3;
-			if (this.isTerrain('rockyterrain') && source && source.hasAbility('gemenergy')) duration += 2;
+			if (this.field.isTerrain('rockyterrain') && source && source.hasAbility('gemenergy')) duration += 2;
 			return duration;
 		},
 	},
@@ -16,7 +16,7 @@ exports.BattleStatuses = {
 		durationCallback: function (source, effect) {
 			let duration = 5;
 			if (source && source.hasItem('heatrock')) duration += 3;
-			if (this.isTerrain('rockyterrain') && source && source.hasAbility('gemenergy')) duration += 2;
+			if (this.field.isTerrain('rockyterrain') && source && source.hasAbility('gemenergy')) duration += 2;
 			return duration;
 		},
 	},
@@ -25,7 +25,7 @@ exports.BattleStatuses = {
 		durationCallback: function (source, effect) {
 			let duration = 5;
 			if (source && source.hasItem('smoothrock')) duration += 3;
-			if (this.isTerrain('rockyterrain') && source && source.hasAbility('gemenergy')) duration += 2;
+			if (this.field.isTerrain('rockyterrain') && source && source.hasAbility('gemenergy')) duration += 2;
 			return duration;
 		},
 	},
@@ -34,7 +34,7 @@ exports.BattleStatuses = {
 		durationCallback: function (source, effect) {
 			let duration = 5;
 			if (source && source.hasItem('icyrock')) duration += 3;
-			if (this.isTerrain('rockyterrain') && source && source.hasAbility('gemenergy')) duration += 2;
+			if (this.field.isTerrain('rockyterrain') && source && source.hasAbility('gemenergy')) duration += 2;
 			return duration;
 		},
 	},

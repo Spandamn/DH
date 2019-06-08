@@ -1045,7 +1045,7 @@ exports.BattleMovedex = {
 			chance: 100,
 			self: {
 				onHit() {
-					this.setTerrain('psychicterrain');
+					this.field.setTerrain('psychicterrain');
 				},
 			},
 		},
@@ -1824,7 +1824,7 @@ exports.BattleMovedex = {
 		volatileStatus: 'fortressofthorns',
 		onHit(pokemon) {
 			pokemon.addVolatile('stall');
-			this.setTerrain('grassyterrain');
+			this.field.setTerrain('grassyterrain');
 		},
 		effect: {
 			duration: 1,

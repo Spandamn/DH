@@ -498,7 +498,7 @@ let BattleAbilities = {
 		shortDesc: "If Rain is active, this Pokemon's Def is 1.5x.",
 		onModifySpAPriority: 5,
 		onModifySpA: function(def, pokemon) {
-			if (this.isWeather(['raindance', 'primordialsea'])) {
+			if (this.field.isWeather(['raindance', 'primordialsea'])) {
 				return this.chainModify(1.5);
 			}
 		},

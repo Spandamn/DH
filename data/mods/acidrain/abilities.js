@@ -2,7 +2,7 @@ exports.BattleAbilities = {
     "chlorophyll": {
         inherit: true,
         onModifySpe: function (speMod) {
-            if (this.isWeather('sunnyday') || this.isWeather('raindance')) {
+            if (this.field.isWeather('sunnyday') || this.field.isWeather('raindance')) {
                 return this.chain(speMod, 2);
             }
         }
@@ -17,7 +17,7 @@ exports.BattleAbilities = {
         inherit: true,
         onUpdate: function (pokemon) {
             if (!pokemon.isActive || pokemon.speciesid !== 'cherrim') return;
-            if (this.isWeather('sunnyday') || this.isWeather('raindance')) {
+            if (this.field.isWeather('sunnyday') || this.field.isWeather('raindance')) {
                 if (this.effectData.forme !== 'Sunshine') {
                     this.effectData.forme = 'Sunshine';
                     this.add('-formechange', pokemon, 'Cherrim-Sunshine');
@@ -33,13 +33,13 @@ exports.BattleAbilities = {
         },
         onAllyModifyAtk: function (atk) {
             if (this.effectData.target.template.speciesid !== 'cherrim') return;
-            if (this.isWeather('sunnyday') || this.isWeather('raindance')) {
+            if (this.field.isWeather('sunnyday') || this.field.isWeather('raindance')) {
                 return this.chainModify(1.5);
             }
         },
         onAllyModifySpD: function (spd) {
             if (this.effectData.target.template.speciesid !== 'cherrim') return;
-            if (this.isWeather('sunnyday') || this.isWeather('raindance')) {
+            if (this.field.isWeather('sunnyday') || this.field.isWeather('raindance')) {
                 return this.chainModify(1.5);
             }
         }
@@ -47,7 +47,7 @@ exports.BattleAbilities = {
     "harvest": {
         inherit: true,
         onResidual: function (pokemon) {
-            if (this.isWeather('sunnyday') || this.isWeather('raindance') || this.random(2) === 0) {
+            if (this.field.isWeather('sunnyday') || this.field.isWeather('raindance') || this.random(2) === 0) {
                 if (pokemon.hp && !pokemon.item && this.getItem(pokemon.lastItem).isBerry) {
                     pokemon.setItem(pokemon.lastItem);
                     this.add('-item', pokemon, pokemon.getItem(), '[from] ability: Harvest');
@@ -66,12 +66,12 @@ exports.BattleAbilities = {
     "leafguard": {
         inherit: true,
         onSetStatus: function (pokemon) {
-            if (this.isWeather('sunnyday') || this.isWeather('raindance')) {
+            if (this.field.isWeather('sunnyday') || this.field.isWeather('raindance')) {
                 return false;
             }
         },
         onTryHit: function (target, source, move) {
-            if (move && move.id === 'yawn' && (this.isWeather('sunnyday') || this.isWeather('raindance'))) {
+            if (move && move.id === 'yawn' && (this.field.isWeather('sunnyday') || this.field.isWeather('raindance'))) {
                 return false;
             }
         }
@@ -79,7 +79,7 @@ exports.BattleAbilities = {
     "sandforce": {
         inherit: true,
         onBasePower: function (basePower, attacker, defender, move) {
-            if (this.isWeather('sandstorm') || this.isWeather('raindance')) {
+            if (this.field.isWeather('sandstorm') || this.field.isWeather('raindance')) {
                 if (move.type === 'Rock' || move.type === 'Ground' || move.type === 'Steel') {
                     this.debug('Sand Force boost');
                     return this.chainModify([0x14CD, 0x1000]); // The Sand Force modifier is slightly higher than the normal 1.3 (0x14CC)
@@ -90,7 +90,7 @@ exports.BattleAbilities = {
     "sandrush": {
         inherit: true,
         onModifySpe: function (speMod, pokemon) {
-            if (this.isWeather('sandstorm') || this.isWeather('raindance')) {
+            if (this.field.isWeather('sandstorm') || this.field.isWeather('raindance')) {
                 return this.chain(speMod, 2);
             }
         },
@@ -105,7 +105,7 @@ exports.BattleAbilities = {
         inherit: true,
         onAccuracy: function (accuracy) {
             if (typeof accuracy !== 'number') return;
-            if (this.isWeather('sandstorm') || this.isWeather('raindance')) {
+            if (this.field.isWeather('sandstorm') || this.field.isWeather('raindance')) {
                 this.debug('Sand Veil - decreasing accuracy');
                 return accuracy * 0.8;
             }
@@ -115,7 +115,7 @@ exports.BattleAbilities = {
         inherit: true,
         onAccuracy: function (accuracy) {
             if (typeof accuracy !== 'number') return;
-            if (this.isWeather('hail') || this.isWeather('raindance')) {
+            if (this.field.isWeather('hail') || this.field.isWeather('raindance')) {
                 this.debug('Snow Cloak - decreasing accuracy');
                 return accuracy * 0.8;
             }
@@ -130,7 +130,7 @@ exports.BattleAbilities = {
     "solarpower": {
         inherit: true,
         onModifySpA: function (spa, pokemon) {
-            if (this.isWeather('sunnyday') || this.isWeather('raindance')) {
+            if (this.field.isWeather('sunnyday') || this.field.isWeather('raindance')) {
                 return this.chainModify(1.5);
             }
         },

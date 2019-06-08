@@ -381,7 +381,7 @@ exports.BattleAbilities = {
 	"leafguard": {
 		inherit: true,
 		onSetStatus: function (status, target, source, effect) {
-			if (this.isWeather(['sunnyday', 'desolateland'])) {
+			if (this.field.isWeather(['sunnyday', 'desolateland'])) {
 				if (effect && effect.status) {
 					this.add('-immune', target, '[msg]', '[from] ability: Leaf Guard');
 					this.bounceMove(effect, target, source);
@@ -390,7 +390,7 @@ exports.BattleAbilities = {
 			}
 		},
 		onTryAddVolatile: function (status, target, source) {
-			if (status.id === 'yawn' && this.isWeather(['sunnyday', 'desolateland'])) {
+			if (status.id === 'yawn' && this.field.isWeather(['sunnyday', 'desolateland'])) {
 				this.add('-immune', target, '[msg]', '[from] ability: Leaf Guard');
 				this.bounceMove(this.activeMove, target, source);
 				return null;

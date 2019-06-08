@@ -144,11 +144,11 @@ exports.BattleScripts = {
 				didSomething = didSomething || hitResult;
 			}
 			if (moveData.terrain) {
-				hitResult = this.setTerrain(moveData.terrain, pokemon, move);
+				hitResult = this.field.setTerrain(moveData.terrain, pokemon, move);
 				didSomething = didSomething || hitResult;
 			}
 			if (moveData.pseudoWeather) {
-				hitResult = this.addPseudoWeather(moveData.pseudoWeather, pokemon, move);
+				hitResult = this.field.addPseudoWeather(moveData.pseudoWeather, pokemon, move);
 				didSomething = didSomething || hitResult;
 			}
 			if (moveData.forceSwitch) {
@@ -217,7 +217,7 @@ exports.BattleScripts = {
 						}
 						if (target.hasType(cantStatus[status][0])) return false;
 						if (move.ignoreAbility) return true;
-						if (target.hasAbility('leafguard') && this.isWeather(['sunnyday', 'desolateland'])) return false;
+						if (target.hasAbility('leafguard') && this.field.isWeather(['sunnyday', 'desolateland'])) return false;
 						if (target.hasAbility('shieldsdown') && target.template.speciesid === 'miniormeteor') return false;
 						if (target.hasAbility(cantStatus[status])) return false;
 						return true;

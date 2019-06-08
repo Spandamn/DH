@@ -2039,7 +2039,7 @@ exports.BattleItems = {
 			basePower: 130
 		},
 		onEffectiveness: function (typeMod, target, type, move) {
-			if (target.volatiles['ingrain'] || target.volatiles['smackdown'] || this.getPseudoWeather('gravity')) return;
+			if (target.volatiles['ingrain'] || target.volatiles['smackdown'] || this.field.getPseudoWeather('gravity')) return;
 			if (move.type === 'Ground' && !this.getImmunity(move.type, target)) return 0;
 		},
 		onNegateImmunity: function (pokemon, type) {

@@ -2136,7 +2136,7 @@ exports.BattleMovedex = {
             chance: 100,
             self: {
                 onHit() {
-                    this.setTerrain('electricterrain');
+                    this.field.setTerrain('electricterrain');
                 },
             },
         }, ],
@@ -2163,7 +2163,7 @@ exports.BattleMovedex = {
         secondary: {
             self: {
                 onHit() {
-                    this.setTerrain('electricterrain');
+                    this.field.setTerrain('electricterrain');
                 },
             },
         },

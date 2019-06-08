@@ -38,7 +38,7 @@ exports.BattleStatuses = {
 		onResidualOrder: 1,
 		onResidual: function () {
 			this.add('-weather', 'AcidRain', '[upkeep]');
-			if (this.isWeather('acidrain')) this.eachEvent('Weather');
+			if (this.field.isWeather('acidrain')) this.eachEvent('Weather');
 		},
 		onWeather: function (target) {
 			this.damage(target.maxhp / 16);
@@ -67,7 +67,7 @@ exports.BattleStatuses = {
 		onResidualOrder: 1,
 		onResidual: function () {
 			this.add('-weather', 'RagingWinds', '[upkeep]');
-			if (this.isWeather('ragingWinds')) this.eachEvent('Weather');
+			if (this.field.isWeather('ragingWinds')) this.eachEvent('Weather');
 		},
 		onEnd: function () {
 			this.add('-weather', 'none');

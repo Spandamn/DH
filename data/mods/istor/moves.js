@@ -599,7 +599,7 @@ exports.BattleMovedex = {
 		priority: 0,
 		flags: {protect: 1, mirror: 1, distance: 1},
 		onModifyMove: function (move) {
-			if (this.isWeather(['sandstorm'])) {
+			if (this.field.isWeather(['sandstorm'])) {
 				move.accuracy = true;
 			}
 		},

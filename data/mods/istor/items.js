@@ -20,7 +20,7 @@ exports.BattleItems = {
 			basePower: 40,
 		},
 		onModifySpe: function (spe) {
-			if (this.isWeather('hail')) return this.chainModify(1.5);
+			if (this.field.isWeather('hail')) return this.chainModify(1.5);
 		},
 		num: 10002,
 		gen: 7,

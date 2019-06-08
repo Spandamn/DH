@@ -49,9 +49,9 @@ let BattleMovedex = {
 				return 5;
 			},
 			onStart: function(target, source) {
-			this.removePseudoWeather('trickroom');
-			this.removePseudoWeather('magicroom');
-			this.removePseudoWeather('wonderroom');
+			this.field.removePseudoWeather('trickroom');
+			this.field.removePseudoWeather('magicroom');
+			this.field.removePseudoWeather('wonderroom');
 				this.add('-fieldstart', 'move: Inverse Room', '[of] ' + source);
 			},
 			onRestart: function (target, source) {
@@ -103,7 +103,7 @@ let BattleMovedex = {
 				this.add('-fieldstart', 'move: Wonder Room', '[of] ' + source);
 			},
 			onRestart: function (target, source, pokemon) {
-				this.removePseudoWeather('wonderroom');
+				this.field.removePseudoWeather('wonderroom');
 			},
 			onModifyMovePriority: 8,
 			onModifyMove: function(move, pokemon) {
@@ -292,7 +292,7 @@ let BattleMovedex = {
 			},
 			onAfterMove: function (pokemon, target, move) {
 				if (move.type === 'Electric') {
-					this.removePseudoWeather('mudsport');
+					this.field.removePseudoWeather('mudsport');
 				}
 			},
 			onResidualOrder: 21,
@@ -333,7 +333,7 @@ let BattleMovedex = {
 			},
 			onAfterMove: function (pokemon, target, move) {
 				if (move.type === 'Fire') {
-					this.removePseudoWeather('watersport');
+					this.field.removePseudoWeather('watersport');
 				}
 			},
 			onResidualOrder: 21,

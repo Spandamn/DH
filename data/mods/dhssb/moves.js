@@ -730,7 +730,7 @@ exports.BattleMovedex = {
 			mirror: 1
 		},
 		onModifyMove: function(move) {
-			if (this.isWeather('hail') || this.isWeather('russianwinter')) move.accuracy = true;
+			if (this.field.isWeather('hail') || this.field.isWeather('russianwinter')) move.accuracy = true;
 		},
 		secondary: {
 			chance: 10,

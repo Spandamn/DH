@@ -105,19 +105,19 @@ let BattleAbilities = {
 		shortDesc: "Boosts Atk, SpA and Spe by 50% in Sun.",
 		onModifySpAPriority: 5,
 		onModifySpA: function (spa, pokemon) {
-			if (this.isWeather(['sunnyday', 'desolateland'])) {
+			if (this.field.isWeather(['sunnyday', 'desolateland'])) {
 				return this.chainModify(1.5);
 			}
 		},
 		onModifyAtjPriority: 5,
 		onModifyAtk: function (spa, pokemon) {
-			if (this.isWeather(['sunnyday', 'desolateland'])) {
+			if (this.field.isWeather(['sunnyday', 'desolateland'])) {
 				return this.chainModify(1.5);
 			}
 		},
 		onModifySpePriority: 5,
 		onModifySpe: function (spa, pokemon) {
-			if (this.isWeather(['sunnyday', 'desolateland'])) {
+			if (this.field.isWeather(['sunnyday', 'desolateland'])) {
 				return this.chainModify(1.5);
 			}
 		},
@@ -246,14 +246,14 @@ let BattleAbilities = {
 			} else if (pokemon.item === 'breezerock') {
 				pokemon.addType('Flying');
 				this.setWeather('aircurrent');
-			} else if (this.isWeather('deltastream')) {
+			} else if (this.field.isWeather('deltastream')) {
 				pokemon.addType('Flying');
 			}
 		},
 		onUpdate: function(pokemon) {
 			if (pokemon.baseTemplate.baseSpecies !== 'Castform' || pokemon.transformed) return;
 			let forme = null;
-			switch (this.effectiveWeather()) {
+			switch (this.field.effectiveWeather()) {
 				case 'sunnyday':
 				case 'desolateland':
 					if (pokemon.template.speciesid !== 'castformsunny') forme = 'Castform-Sunny';

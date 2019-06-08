@@ -224,7 +224,7 @@ exports.BattleAbilities = {
 		shortDesc: "If Misty Terrain is active, this Pokemon's Special Attack is multiplied by 1.3.",
 		onModifySpaPriority: 6,
 		onModifySpa: function (pokemon) {
-			if (this.isTerrain('mistyterrain')) return this.chainModify(1.3);
+			if (this.field.isTerrain('mistyterrain')) return this.chainModify(1.3);
 		},
 		id: "mistcannon",
 		name: "Mist Cannon",
@@ -234,11 +234,11 @@ exports.BattleAbilities = {
 		shortDesc: "If Misty Terrain is active, this Pokemon's Defense's are multiplied by 1.3.",
 		onModifyDefPriority: 6,
 		onModifyDef: function (pokemon) {
-			if (this.isTerrain('mistyterrain')) return this.chainModify(1.3);
+			if (this.field.isTerrain('mistyterrain')) return this.chainModify(1.3);
 		},
 		onModifySpdPriority: 6,
 		onModifySpd: function (pokemon) {
-			if (this.isTerrain('mistyterrain')) return this.chainModify(1.3);
+			if (this.field.isTerrain('mistyterrain')) return this.chainModify(1.3);
 		},
 		id: "mistshield",
 		name: "Mist Shield",

@@ -176,9 +176,9 @@ exports.BattleMovedex = {
 		priority: 0,
 		flags: {snatch: 1, heal: 1},
 		onHit: function(pokemon) {
-			if (this.isWeather(['raindance', 'primordialsea'])) {
+			if (this.field.isWeather(['raindance', 'primordialsea'])) {
 				this.heal(this.modify(pokemon.maxhp, 0.667));
-			} else if (this.isWeather(['sunnyday', 'desolateland'])) {
+			} else if (this.field.isWeather(['sunnyday', 'desolateland'])) {
 				this.heal(this.modify(pokemon.maxhp, 0.25));
 			}  else {
 				this.heal(this.modify(pokemon.maxhp, 0.5));
@@ -203,7 +203,7 @@ exports.BattleMovedex = {
 		priority: 0,
 		flags: {protect: 1, mirror: 1},
 		onModifyMove: function(move) {
-			if (this.isWeather(['raindance', 'primordialsea'])) {
+			if (this.field.isWeather(['raindance', 'primordialsea'])) {
 				return move.basePower * 2;
 			}
 		},
@@ -366,7 +366,7 @@ exports.BattleMovedex = {
 		priority: 0,
 		flags: {contact: 1, protect: 1, mirror: 1},
 		onHit: function(source, effect) {
-			this.addPseudoWeather('trickroom', source, effect, '[of] ' + source);
+			this.field.addPseudoWeather('trickroom', source, effect, '[of] ' + source);
 
 		},
 		secondary: false,
@@ -849,9 +849,9 @@ exports.BattleMovedex = {
 			this.setWeather('raindance');
 		},
 		onModifyMove: function(move) {
-			if (this.isWeather(['raindance', 'primordialsea'])) {
+			if (this.field.isWeather(['raindance', 'primordialsea'])) {
 				move.accuracy = true;
-			} else if (this.isWeather(['sunnyday', 'desolateland'])) {
+			} else if (this.field.isWeather(['sunnyday', 'desolateland'])) {
 				move.accuracy = 50;
 			}
 		},
@@ -1038,10 +1038,10 @@ exports.BattleMovedex = {
 		priority: 0,
 		flags: {mirror: 1},
 		onHitField: function (target, source, effect) {
-			if (this.pseudoWeather['wonderroom']) {
-				this.removePseudoWeather('wonderroom', source, effect, '[of] ' + source);
+			if (this.field.pseudoWeather['wonderroom']) {
+				this.field.removePseudoWeather('wonderroom', source, effect, '[of] ' + source);
 			} else {
-				this.addPseudoWeather('wonderroom', source, effect, '[of] ' + source);
+				this.field.addPseudoWeather('wonderroom', source, effect, '[of] ' + source);
 			}
 		},
 		effect: {
@@ -1080,10 +1080,10 @@ exports.BattleMovedex = {
 		priority: 0,
 		flags: {mirror: 1},
 		onHitField: function (target, source, effect) {
-			if (this.pseudoWeather['magicroom']) {
-				this.removePseudoWeather('magicroom', source, effect, '[of] ' + source);
+			if (this.field.pseudoWeather['magicroom']) {
+				this.field.removePseudoWeather('magicroom', source, effect, '[of] ' + source);
 			} else {
-				this.addPseudoWeather('magicroom', source, effect, '[of] ' + source);
+				this.field.addPseudoWeather('magicroom', source, effect, '[of] ' + source);
 			}
 		},
 		effect: {
@@ -1122,10 +1122,10 @@ exports.BattleMovedex = {
 		priority: -7,
 		flags: {mirror: 1},
 		onHitField: function (target, source, effect) {
-			if (this.pseudoWeather['trickroom']) {
-				this.removePseudoWeather('trickroom', source, effect, '[of] ' + source);
+			if (this.field.pseudoWeather['trickroom']) {
+				this.field.removePseudoWeather('trickroom', source, effect, '[of] ' + source);
 			} else {
-				this.addPseudoWeather('trickroom', source, effect, '[of] ' + source);
+				this.field.addPseudoWeather('trickroom', source, effect, '[of] ' + source);
 			}
 		},
 		effect: {
@@ -1168,7 +1168,7 @@ exports.BattleMovedex = {
 		priority: 0,
 		flags: {bullet: 1, protect: 1, mirror: 1},
 		onModifyMove: function (move) {
-			switch (this.effectiveWeather()) {
+			switch (this.field.effectiveWeather()) {
 			case 'sunnyday':
 			case 'desolateland':
 				move.type = 'Fire';
@@ -1344,9 +1344,9 @@ exports.BattleMovedex = {
 		priority: 0,
 		flags: {snatch: 1, heal: 1},
 		onHit: function(pokemon) {
-			if (this.isWeather(['hail'])) {
+			if (this.field.isWeather(['hail'])) {
 				this.heal(this.modify(pokemon.maxhp, 0.667));
-			} else if (this.isWeather(['sandstorm'])) {
+			} else if (this.field.isWeather(['sandstorm'])) {
 				this.heal(this.modify(pokemon.maxhp, 0.25));
 			}  else {
 				this.heal(this.modify(pokemon.maxhp, 0.5));
@@ -1372,9 +1372,9 @@ exports.BattleMovedex = {
 		priority: 0,
 		flags: {snatch: 1, heal: 1},
 		onHit: function(pokemon) {
-			if (this.isWeather(['sandstorm'])) {
+			if (this.field.isWeather(['sandstorm'])) {
 				this.heal(this.modify(pokemon.maxhp, 0.667));
-			} else if (this.isWeather(['hail'])) {
+			} else if (this.field.isWeather(['hail'])) {
 				this.heal(this.modify(pokemon.maxhp, 0.25));
 			}  else {
 				this.heal(this.modify(pokemon.maxhp, 0.5));
@@ -1703,7 +1703,7 @@ exports.BattleMovedex = {
 			chance: 100,
 			self: {
 				onHit: function () {
-					this.setTerrain('mistyterrain');
+					this.field.setTerrain('mistyterrain');
 				},
 			},
 		},

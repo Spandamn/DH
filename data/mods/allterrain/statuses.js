@@ -7,7 +7,7 @@ exports.BattleStatuses = {
 		effectType: 'terrain',
 		duration: 0,
 		onBegin: function() {
-			this.setTerrain('allterrain');
+			this.field.setTerrain('allterrain');
 		},
 		onSetStatus: function (status, target, source, effect) {
 			if (!target.isGrounded() || target.isSemiInvulnerable()) return;

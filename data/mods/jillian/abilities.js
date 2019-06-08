@@ -266,7 +266,7 @@ exports.BattleAbilities = {
         "brushrusher": {
 		shortDesc: "If Grassy Terrain is active, this Pokemon's Speed is doubled.",
 		onModifySpe: function (spe) {
-			if (this.isTerrain('grassyterrain')) {
+			if (this.field.isTerrain('grassyterrain')) {
 				return this.chainModify(2);
 			}
 		},
@@ -277,7 +277,7 @@ exports.BattleAbilities = {
 	"mistskimmer": {
 		shortDesc: "If Misty Terrain is active, this Pokemon's Speed is doubled.",
 		onModifySpe: function (spe) {
-			if (this.isTerrain('mistyterrain')) {
+			if (this.field.isTerrain('mistyterrain')) {
 				return this.chainModify(2);
 			}
 		},
@@ -288,7 +288,7 @@ exports.BattleAbilities = {
 	"miracledash": {
 		shortDesc: "If Psychic Terrain is active, this Pokemon's Speed is doubled.",
 		onModifySpe: function (spe) {
-			if (this.isTerrain('psychicterrain')) {
+			if (this.field.isTerrain('psychicterrain')) {
 				return this.chainModify(2);
 			}
 		},
@@ -447,13 +447,13 @@ exports.BattleAbilities = {
 		 shortDesc: "+50% Atk and SpAtk under rain, -1/8 HP per turn",
 		 onModifySpAPriority: 5,
 		 onModifySpA: function (spa, pokemon) {
-			if (this.isWeather(['raindance', 'primordialsea'])) {
+			if (this.field.isWeather(['raindance', 'primordialsea'])) {
 				return this.chainModify(1.5);
 			}
 		},
 		onModifyAtkPriority: 5,
 		onModifyAtk: function (atk, pokemon) {
-			if (this.isWeather(['raindance', 'primordialsea'])) {
+			if (this.field.isWeather(['raindance', 'primordialsea'])) {
 				return this.chainModify(1.5);
 			}
 		},

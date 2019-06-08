@@ -692,7 +692,7 @@ exports.BattleScripts = {
 		let defenseStat = defensiveCategory === 'Physical' ? 'def' : 'spd';
 
 		// Mirror Image implementation
-		if (this.isTerrain('metallicterrain')) {
+		if (this.field.isTerrain('metallicterrain')) {
 			let mirrorImage = false;
 			for (let sideSlot = 0; sideSlot < this.sides.length; sideSlot++) {
 				let sideActive = this.sides[sideSlot].active;

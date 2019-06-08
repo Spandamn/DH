@@ -22,14 +22,14 @@ exports.BattleAbilities = {
 			} else if (pokemon.item === 'breezerock') {
 				pokemon.addType('Flying');
 				this.setWeather('aircurrent');
-			} else if (this.isWeather('deltastream')) {
+			} else if (this.field.isWeather('deltastream')) {
 				pokemon.addType('Flying');
 			}
 		},
 		onUpdate: function(pokemon) {
 			if (pokemon.baseTemplate.baseSpecies !== 'Castform' || pokemon.transformed) return;
 			let forme = null;
-			switch (this.effectiveWeather()) {
+			switch (this.field.effectiveWeather()) {
 				case 'sunnyday':
 				case 'desolateland':
 					if (pokemon.template.speciesid !== 'castformsunny') forme = 'Castform-Sunny';
@@ -208,10 +208,10 @@ exports.BattleAbilities = {
 		shortDesc: "Removes hazards upon switch-in.",
 		onSwitchInPriority: 6,
 		onSwitchIn: function(pokemon, target, source) {
-			this.removePseudoWeather('trickroom');
-			this.removePseudoWeather('magicroom');
-			this.removePseudoWeather('wonderroom');
-			this.removePseudoWeather('inverseroom');
+			this.field.removePseudoWeather('trickroom');
+			this.field.removePseudoWeather('magicroom');
+			this.field.removePseudoWeather('wonderroom');
+			this.field.removePseudoWeather('inverseroom');
 			let sideConditions = ['spikes', 'toxicspikes', 'stealthrock', 'stickyweb'];
 			for (const condition of sideConditions) {
 				if (pokemon.hp && pokemon.side.removeSideCondition(condition)) {
@@ -544,7 +544,7 @@ exports.BattleAbilities = {
 	"sugarglider": {
 		shortDesc: "If Air Current is active, this Pokemon's Speed is doubled.",
 		onModifySpe: function (spe, pokemon) {
-			if (this.isWeather(['aircurrent'])) {
+			if (this.field.isWeather(['aircurrent'])) {
 				return this.chainModify(2);
 			}
 		},
@@ -582,7 +582,7 @@ exports.BattleAbilities = {
 	"sandveil": {
 		shortDesc: "Under Sandstorm, this Pokemon takes 33% less damage from all but NvE moves (Includes Stealth Rocks)",
 		onSourceModifyDamage: function (damage, source, target, move) {
-			if (move.typeMod < 0 && this.isWeather('sandstorm')) {
+			if (move.typeMod < 0 && this.field.isWeather('sandstorm')) {
 				return this.chainModify(0.67);
 			}
 		},
@@ -592,7 +592,7 @@ exports.BattleAbilities = {
 	"snowcloak": {
 		shortDesc: "Under Sandstorm, this Pokemon takes 33% less damage from all but NvE moves (Includes Stealth Rocks)",
 		onSourceModifyDamage: function (damage, source, target, move) {
-			if (move.typeMod < 0 && this.isWeather('hail')) {;
+			if (move.typeMod < 0 && this.field.isWeather('hail')) {;
 				return this.chainModify(0.67);
 			}
 		},
@@ -602,7 +602,7 @@ exports.BattleAbilities = {
 	"wetsuit": {
 		shortDesc: "Under Rain, this Pokemon takes 33% less damage from all but NvE moves (Includes Stealth Rocks)",
 		onSourceModifyDamage: function (damage, source, target, move) {
-			if (move.typeMod < 0 && this.isWeather(['raindance', 'primordialsea'])) {
+			if (move.typeMod < 0 && this.field.isWeather(['raindance', 'primordialsea'])) {
 				return this.chainModify(0.67);
 			}
 		},
@@ -612,7 +612,7 @@ exports.BattleAbilities = {
 	"bask": {
 		shortDesc: "Under Harsh Sunlight, this Pokemon takes 33% less damage from all but NvE moves (Includes Stealth Rocks)",
 		onSourceModifyDamage: function (damage, source, target, move) {
-			if (move.typeMod < 0 && this.isWeather(['desolateland'])) {
+			if (move.typeMod < 0 && this.field.isWeather(['desolateland'])) {
 				return this.chainModify(0.67);
 			}
 		},

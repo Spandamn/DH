@@ -16,12 +16,12 @@ exports.BattleAbilities = {
 	"flowergift": {
 		inherit: true,
 		onAllyModifyAtk: function (atk) {
-			if (this.isWeather('sunnyday')) {
+			if (this.field.isWeather('sunnyday')) {
 				return this.chainModify(1.5);
 			}
 		},
 		onAllyModifySpD: function (spd) {
-			if (this.isWeather('sunnyday')) {
+			if (this.field.isWeather('sunnyday')) {
 				return this.chainModify(1.5);
 			}
 		},
@@ -58,7 +58,7 @@ exports.BattleAbilities = {
 		onSetStatus: function (status, target, source, effect) {
 			if (effect && effect.id === 'rest') {
 				return;
-			} else if (this.isWeather('sunnyday')) {
+			} else if (this.field.isWeather('sunnyday')) {
 				return false;
 			}
 		},

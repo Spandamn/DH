@@ -586,7 +586,7 @@ brn: {
 		// So we give it increased priority.
 		onModifySpDPriority: 10,
 		onModifySpD: function (spd, pokemon) {
-			if (pokemon.hasType('Rock') && this.isWeather('sandstorm')) {
+			if (pokemon.hasType('Rock') && this.field.isWeather('sandstorm')) {
 				return this.modify(spd, 1.5);
 			}
 		},
@@ -601,7 +601,7 @@ brn: {
 		onResidualOrder: 1,
 		onResidual: function () {
 			this.add('-weather', 'Sandstorm', '[upkeep]');
-			if (this.isWeather('sandstorm')) this.eachEvent('Weather');
+			if (this.field.isWeather('sandstorm')) this.eachEvent('Weather');
 		},
 		onWeather: function (target) {
 			this.damage(target.maxhp / 16);
@@ -630,7 +630,7 @@ brn: {
 		onResidualOrder: 1,
 		onResidual: function () {
 			this.add('-weather', 'Hail', '[upkeep]');
-			if (this.isWeather('hail')) this.eachEvent('Weather');
+			if (this.field.isWeather('hail')) this.eachEvent('Weather');
 		},
 		onWeather: function (target) {
 			this.damage(target.maxhp / 16);

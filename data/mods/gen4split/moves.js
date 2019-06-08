@@ -879,9 +879,9 @@ exports.BattleMovedex = {
 	moonlight: {
 		inherit: true,
 		onHit: function (pokemon) {
-			if (this.isWeather(['sunnyday', 'desolateland'])) {
+			if (this.field.isWeather(['sunnyday', 'desolateland'])) {
 				this.heal(pokemon.maxhp * 2 / 3);
-			} else if (this.isWeather(['raindance', 'primordialsea', 'sandstorm', 'hail'])) {
+			} else if (this.field.isWeather(['raindance', 'primordialsea', 'sandstorm', 'hail'])) {
 				this.heal(pokemon.maxhp / 4);
 			} else {
 				this.heal(pokemon.maxhp / 2);
@@ -891,9 +891,9 @@ exports.BattleMovedex = {
 	morningsun: {
 		inherit: true,
 		onHit: function (pokemon) {
-			if (this.isWeather(['sunnyday', 'desolateland'])) {
+			if (this.field.isWeather(['sunnyday', 'desolateland'])) {
 				this.heal(pokemon.maxhp * 2 / 3);
-			} else if (this.isWeather(['raindance', 'primordialsea', 'sandstorm', 'hail'])) {
+			} else if (this.field.isWeather(['raindance', 'primordialsea', 'sandstorm', 'hail'])) {
 				this.heal(pokemon.maxhp / 4);
 			} else {
 				this.heal(pokemon.maxhp / 2);
@@ -1083,9 +1083,9 @@ exports.BattleMovedex = {
 	synthesis: {
 		inherit: true,
 		onHit: function (pokemon) {
-			if (this.isWeather(['sunnyday', 'desolateland'])) {
+			if (this.field.isWeather(['sunnyday', 'desolateland'])) {
 				this.heal(pokemon.maxhp * 2 / 3);
-			} else if (this.isWeather(['raindance', 'primordialsea', 'sandstorm', 'hail'])) {
+			} else if (this.field.isWeather(['raindance', 'primordialsea', 'sandstorm', 'hail'])) {
 				this.heal(pokemon.maxhp / 4);
 			} else {
 				this.heal(pokemon.maxhp / 2);

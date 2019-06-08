@@ -9,7 +9,7 @@ exports.BattleItems = {
 			basePower: 10,
 		},
 		onUpdate: function (pokemon) {
-			if (this.isTerrain('pollenterrain') && pokemon.useItem()) {
+			if (this.field.isTerrain('pollenterrain') && pokemon.useItem()) {
 				this.boost({spd: 1});
 			}
 		},
@@ -23,7 +23,7 @@ exports.BattleItems = {
 			basePower: 10,
 		},
 		onUpdate: function (pokemon) {
-			if (this.isTerrain('murkyterrain') && pokemon.useItem()) {
+			if (this.field.isTerrain('murkyterrain') && pokemon.useItem()) {
 				this.add('-clearallboost');
 				for (let i = 0; i < this.sides.length; i++) {
 					for (let j = 0; j < this.sides[i].active.length; j++) {
@@ -42,7 +42,7 @@ exports.BattleItems = {
 			basePower: 10,
 		},
 		onUpdate: function (pokemon) {
-			if (this.isTerrain('regalterrain') && pokemon.useItem()) {
+			if (this.field.isTerrain('regalterrain') && pokemon.useItem()) {
 				this.boost({acc: 1});
 			}
 		},
@@ -56,7 +56,7 @@ exports.BattleItems = {
 			basePower: 10,
 		},
 		onUpdate: function (pokemon) {
-			if (this.isTerrain('fieryterrain') && pokemon.useItem()) {
+			if (this.field.isTerrain('fieryterrain') && pokemon.useItem()) {
 				this.boost({def: 1});
 			}
 		},
@@ -70,7 +70,7 @@ exports.BattleItems = {
 			basePower: 10,
 		},
 		onUpdate: function (pokemon) {
-			if (this.isTerrain('chakraterrain') && pokemon.useItem()) {
+			if (this.field.isTerrain('chakraterrain') && pokemon.useItem()) {
 				pokemon.addVolatile('focusenergy');
 			}
 		},
@@ -84,7 +84,7 @@ exports.BattleItems = {
 			basePower: 10,
 		},
 		onUpdate: function (pokemon) {
-			if (this.isTerrain('elevatedterrain') && pokemon.useItem()) {
+			if (this.field.isTerrain('elevatedterrain') && pokemon.useItem()) {
 				this.boost({def: 1});
 			}
 		},
@@ -98,7 +98,7 @@ exports.BattleItems = {
 			basePower: 10,
 		},
 		onUpdate: function (pokemon) {
-			if (this.isTerrain('ominousterrain') && pokemon.useItem()) {
+			if (this.field.isTerrain('ominousterrain') && pokemon.useItem()) {
 				this.boost({spd: 1});
 			}
 		},
@@ -112,7 +112,7 @@ exports.BattleItems = {
 			basePower: 10,
 		},
 		onUpdate: function (pokemon) {
-			if (this.isTerrain('sandyterrain') && pokemon.useItem()) {
+			if (this.field.isTerrain('sandyterrain') && pokemon.useItem()) {
 				this.boost({spd: 1});
 			}
 		},
@@ -126,7 +126,7 @@ exports.BattleItems = {
 			basePower: 10,
 		},
 		onUpdate: function (pokemon) {
-			if (this.isTerrain('frostyterrain') && pokemon.useItem()) {
+			if (this.field.isTerrain('frostyterrain') && pokemon.useItem()) {
 				this.boost({def: 1});
 			}
 		},
@@ -140,7 +140,7 @@ exports.BattleItems = {
 			basePower: 10,
 		},
 		onUpdate: function (pokemon) {
-			if (this.isTerrain('cloudyterrain') && pokemon.useItem()) {
+			if (this.field.isTerrain('cloudyterrain') && pokemon.useItem()) {
 				this.boost({spd: 1});
 			}
 		},
@@ -154,7 +154,7 @@ exports.BattleItems = {
 			basePower: 10,
 		},
 		onUpdate: function (pokemon) {
-			if (this.isTerrain('rockyterrain') && pokemon.useItem()) {
+			if (this.field.isTerrain('rockyterrain') && pokemon.useItem()) {
 				this.boost({def: 1});
 			}
 		},
@@ -168,7 +168,7 @@ exports.BattleItems = {
 			basePower: 10,
 		},
 		onUpdate: function (pokemon) {
-			if (this.isTerrain('corrosiveterrain') && pokemon.useItem()) {
+			if (this.field.isTerrain('corrosiveterrain') && pokemon.useItem()) {
 				this.boost({spd: 1});
 			}
 		},
@@ -182,7 +182,7 @@ exports.BattleItems = {
 			basePower: 10,
 		},
 		onUpdate: function (pokemon) {
-			if (this.isTerrain('metallicterrain') && pokemon.useItem()) {
+			if (this.field.isTerrain('metallicterrain') && pokemon.useItem()) {
 				this.boost({spe: 1});
 			}
 		},
@@ -196,7 +196,7 @@ exports.BattleItems = {
 			basePower: 10,
 		},
 		onUpdate: function (pokemon) {
-			if (this.isTerrain('seaterrain') && pokemon.useItem()) {
+			if (this.field.isTerrain('seaterrain') && pokemon.useItem()) {
 				this.boost({spd: 1});
 			}
 		},

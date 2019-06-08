@@ -14,7 +14,7 @@ exports.BattleStatuses = {
         },
         onModifySpDPriority: 10,
         onModifySpD: function (spd, pokemon) {
-            if (pokemon.hasType('Rock') && this.isWeather('RainDance')) {
+            if (pokemon.hasType('Rock') && this.field.isWeather('RainDance')) {
                 return this.modify(spd, 1.5);
             }
         },

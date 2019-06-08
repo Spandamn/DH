@@ -21,10 +21,10 @@ exports.BattleStatuses = {
 		onResidualOrder: 1,
 		onResidual: function () {
 			this.add('-weather', 'Hail', '[upkeep]');
-			if (this.isWeather('hail')) this.eachEvent('Weather');
+			if (this.field.isWeather('hail')) this.eachEvent('Weather');
 		},
 		onModifyDef: function (def, pokemon) {
-			if (pokemon.hasType('Ice') && this.isWeather('hail')) {
+			if (pokemon.hasType('Ice') && this.field.isWeather('hail')) {
 				return this.modify(def, 1.5);
 			}
 		},

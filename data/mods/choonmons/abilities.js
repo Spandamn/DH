@@ -55,7 +55,7 @@ exports.BattleAbilities = {
 		onResidualOrder: 5,
 		onResidualSubOrder: 1,
 		onResidual: function (pokemon) {
-			if (pokemon.status && this.isWeather(['sunnyday', 'desolateland'])) {
+			if (pokemon.status && this.field.isWeather(['sunnyday', 'desolateland'])) {
 				this.debug('leafguard');
 				pokemon.cureStatus();
 			}
