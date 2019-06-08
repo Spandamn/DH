@@ -149,11 +149,11 @@ exports.BattleScripts = {
 				didSomething = didSomething || hitResult;
 			}
 			if (moveData.weather) {
-				hitResult = this.setWeather(moveData.weather, pokemon, move);
+				hitResult = this.field.setWeather(moveData.weather, pokemon, move);
 				didSomething = didSomething || hitResult;
 			}
 			if (moveData.terrain) {
-				hitResult = this.setTerrain(moveData.terrain, pokemon, move);
+				hitResult = this.field.setTerrain(moveData.terrain, pokemon, move);
 				didSomething = didSomething || hitResult;
 			}
 			if (moveData.pseudoWeather) {

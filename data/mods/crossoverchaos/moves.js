@@ -1,7 +1,5 @@
 /*
-
 List of flags and their descriptions:
-
 authentic: Ignores a target's substitute.
 bite: Power is multiplied by 1.5 when used by a Pokemon with the Ability Strong Jaw.
 bullet: Has no effect on Pokemon with the Ability Bulletproof.
@@ -23,7 +21,6 @@ recharge: If this move is successful, the user must recharge on the following tu
 reflectable: Bounced back to the original user by Magic Coat or the Ability Magic Bounce.
 snatch: Can be stolen from the original user and instead used by another Pokemon using Snatch.
 sound: Has no effect on Pokemon with the Ability Soundproof.
-
 */
 
 'use strict';
@@ -387,7 +384,7 @@ let BattleMovedex = {
 		},
 		category: "Physical",
 		desc: "Hits three times. Power increases to 30 for the second hit and 40 for the third. This move does not check accuracy. If one of the hits breaks the target's substitute, it will take damage for the remaining hits.",
-		shortDesc: "Hits 3 times. This move does not check accuracy.",
+		shortDesc: "Hits 3 times with BP 20 -> 30 -> 40. This move does not check accuracy.",
 		id: "crystalspin",
 		name: "Crystal Spin",
 		pp: 10,
@@ -550,6 +547,87 @@ let BattleMovedex = {
 		type: "Ice",
 		zMoveBoost: {def: 1},
 		contestType: "Cool",
+	},
+	"heartache": {
+		num: 40020,
+		accuracy: 100,
+		basePower: 150,
+		category: "Special",
+		desc: "Accuracy is equal to (target's current HP * 100% / target's maximum HP), rounded half down.",
+		shortDesc: "Less accuracy as target's HP decreases.",
+		id: "heartache",
+		isViable: true,
+		name: "Heartache",
+		pp: 25,
+		priority: 0,
+		flags: {protect: 1, mirror: 1},
+		onModifyMove(move, source, target) {
+			move.accuracy = Math.floor(Math.floor((move.accuracy * (100 * Math.floor(target.hp * 4096 / target.maxhp)) + 2048 - 1) / 4096) / 100);
+		},
+		secondary: null,
+		target: "normal",
+		type: "Fire",
+		zMovePower: 200,
+		contestType: "Beautiful",
+	},
+    "liarshot": {
+        num: 40021,
+        accuracy: 100,
+        basePower: 80,
+        category: "Physical",
+        desc: "Has a 30% chance to flinch the target.",
+        shortDesc: "30% chance to flinch the target.",
+        id: "liarshot",
+        isViable: true,
+        name: "Liar Shot",
+        pp: 15,
+        priority: 0,
+        flags: {protect: 1, mirror: 1},
+        secondary: {
+            chance: 30,
+            volatileStatus: 'flinch',
+        },
+        target: "normal",
+        type: "Dark",
+        zMovePower: 160,
+    },
+    "thorntrap": {
+        num: 40022,
+        accuracy: 95,
+        basePower: 35,
+        category: "Physical",
+        desc: "Prevents the target from switching for four or five turns; seven turns if the user is holding Grip Claw. Causes damage to the target equal to 1/8 of its maximum HP (1/6 if the user is holding Binding Band), rounded down, at the end of each turn during effect. The target can still switch out if it is holding Shed Shell or uses Baton Pass, Parting Shot, U-turn, or Volt Switch. The effect ends if either the user or the target leaves the field, or if the target uses Rapid Spin or Substitute. This effect is not stackable or reset by using this or another partial-trapping move.",
+        shortDesc: "Traps and damages the target for 4-5 turns.",
+        id: "thorntrap",
+        name: "Thorn Trap",
+        pp: 20,
+        priority: 0,
+        flags: {protect: 1, mirror: 1},
+        volatileStatus: 'partiallytrapped',
+        secondary: false,
+        target: "normal",
+        type: "Grass",
+        zMovePower: 100,
+    },
+	"blackholebomb": {
+      num: 40023,
+		accuracy: 95,
+		basePower: 90,
+		category: "Special",
+		desc: "The user recovers 1/4 the HP lost by the target, rounded half up. If Big Root is held by the user, the HP recovered is 1.3x normal, rounded half down.",
+		shortDesc: "User recovers 25% of the damage dealt.",
+		id: "blackholebomb",
+		isViable: true,
+		name: "Black Hole Bomb",
+		pp: 10,
+		priority: 0,
+		flags: {protect: 1, mirror: 1, heal: 1},
+		drain: [1, 4],
+		secondary: null,
+		target: "normal",
+		type: "Psychic",
+		zMovePower: 175,
+		contestType: "Clever",
 	},
 // "digslash": {
 //         num: 40000,

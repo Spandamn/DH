@@ -2476,14 +2476,7 @@ exports.BattleMovedex = {
 		target: "normal",
 		type: "Dark",
 		isZ: "yveltiumz",
-	},
-	/* Temporarily commented
-	The server needs to restart because of a crash: /home/spandan/DH/data/mods/zmoveseverywhere/moves.js:2502
-if sideCondition && !side.foe.sideConditions[condition]) {
-Please restart the server.
-*/
-	/*FOUND IT: There was a missing parenthesis.*/
-	
+	},	
 	"bringordertotheworld": {
 		accuracy: true,
 		basePower: 200,
@@ -2535,4 +2528,25 @@ Please restart the server.
 		target: "allAdjacentFoes",
 		type: "Ground",
 	},
+"unleashedpowerofthedjinn": {
+    basePower: 180,
+    accuracy: true,
+    category: "Special",
+    shortDesc: "Ignores screens and protection. Can hit Dark-types.",
+    id: "unleashedpowerofthedjinn",
+    name: "Unleashed Power of the Djinn",
+    pp: 1,
+    priority: 1,
+    flags: {},
+	 breaksProtect: true,
+	 infiltrates: true,
+	 ignoreImmunity: true,
+    onPrepareHit(target, source) {
+        this.attrLastMove('[still]');
+        this.add('-anim', source, "Revelation Dance", target);
+    },
+    target: "normal",
+    type: "Psychic",
+    isZ: "hoopiumz",
+},
 };
