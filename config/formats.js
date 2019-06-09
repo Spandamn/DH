@@ -6735,12 +6735,18 @@ exports.Formats = [
 		],*/
 
 		mod: 'gen7',
-		teamLength: {
+		/*teamLength: {
 			validate: [6, 6],
 			battle: 6,
-		},
+		},*/
 		ruleset: ['[Gen 7] OU'],
 		banlist: ['Battle Bond'],
+		onBegin: function () {
+			p1.pokemon[0].originalAbility = p1.pokemon[0].ability;
+			p1.pokemon[0].ability = 'illusion';
+			p2.pokemon[0].originalAbility = p12.pokemon[0].ability;
+			p2.pokemon[0].ability = 'illusion';
+		}, //hack for team preview bish
 		onValidateSet: function (set) {
 			let restrictedMoves = ['Extreme Speed', 'Geomancy', 'Shell Smash', 'Shift Gear', 'Spore'];
 			let lastMove = this.getMove(set.moves[set.moves.length - 1]).name;
@@ -6766,6 +6772,7 @@ exports.Formats = [
 						disabledSource: '',
 						used: false,
 					});
+					if (pokemon.originalAbility) pokemon.ability = pokemon.baseAility = pokemon.originalAbility;
 				}
 			}
 		},
