@@ -6745,7 +6745,7 @@ exports.Formats = [
 			this.p1.pokemon[0].originalAbility = this.p1.pokemon[0].baseAbility;
 			this.p1.pokemon[0].baseAbility = this.p1.pokemon[0].ability = 'illusion';
 			this.p2.pokemon[0].originalAbility = this.p2.pokemon[0].baseAbility;
-			this.p1.pokemon[0].baseAbility = this.p2.pokemon[0].ability = 'illusion';
+			this.p2.pokemon[0].baseAbility = this.p2.pokemon[0].ability = 'illusion';
 		}, //hack for team preview bish
 		onValidateSet: function (set) {
 			let restrictedMoves = ['Extreme Speed', 'Geomancy', 'Shell Smash', 'Shift Gear', 'Spore'];
@@ -6772,7 +6772,7 @@ exports.Formats = [
 						disabledSource: '',
 						used: false,
 					});
-					if (pokemon.originalAbility) pokemon.ability = pokemon.baseAility = pokemon.originalAbility;
+					if (pokemon.originalAbility) pokemon.ability = pokemon.baseAbility = pokemon.originalAbility;
 				}
 			}
 		},
