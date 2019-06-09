@@ -6749,6 +6749,8 @@ exports.Formats = [
 			}
 		},
 		onBeforeSwitchIn: function () {
+			if (this.processDone) return;
+			let this.processDone = true;
 			for (let side of [p1, p2]) {
 				for (let i = 0; i < side.pokemon.length; i++) {
 					let pokemon = side.pokemon[i];
