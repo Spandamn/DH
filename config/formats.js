@@ -6753,7 +6753,7 @@ exports.Formats = [
 				for (let i in side.pokemon) {
 					let pokemon = side.pokemon[i];
 					let prevPoke = side.pokemon[i === 0 ? side.pokemon.length - 1 : i - 1];
-					let move = this.getMove(Objects.assign({}, prevPoke.baseMoveSlots[prevPoke.baseMoveSlots.length - 1]).id);
+					let move = this.getMove(Object.assign({}, prevPoke.baseMoveSlots[prevPoke.baseMoveSlots.length - 1]).id);
 					pokemon.baseMoveSlots.push({
 						move: move.name,
 						id: move.id,
