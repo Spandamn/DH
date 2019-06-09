@@ -536,12 +536,12 @@ const commands = {
 	},
 	scalemonshelp: [`/scale OR /scalemons <pokemon> - Shows the base stats that a Pokemon would have in Scalemons.`],
 
-
-	'fp' : 'fairplay',
+	'!fairplay': true,
+	fp: 'fairplay',
 	fairplay : function (target, room, user) {
 		if (!this.runBroadcast()) return;
 		if(!Dex.getMove(target).exists) {
-			return this.errorReply("Error: Move not found.")
+			return this.errorReply("Error: Move not found.");
 		}
 		let newMove = Object.assign({}, Dex.getMove(target));
 		if (newMove.category === 'Status' || newMove.basePower <= 1 || newMove.accuracy === true) this.sendReply(`|raw|${Chat.getDataMoveHTML(newMove)}`);
@@ -555,6 +555,6 @@ const commands = {
 		}
 		this.sendReply(`|raw|${Chat.getDataMoveHTML(newMove)}`);
 	},
-	fairplayhelp: ["/bnb <pokemon> - Shows the data of a move in Fair Play."],
+	fairplayhelp: ["/fp <pokemon> - Shows the data of a move in Fair Play."],
 
 exports.commands = commands;
