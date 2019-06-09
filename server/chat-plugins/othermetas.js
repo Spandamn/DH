@@ -535,6 +535,27 @@ const commands = {
 		this.sendReply(`|raw|${Chat.getDataPokemonHTML(template)}`);
 	},
 	scalemonshelp: [`/scale OR /scalemons <pokemon> - Shows the base stats that a Pokemon would have in Scalemons.`],
-};
+
+
+	'fp' : 'fairplay',
+	fairplay : function (target, room, user) {
+		if (!this.runBroadcast()) return;
+		if(!Dex.getMove(target).exists) {
+			return this.errorReply("Error: Move not found.")
+		}
+		let newMove = Object.assign({}, Dex.getMove(target));
+		if (newMove.category === 'Status' || newMove.basePower <= 1 || newMove.accuracy === true) this.sendReply(`|raw|${Chat.getDataMoveHTML(newMove)}`);
+		let newMove = Object.assign({}, move);
+		if (newMove.accuracy < 100) {
+			newMove.basePower -= 100 - newMoveaccuracy;
+			newMove.accuracy = 100;
+		}
+		if (newMove.secondary) {
+			newMove.basePower += newMove.secondary.chance;
+			delete newMove.secondary;
+		}
+		this.sendReply(`|raw|${Chat.getDataMoveHTML(newMove)}`);
+	},
+	fairplayhelp: ["/bnb <pokemon> - Shows the data of a move in Fair Play."],
 
 exports.commands = commands;

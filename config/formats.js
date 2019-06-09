@@ -6779,6 +6779,31 @@ exports.Formats = [
 		},
 	},
 	{
+		name: "[Gen 7] Fair Play",
+		desc: "Chances for accuracy and secondary effects are removed in exchange for base power.",
+		/*threads: [
+			"&bullet; <a href=\"https://www.smogon.com/forums/threads/3607451/\">Chimera</a>",
+		],*/
+
+		mod: 'gen7',
+		ruleset: ['[Gen 7] OU'],
+		banlist: ['Struggle Bug', 'Snarl', 'Throat Chop', 'Zap Cannon', 'Electroweb', 'Dynamic Punch', 'Low Sweep', 'Power Up Punch', 'Mud Shot', 'Inferno', 'Flame Charge', 'Bulldoze', 'Icy Wind', 'Rock Tomb'],
+		onModifyMovePriority: -9,
+		onModifyMove: function (move, pokemon) {
+			if (move.category === 'Status' || move.basePower <= 1 || move.accuracy === true) return move;
+			let newMove = Object.assign({}, move);
+			if (newMove.accuracy < 100) {
+				newMove.basePower -= 100 - newMoveaccuracy;
+				newMove.accuracy = 100;
+			}
+			if (newMove.secondary) {
+				newMove.basePower += newMove.secondary.chance;
+				delete newMove.secondary;
+			}
+			return newMove;
+		},
+	},
+	{
 		name: "[Gen 7] Multibility Doubles",
 		desc: [
 			"&bullet; Put your second ability in the item slot.",
