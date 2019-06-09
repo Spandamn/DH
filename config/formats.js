@@ -6817,10 +6817,7 @@ exports.Formats = [
 		},
 		validateSet(set, teamHas) {
 			const restrictedAbilities = this.format.restrictedAbilities || [];
-			let ability = this.dex.getAbility(set.ability);
-			if (restrictedAbilities.includes(ability.name)) return this.validateSet(set, teamHas);
 			let customRules = this.format.customRules || [];
-			if (!customRules.includes('ignoreillegalmoves')) customRules.push('ignoreillegalmoves');
 			let TeamValidator = /** @type {new(format: string | Format) => Validator} */ (this.constructor);
 			let validator = new TeamValidator(Dex.getFormat(this.format.id + '@@@' + customRules.join(',')));
 			let abilities = [];
