@@ -6742,10 +6742,10 @@ exports.Formats = [
 		ruleset: ['[Gen 7] OU'],
 		banlist: ['Battle Bond'],
 		onBegin: function () {
-			p1.pokemon[0].originalAbility = p1.pokemon[0].ability;
-			p1.pokemon[0].ability = 'illusion';
-			p2.pokemon[0].originalAbility = p12.pokemon[0].ability;
-			p2.pokemon[0].ability = 'illusion';
+			this.p1.pokemon[0].originalAbility = this.p1.pokemon[0].ability;
+			this.p1.pokemon[0].ability = 'illusion';
+			this.p2.pokemon[0].originalAbility = this.p2.pokemon[0].ability;
+			this.p2.pokemon[0].ability = 'illusion';
 		}, //hack for team preview bish
 		onValidateSet: function (set) {
 			let restrictedMoves = ['Extreme Speed', 'Geomancy', 'Shell Smash', 'Shift Gear', 'Spore'];
