@@ -6830,7 +6830,7 @@ exports.Formats = [
 			for (let i = 0; i < set.moves.length; i++) {
 				let move = this.dex.getAbility(set.moves[i]);
 				if (!move.exists) continue;
-				set.moves.splice(i, 1); 
+				set.moves.splice(i--, 1); // i-- because when you splice the current move, the next move will come to this slot.
 				abilities.push(move.id);
 				teamHas.absAsMoves[move.name] = (teamHas.absAsMoves[move.name] || 0) + 1;
 				if (restrictedAbilities.includes(move.name)) problems.push(`${set.name || set.species} has ${move.ability} in a moveslot, which is banned.`);
