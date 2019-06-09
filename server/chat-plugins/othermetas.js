@@ -545,7 +545,6 @@ const commands = {
 		}
 		let newMove = Object.assign({}, Dex.getMove(target));
 		if (newMove.category === 'Status' || newMove.basePower <= 1 || newMove.accuracy === true) this.sendReply(`|raw|${Chat.getDataMoveHTML(newMove)}`);
-		let newMove = Object.assign({}, move);
 		if (newMove.accuracy < 100) {
 			newMove.basePower -= 100 - newMoveaccuracy;
 			newMove.accuracy = 100;
