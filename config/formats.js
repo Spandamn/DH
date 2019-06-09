@@ -6793,7 +6793,7 @@ exports.Formats = [
 			if (move.category === 'Status' || move.basePower <= 1 || move.accuracy === true) return move;
 			let newMove = Object.assign({}, move);
 			if (newMove.accuracy < 100) {
-				newMove.basePower -= 100 - newMoveaccuracy;
+				newMove.basePower -= 100 - newMove.accuracy;
 				newMove.accuracy = 100;
 			}
 			if (newMove.secondary) {
