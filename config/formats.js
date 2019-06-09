@@ -6736,11 +6736,10 @@ exports.Formats = [
 		teamLength: {
 			validate: [6, 6],
 			battle: 6,
-			count: 6,
 		},
 		ruleset: ['[Gen 7] OU'],
 		banlist: ['Battle Bond'],
-		/*onBegin: function () {
+		/*onBegin: function () { // I hate this hack
 			this.p1.pokemon[0].originalAbility = this.p1.pokemon[0].baseAbility;
 			this.p1.pokemon[0].baseAbility = this.p1.pokemon[0].ability = 'illusion';
 			this.p2.pokemon[0].originalAbility = this.p2.pokemon[0].baseAbility;
@@ -6771,7 +6770,7 @@ exports.Formats = [
 						disabledSource: '',
 						used: false,
 					});
-					if (pokemon.originalAbility) pokemon.ability = pokemon.baseAbility = pokemon.originalAbility;
+					// if (pokemon.originalAbility) pokemon.ability = pokemon.baseAbility = pokemon.originalAbility; // unhack
 				}
 			}
 		},
@@ -6810,7 +6809,7 @@ exports.Formats = [
 		mod: 'sharedpower',
 		ruleset: ['[Gen 7] OU'],
 		banlist: ['Shedinja'],
-		restrictedAbilities: ['Comatose', 'Contrary', 'Fluffy', 'Fur Coat', 'Huge Power', 'Illusion', 'Imposter', 'Innards Out', 'Parental Bond', 'Protean', 'Pure Power', 'Simple', 'Speed boost', 'Stakeout', 'Water Bubble', 'Wonder Guard'],
+		restrictedAbilities: ['Comatose', 'Contrary', 'Fluffy', 'Fur Coat', 'Huge Power', 'Illusion', 'Imposter', 'Innards Out', 'Parental Bond', 'Protean', 'Pure Power', 'Simple', 'Speed Boost', 'Stakeout', 'Water Bubble', 'Wonder Guard'],
 		onValidateTeam(team, format, teamHas) {
 			for (let ability in teamHas.absAsMoves) {
 				if (teamHas.absAsMoves[ability] > 1) return [`You are limited to 1 of each Ability as Move. (You have ${teamHas.absAsMoves[ability]} of ${ability}).`];
