@@ -3015,7 +3015,8 @@ exports.Formats = [
 		onAfterMega: function (pokemon) {
 			this.add('-start', pokemon, 'typechange', pokemon.types.join('/'), '[silent]');
 		},
-	},{
+	},
+	{
 		name: "[Gen 7] Chimera",
 		desc: "Bring 6 Pok&eacute;mon and choose their order at Team Preview. The lead Pok&eacute;mon then receives the Item, Ability, Stats and Moves of the other five Pok&eacute;mon, who play no further part in the battle.",
 		threads: [
@@ -6722,6 +6723,47 @@ exports.Formats = [
 				if (!abilityTable[ability.id]) abilityTable[ability.id] = 0;
 				if (++abilityTable[ability.id] > 2) {
 					return ["You are limited to two of each ability by Ability Clause.", "(You have more than two of " + ability.name + ")"];
+				}
+			}
+		},
+	},
+	{
+		name: "[Gen 7] Secret Slot",
+		desc: "The last move in a Pokemon's set is passed on to the next teammate in line, giving them an extra moveslot. At team preview you can rearrange your team in any order, letting you mix things up. ",
+		/*threads: [
+			"&bullet; <a href=\"https://www.smogon.com/forums/threads/3607451/\">Chimera</a>",
+		],*/
+
+		mod: 'gen7',
+		teamLength: {
+			validate: [6, 6],
+			battle: 6,
+		},
+		ruleset: ['[Gen 7] OU'],
+		banlist: ['Battle Bond'],
+		onValidateSet: function (set) {
+			let restrictedMoves = ['Extreme Speed', 'Geomancy', 'Shell Smash', 'Shift Gear', 'Spore'];
+			let lastMove = this.getMove(set.moves[set.moves.length - 1]).name;
+			if (restrictedMoves.includes(lastMove)) {
+				return [`${set.name || set.species} cannot have ${lastMove} in its last moveslot.`];
+			}
+		},
+		onBegin: function () {
+			for (let side of sides) {
+				for (let i in side.pokemon) {
+					let pokemon = side.pokemon[i];
+					let prevPoke = side.pokemon[i === 0 ? side.pokemon.length - 1 : i - 1];
+					let move = this.getMove(Objects.assign({}, prevPoke.baseMoveSlots[prevPoke.baseMoveSlots.length - 1]).id);
+					pokemon.baseMoveSlots.push({
+						move: move.name,
+						id: move.id,
+						pp: ((move.noPPBoosts || move.isZ) ? move.pp : move.pp * 8 / 5),
+						maxpp: ((move.noPPBoosts || move.isZ) ? move.pp : move.pp * 8 / 5),
+						target: move.target,
+						disabled: false,
+						disabledSource: '',
+						used: false,
+					});
 				}
 			}
 		},
