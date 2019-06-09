@@ -6751,7 +6751,7 @@ exports.Formats = [
 		onBeforeSwitchIn: function () {
 			if (this.processDone) return;
 			this.processDone = true;
-			for (let side of this.battle.sides) {
+			for (let side of this.sides) {
 				for (let i = 0; i < side.pokemon.length; i++) {
 					let pokemon = side.pokemon[i];
 					let prevPoke = side.pokemon[i === 0 ? side.pokemon.length - 1 : i - 1];
