@@ -4274,32 +4274,30 @@ exports.Formats = [
 		mod: 'trademarked',
 		ruleset: ['[Gen 7] OU'],
 		banlist: ['Slaking', 'Regigigas'],
-		validateSet: function(set, teamHas) {
-			if (!this.validateSet(set, teamHas).length) return [];
-			let ability = Dex.getAbility(set.ability);
-			let template = Dex.getTemplate(set.species);
-			if (!set.moves.includes(ability.id) && !set.moves.includes(ability.name) && !this.checkLearnset(`move:${ability.id}`, template, {
-					set: set
-				})) {
-				template = Object.assign({}, template);
-				template.abilities = {
-					0: ability.name,
-				};
+		onValidateTeam(team, format, teamHas) {
+			for (let trademark in teamHas.trademarks) {
+				if (teamHas.trademarks[trademark] > 1) return [`You are limited to 1 of each Trademark. (You have ${teamHas.trademarks[trademark]} of ${trademark}).`];
 			}
-			return this.validateSet(set, teamHas, template);
 		},
-		onValidateTeam: function (team) {
-			let tms = [];
-			let problems = [];
-			for (let set of team) {
-				let ability = this.getMove(set.ability);
-				if (ability.effectType === 'Move' && tms.includes(ability)) {
-					problems.push(`You cannot have more than one of ${ability.name} as a trademark.`);
-				} else {
-					tms.push(ability.id);
-				}
-			}
-			return problems;
+		validateSet(set, teamHas) {
+			const restrictedMoves = this.format.restrictedMoves || [];
+			let move = this.dex.getMove(set.ability);
+			if (move.category !== 'Status' || move.status === 'slp' || restrictedMoves.includes(move.name) || set.moves.map(toID).includes(move.id)) return this.validateSet(set, teamHas);
+			let customRules = this.format.customRules || [];
+			if (!customRules.includes('ignoreillegalabilities')) customRules.push('ignoreillegalabilities');
+			let TeamValidator = /** @type {new(format: string | Format) => Validator} */ (this.constructor);
+			let validator = new TeamValidator(Dex.getFormat(this.format.id + '@@@' + customRules.join(',')));
+			let moves = set.moves;
+			set.moves = [set.ability];
+			set.ability = '';
+			let problems = validator.validateSet(set, {}) || [];
+			set.moves = moves;
+			set.ability = '';
+			problems = problems.concat(validator.validateSet(set, teamHas) || []);
+			set.ability = move.id;
+			if (!teamHas.trademarks) teamHas.trademarks = {};
+			teamHas.trademarks[move.name] = (teamHas.trademarks[move.name] || 0) + 1;
+			return problems.length ? problems : null;
 		},
 	},
 	{
@@ -6801,6 +6799,82 @@ exports.Formats = [
 				delete newMove.secondary;
 			}
 			return newMove;
+		},
+	},
+	{
+		name: "[Gen 7] Abilities As Moves",
+		desc: [
+			"&bullet; Pokemon can add almost any ability as extra abilities at the cost of moveslots.",
+		],
+
+		mod: 'sharedpower',
+		ruleset: ['[Gen 7] OU'],
+		banlist: ['Shedinja'],
+		restrictedAbilities: ['Comatose', 'Contrary', 'Fluffy', 'Fur Coat', 'Huge Power', 'Illusion', 'Imposter', 'Innards Out', 'Parental Bond', 'Protean', 'Pure Power', 'Simple', 'Speed boost', 'Stakeout', 'Water Bubble', 'Wonder Guard'],
+		onValidateTeam(team, format, teamHas) {
+			for (let ability in teamHas.absAsMoves) {
+				if (teamHas.absAsMoves[ability] > 1) return [`You are limited to 1 of each Ability as Move. (You have ${teamHas.absAsMoves[ability]} of ${ability}).`];
+			}
+		},
+		validateSet(set, teamHas) {
+			const restrictedAbilities = this.format.restrictedAbilities || [];
+			let ability = this.dex.getAbility(set.ability);
+			if (restrictedAbilities.includes(ability.name)) return this.validateSet(set, teamHas);
+			let customRules = this.format.customRules || [];
+			if (!customRules.includes('ignoreillegalmoves')) customRules.push('ignoreillegalmoves');
+			let TeamValidator = /** @type {new(format: string | Format) => Validator} */ (this.constructor);
+			let validator = new TeamValidator(Dex.getFormat(this.format.id + '@@@' + customRules.join(',')));
+			let abilities = [];
+			let problems = [];
+			if (!teamHas.absAsMoves) teamHas.absAsMoves = {};
+			for (let i = 0; i < set.moves.length; i++) {
+				let move = this.dex.getAbility(set.moves[i]);
+				if (move.exists) abilities.splice(i, 1); abilities.push(move.id);
+				teamHas.absAsMoves[move.name] = (teamHas.absAsMoves[move.name] || 0) + 1;
+				if (restrictedAbilities.includes(move.name)) problems.push(`${set.name || set.species} has ${move.ability} in a moveslot, which is banned.`);
+			}
+			problems = problems.concat(validator.validateSet(set, teamHas) || []);
+			if (abilities.length) set.ability = [set.ability].concat(abilities).join('0');
+			return problems.length ? problems : null;
+		},
+		onBegin: function () {
+			let allPokemon = this.p1.pokemon.concat(this.p2.pokemon);
+			for (let pokemon of allPokemon) {
+				if (!pokemon.baseAbility.includes('0')) continue;
+				let abilities = pokemon.baseAbility.split('0');
+				pokemon.baseAbility = pokemon.ability = abilities[0];
+				abilities.splice(0, 1);
+				pokemon.otherAbilities = abilities;
+			}
+		},
+		onBeforeSwitchIn: function (pokemon) {
+			let restrictedAbilities = this.getFormat().restrictedAbilities.map(toID);
+			for (const ability of pokemon.otherAbilities) {
+				if (ability !== pokemon.baseAbility && !restrictedAbilities.includes(ability)) {
+					let effect = 'ability' + ability;
+					pokemon.volatiles[effect] = {id: effect, target: pokemon};
+				}
+			}
+		},
+		onSwitchInPriority: 2,
+		onSwitchIn: function (pokemon) {
+			let restrictedAbilities = this.getFormat().restrictedAbilities.map(toID);
+			for (const ability of pokemon.otherAbilities) {
+				if (ability !== pokemon.baseAbility && !restrictedAbilities.includes(ability)) {
+					let effect = 'ability' + ability;
+					delete pokemon.volatiles[effect];
+					pokemon.addVolatile(effect);
+				}
+			}
+		},
+		onAfterMega: function (pokemon) {
+			let restrictedAbilities = this.getFormat().restrictedAbilities.map(toID);
+			for (const ability of pokemon.otherAbilities) {
+				if (ability !== pokemon.baseAbility && !restrictedAbilities.includes(ability)) {
+					let effect = 'ability' + ability;
+					pokemon.addVolatile(effect);
+				}
+			}
 		},
 	},
 	{
