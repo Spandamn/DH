@@ -556,5 +556,5 @@ const commands = {
 		this.sendReply(`|raw|${Chat.getDataMoveHTML(newMove)}`);
 	},
 	fairplayhelp: ["/fp <pokemon> - Shows the data of a move in Fair Play."],
-
+};
 exports.commands = commands;
