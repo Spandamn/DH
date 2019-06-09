@@ -6748,8 +6748,8 @@ exports.Formats = [
 				return [`${set.name || set.species} cannot have ${lastMove} in its last moveslot.`];
 			}
 		},
-		onBegin: function () {
-			for (let side of this.sides) {
+		onBeforeSwitchIn: function () {
+			for (let side of [p1, p2]) {
 				for (let i = 0; i < side.pokemon.length; i++) {
 					let pokemon = side.pokemon[i];
 					let prevPoke = side.pokemon[i === 0 ? side.pokemon.length - 1 : i - 1];
