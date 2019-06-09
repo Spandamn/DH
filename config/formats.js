@@ -6829,7 +6829,9 @@ exports.Formats = [
 			if (!teamHas.absAsMoves) teamHas.absAsMoves = {};
 			for (let i = 0; i < set.moves.length; i++) {
 				let move = this.dex.getAbility(set.moves[i]);
-				if (move.exists) abilities.splice(i, 1); abilities.push(move.id);
+				if (!move.exists) continue;
+				set.moves.splice(i, 1); 
+				abilities.push(move.id);
 				teamHas.absAsMoves[move.name] = (teamHas.absAsMoves[move.name] || 0) + 1;
 				if (restrictedAbilities.includes(move.name)) problems.push(`${set.name || set.species} has ${move.ability} in a moveslot, which is banned.`);
 			}
