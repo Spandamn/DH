@@ -6809,7 +6809,7 @@ exports.Formats = [
 		mod: 'sharedpower',
 		ruleset: ['[Gen 7] OU'],
 		banlist: ['Shedinja'. 'Trace'],
-		restrictedAbilities: ['Comatose', 'Contrary', 'Fluffy', 'Fur Coat', 'Huge Power', 'Illusion', 'Imposter', 'Innards Out', 'Parental Bond', 'Protean', 'Pure Power', 'Simple', 'Speed Boost', 'Stakeout', 'Trace', 'Water Bubble', 'Wonder Guard'],
+		restrictedAbilities: ['Comatose', 'Contrary', 'Fluffy', 'Fur Coat', 'Huge Power', 'Illusion', 'Imposter', 'Innards Out', 'Parental Bond', 'Protean', 'Pure Power', 'Simple', 'Speed Boost', 'Stakeout', '', 'Water Bubble', 'Wonder Guard'],
 		onValidateTeam(team, format, teamHas) {
 			for (let ability in teamHas.absAsMoves) {
 				if (teamHas.absAsMoves[ability] > 1) return [`You are limited to 1 of each Ability as Move. (You have ${teamHas.absAsMoves[ability]} of ${ability}).`];
@@ -6845,7 +6845,7 @@ exports.Formats = [
 				pokemon.otherAbilities = abilities;
 			}
 		},
-		onBeforeSwitchIn: function (pokemon) {
+		/*onBeforeSwitchIn: function (pokemon) {
 			if (!pokemon.otherAbilities) return;
 			let restrictedAbilities = this.getFormat().restrictedAbilities.map(toID);
 			for (const ability of pokemon.otherAbilities) {
@@ -6854,7 +6854,7 @@ exports.Formats = [
 					pokemon.volatiles[effect] = {id: effect, target: pokemon};
 				}
 			}
-		},
+		},*/
 		onSwitchInPriority: 2,
 		onSwitchIn: function (pokemon) {
 			if (!pokemon.otherAbilities) return;
