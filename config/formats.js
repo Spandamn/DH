@@ -6808,7 +6808,7 @@ exports.Formats = [
 
 		mod: 'sharedpower',
 		ruleset: ['[Gen 7] OU'],
-		banlist: ['Shedinja'. 'Trace'],
+		banlist: ['Shedinja', 'Trace'],
 		restrictedAbilities: ['Comatose', 'Contrary', 'Fluffy', 'Fur Coat', 'Huge Power', 'Illusion', 'Imposter', 'Innards Out', 'Parental Bond', 'Protean', 'Pure Power', 'Simple', 'Speed Boost', 'Stakeout', '', 'Water Bubble', 'Wonder Guard'],
 		onValidateTeam(team, format, teamHas) {
 			for (let ability in teamHas.absAsMoves) {
