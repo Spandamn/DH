@@ -6846,6 +6846,7 @@ exports.Formats = [
 			}
 		},
 		onBeforeSwitchIn: function (pokemon) {
+			if (!pokemon.otherAbilities) return;
 			let restrictedAbilities = this.getFormat().restrictedAbilities.map(toID);
 			for (const ability of pokemon.otherAbilities) {
 				if (ability !== pokemon.baseAbility && !restrictedAbilities.includes(ability)) {
@@ -6856,6 +6857,7 @@ exports.Formats = [
 		},
 		onSwitchInPriority: 2,
 		onSwitchIn: function (pokemon) {
+			if (!pokemon.otherAbilities) return;
 			let restrictedAbilities = this.getFormat().restrictedAbilities.map(toID);
 			for (const ability of pokemon.otherAbilities) {
 				if (ability !== pokemon.baseAbility && !restrictedAbilities.includes(ability)) {
@@ -6866,6 +6868,7 @@ exports.Formats = [
 			}
 		},
 		onAfterMega: function (pokemon) {
+			if (!pokemon.otherAbilities) return;
 			let restrictedAbilities = this.getFormat().restrictedAbilities.map(toID);
 			for (const ability of pokemon.otherAbilities) {
 				if (ability !== pokemon.baseAbility && !restrictedAbilities.includes(ability)) {
