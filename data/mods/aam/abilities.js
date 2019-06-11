@@ -4,13 +4,13 @@
 let BattleAbilities = {
 	"desolateland": {
 		inherit: true,
-		onStart(source) {
+		onStart: function (source) {
 			this.field.setWeather('desolateland', source);
 		},
 	},
 	"primordialsea": {
 		inherit: true,
-		onStart(source) {
+		onStart: function (source) {
 			this.field.setWeather('primordialsea', source);
 		},
 	},
