@@ -1921,7 +1921,7 @@ exports.Formats = [
 		],
 		team: 'random',
 
-		ruleset: ['Random Battle', 'Team Preview'],
+		ruleset: ['[Gen 7] Random Battle', 'Team Preview'],
 		onBegin: function() {
 			let allPokemon = this.p1.pokemon.concat(this.p2.pokemon);
 			for (let i = 0, len = allPokemon.length; i < len; i++) {
@@ -1968,7 +1968,7 @@ exports.Formats = [
 		mod: 'pic',
 		gameType: 'doubles',
 		team: 'random',
-		ruleset: ['[Gen 7] Doubles OU', 'Sleep Clause Mod'],
+		ruleset: ['[Gen 7] Random Doubles Battle', 'Sleep Clause Mod'],
 
 		banlist: ['Huge Power', 'Imposter', 'Parental Bond', 'Pure Power', 'Wonder Guard', 'Kangaskhanite', 'Mawilite', 'Medichamite', 'Mimic', 'Sketch', 'Transform'],
 		onDisableMovePriority: -1,
@@ -2036,7 +2036,7 @@ exports.Formats = [
 			"&bullet; <a href=\"http://www.smogon.com/forums/threads/3598275/#post-7271345\">Quantumbility</a>",
 		],
 		mod: 'franticfusions',
-		ruleset: ['[Gen 7] OU'],
+		ruleset: ['[Gen 7] Random Battle'],
 		banlist: ["Liepard", "Serperior"],
 		team: 'random',
 		onSwitchInPriority: 1,
@@ -2241,7 +2241,7 @@ exports.Formats = [
 		name: "[Gen 7] Random Top Percentage",
 		mod: 'toppercentage',
 		desc: ["&lt; <a href=\"http://www.smogon.com/forums/threads/top-percentage.3564459/\">Top Percentage</a>"],
-		ruleset: ['Random Battle', "Team Preview"],
+		ruleset: ['[Gen 7] Random Battle', "Team Preview"],
 		team: "random",
 		onBegin: function() {
 			this.add("raw|Welcome to Top Percentage! The first Player to deal 400% damage wins! HAHAHAH!");
@@ -2269,7 +2269,7 @@ exports.Formats = [
 	{
 		name: "[Gen 7] Random Last Will",
 		desc: ["&bullet; Every Pokemon will use the move in their last moveslot before fainting in battle."],
-		ruleset: ['Random Battle'],
+		ruleset: ['[Gen 7] Random Battle'],
 		mod: ['gen7'],
 		team: 'random',
 		onBeforeFaint: function (pokemon, source) {
@@ -2281,7 +2281,7 @@ exports.Formats = [
 		name: "[Gen 7] Random Move Equality",
 		desc: ["&bullet; Every Move has 100 base power with the exception of moves that have varying base powers."],
 		mod: 'gen7',
-		ruleset: ['Random Battle'],
+		ruleset: ['[Gen 7] Random Battle'],
 		team: 'random',
 		onModifyMovePriority: 5,
 		onModifyMove: function(move, pokemon) {

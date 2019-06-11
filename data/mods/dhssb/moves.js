@@ -687,6 +687,7 @@ exports.BattleMovedex = {
 			mirror: 1
 		},
 		onHit: function(target, source) {
+			let stat = [];
 			if (this.random(10) < 1) {
 				stat = ['par', 'slp']
 				source.trySetStatus(stat[this.random(2)], target);
