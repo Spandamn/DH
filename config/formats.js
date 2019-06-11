@@ -2524,7 +2524,6 @@ exports.Formats = [
 		threads: [`&bullet; <a href="https://www.smogon.com/forums/threads/3599594/">CAP LC</a>`],
 
 		mod: 'gen7',
-		searchShow: false,
 		maxLevel: 5,
 		ruleset: ['[Gen 7] LC', 'Allow CAP'],
 	},
@@ -9328,14 +9327,6 @@ onValidateTeam: function (team) {
       restrictedMoves: ['Acupressure', 'Belly Drum', 'Chatter', 'Extreme Speed', 'Geomancy', 'Lovely Kiss', 'Shell Smash', 'Shift Gear', 'Spore', 'Thousand Arrows'],
 	},
 
-	{
-		name: "[Gen 7] CAP LC",
-		desc: ["&bullet; <a href=\"http://www.smogon.com/forums/threads/3599594/\">CAP LC</a>"],
-
-		mod: 'gen7',
-		maxLevel: 5,
-		ruleset: ['[Gen 7] LC', 'Allow CAP'],
-	},
 	{
 		section: "Frantic Fusions",
 		column: 4,
