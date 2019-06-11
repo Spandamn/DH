@@ -7,6 +7,7 @@ let BattleStatuses = {
 		shortDesc: "On switch-in, extremely harsh sunlight begins until this Ability is not active in battle.",
 		onStart(source) {
 			this.field.setWeather('desolateland', source);
+			this.add("|raw|this is working");
 		},
 		onAnySetWeather(target, source, weather) {
 			if (this.field.getWeather().id === 'desolateland' && !['desolateland', 'primordialsea', 'deltastream'].includes(weather.id)) return false;
