@@ -154,7 +154,7 @@ exports.BattleScripts = {
 			if (action.pokemon.hp) {
 				action.pokemon.beingCalledBack = true;
 				const sourceEffect = action.sourceEffect;
-				if (sourceEffect && (sourceEffect as Move).selfSwitch === 'copyvolatile') {
+				if (sourceEffect && sourceEffect.selfSwitch === 'copyvolatile') {
 					action.pokemon.switchCopyFlag = true;
 				}
 				if (!action.pokemon.switchCopyFlag) {
@@ -275,7 +275,7 @@ exports.BattleScripts = {
 				queuedAction.pokemon === action.pokemon && queuedAction.choice === 'move'
 			);
 			if (moveIndex >= 0) {
-				const moveAction = this.queue.splice(moveIndex, 1)[0] as Actions.MoveAction;
+				const moveAction = this.queue.splice(moveIndex, 1)[0];
 				moveAction.mega = 'done';
 				this.insertQueue(moveAction, true);
 			}
