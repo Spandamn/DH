@@ -27,7 +27,7 @@ exports.BattleScripts = {
 			return this.ability === ability || !!this.volatiles['ability' + ability];
 		},
 	},
-	dragIn: function (side: Side, pos?: number) {
+	dragIn (side, pos) {
 		if (!pos) pos = 0;
 		if (pos >= side.active.length) return false;
 		const pokemon = this.getRandomSwitchable(side);
@@ -81,7 +81,7 @@ exports.BattleScripts = {
 		}
 		return true;
 	},
-	runAction: function (action: Actions.Action) {
+	runAction (action) {
 		// returns whether or not we ended in a callback
 		switch (action.choice) {
 		case 'start': {
