@@ -6925,15 +6925,15 @@ exports.Formats = [
 				}
 			}
 		},
-		battle: {
-			pokemon: {
-				hasAbility: function (ability) {
-					if (this.ignoringAbility()) return false;
-					if (Array.isArray(ability)) return ability.some(ability => this.hasAbility(ability));
-					ability = toID(ability);
-					return this.ability === ability || !!this.volatiles['ability' + ability];
-				},
+		pokemon: {
+			hasAbility: function (ability) {
+				if (this.ignoringAbility()) return false;
+				if (Array.isArray(ability)) return ability.some(ability => this.hasAbility(ability));
+				ability = toID(ability);
+				return this.ability === ability || !!this.volatiles['ability' + ability];
 			},
+		},
+		battle: {
 			getEffect: function (name) {
 				if (name && typeof name !== 'string') {
 					return name;
