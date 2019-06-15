@@ -27,7 +27,7 @@ exports.BattleScripts = {
 			return this.ability === ability || !!this.volatiles['ability' + ability];
 		},
 	},
-	dragIn: funtion (side: Side, pos?: number) {
+	dragIn: function (side: Side, pos?: number) {
 		if (!pos) pos = 0;
 		if (pos >= side.active.length) return false;
 		const pokemon = this.getRandomSwitchable(side);
