@@ -1,6 +1,5 @@
 'use strict';
 
-/**@type {{[k: string]: PureEffectData}} */
 let BattleAbilities = {
 	"desolateland": {
 		inherit: true,

@@ -2917,7 +2917,7 @@ exports.Formats = [
 			if (move.id !== "genesissupernova") return;
 			source.baseMoveset.forEach(curmove => {
 				let move = this.getMove(curmove.id);
-				if ((move.id === 'bellydrum' || (move.category === "Status" && move.boosts && move.target === "self")) && this.terrain === "psychicterrain") { // Confirm that it successfully set Psychic Terrain
+				if ((move.id === 'bellydrum' || (move.category === "Status" && move.boosts && move.target === "self")) && this.field.terrain === "psychicterrain") { // Confirm that it successfully set Psychic Terrain
 					this.useMove(move, source);
 				}
 			});
@@ -3751,11 +3751,11 @@ exports.Formats = [
 			if (this.turn !== 6) return;
 			let pseudo = ['magicroom', 'wonderroom', 'trickroom', 'gravity', 'mudsport', 'watersport'];
 			this.add("-message", "The Lockdown has commenced! Battlefield changes are now permanent!");
-			if (this.weatherData.duration) this.weatherData.duration = 0;
-			if (this.terrainData.duration) this.terrainData.duration = 0;
+			if (this.field.weatherData.duration) this.field.weatherData.duration = 0;
+			if (this.field.terrainData.duration) this.field.terrainData.duration = 0;
 			for (let i in this.pseudoWeather) {
 				if (pseudo.includes(i)) {
-					this.pseudoWeather[i].duration = 0;
+					this.field.pseudoWeather[i].duration = 0;
 				}
 			}
 		},
@@ -6173,7 +6173,7 @@ exports.Formats = [
 		mod: 'acidrain',
 		onBegin: function() {
 			this.setWeather('raindance');
-			delete this.weatherData.duration;
+			delete this.field.weatherData.duration;
 			this.add('-message', "Eh, close enough.");
 		},
 		ruleset: ['Pokemon', 'Standard', 'Team Preview', 'Swagger Clause', 'Baton Pass Clause'],
@@ -6812,7 +6812,7 @@ exports.Formats = [
 		},
 	},
 	{
-		name: "[Gen 7] Abilities As Moves",
+		name: "[Gen 7] Abilimoves",
 		desc: [
 			"&bullet; Pokemon can add almost any ability as extra abilities at the cost of moveslots.",
 		],
@@ -6820,7 +6820,7 @@ exports.Formats = [
 		mod: 'aam',
 		ruleset: ['[Gen 7] OU'],
 		banlist: ['Shedinja', 'Trace'],
-		restrictedAbilities: ['Comatose', 'Contrary', 'Fluffy', 'Fur Coat', 'Huge Power', 'Illusion', 'Imposter', 'Innards Out', 'Parental Bond', 'Protean', 'Pure Power', 'Simple', 'Speed Boost', 'Stakeout', '', 'Water Bubble', 'Wonder Guard'],
+		restrictedAbilities: ['Arena Trap', 'Comatose', 'Contrary', 'Fluffy', 'Fur Coat', 'Huge Power', 'Illusion', 'Imposter', 'Innards Out', 'Parental Bond', 'Power Construct', 'Protean', 'Pure Power', 'Shadow Tag', 'Simple', 'Speed Boost', 'Stakeout', '', 'Water Bubble', 'Wonder Guard'],
 		onValidateTeam(team, format, teamHas) {
 			for (let ability in teamHas.absAsMoves) {
 				if (teamHas.absAsMoves[ability] > 1) return [`You are limited to 1 of each Ability as Move. (You have ${teamHas.absAsMoves[ability]} of ${ability}).`];
@@ -6856,16 +6856,6 @@ exports.Formats = [
 				pokemon.otherAbilities = abilities;
 			}
 		},
-		/*onBeforeSwitchIn: function (pokemon) {
-			if (!pokemon.otherAbilities) return;
-			let restrictedAbilities = this.getFormat().restrictedAbilities.map(toID);
-			for (const ability of pokemon.otherAbilities) {
-				if (ability !== pokemon.baseAbility && !restrictedAbilities.includes(ability)) {
-					let effect = 'ability' + ability;
-					pokemon.volatiles[effect] = {id: effect, target: pokemon};
-				}
-			}
-		},*/
 		onSwitchInPriority: 2,
 		onSwitchIn: function (pokemon) {
 			if (!pokemon.otherAbilities) return;
@@ -6874,16 +6864,6 @@ exports.Formats = [
 				if (ability !== pokemon.baseAbility && !restrictedAbilities.includes(ability)) {
 					let effect = 'ability' + ability;
 					delete pokemon.volatiles[effect];
-					pokemon.addVolatile(effect);
-				}
-			}
-		},
-		onAfterMega: function (pokemon) {
-			if (!pokemon.otherAbilities) return;
-			let restrictedAbilities = this.getFormat().restrictedAbilities.map(toID);
-			for (const ability of pokemon.otherAbilities) {
-				if (ability !== pokemon.baseAbility && !restrictedAbilities.includes(ability)) {
-					let effect = 'ability' + ability;
 					pokemon.addVolatile(effect);
 				}
 			}
