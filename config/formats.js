@@ -6817,7 +6817,6 @@ exports.Formats = [
 			"&bullet; Pokemon can add almost any ability as extra abilities at the cost of moveslots.",
 		],
 
-		mod: 'aam',
 		ruleset: ['[Gen 7] OU'],
 		banlist: ['Shedinja', 'Trace'],
 		restrictedAbilities: ['Arena Trap', 'Comatose', 'Contrary', 'Fluffy', 'Fur Coat', 'Huge Power', 'Illusion', 'Imposter', 'Innards Out', 'Parental Bond', 'Power Construct', 'Protean', 'Pure Power', 'Shadow Tag', 'Simple', 'Speed Boost', 'Stakeout', '', 'Water Bubble', 'Wonder Guard'],
@@ -6867,73 +6866,16 @@ exports.Formats = [
 					pokemon.addVolatile(effect);
 				}
 			}
-		},
-	},
-	{
-		name: "[Gen 7] Abilimoves [TEST]",
-		desc: [
-			"&bullet; Pokemon can add almost any ability as extra abilities at the cost of moveslots.",
-		],
-
-		ruleset: ['[Gen 7] OU'],
-		banlist: ['Shedinja', 'Trace'],
-		restrictedAbilities: ['Arena Trap', 'Comatose', 'Contrary', 'Fluffy', 'Fur Coat', 'Huge Power', 'Illusion', 'Imposter', 'Innards Out', 'Parental Bond', 'Power Construct', 'Protean', 'Pure Power', 'Shadow Tag', 'Simple', 'Speed Boost', 'Stakeout', '', 'Water Bubble', 'Wonder Guard'],
-		onValidateTeam(team, format, teamHas) {
-			for (let ability in teamHas.absAsMoves) {
-				if (teamHas.absAsMoves[ability] > 1) return [`You are limited to 1 of each Ability as Move. (You have ${teamHas.absAsMoves[ability]} of ${ability}).`];
-			}
-		},
-		validateSet(set, teamHas) {
-			const restrictedAbilities = this.format.restrictedAbilities || [];
-			let customRules = this.format.customRules || [];
-			let TeamValidator = /** @type {new(format: string | Format) => Validator} */ (this.constructor);
-			let validator = new TeamValidator(Dex.getFormat(this.format.id + '@@@' + customRules.join(',')));
-			let abilities = [];
-			let problems = [];
-			if (!teamHas.absAsMoves) teamHas.absAsMoves = {};
-			for (let i = 0; i < set.moves.length; i++) {
-				let move = this.dex.getAbility(set.moves[i]);
-				if (!move.exists) continue;
-				set.moves.splice(i--, 1); // i-- because when you splice the current move, the next move will come to this slot.
-				abilities.push(move.id);
-				teamHas.absAsMoves[move.name] = (teamHas.absAsMoves[move.name] || 0) + 1;
-				if (restrictedAbilities.includes(move.name)) problems.push(`${set.name || set.species} has ${move.ability} in a moveslot, which is banned.`);
-			}
-			problems = problems.concat(validator.validateSet(set, teamHas) || []);
-			if (abilities.length) set.ability = [set.ability].concat(abilities).join('0');
-			return problems.length ? problems : null;
-		},
-		onBegin: function () {
-			let allPokemon = this.p1.pokemon.concat(this.p2.pokemon);
-			for (let pokemon of allPokemon) {
-				if (!pokemon.baseAbility.includes('0')) continue;
-				let abilities = pokemon.baseAbility.split('0');
-				pokemon.baseAbility = pokemon.ability = abilities[0];
-				abilities.splice(0, 1);
-				pokemon.otherAbilities = abilities;
-			}
-		},
-		onSwitchInPriority: 2,
-		onSwitchIn: function (pokemon) {
-			if (!pokemon.otherAbilities) return;
-			let restrictedAbilities = this.getFormat().restrictedAbilities.map(toID);
-			for (const ability of pokemon.otherAbilities) {
-				if (ability !== pokemon.baseAbility && !restrictedAbilities.includes(ability)) {
-					let effect = 'ability' + ability;
-					delete pokemon.volatiles[effect];
-					pokemon.addVolatile(effect);
-				}
-			}
-		},
-		pokemon: {
-			hasAbility: function (ability) {
-				if (this.ignoringAbility()) return false;
-				if (Array.isArray(ability)) return ability.some(ability => this.hasAbility(ability));
-				ability = toID(ability);
-				return this.ability === ability || !!this.volatiles['ability' + ability];
-			},
 		},
 		battle: {
+			pokemon: {
+				hasAbility: function (ability) {
+					if (this.ignoringAbility()) return false;
+					if (Array.isArray(ability)) return ability.some(ability => this.hasAbility(ability));
+					ability = toID(ability);
+					return this.ability === ability || !!this.volatiles['ability' + ability];
+				},
+			},
 			getEffect: function (name) {
 				if (name && typeof name !== 'string') {
 					return name;
