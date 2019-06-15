@@ -6818,8 +6818,8 @@ exports.Formats = [
 		],
 
 		ruleset: ['[Gen 7] OU'],
-		banlist: ['Shedinja', 'Trace'],
-		restrictedAbilities: ['Arena Trap', 'Comatose', 'Contrary', 'Fluffy', 'Fur Coat', 'Huge Power', 'Illusion', 'Imposter', 'Innards Out', 'Parental Bond', 'Power Construct', 'Protean', 'Pure Power', 'Shadow Tag', 'Simple', 'Speed Boost', 'Stakeout', '', 'Water Bubble', 'Wonder Guard'],
+		banlist: ['Shedinja'		],
+		restrictedAbilities: ['Arena Trap', 'Comatose', 'Contrary', 'Fluffy', 'Fur Coat', 'Huge Power', 'Illusion', 'Imposter', 'Innards Out', 'Parental Bond', 'Power Construct', 'Protean', 'Pure Power', 'Shadow Tag', 'Simple', 'Speed Boost', 'Stakeout', 'Trace', 'Water Bubble', 'Wonder Guard'],
 		onValidateTeam(team, format, teamHas) {
 			for (let ability in teamHas.absAsMoves) {
 				if (teamHas.absAsMoves[ability] > 1) return [`You are limited to 1 of each Ability as Move. (You have ${teamHas.absAsMoves[ability]} of ${ability}).`];
