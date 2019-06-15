@@ -875,12 +875,8 @@ exports.BattleMovedex = {
 			this.add('-anim', source, "Double Edge", target);
 		},
 		onTry: function(source, target) {
-			target.side.addSideCondition('futuremove');
-			if (target.side.sideConditions['futuremove'].positions[target.position]) {
-				return false;
-			}
-			target.side.sideConditions['futuremove'].positions[target.position] = {
-				duration: 3,
+			if (!target.side.addSlotCondition(target, 'futuremove')) return false;
+			Object.assign(target.side.slotConditions[target.position]['futuremove'], {
 				move: 'rushb',
 				source: source,
 				moveData: {
@@ -895,7 +891,7 @@ exports.BattleMovedex = {
 					isFutureMove: true,
 					type: 'Fighting',
 				},
-			};
+			});
 			this.add('-start', source, 'move: Rush B');
 			return null;
 		},
