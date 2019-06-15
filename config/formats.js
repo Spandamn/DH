@@ -6875,7 +6875,6 @@ exports.Formats = [
 			"&bullet; Pokemon can add almost any ability as extra abilities at the cost of moveslots.",
 		],
 
-		mod: 'aam',
 		ruleset: ['[Gen 7] OU'],
 		banlist: ['Shedinja', 'Trace'],
 		restrictedAbilities: ['Arena Trap', 'Comatose', 'Contrary', 'Fluffy', 'Fur Coat', 'Huge Power', 'Illusion', 'Imposter', 'Innards Out', 'Parental Bond', 'Power Construct', 'Protean', 'Pure Power', 'Shadow Tag', 'Simple', 'Speed Boost', 'Stakeout', '', 'Water Bubble', 'Wonder Guard'],
