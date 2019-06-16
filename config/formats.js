@@ -6818,7 +6818,7 @@ exports.Formats = [
 		],
 
 		ruleset: ['[Gen 7] OU'],
-		banlist: ['Shedinja'		],
+		banlist: ['Shedinja'],
 		restrictedAbilities: ['Arena Trap', 'Comatose', 'Contrary', 'Fluffy', 'Fur Coat', 'Huge Power', 'Illusion', 'Imposter', 'Innards Out', 'Parental Bond', 'Power Construct', 'Protean', 'Pure Power', 'Shadow Tag', 'Simple', 'Speed Boost', 'Stakeout', 'Trace', 'Water Bubble', 'Wonder Guard'],
 		onValidateTeam(team, format, teamHas) {
 			for (let ability in teamHas.absAsMoves) {
@@ -6839,7 +6839,7 @@ exports.Formats = [
 				set.moves.splice(i--, 1); // i-- because when you splice the current move, the next move will come to this slot.
 				abilities.push(move.id);
 				teamHas.absAsMoves[move.name] = (teamHas.absAsMoves[move.name] || 0) + 1;
-				if (restrictedAbilities.includes(move.name)) problems.push(`${set.name || set.species} has ${move.ability} in a moveslot, which is banned.`);
+				if (restrictedAbilities.includes(move.name)) problems.push(`${set.name || set.species} has ${move.name} in a moveslot, which is banned.`);
 			}
 			problems = problems.concat(validator.validateSet(set, teamHas) || []);
 			if (abilities.length) set.ability = [set.ability].concat(abilities).join('0');
