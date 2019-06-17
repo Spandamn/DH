@@ -5081,7 +5081,15 @@ exports.Formats = [
 		onSwitchIn: function (pokemon) {
             this.add('-start', pokemon, 'typechange', pokemon.template.types.join('/'), '[silent]');
         },
+		onBegin: function () {
+			this.zMoveTable.Space = 'Event Horizon'
+			this.zMoveTable.Time = 'Eternal Onslaught'
+			this.zMoveTable.Light = 'Radiance Nova'
+			this.zMoveTable.Heart = 'Compassion Cannon'
+			this.zMoveTable.Food = 'Culinary Cataclysm'
+		},
 		mod: 'ttm',
+		
 	},
 	{
   		name: "[Gen 7] Type Optimisation",
