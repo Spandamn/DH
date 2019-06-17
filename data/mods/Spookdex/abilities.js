@@ -276,17 +276,19 @@ let BattleAbilities = {
 	"beastboost": {
 		desc: "This Pokemon's highest stat is raised by 1 stage if it attacks and knocks out another Pokemon.",
 		shortDesc: "This Pokemon's highest stat is raised by 1 if it attacks and KOes another Pokemon.",
-		onSourceFaint: function (target, source, effect) {
+		onSourceFaint(target, source, effect) {
 			if (effect && effect.effectType === 'Move') {
-				let stat = 'atk';
+				let statName = 'atk';
 				let bestStat = 0;
-				for (let i in source.stats) {
-					if (source.stats[i] > bestStat) {
-						stat = i;
-						bestStat = source.stats[i];
+				/** @type {StatNameExceptHP} */
+				let s;
+				for (s in source.storedStats) {
+					if (source.storedStats[s] > bestStat) {
+						statName = s;
+						bestStat = source.storedStats[s];
 					}
 				}
-				this.boost({[stat]: 1}, source);
+				this.boost({[statName]: 1}, source);
 			}
 		},
 		id: "beastboost",
