@@ -10894,7 +10894,7 @@ exports.BattlePokedex = {
 	slurpuff: {
 		num: 685,
 		species: "Slurpuff",
-		types: ["Fairy"],
+		types: ["Food", "Fairy"],
 		baseStats: {hp: 82, atk: 80, def: 86, spa: 85, spd: 75, spe: 72},
 		abilities: {0: "Sweet Veil", 1: "Chocolate", H: "Unburden"},
 		heightm: 0.8,
