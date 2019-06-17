@@ -205,7 +205,7 @@ exports.BattlePokedex = {
     azuninja: {
         num: 75003,
         species: "Azuninja",
-        types: ["Water", "Dark"],
+        types: ["Water"],
         genderRatio: {
             M: 0.75,
             F: 0.25
