@@ -242,7 +242,7 @@ exports.BattleAbilities = {
 		id: "puppeteer",
 		name: "Puppeteer",
 	},
-	"showerpower": {
+	"rainpower": {
 		desc: "If Rain Dance is active, this Pokemon's Special Attack is multiplied by 1.5 and it loses 1/8 of its maximum HP, rounded down, at the end of each turn.",
 		shortDesc: "If Rain Dance is active, this Pokemon's Sp. Atk is 1.5x; loses 1/8 max HP per turn.",
 		onModifySpAPriority: 5,
@@ -256,8 +256,8 @@ exports.BattleAbilities = {
 				this.damage(target.maxhp / 8, target, target);
 			}
 		},
-		id: "showerpower",
-		name: "Shower Power",
+		id: "rainpower",
+		name: "Rain Power",
 	},
 	"striker": {
 		desc: "This Pokemon's kick-based attacks have their power multiplied by 1.2 and ignore accuracy checks to always hit.",
