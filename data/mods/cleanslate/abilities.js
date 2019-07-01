@@ -1770,7 +1770,7 @@ let BattleAbilities = {
 			if (target === source || move.hasBounced || !move.flags['reflectable']) {
 				return;
 			}
-			let newMove = this.getMoveCopy(move.id);
+			let newMove = this.getActiveMove(move.id);
 			newMove.hasBounced = true;
 			newMove.pranksterBoosted = false;
 			this.useMove(newMove, target, source);
@@ -1780,7 +1780,7 @@ let BattleAbilities = {
 			if (target.side === source.side || move.hasBounced || !move.flags['reflectable']) {
 				return;
 			}
-			let newMove = this.getMoveCopy(move.id);
+			let newMove = this.getActiveMove(move.id);
 			newMove.hasBounced = true;
 			newMove.pranksterBoosted = false;
 			this.useMove(newMove, this.effectData.target, source);
@@ -4117,7 +4117,7 @@ let BattleAbilities = {
 			if (target === source || move.hasBounced || !move.flags['reflectable']) {
 				return;
 			}
-			let newMove = this.getMoveCopy(move.id);
+			let newMove = this.getActiveMove(move.id);
 			newMove.hasBounced = true;
 			this.useMove(newMove, target, source);
 			return null;
@@ -4128,7 +4128,7 @@ let BattleAbilities = {
 			if (target.side === source.side || move.hasBounced || !move.flags['reflectable']) {
 				return;
 			}
-			let newMove = this.getMoveCopy(move.id);
+			let newMove = this.getActiveMove(move.id);
 			newMove.hasBounced = true;
 			this.useMove(newMove, this.effectData.target, source);
 			return null;
