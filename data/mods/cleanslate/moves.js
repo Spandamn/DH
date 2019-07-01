@@ -11442,11 +11442,12 @@ let BattleMovedex = {
 		pp: 20,
 		priority: 0,
 		flags: {protect: 1, mirror: 1, mystery: 1},
-		onHit: function (target, pokemon) {
+		onHit(target, pokemon) {
 			let averagehp = Math.floor((target.hp + pokemon.hp) / 2) || 1;
 			target.sethp(averagehp);
+			this.add('-sethp', target, target.getHealth, '[from] move: Pain Split', '[silent]');
 			pokemon.sethp(averagehp);
-			this.add('-sethp', target, target.getHealth, pokemon, pokemon.getHealth, '[from] move: Pain Split');
+			this.add('-sethp', pokemon, pokemon.getHealth, '[from] move: Pain Split');
 		},
 		secondary: null,
 		target: "normal",
