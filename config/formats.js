@@ -2869,7 +2869,7 @@ exports.Formats = [
 		unbanlist: ["Landorus"],
 		mod: 'allterrain',
 		onBegin: function() {
-			this.setTerrain('allterrain');
+			this.field.setTerrain('allterrain');
 		},
 	},
 	{
@@ -3753,7 +3753,7 @@ exports.Formats = [
 			this.add("-message", "The Lockdown has commenced! Battlefield changes are now permanent!");
 			if (this.field.weatherData.duration) this.field.weatherData.duration = 0;
 			if (this.field.terrainData.duration) this.field.terrainData.duration = 0;
-			for (let i in this.pseudoWeather) {
+			for (let i in this.field.pseudoWeather) {
 				if (pseudo.includes(i)) {
 					this.field.pseudoWeather[i].duration = 0;
 				}
