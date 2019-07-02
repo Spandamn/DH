@@ -3858,7 +3858,6 @@ exports.Formats = [
 			`&bullet; <a href="http://www.smogon.com/forums/threads/3612727/">Nature Swap</a>`,
 		],
 
-		mod: 'natureswap',
 		ruleset: ['[Gen 7] OU'],
 		banlist: ['Blissey', 'Chansey', 'Cloyster', 'Hoopa-Unbound', 'Kyurem-Black', 'Stakataka'],
 		battle: {
