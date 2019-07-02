@@ -418,7 +418,7 @@ const commands = {
 		let nature = target.trim().split(' ')[0];
 		let pokemon = target.trim().split(' ')[1];
 		if (!toID(nature) || !toID(pokemon)) return this.parse(`/help natureswap`);
-		let nature  = Dex.getNature(nature);
+		nature = Dex.getNature(nature);
 		if (!nature.exists) return this.errorReply(`Error: Pokemon ${nature} not found.`);
 		let template = Dex.deepClone(Dex.getTemplate(pokemon));
 		if (!template.exists) return this.errorReply(`Error: Pokemon ${pokemon} not found.`);
@@ -428,6 +428,7 @@ const commands = {
 		this.sendReply(`|raw|${Chat.getDataPokemonHTML(template)}`);
 	},
 	natureswapshelp: [`/ns OR /natureswap <pokemon> - Shows the base stats that a Pokemon would have in Nature Swap. Usage: /ns <Nature> <Pokemon>.`],
+
 	fuse: function(target, room, user) {
 		if (!this.runBroadcast()) return;
 		if(!target || target === ' ' || !target.includes(',')) return this.errorReply('Error: Invalid Argument(s).')
