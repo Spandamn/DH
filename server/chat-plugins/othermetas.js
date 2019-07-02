@@ -418,7 +418,7 @@ const commands = {
 		let nature = target.trim().split(' ')[0];
 		let pokemon = target.trim().split(' ')[1];
 		if (!toID(nature) || !toID(pokemon)) return this.parse(`/help natureswap`);
-		natureObj = Dex.getNature(nature);
+		let natureObj = Dex.getNature(nature);
 		if (!natureObj.exists) return this.errorReply(`Error: Pokemon ${natureObj} not found.`);
 		let template = Dex.deepClone(Dex.getTemplate(pokemon));
 		if (!template.exists) return this.errorReply(`Error: Pokemon ${pokemon} not found.`);
