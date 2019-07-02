@@ -425,6 +425,7 @@ const commands = {
 		let swap = template.baseStats[nature.minus];
 		template.baseStats[nature.minus] = template.baseStats[nature.plus];
 		template.baseStats[nature.plus] = swap;
+		template.tier = 'NS';
 		this.sendReply(`|raw|${Chat.getDataPokemonHTML(template)}`);
 	},
 	natureswapshelp: [`/ns OR /natureswap <pokemon> - Shows the base stats that a Pokemon would have in Nature Swap. Usage: /ns <Nature> <Pokemon>.`],
