@@ -424,7 +424,7 @@ const commands = {
 		if (!template.exists) return this.errorReply(`Error: Pokemon ${pokemon} not found.`);
 		let swap = template.baseStats[nature.minus];
 		template.baseStats[nature.minus] = `<b>${template.baseStats[nature.plus]}</b>`;
-		template.baseStats[nature.plus] = `<b>${}</b>`;
+		template.baseStats[nature.plus] = `<b>${swap}</b>`;
 		template.tier = 'NS';
 		this.sendReply(`|raw|${Chat.getDataPokemonHTML(template)}`);
 	},
