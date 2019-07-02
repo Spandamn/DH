@@ -410,51 +410,24 @@ const commands = {
 	tiershifthelp: [`/ts OR /tiershift <pokemon> - Shows the base stats that a Pokemon would have in Tier Shift.`],
 
 	//Misc commands for DragonHeaven
+	
+	'!natureswap': true,
 	ns: 'natureswap',
-        'natureswap': function(target, room, user) {
+	natureswap(target, room, user) {
 		if (!this.runBroadcast()) return;
-		let arg=target,by=user;
-		let natures = Object.assign({}, Dex.data.Natures);
-		let pokemen = Object.assign({}, Dex.data.Pokedex);
-                let text = "";
-                if (arg == " " || arg == '') {
-                        text += "Usage: <code>/ns &lt;Nature> &lt;Pokemon></code>";
-                } else {
-                        let tar = arg.split(' ');
-                        let poke = tar[1],
-                                nat = toID(tar[0]),
-                                p = toID(poke);
-                        if (p == "mega")
-                                poke = tar[2] + "mega";
-                        if (p.charAt(0) == "m" && pokemen[p.substring(1, p.length) + "mega"] != undefined)
-                                poke = poke.substring(1, poke.length) + "mega";
-                        let temp = "";
-                        p = toID(poke);
-                        if (pokemen[p] == undefined) {
-                                text += "Error: Pokemon not found";
-                        } else if (natures[nat] == undefined) {
-                                text += "Error: Nature not found";
-                        } else {
-                                let pokeobj = {
-                                        hp: "" + pokemen[p].baseStats.hp,
-                                        atk: "" + pokemen[p].baseStats.atk,
-                                        def: "" + pokemen[p].baseStats.def,
-                                        spa: "" + pokemen[p].baseStats.spa,
-                                        spd: "" + pokemen[p].baseStats.spd,
-                                        spe: "" + pokemen[p].baseStats.spe,
-                                        name: pokemen[p].species,
-                                };
-                                let natureobj = natures[nat];
-                                if (natureobj.plus && natureobj.minus) {
-                                        temp = "<b>" + pokeobj[natureobj['plus']] + "</b>";
-                                        pokeobj[natureobj['plus']] = "<b>" + pokeobj[natureobj['minus']] + "</b>";
-                                        pokeobj[natureobj['minus']] = temp;
-                                }
-                                text += "The new stats for " + pokeobj['name'] + " are: " + pokeobj['hp'] + "/" + pokeobj['atk'] + "/" + pokeobj['def'] + "/" + pokeobj['spa'] + "/" + pokeobj['spd'] + "/" + pokeobj['spe'] + "";
-                        }
-                }
-                this.sendReplyBox(text);
-        },
+		let nature = target.trim().split(' ')[0];
+		let pokemon = target.trim().split(' ')[1];
+		if (!toID(nature) || !toID(pokemon)) return this.parse(`/help natureswap`);
+		let nature  = Dex.getNature(nature);
+		if (!nature.exists) return this.errorReply(`Error: Pokemon ${nature} not found.`);
+		let template = Dex.deepClone(Dex.getTemplate(pokemon));
+		if (!template.exists) return this.errorReply(`Error: Pokemon ${pokemon} not found.`);
+		let swap = template.baseStats[nature.minus];
+		template.baseStats[nature.minus] = template.baseStats[nature.plus];
+		template.baseStats[nature.plus] = swap;
+		this.sendReply(`|raw|${Chat.getDataPokemonHTML(template)}`);
+	},
+	natureswapshelp: [`/ns OR /natureswap <pokemon> - Shows the base stats that a Pokemon would have in Nature Swap. Usage: /ns <Nature> <Pokemon>.`],
 	fuse: function(target, room, user) {
 		if (!this.runBroadcast()) return;
 		if(!target || target === ' ' || !target.includes(',')) return this.errorReply('Error: Invalid Argument(s).')
