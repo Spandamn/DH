@@ -141,7 +141,7 @@ export class Validator {
 		const nameTemplate = dex.getTemplate(set.name);
 		// @ts-ignore
 		const allowedFormats = ['gen7crossevolution', 'gen7franticfusions'];
-		if (nameTemplate.exists && nameTemplate.name.toLowerCase() === set.name.toLowerCase() && !allowedFormats.includes(format)) {
+		if (nameTemplate.exists && nameTemplate.name.toLowerCase() === set.name.toLowerCase() && !allowedFormats.includes(toID(format))) {
 			// Name must not be the name of another pokemon
 			set.name = '';
 		}
