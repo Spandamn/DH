@@ -6484,7 +6484,7 @@ exports.Formats = [
 		ruleset: ['[Gen 7] OU'],
 		banlist: ['Ignore Illegal Abilities', 'Wonder Guard', 'Serene Grace ++ Shaymin', 'Shadow Tag', 'Parental Bond ++ Seismic Toss'],
 		onModifyTemplate: function (template, pokemon) {
-			let newStats = Object.assign({}, template.baseStats), prevo = pokemon.baseTemplate.prevo;
+			let newStats = Object.assign({}, template.baseStats), prevo = this.getTemplate(template.baseSpecies).prevo;
 			while (prevo) {
 				let prevoTemplate = this.getTemplate(prevo);
 				for (let i in newStats.baseStats) {
@@ -6492,9 +6492,9 @@ exports.Formats = [
 				}
 				prevo = prevoTemplate.prevo;
 			}
-			if (!pokemon.baseTemplate.otherFormes) return Object.assign(template, newStats);
-			for (let i = 0; i < pokemon.baseTemplate.otherFormes.length; i++) {
-				let formeTemplate = this.getTemplate(pokemon.baseTemplate.otherFormes[i]);
+			if (!this.getTemplate(template.baseSpecies).otherFormes) return Object.assign(template, newStats);
+			for (let i = 0; i < this.getTemplate(template.baseSpecies).otherFormes.length; i++) {
+				let formeTemplate = this.getTemplate(this.getTemplate(template.baseSpecies).otherFormes[i]);
 				for (let j in newStats) {
 					newStats[j] = Math.max(formeTemplate.baseStats[j], newStats[j]);
 				}
