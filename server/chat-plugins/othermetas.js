@@ -423,8 +423,8 @@ const commands = {
 		let template = Dex.deepClone(Dex.getTemplate(pokemon));
 		if (!template.exists) return this.errorReply(`Error: Pokemon ${pokemon} not found.`);
 		let swap = template.baseStats[nature.minus];
-		template.baseStats[nature.minus] = `<b>${template.baseStats[nature.plus]}</b>`;
-		template.baseStats[nature.plus] = `<b>${swap}</b>`;
+		template.baseStats[nature.minus] = template.baseStats[nature.plus];
+		template.baseStats[nature.plus] = swap;
 		template.tier = 'NS';
 		this.sendReply(`|raw|${Chat.getDataPokemonHTML(template)}`);
 	},
