@@ -3861,6 +3861,28 @@ exports.Formats = [
 		mod: 'natureswap',
 		ruleset: ['[Gen 7] OU'],
 		banlist: ['Blissey', 'Chansey', 'Cloyster', 'Hoopa-Unbound', 'Kyurem-Black', 'Stakataka'],
+		battle: {
+			natureModify(stats, set) {
+				let nature = this.getNature(set.nature);
+				let stat;
+				if (nature.plus) {
+					stat = nature.plus;
+					stats[stat] = Math.floor(stats[stat] * 1.1);
+				}
+				return stats;
+			},
+		},
+		onModifyTemplate(template, target, source, effect) {
+			if (!target) return; // Chat command
+			if (effect && ['imposter', 'transform'].includes(effect.id)) return;
+			let nature = this.getNature(target.set.nature);
+			if (!nature.plus) return template;
+			let newStats = Object.assign({}, template.baseStats);
+			let swap = newStats[nature.plus];
+			newStats[nature.plus] = newStats[nature.minus];
+			newStats[nature.minus] = swap;
+			return Object.assign({}, template, {baseStats: newStats});
+		},
 	},
 	{
 		name: "[Gen 7] No Status",
