@@ -3123,16 +3123,16 @@ exports.Formats = [
 			}
 		},
 		validateSet: function (set, teamHas) {
-			let crossTemplate = Dex.getTemplate(set.name);
+			let crossTemplate = this.dex.getTemplate(set.name);
 			if (!crossTemplate.exists || crossTemplate.isNonstandard) return this.validateSet(set, teamHas);
-			let template = Dex.getTemplate(set.species);
+			let template = this.dex.getTemplate(set.species);
 			if (!template.exists) return [`The Pokemon ${set.species} does not exist.`];
 			if (!template.evos.length) return [`${template.species} cannot cross evolve because it doesn't evolve.`];
 			if (template.species === 'Sneasel') return [`Sneasel as a base Pokemon is banned.`];
 			let crossBans = {'shedinja': 1, 'solgaleo': 1, 'lunala': 1};
 			if (crossTemplate.id in crossBans) return [`${template.species} cannot cross evolve into ${crossTemplate.species} because it is banned.`];
 			if (crossTemplate.battleOnly || !crossTemplate.prevo) return [`${template.species} cannot cross evolve into ${crossTemplate.species} because it isn't an evolution.`];
-			let crossPrevoTemplate = Dex.getTemplate(crossTemplate.prevo);
+			let crossPrevoTemplate = this.dex.getTemplate(crossTemplate.prevo);
 			if (!crossPrevoTemplate.prevo !== !template.prevo) return [`${template.species} cannot cross into ${crossTemplate.species} because they are not consecutive evolutionary stages.`];
 
 			// Make sure no stat is too high/low to cross evolve to
@@ -3155,7 +3155,7 @@ exports.Formats = [
 
 			let mixedTemplate = Object.assign({}, template);
 			// Ability test
-			let ability = Dex.getAbility(set.ability);
+			let ability = this.dex.getAbility(set.ability);
 			let abilityBans = {'hugepower': 1, 'purepower': 1, 'shadowtag': 1};
 			if (!(ability.id in abilityBans)) mixedTemplate.abilities = crossTemplate.abilities;
 
