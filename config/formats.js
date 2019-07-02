@@ -3110,7 +3110,6 @@ exports.Formats = [
 		],
 		mod: 'gen7',
 		ruleset: ['[Gen 7] Ubers', 'Baton Pass Clause'],
-		banlist: ['Rule:nicknameclause'],
 		onValidateTeam: function (team) {
 			let nameTable = {};
 			for (let i = 0; i < team.length; i++) {
