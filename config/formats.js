@@ -2237,7 +2237,7 @@ exports.Formats = [
 			}
 		}
 	},
-	{
+	/*{
 		name: "[Gen 7] Random Top Percentage",
 		mod: 'toppercentage',
 		desc: ["&lt; <a href=\"http://www.smogon.com/forums/threads/top-percentage.3564459/\">Top Percentage</a>"],
@@ -2265,7 +2265,7 @@ exports.Formats = [
 				this.win(target.side.foe);
 			}
 		},
-	},
+	},*/
 	{
 		name: "[Gen 7] Random Last Will",
 		desc: ["&bullet; Every Pokemon will use the move in their last moveslot before fainting in battle."],
@@ -4572,7 +4572,7 @@ exports.Formats = [
 			if (pokemon.baseTemplate.actualSpecies) this.add('-end', pokemon, pokemon.baseTemplate.actualSpecies, '[silent]');
 		},
 	},
-		{
+	/*	{
 		name: "[Gen 7] [Random] Choonmons δ",
 		mod: 'choonmons',
 		team: 'randomSeasonalMelee',
@@ -4646,7 +4646,7 @@ exports.Formats = [
 		onModifyPokemon: function(pokemon) {
 			let name = toID(pokemon.name);
 		},
-	},
+	},*/
 	
 	/*{	THis needs a "randomCHOONMONSFactory function in mods/choonmons/scripts.js"
 		name: "[Gen 7] Choonmons Factory",
@@ -10400,13 +10400,13 @@ onValidateTeam: function (team) {
 		section: "Fakemon",
 		column: 4,
 	},
-	{
+	/*{
 		name: "[Fakemon] Random Battle",
 		mod: 'fakemon',
 		team: 'randomFotW',
 		ruleset: ['Pokemon', 'Sleep Clause Mod', 'HP Percentage Mod', 'Cancel Mod', 'Freeze Clause Mod'],
 		fotw: "Mechroarmancer",
-	},
+	},*/
 	// Let's Go!
 	///////////////////////////////////////////////////////////////////
 
