@@ -456,7 +456,7 @@ stardream: {
 	 gender: "N",
     baseStats: {hp: 120, atk: 100, def: 120, spa: 150, spd: 90, spe: 100},
     abilities: {0: "Levitate", H: "Soul-Heart"},
-	 heightm: 2,
+	 heightm: 20,
     weightkg: 250,
 	 otherFormes: ["stardreamaccessark", "stardreamclockworkstar", "stardreamsoulos", "stardreamsoulosaccessark", "stardreamsoulosclockworkstar", "stardreamsoulosheart"],
 },
@@ -470,7 +470,7 @@ stardreamaccessark: {
 	 gender: "N",
     baseStats: {hp: 120, atk: 130, def: 140, spa: 110, spd: 110, spe: 70},
     abilities: {0: "Levitate", H: "Soul-Heart"},
-	 heightm: 10,
+	 heightm: 12700000,
     weightkg: 999.9,
 },
 stardreamclockworkstar: {
@@ -483,7 +483,7 @@ stardreamclockworkstar: {
 	 gender: "N",
     baseStats: {hp: 120, atk: 120, def: 120, spa: 160, spd: 110, spe: 90},
     abilities: {0: "Levitate", H: "Soul-Heart"},
-	 heightm: 10,
+	 heightm: 12700000,
     weightkg: 999.9,
 },
 stardreamsoulos: {
@@ -496,7 +496,7 @@ stardreamsoulos: {
 	 gender: "N",
     baseStats: {hp: 120, atk: 130, def: 140, spa: 180, spd: 90, spe: 120},
     abilities: {0: "Soul 0 System"},
-	 heightm: 2,
+	 heightm: 20,
     weightkg: 250,
 },
 stardreamsoulosaccessark: {
@@ -509,7 +509,7 @@ stardreamsoulosaccessark: {
 	 gender: "N",
     baseStats: {hp: 120, atk: 160, def: 160, spa: 160, spd: 130, spe: 70},
     abilities: {0: "Soul 0 System"},
-	 heightm: 10,
+	 heightm: 12700000,
     weightkg: 999.9,
 },
 stardreamsoulosclockworkstar: {
@@ -522,7 +522,7 @@ stardreamsoulosclockworkstar: {
 	 gender: "N",
     baseStats: {hp: 120, atk: 140, def: 140, spa: 200, spd: 130, spe: 90},
     abilities: {0: "Soul 0 System"},
-	 heightm: 10,
+	 heightm: 12700000,
     weightkg: 999.9,
 },
 stardreamsoulosheart: {
@@ -1888,6 +1888,162 @@ hrh: {
     abilities: {0: "Slush Rush"},
 	 heightm: 4,
     weightkg: 400,
+},
+walle: {
+    num: 7000001,
+    species: "WALL-E", /* WALL-E */
+    types: ["Steel", "Normal"],
+	 gender: "M",
+    baseStats: {hp: 100, atk: 70, def: 100, spa: 70, spd: 100, spe: 100},
+    abilities: {0: "Slush Rush"},
+	 heightm: 0.5,
+    weightkg: 5,
+},
+shaggy: {
+    num: 7000002,
+    species: "Shaggy", /* Scooby-Doo */
+    types: ["Normal"],
+	 gender: "M",
+    baseStats: {hp: 80, atk: 95, def: 100, spa: 75, spd: 75, spe: 124},
+    abilities: {0: "Wimp Out", H: "Hypnotic Confidence"},
+	 heightm: 1.8,
+    weightkg: 55,
+},
+sayakamiki: {
+    num: 7000003,
+    species: "Sayaka Miki", /* Puella Magi Madoka Magica */
+    types: ["Fighting"],
+	 gender: "F",
+    baseStats: {hp: 80, atk: 105, def: 80, spa: 50, spd: 70, spe: 100},
+    abilities: {0: "Regenerator", H: "Unaware"},
+	 heightm: 1.6,
+    weightkg: 48,
+	 evos: ["oktaviavonseckendorff"]
+},
+oktaviavonseckendorff: {
+    num: 7000004,
+    species: "Oktavia von Seckendorff", /* Puella Magi Madoka Magica */
+    types: ["Fighting"],
+	 gender: "F",
+    baseStats: {hp: 110, atk: 135, def: 110, spa: 80, spd: 90, spe: 30},
+    abilities: {0: "Regenerator", H: "Unaware"},
+	 heightm: 10,
+    weightkg: 480,
+	 prevo: ["sayakamiki"]
+},
+skipper: {
+    num: 7000005,
+    species: "Skipper", /* Madagascar */
+    types: ["Water", "Fighting"],
+	 gender: "M",
+    baseStats: {hp: 80, atk: 110, def: 90, spa: 60, spd: 80, spe: 120},
+    abilities: {0: "Reckless", H: "Commando Leader"},
+	 heightm: 0.9,
+    weightkg: 16,
+},
+rohankishibe: {
+    num: 7000006,
+    species: "Rohan Kishibe", /* JoJo's Bizzare Adventure */
+    types: ["Psychic"],
+	 gender: "M",
+    baseStats: {hp: 99, atk: 100, def: 77, spa: 80, spd: 97, spe: 127},
+    abilities: {0: "Heaven's Door", H: "Steelworker"},
+	 heightm: 1.9,
+    weightkg: 55,
+},
+arthurkingofbritons: {
+    num: 7000007,
+    species: "Arthur, King of Britons", /* Monty Python */
+    types: ["Normal"],
+	 gender: "M",
+    baseStats: {hp: 99, atk: 111, def: 99, spa: 44, spd: 88, spe: 99},
+    abilities: {0: "Heaven's Door", H: "Steelworker"},
+	 heightm: 1.9,
+    weightkg: 55,
+},
+siivagunner: {
+    num: 7000008,
+    species: "SiIvaGunner", /* SiIvaGunner */
+    types: ["Rock"],
+	 gender: "M",
+    baseStats: {hp: 90, atk: 70, def: 110, spa: 130, spd: 90, spe: 110},
+    abilities: {0: "Illusion", H: "Comatose"},
+	 heightm: 1.8,
+    weightkg: 75,
+},
+blackrabbit: {
+    num: 7000009,
+    species: "Black Rabbit", /* Problem Children Are Coming From Another World, Aren't They? */
+    types: ["Electric", "Fairy"],
+	 gender: "F",
+    baseStats: {hp: 65, atk: 100, def: 84, spa: 100, spd: 96, spe: 135},
+    abilities: {0: "Judge Master"},
+	 heightm: 1.5,
+    weightkg: 48,
+},
+creati: {
+    num: 7000010,
+    species: "Creati", /* My Hero Academia */
+    types: ["Normal"],
+	 gender: "F",
+    baseStats: {hp: 100, atk: 80, def: 105, spa: 80, spd: 120, spe: 85},
+    abilities: {0: "Inner Focus", H:"Creation"},
+	 heightm: 1.7,
+    weightkg: 55,
+},
+shaihulud: {
+    num: 7000011,
+    species: "Shai Hulud", /* Dune */
+    types: ["Ground"],
+    baseStats: {hp: 180, atk: 140, def: 90, spa: 60, spd: 60, spe: 70},
+    abilities: {0: "Dry Body"},
+	 heightm: 2700,
+    weightkg: 999.9,
+},
+irongiant: {
+    num: 7000012,
+    species: "Iron Giant", /* The Iron Giant */
+    types: ["Steel"],
+	 gender: "M",
+    baseStats: {hp: 110, atk: 160, def: 110, spa: 90, spd: 80, spe: 30},
+    abilities: {0: "Metal Eater", 1: "Regenerator", H: "Levitate"},
+	 heightm: 27,
+    weightkg: 999.9,
+},
+smolnozomi: {
+    num: 7000013,
+    species: "Smol Nozomi", /* SiIvaGunner */
+    types: ["Ice"],
+	 gender: "F",
+    baseStats: {hp: 80, atk: 60, def: 80, spa: 75, spd: 85, spe: 110},
+    abilities: {0: "Clear Body", H: "Snow Warning"},
+	 heightm: 0.2,
+    weightkg: 1,
+	 evos: ["smolitzer"]
+},
+smolitzer: {
+    num: 7000014,
+    species: "Smolitzer", /* SiIvaGunner */
+    types: ["Ice", "Steel"],
+	 gender: "F",
+    baseStats: {hp: 110, atk: 135, def: 110, spa: 85, spd: 100, spe: 60},
+    abilities: {0: "Iron Fist", H: "Snow Warning"},
+	 heightm: 2.1,
+    weightkg: 350,
+	 prevo: ["smolnozomi"]
+},
+smolitzermega: {
+    num: 7000014,
+    species: "Smolitzer", /* SiIvaGunner */
+    baseSpecies: "Smolitzer",
+    forme: "Mega",
+    formeLetter: "M",
+    types: ["Ice", "Steel"],
+	 gender: "F",
+    baseStats: {hp: 110, atk: 155, def: 120, spa: 85, spd: 110, spe: 120},
+    abilities: {0: "voiceless"},
+	 heightm: 2.1,
+    weightkg: 350,
 },
      
 //    /* mario: {
