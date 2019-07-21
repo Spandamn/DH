@@ -1676,18 +1676,8 @@ cirnotanned: {
 	 heightm: 1.3,
     weightkg: 30,
 },
-princesspeach: {
-    num: 6000094,
-    species: "Princess Peach", /* Super Mario */
-    types: ["Normal", "Fairy"],
-	 gender: "F",
-    baseStats: {hp: 100, atk: 90, def: 85, spa: 105, spd: 125, spe: 95},
-    abilities: {0: "Serene Grace", 1: "Triage", H: "Sweet Veil"},
-	 heightm: 1.8,
-    weightkg: 60,
-},
 monokuma: {
-    num: 6000095,
+    num: 6000094,
     species: "Monokuma", /* Danganronpa */
     types: ["Steel", "Dark"],
 	 gender: "N",
@@ -1695,6 +1685,16 @@ monokuma: {
     abilities: {0: "Tough Claws", 1: "Fluffy", H: "Hope Crusher"},
 	 heightm: 0.7,
     weightkg: 15,
+},
+princesspeach: {
+    num: 6000095,
+    species: "Princess Peach", /* Super Mario */
+    types: ["Normal", "Fairy"],
+	 gender: "F",
+    baseStats: {hp: 100, atk: 90, def: 85, spa: 105, spd: 125, spe: 95},
+    abilities: {0: "Serene Grace", 1: "Triage", H: "Sweet Veil"},
+	 heightm: 1.8,
+    weightkg: 60,
 },
 banjokazooie: {
     num: 6000096,
@@ -1730,15 +1730,15 @@ banjokazooiedragonkazooie: {
 	 heightm: 1.3,
     weightkg: 80,
 },
-kyoko: {
+toriel: {
     num: 6000097,
-    species: "Kyoko", /* Suguri and 100% Orange Juice */
-    types: ["Ice"],
+    species: "Toriel", /* Undertale */
+    types: ["Fire", "Fairy"],
 	 gender: "F",
-    baseStats: {hp: 90, atk: 50, def: 60, spa: 60, spd: 60, spe: 50},
-    abilities: {0: "Crystal Barrier"},
-	 heightm: 1.8,
-    weightkg: 55,
+    baseStats: {hp: 150, atk: 10, def: 50, spa: 135, spd: 165, spe: 90},
+    abilities: {0: "Flame Body", 1: "Healer", H: "Serene Grace"},
+	 heightm: 2.5,
+    weightkg: 150,
 },
 glados: {
     num: 6000098,
@@ -1750,15 +1750,144 @@ glados: {
 	 heightm: 5,
     weightkg: 100,
 },
-toriel: {
+kyoko: {
     num: 6000099,
-    species: "Toriel", /* Undertale */
-    types: ["Fire", "Fairy"],
+    species: "Kyoko", /* Suguri and 100% Orange Juice */
+    types: ["Ice"],
 	 gender: "F",
-    baseStats: {hp: 150, atk: 10, def: 50, spa: 135, spd: 165, spe: 90},
-    abilities: {0: "Flame Body", 1: "Healer", H: "Serene Grace"},
-	 heightm: 2.5,
-    weightkg: 150,
+    baseStats: {hp: 90, atk: 50, def: 60, spa: 60, spd: 60, spe: 50},
+    abilities: {0: "Crystal Barrier"},
+	 heightm: 1.8,
+    weightkg: 55,
+},
+steve: {
+    num: 6000100,
+    species: "Steve?", /* Minecraft */
+    types: ["Normal"],
+	 gender: "M",
+    baseStats: {hp: 95, atk: 95, def: 95, spa: 95, spd: 95, spe: 95},
+    abilities: {0: "Battle Armor", 1: "Hunger", H: "Miner"},
+	 heightm: 1.8,
+    weightkg: 55,
+},
+dimentio: {
+    num: 6000101,
+    species: "Dimentio", /* Super Paper Mario */
+    types: ["Psychic"],
+	 gender: "M",
+    baseStats: {hp: 80, atk: 64, def: 64, spa: 144, spd: 112, spe: 96},
+    abilities: {0: "Dimensional Mastery", H: "Levitate"},
+	 heightm: 1.5,
+    weightkg: 55,
+},
+dimentiosuper: {
+    num: 6000101,
+    species: "Dimentio-Super",
+    baseSpecies: "Dimentio",
+    forme: "Super",
+    formeLetter: "S",
+    types: ["Psychic", "Dark"],
+    genderRatio: "M",
+    baseStats: {hp: 200, atk: 144, def: 64, spa: 128, spd: 96, spe: 48},
+    abilities: {0: "Dimensional Mastery"},
+	 heightm: 15,
+    weightkg: 550,
+},
+traitorlord: {
+    num: 6000102,
+    species: "Traitor Lord", /* Hollow Knight */
+    types: ["Dark", "Bug"],
+	 gender: "M",
+    baseStats: {hp: 110, atk: 120, def: 85, spa: 90, spd: 75, spe: 90},
+    abilities: {0: "Sheer Force", H: "Toxic Boost"},
+	 heightm: 2.1,
+    weightkg: 300,
+},
+archer: {
+    num: 6000103,
+    species: "Archer", /* Fate/stay night */
+    types: ["Steel"],
+	 gender: "M",
+    baseStats: {hp: 80, atk: 100, def: 80, spa: 50, spd: 80, spe: 90},
+    abilities: {0: "Justified", 1: "Protean", H: "Trace"},
+	 heightm: 1.8,
+    weightkg: 55,
+},
+magus: {
+    num: 6000104,
+    species: "Magus", /* Chrono Trigger */
+    types: ["Psychic", "Dark"],
+	 gender: "M",
+    baseStats: {hp: 110, atk: 96, def: 90, spa: 140, spd: 120, spe: 110},
+    abilities: {0: "Dark Aura", H: "Barrier Change"},
+	 heightm: 1.8,
+    weightkg: 55,
+},
+tamamonomae: {
+    num: 6000105,
+    species: "Tamamo no Mae", /* Fate/EXTRA */
+    types: ["Fire", "Ghost"],
+	 gender: "F",
+    baseStats: {hp: 108, atk: 27, def: 63, spa: 99, spd: 99, spe: 99},
+    abilities: {0: "Fluffy", H: "Boundless Sunlight"},
+	 heightm: 1.5,
+    weightkg: 55,
+},
+tamamonomaesummer: {
+    num: 6000105,
+    species: "Tamamo no Mae-Summer",
+    baseSpecies: "Tamamo no Mae",
+    forme: "Summer",
+    formeLetter: "S",
+    types: ["Fire", "Ghost"],
+	 gender: "F",
+    baseStats: {hp: 108, atk: 99, def: 81, spa: 45, spd: 81, spe: 108},
+    abilities: {0: "Fluffy", H: "Boundless Sunlight"},
+	 heightm: 1.5,
+    weightkg: 55,
+},
+tamamonomaesummer: {
+    num: 6000105,
+    species: "Tamamo no Mae-Nine-Tails",
+    baseSpecies: "Tamamo no Mae",
+    forme: "Nine-Tails",
+    formeLetter: "9",
+    types: ["Fire", "Ghost"],
+	 gender: "F",
+    baseStats: {hp: 108, atk: 99, def: 63, spa: 153, spd: 126, spe: 108},
+    abilities: {0: "Fluffy", H: "Boundless Sunlight"},
+	 heightm: 99.9,
+    weightkg: 999.9,
+},
+knuckles: {
+    num: 6000106,
+    species: "Knuckles", /* Fate/EXTRA */
+    types: ["Ground", "Fighting"],
+	 gender: "M",
+    baseStats: {hp: 85, atk: 135, def: 105, spa: 70, spd: 85, spe: 110},
+    abilities: {0: "Iron Fist", H: "Scrappy"},
+	 heightm: 1,
+    weightkg: 35,
+},
+knuckles: {
+    num: 6000106,
+    species: "Knuckles", /* Sonic the Hedgehog 3 */
+    types: ["Ground", "Fighting"],
+	 gender: "M",
+    baseStats: {hp: 85, atk: 135, def: 105, spa: 70, spd: 85, spe: 110},
+    abilities: {0: "Iron Fist", H: "Scrappy"},
+	 heightm: 1,
+    weightkg: 35,
+},
+hrh: {
+    num: 6000106,
+    species: "HR-H", /* Kirby 64 */
+    types: ["Steel"],
+	 gender: "M",
+    baseStats: {hp: 110, atk: 125, def: 105, spa: 115, spd: 80, spe: 65},
+    abilities: {0: "Slush Rush"},
+	 heightm: 4,
+    weightkg: 400,
 },
      
 //    /* mario: {
