@@ -2126,17 +2126,8 @@ devil: {
 	 heightm: 1.9,
     weightkg: 69,
 },
-devil: {
-    num: 7000019,
-    species: "Devil", /* Lanterne of Light */
-    types: ["Dark"],
-    baseStats: {hp: 101, atk: 101, def: 101, spa: 101, spd: 101, spe: 91},
-    abilities: {0: "Devil's Disguise"},
-	 heightm: 1.9,
-    weightkg: 69,
-},
 beelzebub: {
-    num: 7000019,
+    num: 7000018,
     species: "Beelzebub",
 	 baseSpecies: "Devil",
 	 forme: "Beelzebub",
@@ -2148,7 +2139,7 @@ beelzebub: {
     weightkg: 69,
 },
 satan: {
-    num: 7000019,
+    num: 7000018,
     species: "Satan",
 	 baseSpecies: "Devil",
 	 forme: "Satan",
@@ -2160,7 +2151,7 @@ satan: {
     weightkg: 69,
 },
 asmodeus: {
-    num: 7000019,
+    num: 7000018,
     species: "Asmodeus",
 	 baseSpecies: "Devil",
 	 forme: "Asmodeus",
@@ -2172,7 +2163,7 @@ asmodeus: {
     weightkg: 69,
 },
 lucifer: {
-    num: 7000019,
+    num: 7000018,
     species: "Lucifer",
 	 baseSpecies: "Devil",
 	 forme: "Lucifer",
@@ -2184,7 +2175,7 @@ lucifer: {
     weightkg: 69,
 },
 leviathan: {
-    num: 7000019,
+    num: 7000018,
     species: "Leviathan",
 	 baseSpecies: "Devil",
 	 forme: "Leviathan",
@@ -2196,7 +2187,7 @@ leviathan: {
     weightkg: 69,
 },
 mammon: {
-    num: 7000019,
+    num: 7000018,
     species: "Mammon",
 	 baseSpecies: "Devil",
 	 forme: "Mammon",
@@ -2208,7 +2199,7 @@ mammon: {
     weightkg: 69,
 },
 belphegor: {
-    num: 7000019,
+    num: 7000018,
     species: "Belphegor",
 	 baseSpecies: "Devil",
 	 forme: "Belphegor",
@@ -2220,7 +2211,7 @@ belphegor: {
     weightkg: 69,
 },
 kars: {
-    num: 7000020,
+    num: 7000019,
     species: "Kars", /* JoJo's Bizzare Adventure */
     types: ["Dark", "Rock"],
     baseStats: {hp: 80, atk: 130, def: 80, spa: 90, spd: 90, spe: 130},
@@ -2229,7 +2220,7 @@ kars: {
     weightkg: 80,
 },
 karsultimate: {
-    num: 7000020,
+    num: 7000019,
     species: "Kars-Ultimate",
 	 baseSpecies: "Kars",
 	 forme: "Ultimate",
@@ -2241,7 +2232,7 @@ karsultimate: {
     weightkg: 80,
 },
 shelob: {
-    num: 7000021,
+    num: 7000020,
     species: "Shelob", /* Lord of the Rings */
     types: ["Bug", "Dark"],
     baseStats: {hp: 150, atk: 125, def: 95, spa: 75, spd: 65, spe: 60},
@@ -2250,7 +2241,7 @@ shelob: {
     weightkg: 350,
 },
 unregisteredhypercam2: {
-    num: 7000022,
+    num: 7000021,
     species: "Unregistered Hypercam 2", /* SiIvaGunner */
     types: ["Steel"],
 	 gender: "N",
@@ -2260,7 +2251,7 @@ unregisteredhypercam2: {
     weightkg: 5,
 },
 gigan: {
-    num: 7000023,
+    num: 7000022,
     species: "Gigan", /* Godzilla */
     types: ["Steel", "Dark"],
     baseStats: {hp: 80, atk: 150, def: 80, spa: 130, spd: 70, spe: 110},
@@ -2269,7 +2260,7 @@ gigan: {
     weightkg: 900,
 },
 anguirus: {
-    num: 7000024,
+    num: 7000023,
     species: "Anguirus", /* Godzilla */
     types: ["Ground", "Dragon"],
     baseStats: {hp: 140, atk: 110, def: 150, spa: 40, spd: 70, spe: 90},
@@ -2278,7 +2269,7 @@ anguirus: {
     weightkg: 350,
 },
 sakinikaido: {
-    num: 7000025,
+    num: 7000024,
     species: "Saki Nikaido", /* Zombie Land SAGA */
     types: ["Dark", "Ghost"],
     baseStats: {hp: 120, atk: 120, def: 60, spa: 100, spd: 90, spe: 110},
@@ -2287,7 +2278,7 @@ sakinikaido: {
     weightkg: 48,
 },
 majinbuu: {
-    num: 7000026,
+    num: 7000025,
     species: "Majin Buu", /* Dragon Ball */
     types: ["Dark", "Ghost"],
     baseStats: {hp: 160, atk: 105, def: 50, spa: 115, spd: 100, spe: 100},
@@ -2296,7 +2287,7 @@ majinbuu: {
     weightkg: 48,
 },
 hansolo: {
-    num: 7000027,
+    num: 7000026,
     species: "Han Solo", /* Star Wars */
     types: ["Normal"],
     baseStats: {hp: 80, atk: 104, def: 90, spa: 30, spd: 80, spe: 130},
@@ -2305,7 +2296,7 @@ hansolo: {
     weightkg: 55,
 },
 goku: {
-    num: 7000028,
+    num: 7000027,
     species: "Goku", /* Dragon Ball */
     types: ["Fighting"],
     baseStats: {hp: 90, atk: 100, def: 90, spa: 100, spd: 90, spe: 100},
@@ -2314,7 +2305,7 @@ goku: {
     weightkg: 55,
 },
 gokusupersaiyan: {
-    num: 7000028,
+    num: 7000027,
     species: "Goku-Super Saiyan",
 	 baseSpecies: "Goku",
 	 forme: "Super Saiyan",
@@ -2326,7 +2317,7 @@ gokusupersaiyan: {
     weightkg: 55,
 },
 gokusupersaiyangod: {
-    num: 7000028,
+    num: 7000027,
     species: "Goku-Super Saiyan God",
 	 baseSpecies: "Goku",
 	 forme: "Super Saiyan God",
@@ -2338,7 +2329,7 @@ gokusupersaiyangod: {
     weightkg: 55,
 },
 gokusupersaiyanblue: {
-    num: 7000028,
+    num: 7000027,
     species: "Goku-Super Saiyan Blue",
 	 baseSpecies: "Goku",
 	 forme: "Super Saiyan Blue",
@@ -2350,7 +2341,7 @@ gokusupersaiyanblue: {
     weightkg: 55,
 },
 gokuultainstinct: {
-    num: 7000028,
+    num: 7000027,
     species: "Goku-Ultra Instinct",
 	 baseSpecies: "Goku",
 	 forme: "Ultra Instinct",
@@ -2362,7 +2353,7 @@ gokuultainstinct: {
     weightkg: 55,
 },
 jonathanjoestar: {
-    num: 7000029,
+    num: 7000028,
     species: "Jonathan Joestar", /* JoJo's Bizzare Adventure */
     types: ["Fighting"],
     baseStats: {hp: 130, atk: 150, def: 110, spa: 70, spd: 70, spe: 70},
@@ -2371,7 +2362,7 @@ jonathanjoestar: {
     weightkg: 105,
 },
 orga: {
-    num: 7000030,
+    num: 7000029,
     species: "Orga", /* Godzilla */
     types: ["Dragon", "Psychic"],
     baseStats: {hp: 120, atk: 170, def: 90, spa: 120, spd: 70, spe: 100},
@@ -2380,7 +2371,7 @@ orga: {
     weightkg: 900,
 },
 thanos: {
-    num: 7000031,
+    num: 7000030,
     species: "Thanos", /* Marvel */
     types: ["Dark", "Normal"],
     baseStats: {hp: 120, atk: 130, def: 100, spa: 80, spd: 90, spe: 90},
@@ -2389,7 +2380,7 @@ thanos: {
     weightkg: 105,
 },
 thanosspace: {
-    num: 7000031,
+    num: 7000030,
     species: "Thanos-Space", 
 	 baseSpecies: "Thanos",
 	 forme: "Space",
@@ -2401,7 +2392,7 @@ thanosspace: {
     weightkg: 105,
 },
 thanosmind: {
-    num: 7000031,
+    num: 7000030,
     species: "Thanos-Mind", 
 	 baseSpecies: "Thanos",
 	 forme: "Mind",
@@ -2413,7 +2404,7 @@ thanosmind: {
     weightkg: 105,
 },
 thanosreality: {
-    num: 7000031,
+    num: 7000030,
     species: "Thanos-Reality", 
 	 baseSpecies: "Thanos",
 	 forme: "Reality",
@@ -2425,7 +2416,7 @@ thanosreality: {
     weightkg: 105,
 },
 thanospower: {
-    num: 7000031,
+    num: 7000030,
     species: "Thanos-Power", 
 	 baseSpecies: "Thanos",
 	 forme: "Power",
@@ -2437,7 +2428,7 @@ thanospower: {
     weightkg: 105,
 },
 thanostime: {
-    num: 7000031,
+    num: 7000030,
     species: "Thanos-Time", 
 	 baseSpecies: "Thanos",
 	 forme: "Time",
@@ -2449,7 +2440,7 @@ thanostime: {
     weightkg: 105,
 },
 thanossoul: {
-    num: 7000031,
+    num: 7000030,
     species: "Thanos-Soul", 
 	 baseSpecies: "Thanos",
 	 forme: "Soul",
@@ -2461,7 +2452,7 @@ thanossoul: {
     weightkg: 105,
 },
 thanosinfinity: {
-    num: 7000031,
+    num: 7000030,
     species: "Thanos-Infinity", 
 	 baseSpecies: "Thanos",
 	 forme: "Infinity",
@@ -2473,7 +2464,7 @@ thanosinfinity: {
     weightkg: 105,
 },
 iroh: {
-    num: 7000032,
+    num: 7000031,
     species: "Iroh", /* Avatar: The Last Airbender*/
     types: ["Fire", "Dragon"],
     baseStats: {hp: 80, atk: 95, def: 100, spa: 140, spd: 110, spe: 50},
@@ -2482,7 +2473,7 @@ iroh: {
     weightkg: 55,
 },
 homersimpson: {
-    num: 7000033, /* The Simpsons */
+    num: 7000032, /* The Simpsons */
     species: "Homer Simpson",
     types: ["Poison"],
     baseStats: {hp: 167, atk: 107, def: 80, spa: 44, spd: 74, spe: 60},
@@ -2491,7 +2482,7 @@ homersimpson: {
     weightkg: 70,
 },
 moongirl: {
-    num: 7000034,
+    num: 7000033,
     species: "Moon Girl", /* Marvel */
     types: ["Normal"],
     baseStats: {hp: 40, atk: 65, def: 55, spa: 130, spd: 80, spe: 70},
@@ -2500,7 +2491,7 @@ moongirl: {
     weightkg: 48,
 },
 elmerape: {
-    num: 7000035,
+    num: 7000034,
     species: "Elmer Ape", /* Sandsverse */
     types: ["Grass"],
     baseStats: {hp: 80, atk: 110, def: 80, spa: 110, spd: 80, spe: 120},
