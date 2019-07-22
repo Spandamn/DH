@@ -1823,8 +1823,31 @@ magus: {
 	 heightm: 1.8,
     weightkg: 55,
 },
-tamamonomae: {
+silver: {
     num: 6000105,
+    species: "Silver", /* Sonic the Hedgehog */
+    types: ["Psychic"],
+	 gender: "M",
+    baseStats: {hp: 80, atk: 90, def: 90, spa: 120, spd: 80, spe: 140},
+    abilities: {0: "Levitate", H: "Sheer Force"},
+	 heightm: 1,
+    weightkg: 35,
+},
+silversuper: {
+    num: 6000105,
+    species: "Silver-Super",
+	 baseSpecies: "Silver",
+	 forme: "Super",
+	 formeLetter: "S",
+    types: ["Psychic", "Flying"],
+	 gender: "M",
+    baseStats: {hp: 80, atk: 100, def: 110, spa: 150, spd: 100, spe: 160},
+    abilities: {0: "Sheer Force"},
+	 heightm: 1,
+    weightkg: 35,
+},
+tamamonomae: {
+    num: 6000106,
     species: "Tamamo no Mae", /* Fate/EXTRA */
     types: ["Fire", "Ghost"],
 	 gender: "F",
@@ -1834,7 +1857,7 @@ tamamonomae: {
     weightkg: 55,
 },
 tamamonomaesummer: {
-    num: 6000105,
+    num: 6000106,
     species: "Tamamo no Mae-Summer",
     baseSpecies: "Tamamo no Mae",
     forme: "Summer",
@@ -1846,8 +1869,8 @@ tamamonomaesummer: {
 	 heightm: 1.5,
     weightkg: 55,
 },
-tamamonomaesummer: {
-    num: 6000105,
+tamamonomaeninetails: {
+    num: 6000106,
     species: "Tamamo no Mae-Nine-Tails",
     baseSpecies: "Tamamo no Mae",
     forme: "Nine-Tails",
@@ -1860,7 +1883,7 @@ tamamonomaesummer: {
     weightkg: 999.9,
 },
 knuckles: {
-    num: 6000106,
+    num: 6000107,
     species: "Knuckles", /* Fate/EXTRA */
     types: ["Ground", "Fighting"],
 	 gender: "M",
@@ -1869,18 +1892,8 @@ knuckles: {
 	 heightm: 1,
     weightkg: 35,
 },
-knuckles: {
-    num: 6000106,
-    species: "Knuckles", /* Sonic the Hedgehog 3 */
-    types: ["Ground", "Fighting"],
-	 gender: "M",
-    baseStats: {hp: 85, atk: 135, def: 105, spa: 70, spd: 85, spe: 110},
-    abilities: {0: "Iron Fist", H: "Scrappy"},
-	 heightm: 1,
-    weightkg: 35,
-},
 hrh: {
-    num: 6000106,
+    num: 6000108,
     species: "HR-H", /* Kirby 64 */
     types: ["Steel"],
 	 gender: "M",
@@ -1890,7 +1903,7 @@ hrh: {
     weightkg: 400,
 },
 uumuu: {
-    num: 6000107,
+    num: 6000109,
     species: "Uumuu", /* Hollow Knight */
     types: ["Electric", "Poison"],
 	 gender: "N",
@@ -1900,7 +1913,7 @@ uumuu: {
     weightkg: 60,
 },
 ringoando: {
-    num: 6000108,
+    num: 6000110,
     species: "Ringo Ando", /* Puyo Puyo */
     types: ["Electric", "Water"],
 	 gender: "F",
@@ -1910,7 +1923,7 @@ ringoando: {
     weightkg: 48,
 },
 highpriest: {
-    num: 6000109,
+    num: 6000111,
     species: "High Priest", /* Enter the Gungeon */
     types: ["Psychic", "Steel"],
 	 gender: "N",
