@@ -3,141 +3,141 @@
 exports.BattleFormatsData = { //
 
     kirby: {
-        tier: "OU",
+        tier: "V2",
 //         doublesTier: "DOU",
     },
     kirbybug: {
-        tier: "OU",
+        tier: "V2",
 //         doublesTier: "DOU",
     },
     kirbydark: {
-        tier: "OU",
+        tier: "V2",
 //         doublesTier: "DOU",
     },
     kirbydragon: {
-        tier: "OU",
+        tier: "V2",
 //         doublesTier: "DOU",
     },
     kirbyelectric: {
-        tier: "OU",
+        tier: "V2",
 //         doublesTier: "DOU",
     },
     kirbyfairy: {
-        tier: "OU",
+        tier: "V2",
 //         doublesTier: "DOU",
     },
     kirbyfighting: {
-        tier: "OU",
+        tier: "V2",
 //         doublesTier: "DOU",
     },
     kirbyfire: {
-        tier: "OU",
+        tier: "V2",
 //         doublesTier: "DOU",
     },
     kirbyghost: {
-        tier: "OU",
+        tier: "V2",
 //         doublesTier: "DOU",
     },
     kirbygrass: {
-        tier: "OU",
+        tier: "V2",
 //         doublesTier: "DOU",
     },
     kirbyground: {
-        tier: "OU",
+        tier: "V2",
 //         doublesTier: "DOU",
     },
     kirbyice: {
-        tier: "OU",
+        tier: "V2",
 //         doublesTier: "DOU",
     },
     kirbynormal: {
-        tier: "OU",
+        tier: "V2",
 //         doublesTier: "DOU",
     },
     kirbypoison: {
-        tier: "OU",
+        tier: "V2",
 //         doublesTier: "DOU",
     },
     kirbypsychic: {
-        tier: "OU",
+        tier: "V2",
 //         doublesTier: "DOU",
     },
     kirbyrock: {
-        tier: "OU",
+        tier: "V2",
 //         doublesTier: "DOU",
     },
     kirbysteel: {
-        tier: "OU",
+        tier: "V2",
 //         doublesTier: "DOU",
     },
     kirbywater: {
-        tier: "OU",
+        tier: "V2",
 //         doublesTier: "DOU",
     },
     inkling: {
-        tier: "OU",
+        tier: "V2",
 //         doublesTier: "DOU",
     },
     inklingkid: {
-        tier: "OU",
+        tier: "V2",
 //         doublesTier: "DOU",
     },
     
     corrin: {
-        tier: "OU",
+        tier: "V2",
 //         doublesTier: "DOU",
     },
     corrindragon: {
-        tier: "OU",
+        tier: "V2",
 //         doublesTier: "DOU",
     },
     dedede: {
-        tier: "OU",
+        tier: "V2",
 //         doublesTier: "DOU",
     },
     dededemasked: {
 		  requiredItem: "Dedede Mask",
-        tier: "OU",
+        tier: "V2",
 //         doublesTier: "DOU",
     },
     plagueknight: {
-        tier: "OU",
+        tier: "V2",
 //         doublesTier: "DOU",
     },
     chihirofujisaki: {
-        tier: "OU",
+        tier: "V2",
 //         doublesTier: "DOU",
     },
     metaknight: {
-        tier: "OU",
+        tier: "V2",
 //         doublesTier: "DOU",
     },
     pit: {
-        tier: "OU",
+        tier: "V2",
 //         doublesTier: "DOU",
     },
     iceclimbers: {
-        tier: "OU",
+        tier: "V2",
 //         doublesTier: "DOU",
     },
     bandannadee: {
-        tier: "OU",
+        tier: "V2",
 //         doublesTier: "DOU",
     },
     specterknight: {
-        tier: "OU",
+        tier: "V2",
 //         doublesTier: "DOU",
     },
     gale: {
-        tier: "OU",
+        tier: "V2",
 //         doublesTier: "DOU",
     },
     titandweevil: {
-        tier: "OU",
+        tier: "V2",
 //         doublesTier: "DOU",
     },
     lordfredrik: {
-        tier: "OU",
+        tier: "V2",
 //         doublesTier: "DOU",
     },
     stardream: {
@@ -164,45 +164,45 @@ exports.BattleFormatsData = { //
     },
     stardreamsoulosclockworkstar: {
 		  requiredItem: "Soul Orb",
-        tier: "AG",
+        tier: "Uber",
 //         doublesTier: "DUber",
     },
     stardreamsoulosheart: {
 		  requiredItem: "Soul Orb",
-        tier: "AG",
+        tier: "Uber",
 //         doublesTier: "DUber",
     },
     daroach: {
-        tier: "OU",
+        tier: "V2",
 //         doublesTier: "DOU",
     },
     daroachdark: {
 		  requiredItem: "Dark Treasure Chest",
-        tier: "OU",
+        tier: "V2",
 //         doublesTier: "DOU",
     },
     propellerknight: {
-        tier: "OU",
+        tier: "V2",
 //         doublesTier: "DOU",
     },
     zarya: {
-        tier: "OU",
+        tier: "V2",
 //         doublesTier: "DOU",
     },
     bowser: {
-        tier: "OU",
+        tier: "V2",
 //         doublesTier: "DOU",
     },
     shulk: {
-        tier: "OU",
+        tier: "V2",
 //         doublesTier: "DOU",
     },
     lloydirving: {
-        tier: "OU",
+        tier: "V2",
 //         doublesTier: "DOU",
     },
     marxunwinged: {
-        tier: "OU",
+        tier: "V2",
 //         doublesTier: "DOU",
     },
     marx: {
@@ -215,164 +215,164 @@ exports.BattleFormatsData = { //
 //         doublesTier: "DUber",
     },
     primrose: {
-        tier: "OU",
+        tier: "V2",
 //         doublesTier: "DOU",
     },
     chibiterasu: {
-        tier: "OU",
+        tier: "V2",
 //         doublesTier: "DOU",
     },
     shovelknight: {
-        tier: "OU",
+        tier: "V2",
 //         doublesTier: "DOU",
     },
     kuro: {
-        tier: "OU",
+        tier: "V2",
 //         doublesTier: "DOU",
     },
     flowey: {
-        tier: "OU",
+        tier: "V2",
 //         doublesTier: "DOU",
     },
     floweyomega: {
-        tier: "OU",
+        tier: "V2",
 //         doublesTier: "DOU",
     },
     zanpartizanne: {
-        tier: "OU",
+        tier: "V2",
 //         doublesTier: "DOU",
     },
     wyvern: {
-        tier: "OU",
+        tier: "V2",
 //         doublesTier: "DOU",
     },
     sonic: {
-        tier: "OU",
+        tier: "V2",
 //         doublesTier: "DOU",
     },
     sonicsuper: {
 		  requiredItem: "Chaos Emeralds",
-        tier: "OU",
+        tier: "V2",
 //         doublesTier: "DOU",
     },
     fludd: {
-        tier: "OU",
+        tier: "V2",
 //         doublesTier: "DOU",
     },
     palico: {
-        tier: "OU",
+        tier: "V2",
 //         doublesTier: "DOU",
     },
     gooey: {
-        tier: "OU",
+        tier: "V2",
 //         doublesTier: "DOU",
     },
     luigi: {
-        tier: "OU",
+        tier: "V2",
 //         doublesTier: "DOU",
     },
     rathalos: {
-        tier: "OU",
+        tier: "V2",
 //         doublesTier: "DOU",
     },
     rathian: {
-        tier: "OU",
+        tier: "V2",
 //         doublesTier: "DOU",
     },
     zero: {
-        tier: "OU",
+        tier: "V2",
 //         doublesTier: "DOU",
     },
     zeroawakened: {
-        tier: "OU",
+        tier: "V2",
 //         doublesTier: "DOU",
     },
     theknight: {
-        tier: "OU",
+        tier: "V2",
 //         doublesTier: "DOU",
     },
     theknightshade: {
-        tier: "OU",
+        tier: "V2",
 //         doublesTier: "DOU",
     },
     falseknight: {
-        tier: "OU",
+        tier: "V2",
 //         doublesTier: "DOU",
     },
     falseknightunarmored: {
-        tier: "OU",
+        tier: "V2",
 //         doublesTier: "DOU",
     },
     sans: {
-        tier: "OU",
+        tier: "V2",
 //         doublesTier: "DOU",
     },
     megaman: {
-        tier: "OU",
+        tier: "V2",
 //         doublesTier: "DOU",
     },
     stonetalus: {
-        tier: "OU",
+        tier: "V2",
 //         doublesTier: "DOU",
     },
     sandstonetalus: {
-        tier: "OU",
+        tier: "V2",
 //         doublesTier: "DOU",
     },
     igneotalus: {
-        tier: "OU",
+        tier: "V2",
 //         doublesTier: "DOU",
     },
     frosttalus: {
-        tier: "OU",
+        tier: "V2",
 //         doublesTier: "DOU",
     },
     x: {
-        tier: "OU",
+        tier: "V2",
 //         doublesTier: "DOU",
     },
     xfourth: {
-        tier: "OU",
+        tier: "V2",
 //         doublesTier: "DOU",
     },
     xfalcon: {
-        tier: "OU",
+        tier: "V2",
 //         doublesTier: "DOU",
     },
     xgaea: {
-        tier: "OU",
+        tier: "V2",
 //         doublesTier: "DOU",
     },
     xblade: {
-        tier: "OU",
+        tier: "V2",
 //         doublesTier: "DOU",
     },
     xshadow: {
-        tier: "OU",
+        tier: "V2",
 //         doublesTier: "DOU",
     },
     kingboo: {
-        tier: "OU",
+        tier: "V2",
 //         doublesTier: "DOU",
     },
     majora: {
-        tier: "OU",
+        tier: "V2",
 //         doublesTier: "DOU",
     },
     majoraincarnation: {
-        tier: "OU",
+        tier: "V2",
 //         doublesTier: "DOU",
     },
     majorawrath: {
-        tier: "OU",
+        tier: "V2",
 //         doublesTier: "DOU",
     },
     zerokirby: {
-        tier: "OU",
+        tier: "V2",
 //         doublesTier: "DOU",
     },
     zeroiris: {
-        tier: "OU",
+        tier: "V2",
 //         doublesTier: "DOU",
     },
     zero2: {
@@ -380,115 +380,115 @@ exports.BattleFormatsData = { //
 //         doublesTier: "DOU",
     },
     chaoskin: {
-        tier: "OU",
+        tier: "V2",
 //         doublesTier: "DOU",
     },
     chaoskinash: {
-        tier: "OU",
+        tier: "V2",
 //         doublesTier: "DOU",
     },
     captainfalcon: {
-        tier: "OU",
+        tier: "V2",
 //         doublesTier: "DOU",
     },
     waluigi: {
-        tier: "OU",
+        tier: "V2",
 //         doublesTier: "DOU",
     },
     nailsagesly: {
-        tier: "OU",
+        tier: "V2",
 //         doublesTier: "DOU",
     },
     presidenthaltmann: {
-        tier: "OU",
+        tier: "V2",
 //         doublesTier: "DOU",
     },
     wario: {
-        tier: "OU",
+        tier: "V2",
 //         doublesTier: "DOU",
     },
     drybones: {
-        tier: "OU",
+        tier: "V2",
 //         doublesTier: "DOU",
     },
     dewy: {
-        tier: "OU",
+        tier: "V2",
 //         doublesTier: "DOU",
     },
     dewyice: {
-        tier: "OU",
+        tier: "V2",
 //         doublesTier: "DOU",
     },
     dewymist: {
-        tier: "OU",
+        tier: "V2",
 //         doublesTier: "DOU",
     },
     hyness: {
-        tier: "OU",
+        tier: "V2",
 //         doublesTier: "DOU",
     },
     hynessunhooded: {
-        tier: "OU",
+        tier: "V2",
 //         doublesTier: "DOU",
     },
     waterwraith: {
-        tier: "OU",
+        tier: "V2",
 //         doublesTier: "DOU",
     },
     samus: {
-        tier: "OU",
+        tier: "V2",
 //         doublesTier: "DOU",
     },
     taranza: {
-        tier: "OU",
+        tier: "V2",
 //         doublesTier: "DOU",
     },
     donkeykong: {
-        tier: "OU",
+        tier: "V2",
 //         doublesTier: "DOU",
     },
     galeem: {
-        tier: "OU",
+        tier: "V2",
 //         doublesTier: "DOU",
     },
     isabelle: {
-        tier: "OU",
+        tier: "V2",
 //         doublesTier: "DOU",
     },
     joker: {
-        tier: "OU",
+        tier: "V2",
 //         doublesTier: "DOU",
     },
     riki: {
-        tier: "OU",
+        tier: "V2",
 //         doublesTier: "DOU",
     },
     jevil: {
-        tier: "OU",
+        tier: "V2",
 //         doublesTier: "DOU",
     },
     mario: {
-        tier: "OU",
+        tier: "V2",
 //         doublesTier: "DOU",
     },
     nagitokomaeda: {
-        tier: "OU",
+        tier: "V2",
 //         doublesTier: "DOU",
     },
     yoshi: {
-        tier: "OU",
+        tier: "V2",
 //         doublesTier: "DOU",
     },
     masterchief: {
-        tier: "OU",
+        tier: "V2",
 //         doublesTier: "DOU",
     },
     spy: {
-        tier: "OU",
+        tier: "V2",
 //         doublesTier: "DOU",
     },
     magolor: {
-        tier: "OU",
+        tier: "V2",
 //         doublesTier: "DOU",
     },
     magolorcrowned: {
@@ -501,119 +501,354 @@ exports.BattleFormatsData = { //
 //         doublesTier: "DUber",
     },
     galleom: {
-        tier: "OU",
+        tier: "V2",
 //         doublesTier: "DOU",
     },
     tenshi: {
-        tier: "OU",
+        tier: "V2",
 //         doublesTier: "DOU",
     },
     masterhand: {
-        tier: "OU",
+        tier: "V2",
 //         doublesTier: "DOU",
     },
     subzero: {
-        tier: "OU",
+        tier: "V2",
 //         doublesTier: "DOU",
     },
     fi: {
-        tier: "OU",
+        tier: "V2",
 //         doublesTier: "DOU",
     },
     makiharukawa: {
-        tier: "OU",
+        tier: "V2",
 //         doublesTier: "DOU",
     },
     olimar: {
-        tier: "OU",
+        tier: "V2",
 //         doublesTier: "DOU",
     },
     rosalina: {
-        tier: "OU",
+        tier: "V2",
 //         doublesTier: "DOU",
     },
     galaxyman: {
-        tier: "OU",
+        tier: "V2",
 //         doublesTier: "DOU",
     },
     urdnotwrex: {
-        tier: "OU",
+        tier: "V2",
 //         doublesTier: "DOU",
     },
     somacruz: {
-        tier: "OU",
+        tier: "V2",
 //         doublesTier: "DOU",
     },
     somacruzawakened: {
-        tier: "OU",
+        tier: "V2",
 //         doublesTier: "DOU",
     },
     mokou: {
-        tier: "OU",
+        tier: "V2",
 //         doublesTier: "DOU",
     },
     link: {
-        tier: "OU",
+        tier: "V2",
 //         doublesTier: "DOU",
     },
     saber: {
-        tier: "OU",
+        tier: "V2",
 //         doublesTier: "DOU",
     },
     shieldknight: {
-        tier: "OU",
+        tier: "V2",
 //         doublesTier: "DOU",
     },
     katamariprince: {
-        tier: "OU",
+        tier: "V2",
 //         doublesTier: "DOU",
     },
     landia: {
-        tier: "OU",
+        tier: "V2",
 //         doublesTier: "DOU",
     },
     landiaone: {
-        tier: "OU",
+        tier: "V2",
 //         doublesTier: "DOU",
     },
     cirno: {
-        tier: "OU",
+        tier: "V2",
 //         doublesTier: "DOU",
     },
     cirnotanned: {
-        tier: "OU",
+        tier: "V2",
 //         doublesTier: "DOU",
     },
     princesspeach: {
-        tier: "OU",
+        tier: "V2",
 //         doublesTier: "DOU",
     },
     monokuma: {
-        tier: "OU",
+        tier: "V2",
 //         doublesTier: "DOU",
     },
     banjokazooie: {
-        tier: "OU",
+        tier: "V2",
 //         doublesTier: "DOU",
     },
     banjokazooiewashingmachine: {
-        tier: "OU",
+        tier: "V2",
 //         doublesTier: "DOU",
     },
     banjokazooiedragonkazooie: {
-        tier: "OU",
+        tier: "V2",
 //         doublesTier: "DOU",
     },
     kyoko: {
-        tier: "OU",
+        tier: "V2",
 //         doublesTier: "DOU",
     },
     glados: {
-        tier: "OU",
+        tier: "V2",
 //         doublesTier: "DOU",
     },
     toriel: {
-        tier: "OU",
+        tier: "V2",
 //         doublesTier: "DOU",
     },
+	 steve: {
+		  tier: "V2",
+	 },
+	 dimentio: {
+		  tier: "V2",
+	 },
+	 dimentiosuper: {
+		  tier: "V2",
+	 },
+	 traitorlord: {
+		  tier: "V2",
+	 },
+	 archer: {
+		  tier: "V2",
+	 },
+	 magus: {
+		  tier: "Ubers",
+	 },
+	 silver: {
+		  tier: "V2",
+	 },
+	 silversuper: {
+		  requiredItem: "Chaos Emeralds",
+		  tier: "V2",
+	 },
+	 tamamonomae: {
+		  tier: "V2",
+	 },
+	 tamamonomaesummer: {
+		  tier: "V2",
+	 },
+	 tamamonomaeninetails: {
+		  tier: "Uber",
+	 },
+	 knuckles: {
+		  tier: "V2",
+	 },
+	 hrh: {
+		  tier: "V2",
+	 },
+	 uumuu: {
+		  tier: "V2",
+	 },
+	 ringoando: {
+		  tier: "V2",
+	 },
+	 highpriest: {
+		  tier: "V2",
+	 },
+	 walle: {
+		  tier: "EX",
+	 },
+	 shaggy: {
+		  tier: "EX",
+	 },
+	 sayakamiki: {
+		  tier: "EX",
+	 },
+	 oktaviavonseckendorff: {
+		  tier: "EX",
+	 },
+	 skipper: {
+		  tier: "EX",
+	 },
+	 rohankishibe: {
+		  tier: "EX",
+	 },
+	 arthurkingofbritons: {
+		  tier: "EX",
+	 },
+	 siivagunner: {
+		  tier: "EX",
+	 },
+	 blackrabbit: {
+		  tier: "EX",
+	 },
+	 creati: {
+		  tier: "EX",
+	 },
+	 shaihulud: {
+		  tier: "EX",
+	 },
+	 irongiant: {
+		  tier: "EX",
+	 },
+	 smolnozomi: {
+		  tier: "EX",
+	 },
+	 smolitzer: {
+		  tier: "EX",
+	 },
+	 smolitzermega: {
+		  requiredItem: "Christmas Spirit",
+		  tier: "EX",
+	 },
+	 rin: {
+		  tier: "EX",
+	 },
+	 oldspiceguy: {
+		  tier: "EX",
+	 },
+	 dalek: {
+		  tier: "EX",
+	 },
+	 devil: {
+		  tier: "Uber",
+	 },
+	 beelzebub: {
+		  tier: "Uber",
+	 },
+	 satan: {
+		  tier: "Uber",
+	 },
+	 asmodeus: {
+		  tier: "Uber",
+	 },
+	 lucifer: {
+		  tier: "Uber",
+	 },
+	 leviathan: {
+		  tier: "Uber",
+	 },
+	 mammon: {
+		  tier: "Uber",
+	 },
+	 belphegor: {
+		  tier: "Uber",
+	 },
+	 kars: {
+		  tier: "EX",
+	 },
+	 karsultimate: {
+		  requiredItem: "Red Stone of Aja",
+		  tier: "EX",
+	 },
+	 shelob: {
+		  tier: "EX",
+	 },
+	 unregisteredhypercam2: {
+		  tier: "EX",
+	 },
+	 gigan: {
+		  tier: "EX",
+	 },
+	 anguirus: {
+		  tier: "EX",
+	 },
+	 sakinikaido: {
+		  tier: "EX",
+	 },
+	 majinbuu: {
+		  tier: "EX",
+	 },
+	 hansolo: {
+		  tier: "EX",
+	 },
+	 goku: {
+		  tier: "EX",
+	 },
+	 gokusupersaiyan: {
+		  requiredItem: "Gokunite S",
+		  tier: "EX",
+	 },
+	 gokusupersaiygangod: {
+		  requiredItem: "Gokunite G",
+		  tier: "EX",
+	 },
+	 gokusupersaiyanblue: {
+		  requiredItem: "Gokunite B",
+		  tier: "EX",
+	 },
+	 gokuultrainstinct: {
+		  requiredItem: "Gokunite U",
+		  tier: "EX",
+	 },
+	 jonathanjoestar: {
+		  tier: "EX",
+	 },
+	 orga: {
+		  tier: "EX",
+	 },
+	 thanos: {
+		  tier: "EX",
+	 }, 
+	 thanosspace: {
+		  requiredItem: "Space Stone",
+		  tier: "EX",
+	 },
+	 thanosmind: {
+		  requiredItem: "Mind Stone",
+		  tier: "EX",
+	 },
+	 thanosreality: {
+		  requiredItem: "Reality Stone",
+		  tier: "EX",
+	 },
+	 thanospower: {
+		  requiredItem: "Power Stone",
+		  tier: "EX",
+	 },
+	 thanostime: {
+		  requiredItem: "Time Stone",
+		  tier: "EX",
+	 },
+	 thanossoul: {
+		  requiredItem: "Soul Stone",
+		  tier: "EX",
+	 },
+	 thanosinfinity: {
+		  requiredItem: "Infinity Stones",
+		  tier: "Uber",
+	 },
+	 iroh: {
+		  tier: "EX",
+	 },
+	 homersimpson: {
+		  tier: "EX",
+	 },
+	 moongirl: {
+		  tier: "EX",
+	 },
+	 elmerape: {
+		  tier: "EX",
+	 },
+	 gregheffley: {
+		  tier: "EX",
+	 },
 };
+
+
+
+
+
+
+
+
