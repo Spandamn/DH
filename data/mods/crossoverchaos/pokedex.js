@@ -2077,7 +2077,7 @@ smolitzer: {
 },
 smolitzermega: {
     num: 7000014,
-    species: "Smolitzer", /* SiIvaGunner */
+    species: "Smolitzer-Mega", /* SiIvaGunner */
     baseSpecies: "Smolitzer",
     forme: "Mega",
     formeLetter: "M",
