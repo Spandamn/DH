@@ -6421,7 +6421,7 @@ blackrabbit: {learnset: {
 		workup: ["7M", "5M"],
 }},
 creati: {learnset: {
-	sketch: ["7L1"],
+	sketch: ["7E"],
 	return: ["7L1"],
 	facade: ["7L1"],
 	quickattack: ["7L1"],
@@ -7611,7 +7611,7 @@ elmerape: {learnset: {
 	taunt: ["7L1"],
 }},
 gregheffley: {learnset: {
-	sketch: ["7L1"],
+	sketch: ["7E"],
 	cheesetouch: ["7L1"],
 	iciclewall: ["7L1"],
 	auroraveil: ["7L1"],
