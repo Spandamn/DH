@@ -675,6 +675,41 @@ let BattleMovedex = {
 		zMovePower: 180,
 		contestType: "Tough",
 	},
+	"cycloneslash": {
+		num: 40026,
+		accuracy: 90,
+		basePower: 25,
+		category: "Physical",
+		desc: "Hits two to five times. Has a 1/3 chance to hit two or three times, and a 1/6 chance to hit four or five times. If one of the hits breaks the target's substitute, it will take damage for the remaining hits. If the user has the Skill Link Ability, this move will always hit five times. User becomes immune to Ground for 1 turn.",
+		shortDesc: "Hits 2-5 times in one turn. User becomes immune to Ground for 1 turn.",
+		id: "cycloneslash",
+		isViable: true,
+		name: "Cyclone Slash",
+		pp: 10,
+		priority: 0,
+		flags: {contact: 1, protect: 1, mirror: 1},
+		multihit: [2, 5],
+		volatileStatus: 'cycloneslash',
+		effect: {
+			duration: 1,
+			onStart(target) {
+				if (target.volatiles['smackdown'] || target.volatiles['ingrain']) return false;
+				this.add('-start', target, 'Cyclone Slash');
+			},
+			onImmunity(type) {
+				if (type === 'Ground') return false;
+			},
+			onResidualOrder: 15,
+			onEnd(target) {
+				this.add('-end', target, 'Magnet Rise');
+			},
+		},
+		secondary: null,
+		target: "normal",
+		type: "Steel",
+		zMovePower: 140,
+		contestType: "Cool",
+	},
 	"suicideride": {
 		num: 50001,
 		accuracy: 100,
