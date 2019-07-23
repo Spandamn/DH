@@ -447,7 +447,7 @@ exports.Formats = [
 				pokemon.addVolatile('cursedbodyinnate', pokemon);
 			}
 			if (name === 'galbia' || name === 'aurora') {
-				this.setWeather('sandstorm');
+				this.field.setWeather('sandstorm');
 			}
 			if (name === 'rodan') {
 				pokemon.addVolatile('gonnamakeyousweat', pokemon);
