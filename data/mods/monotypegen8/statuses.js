@@ -14,9 +14,9 @@ exports.BattleStatuses = {
 			return 5;
 		},
 		onModifyDefPriority: 10,
-		onModifyDef: function (spd, pokemon) {
+		onModifyDef: function (def, pokemon) {
 			if (pokemon.hasType('Ice') && this.field.isWeather('hail')) {
-				return this.modify(spd, 1.5);
+				return this.modify(def, 1.5);
 			}
 		},
 		onStart: function (battle, source, effect) {
