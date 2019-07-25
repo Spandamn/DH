@@ -119,8 +119,10 @@ exports.BattleLearnsets = {
 		toxic: ["7L1"],
 		dragonclaw: ["7L1"],
 		outrage: ["7L1"],
+		bide: ["7L1"],
+		snore: ["7L1"],
 	}},
-	braviary: {learnset: {
+	braviaryalola: {learnset: {
 		aerialace: ["7M", "7L23", "6M", "6L23", "5M", "5L23", "5S0"],
 		airslash: ["7L41", "6L41", "5L41"],
 		attract: ["7M", "6M", "5M"],
@@ -215,6 +217,8 @@ exports.BattleLearnsets = {
 		rest: ["7L1"],
 		sleeptalk: ["7L1"],
 		toxic: ["7L1"],
+		bide: ["7L1"],
+		snore: ["7L1"],
 	}},
 	chandelurealola: {learnset: {
 		calmmind: ["7L1"],
@@ -231,6 +235,8 @@ exports.BattleLearnsets = {
 		rest: ["7L1"],
 		sleeptalk: ["7L1"],
 		toxic: ["7L1"],
+		bide: ["7L1"],
+		snore: ["7L1"],
 	}},
 	clawcroach: {learnset: {
 		closecombat: ["7L1"],
@@ -250,6 +256,8 @@ exports.BattleLearnsets = {
 		facade: ["7L1"],
 		return: ["7L1"],
 		frustration: ["7L1"],
+		bide: ["7L1"],
+		snore: ["7L1"],
 	}},
 	clefablealola: {learnset: {
 		afteryou: ["7T", "6T", "5T"],
@@ -398,6 +406,8 @@ exports.BattleLearnsets = {
 		facade: ["7L1"],
 		return: ["7L1"],
 		frustration: ["7L1"],
+		bide: ["7L1"],
+		snore: ["7L1"],
 	}},
 	corsteela: {learnset: {
 		calmmind: ["7L1"],
@@ -431,6 +441,8 @@ exports.BattleLearnsets = {
 		facade: ["7L1"],
 		return: ["7L1"],
 		frustration: ["7L1"],
+		bide: ["7L1"],
+		snore: ["7L1"],
 	}},
 	cryptech: {learnset: {
 		darkpulse: ["7L1"],
@@ -459,6 +471,8 @@ exports.BattleLearnsets = {
 		facade: ["7L1"],
 		return: ["7L1"],
 		frustration: ["7L1"],
+		bide: ["7L1"],
+		snore: ["7L1"],
 	}},
 	cursphinx: {learnset: {
 		calmmind: ["7L1"],
@@ -485,6 +499,8 @@ exports.BattleLearnsets = {
 		facade: ["7L1"],
 		return: ["7L1"],
 		frustration: ["7L1"],
+		bide: ["7L1"],
+		snore: ["7L1"],
 	}},
 	electiviremega: {learnset: {
 		curse: ["7L1"],
@@ -509,6 +525,8 @@ exports.BattleLearnsets = {
 		facade: ["7L1"],
 		return: ["7L1"],
 		frustration: ["7L1"],
+		bide: ["7L1"],
+		snore: ["7L1"],
 	}},
 	electrolyte: {learnset: {
 		aquatail: ["7L1"],
@@ -537,6 +555,8 @@ exports.BattleLearnsets = {
 		facade: ["7L1"],
 		return: ["7L1"],
 		frustration: ["7L1"],
+		bide: ["7L1"],
+		snore: ["7L1"],
 	}},
 	gryphoid: {learnset: {
 		dracometeor: ["7L1"],
@@ -560,6 +580,8 @@ exports.BattleLearnsets = {
 		facade: ["7L1"],
 		return: ["7L1"],
 		frustration: ["7L1"],
+		bide: ["7L1"],
+		snore: ["7L1"],
 	}},
 	haluslime: {learnset: {
 		barrier: ["7L1"],
@@ -594,6 +616,8 @@ exports.BattleLearnsets = {
 		facade: ["7L1"],
 		return: ["7L1"],
 		frustration: ["7L1"],
+		bide: ["7L1"],
+		snore: ["7L1"],
 	}},
 	jerbola: {learnset: {
 		blazekick: ["7L1"],
@@ -618,6 +642,8 @@ exports.BattleLearnsets = {
 		facade: ["7L1"],
 		return: ["7L1"],
 		frustration: ["7L1"],
+		bide: ["7L1"],
+		snore: ["7L1"],
 	}},
 	krakatuby: {learnset: {
 		crystalbeam: ["7L1"],
@@ -643,6 +669,8 @@ exports.BattleLearnsets = {
 		facade: ["7L1"],
 		return: ["7L1"],
 		frustration: ["7L1"],
+		bide: ["7L1"],
+		snore: ["7L1"],
 	}},
 	laprasalola: {learnset: {
 		ancientpower: ["7E", "6E", "5E", "4T", "4E"],
@@ -763,6 +791,9 @@ exports.BattleLearnsets = {
 		facade: ["7L1"],
 		return: ["7L1"],
 		frustration: ["7L1"],
+		brickbreak: ["7L1"],
+		bide: ["7L1"],
+		snore: ["7L1"],
 	}},
 	magmule: {learnset: {
 		calmmind: ["7L1"],
@@ -783,6 +814,8 @@ exports.BattleLearnsets = {
 		facade: ["7L1"],
 		return: ["7L1"],
 		frustration: ["7L1"],
+		bide: ["7L1"],
+		snore: ["7L1"],
 	}},
 	pixoil: {learnset: {
 		defog: ["7L1"],
@@ -805,6 +838,8 @@ exports.BattleLearnsets = {
 		facade: ["7L1"],
 		return: ["7L1"],
 		frustration: ["7L1"],
+		bide: ["7L1"],
+		snore: ["7L1"],
 	}},
 	pumpkindle: {learnset: {
 		calmmind: ["7L1"],
@@ -834,6 +869,8 @@ exports.BattleLearnsets = {
 		rest: ["7L1"],
 		sleeptalk: ["7L1"],
 		toxic: ["7L1"],
+		bide: ["7L1"],
+		snore: ["7L1"],
 	}},
 	rangeruff: {learnset: {
 		crunch: ["7L1"],
@@ -860,6 +897,8 @@ exports.BattleLearnsets = {
 		facade: ["7L1"],
 		return: ["7L1"],
 		frustration: ["7L1"],
+		bide: ["7L1"],
+		snore: ["7L1"],
 	}},
 	rockatrice: {learnset: {
 		airslash: ["7L1"],
@@ -891,6 +930,8 @@ exports.BattleLearnsets = {
 		facade: ["7L1"],
 		return: ["7L1"],
 		frustration: ["7L1"],
+		bide: ["7L1"],
+		snore: ["7L1"],
 	}},
 	scorpiod: {learnset: {
 		earthquake: ["7L1"],
@@ -914,6 +955,8 @@ exports.BattleLearnsets = {
 		facade: ["7L1"],
 		return: ["7L1"],
 		frustration: ["7L1"],
+		bide: ["7L1"],
+		snore: ["7L1"],
 	}},
 	souldier: {learnset: {
 		bulkup: ["7L1"],
@@ -936,6 +979,8 @@ exports.BattleLearnsets = {
 		facade: ["7L1"],
 		return: ["7L1"],
 		frustration: ["7L1"],
+		bide: ["7L1"],
+		snore: ["7L1"],
 	}},
 	spirisheet: {learnset: {
 		dazzlinggleam: ["7L1"],
@@ -963,6 +1008,8 @@ exports.BattleLearnsets = {
 		facade: ["7L1"],
 		return: ["7L1"],
 		frustration: ["7L1"],
+		bide: ["7L1"],
+		snore: ["7L1"],
 	}},
 	temprasect: {learnset: {
 		bugbuzz: ["7L1"],
@@ -987,6 +1034,15 @@ exports.BattleLearnsets = {
 		facade: ["7L1"],
 		return: ["7L1"],
 		frustration: ["7L1"],
+		dragonrush: ["7L1"],
+		xscissor: ["7L1"],
+		crosschop: ["7L1"],
+		firepunch: ["7L1"],
+		steelwing: ["7L1"],
+		drillrun: ["7L1"],
+		sludgebomb: ["7L1"],
+		bide: ["7L1"],
+		snore: ["7L1"],
 	}},
 	termight: {learnset: {
 		aurasphere: ["7L1"],
@@ -1006,6 +1062,8 @@ exports.BattleLearnsets = {
 		facade: ["7L1"],
 		return: ["7L1"],
 		frustration: ["7L1"],
+		bide: ["7L1"],
+		snore: ["7L1"],
 	}},
 	shoburu: {learnset: {
 		bulkup: ["7L1"],
@@ -1034,6 +1092,8 @@ exports.BattleLearnsets = {
 		facade: ["7L1"],
 		return: ["7L1"],
 		frustration: ["7L1"],
+		bide: ["7L1"],
+		snore: ["7L1"],
 	}},
 	ursanium: {learnset: {
 		autotomize: ["7L1"],
@@ -1053,6 +1113,8 @@ exports.BattleLearnsets = {
 		facade: ["7L1"],
 		return: ["7L1"],
 		frustration: ["7L1"],
+		bide: ["7L1"],
+		snore: ["7L1"],
 	}},
 	venusauralola: {learnset: {
 		earthpower: ["7L1"],
@@ -1077,6 +1139,8 @@ exports.BattleLearnsets = {
 		facade: ["7L1"],
 		return: ["7L1"],
 		frustration: ["7L1"],
+		bide: ["7L1"],
+		snore: ["7L1"],
 	}},
 	vivifire: {learnset: {
 		aromatherapy: ["7L1"],
@@ -1105,6 +1169,8 @@ exports.BattleLearnsets = {
 		facade: ["7L1"],
 		return: ["7L1"],
 		frustration: ["7L1"],
+		bide: ["7L1"],
+		snore: ["7L1"],
 	}},
 	faenister: {learnset: {
 		moonblast: ["7L1"],
@@ -1122,34 +1188,8 @@ exports.BattleLearnsets = {
 		return: ["7L1"],
 		frustration: ["7L1"],
 		defog: ["7L1"],
-	}},
-	vivifire: {learnset: {
-		aromatherapy: ["7L1"],
-		calmmind: ["7L1"],
-		celebrate: ["7L1"],
-		cleansingfire: ["7L1"],
-		fireblast: ["7L1"],
-		flamethrower: ["7L1"],
-		focusblast: ["7L1"],
-		lightscreen: ["7L1"],
-		moonblast: ["7L1"],
-		moonlight: ["7L1"],
-		nastyplot: ["7L1"],
-		psychic: ["7L1"],
-		psyshock: ["7L1"],
-		reflect: ["7L1"],
-		thunderbolt: ["7L1"],
-		thunderwave: ["7L1"],
-		willowisp: ["7L1"],
-		substitute: ["7L1"],
-		protect: ["7L1"],
-		hiddenpower: ["7L1"],
-		rest: ["7L1"],
-		sleeptalk: ["7L1"],
-		toxic: ["7L1"],
-		facade: ["7L1"],
-		return: ["7L1"],
-		frustration: ["7L1"],
+		bide: ["7L1"],
+		snore: ["7L1"],
 	}},
 	tigresh: {learnset: {
 		blazekick: ["7L1"],
@@ -1186,6 +1226,8 @@ exports.BattleLearnsets = {
 		facade: ["7L1"],
 		return: ["7L1"],
 		frustration: ["7L1"],
+		bide: ["7L1"],
+		snore: ["7L1"],
 	}},
 	comparsnip: {learnset: {
 		acidspray: ["7L1"],
@@ -1211,6 +1253,8 @@ exports.BattleLearnsets = {
 		facade: ["7L1"],
 		return: ["7L1"],
 		frustration: ["7L1"],
+		bide: ["7L1"],
+		snore: ["7L1"],
 	}},
 	amazonda: {learnset: {
 		aquatail: ["7L1"],
@@ -1242,6 +1286,8 @@ exports.BattleLearnsets = {
 		facade: ["7L1"],
 		return: ["7L1"],
 		frustration: ["7L1"],
+		bide: ["7L1"],
+		snore: ["7L1"],
 	}},
 	turfeon: {learnset: {
 		earthquake: ["7L1"],
@@ -1263,6 +1309,8 @@ exports.BattleLearnsets = {
 		facade: ["7L1"],
 		return: ["7L1"],
 		frustration: ["7L1"],
+		bide: ["7L1"],
+		snore: ["7L1"],
 	}},
 	canadensail: {learnset: {
 		calmmind: ["7L1"],
@@ -1288,6 +1336,8 @@ exports.BattleLearnsets = {
 		facade: ["7L1"],
 		return: ["7L1"],
 		frustration: ["7L1"],
+		bide: ["7L1"],
+		snore: ["7L1"],
 	}},
 	poiseon: {learnset: {
 		firefang: ["7L1"],
@@ -1319,6 +1369,8 @@ exports.BattleLearnsets = {
 		venoshock: ["7L1"],
 		wish: ["7L1"],
 		workup: ["7L1"],
+		bide: ["7L1"],
+		snore: ["7L1"],
 	}},
 	flooduel: {learnset: {
 		blizzard: ["7L1"],
@@ -1329,7 +1381,7 @@ exports.BattleLearnsets = {
 		hydropump: ["7L1"],
 		icebeam: ["7L1"],
 		iciclecrash: ["7L1"],
-		nastyplot: ["7L1"],
+		dynamicpunch: ["7L1"],
 		scald: ["7L1"],
 		stoneedge: ["7L1"],
 		substitute: ["7L1"],
@@ -1345,6 +1397,8 @@ exports.BattleLearnsets = {
 		facade: ["7L1"],
 		return: ["7L1"],
 		frustration: ["7L1"],
+		bide: ["7L1"],
+		snore: ["7L1"],
 	}},
 	corwhal: {learnset: {
 		blizzard: ["7L1"],
@@ -1368,6 +1422,8 @@ exports.BattleLearnsets = {
 		facade: ["7L1"],
 		return: ["7L1"],
 		frustration: ["7L1"],
+		bide: ["7L1"],
+		snore: ["7L1"],
 	}},
 
 	zephyreon: {learnset: {	
@@ -1392,6 +1448,8 @@ exports.BattleLearnsets = {
 		facade: ["7L1"],
 		return: ["7L1"],
 		frustration: ["7L1"],
+		bide: ["7L1"],
+		snore: ["7L1"],
 	}},
 	
 	meganiumalola: {learnset: {
@@ -1496,6 +1554,8 @@ exports.BattleLearnsets = {
 		facade: ["7L1"],
 		return: ["7L1"],
 		frustration: ["7L1"],
+		bide: ["7L1"],
+		snore: ["7L1"],
 	}},
 	torloam: {learnset: {
 		accelerock: ["7L1"],
@@ -1521,6 +1581,8 @@ exports.BattleLearnsets = {
 		facade: ["7L1"],
 		return: ["7L1"],
 		frustration: ["7L1"],
+		bide: ["7L1"],
+		snore: ["7L1"],
 	}},
 	saphaero: {learnset: {
 		bravebird: ["7L1"],
@@ -1545,6 +1607,8 @@ exports.BattleLearnsets = {
 		facade: ["7L1"],
 		return: ["7L1"],
 		frustration: ["7L1"],
+		bide: ["7L1"],
+		snore: ["7L1"],
 	}},
 	atlampra: {learnset: {
 		agility: ["7L1"],
@@ -1584,6 +1648,8 @@ exports.BattleLearnsets = {
 		facade: ["7L1"],
 		return: ["7L1"],
 		frustration: ["7L1"],
+		bide: ["7L1"],
+		snore: ["7L1"],
 	}},
 	volpacifa: {learnset: {
 		aquatail: ["7L1"],
@@ -1621,6 +1687,8 @@ exports.BattleLearnsets = {
 		facade: ["7L1"],
 		return: ["7L1"],
 		frustration: ["7L1"],
+		bide: ["7L1"],
+		snore: ["7L1"],
 	}},
 	coralindia: {learnset: {
 		aquatail: ["7L1"],
@@ -1660,6 +1728,8 @@ exports.BattleLearnsets = {
 		facade: ["7L1"],
 		return: ["7L1"],
 		frustration: ["7L1"],
+		bide: ["7L1"],
+		snore: ["7L1"],
 	}},
 	arcturna: {learnset: {
 		aquatail: ["7L1"],
@@ -1692,6 +1762,8 @@ exports.BattleLearnsets = {
 		facade: ["7L1"],
 		return: ["7L1"],
 		frustration: ["7L1"],
+		bide: ["7L1"],
+		snore: ["7L1"],
 	}},
 	missorceress: {learnset: {
 		aerialace: ["7M", "6M", "5M", "4M"],
@@ -1774,6 +1846,8 @@ exports.BattleLearnsets = {
 		uproar: ["7T", "6T", "5T", "4T"],
 		willowisp: ["7L1"],
 		wonderroom: ["7T", "6T", "5T"],
+		bide: ["7L1"],
+		snore: ["7L1"],
 	}},
 	adnocana: {learnset: {
 		acid: ["7L20", "7V", "6L20", "5L20", "4L20", "3L38"],
@@ -1866,6 +1940,8 @@ exports.BattleLearnsets = {
 		venomstrike: ["7L1"],
 		venoshock: ["7M", "6M", "5M"],
 		wrap: ["7L1", "7V", "6L1", "5L1", "4L1", "3L1"],
+		bide: ["7L1"],
+		snore: ["7L1"],
 	}},
 	blunderbusc: {learnset: {
 		acidspray: ["7L1"],
