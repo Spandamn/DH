@@ -1877,7 +1877,7 @@ tamamonomaeninetails: {
     formeLetter: "9",
     types: ["Fire", "Ghost"],
 	 gender: "F",
-    baseStats: {hp: 108, atk: 99, def: 63, spa: 153, spd: 126, spe: 108},
+    baseStats: {hp: 180, atk: 99, def: 63, spa: 153, spd: 126, spe: 108},
     abilities: {0: "Fluffy", H: "Boundless Sunlight"},
 	 heightm: 99.9,
     weightkg: 999.9,
