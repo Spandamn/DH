@@ -10,4 +10,17 @@ exports.BattleItems = {
         zMoveUser: ["Shulk"],
         desc: "If held by Shulk with Sacred Sword, he can use Monado Buster.",
     },
+	 "christmasspirit": { 
+		  id: "christmasspirit",
+		  name: "Christmas Spirit",
+		  spritenum: "184",
+		  megaStone: "Smolitzer-Mega",
+		  megaEvolves: "Smolitzer",
+		  onTakeItem(item, source) {
+			  if (item.megaEvolves === source.baseTemplate.baseSpecies) return false;
+			  return true;
+		  },
+		 desc: "If held by the Smolitzer, this item allows it to Mega Evolve in battle."
+	 },
+		 
 };

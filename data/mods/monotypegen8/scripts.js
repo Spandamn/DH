@@ -16,7 +16,7 @@ let BattleScripts = {
 		
 		this.modData('Learnsets', 'heatmor').learnset.coaltrap = ['7L1'];
 
-	this.modData('Learnsets', 'golisopod').learnset.healorder = ['7L1'];
+		this.modData('Learnsets', 'golisopod').learnset.healorder = ['7L1'];
 	
 	},
 };
