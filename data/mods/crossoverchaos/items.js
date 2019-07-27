@@ -22,5 +22,14 @@ exports.BattleItems = {
 		  },
 		 desc: "If held by the Smolitzer, this item allows it to Mega Evolve in battle."
 	 },
+    "siivagunniumz": {
+        id: "siivagunniumz",
+        name: "SiIvaGunniumZ",
+        onTakeItem: false,
+        zMove: "Stone Halation",
+        zMoveFrom: "Snow Halation",
+        zMoveUser: ["SiIvaGunner"],
+        desc: "If held by SiIvaGunner with Snow Halation, he can use Stone Halation.",
+    },
 		 
 };
