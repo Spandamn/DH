@@ -468,7 +468,7 @@ stardreamaccessark: {
 	 formeLetter: "A",
     types: ["Steel", "Psychic"],
 	 gender: "N",
-    baseStats: {hp: 120, atk: 130, def: 140, spa: 110, spd: 110, spe: 70},
+    baseStats: {hp: 120, atk: 130, def: 140, spa: 130, spd: 110, spe: 70},
     abilities: {0: "Levitate", H: "Soul-Heart"},
 	 heightm: 12700000,
     weightkg: 999.9,
