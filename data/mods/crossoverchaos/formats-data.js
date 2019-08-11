@@ -843,6 +843,15 @@ exports.BattleFormatsData = { //
 	 gregheffley: {
 		  tier: "EX",
 	 },
+	 aimizuno: {
+		  tier: "EX",
+	 },
+	 rapunzel: {
+		  tier: "EX",
+	 },
+	 elphaba: {
+		  tier: "EX",
+	 },
 };
 
 
